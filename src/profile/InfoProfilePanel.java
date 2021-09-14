@@ -7,7 +7,6 @@ package profile;
 
 import com.github.javafaker.Faker;
 import dashboard.DashboardPanel;
-import frames.ImageFrame;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -26,7 +25,7 @@ import net.coobird.gui.simpleimageviewer4j.Viewer;
  */
 public class InfoProfilePanel extends javax.swing.JPanel {
 
-    private ImageFrame imageFrame;
+    private Viewer imageViewer;
     
     /**
      * Creates new form ProfilePanel
@@ -34,7 +33,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public InfoProfilePanel() {
         initComponents();
-        imageFrame = new ImageFrame();
+        imageViewer = new Viewer(DashboardPanel.getBufferedUserImage());
         jLabelApellidos.setForeground(DashboardPanel.getFontColor());
         jLabelCorreoElectronico.setForeground(DashboardPanel.getFontColor());
         jLabelEditarPerfil.setForeground(DashboardPanel.getFontColor());
@@ -290,10 +289,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
     private void jLabelProfilePhotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProfilePhotoMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-           
-            Viewer v = new Viewer(DashboardPanel.getBufferedUserImage());
-            v.show();
-            
+             imageViewer.show();
         }
     }//GEN-LAST:event_jLabelProfilePhotoMouseClicked
 
@@ -329,6 +325,10 @@ public class InfoProfilePanel extends javax.swing.JPanel {
 
     public JLabel getProfilePhotoLabel(){
         return InfoProfilePanel.jLabelProfilePhoto;
+    }
+    
+    public void dispose(){
+        imageViewer = null;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

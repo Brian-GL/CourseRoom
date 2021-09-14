@@ -30,7 +30,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import media.MusicPanel;
-import media.VideoPanel;
 import profile.EditProfilePanel;
 import profile.InfoProfilePanel;
 
@@ -47,7 +46,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     
     private ChatsPanel chatsPanel;
     private AboutPanel aboutPanel;
-    private VideoPanel videoPanel;
     private static InfoProfilePanel infoProfilePanel;
     private EditProfilePanel editProfilePanel;
     private MusicPanel musicPanel;
@@ -120,10 +118,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             musicPanel = new MusicPanel();
             jPanelInformacion.add("musicPanel",musicPanel);
             
-            //video panel -> 11 en active page flag
-            videoPanel = new VideoPanel();
-            jPanelInformacion.add("videoPanel",videoPanel);
-            
             Faker faker = new Faker(new Locale("es","MX"));
             panelLayout = (CardLayout) jPanelInformacion.getLayout();
             jLabelUserName.setText(faker.name().username());
@@ -159,7 +153,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelAbout = new javax.swing.JLabel();
         jLabelLogOut = new javax.swing.JLabel();
         jLabelMusic = new javax.swing.JLabel();
-        jLabelVideo = new javax.swing.JLabel();
         jPanelBarraSuperior = new javax.swing.JPanel();
         jLabelMenu = new javax.swing.JLabel();
         jLabelUserName = new javax.swing.JLabel();
@@ -380,7 +373,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 jLabelAboutMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelAbout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
+        jPanelMenu.add(jLabelAbout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 455, -1, -1));
 
         jLabelLogOut.setBackground(new java.awt.Color(3, 111, 252));
         jLabelLogOut.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
@@ -404,7 +397,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 jLabelLogOutMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 525, -1, -1));
+        jPanelMenu.add(jLabelLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
 
         jLabelMusic.setBackground(new java.awt.Color(3, 111, 252));
         jLabelMusic.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
@@ -429,30 +422,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             }
         });
         jPanelMenu.add(jLabelMusic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
-
-        jLabelVideo.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelVideo.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelVideo.setForeground(java.awt.Color.white);
-        jLabelVideo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/iconfinder-videoslideslayersplayerui-3993849_112664.png"))); // NOI18N
-        jLabelVideo.setText("<html>&nbsp;Video&nbsp;</html>");
-        jLabelVideo.setToolTipText("Video Player");
-        jLabelVideo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelVideo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelVideo.setOpaque(true);
-        jLabelVideo.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelVideo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelVideoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelVideoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelVideoMouseExited(evt);
-            }
-        });
-        jPanelMenu.add(jLabelVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 455, -1, -1));
 
         jPanelBarraSuperior.setBackground(new java.awt.Color(35, 64, 102));
         jPanelBarraSuperior.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -763,28 +732,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelMusic.setForeground(secondFontColor);
     }//GEN-LAST:event_jLabelMusicMouseExited
 
-    private void jLabelVideoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVideoMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(activePageFlag != 11){
-                panelLayout.show(jPanelInformacion, "videoPanel");
-                activePageFlag =11;
-            }
-        }
-    }//GEN-LAST:event_jLabelVideoMouseClicked
-
-    private void jLabelVideoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVideoMouseEntered
-        // TODO add your handling code here:
-        jLabelVideo.setBackground(firstColor);
-        jLabelVideo.setForeground(fontColor);
-    }//GEN-LAST:event_jLabelVideoMouseEntered
-
-    private void jLabelVideoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVideoMouseExited
-        // TODO add your handling code here:
-        jLabelVideo.setBackground(secondColor);
-        jLabelVideo.setForeground(secondFontColor);
-    }//GEN-LAST:event_jLabelVideoMouseExited
-
     public static void showInfoProfilePanel(){
         if(activePageFlag != 0){
             panelLayout.show(jPanelInformacion, "infoProfilePanel");
@@ -825,7 +772,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                             maximum = number;
                         }
                     } else {
-                        colorList.add_back(1, color);
+                        colorList.push_back(1, color);
                     }
 
                     color = null;
@@ -892,7 +839,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 jLabelClasses.setForeground(secondFontColor);
                 jLabelHomePage.setForeground(secondFontColor);
                 jLabelHomeWorks.setForeground(secondFontColor);
-                jLabelVideo.setForeground(secondFontColor);
                 jLabelNotices.setForeground(secondFontColor);
                 jLabelDates.setForeground(secondFontColor);
                 jLabelAbout.setForeground(secondFontColor);
@@ -918,6 +864,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         userImage = null;
         musicPanel.dispose();
         chatsPanel.dispose();
+        infoProfilePanel.dispose();
         musicPanel = null;
         setFirstColor(null);
         setSecondColor(null);
@@ -945,7 +892,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private javax.swing.JLabel jLabelNotices;
     private javax.swing.JLabel jLabelUserName;
     private static javax.swing.JLabel jLabelUserProfilePhoto;
-    private javax.swing.JLabel jLabelVideo;
     private javax.swing.JPanel jPanelBarraSuperior;
     private static javax.swing.JPanel jPanelInformacion;
     private javax.swing.JPanel jPanelMenu;

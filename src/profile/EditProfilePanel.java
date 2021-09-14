@@ -859,12 +859,8 @@ public class EditProfilePanel extends javax.swing.JPanel {
             
             String clase = component.getClass().getSimpleName();
             switch (clase) {
-                case "JTextField":
-                    ((JTextField)component).setCaretColor(DashboardPanel.getFirstColor());
-                    break;
-                case "JFormattedTextField":
-                    ((JFormattedTextField)component).setCaretColor(DashboardPanel.getFirstColor());
-                    break;        
+                case "JTextField" -> ((JTextField)component).setCaretColor(DashboardPanel.getFirstColor());
+                case "JFormattedTextField" -> ((JFormattedTextField)component).setCaretColor(DashboardPanel.getFirstColor());        
             }
             
             component.setBackground(DashboardPanel.getSecondColor());

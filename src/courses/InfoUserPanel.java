@@ -9,7 +9,6 @@ import chat.BoxChatPanel;
 import data.collections.PairDoublyLinkedList;
 import data.interfaces.MainInterface;
 import data.structures.Pair;
-import data_structures.Doublet;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -143,7 +142,7 @@ public class InfoUserPanel extends javax.swing.JPanel implements MainInterface{
                             maximum = number;
                         }
                     } else {
-                        colorList.add_back(1, color);
+                        colorList.push_back(1, color);
                     }
 
                     color = null;

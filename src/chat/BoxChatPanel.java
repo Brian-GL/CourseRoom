@@ -79,7 +79,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements data.interfaces.
                             maximum = number;
                         }
                     } else {
-                        colorList.add_back(1, color);
+                        colorList.push_back(1, color);
                     }
 
                     color = null;

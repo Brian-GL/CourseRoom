@@ -28,7 +28,7 @@ public class DoublyLinkedQueue<T> extends Collection<T> {
     }
 
     public T dequeue() throws NullPointerException{
-        return this._collection.unenlist_front();
+        return this._collection.delist();
     }
     
     

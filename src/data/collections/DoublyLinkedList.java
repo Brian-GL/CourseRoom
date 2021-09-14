@@ -30,7 +30,7 @@ public class DoublyLinkedList<T>{
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public DoublyLinkedList(Collection<T> collection) {
-         this._size = 0;
+        this._size = 0;
 
         Node<T> middle = collection.list().middle();
 
@@ -86,30 +86,23 @@ public class DoublyLinkedList<T>{
     //Public Methods
 
     public boolean is_empty() {return this._front == null;}
-
     
     public int size() {return this._size;}
 
-    
     public T first() throws NullPointerException {return (this._front != null) ? this._front.element() : null;}
 
-    
     public T last() throws NullPointerException {return (this._back != null) ? this._back.element() : null;}
 
-    
     public T medium() throws NullPointerException {return (this._middle != null) ? this._middle.element() : null;}
 
-    
     public Node<T> front() throws NullPointerException{ return this._front; }
 
-    
     public Node<T> back() throws NullPointerException { return this._back; }
 
-    
     public Node<T> middle() throws NullPointerException { return this._middle; }
 
     
-    public T unenlist_front() throws NullPointerException{
+    public T delist() throws NullPointerException{
         if(!is_empty()) {
             T auxiliar = this._front.element();
             pop_front();
@@ -119,7 +112,7 @@ public class DoublyLinkedList<T>{
     }
 
     
-    public T unenlist_back() throws NullPointerException{
+    public T unlist() throws NullPointerException{
         if(!is_empty()) {
             T auxiliar = this._back.element();
             pop_back();

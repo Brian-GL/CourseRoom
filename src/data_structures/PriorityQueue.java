@@ -5,6 +5,10 @@
  */
 package data_structures;
 
+import data.collections.Collection;
+import data.collections.DoublyLinkedList;
+import data.structures.Node;
+import data_structures.Mode;
 import java.util.Comparator;
 
 /**Comparator class useful for element's comparison in Priority Queue*/
@@ -17,7 +21,7 @@ class DefaultComparator<T> implements Comparator<T>{
     }
 }
 
-public class PriorityQueue<T> extends Structure<T>{
+public class PriorityQueue<T> extends Collection<T>{
 	
     /**Private attributes*/
 
@@ -32,14 +36,14 @@ public class PriorityQueue<T> extends Structure<T>{
     public PriorityQueue(Mode mode) { super(); this._mode = mode; }
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public PriorityQueue(Listing<T> list, Mode mode) { 
+    public PriorityQueue(DoublyLinkedList<T> list, Mode mode) { 
             super();
             this._mode = mode; 
-            Nodet<T> auxiliar = list.getFrontNodet();
+            Node<T> auxiliar = list.front();
 
             while(auxiliar != null) {
-                    enqueue(auxiliar.getValue());
-                    auxiliar = auxiliar.getNext();
+                    enqueue(auxiliar.element());
+                    auxiliar = auxiliar.next();
             }
     }
 
@@ -67,14 +71,14 @@ public class PriorityQueue<T> extends Structure<T>{
     */
    
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public PriorityQueue(Structure<T> structure, Mode mode) { 
+    public PriorityQueue(Collection<T> collection, Mode mode) { 
             super(); 
             this._mode = mode; 
-            Nodet<T> auxiliar = structure.toListing().getFrontNodet();
+            Node<T> auxiliar = collection.list().front();
 
             while(auxiliar != null) {
-                    enqueue(auxiliar.getValue());
-                    auxiliar = auxiliar.getNext();
+                    enqueue(auxiliar.element());
+                    auxiliar = auxiliar.next();
             }
     }
 
@@ -82,123 +86,123 @@ public class PriorityQueue<T> extends Structure<T>{
 
     public void enqueue(T element) {
 
-        if(this._elements.isEmpty())
-                this._elements.pushFront(element);
+        if(this._collection.is_empty())
+                this._collection.push_front(element);
         else {
 
                 switch(this._mode) {
                         case ASCENDING:
                         {	
-                                T middleElement = this._elements.getMediumElement();
+                                T middleElement = this._collection.medium();
 
                                 Integer comparator = this._comparator.compare(element,middleElement);
 
                                 //Are the same value
                                 if(comparator == 0) 
-                                        this._elements.insertNextTo(this._elements.getMiddleNodet(), element);
+                                        this._collection.insert_next(this._collection.middle(), element);
 
                                 //It means the element if bigger than the middle value.
                                 else if(comparator > 0) {
 
                                         boolean broke = false;
-                                        Nodet<T> auxiliar = this._elements.getMiddleNodet();
+                                        Node<T> auxiliar = this._collection.middle();
 
-                                        while(auxiliar.getNext() != null) {
+                                        while(auxiliar.next() != null) {
 
-                                                Integer previousComparator = this._comparator.compare(auxiliar.getValue(),element);
-                                                Integer nextComparator = this._comparator.compare(auxiliar.getNext().getValue(),element);
+                                                Integer previousComparator = this._comparator.compare(auxiliar.element(),element);
+                                                Integer nextComparator = this._comparator.compare(auxiliar.next().element(),element);
 
                                                 if(previousComparator <= 0 && nextComparator >= 0) {
                                                         broke = true;
-                                                        this._elements.insertNextTo(auxiliar, element);
+                                                        this._collection.insert_next(auxiliar, element);
                                                         break;
                                                 }
 
-                                                auxiliar = auxiliar.getNext();
+                                                auxiliar = auxiliar.next();
                                         }
 
                                         if(!broke)
-                                                this._elements.insertNextTo(auxiliar,element);
+                                                this._collection.insert_next(auxiliar,element);
 
                                 }
                                 //It means the element is smaller than the middle value.
                                 else {
                                         boolean broke = false;
-                                        Nodet<T> auxiliar = this._elements.getMiddleNodet();
+                                        Node<T> auxiliar = this._collection.middle();
 
-                                        while(auxiliar.getPrevious() != null) {
+                                        while(auxiliar.previous() != null) {
 
-                                                Integer nextComparator = this._comparator.compare(auxiliar.getValue(),element);
-                                                Integer previousComparator = this._comparator.compare(auxiliar.getPrevious().getValue(),element);
+                                                Integer nextComparator = this._comparator.compare(auxiliar.element(),element);
+                                                Integer previousComparator = this._comparator.compare(auxiliar.previous().element(),element);
 
                                                 if(previousComparator <= 0 && nextComparator >= 0) {
                                                         broke = true;
-                                                        this._elements.insertPreviousTo(auxiliar, element);
+                                                        this._collection.insert_previous(auxiliar, element);
                                                         break;
                                                 }
 
-                                                auxiliar = auxiliar.getPrevious();
+                                                auxiliar = auxiliar.previous();
                                         }
 
                                         if(!broke)
-                                                this._elements.insertPreviousTo(auxiliar,element);
+                                                this._collection.insert_previous(auxiliar,element);
                                 }
                         }
                         break;
                         case DESCENDING:{
-                                T middleElement = this._elements.getMediumElement();
+                                T middleElement = this._collection.medium();
 
                                 Integer comparator = this._comparator.compare(element,middleElement);
 
                                 //Are the same value
                                 if(comparator == 0) 
-                                        this._elements.insertNextTo(this._elements.getMiddleNodet(), element);
+                                        this._collection.insert_next(this._collection.middle(), element);
 
                                 //It means the element if bigger than the middle value.
                                 else if(comparator > 0) {
 
                                         boolean broke = false;
-                                        Nodet<T> auxiliar = this._elements.getMiddleNodet();
+                                        Node<T> auxiliar = this._collection.middle();
 
-                                        while(auxiliar.getPrevious() != null){
+                                        while(auxiliar.previous() != null){
 
-                                                Integer previousComparator = this._comparator.compare(auxiliar.getValue(),element);
-                                                Integer nextComparator = this._comparator.compare(auxiliar.getPrevious().getValue(),element);
+                                                Integer previousComparator = this._comparator.compare(auxiliar.element(),element);
+                                                Integer nextComparator = this._comparator.compare(auxiliar.previous().element(),element);
 
                                                 if(previousComparator <= 0 && nextComparator >= 0) {
                                                         broke = true;
-                                                        this._elements.insertPreviousTo(auxiliar, element);
+                                                        this._collection.insert_previous(auxiliar, element);
                                                         break;
                                                 }
 
-                                                auxiliar = auxiliar.getPrevious();
+                                                auxiliar = auxiliar.previous();
                                         }
 
                                         if(!broke)
-                                                this._elements.insertPreviousTo(auxiliar,element);
+                                                this._collection.insert_previous(auxiliar,element);
 
                                 }
                                 //It means the element is small than the middle value.
                                 else {
                                         boolean broke = false;
-                                        Nodet<T> auxiliar = this._elements.getMiddleNodet();
+                                        Node<T> auxiliar = this._collection.middle();
 
-                                        while(auxiliar.getNext() != null) {
+                                        while(auxiliar.next() != null) {
 
-                                                Integer  previousComparator = this._comparator.compare(auxiliar.getValue(),element);
-                                                Integer nextComparator = this._comparator.compare(auxiliar.getNext().getValue(),element);
+                                                Integer  previousComparator = this._comparator.compare(auxiliar.element(),element);
+                                                Integer nextComparator = this._comparator.compare(auxiliar.next().element(),element);
 
                                                 if(previousComparator >= 0 && nextComparator <= 0) {
                                                         broke = true;
-                                                        this._elements.insertNextTo(auxiliar, element);
+                                                        this._collection.insert_next(auxiliar, element);
                                                         break;
                                                 }
 
-                                                auxiliar = auxiliar.getNext();
+                                                auxiliar = auxiliar.next();
                                         }
 
                                         if(!broke)
-                                                this._elements.insertNextTo(auxiliar,element);
+                                                this._collection.insert_next(auxiliar,element);
                                 }
                         }
                         break;
@@ -207,12 +211,12 @@ public class PriorityQueue<T> extends Structure<T>{
     }
 
     public void queueUp(T element) {
-        if(!this._elements.containsElement(element))
+        if(!this._collection.contains(element))
             enqueue(element);
     }
 
     public T dequeue() throws NullPointerException{
-           return _elements.dequeue();
+           return _collection.delist();
     }
 	
 }

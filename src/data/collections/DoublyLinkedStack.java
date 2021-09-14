@@ -28,7 +28,7 @@ public class DoublyLinkedStack<T> extends Collection<T>{
     }
 
     public T unstack() throws NullPointerException{
-        return this._collection.unenlist_back();
+        return this._collection.unlist();
     }
     
 }

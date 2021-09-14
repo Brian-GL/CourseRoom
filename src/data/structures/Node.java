@@ -13,10 +13,10 @@ import java.util.Objects;
  */
 public class Node<T> implements Comparable<Node<T>>{
 
-    private Node<T> _previous;
-    private T _element;
-    private Node<T> _next;
-    private Comparing<T> _comparing;
+    protected Node<T> _previous;
+    protected T _element;
+    protected Node<T> _next;
+    protected Comparing<T> _comparing;
 
     public Node(Node<T> _previous, T _value, Node<T> _next) {
         this._previous = _previous;
