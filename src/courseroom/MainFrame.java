@@ -6,16 +6,21 @@
 package courseroom;
 
 
-import dashboard.DashboardPanel;
+import com.formdev.flatlaf.FlatDarkLaf;
+import panels.DashboardPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import login.LoginPanel;
-import login.RecuperarCredencialesPanel;
-import registration.CrearCuentaPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import panels.LoginPanel;
+import panels.RecuperarCredencialesPanel;
+import panels.CrearCuentaPanel;
 /**
  *
  * @author LENOVO
@@ -80,19 +85,24 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CourseRoom - Tu Espacio Personal Para Estudiar");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../resources/images/Course_Room_Logo.png")));
-        setMinimumSize(new java.awt.Dimension(800, 650));
+        setMinimumSize(new java.awt.Dimension(1024, 700));
         setName("mainFrame"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1024, 700));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(new java.awt.CardLayout());
 
+        jScrollPaneFondo.setMinimumSize(new java.awt.Dimension(0, 0));
+        jScrollPaneFondo.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        jPanelViewer.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanelViewer.setPreferredSize(new java.awt.Dimension(0, 0));
         jPanelViewer.setLayout(new java.awt.CardLayout());
         jScrollPaneFondo.setViewportView(jPanelViewer);
 
-        getContentPane().add(jScrollPaneFondo, "card2");
+        getContentPane().add(jScrollPaneFondo, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,6 +187,21 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
+    /**
+    * @param args the command line arguments
+    */
+    public static void main(String args[]) {
+        try {
+            FlatDarkLaf ui = new FlatDarkLaf();
+            UIManager.setLookAndFeel(ui);
+            java.awt.EventQueue.invokeLater(() -> {
+                new MainFrame().setVisible(true);
+            });
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     
 }
