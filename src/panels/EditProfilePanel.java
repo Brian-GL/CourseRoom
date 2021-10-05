@@ -38,9 +38,21 @@ public class EditProfilePanel extends javax.swing.JPanel {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public EditProfilePanel() {
         initComponents();
-        this.setBackground(DashboardPanel.getFirstColor());
-        jTabbedPaneFondo.setBackground(DashboardPanel.getFirstColor());
-        jTabbedPaneFondo.setForeground( DashboardPanel.getThirdColor());
+        paintComponentes();
+        Color noColor = new Color(0,0,0,0);
+        jTabbedPaneFondo.setBackground(noColor);
+        jCheckBoxEditarApellidos.setBackground(noColor);
+        jCheckBoxEditarCorreoElectronico.setBackground(noColor);
+        jCheckBoxEditarDescripcion.setBackground(noColor);
+        jCheckBoxEditarFechaNacimiento.setBackground(noColor);
+        jCheckBoxEditarGenero.setBackground(noColor);
+        jCheckBoxEditarImagenPerfil.setBackground(noColor);
+        jCheckBoxEditarLocalidad.setBackground(noColor);
+        jCheckBoxEditarNombreUsuario.setBackground(noColor);
+        jCheckBoxEditarNombres.setBackground(noColor);
+        jCheckBoxEditarPassword.setBackground(noColor);
+        jCheckBoxEditarPerfil.setBackground(noColor);
+        jCheckBoxEditarTelefono.setBackground(noColor);
         jScrollPaneDescripcion.getViewport().setOpaque(false);
         int imageWidth = jLabelImagenPerfilAutenticacion.getPreferredSize().width;
         int imageHeight = jLabelImagenPerfilAutenticacion.getPreferredSize().height;
@@ -49,10 +61,9 @@ public class EditProfilePanel extends javax.swing.JPanel {
         imageWidth = jLabelImagenPerfil.getPreferredSize().width;
         imageHeight = jLabelImagenPerfil.getPreferredSize().height;
         icon = new ImageIcon(DashboardPanel.getUserImage().getScaledInstance(imageWidth,imageHeight,Image.SCALE_SMOOTH));
-        
         jLabelImagenPerfil.setIcon(icon);
-        
-        paintComponentes();
+        noColor = null;
+       
         
     }
 
@@ -66,25 +77,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jTabbedPaneFondo = new javax.swing.JTabbedPane();
-        jPanelAutenticacion = new JPanel(){
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                int w = this.getWidth();
-                int h = this.getHeight();
-                Graphics2D graphics = (Graphics2D)g;
-                Color noColor =  new Color(0, 0, 0, 0);
-                GradientPaint primary = new GradientPaint(0f, 0f, DashboardPanel.getSecondColor(), w, 0f, DashboardPanel.getThirdColor());
-                GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, DashboardPanel.getFirstColor());
-                graphics.setPaint(primary);
-                graphics.fillRect(0, 0, w, h);
-                graphics.setPaint(secondary);
-                graphics.fillRect(0, 0, w, h);
-                primary = null;
-                secondary = null;
-                noColor = null;
-                graphics = null;
-            }
-        };
+        jPanelAutenticacion = new javax.swing.JPanel();
         jLabelNombre = new javax.swing.JLabel();
         jTextFieldNombreDeUsuario = new javax.swing.JTextField();
         jLabelPassword = new javax.swing.JLabel();
@@ -106,25 +99,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jLabelImagenPerfilAutenticacion = new javax.swing.JLabel();
         jButtonGuardarCambiosAutenticacion = new javax.swing.JButton();
         jLabelRegresarAMiPerfil = new javax.swing.JLabel();
-        jPanelDatosPersonales = new JPanel(){
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                int w = this.getWidth();
-                int h = this.getHeight();
-                Graphics2D graphics = (Graphics2D)g;
-                Color noColor =  new Color(0, 0, 0, 0);
-                GradientPaint primary = new GradientPaint(0f, 0f, DashboardPanel.getSecondColor(), w, 0f, DashboardPanel.getThirdColor());
-                GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, DashboardPanel.getFirstColor());
-                graphics.setPaint(primary);
-                graphics.fillRect(0, 0, w, h);
-                graphics.setPaint(secondary);
-                graphics.fillRect(0, 0, w, h);
-                primary = null;
-                secondary = null;
-                noColor = null;
-                graphics = null;
-            }
-        };
+        jPanelDatosPersonales = new javax.swing.JPanel();
         jLabelNombres = new javax.swing.JLabel();
         jTextFieldNombres = new javax.swing.JTextField();
         jLabelApellidos = new javax.swing.JLabel();
@@ -164,8 +139,9 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jCheckBoxEditarImagenPerfil = new javax.swing.JCheckBox();
         jButtonGuardarCambiosDatosPersonales = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(1036, 660));
-        setPreferredSize(new java.awt.Dimension(1036, 660));
+        setMinimumSize(new java.awt.Dimension(1020, 600));
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1020, 600));
         setLayout(new java.awt.CardLayout());
 
         jTabbedPaneFondo.setBackground(java.awt.Color.black);
@@ -663,7 +639,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonGuardarCambiosDatosPersonales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                    .addComponent(jTextFieldNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                     .addComponent(jTextFieldApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jFormattedTextFieldFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -672,13 +648,13 @@ public class EditProfilePanel extends javax.swing.JPanel {
                     .addComponent(jComboBoxPerfil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
                         .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                            .addComponent(jLabelApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                            .addComponent(jLabelLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                            .addComponent(jLabelFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                            .addComponent(jLabelGenero, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                            .addComponent(jLabelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                            .addComponent(jLabelPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
+                            .addComponent(jLabelNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                            .addComponent(jLabelApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                            .addComponent(jLabelLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                            .addComponent(jLabelFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                            .addComponent(jLabelGenero, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                            .addComponent(jLabelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                            .addComponent(jLabelPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                         .addGap(50, 50, 50)))
                 .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
@@ -717,11 +693,11 @@ public class EditProfilePanel extends javax.swing.JPanel {
                     .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEditarDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(jLabelEditarDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                             .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(jCheckBoxEditarDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)))
                         .addGap(9, 9, 9))
                     .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

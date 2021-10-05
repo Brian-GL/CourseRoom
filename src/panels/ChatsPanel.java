@@ -24,7 +24,10 @@ public class ChatsPanel extends javax.swing.JPanel {
     public ChatsPanel(){
         
         initComponents();
-        this.setBackground(DashboardPanel.getSecondColor());
+        Color noColor = new Color(0,0,0,0);
+        jTabbedPaneChats.setBackground(noColor);
+        jScrollPaneChatsGrupales.getViewport().setOpaque(false);
+        jScrollPaneChatsPersonales.getViewport().setOpaque(false);
         jTabbedPaneChats.setBackground(DashboardPanel.getFirstColor());
         jTabbedPaneChats.setForeground( DashboardPanel.getFontColor());
         jPanelChatsGrupales.setBackground(DashboardPanel.getFirstColor());
@@ -35,12 +38,14 @@ public class ChatsPanel extends javax.swing.JPanel {
         jPanelChatsPersonales.setLayout(gridLayoutChatsPersonales);
         GridLayout gridLayoutChatsGrupales = new GridLayout(0,4);
         jPanelChatsGrupales.setLayout(gridLayoutChatsGrupales);
-
-        for(int i = 0; i < 4; i++){
+        noColor = null;
+        
+        for(int i = 0; i < 12; i++){
             BoxChatPanel boxChatPanel = new BoxChatPanel("https://source.unsplash.com/random");
             jPanelChatsPersonales.add(boxChatPanel);
             System.out.println("Getting Image From : https://source.unsplash.com/random");
         }
+        
         
         gridLayoutChatsPersonales = null;
         gridLayoutChatsGrupales = null;
@@ -59,54 +64,16 @@ public class ChatsPanel extends javax.swing.JPanel {
 
         jTabbedPaneChats = new javax.swing.JTabbedPane();
         jScrollPaneChatsPersonales = new javax.swing.JScrollPane();
-        jPanelChatsPersonales = new JPanel(){
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                int w = this.getWidth();
-                int h = this.getHeight();
-                Graphics2D graphics = (Graphics2D)g;
-                Color noColor =  new Color(0, 0, 0, 0);
-                GradientPaint primary = new GradientPaint(0f, 0f, DashboardPanel.getSecondColor(), w, 0f, DashboardPanel.getThirdColor());
-                GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, DashboardPanel.getFirstColor());
-                graphics.setPaint(primary);
-                graphics.fillRect(0, 0, w, h);
-                graphics.setPaint(secondary);
-                graphics.fillRect(0, 0, w, h);
-                primary = null;
-                secondary = null;
-                noColor = null;
-                graphics = null;
-            }
-        };
+        jPanelChatsPersonales = new javax.swing.JPanel();
         jScrollPaneChatsGrupales = new javax.swing.JScrollPane();
-        jPanelChatsGrupales = new JPanel(){
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                int w = this.getWidth();
-                int h = this.getHeight();
-                Graphics2D graphics = (Graphics2D)g;
-                Color noColor =  new Color(0, 0, 0, 0);
-                GradientPaint primary = new GradientPaint(0f, 0f, DashboardPanel.getSecondColor(), w, 0f, DashboardPanel.getThirdColor());
-                GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, DashboardPanel.getFirstColor());
-                graphics.setPaint(primary);
-                graphics.fillRect(0, 0, w, h);
-                graphics.setPaint(secondary);
-                graphics.fillRect(0, 0, w, h);
-                primary = null;
-                secondary = null;
-                noColor = null;
-                graphics = null;
-            }
-        };
+        jPanelChatsGrupales = new javax.swing.JPanel();
 
-        setMinimumSize(new java.awt.Dimension(1036, 660));
+        setMinimumSize(new java.awt.Dimension(1020, 600));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1036, 660));
+        setPreferredSize(new java.awt.Dimension(1020, 600));
         setLayout(new java.awt.CardLayout());
 
-        jTabbedPaneChats.setBackground(java.awt.Color.black);
         jTabbedPaneChats.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jTabbedPaneChats.setOpaque(true);
 
         jScrollPaneChatsPersonales.setBackground(java.awt.Color.white);
         jScrollPaneChatsPersonales.setBorder(null);

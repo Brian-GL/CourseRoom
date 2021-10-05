@@ -34,7 +34,6 @@ public class MainFrame extends javax.swing.JFrame {
     private static Color lightBlue,darkBlue;
     private static ImageIcon logoImage;
     private static CardLayout viewerLayout;
-   
     
     /**
      * Creates new form MainFrame
@@ -43,8 +42,6 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         
         initComponents();
-        jScrollPaneFondo.getVerticalScrollBar().setUnitIncrement(15);
-        jScrollPaneFondo.getHorizontalScrollBar().setUnitIncrement(15);
         
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -66,7 +63,6 @@ public class MainFrame extends javax.swing.JFrame {
         
         viewerLayout = (CardLayout)jPanelViewer.getLayout();
         
-       
      
     }
 
@@ -79,30 +75,25 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPaneFondo = new javax.swing.JScrollPane();
         jPanelViewer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CourseRoom - Tu Espacio Personal Para Estudiar");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../resources/images/Course_Room_Logo.png")));
-        setMinimumSize(new java.awt.Dimension(1024, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
         setName("mainFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1024, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-
-        jScrollPaneFondo.setMinimumSize(new java.awt.Dimension(0, 0));
-        jScrollPaneFondo.setPreferredSize(new java.awt.Dimension(0, 0));
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPanelViewer.setMinimumSize(new java.awt.Dimension(0, 0));
         jPanelViewer.setPreferredSize(new java.awt.Dimension(0, 0));
         jPanelViewer.setLayout(new java.awt.CardLayout());
-        jScrollPaneFondo.setViewportView(jPanelViewer);
-
-        getContentPane().add(jScrollPaneFondo, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanelViewer);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -115,23 +106,23 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     public static void showLogin(){
-        viewerLayout.show(jPanelViewer, "login");
+        viewerLayout.show(jPanelViewer,"login");
     }
     
     public static void showRecuperarCredenciales(){
-        viewerLayout.show(jPanelViewer, "recuperarCredenciales");
+        viewerLayout.show(jPanelViewer,"recuperarCredenciales");
     }
     
     public static void showCrearCuenta(){
-        viewerLayout.show(jPanelViewer, "crearCuenta");
+        viewerLayout.show(jPanelViewer,"crearCuenta");
     }
     
     public static void showDashboard(){
-        viewerLayout.show(jPanelViewer, "dashboard");
+        viewerLayout.show(jPanelViewer,"dashboard");
     }
     
     public static void logOut(){
-        viewerLayout.show(jPanelViewer, "login");
+        showLogin();
     }
    
     @Override
@@ -152,7 +143,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JPanel jPanelViewer;
-    private javax.swing.JScrollPane jScrollPaneFondo;
     // End of variables declaration//GEN-END:variables
 
    

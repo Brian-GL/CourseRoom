@@ -31,11 +31,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelLogo" alignment="0" pref="815" max="32767" attributes="0"/>
-                          <Component id="jLabelTitulo" alignment="0" pref="815" max="32767" attributes="0"/>
-                          <Component id="jLabelFrase" alignment="0" pref="815" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCorreoElectronico" alignment="0" pref="815" max="32767" attributes="0"/>
-                          <Component id="jButtonRecuperarCredenciales" alignment="0" pref="815" max="32767" attributes="0"/>
+                          <Component id="jLabelLogo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelTitulo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelFrase" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldCorreoElectronico" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButtonRecuperarCredenciales" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelCorreoElectronico" pref="0" max="32767" attributes="0"/>
                               <EmptySpace min="388" pref="388" max="-2" attributes="0"/>
@@ -51,17 +51,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="jLabelLogo" pref="168" max="32767" attributes="0"/>
+              <Component id="jLabelLogo" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="jLabelTitulo" pref="81" max="32767" attributes="0"/>
+              <Component id="jLabelTitulo" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-              <Component id="jLabelFrase" pref="130" max="32767" attributes="0"/>
+              <Component id="jLabelFrase" pref="156" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Component id="jLabelCorreoElectronico" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="jTextFieldCorreoElectronico" pref="64" max="32767" attributes="0"/>
+              <Component id="jTextFieldCorreoElectronico" pref="90" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Component id="jButtonRecuperarCredenciales" pref="74" max="32767" attributes="0"/>
+              <Component id="jButtonRecuperarCredenciales" pref="100" max="32767" attributes="0"/>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Component id="jLabelRegresar" min="-2" pref="37" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>

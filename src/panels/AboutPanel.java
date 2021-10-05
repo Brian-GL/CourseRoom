@@ -5,12 +5,9 @@
  */
 package panels;
 
-import courseroom.MainFrame;
-import panels.DashboardPanel;
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import com.github.javafaker.Faker;
+import courseroom.MainFrame;import java.util.Locale;
+;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -27,16 +24,23 @@ public class AboutPanel extends javax.swing.JPanel {
         initComponents();
         jLabelLogo.setIcon(MainFrame.getLogoImage());
         jTextPaneAbout.setForeground(DashboardPanel.getFontColor());
-        jLabelTitulo.setForeground(DashboardPanel.getFirstColor());
+        jLabelTitulo.setForeground(DashboardPanel.getSecondFontColor());
         StyledDocument doc = jTextPaneAbout.getStyledDocument();
         SimpleAttributeSet center = new SimpleAttributeSet();
         StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
         doc.setParagraphAttributes(0, doc.getLength(), center, false);
         doc = null;
         center = null;
+        Faker faker = new Faker(new Locale("es","MX"));
+        String ma ="";
+        for(int i = 0; i < 20;i++){
+            ma = ma  + faker.lorem().paragraph() + "\n";
+        }
+        jTextPaneAbout.setText(ma);
         jScrollPaneTextPane.getViewport().setOpaque(false);
+        faker = null;
+        ma = null;
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,7 +55,9 @@ public class AboutPanel extends javax.swing.JPanel {
         jScrollPaneTextPane = new javax.swing.JScrollPane();
         jTextPaneAbout = new javax.swing.JTextPane();
 
-        setMinimumSize(new java.awt.Dimension(1036, 660));
+        setMinimumSize(new java.awt.Dimension(849, 650));
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(849, 650));
 
         jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogo.setMaximumSize(new java.awt.Dimension(150, 125));
@@ -63,8 +69,12 @@ public class AboutPanel extends javax.swing.JPanel {
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("Acerca De CourseRoom");
 
+        jScrollPaneTextPane.setBorder(null);
+        jScrollPaneTextPane.setMinimumSize(new java.awt.Dimension(274, 420));
         jScrollPaneTextPane.setOpaque(false);
+        jScrollPaneTextPane.setPreferredSize(new java.awt.Dimension(274, 420));
 
+        jTextPaneAbout.setEditable(false);
         jTextPaneAbout.setBorder(null);
         jTextPaneAbout.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jTextPaneAbout.setText("CourseRoom - All Rights Reserved");
@@ -76,45 +86,26 @@ public class AboutPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneTextPane)
+                    .addComponent(jScrollPaneTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelLogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE))
-                .addGap(60, 60, 60))
+                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jLabelTitulo)
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPaneTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-                .addGap(17, 17, 17))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPaneTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    @Override
-    protected void paintComponent(Graphics g){
-        super.paintComponent(g);
-        int w = this.getWidth();
-        int h = this.getHeight();
-        Graphics2D graphics = (Graphics2D)g;
-        Color noColor =  new Color(0, 0, 0, 0);
-        GradientPaint primary = new GradientPaint(0f, 0f, DashboardPanel.getSecondColor(), w, 0f, DashboardPanel.getThirdColor());
-        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, DashboardPanel.getFirstColor());
-        graphics.setPaint(primary);
-        graphics.fillRect(0, 0, w, h);
-        graphics.setPaint(secondary);
-        graphics.fillRect(0, 0, w, h);
-        primary = null;
-        secondary = null;
-        noColor = null;
-        graphics  = null;
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelTitulo;

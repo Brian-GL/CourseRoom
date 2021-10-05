@@ -45,12 +45,7 @@ import org.jaudiotagger.tag.TagException;
 import org.jaudiotagger.tag.images.Artwork;
 import data.collections.DoublyLinkedList;
 import data.structures.Pair;
-import data.structures.PairNode;
-import java.io.BufferedReader;
 import java.io.FileFilter;
-import java.io.FileReader;
-import java.text.CharacterIterator;
-import java.text.StringCharacterIterator;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -69,6 +64,7 @@ public final class MusicPanel extends javax.swing.JPanel{
     
     //Flags
     private boolean flag, moving_next, moving_previous;
+    private static boolean zero_index;
     
     //Image Icons
     private ImageIcon play_icon, pause_icon;
@@ -189,17 +185,18 @@ public final class MusicPanel extends javax.swing.JPanel{
         jTextPaneLyrics = new javax.swing.JTextPane();
 
         setBackground(java.awt.Color.black);
-        setMinimumSize(new java.awt.Dimension(1024, 650));
-        setPreferredSize(new java.awt.Dimension(1024, 650));
+        setMinimumSize(new java.awt.Dimension(849, 660));
+        setPreferredSize(new java.awt.Dimension(849, 660));
 
         jLabelCoverArt.setBackground(new java.awt.Color(0, 0, 0));
         jLabelCoverArt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCoverArt.setToolTipText("");
-        jLabelCoverArt.setMinimumSize(new java.awt.Dimension(600, 600));
-        jLabelCoverArt.setPreferredSize(new java.awt.Dimension(600, 600));
+        jLabelCoverArt.setMaximumSize(new java.awt.Dimension(458, 616));
+        jLabelCoverArt.setMinimumSize(new java.awt.Dimension(458, 616));
+        jLabelCoverArt.setPreferredSize(new java.awt.Dimension(458, 616));
 
         jLabelTitle.setBackground(new java.awt.Color(0, 0, 0));
-        jLabelTitle.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jLabelTitle.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         jLabelTitle.setForeground(java.awt.Color.white);
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/cd.png"))); // NOI18N
@@ -211,7 +208,7 @@ public final class MusicPanel extends javax.swing.JPanel{
         jLabelTitle.setPreferredSize(new java.awt.Dimension(359, 35));
 
         jLabelArtist.setBackground(new java.awt.Color(0, 0, 0));
-        jLabelArtist.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jLabelArtist.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         jLabelArtist.setForeground(java.awt.Color.white);
         jLabelArtist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelArtist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/broadcaster.png"))); // NOI18N
@@ -224,7 +221,7 @@ public final class MusicPanel extends javax.swing.JPanel{
         jLabelArtist.setPreferredSize(new java.awt.Dimension(359, 35));
 
         jLabelAlbum.setBackground(new java.awt.Color(0, 0, 0));
-        jLabelAlbum.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jLabelAlbum.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         jLabelAlbum.setForeground(java.awt.Color.white);
         jLabelAlbum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelAlbum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/music-album.png"))); // NOI18N
@@ -289,7 +286,6 @@ public final class MusicPanel extends javax.swing.JPanel{
         });
 
         jScrollPanePlaylist.setBorder(null);
-        jScrollPanePlaylist.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPanePlaylist.setOpaque(false);
 
         jPanelPlaylist.setOpaque(false);
@@ -301,21 +297,21 @@ public final class MusicPanel extends javax.swing.JPanel{
         jPanelOpenFilesLayout.setHorizontalGroup(
             jPanelOpenFilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOpenFilesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelOpenFilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addGroup(jPanelOpenFilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPanePlaylist)
                     .addGroup(jPanelOpenFilesLayout.createSequentialGroup()
                         .addComponent(jLabelOpenFiles)
-                        .addGap(242, 242, 242)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                         .addComponent(jLabelOpenFolder)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanelOpenFilesLayout.setVerticalGroup(
             jPanelOpenFilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOpenFilesLayout.createSequentialGroup()
                 .addGroup(jPanelOpenFilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelOpenFiles)
-                    .addComponent(jLabelOpenFolder, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabelOpenFolder))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPanePlaylist, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                 .addContainerGap())
@@ -372,13 +368,13 @@ public final class MusicPanel extends javax.swing.JPanel{
         jPanelPlayerControlsLayout.setHorizontalGroup(
             jPanelPlayerControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPlayerControlsLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelStop)
-                .addGap(59, 59, 59)
+                .addGap(50, 50, 50)
                 .addComponent(jLabelPrevious)
-                .addGap(52, 52, 52)
+                .addGap(48, 48, 48)
                 .addComponent(jLabelPlayPause)
-                .addGap(63, 63, 63)
+                .addGap(50, 50, 50)
                 .addComponent(jLabelNext)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -506,14 +502,13 @@ public final class MusicPanel extends javax.swing.JPanel{
         jPanelBands.setBorder(javax.swing.BorderFactory.createTitledBorder("Bands"));
         jPanelBands.setMinimumSize(new java.awt.Dimension(470, 350));
         jPanelBands.setOpaque(false);
-        jPanelBands.setPreferredSize(new java.awt.Dimension(470, 350));
+        jPanelBands.setPreferredSize(new java.awt.Dimension(287, 256));
         jPanelBands.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSliderBand6.setMajorTickSpacing(1);
         jSliderBand6.setMaximum(12);
         jSliderBand6.setMinimum(-12);
         jSliderBand6.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSliderBand6.setPaintTicks(true);
         jSliderBand6.setValue(0);
         jSliderBand6.setMaximumSize(new java.awt.Dimension(28, 300));
         jSliderBand6.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -523,13 +518,12 @@ public final class MusicPanel extends javax.swing.JPanel{
                 jSliderBand6StateChanged(evt);
             }
         });
-        jPanelBands.add(jSliderBand6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 15, 20, 210));
+        jPanelBands.add(jSliderBand6, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 20, 10, 210));
 
         jSliderBand1.setMajorTickSpacing(1);
         jSliderBand1.setMaximum(12);
         jSliderBand1.setMinimum(-12);
         jSliderBand1.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSliderBand1.setPaintTicks(true);
         jSliderBand1.setValue(0);
         jSliderBand1.setMaximumSize(new java.awt.Dimension(28, 300));
         jSliderBand1.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -539,13 +533,12 @@ public final class MusicPanel extends javax.swing.JPanel{
                 jSliderBand1StateChanged(evt);
             }
         });
-        jPanelBands.add(jSliderBand1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 15, 20, 210));
+        jPanelBands.add(jSliderBand1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 20, 10, 210));
 
         jSliderBand2.setMajorTickSpacing(1);
         jSliderBand2.setMaximum(12);
         jSliderBand2.setMinimum(-12);
         jSliderBand2.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSliderBand2.setPaintTicks(true);
         jSliderBand2.setValue(0);
         jSliderBand2.setMaximumSize(new java.awt.Dimension(28, 300));
         jSliderBand2.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -555,13 +548,12 @@ public final class MusicPanel extends javax.swing.JPanel{
                 jSliderBand2StateChanged(evt);
             }
         });
-        jPanelBands.add(jSliderBand2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 15, 20, 210));
+        jPanelBands.add(jSliderBand2, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 20, 10, 210));
 
         jSliderBand3.setMajorTickSpacing(1);
         jSliderBand3.setMaximum(12);
         jSliderBand3.setMinimum(-12);
         jSliderBand3.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSliderBand3.setPaintTicks(true);
         jSliderBand3.setValue(0);
         jSliderBand3.setMaximumSize(new java.awt.Dimension(28, 300));
         jSliderBand3.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -571,13 +563,12 @@ public final class MusicPanel extends javax.swing.JPanel{
                 jSliderBand3StateChanged(evt);
             }
         });
-        jPanelBands.add(jSliderBand3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 15, 20, 210));
+        jPanelBands.add(jSliderBand3, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 20, 10, 210));
 
         jSliderBand4.setMajorTickSpacing(1);
         jSliderBand4.setMaximum(12);
         jSliderBand4.setMinimum(-12);
         jSliderBand4.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSliderBand4.setPaintTicks(true);
         jSliderBand4.setValue(0);
         jSliderBand4.setMaximumSize(new java.awt.Dimension(28, 300));
         jSliderBand4.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -587,13 +578,12 @@ public final class MusicPanel extends javax.swing.JPanel{
                 jSliderBand4StateChanged(evt);
             }
         });
-        jPanelBands.add(jSliderBand4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 15, 20, 210));
+        jPanelBands.add(jSliderBand4, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 20, 10, 210));
 
         jSliderBand5.setMajorTickSpacing(1);
         jSliderBand5.setMaximum(12);
         jSliderBand5.setMinimum(-12);
         jSliderBand5.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSliderBand5.setPaintTicks(true);
         jSliderBand5.setValue(0);
         jSliderBand5.setMaximumSize(new java.awt.Dimension(28, 300));
         jSliderBand5.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -603,13 +593,12 @@ public final class MusicPanel extends javax.swing.JPanel{
                 jSliderBand5StateChanged(evt);
             }
         });
-        jPanelBands.add(jSliderBand5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 15, 20, 210));
+        jPanelBands.add(jSliderBand5, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 20, 10, 210));
 
         jSliderBand0.setMajorTickSpacing(1);
         jSliderBand0.setMaximum(12);
         jSliderBand0.setMinimum(-12);
         jSliderBand0.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSliderBand0.setPaintTicks(true);
         jSliderBand0.setValue(0);
         jSliderBand0.setMaximumSize(new java.awt.Dimension(20, 150));
         jSliderBand0.setMinimumSize(new java.awt.Dimension(20, 150));
@@ -619,13 +608,12 @@ public final class MusicPanel extends javax.swing.JPanel{
                 jSliderBand0StateChanged(evt);
             }
         });
-        jPanelBands.add(jSliderBand0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 15, -1, 210));
+        jPanelBands.add(jSliderBand0, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 20, 10, 210));
 
         jSliderBand7.setMajorTickSpacing(1);
         jSliderBand7.setMaximum(12);
         jSliderBand7.setMinimum(-12);
         jSliderBand7.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSliderBand7.setPaintTicks(true);
         jSliderBand7.setValue(0);
         jSliderBand7.setMaximumSize(new java.awt.Dimension(28, 300));
         jSliderBand7.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -635,13 +623,12 @@ public final class MusicPanel extends javax.swing.JPanel{
                 jSliderBand7StateChanged(evt);
             }
         });
-        jPanelBands.add(jSliderBand7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 15, 20, 210));
+        jPanelBands.add(jSliderBand7, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 20, 10, 210));
 
         jSliderBand8.setMajorTickSpacing(1);
         jSliderBand8.setMaximum(12);
         jSliderBand8.setMinimum(-12);
         jSliderBand8.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSliderBand8.setPaintTicks(true);
         jSliderBand8.setValue(0);
         jSliderBand8.setMaximumSize(new java.awt.Dimension(28, 300));
         jSliderBand8.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -651,13 +638,12 @@ public final class MusicPanel extends javax.swing.JPanel{
                 jSliderBand8StateChanged(evt);
             }
         });
-        jPanelBands.add(jSliderBand8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 15, 20, 210));
+        jPanelBands.add(jSliderBand8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 10, 210));
 
         jSliderBand9.setMajorTickSpacing(1);
         jSliderBand9.setMaximum(12);
         jSliderBand9.setMinimum(-12);
         jSliderBand9.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSliderBand9.setPaintTicks(true);
         jSliderBand9.setValue(0);
         jSliderBand9.setMaximumSize(new java.awt.Dimension(28, 300));
         jSliderBand9.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -667,47 +653,47 @@ public final class MusicPanel extends javax.swing.JPanel{
                 jSliderBand9StateChanged(evt);
             }
         });
-        jPanelBands.add(jSliderBand9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 15, 20, 210));
+        jPanelBands.add(jSliderBand9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 10, 210));
 
         jLabelBand1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand1.setText("0");
-        jPanelBands.add(jLabelBand1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jPanelBands.add(jLabelBand1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 230, -1, -1));
 
         jLabelBand0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand0.setText("0");
-        jPanelBands.add(jLabelBand0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        jPanelBands.add(jLabelBand0, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 230, -1, -1));
 
         jLabelBand2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand2.setText("0");
-        jPanelBands.add(jLabelBand2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
+        jPanelBands.add(jLabelBand2, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 230, -1, -1));
 
         jLabelBand3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand3.setText("0");
-        jPanelBands.add(jLabelBand3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+        jPanelBands.add(jLabelBand3, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 230, -1, -1));
 
         jLabelBand4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand4.setText("0");
-        jPanelBands.add(jLabelBand4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
+        jPanelBands.add(jLabelBand4, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 230, -1, -1));
 
         jLabelBand5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand5.setText("0");
-        jPanelBands.add(jLabelBand5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+        jPanelBands.add(jLabelBand5, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 230, -1, -1));
 
         jLabelBand6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand6.setText("0");
-        jPanelBands.add(jLabelBand6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
+        jPanelBands.add(jLabelBand6, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 230, -1, -1));
 
         jLabelBand7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand7.setText("0");
-        jPanelBands.add(jLabelBand7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
+        jPanelBands.add(jLabelBand7, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 230, -1, -1));
 
         jLabelBand8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand8.setText("0");
-        jPanelBands.add(jLabelBand8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
+        jPanelBands.add(jLabelBand8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
         jLabelBand9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand9.setText("0");
-        jPanelBands.add(jLabelBand9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
+        jPanelBands.add(jLabelBand9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
 
         jLabelPreampTitle.setText("Preamp");
         jLabelPreampTitle.setPreferredSize(new java.awt.Dimension(47, 20));
@@ -717,7 +703,6 @@ public final class MusicPanel extends javax.swing.JPanel{
         jSliderBandPreamp.setMajorTickSpacing(1);
         jSliderBandPreamp.setMaximum(12);
         jSliderBandPreamp.setMinimum(-12);
-        jSliderBandPreamp.setPaintTicks(true);
         jSliderBandPreamp.setValue(0);
         jSliderBandPreamp.setMaximumSize(new java.awt.Dimension(20, 150));
         jSliderBandPreamp.setMinimumSize(new java.awt.Dimension(20, 150));
@@ -755,8 +740,9 @@ public final class MusicPanel extends javax.swing.JPanel{
         jPanelEqualizerLayout.setHorizontalGroup(
             jPanelEqualizerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEqualizerLayout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelEqualizerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelBands, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelEqualizerLayout.createSequentialGroup()
                         .addGroup(jPanelEqualizerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEqualizerLayout.createSequentialGroup()
@@ -765,19 +751,18 @@ public final class MusicPanel extends javax.swing.JPanel{
                             .addGroup(jPanelEqualizerLayout.createSequentialGroup()
                                 .addComponent(jLabelPreset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(3, 3, 3)))
-                        .addGroup(jPanelEqualizerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBoxPresets, 0, 1, Short.MAX_VALUE)
-                            .addComponent(jSliderBandPreamp, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabelPreamp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelBands, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                        .addGroup(jPanelEqualizerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSliderBandPreamp, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                            .addComponent(jComboBoxPresets, 0, 1, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPreamp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelEqualizerLayout.setVerticalGroup(
             jPanelEqualizerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEqualizerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelBands, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelBands, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelEqualizerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelPreampTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -830,14 +815,15 @@ public final class MusicPanel extends javax.swing.JPanel{
             jPanelMediaInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMediaInformationLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanelMediaInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneLyrics, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelMediaInformationLayout.createSequentialGroup()
-                        .addComponent(jLabelYearValue, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelMediaValue, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelGenreValue, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanelMediaInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelGenreValue, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelMediaInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanelMediaInformationLayout.createSequentialGroup()
+                            .addComponent(jLabelYearValue, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabelMediaValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPaneLyrics, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
         jPanelMediaInformationLayout.setVerticalGroup(
             jPanelMediaInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -850,7 +836,7 @@ public final class MusicPanel extends javax.swing.JPanel{
                     .addComponent(jLabelYearValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneLyrics, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPanelControls.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/archivo-de-musica.png")), jPanelMediaInformation); // NOI18N
@@ -859,33 +845,30 @@ public final class MusicPanel extends javax.swing.JPanel{
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelCoverArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPanelControls)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelArtist, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelAlbum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(jSliderProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelTotalDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(1, 1, 1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSliderProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTotalDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelAlbum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelArtist, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelCoverArt, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCoverArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(jLabelArtist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -897,7 +880,8 @@ public final class MusicPanel extends javax.swing.JPanel{
                             .addComponent(jSliderProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelTotalDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -908,6 +892,7 @@ public final class MusicPanel extends javax.swing.JPanel{
     private void initAttributes(){
         
         flag = true;
+        zero_index = false;
         moving_next = moving_previous = false;
         paths = new DoublyLinkedList<>();
         MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
@@ -1066,10 +1051,16 @@ public final class MusicPanel extends javax.swing.JPanel{
             public void mediaChanged(MediaPlayer mp, MediaRef mr) {
                 if(moving_next){
                     if(actual_node.has_next()){
-                       actual_node = actual_node.next();
-                       index++;
-                       loadMetadata();
-                       moving_next = true;
+                        if(!zero_index){
+                            actual_node = actual_node.next();
+                            index++;
+                        }else{
+                            actual_node = paths.front();
+                            index = 0;
+                            zero_index = false;
+                        }
+                        loadMetadata();
+                        moving_next = true;
                    }   
                 }
                 if(moving_previous){
@@ -1395,6 +1386,7 @@ public final class MusicPanel extends javax.swing.JPanel{
                     File[] files = folder.listFiles(filter);
                     if(files.length > 0){
                         paths.clear();
+                        zero_index = false;
                         actual_node = null;
                         moving_next = false;
                         moving_previous = true;
@@ -1474,6 +1466,7 @@ public final class MusicPanel extends javax.swing.JPanel{
                     actual_node = null;
                     moving_next = false;
                     moving_previous = true;
+                    zero_index = false;
                     audio_list_player_component.mediaListPlayer().controls().stop();
                     audio_list_player_component.mediaListPlayer().list().media().clear();
                     jPanelPlaylist.removeAll();
@@ -1776,7 +1769,7 @@ public final class MusicPanel extends javax.swing.JPanel{
                 Image playlistEntryImage = null;
                 if(artWork != null){
                     
-                    int large = jLabelCoverArt.getHeight();
+                    int large = jLabelCoverArt.getWidth();
                     Image real_cover = ((Image)artWork.getImage());
                     Image coverImagen = real_cover.getScaledInstance(large, large, Image.SCALE_SMOOTH);
                     playlistEntryImage = real_cover.getScaledInstance(63, 63, Image.SCALE_SMOOTH);
@@ -2073,9 +2066,14 @@ public final class MusicPanel extends javax.swing.JPanel{
     // End of variables declaration//GEN-END:variables
 
     public static void playIndex(int idx){
-        index = idx-1;
-        actual_node = paths.node(index);
-        audio_list_player_component.mediaListPlayer().controls().play(idx);
+        if(idx > 0){
+            index = idx-1;
+            actual_node = paths.node(index);
+            audio_list_player_component.mediaListPlayer().controls().play(idx);
+        } else{
+            zero_index = true;
+            audio_list_player_component.mediaListPlayer().controls().play(idx);
+        }
     }
     
 }

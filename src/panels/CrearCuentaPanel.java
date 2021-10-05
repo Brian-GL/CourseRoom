@@ -161,9 +161,10 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jTabbedPaneFondo.setBackground(java.awt.Color.black);
         jTabbedPaneFondo.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPaneFondo.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jTabbedPaneFondo.setMinimumSize(new java.awt.Dimension(800, 600));
+        jTabbedPaneFondo.setMinimumSize(new java.awt.Dimension(1024, 700));
         jTabbedPaneFondo.setOpaque(true);
-        jTabbedPaneFondo.setPreferredSize(new java.awt.Dimension(800, 600));
+        jTabbedPaneFondo.setPreferredSize(new java.awt.Dimension(1024, 700));
+        jTabbedPaneFondo.setRequestFocusEnabled(false);
 
         jPanelInicio.setBackground(new java.awt.Color(14, 30, 64));
         jPanelInicio.setMinimumSize(new java.awt.Dimension(800, 600));

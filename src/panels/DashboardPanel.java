@@ -57,7 +57,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     @SuppressWarnings({"CallToThreadStartDuringObjectConstruction", "OverridableMethodCallInConstructor"})
     public DashboardPanel() {
         initComponents();
-        jScrollPaneInformation.getViewport().setOpaque(false);
+        //jScrollPaneInformation.getViewport().setOpaque(false);
         try {
             
             firstColor = secondColor = thirdColor = fontColor = secondFontColor = Color.BLACK;
@@ -152,14 +152,14 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelMenu = new javax.swing.JLabel();
         jLabelUserName = new javax.swing.JLabel();
         jLabelFechaHoraServidor = new javax.swing.JLabel();
-        jScrollPaneInformation = new javax.swing.JScrollPane();
         jPanelInformacion = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1024, 700));
         setPreferredSize(new java.awt.Dimension(1024, 700));
 
+        jPanelMenu.setMinimumSize(new java.awt.Dimension(175, 660));
         jPanelMenu.setOpaque(false);
-        jPanelMenu.setPreferredSize(new java.awt.Dimension(175, 560));
+        jPanelMenu.setPreferredSize(new java.awt.Dimension(175, 660));
         jPanelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelUserProfilePhoto.setBackground(new java.awt.Color(3, 111, 252));
@@ -167,6 +167,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelUserProfilePhoto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelUserProfilePhoto.setMaximumSize(new java.awt.Dimension(175, 175));
         jLabelUserProfilePhoto.setMinimumSize(new java.awt.Dimension(175, 175));
+        jLabelUserProfilePhoto.setOpaque(true);
         jLabelUserProfilePhoto.setPreferredSize(new java.awt.Dimension(175, 175));
         jLabelUserProfilePhoto.setRequestFocusEnabled(false);
         jLabelUserProfilePhoto.setVerifyInputWhenFocusTarget(false);
@@ -419,6 +420,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jPanelMenu.add(jLabelMusic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
 
         jPanelBarraSuperior.setBackground(java.awt.Color.black);
+        jPanelBarraSuperior.setMinimumSize(new java.awt.Dimension(1024, 40));
         jPanelBarraSuperior.setOpaque(false);
         jPanelBarraSuperior.setPreferredSize(new java.awt.Dimension(1024, 40));
 
@@ -430,14 +432,14 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelMenu.setToolTipText("Muestra/Oculta El Menú");
         jLabelMenu.setMaximumSize(new java.awt.Dimension(40, 40));
         jLabelMenu.setMinimumSize(new java.awt.Dimension(40, 40));
-        jLabelMenu.setPreferredSize(new java.awt.Dimension(39, 39));
+        jLabelMenu.setPreferredSize(new java.awt.Dimension(40, 40));
         jLabelMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelMenuMouseClicked(evt);
             }
         });
 
-        jLabelUserName.setBackground(new java.awt.Color(3, 111, 252));
+        jLabelUserName.setBackground(java.awt.Color.black);
         jLabelUserName.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabelUserName.setForeground(java.awt.Color.white);
         jLabelUserName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -465,53 +467,47 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         jPanelBarraSuperiorLayout.setVerticalGroup(
             jPanelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBarraSuperiorLayout.createSequentialGroup()
                 .addGroup(jPanelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
-        jScrollPaneInformation.setBorder(null);
-        jScrollPaneInformation.setMinimumSize(new java.awt.Dimension(0, 0));
-        jScrollPaneInformation.setOpaque(false);
-
+        jPanelInformacion.setMinimumSize(new java.awt.Dimension(849, 660));
+        jPanelInformacion.setName(""); // NOI18N
         jPanelInformacion.setOpaque(false);
+        jPanelInformacion.setPreferredSize(new java.awt.Dimension(849, 660));
         jPanelInformacion.setLayout(new java.awt.CardLayout());
-        jScrollPaneInformation.setViewportView(jPanelInformacion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(1, 1, 1)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelBarraSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, 1022, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
+                    .addComponent(jPanelBarraSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPaneInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, 0)
+                        .addComponent(jPanelInformacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(1, 1, 1)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelBarraSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPaneInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jPanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelInformacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -845,29 +841,12 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 colorList.clear();
 
                 secondFontColor = (secondColor.getRed() >= 155) ? Color.BLACK : Color.WHITE;
-                //jPanelMenu.setBackground(secondColor);
                 Component[] components = jPanelMenu.getComponents();
 
                 for(Component component: components){
-                    component.setBackground(secondColor);
                     component.setForeground(secondFontColor);
+                    component.setBackground(secondColor);
                 }
-
-                jLabelUserName.setForeground(secondFontColor);
-                jLabelFechaHoraServidor.setForeground(secondFontColor);
-                jPanelBarraSuperior.setBackground(secondColor);
-                jLabelUserName.setForeground(secondFontColor);
-                jLabelMusic.setForeground(secondFontColor);
-                jLabelClasses.setForeground(secondFontColor);
-                jLabelHomePage.setForeground(secondFontColor);
-                jLabelHomeWorks.setForeground(secondFontColor);
-                jLabelNotices.setForeground(secondFontColor);
-                jLabelDates.setForeground(secondFontColor);
-                jLabelAbout.setForeground(secondFontColor);
-                jLabelChats.setForeground(secondFontColor);
-                jLabelGroups.setForeground(secondFontColor);
-                jLabelLogOut.setForeground(secondFontColor);
-                
                 colorList = null;
                 pg = null;
                 pixels = null;
@@ -878,7 +857,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             Logger.getLogger(MusicPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
             
-       
     }
     
     @Override
@@ -886,7 +864,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         userImage = null;
         musicPanel.dispose();
         chatsPanel.dispose();
-        infoProfilePanel.dispose();
         musicPanel = null;
         setFirstColor(null);
         setSecondColor(null);
@@ -917,7 +894,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private javax.swing.JPanel jPanelBarraSuperior;
     private static javax.swing.JPanel jPanelInformacion;
     private javax.swing.JPanel jPanelMenu;
-    private javax.swing.JScrollPane jScrollPaneInformation;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -1005,6 +981,18 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         fontColor = aFontColor;
     }
 
+     /**
+     * @return the fontColor
+     */
+    public static Color getSecondFontColor() {
+        return secondFontColor;
+    }
 
+    /**
+     * @param aFontColor the fontColor to set
+     */
+    public static void setSecondFontColor(Color aFontColor) {
+        secondFontColor = aFontColor;
+    }
 
 }
