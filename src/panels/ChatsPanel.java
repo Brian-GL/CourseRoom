@@ -6,12 +6,7 @@
 package panels;
 
 import panels.DashboardPanel;
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -24,21 +19,16 @@ public class ChatsPanel extends javax.swing.JPanel {
     public ChatsPanel(){
         
         initComponents();
-        Color noColor = new Color(0,0,0,0);
-        jTabbedPaneChats.setBackground(noColor);
+        
         jScrollPaneChatsGrupales.getViewport().setOpaque(false);
         jScrollPaneChatsPersonales.getViewport().setOpaque(false);
-        jTabbedPaneChats.setBackground(DashboardPanel.getFirstColor());
-        jTabbedPaneChats.setForeground( DashboardPanel.getFontColor());
-        jPanelChatsGrupales.setBackground(DashboardPanel.getFirstColor());
-        jPanelChatsPersonales.setBackground(DashboardPanel.getFontColor());
         jScrollPaneChatsGrupales.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneChatsPersonales.getVerticalScrollBar().setUnitIncrement(15);
-        GridLayout gridLayoutChatsPersonales = new GridLayout(0,4);
-        jPanelChatsPersonales.setLayout(gridLayoutChatsPersonales);
-        GridLayout gridLayoutChatsGrupales = new GridLayout(0,4);
-        jPanelChatsGrupales.setLayout(gridLayoutChatsGrupales);
-        noColor = null;
+        
+        TitledBorder border = (TitledBorder) jScrollPaneChatsGrupales.getBorder();
+        border.setTitleColor(DashboardPanel.getSecondFontColor());
+        border = (TitledBorder) jScrollPaneChatsPersonales.getBorder();
+        border.setTitleColor(DashboardPanel.getSecondFontColor());
         
         for(int i = 0; i < 12; i++){
             BoxChatPanel boxChatPanel = new BoxChatPanel("https://source.unsplash.com/random");
@@ -46,10 +36,11 @@ public class ChatsPanel extends javax.swing.JPanel {
             System.out.println("Getting Image From : https://source.unsplash.com/random");
         }
         
-        
-        gridLayoutChatsPersonales = null;
-        gridLayoutChatsGrupales = null;
-        
+        for(int i = 0; i < 7; i++){
+            BoxChatPanel boxChatPanel = new BoxChatPanel("https://source.unsplash.com/random");
+            jPanelChatsGrupales.add(boxChatPanel);
+            System.out.println("Getting Image From : https://source.unsplash.com/random");
+        }
         
     }
 
@@ -62,50 +53,40 @@ public class ChatsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPaneChats = new javax.swing.JTabbedPane();
         jScrollPaneChatsPersonales = new javax.swing.JScrollPane();
         jPanelChatsPersonales = new javax.swing.JPanel();
         jScrollPaneChatsGrupales = new javax.swing.JScrollPane();
         jPanelChatsGrupales = new javax.swing.JPanel();
 
-        setMinimumSize(new java.awt.Dimension(1020, 600));
+        setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1020, 600));
-        setLayout(new java.awt.CardLayout());
-
-        jTabbedPaneChats.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1085, 630));
+        setLayout(new java.awt.GridLayout(1, 2));
 
         jScrollPaneChatsPersonales.setBackground(java.awt.Color.white);
-        jScrollPaneChatsPersonales.setBorder(null);
+        jScrollPaneChatsPersonales.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chats Personales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 24))); // NOI18N
         jScrollPaneChatsPersonales.setForeground(java.awt.Color.white);
         jScrollPaneChatsPersonales.setOpaque(false);
 
         jPanelChatsPersonales.setOpaque(false);
-        jPanelChatsPersonales.setLayout(null);
+        jPanelChatsPersonales.setLayout(new javax.swing.BoxLayout(jPanelChatsPersonales, javax.swing.BoxLayout.PAGE_AXIS));
         jScrollPaneChatsPersonales.setViewportView(jPanelChatsPersonales);
 
-        jTabbedPaneChats.addTab(" Chats Personales ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/chat.png")), jScrollPaneChatsPersonales, "Mostrar Mis Chats Personales."); // NOI18N
+        add(jScrollPaneChatsPersonales);
 
-        jScrollPaneChatsGrupales.setBorder(null);
+        jScrollPaneChatsGrupales.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chats Grupales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 24))); // NOI18N
         jScrollPaneChatsGrupales.setOpaque(false);
 
         jPanelChatsGrupales.setOpaque(false);
-        jPanelChatsGrupales.setLayout(null);
+        jPanelChatsGrupales.setLayout(new javax.swing.BoxLayout(jPanelChatsGrupales, javax.swing.BoxLayout.PAGE_AXIS));
         jScrollPaneChatsGrupales.setViewportView(jPanelChatsGrupales);
 
-        jTabbedPaneChats.addTab(" Chats Grupales ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/grupo-de-chat.png")), jScrollPaneChatsGrupales, "Mostrar Mis Chats De Grupo."); // NOI18N
-
-        add(jTabbedPaneChats, "card2");
+        add(jScrollPaneChatsGrupales);
     }// </editor-fold>//GEN-END:initComponents
 
     public void dispose(){
-        /*
-        while(!boxChatPanels.isEmpty()){
-            BoxChatPanel boxChatPanel = boxChatPanels.dequeue();
-            boxChatPanel.dispose();
-            boxChatPanel = null;
-        }
-        */
+        jPanelChatsGrupales.removeAll();
+        jPanelChatsPersonales.removeAll();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -113,6 +94,5 @@ public class ChatsPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelChatsPersonales;
     private javax.swing.JScrollPane jScrollPaneChatsGrupales;
     private javax.swing.JScrollPane jScrollPaneChatsPersonales;
-    private javax.swing.JTabbedPane jTabbedPaneChats;
     // End of variables declaration//GEN-END:variables
 }

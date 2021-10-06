@@ -185,8 +185,8 @@ public final class MusicPanel extends javax.swing.JPanel{
         jTextPaneLyrics = new javax.swing.JTextPane();
 
         setBackground(java.awt.Color.black);
-        setMinimumSize(new java.awt.Dimension(849, 660));
-        setPreferredSize(new java.awt.Dimension(849, 660));
+        setMinimumSize(new java.awt.Dimension(1085, 630));
+        setPreferredSize(new java.awt.Dimension(1085, 630));
 
         jLabelCoverArt.setBackground(new java.awt.Color(0, 0, 0));
         jLabelCoverArt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -846,9 +846,9 @@ public final class MusicPanel extends javax.swing.JPanel{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelCoverArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
+                .addComponent(jLabelCoverArt, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addGap(18, 77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabelProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -860,7 +860,7 @@ public final class MusicPanel extends javax.swing.JPanel{
                     .addComponent(jLabelArtist, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1730,6 +1730,7 @@ public final class MusicPanel extends javax.swing.JPanel{
         jPanelBands.setEnabled(false);
         jSliderBandPreamp.setEnabled(false);
         jComboBoxPresets.setEnabled(false);
+        jPanelPlaylist.removeAll();
         System.gc();
     }
 
@@ -1769,7 +1770,7 @@ public final class MusicPanel extends javax.swing.JPanel{
                 Image playlistEntryImage = null;
                 if(artWork != null){
                     
-                    int large = jLabelCoverArt.getWidth();
+                    int large = jLabelCoverArt.getHeight();
                     Image real_cover = ((Image)artWork.getImage());
                     Image coverImagen = real_cover.getScaledInstance(large, large, Image.SCALE_SMOOTH);
                     playlistEntryImage = real_cover.getScaledInstance(63, 63, Image.SCALE_SMOOTH);

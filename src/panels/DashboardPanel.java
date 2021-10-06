@@ -154,12 +154,12 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelFechaHoraServidor = new javax.swing.JLabel();
         jPanelInformacion = new javax.swing.JPanel();
 
-        setMinimumSize(new java.awt.Dimension(1024, 700));
-        setPreferredSize(new java.awt.Dimension(1024, 700));
+        setMinimumSize(new java.awt.Dimension(1260, 670));
+        setPreferredSize(new java.awt.Dimension(1260, 670));
 
-        jPanelMenu.setMinimumSize(new java.awt.Dimension(175, 660));
+        jPanelMenu.setMinimumSize(new java.awt.Dimension(175, 630));
         jPanelMenu.setOpaque(false);
-        jPanelMenu.setPreferredSize(new java.awt.Dimension(175, 660));
+        jPanelMenu.setPreferredSize(new java.awt.Dimension(175, 630));
         jPanelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelUserProfilePhoto.setBackground(new java.awt.Color(3, 111, 252));
@@ -420,9 +420,9 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jPanelMenu.add(jLabelMusic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
 
         jPanelBarraSuperior.setBackground(java.awt.Color.black);
-        jPanelBarraSuperior.setMinimumSize(new java.awt.Dimension(1024, 40));
+        jPanelBarraSuperior.setMinimumSize(new java.awt.Dimension(1260, 40));
         jPanelBarraSuperior.setOpaque(false);
-        jPanelBarraSuperior.setPreferredSize(new java.awt.Dimension(1024, 40));
+        jPanelBarraSuperior.setPreferredSize(new java.awt.Dimension(1260, 40));
 
         jLabelMenu.setBackground(new java.awt.Color(3, 111, 252));
         jLabelMenu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -466,7 +466,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 .addComponent(jLabelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -477,13 +477,13 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                     .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+                .addContainerGap())
         );
 
-        jPanelInformacion.setMinimumSize(new java.awt.Dimension(849, 660));
+        jPanelInformacion.setMinimumSize(new java.awt.Dimension(1085, 630));
         jPanelInformacion.setName(""); // NOI18N
         jPanelInformacion.setOpaque(false);
-        jPanelInformacion.setPreferredSize(new java.awt.Dimension(849, 660));
+        jPanelInformacion.setPreferredSize(new java.awt.Dimension(1085, 630));
         jPanelInformacion.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

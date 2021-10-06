@@ -6,12 +6,8 @@
 package panels;
 
 import components.ImageFilePreview;
-import panels.DashboardPanel;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +18,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -38,32 +33,12 @@ public class EditProfilePanel extends javax.swing.JPanel {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public EditProfilePanel() {
         initComponents();
-        paintComponentes();
+        paintMyComponents();
         Color noColor = new Color(0,0,0,0);
         jTabbedPaneFondo.setBackground(noColor);
-        jCheckBoxEditarApellidos.setBackground(noColor);
-        jCheckBoxEditarCorreoElectronico.setBackground(noColor);
-        jCheckBoxEditarDescripcion.setBackground(noColor);
-        jCheckBoxEditarFechaNacimiento.setBackground(noColor);
-        jCheckBoxEditarGenero.setBackground(noColor);
-        jCheckBoxEditarImagenPerfil.setBackground(noColor);
-        jCheckBoxEditarLocalidad.setBackground(noColor);
-        jCheckBoxEditarNombreUsuario.setBackground(noColor);
-        jCheckBoxEditarNombres.setBackground(noColor);
-        jCheckBoxEditarPassword.setBackground(noColor);
-        jCheckBoxEditarPerfil.setBackground(noColor);
-        jCheckBoxEditarTelefono.setBackground(noColor);
         jScrollPaneDescripcion.getViewport().setOpaque(false);
-        int imageWidth = jLabelImagenPerfilAutenticacion.getPreferredSize().width;
-        int imageHeight = jLabelImagenPerfilAutenticacion.getPreferredSize().height;
-        ImageIcon icon = new ImageIcon(DashboardPanel.getUserImage().getScaledInstance(imageWidth,imageHeight,Image.SCALE_SMOOTH));
-        jLabelImagenPerfilAutenticacion.setIcon(icon);
-        imageWidth = jLabelImagenPerfil.getPreferredSize().width;
-        imageHeight = jLabelImagenPerfil.getPreferredSize().height;
-        icon = new ImageIcon(DashboardPanel.getUserImage().getScaledInstance(imageWidth,imageHeight,Image.SCALE_SMOOTH));
-        jLabelImagenPerfil.setIcon(icon);
         noColor = null;
-       
+        jTabbedPaneFondo.setForeground(DashboardPanel.getSecondFontColor());
         
     }
 
@@ -90,15 +65,14 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jLabelInformacionRepetirPassword = new javax.swing.JLabel();
         jLabelInformacionCorreoElectronico = new javax.swing.JLabel();
         jLabelInformacionSeguridadPassword = new javax.swing.JLabel();
-        jLabelEditarNombreUsuario = new javax.swing.JLabel();
-        jCheckBoxEditarNombreUsuario = new javax.swing.JCheckBox();
-        jLabelEditarCorreoElectronico = new javax.swing.JLabel();
-        jCheckBoxEditarCorreoElectronico = new javax.swing.JCheckBox();
-        jLabelEditarPassword = new javax.swing.JLabel();
-        jCheckBoxEditarPassword = new javax.swing.JCheckBox();
         jLabelImagenPerfilAutenticacion = new javax.swing.JLabel();
         jButtonGuardarCambiosAutenticacion = new javax.swing.JButton();
         jLabelRegresarAMiPerfil = new javax.swing.JLabel();
+        jToggleButtonEditarNombreUsuario = new javax.swing.JToggleButton();
+        jToggleButtonEditarCorreoElectronico = new javax.swing.JToggleButton();
+        jToggleButtonEditarPassword = new javax.swing.JToggleButton();
+        jButtonCargarImagenPerfil = new javax.swing.JButton();
+        jToggleButtonEditarImagenPerfil = new javax.swing.JToggleButton();
         jPanelDatosPersonales = new javax.swing.JPanel();
         jLabelNombres = new javax.swing.JLabel();
         jTextFieldNombres = new javax.swing.JTextField();
@@ -116,38 +90,29 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jScrollPaneDescripcion = new javax.swing.JScrollPane();
         jTextAreaDescripcion = new javax.swing.JTextArea();
         jLabelPerfil = new javax.swing.JLabel();
-        jButtonCargarImagenPerfil = new javax.swing.JButton();
-        jLabelImagenPerfil = new javax.swing.JLabel();
         jComboBoxPerfil = new javax.swing.JComboBox<>();
-        jLabelEditarNombres = new javax.swing.JLabel();
-        jCheckBoxEditarNombres = new javax.swing.JCheckBox();
-        jLabelEditarLocalidad = new javax.swing.JLabel();
-        jCheckBoxEditarLocalidad = new javax.swing.JCheckBox();
-        jLabelEditarGenero = new javax.swing.JLabel();
-        jCheckBoxEditarGenero = new javax.swing.JCheckBox();
-        jCheckBoxEditarApellidos = new javax.swing.JCheckBox();
-        jLabelEditarApellidos = new javax.swing.JLabel();
-        jLabelEditarFechaNacimiento = new javax.swing.JLabel();
-        jCheckBoxEditarFechaNacimiento = new javax.swing.JCheckBox();
-        jLabelEditarTelefono = new javax.swing.JLabel();
-        jCheckBoxEditarTelefono = new javax.swing.JCheckBox();
-        jLabelEditarPerfil = new javax.swing.JLabel();
-        jCheckBoxEditarPerfil = new javax.swing.JCheckBox();
-        jLabelEditarDescripcion = new javax.swing.JLabel();
-        jCheckBoxEditarDescripcion = new javax.swing.JCheckBox();
-        jLabelEditarImagenPerfil = new javax.swing.JLabel();
-        jCheckBoxEditarImagenPerfil = new javax.swing.JCheckBox();
         jButtonGuardarCambiosDatosPersonales = new javax.swing.JButton();
+        jLabelPromedio = new javax.swing.JLabel();
+        jFormattedTextFieldPromedio = new javax.swing.JFormattedTextField();
+        jToggleButtonEditarPromedioGeneral = new javax.swing.JToggleButton();
+        jToggleButtonEditarNombres = new javax.swing.JToggleButton();
+        jToggleButtonEditarApellidos = new javax.swing.JToggleButton();
+        jToggleButtonEditarLocalidad = new javax.swing.JToggleButton();
+        jToggleButtonEditarFechaNacimiento = new javax.swing.JToggleButton();
+        jToggleButtonEditarGenero = new javax.swing.JToggleButton();
+        jToggleButtonEditarTelefono = new javax.swing.JToggleButton();
+        jToggleButtonEditarPerfil = new javax.swing.JToggleButton();
+        jToggleButtonEditarDescripcion = new javax.swing.JToggleButton();
 
-        setMinimumSize(new java.awt.Dimension(1020, 600));
+        setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1020, 600));
+        setPreferredSize(new java.awt.Dimension(1085, 630));
         setLayout(new java.awt.CardLayout());
 
         jTabbedPaneFondo.setBackground(java.awt.Color.black);
         jTabbedPaneFondo.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jTabbedPaneFondo.setMinimumSize(new java.awt.Dimension(800, 600));
-        jTabbedPaneFondo.setPreferredSize(new java.awt.Dimension(800, 600));
+        jTabbedPaneFondo.setMinimumSize(new java.awt.Dimension(1085, 630));
+        jTabbedPaneFondo.setPreferredSize(new java.awt.Dimension(1085, 630));
 
         jPanelAutenticacion.setBackground(new java.awt.Color(14, 30, 64));
         jPanelAutenticacion.setMinimumSize(new java.awt.Dimension(800, 600));
@@ -155,93 +120,95 @@ public class EditProfilePanel extends javax.swing.JPanel {
 
         jLabelNombre.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelNombre.setText("Nombre De Usuario");
+        jLabelNombre.setMaximumSize(new java.awt.Dimension(320, 29));
+        jLabelNombre.setMinimumSize(new java.awt.Dimension(320, 29));
+        jLabelNombre.setPreferredSize(new java.awt.Dimension(320, 29));
 
         jTextFieldNombreDeUsuario.setEditable(false);
         jTextFieldNombreDeUsuario.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         jTextFieldNombreDeUsuario.setToolTipText("<html>\n\n<p>\n\nIngrese aquí el nombre de usuario de su elección. Sin embargo, tome las siguientes medidas:<br>\n<b>\n   * El nombre de usuario puede contener letras, números y carácteres con valor ascii entre 32 y 126.<br>\n   * Sólamente se permite un máximo de 20 carácteres.\n\n</b>\n\n</p>\n\n</html>");
         jTextFieldNombreDeUsuario.setCaretColor(new java.awt.Color(104, 194, 232));
-        jTextFieldNombreDeUsuario.setPreferredSize(new java.awt.Dimension(350, 32));
+        jTextFieldNombreDeUsuario.setMinimumSize(new java.awt.Dimension(320, 36));
+        jTextFieldNombreDeUsuario.setPreferredSize(new java.awt.Dimension(320, 36));
 
         jLabelPassword.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelPassword.setText("Contraseña");
+        jLabelPassword.setMaximumSize(new java.awt.Dimension(320, 29));
+        jLabelPassword.setMinimumSize(new java.awt.Dimension(320, 29));
+        jLabelPassword.setPreferredSize(new java.awt.Dimension(320, 29));
 
         jPasswordFieldPassword.setEditable(false);
         jPasswordFieldPassword.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         jPasswordFieldPassword.setToolTipText("Ingrese Aquí Su Contraseña (Mínimo 8 Carácteres)");
         jPasswordFieldPassword.setCaretColor(new java.awt.Color(104, 194, 232));
-        jPasswordFieldPassword.setPreferredSize(new java.awt.Dimension(350, 32));
+        jPasswordFieldPassword.setMinimumSize(new java.awt.Dimension(320, 36));
+        jPasswordFieldPassword.setPreferredSize(new java.awt.Dimension(320, 36));
 
         jLabelCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelCorreoElectronico.setText("Correo Electrónico");
+        jLabelCorreoElectronico.setMaximumSize(new java.awt.Dimension(500, 29));
+        jLabelCorreoElectronico.setMinimumSize(new java.awt.Dimension(500, 29));
+        jLabelCorreoElectronico.setPreferredSize(new java.awt.Dimension(500, 29));
 
         jTextFieldCorreoElectronico.setEditable(false);
         jTextFieldCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         jTextFieldCorreoElectronico.setToolTipText("Ingrese Aquí Su Correo Electrónico (Ingrese Uno Que Pueda Utilizar)");
         jTextFieldCorreoElectronico.setCaretColor(new java.awt.Color(104, 194, 232));
-        jTextFieldCorreoElectronico.setPreferredSize(new java.awt.Dimension(350, 32));
+        jTextFieldCorreoElectronico.setMinimumSize(new java.awt.Dimension(500, 36));
+        jTextFieldCorreoElectronico.setPreferredSize(new java.awt.Dimension(500, 36));
 
         jLabelRepetirPassword.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelRepetirPassword.setText("Repetir Contraseña");
+        jLabelRepetirPassword.setMaximumSize(new java.awt.Dimension(320, 29));
+        jLabelRepetirPassword.setMinimumSize(new java.awt.Dimension(320, 29));
+        jLabelRepetirPassword.setPreferredSize(new java.awt.Dimension(320, 29));
 
         jPasswordFieldRepetirPassword.setEditable(false);
         jPasswordFieldRepetirPassword.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         jPasswordFieldRepetirPassword.setToolTipText("Re-Ingrese Aquí La Contraseña");
         jPasswordFieldRepetirPassword.setCaretColor(new java.awt.Color(104, 194, 232));
-        jPasswordFieldRepetirPassword.setPreferredSize(new java.awt.Dimension(350, 32));
+        jPasswordFieldRepetirPassword.setMinimumSize(new java.awt.Dimension(320, 36));
+        jPasswordFieldRepetirPassword.setPreferredSize(new java.awt.Dimension(320, 36));
 
         jLabelInformacionNombreDeUsuario.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jLabelInformacionNombreDeUsuario.setText("información sobre el nombre de usuario");
+        jLabelInformacionNombreDeUsuario.setMaximumSize(new java.awt.Dimension(320, 20));
+        jLabelInformacionNombreDeUsuario.setMinimumSize(new java.awt.Dimension(320, 20));
+        jLabelInformacionNombreDeUsuario.setPreferredSize(new java.awt.Dimension(320, 20));
 
         jLabelInformacionRepetirPassword.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jLabelInformacionRepetirPassword.setText("información de la repetición de la contraseña");
+        jLabelInformacionRepetirPassword.setMaximumSize(new java.awt.Dimension(320, 20));
+        jLabelInformacionRepetirPassword.setMinimumSize(new java.awt.Dimension(320, 20));
+        jLabelInformacionRepetirPassword.setPreferredSize(new java.awt.Dimension(320, 20));
 
         jLabelInformacionCorreoElectronico.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jLabelInformacionCorreoElectronico.setText("información sobre el correo electrónico");
+        jLabelInformacionCorreoElectronico.setMaximumSize(new java.awt.Dimension(500, 20));
+        jLabelInformacionCorreoElectronico.setMinimumSize(new java.awt.Dimension(500, 20));
+        jLabelInformacionCorreoElectronico.setPreferredSize(new java.awt.Dimension(500, 20));
 
         jLabelInformacionSeguridadPassword.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jLabelInformacionSeguridadPassword.setText("información de la seguridad de la contraseña");
+        jLabelInformacionSeguridadPassword.setMaximumSize(new java.awt.Dimension(320, 20));
+        jLabelInformacionSeguridadPassword.setMinimumSize(new java.awt.Dimension(320, 20));
+        jLabelInformacionSeguridadPassword.setPreferredSize(new java.awt.Dimension(320, 20));
 
-        jLabelEditarNombreUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarNombreUsuario.setText("¿Editar?");
-
-        jCheckBoxEditarNombreUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarNombreUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarNombreUsuarioMouseClicked(evt);
-            }
-        });
-
-        jLabelEditarCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarCorreoElectronico.setText("¿Editar?");
-
-        jCheckBoxEditarCorreoElectronico.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarCorreoElectronico.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarCorreoElectronicoMouseClicked(evt);
-            }
-        });
-
-        jLabelEditarPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarPassword.setText("¿Editar?");
-
-        jCheckBoxEditarPassword.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarPasswordMouseClicked(evt);
-            }
-        });
-
-        jLabelImagenPerfilAutenticacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelImagenPerfilAutenticacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelImagenPerfilAutenticacion.setToolTipText("Imagen De Perfil Seleccionada.");
         jLabelImagenPerfilAutenticacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelImagenPerfilAutenticacion.setMinimumSize(new java.awt.Dimension(300, 300));
+        jLabelImagenPerfilAutenticacion.setMaximumSize(new java.awt.Dimension(400, 400));
+        jLabelImagenPerfilAutenticacion.setMinimumSize(new java.awt.Dimension(400, 400));
         jLabelImagenPerfilAutenticacion.setName(""); // NOI18N
-        jLabelImagenPerfilAutenticacion.setPreferredSize(new java.awt.Dimension(350, 350));
+        jLabelImagenPerfilAutenticacion.setPreferredSize(new java.awt.Dimension(400, 400));
 
         jButtonGuardarCambiosAutenticacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonGuardarCambiosAutenticacion.setText("Guardar Cambios");
         jButtonGuardarCambiosAutenticacion.setToolTipText("Guardar Cambios");
         jButtonGuardarCambiosAutenticacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonGuardarCambiosAutenticacion.setMaximumSize(new java.awt.Dimension(280, 40));
+        jButtonGuardarCambiosAutenticacion.setMinimumSize(new java.awt.Dimension(280, 40));
+        jButtonGuardarCambiosAutenticacion.setPreferredSize(new java.awt.Dimension(280, 40));
         jButtonGuardarCambiosAutenticacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonGuardarCambiosAutenticacionMouseClicked(evt);
@@ -258,124 +225,149 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jLabelRegresarAMiPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelRegresarAMiPerfil.setText("←");
         jLabelRegresarAMiPerfil.setToolTipText("Regresar A Mi Vista De Perfil");
+        jLabelRegresarAMiPerfil.setMaximumSize(new java.awt.Dimension(47, 40));
+        jLabelRegresarAMiPerfil.setMinimumSize(new java.awt.Dimension(47, 40));
+        jLabelRegresarAMiPerfil.setPreferredSize(new java.awt.Dimension(47, 40));
         jLabelRegresarAMiPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelRegresarAMiPerfilMouseClicked(evt);
             }
         });
 
+        jToggleButtonEditarNombreUsuario.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarNombreUsuario.setText("Editar?");
+        jToggleButtonEditarNombreUsuario.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarNombreUsuario.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarNombreUsuario.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jToggleButtonEditarCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarCorreoElectronico.setText("Editar?");
+        jToggleButtonEditarCorreoElectronico.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarCorreoElectronico.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarCorreoElectronico.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jToggleButtonEditarPassword.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarPassword.setText("Editar?");
+        jToggleButtonEditarPassword.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarPassword.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarPassword.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jButtonCargarImagenPerfil.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
+        jButtonCargarImagenPerfil.setText("Cambiar Imagen De Perfil");
+        jButtonCargarImagenPerfil.setToolTipText("<html>Click Para Cargar Tu Foto De Perfil Desde Tu Ordenador.<br><b>NOTA: LA IMAGEN DE PERFIL TENDRÁ UNA RESOLUCIÓN DE 250x250 px.</b></html>");
+        jButtonCargarImagenPerfil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonCargarImagenPerfil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCargarImagenPerfil.setMaximumSize(new java.awt.Dimension(400, 40));
+        jButtonCargarImagenPerfil.setMinimumSize(new java.awt.Dimension(400, 40));
+        jButtonCargarImagenPerfil.setPreferredSize(new java.awt.Dimension(400, 40));
+        jButtonCargarImagenPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCargarImagenPerfilMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonCargarImagenPerfilMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonCargarImagenPerfilMouseExited(evt);
+            }
+        });
+
+        jToggleButtonEditarImagenPerfil.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarImagenPerfil.setText("Editar?");
+        jToggleButtonEditarImagenPerfil.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarImagenPerfil.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarImagenPerfil.setPreferredSize(new java.awt.Dimension(80, 36));
+
         javax.swing.GroupLayout jPanelAutenticacionLayout = new javax.swing.GroupLayout(jPanelAutenticacion);
         jPanelAutenticacion.setLayout(jPanelAutenticacionLayout);
         jPanelAutenticacionLayout.setHorizontalGroup(
             jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                        .addComponent(jLabelRegresarAMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelRegresarAMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonGuardarCambiosAutenticacion)
-                        .addContainerGap())
+                        .addComponent(jButtonGuardarCambiosAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                        .addComponent(jLabelInformacionRepetirPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(477, 477, 477))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAutenticacionLayout.createSequentialGroup()
                         .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                                .addComponent(jLabelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(2, 2, 2))
-                            .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                                .addComponent(jTextFieldNombreDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addGap(2, 2, 2))
-                            .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                                .addComponent(jLabelInformacionNombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(2, 2, 2))
-                            .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                                .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(4, 4, 4))
-                            .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                                .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addGap(4, 4, 4))
-                            .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                                .addComponent(jLabelInformacionCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(4, 4, 4))
-                            .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                                .addComponent(jLabelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(6, 6, 6))
-                            .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                                .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addGap(6, 6, 6))
-                            .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                                .addComponent(jLabelInformacionSeguridadPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(6, 6, 6))
+                            .addComponent(jLabelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldNombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelInformacionNombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelInformacionSeguridadPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelRepetirPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPasswordFieldRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEditarNombreUsuario)
-                            .addComponent(jLabelEditarCorreoElectronico)
-                            .addComponent(jLabelEditarPassword)
+                            .addComponent(jLabelInformacionRepetirPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
                                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBoxEditarNombreUsuario)
-                                    .addComponent(jCheckBoxEditarCorreoElectronico)
-                                    .addComponent(jCheckBoxEditarPassword))))
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabelImagenPerfilAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                                    .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelInformacionCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPasswordFieldRepetirPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToggleButtonEditarNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButtonEditarCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButtonEditarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonCargarImagenPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelImagenPerfilAutenticacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addComponent(jToggleButtonEditarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)))
+                .addContainerGap())
         );
         jPanelAutenticacionLayout.setVerticalGroup(
             jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGap(40, 40, 40)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                        .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(jTextFieldNombreDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldNombreDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
-                        .addComponent(jLabelInformacionNombreDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelInformacionNombreDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
-                        .addComponent(jLabelInformacionCorreoElectronico)
+                        .addComponent(jLabelInformacionCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabelInformacionSeguridadPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(jLabelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPasswordFieldRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
-                        .addComponent(jLabelInformacionSeguridadPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabelRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(jPasswordFieldRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabelEditarNombreUsuario)
-                        .addGap(10, 10, 10)
-                        .addComponent(jCheckBoxEditarNombreUsuario)
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabelEditarCorreoElectronico)
-                        .addGap(10, 10, 10)
-                        .addComponent(jCheckBoxEditarCorreoElectronico)
-                        .addGap(61, 61, 61)
-                        .addComponent(jLabelEditarPassword)
-                        .addGap(10, 10, 10)
-                        .addComponent(jCheckBoxEditarPassword))
+                        .addComponent(jLabelInformacionRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jLabelImagenPerfilAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(4, 4, 4)
-                .addComponent(jLabelInformacionRepetirPassword)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonGuardarCambiosAutenticacion, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(jLabelRegresarAMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                        .addComponent(jToggleButtonEditarNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(jToggleButtonEditarCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(jToggleButtonEditarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelImagenPerfilAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButtonEditarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jButtonCargarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 53, Short.MAX_VALUE)
+                .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonGuardarCambiosAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelRegresarAMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+
+        jTextFieldNombreDeUsuario.getAccessibleContext().setAccessibleName("");
 
         jTabbedPaneFondo.addTab(" Autenticación ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/account.png")), jPanelAutenticacion, "Editar Mis Credenciales Para Acceder Al Sistema."); // NOI18N
 
@@ -385,73 +377,95 @@ public class EditProfilePanel extends javax.swing.JPanel {
 
         jLabelNombres.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelNombres.setText("Nombre(s)");
-        jLabelNombres.setPreferredSize(new java.awt.Dimension(200, 32));
+        jLabelNombres.setMaximumSize(new java.awt.Dimension(400, 30));
+        jLabelNombres.setMinimumSize(new java.awt.Dimension(400, 30));
+        jLabelNombres.setPreferredSize(new java.awt.Dimension(400, 30));
 
         jTextFieldNombres.setEditable(false);
         jTextFieldNombres.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jTextFieldNombres.setToolTipText("<html>Ingresa Aquí Tu(s) Nombre(s).<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
         jTextFieldNombres.setCaretColor(new java.awt.Color(104, 194, 232));
-        jTextFieldNombres.setPreferredSize(new java.awt.Dimension(200, 32));
+        jTextFieldNombres.setMinimumSize(new java.awt.Dimension(400, 36));
+        jTextFieldNombres.setPreferredSize(new java.awt.Dimension(400, 36));
 
         jLabelApellidos.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelApellidos.setText("Apellido(s)");
-        jLabelApellidos.setPreferredSize(new java.awt.Dimension(200, 32));
+        jLabelApellidos.setMaximumSize(new java.awt.Dimension(400, 30));
+        jLabelApellidos.setMinimumSize(new java.awt.Dimension(400, 30));
+        jLabelApellidos.setPreferredSize(new java.awt.Dimension(400, 30));
 
         jTextFieldApellidos.setEditable(false);
         jTextFieldApellidos.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jTextFieldApellidos.setToolTipText("<html>Ingresa Aquí Tu(s) Apellido(s).<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
         jTextFieldApellidos.setCaretColor(new java.awt.Color(104, 194, 232));
-        jTextFieldApellidos.setPreferredSize(new java.awt.Dimension(200, 32));
+        jTextFieldApellidos.setMinimumSize(new java.awt.Dimension(400, 36));
+        jTextFieldApellidos.setPreferredSize(new java.awt.Dimension(400, 36));
 
         jTextFieldLocalidad.setEditable(false);
         jTextFieldLocalidad.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jTextFieldLocalidad.setToolTipText("Ingresa Tu Localidad En Este Campo.");
         jTextFieldLocalidad.setCaretColor(new java.awt.Color(104, 194, 232));
-        jTextFieldLocalidad.setPreferredSize(new java.awt.Dimension(200, 32));
+        jTextFieldLocalidad.setMinimumSize(new java.awt.Dimension(400, 36));
+        jTextFieldLocalidad.setPreferredSize(new java.awt.Dimension(400, 36));
 
         jLabelLocalidad.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelLocalidad.setText("Localidad");
-        jLabelLocalidad.setPreferredSize(new java.awt.Dimension(200, 32));
+        jLabelLocalidad.setMaximumSize(new java.awt.Dimension(400, 30));
+        jLabelLocalidad.setMinimumSize(new java.awt.Dimension(400, 30));
+        jLabelLocalidad.setPreferredSize(new java.awt.Dimension(400, 30));
 
         jTextFieldGenero.setEditable(false);
         jTextFieldGenero.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jTextFieldGenero.setToolTipText("Ingresa Aquí Tu Género, Sexo O Identidad De Género.");
         jTextFieldGenero.setCaretColor(new java.awt.Color(104, 194, 232));
-        jTextFieldGenero.setPreferredSize(new java.awt.Dimension(200, 32));
+        jTextFieldGenero.setMinimumSize(new java.awt.Dimension(400, 36));
+        jTextFieldGenero.setPreferredSize(new java.awt.Dimension(400, 36));
 
         jLabelGenero.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelGenero.setText("Género");
-        jLabelGenero.setPreferredSize(new java.awt.Dimension(200, 32));
+        jLabelGenero.setMaximumSize(new java.awt.Dimension(400, 30));
+        jLabelGenero.setMinimumSize(new java.awt.Dimension(400, 30));
+        jLabelGenero.setPreferredSize(new java.awt.Dimension(400, 30));
 
         jFormattedTextFieldTelefono.setEditable(false);
         jFormattedTextFieldTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##########"))));
         jFormattedTextFieldTelefono.setToolTipText("<html>Ingresa Aquí Tu Número De Teléfono O Celular.<br><b>NOTA: SOLAMENTE SE PERMITEN INGRESAR VALORES NUMÉRICOS.</b></html>");
         jFormattedTextFieldTelefono.setCaretColor(new java.awt.Color(104, 194, 232));
         jFormattedTextFieldTelefono.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jFormattedTextFieldTelefono.setPreferredSize(new java.awt.Dimension(200, 32));
+        jFormattedTextFieldTelefono.setMinimumSize(new java.awt.Dimension(400, 36));
+        jFormattedTextFieldTelefono.setPreferredSize(new java.awt.Dimension(400, 36));
 
         jLabelTelefono.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelTelefono.setText("Teléfono");
-        jLabelTelefono.setPreferredSize(new java.awt.Dimension(200, 32));
+        jLabelTelefono.setMaximumSize(new java.awt.Dimension(400, 30));
+        jLabelTelefono.setMinimumSize(new java.awt.Dimension(400, 30));
+        jLabelTelefono.setPreferredSize(new java.awt.Dimension(400, 30));
 
         jFormattedTextFieldFechaNacimiento.setEditable(false);
         jFormattedTextFieldFechaNacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-mm-yyyy"))));
         jFormattedTextFieldFechaNacimiento.setToolTipText("<html>Ingresa Aquí Tu Fecha De Nacimiento.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.<br>ADEMÁS, DEBERÁS INGRESAR LA FECHA CON EL SIGUIENTE FORMATO: dd-mm-aaaa<br>d: dia, m: mes, a: año.</b>.</html>");
         jFormattedTextFieldFechaNacimiento.setCaretColor(new java.awt.Color(104, 194, 232));
         jFormattedTextFieldFechaNacimiento.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jFormattedTextFieldFechaNacimiento.setPreferredSize(new java.awt.Dimension(200, 32));
+        jFormattedTextFieldFechaNacimiento.setMinimumSize(new java.awt.Dimension(400, 36));
+        jFormattedTextFieldFechaNacimiento.setPreferredSize(new java.awt.Dimension(400, 36));
 
         jLabelFechaNacimiento.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelFechaNacimiento.setText("Fecha De Nacimiento");
-        jLabelFechaNacimiento.setPreferredSize(new java.awt.Dimension(200, 32));
+        jLabelFechaNacimiento.setMaximumSize(new java.awt.Dimension(400, 30));
+        jLabelFechaNacimiento.setMinimumSize(new java.awt.Dimension(400, 30));
+        jLabelFechaNacimiento.setPreferredSize(new java.awt.Dimension(400, 30));
 
         jLabelDescripcion.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDescripcion.setText("Descripción");
+        jLabelDescripcion.setMaximumSize(new java.awt.Dimension(400, 30));
+        jLabelDescripcion.setMinimumSize(new java.awt.Dimension(400, 30));
+        jLabelDescripcion.setPreferredSize(new java.awt.Dimension(400, 30));
 
         jScrollPaneDescripcion.setBackground(new java.awt.Color(104, 194, 232));
         jScrollPaneDescripcion.setForeground(new java.awt.Color(14, 30, 64));
-        jScrollPaneDescripcion.setMaximumSize(new java.awt.Dimension(334, 136));
-        jScrollPaneDescripcion.setMinimumSize(new java.awt.Dimension(334, 136));
+        jScrollPaneDescripcion.setMaximumSize(new java.awt.Dimension(400, 188));
+        jScrollPaneDescripcion.setMinimumSize(new java.awt.Dimension(400, 188));
+        jScrollPaneDescripcion.setPreferredSize(new java.awt.Dimension(400, 188));
 
         jTextAreaDescripcion.setEditable(false);
         jTextAreaDescripcion.setColumns(20);
@@ -465,160 +479,25 @@ public class EditProfilePanel extends javax.swing.JPanel {
 
         jLabelPerfil.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelPerfil.setText("Perfil");
-        jLabelPerfil.setPreferredSize(new java.awt.Dimension(200, 32));
-
-        jButtonCargarImagenPerfil.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
-        jButtonCargarImagenPerfil.setText("Cargar Imagen");
-        jButtonCargarImagenPerfil.setToolTipText("<html>Click Para Cargar Tu Foto De Perfil Desde Tu Ordenador.<br><b>NOTA: LA IMAGEN DE PERFIL TENDRÁ UNA RESOLUCIÓN DE 250x250 px.</b></html>");
-        jButtonCargarImagenPerfil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonCargarImagenPerfil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonCargarImagenPerfil.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        jButtonCargarImagenPerfil.setPreferredSize(new java.awt.Dimension(320, 40));
-        jButtonCargarImagenPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonCargarImagenPerfilMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonCargarImagenPerfilMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonCargarImagenPerfilMouseExited(evt);
-            }
-        });
-
-        jLabelImagenPerfil.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelImagenPerfil.setToolTipText("Imagen De Perfil Seleccionada.");
-        jLabelImagenPerfil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelImagenPerfil.setMinimumSize(new java.awt.Dimension(300, 300));
-        jLabelImagenPerfil.setName(""); // NOI18N
-        jLabelImagenPerfil.setPreferredSize(new java.awt.Dimension(350, 350));
+        jLabelPerfil.setMaximumSize(new java.awt.Dimension(400, 30));
+        jLabelPerfil.setMinimumSize(new java.awt.Dimension(400, 30));
+        jLabelPerfil.setPreferredSize(new java.awt.Dimension(400, 30));
 
         jComboBoxPerfil.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-        jComboBoxPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Maestro" }));
+        jComboBoxPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Maestro", "Ambos" }));
         jComboBoxPerfil.setToolTipText("<html>Aquí Puedes Seleccionar Tu Perfil De Las Posibles.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
         jComboBoxPerfil.setBorder(null);
-        jComboBoxPerfil.setMaximumSize(new java.awt.Dimension(350, 40));
-        jComboBoxPerfil.setPreferredSize(new java.awt.Dimension(200, 32));
-
-        jLabelEditarNombres.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarNombres.setText("¿Editar?");
-
-        jCheckBoxEditarNombres.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarNombres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBoxEditarNombres.setMaximumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarNombres.setMinimumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarNombres.setPreferredSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarNombres.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarNombresMouseClicked(evt);
-            }
-        });
-
-        jLabelEditarLocalidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarLocalidad.setText("¿Editar?");
-
-        jCheckBoxEditarLocalidad.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarLocalidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBoxEditarLocalidad.setMaximumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarLocalidad.setMinimumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarLocalidad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarLocalidadMouseClicked(evt);
-            }
-        });
-
-        jLabelEditarGenero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarGenero.setText("¿Editar?");
-
-        jCheckBoxEditarGenero.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarGenero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBoxEditarGenero.setMaximumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarGenero.setMinimumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarGenero.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarGeneroMouseClicked(evt);
-            }
-        });
-
-        jCheckBoxEditarApellidos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarApellidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBoxEditarApellidos.setMaximumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarApellidos.setMinimumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarApellidos.setPreferredSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarApellidos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarApellidosMouseClicked(evt);
-            }
-        });
-
-        jLabelEditarApellidos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarApellidos.setText("¿Editar?");
-
-        jLabelEditarFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarFechaNacimiento.setText("¿Editar?");
-
-        jCheckBoxEditarFechaNacimiento.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarFechaNacimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBoxEditarFechaNacimiento.setMaximumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarFechaNacimiento.setMinimumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarFechaNacimiento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarFechaNacimientoMouseClicked(evt);
-            }
-        });
-
-        jLabelEditarTelefono.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarTelefono.setText("¿Editar?");
-
-        jCheckBoxEditarTelefono.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBoxEditarTelefono.setMaximumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarTelefono.setMinimumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarTelefonoMouseClicked(evt);
-            }
-        });
-
-        jLabelEditarPerfil.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarPerfil.setText("¿Editar?");
-
-        jCheckBoxEditarPerfil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBoxEditarPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jCheckBoxEditarPerfil.setMaximumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarPerfil.setMinimumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarPerfilMouseClicked(evt);
-            }
-        });
-
-        jLabelEditarDescripcion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarDescripcion.setText("¿Editar?");
-
-        jCheckBoxEditarDescripcion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarDescripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBoxEditarDescripcion.setMaximumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarDescripcion.setMinimumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarDescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBoxEditarDescripcionMouseClicked(evt);
-            }
-        });
-
-        jLabelEditarImagenPerfil.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelEditarImagenPerfil.setText("¿Editar?");
-
-        jCheckBoxEditarImagenPerfil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jCheckBoxEditarImagenPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBoxEditarImagenPerfil.setMaximumSize(new java.awt.Dimension(21, 19));
-        jCheckBoxEditarImagenPerfil.setMinimumSize(new java.awt.Dimension(21, 19));
+        jComboBoxPerfil.setMaximumSize(new java.awt.Dimension(400, 36));
+        jComboBoxPerfil.setMinimumSize(new java.awt.Dimension(400, 36));
+        jComboBoxPerfil.setPreferredSize(new java.awt.Dimension(400, 36));
 
         jButtonGuardarCambiosDatosPersonales.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonGuardarCambiosDatosPersonales.setText("Guardar Cambios");
         jButtonGuardarCambiosDatosPersonales.setToolTipText("Guardar Cambios");
         jButtonGuardarCambiosDatosPersonales.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonGuardarCambiosDatosPersonales.setMaximumSize(new java.awt.Dimension(400, 36));
+        jButtonGuardarCambiosDatosPersonales.setMinimumSize(new java.awt.Dimension(400, 36));
+        jButtonGuardarCambiosDatosPersonales.setPreferredSize(new java.awt.Dimension(400, 36));
         jButtonGuardarCambiosDatosPersonales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonGuardarCambiosDatosPersonalesMouseClicked(evt);
@@ -631,199 +510,196 @@ public class EditProfilePanel extends javax.swing.JPanel {
             }
         });
 
+        jLabelPromedio.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabelPromedio.setText("Promedio General");
+        jLabelPromedio.setMaximumSize(new java.awt.Dimension(400, 30));
+        jLabelPromedio.setMinimumSize(new java.awt.Dimension(400, 30));
+        jLabelPromedio.setPreferredSize(new java.awt.Dimension(400, 30));
+
+        jFormattedTextFieldPromedio.setEditable(false);
+        jFormattedTextFieldPromedio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.###"))));
+        jFormattedTextFieldPromedio.setToolTipText("<html>Ingresa Aquí Tu Promedio De La Escuela.<br><b>NOTA: SOLAMENTE SE PERMITEN INGRESAR VALORES NUMÉRICOS.</b></html>");
+        jFormattedTextFieldPromedio.setCaretColor(new java.awt.Color(104, 194, 232));
+        jFormattedTextFieldPromedio.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jFormattedTextFieldPromedio.setMinimumSize(new java.awt.Dimension(400, 36));
+        jFormattedTextFieldPromedio.setPreferredSize(new java.awt.Dimension(400, 36));
+
+        jToggleButtonEditarPromedioGeneral.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarPromedioGeneral.setText("Editar?");
+        jToggleButtonEditarPromedioGeneral.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarPromedioGeneral.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarPromedioGeneral.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jToggleButtonEditarNombres.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarNombres.setText("Editar?");
+        jToggleButtonEditarNombres.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarNombres.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarNombres.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jToggleButtonEditarApellidos.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarApellidos.setText("Editar?");
+        jToggleButtonEditarApellidos.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarApellidos.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarApellidos.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jToggleButtonEditarLocalidad.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarLocalidad.setText("Editar?");
+        jToggleButtonEditarLocalidad.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarLocalidad.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarLocalidad.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jToggleButtonEditarFechaNacimiento.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarFechaNacimiento.setText("Editar?");
+        jToggleButtonEditarFechaNacimiento.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarFechaNacimiento.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarFechaNacimiento.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jToggleButtonEditarGenero.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarGenero.setText("Editar?");
+        jToggleButtonEditarGenero.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarGenero.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarGenero.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jToggleButtonEditarTelefono.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarTelefono.setText("Editar?");
+        jToggleButtonEditarTelefono.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarTelefono.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarTelefono.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jToggleButtonEditarPerfil.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarPerfil.setText("Editar?");
+        jToggleButtonEditarPerfil.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarPerfil.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarPerfil.setPreferredSize(new java.awt.Dimension(80, 36));
+
+        jToggleButtonEditarDescripcion.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarDescripcion.setText("Editar?");
+        jToggleButtonEditarDescripcion.setMaximumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarDescripcion.setMinimumSize(new java.awt.Dimension(80, 36));
+        jToggleButtonEditarDescripcion.setPreferredSize(new java.awt.Dimension(80, 36));
+
         javax.swing.GroupLayout jPanelDatosPersonalesLayout = new javax.swing.GroupLayout(jPanelDatosPersonales);
         jPanelDatosPersonales.setLayout(jPanelDatosPersonalesLayout);
         jPanelDatosPersonalesLayout.setHorizontalGroup(
             jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonGuardarCambiosDatosPersonales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
-                    .addComponent(jTextFieldApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextFieldFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxPerfil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                            .addComponent(jLabelApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                            .addComponent(jLabelLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                            .addComponent(jLabelFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                            .addComponent(jLabelGenero, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                            .addComponent(jLabelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                            .addComponent(jLabelPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
-                        .addGap(50, 50, 50)))
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEditarNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelEditarApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelEditarLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelEditarFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelEditarGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelEditarTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelEditarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBoxEditarNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBoxEditarApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBoxEditarLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBoxEditarFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBoxEditarGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBoxEditarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(17, 17, 17))
-                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jCheckBoxEditarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonCargarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)))
-                .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEditarDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jCheckBoxEditarDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)))
-                        .addGap(9, 9, 9))
-                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEditarImagenPerfil)
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                                .addComponent(jTextFieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addComponent(jCheckBoxEditarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jToggleButtonEditarGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                                .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jToggleButtonEditarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jFormattedTextFieldPromedio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 395, Short.MAX_VALUE)
+                            .addComponent(jLabelPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jButtonGuardarCambiosDatosPersonales, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jFormattedTextFieldFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jToggleButtonEditarApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jToggleButtonEditarLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jToggleButtonEditarFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                                .addComponent(jTextFieldNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jToggleButtonEditarNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 55, Short.MAX_VALUE)
+                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxPerfil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                        .addComponent(jLabelTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(545, 555, Short.MAX_VALUE))
+                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                        .addComponent(jLabelNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jLabelPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButtonEditarPromedioGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jToggleButtonEditarDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToggleButtonEditarPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanelDatosPersonalesLayout.setVerticalGroup(
             jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jTextFieldNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(jLabelNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(30, 30, 30)))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jTextFieldApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(jLabelApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(30, 30, 30)))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(jLabelLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(30, 30, 30))
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jTextFieldLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jFormattedTextFieldFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(jLabelFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(30, 30, 30)))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(jLabelGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(30, 30, 30))
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jTextFieldGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(jLabelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(30, 30, 30))
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jComboBoxPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(jLabelPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addGap(30, 30, 30))))
-                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                        .addComponent(jLabelDescripcion)
-                        .addGap(5, 5, 5)
-                        .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabelImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2))
-                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(jLabelEditarNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jCheckBoxEditarNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabelEditarApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jCheckBoxEditarApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabelEditarLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jCheckBoxEditarLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabelEditarFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jCheckBoxEditarFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabelEditarGenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jCheckBoxEditarGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabelEditarTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jCheckBoxEditarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabelEditarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBoxEditarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7))
-                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                                .addComponent(jLabelEditarDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jCheckBoxEditarDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(221, 221, 221)
-                                .addComponent(jLabelEditarImagenPerfil)
-                                .addGap(10, 10, 10)
-                                .addComponent(jCheckBoxEditarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(153, 153, 153)))))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabelNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButtonGuardarCambiosDatosPersonales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButtonCargarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49))
+                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButtonEditarNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabelApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jTextFieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabelLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jTextFieldLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabelFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jFormattedTextFieldFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jToggleButtonEditarApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(jToggleButtonEditarLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(jToggleButtonEditarFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                                .addComponent(jLabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButtonEditarGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jFormattedTextFieldPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jToggleButtonEditarPromedioGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
+                        .addComponent(jToggleButtonEditarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jToggleButtonEditarDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addComponent(jLabelTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButtonEditarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonGuardarCambiosDatosPersonales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jTabbedPaneFondo.addTab(" Datos Personales ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/data.png")), jPanelDatosPersonales, "Editar Mis Datos Personales."); // NOI18N
@@ -831,48 +707,10 @@ public class EditProfilePanel extends javax.swing.JPanel {
         add(jTabbedPaneFondo, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void paintComponentes(){
-        Component[] components = jPanelDatosPersonales.getComponents();
-        for(Component component: components){
-            
-            String clase = component.getClass().getSimpleName();
-            switch (clase) {
-                case "JTextField" -> ((JTextField)component).setCaretColor(DashboardPanel.getFirstColor());
-                case "JFormattedTextField" -> ((JFormattedTextField)component).setCaretColor(DashboardPanel.getFirstColor());        
-            }
-            
-            component.setBackground(DashboardPanel.getSecondColor());
-            component.setForeground(DashboardPanel.getFirstColor());
-            
-            
-        }
-        
-        components = jPanelAutenticacion.getComponents();
-        for(Component component: components){
-            String clase = component.getClass().getSimpleName();
-            switch (clase) {
-                case "JTextField":
-                    ((JTextField)component).setCaretColor(DashboardPanel.getFirstColor());
-                    break;
-                case "JFormattedTextField":
-                    ((JFormattedTextField)component).setCaretColor(DashboardPanel.getFirstColor());
-                    break;        
-            }
-            
-            component.setBackground(DashboardPanel.getSecondColor());
-            component.setForeground(DashboardPanel.getFirstColor());
-  
-        }
-        
-        jTextAreaDescripcion.setBackground(DashboardPanel.getSecondColor());
-        jTextAreaDescripcion.setForeground(DashboardPanel.getFirstColor());
-        jTextAreaDescripcion.setCaretColor(DashboardPanel.getFirstColor());
-    }
-    
     
     private void jButtonCargarImagenPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarImagenPerfilMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt) && jCheckBoxEditarImagenPerfil.isSelected()){
+        if(SwingUtilities.isLeftMouseButton(evt)){
             
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setAccessory(new ImageFilePreview(fileChooser));
@@ -888,24 +726,17 @@ public class EditProfilePanel extends javax.swing.JPanel {
                  
                 try {
                     Image openImage = ImageIO.read(file);
-                    int imageWidth = jLabelImagenPerfilAutenticacion.getWidth();
-                    int imageHeight = jLabelImagenPerfilAutenticacion.getHeight();
-                    ImageIcon autenticacionIcon = new ImageIcon(openImage.getScaledInstance(imageWidth,imageHeight,Image.SCALE_SMOOTH));
-                    imageWidth = jLabelImagenPerfil.getWidth();
-                    imageHeight = jLabelImagenPerfil.getHeight();
-                    ImageIcon profileIcon = new ImageIcon(openImage.getScaledInstance(imageWidth,imageHeight,Image.SCALE_SMOOTH));
+                    int large = jLabelImagenPerfilAutenticacion.getHeight();
+                    ImageIcon autenticacionIcon = new ImageIcon(openImage.getScaledInstance(large,large,Image.SCALE_SMOOTH));
                     
-                    jLabelImagenPerfil.setIcon(profileIcon);
                     jLabelImagenPerfilAutenticacion.setIcon(autenticacionIcon);
-                    profileIcon = new ImageIcon(openImage.getScaledInstance(400,400,Image.SCALE_SMOOTH));
                     
-                    DashboardPanel.setUserImage(profileIcon.getImage());
+                    DashboardPanel.setUserImage(autenticacionIcon.getImage());
                     
                     JOptionPane.showMessageDialog(null, "Los Cambios En La Interfaz Se Verán Reflejados \nEn Su Próximo Inicio De Sesión", "Información", JOptionPane.INFORMATION_MESSAGE);
                     
                     openImage = null;
                     autenticacionIcon = null;
-                    profileIcon = null;
                     
                 } catch (IOException ex) {
                     Logger.getLogger(EditProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -922,106 +753,6 @@ public class EditProfilePanel extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_jButtonGuardarCambiosDatosPersonalesMouseClicked
-
-    private void jCheckBoxEditarNombreUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarNombreUsuarioMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(jCheckBoxEditarNombreUsuario.isSelected()){
-                jTextFieldNombreDeUsuario.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarNombreUsuarioMouseClicked
-
-    private void jCheckBoxEditarPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarPasswordMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(jCheckBoxEditarPassword.isSelected()){
-                jPasswordFieldPassword.setEditable(true);
-                jPasswordFieldRepetirPassword.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarPasswordMouseClicked
-
-    private void jCheckBoxEditarCorreoElectronicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarCorreoElectronicoMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(jCheckBoxEditarCorreoElectronico.isSelected()){
-                jTextFieldCorreoElectronico.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarCorreoElectronicoMouseClicked
-
-    private void jCheckBoxEditarNombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarNombresMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(jCheckBoxEditarNombres.isSelected()){
-                jTextFieldNombres.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarNombresMouseClicked
-
-    private void jCheckBoxEditarApellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarApellidosMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if (jCheckBoxEditarApellidos.isSelected()) {
-                jTextFieldApellidos.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarApellidosMouseClicked
-
-    private void jCheckBoxEditarLocalidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarLocalidadMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if (jCheckBoxEditarLocalidad.isSelected()) {
-                jTextFieldLocalidad.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarLocalidadMouseClicked
-
-    private void jCheckBoxEditarGeneroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarGeneroMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if (jCheckBoxEditarGenero.isSelected()) {
-                jTextFieldGenero.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarGeneroMouseClicked
-
-    private void jCheckBoxEditarFechaNacimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarFechaNacimientoMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(jCheckBoxEditarFechaNacimiento.isSelected()){
-                jFormattedTextFieldFechaNacimiento.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarFechaNacimientoMouseClicked
-
-    private void jCheckBoxEditarTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarTelefonoMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(jCheckBoxEditarTelefono.isSelected()){
-                jFormattedTextFieldTelefono.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarTelefonoMouseClicked
-
-    private void jCheckBoxEditarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarPerfilMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if (jCheckBoxEditarPerfil.isSelected()) {
-                jComboBoxPerfil.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarPerfilMouseClicked
-
-    private void jCheckBoxEditarDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEditarDescripcionMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if (jCheckBoxEditarDescripcion.isSelected()) {
-                jTextAreaDescripcion.setEditable(true);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxEditarDescripcionMouseClicked
 
     private void jLabelRegresarAMiPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegresarAMiPerfilMouseClicked
         // TODO add your handling code here:
@@ -1078,39 +809,15 @@ public class EditProfilePanel extends javax.swing.JPanel {
     private javax.swing.JButton jButtonCargarImagenPerfil;
     private javax.swing.JButton jButtonGuardarCambiosAutenticacion;
     private javax.swing.JButton jButtonGuardarCambiosDatosPersonales;
-    private javax.swing.JCheckBox jCheckBoxEditarApellidos;
-    private javax.swing.JCheckBox jCheckBoxEditarCorreoElectronico;
-    private javax.swing.JCheckBox jCheckBoxEditarDescripcion;
-    private javax.swing.JCheckBox jCheckBoxEditarFechaNacimiento;
-    private javax.swing.JCheckBox jCheckBoxEditarGenero;
-    private javax.swing.JCheckBox jCheckBoxEditarImagenPerfil;
-    private javax.swing.JCheckBox jCheckBoxEditarLocalidad;
-    private javax.swing.JCheckBox jCheckBoxEditarNombreUsuario;
-    private javax.swing.JCheckBox jCheckBoxEditarNombres;
-    private javax.swing.JCheckBox jCheckBoxEditarPassword;
-    private javax.swing.JCheckBox jCheckBoxEditarPerfil;
-    private javax.swing.JCheckBox jCheckBoxEditarTelefono;
     private javax.swing.JComboBox<String> jComboBoxPerfil;
     private javax.swing.JFormattedTextField jFormattedTextFieldFechaNacimiento;
+    private javax.swing.JFormattedTextField jFormattedTextFieldPromedio;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefono;
     private javax.swing.JLabel jLabelApellidos;
     private javax.swing.JLabel jLabelCorreoElectronico;
     private javax.swing.JLabel jLabelDescripcion;
-    private javax.swing.JLabel jLabelEditarApellidos;
-    private javax.swing.JLabel jLabelEditarCorreoElectronico;
-    private javax.swing.JLabel jLabelEditarDescripcion;
-    private javax.swing.JLabel jLabelEditarFechaNacimiento;
-    private javax.swing.JLabel jLabelEditarGenero;
-    private javax.swing.JLabel jLabelEditarImagenPerfil;
-    private javax.swing.JLabel jLabelEditarLocalidad;
-    private javax.swing.JLabel jLabelEditarNombreUsuario;
-    private javax.swing.JLabel jLabelEditarNombres;
-    private javax.swing.JLabel jLabelEditarPassword;
-    private javax.swing.JLabel jLabelEditarPerfil;
-    private javax.swing.JLabel jLabelEditarTelefono;
     private javax.swing.JLabel jLabelFechaNacimiento;
     private javax.swing.JLabel jLabelGenero;
-    private javax.swing.JLabel jLabelImagenPerfil;
     private javax.swing.JLabel jLabelImagenPerfilAutenticacion;
     private javax.swing.JLabel jLabelInformacionCorreoElectronico;
     private javax.swing.JLabel jLabelInformacionNombreDeUsuario;
@@ -1121,6 +828,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelNombres;
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelPerfil;
+    private javax.swing.JLabel jLabelPromedio;
     private javax.swing.JLabel jLabelRegresarAMiPerfil;
     private javax.swing.JLabel jLabelRepetirPassword;
     private javax.swing.JLabel jLabelTelefono;
@@ -1137,5 +845,61 @@ public class EditProfilePanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldLocalidad;
     private javax.swing.JTextField jTextFieldNombreDeUsuario;
     private javax.swing.JTextField jTextFieldNombres;
+    private javax.swing.JToggleButton jToggleButtonEditarApellidos;
+    private javax.swing.JToggleButton jToggleButtonEditarCorreoElectronico;
+    private javax.swing.JToggleButton jToggleButtonEditarDescripcion;
+    private javax.swing.JToggleButton jToggleButtonEditarFechaNacimiento;
+    private javax.swing.JToggleButton jToggleButtonEditarGenero;
+    private javax.swing.JToggleButton jToggleButtonEditarImagenPerfil;
+    private javax.swing.JToggleButton jToggleButtonEditarLocalidad;
+    private javax.swing.JToggleButton jToggleButtonEditarNombreUsuario;
+    private javax.swing.JToggleButton jToggleButtonEditarNombres;
+    private javax.swing.JToggleButton jToggleButtonEditarPassword;
+    private javax.swing.JToggleButton jToggleButtonEditarPerfil;
+    private javax.swing.JToggleButton jToggleButtonEditarPromedioGeneral;
+    private javax.swing.JToggleButton jToggleButtonEditarTelefono;
     // End of variables declaration//GEN-END:variables
+
+    private void paintMyComponents() {
+        Component[] components = jPanelDatosPersonales.getComponents();
+        for (Component component : components) {
+
+            String clase = component.getClass().getSimpleName();
+            switch (clase) {
+                case "JTextField" ->
+                    ((JTextField) component).setCaretColor(DashboardPanel.getFirstColor());
+                case "JFormattedTextField" ->
+                    ((JFormattedTextField) component).setCaretColor(DashboardPanel.getFirstColor());
+            }
+
+            component.setBackground(DashboardPanel.getFirstColor());
+            component.setForeground(DashboardPanel.getFontColor());
+
+        }
+
+        components = jPanelAutenticacion.getComponents();
+        for (Component component : components) {
+            String clase = component.getClass().getSimpleName();
+            switch (clase) {
+                case "JTextField":
+                    ((JTextField) component).setCaretColor(DashboardPanel.getFirstColor());
+                    break;
+                case "JFormattedTextField":
+                    ((JFormattedTextField) component).setCaretColor(DashboardPanel.getFirstColor());
+                    break;
+            }
+
+            component.setBackground(DashboardPanel.getFirstColor());
+            component.setForeground(DashboardPanel.getFontColor());
+
+        }
+
+        jTextAreaDescripcion.setBackground(DashboardPanel.getFirstColor());
+        jTextAreaDescripcion.setForeground(DashboardPanel.getFontColor());
+        jTextAreaDescripcion.setCaretColor(DashboardPanel.getFirstColor() );
+
+        int large = jLabelImagenPerfilAutenticacion.getPreferredSize().height;
+        ImageIcon icon = new ImageIcon(DashboardPanel.getUserImage().getScaledInstance(large, large, Image.SCALE_SMOOTH));
+        jLabelImagenPerfilAutenticacion.setIcon(icon);
+    }
 }

@@ -49,9 +49,9 @@ public class LoginPanel extends javax.swing.JPanel{
 
         setBackground(new java.awt.Color(0, 0, 51));
         setForeground(new java.awt.Color(104, 194, 232));
-        setMinimumSize(new java.awt.Dimension(1024, 700));
+        setMinimumSize(new java.awt.Dimension(1260, 670));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1024, 700));
+        setPreferredSize(new java.awt.Dimension(1260, 670));
 
         jLabelCrearCuenta.setBackground(new java.awt.Color(14, 30, 64));
         jLabelCrearCuenta.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
@@ -59,7 +59,6 @@ public class LoginPanel extends javax.swing.JPanel{
         jLabelCrearCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCrearCuenta.setText("¿No Tienes Cuenta? Crea Tu Cuenta Aquí");
         jLabelCrearCuenta.setToolTipText("Crea Tu Cuenta Aquí");
-        jLabelCrearCuenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelCrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelCrearCuenta.setPreferredSize(new java.awt.Dimension(430, 22));
         jLabelCrearCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,7 +131,6 @@ public class LoginPanel extends javax.swing.JPanel{
         jLabelRecuperarCredenciales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelRecuperarCredenciales.setText("¿Olvidaste Tus Credenciales? Recupera Aquí");
         jLabelRecuperarCredenciales.setToolTipText("Recuperar Credenciales");
-        jLabelRecuperarCredenciales.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelRecuperarCredenciales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelRecuperarCredenciales.setPreferredSize(new java.awt.Dimension(430, 22));
         jLabelRecuperarCredenciales.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -184,16 +182,16 @@ public class LoginPanel extends javax.swing.JPanel{
                     .addComponent(jLabelNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldNombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
                     .addComponent(jButtonIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabelRecuperarCredenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabelCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabelBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jCheckBoxMostrarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

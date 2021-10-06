@@ -55,30 +55,35 @@ public class AboutPanel extends javax.swing.JPanel {
         jScrollPaneTextPane = new javax.swing.JScrollPane();
         jTextPaneAbout = new javax.swing.JTextPane();
 
-        setMinimumSize(new java.awt.Dimension(849, 650));
+        setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(849, 650));
+        setPreferredSize(new java.awt.Dimension(1085, 630));
 
         jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLogo.setMaximumSize(new java.awt.Dimension(150, 125));
-        jLabelLogo.setMinimumSize(new java.awt.Dimension(150, 125));
-        jLabelLogo.setPreferredSize(new java.awt.Dimension(150, 125));
+        jLabelLogo.setMaximumSize(new java.awt.Dimension(1071, 125));
+        jLabelLogo.setMinimumSize(new java.awt.Dimension(1071, 125));
+        jLabelLogo.setPreferredSize(new java.awt.Dimension(1071, 125));
 
         jLabelTitulo.setFont(new java.awt.Font("Gill Sans MT", 0, 36)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(104, 194, 232));
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("Acerca De CourseRoom");
+        jLabelTitulo.setMaximumSize(new java.awt.Dimension(1071, 43));
+        jLabelTitulo.setMinimumSize(new java.awt.Dimension(1071, 43));
+        jLabelTitulo.setPreferredSize(new java.awt.Dimension(1071, 43));
 
         jScrollPaneTextPane.setBorder(null);
-        jScrollPaneTextPane.setMinimumSize(new java.awt.Dimension(274, 420));
+        jScrollPaneTextPane.setMinimumSize(new java.awt.Dimension(1071, 400));
         jScrollPaneTextPane.setOpaque(false);
-        jScrollPaneTextPane.setPreferredSize(new java.awt.Dimension(274, 420));
+        jScrollPaneTextPane.setPreferredSize(new java.awt.Dimension(1071, 400));
 
         jTextPaneAbout.setEditable(false);
         jTextPaneAbout.setBorder(null);
         jTextPaneAbout.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jTextPaneAbout.setText("CourseRoom - All Rights Reserved");
+        jTextPaneAbout.setMinimumSize(new java.awt.Dimension(1071, 400));
         jTextPaneAbout.setOpaque(false);
+        jTextPaneAbout.setPreferredSize(new java.awt.Dimension(1071, 400));
         jScrollPaneTextPane.setViewportView(jTextPaneAbout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -90,7 +95,7 @@ public class AboutPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPaneTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelLogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE))
+                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,10 +104,10 @@ public class AboutPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelTitulo)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPaneTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addComponent(jScrollPaneTextPane, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
