@@ -26,48 +26,42 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabelProfilePhoto" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelApellidos" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelCorreoElectronico" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelGenero" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="55" pref="55" max="-2" attributes="0"/>
-                              <Component id="jLabelPerfil" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelNumeroTelefono" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="55" pref="55" max="-2" attributes="0"/>
-                              <Component id="jLabelFechaDeNacimiento" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabelLocalidad" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelNombres" max="32767" attributes="0"/>
-                              <EmptySpace pref="1" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="jLabelEditarPerfil" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPaneDescripcion" min="-2" pref="378" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabelNombreDeUsuario" min="-2" pref="450" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelProfilePhoto" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelNombreDeUsuario" alignment="0" min="-2" pref="450" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabelCorreoElectronico" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabelApellidos" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabelNombres" alignment="1" pref="484" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabelMiDesempenoEscolar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabelEditarPerfil" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabelNumeroTelefono" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="jLabelFechaDeNacimiento" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabelGenero" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="jLabelPerfil" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jLabelLocalidad" max="32767" attributes="0"/>
+                  <Component id="jScrollPaneDescripcion" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="74" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelProfilePhoto" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
@@ -96,10 +90,13 @@
                   <Component id="jLabelNombreDeUsuario" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelEditarPerfil" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelEditarPerfil" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelMiDesempenoEscolar" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="75" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -341,6 +338,19 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLabelMiDesempenoEscolar">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Mi Desempe&#xf1;o Escolar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelMiDesempenoEscolarMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelMiDesempenoEscolarMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelMiDesempenoEscolarMouseExited"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JLabel" name="jLabelEditarPerfil">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

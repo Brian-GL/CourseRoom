@@ -94,7 +94,6 @@ public class LoginPanel extends javax.swing.JPanel{
         jButtonIniciarSesion.setBackground(new java.awt.Color(104, 194, 232));
         jButtonIniciarSesion.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         jButtonIniciarSesion.setForeground(new java.awt.Color(14, 30, 64));
-        jButtonIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/account.png"))); // NOI18N
         jButtonIniciarSesion.setText(" Iniciar Sesión ");
         jButtonIniciarSesion.setToolTipText("Click Para Iniciar Sesión Con Tus Credenciales");
         jButtonIniciarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

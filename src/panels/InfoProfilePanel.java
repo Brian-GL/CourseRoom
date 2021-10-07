@@ -73,6 +73,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelGenero = new javax.swing.JLabel();
         jScrollPaneDescripcion = new javax.swing.JScrollPane();
         jTextAreaDescripcion = new javax.swing.JTextArea();
+        jLabelMiDesempenoEscolar = new javax.swing.JLabel();
         jLabelEditarPerfil = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
@@ -179,6 +180,20 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jTextAreaDescripcion.setOpaque(false);
         jScrollPaneDescripcion.setViewportView(jTextAreaDescripcion);
 
+        jLabelMiDesempenoEscolar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelMiDesempenoEscolar.setText("Mi Desempeño Escolar");
+        jLabelMiDesempenoEscolar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelMiDesempenoEscolarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelMiDesempenoEscolarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelMiDesempenoEscolarMouseExited(evt);
+            }
+        });
+
         jLabelEditarPerfil.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelEditarPerfil.setText("Editar Perfil");
         jLabelEditarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -198,38 +213,35 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelProfilePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNombreDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelNombres, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelProfilePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)
-                                .addComponent(jLabelPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelNumeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)
-                                .addComponent(jLabelFechaDeNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, Short.MAX_VALUE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabelEditarPerfil)
-                                .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabelMiDesempenoEscolar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelEditarPerfil))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelNombreDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(82, 82, 82))
+                        .addComponent(jLabelNumeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabelFechaDeNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabelPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelProfilePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -254,28 +266,44 @@ public class InfoProfilePanel extends javax.swing.JPanel {
                     .addComponent(jLabelNombreDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelEditarPerfil)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelEditarPerfil)
+                            .addComponent(jLabelMiDesempenoEscolar))))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         jLabelProfilePhoto.getAccessibleContext().setAccessibleName("jLabelProfilePhoto");
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabelMiDesempenoEscolarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMiDesempenoEscolarMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jLabelMiDesempenoEscolarMouseClicked
+
+    private void jLabelMiDesempenoEscolarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMiDesempenoEscolarMouseEntered
+        // TODO add your handling code here:
+        jLabelMiDesempenoEscolar.setForeground(DashboardPanel.getThirdColor());
+    }//GEN-LAST:event_jLabelMiDesempenoEscolarMouseEntered
+
+    private void jLabelMiDesempenoEscolarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMiDesempenoEscolarMouseExited
+        // TODO add your handling code here:
+        jLabelMiDesempenoEscolar.setForeground(DashboardPanel.getFontColor());
+    }//GEN-LAST:event_jLabelMiDesempenoEscolarMouseExited
+
     private void jLabelEditarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEditarPerfilMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt))
+        if(SwingUtilities.isLeftMouseButton(evt)){
             DashboardPanel.showEditProfilePanel();
-        
+        }
     }//GEN-LAST:event_jLabelEditarPerfilMouseClicked
 
     private void jLabelEditarPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEditarPerfilMouseEntered
         // TODO add your handling code here:
-        jLabelEditarPerfil.setForeground(DashboardPanel.getThirdColor());
     }//GEN-LAST:event_jLabelEditarPerfilMouseEntered
 
     private void jLabelEditarPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEditarPerfilMouseExited
         // TODO add your handling code here:
-        jLabelEditarPerfil.setForeground(DashboardPanel.getFontColor());
     }//GEN-LAST:event_jLabelEditarPerfilMouseExited
 
     public void setProfileImage(Image image){
@@ -306,6 +334,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelFechaDeNacimiento;
     private javax.swing.JLabel jLabelGenero;
     private javax.swing.JLabel jLabelLocalidad;
+    private javax.swing.JLabel jLabelMiDesempenoEscolar;
     private javax.swing.JLabel jLabelNombreDeUsuario;
     private javax.swing.JLabel jLabelNombres;
     private javax.swing.JLabel jLabelNumeroTelefono;

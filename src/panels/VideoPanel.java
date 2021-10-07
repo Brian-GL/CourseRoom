@@ -44,11 +44,6 @@ public class VideoPanel extends javax.swing.JPanel {
         flag = true;
        
         embeddedMediaPlayerComponent = new EmbeddedMediaPlayerComponent();
-       
-         
-        playImage = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../resources/icons/boton-de-play.png")));
-        pauseImage = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../resources/icons/boton-de-pausa.png")));
-        jButtonPlayPause.setIcon(playImage);
         jPanelVideoView.add("videoView",embeddedMediaPlayerComponent.videoSurfaceComponent());
         
         setPlayerEvents();
@@ -64,15 +59,10 @@ public class VideoPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanelButtons = new javax.swing.JPanel();
-        jButtonAbrirVideo = new javax.swing.JButton();
         jLabelTitulo = new javax.swing.JLabel();
-        jButtonPlayPause = new javax.swing.JButton();
         jSliderProgreso = new javax.swing.JSlider();
-        jButtonStop = new javax.swing.JButton();
         jLabelDuracionTotal = new javax.swing.JLabel();
         jLabelProgreso = new javax.swing.JLabel();
-        jSliderRate = new javax.swing.JSlider();
-        jLabelRate = new javax.swing.JLabel();
         jPanelVideoView = new javax.swing.JPanel();
 
         setBackground(java.awt.Color.black);
@@ -84,21 +74,6 @@ public class VideoPanel extends javax.swing.JPanel {
         jPanelButtons.setMinimumSize(new java.awt.Dimension(800, 90));
         jPanelButtons.setOpaque(false);
 
-        jButtonAbrirVideo.setBackground(new Color (49,88,186,0));
-        jButtonAbrirVideo.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jButtonAbrirVideo.setForeground(new java.awt.Color(104, 194, 232));
-        jButtonAbrirVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/subir.png"))); // NOI18N
-        jButtonAbrirVideo.setToolTipText("Abrir Archivo");
-        jButtonAbrirVideo.setBorder(null);
-        jButtonAbrirVideo.setFocusable(false);
-        jButtonAbrirVideo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButtonAbrirVideo.setIconTextGap(0);
-        jButtonAbrirVideo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonAbrirVideoMouseClicked(evt);
-            }
-        });
-
         jLabelTitulo.setBackground(new Color (49,88,186,185));
         jLabelTitulo.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(104, 194, 232));
@@ -107,21 +82,6 @@ public class VideoPanel extends javax.swing.JPanel {
         jLabelTitulo.setText("Título Del Video");
         jLabelTitulo.setFocusable(false);
         jLabelTitulo.setPreferredSize(new java.awt.Dimension(650, 20));
-
-        jButtonPlayPause.setBackground(new Color (49,88,186,0));
-        jButtonPlayPause.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
-        jButtonPlayPause.setForeground(new java.awt.Color(104, 194, 232));
-        jButtonPlayPause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/boton-de-play.png"))); // NOI18N
-        jButtonPlayPause.setToolTipText("Reproducir/Pausar");
-        jButtonPlayPause.setActionCommand("PlayPause");
-        jButtonPlayPause.setBorder(null);
-        jButtonPlayPause.setFocusable(false);
-        jButtonPlayPause.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButtonPlayPause.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonPlayPauseMouseClicked(evt);
-            }
-        });
 
         jSliderProgreso.setBackground(new Color (49,88,186,185));
         jSliderProgreso.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -133,21 +93,6 @@ public class VideoPanel extends javax.swing.JPanel {
         jSliderProgreso.setFocusable(false);
         jSliderProgreso.setPreferredSize(new java.awt.Dimension(650, 20));
         jSliderProgreso.setValueIsAdjusting(true);
-
-        jButtonStop.setBackground(new Color (49,88,186,0));
-        jButtonStop.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
-        jButtonStop.setForeground(new java.awt.Color(104, 194, 232));
-        jButtonStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/boton-detener.png"))); // NOI18N
-        jButtonStop.setToolTipText("Parar");
-        jButtonStop.setActionCommand("PlayPause");
-        jButtonStop.setBorder(null);
-        jButtonStop.setFocusable(false);
-        jButtonStop.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        jButtonStop.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonStopMouseClicked(evt);
-            }
-        });
 
         jLabelDuracionTotal.setBackground(new Color (49,88,186,185));
         jLabelDuracionTotal.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
@@ -163,80 +108,31 @@ public class VideoPanel extends javax.swing.JPanel {
         jLabelProgreso.setText("00:00:00");
         jLabelProgreso.setFocusable(false);
 
-        jSliderRate.setMajorTickSpacing(10);
-        jSliderRate.setMaximum(150);
-        jSliderRate.setMinimum(50);
-        jSliderRate.setToolTipText("Velocidad De Reproducción");
-        jSliderRate.setValue(100);
-        jSliderRate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jSliderRate.setEnabled(false);
-        jSliderRate.setFocusable(false);
-        jSliderRate.setMinimumSize(new java.awt.Dimension(36, 32));
-        jSliderRate.setPreferredSize(new java.awt.Dimension(200, 32));
-
-        jLabelRate.setBackground(new Color (49,88,186,185));
-        jLabelRate.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        jLabelRate.setForeground(new java.awt.Color(104, 194, 232));
-        jLabelRate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelRate.setText("100%");
-        jLabelRate.setToolTipText("Velocidad De Reproducción");
-        jLabelRate.setFocusable(false);
-        jLabelRate.setMinimumSize(new java.awt.Dimension(36, 32));
-        jLabelRate.setPreferredSize(new java.awt.Dimension(52, 32));
-
         javax.swing.GroupLayout jPanelButtonsLayout = new javax.swing.GroupLayout(jPanelButtons);
         jPanelButtons.setLayout(jPanelButtonsLayout);
         jPanelButtonsLayout.setHorizontalGroup(
             jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelButtonsLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
+                .addComponent(jLabelProgreso)
+                .addGap(8, 8, 8)
                 .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                        .addComponent(jButtonAbrirVideo)
-                        .addGap(5, 5, 5)
-                        .addComponent(jButtonPlayPause)
-                        .addGap(6, 6, 6)
-                        .addComponent(jButtonStop)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSliderRate, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                        .addComponent(jLabelProgreso)
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSliderProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSliderProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                        .addComponent(jLabelDuracionTotal)
-                        .addGap(6, 6, 6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonsLayout.createSequentialGroup()
-                        .addComponent(jLabelRate, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addComponent(jLabelDuracionTotal)
+                .addGap(6, 6, 6))
         );
         jPanelButtonsLayout.setVerticalGroup(
             jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonsLayout.createSequentialGroup()
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                        .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelProgreso)
-                            .addComponent(jSliderProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelDuracionTotal))
-                        .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonAbrirVideo)
-                                    .addComponent(jButtonPlayPause)
-                                    .addComponent(jButtonStop)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonsLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSliderRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabelRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5))
+            .addGroup(jPanelButtonsLayout.createSequentialGroup()
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelProgreso)
+                    .addComponent(jSliderProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDuracionTotal))
+                .addGap(45, 45, 45))
         );
 
         jPanelVideoView.setBackground(java.awt.Color.black);
@@ -260,110 +156,13 @@ public class VideoPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAbrirVideoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAbrirVideoMouseClicked
-        // TODO add your handling code here:
-     
-
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Videos", "mp4", "flv", "webm", "3gp", "dat", "mkv");
-            fileChooser.addChoosableFileFilter(filter);
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            fileChooser.setAcceptAllFileFilterUsed(true);
-            int result = fileChooser.showOpenDialog(this);
-
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File file = fileChooser.getSelectedFile();
-
-                jSliderProgreso.setEnabled(true);
-                jSliderRate.setEnabled(true);
-
-                embeddedMediaPlayerComponent.mediaPlayer().media().startPaused(file.getAbsolutePath());
-
-                long longLenght = embeddedMediaPlayerComponent.mediaPlayer().status().length();
-
-                if(longLenght < Integer.MAX_VALUE){
-                    int lenght = (int)longLenght;
-                    jSliderProgreso.setMaximum(lenght);
-                    jLabelDuracionTotal.setText(secondsToString(lenght/1000));
-
-                    String title = embeddedMediaPlayerComponent.mediaPlayer().media().meta().get(Meta.TITLE);
-                    String titulo = (title != null) ? title : file.getName();
-                    if(titulo.length() > 100)
-                        titulo = titulo.substring(0,100);
-
-                    jLabelTitulo.setText(titulo);
-                    title = null;
-                    titulo = null;
-                    embeddedMediaPlayerComponent.mediaPlayer().controls().play();
-                    jButtonPlayPause.setIcon(pauseImage);
-                }else
-                    JOptionPane.showMessageDialog(null, "ERROR: TIEMPO DE VIDEO NO SOPORTADO", "ERROR", JOptionPane.ERROR_MESSAGE);
-
-                file = null;
-            }
-            fileChooser = null;
-            filter = null;
-            
-        }
-    }//GEN-LAST:event_jButtonAbrirVideoMouseClicked
-
-    private void jButtonPlayPauseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlayPauseMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt))
-            setPlayPause();
-    }//GEN-LAST:event_jButtonPlayPauseMouseClicked
-
-    private void jButtonStopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStopMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt))
-            setStop();
-    }//GEN-LAST:event_jButtonStopMouseClicked
-
-    private void setPlayPause() {
-
-        if (embeddedMediaPlayerComponent.mediaPlayer().status().state() != State.STOPPED) {
-
-            if (embeddedMediaPlayerComponent.mediaPlayer().status().state() == State.PLAYING) {
-                embeddedMediaPlayerComponent.mediaPlayer().controls().setPause(true);
-                jButtonPlayPause.setIcon(playImage);
-            } else if (embeddedMediaPlayerComponent.mediaPlayer().status().state() == State.PAUSED) {
-                embeddedMediaPlayerComponent.mediaPlayer().controls().setPause(false);
-                jButtonPlayPause.setIcon(pauseImage);
-            }
-        }
-    }
-
-    private void setStop() {
-        if (embeddedMediaPlayerComponent.mediaPlayer().status().state() != State.STOPPED) {
-            embeddedMediaPlayerComponent.mediaPlayer().controls().stop();
-        }
-    }
-    
+   
     private void cleanInfoMedia(){
-        if(embeddedMediaPlayerComponent.mediaPlayer().fullScreen().isFullScreen()){
-            embeddedMediaPlayerComponent.mediaPlayer().fullScreen().set(false);
-        }
-        jPanelButtons.setVisible(true);
-        jSliderProgreso.setValue(0);
-        jLabelProgreso.setText("00:00:00");
-        jLabelDuracionTotal.setText("00:00:00");
-        jSliderProgreso.setEnabled(false);
-        jSliderRate.setEnabled(false);
-        jSliderRate.setValue(100);
-        jButtonPlayPause.setIcon(playImage);
     }
 
     private void setPlayerEvents() {
 
-        //Control jslider cambiar rate
-        jSliderRate.addChangeListener((ChangeEvent e) -> {
-            Object source = e.getSource();
-            float rate = (float) (((JSlider) source).getValue() / 100f);
-            embeddedMediaPlayerComponent.mediaPlayer().controls().setRate(rate);
-            jLabelRate.setText(((JSlider) source).getValue() + "%");
-        });
-
+      
 
         //Listener para el slider progress
         jSliderProgreso.addMouseListener(new MouseListener() {
@@ -586,16 +385,11 @@ public class VideoPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAbrirVideo;
-    private javax.swing.JButton jButtonPlayPause;
-    private javax.swing.JButton jButtonStop;
     private javax.swing.JLabel jLabelDuracionTotal;
     private javax.swing.JLabel jLabelProgreso;
-    private javax.swing.JLabel jLabelRate;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelButtons;
     private javax.swing.JPanel jPanelVideoView;
     private javax.swing.JSlider jSliderProgreso;
-    private javax.swing.JSlider jSliderRate;
     // End of variables declaration//GEN-END:variables
 }

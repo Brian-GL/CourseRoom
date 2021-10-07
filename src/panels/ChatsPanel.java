@@ -30,13 +30,13 @@ public class ChatsPanel extends javax.swing.JPanel {
         border = (TitledBorder) jScrollPaneChatsPersonales.getBorder();
         border.setTitleColor(DashboardPanel.getSecondFontColor());
         
-        for(int i = 0; i < 12; i++){
+        for(int i = 0; i < 3; i++){
             BoxChatPanel boxChatPanel = new BoxChatPanel("https://source.unsplash.com/random");
             jPanelChatsPersonales.add(boxChatPanel);
             System.out.println("Getting Image From : https://source.unsplash.com/random");
         }
         
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < 2; i++){
             BoxChatPanel boxChatPanel = new BoxChatPanel("https://source.unsplash.com/random");
             jPanelChatsGrupales.add(boxChatPanel);
             System.out.println("Getting Image From : https://source.unsplash.com/random");

@@ -10,9 +10,6 @@ import data.interfaces.MainInterface;
 import data.structures.Pair;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
@@ -37,7 +34,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         initComponents();
         try {
             URL imageURL = new URL(route);
-            chatImage = ImageIO.read(imageURL).getScaledInstance(125,125,Image.SCALE_SMOOTH);
+            chatImage = ImageIO.read(imageURL).getScaledInstance(114,114,Image.SCALE_SMOOTH);
             ImageIcon chatIcon = new ImageIcon(chatImage);
             jLabelFotoChat.setIcon(chatIcon);
             setColors(chatImage);
@@ -109,8 +106,6 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         } catch (InterruptedException ex) {
             Logger.getLogger(MusicPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
     }
  
   
@@ -139,38 +134,42 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         setBackground(new java.awt.Color(0, 0, 0));
         setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         setForeground(java.awt.Color.white);
-        setMinimumSize(new java.awt.Dimension(450, 110));
-        setPreferredSize(new java.awt.Dimension(450, 110));
+        setMaximumSize(new java.awt.Dimension(32767, 134));
+        setMinimumSize(new java.awt.Dimension(540, 134));
+        setPreferredSize(new java.awt.Dimension(540, 134));
 
-        jLabelFotoChat.setMaximumSize(new java.awt.Dimension(92, 92));
-        jLabelFotoChat.setMinimumSize(new java.awt.Dimension(92, 92));
-        jLabelFotoChat.setPreferredSize(new java.awt.Dimension(92, 92));
+        jLabelFotoChat.setMaximumSize(new java.awt.Dimension(114, 114));
+        jLabelFotoChat.setMinimumSize(new java.awt.Dimension(114, 114));
+        jLabelFotoChat.setPreferredSize(new java.awt.Dimension(114, 114));
         jLabelFotoChat.setRequestFocusEnabled(false);
 
         jLabelNombreChat.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         jLabelNombreChat.setForeground(java.awt.Color.white);
-        jLabelNombreChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNombreChat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelNombreChat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/online-chat_1.png"))); // NOI18N
         jLabelNombreChat.setText("Nombre Del Chat");
         jLabelNombreChat.setMaximumSize(new java.awt.Dimension(488, 32));
         jLabelNombreChat.setMinimumSize(new java.awt.Dimension(488, 32));
         jLabelNombreChat.setPreferredSize(new java.awt.Dimension(488, 32));
 
-        jLabelUltimoMensaje.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        jLabelUltimoMensaje.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         jLabelUltimoMensaje.setForeground(java.awt.Color.white);
-        jLabelUltimoMensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelUltimoMensaje.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelUltimoMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/messaging.png"))); // NOI18N
         jLabelUltimoMensaje.setText("Último Mensaje Recibido");
         jLabelUltimoMensaje.setMaximumSize(new java.awt.Dimension(417, 22));
         jLabelUltimoMensaje.setMinimumSize(new java.awt.Dimension(417, 22));
         jLabelUltimoMensaje.setPreferredSize(new java.awt.Dimension(417, 22));
 
-        jLabelNumeroMensajesNoLeidos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelNumeroMensajesNoLeidos.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jLabelNumeroMensajesNoLeidos.setForeground(java.awt.Color.white);
         jLabelNumeroMensajesNoLeidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNumeroMensajesNoLeidos.setText("1");
 
-        jLabelFechaHoraMensaje.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabelFechaHoraMensaje.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
         jLabelFechaHoraMensaje.setForeground(java.awt.Color.white);
         jLabelFechaHoraMensaje.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelFechaHoraMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/circular-clock.png"))); // NOI18N
         jLabelFechaHoraMensaje.setText("10/08/2021 05:42 P.M");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -178,35 +177,33 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap()
                 .addComponent(jLabelFotoChat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNombreChat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabelUltimoMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelFechaHoraMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jLabelNumeroMensajesNoLeidos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelFechaHoraMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelNumeroMensajesNoLeidos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelUltimoMensaje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jLabelNombreChat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFotoChat, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelNombreChat, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelNombreChat, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabelUltimoMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelFechaHoraMensaje)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabelNumeroMensajesNoLeidos, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                            .addComponent(jLabelNumeroMensajesNoLeidos)))
+                    .addComponent(jLabelFotoChat, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -47,6 +47,8 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private static InfoProfilePanel infoProfilePanel;
     private EditProfilePanel editProfilePanel;
     private MusicPanel musicPanel;
+    private NoticesPanel noticesPanel;
+    private GroupsPanel groupsPanel;
     
     private static CardLayout panelLayout;
     private static byte activePageFlag;
@@ -77,6 +79,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             imageProfile = null;
             activePageFlag = 0;
             imageProfile = null;
+            
             //info profile panel -> 0 en active page flag
             infoProfilePanel = new InfoProfilePanel();
             jPanelInformacion.add("infoProfilePanel",infoProfilePanel);
@@ -98,8 +101,12 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             
             
             //notices panel -> 6 en active page flag
+            noticesPanel = new NoticesPanel();
+            jPanelInformacion.add("noticesPanel",noticesPanel);
             
             //groups panel -> 7 en active page flag
+            groupsPanel = new GroupsPanel();
+            jPanelInformacion.add("groupsPanel",groupsPanel);
             
             //chats panel -> 8 en active page flag
             chatsPanel = new ChatsPanel();
@@ -182,7 +189,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelClasses.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelClasses.setForeground(java.awt.Color.white);
         jLabelClasses.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelClasses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/video-lecture.png"))); // NOI18N
+        jLabelClasses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/training.png"))); // NOI18N
         jLabelClasses.setText("<html>&nbsp;Clases&nbsp;</html>");
         jLabelClasses.setToolTipText("Mostrar Clases");
         jLabelClasses.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -206,7 +213,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelHomePage.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelHomePage.setForeground(java.awt.Color.white);
         jLabelHomePage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelHomePage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/home.png"))); // NOI18N
+        jLabelHomePage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/house.png"))); // NOI18N
         jLabelHomePage.setText("<html>&nbsp;Inicio&nbsp;</html>");
         jLabelHomePage.setToolTipText("Mostrar Mi Inicio");
         jLabelHomePage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -231,7 +238,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelGroups.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelGroups.setForeground(java.awt.Color.white);
         jLabelGroups.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelGroups.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/meeting.png"))); // NOI18N
+        jLabelGroups.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group-meeting.png"))); // NOI18N
         jLabelGroups.setText("<html>&nbsp;Grupos&nbsp;</html>");
         jLabelGroups.setToolTipText("Mostrar Mis Grupos");
         jLabelGroups.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -279,7 +286,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelDates.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelDates.setForeground(java.awt.Color.white);
         jLabelDates.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/calendar.png"))); // NOI18N
+        jLabelDates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/schedule.png"))); // NOI18N
         jLabelDates.setText("<html>&nbsp;Fechas&nbsp;</html>");
         jLabelDates.setToolTipText("Mostrar Calendario");
         jLabelDates.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -303,7 +310,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelChats.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelChats.setForeground(java.awt.Color.white);
         jLabelChats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelChats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/feedback.png"))); // NOI18N
+        jLabelChats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/online-chat.png"))); // NOI18N
         jLabelChats.setText("<html>&nbsp;Chats&nbsp;</html>");
         jLabelChats.setToolTipText("Mostrar Mis Chats");
         jLabelChats.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -351,7 +358,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelAbout.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelAbout.setForeground(java.awt.Color.white);
         jLabelAbout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/iconfinder_Smart_Watch__Help_About_4016160.png"))); // NOI18N
+        jLabelAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/info.png"))); // NOI18N
         jLabelAbout.setText("<html>&nbsp;Acerca&nbsp;</html>");
         jLabelAbout.setToolTipText("Acerca Del Programa");
         jLabelAbout.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -375,7 +382,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelLogOut.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelLogOut.setForeground(java.awt.Color.white);
         jLabelLogOut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/logout.png"))); // NOI18N
+        jLabelLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/exit-door.png"))); // NOI18N
         jLabelLogOut.setText("<html>&nbsp;Salir&nbsp;</html>");
         jLabelLogOut.setToolTipText("Cierre Sesión Y Salga De Su Cuenta En Este Dipositivo.");
         jLabelLogOut.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -399,7 +406,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelMusic.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelMusic.setForeground(java.awt.Color.white);
         jLabelMusic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/ic_album_128_28113.png"))); // NOI18N
+        jLabelMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/audio_1.png"))); // NOI18N
         jLabelMusic.setText("<html>&nbsp;Música&nbsp;</html>");
         jLabelMusic.setToolTipText("Music Player");
         jLabelMusic.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -428,7 +435,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelMenu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelMenu.setForeground(java.awt.Color.white);
         jLabelMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/menu (1).png"))); // NOI18N
+        jLabelMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/menu.png"))); // NOI18N
         jLabelMenu.setToolTipText("Muestra/Oculta El Menú");
         jLabelMenu.setMaximumSize(new java.awt.Dimension(40, 40));
         jLabelMenu.setMinimumSize(new java.awt.Dimension(40, 40));
@@ -443,6 +450,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelUserName.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabelUserName.setForeground(java.awt.Color.white);
         jLabelUserName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelUserName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/id-card.png"))); // NOI18N
         jLabelUserName.setText(" ");
         jLabelUserName.setToolTipText("Usuario Con Sesión Iniciada");
         jLabelUserName.setMaximumSize(new java.awt.Dimension(237, 40));
@@ -452,6 +460,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelFechaHoraServidor.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelFechaHoraServidor.setForeground(java.awt.Color.white);
         jLabelFechaHoraServidor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFechaHoraServidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clock_2.png"))); // NOI18N
         jLabelFechaHoraServidor.setText("10/07/2021 13:55:09 P.M");
         jLabelFechaHoraServidor.setMaximumSize(new java.awt.Dimension(127, 40));
         jLabelFechaHoraServidor.setMinimumSize(new java.awt.Dimension(127, 40));
@@ -465,8 +474,8 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 .addGap(0, 0, 0)
                 .addComponent(jLabelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -652,14 +661,19 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
 
     private void jLabelGroupsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGroupsMouseClicked
         // TODO add your handling code here:
+         if(SwingUtilities.isLeftMouseButton(evt)){
+            if(activePageFlag != 7){
+                panelLayout.show(jPanelInformacion, "groupsPanel");
+                activePageFlag = 7;
+            }
+        }
     }//GEN-LAST:event_jLabelGroupsMouseClicked
 
     private void jLabelNoticesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNoticesMouseClicked
         // TODO add your handling code here:
-        // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             if(activePageFlag != 6){
-                panelLayout.show(jPanelInformacion, "pdfPanel");
+                panelLayout.show(jPanelInformacion, "noticesPanel");
                 activePageFlag = 6;
             }
         }
@@ -864,6 +878,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         userImage = null;
         musicPanel.dispose();
         chatsPanel.dispose();
+        noticesPanel.dispose();
         musicPanel = null;
         setFirstColor(null);
         setSecondColor(null);
@@ -873,6 +888,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         infoProfilePanel = null;
         editProfilePanel = null;
         panelLayout = null;
+        noticesPanel = null;
     }
     
     

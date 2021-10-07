@@ -116,7 +116,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/icons/video-lecture.png"/>
+              <Image iconType="3" name="/resources/icons/training.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;Clases&amp;nbsp;&lt;/html&gt;"/>
             <Property name="toolTipText" type="java.lang.String" value="Mostrar Clases"/>
@@ -157,7 +157,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/icons/home.png"/>
+              <Image iconType="3" name="/resources/icons/house.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;Inicio&amp;nbsp;&lt;/html&gt;"/>
             <Property name="toolTipText" type="java.lang.String" value="Mostrar Mi Inicio"/>
@@ -199,7 +199,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/icons/meeting.png"/>
+              <Image iconType="3" name="/resources/icons/group-meeting.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;Grupos&amp;nbsp;&lt;/html&gt;"/>
             <Property name="toolTipText" type="java.lang.String" value="Mostrar Mis Grupos"/>
@@ -281,7 +281,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/icons/calendar.png"/>
+              <Image iconType="3" name="/resources/icons/schedule.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;Fechas&amp;nbsp;&lt;/html&gt;"/>
             <Property name="toolTipText" type="java.lang.String" value="Mostrar Calendario"/>
@@ -322,7 +322,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/icons/feedback.png"/>
+              <Image iconType="3" name="/resources/icons/online-chat.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;Chats&amp;nbsp;&lt;/html&gt;"/>
             <Property name="toolTipText" type="java.lang.String" value="Mostrar Mis Chats"/>
@@ -404,7 +404,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/icons/iconfinder_Smart_Watch__Help_About_4016160.png"/>
+              <Image iconType="3" name="/resources/icons/info.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;Acerca&amp;nbsp;&lt;/html&gt;"/>
             <Property name="toolTipText" type="java.lang.String" value="Acerca Del Programa"/>
@@ -445,7 +445,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/icons/logout.png"/>
+              <Image iconType="3" name="/resources/icons/exit-door.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;Salir&amp;nbsp;&lt;/html&gt;"/>
             <Property name="toolTipText" type="java.lang.String" value="Cierre Sesi&#xf3;n Y Salga De Su Cuenta En Este Dipositivo."/>
@@ -486,7 +486,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/icons/ic_album_128_28113.png"/>
+              <Image iconType="3" name="/resources/icons/audio_1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&amp;nbsp;M&#xfa;sica&amp;nbsp;&lt;/html&gt;"/>
             <Property name="toolTipText" type="java.lang.String" value="Music Player"/>
@@ -537,8 +537,8 @@
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jLabelMenu" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabelFechaHoraServidor" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                  <Component id="jLabelFechaHoraServidor" min="-2" pref="179" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabelUserName" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
@@ -571,7 +571,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/icons/menu (1).png"/>
+              <Image iconType="3" name="/resources/icons/menu.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Muestra/Oculta El Men&#xfa;"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -600,6 +600,9 @@
               <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/icons/id-card.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value=" "/>
             <Property name="toolTipText" type="java.lang.String" value="Usuario Con Sesi&#xf3;n Iniciada"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -622,6 +625,9 @@
               <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/icons/clock_2.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="10/07/2021 13:55:09 P.M"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[127, 40]"/>

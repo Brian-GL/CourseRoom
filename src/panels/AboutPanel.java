@@ -31,15 +31,6 @@ public class AboutPanel extends javax.swing.JPanel {
         doc.setParagraphAttributes(0, doc.getLength(), center, false);
         doc = null;
         center = null;
-        Faker faker = new Faker(new Locale("es","MX"));
-        String ma ="";
-        for(int i = 0; i < 20;i++){
-            ma = ma  + faker.lorem().paragraph() + "\n";
-        }
-        jTextPaneAbout.setText(ma);
-        jScrollPaneTextPane.getViewport().setOpaque(false);
-        faker = null;
-        ma = null;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,7 +71,7 @@ public class AboutPanel extends javax.swing.JPanel {
         jTextPaneAbout.setEditable(false);
         jTextPaneAbout.setBorder(null);
         jTextPaneAbout.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jTextPaneAbout.setText("CourseRoom - All Rights Reserved");
+        jTextPaneAbout.setText("CourseRoom consists mainly of a set of applications developed in the language Java programming and based on the client-server software design model. Has as main objective to organize the processes of an educational course and provide statistics respective of this to users in general. The general operation, broadly speaking, consists of three main modules: an application for the end user (be it student or teacher) who raises the general behavior of a course (student-teacher interaction, as well as the management of student learning within the course), in addition to other functionalities that allow the user to view multimedia content, view information and statistics on their courses, learn about common courses, work in groups, chat, among others stuff; a server program that controls client requests and generates responses such as uploading, editing, deleting and viewing files, establishing communication through chats and perform specific functions and / or processes, among others; and finally, a set of programs tasked with doing various specific tasks, such as generating random computers, send notifications to users, generate and obtain statistics and relevant information about students and teachers within the courses, among others.\n\nCourseRoom - All Rights Reserved");
         jTextPaneAbout.setMinimumSize(new java.awt.Dimension(1071, 400));
         jTextPaneAbout.setOpaque(false);
         jTextPaneAbout.setPreferredSize(new java.awt.Dimension(1071, 400));

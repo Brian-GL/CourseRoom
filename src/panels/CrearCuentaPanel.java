@@ -255,7 +255,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addContainerGap())
         );
 
-        jTabbedPaneFondo.addTab(" Inicio ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/info.png")), jPanelInicio, "Muestra El Inicio Del Registro De Tu Cuenta."); // NOI18N
+        jTabbedPaneFondo.addTab(" Inicio ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/info_1.png")), jPanelInicio, "Muestra El Inicio Del Registro De Tu Cuenta."); // NOI18N
 
         jPanelAutenticacion.setBackground(new java.awt.Color(14, 30, 64));
         jPanelAutenticacion.setMinimumSize(new java.awt.Dimension(1260, 629));
@@ -460,7 +460,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addContainerGap())
         );
 
-        jTabbedPaneFondo.addTab(" Autenticación ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/account.png")), jPanelAutenticacion, "Pestaña Sobre Creación De Credenciales Para Acceder Al Sistema."); // NOI18N
+        jTabbedPaneFondo.addTab(" Autenticación ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/authentication.png")), jPanelAutenticacion, "Pestaña Sobre Creación De Credenciales Para Acceder Al Sistema."); // NOI18N
 
         jPanelDatosPersonales.setBackground(new java.awt.Color(14, 30, 64));
         jPanelDatosPersonales.setMinimumSize(new java.awt.Dimension(1260, 629));
@@ -705,7 +705,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addContainerGap())
         );
 
-        jTabbedPaneFondo.addTab(" Datos Personales ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/data.png")), jPanelDatosPersonales, "Pestaña Sobre Datos Personales."); // NOI18N
+        jTabbedPaneFondo.addTab(" Datos Personales ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/personal-information.png")), jPanelDatosPersonales, "Pestaña Sobre Datos Personales."); // NOI18N
 
         jPanelPerfil.setBackground(new java.awt.Color(14, 30, 64));
         jPanelPerfil.setMinimumSize(new java.awt.Dimension(1260, 629));
@@ -855,7 +855,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addContainerGap())
         );
 
-        jTabbedPaneFondo.addTab(" Perfil ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/camera.png")), jPanelPerfil, "Pestaña Sobre Información Del Perfil."); // NOI18N
+        jTabbedPaneFondo.addTab(" Perfil ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/profile.png")), jPanelPerfil, "Pestaña Sobre Información Del Perfil."); // NOI18N
 
         add(jTabbedPaneFondo, "card2");
     }// </editor-fold>//GEN-END:initComponents

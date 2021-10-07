@@ -171,7 +171,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
         jButtonRecuperarCredenciales.setBackground(new java.awt.Color(14, 30, 64));
         jButtonRecuperarCredenciales.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         jButtonRecuperarCredenciales.setForeground(new java.awt.Color(104, 194, 232));
-        jButtonRecuperarCredenciales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/data.png"))); // NOI18N
+        jButtonRecuperarCredenciales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/id-card_1.png"))); // NOI18N
         jButtonRecuperarCredenciales.setText(" Recuperar Credenciales ");
         jButtonRecuperarCredenciales.setToolTipText("Click Para Enviar Correo De Recuperación De Credenciales");
         jButtonRecuperarCredenciales.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
