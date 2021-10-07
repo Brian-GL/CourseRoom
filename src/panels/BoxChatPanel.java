@@ -94,6 +94,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
                     component.setForeground(fontColor);
                 }
                 this.setBackground(firstColor);
+                this.setBorder(javax.swing.BorderFactory.createLineBorder(fontColor));
 
                 fontColor = null;
                 colorRandom = null;
@@ -132,7 +133,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         jLabelFechaHoraMensaje = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
-        setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setForeground(java.awt.Color.white);
         setMaximumSize(new java.awt.Dimension(32767, 134));
         setMinimumSize(new java.awt.Dimension(540, 134));
@@ -185,7 +186,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
                         .addComponent(jLabelFechaHoraMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelNumeroMensajesNoLeidos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelUltimoMensaje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jLabelUltimoMensaje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 410, Short.MAX_VALUE)
                     .addComponent(jLabelNombreChat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
         );

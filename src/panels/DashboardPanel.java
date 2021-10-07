@@ -23,6 +23,8 @@ import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
@@ -49,9 +51,12 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private MusicPanel musicPanel;
     private NoticesPanel noticesPanel;
     private GroupsPanel groupsPanel;
+    private DatesPanel datesPanel;
     
     private static CardLayout panelLayout;
     private static byte activePageFlag;
+    private ServerDateTime serverDateTime;
+    private volatile boolean server_time_stop;
     
     /**
      * Creates new form DashboardPanel
@@ -59,9 +64,8 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     @SuppressWarnings({"CallToThreadStartDuringObjectConstruction", "OverridableMethodCallInConstructor"})
     public DashboardPanel() {
         initComponents();
-        //jScrollPaneInformation.getViewport().setOpaque(false);
         try {
-            
+            server_time_stop = true;
             firstColor = secondColor = thirdColor = fontColor = secondFontColor = Color.BLACK;
             colorRandom = new Random(System.currentTimeMillis());
             System.out.println("Getting Image From: https://source.unsplash.com/random");
@@ -98,6 +102,8 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             
             
             //dates panel -> 5 en active page flag
+            datesPanel = new DatesPanel();
+            jPanelInformacion.add("datesPanel",datesPanel);
             
             
             //notices panel -> 6 en active page flag
@@ -123,6 +129,9 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             Faker faker = new Faker(new Locale("es","MX"));
             panelLayout = (CardLayout) jPanelInformacion.getLayout();
             jLabelUserName.setText(faker.name().username());
+            
+            serverDateTime = new ServerDateTime();
+            serverDateTime.start();
             
             
             
@@ -451,17 +460,17 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jLabelUserName.setForeground(java.awt.Color.white);
         jLabelUserName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelUserName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/id-card.png"))); // NOI18N
-        jLabelUserName.setText(" ");
+        jLabelUserName.setText("UserName");
         jLabelUserName.setToolTipText("Usuario Con Sesión Iniciada");
         jLabelUserName.setMaximumSize(new java.awt.Dimension(237, 40));
         jLabelUserName.setMinimumSize(new java.awt.Dimension(237, 40));
         jLabelUserName.setPreferredSize(new java.awt.Dimension(237, 40));
 
-        jLabelFechaHoraServidor.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        jLabelFechaHoraServidor.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabelFechaHoraServidor.setForeground(java.awt.Color.white);
         jLabelFechaHoraServidor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelFechaHoraServidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clock_2.png"))); // NOI18N
-        jLabelFechaHoraServidor.setText("10/07/2021 13:55:09 P.M");
+        jLabelFechaHoraServidor.setText("Viernes 10/07/2021 13:55:09 P.M");
         jLabelFechaHoraServidor.setMaximumSize(new java.awt.Dimension(127, 40));
         jLabelFechaHoraServidor.setMinimumSize(new java.awt.Dimension(127, 40));
         jLabelFechaHoraServidor.setPreferredSize(new java.awt.Dimension(127, 40));
@@ -474,7 +483,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 .addGap(0, 0, 0)
                 .addComponent(jLabelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -682,6 +691,12 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
 
     private void jLabelDatesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDatesMouseClicked
         // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            if(activePageFlag != 5){
+                panelLayout.show(jPanelInformacion, "datesPanel");
+                activePageFlag = 5;
+            }
+        }
         
     }//GEN-LAST:event_jLabelDatesMouseClicked
 
@@ -875,6 +890,8 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     
     @Override
     public void dispose(){
+        server_time_stop = false;
+        serverDateTime.interrupt();
         userImage = null;
         musicPanel.dispose();
         chatsPanel.dispose();
@@ -1010,5 +1027,39 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     public static void setSecondFontColor(Color aFontColor) {
         secondFontColor = aFontColor;
     }
+    
+    public class ServerDateTime extends Thread{
+    
+
+        public ServerDateTime(){
+        }
+
+        @Override
+        @SuppressWarnings("SleepWhileInLoop")
+        public void run(){
+            
+            while(server_time_stop){
+                
+                try {
+                    Date date = new Date();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/mm/yyyy hh:mm:ss a");
+                    String time = dateFormat.format(date);
+                    jLabelFechaHoraServidor.setText(time);
+                    date = null;
+                    time = null;
+                    dateFormat = null;
+                    if(isInterrupted()){
+                        break;
+                    }
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ServerDateTime.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
+    
+    
 
 }

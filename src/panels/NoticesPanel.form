@@ -28,14 +28,7 @@
     <Container class="javax.swing.JScrollPane" name="jScrollPaneMisAvisos">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Tus Avisos">
-              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                <BevelBorder/>
-              </Border>
-              <Font PropertyName="font" name="Gadugi" size="18" style="1"/>
-            </TitledBorder>
-          </Border>
+          <Border info="null"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1085, 630]"/>

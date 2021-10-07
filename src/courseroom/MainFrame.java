@@ -83,6 +83,7 @@ public class MainFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1260, 670));
         setName("mainFrame"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1260, 670));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

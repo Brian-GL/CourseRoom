@@ -22,6 +22,7 @@ public class AboutPanel extends javax.swing.JPanel {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public AboutPanel() {
         initComponents();
+        jScrollPaneTextPane.getViewport().setOpaque(false);
         jLabelLogo.setIcon(MainFrame.getLogoImage());
         jTextPaneAbout.setForeground(DashboardPanel.getFontColor());
         jLabelTitulo.setForeground(DashboardPanel.getSecondFontColor());

@@ -5,8 +5,6 @@
  */
 package panels;
 
-import java.awt.Color;
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -19,16 +17,15 @@ public class GroupsPanel extends javax.swing.JPanel {
      */
     public GroupsPanel() {
         initComponents();
-        Color noColor = new Color(0,0,0,0);
-        jTabbedPaneGrupos.setBackground(noColor);
-        jTabbedPaneGrupos.setForeground(DashboardPanel.getSecondFontColor());
-        noColor = null;
-          
+        jScrollPaneMisGrupos.getViewport().setOpaque(false);
+        jScrollPaneMisGrupos.getVerticalScrollBar().setUnitIncrement(15);
+        
         for(int i = 0; i < 3; i++){
             BoxGroupPanel boxGroupPanel = new BoxGroupPanel("https://source.unsplash.com/random");
             jPanelMisGrupos.add(boxGroupPanel);
             System.out.println("Getting Image From : https://source.unsplash.com/random");
         }
+        
     }
 
     /**
@@ -40,66 +37,31 @@ public class GroupsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPaneGrupos = new javax.swing.JTabbedPane();
+        jScrollPaneMisGrupos = new javax.swing.JScrollPane();
         jPanelMisGrupos = new javax.swing.JPanel();
-        jPanelCrearGrupo = new javax.swing.JPanel();
-        jPanelGruposDeInteres = new javax.swing.JPanel();
-        jPanelAjustesDeGrupos = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
-        setLayout(new java.awt.GridLayout(1, 1));
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1085, 630));
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
-        jTabbedPaneGrupos.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jTabbedPaneGrupos.setMinimumSize(new java.awt.Dimension(1085, 630));
-        jTabbedPaneGrupos.setPreferredSize(new java.awt.Dimension(1085, 630));
+        jScrollPaneMisGrupos.setBorder(null);
+        jScrollPaneMisGrupos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPaneMisGrupos.setOpaque(false);
 
         jPanelMisGrupos.setOpaque(false);
         jPanelMisGrupos.setLayout(new javax.swing.BoxLayout(jPanelMisGrupos, javax.swing.BoxLayout.PAGE_AXIS));
-        jTabbedPaneGrupos.addTab("Mis Grupos", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group_2.png")), jPanelMisGrupos); // NOI18N
+        jScrollPaneMisGrupos.setViewportView(jPanelMisGrupos);
 
-        jPanelCrearGrupo.setOpaque(false);
-
-        javax.swing.GroupLayout jPanelCrearGrupoLayout = new javax.swing.GroupLayout(jPanelCrearGrupo);
-        jPanelCrearGrupo.setLayout(jPanelCrearGrupoLayout);
-        jPanelCrearGrupoLayout.setHorizontalGroup(
-            jPanelCrearGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1085, Short.MAX_VALUE)
-        );
-        jPanelCrearGrupoLayout.setVerticalGroup(
-            jPanelCrearGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
-        );
-
-        jTabbedPaneGrupos.addTab("Crear Grupo", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group-therapy.png")), jPanelCrearGrupo); // NOI18N
-
-        jPanelGruposDeInteres.setLayout(new javax.swing.BoxLayout(jPanelGruposDeInteres, javax.swing.BoxLayout.LINE_AXIS));
-        jTabbedPaneGrupos.addTab("Grupos De Interés", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group-class.png")), jPanelGruposDeInteres); // NOI18N
-
-        javax.swing.GroupLayout jPanelAjustesDeGruposLayout = new javax.swing.GroupLayout(jPanelAjustesDeGrupos);
-        jPanelAjustesDeGrupos.setLayout(jPanelAjustesDeGruposLayout);
-        jPanelAjustesDeGruposLayout.setHorizontalGroup(
-            jPanelAjustesDeGruposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1085, Short.MAX_VALUE)
-        );
-        jPanelAjustesDeGruposLayout.setVerticalGroup(
-            jPanelAjustesDeGruposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
-        );
-
-        jTabbedPaneGrupos.addTab("Ajustes De Grupos", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group.png")), jPanelAjustesDeGrupos); // NOI18N
-
-        add(jTabbedPaneGrupos);
+        add(jScrollPaneMisGrupos);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     public void dispose(){
         jPanelMisGrupos.removeAll();
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanelAjustesDeGrupos;
-    private javax.swing.JPanel jPanelCrearGrupo;
-    private javax.swing.JPanel jPanelGruposDeInteres;
     private javax.swing.JPanel jPanelMisGrupos;
-    private javax.swing.JTabbedPane jTabbedPaneGrupos;
+    private javax.swing.JScrollPane jScrollPaneMisGrupos;
     // End of variables declaration//GEN-END:variables
 }

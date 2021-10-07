@@ -21,10 +21,8 @@ public class NoticesPanel extends javax.swing.JPanel {
         
         jScrollPaneMisAvisos.getViewport().setOpaque(false);
         jScrollPaneMisAvisos.getVerticalScrollBar().setUnitIncrement(15);
-        jScrollPaneMisAvisos.getVerticalScrollBar().setUnitIncrement(15);
+        jScrollPaneMisAvisos.getHorizontalScrollBar().setUnitIncrement(15);
         
-        TitledBorder border = (TitledBorder) jScrollPaneMisAvisos.getBorder();
-        border.setTitleColor(DashboardPanel.getSecondFontColor());
         
         for(int i = 0; i < 5; i++){
             BoxAvisoPanel boxAvisoPanel = new BoxAvisoPanel("https://source.unsplash.com/random");
@@ -50,7 +48,7 @@ public class NoticesPanel extends javax.swing.JPanel {
         setOpaque(false);
         setLayout(new java.awt.GridLayout(1, 1));
 
-        jScrollPaneMisAvisos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Tus Avisos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 18))); // NOI18N
+        jScrollPaneMisAvisos.setBorder(null);
         jScrollPaneMisAvisos.setMinimumSize(new java.awt.Dimension(1085, 630));
         jScrollPaneMisAvisos.setOpaque(false);
         jScrollPaneMisAvisos.setPreferredSize(new java.awt.Dimension(1085, 630));

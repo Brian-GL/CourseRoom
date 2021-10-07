@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -64,6 +65,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
         jLabelChatDelGrupo = new javax.swing.JLabel();
         jLabelUltimaActualizacion = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(32767, 198));
         setMinimumSize(new java.awt.Dimension(649, 198));
         setPreferredSize(new java.awt.Dimension(649, 198));
@@ -87,7 +89,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
         jLabelNumeroIntegrantes.setText("10 Integrantes");
 
         jLabelChatDelGrupo.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
-        jLabelChatDelGrupo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelChatDelGrupo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelChatDelGrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/talking.png"))); // NOI18N
         jLabelChatDelGrupo.setText("Los Estudiosos Chat");
 
@@ -108,7 +110,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNumeroIntegrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelChatDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
+                        .addComponent(jLabelChatDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))
                     .addComponent(jLabelNombreGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelClaseDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -132,7 +134,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelChatDelGrupo)
                             .addComponent(jLabelNumeroIntegrantes))))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -183,6 +185,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
                     component.setForeground(fontColor);
                 }
                 this.setBackground(firstColor);
+                this.setBorder(javax.swing.BorderFactory.createLineBorder(fontColor));
 
                 fontColor = null;
                 colorRandom = null;

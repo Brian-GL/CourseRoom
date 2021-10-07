@@ -65,6 +65,7 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
         jLabelEstado = new javax.swing.JLabel();
 
         setBackground(java.awt.Color.black);
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(32767, 141));
         setMinimumSize(new java.awt.Dimension(598, 141));
 
@@ -186,6 +187,7 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
                     component.setForeground(fontColor);
                 }
                 this.setBackground(firstColor);
+                this.setBorder(javax.swing.BorderFactory.createLineBorder(fontColor));
 
                 fontColor = null;
                 colorRandom = null;
