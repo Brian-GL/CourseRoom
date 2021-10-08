@@ -1772,16 +1772,18 @@ public final class MusicPanel extends javax.swing.JPanel{
                     
                     int large = jLabelCoverArt.getHeight();
                     Image real_cover = ((Image)artWork.getImage());
-                    Image coverImagen = real_cover.getScaledInstance(large, large, Image.SCALE_SMOOTH);
-                    playlistEntryImage = real_cover.getScaledInstance(63, 63, Image.SCALE_SMOOTH);
-                    ImageIcon cover = new ImageIcon(coverImagen);
-                    jLabelCoverArt.setIcon(cover);
-                    setColors(coverImagen);
-                    coverImagen.flush();
-                    coverImagen = null;
-                    real_cover.flush();
-                    real_cover = null;
-                    cover = null;
+                    if(real_cover != null){
+                        Image coverImagen = real_cover.getScaledInstance(large, large, Image.SCALE_SMOOTH);
+                        playlistEntryImage = real_cover.getScaledInstance(63, 63, Image.SCALE_SMOOTH);
+                        ImageIcon cover = new ImageIcon(coverImagen);
+                        jLabelCoverArt.setIcon(cover);
+                        setColors(coverImagen);
+                        coverImagen.flush();
+                        coverImagen = null;
+                        real_cover.flush();
+                        real_cover = null;
+                        cover = null;
+                    }
                 } 
                 PlaylistEntryPanel playlistEntryPanel = (PlaylistEntryPanel)jPanelPlaylist.getComponent(index);
                 if(playlistEntryPanel.isNotSetted()){
