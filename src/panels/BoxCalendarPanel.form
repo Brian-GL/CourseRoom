@@ -36,7 +36,7 @@
                   <Component id="jScrollPaneNotice" pref="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jLabelHora" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <EmptySpace pref="50" max="32767" attributes="0"/>
                       <Component id="jLabelDayNumber" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -63,7 +63,7 @@
     <Component class="javax.swing.JLabel" name="jLabelDayNumber">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Inter" size="24" style="1"/>
+          <Font name="Gadugi" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="01"/>
       </Properties>
@@ -88,7 +88,7 @@
               <Border info="null"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Inter" size="14" style="0"/>
+              <Font name="Gadugi" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Introducci&#xf3;n A Golang Y Sus Principales Usos"/>
             <Property name="opaque" type="boolean" value="false"/>
@@ -99,7 +99,7 @@
     <Component class="javax.swing.JLabel" name="jLabelHora">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Inter" size="14" style="0"/>
+          <Font name="Gadugi" size="14" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="23:55 P.M"/>

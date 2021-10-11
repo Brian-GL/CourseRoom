@@ -84,19 +84,19 @@ public class PlaylistEntryPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabelPlaylistEntryTitle.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        jLabelPlaylistEntryTitle.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jLabelPlaylistEntryTitle.setText("Title");
         jLabelPlaylistEntryTitle.setMaximumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryTitle.setMinimumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryTitle.setPreferredSize(new java.awt.Dimension(220, 17));
 
-        jLabelPlaylistEntryAlbum.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        jLabelPlaylistEntryAlbum.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jLabelPlaylistEntryAlbum.setText("Album");
         jLabelPlaylistEntryAlbum.setMaximumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryAlbum.setMinimumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryAlbum.setPreferredSize(new java.awt.Dimension(220, 17));
 
-        jLabelPlaylistEntryArtist.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        jLabelPlaylistEntryArtist.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jLabelPlaylistEntryArtist.setText("Artist");
         jLabelPlaylistEntryArtist.setMaximumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryArtist.setMinimumSize(new java.awt.Dimension(220, 17));

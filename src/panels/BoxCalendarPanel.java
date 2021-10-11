@@ -50,7 +50,7 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
         setName("CalendarDay"); // NOI18N
         setPreferredSize(new java.awt.Dimension(160, 100));
 
-        jLabelDayNumber.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabelDayNumber.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelDayNumber.setText("01");
 
         jScrollPaneNotice.setBorder(null);
@@ -58,12 +58,12 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
 
         jTextPaneNotice.setEditable(false);
         jTextPaneNotice.setBorder(null);
-        jTextPaneNotice.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jTextPaneNotice.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jTextPaneNotice.setText("Introducción A Golang Y Sus Principales Usos");
         jTextPaneNotice.setOpaque(false);
         jScrollPaneNotice.setViewportView(jTextPaneNotice);
 
-        jLabelHora.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jLabelHora.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabelHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelHora.setText("23:55 P.M");
         jLabelHora.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -81,7 +81,7 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPaneNotice, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addComponent(jLabelDayNumber)))
                 .addContainerGap())
         );

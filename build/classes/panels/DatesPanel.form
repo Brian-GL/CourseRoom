@@ -78,7 +78,7 @@
         <Component class="javax.swing.JLabel" name="jLabelLunes">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Inter" size="24" style="1"/>
+              <Font name="Gadugi" size="24" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Lunes"/>
@@ -87,7 +87,7 @@
         <Component class="javax.swing.JLabel" name="jLabelMartes">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Inter" size="24" style="1"/>
+              <Font name="Gadugi" size="24" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Martes"/>
@@ -96,7 +96,7 @@
         <Component class="javax.swing.JLabel" name="jLabelMiercoles">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Inter" size="24" style="1"/>
+              <Font name="Gadugi" size="24" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Mi&#xe9;rcoles"/>
@@ -105,7 +105,7 @@
         <Component class="javax.swing.JLabel" name="jLabelJueves">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Inter" size="24" style="1"/>
+              <Font name="Gadugi" size="24" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Jueves"/>
@@ -114,7 +114,7 @@
         <Component class="javax.swing.JLabel" name="jLabelViernes">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Inter" size="24" style="1"/>
+              <Font name="Gadugi" size="24" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Viernes"/>
@@ -123,7 +123,7 @@
         <Component class="javax.swing.JLabel" name="jLabelSabado">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Inter" size="24" style="1"/>
+              <Font name="Gadugi" size="24" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="S&#xe1;bado"/>
@@ -132,7 +132,7 @@
         <Component class="javax.swing.JLabel" name="jLabelDomingo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Inter" size="24" style="1"/>
+              <Font name="Gadugi" size="24" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Domingo"/>
@@ -175,7 +175,7 @@
     <Component class="javax.swing.JLabel" name="jLabelNextMonth">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Inter" size="36" style="1"/>
+          <Font name="Gadugi" size="36" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="&gt;"/>
@@ -196,7 +196,7 @@
     <Component class="javax.swing.JLabel" name="jLabelPreviousMonth">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Inter" size="36" style="1"/>
+          <Font name="Gadugi" size="36" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="&lt;"/>
@@ -218,10 +218,11 @@
     <Component class="javax.swing.JLabel" name="jLabelMonth">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Inter" size="24" style="1"/>
+          <Font name="Gadugi" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Octubre"/>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
   </SubComponents>

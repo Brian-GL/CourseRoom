@@ -82,7 +82,7 @@ public class InfoUserPanel extends javax.swing.JPanel implements MainInterface{
         jLabelNombreAmigo.setText("Nombre De Mi Amigo");
         jLabelNombreAmigo.setToolTipText("");
 
-        jLabelNombreUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelNombreUsuario.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelNombreUsuario.setForeground(java.awt.Color.white);
         jLabelNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNombreUsuario.setText("Nombre De Usuario XX");

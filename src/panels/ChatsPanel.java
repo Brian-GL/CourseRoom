@@ -17,7 +17,8 @@ public class ChatsPanel extends javax.swing.JPanel {
     public ChatsPanel(){
         
         initComponents();
-        
+        jLabelChatsTitle.setForeground(DashboardPanel.getFontColor());
+        jLabelChatsTitle.setBackground(DashboardPanel.getFirstColor());
         jScrollPaneChats.getViewport().setOpaque(false);
         jScrollPaneChats.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneChats.getHorizontalScrollBar().setUnitIncrement(15);
@@ -40,13 +41,20 @@ public class ChatsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelChatsTitle = new javax.swing.JLabel();
         jScrollPaneChats = new javax.swing.JScrollPane();
         jPanelAllChats = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1085, 630));
-        setLayout(new java.awt.GridLayout(1, 2));
+
+        jLabelChatsTitle.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
+        jLabelChatsTitle.setText("Chats");
+        jLabelChatsTitle.setMaximumSize(new java.awt.Dimension(416, 84));
+        jLabelChatsTitle.setMinimumSize(new java.awt.Dimension(416, 84));
+        jLabelChatsTitle.setOpaque(true);
+        jLabelChatsTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         jScrollPaneChats.setBackground(java.awt.Color.white);
         jScrollPaneChats.setBorder(null);
@@ -57,7 +65,28 @@ public class ChatsPanel extends javax.swing.JPanel {
         jPanelAllChats.setLayout(new javax.swing.BoxLayout(jPanelAllChats, javax.swing.BoxLayout.PAGE_AXIS));
         jScrollPaneChats.setViewportView(jPanelAllChats);
 
-        add(jScrollPaneChats);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneChats, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelChatsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelChatsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneChats, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     public void dispose(){
@@ -65,6 +94,7 @@ public class ChatsPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelChatsTitle;
     private javax.swing.JPanel jPanelAllChats;
     private javax.swing.JScrollPane jScrollPaneChats;
     // End of variables declaration//GEN-END:variables

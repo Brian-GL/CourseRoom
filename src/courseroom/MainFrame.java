@@ -12,9 +12,10 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Image;
-import java.awt.Toolkit;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -48,9 +49,18 @@ public class MainFrame extends javax.swing.JFrame {
         
         darkBlue = new Color(14,30,64);
         lightBlue  = new Color(104,194,232);
-        Image darkImageLogo = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../resources/images/Course_Room_Brand_Blue.png"))).getImage();
-        logoImage = new ImageIcon(darkImageLogo.getScaledInstance(150, 125, Image.SCALE_SMOOTH));
-        darkImageLogo = null;
+        Image darkImageLogo;
+        try {
+            darkImageLogo = ImageIO.read(getClass().getResource("/resources/images/Course_Room_Brand.png"));
+            Image logo = ImageIO.read(getClass().getResource("/resources/images/Course_Room_Logo.png"));
+            this.setIconImage(logo);
+            logoImage = new ImageIcon(darkImageLogo.getScaledInstance(150, 125, Image.SCALE_SMOOTH));
+            logo = null;
+            darkImageLogo = null;
+        } catch (IOException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         login = new LoginPanel();
         recuperarCredenciales = new RecuperarCredencialesPanel();
         crearCuenta = new CrearCuentaPanel();
@@ -79,7 +89,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CourseRoom - Tu Espacio Personal Para Estudiar");
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../resources/images/Course_Room_Logo.png")));
         setMinimumSize(new java.awt.Dimension(1260, 670));
         setName("mainFrame"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1260, 670));

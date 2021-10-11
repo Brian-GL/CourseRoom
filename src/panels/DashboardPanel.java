@@ -40,7 +40,7 @@ import javax.swing.SwingUtilities;
 public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
 
     private static Image userImage;
-    private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor;
+    private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
     private Random colorRandom;
     private static BufferedImage bufferedUserImage;
     
@@ -52,6 +52,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private NoticesPanel noticesPanel;
     private GroupsPanel groupsPanel;
     private DatesPanel datesPanel;
+    private HomeworksPanel homeworksPanel;
     
     private static CardLayout panelLayout;
     private static byte activePageFlag;
@@ -68,9 +69,8 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             server_time_stop = true;
             firstColor = secondColor = thirdColor = fontColor = secondFontColor = Color.BLACK;
             colorRandom = new Random(System.currentTimeMillis());
-            System.out.println("Getting Image From: https://source.unsplash.com/random");
-            URL getImageURL = new URL("https://source.unsplash.com/random");
-            userImage = ImageIO.read(getImageURL);
+            String imageName = "/resources/images/image"+(colorRandom.nextInt(15)+1)+".jpg";
+            userImage = ImageIO.read(getClass().getResource(imageName));
             bufferedUserImage = new BufferedImage(userImage.getWidth(null), userImage.getHeight(null), BufferedImage.TYPE_INT_ARGB);
 
             // Draw the image on to the buffered image
@@ -99,7 +99,8 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             
             
             //homeworks panel -> 4 en active page flag
-            
+            homeworksPanel = new HomeworksPanel();
+            jPanelInformacion.add("homeworksPanel",homeworksPanel);
             
             //dates panel -> 5 en active page flag
             datesPanel = new DatesPanel();
@@ -133,6 +134,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             serverDateTime = new ServerDateTime();
             serverDateTime.start();
             
+            imageName = null;
             
             
         } catch (MalformedURLException ex) {
@@ -456,9 +458,9 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         });
 
         jLabelUserName.setBackground(java.awt.Color.black);
-        jLabelUserName.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabelUserName.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         jLabelUserName.setForeground(java.awt.Color.white);
-        jLabelUserName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelUserName.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabelUserName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/id-card.png"))); // NOI18N
         jLabelUserName.setText("UserName");
         jLabelUserName.setToolTipText("Usuario Con Sesión Iniciada");
@@ -468,7 +470,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
 
         jLabelFechaHoraServidor.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabelFechaHoraServidor.setForeground(java.awt.Color.white);
-        jLabelFechaHoraServidor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFechaHoraServidor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelFechaHoraServidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clock_2.png"))); // NOI18N
         jLabelFechaHoraServidor.setText("Viernes 10/07/2021 13:55:09 P.M");
         jLabelFechaHoraServidor.setMaximumSize(new java.awt.Dimension(127, 40));
@@ -483,10 +485,10 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 .addGap(0, 0, 0)
                 .addComponent(jLabelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addContainerGap())
         );
         jPanelBarraSuperiorLayout.setVerticalGroup(
             jPanelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -702,6 +704,12 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
 
     private void jLabelHomeWorksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeWorksMouseClicked
         // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            if(activePageFlag != 4){
+                panelLayout.show(jPanelInformacion, "homeworksPanel");
+                activePageFlag = 4;
+            }
+        }
         
     }//GEN-LAST:event_jLabelHomeWorksMouseClicked
 
@@ -800,7 +808,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             int maximum = 0;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            
+            int large = (image.getWidth(null)/3);
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -823,7 +831,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                     }
 
                     color = null;
-                    i+= colorRandom.nextInt(401)+ 400;
+                    i+= colorRandom.nextInt(large + 1)+ large;
                 }
 
                 secondColor = firstColor;
@@ -868,8 +876,11 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 
                 colorList.clear();
-
-                secondFontColor = (secondColor.getRed() >= 155) ? Color.BLACK : Color.WHITE;
+                red = secondColor.getRed();
+                secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
+                red = thirdColor.getRed();
+                thirdFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
+                
                 Component[] components = jPanelMenu.getComponents();
 
                 for(Component component: components){
@@ -896,6 +907,9 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         musicPanel.dispose();
         chatsPanel.dispose();
         noticesPanel.dispose();
+        noticesPanel.dispose();
+        groupsPanel.dispose();
+        homeworksPanel.dispose();
         musicPanel = null;
         setFirstColor(null);
         setSecondColor(null);
@@ -906,6 +920,8 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         editProfilePanel = null;
         panelLayout = null;
         noticesPanel = null;
+        homeworksPanel = null;
+        datesPanel = null;
     }
     
     
@@ -1028,6 +1044,20 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         secondFontColor = aFontColor;
     }
     
+     /**
+     * @return the fontColor
+     */
+    public static Color getThirdFontColor() {
+        return thirdFontColor;
+    }
+
+    /**
+     * @param aFontColor the fontColor to set
+     */
+    public static void setThirdFontColor(Color aFontColor) {
+        thirdFontColor = aFontColor;
+    }
+    
     public class ServerDateTime extends Thread{
     
 
@@ -1042,15 +1072,12 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 
                 try {
                     Date date = new Date();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/mm/yyyy hh:mm:ss a");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy hh:mm:ss a");
                     String time = dateFormat.format(date);
                     jLabelFechaHoraServidor.setText(time);
                     date = null;
                     time = null;
                     dateFormat = null;
-                    if(isInterrupted()){
-                        break;
-                    }
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ServerDateTime.class.getName()).log(Level.SEVERE, null, ex);

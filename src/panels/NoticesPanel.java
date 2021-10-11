@@ -5,7 +5,6 @@
  */
 package panels;
 
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -18,13 +17,14 @@ public class NoticesPanel extends javax.swing.JPanel {
      */
     public NoticesPanel() {
         initComponents();
-        
+        jLabelNoticesTitle.setForeground(DashboardPanel.getFontColor());
+        jLabelNoticesTitle.setBackground(DashboardPanel.getFirstColor());
         jScrollPaneMisAvisos.getViewport().setOpaque(false);
         jScrollPaneMisAvisos.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneMisAvisos.getHorizontalScrollBar().setUnitIncrement(15);
         
         
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 3; i++){
             BoxAvisoPanel boxAvisoPanel = new BoxAvisoPanel("https://source.unsplash.com/random");
             jPanelMisAvisos.add(boxAvisoPanel);
             System.out.println("Getting Image From : https://source.unsplash.com/random");
@@ -41,27 +41,56 @@ public class NoticesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelNoticesTitle = new javax.swing.JLabel();
         jScrollPaneMisAvisos = new javax.swing.JScrollPane();
         jPanelMisAvisos = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
-        setLayout(new java.awt.GridLayout(1, 1));
+
+        jLabelNoticesTitle.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
+        jLabelNoticesTitle.setText("Avisos");
+        jLabelNoticesTitle.setMaximumSize(new java.awt.Dimension(416, 84));
+        jLabelNoticesTitle.setMinimumSize(new java.awt.Dimension(416, 84));
+        jLabelNoticesTitle.setOpaque(true);
+        jLabelNoticesTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         jScrollPaneMisAvisos.setBorder(null);
         jScrollPaneMisAvisos.setMinimumSize(new java.awt.Dimension(1085, 630));
         jScrollPaneMisAvisos.setOpaque(false);
-        jScrollPaneMisAvisos.setPreferredSize(new java.awt.Dimension(1085, 630));
+        jScrollPaneMisAvisos.setPreferredSize(new java.awt.Dimension(1073, 516));
 
         jPanelMisAvisos.setOpaque(false);
         jPanelMisAvisos.setLayout(new javax.swing.BoxLayout(jPanelMisAvisos, javax.swing.BoxLayout.PAGE_AXIS));
         jScrollPaneMisAvisos.setViewportView(jPanelMisAvisos);
 
-        add(jScrollPaneMisAvisos);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneMisAvisos, javax.swing.GroupLayout.DEFAULT_SIZE, 1085, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelNoticesTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelNoticesTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneMisAvisos, javax.swing.GroupLayout.PREFERRED_SIZE, 540, Short.MAX_VALUE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelNoticesTitle;
     private javax.swing.JPanel jPanelMisAvisos;
     private javax.swing.JScrollPane jScrollPaneMisAvisos;
     // End of variables declaration//GEN-END:variables

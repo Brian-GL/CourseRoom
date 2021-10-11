@@ -43,7 +43,6 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagException;
 import org.jaudiotagger.tag.images.Artwork;
-import data.collections.DoublyLinkedList;
 import data.structures.Pair;
 import java.io.FileFilter;
 import java.util.Iterator;
@@ -76,9 +75,8 @@ public final class MusicPanel extends javax.swing.JPanel{
     private static AudioListPlayerComponent audio_list_player_component;
     
     //Data Structures
-    private static DoublyLinkedList<String> paths;
-    private static Node<String> actual_node;
     private Map<String,Equalizer> presets_map;
+    private File[] openFiles;
      
     //Others
     private static int index;
@@ -191,9 +189,9 @@ public final class MusicPanel extends javax.swing.JPanel{
         jLabelCoverArt.setBackground(new java.awt.Color(0, 0, 0));
         jLabelCoverArt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCoverArt.setToolTipText("");
-        jLabelCoverArt.setMaximumSize(new java.awt.Dimension(458, 616));
-        jLabelCoverArt.setMinimumSize(new java.awt.Dimension(458, 616));
-        jLabelCoverArt.setPreferredSize(new java.awt.Dimension(458, 616));
+        jLabelCoverArt.setMaximumSize(new java.awt.Dimension(550, 550));
+        jLabelCoverArt.setMinimumSize(new java.awt.Dimension(550, 550));
+        jLabelCoverArt.setPreferredSize(new java.awt.Dimension(550, 550));
 
         jLabelTitle.setBackground(new java.awt.Color(0, 0, 0));
         jLabelTitle.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
@@ -655,46 +653,57 @@ public final class MusicPanel extends javax.swing.JPanel{
         });
         jPanelBands.add(jSliderBand9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 10, 210));
 
+        jLabelBand1.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelBand1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand1.setText("0");
         jPanelBands.add(jLabelBand1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 230, -1, -1));
 
+        jLabelBand0.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelBand0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand0.setText("0");
         jPanelBands.add(jLabelBand0, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 230, -1, -1));
 
+        jLabelBand2.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelBand2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand2.setText("0");
         jPanelBands.add(jLabelBand2, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 230, -1, -1));
 
+        jLabelBand3.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelBand3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand3.setText("0");
         jPanelBands.add(jLabelBand3, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 230, -1, -1));
 
+        jLabelBand4.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelBand4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand4.setText("0");
         jPanelBands.add(jLabelBand4, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 230, -1, -1));
 
+        jLabelBand5.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelBand5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand5.setText("0");
         jPanelBands.add(jLabelBand5, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 230, -1, -1));
 
+        jLabelBand6.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelBand6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand6.setText("0");
         jPanelBands.add(jLabelBand6, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 230, -1, -1));
 
+        jLabelBand7.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelBand7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand7.setText("0");
         jPanelBands.add(jLabelBand7, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 230, -1, -1));
 
+        jLabelBand8.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelBand8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand8.setText("0");
         jPanelBands.add(jLabelBand8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
+        jLabelBand9.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelBand9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBand9.setText("0");
         jPanelBands.add(jLabelBand9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
 
+        jLabelPreampTitle.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelPreampTitle.setText("Preamp");
         jLabelPreampTitle.setPreferredSize(new java.awt.Dimension(47, 20));
         jLabelPreampTitle.setRequestFocusEnabled(false);
@@ -713,6 +722,7 @@ public final class MusicPanel extends javax.swing.JPanel{
             }
         });
 
+        jLabelPreamp.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jLabelPreamp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPreamp.setText("0");
         jLabelPreamp.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -720,13 +730,13 @@ public final class MusicPanel extends javax.swing.JPanel{
         jLabelPreamp.setRequestFocusEnabled(false);
         jLabelPreamp.setVerifyInputWhenFocusTarget(false);
 
-        jLabelPreset.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jLabelPreset.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabelPreset.setText("Preset");
         jLabelPreset.setMaximumSize(new java.awt.Dimension(50, 32));
         jLabelPreset.setMinimumSize(new java.awt.Dimension(50, 32));
         jLabelPreset.setPreferredSize(new java.awt.Dimension(50, 32));
 
-        jComboBoxPresets.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jComboBoxPresets.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jComboBoxPresets.setMinimumSize(new java.awt.Dimension(250, 32));
         jComboBoxPresets.setPreferredSize(new java.awt.Dimension(250, 32));
         jComboBoxPresets.addItemListener(new java.awt.event.ItemListener() {
@@ -779,21 +789,21 @@ public final class MusicPanel extends javax.swing.JPanel{
 
         jPanelMediaInformation.setOpaque(false);
 
-        jLabelGenreValue.setFont(new java.awt.Font("Inter", 0, 15)); // NOI18N
+        jLabelGenreValue.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         jLabelGenreValue.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelGenreValue.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Genre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 1, 16))); // NOI18N
         jLabelGenreValue.setMaximumSize(new java.awt.Dimension(51, 45));
         jLabelGenreValue.setMinimumSize(new java.awt.Dimension(51, 45));
         jLabelGenreValue.setPreferredSize(new java.awt.Dimension(51, 55));
 
-        jLabelMediaValue.setFont(new java.awt.Font("Inter", 0, 15)); // NOI18N
+        jLabelMediaValue.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         jLabelMediaValue.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelMediaValue.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Media", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 1, 16))); // NOI18N
         jLabelMediaValue.setMaximumSize(new java.awt.Dimension(51, 45));
         jLabelMediaValue.setMinimumSize(new java.awt.Dimension(51, 45));
         jLabelMediaValue.setPreferredSize(new java.awt.Dimension(51, 55));
 
-        jLabelYearValue.setFont(new java.awt.Font("Inter", 0, 15)); // NOI18N
+        jLabelYearValue.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         jLabelYearValue.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelYearValue.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Year", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 1, 16))); // NOI18N
         jLabelYearValue.setMaximumSize(new java.awt.Dimension(51, 45));
@@ -805,7 +815,7 @@ public final class MusicPanel extends javax.swing.JPanel{
 
         jTextPaneLyrics.setEditable(false);
         jTextPaneLyrics.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lyrics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 1, 16))); // NOI18N
-        jTextPaneLyrics.setFont(new java.awt.Font("Inter", 0, 15)); // NOI18N
+        jTextPaneLyrics.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         jTextPaneLyrics.setOpaque(false);
         jScrollPaneLyrics.setViewportView(jTextPaneLyrics);
 
@@ -846,9 +856,9 @@ public final class MusicPanel extends javax.swing.JPanel{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addComponent(jLabelCoverArt, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
-                .addGap(18, 77, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelCoverArt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabelProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -860,28 +870,28 @@ public final class MusicPanel extends javax.swing.JPanel{
                     .addComponent(jLabelArtist, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelCoverArt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabelArtist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabelAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCoverArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabelArtist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabelAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSliderProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelTotalDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)))
+                    .addComponent(jLabelProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSliderProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTotalDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -894,7 +904,6 @@ public final class MusicPanel extends javax.swing.JPanel{
         flag = true;
         zero_index = false;
         moving_next = moving_previous = false;
-        paths = new DoublyLinkedList<>();
         MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
         audio_list_player_component = new AudioListPlayerComponent(mediaPlayerFactory);
         audio_list_player_component.mediaListPlayer().mediaPlayer().setMediaPlayer(mediaPlayerFactory.mediaPlayers().newMediaPlayer());
@@ -1050,12 +1059,10 @@ public final class MusicPanel extends javax.swing.JPanel{
             @Override
             public void mediaChanged(MediaPlayer mp, MediaRef mr) {
                 if(moving_next){
-                    if(actual_node.has_next()){
+                    if((index+1) < audio_list_player_component.mediaListPlayer().list().media().count()){
                         if(!zero_index){
-                            actual_node = actual_node.next();
                             index++;
                         }else{
-                            actual_node = paths.front();
                             index = 0;
                             zero_index = false;
                         }
@@ -1064,9 +1071,8 @@ public final class MusicPanel extends javax.swing.JPanel{
                    }   
                 }
                 if(moving_previous){
-                    if(actual_node.has_previous()){
+                    if((index-1) >= 0){
                        index--;
-                       actual_node = actual_node.previous();
                        loadMetadata();
                    }   
                 }
@@ -1383,11 +1389,9 @@ public final class MusicPanel extends javax.swing.JPanel{
                         return false;
                     };
 
-                    File[] files = folder.listFiles(filter);
+                   File[] files = folder.listFiles(filter);
                     if(files.length > 0){
-                        paths.clear();
                         zero_index = false;
-                        actual_node = null;
                         moving_next = false;
                         moving_previous = true;
                         audio_list_player_component.mediaListPlayer().controls().stop();
@@ -1401,16 +1405,14 @@ public final class MusicPanel extends javax.swing.JPanel{
                             PlaylistEntryPanel playlistEntryPanel = new PlaylistEntryPanel(filename,idx);
                             jPanelPlaylist.add(playlistEntryPanel);
                             audio_list_player_component.mediaListPlayer().list().media().add(path);
-                            paths.push_back(path);
                             filename = null;
                             path = null;
                             playlistEntryPanel = null;
                             idx++;
                             file = null;
                         }
-
-                        actual_node = paths.front();
                         index = 0;
+                        openFiles = files;
                         loadMetadata();
                         audio_list_player_component.mediaListPlayer().controls().play();
                         jSliderVolume.setEnabled(true);
@@ -1430,9 +1432,10 @@ public final class MusicPanel extends javax.swing.JPanel{
                         jSliderBandPreamp.setEnabled(true);
                         jComboBoxPresets.setEnabled(true);
                     }
-                    files = null;
+                    //files = null;
                     filter = null;
                 }
+                
                 folder = null;
             }
 
@@ -1450,7 +1453,7 @@ public final class MusicPanel extends javax.swing.JPanel{
         if(SwingUtilities.isLeftMouseButton(evt)){
 
             JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Music Files", "mp3", "flac", "aac", "wma","ogg");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Music Files", "mp3", "flac", "aac", "wav","ogg");
             fileChooser.addChoosableFileFilter(filter);
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             fileChooser.setAcceptAllFileFilterUsed(true);
@@ -1462,8 +1465,6 @@ public final class MusicPanel extends javax.swing.JPanel{
                 File[] files = fileChooser.getSelectedFiles();
                 if(files.length > 0){
                     int idx = 0;
-                    paths.clear();
-                    actual_node = null;
                     moving_next = false;
                     moving_previous = true;
                     zero_index = false;
@@ -1476,7 +1477,6 @@ public final class MusicPanel extends javax.swing.JPanel{
                         PlaylistEntryPanel playlistEntryPanel = new PlaylistEntryPanel(filename,idx);
                         jPanelPlaylist.add(playlistEntryPanel);
                         audio_list_player_component.mediaListPlayer().list().media().add(path);
-                        paths.push_back(path);
                         filename = null;
                         path = null;;
                         playlistEntryPanel = null;
@@ -1484,8 +1484,8 @@ public final class MusicPanel extends javax.swing.JPanel{
                         file = null;
                     }
 
-                    actual_node = paths.front();
                     index = 0;
+                    openFiles = files;
                     loadMetadata();
                     audio_list_player_component.mediaListPlayer().controls().play();
                     jSliderVolume.setEnabled(true);
@@ -1505,10 +1505,10 @@ public final class MusicPanel extends javax.swing.JPanel{
                     jSliderBandPreamp.setEnabled(true);
                     jComboBoxPresets.setEnabled(true);
                 }
-                files = null;
+                //files = null;
+                
             }
 
-            fileChooser = null;
             filter = null;
         }
         System.gc();
@@ -1664,7 +1664,7 @@ public final class MusicPanel extends javax.swing.JPanel{
     /**Sets Play And Pause Functions*/
     private void setPlayPause() {
         
-        if (audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && !paths.is_empty()) {
+        if (audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && openFiles != null) {
 
             if (audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING) {
                 audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().controls().setPause(true);
@@ -1678,17 +1678,18 @@ public final class MusicPanel extends javax.swing.JPanel{
     
     /**Sets Next Media Function*/
     private void moveNext(){
-        if(actual_node != null){
-            if(actual_node.has_next()){
+        if(openFiles != null){
+            if((index+1) < audio_list_player_component.mediaListPlayer().list().media().count()){
                 audio_list_player_component.mediaListPlayer().controls().playNext();
+                System.gc();
             }
         }
     }
     
     /**Sets Previous Media Function*/
     private void movePrevious(){
-        if(actual_node != null){
-            if(actual_node.has_previous()){
+        if(openFiles != null){
+            if((index-1) >= 0){
                 moving_previous = true;
                 moving_next = false;
                 audio_list_player_component.mediaListPlayer().controls().playPrevious();
@@ -1699,7 +1700,7 @@ public final class MusicPanel extends javax.swing.JPanel{
 
     /**Sets Stop Function*/
     private void setStop() {
-        if (audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && !paths.is_empty()) {
+        if (audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && openFiles != null) {
             audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().controls().stop();
         }
     }
@@ -1731,6 +1732,7 @@ public final class MusicPanel extends javax.swing.JPanel{
         jSliderBandPreamp.setEnabled(false);
         jComboBoxPresets.setEnabled(false);
         jPanelPlaylist.removeAll();
+        openFiles = null;
         System.gc();
     }
 
@@ -1738,7 +1740,8 @@ public final class MusicPanel extends javax.swing.JPanel{
     /**Charge Metadata On Screen*/
     private void loadMetadata(){
         try {
-            File readFile = new File(actual_node.element());
+            //File readFile = new File(actual_node.element());
+            File readFile = openFiles[index];
             
             if(readFile.exists()){      
                
@@ -1752,7 +1755,12 @@ public final class MusicPanel extends javax.swing.JPanel{
                 String year = tag.getFirst(FieldKey.YEAR);
                 String media_info = audioFile.getExt().toUpperCase() + " File - " + audioFile.getAudioHeader().getBitRate() +" kbps";
                 String lyricals = tag.getFirst(FieldKey.LYRICS);
-                
+                if(title == null){
+                    title = readFile.getName();
+                }
+                if(title.isEmpty()){
+                    title = readFile.getName();
+                }
                 jLabelTitle.setToolTipText("Title: "+title);
                 jLabelArtist.setToolTipText("Artist: "+artist);
                 jLabelAlbum.setToolTipText("Album: "+album);
@@ -1783,6 +1791,7 @@ public final class MusicPanel extends javax.swing.JPanel{
                         real_cover.flush();
                         real_cover = null;
                         cover = null;
+                        
                     }
                 } 
                 PlaylistEntryPanel playlistEntryPanel = (PlaylistEntryPanel)jPanelPlaylist.getComponent(index);
@@ -1808,12 +1817,22 @@ public final class MusicPanel extends javax.swing.JPanel{
                 year = null;
                 lyricals = null;
             }else{
-                String mrl = actual_node.element();
+                String mrl = readFile.getAbsolutePath();
                 JOptionPane.showMessageDialog(this, mrl,"UNABLE TO FIND MEDIA",JOptionPane.ERROR_MESSAGE);
-                paths.remove(mrl);
-                if((index+1) < paths.size()){
+                audio_list_player_component.mediaListPlayer().list().media().remove(index);
+                if(openFiles != null){
+                    int aux_index = 0;
+                    File[] aux = new File[audio_list_player_component.mediaListPlayer().list().media().count()];
+                    for(int i = 0; i < openFiles.length;i++){
+                        if(i != index){
+                            aux[aux_index] = openFiles[i];
+                            aux_index++;
+                        }
+                    }
+                }
+                if((index+1) < audio_list_player_component.mediaListPlayer().list().media().count()){
                     moveNext();
-                } else if((index - 1) > 0){
+                } else if((index - 1) >= 0){
                     movePrevious();
                 } else{
                     setStop();
@@ -1994,8 +2013,6 @@ public final class MusicPanel extends javax.swing.JPanel{
         
     public void dispose() {
         audio_list_player_component.release();
-        paths.clear();
-        paths = null;
         play_icon = null;
         pause_icon = null;
         firstColor = null;
@@ -2071,7 +2088,6 @@ public final class MusicPanel extends javax.swing.JPanel{
     public static void playIndex(int idx){
         if(idx > 0){
             index = idx-1;
-            actual_node = paths.node(index);
             audio_list_player_component.mediaListPlayer().controls().play(idx);
         } else{
             zero_index = true;

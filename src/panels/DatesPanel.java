@@ -5,6 +5,7 @@
  */
 package panels;
 
+import java.awt.Color;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,7 +25,8 @@ public class DatesPanel extends javax.swing.JPanel {
      */
     public DatesPanel() {
         initComponents();
-        jLabelMonth.setForeground(DashboardPanel.getSecondFontColor());
+        jLabelMonth.setForeground(DashboardPanel.getFontColor());
+        jLabelMonth.setBackground(DashboardPanel.getFirstColor());
         jScrollPaneCalendar.getViewport().setOpaque(false);
         jLabelLunes.setForeground(DashboardPanel.getSecondFontColor());
         jLabelMartes.setForeground(DashboardPanel.getSecondFontColor());
@@ -73,37 +75,37 @@ public class DatesPanel extends javax.swing.JPanel {
         jPanelDaysTitle.setPreferredSize(new java.awt.Dimension(1025, 30));
         jPanelDaysTitle.setLayout(new java.awt.GridLayout(1, 7));
 
-        jLabelLunes.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabelLunes.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelLunes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLunes.setText("Lunes");
         jPanelDaysTitle.add(jLabelLunes);
 
-        jLabelMartes.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabelMartes.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelMartes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMartes.setText("Martes");
         jPanelDaysTitle.add(jLabelMartes);
 
-        jLabelMiercoles.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabelMiercoles.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelMiercoles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMiercoles.setText("Miércoles");
         jPanelDaysTitle.add(jLabelMiercoles);
 
-        jLabelJueves.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabelJueves.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelJueves.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelJueves.setText("Jueves");
         jPanelDaysTitle.add(jLabelJueves);
 
-        jLabelViernes.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabelViernes.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelViernes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelViernes.setText("Viernes");
         jPanelDaysTitle.add(jLabelViernes);
 
-        jLabelSabado.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabelSabado.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelSabado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelSabado.setText("Sábado");
         jPanelDaysTitle.add(jLabelSabado);
 
-        jLabelDomingo.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabelDomingo.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelDomingo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelDomingo.setText("Domingo");
         jPanelDaysTitle.add(jLabelDomingo);
@@ -119,7 +121,7 @@ public class DatesPanel extends javax.swing.JPanel {
         jPanelCalendar.setLayout(new java.awt.GridLayout(6, 7));
         jScrollPaneCalendar.setViewportView(jPanelCalendar);
 
-        jLabelNextMonth.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
+        jLabelNextMonth.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         jLabelNextMonth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNextMonth.setText(">");
         jLabelNextMonth.setMaximumSize(new java.awt.Dimension(30, 630));
@@ -131,7 +133,7 @@ public class DatesPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabelPreviousMonth.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
+        jLabelPreviousMonth.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         jLabelPreviousMonth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPreviousMonth.setText("<");
         jLabelPreviousMonth.setMaximumSize(new java.awt.Dimension(30, 630));
@@ -144,9 +146,10 @@ public class DatesPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabelMonth.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        jLabelMonth.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelMonth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMonth.setText("Octubre");
+        jLabelMonth.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -161,10 +164,7 @@ public class DatesPanel extends javax.swing.JPanel {
                         .addComponent(jLabelPreviousMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jLabelMonth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanelDaysTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(0, 0, 0)))
+                    .addComponent(jPanelDaysTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addComponent(jLabelNextMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
