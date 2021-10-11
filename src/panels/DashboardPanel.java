@@ -69,7 +69,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             server_time_stop = true;
             firstColor = secondColor = thirdColor = fontColor = secondFontColor = Color.BLACK;
             colorRandom = new Random(System.currentTimeMillis());
-            String imageName = "/resources/images/image"+(colorRandom.nextInt(15)+1)+".jpg";
+            String imageName = "/resources/images/image"+(colorRandom.nextInt(17)%17 + 1)+".jpg";
             userImage = ImageIO.read(getClass().getResource(imageName));
             bufferedUserImage = new BufferedImage(userImage.getWidth(null), userImage.getHeight(null), BufferedImage.TYPE_INT_ARGB);
 
@@ -141,7 +141,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             Logger.getLogger(DashboardPanel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(DashboardPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
         
     }
 
@@ -924,6 +924,13 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         datesPanel = null;
     }
     
+    public static void addView(Component component, String key){
+        jPanelInformacion.add(key,component);
+    }
+    
+    public static void showView(String key){
+        panelLayout.show(jPanelInformacion, key);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelAbout;

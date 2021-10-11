@@ -5,6 +5,7 @@
  */
 package panels;
 
+import com.github.javafaker.Faker;
 import data.collections.PairDoublyLinkedList;
 import data.interfaces.MainInterface;
 import data.structures.Pair;
@@ -18,6 +19,7 @@ import java.awt.Point;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,6 +40,12 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
     public BoxHomeworkPanel(String route) {
         initComponents();
          try {
+            Faker faker = new Faker(new Locale("es","MX"));
+            jLabelNombreTarea.setText(faker.book().title());
+            jLabelFechaDeEntrega.setText(faker.backToTheFuture().date());
+            jLabelTipoDeTarea.setText(faker.book().genre());
+            jLabelClaseDeLaTarea.setText(faker.book().publisher());
+            jLabelEstado.setText((faker.bool().bool()) ? "Entregada" : "No Entregada Aún");
             firstColor = secondColor = Color.BLACK;
             //URL imageURL = new URL(route);
             Image getImage = ImageIO.read(getClass().getResource("/resources/images/homework.jpg"));

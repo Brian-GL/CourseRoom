@@ -5,6 +5,7 @@
  */
 package panels;
 
+import com.github.javafaker.Faker;
 import data.collections.PairDoublyLinkedList;
 import data.interfaces.MainInterface;
 import data.structures.Pair;
@@ -21,6 +22,7 @@ import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,6 +45,12 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
         try {
             firstColor = secondColor = Color.BLACK;
             //URL imageURL = new URL(route);
+            Faker faker = new Faker(new Locale("es","MX"));
+            jLabelNombreGrupo.setText(faker.animal().name());
+            jLabelUltimaActualizacion.setText(faker.team().state());
+            jLabelNumeroIntegrantes.setText(faker.number().digits(1) + " Integrantes" );
+            jLabelClaseDelGrupo.setText(faker.team().name());
+            jLabelChatDelGrupo.setText(faker.gameOfThrones().character());
             Image getImage = ImageIO.read(getClass().getResource("/resources/images/group.jpg"));
             groupImage = getImage.getScaledInstance(182,182,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(groupImage);

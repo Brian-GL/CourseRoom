@@ -51,7 +51,7 @@ public class MainFrame extends javax.swing.JFrame {
         lightBlue  = new Color(104,194,232);
         Image darkImageLogo;
         try {
-            darkImageLogo = ImageIO.read(getClass().getResource("/resources/images/Course_Room_Brand.png"));
+            darkImageLogo = ImageIO.read(getClass().getResource("/resources/images/Course_Room_Brand_Blue.png"));
             Image logo = ImageIO.read(getClass().getResource("/resources/images/Course_Room_Logo.png"));
             this.setIconImage(logo);
             logoImage = new ImageIcon(darkImageLogo.getScaledInstance(150, 125, Image.SCALE_SMOOTH));

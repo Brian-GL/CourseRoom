@@ -5,13 +5,12 @@
  */
 package panels;
 
-import courseroom.MainFrame;
+import com.github.javafaker.Faker;
 import data.collections.PairDoublyLinkedList;
 import data.interfaces.MainInterface;
 import data.structures.Pair;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -19,13 +18,14 @@ import java.awt.LinearGradientPaint;
 import java.awt.Point;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.MalformedURLException;import java.util.Locale;
+;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -35,21 +35,31 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
 
     private Image chatImage;
     private Color firstColor, secondColor;
+    private ChatingPanel chatingPanel;
+    private int id;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public BoxChatPanel(String route) {
+    public BoxChatPanel(int _id) {
         initComponents();
         try {
             firstColor = secondColor = Color.BLACK;
             //URL imageURL = new URL(route);
+            Faker faker = new Faker(new Locale("es","MX"));
+            jLabelNombreChat.setText(faker.rickAndMorty().character());
+            jLabelUltimoMensaje.setText(faker.friends().character() + " Is There?");
+            jLabelNumeroMensajesNoLeidos.setText(faker.number().digits(1));
             Image getImage = ImageIO.read(getClass().getResource("/resources/images/chat.jpg"));
+            chatingPanel = new ChatingPanel(getImage,jLabelNombreChat.getText());
             chatImage = getImage.getScaledInstance(114,114,Image.SCALE_SMOOTH);
             ImageIcon chatIcon = new ImageIcon(chatImage);
             jLabelFotoChat.setIcon(chatIcon);
+            this.id = _id;
+            DashboardPanel.addView(chatingPanel,"chat"+id);
             setColors(getImage);
             getImage.flush();
             getImage = null;
             chatIcon = null;
+            
             //imageURL = null;
         } catch (MalformedURLException ex) {
             Logger.getLogger(BoxChatPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,7 +68,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         }
     }
     
-     @Override
+    @Override
     protected void paintComponent(Graphics g) {
         
        super.paintComponent(g);
@@ -171,6 +181,8 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
     public void dispose(){
         chatImage.flush();
         chatImage = null;
+        chatingPanel.dispose();
+        chatingPanel = null;
     }
     
     
@@ -200,6 +212,11 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         jLabelFotoChat.setMinimumSize(new java.awt.Dimension(114, 114));
         jLabelFotoChat.setPreferredSize(new java.awt.Dimension(114, 114));
         jLabelFotoChat.setRequestFocusEnabled(false);
+        jLabelFotoChat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelFotoChatMouseClicked(evt);
+            }
+        });
 
         jLabelNombreChat.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         jLabelNombreChat.setForeground(java.awt.Color.white);
@@ -209,6 +226,11 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         jLabelNombreChat.setMaximumSize(new java.awt.Dimension(488, 32));
         jLabelNombreChat.setMinimumSize(new java.awt.Dimension(488, 32));
         jLabelNombreChat.setPreferredSize(new java.awt.Dimension(488, 32));
+        jLabelNombreChat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelNombreChatMouseClicked(evt);
+            }
+        });
 
         jLabelUltimoMensaje.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         jLabelUltimoMensaje.setForeground(java.awt.Color.white);
@@ -264,6 +286,20 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabelFotoChatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFotoChatMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("chat"+id);
+        }
+    }//GEN-LAST:event_jLabelFotoChatMouseClicked
+
+    private void jLabelNombreChatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNombreChatMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("chat"+id);
+        }
+    }//GEN-LAST:event_jLabelNombreChatMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

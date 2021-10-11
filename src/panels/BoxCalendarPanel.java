@@ -5,7 +5,9 @@
  */
 package panels;
 
+import com.github.javafaker.Faker;
 import java.awt.Color;
+import java.util.Locale;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -21,6 +23,9 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
      */
     public BoxCalendarPanel(int day) {
         initComponents();
+        Faker faker = new Faker(new Locale("es","MX"));
+        jLabelHora.setText(faker.backToTheFuture().date());
+        jTextPaneNotice.setText(faker.buffy().celebrities());
         jLabelDayNumber.setText(String.valueOf(day));
         StyledDocument doc = jTextPaneNotice.getStyledDocument();
         jScrollPaneNotice.getViewport().setOpaque(false);

@@ -5,6 +5,7 @@
  */
 package panels;
 
+import com.github.javafaker.Faker;
 import data.collections.PairDoublyLinkedList;
 import data.interfaces.MainInterface;
 import data.structures.Pair;
@@ -20,6 +21,7 @@ import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,6 +45,12 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
         try {
             firstColor = secondColor = Color.BLACK;
             //URL imageURL = new URL(route);
+            Faker faker = new Faker(new Locale("es","MX"));
+            jLabelDescripcionAviso.setText(faker.lorem().paragraph(1));
+            jLabelFechaHoraAviso.setText(faker.date().birthday().toString());
+            jLabelProvenenciaAviso.setText(faker.company().name());
+            jLabelEstado.setText(faker.book().publisher());
+            jLabelEstado.setText((faker.bool().bool()) ? "Leído" : "No Leído");
             Image getImage = ImageIO.read(getClass().getResource("/resources/images/notification.jpg"));
             avisoImage = getImage.getScaledInstance(92,92,Image.SCALE_SMOOTH);
             ImageIcon avisoIcon = new ImageIcon(avisoImage);
