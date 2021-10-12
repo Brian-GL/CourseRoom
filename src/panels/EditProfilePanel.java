@@ -718,7 +718,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
             
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setAccessory(new ImageFilePreview(fileChooser));
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Imágenes", "png", "jpg", "jpeg", "bmp");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos De Imagenes", "png", "jpg", "jpeg", "bmp");
             fileChooser.addChoosableFileFilter(filter);
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             fileChooser.setAcceptAllFileFilterUsed(true);

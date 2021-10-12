@@ -17,13 +17,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import uk.co.caprica.vlcj.media.MediaRef;
-import uk.co.caprica.vlcj.media.Meta;
 import uk.co.caprica.vlcj.media.TrackType;
 import uk.co.caprica.vlcj.player.base.MediaPlayer;
 import uk.co.caprica.vlcj.player.base.MediaPlayerEventListener;
-import uk.co.caprica.vlcj.player.base.State;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 /**

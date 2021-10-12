@@ -5,28 +5,33 @@
  */
 package panels;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author LENOVO
  */
-public class TextMessagePanel extends javax.swing.JPanel {
+public class ImageMessagePanel extends javax.swing.JPanel {
 
-    
     /**
-     * Creates new form TextMessagePanel
+     * Creates new form ImageMessagePanel
      */
-    public TextMessagePanel(String sender, String message, String date) {
+    public ImageMessagePanel(String sender, String date, Image image) {
         initComponents();
         jLabelDate.setText(date);
         jLabelSender.setText(sender);
-        jTextAreaMessage.setText(message);
         jLabelDate.setForeground(DashboardPanel.getSecondFontColor());
         jLabelSender.setForeground(DashboardPanel.getSecondFontColor());
         jLabelDate.setBackground(DashboardPanel.getSecondColor());
         jLabelSender.setBackground(DashboardPanel.getSecondColor());
-        jTextAreaMessage.setForeground(DashboardPanel.getFontColor());
-        jTextAreaMessage.setBackground(DashboardPanel.getFirstColor());
-  
+        
+        Image resizedImage = image.getScaledInstance(520, 520, Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(resizedImage);
+        jLabelImageMessage.setIcon(icon);
+        resizedImage.flush();
+        resizedImage = null;
+        icon = null;
     }
 
     /**
@@ -39,63 +44,58 @@ public class TextMessagePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabelSender = new javax.swing.JLabel();
+        jLabelImageMessage = new javax.swing.JLabel();
         jLabelDate = new javax.swing.JLabel();
-        jScrollPaneMessage = new javax.swing.JScrollPane();
-        jTextAreaMessage = new javax.swing.JTextArea();
 
-        setMaximumSize(new java.awt.Dimension(32767, 105));
-        setMinimumSize(new java.awt.Dimension(600, 105));
+        setMaximumSize(new java.awt.Dimension(32767, 600));
+        setMinimumSize(new java.awt.Dimension(600, 600));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(600, 105));
+        setPreferredSize(new java.awt.Dimension(600, 600));
 
         jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelSender.setText("Sender");
         jLabelSender.setOpaque(true);
+
+        jLabelImageMessage.setMaximumSize(new java.awt.Dimension(520, 520));
+        jLabelImageMessage.setMinimumSize(new java.awt.Dimension(520, 520));
+        jLabelImageMessage.setPreferredSize(new java.awt.Dimension(520, 520));
 
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelDate.setText("Date");
         jLabelDate.setOpaque(true);
 
-        jScrollPaneMessage.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        jTextAreaMessage.setColumns(20);
-        jTextAreaMessage.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jTextAreaMessage.setRows(1);
-        jScrollPaneMessage.setViewportView(jTextAreaMessage);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelSender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(347, 347, 347))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(388, 388, 388)
-                        .addComponent(jLabelDate, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelImageMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabelSender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(541, 541, 541))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(560, 560, 560)
+                .addComponent(jLabelDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelSender)
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabelDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelImageMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelDate)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelDate;
+    private javax.swing.JLabel jLabelImageMessage;
     private javax.swing.JLabel jLabelSender;
-    private javax.swing.JScrollPane jScrollPaneMessage;
-    private javax.swing.JTextArea jTextAreaMessage;
     // End of variables declaration//GEN-END:variables
 }
