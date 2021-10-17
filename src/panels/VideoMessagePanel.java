@@ -7,11 +7,6 @@ package panels;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-import java.io.File;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
@@ -46,16 +41,14 @@ public class VideoMessagePanel extends javax.swing.JPanel {
         jLabelProgress.setForeground(DashboardPanel.getSecondFontColor());
         jLabelTitle.setForeground(DashboardPanel.getSecondFontColor());
         jSliderProgress.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelDate.setBackground(DashboardPanel.getSecondColor());
-        jLabelSender.setBackground(DashboardPanel.getSecondColor());
-        jLabelDuration.setBackground(DashboardPanel.getSecondColor());
-        jLabelProgress.setBackground(DashboardPanel.getSecondColor());
-        jLabelTitle.setBackground(DashboardPanel.getSecondColor());
+        jPanelControls.setBackground(DashboardPanel.getSecondColor());
+        this.setBackground(DashboardPanel.getSecondColor());
         
         flag = true;
         embeddedMediaPlayerComponent = new EmbeddedMediaPlayerComponent();
         jPanelVideoView.add("videoView",embeddedMediaPlayerComponent.videoSurfaceComponent());
         setPlayerEvents();
+        embeddedMediaPlayerComponent.mediaPlayer().video().setAdjustVideo(true);
         jLabelTitle.setText(title);
         mrl = _mrl;
         
@@ -80,18 +73,16 @@ public class VideoMessagePanel extends javax.swing.JPanel {
         jSliderProgress = new javax.swing.JSlider();
         jLabelDuration = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 569));
-        setMinimumSize(new java.awt.Dimension(607, 569));
-        setOpaque(false);
+        setMaximumSize(new java.awt.Dimension(800, 569));
+        setMinimumSize(new java.awt.Dimension(800, 569));
+        setPreferredSize(new java.awt.Dimension(800, 569));
 
         jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelSender.setText("Sender");
-        jLabelSender.setOpaque(true);
 
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelDate.setText("Date");
-        jLabelDate.setOpaque(true);
 
         jPanelVideoContent.setOpaque(false);
 
@@ -115,7 +106,6 @@ public class VideoMessagePanel extends javax.swing.JPanel {
         jSliderProgress.setValue(0);
         jSliderProgress.setMaximumSize(new java.awt.Dimension(32767, 16));
         jSliderProgress.setMinimumSize(new java.awt.Dimension(36, 16));
-        jSliderProgress.setPreferredSize(new java.awt.Dimension(200, 16));
 
         jLabelDuration.setBackground(java.awt.Color.black);
         jLabelDuration.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
@@ -132,7 +122,7 @@ public class VideoMessagePanel extends javax.swing.JPanel {
                     .addGroup(jPanelControlsLayout.createSequentialGroup()
                         .addComponent(jLabelProgress)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSliderProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSliderProgress, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelDuration))
                     .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -145,7 +135,7 @@ public class VideoMessagePanel extends javax.swing.JPanel {
                 .addComponent(jLabelTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelProgress, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                    .addComponent(jLabelProgress, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                     .addGroup(jPanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jSliderProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelDuration)))
@@ -178,20 +168,11 @@ public class VideoMessagePanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanelVideoContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabelSender, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 531, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 550, Short.MAX_VALUE)
-                                .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelSender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelVideoContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -201,7 +182,7 @@ public class VideoMessagePanel extends javax.swing.JPanel {
                 .addComponent(jLabelSender)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelVideoContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jLabelDate))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -230,7 +211,11 @@ public class VideoMessagePanel extends javax.swing.JPanel {
         if(embeddedMediaPlayerComponent != null){
             if (embeddedMediaPlayerComponent.mediaPlayer().status().state() != State.STOPPED) {
                 embeddedMediaPlayerComponent.mediaPlayer().controls().stop();
+                jLabelDuration.setText("00:00:00");
+                jLabelProgress.setText("00:00:00");
+                jSliderProgress.setValue(0);
                 play = false;
+                System.gc();
             }
         }
     }
@@ -239,40 +224,7 @@ public class VideoMessagePanel extends javax.swing.JPanel {
     private void setPlayerEvents(){
         
        
-        /*
-        jSliderVolume.addChangeListener((ChangeEvent e) -> {
-            Object source = e.getSource();
-            int volume = ((JSlider) source).getValue();
-            embeddedMediaPlayerComponent.mediaPlayer().audio().setVolume(volume);
-        });
-
-        jSliderVolume.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (SwingUtilities.isRightMouseButton(e)) {
-                    jSliderVolume.setValue(100);
-                    audio_list_player_component.mediaPlayer().audio().setVolume(100);
-                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-            }
-        });
-        */
-        
+       
         //Listener para el slider progress
         jSliderProgress.addMouseListener(new MouseListener() {
 
@@ -389,7 +341,11 @@ public class VideoMessagePanel extends javax.swing.JPanel {
 
             @Override
             public void finished(MediaPlayer mp) {
-                
+                play = false;
+                jSliderProgress.setValue(0);
+                jLabelProgress.setText("00:00:00");
+                jLabelDuration.setText("00:00:00");
+                System.gc();
                 
             }
 

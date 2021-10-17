@@ -69,7 +69,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             server_time_stop = true;
             firstColor = secondColor = thirdColor = fontColor = secondFontColor = Color.BLACK;
             colorRandom = new Random(System.currentTimeMillis());
-            String imageName = "/resources/images/image"+(colorRandom.nextInt(17)%17 + 1)+".jpg";
+            String imageName = "/resources/images/image"+(colorRandom.nextInt(15)+1)+".jpg";
             userImage = ImageIO.read(getClass().getResource(imageName));
             bufferedUserImage = new BufferedImage(userImage.getWidth(null), userImage.getHeight(null), BufferedImage.TYPE_INT_ARGB);
 

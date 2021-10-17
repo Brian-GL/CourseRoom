@@ -12,12 +12,14 @@ import data.interfaces.MainInterface;
 import data.structures.Pair;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.LinearGradientPaint;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.image.PixelGrabber;
 import java.io.File;
@@ -32,7 +34,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 /**
  *
@@ -123,12 +124,11 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
             }
         };
         jLabelAttachFile = new javax.swing.JLabel();
-        jScrollPaneMessage = new javax.swing.JScrollPane();
-        jTextAreaMessage = new javax.swing.JTextArea();
         jLabelSendMessage = new javax.swing.JLabel();
         jLabelAttatchVideo = new javax.swing.JLabel();
         jLabelAttachAudio = new javax.swing.JLabel();
         jLabelAttachImage = new javax.swing.JLabel();
+        jTextFieldMessage = new javax.swing.JTextField();
         jPanelChatInformation = new JPanel(){
             @Override
             protected void paintComponent(Graphics g) {
@@ -245,19 +245,6 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
             }
         });
 
-        jScrollPaneMessage.setMinimumSize(new java.awt.Dimension(530, 32));
-        jScrollPaneMessage.setPreferredSize(new java.awt.Dimension(530, 32));
-
-        jTextAreaMessage.setColumns(20);
-        jTextAreaMessage.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
-        jTextAreaMessage.setRows(1);
-        jTextAreaMessage.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextAreaMessageKeyPressed(evt);
-            }
-        });
-        jScrollPaneMessage.setViewportView(jTextAreaMessage);
-
         jLabelSendMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/send.png"))); // NOI18N
         jLabelSendMessage.setToolTipText("Enviar Mensaje De Texto");
         jLabelSendMessage.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,12 +263,23 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
 
         jLabelAttachAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/microphone_1.png"))); // NOI18N
         jLabelAttachAudio.setToolTipText("Enviar Audio");
+        jLabelAttachAudio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelAttachAudioMouseClicked(evt);
+            }
+        });
 
         jLabelAttachImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit-video.png"))); // NOI18N
         jLabelAttachImage.setToolTipText("Enviar Imagen");
         jLabelAttachImage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelAttachImageMouseClicked(evt);
+            }
+        });
+
+        jTextFieldMessage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldMessageKeyPressed(evt);
             }
         });
 
@@ -298,8 +296,8 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
                 .addComponent(jLabelAttachAudio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelAttachImage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldMessage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelSendMessage)
                 .addContainerGap())
@@ -310,11 +308,11 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
                 .addGap(6, 6, 6)
                 .addGroup(jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelAttachFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelSendMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelAttatchVideo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelAttachAudio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelAttachImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabelAttachImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldMessage)))
         );
 
         jTabbedPaneChatInfo.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -525,14 +523,16 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
     }//GEN-LAST:event_jButtonCambiarImagenMouseExited
 
     private void SendMessage(){
-        String text = jTextAreaMessage.getText();
+        String text = jTextFieldMessage.getText();
         if(!text.isEmpty() && !text.isBlank()){
             Faker faker = new Faker(new Locale("es","MX"));
             String sender = faker.dune().character();
             String date = faker.backToTheFuture().date();
             TextMessagePanel textMessagePanel = new TextMessagePanel(sender,text,date);
+            textMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
             jPanelChatCenter.add(textMessagePanel);
-            jTextAreaMessage.setText("");
+            jTextFieldMessage.setText("");
+                    
         }
     }
     private void jLabelSendMessageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSendMessageMouseClicked
@@ -545,16 +545,29 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
     private void jLabelAttachFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAttachFileMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
-        }
-    }//GEN-LAST:event_jLabelAttachFileMouseClicked
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fileChooser.setApproveButtonText("Open File");
+            fileChooser.setMultiSelectionEnabled(false);
+            fileChooser.doLayout();
+            int result = fileChooser.showOpenDialog(this);
 
-    private void jTextAreaMessageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAreaMessageKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            SendMessage();
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+                if(file != null){
+                    
+                    Faker faker = new Faker(new Locale("es","MX"));
+                    String sender = faker.dune().character();
+                    String date = faker.backToTheFuture().date();
+                    FileMessagePanel fileMessagePanel = new FileMessagePanel(sender,date,file);
+                    fileMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
+                    jPanelChatCenter.add(fileMessagePanel);
+                  
+                }
+            }
         }
-    }//GEN-LAST:event_jTextAreaMessageKeyPressed
+        
+    }//GEN-LAST:event_jLabelAttachFileMouseClicked
 
     private void jLabelAttachImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAttachImageMouseClicked
         // TODO add your handling code here:
@@ -578,7 +591,8 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
                         Faker faker = new Faker(new Locale("es","MX"));
                         String sender = faker.dune().character();
                         String date = faker.backToTheFuture().date();
-                        ImageMessagePanel imageMessagePanel = new ImageMessagePanel(sender,date,openImage);
+                        ImageMessagePanel imageMessagePanel = new ImageMessagePanel(sender,date,openImage,file.getName());
+                        imageMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,600));
                         jPanelChatCenter.add(imageMessagePanel);
                         openImage.flush();
                         openImage = null;
@@ -613,6 +627,7 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
                     String sender = faker.dune().character();
                     String date = faker.backToTheFuture().date();
                     VideoMessagePanel videoMessagePanel  = new VideoMessagePanel(sender,date,file.getAbsolutePath(),file.getName());
+                    videoMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,569));
                     jPanelChatCenter.add(videoMessagePanel);
                     file = null;
                 }
@@ -621,6 +636,42 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
             filter = null;
         }
     }//GEN-LAST:event_jLabelAttatchVideoMouseClicked
+
+    private void jLabelAttachAudioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAttachAudioMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            JFileChooser fileChooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Audio Files", "mp3", "flac", "ogg", "m4a");
+            fileChooser.addChoosableFileFilter(filter);
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fileChooser.setAcceptAllFileFilterUsed(true);
+            fileChooser.setApproveButtonText("Open Music File");
+            fileChooser.setMultiSelectionEnabled(false);
+            int result = fileChooser.showOpenDialog(this);
+
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+                if(file != null){
+                    Faker faker = new Faker(new Locale("es","MX"));
+                    String sender = faker.dune().character();
+                    String date = faker.backToTheFuture().date();
+                    AudioMessagePanel audioMessagePanel  = new AudioMessagePanel(sender,date,file.getAbsolutePath(),file.getName());
+                    audioMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,474));
+                    jPanelChatCenter.add(audioMessagePanel);
+                    file = null;
+                }
+            }
+
+            filter = null;
+        }
+    }//GEN-LAST:event_jLabelAttachAudioMouseClicked
+
+    private void jTextFieldMessageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMessageKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            SendMessage();
+        }
+    }//GEN-LAST:event_jTextFieldMessageKeyPressed
 
      @Override
     public void setColors(Image image){
@@ -691,8 +742,8 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
                 jLabelBack.setForeground(fontColor);
                 jLabelChatName.setForeground(fontColor);
                 jLabelPersonasConQuienSeChatea.setForeground(fontColor);
-                jTextAreaMessage.setBackground(secondColor);
-                jTextAreaMessage.setForeground(secondFontColor);
+                jTextFieldMessage.setBackground(secondColor);
+                jTextFieldMessage.setForeground(secondFontColor);
                 jTabbedPaneChatInfo.setBackground(secondColor);
                 jTabbedPaneChatInfo.setForeground(secondFontColor);
                 jLabelFechaCreacion.setForeground(secondFontColor);
@@ -755,10 +806,9 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
     private javax.swing.JPanel jPanelMoreInformationChat;
     private javax.swing.JScrollPane jScrollPaneChatsCenter;
     private javax.swing.JScrollPane jScrollPaneDescripcionChat;
-    private javax.swing.JScrollPane jScrollPaneMessage;
     private javax.swing.JTabbedPane jTabbedPaneChatInfo;
     private javax.swing.JTextArea jTextAreaDescripcionChat;
-    private javax.swing.JTextArea jTextAreaMessage;
+    private javax.swing.JTextField jTextFieldMessage;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JToggleButton jToggleButtonEdiatrDescripcion;
     private javax.swing.JToggleButton jToggleButtonEditarNombre;

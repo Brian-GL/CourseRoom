@@ -22,10 +22,9 @@ public class TextMessagePanel extends javax.swing.JPanel {
         jTextAreaMessage.setText(message);
         jLabelDate.setForeground(DashboardPanel.getSecondFontColor());
         jLabelSender.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelDate.setBackground(DashboardPanel.getSecondColor());
-        jLabelSender.setBackground(DashboardPanel.getSecondColor());
-        jTextAreaMessage.setForeground(DashboardPanel.getFontColor());
-        jTextAreaMessage.setBackground(DashboardPanel.getFirstColor());
+        jTextAreaMessage.setForeground(DashboardPanel.getThirdFontColor());
+        jTextAreaMessage.setBackground(DashboardPanel.getThirdColor());
+        this.setBackground(DashboardPanel.getSecondColor());
   
     }
 
@@ -43,19 +42,16 @@ public class TextMessagePanel extends javax.swing.JPanel {
         jScrollPaneMessage = new javax.swing.JScrollPane();
         jTextAreaMessage = new javax.swing.JTextArea();
 
-        setMaximumSize(new java.awt.Dimension(32767, 105));
-        setMinimumSize(new java.awt.Dimension(600, 105));
-        setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(600, 105));
+        setMaximumSize(new java.awt.Dimension(800, 200));
+        setMinimumSize(new java.awt.Dimension(800, 200));
+        setPreferredSize(new java.awt.Dimension(800, 200));
 
         jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelSender.setText("Sender");
-        jLabelSender.setOpaque(true);
 
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelDate.setText("Date");
-        jLabelDate.setOpaque(true);
 
         jScrollPaneMessage.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -71,23 +67,20 @@ public class TextMessagePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelSender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(347, 347, 347))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(388, 388, 388)
-                        .addComponent(jLabelDate, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                    .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                    .addComponent(jLabelDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelSender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabelSender)
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabelDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelDate)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
