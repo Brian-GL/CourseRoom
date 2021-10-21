@@ -11,7 +11,6 @@ import data.interfaces.MainInterface;
 import data.structures.Pair;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -40,18 +39,19 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
      * Creates new form BoxAvisoPanel
      */
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public BoxAvisoPanel(String route) {
+    public BoxAvisoPanel() {
         initComponents();
         try {
             firstColor = secondColor = Color.BLACK;
-            //URL imageURL = new URL(route);
+            System.out.println("Aviso -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
+            URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
             Faker faker = new Faker(new Locale("es","MX"));
             jLabelDescripcionAviso.setText(faker.lorem().paragraph(1));
             jLabelFechaHoraAviso.setText(faker.date().birthday().toString());
             jLabelProvenenciaAviso.setText(faker.company().name());
             jLabelEstado.setText(faker.book().publisher());
             jLabelEstado.setText((faker.bool().bool()) ? "Leído" : "No Leído");
-            Image getImage = ImageIO.read(getClass().getResource("/resources/images/notification.jpg"));
+            Image getImage = ImageIO.read(imageURL);
             avisoImage = getImage.getScaledInstance(92,92,Image.SCALE_SMOOTH);
             ImageIcon avisoIcon = new ImageIcon(avisoImage);
             jLabelFotoAviso.setIcon(avisoIcon);

@@ -13,10 +13,14 @@ import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Image;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import panels.LoginPanel;
@@ -43,6 +47,13 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         
         initComponents();
+        
+        boolean isConnected = checkConnection();
+        
+        if (!isConnected){
+            JOptionPane.showMessageDialog(null,"There Is Not Internet Connection","SUPER ERROR",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -73,7 +84,20 @@ public class MainFrame extends javax.swing.JFrame {
         
         viewerLayout = (CardLayout)jPanelViewer.getLayout();
         
-     
+    }
+    
+    public boolean checkConnection(){
+        try {
+            URL url = new URL("http://www.google.com");
+            URLConnection connection = url.openConnection();
+            connection.connect();
+            connection = null;
+            return true;
+        } catch (MalformedURLException e) {
+            return false;
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     /**
@@ -109,7 +133,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        dispose();
+        this.dispose();
         System.gc();
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing

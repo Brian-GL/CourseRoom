@@ -22,9 +22,8 @@ public class HomeworksPanel extends javax.swing.JPanel {
         jScrollPaneMisTareas.getVerticalScrollBar().setUnitIncrement(15);
         
         for(int i = 0; i < 3; i++){
-            BoxHomeworkPanel boxHomeworkPanel = new BoxHomeworkPanel("https://source.unsplash.com/random");
+            BoxHomeworkPanel boxHomeworkPanel = new BoxHomeworkPanel(i);
             jPanelMisTareas.add(boxHomeworkPanel);
-            System.out.println("Getting Image From : https://source.unsplash.com/random");
         }
     }
     

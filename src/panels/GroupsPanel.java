@@ -25,9 +25,8 @@ public class GroupsPanel extends javax.swing.JPanel {
         jScrollPaneMisGrupos.getVerticalScrollBar().setUnitIncrement(15);
         
         for(int i = 0; i < 3; i++){
-            BoxGroupPanel boxGroupPanel = new BoxGroupPanel("https://source.unsplash.com/random");
+            BoxGroupPanel boxGroupPanel = new BoxGroupPanel(i);
             jPanelMisGrupos.add(boxGroupPanel);
-            System.out.println("Getting Image From : https://source.unsplash.com/random");
         }
         
     }

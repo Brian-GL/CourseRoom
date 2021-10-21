@@ -25,9 +25,8 @@ public class NoticesPanel extends javax.swing.JPanel {
         
         
         for(int i = 0; i < 3; i++){
-            BoxAvisoPanel boxAvisoPanel = new BoxAvisoPanel("https://source.unsplash.com/random");
+            BoxAvisoPanel boxAvisoPanel = new BoxAvisoPanel();
             jPanelMisAvisos.add(boxAvisoPanel);
-            System.out.println("Getting Image From : https://source.unsplash.com/random");
         }
         
     }

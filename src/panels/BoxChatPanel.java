@@ -18,7 +18,8 @@ import java.awt.LinearGradientPaint;
 import java.awt.Point;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
-import java.net.MalformedURLException;import java.util.Locale;
+import java.net.MalformedURLException;import java.net.URL;
+import java.util.Locale;
 ;
 import java.util.Random;
 import java.util.logging.Level;
@@ -43,12 +44,13 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         initComponents();
         try {
             firstColor = secondColor = Color.BLACK;
-            //URL imageURL = new URL(route);
+            System.out.println("Chat ID: "+_id+" -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
+            URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
             Faker faker = new Faker(new Locale("es","MX"));
             jLabelNombreChat.setText(faker.rickAndMorty().character());
             jLabelUltimoMensaje.setText(faker.friends().character() + " Is There?");
             jLabelNumeroMensajesNoLeidos.setText(faker.number().digits(1));
-            Image getImage = ImageIO.read(getClass().getResource("/resources/images/chat.jpg"));
+            Image getImage = ImageIO.read(imageURL);
             chatingPanel = new ChatingPanel(getImage,jLabelNombreChat.getText());
             chatImage = getImage.getScaledInstance(114,114,Image.SCALE_SMOOTH);
             ImageIcon chatIcon = new ImageIcon(chatImage);

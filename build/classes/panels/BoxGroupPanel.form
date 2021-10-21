@@ -90,6 +90,9 @@
           <Dimension value="[182, 182]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelFotoGrupoMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelNombreGrupo">
       <Properties>
@@ -102,6 +105,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Nombre Del Grupo"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelNombreGrupoMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelClaseDelGrupo">
       <Properties>

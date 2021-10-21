@@ -11,13 +11,11 @@ import data.interfaces.MainInterface;
 import data.structures.Pair;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.LinearGradientPaint;
 import java.awt.Point;
-import java.awt.geom.Point2D;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -28,6 +26,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -37,24 +36,30 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
 
     private Image groupImage;
     private Color firstColor,secondColor;
+    private GroupingPanel groupingPanel;
+    private int id;
     /**
      * Creates new form BoxGroupPanel
      */
-    public BoxGroupPanel(String route) {
+    public BoxGroupPanel(int _id) {
         initComponents();
         try {
             firstColor = secondColor = Color.BLACK;
-            //URL imageURL = new URL(route);
+            System.out.println("Group ID: "+_id+" -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
+            URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
             Faker faker = new Faker(new Locale("es","MX"));
             jLabelNombreGrupo.setText(faker.animal().name());
             jLabelUltimaActualizacion.setText(faker.team().state());
             jLabelNumeroIntegrantes.setText(faker.number().digits(1) + " Integrantes" );
             jLabelClaseDelGrupo.setText(faker.team().name());
             jLabelChatDelGrupo.setText(faker.gameOfThrones().character());
-            Image getImage = ImageIO.read(getClass().getResource("/resources/images/group.jpg"));
+            this.id = _id;
+            Image getImage = ImageIO.read(imageURL);
             groupImage = getImage.getScaledInstance(182,182,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(groupImage);
             jLabelFotoGrupo.setIcon(groupIcon);
+            groupingPanel = new GroupingPanel(getImage,jLabelNombreGrupo.getText());
+            DashboardPanel.addView(groupingPanel,"group"+_id);
             setColors(getImage);
             getImage.flush();
             getImage = null;
@@ -91,11 +96,21 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
         jLabelFotoGrupo.setMaximumSize(new java.awt.Dimension(182, 182));
         jLabelFotoGrupo.setMinimumSize(new java.awt.Dimension(182, 182));
         jLabelFotoGrupo.setPreferredSize(new java.awt.Dimension(182, 182));
+        jLabelFotoGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelFotoGrupoMouseClicked(evt);
+            }
+        });
 
         jLabelNombreGrupo.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         jLabelNombreGrupo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelNombreGrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group_1.png"))); // NOI18N
         jLabelNombreGrupo.setText("Nombre Del Grupo");
+        jLabelNombreGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelNombreGrupoMouseClicked(evt);
+            }
+        });
 
         jLabelClaseDelGrupo.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
         jLabelClaseDelGrupo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -155,6 +170,20 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
                 .addContainerGap(8, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabelFotoGrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFotoGrupoMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("group"+id);
+        }
+    }//GEN-LAST:event_jLabelFotoGrupoMouseClicked
+
+    private void jLabelNombreGrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNombreGrupoMouseClicked
+        // TODO add your handling code here:
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            DashboardPanel.showView("group" + id);
+        }
+    }//GEN-LAST:event_jLabelNombreGrupoMouseClicked
 
     @Override
     protected void paintComponent(Graphics g) {

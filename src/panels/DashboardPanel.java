@@ -21,6 +21,7 @@ import java.awt.RenderingHints;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -66,8 +67,9 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             server_time_stop = true;
             firstColor = secondColor = thirdColor = fontColor = secondFontColor = Color.BLACK;
             colorRandom = new Random(System.currentTimeMillis());
-            String imageName = "/resources/images/image"+(colorRandom.nextInt(15)+1)+".jpg";
-            userImage = ImageIO.read(getClass().getResource(imageName));
+            System.out.println("Dashboard -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
+            URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
+            userImage = ImageIO.read(imageURL);
            
             ImageIcon imageProfile  = new ImageIcon(userImage.getScaledInstance(175,175, Image.SCALE_SMOOTH));
             setColors(userImage);
@@ -125,8 +127,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             
             serverDateTime = new ServerDateTime();
             serverDateTime.start();
-            
-            imageName = null;
             
             
         } catch (MalformedURLException ex) {

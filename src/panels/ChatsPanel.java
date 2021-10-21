@@ -16,69 +16,27 @@ import javax.swing.JScrollPane;
  */
 public class ChatsPanel extends javax.swing.JPanel {
     
-    private JPanel jPanelPersonalChats, jPanelGrupalChats;
-    private JScrollPane jScrollPanePersonalChats, jScrollPaneGroupsChats;
-    private CardLayout panelLayout;
+    
    
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public ChatsPanel(){
         
         initComponents();
         
-        initMyComponents();
-        
-        int id = 0;
-        for(int i = 0; i < 3; i++){
-            BoxChatPanel boxChatPanel = new BoxChatPanel(id);
-            jPanelPersonalChats.add(boxChatPanel);
-            id++;
-        }
+        jLabelChatsTitle.setForeground(DashboardPanel.getFontColor());
+        jLabelChatsTitle.setBackground(DashboardPanel.getFirstColor());
+        jScrollPaneChats.getViewport().setOpaque(false);
+        jScrollPaneChats.getVerticalScrollBar().setUnitIncrement(15);
+        jScrollPaneChats.getHorizontalScrollBar().setUnitIncrement(15);
         
         for(int i = 0; i < 3; i++){
-            BoxChatPanel boxChatPanel = new BoxChatPanel(id);
-            jPanelGrupalChats.add(boxChatPanel);
-            id++;
+            BoxChatPanel boxChatPanel = new BoxChatPanel(i);
+            jPanelChats.add(boxChatPanel);
         }
+        
         
     }
     
-    private void initMyComponents(){
-        
-        jPanelGrupalChats = new JPanel();
-        jPanelPersonalChats = new JPanel();
-        jScrollPaneGroupsChats = new JScrollPane();
-        jScrollPanePersonalChats = new JScrollPane();
-        
-        jPanelPersonalChats.setOpaque(false);
-        jPanelPersonalChats.setLayout(new javax.swing.BoxLayout(jPanelPersonalChats, javax.swing.BoxLayout.PAGE_AXIS));
-        jPanelGrupalChats.setOpaque(false);
-        jPanelGrupalChats.setLayout(new javax.swing.BoxLayout(jPanelGrupalChats, javax.swing.BoxLayout.PAGE_AXIS));
-        
-        jLabelChatsTitle.setForeground(DashboardPanel.getFontColor());
-        jLabelChatsTitle.setBackground(DashboardPanel.getFirstColor());
-        jScrollPaneGroupsChats.getViewport().setOpaque(false);
-        jScrollPaneGroupsChats.getVerticalScrollBar().setUnitIncrement(15);
-        jScrollPaneGroupsChats.getHorizontalScrollBar().setUnitIncrement(15);
-        jScrollPanePersonalChats.getViewport().setOpaque(false);
-        jScrollPanePersonalChats.getVerticalScrollBar().setUnitIncrement(15);
-        jScrollPanePersonalChats.getHorizontalScrollBar().setUnitIncrement(15);
-         jScrollPaneGroupsChats.setBackground(java.awt.Color.white);
-        jScrollPaneGroupsChats.setBorder(null);
-        jScrollPaneGroupsChats.setForeground(java.awt.Color.white);
-        jScrollPaneGroupsChats.setOpaque(false);
-        jScrollPanePersonalChats.setBackground(java.awt.Color.white);
-        jScrollPanePersonalChats.setBorder(null);
-        jScrollPanePersonalChats.setForeground(java.awt.Color.white);
-        jScrollPanePersonalChats.setOpaque(false);
-        jComboBoxTiposChats.setForeground(DashboardPanel.getSecondFontColor());
-        jComboBoxTiposChats.setBackground(DashboardPanel.getSecondColor());
-        jScrollPaneGroupsChats.setViewportView(jPanelGrupalChats);
-        jScrollPanePersonalChats.setViewportView(jPanelPersonalChats);
-        panelLayout = (CardLayout)jPanelAllChats.getLayout();
-        jPanelAllChats.add("Personales",jScrollPanePersonalChats);
-        jPanelAllChats.add("Grupales",jScrollPaneGroupsChats);
-        
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,30 +48,26 @@ public class ChatsPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabelChatsTitle = new javax.swing.JLabel();
-        jPanelAllChats = new javax.swing.JPanel();
-        jComboBoxTiposChats = new javax.swing.JComboBox<>();
+        jScrollPaneChats = new javax.swing.JScrollPane();
+        jPanelChats = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1085, 630));
 
         jLabelChatsTitle.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
-        jLabelChatsTitle.setText("Chats");
+        jLabelChatsTitle.setText("Chats Personales");
         jLabelChatsTitle.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelChatsTitle.setMinimumSize(new java.awt.Dimension(416, 84));
         jLabelChatsTitle.setOpaque(true);
         jLabelChatsTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
-        jPanelAllChats.setOpaque(false);
-        jPanelAllChats.setLayout(new java.awt.CardLayout());
+        jScrollPaneChats.setBorder(null);
+        jScrollPaneChats.setOpaque(false);
 
-        jComboBoxTiposChats.setFont(new java.awt.Font("Gadugi", 0, 30)); // NOI18N
-        jComboBoxTiposChats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personales", "Grupales" }));
-        jComboBoxTiposChats.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBoxTiposChatsItemStateChanged(evt);
-            }
-        });
+        jPanelChats.setOpaque(false);
+        jPanelChats.setLayout(new javax.swing.BoxLayout(jPanelChats, javax.swing.BoxLayout.PAGE_AXIS));
+        jScrollPaneChats.setViewportView(jPanelChats);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -122,42 +76,30 @@ public class ChatsPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelAllChats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneChats, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelChatsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 741, Short.MAX_VALUE)
-                        .addComponent(jComboBoxTiposChats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelChatsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelChatsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jComboBoxTiposChats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)))
-                .addGap(18, 18, 18)
-                .addComponent(jPanelAllChats, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                .addComponent(jLabelChatsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPaneChats, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxTiposChatsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxTiposChatsItemStateChanged
-        // TODO add your handling code here:
-        panelLayout.show(jPanelAllChats, (String)jComboBoxTiposChats.getSelectedItem());
-    }//GEN-LAST:event_jComboBoxTiposChatsItemStateChanged
-
     public void dispose(){
-        jPanelPersonalChats.removeAll();
-        jPanelGrupalChats.removeAll();
-        jPanelAllChats.removeAll();
+        jPanelChats.removeAll();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBoxTiposChats;
     private javax.swing.JLabel jLabelChatsTitle;
-    private javax.swing.JPanel jPanelAllChats;
+    private javax.swing.JPanel jPanelChats;
+    private javax.swing.JScrollPane jScrollPaneChats;
     // End of variables declaration//GEN-END:variables
 }

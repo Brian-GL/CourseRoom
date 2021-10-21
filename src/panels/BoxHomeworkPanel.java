@@ -19,6 +19,7 @@ import java.awt.Point;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
@@ -34,10 +35,11 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
 
     private Image homeworkImage;
     private Color firstColor,secondColor;
+    private int id;
     /**
      * Creates new form BoxHomeworkPanel
      */
-    public BoxHomeworkPanel(String route) {
+    public BoxHomeworkPanel(int _id) {
         initComponents();
          try {
             Faker faker = new Faker(new Locale("es","MX"));
@@ -47,8 +49,10 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
             jLabelClaseDeLaTarea.setText(faker.book().publisher());
             jLabelEstado.setText((faker.bool().bool()) ? "Entregada" : "No Entregada Aún");
             firstColor = secondColor = Color.BLACK;
-            //URL imageURL = new URL(route);
-            Image getImage = ImageIO.read(getClass().getResource("/resources/images/homework.jpg"));
+            this.id = _id;
+            System.out.println("Homework ID: "+_id+" -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
+            URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
+            Image getImage = ImageIO.read(imageURL);
             homeworkImage = getImage.getScaledInstance(182,182,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(homeworkImage);
             jLabelFotoTarea.setIcon(groupIcon);

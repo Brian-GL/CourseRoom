@@ -909,9 +909,9 @@ public final class MusicPanel extends javax.swing.JPanel{
         audio_list_player_component.mediaListPlayer().mediaPlayer().setMediaPlayer(mediaPlayerFactory.mediaPlayers().newMediaPlayer());
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setEqualizer(mediaPlayerFactory.equalizer().newEqualizer("Flat"));
         presets_map = mediaPlayerFactory.equalizer().allPresetEqualizers();
-        firstColor = Color.BLACK;
-        secondColor = Color.WHITE;
-        thirdColor = Color.GRAY;
+        firstColor = DashboardPanel.getFirstColor();
+        secondColor = DashboardPanel.getSecondColor();
+        thirdColor = DashboardPanel.getThirdColor();
         play_icon = new ImageIcon(getClass().getResource("/resources/icons/play-button.png"));
         pause_icon = new ImageIcon(getClass().getResource("/resources/icons/pause.png"));
         mediaPlayerFactory = null;
