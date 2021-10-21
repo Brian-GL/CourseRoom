@@ -18,11 +18,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -42,7 +40,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private static Image userImage;
     private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
     private Random colorRandom;
-    private static BufferedImage bufferedUserImage;
     
     private ChatsPanel chatsPanel;
     private AboutPanel aboutPanel;
@@ -71,12 +68,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             colorRandom = new Random(System.currentTimeMillis());
             String imageName = "/resources/images/image"+(colorRandom.nextInt(15)+1)+".jpg";
             userImage = ImageIO.read(getClass().getResource(imageName));
-            bufferedUserImage = new BufferedImage(userImage.getWidth(null), userImage.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-
-            // Draw the image on to the buffered image
-            Graphics2D bGr = bufferedUserImage.createGraphics();
-            bGr.drawImage(DashboardPanel.getUserImage(), 0, 0, null);
-            bGr.dispose();
+           
             ImageIcon imageProfile  = new ImageIcon(userImage.getScaledInstance(175,175, Image.SCALE_SMOOTH));
             setColors(userImage);
             jLabelUserProfilePhoto.setIcon(imageProfile);
@@ -957,13 +949,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
      */
     public static Image getUserImage() {
         return userImage;
-    }
-
-    /**
-     * @return the userImage
-     */
-    public static BufferedImage getBufferedUserImage() {
-        return bufferedUserImage;
     }
     
     /**

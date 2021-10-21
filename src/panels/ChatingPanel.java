@@ -62,6 +62,13 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
         image = null;
         chatIcon = null;
         //imageURL = null;
+        jScrollPaneMembers.getVerticalScrollBar().setUnitIncrement(15);
+        jScrollPaneMembers.getViewport().setOpaque(false);
+        
+        for(int i = 0; i < 5;i++){
+            MemberPanel memberPanel = new MemberPanel();
+            jPanelChatMembers.add(memberPanel);
+        }
     }
 
     /**
@@ -147,10 +154,11 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
             }
         };
         jTabbedPaneChatInfo = new javax.swing.JTabbedPane();
-        jPanelAllFilesSend = new javax.swing.JPanel();
         jPanelMembers = new javax.swing.JPanel();
+        jScrollPaneMembers = new javax.swing.JScrollPane();
+        jPanelChatMembers = new javax.swing.JPanel();
         jPanelMoreInformationChat = new javax.swing.JPanel();
-        Nombre = new javax.swing.JLabel();
+        JLabelNombreInformation = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jToggleButtonEditarNombre = new javax.swing.JToggleButton();
         jButtonCambiarImagen = new javax.swing.JButton();
@@ -320,40 +328,25 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
         jTabbedPaneChatInfo.setMinimumSize(new java.awt.Dimension(360, 409));
         jTabbedPaneChatInfo.setPreferredSize(new java.awt.Dimension(360, 409));
 
-        jPanelAllFilesSend.setOpaque(false);
-
-        javax.swing.GroupLayout jPanelAllFilesSendLayout = new javax.swing.GroupLayout(jPanelAllFilesSend);
-        jPanelAllFilesSend.setLayout(jPanelAllFilesSendLayout);
-        jPanelAllFilesSendLayout.setHorizontalGroup(
-            jPanelAllFilesSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-        );
-        jPanelAllFilesSendLayout.setVerticalGroup(
-            jPanelAllFilesSendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 328, Short.MAX_VALUE)
-        );
-
-        jTabbedPaneChatInfo.addTab("Archivos", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/file.png")), jPanelAllFilesSend); // NOI18N
-
         jPanelMembers.setOpaque(false);
+        jPanelMembers.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout jPanelMembersLayout = new javax.swing.GroupLayout(jPanelMembers);
-        jPanelMembers.setLayout(jPanelMembersLayout);
-        jPanelMembersLayout.setHorizontalGroup(
-            jPanelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-        );
-        jPanelMembersLayout.setVerticalGroup(
-            jPanelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 328, Short.MAX_VALUE)
-        );
+        jScrollPaneMembers.setBorder(null);
+        jScrollPaneMembers.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPaneMembers.setOpaque(false);
+
+        jPanelChatMembers.setOpaque(false);
+        jPanelChatMembers.setLayout(new javax.swing.BoxLayout(jPanelChatMembers, javax.swing.BoxLayout.PAGE_AXIS));
+        jScrollPaneMembers.setViewportView(jPanelChatMembers);
+
+        jPanelMembers.add(jScrollPaneMembers, "card2");
 
         jTabbedPaneChatInfo.addTab("Miembros", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group-meeting.png")), jPanelMembers); // NOI18N
 
         jPanelMoreInformationChat.setOpaque(false);
 
-        Nombre.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        Nombre.setText("Nombre");
+        JLabelNombreInformation.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        JLabelNombreInformation.setText("Nombre");
 
         jTextFieldNombre.setEditable(false);
         jTextFieldNombre.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
@@ -396,7 +389,7 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
                 .addGroup(jPanelMoreInformationChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldNombre)
                     .addGroup(jPanelMoreInformationChatLayout.createSequentialGroup()
-                        .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JLabelNombreInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jToggleButtonEditarNombre))
                     .addComponent(jButtonCambiarImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -412,7 +405,7 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
             .addGroup(jPanelMoreInformationChatLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanelMoreInformationChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JLabelNombreInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButtonEditarNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -421,7 +414,7 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
                     .addComponent(jLabelDescripcion)
                     .addComponent(jToggleButtonEdiatrDescripcion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneDescripcionChat, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addComponent(jScrollPaneDescripcionChat, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCambiarImagen)
                 .addGap(18, 18, 18))
@@ -749,6 +742,7 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
                 jLabelFechaCreacion.setForeground(secondFontColor);
                 jLabelDescripcion.setForeground(fontColor);
                 jLabelChatName.setForeground(fontColor);
+                JLabelNombreInformation.setForeground(fontColor);
                 jButtonCambiarImagen.setBackground(firstColor);
                 jButtonCambiarImagen.setForeground(fontColor);
                 jToggleButtonEdiatrDescripcion.setBackground(secondColor);
@@ -760,7 +754,7 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
                 jTextFieldNombre.setBackground(secondColor);
                 jTextFieldNombre.setForeground(secondFontColor);
                 jScrollPaneChatsCenter.setForeground(fontColor);
-
+                
                 
                 colorRandom = null;
                 colorList = null;
@@ -783,7 +777,7 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Nombre;
+    private javax.swing.JLabel JLabelNombreInformation;
     private javax.swing.JButton jButtonCambiarImagen;
     private javax.swing.JLabel jLabelAttachAudio;
     private javax.swing.JLabel jLabelAttachFile;
@@ -797,15 +791,16 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
     private javax.swing.JLabel jLabelMoreInfo;
     private javax.swing.JLabel jLabelPersonasConQuienSeChatea;
     private javax.swing.JLabel jLabelSendMessage;
-    private javax.swing.JPanel jPanelAllFilesSend;
     private javax.swing.JPanel jPanelChatBottom;
     private javax.swing.JPanel jPanelChatCenter;
     private javax.swing.JPanel jPanelChatInformation;
+    private javax.swing.JPanel jPanelChatMembers;
     private javax.swing.JPanel jPanelChatTop;
     private javax.swing.JPanel jPanelMembers;
     private javax.swing.JPanel jPanelMoreInformationChat;
     private javax.swing.JScrollPane jScrollPaneChatsCenter;
     private javax.swing.JScrollPane jScrollPaneDescripcionChat;
+    private javax.swing.JScrollPane jScrollPaneMembers;
     private javax.swing.JTabbedPane jTabbedPaneChatInfo;
     private javax.swing.JTextArea jTextAreaDescripcionChat;
     private javax.swing.JTextField jTextFieldMessage;
