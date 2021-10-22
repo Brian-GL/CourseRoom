@@ -5,6 +5,7 @@
  */
 package panels;
 
+import com.github.javafaker.Faker;
 import java.awt.Color;
 
 
@@ -24,7 +25,8 @@ public class GroupsPanel extends javax.swing.JPanel {
         jScrollPaneMisGrupos.getViewport().setOpaque(false);
         jScrollPaneMisGrupos.getVerticalScrollBar().setUnitIncrement(15);
         
-        for(int i = 0; i < 3; i++){
+        Faker faker = new Faker();
+        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
             BoxGroupPanel boxGroupPanel = new BoxGroupPanel(i);
             jPanelMisGrupos.add(boxGroupPanel);
         }

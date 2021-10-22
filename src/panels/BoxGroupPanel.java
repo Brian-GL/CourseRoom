@@ -48,7 +48,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
             System.out.println("Group ID: "+_id+" -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
             URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
             Faker faker = new Faker(new Locale("es","MX"));
-            jLabelNombreGrupo.setText(faker.animal().name());
+            jLabelNombreGrupo.setText(faker.team().sport());
             jLabelUltimaActualizacion.setText(faker.team().state());
             jLabelNumeroIntegrantes.setText(faker.number().digits(1) + " Integrantes" );
             jLabelClaseDelGrupo.setText(faker.team().name());

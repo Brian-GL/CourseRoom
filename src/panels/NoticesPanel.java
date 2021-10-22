@@ -5,6 +5,8 @@
  */
 package panels;
 
+import com.github.javafaker.Faker;
+
 
 /**
  *
@@ -24,7 +26,8 @@ public class NoticesPanel extends javax.swing.JPanel {
         jScrollPaneMisAvisos.getHorizontalScrollBar().setUnitIncrement(15);
         
         
-        for(int i = 0; i < 3; i++){
+       Faker faker = new Faker();
+        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
             BoxAvisoPanel boxAvisoPanel = new BoxAvisoPanel();
             jPanelMisAvisos.add(boxAvisoPanel);
         }

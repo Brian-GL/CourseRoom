@@ -5,6 +5,7 @@
  */
 package panels;
 
+import com.github.javafaker.Faker;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -29,7 +30,8 @@ public class ChatsPanel extends javax.swing.JPanel {
         jScrollPaneChats.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneChats.getHorizontalScrollBar().setUnitIncrement(15);
         
-        for(int i = 0; i < 3; i++){
+       Faker faker = new Faker();
+        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
             BoxChatPanel boxChatPanel = new BoxChatPanel(i);
             jPanelChats.add(boxChatPanel);
         }

@@ -53,7 +53,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private HomeworksPanel homeworksPanel;
     
     private static CardLayout panelLayout;
-    private static byte activePageFlag;
     private ServerDateTime serverDateTime;
     private volatile boolean server_time_stop;
     
@@ -75,7 +74,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             setColors(userImage);
             jLabelUserProfilePhoto.setIcon(imageProfile);
             imageProfile = null;
-            activePageFlag = 0;
             imageProfile = null;
             
             //info profile panel -> 0 en active page flag
@@ -643,10 +641,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         // TODO add your handling code here:
         
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if(activePageFlag != 9){
-                panelLayout.show(jPanelInformacion, "aboutPanel");
-                activePageFlag = 9;
-            }
+            panelLayout.show(jPanelInformacion, "aboutPanel");
         }
         
     }//GEN-LAST:event_jLabelAboutMouseClicked
@@ -654,10 +649,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private void jLabelChatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelChatsMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if(activePageFlag != 8){
-                panelLayout.show(jPanelInformacion, "chatsPanel");
-                activePageFlag = 8;
-            }
+            panelLayout.show(jPanelInformacion, "chatsPanel");
         }
         
     }//GEN-LAST:event_jLabelChatsMouseClicked
@@ -665,20 +657,14 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private void jLabelGroupsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGroupsMouseClicked
         // TODO add your handling code here:
          if(SwingUtilities.isLeftMouseButton(evt)){
-            if(activePageFlag != 7){
-                panelLayout.show(jPanelInformacion, "groupsPanel");
-                activePageFlag = 7;
-            }
+            panelLayout.show(jPanelInformacion, "groupsPanel");
         }
     }//GEN-LAST:event_jLabelGroupsMouseClicked
 
     private void jLabelNoticesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNoticesMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if(activePageFlag != 6){
-                panelLayout.show(jPanelInformacion, "noticesPanel");
-                activePageFlag = 6;
-            }
+            panelLayout.show(jPanelInformacion, "noticesPanel");
         }
         
     }//GEN-LAST:event_jLabelNoticesMouseClicked
@@ -686,10 +672,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private void jLabelDatesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDatesMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if(activePageFlag != 5){
-                panelLayout.show(jPanelInformacion, "datesPanel");
-                activePageFlag = 5;
-            }
+            panelLayout.show(jPanelInformacion, "datesPanel");
         }
         
     }//GEN-LAST:event_jLabelDatesMouseClicked
@@ -697,10 +680,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private void jLabelHomeWorksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeWorksMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if(activePageFlag != 4){
-                panelLayout.show(jPanelInformacion, "homeworksPanel");
-                activePageFlag = 4;
-            }
+            panelLayout.show(jPanelInformacion, "homeworksPanel");
         }
         
     }//GEN-LAST:event_jLabelHomeWorksMouseClicked
@@ -750,20 +730,14 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     private void jLabelUserProfilePhotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelUserProfilePhotoMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if(activePageFlag != 0){
-                panelLayout.show(jPanelInformacion, "infoProfilePanel");
-                activePageFlag = 0;
-            }
+            panelLayout.show(jPanelInformacion, "infoProfilePanel");
         }
     }//GEN-LAST:event_jLabelUserProfilePhotoMouseClicked
 
     private void jLabelMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMusicMouseClicked
         // TODO add your handling code here:
        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(activePageFlag != 10){
-                panelLayout.show(jPanelInformacion, "musicPanel");
-                activePageFlag =10;
-            }
+            panelLayout.show(jPanelInformacion, "musicPanel");
         }
     }//GEN-LAST:event_jLabelMusicMouseClicked
 
@@ -780,17 +754,11 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
     }//GEN-LAST:event_jLabelMusicMouseExited
 
     public static void showInfoProfilePanel(){
-        if(activePageFlag != 0){
-            panelLayout.show(jPanelInformacion, "infoProfilePanel");
-            activePageFlag = 0;
-        }
+        panelLayout.show(jPanelInformacion, "infoProfilePanel");
     }
     
     public static void showEditProfilePanel(){
-        if(activePageFlag != 1){
-            panelLayout.show(jPanelInformacion, "editProfilePanel");
-            activePageFlag = 1;
-        }
+        panelLayout.show(jPanelInformacion, "editProfilePanel");
     }
     
     @Override

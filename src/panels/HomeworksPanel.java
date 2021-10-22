@@ -5,6 +5,8 @@
  */
 package panels;
 
+import com.github.javafaker.Faker;
+
 /**
  *
  * @author LENOVO
@@ -21,7 +23,8 @@ public class HomeworksPanel extends javax.swing.JPanel {
         jScrollPaneMisTareas.getViewport().setOpaque(false);
         jScrollPaneMisTareas.getVerticalScrollBar().setUnitIncrement(15);
         
-        for(int i = 0; i < 3; i++){
+        Faker faker = new Faker();
+        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
             BoxHomeworkPanel boxHomeworkPanel = new BoxHomeworkPanel(i);
             jPanelMisTareas.add(boxHomeworkPanel);
         }

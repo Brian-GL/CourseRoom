@@ -191,6 +191,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
 
         jScrollPaneDescripcion.setOpaque(false);
 
+        jTextPaneDescripcion.setEditable(false);
         jTextPaneDescripcion.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
         jTextPaneDescripcion.setOpaque(false);
         jScrollPaneDescripcion.setViewportView(jTextPaneDescripcion);
