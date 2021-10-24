@@ -5,12 +5,22 @@
  */
 package panels;
 
+import components.ImageFilePreview;
 import courseroom.MainFrame;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -895,7 +905,38 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
     private void jButtonCargarImagenPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarImagenPerfilMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+             JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setAccessory(new ImageFilePreview(fileChooser));
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos De Imagenes", "png", "jpg", "jpeg", "bmp");
+            fileChooser.addChoosableFileFilter(filter);
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fileChooser.setAcceptAllFileFilterUsed(true);
+            fileChooser.setApproveButtonText("Cargar Imagen");
+            int result = fileChooser.showOpenDialog(this);
 
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+
+                try {
+                    Image openImage = ImageIO.read(file);
+                    int large = jLabelImagenPerfil.getHeight();
+                    Image scaled = openImage.getScaledInstance(large,large,Image.SCALE_SMOOTH);
+                    ImageIcon autenticacionIcon = new ImageIcon();
+
+                    jLabelImagenPerfil.setIcon(autenticacionIcon);
+
+                    DashboardPanel.setUserImage(openImage);
+                    
+                    scaled.flush();
+                    scaled = null;
+                    autenticacionIcon = null;
+
+                } catch (IOException ex) {
+                    Logger.getLogger(EditProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            fileChooser = null;
         }
     }//GEN-LAST:event_jButtonCargarImagenPerfilMouseClicked
 

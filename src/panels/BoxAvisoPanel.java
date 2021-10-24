@@ -16,6 +16,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.LinearGradientPaint;
 import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -52,7 +53,7 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
             jLabelEstado.setText(faker.book().publisher());
             jLabelEstado.setText((faker.bool().bool()) ? "Leído" : "No Leído");
             Image getImage = ImageIO.read(imageURL);
-            avisoImage = getImage.getScaledInstance(92,92,Image.SCALE_SMOOTH);
+            avisoImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
             ImageIcon avisoIcon = new ImageIcon(avisoImage);
             jLabelFotoAviso.setIcon(avisoIcon);
             setColors(getImage);
@@ -83,13 +84,13 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
         jLabelEstado = new javax.swing.JLabel();
 
         setBackground(java.awt.Color.black);
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(32767, 141));
-        setMinimumSize(new java.awt.Dimension(598, 141));
+        setMaximumSize(new java.awt.Dimension(32767, 139));
+        setMinimumSize(new java.awt.Dimension(1085, 139));
+        setPreferredSize(new java.awt.Dimension(1085, 139));
 
-        jLabelFotoAviso.setMaximumSize(new java.awt.Dimension(92, 92));
-        jLabelFotoAviso.setMinimumSize(new java.awt.Dimension(92, 92));
-        jLabelFotoAviso.setPreferredSize(new java.awt.Dimension(92, 92));
+        jLabelFotoAviso.setMaximumSize(new java.awt.Dimension(129, 129));
+        jLabelFotoAviso.setMinimumSize(new java.awt.Dimension(129, 129));
+        jLabelFotoAviso.setPreferredSize(new java.awt.Dimension(129, 129));
         jLabelFotoAviso.setRequestFocusEnabled(false);
 
         jLabelProvenenciaAviso.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
@@ -129,22 +130,22 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelFotoAviso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelFechaHoraAviso)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelFechaHoraAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelProvenenciaAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelDescripcionAviso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelDescripcionAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelProvenenciaAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelFotoAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelFotoAviso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelProvenenciaAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -153,15 +154,16 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelFechaHoraAviso)
                             .addComponent(jLabelEstado))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-        @Override
+    @Override
     protected void paintComponent(Graphics g) {
         
        super.paintComponent(g);
         Graphics2D graphics = (Graphics2D) g;
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         int w = getWidth();
         int h = getHeight();
         Point start = new Point(0,0);
@@ -250,7 +252,6 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
                 jLabelEstado.setForeground(secondFontColor);
                 jLabelFechaHoraAviso.setForeground(fontColor);
                 jLabelProvenenciaAviso.setForeground(fontColor);
-                this.setBorder(javax.swing.BorderFactory.createLineBorder(fontColor));
 
                 fontColor = null;
                 colorRandom = null;

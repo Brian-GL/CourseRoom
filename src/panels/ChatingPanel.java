@@ -7,9 +7,6 @@ package panels;
 
 import com.github.javafaker.Faker;
 import components.ImageFilePreview;
-import data.collections.PairDoublyLinkedList;
-import data.interfaces.MainInterface;
-import data.structures.Pair;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -18,17 +15,15 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.LinearGradientPaint;
 import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.awt.image.PixelGrabber;
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -38,25 +33,20 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author LENOVO
  */
-public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
+public class ChatingPanel extends javax.swing.JPanel{
 
-    private Image chatImage;
-    private Color firstColor, secondColor;
+    private Color firstColor, secondColor,fontColor,secondFontColor;
     
-    /**
-     * Creates new form ChatPanel
-     */
-    public ChatingPanel(Image image, String name) {
+    public ChatingPanel(String name, Color _firstColor, Color _secondColor, Color _fontColor, Color _secondFontColor) {
         initComponents();
         jScrollPaneChatsCenter.getViewport().setOpaque(false);
         jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
-        firstColor = secondColor = Color.BLACK;
-        //URL imageURL = new URL(route);
+        firstColor = _firstColor;
+        secondColor = _secondColor;
+        fontColor = _fontColor;
+        secondFontColor = _secondFontColor;
         jLabelChatName.setText(name);
-        setColors(image);
-        image.flush();
-        image = null;
-        //imageURL = null;
+        paintMyComponents();
     }
 
     /**
@@ -74,6 +64,7 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
 
                 super.paintComponent(g);
                 Graphics2D graphics = (Graphics2D) g;
+                graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
                 int w = getWidth();
                 int h = getHeight();
                 Point start = new Point(0,0);
@@ -93,13 +84,13 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
         };
         jLabelBack = new javax.swing.JLabel();
         jLabelChatName = new javax.swing.JLabel();
-        jLabelActivoHace = new javax.swing.JLabel();
         jPanelChatBottom = new JPanel(){
             @Override
             protected void paintComponent(Graphics g) {
 
                 super.paintComponent(g);
                 Graphics2D graphics = (Graphics2D) g;
+                graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
                 int w = getWidth();
                 int h = getHeight();
                 Point start = new Point(0,0);
@@ -151,10 +142,6 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
         jLabelChatName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/chat_1.png"))); // NOI18N
         jLabelChatName.setText("Nombre Del Chat O La Persona Con Quien Se Chatea");
 
-        jLabelActivoHace.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
-        jLabelActivoHace.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelActivoHace.setText("Activo Hace 2 Horas");
-
         javax.swing.GroupLayout jPanelChatTopLayout = new javax.swing.GroupLayout(jPanelChatTop);
         jPanelChatTop.setLayout(jPanelChatTopLayout);
         jPanelChatTopLayout.setHorizontalGroup(
@@ -162,22 +149,18 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
             .addGroup(jPanelChatTopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelChatName, javax.swing.GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
-                    .addComponent(jLabelActivoHace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jLabelChatName)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelChatTopLayout.setVerticalGroup(
             jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelChatTopLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelActivoHace))
-                    .addComponent(jLabelChatName))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addGroup(jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelChatName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelBack, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         jPanelChatBottom.setMinimumSize(new java.awt.Dimension(1085, 70));
@@ -281,9 +264,9 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelChatTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelChatTop, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPaneChatsCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                .addComponent(jScrollPaneChatsCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanelChatBottom, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -445,103 +428,28 @@ public class ChatingPanel extends javax.swing.JPanel implements MainInterface{
         }
     }//GEN-LAST:event_jTextFieldMessageKeyPressed
 
-     @Override
-    public void setColors(Image image){
+    public void paintMyComponents(){
         
-        try {
-            Random colorRandom = new Random(System.currentTimeMillis());
-            int maximum = 0;
-            
-            PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
-            PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = (image.getWidth(null)/3);
-            if (pg.grabPixels()) {
-                int[] pixels = (int[]) pg.getPixels();
-                for(int i = 0; i < pixels.length; i++){
-                    int pixel = pixels[i];
-                    int  red = (pixel  & 0x00ff0000) >> 16;
-                    int  green = (pixel & 0x0000ff00) >> 8;
-                    int  blue = pixel & 0x000000ff;
-                    Color color = new Color(red,green,blue);
-                    Pair<Integer, Color> pair = colorList.get_from_second(color);
-            
-                    if (pair != null) {//exist
-                        int number = pair.first()+ 1;
-                        pair.first(number);
-                        if (number > maximum) {
-                            firstColor = color;
-                            maximum = number;
-                        }
-                    } else {
-                        colorList.push_back(1, color);
-                    }
-
-                    color = null;
-                    i += colorRandom.nextInt(large+1) + large;
-                }
-
-                secondColor = firstColor;
-            
-                int iterations = 0;
-                if(colorList.size() > 1){
-                    
-                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
-                        secondColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 25){
-                             while(firstColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                secondColor = colorList.get(position).second();
-                            }
-                             break;
-                        }
-                    }
-                }
-              
-                int red = firstColor.getRed();
-                Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                red = secondColor.getRed();
-                Color secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-
-                colorList.clear();
-
-                Component[] components = this.getComponents();
-                for (Component component : components){
-                    component.setForeground(fontColor);
-                }
-                
-                jLabelBack.setForeground(fontColor);
-                jLabelChatName.setForeground(fontColor);
-                jLabelActivoHace.setForeground(fontColor);
-                jTextFieldMessage.setBackground(secondColor);
-                jTextFieldMessage.setForeground(secondFontColor);
-                jLabelChatName.setForeground(fontColor);
-                jScrollPaneChatsCenter.setForeground(fontColor);
-                
-                
-                colorRandom = null;
-                colorList = null;
-                pg = null;
-                fontColor = secondFontColor = null;
-                pixels = null;
-            }
-            
-        } catch (InterruptedException ex) {
-            Logger.getLogger(MusicPanel.class.getName()).log(Level.SEVERE, null, ex);
+       
+        Component[] components = this.getComponents();
+        for (Component component : components){
+            component.setForeground(fontColor);
         }
+
+        jLabelBack.setForeground(fontColor);
+        jLabelChatName.setForeground(fontColor);
+        jTextFieldMessage.setBackground(secondColor);
+        jTextFieldMessage.setForeground(secondFontColor);
+        jLabelChatName.setForeground(fontColor);
+        jScrollPaneChatsCenter.setForeground(fontColor);
     }
  
   
-    @Override
     public void dispose(){
         jPanelChatCenter.removeAll();
-        chatImage.flush();
-        chatImage = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelActivoHace;
     private javax.swing.JLabel jLabelAttachAudio;
     private javax.swing.JLabel jLabelAttachFile;
     private javax.swing.JLabel jLabelAttachImage;

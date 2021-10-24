@@ -57,9 +57,6 @@ public class FileMessagePanel extends javax.swing.JPanel {
         jLabelDate.setText("Date");
 
         jLabelFileIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/ImageIcons/documents.png"))); // NOI18N
-        jLabelFileIcon.setMaximumSize(new java.awt.Dimension(120, 120));
-        jLabelFileIcon.setMinimumSize(new java.awt.Dimension(120, 120));
-        jLabelFileIcon.setPreferredSize(new java.awt.Dimension(120, 120));
 
         jLabelFileName.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         jLabelFileName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -91,18 +88,19 @@ public class FileMessagePanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(3, 3, 3)
+                .addGap(0, 0, 0)
                 .addComponent(jLabelSender)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelFileIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jLabelFileName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelExtension)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelDate))
+                .addGap(0, 0, 0)
+                .addComponent(jLabelDate)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

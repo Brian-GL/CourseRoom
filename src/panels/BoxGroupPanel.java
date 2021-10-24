@@ -16,6 +16,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.LinearGradientPaint;
 import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -35,7 +36,7 @@ import javax.swing.SwingUtilities;
 public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
 
     private Image groupImage;
-    private Color firstColor,secondColor;
+    private Color firstColor,secondColor, thirdColor,fontColor, secondFontColor;
     private GroupingPanel groupingPanel;
     private int id;
     /**
@@ -44,9 +45,14 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
     public BoxGroupPanel(int _id) {
         initComponents();
         try {
-            firstColor = secondColor = Color.BLACK;
+            firstColor = secondColor = thirdColor = Color.BLACK;
             System.out.println("Group ID: "+_id+" -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
             URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
+            Image getImage = ImageIO.read(imageURL);
+            groupImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
+            ImageIcon groupIcon = new ImageIcon(groupImage);
+            jLabelFotoGrupo.setIcon(groupIcon);
+            setColors(getImage);
             Faker faker = new Faker(new Locale("es","MX"));
             jLabelNombreGrupo.setText(faker.team().sport());
             jLabelUltimaActualizacion.setText(faker.team().state());
@@ -54,17 +60,12 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
             jLabelClaseDelGrupo.setText(faker.team().name());
             jLabelChatDelGrupo.setText(faker.gameOfThrones().character());
             this.id = _id;
-            Image getImage = ImageIO.read(imageURL);
-            groupImage = getImage.getScaledInstance(182,182,Image.SCALE_SMOOTH);
-            ImageIcon groupIcon = new ImageIcon(groupImage);
-            jLabelFotoGrupo.setIcon(groupIcon);
-            groupingPanel = new GroupingPanel(getImage,jLabelNombreGrupo.getText());
+            groupingPanel = new GroupingPanel(getImage,jLabelNombreGrupo.getText(),firstColor,secondColor, thirdColor,fontColor, secondFontColor);
             DashboardPanel.addView(groupingPanel,"group"+_id);
-            setColors(getImage);
             getImage.flush();
             getImage = null;
             groupIcon = null;
-            //imageURL = null;
+            imageURL = null;
         } catch (MalformedURLException ex) {
             Logger.getLogger(BoxChatPanel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -88,14 +89,13 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
         jLabelChatDelGrupo = new javax.swing.JLabel();
         jLabelUltimaActualizacion = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setMaximumSize(new java.awt.Dimension(32767, 198));
-        setMinimumSize(new java.awt.Dimension(649, 198));
-        setPreferredSize(new java.awt.Dimension(649, 198));
+        setMaximumSize(new java.awt.Dimension(32767, 174));
+        setMinimumSize(new java.awt.Dimension(1085, 174));
+        setPreferredSize(new java.awt.Dimension(1085, 174));
 
-        jLabelFotoGrupo.setMaximumSize(new java.awt.Dimension(182, 182));
-        jLabelFotoGrupo.setMinimumSize(new java.awt.Dimension(182, 182));
-        jLabelFotoGrupo.setPreferredSize(new java.awt.Dimension(182, 182));
+        jLabelFotoGrupo.setMaximumSize(new java.awt.Dimension(164, 164));
+        jLabelFotoGrupo.setMinimumSize(new java.awt.Dimension(164, 164));
+        jLabelFotoGrupo.setPreferredSize(new java.awt.Dimension(164, 164));
         jLabelFotoGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelFotoGrupoMouseClicked(evt);
@@ -136,14 +136,14 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addComponent(jLabelFotoGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNumeroIntegrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelChatDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))
+                        .addComponent(jLabelChatDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE))
                     .addComponent(jLabelNombreGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelClaseDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -154,20 +154,20 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelFotoGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNombreGrupo)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelClaseDelGrupo)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelUltimaActualizacion)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelChatDelGrupo)
                             .addComponent(jLabelNumeroIntegrantes))))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -190,6 +190,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
         
         super.paintComponent(g);
         Graphics2D graphics = (Graphics2D) g;
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         int w = getWidth();
         int h = getHeight();
         Point start = new Point(0,0);
@@ -261,11 +262,30 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
                         }
                     }
                 }
+                
+                
+                thirdColor = secondColor;
+                if(colorList.size() > 2){
+                    iterations = 0;
+                    
+                    while(Math.abs(thirdColor.getRGB() - firstColor.getRGB()) < 3000000 || Math.abs(secondColor.getRGB() - thirdColor.getRGB()) < 3000000){
+                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        thirdColor = colorList.get(position).second();
+                        iterations++;
+                        if(iterations > 50){
+                            while(thirdColor.getRGB() == firstColor.getRGB() || thirdColor.getRGB() == secondColor.getRGB()){
+                                position = colorRandom.nextInt((int)colorList.size()-1);
+                                thirdColor = colorList.get(position).second();
+                            }
+                            break;
+                        }
+                    }
+                }
               
                 int red = firstColor.getRed();
-                Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
+                fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 red = secondColor.getRed();
-                Color secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
+                secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
 
                 colorList.clear();
 
@@ -279,12 +299,9 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
                 jLabelNombreGrupo.setForeground(fontColor);
                 jLabelNumeroIntegrantes.setForeground(fontColor);
                 jLabelUltimaActualizacion.setForeground(fontColor);
-                this.setBorder(javax.swing.BorderFactory.createLineBorder(fontColor));
 
-                fontColor = null;
                 colorRandom = null;
                 colorList = null;
-                secondFontColor = null;
                 pg = null;
                 pixels = null;
             }

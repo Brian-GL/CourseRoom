@@ -52,6 +52,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         if (!isConnected){
             JOptionPane.showMessageDialog(null,"There Is Not Internet Connection","SUPER ERROR",JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
             return;
         }
         
@@ -160,8 +161,12 @@ public class MainFrame extends javax.swing.JFrame {
    
     @Override
     public void dispose(){
-        dashboard.dispose();
-        recuperarCredenciales.dispose();
+        if(dashboard != null){
+            dashboard.dispose();
+        }
+        if(recuperarCredenciales != null){
+            recuperarCredenciales.dispose();
+        }
         login = null;
         recuperarCredenciales = null;
         crearCuenta = null;

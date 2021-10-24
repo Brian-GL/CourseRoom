@@ -23,10 +23,15 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
      */
     public BoxCalendarPanel(int day) {
         initComponents();
-        Faker faker = new Faker(new Locale("es","MX"));
-        jLabelHora.setText(faker.backToTheFuture().date());
-        jTextPaneNotice.setText(faker.buffy().celebrities());
+        initMyComponents();
         jLabelDayNumber.setText(String.valueOf(day));
+      
+    }
+    
+    private void initMyComponents(){
+        Faker faker = new Faker(new Locale("es","MX"));
+        jLabelHora.setText(faker.number().randomNumber(2, true) + ":" + faker.number().randomNumber(2, false) + " P.M");
+        jTextPaneNotice.setText(faker.lorem().paragraph());
         StyledDocument doc = jTextPaneNotice.getStyledDocument();
         jScrollPaneNotice.getViewport().setOpaque(false);
         SimpleAttributeSet center = new SimpleAttributeSet();
@@ -71,35 +76,36 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
         jLabelHora.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabelHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelHora.setText("23:55 P.M");
-        jLabelHora.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabelHora.setMaximumSize(new java.awt.Dimension(68, 28));
-        jLabelHora.setMinimumSize(new java.awt.Dimension(68, 28));
-        jLabelHora.setPreferredSize(new java.awt.Dimension(68, 28));
+        jLabelHora.setMaximumSize(new java.awt.Dimension(68, 32));
+        jLabelHora.setMinimumSize(new java.awt.Dimension(68, 32));
+        jLabelHora.setPreferredSize(new java.awt.Dimension(68, 32));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneNotice, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addComponent(jLabelDayNumber)))
-                .addContainerGap())
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jLabelDayNumber))
+                    .addComponent(jScrollPaneNotice, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(6, 6, 6))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDayNumber))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPaneNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(4, 4, 4)
+                .addComponent(jLabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(jLabelDayNumber))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPaneNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(4, 4, 4))
         );
     }// </editor-fold>//GEN-END:initComponents
 

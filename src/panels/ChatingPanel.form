@@ -41,9 +41,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Component id="jPanelChatTop" min="-2" max="-2" attributes="0"/>
+              <Component id="jPanelChatTop" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jScrollPaneChatsCenter" pref="516" max="32767" attributes="0"/>
+              <Component id="jScrollPaneChatsCenter" pref="548" max="32767" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="jPanelChatBottom" min="-2" pref="44" max="-2" attributes="0"/>
           </Group>
@@ -61,7 +61,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;       super.paintComponent(g);&#xa;        Graphics2D graphics = (Graphics2D) g;&#xa;        int w = getWidth();&#xa;        int h = getHeight();&#xa;        Point start = new Point(0,0);&#xa;        Point end = new Point(w,h);&#xa;        float[] slice = new float[]{0.5f,1f};&#xa;        Color[] colors = new Color[]{firstColor,secondColor};&#xa;        LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);&#xa;        graphics.setPaint(gp);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics = null;&#xa;        gp = null;&#xa;        graphics = null;&#xa;        slice = null;&#xa;        colors = null;&#xa;        &#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa; @Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;       super.paintComponent(g);&#xa;        Graphics2D graphics = (Graphics2D) g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        int w = getWidth();&#xa;        int h = getHeight();&#xa;        Point start = new Point(0,0);&#xa;        Point end = new Point(w,h);&#xa;        float[] slice = new float[]{0.5f,1f};&#xa;        Color[] colors = new Color[]{firstColor,secondColor};&#xa;        LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);&#xa;        graphics.setPaint(gp);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics = null;&#xa;        gp = null;&#xa;        graphics = null;&#xa;        slice = null;&#xa;        colors = null;&#xa;        &#xa;    }&#xa;}"/>
       </AuxValues>
 
       <Layout>
@@ -70,27 +70,21 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabelBack" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelChatName" pref="1009" max="32767" attributes="0"/>
-                      <Component id="jLabelActivoHace" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                  <Component id="jLabelChatName" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jLabelBack" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelActivoHace" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jLabelChatName" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabelChatName" max="32767" attributes="0"/>
+                      <Component id="jLabelBack" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -129,15 +123,6 @@
             <Property name="text" type="java.lang.String" value="Nombre Del Chat O La Persona Con Quien Se Chatea"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelActivoHace">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gadugi" size="14" style="2"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Activo Hace 2 Horas"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanelChatBottom">
@@ -150,7 +135,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;       super.paintComponent(g);&#xa;        Graphics2D graphics = (Graphics2D) g;&#xa;        int w = getWidth();&#xa;        int h = getHeight();&#xa;        Point start = new Point(0,0);&#xa;        Point end = new Point(w,h);&#xa;        float[] slice = new float[]{0.5f,1f};&#xa;        Color[] colors = new Color[]{firstColor,secondColor};&#xa;        LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);&#xa;        graphics.setPaint(gp);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics = null;&#xa;        gp = null;&#xa;        graphics = null;&#xa;        slice = null;&#xa;        colors = null;&#xa;        &#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa; @Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;       super.paintComponent(g);&#xa;        Graphics2D graphics = (Graphics2D) g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        int w = getWidth();&#xa;        int h = getHeight();&#xa;        Point start = new Point(0,0);&#xa;        Point end = new Point(w,h);&#xa;        float[] slice = new float[]{0.5f,1f};&#xa;        Color[] colors = new Color[]{firstColor,secondColor};&#xa;        LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);&#xa;        graphics.setPaint(gp);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics = null;&#xa;        gp = null;&#xa;        graphics = null;&#xa;        slice = null;&#xa;        colors = null;&#xa;        &#xa;    }&#xa;}"/>
       </AuxValues>
 
       <Layout>

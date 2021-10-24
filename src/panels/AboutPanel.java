@@ -5,8 +5,7 @@
  */
 package panels;
 
-import com.github.javafaker.Faker;
-import courseroom.MainFrame;import java.util.Locale;
+import courseroom.MainFrame;
 ;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -22,16 +21,8 @@ public class AboutPanel extends javax.swing.JPanel {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public AboutPanel() {
         initComponents();
-        jScrollPaneTextPane.getViewport().setOpaque(false);
-        jLabelLogo.setIcon(MainFrame.getLogoImage());
-        jTextPaneAbout.setForeground(DashboardPanel.getFontColor());
-        jLabelTitulo.setForeground(DashboardPanel.getSecondFontColor());
-        StyledDocument doc = jTextPaneAbout.getStyledDocument();
-        SimpleAttributeSet center = new SimpleAttributeSet();
-        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-        doc.setParagraphAttributes(0, doc.getLength(), center, false);
-        doc = null;
-        center = null;
+        initMyComponents();
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,6 +53,7 @@ public class AboutPanel extends javax.swing.JPanel {
         jLabelTitulo.setText("Acerca De CourseRoom");
         jLabelTitulo.setMaximumSize(new java.awt.Dimension(1071, 43));
         jLabelTitulo.setMinimumSize(new java.awt.Dimension(1071, 43));
+        jLabelTitulo.setOpaque(true);
         jLabelTitulo.setPreferredSize(new java.awt.Dimension(1071, 43));
 
         jScrollPaneTextPane.setBorder(null);
@@ -86,8 +78,11 @@ public class AboutPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPaneTextPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelLogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelLogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -103,6 +98,24 @@ public class AboutPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void initMyComponents(){
+      
+        jScrollPaneTextPane.getViewport().setOpaque(false);
+        jScrollPaneTextPane.getVerticalScrollBar().setUnitIncrement(15);
+        jLabelLogo.setIcon(MainFrame.getLogoImage());
+        StyledDocument doc = jTextPaneAbout.getStyledDocument();
+        SimpleAttributeSet center = new SimpleAttributeSet();
+        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+        doc.setParagraphAttributes(0, doc.getLength(), center, false);
+        doc = null;
+        center = null;
+        
+        jLabelTitulo.setForeground(DashboardPanel.getFontColor());
+        jLabelTitulo.setBackground(DashboardPanel.getFirstColor());
+        jTextPaneAbout.setForeground(DashboardPanel.getFontColor());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelTitulo;

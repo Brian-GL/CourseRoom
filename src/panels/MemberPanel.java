@@ -21,6 +21,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import data.collections.PairDoublyLinkedList;
 import data.structures.Pair;
+import java.awt.LinearGradientPaint;
+import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.image.PixelGrabber;
 
 /**
@@ -28,14 +31,17 @@ import java.awt.image.PixelGrabber;
  * @author LENOVO
  */
 public class MemberPanel extends javax.swing.JPanel {
+    
+    private String full_name;
+    private Color firstColor, secondColor;
 
     /**
      * Creates new form MemberPanel
      */
     public MemberPanel() {
         initComponents();
-        Random colorRandom = new Random(System.currentTimeMillis());
         try {
+            firstColor = secondColor = Color.BLACK;
             System.out.println("Member -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
             URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
             Image image = ImageIO.read(imageURL);
@@ -52,6 +58,7 @@ public class MemberPanel extends javax.swing.JPanel {
             String apellido = faker.name().lastName() + " " + faker.name().lastName();
             String username = faker.name().username();
             
+            full_name = nombre + " "+ apellido;
             jLabelMemberLastName.setText(apellido);
             jLabelMemberName.setText(nombre);
             jLabelMemberUserName.setText(username);
@@ -66,6 +73,30 @@ public class MemberPanel extends javax.swing.JPanel {
         }
         
     }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+        Graphics2D graphics = (Graphics2D) g;
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        Point start = new Point(0,0);
+        Point end = new Point(w,h);
+        float[] slice = new float[]{0.5f,1f};
+        Color[] colors = new Color[]{firstColor,secondColor};
+        LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);
+        graphics.setPaint(gp);
+        graphics.fillRect(0, 0, w, h);
+        graphics = null;
+        gp = null;
+        graphics = null;
+        slice = null;
+        colors = null;
+
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,9 +112,9 @@ public class MemberPanel extends javax.swing.JPanel {
         jLabelMemberLastName = new javax.swing.JLabel();
         jLabelMemberUserName = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 120));
-        setMinimumSize(new java.awt.Dimension(465, 120));
-        setPreferredSize(new java.awt.Dimension(465, 120));
+        setMaximumSize(new java.awt.Dimension(32767, 110));
+        setMinimumSize(new java.awt.Dimension(360, 110));
+        setPreferredSize(new java.awt.Dimension(360, 110));
 
         jLabelMemberPhoto.setMaximumSize(new java.awt.Dimension(100, 100));
         jLabelMemberPhoto.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -99,34 +130,35 @@ public class MemberPanel extends javax.swing.JPanel {
 
         jLabelMemberUserName.setFont(new java.awt.Font("Gadugi", 3, 15)); // NOI18N
         jLabelMemberUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelMemberUserName.setText("Nombre De Usuario Del Miembro");
+        jLabelMemberUserName.setText("UserName Del Miembro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap()
                 .addComponent(jLabelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelMemberName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelMemberLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelMemberUserName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabelMemberLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelMemberName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelMemberUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelMemberPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelMemberName)
-                        .addGap(22, 22, 22)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabelMemberLastName)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelMemberUserName))))
+                        .addComponent(jLabelMemberUserName)))
+                .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,7 +167,7 @@ public class MemberPanel extends javax.swing.JPanel {
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
             int maximum = 0;
-            Color firstColor = Color.BLACK;
+            firstColor = Color.BLACK;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
             int large = (image.getWidth(null)/3);
@@ -165,11 +197,30 @@ public class MemberPanel extends javax.swing.JPanel {
                 }
 
                
+                secondColor = firstColor;
+            
+                int iterations = 0;
+                if(colorList.size() > 1){
+                    
+                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
+                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        secondColor = colorList.get(position).second();
+                        iterations++;
+                        if(iterations > 25){
+                             while(firstColor.getRGB() == secondColor.getRGB()){
+                                position = colorRandom.nextInt((int)colorList.size()-1);
+                                secondColor = colorList.get(position).second();
+                            }
+                             break;
+                        }
+                    }
+                }
+                
                 int red = firstColor.getRed();
                 Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-
+                
+                
                 colorList.clear();
-                this.setBackground(firstColor);
                 jLabelMemberLastName.setForeground(fontColor);
                 jLabelMemberUserName.setForeground(fontColor);
                 jLabelMemberName.setForeground(fontColor);
@@ -179,12 +230,15 @@ public class MemberPanel extends javax.swing.JPanel {
                 colorList = null;
                 pg = null;
                 pixels = null;
-                firstColor = null;
             }
             
         } catch (InterruptedException ex) {
             Logger.getLogger(MusicPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public String getFullName(){
+        return this.full_name;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

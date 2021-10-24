@@ -5,7 +5,6 @@
  */
 package panels;
 
-import java.awt.Color;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,6 +24,15 @@ public class DatesPanel extends javax.swing.JPanel {
      */
     public DatesPanel() {
         initComponents();
+        
+        initMyComponents();
+        
+        createCalendar();
+        
+        
+    }
+    
+    private void initMyComponents(){
         jLabelMonth.setForeground(DashboardPanel.getFontColor());
         jLabelMonth.setBackground(DashboardPanel.getFirstColor());
         jScrollPaneCalendar.getViewport().setOpaque(false);
@@ -35,13 +43,12 @@ public class DatesPanel extends javax.swing.JPanel {
         jLabelViernes.setForeground(DashboardPanel.getSecondFontColor());
         jLabelSabado.setForeground(DashboardPanel.getSecondFontColor());
         jLabelDomingo.setForeground(DashboardPanel.getSecondFontColor());
+        jLabelNextMonth.setForeground(DashboardPanel.getThirdFontColor());
+        jLabelPreviousMonth.setForeground(DashboardPanel.getFontColor());
         LocalDateTime now = LocalDateTime.now();  
         index_month = now.getMonthValue();
         index_year = now.getYear();
         time_now = LocalDateTime.now();
-        CreateCalendar();
-        
-        
     }
 
     /**
@@ -162,8 +169,9 @@ public class DatesPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPaneCalendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelPreviousMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabelMonth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE))
                     .addComponent(jPanelDaysTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addComponent(jLabelNextMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -189,7 +197,7 @@ public class DatesPanel extends javax.swing.JPanel {
             if((index_month+1) < 13){
                 index_month++;
                 jPanelCalendar.removeAll();
-                CreateCalendar();
+                createCalendar();
             } 
         }
     }//GEN-LAST:event_jLabelNextMonthMouseClicked
@@ -200,12 +208,12 @@ public class DatesPanel extends javax.swing.JPanel {
             if((index_month-1) > 0 ){
                 index_month--;
                 jPanelCalendar.removeAll();
-                CreateCalendar();
+                createCalendar();
             }
         }
     }//GEN-LAST:event_jLabelPreviousMonthMouseClicked
 
-    public void CreateCalendar(){
+    public void createCalendar(){
         
         
         switch(index_month){

@@ -16,6 +16,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.LinearGradientPaint;
 import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -53,7 +54,7 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
             System.out.println("Homework ID: "+_id+" -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
             URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
             Image getImage = ImageIO.read(imageURL);
-            homeworkImage = getImage.getScaledInstance(182,182,Image.SCALE_SMOOTH);
+            homeworkImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(homeworkImage);
             jLabelFotoTarea.setIcon(groupIcon);
             setColors(getImage);
@@ -84,12 +85,13 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
         jLabelTipoDeTarea = new javax.swing.JLabel();
         jLabelEstado = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(649, 198));
-        setPreferredSize(new java.awt.Dimension(649, 198));
+        setMaximumSize(new java.awt.Dimension(32767, 174));
+        setMinimumSize(new java.awt.Dimension(1085, 174));
+        setPreferredSize(new java.awt.Dimension(1085, 174));
 
-        jLabelFotoTarea.setMaximumSize(new java.awt.Dimension(182, 182));
-        jLabelFotoTarea.setMinimumSize(new java.awt.Dimension(182, 182));
-        jLabelFotoTarea.setPreferredSize(new java.awt.Dimension(182, 182));
+        jLabelFotoTarea.setMaximumSize(new java.awt.Dimension(164, 164));
+        jLabelFotoTarea.setMinimumSize(new java.awt.Dimension(164, 164));
+        jLabelFotoTarea.setPreferredSize(new java.awt.Dimension(164, 164));
 
         jLabelClaseDeLaTarea.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
         jLabelClaseDeLaTarea.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -119,15 +121,15 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jLabelFotoTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabelFotoTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelClaseDeLaTarea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelTipoDeTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelFechaDeEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, Short.MAX_VALUE)
                         .addComponent(jLabelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelNombreTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -135,20 +137,20 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabelFotoTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelFotoTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNombreTarea)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelClaseDeLaTarea)
-                        .addGap(17, 17, 17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelTipoDeTarea)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelEstado)
                             .addComponent(jLabelFechaDeEntrega))))
-                .addGap(1, 1, 1))
+                .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -157,6 +159,7 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
         
         super.paintComponent(g);
         Graphics2D graphics = (Graphics2D) g;
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         int w = getWidth();
         int h = getHeight();
         Point start = new Point(0,0);
@@ -246,7 +249,6 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
                 jLabelFechaDeEntrega.setForeground(fontColor);
                 jLabelNombreTarea.setForeground(fontColor);
                 jLabelTipoDeTarea.setForeground(fontColor);
-                this.setBorder(javax.swing.BorderFactory.createLineBorder(fontColor));
 
                 fontColor = null;
                 colorRandom = null;

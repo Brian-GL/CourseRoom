@@ -39,7 +39,6 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jScrollPaneDescripcion.getViewport().setOpaque(false);
         noColor = null;
         jTabbedPaneFondo.setForeground(DashboardPanel.getSecondFontColor());
-        
     }
 
     /**
@@ -731,16 +730,18 @@ public class EditProfilePanel extends javax.swing.JPanel {
                 try {
                     Image openImage = ImageIO.read(file);
                     int large = jLabelImagenPerfilAutenticacion.getHeight();
-                    ImageIcon autenticacionIcon = new ImageIcon(openImage.getScaledInstance(large,large,Image.SCALE_SMOOTH));
+                    Image scaled = DashboardPanel.getUserImage().getScaledInstance(large, large, Image.SCALE_SMOOTH);
+                    ImageIcon autenticacionIcon = new ImageIcon(scaled);
                     
                     jLabelImagenPerfilAutenticacion.setIcon(autenticacionIcon);
                     
-                    DashboardPanel.setUserImage(autenticacionIcon.getImage());
+                    DashboardPanel.setUserImage(openImage);
                     
                     JOptionPane.showMessageDialog(null, "Los Cambios En La Interfaz Se Verán Reflejados \nEn Su Próximo Inicio De Sesión", "Información", JOptionPane.INFORMATION_MESSAGE);
                     
-                    openImage = null;
+                    openImage.flush();
                     autenticacionIcon = null;
+                    
                     
                 } catch (IOException ex) {
                     Logger.getLogger(EditProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -774,38 +775,40 @@ public class EditProfilePanel extends javax.swing.JPanel {
 
     private void jButtonGuardarCambiosAutenticacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosAutenticacionMouseEntered
         // TODO add your handling code here:
-        jButtonGuardarCambiosAutenticacion.setBackground(DashboardPanel.getFirstColor());
-        jButtonGuardarCambiosAutenticacion.setForeground(DashboardPanel.getSecondColor());
+        
+        jButtonGuardarCambiosAutenticacion.setBackground(DashboardPanel.getSecondColor());
+        jButtonGuardarCambiosAutenticacion.setForeground(DashboardPanel.getSecondFontColor());
     }//GEN-LAST:event_jButtonGuardarCambiosAutenticacionMouseEntered
 
     private void jButtonGuardarCambiosAutenticacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosAutenticacionMouseExited
         // TODO add your handling code here:
-        jButtonGuardarCambiosAutenticacion.setBackground(DashboardPanel.getSecondColor());
-        jButtonGuardarCambiosAutenticacion.setForeground(DashboardPanel.getFirstColor());
+        jButtonGuardarCambiosAutenticacion.setBackground(DashboardPanel.getFirstColor());
+        jButtonGuardarCambiosAutenticacion.setForeground(DashboardPanel.getFontColor());
     }//GEN-LAST:event_jButtonGuardarCambiosAutenticacionMouseExited
 
     private void jButtonCargarImagenPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarImagenPerfilMouseEntered
         // TODO add your handling code here:
-        jButtonCargarImagenPerfil.setBackground(DashboardPanel.getFirstColor());
-        jButtonCargarImagenPerfil.setForeground(DashboardPanel.getSecondColor());
+        jButtonCargarImagenPerfil.setBackground(DashboardPanel.getSecondColor());
+        jButtonCargarImagenPerfil.setForeground(DashboardPanel.getSecondFontColor());
     }//GEN-LAST:event_jButtonCargarImagenPerfilMouseEntered
 
     private void jButtonCargarImagenPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarImagenPerfilMouseExited
         // TODO add your handling code here:
-        jButtonCargarImagenPerfil.setBackground(DashboardPanel.getSecondColor());
-        jButtonCargarImagenPerfil.setForeground(DashboardPanel.getFirstColor());
+        jButtonCargarImagenPerfil.setBackground(DashboardPanel.getFirstColor());
+        jButtonCargarImagenPerfil.setForeground(DashboardPanel.getFontColor());
     }//GEN-LAST:event_jButtonCargarImagenPerfilMouseExited
 
     private void jButtonGuardarCambiosDatosPersonalesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosDatosPersonalesMouseEntered
         // TODO add your handling code here:
-        jButtonGuardarCambiosDatosPersonales.setBackground(DashboardPanel.getFirstColor());
-        jButtonGuardarCambiosDatosPersonales.setForeground(DashboardPanel.getSecondColor());
+        
+        jButtonGuardarCambiosDatosPersonales.setBackground(DashboardPanel.getSecondColor());
+        jButtonGuardarCambiosDatosPersonales.setForeground(DashboardPanel.getSecondFontColor());
     }//GEN-LAST:event_jButtonGuardarCambiosDatosPersonalesMouseEntered
 
     private void jButtonGuardarCambiosDatosPersonalesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosDatosPersonalesMouseExited
         // TODO add your handling code here:
-        jButtonGuardarCambiosDatosPersonales.setBackground(DashboardPanel.getSecondColor());
-        jButtonGuardarCambiosDatosPersonales.setForeground(DashboardPanel.getFirstColor());
+       jButtonGuardarCambiosDatosPersonales.setBackground(DashboardPanel.getFirstColor());
+       jButtonGuardarCambiosDatosPersonales.setForeground(DashboardPanel.getFontColor());
     }//GEN-LAST:event_jButtonGuardarCambiosDatosPersonalesMouseExited
 
 
@@ -865,6 +868,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void paintMyComponents() {
+        
         Component[] components = jPanelDatosPersonales.getComponents();
         for (Component component : components) {
 
@@ -903,7 +907,13 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jTextAreaDescripcion.setCaretColor(DashboardPanel.getFirstColor() );
 
         int large = jLabelImagenPerfilAutenticacion.getPreferredSize().height;
-        ImageIcon icon = new ImageIcon(DashboardPanel.getUserImage().getScaledInstance(large, large, Image.SCALE_SMOOTH));
+        Image scaled = DashboardPanel.getUserImage().getScaledInstance(large, large, Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(scaled);
         jLabelImagenPerfilAutenticacion.setIcon(icon);
+        scaled.flush();
+        scaled = null;
+        icon = null;
+        
+        
     }
 }

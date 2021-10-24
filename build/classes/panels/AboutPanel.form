@@ -30,8 +30,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPaneTextPane" max="32767" attributes="0"/>
                   <Component id="jLabelLogo" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jLabelTitulo" alignment="1" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabelTitulo" min="-2" pref="379" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -41,7 +45,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jLabelLogo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabelTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPaneTextPane" min="-2" pref="414" max="-2" attributes="0"/>
@@ -81,6 +85,7 @@
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1071, 43]"/>
         </Property>
+        <Property name="opaque" type="boolean" value="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1071, 43]"/>
         </Property>

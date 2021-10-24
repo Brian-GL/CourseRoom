@@ -126,6 +126,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             serverDateTime = new ServerDateTime();
             serverDateTime.start();
             
+            imageURL = null;
             
         } catch (MalformedURLException ex) {
             Logger.getLogger(DashboardPanel.class.getName()).log(Level.SEVERE, null, ex);

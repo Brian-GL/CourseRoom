@@ -35,6 +35,7 @@ public class VideoMessagePanel extends javax.swing.JPanel {
         jLabelDate.setText(date);
         jLabelSender.setText(sender);
         play = false;
+        
         jLabelDate.setForeground(DashboardPanel.getSecondFontColor());
         jLabelSender.setForeground(DashboardPanel.getSecondFontColor());
         jLabelDuration.setForeground(DashboardPanel.getSecondFontColor());
@@ -42,7 +43,8 @@ public class VideoMessagePanel extends javax.swing.JPanel {
         jLabelTitle.setForeground(DashboardPanel.getSecondFontColor());
         jSliderProgress.setForeground(DashboardPanel.getSecondFontColor());
         jPanelControls.setBackground(DashboardPanel.getSecondColor());
-        this.setBackground(DashboardPanel.getSecondColor());
+        jLabelDate.setBackground(DashboardPanel.getSecondColor());
+        jLabelSender.setBackground(DashboardPanel.getSecondColor());
         
         flag = true;
         embeddedMediaPlayerComponent = new EmbeddedMediaPlayerComponent();
@@ -73,16 +75,19 @@ public class VideoMessagePanel extends javax.swing.JPanel {
         jSliderProgress = new javax.swing.JSlider();
         jLabelDuration = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(800, 569));
-        setMinimumSize(new java.awt.Dimension(800, 569));
-        setPreferredSize(new java.awt.Dimension(800, 569));
+        setMaximumSize(new java.awt.Dimension(800, 520));
+        setMinimumSize(new java.awt.Dimension(800, 520));
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(800, 520));
 
         jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelSender.setText("Sender");
+        jLabelSender.setText("ALSOALSMAODLAOSLADOAA");
+        jLabelSender.setOpaque(true);
 
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelDate.setText("Date");
+        jLabelDate.setText("MIÉRCOLES 25 De OCTUBRE DE 2021 - 10:10 A.M");
+        jLabelDate.setOpaque(true);
 
         jPanelVideoContent.setOpaque(false);
 
@@ -156,11 +161,11 @@ public class VideoMessagePanel extends javax.swing.JPanel {
         jPanelVideoContentLayout.setVerticalGroup(
             jPanelVideoContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelVideoContentLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanelVideoView, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(5, 5, 5))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -170,20 +175,23 @@ public class VideoMessagePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelSender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelVideoContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelSender)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(3, 3, 3)
-                .addComponent(jLabelSender)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelVideoContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSender)
+                    .addComponent(jLabelDate))
                 .addGap(0, 0, 0)
-                .addComponent(jLabelDate))
+                .addComponent(jPanelVideoContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

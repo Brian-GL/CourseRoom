@@ -3,13 +3,14 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 569]"/>
+      <Dimension value="[800, 520]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 569]"/>
+      <Dimension value="[800, 520]"/>
     </Property>
+    <Property name="opaque" type="boolean" value="false"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 569]"/>
+      <Dimension value="[800, 520]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -30,9 +31,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelSender" max="32767" attributes="0"/>
                   <Component id="jPanelVideoContent" max="32767" attributes="0"/>
-                  <Component id="jLabelDate" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabelSender" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabelDate" min="-2" pref="424" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -41,12 +45,14 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-              <Component id="jLabelSender" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanelVideoContent" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelSender" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelDate" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jLabelDate" min="-2" max="-2" attributes="0"/>
+              <Component id="jPanelVideoContent" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,7 +63,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Sender"/>
+        <Property name="text" type="java.lang.String" value="ALSOALSMAODLAOSLADOAA"/>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelDate">
@@ -66,7 +73,8 @@
           <Font name="Gadugi" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Date"/>
+        <Property name="text" type="java.lang.String" value="MI&#xc9;RCOLES 25 De OCTUBRE DE 2021 - 10:10 A.M"/>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanelVideoContent">
@@ -90,11 +98,11 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jPanelVideoView" min="-2" pref="426" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jPanelControls" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

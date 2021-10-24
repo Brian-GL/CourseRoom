@@ -27,6 +27,12 @@ public class InfoProfilePanel extends javax.swing.JPanel {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public InfoProfilePanel() {
         initComponents();
+        
+        paintMyComponents();
+        
+    }
+    
+    public void paintMyComponents(){
         Component[] components = this.getComponents();
         for(Component component : components){
             component.setForeground(DashboardPanel.getFontColor());
@@ -44,6 +50,13 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelGenero.setText(faker.demographic().sex());
         jLabelFechaDeNacimiento.setText(faker.backToTheFuture().date());
         faker = null;
+        
+        jLabelNombres.setForeground(DashboardPanel.getFontColor());
+        jLabelApellidos.setForeground(DashboardPanel.getFontColor());
+        jLabelNombres.setBackground(DashboardPanel.getFirstColor());
+        jLabelApellidos.setBackground(DashboardPanel.getFirstColor());
+        jLabelNombreDeUsuario.setForeground(DashboardPanel.getSecondFontColor());
+        jLabelNombreDeUsuario.setBackground(DashboardPanel.getSecondColor());
         
     }
 
@@ -89,6 +102,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelApellidos.setMaximumSize(new java.awt.Dimension(380, 50));
         jLabelApellidos.setMinimumSize(new java.awt.Dimension(380, 50));
         jLabelApellidos.setName("label"); // NOI18N
+        jLabelApellidos.setOpaque(true);
         jLabelApellidos.setPreferredSize(new java.awt.Dimension(380, 50));
 
         jLabelNombres.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
@@ -98,6 +112,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelNombres.setMaximumSize(new java.awt.Dimension(380, 50));
         jLabelNombres.setMinimumSize(new java.awt.Dimension(380, 50));
         jLabelNombres.setName("label"); // NOI18N
+        jLabelNombres.setOpaque(true);
         jLabelNombres.setPreferredSize(new java.awt.Dimension(380, 50));
 
         jLabelNombreDeUsuario.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
@@ -106,6 +121,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelNombreDeUsuario.setToolTipText("User Name");
         jLabelNombreDeUsuario.setMaximumSize(new java.awt.Dimension(430, 30));
         jLabelNombreDeUsuario.setMinimumSize(new java.awt.Dimension(430, 30));
+        jLabelNombreDeUsuario.setOpaque(true);
         jLabelNombreDeUsuario.setPreferredSize(new java.awt.Dimension(430, 30));
 
         jLabelCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
