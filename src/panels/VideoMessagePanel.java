@@ -31,20 +31,22 @@ public class VideoMessagePanel extends javax.swing.JPanel {
     
     
     public VideoMessagePanel(String sender, String date, String _mrl, String title) {
+        
         initComponents();
         jLabelDate.setText(date);
         jLabelSender.setText(sender);
         play = false;
         
-        jLabelDate.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelSender.setForeground(DashboardPanel.getSecondFontColor());
+        jLabelDate.setForeground(DashboardPanel.getFontColor());
+        jLabelSender.setForeground(DashboardPanel.getFontColor());
+        jLabelDate.setBackground(DashboardPanel.getFirstColor());
+        jLabelSender.setBackground(DashboardPanel.getFirstColor());
+        
         jLabelDuration.setForeground(DashboardPanel.getSecondFontColor());
         jLabelProgress.setForeground(DashboardPanel.getSecondFontColor());
         jLabelTitle.setForeground(DashboardPanel.getSecondFontColor());
         jSliderProgress.setForeground(DashboardPanel.getSecondFontColor());
         jPanelControls.setBackground(DashboardPanel.getSecondColor());
-        jLabelDate.setBackground(DashboardPanel.getSecondColor());
-        jLabelSender.setBackground(DashboardPanel.getSecondColor());
         
         flag = true;
         embeddedMediaPlayerComponent = new EmbeddedMediaPlayerComponent();

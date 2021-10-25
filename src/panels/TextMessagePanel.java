@@ -18,10 +18,10 @@ public class TextMessagePanel extends javax.swing.JPanel {
         jTextAreaMessage.setText(message);
         jLabelDate.setForeground(DashboardPanel.getFontColor());
         jLabelSender.setForeground(DashboardPanel.getFontColor());
-        jTextAreaMessage.setForeground(DashboardPanel.getSecondFontColor());
-        jTextAreaMessage.setBackground(DashboardPanel.getSecondColor());
         jLabelDate.setBackground(DashboardPanel.getFirstColor());
         jLabelSender.setBackground(DashboardPanel.getFirstColor());
+        jTextAreaMessage.setForeground(DashboardPanel.getSecondFontColor());
+        jTextAreaMessage.setBackground(DashboardPanel.getSecondColor());
   
     }
 
@@ -67,7 +67,7 @@ public class TextMessagePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelSender, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

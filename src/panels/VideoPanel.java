@@ -129,7 +129,7 @@ public class VideoPanel extends javax.swing.JPanel {
                     .addComponent(jLabelProgreso)
                     .addComponent(jSliderProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDuracionTotal))
-                .addGap(45, 45, 45))
+                .addContainerGap())
         );
 
         jPanelVideoView.setBackground(java.awt.Color.black);

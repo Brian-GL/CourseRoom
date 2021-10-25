@@ -14,24 +14,28 @@ import javax.swing.ImageIcon;
  */
 public class ImageMessagePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ImageMessagePanel
-     */
     public ImageMessagePanel(String sender, String date, Image image, String filename) {
         initComponents();
         jLabelDate.setText(date);
         jLabelSender.setText(sender);
         jLabelImageName.setText(filename);
-        jLabelDate.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelSender.setForeground(DashboardPanel.getSecondFontColor());
+        
+        jLabelDate.setForeground(DashboardPanel.getFontColor());
+        jLabelSender.setForeground(DashboardPanel.getFontColor());
+        jLabelDate.setBackground(DashboardPanel.getFirstColor());
+        jLabelSender.setBackground(DashboardPanel.getFirstColor());
+        
         jLabelImageName.setForeground(DashboardPanel.getSecondFontColor());
-        this.setBackground(DashboardPanel.getSecondColor());
-        Image resizedImage = image.getScaledInstance(789, 500, Image.SCALE_AREA_AVERAGING);
+        jLabelImageName.setBackground(DashboardPanel.getSecondColor());
+        jLabelImageMessage.setBackground(DashboardPanel.getSecondColor());
+        
+        Image resizedImage =  image.getScaledInstance(789, 500, Image.SCALE_DEFAULT);
         ImageIcon icon = new ImageIcon(resizedImage);
         jLabelImageMessage.setIcon(icon);
         resizedImage.flush();
         resizedImage = null;
         icon = null;
+        
     }
 
     /**
@@ -57,9 +61,11 @@ public class ImageMessagePanel extends javax.swing.JPanel {
         jLabelSender.setText("USERNAME_10JAKCOLAOQ");
         jLabelSender.setOpaque(true);
 
+        jLabelImageMessage.setBackground(java.awt.Color.black);
         jLabelImageMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelImageMessage.setMaximumSize(new java.awt.Dimension(789, 500));
         jLabelImageMessage.setMinimumSize(new java.awt.Dimension(789, 500));
+        jLabelImageMessage.setOpaque(true);
         jLabelImageMessage.setPreferredSize(new java.awt.Dimension(789, 500));
 
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -79,18 +85,17 @@ public class ImageMessagePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabelSender, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelImageMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(5, 5, 5))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelSender, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabelImageMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabelImageName, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jLabelImageName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,11 +104,10 @@ public class ImageMessagePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSender)
                     .addComponent(jLabelDate))
-                .addGap(0, 0, 0)
                 .addComponent(jLabelImageMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jLabelImageName)
-                .addGap(5, 5, 5))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

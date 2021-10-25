@@ -5,6 +5,7 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1085, 630]"/>
     </Property>
+    <Property name="opaque" type="boolean" value="false"/>
   </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -26,7 +27,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="24" style="1"/>
         </Property>
-        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -37,6 +37,9 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanelAboutGroup">
+          <Properties>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;        super.paintComponent(g);&#xa;        int w = this.getWidth();&#xa;        int h = this.getHeight();&#xa;        Graphics2D graphics = (Graphics2D)g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);&#xa;        graphics.setPaint(primary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics.setPaint(secondary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        primary = null;&#xa;        secondary = null;&#xa;        noColor = null;&#xa;    }&#xa;}"/>
           </AuxValues>
@@ -73,11 +76,9 @@
                       <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPaneMembers" min="-2" pref="360" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabelMiembros" min="-2" pref="354" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jLabelMiembros" min="-2" pref="354" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -222,6 +223,9 @@
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;        super.paintComponent(g);&#xa;        int w = this.getWidth();&#xa;        int h = this.getHeight();&#xa;        Graphics2D graphics = (Graphics2D)g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);&#xa;        graphics.setPaint(primary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics.setPaint(secondary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        primary = null;&#xa;        secondary = null;&#xa;        noColor = null;&#xa;    }&#xa;}"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Chat Grupal">
@@ -236,6 +240,9 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelTareas">
+          <Properties>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;        super.paintComponent(g);&#xa;        int w = this.getWidth();&#xa;        int h = this.getHeight();&#xa;        Graphics2D graphics = (Graphics2D)g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);&#xa;        graphics.setPaint(primary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics.setPaint(secondary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        primary = null;&#xa;        secondary = null;&#xa;        noColor = null;&#xa;    }&#xa;}"/>
           </AuxValues>
@@ -264,6 +271,9 @@
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelPorHacer">
+          <Properties>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;        super.paintComponent(g);&#xa;        int w = this.getWidth();&#xa;        int h = this.getHeight();&#xa;        Graphics2D graphics = (Graphics2D)g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);&#xa;        graphics.setPaint(primary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics.setPaint(secondary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        primary = null;&#xa;        secondary = null;&#xa;        noColor = null;&#xa;    }&#xa;}"/>
           </AuxValues>
@@ -484,6 +494,9 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelConfiguraciones">
+          <Properties>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;        super.paintComponent(g);&#xa;        int w = this.getWidth();&#xa;        int h = this.getHeight();&#xa;        Graphics2D graphics = (Graphics2D)g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);&#xa;        graphics.setPaint(primary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics.setPaint(secondary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        primary = null;&#xa;        secondary = null;&#xa;        noColor = null;&#xa;    }&#xa;}"/>
           </AuxValues>

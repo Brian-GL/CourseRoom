@@ -116,6 +116,7 @@ public class AboutPanel extends javax.swing.JPanel {
         jTextPaneAbout.setForeground(DashboardPanel.getFontColor());
     }
     
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelTitulo;

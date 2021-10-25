@@ -36,9 +36,10 @@ public class EditProfilePanel extends javax.swing.JPanel {
         paintMyComponents();
         Color noColor = new Color(0,0,0,0);
         jTabbedPaneFondo.setBackground(noColor);
+        jTabbedPaneFondo.setForeground(DashboardPanel.getSecondFontColor());
         jScrollPaneDescripcion.getViewport().setOpaque(false);
         noColor = null;
-        jTabbedPaneFondo.setForeground(DashboardPanel.getSecondFontColor());
+        
     }
 
     /**
