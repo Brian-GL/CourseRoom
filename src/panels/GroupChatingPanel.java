@@ -9,12 +9,7 @@ import com.github.javafaker.Faker;
 import components.ImageFilePreview;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.LinearGradientPaint;
-import java.awt.Point;
-import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -34,14 +29,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class GroupChatingPanel extends JPanel{
 
-    private Color firstColor, secondColor;
    
-    public GroupChatingPanel(Color _firstColor, Color _secondColor) {
+    public GroupChatingPanel(Color firstColor, Color secondColor, Color secondFontColor) {
         initComponents();
         jScrollPaneChatsCenter.getViewport().setOpaque(false);
         jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
-        firstColor = _firstColor;
-        secondColor = _secondColor;
+        jPanelChatBottom.setBackground(firstColor);
+        jTextFieldMessage.setBackground(secondColor);
+        jTextFieldMessage.setForeground(secondFontColor);
+        jTextFieldMessage.setCaretColor(secondFontColor);
     }
 
     /**
@@ -53,30 +49,7 @@ public class GroupChatingPanel extends JPanel{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelChatBottom = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-
-                super.paintComponent(g);
-                Graphics2D graphics = (Graphics2D) g;
-                graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                int w = getWidth();
-                int h = getHeight();
-                Point start = new Point(0,0);
-                Point end = new Point(w,h);
-                float[] slice = new float[]{0.5f,1f};
-                Color[] colors = new Color[]{firstColor,secondColor};
-                LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);
-                graphics.setPaint(gp);
-                graphics.fillRect(0, 0, w, h);
-                graphics = null;
-                gp = null;
-                graphics = null;
-                slice = null;
-                colors = null;
-
-            }
-        };
+        jPanelChatBottom = new javax.swing.JPanel();
         jLabelAttachFile = new javax.swing.JLabel();
         jLabelSendMessage = new javax.swing.JLabel();
         jLabelAttatchVideo = new javax.swing.JLabel();

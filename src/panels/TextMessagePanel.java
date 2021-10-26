@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package panels;
+import courseroom.MainFrame;
 
 /**
  *
@@ -16,12 +17,12 @@ public class TextMessagePanel extends javax.swing.JPanel {
         jLabelDate.setText(date);
         jLabelSender.setText(sender);
         jTextAreaMessage.setText(message);
-        jLabelDate.setForeground(DashboardPanel.getFontColor());
-        jLabelSender.setForeground(DashboardPanel.getFontColor());
-        jLabelDate.setBackground(DashboardPanel.getFirstColor());
-        jLabelSender.setBackground(DashboardPanel.getFirstColor());
-        jTextAreaMessage.setForeground(DashboardPanel.getSecondFontColor());
-        jTextAreaMessage.setBackground(DashboardPanel.getSecondColor());
+        jLabelDate.setForeground(MainFrame.getFontColor());
+        jLabelSender.setForeground(MainFrame.getFontColor());
+        jLabelDate.setBackground(MainFrame.getFirstColor());
+        jLabelSender.setBackground(MainFrame.getFirstColor());
+        jTextAreaMessage.setForeground(MainFrame.getSecondFontColor());
+        jTextAreaMessage.setBackground(MainFrame.getSecondColor());
   
     }
 

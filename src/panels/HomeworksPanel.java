@@ -6,6 +6,7 @@
 package panels;
 
 import com.github.javafaker.Faker;
+import courseroom.MainFrame;
 
 /**
  *
@@ -18,8 +19,7 @@ public class HomeworksPanel extends javax.swing.JPanel {
      */
     public HomeworksPanel() {
         initComponents();
-        jLabelHomeworksTitle.setForeground(DashboardPanel.getFontColor());
-        jLabelHomeworksTitle.setBackground(DashboardPanel.getFirstColor());
+        jLabelHomeworksTitle.setForeground(MainFrame.getSecondFontColor());
         jScrollPaneMisTareas.getViewport().setOpaque(false);
         jScrollPaneMisTareas.getVerticalScrollBar().setUnitIncrement(15);
         
@@ -49,10 +49,9 @@ public class HomeworksPanel extends javax.swing.JPanel {
         setOpaque(false);
 
         jLabelHomeworksTitle.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
-        jLabelHomeworksTitle.setText("HomeWorks");
+        jLabelHomeworksTitle.setText("Tareas");
         jLabelHomeworksTitle.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelHomeworksTitle.setMinimumSize(new java.awt.Dimension(416, 84));
-        jLabelHomeworksTitle.setOpaque(true);
         jLabelHomeworksTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         jScrollPaneMisTareas.setBorder(null);
@@ -70,10 +69,10 @@ public class HomeworksPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneMisTareas, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelHomeworksTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPaneMisTareas, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE))
+                        .addComponent(jLabelHomeworksTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

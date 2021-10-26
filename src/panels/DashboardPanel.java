@@ -5,7 +5,6 @@
  */
 package panels;
 
-import data.interfaces.MainInterface;
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
 import data.collections.PairDoublyLinkedList;
@@ -13,13 +12,9 @@ import data.structures.Pair;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.image.PixelGrabber;
-import java.io.IOException;
+import java.awt.image.PixelGrabber;import java.io.IOException;
+;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -36,11 +31,9 @@ import javax.swing.SwingUtilities;
  *
  * @author LENOVO
  */
-public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
+public class DashboardPanel extends javax.swing.JPanel{
 
     private static Image userImage;
-    private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
-    private Random colorRandom;
     
     private ChatsPanel chatsPanel;
     private AboutPanel aboutPanel;
@@ -64,17 +57,15 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         initComponents();
         try {
             server_time_stop = true;
-            firstColor = secondColor = thirdColor = fontColor = secondFontColor = Color.BLACK;
-            colorRandom = new Random(System.currentTimeMillis());
-            System.out.println("Dashboard -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
-            URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
+            System.out.println("Dashboard -> Getting Image From https://loremflickr.com/450/450/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/450/450/sunset,beach/all");
             userImage = ImageIO.read(imageURL);
-           
-            ImageIcon imageProfile  = new ImageIcon(userImage.getScaledInstance(175,175, Image.SCALE_SMOOTH));
-            setColors(userImage);
-            jLabelUserProfilePhoto.setIcon(imageProfile);
-            imageProfile = null;
-            imageProfile = null;
+            Image image = userImage.getScaledInstance(175, 175, Image.SCALE_SMOOTH);
+            ImageIcon imageIcon = new ImageIcon(image);
+            jLabelUserProfilePhoto.setIcon(imageIcon);
+            image.flush();
+            image = null;
+            
             
             //info profile panel -> 0 en active page flag
             infoProfilePanel = new InfoProfilePanel();
@@ -164,6 +155,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         jPanelInformacion = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1260, 670));
 
         jPanelMenu.setMinimumSize(new java.awt.Dimension(175, 630));
@@ -522,120 +514,101 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        
-        super.paintComponent(g);
-        int w = this.getWidth();
-        int h = this.getHeight();
-        Graphics2D graphics = (Graphics2D)g;
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        Color noColor =  new Color(0, 0, 0, 0);
-        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);
-        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);
-        graphics.setPaint(primary);
-        graphics.fillRect(0, 0, w, h);
-        graphics.setPaint(secondary);
-        graphics.fillRect(0, 0, w, h);
-        primary = null;
-        secondary = null;
-        noColor = null;
-    }
     
     private void jLabelHomePageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomePageMouseExited
         // TODO add your handling code here:
-        jLabelHomePage.setBackground(secondColor);
-        jLabelHomePage.setForeground(secondFontColor);
+        jLabelHomePage.setBackground(MainFrame.getSecondColor());
+        jLabelHomePage.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jLabelHomePageMouseExited
 
     private void jLabelHomePageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomePageMouseEntered
         // TODO add your handling code here:
-        jLabelHomePage.setBackground(firstColor);
-        jLabelHomePage.setForeground(fontColor);
+        jLabelHomePage.setBackground(MainFrame.getFirstColor());
+        jLabelHomePage.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelHomePageMouseEntered
 
     private void jLabelClassesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClassesMouseExited
         // TODO add your handling code here:
-        jLabelClasses.setBackground(secondColor);
-        jLabelClasses.setForeground(secondFontColor);
+        jLabelClasses.setBackground(MainFrame.getSecondColor());
+        jLabelClasses.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jLabelClassesMouseExited
 
     private void jLabelClassesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClassesMouseEntered
         // TODO add your handling code here:
-        jLabelClasses.setBackground(firstColor);
-        jLabelClasses.setForeground(fontColor);
+        jLabelClasses.setBackground(MainFrame.getFirstColor());
+        jLabelClasses.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelClassesMouseEntered
 
     private void jLabelHomeWorksMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeWorksMouseExited
         // TODO add your handling code here:
-        jLabelHomeWorks.setBackground(secondColor);
-        jLabelHomeWorks.setForeground(secondFontColor);
+        jLabelHomeWorks.setBackground(MainFrame.getSecondColor());
+        jLabelHomeWorks.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jLabelHomeWorksMouseExited
 
     private void jLabelHomeWorksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeWorksMouseEntered
         // TODO add your handling code here:
-        jLabelHomeWorks.setBackground(firstColor);
-        jLabelHomeWorks.setForeground(fontColor);
+        jLabelHomeWorks.setBackground(MainFrame.getFirstColor());
+        jLabelHomeWorks.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelHomeWorksMouseEntered
 
     private void jLabelDatesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDatesMouseExited
         // TODO add your handling code here:
-        jLabelDates.setBackground(secondColor);
-        jLabelDates.setForeground(secondFontColor);
+        jLabelDates.setBackground(MainFrame.getSecondColor());
+        jLabelDates.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jLabelDatesMouseExited
 
     private void jLabelDatesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDatesMouseEntered
         // TODO add your handling code here:
-        jLabelDates.setBackground(firstColor);
-        jLabelDates.setForeground(fontColor);
+        jLabelDates.setBackground(MainFrame.getFirstColor());
+        jLabelDates.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelDatesMouseEntered
 
     private void jLabelNoticesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNoticesMouseExited
         // TODO add your handling code here:
-        jLabelNotices.setBackground(secondColor);
-        jLabelNotices.setForeground(secondFontColor);
+        jLabelNotices.setBackground(MainFrame.getSecondColor());
+        jLabelNotices.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jLabelNoticesMouseExited
 
     private void jLabelNoticesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNoticesMouseEntered
         // TODO add your handling code here:
-        jLabelNotices.setBackground(firstColor);
-        jLabelNotices.setForeground(fontColor);
+        jLabelNotices.setBackground(MainFrame.getFirstColor());
+        jLabelNotices.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelNoticesMouseEntered
 
     private void jLabelGroupsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGroupsMouseExited
         // TODO add your handling code here:
-        jLabelGroups.setBackground(secondColor);
-        jLabelGroups.setForeground(secondFontColor);
+        jLabelGroups.setBackground(MainFrame.getSecondColor());
+        jLabelGroups.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jLabelGroupsMouseExited
 
     private void jLabelGroupsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGroupsMouseEntered
         // TODO add your handling code here:
-        jLabelGroups.setBackground(firstColor);
-        jLabelGroups.setForeground(fontColor);
+        jLabelGroups.setBackground(MainFrame.getFirstColor());
+        jLabelGroups.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelGroupsMouseEntered
 
     private void jLabelChatsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelChatsMouseEntered
         // TODO add your handling code here:
-        jLabelChats.setBackground(firstColor);
-        jLabelChats.setForeground(fontColor);
+        jLabelChats.setBackground(MainFrame.getFirstColor());
+        jLabelChats.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelChatsMouseEntered
 
     private void jLabelChatsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelChatsMouseExited
         // TODO add your handling code here:
-        jLabelChats.setBackground(secondColor);
-        jLabelChats.setForeground(secondFontColor);
+        jLabelChats.setBackground(MainFrame.getSecondColor());
+        jLabelChats.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jLabelChatsMouseExited
 
     private void jLabelAboutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAboutMouseExited
         // TODO add your handling code here:
-        jLabelAbout.setBackground(secondColor);
-        jLabelAbout.setForeground(secondFontColor);
+        jLabelAbout.setBackground(MainFrame.getSecondColor());
+        jLabelAbout.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jLabelAboutMouseExited
 
     private void jLabelAboutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAboutMouseEntered
         // TODO add your handling code here:
-        jLabelAbout.setBackground(firstColor);
-        jLabelAbout.setForeground(fontColor);
+        jLabelAbout.setBackground(MainFrame.getFirstColor());
+        jLabelAbout.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelAboutMouseEntered
 
     private void jLabelAboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAboutMouseClicked
@@ -718,14 +691,14 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
 
     private void jLabelLogOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLogOutMouseEntered
         // TODO add your handling code here:
-        jLabelLogOut.setBackground(firstColor);
-        jLabelLogOut.setForeground(fontColor);
+        jLabelLogOut.setBackground(MainFrame.getFirstColor());
+        jLabelLogOut.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelLogOutMouseEntered
 
     private void jLabelLogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLogOutMouseExited
         // TODO add your handling code here:
-        jLabelLogOut.setBackground(secondColor);
-        jLabelLogOut.setForeground(secondFontColor);
+        jLabelLogOut.setBackground(MainFrame.getSecondColor());
+        jLabelLogOut.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jLabelLogOutMouseExited
 
     private void jLabelUserProfilePhotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelUserProfilePhotoMouseClicked
@@ -744,14 +717,14 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
 
     private void jLabelMusicMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMusicMouseEntered
         // TODO add your handling code here:
-        jLabelMusic.setBackground(firstColor);
-        jLabelMusic.setForeground(fontColor);
+        jLabelMusic.setBackground(MainFrame.getFirstColor());
+        jLabelMusic.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelMusicMouseEntered
 
     private void jLabelMusicMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMusicMouseExited
         // TODO add your handling code here:
-        jLabelMusic.setBackground(secondColor);
-        jLabelMusic.setForeground(secondFontColor);
+        jLabelMusic.setBackground(MainFrame.getSecondColor());
+        jLabelMusic.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jLabelMusicMouseExited
 
     public static void showInfoProfilePanel(){
@@ -762,14 +735,16 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         panelLayout.show(jPanelInformacion, "editProfilePanel");
     }
     
-    @Override
-    public void setColors(Image image){
+    public void setColors(){
         try {
             
             int maximum = 0;
+            Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
+            firstColor = secondColor = thirdColor =  fontColor =  secondFontColor = thirdFontColor = Color.BLACK;
+            Random colorRandom = new Random(System.currentTimeMillis());
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
-            PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = (image.getWidth(null)/3);
+            PixelGrabber pg = new PixelGrabber(userImage, 0, 0, -1, -1, false);
+            int large = (userImage.getWidth(null)/2);
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -792,7 +767,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                     }
 
                     color = null;
-                    i+= colorRandom.nextInt(large + 1)+ large;
+                    i+= colorRandom.nextInt(large + 1) + large;
                 }
 
                 secondColor = firstColor;
@@ -815,7 +790,7 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 }
                 
 
-                thirdColor = secondColor;
+               thirdColor = secondColor;
                 if(colorList.size() > 2){
                     iterations = 0;
                     
@@ -835,23 +810,34 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
                 
                 int red = firstColor.getRed();
                 fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                
-                colorList.clear();
                 red = secondColor.getRed();
                 secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 red = thirdColor.getRed();
                 thirdFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                
+                colorList.clear();
                 Component[] components = jPanelMenu.getComponents();
 
                 for(Component component: components){
                     component.setForeground(secondFontColor);
                     component.setBackground(secondColor);
                 }
+                jLabelFechaHoraServidor.setForeground(secondFontColor);
+                jLabelUserName.setForeground(thirdFontColor);
                 colorList = null;
                 pg = null;
                 pixels = null;
-                this.repaint();
+                colorRandom = null;
+                
+                MainFrame.setFirstColor(firstColor);
+                MainFrame.setSecondColor(secondColor);
+                MainFrame.setThirdColor(thirdColor);
+                MainFrame.setFontColor(fontColor);
+                MainFrame.setSecondFontColor(secondFontColor);
+                MainFrame.setThirdFontColor(thirdFontColor);
+                
+                MainFrame.repainting();
+                
+                firstColor = secondColor = thirdColor =  fontColor =  secondFontColor = thirdFontColor = null;
             }
             
         } catch (InterruptedException ex) {
@@ -860,7 +846,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
             
     }
     
-    @Override
     public void dispose(){
         server_time_stop = false;
         serverDateTime.interrupt();
@@ -872,9 +857,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         groupsPanel.dispose();
         homeworksPanel.dispose();
         musicPanel = null;
-        setFirstColor(null);
-        setSecondColor(null);
-        colorRandom = null;
         chatsPanel = null;
         aboutPanel = null;
         infoProfilePanel = null;
@@ -935,89 +917,6 @@ public class DashboardPanel extends javax.swing.JPanel implements MainInterface{
         icon = null;
     }
 
-    /**
-     * @return the firstColor
-     */
-    public static Color getFirstColor() {
-        return firstColor;
-    }
-
-    /**
-     * @param aFirstColor the firstColor to set
-     */
-    public static void setFirstColor(Color aFirstColor) {
-        firstColor = aFirstColor;
-    }
-
-    /**
-     * @return the secondColor
-     */
-    public static Color getSecondColor() {
-        return secondColor;
-    }
-
-    /**
-     * @param aSecondColor the secondColor to set
-     */
-    public static void setSecondColor(Color aSecondColor) {
-        secondColor = aSecondColor;
-    }
-
-    /**
-     * @return the thirdColor
-     */
-    public static Color getThirdColor() {
-        return thirdColor;
-    }
-
-    /**
-     * @param aThirdColor the thirdColor to set
-     */
-    public static void setThirdColor(Color aThirdColor) {
-        thirdColor = aThirdColor;
-    }
-
-    /**
-     * @return the fontColor
-     */
-    public static Color getFontColor() {
-        return fontColor;
-    }
-
-    /**
-     * @param aFontColor the fontColor to set
-     */
-    public static void setFontColor(Color aFontColor) {
-        fontColor = aFontColor;
-    }
-
-     /**
-     * @return the fontColor
-     */
-    public static Color getSecondFontColor() {
-        return secondFontColor;
-    }
-
-    /**
-     * @param aFontColor the fontColor to set
-     */
-    public static void setSecondFontColor(Color aFontColor) {
-        secondFontColor = aFontColor;
-    }
-    
-     /**
-     * @return the fontColor
-     */
-    public static Color getThirdFontColor() {
-        return thirdFontColor;
-    }
-
-    /**
-     * @param aFontColor the fontColor to set
-     */
-    public static void setThirdFontColor(Color aFontColor) {
-        thirdFontColor = aFontColor;
-    }
     
     public class ServerDateTime extends Thread{
     

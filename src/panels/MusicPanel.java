@@ -5,15 +5,10 @@
  */
 package panels;
 
-import data.structures.Node;
 import data.collections.PairDoublyLinkedList;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.PixelGrabber;
@@ -68,9 +63,6 @@ public final class MusicPanel extends javax.swing.JPanel{
     //Image Icons
     private ImageIcon play_icon, pause_icon;
     
-    //Colors
-    private Color firstColor, secondColor, thirdColor;
-    
     //Components
     private static AudioListPlayerComponent audio_list_player_component;
     
@@ -94,25 +86,6 @@ public final class MusicPanel extends javax.swing.JPanel{
         setAmps();
     }
     
-    @Override
-    protected void paintComponent(Graphics g) {
-        
-        super.paintComponent(g);
-        int w = this.getWidth();
-        int h = this.getHeight();
-        Graphics2D graphics = (Graphics2D)g;
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        Color noColor =  new Color(0, 0, 0, 0);
-        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);
-        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);
-        graphics.setPaint(primary);
-        graphics.fillRect(0, 0, w, h);
-        graphics.setPaint(secondary);
-        graphics.fillRect(0, 0, w, h);
-        primary = null;
-        secondary = null;
-        noColor = null;
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -124,12 +97,7 @@ public final class MusicPanel extends javax.swing.JPanel{
     private void initComponents() {
 
         jLabelCoverArt = new javax.swing.JLabel();
-        jLabelTitle = new javax.swing.JLabel();
-        jLabelArtist = new javax.swing.JLabel();
-        jLabelAlbum = new javax.swing.JLabel();
-        jLabelProgress = new javax.swing.JLabel();
-        jSliderProgress = new javax.swing.JSlider();
-        jLabelTotalDuration = new javax.swing.JLabel();
+        jPanelControls = new javax.swing.JPanel();
         jTabbedPanelControls = new javax.swing.JTabbedPane();
         jPanelOpenFiles = new javax.swing.JPanel();
         jLabelOpenFolder = new javax.swing.JLabel();
@@ -181,6 +149,12 @@ public final class MusicPanel extends javax.swing.JPanel{
         jLabelYearValue = new javax.swing.JLabel();
         jScrollPaneLyrics = new javax.swing.JScrollPane();
         jTextPaneLyrics = new javax.swing.JTextPane();
+        jLabelTitle = new javax.swing.JLabel();
+        jLabelTotalDuration = new javax.swing.JLabel();
+        jLabelArtist = new javax.swing.JLabel();
+        jLabelAlbum = new javax.swing.JLabel();
+        jLabelProgress = new javax.swing.JLabel();
+        jSliderProgress = new javax.swing.JSlider();
 
         setBackground(java.awt.Color.black);
         setMinimumSize(new java.awt.Dimension(1085, 630));
@@ -193,72 +167,7 @@ public final class MusicPanel extends javax.swing.JPanel{
         jLabelCoverArt.setMinimumSize(new java.awt.Dimension(550, 550));
         jLabelCoverArt.setPreferredSize(new java.awt.Dimension(550, 550));
 
-        jLabelTitle.setBackground(new java.awt.Color(0, 0, 0));
-        jLabelTitle.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
-        jLabelTitle.setForeground(java.awt.Color.white);
-        jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/cd.png"))); // NOI18N
-        jLabelTitle.setText("Title");
-        jLabelTitle.setToolTipText("");
-        jLabelTitle.setFocusable(false);
-        jLabelTitle.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        jLabelTitle.setMinimumSize(new java.awt.Dimension(359, 35));
-        jLabelTitle.setPreferredSize(new java.awt.Dimension(359, 35));
-
-        jLabelArtist.setBackground(new java.awt.Color(0, 0, 0));
-        jLabelArtist.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
-        jLabelArtist.setForeground(java.awt.Color.white);
-        jLabelArtist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelArtist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/broadcaster.png"))); // NOI18N
-        jLabelArtist.setText("Artist");
-        jLabelArtist.setToolTipText("");
-        jLabelArtist.setFocusable(false);
-        jLabelArtist.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        jLabelArtist.setMinimumSize(new java.awt.Dimension(359, 35));
-        jLabelArtist.setName(""); // NOI18N
-        jLabelArtist.setPreferredSize(new java.awt.Dimension(359, 35));
-
-        jLabelAlbum.setBackground(new java.awt.Color(0, 0, 0));
-        jLabelAlbum.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
-        jLabelAlbum.setForeground(java.awt.Color.white);
-        jLabelAlbum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelAlbum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/music-album.png"))); // NOI18N
-        jLabelAlbum.setText("Album");
-        jLabelAlbum.setToolTipText("");
-        jLabelAlbum.setFocusable(false);
-        jLabelAlbum.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        jLabelAlbum.setMinimumSize(new java.awt.Dimension(359, 35));
-        jLabelAlbum.setName(""); // NOI18N
-        jLabelAlbum.setPreferredSize(new java.awt.Dimension(359, 35));
-
-        jLabelProgress.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        jLabelProgress.setForeground(new java.awt.Color(104, 194, 232));
-        jLabelProgress.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelProgress.setText("00:00:00");
-        jLabelProgress.setFocusable(false);
-        jLabelProgress.setMaximumSize(new java.awt.Dimension(56, 35));
-        jLabelProgress.setMinimumSize(new java.awt.Dimension(56, 35));
-
-        jSliderProgress.setBackground(new java.awt.Color(14, 30, 64));
-        jSliderProgress.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jSliderProgress.setForeground(new java.awt.Color(104, 194, 232));
-        jSliderProgress.setMaximum(2147483647);
-        jSliderProgress.setValue(0);
-        jSliderProgress.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jSliderProgress.setEnabled(false);
-        jSliderProgress.setFocusable(false);
-        jSliderProgress.setMaximumSize(new java.awt.Dimension(32767, 17));
-        jSliderProgress.setMinimumSize(new java.awt.Dimension(664, 17));
-        jSliderProgress.setPreferredSize(new java.awt.Dimension(674, 17));
-        jSliderProgress.setValueIsAdjusting(true);
-
-        jLabelTotalDuration.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        jLabelTotalDuration.setForeground(new java.awt.Color(104, 194, 232));
-        jLabelTotalDuration.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTotalDuration.setText("00:00:00");
-        jLabelTotalDuration.setFocusable(false);
-        jLabelTotalDuration.setMaximumSize(new java.awt.Dimension(56, 35));
-        jLabelTotalDuration.setMinimumSize(new java.awt.Dimension(56, 35));
+        jPanelControls.setOpaque(false);
 
         jTabbedPanelControls.setBackground(new java.awt.Color(0, 0, 0));
         jTabbedPanelControls.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
@@ -851,16 +760,81 @@ public final class MusicPanel extends javax.swing.JPanel{
 
         jTabbedPanelControls.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/archivo-de-musica.png")), jPanelMediaInformation); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelCoverArt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        jLabelTitle.setBackground(new java.awt.Color(0, 0, 0));
+        jLabelTitle.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
+        jLabelTitle.setForeground(java.awt.Color.white);
+        jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/cd.png"))); // NOI18N
+        jLabelTitle.setText("Title");
+        jLabelTitle.setToolTipText("");
+        jLabelTitle.setFocusable(false);
+        jLabelTitle.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        jLabelTitle.setMinimumSize(new java.awt.Dimension(359, 35));
+        jLabelTitle.setPreferredSize(new java.awt.Dimension(359, 35));
+
+        jLabelTotalDuration.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabelTotalDuration.setForeground(new java.awt.Color(104, 194, 232));
+        jLabelTotalDuration.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTotalDuration.setText("00:00:00");
+        jLabelTotalDuration.setFocusable(false);
+        jLabelTotalDuration.setMaximumSize(new java.awt.Dimension(56, 35));
+        jLabelTotalDuration.setMinimumSize(new java.awt.Dimension(56, 35));
+
+        jLabelArtist.setBackground(new java.awt.Color(0, 0, 0));
+        jLabelArtist.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
+        jLabelArtist.setForeground(java.awt.Color.white);
+        jLabelArtist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelArtist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/broadcaster.png"))); // NOI18N
+        jLabelArtist.setText("Artist");
+        jLabelArtist.setToolTipText("");
+        jLabelArtist.setFocusable(false);
+        jLabelArtist.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        jLabelArtist.setMinimumSize(new java.awt.Dimension(359, 35));
+        jLabelArtist.setName(""); // NOI18N
+        jLabelArtist.setPreferredSize(new java.awt.Dimension(359, 35));
+
+        jLabelAlbum.setBackground(new java.awt.Color(0, 0, 0));
+        jLabelAlbum.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
+        jLabelAlbum.setForeground(java.awt.Color.white);
+        jLabelAlbum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelAlbum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/music-album.png"))); // NOI18N
+        jLabelAlbum.setText("Album");
+        jLabelAlbum.setToolTipText("");
+        jLabelAlbum.setFocusable(false);
+        jLabelAlbum.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        jLabelAlbum.setMinimumSize(new java.awt.Dimension(359, 35));
+        jLabelAlbum.setName(""); // NOI18N
+        jLabelAlbum.setPreferredSize(new java.awt.Dimension(359, 35));
+
+        jLabelProgress.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabelProgress.setForeground(new java.awt.Color(104, 194, 232));
+        jLabelProgress.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelProgress.setText("00:00:00");
+        jLabelProgress.setFocusable(false);
+        jLabelProgress.setMaximumSize(new java.awt.Dimension(56, 35));
+        jLabelProgress.setMinimumSize(new java.awt.Dimension(56, 35));
+
+        jSliderProgress.setBackground(new java.awt.Color(14, 30, 64));
+        jSliderProgress.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jSliderProgress.setForeground(new java.awt.Color(104, 194, 232));
+        jSliderProgress.setMaximum(2147483647);
+        jSliderProgress.setValue(0);
+        jSliderProgress.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jSliderProgress.setEnabled(false);
+        jSliderProgress.setFocusable(false);
+        jSliderProgress.setMaximumSize(new java.awt.Dimension(32767, 17));
+        jSliderProgress.setMinimumSize(new java.awt.Dimension(664, 17));
+        jSliderProgress.setPreferredSize(new java.awt.Dimension(674, 17));
+        jSliderProgress.setValueIsAdjusting(true);
+
+        javax.swing.GroupLayout jPanelControlsLayout = new javax.swing.GroupLayout(jPanelControls);
+        jPanelControls.setLayout(jPanelControlsLayout);
+        jPanelControlsLayout.setHorizontalGroup(
+            jPanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelControlsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelControlsLayout.createSequentialGroup()
                         .addComponent(jLabelProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSliderProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -869,32 +843,52 @@ public final class MusicPanel extends javax.swing.JPanel{
                     .addComponent(jLabelAlbum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelArtist, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanelControlsLayout.setVerticalGroup(
+            jPanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelControlsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabelArtist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabelAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(jPanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSliderProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTotalDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPanelControls.getAccessibleContext().setAccessibleName("OpenFiles");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelCoverArt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCoverArt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabelArtist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabelAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSliderProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelTotalDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabelCoverArt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jTabbedPanelControls.getAccessibleContext().setAccessibleName("OpenFiles");
     }// </editor-fold>//GEN-END:initComponents
 
     /**Creates and initializes all attributes*/
@@ -907,9 +901,6 @@ public final class MusicPanel extends javax.swing.JPanel{
         audio_list_player_component.mediaListPlayer().mediaPlayer().setMediaPlayer(mediaPlayerFactory.mediaPlayers().newMediaPlayer());
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setEqualizer(mediaPlayerFactory.equalizer().newEqualizer("Flat"));
         presets_map = mediaPlayerFactory.equalizer().allPresetEqualizers();
-        firstColor = DashboardPanel.getFirstColor();
-        secondColor = DashboardPanel.getSecondColor();
-        thirdColor = DashboardPanel.getThirdColor();
         play_icon = new ImageIcon(getClass().getResource("/resources/icons/play-button.png"));
         pause_icon = new ImageIcon(getClass().getResource("/resources/icons/pause.png"));
         mediaPlayerFactory = null;
@@ -1862,7 +1853,8 @@ public final class MusicPanel extends javax.swing.JPanel{
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
             Random colorRandom = new Random(System.currentTimeMillis());
-            
+            Color firstColor = Color.BLACK;
+            int large = image.getHeight(null);
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -1885,48 +1877,11 @@ public final class MusicPanel extends javax.swing.JPanel{
                     }
 
                     color = null;
-                    i+= colorRandom.nextInt(401)+ 400;
+                    i+= colorRandom.nextInt(large+1) + large;
                 }
 
-                secondColor = firstColor;
-            
-                int iterations = 0;
-                if(colorList.size() > 1){
-                    
-                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
-                        secondColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 25){
-                             while(firstColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                secondColor = colorList.get(position).second();
-                            }
-                             break;
-                        }
-                    }
-                }
                 
-
-                thirdColor = secondColor;
-                if(colorList.size() > 2){
-                    iterations = 0;
-                    
-                    while(Math.abs(thirdColor.getRGB() - firstColor.getRGB()) < 3000000 || Math.abs(secondColor.getRGB() - thirdColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
-                        thirdColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 50){
-                            while(thirdColor.getRGB() == firstColor.getRGB() || thirdColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                thirdColor = colorList.get(position).second();
-                            }
-                            break;
-                        }
-                    }
-                }
-                
-                int red = thirdColor.getRed();
+                int red = firstColor.getRed();
                 Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
 
                 colorList.clear();
@@ -1938,69 +1893,69 @@ public final class MusicPanel extends javax.swing.JPanel{
                     component.setForeground(fontColor);
                 }
 
-                jSliderVolume.setBackground(fontColor);
-                jSliderRate.setBackground(fontColor);
+                jSliderRate.setForeground(fontColor);
+                jSliderRate.setForeground(fontColor);
                 jLabelTitle.setForeground(fontColor);
                 jLabelAlbum.setForeground(fontColor);
                 jLabelArtist.setForeground(fontColor);
+                jLabelProgress.setForeground(fontColor);
+                jLabelTotalDuration.setForeground(fontColor);
+                jSliderProgress.setForeground(fontColor);
                 
-                
-                red = firstColor.getRed();
-                Color secondfontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
+               
                 components = jPanelMediaInformation.getComponents();
 
                 for (Component component : components){
-                    component.setForeground(secondfontColor);
+                    component.setForeground(fontColor);
                 }
                 
                 components = jPanelEqualizer.getComponents();
 
                 for (Component component : components){
-                    component.setForeground(secondfontColor);
+                    component.setForeground(fontColor);
                 }
                 
                 components = jPanelBands.getComponents();
 
                 for (Component component : components){
-                    component.setForeground(secondfontColor);
-                    component.setBackground(secondfontColor);
+                    component.setForeground(fontColor);
+                    component.setBackground(fontColor);
                 }
                 
                 components = jPanelPlaylist.getComponents();
                 
                 for (Component component : components){
                     PlaylistEntryPanel playlistEntryPanel = (PlaylistEntryPanel)component;
-                    playlistEntryPanel.setForegrounds(secondfontColor);
+                    playlistEntryPanel.setForegrounds(fontColor);
                     
                 }
                
                 TitledBorder border = (TitledBorder)jLabelGenreValue.getBorder();
-                border.setTitleColor(secondfontColor);
+                border.setTitleColor(fontColor);
 
                 border = (TitledBorder)jLabelYearValue.getBorder();
-                border.setTitleColor(secondfontColor);
+                border.setTitleColor(fontColor);
 
                 border = (TitledBorder)jLabelMediaValue.getBorder();
-                border.setTitleColor(secondfontColor);
+                border.setTitleColor(fontColor);
 
                 border = (TitledBorder)jTextPaneLyrics.getBorder();
-                border.setTitleColor(secondfontColor);
+                border.setTitleColor(fontColor);
                 
                 border = (TitledBorder)jPanelBands.getBorder();
-                border.setTitleColor(secondfontColor);
+                border.setTitleColor(fontColor);
         
-                jComboBoxPresets.setForeground(secondfontColor);
+                jComboBoxPresets.setForeground(fontColor);
                 jComboBoxPresets.setBackground(firstColor);
-                jTextPaneLyrics.setForeground(secondfontColor);
+                jTextPaneLyrics.setForeground(fontColor);
+                this.setBackground(firstColor);
                 
-
+                firstColor = null;
                 colorList = null;
                 fontColor = null;
-                secondfontColor = null;
                 pg = null;
                 pixels = null;
                 colorRandom = null;
-                this.repaint();
             }
             
         } catch (InterruptedException ex) {
@@ -2014,9 +1969,6 @@ public final class MusicPanel extends javax.swing.JPanel{
         audio_list_player_component.release();
         play_icon = null;
         pause_icon = null;
-        firstColor = null;
-        secondColor = null;
-        thirdColor = null;
         audio_list_player_component = null;
         play_icon =  null;
         pause_icon = null;
@@ -2059,6 +2011,7 @@ public final class MusicPanel extends javax.swing.JPanel{
     public javax.swing.JLabel jLabelYearValue;
     private javax.swing.JPanel jPanelAudioControls;
     private javax.swing.JPanel jPanelBands;
+    private javax.swing.JPanel jPanelControls;
     private javax.swing.JPanel jPanelEqualizer;
     private javax.swing.JPanel jPanelMediaInformation;
     private javax.swing.JPanel jPanelOpenFiles;

@@ -6,6 +6,7 @@
 package panels;
 
 import com.github.javafaker.Faker;
+import courseroom.MainFrame;
 
 
 /**
@@ -19,8 +20,7 @@ public class NoticesPanel extends javax.swing.JPanel {
      */
     public NoticesPanel() {
         initComponents();
-        jLabelNoticesTitle.setForeground(DashboardPanel.getFontColor());
-        jLabelNoticesTitle.setBackground(DashboardPanel.getFirstColor());
+        jLabelNoticesTitle.setForeground(MainFrame.getSecondFontColor());
         jScrollPaneMisAvisos.getViewport().setOpaque(false);
         jScrollPaneMisAvisos.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneMisAvisos.getHorizontalScrollBar().setUnitIncrement(15);
@@ -54,7 +54,6 @@ public class NoticesPanel extends javax.swing.JPanel {
         jLabelNoticesTitle.setText("Avisos");
         jLabelNoticesTitle.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelNoticesTitle.setMinimumSize(new java.awt.Dimension(416, 84));
-        jLabelNoticesTitle.setOpaque(true);
         jLabelNoticesTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         jScrollPaneMisAvisos.setBorder(null);

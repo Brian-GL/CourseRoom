@@ -35,7 +35,6 @@ import javax.swing.ImageIcon;
 public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterface{
 
     private Image homeworkImage;
-    private Color firstColor,secondColor;
     private int id;
     /**
      * Creates new form BoxHomeworkPanel
@@ -49,10 +48,9 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
             jLabelTipoDeTarea.setText(faker.book().genre());
             jLabelClaseDeLaTarea.setText(faker.book().publisher());
             jLabelEstado.setText((faker.bool().bool()) ? "Entregada" : "No Entregada Aún");
-            firstColor = secondColor = Color.BLACK;
             this.id = _id;
-            System.out.println("Homework ID: "+_id+" -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
-            URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
+            System.out.println("Homework ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
             homeworkImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(homeworkImage);
@@ -154,29 +152,6 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
         );
     }// </editor-fold>//GEN-END:initComponents
 
-     @Override
-    protected void paintComponent(Graphics g) {
-        
-        super.paintComponent(g);
-        Graphics2D graphics = (Graphics2D) g;
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        int w = getWidth();
-        int h = getHeight();
-        Point start = new Point(0,0);
-        Point end = new Point(w,h);
-        float[] slice = new float[]{0.5f,1f};
-        Color[] colors = new Color[]{firstColor,secondColor};
-        LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);
-        graphics.setPaint(gp);
-        graphics.fillRect(0, 0, w, h);
-        graphics = null;
-        gp = null;
-        graphics = null;
-        slice = null;
-        colors = null;
-        
-    }
-    
     
     @Override
     public void setColors(Image image){
@@ -184,10 +159,10 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
             int maximum = 0;
-            
+            Color firstColor = Color.BLACK;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = (image.getWidth(null)/3);
+            int large = (image.getWidth(null)/2);
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -213,47 +188,25 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
                     i += colorRandom.nextInt(large+1) + large;
                 }
 
-                secondColor = firstColor;
-            
-                int iterations = 0;
-                if(colorList.size() > 1){
-                    
-                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
-                        secondColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 25){
-                             while(firstColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                secondColor = colorList.get(position).second();
-                            }
-                             break;
-                        }
-                    }
-                }
-              
+               
                 int red = firstColor.getRed();
                 Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                red = secondColor.getRed();
-                Color secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-
+                
                 colorList.clear();
 
-                Component[] components = this.getComponents();
-                for (Component component : components){
-                    component.setForeground(fontColor);
-                }
                 
-                jLabelEstado.setForeground(secondFontColor);
+                jLabelEstado.setForeground(fontColor);
                 jLabelClaseDeLaTarea.setForeground(fontColor);
                 jLabelFechaDeEntrega.setForeground(fontColor);
                 jLabelNombreTarea.setForeground(fontColor);
                 jLabelTipoDeTarea.setForeground(fontColor);
+                
+                this.setBackground(firstColor);
 
                 fontColor = null;
                 colorRandom = null;
                 colorList = null;
-                secondFontColor = null;
+                firstColor = null;
                 pg = null;
                 pixels = null;
             }

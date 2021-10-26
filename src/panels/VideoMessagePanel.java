@@ -17,6 +17,7 @@ import uk.co.caprica.vlcj.player.base.MediaPlayer;
 import uk.co.caprica.vlcj.player.base.MediaPlayerEventListener;
 import uk.co.caprica.vlcj.player.base.State;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
+import courseroom.MainFrame;
 
 /**
  *
@@ -37,16 +38,16 @@ public class VideoMessagePanel extends javax.swing.JPanel {
         jLabelSender.setText(sender);
         play = false;
         
-        jLabelDate.setForeground(DashboardPanel.getFontColor());
-        jLabelSender.setForeground(DashboardPanel.getFontColor());
-        jLabelDate.setBackground(DashboardPanel.getFirstColor());
-        jLabelSender.setBackground(DashboardPanel.getFirstColor());
+        jLabelDate.setForeground(MainFrame.getFontColor());
+        jLabelSender.setForeground(MainFrame.getFontColor());
+        jLabelDate.setBackground(MainFrame.getFirstColor());
+        jLabelSender.setBackground(MainFrame.getFirstColor());
         
-        jLabelDuration.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelProgress.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelTitle.setForeground(DashboardPanel.getSecondFontColor());
-        jSliderProgress.setForeground(DashboardPanel.getSecondFontColor());
-        jPanelControls.setBackground(DashboardPanel.getSecondColor());
+        jLabelDuration.setForeground(MainFrame.getSecondFontColor());
+        jLabelProgress.setForeground(MainFrame.getSecondFontColor());
+        jLabelTitle.setForeground(MainFrame.getSecondFontColor());
+        jSliderProgress.setForeground(MainFrame.getSecondFontColor());
+        jPanelControls.setBackground(MainFrame.getSecondColor());
         
         flag = true;
         embeddedMediaPlayerComponent = new EmbeddedMediaPlayerComponent();

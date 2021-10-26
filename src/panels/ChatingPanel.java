@@ -35,18 +35,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class ChatingPanel extends javax.swing.JPanel{
 
-    private Color firstColor, secondColor,fontColor,secondFontColor;
     
-    public ChatingPanel(String name, Color _firstColor, Color _secondColor, Color _fontColor, Color _secondFontColor) {
+    public ChatingPanel(String name, Color _firstColor, Color _fontColor, Color _secondColor) {
         initComponents();
         jScrollPaneChatsCenter.getViewport().setOpaque(false);
         jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
-        firstColor = _firstColor;
-        secondColor = _secondColor;
-        fontColor = _fontColor;
-        secondFontColor = _secondFontColor;
+        
         jLabelChatName.setText(name);
-        paintMyComponents();
+        paintMyComponents(_firstColor,_fontColor,_secondColor);
     }
 
     /**
@@ -58,56 +54,10 @@ public class ChatingPanel extends javax.swing.JPanel{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelChatTop = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-
-                super.paintComponent(g);
-                Graphics2D graphics = (Graphics2D) g;
-                graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                int w = getWidth();
-                int h = getHeight();
-                Point start = new Point(0,0);
-                Point end = new Point(w,h);
-                float[] slice = new float[]{0.5f,1f};
-                Color[] colors = new Color[]{firstColor,secondColor};
-                LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);
-                graphics.setPaint(gp);
-                graphics.fillRect(0, 0, w, h);
-                graphics = null;
-                gp = null;
-                graphics = null;
-                slice = null;
-                colors = null;
-
-            }
-        };
+        jPanelChatTop = new javax.swing.JPanel();
         jLabelBack = new javax.swing.JLabel();
         jLabelChatName = new javax.swing.JLabel();
-        jPanelChatBottom = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-
-                super.paintComponent(g);
-                Graphics2D graphics = (Graphics2D) g;
-                graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                int w = getWidth();
-                int h = getHeight();
-                Point start = new Point(0,0);
-                Point end = new Point(w,h);
-                float[] slice = new float[]{0.5f,1f};
-                Color[] colors = new Color[]{firstColor,secondColor};
-                LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);
-                graphics.setPaint(gp);
-                graphics.fillRect(0, 0, w, h);
-                graphics = null;
-                gp = null;
-                graphics = null;
-                slice = null;
-                colors = null;
-
-            }
-        };
+        jPanelChatBottom = new javax.swing.JPanel();
         jLabelAttachFile = new javax.swing.JLabel();
         jLabelSendMessage = new javax.swing.JLabel();
         jLabelAttatchVideo = new javax.swing.JLabel();
@@ -428,20 +378,15 @@ public class ChatingPanel extends javax.swing.JPanel{
         }
     }//GEN-LAST:event_jTextFieldMessageKeyPressed
 
-    public void paintMyComponents(){
+    public void paintMyComponents(Color firstColor, Color fontColor, Color secondColor){
         
-       
-        Component[] components = this.getComponents();
-        for (Component component : components){
-            component.setForeground(fontColor);
-        }
-
         jLabelBack.setForeground(fontColor);
         jLabelChatName.setForeground(fontColor);
-        jTextFieldMessage.setBackground(secondColor);
-        jTextFieldMessage.setForeground(secondFontColor);
+        jTextFieldMessage.setBackground(firstColor);
+        jTextFieldMessage.setForeground(fontColor);
         jLabelChatName.setForeground(fontColor);
-        jScrollPaneChatsCenter.setForeground(fontColor);
+        jPanelChatBottom.setBackground(secondColor);
+        jPanelChatTop.setBackground(firstColor);
     }
  
   

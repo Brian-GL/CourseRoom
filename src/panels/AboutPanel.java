@@ -5,11 +5,11 @@
  */
 package panels;
 
-import courseroom.MainFrame;
-;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+import courseroom.MainFrame;
+import java.awt.Color;
 
 /**
  *
@@ -53,7 +53,6 @@ public class AboutPanel extends javax.swing.JPanel {
         jLabelTitulo.setText("Acerca De CourseRoom");
         jLabelTitulo.setMaximumSize(new java.awt.Dimension(1071, 43));
         jLabelTitulo.setMinimumSize(new java.awt.Dimension(1071, 43));
-        jLabelTitulo.setOpaque(true);
         jLabelTitulo.setPreferredSize(new java.awt.Dimension(1071, 43));
 
         jScrollPaneTextPane.setBorder(null);
@@ -111,9 +110,8 @@ public class AboutPanel extends javax.swing.JPanel {
         doc = null;
         center = null;
         
-        jLabelTitulo.setForeground(DashboardPanel.getFontColor());
-        jLabelTitulo.setBackground(DashboardPanel.getFirstColor());
-        jTextPaneAbout.setForeground(DashboardPanel.getFontColor());
+        jLabelTitulo.setForeground(MainFrame.getSecondFontColor());
+        jTextPaneAbout.setForeground(MainFrame.getFontColor());
     }
     
     

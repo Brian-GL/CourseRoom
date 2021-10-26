@@ -6,9 +6,6 @@
 package panels;
 
 import courseroom.MainFrame;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,8 +50,8 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public RecuperarCredencialesPanel() {
         initComponents();
-        jLabelLogo.setIcon(MainFrame.getLogoImage());
         
+        paintMyComponents();
 
         pattern = Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE);
 
@@ -70,7 +67,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
             session = Session.getInstance(properties, null);
 
             // Leer la plantilla
-            inputStream = getClass().getResourceAsStream("../resources/html/mensaje.html");
+            inputStream = getClass().getResourceAsStream("/resources/html/mensaje.html");
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             // Almacenar el contenido de la plantilla en un StringBuffer
@@ -126,6 +123,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
         jLabelRegresar = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1260, 670));
 
         jLabelLogo.setBackground(new java.awt.Color(14, 30, 64));
@@ -135,30 +133,23 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
         jLabelLogo.setMinimumSize(new java.awt.Dimension(567, 125));
         jLabelLogo.setPreferredSize(new java.awt.Dimension(567, 125));
 
-        jLabelTitulo.setBackground(new java.awt.Color(14, 30, 64));
         jLabelTitulo.setFont(new java.awt.Font("Gadugi", 1, 28)); // NOI18N
-        jLabelTitulo.setForeground(new java.awt.Color(104, 194, 232));
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("¿Has Olvidado Tu Usuario &/O Contraseña?");
         jLabelTitulo.setPreferredSize(new java.awt.Dimension(500, 38));
 
-        jLabelFrase.setBackground(new java.awt.Color(14, 30, 64));
         jLabelFrase.setFont(new java.awt.Font("Gadugi", 0, 21)); // NOI18N
-        jLabelFrase.setForeground(new java.awt.Color(104, 194, 232));
         jLabelFrase.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelFrase.setText("<html><p style=\"text-align:center;\">No te preocupes. Solamente te pediremos que ingreses<br>el correo electrónico que registraste en tu cuenta.<br>Te mandaremos tu nombre de usuario y contraseña.</p></html>");
         jLabelFrase.setPreferredSize(new java.awt.Dimension(500, 116));
 
         jLabelCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 21)); // NOI18N
-        jLabelCorreoElectronico.setForeground(new java.awt.Color(14, 30, 64));
         jLabelCorreoElectronico.setText("Correo Electrónico");
         jLabelCorreoElectronico.setMaximumSize(new java.awt.Dimension(500, 30));
         jLabelCorreoElectronico.setMinimumSize(new java.awt.Dimension(500, 30));
         jLabelCorreoElectronico.setPreferredSize(new java.awt.Dimension(500, 30));
 
-        jTextFieldCorreoElectronico.setBackground(new java.awt.Color(14, 30, 64));
         jTextFieldCorreoElectronico.setFont(new java.awt.Font("Gadugi", 0, 24)); // NOI18N
-        jTextFieldCorreoElectronico.setForeground(new java.awt.Color(104, 194, 232));
         jTextFieldCorreoElectronico.setToolTipText("Ingresa Aquí Tu Correo Electrónico De Tu Cuenta Para Enviarte Tus Credenciales");
         jTextFieldCorreoElectronico.setCaretColor(new java.awt.Color(104, 194, 232));
         jTextFieldCorreoElectronico.setPreferredSize(new java.awt.Dimension(500, 43));
@@ -168,9 +159,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
             }
         });
 
-        jButtonRecuperarCredenciales.setBackground(new java.awt.Color(14, 30, 64));
         jButtonRecuperarCredenciales.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
-        jButtonRecuperarCredenciales.setForeground(new java.awt.Color(104, 194, 232));
         jButtonRecuperarCredenciales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/id-card_1.png"))); // NOI18N
         jButtonRecuperarCredenciales.setText(" Recuperar Credenciales ");
         jButtonRecuperarCredenciales.setToolTipText("Click Para Enviar Correo De Recuperación De Credenciales");
@@ -190,7 +179,6 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
         });
 
         jLabelRegresar.setFont(new java.awt.Font("Segoe UI", 1, 50)); // NOI18N
-        jLabelRegresar.setForeground(new java.awt.Color(14, 30, 64));
         jLabelRegresar.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabelRegresar.setText("←");
         jLabelRegresar.setToolTipText("Regresa A La Página De Login");
@@ -247,20 +235,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
         );
     }// </editor-fold>//GEN-END:initComponents
 
-        @Override
-    protected void paintComponent(Graphics g) {
-        
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        int w = getWidth();
-        int h = getHeight();
-        GradientPaint gp = new GradientPaint(0, 0, MainFrame.getDarkBlue(), 0, h, MainFrame.getLightBlue());
-        g2d.setPaint(gp);
-        g2d.fillRect(0, 0, w, h);
-        g2d = null;
-        gp = null;
-        
-    }
+
     
     private void jTextFieldCorreoElectronicoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCorreoElectronicoKeyPressed
         // TODO add your handling code here:
@@ -292,6 +267,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
 
     private void jButtonRecuperarCredencialesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRecuperarCredencialesMouseExited
         // TODO add your handling code here:
+        
         jButtonRecuperarCredenciales.setBackground(MainFrame.getDarkBlue());
         jButtonRecuperarCredenciales.setForeground(MainFrame.getLightBlue());
     }//GEN-LAST:event_jButtonRecuperarCredencialesMouseExited
@@ -363,6 +339,19 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
         
         jTextFieldCorreoElectronico.setText("");
         
+    }
+    
+    private void paintMyComponents(){
+        jLabelLogo.setIcon(MainFrame.getLogoImage());
+        jLabelRegresar.setForeground(MainFrame.getDarkBlue());
+        jLabelCorreoElectronico.setForeground(MainFrame.getDarkBlue());
+        jLabelFrase.setForeground(MainFrame.getLightBlue());
+        jLabelTitulo.setForeground(MainFrame.getLightBlue());
+        jTextFieldCorreoElectronico.setBackground(MainFrame.getDarkBlue());
+        jTextFieldCorreoElectronico.setForeground(MainFrame.getLightBlue());
+        jTextFieldCorreoElectronico.setCaretColor(MainFrame.getLightBlue());
+        jButtonRecuperarCredenciales.setBackground(MainFrame.getDarkBlue());
+        jButtonRecuperarCredenciales.setForeground(MainFrame.getLightBlue());
     }
     
     

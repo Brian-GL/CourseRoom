@@ -6,8 +6,8 @@
 package panels;
 
 import com.github.javafaker.Faker;
+import courseroom.MainFrame;
 import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Locale;
 import javax.swing.ImageIcon;
@@ -35,10 +35,10 @@ public class InfoProfilePanel extends javax.swing.JPanel {
     public void paintMyComponents(){
         Component[] components = this.getComponents();
         for(Component component : components){
-            component.setForeground(DashboardPanel.getFontColor());
+            component.setForeground(MainFrame.getFontColor());
         }
         jScrollPaneDescripcion.getViewport().setOpaque(false);
-        jTextPaneDescripcion.setForeground(DashboardPanel.getFontColor());
+        jTextPaneDescripcion.setForeground(MainFrame.getFontColor());
         Faker faker = new Faker(new Locale("es","MX"));
         jLabelNombres.setText(faker.name().firstName() + " " + faker.name().firstName());
         jLabelApellidos.setText(faker.name().lastName() + " " + faker.name().lastName());
@@ -51,12 +51,13 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelFechaDeNacimiento.setText(faker.backToTheFuture().date());
         faker = null;
         
-        jLabelNombres.setForeground(DashboardPanel.getFontColor());
-        jLabelApellidos.setForeground(DashboardPanel.getFontColor());
-        jLabelNombres.setBackground(DashboardPanel.getFirstColor());
-        jLabelApellidos.setBackground(DashboardPanel.getFirstColor());
-        jLabelNombreDeUsuario.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelNombreDeUsuario.setBackground(DashboardPanel.getSecondColor());
+        ImageIcon imageIcon = new ImageIcon(DashboardPanel.getUserImage());
+        jLabelProfilePhoto.setIcon(imageIcon);
+        jLabelNombres.setForeground(MainFrame.getSecondFontColor());
+        jLabelApellidos.setForeground(MainFrame.getSecondFontColor());
+        jLabelNombreDeUsuario.setForeground(MainFrame.getFontColor());
+        imageIcon.getImage().flush();
+        imageIcon = null;
         
     }
 
@@ -102,7 +103,6 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelApellidos.setMaximumSize(new java.awt.Dimension(380, 50));
         jLabelApellidos.setMinimumSize(new java.awt.Dimension(380, 50));
         jLabelApellidos.setName("label"); // NOI18N
-        jLabelApellidos.setOpaque(true);
         jLabelApellidos.setPreferredSize(new java.awt.Dimension(380, 50));
 
         jLabelNombres.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
@@ -112,7 +112,6 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelNombres.setMaximumSize(new java.awt.Dimension(380, 50));
         jLabelNombres.setMinimumSize(new java.awt.Dimension(380, 50));
         jLabelNombres.setName("label"); // NOI18N
-        jLabelNombres.setOpaque(true);
         jLabelNombres.setPreferredSize(new java.awt.Dimension(380, 50));
 
         jLabelNombreDeUsuario.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
@@ -121,7 +120,6 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelNombreDeUsuario.setToolTipText("User Name");
         jLabelNombreDeUsuario.setMaximumSize(new java.awt.Dimension(430, 30));
         jLabelNombreDeUsuario.setMinimumSize(new java.awt.Dimension(430, 30));
-        jLabelNombreDeUsuario.setOpaque(true);
         jLabelNombreDeUsuario.setPreferredSize(new java.awt.Dimension(430, 30));
 
         jLabelCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -287,12 +285,12 @@ public class InfoProfilePanel extends javax.swing.JPanel {
 
     private void jLabelMiDesempenoEscolarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMiDesempenoEscolarMouseEntered
         // TODO add your handling code here:
-        jLabelMiDesempenoEscolar.setForeground(DashboardPanel.getThirdColor());
+        jLabelMiDesempenoEscolar.setForeground(MainFrame.getThirdColor());
     }//GEN-LAST:event_jLabelMiDesempenoEscolarMouseEntered
 
     private void jLabelMiDesempenoEscolarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMiDesempenoEscolarMouseExited
         // TODO add your handling code here:
-        jLabelMiDesempenoEscolar.setForeground(DashboardPanel.getFontColor());
+        jLabelMiDesempenoEscolar.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelMiDesempenoEscolarMouseExited
 
     private void jLabelEditarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEditarPerfilMouseClicked
@@ -304,12 +302,12 @@ public class InfoProfilePanel extends javax.swing.JPanel {
 
     private void jLabelEditarPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEditarPerfilMouseEntered
         // TODO add your handling code here:
-        jLabelEditarPerfil.setForeground(DashboardPanel.getThirdColor());
+        jLabelEditarPerfil.setForeground(MainFrame.getThirdColor());
     }//GEN-LAST:event_jLabelEditarPerfilMouseEntered
 
     private void jLabelEditarPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEditarPerfilMouseExited
         // TODO add your handling code here:
-        jLabelEditarPerfil.setForeground(DashboardPanel.getFontColor());
+        jLabelEditarPerfil.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelEditarPerfilMouseExited
 
     public void setProfileImage(Image image){
@@ -317,17 +315,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelProfilePhoto.setIcon(profileIcon);
         profileIcon = null;
     }
-    
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        int imageHeight = jLabelProfilePhoto.getHeight();
-        int imageWidth = jLabelProfilePhoto.getWidth();
-        ImageIcon icon = new ImageIcon(DashboardPanel.getUserImage().getScaledInstance(imageWidth,imageHeight,Image.SCALE_SMOOTH));
-        jLabelProfilePhoto.setIcon(icon);
-        icon = null;
-    }
-
+   
     public JLabel getProfilePhotoLabel(){
         return InfoProfilePanel.jLabelProfilePhoto;
     }

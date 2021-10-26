@@ -33,7 +33,6 @@ import java.awt.image.PixelGrabber;
 public class MemberPanel extends javax.swing.JPanel {
     
     private String full_name;
-    private Color firstColor, secondColor;
 
     /**
      * Creates new form MemberPanel
@@ -41,9 +40,8 @@ public class MemberPanel extends javax.swing.JPanel {
     public MemberPanel() {
         initComponents();
         try {
-            firstColor = secondColor = Color.BLACK;
-            System.out.println("Member -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
-            URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
+            System.out.println("Member -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
             Image image = ImageIO.read(imageURL);
             setColors(image);
             Image cover = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
@@ -72,29 +70,6 @@ public class MemberPanel extends javax.swing.JPanel {
             Logger.getLogger(MemberPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }
-    
-    @Override
-    protected void paintComponent(Graphics g) {
-
-        super.paintComponent(g);
-        Graphics2D graphics = (Graphics2D) g;
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        int w = getWidth();
-        int h = getHeight();
-        Point start = new Point(0,0);
-        Point end = new Point(w,h);
-        float[] slice = new float[]{0.5f,1f};
-        Color[] colors = new Color[]{firstColor,secondColor};
-        LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);
-        graphics.setPaint(gp);
-        graphics.fillRect(0, 0, w, h);
-        graphics = null;
-        gp = null;
-        graphics = null;
-        slice = null;
-        colors = null;
-
     }
     
 
@@ -167,10 +142,10 @@ public class MemberPanel extends javax.swing.JPanel {
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
             int maximum = 0;
-            firstColor = Color.BLACK;
+            Color firstColor = Color.BLACK;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = (image.getWidth(null)/3);
+            int large = (image.getWidth(null)/2);
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -197,33 +172,14 @@ public class MemberPanel extends javax.swing.JPanel {
                 }
 
                
-                secondColor = firstColor;
-            
-                int iterations = 0;
-                if(colorList.size() > 1){
-                    
-                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
-                        secondColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 25){
-                             while(firstColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                secondColor = colorList.get(position).second();
-                            }
-                             break;
-                        }
-                    }
-                }
-                
                 int red = firstColor.getRed();
                 Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                
                 
                 colorList.clear();
                 jLabelMemberLastName.setForeground(fontColor);
                 jLabelMemberUserName.setForeground(fontColor);
                 jLabelMemberName.setForeground(fontColor);
+                this.setBackground(firstColor);
 
                 fontColor = null;
                 colorRandom = null;

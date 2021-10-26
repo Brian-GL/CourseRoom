@@ -58,9 +58,6 @@
           <Dimension value="[1085, 70]"/>
         </Property>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa; @Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;       super.paintComponent(g);&#xa;        Graphics2D graphics = (Graphics2D) g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        int w = getWidth();&#xa;        int h = getHeight();&#xa;        Point start = new Point(0,0);&#xa;        Point end = new Point(w,h);&#xa;        float[] slice = new float[]{0.5f,1f};&#xa;        Color[] colors = new Color[]{firstColor,secondColor};&#xa;        LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);&#xa;        graphics.setPaint(gp);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics = null;&#xa;        gp = null;&#xa;        graphics = null;&#xa;        slice = null;&#xa;        colors = null;&#xa;        &#xa;    }&#xa;}"/>
-      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">

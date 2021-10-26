@@ -10,13 +10,7 @@ import data.collections.PairDoublyLinkedList;
 import data.interfaces.MainInterface;
 import data.structures.Pair;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.LinearGradientPaint;
-import java.awt.Point;
-import java.awt.RenderingHints;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;import java.net.URL;
@@ -34,7 +28,7 @@ import javax.swing.SwingUtilities;
  */
 public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
 
-    private Color firstColor,secondColor, fontColor, secondFontColor ;
+    private Color firstColor, fontColor, secondColor;
     private ChatingPanel chatingPanel;
     private int id;
     
@@ -42,9 +36,9 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
     public BoxChatPanel(int _id) {
         initComponents();
         try {
-            firstColor = secondColor = Color.BLACK;
-            System.out.println("Chat ID: "+_id+" -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
-            URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
+            firstColor = Color.BLACK;
+            System.out.println("Chat ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
             Image chatImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
             ImageIcon chatIcon = new ImageIcon(chatImage);
@@ -54,7 +48,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
             jLabelNombreChat.setText(faker.rickAndMorty().character());
             jLabelUltimoMensaje.setText(faker.friends().character() + " Is There?");
             jLabelNumeroMensajesNoLeidos.setText(faker.number().digits(1));
-            chatingPanel = new ChatingPanel(jLabelNombreChat.getText(),firstColor,secondColor, fontColor,secondFontColor);
+            chatingPanel = new ChatingPanel(jLabelNombreChat.getText(),firstColor, fontColor,secondColor);
             this.id = _id;
             DashboardPanel.addView(chatingPanel,"chat"+id);
             getImage.flush();
@@ -70,40 +64,15 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         }
     }
     
-     @Override
-    protected void paintComponent(Graphics g) {
-        
-        super.paintComponent(g);
-        Graphics2D graphics = (Graphics2D) g;
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        int w = getWidth();
-        int h = getHeight();
-        Point start = new Point(0,0);
-        Point end = new Point(w,h);
-        float[] slice = new float[]{0.5f,1f};
-        Color[] colors = new Color[]{firstColor,secondColor};
-        LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);
-        graphics.setPaint(gp);
-        graphics.fillRect(0, 0, w, h);
-        graphics = null;
-        gp = null;
-        graphics = null;
-        slice = null;
-        colors = null;
-        
-    }
-    
-    
     @Override
     public void setColors(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
             int maximum = 0;
-            
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = (image.getWidth(null)/3);
+            int large = (image.getWidth(null)/2);
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -128,7 +97,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
                     color = null;
                     i += colorRandom.nextInt(large+1) + large;
                 }
-
+                
                 secondColor = firstColor;
             
                 int iterations = 0;
@@ -147,24 +116,18 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
                         }
                     }
                 }
-               
-              
+
                 int red = firstColor.getRed();
                 fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                red = secondColor.getRed();
-                secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-
+               
                 colorList.clear();
 
-                Component[] components = this.getComponents();
-                for (Component component : components){
-                    component.setForeground(fontColor);
-                }
                 
                 jLabelFechaHoraMensaje.setForeground(fontColor);
                 jLabelNombreChat.setForeground(fontColor);
-                jLabelNumeroMensajesNoLeidos.setForeground(secondFontColor);
+                jLabelNumeroMensajesNoLeidos.setForeground(fontColor);
                 jLabelUltimoMensaje.setForeground(fontColor);
+                this.setBackground(firstColor);
 
                 colorRandom = null;
                 colorList = null;

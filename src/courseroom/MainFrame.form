@@ -44,6 +44,7 @@
         </Property>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xd;&#xa;@Override&#xd;&#xa;    protected void paintComponent(Graphics g) {&#xd;&#xa;        &#xd;&#xa;        super.paintComponent(g);&#xd;&#xa;        int w = this.getWidth();&#xd;&#xa;        int h = this.getHeight();&#xd;&#xa;        Graphics2D graphics = (Graphics2D)g;&#xd;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xd;&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xd;&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, MainFrame.getSecondColor(), w, 0f, MainFrame.getThirdColor());&#xd;&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, MainFrame.getFirstColor());&#xd;&#xa;        graphics.setPaint(primary);&#xd;&#xa;        graphics.fillRect(0, 0, w, h);&#xd;&#xa;        graphics.setPaint(secondary);&#xd;&#xa;        graphics.fillRect(0, 0, w, h);&#xd;&#xa;        primary = null;&#xd;&#xa;        secondary = null;&#xd;&#xa;        noColor = null;&#xd;&#xa;    }&#xd;&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
       </AuxValues>
 

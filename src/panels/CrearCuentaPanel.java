@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -55,41 +54,13 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
     private void initComponents() {
 
         jTabbedPaneFondo = new javax.swing.JTabbedPane();
-        jPanelInicio = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-                int w = getWidth();
-                int h = getHeight();
-                GradientPaint gp = new GradientPaint(0, 0, MainFrame.getDarkBlue(), 0, h, MainFrame.getLightBlue());
-                g2d.setPaint(gp);
-                g2d.fillRect(0, 0, w, h);
-                g2d = null;
-                gp = null;
-            }
-        };
+        jPanelInicio = new javax.swing.JPanel();
         jLabelLogoInicio = new javax.swing.JLabel();
         jLabelTituloInicio = new javax.swing.JLabel();
         jLabelInformacionInicio = new javax.swing.JLabel();
         jLabelInicioAutenticacion = new javax.swing.JLabel();
         jLabelRegresar = new javax.swing.JLabel();
-        jPanelAutenticacion = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-                int w = getWidth();
-                int h = getHeight();
-                GradientPaint gp = new GradientPaint(0, 0, MainFrame.getDarkBlue(), 0, h, MainFrame.getLightBlue());
-                g2d.setPaint(gp);
-                g2d.fillRect(0, 0, w, h);
-                g2d = null;
-                gp = null;
-            }
-        };
+        jPanelAutenticacion = new javax.swing.JPanel();
         jLabelLogoAutenticacion = new javax.swing.JLabel();
         jLabelNombre = new javax.swing.JLabel();
         jTextFieldNombreDeUsuario = new javax.swing.JTextField();
@@ -106,21 +77,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelInformacionSeguridadPassword = new javax.swing.JLabel();
         jLabelAutenticacionInicio = new javax.swing.JLabel();
         jLabelAutenticacionDatosPersonales = new javax.swing.JLabel();
-        jPanelDatosPersonales = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-                int w = getWidth();
-                int h = getHeight();
-                GradientPaint gp = new GradientPaint(0, 0, MainFrame.getDarkBlue(), 0, h, MainFrame.getLightBlue());
-                g2d.setPaint(gp);
-                g2d.fillRect(0, 0, w, h);
-                g2d = null;
-                gp = null;
-            }
-        };
+        jPanelDatosPersonales = new javax.swing.JPanel();
         jLabelLogoDatosPersonales = new javax.swing.JLabel();
         jLabelTituloDatosPersonales = new javax.swing.JLabel();
         jLabelNombres = new javax.swing.JLabel();
@@ -140,21 +97,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jTextAreaDescripcion = new javax.swing.JTextArea();
         jLabelDatosPersonalesAutenticacion = new javax.swing.JLabel();
         jLabelDatosPersonalesPerfil = new javax.swing.JLabel();
-        jPanelPerfil = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-                int w = getWidth();
-                int h = getHeight();
-                GradientPaint gp = new GradientPaint(0, 0, MainFrame.getDarkBlue(), 0, h, MainFrame.getLightBlue());
-                g2d.setPaint(gp);
-                g2d.fillRect(0, 0, w, h);
-                g2d = null;
-                gp = null;
-            }
-        };
+        jPanelPerfil = new javax.swing.JPanel();
         jLabelLogoPerfil = new javax.swing.JLabel();
         jLabelTituloPerfil = new javax.swing.JLabel();
         jLabelPerfil = new javax.swing.JLabel();
@@ -165,6 +108,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelContinuar = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1260, 670));
         setLayout(new java.awt.CardLayout());
 
@@ -172,7 +116,6 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jTabbedPaneFondo.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPaneFondo.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jTabbedPaneFondo.setMinimumSize(new java.awt.Dimension(1024, 700));
-        jTabbedPaneFondo.setOpaque(true);
         jTabbedPaneFondo.setPreferredSize(new java.awt.Dimension(1024, 700));
         jTabbedPaneFondo.setRequestFocusEnabled(false);
 

@@ -6,7 +6,7 @@
 package panels;
 
 import com.github.javafaker.Faker;
-import java.awt.Color;
+import courseroom.MainFrame;
 
 
 /**
@@ -20,8 +20,7 @@ public class GroupsPanel extends javax.swing.JPanel {
      */
     public GroupsPanel() {
         initComponents();
-        jLabelGroupsTitle.setForeground(DashboardPanel.getFontColor());
-        jLabelGroupsTitle.setBackground(DashboardPanel.getFirstColor());
+        jLabelGroupsTitle.setForeground(MainFrame.getSecondFontColor());
         jScrollPaneMisGrupos.getViewport().setOpaque(false);
         jScrollPaneMisGrupos.getVerticalScrollBar().setUnitIncrement(15);
         
@@ -62,7 +61,6 @@ public class GroupsPanel extends javax.swing.JPanel {
         jLabelGroupsTitle.setText("Grupos");
         jLabelGroupsTitle.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelGroupsTitle.setMinimumSize(new java.awt.Dimension(416, 84));
-        jLabelGroupsTitle.setOpaque(true);
         jLabelGroupsTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

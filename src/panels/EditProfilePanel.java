@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import courseroom.MainFrame;
 
 /**
  *
@@ -36,7 +37,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
         paintMyComponents();
         Color noColor = new Color(0,0,0,0);
         jTabbedPaneFondo.setBackground(noColor);
-        jTabbedPaneFondo.setForeground(DashboardPanel.getSecondFontColor());
+        jTabbedPaneFondo.setForeground(MainFrame.getSecondFontColor());
         jScrollPaneDescripcion.getViewport().setOpaque(false);
         noColor = null;
         
@@ -777,39 +778,39 @@ public class EditProfilePanel extends javax.swing.JPanel {
     private void jButtonGuardarCambiosAutenticacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosAutenticacionMouseEntered
         // TODO add your handling code here:
         
-        jButtonGuardarCambiosAutenticacion.setBackground(DashboardPanel.getSecondColor());
-        jButtonGuardarCambiosAutenticacion.setForeground(DashboardPanel.getSecondFontColor());
+        jButtonGuardarCambiosAutenticacion.setBackground(MainFrame.getSecondColor());
+        jButtonGuardarCambiosAutenticacion.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jButtonGuardarCambiosAutenticacionMouseEntered
 
     private void jButtonGuardarCambiosAutenticacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosAutenticacionMouseExited
         // TODO add your handling code here:
-        jButtonGuardarCambiosAutenticacion.setBackground(DashboardPanel.getFirstColor());
-        jButtonGuardarCambiosAutenticacion.setForeground(DashboardPanel.getFontColor());
+        jButtonGuardarCambiosAutenticacion.setBackground(MainFrame.getFirstColor());
+        jButtonGuardarCambiosAutenticacion.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jButtonGuardarCambiosAutenticacionMouseExited
 
     private void jButtonCargarImagenPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarImagenPerfilMouseEntered
         // TODO add your handling code here:
-        jButtonCargarImagenPerfil.setBackground(DashboardPanel.getSecondColor());
-        jButtonCargarImagenPerfil.setForeground(DashboardPanel.getSecondFontColor());
+        jButtonCargarImagenPerfil.setBackground(MainFrame.getSecondColor());
+        jButtonCargarImagenPerfil.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jButtonCargarImagenPerfilMouseEntered
 
     private void jButtonCargarImagenPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarImagenPerfilMouseExited
         // TODO add your handling code here:
-        jButtonCargarImagenPerfil.setBackground(DashboardPanel.getFirstColor());
-        jButtonCargarImagenPerfil.setForeground(DashboardPanel.getFontColor());
+        jButtonCargarImagenPerfil.setBackground(MainFrame.getFirstColor());
+        jButtonCargarImagenPerfil.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jButtonCargarImagenPerfilMouseExited
 
     private void jButtonGuardarCambiosDatosPersonalesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosDatosPersonalesMouseEntered
         // TODO add your handling code here:
         
-        jButtonGuardarCambiosDatosPersonales.setBackground(DashboardPanel.getSecondColor());
-        jButtonGuardarCambiosDatosPersonales.setForeground(DashboardPanel.getSecondFontColor());
+        jButtonGuardarCambiosDatosPersonales.setBackground(MainFrame.getSecondColor());
+        jButtonGuardarCambiosDatosPersonales.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jButtonGuardarCambiosDatosPersonalesMouseEntered
 
     private void jButtonGuardarCambiosDatosPersonalesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosDatosPersonalesMouseExited
         // TODO add your handling code here:
-       jButtonGuardarCambiosDatosPersonales.setBackground(DashboardPanel.getFirstColor());
-       jButtonGuardarCambiosDatosPersonales.setForeground(DashboardPanel.getFontColor());
+       jButtonGuardarCambiosDatosPersonales.setBackground(MainFrame.getFirstColor());
+       jButtonGuardarCambiosDatosPersonales.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jButtonGuardarCambiosDatosPersonalesMouseExited
 
 
@@ -876,13 +877,13 @@ public class EditProfilePanel extends javax.swing.JPanel {
             String clase = component.getClass().getSimpleName();
             switch (clase) {
                 case "JTextField" ->
-                    ((JTextField) component).setCaretColor(DashboardPanel.getFirstColor());
+                    ((JTextField) component).setCaretColor(MainFrame.getFirstColor());
                 case "JFormattedTextField" ->
-                    ((JFormattedTextField) component).setCaretColor(DashboardPanel.getFirstColor());
+                    ((JFormattedTextField) component).setCaretColor(MainFrame.getFirstColor());
             }
 
-            component.setBackground(DashboardPanel.getFirstColor());
-            component.setForeground(DashboardPanel.getFontColor());
+            component.setBackground(MainFrame.getFirstColor());
+            component.setForeground(MainFrame.getFontColor());
 
         }
 
@@ -891,21 +892,21 @@ public class EditProfilePanel extends javax.swing.JPanel {
             String clase = component.getClass().getSimpleName();
             switch (clase) {
                 case "JTextField":
-                    ((JTextField) component).setCaretColor(DashboardPanel.getFirstColor());
+                    ((JTextField) component).setCaretColor(MainFrame.getFirstColor());
                     break;
                 case "JFormattedTextField":
-                    ((JFormattedTextField) component).setCaretColor(DashboardPanel.getFirstColor());
+                    ((JFormattedTextField) component).setCaretColor(MainFrame.getFirstColor());
                     break;
             }
 
-            component.setBackground(DashboardPanel.getFirstColor());
-            component.setForeground(DashboardPanel.getFontColor());
+            component.setBackground(MainFrame.getFirstColor());
+            component.setForeground(MainFrame.getFontColor());
 
         }
 
-        jTextAreaDescripcion.setBackground(DashboardPanel.getFirstColor());
-        jTextAreaDescripcion.setForeground(DashboardPanel.getFontColor());
-        jTextAreaDescripcion.setCaretColor(DashboardPanel.getFirstColor() );
+        jTextAreaDescripcion.setBackground(MainFrame.getFirstColor());
+        jTextAreaDescripcion.setForeground(MainFrame.getFontColor());
+        jTextAreaDescripcion.setCaretColor(MainFrame.getFirstColor() );
 
         int large = jLabelImagenPerfilAutenticacion.getPreferredSize().height;
         Image scaled = DashboardPanel.getUserImage().getScaledInstance(large, large, Image.SCALE_SMOOTH);

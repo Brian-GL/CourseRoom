@@ -5,6 +5,7 @@
  */
 package panels;
 
+import courseroom.MainFrame;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -54,18 +55,18 @@ public class AudioMessagePanel extends javax.swing.JPanel {
         jLabelDate.setText(date);
         jLabelSender.setText(sender);
         play = false;
-        jLabelDate.setForeground(DashboardPanel.getFontColor());
-        jLabelSender.setForeground(DashboardPanel.getFontColor());
-        jLabelDate.setBackground(DashboardPanel.getFirstColor());
-        jLabelSender.setBackground(DashboardPanel.getFirstColor());
-        jPanelAudioInfo.setBackground(DashboardPanel.getSecondColor());
-        jLabelDuration.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelProgress.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelTitle.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelArtist.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelAlbum.setForeground(DashboardPanel.getSecondFontColor());
-        jSliderProgress.setForeground(DashboardPanel.getSecondFontColor());
-        this.setBackground(DashboardPanel.getSecondColor());
+        jLabelDate.setForeground(MainFrame.getFontColor());
+        jLabelSender.setForeground(MainFrame.getFontColor());
+        jLabelDate.setBackground(MainFrame.getFirstColor());
+        jLabelSender.setBackground(MainFrame.getFirstColor());
+        jPanelAudioInfo.setBackground(MainFrame.getSecondColor());
+        jLabelDuration.setForeground(MainFrame.getSecondFontColor());
+        jLabelProgress.setForeground(MainFrame.getSecondFontColor());
+        jLabelTitle.setForeground(MainFrame.getSecondFontColor());
+        jLabelArtist.setForeground(MainFrame.getSecondFontColor());
+        jLabelAlbum.setForeground(MainFrame.getSecondFontColor());
+        jSliderProgress.setForeground(MainFrame.getSecondFontColor());
+        this.setBackground(MainFrame.getSecondColor());
         play_icon = new ImageIcon(getClass().getResource("/resources/icons/play-button.png"));
         pause_icon = new ImageIcon(getClass().getResource("/resources/icons/pause.png"));
         flag = true;

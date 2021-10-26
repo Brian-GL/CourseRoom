@@ -7,6 +7,7 @@ package panels;
 
 import java.io.File;
 import org.apache.commons.io.FilenameUtils;
+import courseroom.MainFrame;
 
 /**
  *
@@ -23,13 +24,13 @@ public class FileMessagePanel extends javax.swing.JPanel {
         jLabelSender.setText(sender);
         jLabelFileName.setText(file.getName());
         jLabelExtension.setText( FilenameUtils.getExtension(file.getName()));
-        jLabelDate.setForeground(DashboardPanel.getFontColor());
-        jLabelSender.setForeground(DashboardPanel.getFontColor());
-        jLabelDate.setBackground(DashboardPanel.getFirstColor());
-        jLabelSender.setBackground(DashboardPanel.getFirstColor());
-        jPanelFileInfo.setBackground(DashboardPanel.getSecondColor());
-        jLabelFileName.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelExtension.setForeground(DashboardPanel.getSecondFontColor());
+        jLabelDate.setForeground(MainFrame.getFontColor());
+        jLabelSender.setForeground(MainFrame.getFontColor());
+        jLabelDate.setBackground(MainFrame.getFirstColor());
+        jLabelSender.setBackground(MainFrame.getFirstColor());
+        jPanelFileInfo.setBackground(MainFrame.getSecondColor());
+        jLabelFileName.setForeground(MainFrame.getSecondFontColor());
+        jLabelExtension.setForeground(MainFrame.getSecondFontColor());
     }
 
     /**

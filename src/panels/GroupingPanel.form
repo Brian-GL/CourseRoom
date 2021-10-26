@@ -37,12 +37,6 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanelAboutGroup">
-          <Properties>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;        super.paintComponent(g);&#xa;        int w = this.getWidth();&#xa;        int h = this.getHeight();&#xa;        Graphics2D graphics = (Graphics2D)g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);&#xa;        graphics.setPaint(primary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics.setPaint(secondary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        primary = null;&#xa;        secondary = null;&#xa;        noColor = null;&#xa;    }&#xa;}"/>
-          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Informaci&#xf3;n">
@@ -130,7 +124,6 @@
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[416, 84]"/>
                 </Property>
-                <Property name="opaque" type="boolean" value="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[416, 84]"/>
                 </Property>
@@ -168,7 +161,6 @@
                   <Image iconType="3" name="/resources/icons/teacher.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="De La Clase Sistemas Operativos"/>
-                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelGroupClassMouseClicked"/>
@@ -211,7 +203,6 @@
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[416, 84]"/>
                 </Property>
-                <Property name="opaque" type="boolean" value="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[416, 84]"/>
                 </Property>
@@ -220,12 +211,6 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelGrupalChat">
-          <Properties>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;        super.paintComponent(g);&#xa;        int w = this.getWidth();&#xa;        int h = this.getHeight();&#xa;        Graphics2D graphics = (Graphics2D)g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);&#xa;        graphics.setPaint(primary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics.setPaint(secondary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        primary = null;&#xa;        secondary = null;&#xa;        noColor = null;&#xa;    }&#xa;}"/>
-          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Chat Grupal">
@@ -240,12 +225,6 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelTareas">
-          <Properties>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;        super.paintComponent(g);&#xa;        int w = this.getWidth();&#xa;        int h = this.getHeight();&#xa;        Graphics2D graphics = (Graphics2D)g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);&#xa;        graphics.setPaint(primary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics.setPaint(secondary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        primary = null;&#xa;        secondary = null;&#xa;        noColor = null;&#xa;    }&#xa;}"/>
-          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Tareas">
@@ -271,12 +250,6 @@
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelPorHacer">
-          <Properties>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;        super.paintComponent(g);&#xa;        int w = this.getWidth();&#xa;        int h = this.getHeight();&#xa;        Graphics2D graphics = (Graphics2D)g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);&#xa;        graphics.setPaint(primary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics.setPaint(secondary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        primary = null;&#xa;        secondary = null;&#xa;        noColor = null;&#xa;    }&#xa;}"/>
-          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Por Hacer">
@@ -485,7 +458,6 @@
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[416, 84]"/>
                 </Property>
-                <Property name="opaque" type="boolean" value="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[416, 84]"/>
                 </Property>
@@ -494,12 +466,6 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelConfiguraciones">
-          <Properties>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;@Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        &#xa;        super.paintComponent(g);&#xa;        int w = this.getWidth();&#xa;        int h = this.getHeight();&#xa;        Graphics2D graphics = (Graphics2D)g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);&#xa;        Color noColor =  new Color(0, 0, 0, 0);&#xa;        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);&#xa;        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);&#xa;        graphics.setPaint(primary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        graphics.setPaint(secondary);&#xa;        graphics.fillRect(0, 0, w, h);&#xa;        primary = null;&#xa;        secondary = null;&#xa;        noColor = null;&#xa;    }&#xa;}"/>
-          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Configuraciones">

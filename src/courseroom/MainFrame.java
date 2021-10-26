@@ -11,7 +11,11 @@ import panels.DashboardPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,6 +25,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import panels.LoginPanel;
@@ -36,8 +41,11 @@ public class MainFrame extends javax.swing.JFrame {
     private static RecuperarCredencialesPanel recuperarCredenciales;
     private static CrearCuentaPanel crearCuenta;
     private static DashboardPanel dashboard;
-    private static Color lightBlue,darkBlue;
+    
+    private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor, darkBlue, lightBlue;
+    
     private static ImageIcon logoImage;
+    
     private static CardLayout viewerLayout;
     
     /**
@@ -59,8 +67,9 @@ public class MainFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
         
-        darkBlue = new Color(14,30,64);
-        lightBlue  = new Color(104,194,232);
+        secondColor = thirdColor = darkBlue = new Color(14,30,64);
+        firstColor = lightBlue  = new Color(104,194,232);
+        fontColor = secondFontColor = thirdFontColor = Color.BLACK;
         Image darkImageLogo;
         try {
             darkImageLogo = ImageIO.read(getClass().getResource("/resources/images/Course_Room_Brand_Blue.png"));
@@ -84,8 +93,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelViewer.add("dashboard",dashboard);
         
         viewerLayout = (CardLayout)jPanelViewer.getLayout();
-        
     }
+    
     
     public boolean checkConnection(){
         try {
@@ -110,7 +119,27 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelViewer = new javax.swing.JPanel();
+        jPanelViewer = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+
+                super.paintComponent(g);
+                int w = this.getWidth();
+                int h = this.getHeight();
+                Graphics2D graphics = (Graphics2D)g;
+                graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+                Color noColor =  new Color(0, 0, 0, 0);
+                GradientPaint primary = new GradientPaint(0f, 0f, MainFrame.getSecondColor(), w, 0f, MainFrame.getThirdColor());
+                GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, MainFrame.getFirstColor());
+                graphics.setPaint(primary);
+                graphics.fillRect(0, 0, w, h);
+                graphics.setPaint(secondary);
+                graphics.fillRect(0, 0, w, h);
+                primary = null;
+                secondary = null;
+                noColor = null;
+            }
+        };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CourseRoom - Tu Espacio Personal Para Estudiar");
@@ -152,11 +181,24 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     public static void showDashboard(){
+        dashboard.setColors();
         viewerLayout.show(jPanelViewer,"dashboard");
     }
     
     public static void logOut(){
         showLogin();
+        firstColor = lightBlue;
+        secondColor = darkBlue;
+        thirdColor = darkBlue;
+        jPanelViewer.repaint();
+        dashboard.dispose();
+        dashboard = null;
+        dashboard = new DashboardPanel();
+        
+    }
+    
+    public static void repainting(){
+        jPanelViewer.repaint();
     }
    
     @Override
@@ -171,8 +213,7 @@ public class MainFrame extends javax.swing.JFrame {
         recuperarCredenciales = null;
         crearCuenta = null;
         dashboard = null;
-        lightBlue = null;
-        darkBlue = null;
+        firstColor = secondColor = thirdColor = fontColor = secondFontColor = thirdFontColor = null;
         logoImage = null;
         viewerLayout = null;
         super.dispose();
@@ -183,21 +224,19 @@ public class MainFrame extends javax.swing.JFrame {
     private static javax.swing.JPanel jPanelViewer;
     // End of variables declaration//GEN-END:variables
 
-   
     /**
-     * @return the lightBlue
-     */
-    public static Color getLightBlue() {
-        return lightBlue;
-    }
-
-    /**
-     * @return the darkBlue
+     * @return the secondColor
      */
     public static Color getDarkBlue() {
         return darkBlue;
     }
     
+    /**
+     * @return the secondColor
+     */
+    public static Color getLightBlue() {
+        return lightBlue;
+    }
 
     /**
      * @return the logoImage
@@ -213,6 +252,90 @@ public class MainFrame extends javax.swing.JFrame {
     public static LoginPanel getLogin() {
         return login;
     }
+    
+    /**
+     * @return the firstColor
+     */
+    public static Color getFirstColor() {
+        return firstColor;
+    }
+
+    /**
+     * @param aFirstColor the firstColor to set
+     */
+    public static void setFirstColor(Color aFirstColor) {
+        firstColor = aFirstColor;
+    }
+
+    /**
+     * @return the secondColor
+     */
+    public static Color getSecondColor() {
+        return secondColor;
+    }
+
+    /**
+     * @param aSecondColor the secondColor to set
+     */
+    public static void setSecondColor(Color aSecondColor) {
+        secondColor = aSecondColor;
+    }
+
+    /**
+     * @return the thirdColor
+     */
+    public static Color getThirdColor() {
+        return thirdColor;
+    }
+
+    /**
+     * @param aThirdColor the thirdColor to set
+     */
+    public static void setThirdColor(Color aThirdColor) {
+        thirdColor = aThirdColor;
+    }
+
+    /**
+     * @return the fontColor
+     */
+    public static Color getFontColor() {
+        return fontColor;
+    }
+
+    /**
+     * @param aFontColor the fontColor to set
+     */
+    public static void setFontColor(Color aFontColor) {
+        fontColor = aFontColor;
+    }
+
+     /**
+     * @return the fontColor
+     */
+    public static Color getSecondFontColor() {
+        return secondFontColor;
+    }
+
+    /**
+     * @param aFontColor the fontColor to set
+     */
+    public static void setSecondFontColor(Color aFontColor) {
+        secondFontColor = aFontColor;
+    }
+    
+     /**
+     * @return the fontColor
+     */
+    public static Color getThirdFontColor() {
+        return thirdFontColor;
+    }
+
+    /**
+     * @param aFontColor the fontColor to set
+     */
+    public static void setThirdFontColor(Color aFontColor) {
+        thirdFontColor = aFontColor;
+    }
 
 
     /**
@@ -222,9 +345,8 @@ public class MainFrame extends javax.swing.JFrame {
         try {
             FlatDarkLaf ui = new FlatDarkLaf();
             UIManager.setLookAndFeel(ui);
-            java.awt.EventQueue.invokeLater(() -> {
-                new MainFrame().setVisible(true);
-            });
+            MainFrame m = new MainFrame();
+            m.setVisible(true);
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }

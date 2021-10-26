@@ -36,7 +36,7 @@ import javax.swing.SwingUtilities;
 public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
 
     private Image groupImage;
-    private Color firstColor,secondColor, thirdColor,fontColor, secondFontColor;
+    private Color firstColor,secondColor,fontColor, secondFontColor;
     private GroupingPanel groupingPanel;
     private int id;
     /**
@@ -45,9 +45,9 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
     public BoxGroupPanel(int _id) {
         initComponents();
         try {
-            firstColor = secondColor = thirdColor = Color.BLACK;
-            System.out.println("Group ID: "+_id+" -> Getting Image From https://source.unsplash.com/random/?nature,city,beach,sunset");
-            URL imageURL = new URL("https://source.unsplash.com/random/?nature,city,beach,sunset");
+            firstColor = Color.BLACK;
+            System.out.println("Group ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
             groupImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(groupImage);
@@ -60,7 +60,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
             jLabelClaseDelGrupo.setText(faker.team().name());
             jLabelChatDelGrupo.setText(faker.gameOfThrones().character());
             this.id = _id;
-            groupingPanel = new GroupingPanel(getImage,jLabelNombreGrupo.getText(),firstColor,secondColor, thirdColor,fontColor, secondFontColor);
+            groupingPanel = new GroupingPanel(getImage,jLabelNombreGrupo.getText(),firstColor,secondColor,fontColor,secondFontColor);
             DashboardPanel.addView(groupingPanel,"group"+_id);
             getImage.flush();
             getImage = null;
@@ -185,28 +185,6 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
         }
     }//GEN-LAST:event_jLabelNombreGrupoMouseClicked
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        
-        super.paintComponent(g);
-        Graphics2D graphics = (Graphics2D) g;
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        int w = getWidth();
-        int h = getHeight();
-        Point start = new Point(0,0);
-        Point end = new Point(w,h);
-        float[] slice = new float[]{0.5f,1f};
-        Color[] colors = new Color[]{firstColor,secondColor};
-        LinearGradientPaint gp = new LinearGradientPaint(start,end, slice, colors);
-        graphics.setPaint(gp);
-        graphics.fillRect(0, 0, w, h);
-        graphics = null;
-        gp = null;
-        graphics = null;
-        slice = null;
-        colors = null;
-        
-    }
     
     
     @Override
@@ -218,7 +196,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
             
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = (image.getWidth(null)/3);
+            int large = (image.getWidth(null)/2);
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -262,25 +240,6 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
                         }
                     }
                 }
-                
-                
-                thirdColor = secondColor;
-                if(colorList.size() > 2){
-                    iterations = 0;
-                    
-                    while(Math.abs(thirdColor.getRGB() - firstColor.getRGB()) < 3000000 || Math.abs(secondColor.getRGB() - thirdColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
-                        thirdColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 50){
-                            while(thirdColor.getRGB() == firstColor.getRGB() || thirdColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                thirdColor = colorList.get(position).second();
-                            }
-                            break;
-                        }
-                    }
-                }
               
                 int red = firstColor.getRed();
                 fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
@@ -288,17 +247,13 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
                 secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
 
                 colorList.clear();
-
-                Component[] components = this.getComponents();
-                for (Component component : components){
-                    component.setForeground(fontColor);
-                }
                 
-                jLabelChatDelGrupo.setForeground(secondFontColor);
+                jLabelChatDelGrupo.setForeground(fontColor);
                 jLabelClaseDelGrupo.setForeground(fontColor);
                 jLabelNombreGrupo.setForeground(fontColor);
                 jLabelNumeroIntegrantes.setForeground(fontColor);
                 jLabelUltimaActualizacion.setForeground(fontColor);
+                this.setBackground(firstColor);
 
                 colorRandom = null;
                 colorList = null;

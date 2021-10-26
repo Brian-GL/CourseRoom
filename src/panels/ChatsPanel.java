@@ -9,6 +9,7 @@ import com.github.javafaker.Faker;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import courseroom.MainFrame;
 
 
 /**
@@ -24,8 +25,7 @@ public class ChatsPanel extends javax.swing.JPanel {
         
         initComponents();
         
-        jLabelChatsTitle.setForeground(DashboardPanel.getFontColor());
-        jLabelChatsTitle.setBackground(DashboardPanel.getFirstColor());
+        jLabelChatsTitle.setForeground(MainFrame.getSecondFontColor());
         jScrollPaneChats.getViewport().setOpaque(false);
         jScrollPaneChats.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneChats.getHorizontalScrollBar().setUnitIncrement(15);
@@ -61,7 +61,6 @@ public class ChatsPanel extends javax.swing.JPanel {
         jLabelChatsTitle.setText("Chats Personales");
         jLabelChatsTitle.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelChatsTitle.setMinimumSize(new java.awt.Dimension(416, 84));
-        jLabelChatsTitle.setOpaque(true);
         jLabelChatsTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         jScrollPaneChats.setBorder(null);

@@ -7,6 +7,7 @@ package panels;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import courseroom.MainFrame;
 
 /**
  *
@@ -20,14 +21,14 @@ public class ImageMessagePanel extends javax.swing.JPanel {
         jLabelSender.setText(sender);
         jLabelImageName.setText(filename);
         
-        jLabelDate.setForeground(DashboardPanel.getFontColor());
-        jLabelSender.setForeground(DashboardPanel.getFontColor());
-        jLabelDate.setBackground(DashboardPanel.getFirstColor());
-        jLabelSender.setBackground(DashboardPanel.getFirstColor());
+        jLabelDate.setForeground(MainFrame.getFontColor());
+        jLabelSender.setForeground(MainFrame.getFontColor());
+        jLabelDate.setBackground(MainFrame.getFirstColor());
+        jLabelSender.setBackground(MainFrame.getFirstColor());
         
-        jLabelImageName.setForeground(DashboardPanel.getSecondFontColor());
-        jLabelImageName.setBackground(DashboardPanel.getSecondColor());
-        jLabelImageMessage.setBackground(DashboardPanel.getSecondColor());
+        jLabelImageName.setForeground(MainFrame.getSecondFontColor());
+        jLabelImageName.setBackground(MainFrame.getSecondColor());
+        jLabelImageMessage.setBackground(MainFrame.getSecondColor());
         
         Image resizedImage =  image.getScaledInstance(789, 500, Image.SCALE_DEFAULT);
         ImageIcon icon = new ImageIcon(resizedImage);
