@@ -51,58 +51,9 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
     public RecuperarCredencialesPanel() {
         initComponents();
         
-        paintMyComponents();
+        initMyComponents();
 
-        pattern = Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE);
-
-        try {
-            //Crear las propiedades para mandar el correo
-            properties = new Properties();
-            properties.put("mail.smtp.host", "smtp.outlook.com");
-            properties.put("mail.smtp.starttls.enable", "true");
-            properties.put("mail.smtp.port", "587");
-            properties.put("mail.smtp.auth", "true");
-
-            // Obtener la sesion
-            session = Session.getInstance(properties, null);
-
-            // Leer la plantilla
-            inputStream = getClass().getResourceAsStream("/resources/html/mensaje.html");
-            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
-            // Almacenar el contenido de la plantilla en un StringBuffer
-            String strLine;
-            msjHTML = new StringBuilder();
-
-            while ((strLine = bufferedReader.readLine()) != null) {
-                msjHTML.append(strLine);
-            }
-
-            strLine = null;
-            // Crear la parte del mensaje HTML
-            mimeBodyPartHTML = new MimeBodyPart();
-            mimeBodyPartHTML.setContent(msjHTML.toString(), "text/html");
-
-            // Crear el cuerpo del mensaje
-            mimeMessage = new MimeMessage(session);
-
-            // Agregar el asunto al correo
-            mimeMessage.setSubject("Course Room -  Mensaje De Recuperación.");
-
-            // Agregar quien envía el correo
-            mimeMessage.setFrom(new InternetAddress("Course_Room@outlook.com", "Course Room Mensaje De Recuperación"));
-
-            // Crear el multipart para agregar la parte del mensaje anterior
-            multipart = new MimeMultipart();
-
-            // Agregar la parte del mensaje  de recuperación HTML al multiPart
-            multipart.addBodyPart(mimeBodyPartHTML);
-
-            internetAddress = new InternetAddress();
-
-        } catch (IOException | MessagingException ex) {
-            System.out.println("main.RecuperarCredencialesController.initialize(): " + ex.getMessage());
-        }
+        
     }
 
     /**
@@ -135,7 +86,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
 
         jLabelTitulo.setFont(new java.awt.Font("Gadugi", 1, 28)); // NOI18N
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTitulo.setText("¿Has Olvidado Tu Usuario &/O Contraseña?");
+        jLabelTitulo.setText("¿Has Olvidado Tu Usuario Y/O Contraseña?");
         jLabelTitulo.setPreferredSize(new java.awt.Dimension(500, 38));
 
         jLabelFrase.setFont(new java.awt.Font("Gadugi", 0, 21)); // NOI18N
@@ -178,11 +129,13 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
             }
         });
 
-        jLabelRegresar.setFont(new java.awt.Font("Segoe UI", 1, 50)); // NOI18N
         jLabelRegresar.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabelRegresar.setText("←");
+        jLabelRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
         jLabelRegresar.setToolTipText("Regresa A La Página De Login");
         jLabelRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelRegresar.setMaximumSize(new java.awt.Dimension(48, 48));
+        jLabelRegresar.setMinimumSize(new java.awt.Dimension(48, 48));
+        jLabelRegresar.setPreferredSize(new java.awt.Dimension(48, 48));
         jLabelRegresar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jLabelRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -195,42 +148,38 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelRegresar)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(jLabelRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(336, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelFrase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
-                                .addGap(388, 388, 388)))))
-                .addGap(105, 105, 105))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonRecuperarCredenciales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButtonRecuperarCredenciales, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+                            .addComponent(jLabelFrase, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(7, 7, 7)
-                .addComponent(jLabelFrase, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                .addGap(25, 25, 25)
-                .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
+                .addContainerGap()
+                .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jLabelFrase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jButtonRecuperarCredenciales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jLabelRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -261,15 +210,15 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
 
     private void jButtonRecuperarCredencialesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRecuperarCredencialesMouseEntered
         // TODO add your handling code here:
-        jButtonRecuperarCredenciales.setBackground(MainFrame.getLightBlue());
-        jButtonRecuperarCredenciales.setForeground(MainFrame.getDarkBlue());
+        jButtonRecuperarCredenciales.setBackground(MainFrame.getFirstColor());
+        jButtonRecuperarCredenciales.setForeground(MainFrame.getSecondColor());
     }//GEN-LAST:event_jButtonRecuperarCredencialesMouseEntered
 
     private void jButtonRecuperarCredencialesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRecuperarCredencialesMouseExited
         // TODO add your handling code here:
         
-        jButtonRecuperarCredenciales.setBackground(MainFrame.getDarkBlue());
-        jButtonRecuperarCredenciales.setForeground(MainFrame.getLightBlue());
+        jButtonRecuperarCredenciales.setBackground(MainFrame.getSecondColor());
+        jButtonRecuperarCredenciales.setForeground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonRecuperarCredencialesMouseExited
 
     private boolean esCorreoElectronico(String value){
@@ -341,17 +290,68 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
         
     }
     
-    private void paintMyComponents(){
+    private void initMyComponents(){
+        
+        pattern = Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE);
+
+        try {
+            //Crear las propiedades para mandar el correo
+            properties = new Properties();
+            properties.put("mail.smtp.host", "smtp.outlook.com");
+            properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.port", "587");
+            properties.put("mail.smtp.auth", "true");
+
+            // Obtener la sesion
+            session = Session.getInstance(properties, null);
+
+            // Leer la plantilla
+            inputStream = getClass().getResourceAsStream("/resources/html/mensaje.html");
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+            // Almacenar el contenido de la plantilla en un StringBuffer
+            String strLine = "";
+            msjHTML = new StringBuilder();
+
+            while ((strLine = bufferedReader.readLine()) != null) {
+                msjHTML.append(strLine);
+            }
+
+            strLine = null;
+            // Crear la parte del mensaje HTML
+            mimeBodyPartHTML = new MimeBodyPart();
+            mimeBodyPartHTML.setContent(msjHTML.toString(), "text/html");
+
+            // Crear el cuerpo del mensaje
+            mimeMessage = new MimeMessage(session);
+
+            // Agregar el asunto al correo
+            mimeMessage.setSubject("Course Room -  Mensaje De Recuperación.");
+
+            // Agregar quien envía el correo
+            mimeMessage.setFrom(new InternetAddress("Course_Room@outlook.com", "Course Room Mensaje De Recuperación"));
+
+            // Crear el multipart para agregar la parte del mensaje anterior
+            multipart = new MimeMultipart();
+
+            // Agregar la parte del mensaje  de recuperación HTML al multiPart
+            multipart.addBodyPart(mimeBodyPartHTML);
+
+            internetAddress = new InternetAddress();
+
+        } catch (IOException | MessagingException ex) {
+            System.out.println("main.RecuperarCredencialesController.initialize(): " + ex.getMessage());
+        }
+        
         jLabelLogo.setIcon(MainFrame.getLogoImage());
-        jLabelRegresar.setForeground(MainFrame.getDarkBlue());
-        jLabelCorreoElectronico.setForeground(MainFrame.getDarkBlue());
-        jLabelFrase.setForeground(MainFrame.getLightBlue());
-        jLabelTitulo.setForeground(MainFrame.getLightBlue());
-        jTextFieldCorreoElectronico.setBackground(MainFrame.getDarkBlue());
-        jTextFieldCorreoElectronico.setForeground(MainFrame.getLightBlue());
-        jTextFieldCorreoElectronico.setCaretColor(MainFrame.getLightBlue());
-        jButtonRecuperarCredenciales.setBackground(MainFrame.getDarkBlue());
-        jButtonRecuperarCredenciales.setForeground(MainFrame.getLightBlue());
+        jLabelCorreoElectronico.setForeground(MainFrame.getSecondColor());
+        jLabelFrase.setForeground(MainFrame.getSecondColor());
+        jLabelTitulo.setForeground(MainFrame.getSecondColor());
+        jTextFieldCorreoElectronico.setBackground(MainFrame.getSecondColor());
+        jTextFieldCorreoElectronico.setForeground(MainFrame.getFirstColor());
+        jTextFieldCorreoElectronico.setCaretColor(MainFrame.getFirstColor());
+        jButtonRecuperarCredenciales.setBackground(MainFrame.getSecondColor());
+        jButtonRecuperarCredenciales.setForeground(MainFrame.getFirstColor());
     }
     
     

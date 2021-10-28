@@ -20,7 +20,7 @@ public class NoticesPanel extends javax.swing.JPanel {
      */
     public NoticesPanel() {
         initComponents();
-        jLabelNoticesTitle.setForeground(MainFrame.getSecondFontColor());
+        
         jScrollPaneMisAvisos.getViewport().setOpaque(false);
         jScrollPaneMisAvisos.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneMisAvisos.getHorizontalScrollBar().setUnitIncrement(15);
@@ -38,6 +38,10 @@ public class NoticesPanel extends javax.swing.JPanel {
         jPanelMisAvisos.removeAll();
     }
 
+    public void colorMyComponents(){
+        jLabelNoticesTitle.setBackground(MainFrame.getSecondColor());
+        jLabelNoticesTitle.setForeground(MainFrame.getSecondFontColor());
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -54,6 +58,7 @@ public class NoticesPanel extends javax.swing.JPanel {
         jLabelNoticesTitle.setText("Avisos");
         jLabelNoticesTitle.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelNoticesTitle.setMinimumSize(new java.awt.Dimension(416, 84));
+        jLabelNoticesTitle.setOpaque(true);
         jLabelNoticesTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         jScrollPaneMisAvisos.setBorder(null);

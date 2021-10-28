@@ -19,7 +19,7 @@ public class HomeworksPanel extends javax.swing.JPanel {
      */
     public HomeworksPanel() {
         initComponents();
-        jLabelHomeworksTitle.setForeground(MainFrame.getSecondFontColor());
+        
         jScrollPaneMisTareas.getViewport().setOpaque(false);
         jScrollPaneMisTareas.getVerticalScrollBar().setUnitIncrement(15);
         
@@ -52,6 +52,7 @@ public class HomeworksPanel extends javax.swing.JPanel {
         jLabelHomeworksTitle.setText("Tareas");
         jLabelHomeworksTitle.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelHomeworksTitle.setMinimumSize(new java.awt.Dimension(416, 84));
+        jLabelHomeworksTitle.setOpaque(true);
         jLabelHomeworksTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         jScrollPaneMisTareas.setBorder(null);
@@ -88,6 +89,11 @@ public class HomeworksPanel extends javax.swing.JPanel {
 
     public void dispose(){
         jPanelMisTareas.removeAll();
+    }
+    
+    public void colorMyComponents(){
+        jLabelHomeworksTitle.setBackground(MainFrame.getSecondColor());
+        jLabelHomeworksTitle.setForeground(MainFrame.getSecondFontColor());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

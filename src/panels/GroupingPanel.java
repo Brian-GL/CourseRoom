@@ -9,9 +9,6 @@ import com.github.javafaker.Faker;
 import components.ImageFilePreview;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -33,36 +30,22 @@ import net.sourceforge.jdatepicker.impl.UtilDateModel;
 public class GroupingPanel extends javax.swing.JPanel {
 
     private Image groupImage;
-    private Color firstColor, secondColor,fontColor, secondFontColor;
+    private Color firstColor, secondColor,thirdColor,fontColor, secondFontColor, thirdFontColor;
     private GroupChatingPanel groupChatingPanel;
     
    
-    public GroupingPanel(Image image, String name, Color _firstColor, Color _secondColor, Color _fontColor, Color _secondFontColor) {
+    public GroupingPanel(Image image, String name, Color _firstColor, Color _secondColor, Color _thirdColor, Color _fontColor, Color _secondFontColor,Color _thirdFontColor ) {
         initComponents();
         firstColor = _firstColor;
         secondColor = _secondColor;
         fontColor = _fontColor;
         secondFontColor = _secondFontColor;
+        thirdColor = _thirdColor;
+        thirdFontColor = _thirdFontColor;
         groupImage = image.getScaledInstance(440,440,Image.SCALE_SMOOTH);
-        ImageIcon groupIcon = new ImageIcon(groupImage);
-        jLabelGroupImage.setIcon(groupIcon);
         jLabelGroupName.setText(name);
-        groupChatingPanel = new GroupChatingPanel(firstColor,secondColor, secondFontColor);
-        jPanelGrupalChat.add(groupChatingPanel);
-        jScrollPaneMembers.getViewport().setOpaque(false);
-        jScrollPaneMembers.getVerticalScrollBar().setUnitIncrement(15);
-        paintMyComponents();
-        groupIcon = null;
+        initMyComponents();
         
-        Faker faker = new Faker();
-        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
-            MemberPanel memberPanel = new MemberPanel();
-            jComboBoxMiembros.addItem(memberPanel.getFullName());
-            jPanelMembers.add(memberPanel);
-        }
-        
-        jComboBoxMiembros.setSelectedIndex(0);
-        jScrollPaneDescripcionTareaPendiente.getViewport().setOpaque(false);
         
        
     }
@@ -118,6 +101,7 @@ public class GroupingPanel extends javax.swing.JPanel {
         jLabelGroupName.setText("Group Name");
         jLabelGroupName.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelGroupName.setMinimumSize(new java.awt.Dimension(416, 84));
+        jLabelGroupName.setOpaque(true);
         jLabelGroupName.setPreferredSize(new java.awt.Dimension(416, 84));
 
         jScrollPaneMembers.setBorder(null);
@@ -132,6 +116,7 @@ public class GroupingPanel extends javax.swing.JPanel {
         jLabelGroupClass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelGroupClass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/teacher.png"))); // NOI18N
         jLabelGroupClass.setText("De La Clase Sistemas Operativos");
+        jLabelGroupClass.setOpaque(true);
         jLabelGroupClass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelGroupClassMouseClicked(evt);
@@ -142,10 +127,11 @@ public class GroupingPanel extends javax.swing.JPanel {
         jLabelFechaCreacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelFechaCreacion.setText("Creado El 22 De Octubre De 2021");
 
-        jLabelReturn.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabelReturn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelReturn.setText("←");
-        jLabelReturn.setPreferredSize(new java.awt.Dimension(37, 20));
+        jLabelReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jLabelReturn.setMaximumSize(new java.awt.Dimension(48, 48));
+        jLabelReturn.setMinimumSize(new java.awt.Dimension(48, 48));
+        jLabelReturn.setPreferredSize(new java.awt.Dimension(48, 48));
         jLabelReturn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelReturnMouseClicked(evt);
@@ -157,6 +143,7 @@ public class GroupingPanel extends javax.swing.JPanel {
         jLabelMiembros.setText("Miembros");
         jLabelMiembros.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelMiembros.setMinimumSize(new java.awt.Dimension(416, 84));
+        jLabelMiembros.setOpaque(true);
         jLabelMiembros.setPreferredSize(new java.awt.Dimension(416, 84));
 
         javax.swing.GroupLayout jPanelAboutGroupLayout = new javax.swing.GroupLayout(jPanelAboutGroup);
@@ -164,23 +151,28 @@ public class GroupingPanel extends javax.swing.JPanel {
         jPanelAboutGroupLayout.setHorizontalGroup(
             jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                        .addGap(0, 132, Short.MAX_VALUE)
+                        .addGap(0, 134, Short.MAX_VALUE)
                         .addComponent(jLabelGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 142, Short.MAX_VALUE))
+                        .addGap(0, 144, Short.MAX_VALUE))
                     .addComponent(jLabelGroupName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelGroupClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAboutGroupLayout.createSequentialGroup()
+                    .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
                         .addComponent(jLabelReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelFechaCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelFechaCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelGroupClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPaneMembers, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAboutGroupLayout.createSequentialGroup()
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jLabelMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanelAboutGroupLayout.setVerticalGroup(
             jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,18 +181,17 @@ public class GroupingPanel extends javax.swing.JPanel {
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelGroupName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
                         .addComponent(jLabelGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelGroupClass)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelFechaCreacion)
-                            .addComponent(jLabelReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPaneMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                        .addComponent(jLabelFechaCreacion))
+                    .addComponent(jScrollPaneMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelReturn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jTabbedPaneGrouping.addTab("Información", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/information.png")), jPanelAboutGroup); // NOI18N
@@ -212,11 +203,11 @@ public class GroupingPanel extends javax.swing.JPanel {
         jPanelTareas.setLayout(jPanelTareasLayout);
         jPanelTareasLayout.setHorizontalGroup(
             jPanelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1138, Short.MAX_VALUE)
+            .addGap(0, 1139, Short.MAX_VALUE)
         );
         jPanelTareasLayout.setVerticalGroup(
             jPanelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGap(0, 617, Short.MAX_VALUE)
         );
 
         jTabbedPaneGrouping.addTab("Tareas", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_4.png")), jPanelTareas); // NOI18N
@@ -245,11 +236,11 @@ public class GroupingPanel extends javax.swing.JPanel {
         jPanelListaDeTareasPendientes.setLayout(jPanelListaDeTareasPendientesLayout);
         jPanelListaDeTareasPendientesLayout.setHorizontalGroup(
             jPanelListaDeTareasPendientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 716, Short.MAX_VALUE)
+            .addGap(0, 717, Short.MAX_VALUE)
         );
         jPanelListaDeTareasPendientesLayout.setVerticalGroup(
             jPanelListaDeTareasPendientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
+            .addGap(0, 548, Short.MAX_VALUE)
         );
 
         jScrollPaneListaTareasPendientes.setViewportView(jPanelListaDeTareasPendientes);
@@ -283,6 +274,7 @@ public class GroupingPanel extends javax.swing.JPanel {
         jLabelListaTareasPendientes.setText("Lista De Tareas Pendientes");
         jLabelListaTareasPendientes.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelListaTareasPendientes.setMinimumSize(new java.awt.Dimension(416, 84));
+        jLabelListaTareasPendientes.setOpaque(true);
         jLabelListaTareasPendientes.setPreferredSize(new java.awt.Dimension(416, 84));
 
         javax.swing.GroupLayout jPanelPorHacerLayout = new javax.swing.GroupLayout(jPanelPorHacer);
@@ -376,7 +368,7 @@ public class GroupingPanel extends javax.swing.JPanel {
             .addGroup(jPanelConfiguracionesLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jButtonEditGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(521, Short.MAX_VALUE))
+                .addContainerGap(543, Short.MAX_VALUE))
         );
 
         jTabbedPaneGrouping.addTab("Configuraciones", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit-tool.png")), jPanelConfiguraciones); // NOI18N
@@ -423,14 +415,14 @@ public class GroupingPanel extends javax.swing.JPanel {
 
     private void jButtonEditGroupImageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditGroupImageMouseEntered
         // TODO add your handling code here:
-        jButtonEditGroupImage.setBackground(firstColor);
-        jButtonEditGroupImage.setForeground(fontColor);
+        jButtonEditGroupImage.setBackground(secondColor);
+        jButtonEditGroupImage.setForeground(secondFontColor);
     }//GEN-LAST:event_jButtonEditGroupImageMouseEntered
 
     private void jButtonEditGroupImageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditGroupImageMouseExited
         // TODO add your handling code here:
-        jButtonEditGroupImage.setBackground(secondColor);
-        jButtonEditGroupImage.setForeground(fontColor);
+        jButtonEditGroupImage.setBackground(thirdColor);
+        jButtonEditGroupImage.setForeground(thirdFontColor);
     }//GEN-LAST:event_jButtonEditGroupImageMouseExited
 
     private void jLabelGroupClassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGroupClassMouseClicked
@@ -454,7 +446,7 @@ public class GroupingPanel extends javax.swing.JPanel {
 
     private void jLabelAgregarTareaPendienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAgregarTareaPendienteMouseEntered
         // TODO add your handling code here:
-        jLabelAgregarTareaPendiente.setForeground(firstColor);
+        jLabelAgregarTareaPendiente.setForeground(thirdColor);
     }//GEN-LAST:event_jLabelAgregarTareaPendienteMouseEntered
 
     private void jLabelAgregarTareaPendienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAgregarTareaPendienteMouseClicked
@@ -464,26 +456,46 @@ public class GroupingPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jLabelAgregarTareaPendienteMouseClicked
 
-      public void paintMyComponents(){
+      public void initMyComponents(){
+        ImageIcon groupIcon = new ImageIcon(groupImage);
+        jLabelGroupImage.setIcon(groupIcon);
         
+        groupChatingPanel = new GroupChatingPanel(firstColor,secondColor, secondFontColor);
+        jPanelGrupalChat.add(groupChatingPanel);
+        jScrollPaneMembers.getViewport().setOpaque(false);
+        jScrollPaneMembers.getVerticalScrollBar().setUnitIncrement(15);
         jTabbedPaneGrouping.setBackground(firstColor);
         jTabbedPaneGrouping.setForeground(fontColor);
+        groupIcon = null;
+        
+        Faker faker = new Faker();
+        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
+            MemberPanel memberPanel = new MemberPanel();
+            jComboBoxMiembros.addItem(memberPanel.getFullName());
+            jPanelMembers.add(memberPanel);
+        }
+        
+        jComboBoxMiembros.setSelectedIndex(0);
+        jScrollPaneDescripcionTareaPendiente.getViewport().setOpaque(false);
+        
         Component[] components = this.getComponents();
         for (Component component : components){
             component.setForeground(fontColor);
         }
 
-        jLabelGroupName.setForeground(fontColor);
+        jLabelGroupName.setBackground(secondColor);
+        jLabelGroupName.setForeground(secondFontColor);
 
-        jLabelMiembros.setForeground(fontColor);
+        jLabelMiembros.setBackground(secondColor);
+        jLabelMiembros.setForeground(secondFontColor);
 
-        jLabelGroupName.setForeground(fontColor);
+        jButtonEditGroupImage.setBackground(thirdColor);
+        jButtonEditGroupImage.setForeground(thirdFontColor);
 
-        jButtonEditGroupImage.setForeground(fontColor);
-
-        jLabelGroupClass.setForeground(fontColor);
+        jLabelGroupClass.setBackground(thirdColor);
+        jLabelGroupClass.setForeground(thirdFontColor);
+        
         jLabelFechaCreacion.setForeground(fontColor);
-        jLabelReturn.setForeground(fontColor);
 
         jLabelAgregarTareaPendiente.setForeground(fontColor);
         jLabelMiembroACargo.setForeground(fontColor);
@@ -491,37 +503,41 @@ public class GroupingPanel extends javax.swing.JPanel {
         jLabelDescripcion.setForeground(fontColor);
         jLabelFechaFinalizacion.setForeground(fontColor);
         
-        jLabelListaTareasPendientes.setForeground(fontColor);
-        jLabelListaTareasPendientes.setBackground(firstColor);
+        jLabelListaTareasPendientes.setForeground(thirdFontColor);
+        jLabelListaTareasPendientes.setBackground(thirdColor);
 
-        jComboBoxMiembros.setForeground(fontColor);
-        jComboBoxMiembros.setBackground(firstColor);
+        jComboBoxMiembros.setForeground(thirdFontColor);
+        jComboBoxMiembros.setBackground(thirdColor);
 
-        jTextFieldNombreTareaPendiente.setForeground(fontColor);
-        jTextFieldNombreTareaPendiente.setBackground(firstColor);
+        jTextFieldNombreTareaPendiente.setForeground(thirdFontColor);
+        jTextFieldNombreTareaPendiente.setCaretColor(thirdFontColor);
+        jTextFieldNombreTareaPendiente.setBackground(thirdColor);
 
-        jTextAreaDescripcionTareaPendiente.setForeground(fontColor);
-        jTextAreaDescripcionTareaPendiente.setBackground(firstColor);
+        jTextAreaDescripcionTareaPendiente.setForeground(thirdFontColor);
+        jTextAreaDescripcionTareaPendiente.setCaretColor(thirdFontColor);
+        jTextAreaDescripcionTareaPendiente.setBackground(thirdColor);
 
-        jPanelFechaFinalizacion.setBackground(firstColor);
-        jPanelFechaFinalizacion.setForeground(fontColor);
+        jPanelFechaFinalizacion.setBackground(thirdColor);
+        jPanelFechaFinalizacion.setForeground(thirdFontColor);
         
         UtilDateModel model = new UtilDateModel();
         JDatePanelImpl datePanel = new JDatePanelImpl(model);
         datePanel.setMaximumSize(jTextFieldNombreTareaPendiente.getMaximumSize());
         datePanel.setFont(jTextFieldNombreTareaPendiente.getFont());
-        datePanel.setForeground(fontColor);
+        datePanel.setForeground(thirdColor);
         JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
         datePicker.setMaximumSize(jTextFieldNombreTareaPendiente.getMaximumSize());
         datePicker.setFont(jTextFieldNombreTareaPendiente.getFont());
-        datePicker.setForeground(fontColor);
+        datePicker.setForeground(thirdColor);
         datePanel.setOpaque(false);
         datePicker.setOpaque(false);
         jPanelFechaFinalizacion.add(datePicker);
         
         jPanelAboutGroup.setBackground(firstColor);
         jPanelGrupalChat.setBackground(firstColor);
-        jPanelListaDeTareasPendientes.setBackground(firstColor);
+        jPanelPorHacer.setBackground(firstColor);
+        jPanelConfiguraciones.setBackground(firstColor);
+        jPanelTareas.setBackground(firstColor);
     }
  
     

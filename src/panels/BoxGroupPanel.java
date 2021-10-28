@@ -36,7 +36,7 @@ import javax.swing.SwingUtilities;
 public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
 
     private Image groupImage;
-    private Color firstColor,secondColor,fontColor, secondFontColor;
+    private Color firstColor , secondColor, thirdColor,fontColor, secondFontColor, thirdFontColor;
     private GroupingPanel groupingPanel;
     private int id;
     /**
@@ -60,7 +60,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
             jLabelClaseDelGrupo.setText(faker.team().name());
             jLabelChatDelGrupo.setText(faker.gameOfThrones().character());
             this.id = _id;
-            groupingPanel = new GroupingPanel(getImage,jLabelNombreGrupo.getText(),firstColor,secondColor,fontColor,secondFontColor);
+            groupingPanel = new GroupingPanel(getImage,jLabelNombreGrupo.getText(),firstColor,secondColor,thirdColor,fontColor,secondFontColor,thirdFontColor);
             DashboardPanel.addView(groupingPanel,"group"+_id);
             getImage.flush();
             getImage = null;
@@ -196,7 +196,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
             
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = (image.getWidth(null)/2);
+            int large = image.getWidth(null);
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -241,10 +241,30 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
                     }
                 }
               
+               thirdColor = secondColor;
+                if(colorList.size() > 2){
+                    iterations = 0;
+                    
+                    while(Math.abs(thirdColor.getRGB() - firstColor.getRGB()) < 3000000 || Math.abs(secondColor.getRGB() - thirdColor.getRGB()) < 3000000){
+                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        thirdColor = colorList.get(position).second();
+                        iterations++;
+                        if(iterations > 50){
+                            while(thirdColor.getRGB() == firstColor.getRGB() || thirdColor.getRGB() == secondColor.getRGB()){
+                                position = colorRandom.nextInt((int)colorList.size()-1);
+                                thirdColor = colorList.get(position).second();
+                            }
+                            break;
+                        }
+                    }
+                }
+                
                 int red = firstColor.getRed();
                 fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 red = secondColor.getRed();
                 secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
+                red = thirdColor.getRed();
+                thirdFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
 
                 colorList.clear();
                 

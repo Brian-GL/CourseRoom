@@ -6,7 +6,6 @@
 package panels;
 
 import courseroom.MainFrame;
-import java.awt.Color;
 import java.awt.Font;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,9 +27,7 @@ public class LoginPanel extends javax.swing.JPanel{
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public LoginPanel() {
         initComponents();
-        jLabelLogo.setIcon(MainFrame.getLogoImage());
-        
-        paintMyComponents();
+        initMyComponents();
         
     }
 
@@ -251,19 +248,22 @@ public class LoginPanel extends javax.swing.JPanel{
 
     private void jButtonIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionMouseEntered
         // TODO add your handling code here:
-        jButtonIniciarSesion.setBackground(MainFrame.getLightBlue());
-        jButtonIniciarSesion.setForeground(MainFrame.getDarkBlue());
+        jButtonIniciarSesion.setBackground(MainFrame.getFirstColor());
+        jButtonIniciarSesion.setForeground(MainFrame.getSecondColor());
     }//GEN-LAST:event_jButtonIniciarSesionMouseEntered
 
     private void jButtonIniciarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionMouseExited
         // TODO add your handling code here:
         
-        jButtonIniciarSesion.setBackground(MainFrame.getDarkBlue());
-        jButtonIniciarSesion.setForeground(MainFrame.getLightBlue());
+        jButtonIniciarSesion.setBackground(MainFrame.getSecondColor());
+        jButtonIniciarSesion.setForeground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonIniciarSesionMouseExited
 
     
-    private void paintMyComponents(){
+    private void initMyComponents(){
+        
+        jLabelLogo.setIcon(MainFrame.getLogoImage());
+        
         System.out.println("Login -> Getting Image From https://loremflickr.com/644/720/university,school/all");
         try {
             URL imageURL = new URL("https://loremflickr.com/644/720/university,school/all");
@@ -285,25 +285,25 @@ public class LoginPanel extends javax.swing.JPanel{
         
         gadugi_18 = null;
         
-        jLabelNombreUsuario.setForeground(MainFrame.getLightBlue());
-        jLabelPassword.setForeground(MainFrame.getLightBlue());
+        jLabelNombreUsuario.setForeground(MainFrame.getSecondColor());
+        jLabelPassword.setForeground(MainFrame.getSecondColor());
         
-        jTextFieldNombreDeUsuario.setBackground(MainFrame.getLightBlue());
-        jTextFieldNombreDeUsuario.setForeground(MainFrame.getDarkBlue());
-        jTextFieldNombreDeUsuario.setCaretColor(MainFrame.getDarkBlue());
+        jTextFieldNombreDeUsuario.setBackground(MainFrame.getSecondColor());
+        jTextFieldNombreDeUsuario.setForeground(MainFrame.getFirstColor());
+        jTextFieldNombreDeUsuario.setCaretColor(MainFrame.getFirstColor());
         
-        jPasswordFieldPassword.setBackground(MainFrame.getLightBlue());
-        jPasswordFieldPassword.setForeground(MainFrame.getDarkBlue());
-        jPasswordFieldPassword.setCaretColor(MainFrame.getDarkBlue());
+        jPasswordFieldPassword.setBackground(MainFrame.getSecondColor());
+        jPasswordFieldPassword.setForeground(MainFrame.getFirstColor());
+        jPasswordFieldPassword.setCaretColor(MainFrame.getFirstColor());
         
-        jLabelRecuperarCredenciales.setForeground(MainFrame.getDarkBlue());
-        jLabelCrearCuenta.setForeground(MainFrame.getDarkBlue());
-        jLabelBrand.setForeground(MainFrame.getDarkBlue());
+        jLabelRecuperarCredenciales.setForeground(MainFrame.getSecondColor());
+        jLabelCrearCuenta.setForeground(MainFrame.getSecondColor());
+        jLabelBrand.setForeground(MainFrame.getSecondColor());
         
-        jButtonIniciarSesion.setBackground(MainFrame.getDarkBlue());
-        jButtonIniciarSesion.setForeground(MainFrame.getLightBlue());
+        jButtonIniciarSesion.setBackground(MainFrame.getSecondColor());
+        jButtonIniciarSesion.setForeground(MainFrame.getFirstColor());
         
-        jCheckBoxMostrarPassword.setForeground(MainFrame.getLightBlue());
+        jCheckBoxMostrarPassword.setForeground(MainFrame.getSecondColor());
         
     }
     

@@ -20,7 +20,7 @@ public class GroupsPanel extends javax.swing.JPanel {
      */
     public GroupsPanel() {
         initComponents();
-        jLabelGroupsTitle.setForeground(MainFrame.getSecondFontColor());
+        
         jScrollPaneMisGrupos.getViewport().setOpaque(false);
         jScrollPaneMisGrupos.getVerticalScrollBar().setUnitIncrement(15);
         
@@ -61,6 +61,7 @@ public class GroupsPanel extends javax.swing.JPanel {
         jLabelGroupsTitle.setText("Grupos");
         jLabelGroupsTitle.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelGroupsTitle.setMinimumSize(new java.awt.Dimension(416, 84));
+        jLabelGroupsTitle.setOpaque(true);
         jLabelGroupsTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -90,6 +91,11 @@ public class GroupsPanel extends javax.swing.JPanel {
     
     public void dispose(){
         jPanelMisGrupos.removeAll();
+    }
+    
+    public void colorMyComponents(){
+        jLabelGroupsTitle.setBackground(MainFrame.getSecondColor());
+        jLabelGroupsTitle.setForeground(MainFrame.getSecondFontColor());
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

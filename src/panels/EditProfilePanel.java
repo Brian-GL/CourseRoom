@@ -34,7 +34,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public EditProfilePanel() {
         initComponents();
-        paintMyComponents();
+        initMyComponents();
         Color noColor = new Color(0,0,0,0);
         jTabbedPaneFondo.setBackground(noColor);
         jTabbedPaneFondo.setForeground(MainFrame.getSecondFontColor());
@@ -203,7 +203,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jLabelImagenPerfilAutenticacion.setName(""); // NOI18N
         jLabelImagenPerfilAutenticacion.setPreferredSize(new java.awt.Dimension(400, 400));
 
-        jButtonGuardarCambiosAutenticacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonGuardarCambiosAutenticacion.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jButtonGuardarCambiosAutenticacion.setText("Guardar Cambios");
         jButtonGuardarCambiosAutenticacion.setToolTipText("Guardar Cambios");
         jButtonGuardarCambiosAutenticacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -224,30 +224,30 @@ public class EditProfilePanel extends javax.swing.JPanel {
 
         jLabelRegresarAMiPerfil.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabelRegresarAMiPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelRegresarAMiPerfil.setText("←");
+        jLabelRegresarAMiPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
         jLabelRegresarAMiPerfil.setToolTipText("Regresar A Mi Vista De Perfil");
-        jLabelRegresarAMiPerfil.setMaximumSize(new java.awt.Dimension(47, 40));
-        jLabelRegresarAMiPerfil.setMinimumSize(new java.awt.Dimension(47, 40));
-        jLabelRegresarAMiPerfil.setPreferredSize(new java.awt.Dimension(47, 40));
+        jLabelRegresarAMiPerfil.setMaximumSize(new java.awt.Dimension(48, 48));
+        jLabelRegresarAMiPerfil.setMinimumSize(new java.awt.Dimension(48, 48));
+        jLabelRegresarAMiPerfil.setPreferredSize(new java.awt.Dimension(48, 48));
         jLabelRegresarAMiPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelRegresarAMiPerfilMouseClicked(evt);
             }
         });
 
-        jToggleButtonEditarNombreUsuario.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarNombreUsuario.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jToggleButtonEditarNombreUsuario.setText("Editar?");
         jToggleButtonEditarNombreUsuario.setMaximumSize(new java.awt.Dimension(80, 36));
         jToggleButtonEditarNombreUsuario.setMinimumSize(new java.awt.Dimension(80, 36));
         jToggleButtonEditarNombreUsuario.setPreferredSize(new java.awt.Dimension(80, 36));
 
-        jToggleButtonEditarCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jToggleButtonEditarCorreoElectronico.setText("Editar?");
         jToggleButtonEditarCorreoElectronico.setMaximumSize(new java.awt.Dimension(80, 36));
         jToggleButtonEditarCorreoElectronico.setMinimumSize(new java.awt.Dimension(80, 36));
         jToggleButtonEditarCorreoElectronico.setPreferredSize(new java.awt.Dimension(80, 36));
 
-        jToggleButtonEditarPassword.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarPassword.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jToggleButtonEditarPassword.setText("Editar?");
         jToggleButtonEditarPassword.setMaximumSize(new java.awt.Dimension(80, 36));
         jToggleButtonEditarPassword.setMinimumSize(new java.awt.Dimension(80, 36));
@@ -273,7 +273,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
             }
         });
 
-        jToggleButtonEditarImagenPerfil.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jToggleButtonEditarImagenPerfil.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jToggleButtonEditarImagenPerfil.setText("Editar?");
         jToggleButtonEditarImagenPerfil.setMaximumSize(new java.awt.Dimension(80, 36));
         jToggleButtonEditarImagenPerfil.setMinimumSize(new java.awt.Dimension(80, 36));
@@ -324,7 +324,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jPanelAutenticacionLayout.setVerticalGroup(
             jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
                         .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,10 +361,10 @@ public class EditProfilePanel extends javax.swing.JPanel {
                     .addComponent(jToggleButtonEditarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(jButtonCargarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonGuardarCambiosAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelRegresarAMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 48, Short.MAX_VALUE)
+                .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelRegresarAMiPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonGuardarCambiosAutenticacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -869,8 +869,22 @@ public class EditProfilePanel extends javax.swing.JPanel {
     private javax.swing.JToggleButton jToggleButtonEditarTelefono;
     // End of variables declaration//GEN-END:variables
 
-    private void paintMyComponents() {
+    private void initMyComponents() {
         
+        
+
+        int large = jLabelImagenPerfilAutenticacion.getPreferredSize().height;
+        Image scaled = DashboardPanel.getUserImage().getScaledInstance(large, large, Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(scaled);
+        jLabelImagenPerfilAutenticacion.setIcon(icon);
+        scaled.flush();
+        scaled = null;
+        icon = null;
+        
+        
+    }
+    
+    public void colorMyComponents(){
         Component[] components = jPanelDatosPersonales.getComponents();
         for (Component component : components) {
 
@@ -907,15 +921,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jTextAreaDescripcion.setBackground(MainFrame.getFirstColor());
         jTextAreaDescripcion.setForeground(MainFrame.getFontColor());
         jTextAreaDescripcion.setCaretColor(MainFrame.getFirstColor() );
-
-        int large = jLabelImagenPerfilAutenticacion.getPreferredSize().height;
-        Image scaled = DashboardPanel.getUserImage().getScaledInstance(large, large, Image.SCALE_SMOOTH);
-        ImageIcon icon = new ImageIcon(scaled);
-        jLabelImagenPerfilAutenticacion.setIcon(icon);
-        scaled.flush();
-        scaled = null;
-        icon = null;
-        
-        
     }
+    
+    
 }

@@ -28,15 +28,16 @@ public class InfoProfilePanel extends javax.swing.JPanel {
     public InfoProfilePanel() {
         initComponents();
         
-        paintMyComponents();
+        initMyComponents();
         
     }
     
-    public void paintMyComponents(){
+    public void initMyComponents(){
         Component[] components = this.getComponents();
         for(Component component : components){
             component.setForeground(MainFrame.getFontColor());
         }
+        
         jScrollPaneDescripcion.getViewport().setOpaque(false);
         jTextPaneDescripcion.setForeground(MainFrame.getFontColor());
         Faker faker = new Faker(new Locale("es","MX"));
@@ -59,6 +60,26 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         imageIcon.getImage().flush();
         imageIcon = null;
         
+        
+    }
+    
+    public void colorMyComponents(){
+        jLabelApellidos.setBackground(MainFrame.getThirdColor());
+        jLabelApellidos.setForeground(MainFrame.getThirdFontColor());
+        jLabelCorreoElectronico.setForeground(MainFrame.getFontColor());
+        jLabelEditarPerfil.setForeground(MainFrame.getFontColor());
+        jLabelFechaDeNacimiento.setForeground(MainFrame.getFontColor());
+        jLabelGenero.setForeground(MainFrame.getFontColor());
+        jLabelLocalidad.setForeground(MainFrame.getFontColor());
+        jLabelMiDesempenoEscolar.setForeground(MainFrame.getFontColor());
+        jLabelNombreDeUsuario.setForeground(MainFrame.getSecondFontColor());
+        jLabelNombreDeUsuario.setBackground(MainFrame.getSecondColor());
+        jLabelNombres.setBackground(MainFrame.getThirdColor());
+        jLabelNombres.setForeground(MainFrame.getThirdFontColor());
+        jLabelNumeroTelefono.setForeground(MainFrame.getFontColor());
+        jLabelPerfil.setForeground(MainFrame.getFontColor());
+        jLabelProfilePhoto.setForeground(MainFrame.getFontColor());
+        jTextPaneDescripcion.setForeground(MainFrame.getFontColor());
     }
 
     /**
@@ -103,6 +124,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelApellidos.setMaximumSize(new java.awt.Dimension(380, 50));
         jLabelApellidos.setMinimumSize(new java.awt.Dimension(380, 50));
         jLabelApellidos.setName("label"); // NOI18N
+        jLabelApellidos.setOpaque(true);
         jLabelApellidos.setPreferredSize(new java.awt.Dimension(380, 50));
 
         jLabelNombres.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
@@ -112,6 +134,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelNombres.setMaximumSize(new java.awt.Dimension(380, 50));
         jLabelNombres.setMinimumSize(new java.awt.Dimension(380, 50));
         jLabelNombres.setName("label"); // NOI18N
+        jLabelNombres.setOpaque(true);
         jLabelNombres.setPreferredSize(new java.awt.Dimension(380, 50));
 
         jLabelNombreDeUsuario.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
@@ -120,6 +143,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelNombreDeUsuario.setToolTipText("User Name");
         jLabelNombreDeUsuario.setMaximumSize(new java.awt.Dimension(430, 30));
         jLabelNombreDeUsuario.setMinimumSize(new java.awt.Dimension(430, 30));
+        jLabelNombreDeUsuario.setOpaque(true);
         jLabelNombreDeUsuario.setPreferredSize(new java.awt.Dimension(430, 30));
 
         jLabelCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -271,7 +295,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelEditarPerfil)
                             .addComponent(jLabelMiDesempenoEscolar))))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jLabelProfilePhoto.getAccessibleContext().setAccessibleName("jLabelProfilePhoto");
@@ -285,7 +309,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
 
     private void jLabelMiDesempenoEscolarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMiDesempenoEscolarMouseEntered
         // TODO add your handling code here:
-        jLabelMiDesempenoEscolar.setForeground(MainFrame.getThirdColor());
+        jLabelMiDesempenoEscolar.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jLabelMiDesempenoEscolarMouseEntered
 
     private void jLabelMiDesempenoEscolarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMiDesempenoEscolarMouseExited

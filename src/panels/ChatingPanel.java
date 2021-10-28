@@ -72,15 +72,15 @@ public class ChatingPanel extends javax.swing.JPanel{
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1085, 630));
 
-        jPanelChatTop.setMinimumSize(new java.awt.Dimension(1085, 70));
-        jPanelChatTop.setPreferredSize(new java.awt.Dimension(1085, 70));
+        jPanelChatTop.setMaximumSize(new java.awt.Dimension(32767, 50));
+        jPanelChatTop.setMinimumSize(new java.awt.Dimension(1085, 50));
+        jPanelChatTop.setPreferredSize(new java.awt.Dimension(1085, 50));
 
-        jLabelBack.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabelBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelBack.setText("←");
-        jLabelBack.setMaximumSize(new java.awt.Dimension(58, 58));
-        jLabelBack.setMinimumSize(new java.awt.Dimension(58, 58));
-        jLabelBack.setPreferredSize(new java.awt.Dimension(58, 58));
+        jLabelBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jLabelBack.setMaximumSize(new java.awt.Dimension(48, 48));
+        jLabelBack.setMinimumSize(new java.awt.Dimension(48, 48));
+        jLabelBack.setPreferredSize(new java.awt.Dimension(48, 48));
         jLabelBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelBackMouseClicked(evt);
@@ -106,11 +106,11 @@ public class ChatingPanel extends javax.swing.JPanel{
         jPanelChatTopLayout.setVerticalGroup(
             jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelChatTopLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addGap(1, 1, 1)
                 .addGroup(jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelChatName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelBack, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+                    .addComponent(jLabelBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(1, 1, 1))
         );
 
         jPanelChatBottom.setMinimumSize(new java.awt.Dimension(1085, 70));
@@ -214,9 +214,9 @@ public class ChatingPanel extends javax.swing.JPanel{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelChatTop, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelChatTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPaneChatsCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                .addComponent(jScrollPaneChatsCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanelChatBottom, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );

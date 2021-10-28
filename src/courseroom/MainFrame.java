@@ -25,7 +25,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import panels.LoginPanel;
@@ -41,8 +40,8 @@ public class MainFrame extends javax.swing.JFrame {
     private static RecuperarCredencialesPanel recuperarCredenciales;
     private static CrearCuentaPanel crearCuenta;
     private static DashboardPanel dashboard;
-    
-    private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor, darkBlue, lightBlue;
+    private static Color darkBlue, lightBlue;
+    private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
     
     private static ImageIcon logoImage;
     
@@ -56,20 +55,15 @@ public class MainFrame extends javax.swing.JFrame {
         
         initComponents();
         
-        boolean isConnected = checkConnection();
-        
-        if (!isConnected){
-            JOptionPane.showMessageDialog(null,"There Is Not Internet Connection","SUPER ERROR",JOptionPane.ERROR_MESSAGE);
-            System.exit(0);
-            return;
-        }
-        
+        darkBlue = new Color(14,30,64);
+        lightBlue  = new Color(104,194,232);
+        firstColor = darkBlue;
+        secondColor = thirdColor = lightBlue;
+        fontColor = secondFontColor = thirdFontColor = Color.BLACK;
+         
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
         
-        secondColor = thirdColor = darkBlue = new Color(14,30,64);
-        firstColor = lightBlue  = new Color(104,194,232);
-        fontColor = secondFontColor = thirdFontColor = Color.BLACK;
         Image darkImageLogo;
         try {
             darkImageLogo = ImageIO.read(getClass().getResource("/resources/images/Course_Room_Brand_Blue.png"));
@@ -82,17 +76,28 @@ public class MainFrame extends javax.swing.JFrame {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        jPanelViewer.setBackground(firstColor);
         login = new LoginPanel();
+        jPanelViewer.add("login",login);
+        
+        boolean isConnected = checkConnection();
+        
+        if (!isConnected){
+            JOptionPane.showMessageDialog(null,"There Is Not Internet Connection","SUPER ERROR",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         recuperarCredenciales = new RecuperarCredencialesPanel();
         crearCuenta = new CrearCuentaPanel();
         dashboard = new DashboardPanel();
         
-        jPanelViewer.add("login",login);
+        
         jPanelViewer.add("recuperarCredenciales",recuperarCredenciales);
         jPanelViewer.add("crearCuenta",crearCuenta);
         jPanelViewer.add("dashboard",dashboard);
         
         viewerLayout = (CardLayout)jPanelViewer.getLayout();
+        
     }
     
     
@@ -119,27 +124,7 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelViewer = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-
-                super.paintComponent(g);
-                int w = this.getWidth();
-                int h = this.getHeight();
-                Graphics2D graphics = (Graphics2D)g;
-                graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                Color noColor =  new Color(0, 0, 0, 0);
-                GradientPaint primary = new GradientPaint(0f, 0f, MainFrame.getSecondColor(), w, 0f, MainFrame.getThirdColor());
-                GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, MainFrame.getFirstColor());
-                graphics.setPaint(primary);
-                graphics.fillRect(0, 0, w, h);
-                graphics.setPaint(secondary);
-                graphics.fillRect(0, 0, w, h);
-                primary = null;
-                secondary = null;
-                noColor = null;
-            }
-        };
+        jPanelViewer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CourseRoom - Tu Espacio Personal Para Estudiar");
@@ -187,9 +172,9 @@ public class MainFrame extends javax.swing.JFrame {
     
     public static void logOut(){
         showLogin();
-        firstColor = lightBlue;
-        secondColor = darkBlue;
-        thirdColor = darkBlue;
+        firstColor = darkBlue;
+        secondColor = lightBlue;
+        thirdColor = lightBlue;
         jPanelViewer.repaint();
         dashboard.dispose();
         dashboard = null;
@@ -198,7 +183,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     public static void repainting(){
-        jPanelViewer.repaint();
+        //jPanelViewer.repaint();
+        jPanelViewer.setBackground(firstColor);
     }
    
     @Override
@@ -213,6 +199,7 @@ public class MainFrame extends javax.swing.JFrame {
         recuperarCredenciales = null;
         crearCuenta = null;
         dashboard = null;
+        darkBlue = lightBlue = null;
         firstColor = secondColor = thirdColor = fontColor = secondFontColor = thirdFontColor = null;
         logoImage = null;
         viewerLayout = null;
@@ -224,20 +211,7 @@ public class MainFrame extends javax.swing.JFrame {
     private static javax.swing.JPanel jPanelViewer;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * @return the secondColor
-     */
-    public static Color getDarkBlue() {
-        return darkBlue;
-    }
-    
-    /**
-     * @return the secondColor
-     */
-    public static Color getLightBlue() {
-        return lightBlue;
-    }
-
+   
     /**
      * @return the logoImage
      */

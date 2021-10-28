@@ -28,27 +28,32 @@ public class DatesPanel extends javax.swing.JPanel {
         
         initMyComponents();
         
-        createCalendar();
-        
         
     }
     
     private void initMyComponents(){
-        jLabelMonth.setForeground(MainFrame.getSecondFontColor());
+        
         jScrollPaneCalendar.getViewport().setOpaque(false);
-        jLabelLunes.setForeground(MainFrame.getSecondFontColor());
-        jLabelMartes.setForeground(MainFrame.getSecondFontColor());
-        jLabelMiercoles.setForeground(MainFrame.getSecondFontColor());
-        jLabelJueves.setForeground(MainFrame.getSecondFontColor());
-        jLabelViernes.setForeground(MainFrame.getSecondFontColor());
-        jLabelSabado.setForeground(MainFrame.getSecondFontColor());
-        jLabelDomingo.setForeground(MainFrame.getSecondFontColor());
-        jLabelNextMonth.setForeground(MainFrame.getThirdFontColor());
-        jLabelPreviousMonth.setForeground(MainFrame.getFontColor());
         LocalDateTime now = LocalDateTime.now();  
         index_month = now.getMonthValue();
         index_year = now.getYear();
         time_now = LocalDateTime.now();
+    }
+    
+    public void colorMyComponents(){
+        jLabelMonth.setBackground(MainFrame.getSecondColor());
+        jLabelMonth.setForeground(MainFrame.getSecondFontColor());
+        
+        jLabelLunes.setForeground(MainFrame.getFontColor());
+        jLabelMartes.setForeground(MainFrame.getFontColor());
+        jLabelMiercoles.setForeground(MainFrame.getFontColor());
+        jLabelJueves.setForeground(MainFrame.getFontColor());
+        jLabelViernes.setForeground(MainFrame.getFontColor());
+        jLabelSabado.setForeground(MainFrame.getFontColor());
+        jLabelDomingo.setForeground(MainFrame.getFontColor());
+        jLabelNextMonth.setForeground(MainFrame.getFontColor());
+        jLabelPreviousMonth.setForeground(MainFrame.getFontColor());
+        createCalendar();
     }
 
     /**
@@ -156,6 +161,7 @@ public class DatesPanel extends javax.swing.JPanel {
         jLabelMonth.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelMonth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMonth.setText("Octubre");
+        jLabelMonth.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -285,7 +291,7 @@ public class DatesPanel extends javax.swing.JPanel {
         int until = dayOfWeek.getValue()-1;
         for(int i = until; i > 0;i--){
             BoxCalendarPanel calendarDayPanel = new BoxCalendarPanel(previous_index_month_days-i);
-            calendarDayPanel.paintMyComponents(MainFrame.getThirdColor(), MainFrame.getFirstColor());
+            calendarDayPanel.paintMyComponents(MainFrame.getThirdColor(), MainFrame.getThirdFontColor());
             jPanelCalendar.add(calendarDayPanel);
             count++;
         }
@@ -293,10 +299,10 @@ public class DatesPanel extends javax.swing.JPanel {
         for(int i = 1; i < index_month_days;i++){
             BoxCalendarPanel calendarDayPanel = new BoxCalendarPanel(i);
             if(time_now.getDayOfMonth() == i){
-                calendarDayPanel.paintMyComponents(MainFrame.getSecondColor(), MainFrame.getSecondFontColor());
+                calendarDayPanel.paintMyComponents(MainFrame.getFirstColor(), MainFrame.getFontColor());
                 jPanelCalendar.add(calendarDayPanel);
             } else{
-                 calendarDayPanel.paintMyComponents(MainFrame.getFirstColor(), MainFrame.getFontColor());
+                 calendarDayPanel.paintMyComponents(MainFrame.getSecondColor(), MainFrame.getSecondFontColor());
                 jPanelCalendar.add(calendarDayPanel);
             }
             count++;

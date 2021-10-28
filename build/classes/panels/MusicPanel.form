@@ -28,7 +28,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="110" max="32767" attributes="0"/>
               <Component id="jLabelCoverArt" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="jPanelControls" min="-2" max="-2" attributes="0"/>
@@ -40,9 +40,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelCoverArt" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPanelControls" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jLabelCoverArt" max="32767" attributes="0"/>
+                  <Component id="jPanelControls" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -57,6 +57,11 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[550, 550]"/>
         </Property>
@@ -79,22 +84,22 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabelAlbum" max="32767" attributes="0"/>
+                      <Component id="jTabbedPanelControls" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabelProgress" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSliderProgress" min="-2" pref="212" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabelProgress" min="-2" pref="74" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Component id="jSliderProgress" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelTotalDuration" min="-2" pref="61" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabelAlbum" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabelArtist" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabelTitle" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jTabbedPanelControls" min="-2" pref="359" max="-2" attributes="0"/>
+                      <Component id="jLabelArtist" max="32767" attributes="0"/>
+                      <Component id="jLabelTitle" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -105,16 +110,16 @@
                   <Component id="jLabelTitle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="jLabelArtist" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabelAlbum" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelProgress" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSliderProgress" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelTotalDuration" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSliderProgress" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jLabelTotalDuration" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPanelControls" min="-2" pref="338" max="-2" attributes="0"/>
+                  <Component id="jTabbedPanelControls" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -158,7 +163,7 @@
                               <Component id="jScrollPanePlaylist" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="jLabelOpenFiles" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="222" max="32767" attributes="0"/>
+                                  <EmptySpace pref="252" max="32767" attributes="0"/>
                                   <Component id="jLabelOpenFolder" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -174,7 +179,7 @@
                               <Component id="jLabelOpenFolder" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jScrollPanePlaylist" pref="288" max="32767" attributes="0"/>
+                          <Component id="jScrollPanePlaylist" pref="342" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -259,7 +264,7 @@
                           <Component id="jLabelPlayPause" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="jLabelNext" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="16" max="32767" attributes="0"/>
+                          <EmptySpace pref="45" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -273,7 +278,7 @@
                               <Component id="jLabelPlayPause" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelNext" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="300" max="32767" attributes="0"/>
+                          <EmptySpace pref="354" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -395,7 +400,7 @@
                               <Component id="jSliderVolume" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelVolumeUp" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="250" max="32767" attributes="0"/>
+                          <EmptySpace pref="304" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -558,8 +563,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanelBands" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanelBands" pref="294" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabelPreampTitle" min="-2" max="-2" attributes="0"/>
                               <Component id="jSliderBandPreamp" min="-2" max="-2" attributes="0"/>
@@ -570,7 +575,7 @@
                               <Component id="jComboBoxPresets" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelPreset" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -618,7 +623,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="182" y="20" width="10" height="210"/>
+                          <AbsoluteConstraints x="182" y="20" width="10" height="240"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -644,7 +649,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="37" y="20" width="10" height="210"/>
+                          <AbsoluteConstraints x="37" y="20" width="10" height="240"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -670,7 +675,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="66" y="20" width="10" height="210"/>
+                          <AbsoluteConstraints x="66" y="20" width="10" height="240"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -696,7 +701,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="95" y="20" width="10" height="210"/>
+                          <AbsoluteConstraints x="95" y="20" width="10" height="240"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -722,7 +727,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="124" y="20" width="10" height="210"/>
+                          <AbsoluteConstraints x="124" y="20" width="10" height="240"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -748,7 +753,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="153" y="20" width="10" height="210"/>
+                          <AbsoluteConstraints x="153" y="20" width="10" height="240"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -774,7 +779,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="8" y="20" width="10" height="210"/>
+                          <AbsoluteConstraints x="8" y="20" width="10" height="240"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -800,7 +805,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="211" y="20" width="10" height="210"/>
+                          <AbsoluteConstraints x="211" y="20" width="10" height="240"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -826,7 +831,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="240" y="20" width="10" height="210"/>
+                          <AbsoluteConstraints x="240" y="20" width="10" height="240"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -852,7 +857,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="270" y="20" width="10" height="210"/>
+                          <AbsoluteConstraints x="270" y="20" width="10" height="240"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -866,7 +871,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="37" y="230" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="33" y="260" width="10" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -880,7 +885,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="8" y="230" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="4" y="260" width="10" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -894,7 +899,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="66" y="230" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="62" y="260" width="10" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -908,7 +913,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="95" y="230" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="91" y="260" width="10" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -922,7 +927,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="124" y="230" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="120" y="260" width="10" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -936,7 +941,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="153" y="230" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="149" y="260" width="10" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -950,7 +955,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="182" y="230" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="178" y="260" width="10" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -964,7 +969,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="211" y="230" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="207" y="260" width="10" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -978,7 +983,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="240" y="230" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="236" y="260" width="10" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -992,7 +997,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="270" y="230" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="266" y="260" width="10" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1107,20 +1112,18 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabelGenreValue" alignment="1" min="-2" pref="290" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabelYearValue" min="-2" pref="137" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelMediaValue" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="jScrollPaneLyrics" min="-2" pref="290" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabelGenreValue" min="-2" pref="321" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneLyrics" min="-2" pref="321" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabelYearValue" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelMediaValue" min="-2" pref="178" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1135,8 +1138,8 @@
                               <Component id="jLabelYearValue" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPaneLyrics" min="-2" pref="216" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jScrollPaneLyrics" pref="264" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

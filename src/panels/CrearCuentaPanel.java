@@ -7,9 +7,7 @@ package panels;
 
 import components.ImageFilePreview;
 import courseroom.MainFrame;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -33,15 +31,8 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public CrearCuentaPanel() {
         initComponents();
-        this.setBackground(MainFrame.getDarkBlue());
-        jTabbedPaneFondo.setForeground(MainFrame.getLightBlue());
-        jLabelLogoInicio.setIcon(MainFrame.getLogoImage());
-        jLabelLogoAutenticacion.setIcon(MainFrame.getLogoImage());
-        jLabelLogoDatosPersonales.setIcon(MainFrame.getLogoImage());
-        jLabelLogoPerfil.setIcon(MainFrame.getLogoImage());
         
-        jTabbedPaneFondo.setBackground(MainFrame.getDarkBlue());
-        jTabbedPaneFondo.setForeground( MainFrame.getLightBlue());
+        initMyComponents();
     }
 
     /**
@@ -124,52 +115,35 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jPanelInicio.setName("crearCuentaFrame"); // NOI18N
         jPanelInicio.setOpaque(false);
 
-        jLabelLogoInicio.setBackground(new java.awt.Color(14, 30, 64));
         jLabelLogoInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogoInicio.setMaximumSize(new java.awt.Dimension(150, 125));
         jLabelLogoInicio.setMinimumSize(new java.awt.Dimension(150, 125));
         jLabelLogoInicio.setPreferredSize(new java.awt.Dimension(150, 125));
 
-        jLabelTituloInicio.setBackground(new java.awt.Color(14, 30, 64));
         jLabelTituloInicio.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
-        jLabelTituloInicio.setForeground(new java.awt.Color(104, 194, 232));
         jLabelTituloInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTituloInicio.setText("Registra Los Datos De Tu Nueva Cuenta");
         jLabelTituloInicio.setPreferredSize(new java.awt.Dimension(670, 48));
 
-        jLabelInformacionInicio.setBackground(new java.awt.Color(14, 30, 64));
         jLabelInformacionInicio.setFont(new java.awt.Font("Gadugi", 0, 24)); // NOI18N
-        jLabelInformacionInicio.setForeground(new java.awt.Color(14, 30, 64));
         jLabelInformacionInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelInformacionInicio.setText("<html>\n\n<p style=\"text-align:center;\">\n\nA continuación, te pediremos algunos datos que requerimos<br>\nde tu parte para que puedas acceder y tener una cuenta de<br>\nacceso al sistema. No te preocupes,  no toma demasiado<br>\ntiempo y, sobre todo, tus datos están<br>\nseguros con nosotros.\n\n</p>\n\n</html>");
         jLabelInformacionInicio.setPreferredSize(new java.awt.Dimension(670, 104));
 
-        jLabelInicioAutenticacion.setBackground(new java.awt.Color(14, 30, 64));
-        jLabelInicioAutenticacion.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabelInicioAutenticacion.setForeground(new java.awt.Color(14, 30, 64));
         jLabelInicioAutenticacion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelInicioAutenticacion.setText("→");
+        jLabelInicioAutenticacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
         jLabelInicioAutenticacion.setToolTipText("Ir Al Registro De Autenticación");
         jLabelInicioAutenticacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelInicioAutenticacion.setMaximumSize(new java.awt.Dimension(567, 40));
-        jLabelInicioAutenticacion.setMinimumSize(new java.awt.Dimension(567, 40));
-        jLabelInicioAutenticacion.setPreferredSize(new java.awt.Dimension(567, 30));
         jLabelInicioAutenticacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelInicioAutenticacionMouseClicked(evt);
             }
         });
 
-        jLabelRegresar.setBackground(new java.awt.Color(14, 30, 64));
-        jLabelRegresar.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabelRegresar.setForeground(new java.awt.Color(14, 30, 64));
         jLabelRegresar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelRegresar.setText("←");
+        jLabelRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
         jLabelRegresar.setToolTipText("Regresa A La Página De Login");
         jLabelRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelRegresar.setMaximumSize(new java.awt.Dimension(567, 40));
-        jLabelRegresar.setMinimumSize(new java.awt.Dimension(567, 40));
-        jLabelRegresar.setPreferredSize(new java.awt.Dimension(567, 30));
         jLabelRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelRegresarMouseClicked(evt);
@@ -185,9 +159,9 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelLogoInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
-                        .addComponent(jLabelRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelRegresar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelInicioAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelInicioAutenticacion))
                     .addComponent(jLabelTituloInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)
                     .addComponent(jLabelInformacionInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -195,16 +169,16 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jPanelInicioLayout.setVerticalGroup(
             jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicioLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addContainerGap()
                 .addComponent(jLabelLogoInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelTituloInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(jLabelInformacionInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelInicioAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelRegresar)
+                    .addComponent(jLabelInicioAutenticacion))
                 .addContainerGap())
         );
 
@@ -214,118 +188,79 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jPanelAutenticacion.setMinimumSize(new java.awt.Dimension(1260, 629));
         jPanelAutenticacion.setOpaque(false);
 
-        jLabelLogoAutenticacion.setBackground(new java.awt.Color(14, 30, 64));
         jLabelLogoAutenticacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogoAutenticacion.setMaximumSize(new java.awt.Dimension(150, 125));
         jLabelLogoAutenticacion.setMinimumSize(new java.awt.Dimension(150, 125));
         jLabelLogoAutenticacion.setPreferredSize(new java.awt.Dimension(150, 125));
 
-        jLabelNombre.setBackground(new java.awt.Color(14, 30, 64));
         jLabelNombre.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelNombre.setForeground(new java.awt.Color(104, 194, 232));
         jLabelNombre.setText("Nombre De Usuario");
 
-        jTextFieldNombreDeUsuario.setBackground(new java.awt.Color(14, 30, 64));
         jTextFieldNombreDeUsuario.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        jTextFieldNombreDeUsuario.setForeground(new java.awt.Color(104, 194, 232));
         jTextFieldNombreDeUsuario.setToolTipText("<html>\n\n<p>\n\nIngrese aquí el nombre de usuario de su elección. Sin embargo, tome las siguientes medidas:<br>\n<b>\n   * El nombre de usuario puede contener letras, números y carácteres con valor ascii entre 32 y 126.<br>\n   * Sólamente se permite un máximo de 20 carácteres.\n\n</b>\n\n</p>\n\n</html>");
         jTextFieldNombreDeUsuario.setCaretColor(new java.awt.Color(104, 194, 232));
         jTextFieldNombreDeUsuario.setPreferredSize(new java.awt.Dimension(350, 32));
 
-        jLabelPassword.setBackground(new java.awt.Color(14, 30, 64));
         jLabelPassword.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelPassword.setForeground(new java.awt.Color(104, 194, 232));
         jLabelPassword.setText("Contraseña");
 
-        jPasswordFieldPassword.setBackground(new java.awt.Color(14, 30, 64));
         jPasswordFieldPassword.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        jPasswordFieldPassword.setForeground(new java.awt.Color(104, 194, 232));
         jPasswordFieldPassword.setToolTipText("Ingrese Aquí Su Contraseña (Mínimo 8 Carácteres)");
         jPasswordFieldPassword.setCaretColor(new java.awt.Color(104, 194, 232));
         jPasswordFieldPassword.setPreferredSize(new java.awt.Dimension(350, 32));
 
-        jLabelTituloAutenticacion.setBackground(new java.awt.Color(14, 30, 64));
         jLabelTituloAutenticacion.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
-        jLabelTituloAutenticacion.setForeground(new java.awt.Color(104, 194, 232));
         jLabelTituloAutenticacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTituloAutenticacion.setText("Registra Tus Credenciales Para Acceder Al Sistema");
 
-        jLabelCorreoElectronico.setBackground(new java.awt.Color(14, 30, 64));
         jLabelCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelCorreoElectronico.setForeground(new java.awt.Color(14, 30, 64));
         jLabelCorreoElectronico.setText("Correo Electrónico");
 
-        jTextFieldCorreoElectronico.setBackground(new java.awt.Color(14, 30, 64));
         jTextFieldCorreoElectronico.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        jTextFieldCorreoElectronico.setForeground(new java.awt.Color(104, 194, 232));
         jTextFieldCorreoElectronico.setToolTipText("Ingrese Aquí Su Correo Electrónico (Ingrese Uno Que Pueda Utilizar)");
         jTextFieldCorreoElectronico.setCaretColor(new java.awt.Color(104, 194, 232));
         jTextFieldCorreoElectronico.setPreferredSize(new java.awt.Dimension(350, 32));
 
-        jLabelRepetirPassword.setBackground(new java.awt.Color(14, 30, 64));
         jLabelRepetirPassword.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelRepetirPassword.setForeground(new java.awt.Color(14, 30, 64));
         jLabelRepetirPassword.setText("Repetir Contraseña");
 
-        jPasswordFieldRepetirPassword.setBackground(new java.awt.Color(14, 30, 64));
         jPasswordFieldRepetirPassword.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        jPasswordFieldRepetirPassword.setForeground(new java.awt.Color(104, 194, 232));
         jPasswordFieldRepetirPassword.setToolTipText("Re-Ingrese Aquí La Contraseña");
         jPasswordFieldRepetirPassword.setCaretColor(new java.awt.Color(104, 194, 232));
         jPasswordFieldRepetirPassword.setPreferredSize(new java.awt.Dimension(350, 32));
 
-        jLabelInformacionNombreDeUsuario.setBackground(new java.awt.Color(14, 30, 64));
         jLabelInformacionNombreDeUsuario.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jLabelInformacionNombreDeUsuario.setForeground(new java.awt.Color(14, 30, 64));
         jLabelInformacionNombreDeUsuario.setText("información sobre el nombre de usuario");
         jLabelInformacionNombreDeUsuario.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabelInformacionRepetirPassword.setBackground(new java.awt.Color(14, 30, 64));
         jLabelInformacionRepetirPassword.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jLabelInformacionRepetirPassword.setForeground(new java.awt.Color(14, 30, 64));
         jLabelInformacionRepetirPassword.setText("información de la repetición de la contraseña");
         jLabelInformacionRepetirPassword.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabelInformacionCorreoElectronico.setBackground(new java.awt.Color(14, 30, 64));
         jLabelInformacionCorreoElectronico.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jLabelInformacionCorreoElectronico.setForeground(new java.awt.Color(14, 30, 64));
         jLabelInformacionCorreoElectronico.setText("información sobre el correo electrónico");
         jLabelInformacionCorreoElectronico.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabelInformacionSeguridadPassword.setBackground(new java.awt.Color(14, 30, 64));
         jLabelInformacionSeguridadPassword.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jLabelInformacionSeguridadPassword.setForeground(new java.awt.Color(14, 30, 64));
         jLabelInformacionSeguridadPassword.setText("información de la seguridad de la contraseña");
         jLabelInformacionSeguridadPassword.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabelAutenticacionInicio.setBackground(new java.awt.Color(14, 30, 64));
-        jLabelAutenticacionInicio.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabelAutenticacionInicio.setForeground(new java.awt.Color(14, 30, 64));
         jLabelAutenticacionInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelAutenticacionInicio.setText("←");
+        jLabelAutenticacionInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
         jLabelAutenticacionInicio.setToolTipText("Regresar Al Inicio Del Registro");
         jLabelAutenticacionInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelAutenticacionInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelAutenticacionInicio.setMaximumSize(new java.awt.Dimension(567, 40));
-        jLabelAutenticacionInicio.setMinimumSize(new java.awt.Dimension(567, 40));
-        jLabelAutenticacionInicio.setPreferredSize(new java.awt.Dimension(567, 30));
         jLabelAutenticacionInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelAutenticacionInicioMouseClicked(evt);
             }
         });
 
-        jLabelAutenticacionDatosPersonales.setBackground(new java.awt.Color(14, 30, 64));
-        jLabelAutenticacionDatosPersonales.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabelAutenticacionDatosPersonales.setForeground(new java.awt.Color(14, 30, 64));
         jLabelAutenticacionDatosPersonales.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelAutenticacionDatosPersonales.setText("→");
+        jLabelAutenticacionDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
         jLabelAutenticacionDatosPersonales.setToolTipText("Ir Al Registro De Datos Personales");
         jLabelAutenticacionDatosPersonales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelAutenticacionDatosPersonales.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabelAutenticacionDatosPersonales.setMaximumSize(new java.awt.Dimension(567, 40));
-        jLabelAutenticacionDatosPersonales.setMinimumSize(new java.awt.Dimension(567, 40));
-        jLabelAutenticacionDatosPersonales.setPreferredSize(new java.awt.Dimension(567, 30));
         jLabelAutenticacionDatosPersonales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelAutenticacionDatosPersonalesMouseClicked(evt);
@@ -338,20 +273,20 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
             jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAutenticacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelAutenticacionInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelAutenticacionInicio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelAutenticacionDatosPersonales, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelAutenticacionDatosPersonales)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAutenticacionLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
+                    .addComponent(jTextFieldNombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
                     .addComponent(jLabelInformacionNombreDeUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelInformacionSeguridadPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
+                    .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
                     .addComponent(jLabelPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40))
             .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
@@ -360,7 +295,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                     .addComponent(jLabelInformacionCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelRepetirPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelInformacionRepetirPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -376,11 +311,11 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jPanelAutenticacionLayout.setVerticalGroup(
             jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addComponent(jLabelLogoAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jLabelTituloAutenticacion, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelTituloAutenticacion)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
                     .addComponent(jLabelPassword))
@@ -392,10 +327,9 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelInformacionNombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelInformacionSeguridadPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 41, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
                         .addComponent(jLabelCorreoElectronico)
                         .addGap(2, 2, 2))
                     .addComponent(jLabelRepetirPassword, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -405,11 +339,11 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addGap(1, 1, 1)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelInformacionCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelInformacionRepetirPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelInformacionRepetirPassword))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAutenticacionInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAutenticacionDatosPersonales, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelAutenticacionInicio)
+                    .addComponent(jLabelAutenticacionDatosPersonales))
                 .addContainerGap())
         );
 
@@ -419,106 +353,73 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jPanelDatosPersonales.setMinimumSize(new java.awt.Dimension(1260, 629));
         jPanelDatosPersonales.setOpaque(false);
 
-        jLabelLogoDatosPersonales.setBackground(new java.awt.Color(14, 30, 64));
         jLabelLogoDatosPersonales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogoDatosPersonales.setMaximumSize(new java.awt.Dimension(150, 125));
         jLabelLogoDatosPersonales.setMinimumSize(new java.awt.Dimension(150, 125));
         jLabelLogoDatosPersonales.setPreferredSize(new java.awt.Dimension(150, 125));
 
-        jLabelTituloDatosPersonales.setBackground(new java.awt.Color(14, 30, 64));
         jLabelTituloDatosPersonales.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
-        jLabelTituloDatosPersonales.setForeground(new java.awt.Color(104, 194, 232));
         jLabelTituloDatosPersonales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTituloDatosPersonales.setText("Registra Tus Datos Personales");
 
-        jLabelNombres.setBackground(new java.awt.Color(14, 30, 64));
         jLabelNombres.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelNombres.setForeground(new java.awt.Color(104, 194, 232));
         jLabelNombres.setText("Nombre(s)*");
 
-        jTextFieldNombres.setBackground(new java.awt.Color(14, 30, 64));
         jTextFieldNombres.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        jTextFieldNombres.setForeground(new java.awt.Color(104, 194, 232));
         jTextFieldNombres.setToolTipText("<html>Ingresa Aquí Tu(s) Nombre(s).<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
         jTextFieldNombres.setCaretColor(new java.awt.Color(104, 194, 232));
         jTextFieldNombres.setPreferredSize(new java.awt.Dimension(350, 32));
 
-        jLabelApellidos.setBackground(new java.awt.Color(14, 30, 64));
         jLabelApellidos.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelApellidos.setForeground(new java.awt.Color(104, 194, 232));
         jLabelApellidos.setText("Apellido(s)*");
 
-        jTextFieldApellidos.setBackground(new java.awt.Color(14, 30, 64));
         jTextFieldApellidos.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        jTextFieldApellidos.setForeground(new java.awt.Color(104, 194, 232));
         jTextFieldApellidos.setToolTipText("<html>Ingresa Aquí Tu(s) Apellido(s).<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
         jTextFieldApellidos.setCaretColor(new java.awt.Color(104, 194, 232));
         jTextFieldApellidos.setPreferredSize(new java.awt.Dimension(350, 32));
 
-        jTextFieldLocalidad.setBackground(new java.awt.Color(14, 30, 64));
         jTextFieldLocalidad.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        jTextFieldLocalidad.setForeground(new java.awt.Color(104, 194, 232));
         jTextFieldLocalidad.setToolTipText("Ingresa Tu Localidad En Este Campo.");
         jTextFieldLocalidad.setCaretColor(new java.awt.Color(104, 194, 232));
         jTextFieldLocalidad.setPreferredSize(new java.awt.Dimension(350, 32));
 
-        jLabelLocalidad.setBackground(new java.awt.Color(14, 30, 64));
         jLabelLocalidad.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelLocalidad.setForeground(new java.awt.Color(14, 30, 64));
         jLabelLocalidad.setText("Localidad");
 
-        jTextFieldGenero.setBackground(new java.awt.Color(14, 30, 64));
         jTextFieldGenero.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        jTextFieldGenero.setForeground(new java.awt.Color(104, 194, 232));
         jTextFieldGenero.setToolTipText("Ingresa Aquí Tu Género, Sexo O Identidad De Género.");
         jTextFieldGenero.setCaretColor(new java.awt.Color(104, 194, 232));
         jTextFieldGenero.setPreferredSize(new java.awt.Dimension(350, 32));
 
-        jLabelGenero.setBackground(new java.awt.Color(14, 30, 64));
         jLabelGenero.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelGenero.setForeground(new java.awt.Color(14, 30, 64));
         jLabelGenero.setText("Género");
 
-        jFormattedTextFieldTelefono.setBackground(new java.awt.Color(14, 30, 64));
-        jFormattedTextFieldTelefono.setForeground(new java.awt.Color(104, 194, 232));
         jFormattedTextFieldTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##########"))));
         jFormattedTextFieldTelefono.setToolTipText("<html>Ingresa Aquí Tu Número De Teléfono O Celular.<br><b>NOTA: SOLAMENTE SE PERMITEN INGRESAR VALORES NUMÉRICOS.</b></html>");
         jFormattedTextFieldTelefono.setCaretColor(new java.awt.Color(104, 194, 232));
         jFormattedTextFieldTelefono.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         jFormattedTextFieldTelefono.setPreferredSize(new java.awt.Dimension(350, 32));
 
-        jLabelTelefono.setBackground(new java.awt.Color(14, 30, 64));
         jLabelTelefono.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelTelefono.setForeground(new java.awt.Color(14, 30, 64));
         jLabelTelefono.setText("Número De Teléfono O Celular");
 
-        jFormattedTextFieldFechaNacimiento.setBackground(new java.awt.Color(14, 30, 64));
-        jFormattedTextFieldFechaNacimiento.setForeground(new java.awt.Color(104, 194, 232));
         jFormattedTextFieldFechaNacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-mm-yyyy"))));
         jFormattedTextFieldFechaNacimiento.setToolTipText("<html>Ingresa Aquí Tu Fecha De Nacimiento.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.<br>ADEMÁS, DEBERÁS INGRESAR LA FECHA CON EL SIGUIENTE FORMATO: dd-mm-aaaa<br>d: dia, m: mes, a: año.</b>.</html>");
         jFormattedTextFieldFechaNacimiento.setCaretColor(new java.awt.Color(104, 194, 232));
         jFormattedTextFieldFechaNacimiento.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         jFormattedTextFieldFechaNacimiento.setPreferredSize(new java.awt.Dimension(350, 32));
 
-        jLabelFechaNacimiento.setBackground(new java.awt.Color(14, 30, 64));
         jLabelFechaNacimiento.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelFechaNacimiento.setForeground(new java.awt.Color(14, 30, 64));
         jLabelFechaNacimiento.setText("Fecha De Nacimiento (dd-mm-aaaa)*");
 
-        jLabelDescripcion.setBackground(new java.awt.Color(14, 30, 64));
         jLabelDescripcion.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelDescripcion.setForeground(new java.awt.Color(14, 30, 64));
         jLabelDescripcion.setText("Descripción");
 
-        jScrollPaneDescripcion.setBackground(new java.awt.Color(104, 194, 232));
-        jScrollPaneDescripcion.setForeground(new java.awt.Color(14, 30, 64));
         jScrollPaneDescripcion.setMaximumSize(new java.awt.Dimension(334, 136));
         jScrollPaneDescripcion.setMinimumSize(new java.awt.Dimension(334, 136));
 
-        jTextAreaDescripcion.setBackground(new java.awt.Color(14, 30, 64));
         jTextAreaDescripcion.setColumns(20);
         jTextAreaDescripcion.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        jTextAreaDescripcion.setForeground(new java.awt.Color(104, 194, 232));
         jTextAreaDescripcion.setRows(5);
         jTextAreaDescripcion.setToolTipText("Ingresa Aquí Una Descricpción Sobre Tí.");
         jTextAreaDescripcion.setCaretColor(new java.awt.Color(104, 194, 232));
@@ -526,34 +427,22 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jTextAreaDescripcion.setMinimumSize(new java.awt.Dimension(332, 134));
         jScrollPaneDescripcion.setViewportView(jTextAreaDescripcion);
 
-        jLabelDatosPersonalesAutenticacion.setBackground(new java.awt.Color(14, 30, 64));
-        jLabelDatosPersonalesAutenticacion.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabelDatosPersonalesAutenticacion.setForeground(new java.awt.Color(14, 30, 64));
         jLabelDatosPersonalesAutenticacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelDatosPersonalesAutenticacion.setText("←");
+        jLabelDatosPersonalesAutenticacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
         jLabelDatosPersonalesAutenticacion.setToolTipText("Regresar Al Registro De Autenticación.");
         jLabelDatosPersonalesAutenticacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelDatosPersonalesAutenticacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelDatosPersonalesAutenticacion.setMaximumSize(new java.awt.Dimension(567, 40));
-        jLabelDatosPersonalesAutenticacion.setMinimumSize(new java.awt.Dimension(567, 40));
-        jLabelDatosPersonalesAutenticacion.setPreferredSize(new java.awt.Dimension(567, 30));
         jLabelDatosPersonalesAutenticacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelDatosPersonalesAutenticacionMouseClicked(evt);
             }
         });
 
-        jLabelDatosPersonalesPerfil.setBackground(new java.awt.Color(14, 30, 64));
-        jLabelDatosPersonalesPerfil.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabelDatosPersonalesPerfil.setForeground(new java.awt.Color(14, 30, 64));
         jLabelDatosPersonalesPerfil.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelDatosPersonalesPerfil.setText("→");
+        jLabelDatosPersonalesPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
         jLabelDatosPersonalesPerfil.setToolTipText("Ir Al Registro De Perfil.");
         jLabelDatosPersonalesPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelDatosPersonalesPerfil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelDatosPersonalesPerfil.setMaximumSize(new java.awt.Dimension(567, 40));
-        jLabelDatosPersonalesPerfil.setMinimumSize(new java.awt.Dimension(567, 40));
-        jLabelDatosPersonalesPerfil.setPreferredSize(new java.awt.Dimension(567, 30));
         jLabelDatosPersonalesPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelDatosPersonalesPerfilMouseClicked(evt);
@@ -566,9 +455,9 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
             jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelDatosPersonalesAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelDatosPersonalesAutenticacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelDatosPersonalesPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelDatosPersonalesPerfil)
                 .addContainerGap())
             .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
@@ -612,7 +501,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                                 .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(45, 45, 45))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDatosPersonalesLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelTituloDatosPersonales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelLogoDatosPersonales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -621,11 +510,11 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jPanelDatosPersonalesLayout.setVerticalGroup(
             jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addComponent(jLabelLogoDatosPersonales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jLabelTituloDatosPersonales, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelTituloDatosPersonales)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -639,7 +528,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFormattedTextFieldFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -653,8 +542,8 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                     .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDatosPersonalesAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDatosPersonalesPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelDatosPersonalesAutenticacion)
+                    .addComponent(jLabelDatosPersonalesPerfil))
                 .addContainerGap())
         );
 
@@ -665,30 +554,23 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jPanelPerfil.setOpaque(false);
         jPanelPerfil.setPreferredSize(new java.awt.Dimension(1260, 629));
 
-        jLabelLogoPerfil.setBackground(new java.awt.Color(14, 30, 64));
         jLabelLogoPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogoPerfil.setMaximumSize(new java.awt.Dimension(150, 125));
         jLabelLogoPerfil.setMinimumSize(new java.awt.Dimension(150, 125));
         jLabelLogoPerfil.setPreferredSize(new java.awt.Dimension(150, 125));
 
-        jLabelTituloPerfil.setBackground(new java.awt.Color(14, 30, 64));
         jLabelTituloPerfil.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
-        jLabelTituloPerfil.setForeground(new java.awt.Color(104, 194, 232));
         jLabelTituloPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTituloPerfil.setText("Registra Tu Información De Perfil");
         jLabelTituloPerfil.setMaximumSize(new java.awt.Dimension(490, 41));
         jLabelTituloPerfil.setMinimumSize(new java.awt.Dimension(490, 41));
         jLabelTituloPerfil.setPreferredSize(new java.awt.Dimension(490, 41));
 
-        jLabelPerfil.setBackground(new java.awt.Color(14, 30, 64));
         jLabelPerfil.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelPerfil.setForeground(new java.awt.Color(14, 30, 64));
         jLabelPerfil.setText("Perfil*");
         jLabelPerfil.setPreferredSize(new java.awt.Dimension(389, 25));
 
-        jComboBoxPerfil.setBackground(new java.awt.Color(14, 30, 64));
         jComboBoxPerfil.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jComboBoxPerfil.setForeground(new java.awt.Color(104, 194, 232));
         jComboBoxPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Maestro" }));
         jComboBoxPerfil.setToolTipText("<html>Aquí Puedes Seleccionar Tu Perfil De Las Posibles.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
         jComboBoxPerfil.setBorder(null);
@@ -696,7 +578,6 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jComboBoxPerfil.setMaximumSize(new java.awt.Dimension(350, 40));
         jComboBoxPerfil.setPreferredSize(new java.awt.Dimension(320, 40));
 
-        jLabelImagenPerfil.setBackground(new java.awt.Color(14, 30, 64));
         jLabelImagenPerfil.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelImagenPerfil.setToolTipText("Imagen De Perfil Seleccionada.");
         jLabelImagenPerfil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -705,9 +586,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelImagenPerfil.setName(""); // NOI18N
         jLabelImagenPerfil.setPreferredSize(new java.awt.Dimension(300, 300));
 
-        jButtonCargarImagenPerfil.setBackground(new java.awt.Color(14, 30, 64));
         jButtonCargarImagenPerfil.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jButtonCargarImagenPerfil.setForeground(new java.awt.Color(104, 194, 232));
         jButtonCargarImagenPerfil.setText("Cargar Imagen De Perfil");
         jButtonCargarImagenPerfil.setToolTipText("<html>Click Para Cargar Tu Foto De Perfil Desde Tu Ordenador.<br><b>NOTA: LA IMAGEN DE PERFIL TENDRÁ UNA RESOLUCIÓN DE 250x250 px.</b></html>");
         jButtonCargarImagenPerfil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -727,32 +606,20 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
             }
         });
 
-        jLabelPerfilDatosPersonales.setBackground(new java.awt.Color(14, 30, 64));
-        jLabelPerfilDatosPersonales.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabelPerfilDatosPersonales.setForeground(new java.awt.Color(14, 30, 64));
         jLabelPerfilDatosPersonales.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelPerfilDatosPersonales.setText("←");
+        jLabelPerfilDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
         jLabelPerfilDatosPersonales.setToolTipText("Regresar Al Registro De Datos Personales.");
         jLabelPerfilDatosPersonales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelPerfilDatosPersonales.setMaximumSize(new java.awt.Dimension(50, 40));
-        jLabelPerfilDatosPersonales.setMinimumSize(new java.awt.Dimension(50, 40));
-        jLabelPerfilDatosPersonales.setPreferredSize(new java.awt.Dimension(50, 40));
         jLabelPerfilDatosPersonales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelPerfilDatosPersonalesMouseClicked(evt);
             }
         });
 
-        jLabelContinuar.setBackground(new java.awt.Color(14, 30, 64));
-        jLabelContinuar.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabelContinuar.setForeground(new java.awt.Color(14, 30, 64));
         jLabelContinuar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelContinuar.setText("→");
+        jLabelContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
         jLabelContinuar.setToolTipText("Guardar Datos Y Completar Registro.");
         jLabelContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelContinuar.setMaximumSize(new java.awt.Dimension(50, 40));
-        jLabelContinuar.setMinimumSize(new java.awt.Dimension(50, 40));
-        jLabelContinuar.setPreferredSize(new java.awt.Dimension(50, 40));
         jLabelContinuar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelContinuarMouseClicked(evt);
@@ -779,19 +646,19 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                         .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelLogoPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanelPerfilLayout.createSequentialGroup()
-                                .addComponent(jLabelPerfilDatosPersonales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelPerfilDatosPersonales)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabelContinuar))
                             .addComponent(jLabelTituloPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanelPerfilLayout.setVerticalGroup(
             jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPerfilLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabelLogoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jLabelTituloPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabelLogoPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelTituloPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelPerfilLayout.createSequentialGroup()
@@ -803,8 +670,8 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                     .addComponent(jLabelImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPerfilDatosPersonales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelContinuar)
+                    .addComponent(jLabelPerfilDatosPersonales))
                 .addContainerGap())
         );
 
@@ -894,16 +761,99 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
 
     private void jButtonCargarImagenPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarImagenPerfilMouseEntered
         // TODO add your handling code here:
-        jButtonCargarImagenPerfil.setBackground(MainFrame.getLightBlue());
-        jButtonCargarImagenPerfil.setForeground(MainFrame.getDarkBlue());
+        jButtonCargarImagenPerfil.setBackground(MainFrame.getFirstColor());
+        jButtonCargarImagenPerfil.setForeground(MainFrame.getSecondColor());
     }//GEN-LAST:event_jButtonCargarImagenPerfilMouseEntered
 
     private void jButtonCargarImagenPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarImagenPerfilMouseExited
         // TODO add your handling code here:
-        jButtonCargarImagenPerfil.setBackground(MainFrame.getDarkBlue());
-        jButtonCargarImagenPerfil.setForeground(MainFrame.getLightBlue());
+        jButtonCargarImagenPerfil.setBackground(MainFrame.getSecondColor());
+        jButtonCargarImagenPerfil.setForeground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonCargarImagenPerfilMouseExited
 
+    private void initMyComponents(){
+        
+        Color noColor = new Color(0,0,0,0);
+        jTabbedPaneFondo.setForeground(MainFrame.getSecondColor());
+        jTabbedPaneFondo.setBackground(noColor);
+        
+        jLabelLogoInicio.setIcon(MainFrame.getLogoImage());
+        jLabelLogoAutenticacion.setIcon(MainFrame.getLogoImage());
+        jLabelLogoDatosPersonales.setIcon(MainFrame.getLogoImage());
+        jLabelLogoPerfil.setIcon(MainFrame.getLogoImage());
+        jTextAreaDescripcion .setBackground(MainFrame.getSecondColor());
+        jTextAreaDescripcion.setForeground(MainFrame.getFirstColor());
+        jTextAreaDescripcion.setCaretColor(MainFrame.getFirstColor());
+        jTextFieldApellidos.setBackground(MainFrame.getSecondColor());
+        jTextFieldApellidos.setForeground(MainFrame.getFirstColor());
+        jTextFieldApellidos.setCaretColor(MainFrame.getFirstColor());
+        jTextFieldCorreoElectronico .setBackground(MainFrame.getSecondColor());
+        jTextFieldCorreoElectronico.setForeground(MainFrame.getFirstColor());
+        jTextFieldCorreoElectronico.setCaretColor(MainFrame.getFirstColor());
+        jTextFieldGenero.setBackground(MainFrame.getSecondColor());
+        jTextFieldGenero.setForeground(MainFrame.getFirstColor());
+        jTextFieldGenero.setCaretColor(MainFrame.getFirstColor());
+        jTextFieldLocalidad .setBackground(MainFrame.getSecondColor());
+        jTextFieldLocalidad.setForeground(MainFrame.getFirstColor());
+        jTextFieldLocalidad.setCaretColor(MainFrame.getFirstColor());
+        jTextFieldNombreDeUsuario.setBackground(MainFrame.getSecondColor());
+        jTextFieldNombreDeUsuario.setForeground(MainFrame.getFirstColor());
+        jTextFieldNombreDeUsuario.setCaretColor(MainFrame.getFirstColor());
+        jTextFieldNombres.setBackground(MainFrame.getSecondColor());
+        jTextFieldNombres.setForeground(MainFrame.getFirstColor());
+        jTextFieldNombres.setCaretColor(MainFrame.getFirstColor());
+        jPasswordFieldPassword.setBackground(MainFrame.getSecondColor());
+        jPasswordFieldPassword.setForeground(MainFrame.getFirstColor());
+        jPasswordFieldPassword.setCaretColor(MainFrame.getFirstColor());
+        jPasswordFieldRepetirPassword.setBackground(MainFrame.getSecondColor());
+        jPasswordFieldRepetirPassword.setForeground(MainFrame.getFirstColor());
+        jPasswordFieldRepetirPassword.setCaretColor(MainFrame.getFirstColor());
+        jButtonCargarImagenPerfil.setBackground(MainFrame.getSecondColor());
+        jButtonCargarImagenPerfil.setForeground(MainFrame.getFirstColor());
+        jComboBoxPerfil.setBackground(MainFrame.getSecondColor());
+        jComboBoxPerfil.setForeground(MainFrame.getFirstColor());
+        jFormattedTextFieldFechaNacimiento.setBackground(MainFrame.getSecondColor());
+        jFormattedTextFieldFechaNacimiento.setForeground(MainFrame.getFirstColor());
+        jFormattedTextFieldTelefono.setBackground(MainFrame.getSecondColor());
+        jFormattedTextFieldTelefono.setForeground(MainFrame.getFirstColor());
+        jLabelApellidos.setForeground(MainFrame.getSecondColor());
+        jLabelAutenticacionDatosPersonales.setForeground(MainFrame.getSecondColor());
+        jLabelAutenticacionInicio.setForeground(MainFrame.getSecondColor());
+        jLabelContinuar.setForeground(MainFrame.getSecondColor());
+        jLabelCorreoElectronico.setForeground(MainFrame.getSecondColor());
+        jLabelDatosPersonalesAutenticacion.setForeground(MainFrame.getSecondColor());
+        jLabelDatosPersonalesPerfil.setForeground(MainFrame.getSecondColor());
+        jLabelDescripcion.setForeground(MainFrame.getSecondColor());
+        jLabelFechaNacimiento.setForeground(MainFrame.getSecondColor());
+        jLabelGenero.setForeground(MainFrame.getSecondColor());
+        jLabelImagenPerfil.setForeground(MainFrame.getSecondColor());
+        jLabelInformacionCorreoElectronico.setForeground(MainFrame.getSecondColor());
+        jLabelInformacionInicio.setForeground(MainFrame.getSecondColor());
+        jLabelInformacionNombreDeUsuario.setForeground(MainFrame.getSecondColor());
+        jLabelInformacionRepetirPassword.setForeground(MainFrame.getSecondColor());
+        jLabelInformacionSeguridadPassword.setForeground(MainFrame.getSecondColor());
+        jLabelInicioAutenticacion.setForeground(MainFrame.getSecondColor());
+        jLabelLocalidad.setForeground(MainFrame.getSecondColor());
+        jLabelLogoAutenticacion.setForeground(MainFrame.getSecondColor());
+        jLabelLogoDatosPersonales.setForeground(MainFrame.getSecondColor());
+        jLabelLogoInicio.setForeground(MainFrame.getSecondColor());
+        jLabelLogoPerfil.setForeground(MainFrame.getSecondColor());
+        jLabelNombre.setForeground(MainFrame.getSecondColor());
+        jLabelNombres.setForeground(MainFrame.getSecondColor());
+        jLabelPassword.setForeground(MainFrame.getSecondColor());
+        jLabelPerfil.setForeground(MainFrame.getSecondColor());
+        jLabelPerfilDatosPersonales.setForeground(MainFrame.getSecondColor());
+        jLabelRegresar.setForeground(MainFrame.getSecondColor());
+        jLabelRepetirPassword.setForeground(MainFrame.getSecondColor());
+        jLabelTelefono.setForeground(MainFrame.getSecondColor());
+        jLabelTituloAutenticacion.setForeground(MainFrame.getSecondColor());
+        jLabelTituloDatosPersonales.setForeground(MainFrame.getSecondColor());
+        jLabelTituloInicio.setForeground(MainFrame.getSecondColor());
+        jLabelTituloPerfil.setForeground(MainFrame.getSecondColor());
+        
+        
+        noColor = null;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCargarImagenPerfil;

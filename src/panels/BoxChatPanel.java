@@ -72,7 +72,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
             int maximum = 0;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = (image.getWidth(null)/2);
+            int large = image.getWidth(null);
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){

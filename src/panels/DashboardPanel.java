@@ -744,7 +744,7 @@ public class DashboardPanel extends javax.swing.JPanel{
             Random colorRandom = new Random(System.currentTimeMillis());
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(userImage, 0, 0, -1, -1, false);
-            int large = (userImage.getWidth(null)/2);
+            int large = userImage.getWidth(null);
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -821,8 +821,8 @@ public class DashboardPanel extends javax.swing.JPanel{
                     component.setForeground(secondFontColor);
                     component.setBackground(secondColor);
                 }
-                jLabelFechaHoraServidor.setForeground(secondFontColor);
-                jLabelUserName.setForeground(thirdFontColor);
+                jLabelFechaHoraServidor.setForeground(fontColor);
+                jLabelUserName.setForeground(fontColor);
                 colorList = null;
                 pg = null;
                 pixels = null;
@@ -836,8 +836,15 @@ public class DashboardPanel extends javax.swing.JPanel{
                 MainFrame.setThirdFontColor(thirdFontColor);
                 
                 MainFrame.repainting();
+                infoProfilePanel.colorMyComponents();
+                editProfilePanel.colorMyComponents();
+                aboutPanel.colorMyComponents();
+                chatsPanel.colorMyComponents();
+                homeworksPanel.colorMyComponents();
+                groupsPanel.colorMyComponents();
+                noticesPanel.colorMyComponents();
+                datesPanel.colorMyComponents();
                 
-                firstColor = secondColor = thirdColor =  fontColor =  secondFontColor = thirdFontColor = null;
             }
             
         } catch (InterruptedException ex) {
