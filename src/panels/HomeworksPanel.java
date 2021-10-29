@@ -7,12 +7,13 @@ package panels;
 
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
 
 /**
  *
  * @author LENOVO
  */
-public class HomeworksPanel extends javax.swing.JPanel {
+public class HomeworksPanel extends javax.swing.JPanel implements DisposeInterface{
 
     /**
      * Creates new form HomeworksPanel
@@ -87,9 +88,6 @@ public class HomeworksPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void dispose(){
-        jPanelMisTareas.removeAll();
-    }
     
     public void colorMyComponents(){
         jLabelHomeworksTitle.setBackground(MainFrame.getSecondColor());
@@ -101,4 +99,9 @@ public class HomeworksPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelMisTareas;
     private javax.swing.JScrollPane jScrollPaneMisTareas;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose()  {
+        jPanelMisTareas.removeAll();
+    }
 }

@@ -6,14 +6,13 @@
 package panels;
 
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -31,13 +30,9 @@ import javax.swing.SwingUtilities;
  *
  * @author LENOVO
  */
-public class RecuperarCredencialesPanel extends javax.swing.JPanel{
+public class RecuperarCredencialesPanel extends javax.swing.JPanel implements DisposeInterface{
 
-    private Pattern pattern;
-    private Properties properties;
     private Session session;
-    private InputStream inputStream;
-    private BufferedReader bufferedReader;
     private StringBuilder msjHTML;
     private MimeBodyPart mimeBodyPartHTML;
     private MimeMessage mimeMessage;
@@ -52,8 +47,6 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
         initComponents();
         
         initMyComponents();
-
-        
     }
 
     /**
@@ -222,6 +215,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
     }//GEN-LAST:event_jButtonRecuperarCredencialesMouseExited
 
     private boolean esCorreoElectronico(String value){
+        Pattern pattern = Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE);
         return pattern.matcher(value).find();
     }
     
@@ -253,7 +247,6 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
                 Transport transport = session.getTransport("smtp")) {
                 transport.connect("Course_Room@outlook.com","cuceiUDG");
                 transport.sendMessage(mimeMessage, mimeMessage.getAllRecipients());
-                transport.close();
            }
            
            mimeBodyPartMensaje = null;
@@ -292,32 +285,35 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
     
     private void initMyComponents(){
         
-        pattern = Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE);
 
         try {
             //Crear las propiedades para mandar el correo
-            properties = new Properties();
+            Properties properties = new Properties();
             properties.put("mail.smtp.host", "smtp.outlook.com");
             properties.put("mail.smtp.starttls.enable", "true");
             properties.put("mail.smtp.port", "587");
             properties.put("mail.smtp.auth", "true");
-
             // Obtener la sesion
             session = Session.getInstance(properties, null);
 
             // Leer la plantilla
-            inputStream = getClass().getResourceAsStream("/resources/html/mensaje.html");
-            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            try(InputStream inputStream = getClass().getResourceAsStream("/resources/html/mensaje.html")){
+                try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))){
+                     // Almacenar el contenido de la plantilla en un StringBuffer
+                    String strLine = "";
+                    msjHTML = new StringBuilder();
 
-            // Almacenar el contenido de la plantilla en un StringBuffer
-            String strLine = "";
-            msjHTML = new StringBuilder();
-
-            while ((strLine = bufferedReader.readLine()) != null) {
-                msjHTML.append(strLine);
+                    while ((strLine = bufferedReader.readLine()) != null) {
+                        msjHTML.append(strLine);
+                    }
+                    
+                    strLine = null;
+                }
             }
+           
 
-            strLine = null;
+           
+
             // Crear la parte del mensaje HTML
             mimeBodyPartHTML = new MimeBodyPart();
             mimeBodyPartHTML.setContent(msjHTML.toString(), "text/html");
@@ -338,6 +334,8 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
             multipart.addBodyPart(mimeBodyPartHTML);
 
             internetAddress = new InternetAddress();
+            properties.clear();
+            properties = null;
 
         } catch (IOException | MessagingException ex) {
             System.out.println("main.RecuperarCredencialesController.initialize(): " + ex.getMessage());
@@ -353,27 +351,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
         jButtonRecuperarCredenciales.setBackground(MainFrame.getSecondColor());
         jButtonRecuperarCredenciales.setForeground(MainFrame.getFirstColor());
     }
-    
-    
-    public void dispose(){
-        try {
-            properties.clear();
-            pattern = null;
-            properties = null;
-            session = null;
-            inputStream.close();
-            bufferedReader.close();
-            inputStream = null;
-            bufferedReader = null;
-            msjHTML = null;
-            mimeBodyPartHTML = null;
-            mimeMessage = null;
-            internetAddress = null;
-            multipart = null;
-        } catch (IOException ex) {
-            Logger.getLogger(RecuperarCredencialesPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRecuperarCredenciales;
@@ -384,4 +362,14 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel{
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JTextField jTextFieldCorreoElectronico;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose() {
+        session = null;
+        msjHTML = null;
+        mimeBodyPartHTML = null;
+        mimeMessage = null;
+        internetAddress = null;
+        multipart = null;
+    }
 }

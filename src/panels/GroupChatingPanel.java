@@ -7,7 +7,9 @@ package panels;
 
 import com.github.javafaker.Faker;
 import components.ImageFilePreview;
+import data.interfaces.DisposeInterface;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -27,7 +29,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author LENOVO
  */
-public class GroupChatingPanel extends JPanel{
+public class GroupChatingPanel extends JPanel implements  DisposeInterface{
 
    
     public GroupChatingPanel(Color firstColor, Color secondColor, Color secondFontColor) {
@@ -322,10 +324,6 @@ public class GroupChatingPanel extends JPanel{
         }
     }//GEN-LAST:event_jTextFieldMessageKeyPressed
 
-    
-    public void dispose(){
-        jPanelChatCenter.removeAll();
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelAttachAudio;
@@ -338,4 +336,9 @@ public class GroupChatingPanel extends JPanel{
     private javax.swing.JScrollPane jScrollPaneChatsCenter;
     private javax.swing.JTextField jTextFieldMessage;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose(){
+        jPanelChatCenter.removeAll();
+    }
 }

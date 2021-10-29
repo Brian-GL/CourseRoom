@@ -8,12 +8,13 @@ package panels;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
 
 /**
  *
  * @author LENOVO
  */
-public class ImageMessagePanel extends javax.swing.JPanel {
+public class ImageMessagePanel extends javax.swing.JPanel implements DisposeInterface{
 
     public ImageMessagePanel(String sender, String date, Image image, String filename) {
         initComponents();
@@ -33,6 +34,8 @@ public class ImageMessagePanel extends javax.swing.JPanel {
         Image resizedImage =  image.getScaledInstance(789, 500, Image.SCALE_DEFAULT);
         ImageIcon icon = new ImageIcon(resizedImage);
         jLabelImageMessage.setIcon(icon);
+        image.flush();
+        image = null;
         resizedImage.flush();
         resizedImage = null;
         icon = null;
@@ -119,4 +122,8 @@ public class ImageMessagePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelImageName;
     private javax.swing.JLabel jLabelSender;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose() {
+    }
 }

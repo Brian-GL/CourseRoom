@@ -7,16 +7,10 @@ package panels;
 
 import com.github.javafaker.Faker;
 import data.collections.PairDoublyLinkedList;
-import data.interfaces.MainInterface;
+import data.interfaces.ColorInterface;
 import data.structures.Pair;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.LinearGradientPaint;
-import java.awt.Point;
-import java.awt.RenderingHints;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -32,9 +26,8 @@ import javax.swing.ImageIcon;
  *
  * @author LENOVO
  */
-public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
+public class BoxAvisoPanel extends javax.swing.JPanel implements ColorInterface{
 
-    private Image avisoImage;
     /**
      * Creates new form BoxAvisoPanel
      */
@@ -44,21 +37,26 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
         try {
             System.out.println("Aviso -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
             URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
-            Faker faker = new Faker(new Locale("es","MX"));
+            Locale mx = new Locale("es","MX");
+            Faker faker = new Faker(mx);
             jLabelDescripcionAviso.setText(faker.lorem().paragraph(1));
             jLabelFechaHoraAviso.setText(faker.date().birthday().toString());
             jLabelProvenenciaAviso.setText(faker.company().name());
             jLabelEstado.setText(faker.book().publisher());
             jLabelEstado.setText((faker.bool().bool()) ? "Leído" : "No Leído");
             Image getImage = ImageIO.read(imageURL);
-            avisoImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
+            Image avisoImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
             ImageIcon avisoIcon = new ImageIcon(avisoImage);
             jLabelFotoAviso.setIcon(avisoIcon);
             setColors(getImage);
             getImage.flush();
             getImage = null;
             avisoIcon = null;
-            //imageURL = null;
+            avisoImage.flush();
+            avisoImage = null;
+            imageURL = null;
+            faker = null;
+            mx = null;
         } catch (MalformedURLException ex) {
             Logger.getLogger(BoxChatPanel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -215,12 +213,6 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements MainInterface{
         } catch (InterruptedException ex) {
             Logger.getLogger(MusicPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    @Override
-    public void dispose(){
-        avisoImage.flush();
-        avisoImage = null;
     }
     
 

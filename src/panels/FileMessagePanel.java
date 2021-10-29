@@ -8,12 +8,13 @@ package panels;
 import java.io.File;
 import org.apache.commons.io.FilenameUtils;
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
 
 /**
  *
  * @author LENOVO
  */
-public class FileMessagePanel extends javax.swing.JPanel {
+public class FileMessagePanel extends javax.swing.JPanel implements DisposeInterface{
 
     /**
      * Creates new form FileMessagePanel
@@ -31,6 +32,9 @@ public class FileMessagePanel extends javax.swing.JPanel {
         jPanelFileInfo.setBackground(MainFrame.getSecondColor());
         jLabelFileName.setForeground(MainFrame.getSecondFontColor());
         jLabelExtension.setForeground(MainFrame.getSecondFontColor());
+        date = null;
+        sender = null;
+        file = null;
     }
 
     /**
@@ -141,4 +145,9 @@ public class FileMessagePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelSender;
     private javax.swing.JPanel jPanelFileInfo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose() {
+        
+    }
 }

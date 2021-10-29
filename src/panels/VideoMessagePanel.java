@@ -18,18 +18,18 @@ import uk.co.caprica.vlcj.player.base.MediaPlayerEventListener;
 import uk.co.caprica.vlcj.player.base.State;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
 
 /**
  *
  * @author LENOVO
  */
-public class VideoMessagePanel extends javax.swing.JPanel {
+public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInterface{
 
     private EmbeddedMediaPlayerComponent embeddedMediaPlayerComponent;
     private boolean flag;
     private boolean play;
     private String mrl;
-    
     
     public VideoMessagePanel(String sender, String date, String _mrl, String title) {
         
@@ -479,16 +479,18 @@ public class VideoMessagePanel extends javax.swing.JPanel {
     private String secondsToString(long seconds) {
         long absSeconds = Math.abs(seconds);
         String positive = String.format(
-                "%02d:%02d:%02d",
+                "%02d:%02d:%02d", 
                 absSeconds / 3600,
                 (absSeconds % 3600) / 60,
                 absSeconds % 60);
         return seconds < 0 ? "-" + positive : positive;
     }
-    
+   
+    @Override
     public void dispose(){
         embeddedMediaPlayerComponent.release();
         embeddedMediaPlayerComponent = null;
+        mrl = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -502,4 +504,7 @@ public class VideoMessagePanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelVideoView;
     private javax.swing.JSlider jSliderProgress;
     // End of variables declaration//GEN-END:variables
+
+   
+   
 }

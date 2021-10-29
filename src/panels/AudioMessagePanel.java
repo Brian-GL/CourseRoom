@@ -6,6 +6,7 @@
 package panels;
 
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -38,7 +39,7 @@ import uk.co.caprica.vlcj.player.component.AudioPlayerComponent;
  *
  * @author LENOVO
  */
-public class AudioMessagePanel extends javax.swing.JPanel {
+public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInterface{
 
     private AudioPlayerComponent audioPlayerComponent;
     private boolean flag;
@@ -604,4 +605,16 @@ public class AudioMessagePanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelAudioInfo;
     private javax.swing.JSlider jSliderProgress;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose()  {
+        
+        audioPlayerComponent.release();
+        audioPlayerComponent = null;
+        mrl = null;
+        play_icon.getImage().flush();
+        pause_icon.getImage().flush();
+        play_icon = null;
+        pause_icon = null;
+    }
 }

@@ -6,16 +6,11 @@
 package panels;
 
 import java.awt.Color;
-import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.io.File;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.JSlider;
-import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import uk.co.caprica.vlcj.media.MediaRef;
 import uk.co.caprica.vlcj.media.TrackType;
@@ -30,8 +25,6 @@ import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 public class VideoPanel extends javax.swing.JPanel {
 
     private boolean flag;
-    private ImageIcon playImage;
-    private ImageIcon pauseImage;
     private EmbeddedMediaPlayerComponent embeddedMediaPlayerComponent;
     /**
      * Creates new form VideoPanel
@@ -375,8 +368,6 @@ public class VideoPanel extends javax.swing.JPanel {
     }
     
     public void dispose(){
-        playImage = null;
-        pauseImage = null;
         embeddedMediaPlayerComponent.release();
         embeddedMediaPlayerComponent = null;
     }

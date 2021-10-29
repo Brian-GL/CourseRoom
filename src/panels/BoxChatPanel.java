@@ -7,13 +7,13 @@ package panels;
 
 import com.github.javafaker.Faker;
 import data.collections.PairDoublyLinkedList;
-import data.interfaces.MainInterface;
 import data.structures.Pair;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
-import java.net.MalformedURLException;import java.net.URL;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
@@ -21,12 +21,14 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import data.interfaces.ColorInterface;
+import data.interfaces.DisposeInterface;
 
 /**
  *
  * @author LENOVO
  */
-public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
+public class BoxChatPanel extends javax.swing.JPanel implements ColorInterface, DisposeInterface{
 
     private Color firstColor, fontColor, secondColor;
     private ChatingPanel chatingPanel;
@@ -44,19 +46,24 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
             ImageIcon chatIcon = new ImageIcon(chatImage);
             jLabelFotoChat.setIcon(chatIcon);
             setColors(getImage);
-            Faker faker = new Faker(new Locale("es","MX"));
+            Locale mx = new Locale("es","MX");
+            Faker faker = new Faker(mx);
             jLabelNombreChat.setText(faker.rickAndMorty().character());
             jLabelUltimoMensaje.setText(faker.friends().character() + " Is There?");
             jLabelNumeroMensajesNoLeidos.setText(faker.number().digits(1));
-            chatingPanel = new ChatingPanel(jLabelNombreChat.getText(),firstColor, fontColor,secondColor);
             this.id = _id;
+            chatingPanel = new ChatingPanel(jLabelNombreChat.getText(),firstColor, fontColor,secondColor);
             DashboardPanel.addView(chatingPanel,"chat"+id);
+            
             getImage.flush();
             getImage = null;
             chatImage.flush();
             chatImage = null;
             chatIcon = null;
             imageURL = null;
+            faker = null;
+            mx = null;
+            
         } catch (MalformedURLException ex) {
             Logger.getLogger(BoxChatPanel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -138,13 +145,6 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
         } catch (InterruptedException ex) {
             Logger.getLogger(MusicPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
- 
-  
-    @Override
-    public void dispose(){
-        chatingPanel.dispose();
-        chatingPanel = null;
     }
     
     
@@ -270,4 +270,11 @@ public class BoxChatPanel extends javax.swing.JPanel implements MainInterface{
     private javax.swing.JLabel jLabelNumeroMensajesNoLeidos;
     private javax.swing.JLabel jLabelUltimoMensaje;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose() {
+        chatingPanel.dispose();
+    }
+
+   
 }

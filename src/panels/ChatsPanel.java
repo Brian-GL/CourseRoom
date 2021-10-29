@@ -7,13 +7,15 @@ package panels;
 
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
+import java.awt.Component;
 
 
 /**
  *
  * @author LENOVO
  */
-public class ChatsPanel extends javax.swing.JPanel {
+public class ChatsPanel extends javax.swing.JPanel implements DisposeInterface{
     
     
    
@@ -31,7 +33,6 @@ public class ChatsPanel extends javax.swing.JPanel {
             BoxChatPanel boxChatPanel = new BoxChatPanel(i);
             jPanelChats.add(boxChatPanel);
         }
-        
         
     }
     
@@ -91,9 +92,6 @@ public class ChatsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void dispose(){
-        jPanelChats.removeAll();
-    }
     
     public void colorMyComponents(){
         jLabelChatsTitle.setBackground(MainFrame.getSecondColor());
@@ -105,4 +103,9 @@ public class ChatsPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelChats;
     private javax.swing.JScrollPane jScrollPaneChats;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose()  {
+        jPanelChats.removeAll();
+    }
 }

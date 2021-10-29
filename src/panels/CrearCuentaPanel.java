@@ -738,6 +738,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                     DashboardPanel.setUserImage(openImage);
                     
                     scaled.flush();
+                    openImage.flush();
                     scaled = null;
                     autenticacionIcon = null;
 

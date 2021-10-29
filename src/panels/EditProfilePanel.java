@@ -742,6 +742,8 @@ public class EditProfilePanel extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "Los Cambios En La Interfaz Se Verán Reflejados \nEn Su Próximo Inicio De Sesión", "Información", JOptionPane.INFORMATION_MESSAGE);
                     
                     openImage.flush();
+                    scaled.flush();
+                    scaled = null;
                     autenticacionIcon = null;
                     
                     
@@ -871,8 +873,6 @@ public class EditProfilePanel extends javax.swing.JPanel {
 
     private void initMyComponents() {
         
-        
-
         int large = jLabelImagenPerfilAutenticacion.getPreferredSize().height;
         Image scaled = DashboardPanel.getUserImage().getScaledInstance(large, large, Image.SCALE_SMOOTH);
         ImageIcon icon = new ImageIcon(scaled);

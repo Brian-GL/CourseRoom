@@ -5,12 +5,13 @@
  */
 package panels;
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
 
 /**
  *
  * @author LENOVO
  */
-public class TextMessagePanel extends javax.swing.JPanel {
+public class TextMessagePanel extends javax.swing.JPanel implements DisposeInterface{
 
     public TextMessagePanel(String sender, String message, String date) {
         initComponents();
@@ -23,6 +24,7 @@ public class TextMessagePanel extends javax.swing.JPanel {
         jLabelSender.setBackground(MainFrame.getFirstColor());
         jTextAreaMessage.setForeground(MainFrame.getSecondFontColor());
         jTextAreaMessage.setBackground(MainFrame.getSecondColor());
+        sender = message = date = null;
   
     }
 
@@ -95,4 +97,9 @@ public class TextMessagePanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPaneMessage;
     private javax.swing.JTextArea jTextAreaMessage;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose() {
+        jTextAreaMessage.setText("");
+    }
 }

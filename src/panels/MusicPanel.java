@@ -6,6 +6,8 @@
 package panels;
 
 import data.collections.PairDoublyLinkedList;
+import data.interfaces.ColorInterface;
+import data.interfaces.DisposeInterface;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
@@ -52,7 +54,7 @@ import uk.co.caprica.vlcj.player.list.MediaListPlayerEventListener;
  *
  * @author brian-gl
  */
-public final class MusicPanel extends javax.swing.JPanel{
+public final class MusicPanel extends javax.swing.JPanel implements ColorInterface, DisposeInterface{
 
     //Private attributes
     
@@ -1964,16 +1966,6 @@ public final class MusicPanel extends javax.swing.JPanel{
         System.gc();
     }
         
-    public void dispose() {
-        audio_list_player_component.mediaListPlayer().controls().stop();
-        audio_list_player_component.release();
-        play_icon = null;
-        pause_icon = null;
-        audio_list_player_component = null;
-        play_icon =  null;
-        pause_icon = null;
-        presets_map = null;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBoxPresets;
@@ -2045,6 +2037,18 @@ public final class MusicPanel extends javax.swing.JPanel{
             zero_index = true;
             audio_list_player_component.mediaListPlayer().controls().play(idx);
         }
+    }
+
+    @Override
+    public void dispose()  {
+        audio_list_player_component.mediaListPlayer().controls().stop();
+        audio_list_player_component.release();
+        play_icon.getImage().flush();
+        pause_icon.getImage().flush();
+        play_icon = null;
+        openFiles = null;
+        pause_icon = null;
+        audio_list_player_component = null;
     }
     
 }

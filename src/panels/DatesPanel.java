@@ -10,12 +10,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.swing.SwingUtilities;
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
 
 /**
  *
  * @author brian
  */
-public class DatesPanel extends javax.swing.JPanel {
+public class DatesPanel extends javax.swing.JPanel implements DisposeInterface{
 
     private int index_month;
     private int index_year;
@@ -380,4 +381,9 @@ public class DatesPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelDaysTitle;
     private javax.swing.JScrollPane jScrollPaneCalendar;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose()  {
+        jPanelCalendar.removeAll();
+    }
 }

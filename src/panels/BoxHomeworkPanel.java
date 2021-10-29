@@ -7,7 +7,6 @@ package panels;
 
 import com.github.javafaker.Faker;
 import data.collections.PairDoublyLinkedList;
-import data.interfaces.MainInterface;
 import data.structures.Pair;
 import java.awt.Color;
 import java.awt.Image;
@@ -21,14 +20,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import data.interfaces.ColorInterface;
 
 /**
  *
  * @author LENOVO
  */
-public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterface{
+public class BoxHomeworkPanel extends javax.swing.JPanel implements ColorInterface{
 
-    private Image homeworkImage;
     private int id;
     /**
      * Creates new form BoxHomeworkPanel
@@ -46,11 +45,13 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
             System.out.println("Homework ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
             URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
-            homeworkImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
+            Image homeworkImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(homeworkImage);
             jLabelFotoTarea.setIcon(groupIcon);
             setColors(getImage);
             getImage.flush();
+            homeworkImage.flush();
+            homeworkImage = null;
             getImage = null;
             groupIcon = null;
             //imageURL = null;
@@ -209,11 +210,7 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements MainInterfac
             Logger.getLogger(MusicPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    @Override
-    public void dispose(){
-        homeworkImage.flush();
-        homeworkImage = null;
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelClaseDeLaTarea;

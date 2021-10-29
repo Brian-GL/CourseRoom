@@ -7,13 +7,15 @@ package panels;
 
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
+import java.awt.Component;
 
 
 /**
  *
  * @author LENOVO
  */
-public class NoticesPanel extends javax.swing.JPanel {
+public class NoticesPanel extends javax.swing.JPanel implements DisposeInterface{
 
     /**
      * Creates new form AvisosPanel
@@ -32,10 +34,6 @@ public class NoticesPanel extends javax.swing.JPanel {
             jPanelMisAvisos.add(boxAvisoPanel);
         }
         
-    }
-
-    public void dispose(){
-        jPanelMisAvisos.removeAll();
     }
 
     public void colorMyComponents(){
@@ -100,4 +98,9 @@ public class NoticesPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelMisAvisos;
     private javax.swing.JScrollPane jScrollPaneMisAvisos;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose() {
+        jPanelMisAvisos.removeAll();
+    }
 }

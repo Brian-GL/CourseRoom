@@ -7,7 +7,6 @@ package panels;
 
 import panels.BoxChatPanel;
 import data.collections.PairDoublyLinkedList;
-import data.interfaces.MainInterface;
 import data.structures.Pair;
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -23,7 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import panels.MusicPanel;
+import data.interfaces.ColorInterface;
 
 
 
@@ -31,7 +30,7 @@ import panels.MusicPanel;
  *
  * @author LENOVO
  */
-public class InfoUserPanel extends javax.swing.JPanel implements MainInterface{
+public class InfoUserPanel extends javax.swing.JPanel implements ColorInterface{
 
     private Color firstColor, secondColor, thirdColor;
     private Image userImage;
@@ -213,34 +212,6 @@ public class InfoUserPanel extends javax.swing.JPanel implements MainInterface{
         
     }
  
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        int w = this.getWidth();
-        int h = this.getHeight();
-        Graphics2D graphics = (Graphics2D)g;
-        Color noColor =  new Color(0, 0, 0, 0);
-        GradientPaint primary = new GradientPaint(0f, 0f, secondColor, w, 0f, thirdColor);
-        GradientPaint secondary = new GradientPaint( 0f, 0f, noColor,0f, h, firstColor);
-        graphics.setPaint(primary);
-        graphics.fillRect(0, 0, w, h);
-        graphics.setPaint(secondary);
-        graphics.fillRect(0, 0, w, h);
-        primary = null;
-        secondary = null;
-        noColor = null;
-        graphics = null;
-
-    }
-
-    @Override
-    public void dispose(){
-        firstColor = null;
-        secondColor = null;
-        thirdColor = null;
-        userImage.flush();
-        userImage = null;
-    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

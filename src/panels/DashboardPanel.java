@@ -8,13 +8,15 @@ package panels;
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
 import data.collections.PairDoublyLinkedList;
+import data.interfaces.ColorInterface;
+import data.interfaces.DisposeInterface;
 import data.structures.Pair;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
-import java.awt.image.PixelGrabber;import java.io.IOException;
-;
+import java.awt.image.PixelGrabber;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -31,7 +33,7 @@ import javax.swing.SwingUtilities;
  *
  * @author LENOVO
  */
-public class DashboardPanel extends javax.swing.JPanel{
+public class DashboardPanel extends javax.swing.JPanel implements ColorInterface, DisposeInterface{
 
     private static Image userImage;
     
@@ -63,8 +65,8 @@ public class DashboardPanel extends javax.swing.JPanel{
             Image image = userImage.getScaledInstance(175, 175, Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(image);
             jLabelUserProfilePhoto.setIcon(imageIcon);
-            image.flush();
-            image = null;
+            //image.flush();
+            //image = null;
             
             
             //info profile panel -> 0 en active page flag
@@ -85,18 +87,20 @@ public class DashboardPanel extends javax.swing.JPanel{
             homeworksPanel = new HomeworksPanel();
             jPanelInformacion.add("homeworksPanel",homeworksPanel);
             
+            
             //dates panel -> 5 en active page flag
             datesPanel = new DatesPanel();
             jPanelInformacion.add("datesPanel",datesPanel);
-            
             
             //notices panel -> 6 en active page flag
             noticesPanel = new NoticesPanel();
             jPanelInformacion.add("noticesPanel",noticesPanel);
             
+            
             //groups panel -> 7 en active page flag
             groupsPanel = new GroupsPanel();
             jPanelInformacion.add("groupsPanel",groupsPanel);
+            
             
             //chats panel -> 8 en active page flag
             chatsPanel = new ChatsPanel();
@@ -109,6 +113,7 @@ public class DashboardPanel extends javax.swing.JPanel{
             //musica panel -> 10 en active page flag
             musicPanel = new MusicPanel();
             jPanelInformacion.add("musicPanel",musicPanel);
+            
             
             Faker faker = new Faker(new Locale("es","MX"));
             panelLayout = (CardLayout) jPanelInformacion.getLayout();
@@ -854,24 +859,13 @@ public class DashboardPanel extends javax.swing.JPanel{
     }
     
     public void dispose(){
-        server_time_stop = false;
-        serverDateTime.interrupt();
-        userImage = null;
+        homeworksPanel.dispose();
         musicPanel.dispose();
         chatsPanel.dispose();
         noticesPanel.dispose();
-        noticesPanel.dispose();
+        datesPanel.dispose();
         groupsPanel.dispose();
-        homeworksPanel.dispose();
-        musicPanel = null;
-        chatsPanel = null;
-        aboutPanel = null;
-        infoProfilePanel = null;
-        editProfilePanel = null;
-        panelLayout = null;
-        noticesPanel = null;
-        homeworksPanel = null;
-        datesPanel = null;
+        
     }
     
     public static void addView(Component component, String key){
@@ -914,16 +908,21 @@ public class DashboardPanel extends javax.swing.JPanel{
      */
     public static void setUserImage(Image aUserImage) {
         userImage = aUserImage;
-        ImageIcon imageProfile  = new ImageIcon(userImage.getScaledInstance(175,175, Image.SCALE_SMOOTH));
+        ImageIcon imageProfile = new ImageIcon(userImage.getScaledInstance(175,175, Image.SCALE_SMOOTH));
         jLabelUserProfilePhoto.setIcon(imageProfile);
         int imageWidth = infoProfilePanel.getProfilePhotoLabel().getPreferredSize().width;
         int imageHeight = infoProfilePanel.getProfilePhotoLabel().getPreferredSize().height;
         ImageIcon icon = new ImageIcon(imageProfile.getImage().getScaledInstance(imageWidth,imageHeight,Image.SCALE_SMOOTH));
         infoProfilePanel.getProfilePhotoLabel().setIcon(icon);
+        imageProfile.getImage().flush();
         imageProfile = null;
         icon = null;
     }
 
+    @Override
+    public void setColors(Image image) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public class ServerDateTime extends Thread{
     
@@ -942,9 +941,6 @@ public class DashboardPanel extends javax.swing.JPanel{
                     SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy hh:mm:ss a");
                     String time = dateFormat.format(date);
                     jLabelFechaHoraServidor.setText(time);
-                    date = null;
-                    time = null;
-                    dateFormat = null;
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ServerDateTime.class.getName()).log(Level.SEVERE, null, ex);

@@ -5,16 +5,11 @@
  */
 package data.interfaces;
 
-import java.awt.Image;
-
-
 /**
  *
  * @author LENOVO
  */
-public interface MainInterface {
+public interface DisposeInterface {
     
-     public void setColors(Image image);
-     
-     public void dispose();
+    public void dispose();
 }

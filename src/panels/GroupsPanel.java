@@ -7,13 +7,15 @@ package panels;
 
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
+import data.interfaces.DisposeInterface;
+import java.awt.Component;
 
 
 /**
  *
  * @author LENOVO
  */
-public class GroupsPanel extends javax.swing.JPanel {
+public class GroupsPanel extends javax.swing.JPanel implements DisposeInterface{
 
     /**
      * Creates new form GroupsPanel
@@ -88,11 +90,6 @@ public class GroupsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public void dispose(){
-        jPanelMisGrupos.removeAll();
-    }
-    
     public void colorMyComponents(){
         jLabelGroupsTitle.setBackground(MainFrame.getSecondColor());
         jLabelGroupsTitle.setForeground(MainFrame.getSecondFontColor());
@@ -103,4 +100,9 @@ public class GroupsPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelMisGrupos;
     private javax.swing.JScrollPane jScrollPaneMisGrupos;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose()  {
+        jPanelMisGrupos.removeAll();
+    }
 }

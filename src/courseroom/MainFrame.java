@@ -7,15 +7,12 @@ package courseroom;
 
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import data.interfaces.DisposeInterface;
 import panels.DashboardPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.RenderingHints;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -34,7 +31,7 @@ import panels.CrearCuentaPanel;
  *
  * @author LENOVO
  */
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
 
     private static LoginPanel login;
     private static RecuperarCredencialesPanel recuperarCredenciales;
@@ -88,13 +85,14 @@ public class MainFrame extends javax.swing.JFrame {
         }
         
         recuperarCredenciales = new RecuperarCredencialesPanel();
+        jPanelViewer.add("recuperarCredenciales",recuperarCredenciales);
+        
         crearCuenta = new CrearCuentaPanel();
         dashboard = new DashboardPanel();
-        
-        
-        jPanelViewer.add("recuperarCredenciales",recuperarCredenciales);
-        jPanelViewer.add("crearCuenta",crearCuenta);
         jPanelViewer.add("dashboard",dashboard);
+        
+        jPanelViewer.add("crearCuenta",crearCuenta);
+        
         
         viewerLayout = (CardLayout)jPanelViewer.getLayout();
         
@@ -175,7 +173,7 @@ public class MainFrame extends javax.swing.JFrame {
         firstColor = darkBlue;
         secondColor = lightBlue;
         thirdColor = lightBlue;
-        jPanelViewer.repaint();
+        jPanelViewer.setBackground(darkBlue);
         dashboard.dispose();
         dashboard = null;
         dashboard = new DashboardPanel();
@@ -189,12 +187,8 @@ public class MainFrame extends javax.swing.JFrame {
    
     @Override
     public void dispose(){
-        if(dashboard != null){
-            dashboard.dispose();
-        }
-        if(recuperarCredenciales != null){
-            recuperarCredenciales.dispose();
-        }
+        dashboard.dispose();
+        recuperarCredenciales.dispose();
         login = null;
         recuperarCredenciales = null;
         crearCuenta = null;

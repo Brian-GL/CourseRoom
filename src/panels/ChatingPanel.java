@@ -7,15 +7,11 @@ package panels;
 
 import com.github.javafaker.Faker;
 import components.ImageFilePreview;
+import data.interfaces.DisposeInterface;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.LinearGradientPaint;
-import java.awt.Point;
-import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -25,7 +21,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -33,14 +28,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author LENOVO
  */
-public class ChatingPanel extends javax.swing.JPanel{
+public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface{
 
     
     public ChatingPanel(String name, Color _firstColor, Color _fontColor, Color _secondColor) {
         initComponents();
         jScrollPaneChatsCenter.getViewport().setOpaque(false);
         jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
-        
         jLabelChatName.setText(name);
         paintMyComponents(_firstColor,_fontColor,_secondColor);
     }
@@ -237,7 +231,6 @@ public class ChatingPanel extends javax.swing.JPanel{
             textMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
             jPanelChatCenter.add(textMessagePanel);
             jTextFieldMessage.setText("");
-                    
         }
     }
     private void jLabelSendMessageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSendMessageMouseClicked
@@ -389,10 +382,6 @@ public class ChatingPanel extends javax.swing.JPanel{
         jPanelChatTop.setBackground(firstColor);
     }
  
-  
-    public void dispose(){
-        jPanelChatCenter.removeAll();
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelAttachAudio;
@@ -408,4 +397,9 @@ public class ChatingPanel extends javax.swing.JPanel{
     private javax.swing.JScrollPane jScrollPaneChatsCenter;
     private javax.swing.JTextField jTextFieldMessage;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose()  {
+        jPanelChatCenter.removeAll();
+    }
 }

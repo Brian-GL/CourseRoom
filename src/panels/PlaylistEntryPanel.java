@@ -47,6 +47,8 @@ public class PlaylistEntryPanel extends javax.swing.JPanel {
     public void setCoverArt(Image image){
         ImageIcon icon = new ImageIcon(image);
         jLabelPlaylistEntryCoverArt.setIcon(icon);
+        image.flush();
+        image = null;
         icon = null;
     }
     

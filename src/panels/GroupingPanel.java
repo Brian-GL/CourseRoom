@@ -7,6 +7,7 @@ package panels;
 
 import com.github.javafaker.Faker;
 import components.ImageFilePreview;
+import data.interfaces.DisposeInterface;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
@@ -27,11 +28,10 @@ import net.sourceforge.jdatepicker.impl.UtilDateModel;
  *
  * @author LENOVO
  */
-public class GroupingPanel extends javax.swing.JPanel {
-
-    private Image groupImage;
-    private Color firstColor, secondColor,thirdColor,fontColor, secondFontColor, thirdFontColor;
+public class GroupingPanel extends javax.swing.JPanel implements DisposeInterface{
+    
     private GroupChatingPanel groupChatingPanel;
+    private Color firstColor, secondColor,thirdColor,fontColor, secondFontColor, thirdFontColor;
     
    
     public GroupingPanel(Image image, String name, Color _firstColor, Color _secondColor, Color _thirdColor, Color _fontColor, Color _secondFontColor,Color _thirdFontColor ) {
@@ -42,11 +42,9 @@ public class GroupingPanel extends javax.swing.JPanel {
         secondFontColor = _secondFontColor;
         thirdColor = _thirdColor;
         thirdFontColor = _thirdFontColor;
-        groupImage = image.getScaledInstance(440,440,Image.SCALE_SMOOTH);
+        Image groupImage = image.getScaledInstance(440,440,Image.SCALE_SMOOTH);
         jLabelGroupName.setText(name);
-        initMyComponents();
-        
-        
+        initMyComponents(groupImage);
        
     }
 
@@ -456,12 +454,17 @@ public class GroupingPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jLabelAgregarTareaPendienteMouseClicked
 
-      public void initMyComponents(){
+      public void initMyComponents(Image groupImage){
         ImageIcon groupIcon = new ImageIcon(groupImage);
+        
         jLabelGroupImage.setIcon(groupIcon);
+        groupImage.flush();
+        groupImage = null;
+        groupIcon = null;
         
         groupChatingPanel = new GroupChatingPanel(firstColor,secondColor, secondFontColor);
         jPanelGrupalChat.add(groupChatingPanel);
+       
         jScrollPaneMembers.getViewport().setOpaque(false);
         jScrollPaneMembers.getVerticalScrollBar().setUnitIncrement(15);
         jTabbedPaneGrouping.setBackground(firstColor);
@@ -573,4 +576,9 @@ public class GroupingPanel extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextAreaDescripcionTareaPendiente;
     private javax.swing.JTextField jTextFieldNombreTareaPendiente;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose() {
+        groupChatingPanel.dispose();
+    }
 }

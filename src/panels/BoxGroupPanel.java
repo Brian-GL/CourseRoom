@@ -7,16 +7,9 @@ package panels;
 
 import com.github.javafaker.Faker;
 import data.collections.PairDoublyLinkedList;
-import data.interfaces.MainInterface;
 import data.structures.Pair;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.LinearGradientPaint;
-import java.awt.Point;
-import java.awt.RenderingHints;
 import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -28,14 +21,14 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import data.interfaces.ColorInterface;
 
 /**
  *
  * @author LENOVO
  */
-public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
+public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
 
-    private Image groupImage;
     private Color firstColor , secondColor, thirdColor,fontColor, secondFontColor, thirdFontColor;
     private GroupingPanel groupingPanel;
     private int id;
@@ -49,7 +42,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
             System.out.println("Group ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
             URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
-            groupImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
+            Image groupImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(groupImage);
             jLabelFotoGrupo.setIcon(groupIcon);
             setColors(getImage);
@@ -64,6 +57,8 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
             DashboardPanel.addView(groupingPanel,"group"+_id);
             getImage.flush();
             getImage = null;
+            groupImage.flush();
+            groupImage = null;
             groupIcon = null;
             imageURL = null;
         } catch (MalformedURLException ex) {
@@ -285,11 +280,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
             Logger.getLogger(MusicPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    @Override
-    public void dispose(){
-        groupImage.flush();
-        groupImage = null;
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelChatDelGrupo;
@@ -299,4 +290,5 @@ public class BoxGroupPanel extends javax.swing.JPanel implements MainInterface{
     private javax.swing.JLabel jLabelNumeroIntegrantes;
     private javax.swing.JLabel jLabelUltimaActualizacion;
     // End of variables declaration//GEN-END:variables
+
 }

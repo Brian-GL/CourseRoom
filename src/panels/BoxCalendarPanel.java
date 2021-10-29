@@ -29,7 +29,8 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
     }
     
     private void initMyComponents(){
-        Faker faker = new Faker(new Locale("es","MX"));
+        Locale mx = new Locale("es","MX");
+        Faker faker = new Faker(mx);
         jLabelHora.setText(faker.number().randomNumber(2, true) + ":" + faker.number().randomNumber(2, false) + " P.M");
         jTextPaneNotice.setText(faker.lorem().paragraph());
         StyledDocument doc = jTextPaneNotice.getStyledDocument();
@@ -39,6 +40,8 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
         doc.setParagraphAttributes(0, doc.getLength(), center, false);
         doc = null;
         center = null;
+        faker = null;
+        mx = null;
     }
 
     /**
