@@ -2,6 +2,11 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
+    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+        <TitledBorder/>
+      </Border>
+    </Property>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[32767, 174]"/>
     </Property>
@@ -35,7 +40,7 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabelNumeroIntegrantes" min="-2" pref="145" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabelChatDelGrupo" pref="728" max="32767" attributes="0"/>
+                      <Component id="jLabelChatDelGrupo" pref="726" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jLabelNombreGrupo" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">

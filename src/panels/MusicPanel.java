@@ -1846,6 +1846,7 @@ public final class MusicPanel extends javax.swing.JPanel implements ColorInterfa
         return seconds < 0 ? "-" + positive : positive;
     }
     
+    @Override
     public void setColors(Image image) {
         try {
             
@@ -1854,7 +1855,7 @@ public final class MusicPanel extends javax.swing.JPanel implements ColorInterfa
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
             Random colorRandom = new Random(System.currentTimeMillis());
             Color firstColor = Color.BLACK;
-            int large = image.getHeight(null);
+            int large = image.getHeight(null)/2;
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){

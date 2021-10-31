@@ -749,7 +749,7 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
             Random colorRandom = new Random(System.currentTimeMillis());
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(userImage, 0, 0, -1, -1, false);
-            int large = userImage.getWidth(null);
+            int large = userImage.getWidth(null)/2;
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -858,6 +858,7 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
             
     }
     
+    @Override
     public void dispose(){
         homeworksPanel.dispose();
         musicPanel.dispose();

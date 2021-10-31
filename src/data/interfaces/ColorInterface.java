@@ -13,5 +13,6 @@ import java.awt.Image;
  * @author LENOVO
  */
 public interface ColorInterface {
+    
     public void setColors(Image image);
 }

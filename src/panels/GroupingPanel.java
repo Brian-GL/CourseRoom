@@ -6,6 +6,8 @@
 package panels;
 
 import com.github.javafaker.Faker;
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DateTimePicker;
 import components.ImageFilePreview;
 import data.interfaces.DisposeInterface;
 import java.awt.Color;
@@ -20,9 +22,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
-import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
-import net.sourceforge.jdatepicker.impl.UtilDateModel;
 
 /**
  *
@@ -31,6 +30,7 @@ import net.sourceforge.jdatepicker.impl.UtilDateModel;
 public class GroupingPanel extends javax.swing.JPanel implements DisposeInterface{
     
     private GroupChatingPanel groupChatingPanel;
+    private DateTimePicker dateTimePicker;
     private Color firstColor, secondColor,thirdColor,fontColor, secondFontColor, thirdFontColor;
     
    
@@ -70,7 +70,6 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jPanelGrupalChat = new javax.swing.JPanel();
         jPanelTareas = new javax.swing.JPanel();
         jPanelPorHacer = new javax.swing.JPanel();
-        jLabelAgregarTareaPendiente = new javax.swing.JLabel();
         jScrollPaneListaTareasPendientes = new javax.swing.JScrollPane();
         jPanelListaDeTareasPendientes = new javax.swing.JPanel();
         jLabelNombreTareaPendiente = new javax.swing.JLabel();
@@ -83,6 +82,7 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jLabelDescripcion = new javax.swing.JLabel();
         jPanelFechaFinalizacion = new javax.swing.JPanel();
         jLabelListaTareasPendientes = new javax.swing.JLabel();
+        jButtonAgregarTareaPendiente = new javax.swing.JButton();
         jPanelConfiguraciones = new javax.swing.JPanel();
         jButtonEditGroupImage = new javax.swing.JButton();
 
@@ -127,9 +127,6 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
 
         jLabelReturn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jLabelReturn.setMaximumSize(new java.awt.Dimension(48, 48));
-        jLabelReturn.setMinimumSize(new java.awt.Dimension(48, 48));
-        jLabelReturn.setPreferredSize(new java.awt.Dimension(48, 48));
         jLabelReturn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelReturnMouseClicked(evt);
@@ -149,47 +146,50 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jPanelAboutGroupLayout.setHorizontalGroup(
             jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                        .addGap(0, 134, Short.MAX_VALUE)
-                        .addComponent(jLabelGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 144, Short.MAX_VALUE))
-                    .addComponent(jLabelGroupName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                        .addComponent(jLabelReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addContainerGap()
                         .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelFechaCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelGroupClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelReturn)
+                            .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabelGroupName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+                                    .addComponent(jLabelGroupClass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPaneMembers, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                        .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAboutGroupLayout.createSequentialGroup()
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jLabelMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(207, Short.MAX_VALUE)
+                        .addComponent(jLabelGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 158, Short.MAX_VALUE)))
+                .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPaneMembers)
+                    .addComponent(jLabelFechaCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAboutGroupLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
         );
         jPanelAboutGroupLayout.setVerticalGroup(
             jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelGroupName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelGroupName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
                         .addComponent(jLabelGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelGroupClass)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelFechaCreacion))
-                    .addComponent(jScrollPaneMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelReturn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                        .addGap(18, 25, Short.MAX_VALUE)
+                        .addComponent(jLabelReturn))
+                    .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
+                        .addComponent(jScrollPaneMembers)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelFechaCreacion)))
+                .addContainerGap())
         );
 
         jTabbedPaneGrouping.addTab("Información", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/information.png")), jPanelAboutGroup); // NOI18N
@@ -201,50 +201,25 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jPanelTareas.setLayout(jPanelTareasLayout);
         jPanelTareasLayout.setHorizontalGroup(
             jPanelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1139, Short.MAX_VALUE)
+            .addGap(0, 1169, Short.MAX_VALUE)
         );
         jPanelTareasLayout.setVerticalGroup(
             jPanelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 617, Short.MAX_VALUE)
+            .addGap(0, 639, Short.MAX_VALUE)
         );
 
         jTabbedPaneGrouping.addTab("Tareas", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_4.png")), jPanelTareas); // NOI18N
 
-        jLabelAgregarTareaPendiente.setFont(new java.awt.Font("Gadugi", 3, 18)); // NOI18N
-        jLabelAgregarTareaPendiente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelAgregarTareaPendiente.setText("Agregar Tarea Pendiente");
-        jLabelAgregarTareaPendiente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAgregarTareaPendienteMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelAgregarTareaPendienteMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelAgregarTareaPendienteMouseExited(evt);
-            }
-        });
-
+        jScrollPaneListaTareasPendientes.setBorder(null);
         jScrollPaneListaTareasPendientes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPaneListaTareasPendientes.setOpaque(false);
 
         jPanelListaDeTareasPendientes.setOpaque(false);
-
-        javax.swing.GroupLayout jPanelListaDeTareasPendientesLayout = new javax.swing.GroupLayout(jPanelListaDeTareasPendientes);
-        jPanelListaDeTareasPendientes.setLayout(jPanelListaDeTareasPendientesLayout);
-        jPanelListaDeTareasPendientesLayout.setHorizontalGroup(
-            jPanelListaDeTareasPendientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 717, Short.MAX_VALUE)
-        );
-        jPanelListaDeTareasPendientesLayout.setVerticalGroup(
-            jPanelListaDeTareasPendientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
-        );
-
+        jPanelListaDeTareasPendientes.setLayout(new javax.swing.BoxLayout(jPanelListaDeTareasPendientes, javax.swing.BoxLayout.PAGE_AXIS));
         jScrollPaneListaTareasPendientes.setViewportView(jPanelListaDeTareasPendientes);
 
         jLabelNombreTareaPendiente.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelNombreTareaPendiente.setText("Nombre De La Tarea Pendiente");
+        jLabelNombreTareaPendiente.setText("Nombre Del Pendiente");
 
         jComboBoxMiembros.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
 
@@ -275,6 +250,15 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jLabelListaTareasPendientes.setOpaque(true);
         jLabelListaTareasPendientes.setPreferredSize(new java.awt.Dimension(416, 84));
 
+        jButtonAgregarTareaPendiente.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jButtonAgregarTareaPendiente.setText("Agregar Tarea Pendiente");
+        jButtonAgregarTareaPendiente.setActionCommand("Agregar Pendiente");
+        jButtonAgregarTareaPendiente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAgregarTareaPendienteMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelPorHacerLayout = new javax.swing.GroupLayout(jPanelPorHacer);
         jPanelPorHacer.setLayout(jPanelPorHacerLayout);
         jPanelPorHacerLayout.setHorizontalGroup(
@@ -282,22 +266,22 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
             .addGroup(jPanelPorHacerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelPorHacerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneListaTareasPendientes)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPorHacerLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanelPorHacerLayout.createSequentialGroup()
+                        .addGap(0, 180, Short.MAX_VALUE)
                         .addComponent(jLabelListaTareasPendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelPorHacerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelAgregarTareaPendiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 180, Short.MAX_VALUE))
+                    .addComponent(jScrollPaneListaTareasPendientes))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPorHacerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelFechaFinalizacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelFechaFinalizacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneDescripcionTareaPendiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldNombreTareaPendiente, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelNombreTareaPendiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxMiembros, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelNombreTareaPendiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelMiembroACargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNombreTareaPendiente)
-                    .addComponent(jLabelFechaFinalizacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneDescripcionTareaPendiente)
-                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelFechaFinalizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelMiembroACargo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAgregarTareaPendiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelPorHacerLayout.setVerticalGroup(
@@ -325,12 +309,12 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
                         .addComponent(jLabelFechaFinalizacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanelFechaFinalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelAgregarTareaPendiente)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                        .addComponent(jButtonAgregarTareaPendiente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
-        jTabbedPaneGrouping.addTab("Por Hacer", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/daily-tasks.png")), jPanelPorHacer); // NOI18N
+        jTabbedPaneGrouping.addTab("Pendientes", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/daily-tasks.png")), jPanelPorHacer); // NOI18N
 
         jButtonEditGroupImage.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         jButtonEditGroupImage.setText("Cambiar Imagen");
@@ -366,7 +350,7 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
             .addGroup(jPanelConfiguracionesLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jButtonEditGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(565, Short.MAX_VALUE))
         );
 
         jTabbedPaneGrouping.addTab("Configuraciones", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit-tool.png")), jPanelConfiguraciones); // NOI18N
@@ -437,24 +421,30 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         }
     }//GEN-LAST:event_jLabelReturnMouseClicked
 
-    private void jLabelAgregarTareaPendienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAgregarTareaPendienteMouseExited
-        // TODO add your handling code here:
-        jLabelAgregarTareaPendiente.setForeground(fontColor);
-    }//GEN-LAST:event_jLabelAgregarTareaPendienteMouseExited
-
-    private void jLabelAgregarTareaPendienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAgregarTareaPendienteMouseEntered
-        // TODO add your handling code here:
-        jLabelAgregarTareaPendiente.setForeground(thirdColor);
-    }//GEN-LAST:event_jLabelAgregarTareaPendienteMouseEntered
-
-    private void jLabelAgregarTareaPendienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAgregarTareaPendienteMouseClicked
+    private void jButtonAgregarTareaPendienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarTareaPendienteMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-        }
-    }//GEN-LAST:event_jLabelAgregarTareaPendienteMouseClicked
+            MemberPanel memberPanel = (MemberPanel)jPanelMembers.getComponent(jComboBoxMiembros.getSelectedIndex());
+            String todo_name = jTextFieldNombreTareaPendiente.getText();
+            String todo_description = jTextAreaDescripcionTareaPendiente.getText();
+            String todo_datetime = dateTimePicker.getDatePicker().getDateStringOrEmptyString() + " - " +dateTimePicker.getTimePicker().getTimeStringOrEmptyString();
+            
+            if(!todo_name.isEmpty() && !todo_name.isBlank() && 
+                    !todo_description.isEmpty() && !todo_description.isBlank() &&
+                    !todo_datetime.isEmpty() && !todo_datetime.isBlank()){
+                ToDoPanel toDoPanel = new ToDoPanel(memberPanel.getImageIcon(),memberPanel.getFirstColor(),memberPanel.getFontColor(),
+                        memberPanel.getSecondColor(),memberPanel.getSecondFontColor(),
+                todo_name,todo_description,todo_datetime,memberPanel.getFullName());
 
-      public void initMyComponents(Image groupImage){
+                jPanelListaDeTareasPendientes.add(toDoPanel);
+            }
+            
+        }
+    }//GEN-LAST:event_jButtonAgregarTareaPendienteMouseClicked
+
+    
+    public void initMyComponents(Image groupImage){
         ImageIcon groupIcon = new ImageIcon(groupImage);
         
         jLabelGroupImage.setIcon(groupIcon);
@@ -467,6 +457,8 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
        
         jScrollPaneMembers.getViewport().setOpaque(false);
         jScrollPaneMembers.getVerticalScrollBar().setUnitIncrement(15);
+        jScrollPaneListaTareasPendientes.getViewport().setOpaque(false);
+        jScrollPaneListaTareasPendientes.getVerticalScrollBar().setUnitIncrement(15);
         jTabbedPaneGrouping.setBackground(firstColor);
         jTabbedPaneGrouping.setForeground(fontColor);
         groupIcon = null;
@@ -500,7 +492,8 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         
         jLabelFechaCreacion.setForeground(fontColor);
 
-        jLabelAgregarTareaPendiente.setForeground(fontColor);
+        jButtonAgregarTareaPendiente.setForeground(thirdFontColor);
+        jButtonAgregarTareaPendiente.setBackground(thirdColor);
         jLabelMiembroACargo.setForeground(fontColor);
         jLabelNombreTareaPendiente.setForeground(fontColor);
         jLabelDescripcion.setForeground(fontColor);
@@ -523,20 +516,12 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jPanelFechaFinalizacion.setBackground(thirdColor);
         jPanelFechaFinalizacion.setForeground(thirdFontColor);
         
-        UtilDateModel model = new UtilDateModel();
-        JDatePanelImpl datePanel = new JDatePanelImpl(model);
-        datePanel.setMaximumSize(jTextFieldNombreTareaPendiente.getMaximumSize());
-        datePanel.setFont(jTextFieldNombreTareaPendiente.getFont());
-        datePanel.setForeground(thirdColor);
-        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
-        datePicker.setMaximumSize(jTextFieldNombreTareaPendiente.getMaximumSize());
-        datePicker.setFont(jTextFieldNombreTareaPendiente.getFont());
-        datePicker.setForeground(thirdColor);
-        datePanel.setOpaque(false);
-        datePicker.setOpaque(false);
-        jPanelFechaFinalizacion.add(datePicker);
-        
+        dateTimePicker = new DateTimePicker();
+        dateTimePicker.setFont(jTextFieldNombreTareaPendiente.getFont());
+        dateTimePicker.setForeground(thirdColor);
+        jPanelFechaFinalizacion.add(dateTimePicker);
         jPanelAboutGroup.setBackground(firstColor);
+        jPanelFechaFinalizacion.setBorder(jTextFieldNombreTareaPendiente.getBorder());
         jPanelGrupalChat.setBackground(firstColor);
         jPanelPorHacer.setBackground(firstColor);
         jPanelConfiguraciones.setBackground(firstColor);
@@ -547,9 +532,9 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAgregarTareaPendiente;
     private javax.swing.JButton jButtonEditGroupImage;
     private javax.swing.JComboBox<String> jComboBoxMiembros;
-    private javax.swing.JLabel jLabelAgregarTareaPendiente;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelFechaCreacion;
     private javax.swing.JLabel jLabelFechaFinalizacion;

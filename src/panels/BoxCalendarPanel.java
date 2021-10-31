@@ -8,6 +8,7 @@ package panels;
 import com.github.javafaker.Faker;
 import java.awt.Color;
 import java.util.Locale;
+import javax.swing.border.TitledBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -58,7 +59,7 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
         jTextPaneNotice = new javax.swing.JTextPane();
         jLabelHora = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMinimumSize(new java.awt.Dimension(160, 100));
         setName("CalendarDay"); // NOI18N
         setPreferredSize(new java.awt.Dimension(160, 100));
@@ -114,7 +115,8 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
 
     public void paintMyComponents(Color background, Color foreground){
         this.setBackground(background);
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(foreground));
+        TitledBorder border = (TitledBorder)this.getBorder();
+        border.setTitleColor(foreground);
         jLabelDayNumber.setForeground(foreground);
         jLabelHora.setForeground(foreground);
         jTextPaneNotice.setForeground(foreground);

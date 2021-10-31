@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -80,6 +81,7 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelEstado = new javax.swing.JLabel();
 
         setBackground(java.awt.Color.black);
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMaximumSize(new java.awt.Dimension(32767, 139));
         setMinimumSize(new java.awt.Dimension(1085, 139));
         setPreferredSize(new java.awt.Dimension(1085, 139));
@@ -163,7 +165,7 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements ColorInterface{
             Color firstColor = Color.BLACK;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = image.getWidth(null);
+            int large = image.getWidth(null)/2;
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -201,6 +203,8 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements ColorInterface{
                 jLabelFechaHoraAviso.setForeground(fontColor);
                 jLabelProvenenciaAviso.setForeground(fontColor);
                 this.setBackground(firstColor);
+                TitledBorder border = (TitledBorder)this.getBorder();
+                border.setTitleColor(fontColor);
 
                 fontColor = null;
                 colorRandom = null;

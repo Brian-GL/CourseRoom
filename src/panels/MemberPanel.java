@@ -17,16 +17,20 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import data.collections.PairDoublyLinkedList;
+import data.interfaces.ColorInterface;
 import data.structures.Pair;
 import java.awt.image.PixelGrabber;
+import javax.swing.Icon;
+import javax.swing.border.TitledBorder;
 
 /**
  *
  * @author LENOVO
  */
-public class MemberPanel extends javax.swing.JPanel {
+public class MemberPanel extends javax.swing.JPanel implements ColorInterface{
     
     private String full_name;
+    private Color firstColor, fontColor, secondColor, secondFontColor;
 
     /**
      * Creates new form MemberPanel
@@ -34,17 +38,14 @@ public class MemberPanel extends javax.swing.JPanel {
     public MemberPanel() {
         initComponents();
         try {
-            System.out.println("Member -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
+            System.out.println("Member -> Getting Image From https://loremflickr.com/142/142/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/142/142/sunset,beach/all");
             Image image = ImageIO.read(imageURL);
             setColors(image);
-            Image cover = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-            ImageIcon imageIcon = new ImageIcon(cover);
+            ImageIcon imageIcon = new ImageIcon(image);
             jLabelMemberPhoto.setIcon(imageIcon);
             image.flush();
-            cover.flush();
             image = null;
-            cover = null;
             Faker faker = new Faker(new Locale("es","MX"));
             String nombre = faker.name().firstName() + " " +faker.name().firstName();
             String apellido = faker.name().lastName() + " " + faker.name().lastName();
@@ -63,7 +64,6 @@ public class MemberPanel extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(MemberPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
 
@@ -81,13 +81,14 @@ public class MemberPanel extends javax.swing.JPanel {
         jLabelMemberLastName = new javax.swing.JLabel();
         jLabelMemberUserName = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 110));
-        setMinimumSize(new java.awt.Dimension(360, 110));
-        setPreferredSize(new java.awt.Dimension(360, 110));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        setMaximumSize(new java.awt.Dimension(32767, 230));
+        setMinimumSize(new java.awt.Dimension(365, 230));
+        setPreferredSize(new java.awt.Dimension(365, 230));
 
-        jLabelMemberPhoto.setMaximumSize(new java.awt.Dimension(100, 100));
-        jLabelMemberPhoto.setMinimumSize(new java.awt.Dimension(100, 100));
-        jLabelMemberPhoto.setPreferredSize(new java.awt.Dimension(100, 100));
+        jLabelMemberPhoto.setMaximumSize(new java.awt.Dimension(130, 130));
+        jLabelMemberPhoto.setMinimumSize(new java.awt.Dimension(130, 130));
+        jLabelMemberPhoto.setPreferredSize(new java.awt.Dimension(130, 130));
 
         jLabelMemberName.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         jLabelMemberName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -106,40 +107,41 @@ public class MemberPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelMemberName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelMemberLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelMemberUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelMemberLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelMemberName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelMemberUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelMemberPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelMemberName)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelMemberLastName)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelMemberUserName)))
-                .addGap(5, 5, 5))
+                .addContainerGap()
+                .addComponent(jLabelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelMemberName)
+                .addGap(6, 6, 6)
+                .addComponent(jLabelMemberLastName)
+                .addGap(6, 6, 6)
+                .addComponent(jLabelMemberUserName))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    @Override
     public void setColors(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
             int maximum = 0;
-            Color firstColor = Color.BLACK;
+            firstColor = Color.BLACK;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = image.getWidth(null);
+            int large = image.getWidth(null)/2;
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -164,18 +166,39 @@ public class MemberPanel extends javax.swing.JPanel {
                     color = null;
                     i += colorRandom.nextInt(large+1) + large;
                 }
-
+                
+                secondColor = firstColor;
+            
+                int iterations = 0;
+                if(colorList.size() > 1){
+                    
+                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
+                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        secondColor = colorList.get(position).second();
+                        iterations++;
+                        if(iterations > 25){
+                             while(firstColor.getRGB() == secondColor.getRGB()){
+                                position = colorRandom.nextInt((int)colorList.size()-1);
+                                secondColor = colorList.get(position).second();
+                            }
+                             break;
+                        }
+                    }
+                }
                
                 int red = firstColor.getRed();
-                Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
+                fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
+                red = secondColor.getRed();
+                secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 
                 colorList.clear();
-                jLabelMemberLastName.setForeground(fontColor);
-                jLabelMemberUserName.setForeground(fontColor);
-                jLabelMemberName.setForeground(fontColor);
-                this.setBackground(firstColor);
+                jLabelMemberLastName.setForeground(getFontColor());
+                jLabelMemberUserName.setForeground(getFontColor());
+                jLabelMemberName.setForeground(getFontColor());
+                this.setBackground(getFirstColor());
+                TitledBorder border = (TitledBorder)this.getBorder();
+                border.setTitleColor(fontColor);
 
-                fontColor = null;
                 colorRandom = null;
                 colorList = null;
                 pg = null;
@@ -191,10 +214,42 @@ public class MemberPanel extends javax.swing.JPanel {
         return this.full_name;
     }
     
+    public Icon getImageIcon(){
+        return jLabelMemberPhoto.getIcon();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelMemberLastName;
     private javax.swing.JLabel jLabelMemberName;
     private javax.swing.JLabel jLabelMemberPhoto;
     private javax.swing.JLabel jLabelMemberUserName;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the firstColor
+     */
+    public Color getFirstColor() {
+        return firstColor;
+    }
+
+    /**
+     * @return the fontColor
+     */
+    public Color getFontColor() {
+        return fontColor;
+    }
+
+    /**
+     * @return the secondColor
+     */
+    public Color getSecondColor() {
+        return secondColor;
+    }
+
+    /**
+     * @return the secondFontColor
+     */
+    public Color getSecondFontColor() {
+        return secondFontColor;
+    }
 }

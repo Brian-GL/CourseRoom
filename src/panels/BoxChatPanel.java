@@ -23,6 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import data.interfaces.ColorInterface;
 import data.interfaces.DisposeInterface;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -79,7 +80,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements ColorInterface, 
             int maximum = 0;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = image.getWidth(null);
+            int large = image.getWidth(null)/2;
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -135,6 +136,8 @@ public class BoxChatPanel extends javax.swing.JPanel implements ColorInterface, 
                 jLabelNumeroMensajesNoLeidos.setForeground(fontColor);
                 jLabelUltimoMensaje.setForeground(fontColor);
                 this.setBackground(firstColor);
+                TitledBorder border = (TitledBorder)this.getBorder();
+                border.setTitleColor(fontColor);
 
                 colorRandom = null;
                 colorList = null;
@@ -164,6 +167,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements ColorInterface, 
         jLabelFechaHoraMensaje = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setForeground(java.awt.Color.white);
         setMaximumSize(new java.awt.Dimension(32767, 139));
         setMinimumSize(new java.awt.Dimension(1085, 139));
@@ -226,7 +230,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements ColorInterface, 
                         .addComponent(jLabelFechaHoraMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelNumeroMensajesNoLeidos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelNombreChat, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
+                    .addComponent(jLabelNombreChat, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
                     .addComponent(jLabelUltimoMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
         );

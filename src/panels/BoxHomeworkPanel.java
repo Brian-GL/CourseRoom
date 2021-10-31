@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import data.interfaces.ColorInterface;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -78,6 +79,7 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements ColorInterfa
         jLabelTipoDeTarea = new javax.swing.JLabel();
         jLabelEstado = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMaximumSize(new java.awt.Dimension(32767, 174));
         setMinimumSize(new java.awt.Dimension(1085, 174));
         setPreferredSize(new java.awt.Dimension(1085, 174));
@@ -122,7 +124,7 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements ColorInterfa
                     .addComponent(jLabelTipoDeTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelFechaDeEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 473, Short.MAX_VALUE)
                         .addComponent(jLabelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelNombreTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -157,7 +159,7 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements ColorInterfa
             Color firstColor = Color.BLACK;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = image.getWidth(null);
+            int large = image.getWidth(null)/2;
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
@@ -197,6 +199,8 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements ColorInterfa
                 jLabelTipoDeTarea.setForeground(fontColor);
                 
                 this.setBackground(firstColor);
+                TitledBorder border = (TitledBorder)this.getBorder();
+                border.setTitleColor(fontColor);
 
                 fontColor = null;
                 colorRandom = null;
