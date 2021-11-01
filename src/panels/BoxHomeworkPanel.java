@@ -21,7 +21,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import data.interfaces.ColorInterface;
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -79,7 +78,6 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements ColorInterfa
         jLabelTipoDeTarea = new javax.swing.JLabel();
         jLabelEstado = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMaximumSize(new java.awt.Dimension(32767, 174));
         setMinimumSize(new java.awt.Dimension(1085, 174));
         setPreferredSize(new java.awt.Dimension(1085, 174));
@@ -124,7 +122,7 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements ColorInterfa
                     .addComponent(jLabelTipoDeTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelFechaDeEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 473, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, Short.MAX_VALUE)
                         .addComponent(jLabelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelNombreTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -185,13 +183,30 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements ColorInterfa
                     i += colorRandom.nextInt(large+1) + large;
                 }
 
+                Color secondColor = firstColor;
+            
+                int iterations = 0;
+                if(colorList.size() > 1){
+                    
+                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
+                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        secondColor = colorList.get(position).second();
+                        iterations++;
+                        if(iterations > 25){
+                             while(firstColor.getRGB() == secondColor.getRGB()){
+                                position = colorRandom.nextInt((int)colorList.size()-1);
+                                secondColor = colorList.get(position).second();
+                            }
+                             break;
+                        }
+                    }
+                }
                
                 int red = firstColor.getRed();
                 Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 
                 colorList.clear();
 
-                
                 jLabelEstado.setForeground(fontColor);
                 jLabelClaseDeLaTarea.setForeground(fontColor);
                 jLabelFechaDeEntrega.setForeground(fontColor);
@@ -199,8 +214,7 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements ColorInterfa
                 jLabelTipoDeTarea.setForeground(fontColor);
                 
                 this.setBackground(firstColor);
-                TitledBorder border = (TitledBorder)this.getBorder();
-                border.setTitleColor(fontColor);
+                this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
 
                 fontColor = null;
                 colorRandom = null;

@@ -85,7 +85,6 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelChatDelGrupo = new javax.swing.JLabel();
         jLabelUltimaActualizacion = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMaximumSize(new java.awt.Dimension(32767, 174));
         setMinimumSize(new java.awt.Dimension(1085, 174));
         setPreferredSize(new java.awt.Dimension(1085, 174));
@@ -140,7 +139,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNumeroIntegrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelChatDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE))
+                        .addComponent(jLabelChatDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE))
                     .addComponent(jLabelNombreGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelClaseDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -271,8 +270,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
                 jLabelNumeroIntegrantes.setForeground(fontColor);
                 jLabelUltimaActualizacion.setForeground(fontColor);
                 this.setBackground(firstColor);
-                TitledBorder border = (TitledBorder)this.getBorder();
-                border.setTitleColor(fontColor);
+                this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
 
                 colorRandom = null;
                 colorList = null;

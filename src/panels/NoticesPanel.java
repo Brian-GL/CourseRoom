@@ -8,7 +8,6 @@ package panels;
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
-import java.awt.Component;
 
 
 /**

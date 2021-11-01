@@ -143,20 +143,21 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
 
         jPanelMenu = new javax.swing.JPanel();
         jLabelUserProfilePhoto = new javax.swing.JLabel();
-        jLabelClasses = new javax.swing.JLabel();
-        jLabelHomePage = new javax.swing.JLabel();
-        jLabelGroups = new javax.swing.JLabel();
-        jLabelHomeWorks = new javax.swing.JLabel();
-        jLabelDates = new javax.swing.JLabel();
-        jLabelChats = new javax.swing.JLabel();
-        jLabelNotices = new javax.swing.JLabel();
-        jLabelAbout = new javax.swing.JLabel();
-        jLabelLogOut = new javax.swing.JLabel();
-        jLabelMusic = new javax.swing.JLabel();
+        jButtonInicio = new javax.swing.JButton();
+        jButtonClases = new javax.swing.JButton();
+        jButtonTareas = new javax.swing.JButton();
+        jButtonFechas = new javax.swing.JButton();
+        jButtonAvisos = new javax.swing.JButton();
+        jButtonGrupos = new javax.swing.JButton();
+        jButtonChats = new javax.swing.JButton();
+        jButtonMusica = new javax.swing.JButton();
+        jButtonAcerca = new javax.swing.JButton();
+        jButtonAjustes = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
         jPanelBarraSuperior = new javax.swing.JPanel();
-        jLabelMenu = new javax.swing.JLabel();
         jLabelUserName = new javax.swing.JLabel();
         jLabelFechaHoraServidor = new javax.swing.JLabel();
+        jButtonMenu = new javax.swing.JButton();
         jPanelInformacion = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
@@ -184,266 +185,219 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
         });
         jPanelMenu.add(jLabelUserProfilePhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabelClasses.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelClasses.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelClasses.setForeground(java.awt.Color.white);
-        jLabelClasses.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelClasses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/training.png"))); // NOI18N
-        jLabelClasses.setText("<html>&nbsp;Clases&nbsp;</html>");
-        jLabelClasses.setToolTipText("Mostrar Clases");
-        jLabelClasses.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelClasses.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelClasses.setOpaque(true);
-        jLabelClasses.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelClasses.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonInicio.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/house.png"))); // NOI18N
+        jButtonInicio.setText("Inicio");
+        jButtonInicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInicio.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelClassesMouseClicked(evt);
+                jButtonInicioMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelClassesMouseEntered(evt);
+                jButtonInicioMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelClassesMouseExited(evt);
+                jButtonInicioMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelClasses, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, -1));
+        jPanelMenu.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 175, -1, -1));
 
-        jLabelHomePage.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelHomePage.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelHomePage.setForeground(java.awt.Color.white);
-        jLabelHomePage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelHomePage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/house.png"))); // NOI18N
-        jLabelHomePage.setText("<html>&nbsp;Inicio&nbsp;</html>");
-        jLabelHomePage.setToolTipText("Mostrar Mi Inicio");
-        jLabelHomePage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelHomePage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelHomePage.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabelHomePage.setOpaque(true);
-        jLabelHomePage.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelHomePage.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonClases.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonClases.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/training.png"))); // NOI18N
+        jButtonClases.setText("Clases");
+        jButtonClases.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonClases.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClases.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonClases.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelHomePageMouseClicked(evt);
+                jButtonClasesMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelHomePageMouseEntered(evt);
+                jButtonClasesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelHomePageMouseExited(evt);
+                jButtonClasesMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelHomePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 175, -1, -1));
+        jPanelMenu.add(jButtonClases, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, -1));
 
-        jLabelGroups.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelGroups.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelGroups.setForeground(java.awt.Color.white);
-        jLabelGroups.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelGroups.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group-meeting.png"))); // NOI18N
-        jLabelGroups.setText("<html>&nbsp;Grupos&nbsp;</html>");
-        jLabelGroups.setToolTipText("Mostrar Mis Grupos");
-        jLabelGroups.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelGroups.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelGroups.setOpaque(true);
-        jLabelGroups.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelGroups.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonTareas.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonTareas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework.png"))); // NOI18N
+        jButtonTareas.setText("Tareas");
+        jButtonTareas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonTareas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonTareas.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonTareas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelGroupsMouseClicked(evt);
+                jButtonTareasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelGroupsMouseEntered(evt);
+                jButtonTareasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelGroupsMouseExited(evt);
+                jButtonTareasMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelGroups, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
+        jPanelMenu.add(jButtonTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 245, -1, -1));
 
-        jLabelHomeWorks.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelHomeWorks.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelHomeWorks.setForeground(java.awt.Color.white);
-        jLabelHomeWorks.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelHomeWorks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework.png"))); // NOI18N
-        jLabelHomeWorks.setText("<html>&nbsp;Tareas&nbsp;</html>");
-        jLabelHomeWorks.setToolTipText("Mostrar Tareas");
-        jLabelHomeWorks.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelHomeWorks.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelHomeWorks.setOpaque(true);
-        jLabelHomeWorks.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelHomeWorks.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonFechas.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonFechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/schedule.png"))); // NOI18N
+        jButtonFechas.setText("Fechas");
+        jButtonFechas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonFechas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonFechas.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonFechas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelHomeWorksMouseClicked(evt);
+                jButtonFechasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelHomeWorksMouseEntered(evt);
+                jButtonFechasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelHomeWorksMouseExited(evt);
+                jButtonFechasMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelHomeWorks, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 245, -1, -1));
+        jPanelMenu.add(jButtonFechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, -1, -1));
 
-        jLabelDates.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelDates.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelDates.setForeground(java.awt.Color.white);
-        jLabelDates.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/schedule.png"))); // NOI18N
-        jLabelDates.setText("<html>&nbsp;Fechas&nbsp;</html>");
-        jLabelDates.setToolTipText("Mostrar Calendario");
-        jLabelDates.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelDates.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelDates.setOpaque(true);
-        jLabelDates.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelDates.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonAvisos.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonAvisos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/bell.png"))); // NOI18N
+        jButtonAvisos.setText("Avisos");
+        jButtonAvisos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonAvisos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAvisos.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonAvisos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelDatesMouseClicked(evt);
+                jButtonAvisosMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelDatesMouseEntered(evt);
+                jButtonAvisosMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelDatesMouseExited(evt);
+                jButtonAvisosMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelDates, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, -1, -1));
+        jPanelMenu.add(jButtonAvisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 315, -1, -1));
 
-        jLabelChats.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelChats.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelChats.setForeground(java.awt.Color.white);
-        jLabelChats.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelChats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/online-chat.png"))); // NOI18N
-        jLabelChats.setText("<html>&nbsp;Chats&nbsp;</html>");
-        jLabelChats.setToolTipText("Mostrar Mis Chats");
-        jLabelChats.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelChats.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelChats.setOpaque(true);
-        jLabelChats.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelChats.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonGrupos.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonGrupos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group-meeting.png"))); // NOI18N
+        jButtonGrupos.setText("Grupos");
+        jButtonGrupos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonGrupos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonGrupos.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonGrupos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelChatsMouseClicked(evt);
+                jButtonGruposMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelChatsMouseEntered(evt);
+                jButtonGruposMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelChatsMouseExited(evt);
+                jButtonGruposMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 385, -1, -1));
+        jPanelMenu.add(jButtonGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
 
-        jLabelNotices.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelNotices.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelNotices.setForeground(java.awt.Color.white);
-        jLabelNotices.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNotices.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/bell.png"))); // NOI18N
-        jLabelNotices.setText("<html>&nbsp;Avisos&nbsp;</html>");
-        jLabelNotices.setToolTipText("Mostrar Avisos");
-        jLabelNotices.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelNotices.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelNotices.setOpaque(true);
-        jLabelNotices.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelNotices.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonChats.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonChats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/online-chat.png"))); // NOI18N
+        jButtonChats.setText("Chats");
+        jButtonChats.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonChats.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonChats.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonChats.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelNoticesMouseClicked(evt);
+                jButtonChatsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelNoticesMouseEntered(evt);
+                jButtonChatsMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelNoticesMouseExited(evt);
+                jButtonChatsMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelNotices, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 315, -1, -1));
+        jPanelMenu.add(jButtonChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 385, -1, -1));
 
-        jLabelAbout.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelAbout.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelAbout.setForeground(java.awt.Color.white);
-        jLabelAbout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/info.png"))); // NOI18N
-        jLabelAbout.setText("<html>&nbsp;Acerca&nbsp;</html>");
-        jLabelAbout.setToolTipText("Acerca Del Programa");
-        jLabelAbout.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelAbout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelAbout.setOpaque(true);
-        jLabelAbout.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelAbout.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonMusica.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonMusica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/audio.png"))); // NOI18N
+        jButtonMusica.setText("Música");
+        jButtonMusica.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonMusica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMusica.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonMusica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAboutMouseClicked(evt);
+                jButtonMusicaMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelAboutMouseEntered(evt);
+                jButtonMusicaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelAboutMouseExited(evt);
+                jButtonMusicaMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelAbout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 455, -1, -1));
+        jPanelMenu.add(jButtonMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
 
-        jLabelLogOut.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelLogOut.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelLogOut.setForeground(java.awt.Color.white);
-        jLabelLogOut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/exit-door.png"))); // NOI18N
-        jLabelLogOut.setText("<html>&nbsp;Salir&nbsp;</html>");
-        jLabelLogOut.setToolTipText("Cierre Sesión Y Salga De Su Cuenta En Este Dipositivo.");
-        jLabelLogOut.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelLogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelLogOut.setOpaque(true);
-        jLabelLogOut.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonAcerca.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonAcerca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/info.png"))); // NOI18N
+        jButtonAcerca.setText("Acerca");
+        jButtonAcerca.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonAcerca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAcerca.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonAcerca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelLogOutMouseClicked(evt);
+                jButtonAcercaMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelLogOutMouseEntered(evt);
+                jButtonAcercaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelLogOutMouseExited(evt);
+                jButtonAcercaMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
+        jPanelMenu.add(jButtonAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
 
-        jLabelMusic.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelMusic.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelMusic.setForeground(java.awt.Color.white);
-        jLabelMusic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/audio_1.png"))); // NOI18N
-        jLabelMusic.setText("<html>&nbsp;Música&nbsp;</html>");
-        jLabelMusic.setToolTipText("Music Player");
-        jLabelMusic.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelMusic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelMusic.setOpaque(true);
-        jLabelMusic.setPreferredSize(new java.awt.Dimension(175, 35));
-        jLabelMusic.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonAjustes.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/settings.png"))); // NOI18N
+        jButtonAjustes.setText("Ajustes");
+        jButtonAjustes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonAjustes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAjustes.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonAjustes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelMusicMouseClicked(evt);
+                jButtonAjustesMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelMusicMouseEntered(evt);
+                jButtonAjustesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelMusicMouseExited(evt);
+                jButtonAjustesMouseExited(evt);
             }
         });
-        jPanelMenu.add(jLabelMusic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
+        jPanelMenu.add(jButtonAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 455, -1, -1));
+
+        jButtonSalir.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/exit-door.png"))); // NOI18N
+        jButtonSalir.setText("Salir");
+        jButtonSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSalir.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonSalirMouseExited(evt);
+            }
+        });
+        jPanelMenu.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 525, -1, -1));
 
         jPanelBarraSuperior.setBackground(java.awt.Color.black);
         jPanelBarraSuperior.setMinimumSize(new java.awt.Dimension(1260, 40));
         jPanelBarraSuperior.setOpaque(false);
         jPanelBarraSuperior.setPreferredSize(new java.awt.Dimension(1260, 40));
-
-        jLabelMenu.setBackground(new java.awt.Color(3, 111, 252));
-        jLabelMenu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabelMenu.setForeground(java.awt.Color.white);
-        jLabelMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/menu.png"))); // NOI18N
-        jLabelMenu.setToolTipText("Muestra/Oculta El Menú");
-        jLabelMenu.setMaximumSize(new java.awt.Dimension(40, 40));
-        jLabelMenu.setMinimumSize(new java.awt.Dimension(40, 40));
-        jLabelMenu.setPreferredSize(new java.awt.Dimension(40, 40));
-        jLabelMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelMenuMouseClicked(evt);
-            }
-        });
 
         jLabelUserName.setBackground(java.awt.Color.black);
         jLabelUserName.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
@@ -465,14 +419,33 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
         jLabelFechaHoraServidor.setMinimumSize(new java.awt.Dimension(127, 40));
         jLabelFechaHoraServidor.setPreferredSize(new java.awt.Dimension(127, 40));
 
+        jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/menu.png"))); // NOI18N
+        jButtonMenu.setBorder(null);
+        jButtonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenu.setLabel("");
+        jButtonMenu.setMaximumSize(new java.awt.Dimension(40, 40));
+        jButtonMenu.setMinimumSize(new java.awt.Dimension(40, 40));
+        jButtonMenu.setPreferredSize(new java.awt.Dimension(40, 40));
+        jButtonMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonMenuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonMenuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonMenuMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBarraSuperiorLayout = new javax.swing.GroupLayout(jPanelBarraSuperior);
         jPanelBarraSuperior.setLayout(jPanelBarraSuperiorLayout);
         jPanelBarraSuperiorLayout.setHorizontalGroup(
             jPanelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBarraSuperiorLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jLabelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(jButtonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -482,8 +455,9 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
             jPanelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBarraSuperiorLayout.createSequentialGroup()
                 .addGroup(jPanelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -520,192 +494,7 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void jLabelHomePageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomePageMouseExited
-        // TODO add your handling code here:
-        jLabelHomePage.setBackground(MainFrame.getSecondColor());
-        jLabelHomePage.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jLabelHomePageMouseExited
-
-    private void jLabelHomePageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomePageMouseEntered
-        // TODO add your handling code here:
-        jLabelHomePage.setBackground(MainFrame.getFirstColor());
-        jLabelHomePage.setForeground(MainFrame.getFontColor());
-    }//GEN-LAST:event_jLabelHomePageMouseEntered
-
-    private void jLabelClassesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClassesMouseExited
-        // TODO add your handling code here:
-        jLabelClasses.setBackground(MainFrame.getSecondColor());
-        jLabelClasses.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jLabelClassesMouseExited
-
-    private void jLabelClassesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClassesMouseEntered
-        // TODO add your handling code here:
-        jLabelClasses.setBackground(MainFrame.getFirstColor());
-        jLabelClasses.setForeground(MainFrame.getFontColor());
-    }//GEN-LAST:event_jLabelClassesMouseEntered
-
-    private void jLabelHomeWorksMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeWorksMouseExited
-        // TODO add your handling code here:
-        jLabelHomeWorks.setBackground(MainFrame.getSecondColor());
-        jLabelHomeWorks.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jLabelHomeWorksMouseExited
-
-    private void jLabelHomeWorksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeWorksMouseEntered
-        // TODO add your handling code here:
-        jLabelHomeWorks.setBackground(MainFrame.getFirstColor());
-        jLabelHomeWorks.setForeground(MainFrame.getFontColor());
-    }//GEN-LAST:event_jLabelHomeWorksMouseEntered
-
-    private void jLabelDatesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDatesMouseExited
-        // TODO add your handling code here:
-        jLabelDates.setBackground(MainFrame.getSecondColor());
-        jLabelDates.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jLabelDatesMouseExited
-
-    private void jLabelDatesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDatesMouseEntered
-        // TODO add your handling code here:
-        jLabelDates.setBackground(MainFrame.getFirstColor());
-        jLabelDates.setForeground(MainFrame.getFontColor());
-    }//GEN-LAST:event_jLabelDatesMouseEntered
-
-    private void jLabelNoticesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNoticesMouseExited
-        // TODO add your handling code here:
-        jLabelNotices.setBackground(MainFrame.getSecondColor());
-        jLabelNotices.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jLabelNoticesMouseExited
-
-    private void jLabelNoticesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNoticesMouseEntered
-        // TODO add your handling code here:
-        jLabelNotices.setBackground(MainFrame.getFirstColor());
-        jLabelNotices.setForeground(MainFrame.getFontColor());
-    }//GEN-LAST:event_jLabelNoticesMouseEntered
-
-    private void jLabelGroupsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGroupsMouseExited
-        // TODO add your handling code here:
-        jLabelGroups.setBackground(MainFrame.getSecondColor());
-        jLabelGroups.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jLabelGroupsMouseExited
-
-    private void jLabelGroupsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGroupsMouseEntered
-        // TODO add your handling code here:
-        jLabelGroups.setBackground(MainFrame.getFirstColor());
-        jLabelGroups.setForeground(MainFrame.getFontColor());
-    }//GEN-LAST:event_jLabelGroupsMouseEntered
-
-    private void jLabelChatsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelChatsMouseEntered
-        // TODO add your handling code here:
-        jLabelChats.setBackground(MainFrame.getFirstColor());
-        jLabelChats.setForeground(MainFrame.getFontColor());
-    }//GEN-LAST:event_jLabelChatsMouseEntered
-
-    private void jLabelChatsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelChatsMouseExited
-        // TODO add your handling code here:
-        jLabelChats.setBackground(MainFrame.getSecondColor());
-        jLabelChats.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jLabelChatsMouseExited
-
-    private void jLabelAboutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAboutMouseExited
-        // TODO add your handling code here:
-        jLabelAbout.setBackground(MainFrame.getSecondColor());
-        jLabelAbout.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jLabelAboutMouseExited
-
-    private void jLabelAboutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAboutMouseEntered
-        // TODO add your handling code here:
-        jLabelAbout.setBackground(MainFrame.getFirstColor());
-        jLabelAbout.setForeground(MainFrame.getFontColor());
-    }//GEN-LAST:event_jLabelAboutMouseEntered
-
-    private void jLabelAboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAboutMouseClicked
-        // TODO add your handling code here:
-        
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            panelLayout.show(jPanelInformacion, "aboutPanel");
-        }
-        
-    }//GEN-LAST:event_jLabelAboutMouseClicked
-
-    private void jLabelChatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelChatsMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            panelLayout.show(jPanelInformacion, "chatsPanel");
-        }
-        
-    }//GEN-LAST:event_jLabelChatsMouseClicked
-
-    private void jLabelGroupsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGroupsMouseClicked
-        // TODO add your handling code here:
-         if(SwingUtilities.isLeftMouseButton(evt)){
-            panelLayout.show(jPanelInformacion, "groupsPanel");
-        }
-    }//GEN-LAST:event_jLabelGroupsMouseClicked
-
-    private void jLabelNoticesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNoticesMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            panelLayout.show(jPanelInformacion, "noticesPanel");
-        }
-        
-    }//GEN-LAST:event_jLabelNoticesMouseClicked
-
-    private void jLabelDatesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDatesMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            panelLayout.show(jPanelInformacion, "datesPanel");
-        }
-        
-    }//GEN-LAST:event_jLabelDatesMouseClicked
-
-    private void jLabelHomeWorksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeWorksMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            panelLayout.show(jPanelInformacion, "homeworksPanel");
-        }
-        
-    }//GEN-LAST:event_jLabelHomeWorksMouseClicked
-
-    private void jLabelClassesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClassesMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jLabelClassesMouseClicked
-
     
-    private void jLabelHomePageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomePageMouseClicked
-        // TODO add your handling code here:
-        
-        
-        
-    }//GEN-LAST:event_jLabelHomePageMouseClicked
-
-    private void jLabelMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMenuMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(jPanelMenu.isVisible())
-                jPanelMenu.setVisible(false);
-            else
-                jPanelMenu.setVisible(true);
-        }
-    }//GEN-LAST:event_jLabelMenuMouseClicked
-
-    private void jLabelLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLogOutMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            MainFrame.logOut();
-        }
-    }//GEN-LAST:event_jLabelLogOutMouseClicked
-
-    private void jLabelLogOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLogOutMouseEntered
-        // TODO add your handling code here:
-        jLabelLogOut.setBackground(MainFrame.getFirstColor());
-        jLabelLogOut.setForeground(MainFrame.getFontColor());
-    }//GEN-LAST:event_jLabelLogOutMouseEntered
-
-    private void jLabelLogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLogOutMouseExited
-        // TODO add your handling code here:
-        jLabelLogOut.setBackground(MainFrame.getSecondColor());
-        jLabelLogOut.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jLabelLogOutMouseExited
-
     private void jLabelUserProfilePhotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelUserProfilePhotoMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -713,32 +502,234 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
         }
     }//GEN-LAST:event_jLabelUserProfilePhotoMouseClicked
 
-    private void jLabelMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMusicMouseClicked
+    private void jButtonMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMenuMouseClicked
         // TODO add your handling code here:
-       if(SwingUtilities.isLeftMouseButton(evt)){
-            panelLayout.show(jPanelInformacion, "musicPanel");
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            jPanelMenu.setVisible(!jPanelMenu.isVisible());
         }
-    }//GEN-LAST:event_jLabelMusicMouseClicked
+    }//GEN-LAST:event_jButtonMenuMouseClicked
 
-    private void jLabelMusicMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMusicMouseEntered
+    private void jButtonMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMenuMouseEntered
         // TODO add your handling code here:
-        jLabelMusic.setBackground(MainFrame.getFirstColor());
-        jLabelMusic.setForeground(MainFrame.getFontColor());
-    }//GEN-LAST:event_jLabelMusicMouseEntered
+        jButtonMenu.setBackground(MainFrame.getSecondColor());
+    }//GEN-LAST:event_jButtonMenuMouseEntered
 
-    private void jLabelMusicMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMusicMouseExited
+    private void jButtonMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMenuMouseExited
         // TODO add your handling code here:
-        jLabelMusic.setBackground(MainFrame.getSecondColor());
-        jLabelMusic.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jLabelMusicMouseExited
+        jButtonMenu.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonMenuMouseExited
 
-    public static void showInfoProfilePanel(){
-        panelLayout.show(jPanelInformacion, "infoProfilePanel");
-    }
-    
-    public static void showEditProfilePanel(){
-        panelLayout.show(jPanelInformacion, "editProfilePanel");
-    }
+    private void jButtonInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInicioMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
+    }//GEN-LAST:event_jButtonInicioMouseClicked
+
+    private void jButtonInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInicioMouseEntered
+        // TODO add your handling code here:
+        jButtonInicio.setBackground(MainFrame.getThirdColor());
+        jButtonInicio.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonInicioMouseEntered
+
+    private void jButtonInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInicioMouseExited
+        // TODO add your handling code here:
+        jButtonInicio.setBackground(MainFrame.getSecondColor());
+        jButtonInicio.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonInicioMouseExited
+
+    private void jButtonClasesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClasesMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
+    }//GEN-LAST:event_jButtonClasesMouseClicked
+
+    private void jButtonClasesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClasesMouseEntered
+        // TODO add your handling code here:
+        jButtonClases.setBackground(MainFrame.getThirdColor());
+        jButtonClases.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonClasesMouseEntered
+
+    private void jButtonClasesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClasesMouseExited
+        // TODO add your handling code here:
+        jButtonClases.setBackground(MainFrame.getSecondColor());
+        jButtonClases.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonClasesMouseExited
+
+    private void jButtonTareasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTareasMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("homeworksPanel");
+        }
+        
+    }//GEN-LAST:event_jButtonTareasMouseClicked
+
+    private void jButtonTareasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTareasMouseEntered
+        // TODO add your handling code here:
+        jButtonTareas.setBackground(MainFrame.getThirdColor());
+        jButtonTareas.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonTareasMouseEntered
+
+    private void jButtonTareasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTareasMouseExited
+        // TODO add your handling code here:
+        jButtonTareas.setBackground(MainFrame.getSecondColor());
+        jButtonTareas.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonTareasMouseExited
+
+    private void jButtonFechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFechasMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("datesPanel");
+        }
+    }//GEN-LAST:event_jButtonFechasMouseClicked
+
+    private void jButtonFechasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFechasMouseEntered
+        // TODO add your handling code here:
+        jButtonFechas.setBackground(MainFrame.getThirdColor());
+        jButtonFechas.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonFechasMouseEntered
+
+    private void jButtonFechasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFechasMouseExited
+        // TODO add your handling code here:
+        jButtonFechas.setBackground(MainFrame.getSecondColor());
+        jButtonFechas.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonFechasMouseExited
+
+    private void jButtonAvisosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAvisosMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("noticesPanel");
+        }
+    }//GEN-LAST:event_jButtonAvisosMouseClicked
+
+    private void jButtonAvisosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAvisosMouseEntered
+        // TODO add your handling code here:
+        jButtonAvisos.setBackground(MainFrame.getThirdColor());
+        jButtonAvisos.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonAvisosMouseEntered
+
+    private void jButtonAvisosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAvisosMouseExited
+        // TODO add your handling code here:
+        jButtonAvisos.setBackground(MainFrame.getSecondColor());
+        jButtonAvisos.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonAvisosMouseExited
+
+    private void jButtonGruposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGruposMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("groupsPanel");
+        }
+    }//GEN-LAST:event_jButtonGruposMouseClicked
+
+    private void jButtonGruposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGruposMouseEntered
+        // TODO add your handling code here:
+        jButtonGrupos.setBackground(MainFrame.getThirdColor());
+        jButtonGrupos.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonGruposMouseEntered
+
+    private void jButtonGruposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGruposMouseExited
+        // TODO add your handling code here:
+        jButtonGrupos.setBackground(MainFrame.getSecondColor());
+        jButtonGrupos.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonGruposMouseExited
+
+    private void jButtonChatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonChatsMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("chatsPanel");
+        }
+    }//GEN-LAST:event_jButtonChatsMouseClicked
+
+    private void jButtonChatsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonChatsMouseEntered
+        // TODO add your handling code here:
+        jButtonChats.setBackground(MainFrame.getThirdColor());
+        jButtonChats.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonChatsMouseEntered
+
+    private void jButtonChatsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonChatsMouseExited
+        // TODO add your handling code here:
+        jButtonChats.setBackground(MainFrame.getSecondColor());
+        jButtonChats.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonChatsMouseExited
+
+    private void jButtonMusicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMusicaMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("musicPanel");
+        }
+    }//GEN-LAST:event_jButtonMusicaMouseClicked
+
+    private void jButtonMusicaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMusicaMouseEntered
+        // TODO add your handling code here:
+        jButtonMusica.setBackground(MainFrame.getThirdColor());
+        jButtonMusica.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonMusicaMouseEntered
+
+    private void jButtonMusicaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMusicaMouseExited
+        // TODO add your handling code here:
+        jButtonMusica.setBackground(MainFrame.getSecondColor());
+        jButtonMusica.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonMusicaMouseExited
+
+    private void jButtonAcercaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAcercaMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("aboutPanel");
+        }
+    }//GEN-LAST:event_jButtonAcercaMouseClicked
+
+    private void jButtonAcercaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAcercaMouseEntered
+        // TODO add your handling code here:
+        jButtonAcerca.setBackground(MainFrame.getThirdColor());
+        jButtonAcerca.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonAcercaMouseEntered
+
+    private void jButtonAcercaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAcercaMouseExited
+        // TODO add your handling code here:
+        jButtonAcerca.setBackground(MainFrame.getSecondColor());
+        jButtonAcerca.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonAcercaMouseExited
+
+    private void jButtonAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjustesMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
+    }//GEN-LAST:event_jButtonAjustesMouseClicked
+
+    private void jButtonAjustesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjustesMouseEntered
+        // TODO add your handling code here:
+        jButtonAjustes.setBackground(MainFrame.getThirdColor());
+        jButtonAjustes.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonAjustesMouseEntered
+
+    private void jButtonAjustesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjustesMouseExited
+        // TODO add your handling code here:
+        jButtonAjustes.setBackground(MainFrame.getSecondColor());
+        jButtonAjustes.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonAjustesMouseExited
+
+    private void jButtonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalirMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            MainFrame.showLogin();
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonSalirMouseClicked
+
+    private void jButtonSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalirMouseEntered
+        // TODO add your handling code here:
+        jButtonSalir.setBackground(MainFrame.getThirdColor());
+        jButtonSalir.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonSalirMouseEntered
+
+    private void jButtonSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalirMouseExited
+        // TODO add your handling code here:
+        jButtonSalir.setBackground(MainFrame.getSecondColor());
+        jButtonSalir.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonSalirMouseExited
+
     
     public void setColors(){
         try {
@@ -878,18 +869,19 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelAbout;
-    private javax.swing.JLabel jLabelChats;
-    private javax.swing.JLabel jLabelClasses;
-    private javax.swing.JLabel jLabelDates;
+    private javax.swing.JButton jButtonAcerca;
+    private javax.swing.JButton jButtonAjustes;
+    private javax.swing.JButton jButtonAvisos;
+    private javax.swing.JButton jButtonChats;
+    private javax.swing.JButton jButtonClases;
+    private javax.swing.JButton jButtonFechas;
+    private javax.swing.JButton jButtonGrupos;
+    private javax.swing.JButton jButtonInicio;
+    private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonMusica;
+    private javax.swing.JButton jButtonSalir;
+    private javax.swing.JButton jButtonTareas;
     private javax.swing.JLabel jLabelFechaHoraServidor;
-    private javax.swing.JLabel jLabelGroups;
-    private javax.swing.JLabel jLabelHomePage;
-    private javax.swing.JLabel jLabelHomeWorks;
-    private javax.swing.JLabel jLabelLogOut;
-    private javax.swing.JLabel jLabelMenu;
-    private javax.swing.JLabel jLabelMusic;
-    private javax.swing.JLabel jLabelNotices;
     private javax.swing.JLabel jLabelUserName;
     private static javax.swing.JLabel jLabelUserProfilePhoto;
     private javax.swing.JPanel jPanelBarraSuperior;

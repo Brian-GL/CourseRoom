@@ -49,8 +49,8 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelLogoInicio = new javax.swing.JLabel();
         jLabelTituloInicio = new javax.swing.JLabel();
         jLabelInformacionInicio = new javax.swing.JLabel();
-        jLabelInicioAutenticacion = new javax.swing.JLabel();
-        jLabelRegresar = new javax.swing.JLabel();
+        jButtonContinuarAutenticacion = new javax.swing.JButton();
+        jButtonRegresarLogin = new javax.swing.JButton();
         jPanelAutenticacion = new javax.swing.JPanel();
         jLabelLogoAutenticacion = new javax.swing.JLabel();
         jLabelNombre = new javax.swing.JLabel();
@@ -66,8 +66,8 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelInformacionRepetirPassword = new javax.swing.JLabel();
         jLabelInformacionCorreoElectronico = new javax.swing.JLabel();
         jLabelInformacionSeguridadPassword = new javax.swing.JLabel();
-        jLabelAutenticacionInicio = new javax.swing.JLabel();
-        jLabelAutenticacionDatosPersonales = new javax.swing.JLabel();
+        jButtonRegresarInicio = new javax.swing.JButton();
+        jButtonContinuarDatosPersonales = new javax.swing.JButton();
         jPanelDatosPersonales = new javax.swing.JPanel();
         jLabelLogoDatosPersonales = new javax.swing.JLabel();
         jLabelTituloDatosPersonales = new javax.swing.JLabel();
@@ -86,8 +86,8 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelDescripcion = new javax.swing.JLabel();
         jScrollPaneDescripcion = new javax.swing.JScrollPane();
         jTextAreaDescripcion = new javax.swing.JTextArea();
-        jLabelDatosPersonalesAutenticacion = new javax.swing.JLabel();
-        jLabelDatosPersonalesPerfil = new javax.swing.JLabel();
+        jButtonContinuarPerfil = new javax.swing.JButton();
+        jButtonRegresarAutenticacion = new javax.swing.JButton();
         jPanelPerfil = new javax.swing.JPanel();
         jLabelLogoPerfil = new javax.swing.JLabel();
         jLabelTituloPerfil = new javax.swing.JLabel();
@@ -95,8 +95,8 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jComboBoxPerfil = new javax.swing.JComboBox<>();
         jLabelImagenPerfil = new javax.swing.JLabel();
         jButtonCargarImagenPerfil = new javax.swing.JButton();
-        jLabelPerfilDatosPersonales = new javax.swing.JLabel();
-        jLabelContinuar = new javax.swing.JLabel();
+        jButtonContinuarDashboard = new javax.swing.JButton();
+        jButtonRegresarDatosPersonales = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
         setOpaque(false);
@@ -130,23 +130,33 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelInformacionInicio.setText("<html>\n\n<p style=\"text-align:center;\">\n\nA continuación, te pediremos algunos datos que requerimos<br>\nde tu parte para que puedas acceder y tener una cuenta de<br>\nacceso al sistema. No te preocupes,  no toma demasiado<br>\ntiempo y, sobre todo, tus datos están<br>\nseguros con nosotros.\n\n</p>\n\n</html>");
         jLabelInformacionInicio.setPreferredSize(new java.awt.Dimension(670, 104));
 
-        jLabelInicioAutenticacion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelInicioAutenticacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
-        jLabelInicioAutenticacion.setToolTipText("Ir Al Registro De Autenticación");
-        jLabelInicioAutenticacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelInicioAutenticacion.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonContinuarAutenticacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
+        jButtonContinuarAutenticacion.setBorder(null);
+        jButtonContinuarAutenticacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonContinuarAutenticacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelInicioAutenticacionMouseClicked(evt);
+                jButtonContinuarAutenticacionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonContinuarAutenticacionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonContinuarAutenticacionMouseExited(evt);
             }
         });
 
-        jLabelRegresar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jLabelRegresar.setToolTipText("Regresa A La Página De Login");
-        jLabelRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonRegresarLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresarLogin.setBorder(null);
+        jButtonRegresarLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegresarLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelRegresarMouseClicked(evt);
+                jButtonRegresarLoginMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonRegresarLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonRegresarLoginMouseExited(evt);
             }
         });
 
@@ -159,9 +169,9 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelLogoInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelInicioLayout.createSequentialGroup()
-                        .addComponent(jLabelRegresar)
+                        .addComponent(jButtonRegresarLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelInicioAutenticacion))
+                        .addComponent(jButtonContinuarAutenticacion))
                     .addComponent(jLabelTituloInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)
                     .addComponent(jLabelInformacionInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -175,10 +185,10 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addComponent(jLabelTituloInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(jLabelInformacionInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelRegresar)
-                    .addComponent(jLabelInicioAutenticacion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addGroup(jPanelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonContinuarAutenticacion, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonRegresarLogin, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -245,25 +255,33 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelInformacionSeguridadPassword.setText("información de la seguridad de la contraseña");
         jLabelInformacionSeguridadPassword.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabelAutenticacionInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelAutenticacionInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jLabelAutenticacionInicio.setToolTipText("Regresar Al Inicio Del Registro");
-        jLabelAutenticacionInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelAutenticacionInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelAutenticacionInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonRegresarInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresarInicio.setBorder(null);
+        jButtonRegresarInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegresarInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAutenticacionInicioMouseClicked(evt);
+                jButtonRegresarInicioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonRegresarInicioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonRegresarInicioMouseExited(evt);
             }
         });
 
-        jLabelAutenticacionDatosPersonales.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelAutenticacionDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
-        jLabelAutenticacionDatosPersonales.setToolTipText("Ir Al Registro De Datos Personales");
-        jLabelAutenticacionDatosPersonales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelAutenticacionDatosPersonales.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabelAutenticacionDatosPersonales.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonContinuarDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
+        jButtonContinuarDatosPersonales.setBorder(null);
+        jButtonContinuarDatosPersonales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonContinuarDatosPersonales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAutenticacionDatosPersonalesMouseClicked(evt);
+                jButtonContinuarDatosPersonalesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonContinuarDatosPersonalesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonContinuarDatosPersonalesMouseExited(evt);
             }
         });
 
@@ -273,9 +291,9 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
             jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAutenticacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelAutenticacionInicio)
+                .addComponent(jButtonRegresarInicio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelAutenticacionDatosPersonales)
+                .addComponent(jButtonContinuarDatosPersonales)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAutenticacionLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
@@ -315,7 +333,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addComponent(jLabelLogoAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelTituloAutenticacion)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 58, Short.MAX_VALUE)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
                     .addComponent(jLabelPassword))
@@ -340,10 +358,10 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelInformacionCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelInformacionRepetirPassword))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAutenticacionInicio)
-                    .addComponent(jLabelAutenticacionDatosPersonales))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonContinuarDatosPersonales, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonRegresarInicio, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -427,25 +445,33 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jTextAreaDescripcion.setMinimumSize(new java.awt.Dimension(332, 134));
         jScrollPaneDescripcion.setViewportView(jTextAreaDescripcion);
 
-        jLabelDatosPersonalesAutenticacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelDatosPersonalesAutenticacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jLabelDatosPersonalesAutenticacion.setToolTipText("Regresar Al Registro De Autenticación.");
-        jLabelDatosPersonalesAutenticacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelDatosPersonalesAutenticacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelDatosPersonalesAutenticacion.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonContinuarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
+        jButtonContinuarPerfil.setBorder(null);
+        jButtonContinuarPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonContinuarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelDatosPersonalesAutenticacionMouseClicked(evt);
+                jButtonContinuarPerfilMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonContinuarPerfilMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonContinuarPerfilMouseExited(evt);
             }
         });
 
-        jLabelDatosPersonalesPerfil.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelDatosPersonalesPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
-        jLabelDatosPersonalesPerfil.setToolTipText("Ir Al Registro De Perfil.");
-        jLabelDatosPersonalesPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelDatosPersonalesPerfil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelDatosPersonalesPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonRegresarAutenticacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresarAutenticacion.setBorder(null);
+        jButtonRegresarAutenticacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegresarAutenticacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelDatosPersonalesPerfilMouseClicked(evt);
+                jButtonRegresarAutenticacionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonRegresarAutenticacionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonRegresarAutenticacionMouseExited(evt);
             }
         });
 
@@ -455,9 +481,9 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
             jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelDatosPersonalesAutenticacion)
+                .addComponent(jButtonRegresarAutenticacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelDatosPersonalesPerfil)
+                .addComponent(jButtonContinuarPerfil)
                 .addContainerGap())
             .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
@@ -540,10 +566,10 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                         .addGap(0, 0, 0)
                         .addComponent(jTextFieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDatosPersonalesAutenticacion)
-                    .addComponent(jLabelDatosPersonalesPerfil))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonContinuarPerfil, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonRegresarAutenticacion, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -606,23 +632,33 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
             }
         });
 
-        jLabelPerfilDatosPersonales.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelPerfilDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jLabelPerfilDatosPersonales.setToolTipText("Regresar Al Registro De Datos Personales.");
-        jLabelPerfilDatosPersonales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelPerfilDatosPersonales.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonContinuarDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
+        jButtonContinuarDashboard.setBorder(null);
+        jButtonContinuarDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonContinuarDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelPerfilDatosPersonalesMouseClicked(evt);
+                jButtonContinuarDashboardMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonContinuarDashboardMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonContinuarDashboardMouseExited(evt);
             }
         });
 
-        jLabelContinuar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
-        jLabelContinuar.setToolTipText("Guardar Datos Y Completar Registro.");
-        jLabelContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelContinuar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonRegresarDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresarDatosPersonales.setBorder(null);
+        jButtonRegresarDatosPersonales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegresarDatosPersonales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelContinuarMouseClicked(evt);
+                jButtonRegresarDatosPersonalesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonRegresarDatosPersonalesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonRegresarDatosPersonalesMouseExited(evt);
             }
         });
 
@@ -646,9 +682,9 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                         .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelLogoPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanelPerfilLayout.createSequentialGroup()
-                                .addComponent(jLabelPerfilDatosPersonales)
+                                .addComponent(jButtonRegresarDatosPersonales)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelContinuar))
+                                .addComponent(jButtonContinuarDashboard))
                             .addComponent(jLabelTituloPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -668,10 +704,10 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonCargarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelContinuar)
-                    .addComponent(jLabelPerfilDatosPersonales))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGroup(jPanelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonContinuarDashboard, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonRegresarDatosPersonales, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -683,35 +719,6 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
     
     
     
-    private void jLabelInicioAutenticacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInicioAutenticacionMouseClicked
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jLabelInicioAutenticacionMouseClicked
-
-    private void jLabelRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegresarMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            this.setVisible(false);
-            MainFrame.showLogin();
-        }
-    }//GEN-LAST:event_jLabelRegresarMouseClicked
-
-    private void jLabelAutenticacionInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAutenticacionInicioMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelAutenticacionInicioMouseClicked
-
-    private void jLabelAutenticacionDatosPersonalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAutenticacionDatosPersonalesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelAutenticacionDatosPersonalesMouseClicked
-
-    private void jLabelDatosPersonalesAutenticacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDatosPersonalesAutenticacionMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelDatosPersonalesAutenticacionMouseClicked
-
-    private void jLabelDatosPersonalesPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDatosPersonalesPerfilMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelDatosPersonalesPerfilMouseClicked
-
     private void jButtonCargarImagenPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarImagenPerfilMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -751,15 +758,6 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         }
     }//GEN-LAST:event_jButtonCargarImagenPerfilMouseClicked
 
-    private void jLabelPerfilDatosPersonalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPerfilDatosPersonalesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelPerfilDatosPersonalesMouseClicked
-
-    private void jLabelContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelContinuarMouseClicked
-        // TODO add your handling code here:
-        MainFrame.showDashboard();
-    }//GEN-LAST:event_jLabelContinuarMouseClicked
-
     private void jButtonCargarImagenPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCargarImagenPerfilMouseEntered
         // TODO add your handling code here:
         jButtonCargarImagenPerfil.setBackground(MainFrame.getFirstColor());
@@ -771,6 +769,129 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jButtonCargarImagenPerfil.setBackground(MainFrame.getSecondColor());
         jButtonCargarImagenPerfil.setForeground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonCargarImagenPerfilMouseExited
+
+    private void jButtonContinuarAutenticacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarAutenticacionMouseEntered
+        // TODO add your handling code here:
+        jButtonContinuarAutenticacion.setBackground(MainFrame.getSecondColor());
+    }//GEN-LAST:event_jButtonContinuarAutenticacionMouseEntered
+
+    private void jButtonContinuarAutenticacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarAutenticacionMouseExited
+        // TODO add your handling code here:
+        jButtonContinuarAutenticacion.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonContinuarAutenticacionMouseExited
+
+    private void jButtonContinuarAutenticacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarAutenticacionMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonContinuarAutenticacionMouseClicked
+
+    private void jButtonRegresarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarLoginMouseClicked
+        // TODO add your handling code here:
+        
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            MainFrame.showLogin();
+        }
+        
+    }//GEN-LAST:event_jButtonRegresarLoginMouseClicked
+
+    private void jButtonRegresarLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarLoginMouseEntered
+        // TODO add your handling code here:
+        jButtonRegresarLogin.setBackground(MainFrame.getSecondColor());
+    }//GEN-LAST:event_jButtonRegresarLoginMouseEntered
+
+    private void jButtonRegresarLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarLoginMouseExited
+        // TODO add your handling code here:
+        jButtonRegresarLogin.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonRegresarLoginMouseExited
+
+    private void jButtonRegresarInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarInicioMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonRegresarInicioMouseClicked
+
+    private void jButtonRegresarInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarInicioMouseEntered
+        // TODO add your handling code here:
+        jButtonRegresarInicio.setBackground(MainFrame.getSecondColor());
+        
+    }//GEN-LAST:event_jButtonRegresarInicioMouseEntered
+
+    private void jButtonRegresarInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarInicioMouseExited
+        // TODO add your handling code here:
+        jButtonRegresarInicio.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonRegresarInicioMouseExited
+
+    private void jButtonContinuarDatosPersonalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarDatosPersonalesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonContinuarDatosPersonalesMouseClicked
+
+    private void jButtonContinuarDatosPersonalesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarDatosPersonalesMouseEntered
+        // TODO add your handling code here:
+        jButtonContinuarDatosPersonales.setBackground(MainFrame.getSecondColor());
+    }//GEN-LAST:event_jButtonContinuarDatosPersonalesMouseEntered
+
+    private void jButtonContinuarDatosPersonalesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarDatosPersonalesMouseExited
+        // TODO add your handling code here:
+        jButtonContinuarDatosPersonales.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonContinuarDatosPersonalesMouseExited
+
+    private void jButtonContinuarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarPerfilMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonContinuarPerfilMouseClicked
+
+    private void jButtonContinuarPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarPerfilMouseEntered
+        // TODO add your handling code here:
+        jButtonContinuarPerfil.setBackground(MainFrame.getSecondColor());
+    }//GEN-LAST:event_jButtonContinuarPerfilMouseEntered
+
+    private void jButtonContinuarPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarPerfilMouseExited
+        // TODO add your handling code here:
+        jButtonContinuarPerfil.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonContinuarPerfilMouseExited
+
+    private void jButtonRegresarAutenticacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarAutenticacionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRegresarAutenticacionMouseClicked
+
+    private void jButtonRegresarAutenticacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarAutenticacionMouseEntered
+        // TODO add your handling code here:
+        jButtonRegresarAutenticacion.setBackground(MainFrame.getSecondColor());
+    }//GEN-LAST:event_jButtonRegresarAutenticacionMouseEntered
+
+    private void jButtonRegresarAutenticacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarAutenticacionMouseExited
+        // TODO add your handling code here:
+        jButtonRegresarAutenticacion.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonRegresarAutenticacionMouseExited
+
+    private void jButtonContinuarDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarDashboardMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            MainFrame.showDashboard();
+        }
+    }//GEN-LAST:event_jButtonContinuarDashboardMouseClicked
+
+    private void jButtonContinuarDashboardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarDashboardMouseEntered
+        // TODO add your handling code here:
+        jButtonContinuarDashboard.setBackground(MainFrame.getSecondColor());
+    }//GEN-LAST:event_jButtonContinuarDashboardMouseEntered
+
+    private void jButtonContinuarDashboardMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarDashboardMouseExited
+        // TODO add your handling code here:
+        jButtonContinuarDashboard.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonContinuarDashboardMouseExited
+
+    private void jButtonRegresarDatosPersonalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarDatosPersonalesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRegresarDatosPersonalesMouseClicked
+
+    private void jButtonRegresarDatosPersonalesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarDatosPersonalesMouseEntered
+        // TODO add your handling code here:
+        jButtonRegresarDatosPersonales.setBackground(MainFrame.getSecondColor());
+    }//GEN-LAST:event_jButtonRegresarDatosPersonalesMouseEntered
+
+    private void jButtonRegresarDatosPersonalesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarDatosPersonalesMouseExited
+        // TODO add your handling code here:
+        jButtonRegresarDatosPersonales.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonRegresarDatosPersonalesMouseExited
 
     private void initMyComponents(){
         
@@ -818,12 +939,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jFormattedTextFieldTelefono.setBackground(MainFrame.getSecondColor());
         jFormattedTextFieldTelefono.setForeground(MainFrame.getFirstColor());
         jLabelApellidos.setForeground(MainFrame.getSecondColor());
-        jLabelAutenticacionDatosPersonales.setForeground(MainFrame.getSecondColor());
-        jLabelAutenticacionInicio.setForeground(MainFrame.getSecondColor());
-        jLabelContinuar.setForeground(MainFrame.getSecondColor());
         jLabelCorreoElectronico.setForeground(MainFrame.getSecondColor());
-        jLabelDatosPersonalesAutenticacion.setForeground(MainFrame.getSecondColor());
-        jLabelDatosPersonalesPerfil.setForeground(MainFrame.getSecondColor());
         jLabelDescripcion.setForeground(MainFrame.getSecondColor());
         jLabelFechaNacimiento.setForeground(MainFrame.getSecondColor());
         jLabelGenero.setForeground(MainFrame.getSecondColor());
@@ -833,7 +949,6 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelInformacionNombreDeUsuario.setForeground(MainFrame.getSecondColor());
         jLabelInformacionRepetirPassword.setForeground(MainFrame.getSecondColor());
         jLabelInformacionSeguridadPassword.setForeground(MainFrame.getSecondColor());
-        jLabelInicioAutenticacion.setForeground(MainFrame.getSecondColor());
         jLabelLocalidad.setForeground(MainFrame.getSecondColor());
         jLabelLogoAutenticacion.setForeground(MainFrame.getSecondColor());
         jLabelLogoDatosPersonales.setForeground(MainFrame.getSecondColor());
@@ -843,8 +958,6 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelNombres.setForeground(MainFrame.getSecondColor());
         jLabelPassword.setForeground(MainFrame.getSecondColor());
         jLabelPerfil.setForeground(MainFrame.getSecondColor());
-        jLabelPerfilDatosPersonales.setForeground(MainFrame.getSecondColor());
-        jLabelRegresar.setForeground(MainFrame.getSecondColor());
         jLabelRepetirPassword.setForeground(MainFrame.getSecondColor());
         jLabelTelefono.setForeground(MainFrame.getSecondColor());
         jLabelTituloAutenticacion.setForeground(MainFrame.getSecondColor());
@@ -852,22 +965,33 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelTituloInicio.setForeground(MainFrame.getSecondColor());
         jLabelTituloPerfil.setForeground(MainFrame.getSecondColor());
         
+        jButtonContinuarAutenticacion.setBackground(MainFrame.getFirstColor());
+        jButtonContinuarDashboard.setBackground(MainFrame.getFirstColor());
+        jButtonContinuarDatosPersonales.setBackground(MainFrame.getFirstColor());
+        jButtonContinuarPerfil.setBackground(MainFrame.getFirstColor());
+        jButtonRegresarAutenticacion.setBackground(MainFrame.getFirstColor());
+        jButtonRegresarDatosPersonales.setBackground(MainFrame.getFirstColor());
+        jButtonRegresarInicio.setBackground(MainFrame.getFirstColor());
+        jButtonRegresarLogin.setBackground(MainFrame.getFirstColor());
         
         noColor = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCargarImagenPerfil;
+    private javax.swing.JButton jButtonContinuarAutenticacion;
+    private javax.swing.JButton jButtonContinuarDashboard;
+    private javax.swing.JButton jButtonContinuarDatosPersonales;
+    private javax.swing.JButton jButtonContinuarPerfil;
+    private javax.swing.JButton jButtonRegresarAutenticacion;
+    private javax.swing.JButton jButtonRegresarDatosPersonales;
+    private javax.swing.JButton jButtonRegresarInicio;
+    private javax.swing.JButton jButtonRegresarLogin;
     private javax.swing.JComboBox<String> jComboBoxPerfil;
     private javax.swing.JFormattedTextField jFormattedTextFieldFechaNacimiento;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefono;
     private javax.swing.JLabel jLabelApellidos;
-    private javax.swing.JLabel jLabelAutenticacionDatosPersonales;
-    private javax.swing.JLabel jLabelAutenticacionInicio;
-    private javax.swing.JLabel jLabelContinuar;
     private javax.swing.JLabel jLabelCorreoElectronico;
-    private javax.swing.JLabel jLabelDatosPersonalesAutenticacion;
-    private javax.swing.JLabel jLabelDatosPersonalesPerfil;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelFechaNacimiento;
     private javax.swing.JLabel jLabelGenero;
@@ -877,7 +1001,6 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
     private javax.swing.JLabel jLabelInformacionNombreDeUsuario;
     private javax.swing.JLabel jLabelInformacionRepetirPassword;
     private javax.swing.JLabel jLabelInformacionSeguridadPassword;
-    private javax.swing.JLabel jLabelInicioAutenticacion;
     private javax.swing.JLabel jLabelLocalidad;
     private javax.swing.JLabel jLabelLogoAutenticacion;
     private javax.swing.JLabel jLabelLogoDatosPersonales;
@@ -887,8 +1010,6 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
     private javax.swing.JLabel jLabelNombres;
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelPerfil;
-    private javax.swing.JLabel jLabelPerfilDatosPersonales;
-    private javax.swing.JLabel jLabelRegresar;
     private javax.swing.JLabel jLabelRepetirPassword;
     private javax.swing.JLabel jLabelTelefono;
     private javax.swing.JLabel jLabelTituloAutenticacion;

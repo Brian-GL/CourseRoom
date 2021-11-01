@@ -19,6 +19,7 @@ import uk.co.caprica.vlcj.player.base.State;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -39,8 +40,9 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
         play = false;
         
         jLabelDate.setForeground(MainFrame.getFontColor());
-        jLabelSender.setForeground(MainFrame.getFontColor());
         jLabelDate.setBackground(MainFrame.getFirstColor());
+        
+        jLabelSender.setForeground(MainFrame.getFontColor());
         jLabelSender.setBackground(MainFrame.getFirstColor());
         
         jLabelDuration.setForeground(MainFrame.getSecondFontColor());
@@ -48,6 +50,8 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelTitle.setForeground(MainFrame.getSecondFontColor());
         jSliderProgress.setForeground(MainFrame.getSecondFontColor());
         jPanelControls.setBackground(MainFrame.getSecondColor());
+    
+    
         
         flag = true;
         embeddedMediaPlayerComponent = new EmbeddedMediaPlayerComponent();
@@ -56,6 +60,8 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
         embeddedMediaPlayerComponent.mediaPlayer().video().setAdjustVideo(true);
         jLabelTitle.setText(title);
         mrl = _mrl;
+        
+        
         
     }
 
@@ -68,7 +74,6 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelSender = new javax.swing.JLabel();
         jLabelDate = new javax.swing.JLabel();
         jPanelVideoContent = new javax.swing.JPanel();
         jPanelVideoView = new javax.swing.JPanel();
@@ -77,15 +82,12 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelTitle = new javax.swing.JLabel();
         jSliderProgress = new javax.swing.JSlider();
         jLabelDuration = new javax.swing.JLabel();
+        jLabelSender = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 520));
         setMinimumSize(new java.awt.Dimension(800, 520));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(800, 520));
-
-        jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelSender.setText("ALSOALSMAODLAOSLADOAA");
-        jLabelSender.setOpaque(true);
 
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -130,7 +132,7 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
                     .addGroup(jPanelControlsLayout.createSequentialGroup()
                         .addComponent(jLabelProgress)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSliderProgress, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+                        .addComponent(jSliderProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelDuration))
                     .addComponent(jLabelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -171,6 +173,11 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
                 .addGap(5, 5, 5))
         );
 
+        jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabelSender.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelSender.setText("AOLSMALDOEMRITMCODLA");
+        jLabelSender.setOpaque(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,8 +188,8 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
                     .addComponent(jPanelVideoContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelSender)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                        .addComponent(jLabelDate)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -190,8 +197,8 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSender)
-                    .addComponent(jLabelDate))
+                    .addComponent(jLabelDate)
+                    .addComponent(jLabelSender))
                 .addGap(0, 0, 0)
                 .addComponent(jPanelVideoContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

@@ -81,7 +81,6 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelEstado = new javax.swing.JLabel();
 
         setBackground(java.awt.Color.black);
-        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMaximumSize(new java.awt.Dimension(32767, 139));
         setMinimumSize(new java.awt.Dimension(1085, 139));
         setPreferredSize(new java.awt.Dimension(1085, 139));
@@ -191,7 +190,24 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements ColorInterface{
                     i += colorRandom.nextInt(large+1) + large;
                 }
 
-                
+                Color secondColor = firstColor;
+            
+                int iterations = 0;
+                if(colorList.size() > 1){
+                    
+                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
+                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        secondColor = colorList.get(position).second();
+                        iterations++;
+                        if(iterations > 25){
+                             while(firstColor.getRGB() == secondColor.getRGB()){
+                                position = colorRandom.nextInt((int)colorList.size()-1);
+                                secondColor = colorList.get(position).second();
+                            }
+                             break;
+                        }
+                    }
+                }
               
                 int red = firstColor.getRed();
                 Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
@@ -203,8 +219,7 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements ColorInterface{
                 jLabelFechaHoraAviso.setForeground(fontColor);
                 jLabelProvenenciaAviso.setForeground(fontColor);
                 this.setBackground(firstColor);
-                TitledBorder border = (TitledBorder)this.getBorder();
-                border.setTitleColor(fontColor);
+                this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
 
                 fontColor = null;
                 colorRandom = null;

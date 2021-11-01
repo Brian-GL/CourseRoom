@@ -68,12 +68,12 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jLabelInformacionSeguridadPassword = new javax.swing.JLabel();
         jLabelImagenPerfilAutenticacion = new javax.swing.JLabel();
         jButtonGuardarCambiosAutenticacion = new javax.swing.JButton();
-        jLabelRegresarAMiPerfil = new javax.swing.JLabel();
         jToggleButtonEditarNombreUsuario = new javax.swing.JToggleButton();
         jToggleButtonEditarCorreoElectronico = new javax.swing.JToggleButton();
         jToggleButtonEditarPassword = new javax.swing.JToggleButton();
         jButtonCargarImagenPerfil = new javax.swing.JButton();
         jToggleButtonEditarImagenPerfil = new javax.swing.JToggleButton();
+        jButtonRegresarPerfil = new javax.swing.JButton();
         jPanelDatosPersonales = new javax.swing.JPanel();
         jLabelNombres = new javax.swing.JLabel();
         jTextFieldNombres = new javax.swing.JTextField();
@@ -222,19 +222,6 @@ public class EditProfilePanel extends javax.swing.JPanel {
             }
         });
 
-        jLabelRegresarAMiPerfil.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabelRegresarAMiPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelRegresarAMiPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jLabelRegresarAMiPerfil.setToolTipText("Regresar A Mi Vista De Perfil");
-        jLabelRegresarAMiPerfil.setMaximumSize(new java.awt.Dimension(48, 48));
-        jLabelRegresarAMiPerfil.setMinimumSize(new java.awt.Dimension(48, 48));
-        jLabelRegresarAMiPerfil.setPreferredSize(new java.awt.Dimension(48, 48));
-        jLabelRegresarAMiPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelRegresarAMiPerfilMouseClicked(evt);
-            }
-        });
-
         jToggleButtonEditarNombreUsuario.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jToggleButtonEditarNombreUsuario.setText("Editar?");
         jToggleButtonEditarNombreUsuario.setMaximumSize(new java.awt.Dimension(80, 36));
@@ -279,6 +266,20 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jToggleButtonEditarImagenPerfil.setMinimumSize(new java.awt.Dimension(80, 36));
         jToggleButtonEditarImagenPerfil.setPreferredSize(new java.awt.Dimension(80, 36));
 
+        jButtonRegresarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresarPerfil.setBorder(null);
+        jButtonRegresarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRegresarPerfilMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonRegresarPerfilMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonRegresarPerfilMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelAutenticacionLayout = new javax.swing.GroupLayout(jPanelAutenticacion);
         jPanelAutenticacion.setLayout(jPanelAutenticacionLayout);
         jPanelAutenticacionLayout.setHorizontalGroup(
@@ -287,7 +288,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                        .addComponent(jLabelRegresarAMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonRegresarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonGuardarCambiosAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
@@ -359,12 +360,15 @@ public class EditProfilePanel extends javax.swing.JPanel {
                         .addComponent(jToggleButtonEditarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelImagenPerfilAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButtonEditarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jButtonCargarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 48, Short.MAX_VALUE)
-                .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelRegresarAMiPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonGuardarCambiosAutenticacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jButtonCargarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 48, Short.MAX_VALUE)
+                        .addComponent(jButtonGuardarCambiosAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonRegresarPerfil)))
                 .addContainerGap())
         );
 
@@ -763,15 +767,6 @@ public class EditProfilePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButtonGuardarCambiosDatosPersonalesMouseClicked
 
-    private void jLabelRegresarAMiPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegresarAMiPerfilMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            DashboardPanel.showInfoProfilePanel();
-        }
-            
-        
-    }//GEN-LAST:event_jLabelRegresarAMiPerfilMouseClicked
-
     private void jButtonGuardarCambiosAutenticacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosAutenticacionMouseClicked
         // TODO add your handling code here:
         
@@ -815,11 +810,29 @@ public class EditProfilePanel extends javax.swing.JPanel {
        jButtonGuardarCambiosDatosPersonales.setForeground(MainFrame.getFontColor());
     }//GEN-LAST:event_jButtonGuardarCambiosDatosPersonalesMouseExited
 
+    private void jButtonRegresarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarPerfilMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("infoProfilePanel");
+        }
+    }//GEN-LAST:event_jButtonRegresarPerfilMouseClicked
+
+    private void jButtonRegresarPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarPerfilMouseEntered
+        // TODO add your handling code here:
+        jButtonRegresarPerfil.setBackground(MainFrame.getSecondColor());
+    }//GEN-LAST:event_jButtonRegresarPerfilMouseEntered
+
+    private void jButtonRegresarPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarPerfilMouseExited
+        // TODO add your handling code here:
+        jButtonRegresarPerfil.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonRegresarPerfilMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCargarImagenPerfil;
     private javax.swing.JButton jButtonGuardarCambiosAutenticacion;
     private javax.swing.JButton jButtonGuardarCambiosDatosPersonales;
+    private javax.swing.JButton jButtonRegresarPerfil;
     private javax.swing.JComboBox<String> jComboBoxPerfil;
     private javax.swing.JFormattedTextField jFormattedTextFieldFechaNacimiento;
     private javax.swing.JFormattedTextField jFormattedTextFieldPromedio;
@@ -840,7 +853,6 @@ public class EditProfilePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelPerfil;
     private javax.swing.JLabel jLabelPromedio;
-    private javax.swing.JLabel jLabelRegresarAMiPerfil;
     private javax.swing.JLabel jLabelRepetirPassword;
     private javax.swing.JLabel jLabelTelefono;
     private javax.swing.JPanel jPanelAutenticacion;
@@ -880,6 +892,9 @@ public class EditProfilePanel extends javax.swing.JPanel {
         scaled.flush();
         scaled = null;
         icon = null;
+        
+        jPanelAutenticacion.setForeground(MainFrame.getFontColor());
+        jPanelDatosPersonales.setForeground(MainFrame.getFontColor());
         
         
     }

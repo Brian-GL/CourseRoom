@@ -12,9 +12,13 @@ import components.ImageFilePreview;
 import data.interfaces.DisposeInterface;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -22,6 +26,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  *
@@ -65,10 +70,15 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jPanelMembers = new javax.swing.JPanel();
         jLabelGroupClass = new javax.swing.JLabel();
         jLabelFechaCreacion = new javax.swing.JLabel();
-        jLabelReturn = new javax.swing.JLabel();
         jLabelMiembros = new javax.swing.JLabel();
+        jButtonRegresar = new javax.swing.JButton();
         jPanelGrupalChat = new javax.swing.JPanel();
-        jPanelTareas = new javax.swing.JPanel();
+        jPanelArchivos = new javax.swing.JPanel();
+        jScrollPaneArchivosCompartidos = new javax.swing.JScrollPane();
+        jPanelArchivosCompartidos = new javax.swing.JPanel();
+        jButtonCompartirArchivo = new javax.swing.JButton();
+        jComboBoxOrdenarArchivosCompartidos = new javax.swing.JComboBox<>();
+        jLabelOrdenarPor = new javax.swing.JLabel();
         jPanelPorHacer = new javax.swing.JPanel();
         jScrollPaneListaTareasPendientes = new javax.swing.JScrollPane();
         jPanelListaDeTareasPendientes = new javax.swing.JPanel();
@@ -125,14 +135,6 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jLabelFechaCreacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelFechaCreacion.setText("Creado El 22 De Octubre De 2021");
 
-        jLabelReturn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jLabelReturn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelReturnMouseClicked(evt);
-            }
-        });
-
         jLabelMiembros.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         jLabelMiembros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMiembros.setText("Miembros");
@@ -141,6 +143,21 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jLabelMiembros.setOpaque(true);
         jLabelMiembros.setPreferredSize(new java.awt.Dimension(416, 84));
 
+        jButtonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresar.setBorder(null);
+        jButtonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRegresarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonRegresarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonRegresarMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelAboutGroupLayout = new javax.swing.GroupLayout(jPanelAboutGroup);
         jPanelAboutGroup.setLayout(jPanelAboutGroupLayout);
         jPanelAboutGroupLayout.setHorizontalGroup(
@@ -148,19 +165,20 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
             .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelReturn)
                             .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addContainerGap()
+                                .addComponent(jButtonRegresar))
+                            .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabelGroupName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
                                     .addComponent(jLabelGroupClass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                        .addContainerGap(207, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAboutGroupLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 158, Short.MAX_VALUE)))
+                        .addGap(18, 18, Short.MAX_VALUE)))
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPaneMembers)
                     .addComponent(jLabelFechaCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
@@ -181,10 +199,10 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
                         .addComponent(jLabelGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(12, 12, 12)
                         .addComponent(jLabelGroupClass)
-                        .addGap(18, 25, Short.MAX_VALUE)
-                        .addComponent(jLabelReturn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addComponent(jButtonRegresar))
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
                         .addComponent(jScrollPaneMembers)
                         .addGap(18, 18, 18)
@@ -197,18 +215,64 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jPanelGrupalChat.setLayout(new java.awt.CardLayout());
         jTabbedPaneGrouping.addTab("Chat Grupal", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group_3.png")), jPanelGrupalChat); // NOI18N
 
-        javax.swing.GroupLayout jPanelTareasLayout = new javax.swing.GroupLayout(jPanelTareas);
-        jPanelTareas.setLayout(jPanelTareasLayout);
-        jPanelTareasLayout.setHorizontalGroup(
-            jPanelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1169, Short.MAX_VALUE)
+        jScrollPaneArchivosCompartidos.setBorder(null);
+        jScrollPaneArchivosCompartidos.setOpaque(false);
+
+        jPanelArchivosCompartidos.setOpaque(false);
+        jPanelArchivosCompartidos.setLayout(new javax.swing.BoxLayout(jPanelArchivosCompartidos, javax.swing.BoxLayout.PAGE_AXIS));
+        jScrollPaneArchivosCompartidos.setViewportView(jPanelArchivosCompartidos);
+
+        jButtonCompartirArchivo.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jButtonCompartirArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/submit.png"))); // NOI18N
+        jButtonCompartirArchivo.setText("Compartir Archivo");
+        jButtonCompartirArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCompartirArchivoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonCompartirArchivoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonCompartirArchivoMouseExited(evt);
+            }
+        });
+
+        jComboBoxOrdenarArchivosCompartidos.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jComboBoxOrdenarArchivosCompartidos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Tipo", "Fecha", "Miembro" }));
+
+        jLabelOrdenarPor.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabelOrdenarPor.setText("Ordenar Por");
+
+        javax.swing.GroupLayout jPanelArchivosLayout = new javax.swing.GroupLayout(jPanelArchivos);
+        jPanelArchivos.setLayout(jPanelArchivosLayout);
+        jPanelArchivosLayout.setHorizontalGroup(
+            jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelArchivosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneArchivosCompartidos)
+                    .addGroup(jPanelArchivosLayout.createSequentialGroup()
+                        .addComponent(jLabelOrdenarPor)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxOrdenarArchivosCompartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 650, Short.MAX_VALUE)
+                        .addComponent(jButtonCompartirArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
-        jPanelTareasLayout.setVerticalGroup(
-            jPanelTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 639, Short.MAX_VALUE)
+        jPanelArchivosLayout.setVerticalGroup(
+            jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelArchivosLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCompartirArchivo)
+                    .addComponent(jComboBoxOrdenarArchivosCompartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelOrdenarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneArchivosCompartidos, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jTabbedPaneGrouping.addTab("Tareas", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_4.png")), jPanelTareas); // NOI18N
+        jTabbedPaneGrouping.addTab("Archivos", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/file-upload.png")), jPanelArchivos); // NOI18N
 
         jScrollPaneListaTareasPendientes.setBorder(null);
         jScrollPaneListaTareasPendientes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -414,13 +478,6 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         }
     }//GEN-LAST:event_jLabelGroupClassMouseClicked
 
-    private void jLabelReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelReturnMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            DashboardPanel.showView("groupsPanel");
-        }
-    }//GEN-LAST:event_jLabelReturnMouseClicked
-
     private void jButtonAgregarTareaPendienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarTareaPendienteMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -443,6 +500,66 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         }
     }//GEN-LAST:event_jButtonAgregarTareaPendienteMouseClicked
 
+    private void jButtonCompartirArchivoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCompartirArchivoMouseExited
+        // TODO add your handling code here:
+        jButtonCompartirArchivo.setBackground(thirdColor);
+        jButtonCompartirArchivo.setForeground(thirdFontColor);
+    }//GEN-LAST:event_jButtonCompartirArchivoMouseExited
+
+    private void jButtonCompartirArchivoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCompartirArchivoMouseEntered
+        // TODO add your handling code here:
+        jButtonCompartirArchivo.setBackground(secondColor);
+        jButtonCompartirArchivo.setForeground(secondFontColor);
+        
+    }//GEN-LAST:event_jButtonCompartirArchivoMouseEntered
+
+    private void jButtonCompartirArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCompartirArchivoMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            attachFile();
+        }
+    }//GEN-LAST:event_jButtonCompartirArchivoMouseClicked
+
+    private void jButtonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            DashboardPanel.showView("groupsPanel");
+        }
+    }//GEN-LAST:event_jButtonRegresarMouseClicked
+
+    private void jButtonRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseEntered
+        // TODO add your handling code here:
+        jButtonRegresar.setBackground(secondColor);
+    }//GEN-LAST:event_jButtonRegresarMouseEntered
+
+    private void jButtonRegresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseExited
+        // TODO add your handling code here:
+        jButtonRegresar.setBackground(thirdColor);
+    }//GEN-LAST:event_jButtonRegresarMouseExited
+
+    private void attachFile(){
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setApproveButtonText("Open File");
+        fileChooser.setMultiSelectionEnabled(false);
+        fileChooser.doLayout();
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            if(file != null){
+
+                Faker faker = new Faker(new Locale("es","MX"));
+                
+                Date date = faker.date().birthday();
+                GroupSharedFilePanel groupSharedFilePanel = new GroupSharedFilePanel(file.getName(),"Nombre Del Usuario",date.toString(),secondColor,secondFontColor,thirdColor,thirdFontColor,fontColor);
+                
+                jPanelArchivosCompartidos.add(groupSharedFilePanel);
+
+            }
+        }
+    
+    }
     
     public void initMyComponents(Image groupImage){
         ImageIcon groupIcon = new ImageIcon(groupImage);
@@ -457,10 +574,16 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
        
         jScrollPaneMembers.getViewport().setOpaque(false);
         jScrollPaneMembers.getVerticalScrollBar().setUnitIncrement(15);
+        
         jScrollPaneListaTareasPendientes.getViewport().setOpaque(false);
         jScrollPaneListaTareasPendientes.getVerticalScrollBar().setUnitIncrement(15);
+        
+        jScrollPaneArchivosCompartidos.getViewport().setOpaque(false);
+        jScrollPaneArchivosCompartidos.getVerticalScrollBar().setUnitIncrement(15);
+        
         jTabbedPaneGrouping.setBackground(firstColor);
         jTabbedPaneGrouping.setForeground(fontColor);
+        
         groupIcon = null;
         
         Faker faker = new Faker();
@@ -494,8 +617,18 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
 
         jButtonAgregarTareaPendiente.setForeground(thirdFontColor);
         jButtonAgregarTareaPendiente.setBackground(thirdColor);
+        
+        jButtonCompartirArchivo.setForeground(thirdFontColor);
+        jButtonCompartirArchivo.setBackground(thirdColor);
+        
+        jLabelOrdenarPor.setForeground(fontColor);
+        
+        jComboBoxOrdenarArchivosCompartidos.setForeground(thirdFontColor);
+        jComboBoxOrdenarArchivosCompartidos.setBackground(thirdColor);
+        
         jLabelMiembroACargo.setForeground(fontColor);
         jLabelNombreTareaPendiente.setForeground(fontColor);
+        
         jLabelDescripcion.setForeground(fontColor);
         jLabelFechaFinalizacion.setForeground(fontColor);
         
@@ -525,7 +658,7 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
         jPanelGrupalChat.setBackground(firstColor);
         jPanelPorHacer.setBackground(firstColor);
         jPanelConfiguraciones.setBackground(firstColor);
-        jPanelTareas.setBackground(firstColor);
+        jPanelArchivos.setBackground(firstColor);
     }
  
     
@@ -533,8 +666,11 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgregarTareaPendiente;
+    private javax.swing.JButton jButtonCompartirArchivo;
     private javax.swing.JButton jButtonEditGroupImage;
+    private javax.swing.JButton jButtonRegresar;
     private javax.swing.JComboBox<String> jComboBoxMiembros;
+    private javax.swing.JComboBox<String> jComboBoxOrdenarArchivosCompartidos;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelFechaCreacion;
     private javax.swing.JLabel jLabelFechaFinalizacion;
@@ -545,15 +681,17 @@ public class GroupingPanel extends javax.swing.JPanel implements DisposeInterfac
     private javax.swing.JLabel jLabelMiembroACargo;
     private javax.swing.JLabel jLabelMiembros;
     private javax.swing.JLabel jLabelNombreTareaPendiente;
-    private javax.swing.JLabel jLabelReturn;
+    private javax.swing.JLabel jLabelOrdenarPor;
     private javax.swing.JPanel jPanelAboutGroup;
+    private javax.swing.JPanel jPanelArchivos;
+    private javax.swing.JPanel jPanelArchivosCompartidos;
     private javax.swing.JPanel jPanelConfiguraciones;
     private javax.swing.JPanel jPanelFechaFinalizacion;
     private javax.swing.JPanel jPanelGrupalChat;
     private javax.swing.JPanel jPanelListaDeTareasPendientes;
     private javax.swing.JPanel jPanelMembers;
     private javax.swing.JPanel jPanelPorHacer;
-    private javax.swing.JPanel jPanelTareas;
+    private javax.swing.JScrollPane jScrollPaneArchivosCompartidos;
     private javax.swing.JScrollPane jScrollPaneDescripcionTareaPendiente;
     private javax.swing.JScrollPane jScrollPaneListaTareasPendientes;
     private javax.swing.JScrollPane jScrollPaneMembers;

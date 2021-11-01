@@ -43,23 +43,25 @@ public class LoginPanel extends javax.swing.JPanel{
         jLabelCrearCuenta = new javax.swing.JLabel();
         jPasswordFieldPassword = new javax.swing.JPasswordField();
         jLabelNombreUsuario = new javax.swing.JLabel();
-        jTextFieldNombreDeUsuario = new javax.swing.JTextField();
+        jTextFieldNombreUsuario = new javax.swing.JTextField();
         jButtonIniciarSesion = new javax.swing.JButton();
         jLabelBrand = new javax.swing.JLabel();
         jLabelRecuperarCredenciales = new javax.swing.JLabel();
         jCheckBoxMostrarPassword = new javax.swing.JCheckBox();
-        jLabelLogo = new javax.swing.JLabel();
+        jLabelBrandImage = new javax.swing.JLabel();
         jLabelPassword = new javax.swing.JLabel();
-        jLabelImageUnsplash = new javax.swing.JLabel();
+        jLabelImagen = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1260, 670));
 
+        jLabelCrearCuenta.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         jLabelCrearCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCrearCuenta.setText("¿No Tienes Cuenta? Crea Tu Cuenta Aquí");
         jLabelCrearCuenta.setToolTipText("Crea Tu Cuenta Aquí");
         jLabelCrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCrearCuenta.setOpaque(true);
         jLabelCrearCuenta.setPreferredSize(new java.awt.Dimension(430, 22));
         jLabelCrearCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -78,10 +80,10 @@ public class LoginPanel extends javax.swing.JPanel{
         jLabelNombreUsuario.setMinimumSize(new java.awt.Dimension(430, 30));
         jLabelNombreUsuario.setPreferredSize(new java.awt.Dimension(430, 30));
 
-        jTextFieldNombreDeUsuario.setFont(new java.awt.Font("Gadugi", 0, 25)); // NOI18N
-        jTextFieldNombreDeUsuario.setToolTipText("Ingresa Aquí Tu Nombre De Usuario");
-        jTextFieldNombreDeUsuario.setMinimumSize(new java.awt.Dimension(430, 45));
-        jTextFieldNombreDeUsuario.setPreferredSize(new java.awt.Dimension(430, 45));
+        jTextFieldNombreUsuario.setFont(new java.awt.Font("Gadugi", 0, 25)); // NOI18N
+        jTextFieldNombreUsuario.setToolTipText("Ingresa Aquí Tu Nombre De Usuario");
+        jTextFieldNombreUsuario.setMinimumSize(new java.awt.Dimension(430, 45));
+        jTextFieldNombreUsuario.setPreferredSize(new java.awt.Dimension(430, 45));
 
         jButtonIniciarSesion.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         jButtonIniciarSesion.setText(" Iniciar Sesión ");
@@ -112,10 +114,12 @@ public class LoginPanel extends javax.swing.JPanel{
             }
         });
 
+        jLabelRecuperarCredenciales.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         jLabelRecuperarCredenciales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelRecuperarCredenciales.setText("¿Olvidaste Tus Credenciales? Recupera Aquí");
         jLabelRecuperarCredenciales.setToolTipText("Recuperar Credenciales");
         jLabelRecuperarCredenciales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelRecuperarCredenciales.setOpaque(true);
         jLabelRecuperarCredenciales.setPreferredSize(new java.awt.Dimension(430, 22));
         jLabelRecuperarCredenciales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -137,11 +141,11 @@ public class LoginPanel extends javax.swing.JPanel{
             }
         });
 
-        jLabelLogo.setBackground(new java.awt.Color(14, 30, 64));
-        jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLogo.setToolTipText("CourseRoom Logo");
-        jLabelLogo.setMinimumSize(new java.awt.Dimension(150, 125));
-        jLabelLogo.setPreferredSize(new java.awt.Dimension(400, 125));
+        jLabelBrandImage.setBackground(new java.awt.Color(14, 30, 64));
+        jLabelBrandImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelBrandImage.setToolTipText("CourseRoom Logo");
+        jLabelBrandImage.setMinimumSize(new java.awt.Dimension(150, 125));
+        jLabelBrandImage.setPreferredSize(new java.awt.Dimension(400, 125));
 
         jLabelPassword.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelPassword.setText("<html>\n<p style=\"text-align:center;\">\n Contraseña\n</p>\n</html>");
@@ -149,40 +153,46 @@ public class LoginPanel extends javax.swing.JPanel{
         jLabelPassword.setMinimumSize(new java.awt.Dimension(430, 30));
         jLabelPassword.setPreferredSize(new java.awt.Dimension(430, 30));
 
-        jLabelImageUnsplash.setBackground(java.awt.Color.black);
+        jLabelImagen.setBackground(java.awt.Color.black);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
-                    .addComponent(jButtonIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabelRecuperarCredenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabelCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabelBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jCheckBoxMostrarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelImageUnsplash, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(8, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelBrandImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                            .addComponent(jButtonIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabelBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jCheckBoxMostrarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelRecuperarCredenciales, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                            .addComponent(jLabelCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jLabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addComponent(jLabelBrandImage, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
                 .addComponent(jLabelNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(jTextFieldNombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addComponent(jTextFieldNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
                 .addComponent(jLabelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
@@ -192,13 +202,13 @@ public class LoginPanel extends javax.swing.JPanel{
                 .addGap(7, 7, 7)
                 .addComponent(jButtonIniciarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelRecuperarCredenciales, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabelCrearCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addGap(10, 10, 10)
-                .addComponent(jLabelBrand, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                .addComponent(jLabelRecuperarCredenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelBrand, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
-            .addComponent(jLabelImageUnsplash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,15 +272,15 @@ public class LoginPanel extends javax.swing.JPanel{
     
     private void initMyComponents(){
         
-        jLabelLogo.setIcon(MainFrame.getLogoImage());
+        jLabelBrandImage.setIcon(MainFrame.getLogoImage());
         
         System.out.println("Login -> Getting Image From https://loremflickr.com/644/720/university,school/all");
         try {
             URL imageURL = new URL("https://loremflickr.com/644/720/university,school/all");
             ImageIcon imageIcon = new ImageIcon(imageURL);
-            jLabelImageUnsplash.setIcon(imageIcon);
+            jLabelImagen.setIcon(imageIcon);
             String tooltip = "Image from " + imageURL.getHost();
-            jLabelImageUnsplash.setToolTipText(tooltip);
+            jLabelImagen.setToolTipText(tooltip);
             imageIcon.getImage().flush();
             imageIcon = null;
             imageURL = null;
@@ -288,16 +298,21 @@ public class LoginPanel extends javax.swing.JPanel{
         jLabelNombreUsuario.setForeground(MainFrame.getSecondColor());
         jLabelPassword.setForeground(MainFrame.getSecondColor());
         
-        jTextFieldNombreDeUsuario.setBackground(MainFrame.getSecondColor());
-        jTextFieldNombreDeUsuario.setForeground(MainFrame.getFirstColor());
-        jTextFieldNombreDeUsuario.setCaretColor(MainFrame.getFirstColor());
+        jTextFieldNombreUsuario.setBackground(MainFrame.getSecondColor());
+        jTextFieldNombreUsuario.setForeground(MainFrame.getFirstColor());
+        jTextFieldNombreUsuario.setCaretColor(MainFrame.getFirstColor());
         
         jPasswordFieldPassword.setBackground(MainFrame.getSecondColor());
         jPasswordFieldPassword.setForeground(MainFrame.getFirstColor());
         jPasswordFieldPassword.setCaretColor(MainFrame.getFirstColor());
         
-        jLabelRecuperarCredenciales.setForeground(MainFrame.getSecondColor());
-        jLabelCrearCuenta.setForeground(MainFrame.getSecondColor());
+        jLabelRecuperarCredenciales.setBackground(MainFrame.getSecondColor());
+        jLabelCrearCuenta.setBackground(MainFrame.getSecondColor());
+        
+        jLabelRecuperarCredenciales.setForeground(MainFrame.getFirstColor());
+        jLabelCrearCuenta.setForeground(MainFrame.getFirstColor());
+        
+        
         jLabelBrand.setForeground(MainFrame.getSecondColor());
         
         jButtonIniciarSesion.setBackground(MainFrame.getSecondColor());
@@ -312,13 +327,13 @@ public class LoginPanel extends javax.swing.JPanel{
     private javax.swing.JButton jButtonIniciarSesion;
     private javax.swing.JCheckBox jCheckBoxMostrarPassword;
     private javax.swing.JLabel jLabelBrand;
+    private javax.swing.JLabel jLabelBrandImage;
     private javax.swing.JLabel jLabelCrearCuenta;
-    private javax.swing.JLabel jLabelImageUnsplash;
-    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelImagen;
     private javax.swing.JLabel jLabelNombreUsuario;
     private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelRecuperarCredenciales;
     private javax.swing.JPasswordField jPasswordFieldPassword;
-    private javax.swing.JTextField jTextFieldNombreDeUsuario;
+    private javax.swing.JTextField jTextFieldNombreUsuario;
     // End of variables declaration//GEN-END:variables
 }

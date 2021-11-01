@@ -1877,7 +1877,6 @@ public final class MusicPanel extends javax.swing.JPanel implements ColorInterfa
                         colorList.push_back(1, color);
                     }
 
-                    color = null;
                     i+= colorRandom.nextInt(large+1) + large;
                 }
 

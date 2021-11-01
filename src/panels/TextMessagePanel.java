@@ -6,6 +6,7 @@
 package panels;
 import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -19,13 +20,14 @@ public class TextMessagePanel extends javax.swing.JPanel implements DisposeInter
         jLabelSender.setText(sender);
         jTextAreaMessage.setText(message);
         jLabelDate.setForeground(MainFrame.getFontColor());
-        jLabelSender.setForeground(MainFrame.getFontColor());
         jLabelDate.setBackground(MainFrame.getFirstColor());
+        jLabelSender.setForeground(MainFrame.getFontColor());
         jLabelSender.setBackground(MainFrame.getFirstColor());
         jTextAreaMessage.setForeground(MainFrame.getSecondFontColor());
         jTextAreaMessage.setBackground(MainFrame.getSecondColor());
-        sender = message = date = null;
   
+        
+        sender = message = date = null;
     }
 
     /**
@@ -37,44 +39,48 @@ public class TextMessagePanel extends javax.swing.JPanel implements DisposeInter
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelSender = new javax.swing.JLabel();
         jLabelDate = new javax.swing.JLabel();
         jScrollPaneMessage = new javax.swing.JScrollPane();
         jTextAreaMessage = new javax.swing.JTextArea();
+        jLabelSender = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(800, 185));
-        setMinimumSize(new java.awt.Dimension(800, 185));
+        setMaximumSize(new java.awt.Dimension(800, 150));
+        setMinimumSize(new java.awt.Dimension(800, 150));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(800, 185));
-
-        jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelSender.setText("USERNAME_10APSL0192L");
-        jLabelSender.setOpaque(true);
+        setPreferredSize(new java.awt.Dimension(800, 150));
 
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelDate.setText("MIÉRCOLES 31 DE OCTUBRE DE 20201 - 10:00 P.M");
         jLabelDate.setOpaque(true);
 
+        jScrollPaneMessage.setBorder(null);
         jScrollPaneMessage.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jTextAreaMessage.setColumns(20);
         jTextAreaMessage.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
         jTextAreaMessage.setRows(1);
+        jTextAreaMessage.setText("Hola\nComo\nEstas\nKaren");
+        jTextAreaMessage.setBorder(null);
         jScrollPaneMessage.setViewportView(jTextAreaMessage);
+
+        jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabelSender.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelSender.setText("AISMAOLSOALDOAMSIMAD");
+        jLabelSender.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPaneMessage)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelSender, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelSender)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jLabelDate)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -82,11 +88,11 @@ public class TextMessagePanel extends javax.swing.JPanel implements DisposeInter
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSender)
-                    .addComponent(jLabelDate))
+                    .addComponent(jLabelDate)
+                    .addComponent(jLabelSender))
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5))
+                .addComponent(jScrollPaneMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

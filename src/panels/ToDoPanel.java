@@ -5,6 +5,7 @@
  */
 package panels;
 
+import courseroom.MainFrame;
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.SwingUtilities;
@@ -35,10 +36,7 @@ public class ToDoPanel extends javax.swing.JPanel {
         jToggleButtonFinalizado.setForeground(secondFontColor);
         jToggleButtonFinalizado.setBackground(secondColor);
         
-        TitledBorder border = (TitledBorder)this.getBorder();
-        border.setTitleColor(fontColor);
-        
-        
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
     }
 
     /**
@@ -57,7 +55,6 @@ public class ToDoPanel extends javax.swing.JPanel {
         jScrollPaneDescripcion = new javax.swing.JScrollPane();
         jTextAreaDescripcion = new javax.swing.JTextArea();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMaximumSize(new java.awt.Dimension(32767, 188));
         setMinimumSize(new java.awt.Dimension(717, 188));
         setPreferredSize(new java.awt.Dimension(717, 188));
@@ -98,7 +95,7 @@ public class ToDoPanel extends javax.swing.JPanel {
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelFechaTerminacionTareaPorHacer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
                     .addComponent(jLabelNombreTareaPorHacer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

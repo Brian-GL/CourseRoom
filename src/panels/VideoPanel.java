@@ -5,11 +5,11 @@
  */
 package panels;
 
+import courseroom.MainFrame;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import javax.swing.ImageIcon;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import uk.co.caprica.vlcj.media.MediaRef;
@@ -35,6 +35,13 @@ public class VideoPanel extends javax.swing.JPanel {
        
         embeddedMediaPlayerComponent = new EmbeddedMediaPlayerComponent();
         jPanelVideoView.add("videoView",embeddedMediaPlayerComponent.videoSurfaceComponent());
+        
+        jLabelDuracionTotal.setForeground(MainFrame.getFirstColor());
+        jLabelProgreso.setForeground(MainFrame.getFirstColor());
+        jLabelTitulo.setForeground(MainFrame.getFirstColor());
+        jSliderProgreso.setBackground(MainFrame.getFirstColor());
+        jSliderProgreso.setForeground(MainFrame.getFontColor());
+        
         
         setPlayerEvents();
     }

@@ -58,24 +58,24 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel implements Di
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelLogo = new javax.swing.JLabel();
+        jLabelBrandImagen = new javax.swing.JLabel();
         jLabelTitulo = new javax.swing.JLabel();
         jLabelFrase = new javax.swing.JLabel();
         jLabelCorreoElectronico = new javax.swing.JLabel();
         jTextFieldCorreoElectronico = new javax.swing.JTextField();
         jButtonRecuperarCredenciales = new javax.swing.JButton();
-        jLabelRegresar = new javax.swing.JLabel();
+        jButtonRegresar = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1260, 670));
 
-        jLabelLogo.setBackground(new java.awt.Color(14, 30, 64));
-        jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLogo.setToolTipText("CourseRoom Logo");
-        jLabelLogo.setMaximumSize(new java.awt.Dimension(567, 125));
-        jLabelLogo.setMinimumSize(new java.awt.Dimension(567, 125));
-        jLabelLogo.setPreferredSize(new java.awt.Dimension(567, 125));
+        jLabelBrandImagen.setBackground(new java.awt.Color(14, 30, 64));
+        jLabelBrandImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelBrandImagen.setToolTipText("CourseRoom Logo");
+        jLabelBrandImagen.setMaximumSize(new java.awt.Dimension(567, 125));
+        jLabelBrandImagen.setMinimumSize(new java.awt.Dimension(567, 125));
+        jLabelBrandImagen.setPreferredSize(new java.awt.Dimension(567, 125));
 
         jLabelTitulo.setFont(new java.awt.Font("Gadugi", 1, 28)); // NOI18N
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -122,17 +122,18 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel implements Di
             }
         });
 
-        jLabelRegresar.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabelRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jLabelRegresar.setToolTipText("Regresa A La Página De Login");
-        jLabelRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelRegresar.setMaximumSize(new java.awt.Dimension(48, 48));
-        jLabelRegresar.setMinimumSize(new java.awt.Dimension(48, 48));
-        jLabelRegresar.setPreferredSize(new java.awt.Dimension(48, 48));
-        jLabelRegresar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jLabelRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresar.setBorder(null);
+        jButtonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelRegresarMouseClicked(evt);
+                jButtonRegresarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonRegresarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonRegresarMouseExited(evt);
             }
         });
 
@@ -141,38 +142,37 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel implements Di
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(336, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonRecuperarCredenciales, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
-                            .addComponent(jLabelFrase, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(336, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelBrandImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonRecuperarCredenciales, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+                    .addComponent(jLabelFrase, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(337, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                .addComponent(jLabelBrandImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 19, Short.MAX_VALUE)
                 .addComponent(jLabelFrase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 19, Short.MAX_VALUE)
                 .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(jButtonRecuperarCredenciales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonRegresar)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -192,15 +192,6 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel implements Di
 
     }//GEN-LAST:event_jButtonRecuperarCredencialesMouseClicked
 
-    private void jLabelRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegresarMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            this.setVisible(false);
-            MainFrame.showLogin();
-        }
-        
-    }//GEN-LAST:event_jLabelRegresarMouseClicked
-
     private void jButtonRecuperarCredencialesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRecuperarCredencialesMouseEntered
         // TODO add your handling code here:
         jButtonRecuperarCredenciales.setBackground(MainFrame.getFirstColor());
@@ -213,6 +204,24 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel implements Di
         jButtonRecuperarCredenciales.setBackground(MainFrame.getSecondColor());
         jButtonRecuperarCredenciales.setForeground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonRecuperarCredencialesMouseExited
+
+    private void jButtonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            this.setVisible(false);
+            MainFrame.showLogin();
+        }
+    }//GEN-LAST:event_jButtonRegresarMouseClicked
+
+    private void jButtonRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseEntered
+        // TODO add your handling code here:
+        jButtonRegresar.setBackground(MainFrame.getSecondColor());
+    }//GEN-LAST:event_jButtonRegresarMouseEntered
+
+    private void jButtonRegresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseExited
+        // TODO add your handling code here:
+        jButtonRegresar.setBackground(MainFrame.getFirstColor());
+    }//GEN-LAST:event_jButtonRegresarMouseExited
 
     private boolean esCorreoElectronico(String value){
         Pattern pattern = Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE);
@@ -341,7 +350,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel implements Di
             System.out.println("main.RecuperarCredencialesController.initialize(): " + ex.getMessage());
         }
         
-        jLabelLogo.setIcon(MainFrame.getLogoImage());
+        jLabelBrandImagen.setIcon(MainFrame.getLogoImage());
         jLabelCorreoElectronico.setForeground(MainFrame.getSecondColor());
         jLabelFrase.setForeground(MainFrame.getSecondColor());
         jLabelTitulo.setForeground(MainFrame.getSecondColor());
@@ -349,16 +358,17 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel implements Di
         jTextFieldCorreoElectronico.setForeground(MainFrame.getFirstColor());
         jTextFieldCorreoElectronico.setCaretColor(MainFrame.getFirstColor());
         jButtonRecuperarCredenciales.setBackground(MainFrame.getSecondColor());
+        jButtonRegresar.setBackground(MainFrame.getFirstColor());
         jButtonRecuperarCredenciales.setForeground(MainFrame.getFirstColor());
     }
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRecuperarCredenciales;
+    private javax.swing.JButton jButtonRegresar;
+    private javax.swing.JLabel jLabelBrandImagen;
     private javax.swing.JLabel jLabelCorreoElectronico;
     private javax.swing.JLabel jLabelFrase;
-    private javax.swing.JLabel jLabelLogo;
-    private javax.swing.JLabel jLabelRegresar;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JTextField jTextFieldCorreoElectronico;
     // End of variables declaration//GEN-END:variables

@@ -7,9 +7,9 @@ package panels;
 
 import com.github.javafaker.Faker;
 import components.ImageFilePreview;
+import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -30,13 +30,17 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface{
 
+    private Color firstColor, secondColor, fontColor;
     
     public ChatingPanel(String name, Color _firstColor, Color _fontColor, Color _secondColor) {
         initComponents();
+        firstColor = _firstColor;
+        secondColor = _secondColor;
+        fontColor = _fontColor;
         jScrollPaneChatsCenter.getViewport().setOpaque(false);
         jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
         jLabelChatName.setText(name);
-        paintMyComponents(_firstColor,_fontColor,_secondColor);
+        paintMyComponents();
     }
 
     /**
@@ -49,15 +53,15 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
     private void initComponents() {
 
         jPanelChatTop = new javax.swing.JPanel();
-        jLabelBack = new javax.swing.JLabel();
         jLabelChatName = new javax.swing.JLabel();
+        jButtonRegresar = new javax.swing.JButton();
         jPanelChatBottom = new javax.swing.JPanel();
-        jLabelAttachFile = new javax.swing.JLabel();
-        jLabelSendMessage = new javax.swing.JLabel();
-        jLabelAttatchVideo = new javax.swing.JLabel();
-        jLabelAttachAudio = new javax.swing.JLabel();
-        jLabelAttachImage = new javax.swing.JLabel();
         jTextFieldMessage = new javax.swing.JTextField();
+        jButtonEnviarArchivo = new javax.swing.JButton();
+        jButtonEnviarVideo = new javax.swing.JButton();
+        jButtonEnviarAudio = new javax.swing.JButton();
+        jButtonEnviarImagen = new javax.swing.JButton();
+        jButtonEnviarTexto = new javax.swing.JButton();
         jScrollPaneChatsCenter = new javax.swing.JScrollPane();
         jPanelChatCenter = new javax.swing.JPanel();
 
@@ -70,21 +74,25 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
         jPanelChatTop.setMinimumSize(new java.awt.Dimension(1085, 50));
         jPanelChatTop.setPreferredSize(new java.awt.Dimension(1085, 50));
 
-        jLabelBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jLabelBack.setMaximumSize(new java.awt.Dimension(48, 48));
-        jLabelBack.setMinimumSize(new java.awt.Dimension(48, 48));
-        jLabelBack.setPreferredSize(new java.awt.Dimension(48, 48));
-        jLabelBack.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelBackMouseClicked(evt);
-            }
-        });
-
         jLabelChatName.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelChatName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelChatName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/chat_1.png"))); // NOI18N
         jLabelChatName.setText("Nombre Del Chat O La Persona Con Quien Se Chatea");
+
+        jButtonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresar.setBorder(null);
+        jButtonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRegresarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonRegresarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonRegresarMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelChatTopLayout = new javax.swing.GroupLayout(jPanelChatTop);
         jPanelChatTop.setLayout(jPanelChatTopLayout);
@@ -92,67 +100,103 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
             jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelChatTopLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jLabelChatName)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButtonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jLabelChatName, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(439, Short.MAX_VALUE))
         );
         jPanelChatTopLayout.setVerticalGroup(
             jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelChatTopLayout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addGroup(jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelChatName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(1, 1, 1))
+                .addGroup(jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelChatName, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonRegresar))
+                .addContainerGap())
         );
 
         jPanelChatBottom.setMinimumSize(new java.awt.Dimension(1085, 70));
         jPanelChatBottom.setPreferredSize(new java.awt.Dimension(1085, 70));
 
-        jLabelAttachFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/attachment.png"))); // NOI18N
-        jLabelAttachFile.setToolTipText("Enviar Archivo");
-        jLabelAttachFile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAttachFileMouseClicked(evt);
-            }
-        });
-
-        jLabelSendMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/send.png"))); // NOI18N
-        jLabelSendMessage.setToolTipText("Enviar Mensaje De Texto");
-        jLabelSendMessage.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelSendMessageMouseClicked(evt);
-            }
-        });
-
-        jLabelAttatchVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clapperboard.png"))); // NOI18N
-        jLabelAttatchVideo.setToolTipText("Enviar Video");
-        jLabelAttatchVideo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAttatchVideoMouseClicked(evt);
-            }
-        });
-
-        jLabelAttachAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/microphone_1.png"))); // NOI18N
-        jLabelAttachAudio.setToolTipText("Enviar Audio");
-        jLabelAttachAudio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAttachAudioMouseClicked(evt);
-            }
-        });
-
-        jLabelAttachImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit-video.png"))); // NOI18N
-        jLabelAttachImage.setToolTipText("Enviar Imagen");
-        jLabelAttachImage.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAttachImageMouseClicked(evt);
-            }
-        });
-
+        jTextFieldMessage.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jTextFieldMessage.setText("Hola");
         jTextFieldMessage.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldMessageKeyPressed(evt);
+            }
+        });
+
+        jButtonEnviarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/attachment.png"))); // NOI18N
+        jButtonEnviarArchivo.setBorder(null);
+        jButtonEnviarArchivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEnviarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEnviarArchivoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonEnviarArchivoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonEnviarArchivoMouseExited(evt);
+            }
+        });
+
+        jButtonEnviarVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clapperboard.png"))); // NOI18N
+        jButtonEnviarVideo.setBorder(null);
+        jButtonEnviarVideo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEnviarVideo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEnviarVideoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonEnviarVideoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonEnviarVideoMouseExited(evt);
+            }
+        });
+
+        jButtonEnviarAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/microphone.png"))); // NOI18N
+        jButtonEnviarAudio.setBorder(null);
+        jButtonEnviarAudio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEnviarAudio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEnviarAudioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonEnviarAudioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonEnviarAudioMouseExited(evt);
+            }
+        });
+
+        jButtonEnviarImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit-video.png"))); // NOI18N
+        jButtonEnviarImagen.setBorder(null);
+        jButtonEnviarImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEnviarImagen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEnviarImagenMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonEnviarImagenMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonEnviarImagenMouseExited(evt);
+            }
+        });
+
+        jButtonEnviarTexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/send.png"))); // NOI18N
+        jButtonEnviarTexto.setBorder(null);
+        jButtonEnviarTexto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEnviarTexto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEnviarTextoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonEnviarTextoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonEnviarTextoMouseExited(evt);
             }
         });
 
@@ -161,18 +205,18 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
         jPanelChatBottomLayout.setHorizontalGroup(
             jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelChatBottomLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabelAttachFile)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelAttatchVideo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelAttachAudio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelAttachImage)
+                .addContainerGap()
+                .addComponent(jButtonEnviarArchivo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonEnviarVideo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonEnviarAudio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonEnviarImagen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldMessage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelSendMessage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonEnviarTexto)
                 .addContainerGap())
         );
         jPanelChatBottomLayout.setVerticalGroup(
@@ -180,12 +224,12 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
             .addGroup(jPanelChatBottomLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelAttachFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelSendMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelAttatchVideo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelAttachAudio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelAttachImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldMessage)))
+                    .addComponent(jButtonEnviarArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldMessage)
+                    .addComponent(jButtonEnviarVideo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEnviarAudio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEnviarImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEnviarTexto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jScrollPaneChatsCenter.setOpaque(false);
@@ -216,12 +260,7 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabelBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBackMouseClicked
-        // TODO add your handling code here:
-        DashboardPanel.showView("chatsPanel");
-    }//GEN-LAST:event_jLabelBackMouseClicked
-
-    private void SendMessage(){
+    private void sendMessage(){
         String text = jTextFieldMessage.getText();
         if(!text.isEmpty() && !text.isBlank()){
             Faker faker = new Faker(new Locale("es","MX"));
@@ -233,164 +272,254 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
             jTextFieldMessage.setText("");
         }
     }
-    private void jLabelSendMessageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSendMessageMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-           SendMessage();
-        }
-    }//GEN-LAST:event_jLabelSendMessageMouseClicked
-
-    private void jLabelAttachFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAttachFileMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            fileChooser.setApproveButtonText("Open File");
-            fileChooser.setMultiSelectionEnabled(false);
-            fileChooser.doLayout();
-            int result = fileChooser.showOpenDialog(this);
-
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File file = fileChooser.getSelectedFile();
-                if(file != null){
-                    
-                    Faker faker = new Faker(new Locale("es","MX"));
-                    String sender = faker.dune().character();
-                    String date = faker.backToTheFuture().date();
-                    FileMessagePanel fileMessagePanel = new FileMessagePanel(sender,date,file);
-                    fileMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
-                    jPanelChatCenter.add(fileMessagePanel);
-                  
-                }
-            }
-        }
-        
-    }//GEN-LAST:event_jLabelAttachFileMouseClicked
-
-    private void jLabelAttachImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAttachImageMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setAccessory(new ImageFilePreview(fileChooser));
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "png", "jpg", "jpeg", "bmp");
-            fileChooser.addChoosableFileFilter(filter);
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            fileChooser.setAcceptAllFileFilterUsed(true);
-            fileChooser.setApproveButtonText("Open Image File");
-            fileChooser.setMultiSelectionEnabled(false);
-            int result = fileChooser.showOpenDialog(this);
-
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File file = fileChooser.getSelectedFile();
-                if(file != null){
-                    
-                    try {
-                        Image openImage = ImageIO.read(file);
-                        Faker faker = new Faker(new Locale("es","MX"));
-                        String sender = faker.dune().character();
-                        String date = faker.backToTheFuture().date();
-                        ImageMessagePanel imageMessagePanel = new ImageMessagePanel(sender,date,openImage,file.getName());
-                        imageMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,600));
-                        jPanelChatCenter.add(imageMessagePanel);
-                        openImage.flush();
-                        openImage = null;
-                        file = null;
-                    } catch (IOException ex) {
-                        Logger.getLogger(ChatingPanel.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                  
-                }
-            }
-
-            filter = null;
-        }
-    }//GEN-LAST:event_jLabelAttachImageMouseClicked
-
-    private void jLabelAttatchVideoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAttatchVideoMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Video Files", "mp4", "mkv", "wmv", "3gp","avi");
-            fileChooser.addChoosableFileFilter(filter);
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            fileChooser.setAcceptAllFileFilterUsed(true);
-            fileChooser.setApproveButtonText("Open Video File");
-            fileChooser.setMultiSelectionEnabled(false);
-            int result = fileChooser.showOpenDialog(this);
-
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File file = fileChooser.getSelectedFile();
-                if(file != null){
-                    Faker faker = new Faker(new Locale("es","MX"));
-                    String sender = faker.dune().character();
-                    String date = faker.backToTheFuture().date();
-                    VideoMessagePanel videoMessagePanel  = new VideoMessagePanel(sender,date,file.getAbsolutePath(),file.getName());
-                    videoMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,569));
-                    jPanelChatCenter.add(videoMessagePanel);
-                    file = null;
-                }
-            }
-
-            filter = null;
-        }
-    }//GEN-LAST:event_jLabelAttatchVideoMouseClicked
-
-    private void jLabelAttachAudioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAttachAudioMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Audio Files", "mp3", "flac", "ogg", "m4a");
-            fileChooser.addChoosableFileFilter(filter);
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            fileChooser.setAcceptAllFileFilterUsed(true);
-            fileChooser.setApproveButtonText("Open Music File");
-            fileChooser.setMultiSelectionEnabled(false);
-            int result = fileChooser.showOpenDialog(this);
-
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File file = fileChooser.getSelectedFile();
-                if(file != null){
-                    Faker faker = new Faker(new Locale("es","MX"));
-                    String sender = faker.dune().character();
-                    String date = faker.backToTheFuture().date();
-                    AudioMessagePanel audioMessagePanel  = new AudioMessagePanel(sender,date,file.getAbsolutePath(),file.getName());
-                    audioMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,474));
-                    jPanelChatCenter.add(audioMessagePanel);
-                    file = null;
-                }
-            }
-
-            filter = null;
-        }
-    }//GEN-LAST:event_jLabelAttachAudioMouseClicked
-
     private void jTextFieldMessageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMessageKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            SendMessage();
+            sendMessage();
         }
     }//GEN-LAST:event_jTextFieldMessageKeyPressed
 
-    public void paintMyComponents(Color firstColor, Color fontColor, Color secondColor){
+    private void jButtonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+           DashboardPanel.showView("chatsPanel");
+        }
+    }//GEN-LAST:event_jButtonRegresarMouseClicked
+
+    private void jButtonRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseEntered
+        // TODO add your handling code here:
+        jButtonRegresar.setBackground(secondColor);
+    }//GEN-LAST:event_jButtonRegresarMouseEntered
+
+    private void jButtonRegresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseExited
+        // TODO add your handling code here:
+        jButtonRegresar.setBackground(firstColor);
+    }//GEN-LAST:event_jButtonRegresarMouseExited
+
+    private void jButtonEnviarArchivoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarArchivoMouseExited
+        // TODO add your handling code here:
+        jButtonEnviarArchivo.setBackground(secondColor);
+    }//GEN-LAST:event_jButtonEnviarArchivoMouseExited
+
+    private void jButtonEnviarArchivoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarArchivoMouseEntered
+        // TODO add your handling code here:
+        jButtonEnviarArchivo.setBackground(firstColor);
+    }//GEN-LAST:event_jButtonEnviarArchivoMouseEntered
+
+    private void jButtonEnviarArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarArchivoMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            attachFile();
+        }
+    }//GEN-LAST:event_jButtonEnviarArchivoMouseClicked
+
+    private void jButtonEnviarVideoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarVideoMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            attachVideo();
+        }
+    }//GEN-LAST:event_jButtonEnviarVideoMouseClicked
+
+    private void jButtonEnviarVideoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarVideoMouseEntered
+        // TODO add your handling code here:
+        jButtonEnviarVideo.setBackground(firstColor);
+    }//GEN-LAST:event_jButtonEnviarVideoMouseEntered
+
+    private void jButtonEnviarVideoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarVideoMouseExited
+        // TODO add your handling code here:
+        jButtonEnviarVideo.setBackground(secondColor);
+    }//GEN-LAST:event_jButtonEnviarVideoMouseExited
+
+    private void jButtonEnviarAudioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarAudioMouseClicked
+        // TODO add your handling code here
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            attachAudio();
+        }
+    }//GEN-LAST:event_jButtonEnviarAudioMouseClicked
+
+    private void jButtonEnviarAudioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarAudioMouseEntered
+        // TODO add your handling code here:
+        jButtonEnviarAudio.setBackground(firstColor);
+    }//GEN-LAST:event_jButtonEnviarAudioMouseEntered
+
+    private void jButtonEnviarAudioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarAudioMouseExited
+        // TODO add your handling code here:
+        jButtonEnviarAudio.setBackground(secondColor);
+    }//GEN-LAST:event_jButtonEnviarAudioMouseExited
+
+    private void jButtonEnviarImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarImagenMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            attachImagen();
+        }
+    }//GEN-LAST:event_jButtonEnviarImagenMouseClicked
+
+    private void jButtonEnviarImagenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarImagenMouseEntered
+        // TODO add your handling code here:
+        jButtonEnviarImagen.setBackground(firstColor);
+    }//GEN-LAST:event_jButtonEnviarImagenMouseEntered
+
+    private void jButtonEnviarImagenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarImagenMouseExited
+        // TODO add your handling code here:
+        jButtonEnviarImagen.setBackground(secondColor);
+    }//GEN-LAST:event_jButtonEnviarImagenMouseExited
+
+    private void jButtonEnviarTextoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            sendMessage();
+        }
+    }//GEN-LAST:event_jButtonEnviarTextoMouseClicked
+
+    private void jButtonEnviarTextoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoMouseEntered
+        // TODO add your handling code here:
+        jButtonEnviarTexto.setBackground(firstColor);
+    }//GEN-LAST:event_jButtonEnviarTextoMouseEntered
+
+    private void jButtonEnviarTextoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoMouseExited
+        // TODO add your handling code here:
+        jButtonEnviarTexto.setBackground(secondColor);
+    }//GEN-LAST:event_jButtonEnviarTextoMouseExited
+
+    private void attachFile(){
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setApproveButtonText("Open File");
+        fileChooser.setMultiSelectionEnabled(false);
+        fileChooser.doLayout();
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            if(file != null){
+
+                Faker faker = new Faker(new Locale("es","MX"));
+                String sender = faker.dune().character();
+                String date = faker.backToTheFuture().date();
+                FileMessagePanel fileMessagePanel = new FileMessagePanel(sender,date,file);
+                fileMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
+                jPanelChatCenter.add(fileMessagePanel);
+
+            }
+        }
+    
+    }
+            
+    private void attachVideo(){
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Video Files", "mp4", "mkv", "wmv", "3gp","avi");
+        fileChooser.addChoosableFileFilter(filter);
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(true);
+        fileChooser.setApproveButtonText("Open Video File");
+        fileChooser.setMultiSelectionEnabled(false);
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            if(file != null){
+                Faker faker = new Faker(new Locale("es","MX"));
+                String sender = faker.dune().character();
+                String date = faker.backToTheFuture().date();
+                VideoMessagePanel videoMessagePanel  = new VideoMessagePanel(sender,date,file.getAbsolutePath(),file.getName());
+                videoMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,569));
+                jPanelChatCenter.add(videoMessagePanel);
+                file = null;
+            }
+        }
+
+        filter = null;
+    }
+    
+    private void attachImagen(){
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setAccessory(new ImageFilePreview(fileChooser));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "png", "jpg", "jpeg", "bmp");
+        fileChooser.addChoosableFileFilter(filter);
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(true);
+        fileChooser.setApproveButtonText("Open Image File");
+        fileChooser.setMultiSelectionEnabled(false);
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            if(file != null){
+
+                try {
+                    Image openImage = ImageIO.read(file);
+                    Faker faker = new Faker(new Locale("es","MX"));
+                    String sender = faker.dune().character();
+                    String date = faker.backToTheFuture().date();
+                    ImageMessagePanel imageMessagePanel = new ImageMessagePanel(sender,date,openImage,file.getName());
+                    imageMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,600));
+                    jPanelChatCenter.add(imageMessagePanel);
+                    openImage.flush();
+                    openImage = null;
+                    file = null;
+                } catch (IOException ex) {
+                    Logger.getLogger(ChatingPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        }
+
+        filter = null;
+    }
+    
+    private void attachAudio(){
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Audio Files", "mp3", "flac", "ogg", "m4a");
+        fileChooser.addChoosableFileFilter(filter);
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(true);
+        fileChooser.setApproveButtonText("Open Music File");
+        fileChooser.setMultiSelectionEnabled(false);
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            if(file != null){
+                Faker faker = new Faker(new Locale("es","MX"));
+                String sender = faker.dune().character();
+                String date = faker.backToTheFuture().date();
+                AudioMessagePanel audioMessagePanel  = new AudioMessagePanel(sender,date,file.getAbsolutePath(),file.getName());
+                audioMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,474));
+                jPanelChatCenter.add(audioMessagePanel);
+                file = null;
+            }
+        }
+
+        filter = null;
+    }
+    
+    public void paintMyComponents(){
         
-        jLabelBack.setForeground(fontColor);
+        jButtonRegresar.setBackground(firstColor);
         jLabelChatName.setForeground(fontColor);
         jTextFieldMessage.setBackground(firstColor);
         jTextFieldMessage.setForeground(fontColor);
         jLabelChatName.setForeground(fontColor);
         jPanelChatBottom.setBackground(secondColor);
         jPanelChatTop.setBackground(firstColor);
+        
+        jButtonEnviarArchivo.setBackground(secondColor);
+        jButtonEnviarAudio.setBackground(secondColor);
+        jButtonEnviarImagen.setBackground(secondColor);
+        jButtonEnviarTexto.setBackground(secondColor);
+        jButtonEnviarVideo.setBackground(secondColor);
+        
     }
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelAttachAudio;
-    private javax.swing.JLabel jLabelAttachFile;
-    private javax.swing.JLabel jLabelAttachImage;
-    private javax.swing.JLabel jLabelAttatchVideo;
-    private javax.swing.JLabel jLabelBack;
+    private javax.swing.JButton jButtonEnviarArchivo;
+    private javax.swing.JButton jButtonEnviarAudio;
+    private javax.swing.JButton jButtonEnviarImagen;
+    private javax.swing.JButton jButtonEnviarTexto;
+    private javax.swing.JButton jButtonEnviarVideo;
+    private javax.swing.JButton jButtonRegresar;
     private javax.swing.JLabel jLabelChatName;
-    private javax.swing.JLabel jLabelSendMessage;
     private javax.swing.JPanel jPanelChatBottom;
     private javax.swing.JPanel jPanelChatCenter;
     private javax.swing.JPanel jPanelChatTop;

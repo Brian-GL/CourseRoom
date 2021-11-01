@@ -9,6 +9,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -20,16 +21,14 @@ public class ImageMessagePanel extends javax.swing.JPanel implements DisposeInte
         initComponents();
         jLabelDate.setText(date);
         jLabelSender.setText(sender);
-        jLabelImageName.setText(filename);
         
         jLabelDate.setForeground(MainFrame.getFontColor());
-        jLabelSender.setForeground(MainFrame.getFontColor());
         jLabelDate.setBackground(MainFrame.getFirstColor());
+        jLabelSender.setForeground(MainFrame.getFontColor());
         jLabelSender.setBackground(MainFrame.getFirstColor());
         
-        jLabelImageName.setForeground(MainFrame.getSecondFontColor());
-        jLabelImageName.setBackground(MainFrame.getSecondColor());
         jLabelImageMessage.setBackground(MainFrame.getSecondColor());
+        jLabelImageMessage.setToolTipText(filename);
         
         Image resizedImage =  image.getScaledInstance(789, 500, Image.SCALE_DEFAULT);
         ImageIcon icon = new ImageIcon(resizedImage);
@@ -39,6 +38,7 @@ public class ImageMessagePanel extends javax.swing.JPanel implements DisposeInte
         resizedImage.flush();
         resizedImage = null;
         icon = null;
+        
         
     }
 
@@ -51,19 +51,14 @@ public class ImageMessagePanel extends javax.swing.JPanel implements DisposeInte
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelSender = new javax.swing.JLabel();
         jLabelImageMessage = new javax.swing.JLabel();
         jLabelDate = new javax.swing.JLabel();
-        jLabelImageName = new javax.swing.JLabel();
+        jLabelSender = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(800, 560));
-        setMinimumSize(new java.awt.Dimension(800, 560));
+        setMaximumSize(new java.awt.Dimension(800, 535));
+        setMinimumSize(new java.awt.Dimension(800, 535));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(800, 560));
-
-        jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelSender.setText("USERNAME_10JAKCOLAOQ");
-        jLabelSender.setOpaque(true);
+        setPreferredSize(new java.awt.Dimension(800, 535));
 
         jLabelImageMessage.setBackground(java.awt.Color.black);
         jLabelImageMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -77,10 +72,10 @@ public class ImageMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelDate.setText("MIÉRCOLES 30 DE SEPTIEMBRE DE 20201 - 22:22 A.M");
         jLabelDate.setOpaque(true);
 
-        jLabelImageName.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        jLabelImageName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelImageName.setText("Image Name");
-        jLabelImageName.setOpaque(true);
+        jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabelSender.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelSender.setText("OALDPAMDOLAMDONALODP");
+        jLabelSender.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,29 +84,23 @@ public class ImageMessagePanel extends javax.swing.JPanel implements DisposeInte
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelImageMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabelSender, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelImageMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(5, 5, 5))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelImageName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(jLabelSender)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSender)
-                    .addComponent(jLabelDate))
-                .addComponent(jLabelImageMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDate)
+                    .addComponent(jLabelSender))
                 .addGap(0, 0, 0)
-                .addComponent(jLabelImageName)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addComponent(jLabelImageMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -119,7 +108,6 @@ public class ImageMessagePanel extends javax.swing.JPanel implements DisposeInte
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelImageMessage;
-    private javax.swing.JLabel jLabelImageName;
     private javax.swing.JLabel jLabelSender;
     // End of variables declaration//GEN-END:variables
 

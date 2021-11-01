@@ -59,7 +59,6 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
         jTextPaneNotice = new javax.swing.JTextPane();
         jLabelHora = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMinimumSize(new java.awt.Dimension(160, 100));
         setName("CalendarDay"); // NOI18N
         setPreferredSize(new java.awt.Dimension(160, 100));
@@ -108,15 +107,14 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
                 .addComponent(jLabelDayNumber))
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jScrollPaneNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addComponent(jScrollPaneNotice, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                 .addGap(4, 4, 4))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     public void paintMyComponents(Color background, Color foreground){
         this.setBackground(background);
-        TitledBorder border = (TitledBorder)this.getBorder();
-        border.setTitleColor(foreground);
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(foreground));
         jLabelDayNumber.setForeground(foreground);
         jLabelHora.setForeground(foreground);
         jTextPaneNotice.setForeground(foreground);

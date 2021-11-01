@@ -21,7 +21,6 @@ import data.interfaces.ColorInterface;
 import data.structures.Pair;
 import java.awt.image.PixelGrabber;
 import javax.swing.Icon;
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -81,7 +80,6 @@ public class MemberPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelMemberLastName = new javax.swing.JLabel();
         jLabelMemberUserName = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMaximumSize(new java.awt.Dimension(32767, 230));
         setMinimumSize(new java.awt.Dimension(365, 230));
         setPreferredSize(new java.awt.Dimension(365, 230));
@@ -196,8 +194,7 @@ public class MemberPanel extends javax.swing.JPanel implements ColorInterface{
                 jLabelMemberUserName.setForeground(getFontColor());
                 jLabelMemberName.setForeground(getFontColor());
                 this.setBackground(getFirstColor());
-                TitledBorder border = (TitledBorder)this.getBorder();
-                border.setTitleColor(fontColor);
+                this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
 
                 colorRandom = null;
                 colorList = null;

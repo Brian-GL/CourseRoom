@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
+import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -57,8 +58,8 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelSender.setText(sender);
         play = false;
         jLabelDate.setForeground(MainFrame.getFontColor());
-        jLabelSender.setForeground(MainFrame.getFontColor());
         jLabelDate.setBackground(MainFrame.getFirstColor());
+        jLabelSender.setForeground(MainFrame.getFontColor());
         jLabelSender.setBackground(MainFrame.getFirstColor());
         jPanelAudioInfo.setBackground(MainFrame.getSecondColor());
         jLabelDuration.setForeground(MainFrame.getSecondFontColor());
@@ -67,13 +68,16 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelArtist.setForeground(MainFrame.getSecondFontColor());
         jLabelAlbum.setForeground(MainFrame.getSecondFontColor());
         jSliderProgress.setForeground(MainFrame.getSecondFontColor());
-        this.setBackground(MainFrame.getSecondColor());
+       
+        
+        
         play_icon = new ImageIcon(getClass().getResource("/resources/icons/play-button.png"));
         pause_icon = new ImageIcon(getClass().getResource("/resources/icons/pause.png"));
         flag = true;
         audioPlayerComponent = new AudioPlayerComponent();
         setPlayerEvents();
         jLabelTitle.setText(title);
+        
         mrl = _mrl;
         loadMetadata();
     }
@@ -87,7 +91,6 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelSender = new javax.swing.JLabel();
         jLabelDate = new javax.swing.JLabel();
         jPanelAudioInfo = new javax.swing.JPanel();
         jLabelCoverArt = new javax.swing.JLabel();
@@ -99,16 +102,13 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
         jSliderProgress = new javax.swing.JSlider();
         jLabelDuration = new javax.swing.JLabel();
         jLabelStop = new javax.swing.JLabel();
+        jLabelSender = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 432));
         setMinimumSize(new java.awt.Dimension(800, 432));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(800, 432));
         setRequestFocusEnabled(false);
-
-        jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelSender.setText("USERNAME__102PALSOLA");
-        jLabelSender.setOpaque(true);
 
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -175,14 +175,14 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
         jPanelAudioInfoLayout.setHorizontalGroup(
             jPanelAudioInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAudioInfoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(jLabelCoverArt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 35, Short.MAX_VALUE)
                 .addGroup(jPanelAudioInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelAudioInfoLayout.createSequentialGroup()
                         .addComponent(jLabelProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(jSliderProgress, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                        .addComponent(jSliderProgress, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelArtist, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -194,7 +194,7 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelPlayPause)
                         .addGap(96, 96, 96)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanelAudioInfoLayout.setVerticalGroup(
             jPanelAudioInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,6 +222,11 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
                 .addContainerGap())
         );
 
+        jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabelSender.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelSender.setText("AMILDOALODLAOLSMDFFR");
+        jLabelSender.setOpaque(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -230,7 +235,7 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelSender, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelSender)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelDate))
                     .addComponent(jPanelAudioInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -241,8 +246,8 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSender)
-                    .addComponent(jLabelDate))
+                    .addComponent(jLabelDate)
+                    .addComponent(jLabelSender))
                 .addGap(0, 0, 0)
                 .addComponent(jPanelAudioInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
