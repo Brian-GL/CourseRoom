@@ -66,6 +66,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="MI&#xc9;RCOLES 31 DE DICIEMBRE DE 2021 -  10:40 P.M"/>
+        <Property name="toolTipText" type="java.lang.String" value="Fecha &amp; Hora Del Mensaje"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
@@ -155,6 +156,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#xc1;lbum"/>
+            <Property name="toolTipText" type="java.lang.String" value="&#xc1;lbum"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelArtist">
@@ -164,6 +166,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Artista"/>
+            <Property name="toolTipText" type="java.lang.String" value="Artista"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelPlayPause">
@@ -211,6 +214,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Titulo"/>
+            <Property name="toolTipText" type="java.lang.String" value="Titulo Del Archivo De Audio"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderProgress">
@@ -271,6 +275,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="AMILDOALODLAOLSMDFFR"/>
+        <Property name="toolTipText" type="java.lang.String" value="Emisor Del Mensaje"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>

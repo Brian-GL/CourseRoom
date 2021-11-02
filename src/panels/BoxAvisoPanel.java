@@ -95,6 +95,7 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelProvenenciaAviso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelProvenenciaAviso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/notification.png"))); // NOI18N
         jLabelProvenenciaAviso.setText("Provenencia Del Aviso");
+        jLabelProvenenciaAviso.setToolTipText("Provenencia Del Aviso");
         jLabelProvenenciaAviso.setMaximumSize(new java.awt.Dimension(488, 32));
         jLabelProvenenciaAviso.setMinimumSize(new java.awt.Dimension(488, 32));
         jLabelProvenenciaAviso.setPreferredSize(new java.awt.Dimension(488, 32));
@@ -104,6 +105,7 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelDescripcionAviso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelDescripcionAviso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/announcement.png"))); // NOI18N
         jLabelDescripcionAviso.setText("Descripción Corta Del Aviso");
+        jLabelDescripcionAviso.setToolTipText("Descripción Corta Del Aviso");
         jLabelDescripcionAviso.setMaximumSize(new java.awt.Dimension(417, 22));
         jLabelDescripcionAviso.setMinimumSize(new java.awt.Dimension(417, 22));
         jLabelDescripcionAviso.setPreferredSize(new java.awt.Dimension(417, 22));
@@ -112,13 +114,15 @@ public class BoxAvisoPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelFechaHoraAviso.setForeground(java.awt.Color.white);
         jLabelFechaHoraAviso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelFechaHoraAviso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/time-limit.png"))); // NOI18N
-        jLabelFechaHoraAviso.setText("10/08/2021 05:42 P.M - Hace 18 Horas");
+        jLabelFechaHoraAviso.setText("10/08/2021 05:42 P.M");
+        jLabelFechaHoraAviso.setToolTipText("Fecha & Hora Del Aviso");
 
         jLabelEstado.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jLabelEstado.setForeground(java.awt.Color.white);
         jLabelEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/read.png"))); // NOI18N
         jLabelEstado.setText("No Leído");
+        jLabelEstado.setToolTipText("Estado Del Aviso");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

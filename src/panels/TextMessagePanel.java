@@ -52,6 +52,7 @@ public class TextMessagePanel extends javax.swing.JPanel implements DisposeInter
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelDate.setText("MIÉRCOLES 31 DE OCTUBRE DE 20201 - 10:00 P.M");
+        jLabelDate.setToolTipText("Fecha & Hora Del Mensaje");
         jLabelDate.setOpaque(true);
 
         jScrollPaneMessage.setBorder(null);
@@ -67,6 +68,7 @@ public class TextMessagePanel extends javax.swing.JPanel implements DisposeInter
         jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelSender.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelSender.setText("AISMAOLSOALDOAMSIMAD");
+        jLabelSender.setToolTipText("Emisor Del Mensaje");
         jLabelSender.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

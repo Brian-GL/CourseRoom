@@ -97,6 +97,7 @@
           <Image iconType="3" name="/resources/icons/notification.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Provenencia Del Aviso"/>
+        <Property name="toolTipText" type="java.lang.String" value="Provenencia Del Aviso"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[488, 32]"/>
         </Property>
@@ -121,6 +122,7 @@
           <Image iconType="3" name="/resources/icons/announcement.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Descripci&#xf3;n Corta Del Aviso"/>
+        <Property name="toolTipText" type="java.lang.String" value="Descripci&#xf3;n Corta Del Aviso"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[417, 22]"/>
         </Property>
@@ -144,7 +146,8 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/time-limit.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="10/08/2021 05:42 P.M - Hace 18 Horas"/>
+        <Property name="text" type="java.lang.String" value="10/08/2021 05:42 P.M"/>
+        <Property name="toolTipText" type="java.lang.String" value="Fecha &amp; Hora Del Aviso"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelEstado">
@@ -160,6 +163,7 @@
           <Image iconType="3" name="/resources/icons/read.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="No Le&#xed;do"/>
+        <Property name="toolTipText" type="java.lang.String" value="Estado Del Aviso"/>
       </Properties>
     </Component>
   </SubComponents>

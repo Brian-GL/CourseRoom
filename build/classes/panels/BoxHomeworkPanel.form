@@ -93,6 +93,7 @@
           <Image iconType="3" name="/resources/icons/course.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Clase Que Pertenece La Tarea"/>
+        <Property name="toolTipText" type="java.lang.String" value="Clase Que Pertenece La Tarea"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelNombreTarea">
@@ -105,6 +106,7 @@
           <Image iconType="3" name="/resources/icons/homework_2.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nombre De La Tarea"/>
+        <Property name="toolTipText" type="java.lang.String" value="Nombre De La Tarea"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelFechaDeEntrega">
@@ -117,6 +119,7 @@
           <Image iconType="3" name="/resources/icons/homework_1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Fecha De Entrega"/>
+        <Property name="toolTipText" type="java.lang.String" value="Fecha De Entrega"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelTipoDeTarea">
@@ -128,6 +131,7 @@
           <Image iconType="3" name="/resources/icons/writing.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tipo De Tarea"/>
+        <Property name="toolTipText" type="java.lang.String" value="Tipo De Tarea"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelEstado">
@@ -139,6 +143,7 @@
           <Image iconType="3" name="/resources/icons/homework_3.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Estado De La Tarea"/>
+        <Property name="toolTipText" type="java.lang.String" value="Estado De La Tarea"/>
       </Properties>
     </Component>
   </SubComponents>

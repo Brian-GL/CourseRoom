@@ -137,6 +137,7 @@ public class DatesPanel extends javax.swing.JPanel implements DisposeInterface{
         jLabelNextMonth.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         jLabelNextMonth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNextMonth.setText(">");
+        jLabelNextMonth.setToolTipText("Mes Siguiente");
         jLabelNextMonth.setMaximumSize(new java.awt.Dimension(30, 630));
         jLabelNextMonth.setMinimumSize(new java.awt.Dimension(30, 630));
         jLabelNextMonth.setPreferredSize(new java.awt.Dimension(30, 630));
@@ -149,6 +150,7 @@ public class DatesPanel extends javax.swing.JPanel implements DisposeInterface{
         jLabelPreviousMonth.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         jLabelPreviousMonth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPreviousMonth.setText("<");
+        jLabelPreviousMonth.setToolTipText("Mes Anterior");
         jLabelPreviousMonth.setMaximumSize(new java.awt.Dimension(30, 630));
         jLabelPreviousMonth.setMinimumSize(new java.awt.Dimension(30, 630));
         jLabelPreviousMonth.setPreferredSize(new java.awt.Dimension(30, 630));
@@ -162,6 +164,7 @@ public class DatesPanel extends javax.swing.JPanel implements DisposeInterface{
         jLabelMonth.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelMonth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMonth.setText("Octubre");
+        jLabelMonth.setToolTipText("Mes Actual");
         jLabelMonth.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

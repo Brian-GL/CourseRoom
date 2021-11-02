@@ -3,14 +3,14 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[32767, 71]"/>
+      <Dimension value="[32767, 65]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1070, 71]"/>
+      <Dimension value="[1070, 65]"/>
     </Property>
     <Property name="opaque" type="boolean" value="false"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1070, 71]"/>
+      <Dimension value="[1070, 65]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -31,20 +31,20 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabelTipoArchivoImagen" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jLabelNombreArchivo" min="-2" pref="358" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabelPersonaEnvioArchivo" min="-2" pref="338" max="-2" attributes="0"/>
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
-                      <Component id="jLabelFechaEnvioArchivo" min="-2" pref="256" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <Component id="jButtonRemoverArchivo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButtonDescargarArchivo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabelNombreArchivo" min="-2" pref="373" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabelPersonaEnvioArchivo" min="-2" pref="338" max="-2" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                      <Component id="jLabelFechaEnvioArchivo" min="-2" pref="256" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -56,8 +56,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jLabelTipoArchivoImagen" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Component id="jLabelTipoArchivoImagen" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelNombreArchivo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelPersonaEnvioArchivo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -68,10 +68,9 @@
                           <Component id="jButtonDescargarArchivo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonRemoverArchivo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,6 +83,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nombre Del Archivo"/>
+        <Property name="toolTipText" type="java.lang.String" value="Nombre Del Archivo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelPersonaEnvioArchivo">
@@ -93,6 +93,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Quien envio el archivo"/>
+        <Property name="toolTipText" type="java.lang.String" value="Emisor Del Archivo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelFechaEnvioArchivo">
@@ -102,6 +103,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Fecha del envio del archivo"/>
+        <Property name="toolTipText" type="java.lang.String" value="Fecha Del Env&#xed;o"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonDescargarArchivo">
@@ -110,6 +112,7 @@
           <Font name="Gadugi" size="14" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Descargar Archivo"/>
+        <Property name="toolTipText" type="java.lang.String" value="Descargar Archivo"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonDescargarArchivoMouseClicked"/>
@@ -121,16 +124,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/resources/icons/docs.png"/>
-        </Property>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[59, 59]"/>
-        </Property>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[59, 59]"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[59, 59]"/>
+          <Image iconType="3" name="/resources/icons/shelf.png"/>
         </Property>
       </Properties>
     </Component>
@@ -140,6 +134,7 @@
           <Font name="Gadugi" size="14" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Remover Archivo"/>
+        <Property name="toolTipText" type="java.lang.String" value="Remover Archivo Compartido (Eliminar Archivo)"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonRemoverArchivoMouseClicked"/>

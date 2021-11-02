@@ -446,6 +446,7 @@
                   <Font name="Gadugi" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Editar?"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[80, 36]"/>
                 </Property>
@@ -542,6 +543,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icons/reply.png"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Regresar A Mi Perfil"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>

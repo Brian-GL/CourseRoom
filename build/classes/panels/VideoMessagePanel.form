@@ -65,6 +65,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="MI&#xc9;RCOLES 25 De OCTUBRE DE 2021 - 10:10 A.M"/>
+        <Property name="toolTipText" type="java.lang.String" value="Fecha &amp; Hora Del Mensaje"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
@@ -178,6 +179,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Title"/>
+                <Property name="toolTipText" type="java.lang.String" value="Nombre Del Archivo De Video"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSlider" name="jSliderProgress">
@@ -219,6 +221,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="AOLSMALDOEMRITMCODLA"/>
+        <Property name="toolTipText" type="java.lang.String" value="Emisor Del Mensaje"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>

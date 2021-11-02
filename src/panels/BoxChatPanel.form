@@ -103,6 +103,7 @@
           <Image iconType="3" name="/resources/icons/online-chat_1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nombre Del Chat"/>
+        <Property name="toolTipText" type="java.lang.String" value="Nombre Del Chat"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[488, 32]"/>
         </Property>
@@ -130,6 +131,7 @@
           <Image iconType="3" name="/resources/icons/messaging.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xda;ltimo Mensaje Recibido"/>
+        <Property name="toolTipText" type="java.lang.String" value="&#xda;ltimo Mensaje Recibido"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[417, 22]"/>
         </Property>
@@ -151,6 +153,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="1"/>
+        <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero De Mensajes No Le&#xed;dos"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelFechaHoraMensaje">
@@ -166,6 +169,7 @@
           <Image iconType="3" name="/resources/icons/circular-clock.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="10/08/2021 05:42 P.M"/>
+        <Property name="toolTipText" type="java.lang.String" value="Fecha &amp; Hora Del &#xda;ltimo Mensaje"/>
       </Properties>
     </Component>
   </SubComponents>

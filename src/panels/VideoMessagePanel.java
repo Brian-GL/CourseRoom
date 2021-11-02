@@ -92,6 +92,7 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelDate.setText("MIÉRCOLES 25 De OCTUBRE DE 2021 - 10:10 A.M");
+        jLabelDate.setToolTipText("Fecha & Hora Del Mensaje");
         jLabelDate.setOpaque(true);
 
         jPanelVideoContent.setOpaque(false);
@@ -111,6 +112,7 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelTitle.setForeground(java.awt.Color.white);
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("Title");
+        jLabelTitle.setToolTipText("Nombre Del Archivo De Video");
 
         jSliderProgress.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jSliderProgress.setValue(0);
@@ -176,6 +178,7 @@ public class VideoMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelSender.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSender.setText("AOLSMALDOEMRITMCODLA");
+        jLabelSender.setToolTipText("Emisor Del Mensaje");
         jLabelSender.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

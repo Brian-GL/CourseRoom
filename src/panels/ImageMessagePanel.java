@@ -70,11 +70,13 @@ public class ImageMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelDate.setText("MIÉRCOLES 30 DE SEPTIEMBRE DE 20201 - 22:22 A.M");
+        jLabelDate.setToolTipText("Fecha & Hora Del Mensaje");
         jLabelDate.setOpaque(true);
 
         jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelSender.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSender.setText("OALDPAMDOLAMDONALODP");
+        jLabelSender.setToolTipText("Emisor Del Mensaje");
         jLabelSender.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

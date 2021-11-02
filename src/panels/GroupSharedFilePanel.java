@@ -58,25 +58,29 @@ public class GroupSharedFilePanel extends javax.swing.JPanel {
         jLabelTipoArchivoImagen = new javax.swing.JLabel();
         jButtonRemoverArchivo = new javax.swing.JButton();
 
-        setMaximumSize(new java.awt.Dimension(32767, 71));
-        setMinimumSize(new java.awt.Dimension(1070, 71));
+        setMaximumSize(new java.awt.Dimension(32767, 65));
+        setMinimumSize(new java.awt.Dimension(1070, 65));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1070, 71));
+        setPreferredSize(new java.awt.Dimension(1070, 65));
 
         jLabelNombreArchivo.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         jLabelNombreArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNombreArchivo.setText("Nombre Del Archivo");
+        jLabelNombreArchivo.setToolTipText("Nombre Del Archivo");
 
         jLabelPersonaEnvioArchivo.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         jLabelPersonaEnvioArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPersonaEnvioArchivo.setText("Quien envio el archivo");
+        jLabelPersonaEnvioArchivo.setToolTipText("Emisor Del Archivo");
 
         jLabelFechaEnvioArchivo.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         jLabelFechaEnvioArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelFechaEnvioArchivo.setText("Fecha del envio del archivo");
+        jLabelFechaEnvioArchivo.setToolTipText("Fecha Del Envío");
 
         jButtonDescargarArchivo.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jButtonDescargarArchivo.setText("Descargar Archivo");
+        jButtonDescargarArchivo.setToolTipText("Descargar Archivo");
         jButtonDescargarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonDescargarArchivoMouseClicked(evt);
@@ -90,13 +94,11 @@ public class GroupSharedFilePanel extends javax.swing.JPanel {
         });
 
         jLabelTipoArchivoImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTipoArchivoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/docs.png"))); // NOI18N
-        jLabelTipoArchivoImagen.setMaximumSize(new java.awt.Dimension(59, 59));
-        jLabelTipoArchivoImagen.setMinimumSize(new java.awt.Dimension(59, 59));
-        jLabelTipoArchivoImagen.setPreferredSize(new java.awt.Dimension(59, 59));
+        jLabelTipoArchivoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/shelf.png"))); // NOI18N
 
         jButtonRemoverArchivo.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jButtonRemoverArchivo.setText("Remover Archivo");
+        jButtonRemoverArchivo.setToolTipText("Remover Archivo Compartido (Eliminar Archivo)");
         jButtonRemoverArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonRemoverArchivoMouseClicked(evt);
@@ -115,20 +117,20 @@ public class GroupSharedFilePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelTipoArchivoImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabelTipoArchivoImagen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelNombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonRemoverArchivo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonDescargarArchivo)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelNombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelPersonaEnvioArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(jLabelFechaEnvioArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonRemoverArchivo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonDescargarArchivo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(jLabelFechaEnvioArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -136,8 +138,8 @@ public class GroupSharedFilePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabelTipoArchivoImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabelTipoArchivoImagen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelNombreArchivo)
                             .addComponent(jLabelPersonaEnvioArchivo)
@@ -145,9 +147,8 @@ public class GroupSharedFilePanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonDescargarArchivo)
-                            .addComponent(jButtonRemoverArchivo))
-                        .addGap(6, 6, 6)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButtonRemoverArchivo))))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

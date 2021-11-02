@@ -433,6 +433,7 @@
               <Image iconType="3" name="/resources/icons/exit-door.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
@@ -490,10 +491,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelFechaHoraServidor" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonMenu" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jButtonMenu" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelFechaHoraServidor" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelUserName" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -543,6 +542,7 @@
               <Image iconType="3" name="/resources/icons/clock_2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Viernes 10/07/2021 13:55:09 P.M"/>
+            <Property name="toolTipText" type="java.lang.String" value="Horario Del Servidor"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[127, 40]"/>
             </Property>
@@ -559,13 +559,13 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/icons/menu.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Mostrar/Ocultar Men&#xfa;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
-            <Property name="label" type="java.lang.String" value=""/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[40, 40]"/>
             </Property>

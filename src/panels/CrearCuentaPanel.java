@@ -131,6 +131,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelInformacionInicio.setPreferredSize(new java.awt.Dimension(670, 104));
 
         jButtonContinuarAutenticacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
+        jButtonContinuarAutenticacion.setToolTipText("Continuar A Autenticación");
         jButtonContinuarAutenticacion.setBorder(null);
         jButtonContinuarAutenticacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonContinuarAutenticacion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,6 +147,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         });
 
         jButtonRegresarLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresarLogin.setToolTipText("Regresar Al Login");
         jButtonRegresarLogin.setBorder(null);
         jButtonRegresarLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegresarLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -256,6 +258,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jLabelInformacionSeguridadPassword.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         jButtonRegresarInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresarInicio.setToolTipText("Regresar Al Inicio");
         jButtonRegresarInicio.setBorder(null);
         jButtonRegresarInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegresarInicio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -271,6 +274,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         });
 
         jButtonContinuarDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
+        jButtonContinuarDatosPersonales.setToolTipText("Continuar A Datos Personales");
         jButtonContinuarDatosPersonales.setBorder(null);
         jButtonContinuarDatosPersonales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonContinuarDatosPersonales.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -446,6 +450,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         jScrollPaneDescripcion.setViewportView(jTextAreaDescripcion);
 
         jButtonContinuarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
+        jButtonContinuarPerfil.setToolTipText("Continuar A Perfil");
         jButtonContinuarPerfil.setBorder(null);
         jButtonContinuarPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonContinuarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -461,6 +466,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         });
 
         jButtonRegresarAutenticacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresarAutenticacion.setToolTipText("Regresar A Autenticación");
         jButtonRegresarAutenticacion.setBorder(null);
         jButtonRegresarAutenticacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegresarAutenticacion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -633,6 +639,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         });
 
         jButtonContinuarDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/inreply.png"))); // NOI18N
+        jButtonContinuarDashboard.setToolTipText("Crear Perfil");
         jButtonContinuarDashboard.setBorder(null);
         jButtonContinuarDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonContinuarDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -648,6 +655,7 @@ public class CrearCuentaPanel extends javax.swing.JPanel{
         });
 
         jButtonRegresarDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresarDatosPersonales.setToolTipText("Regresar A Datos Personales");
         jButtonRegresarDatosPersonales.setBorder(null);
         jButtonRegresarDatosPersonales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegresarDatosPersonales.addMouseListener(new java.awt.event.MouseAdapter() {

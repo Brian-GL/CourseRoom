@@ -185,6 +185,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements ColorInterface, 
         jLabelNombreChat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelNombreChat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/online-chat_1.png"))); // NOI18N
         jLabelNombreChat.setText("Nombre Del Chat");
+        jLabelNombreChat.setToolTipText("Nombre Del Chat");
         jLabelNombreChat.setMaximumSize(new java.awt.Dimension(488, 32));
         jLabelNombreChat.setMinimumSize(new java.awt.Dimension(488, 32));
         jLabelNombreChat.setPreferredSize(new java.awt.Dimension(488, 32));
@@ -199,6 +200,7 @@ public class BoxChatPanel extends javax.swing.JPanel implements ColorInterface, 
         jLabelUltimoMensaje.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelUltimoMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/messaging.png"))); // NOI18N
         jLabelUltimoMensaje.setText("Último Mensaje Recibido");
+        jLabelUltimoMensaje.setToolTipText("Último Mensaje Recibido");
         jLabelUltimoMensaje.setMaximumSize(new java.awt.Dimension(417, 22));
         jLabelUltimoMensaje.setMinimumSize(new java.awt.Dimension(417, 22));
         jLabelUltimoMensaje.setPreferredSize(new java.awt.Dimension(417, 22));
@@ -207,12 +209,14 @@ public class BoxChatPanel extends javax.swing.JPanel implements ColorInterface, 
         jLabelNumeroMensajesNoLeidos.setForeground(java.awt.Color.white);
         jLabelNumeroMensajesNoLeidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNumeroMensajesNoLeidos.setText("1");
+        jLabelNumeroMensajesNoLeidos.setToolTipText("Número De Mensajes No Leídos");
 
         jLabelFechaHoraMensaje.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
         jLabelFechaHoraMensaje.setForeground(java.awt.Color.white);
         jLabelFechaHoraMensaje.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelFechaHoraMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/circular-clock.png"))); // NOI18N
         jLabelFechaHoraMensaje.setText("10/08/2021 05:42 P.M");
+        jLabelFechaHoraMensaje.setToolTipText("Fecha & Hora Del Último Mensaje");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

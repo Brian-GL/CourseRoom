@@ -178,7 +178,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nombre De Usuario"/>
-        <Property name="toolTipText" type="java.lang.String" value="User Name"/>
+        <Property name="toolTipText" type="java.lang.String" value="UserName"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[430, 30]"/>
         </Property>
@@ -335,6 +335,7 @@
           <Font name="Gadugi" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mi Desempe&#xf1;o Escolar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Muestra Tu Desempe&#xf1;o Escolar &amp; Predicciones De Estas"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -351,6 +352,7 @@
           <Font name="Gadugi" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Editar Perfil"/>
+        <Property name="toolTipText" type="java.lang.String" value="Edita La Informaci&#xf3;n De Tu Perfil"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>

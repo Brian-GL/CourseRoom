@@ -78,8 +78,10 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
         jLabelChatName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelChatName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/chat_1.png"))); // NOI18N
         jLabelChatName.setText("Nombre Del Chat O La Persona Con Quien Se Chatea");
+        jLabelChatName.setToolTipText("Nombre Del Chat O La Persona Con Quien Se Chatea");
 
         jButtonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresar.setToolTipText("Regresar A Mis Chats");
         jButtonRegresar.setBorder(null);
         jButtonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,9 +103,9 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
             .addGroup(jPanelChatTopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabelChatName, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelChatTopLayout.setVerticalGroup(
             jPanelChatTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,8 +119,8 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
         jPanelChatBottom.setMinimumSize(new java.awt.Dimension(1085, 70));
         jPanelChatBottom.setPreferredSize(new java.awt.Dimension(1085, 70));
 
-        jTextFieldMessage.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jTextFieldMessage.setText("Hola");
+        jTextFieldMessage.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
+        jTextFieldMessage.setToolTipText("Redactar Menssaje");
         jTextFieldMessage.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldMessageKeyPressed(evt);
@@ -126,6 +128,7 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
         });
 
         jButtonEnviarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/attachment.png"))); // NOI18N
+        jButtonEnviarArchivo.setToolTipText("Enviar Archivo");
         jButtonEnviarArchivo.setBorder(null);
         jButtonEnviarArchivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonEnviarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,6 +144,7 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
         });
 
         jButtonEnviarVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clapperboard.png"))); // NOI18N
+        jButtonEnviarVideo.setToolTipText("Enviar Archivo De Video");
         jButtonEnviarVideo.setBorder(null);
         jButtonEnviarVideo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonEnviarVideo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -156,6 +160,7 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
         });
 
         jButtonEnviarAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/microphone.png"))); // NOI18N
+        jButtonEnviarAudio.setToolTipText("Enviar Archivo De Audio");
         jButtonEnviarAudio.setBorder(null);
         jButtonEnviarAudio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonEnviarAudio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,6 +176,7 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
         });
 
         jButtonEnviarImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit-video.png"))); // NOI18N
+        jButtonEnviarImagen.setToolTipText("Enviar Archivo De Imagen");
         jButtonEnviarImagen.setBorder(null);
         jButtonEnviarImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonEnviarImagen.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,6 +192,7 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
         });
 
         jButtonEnviarTexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/send.png"))); // NOI18N
+        jButtonEnviarTexto.setToolTipText("Enviar Mensaje");
         jButtonEnviarTexto.setBorder(null);
         jButtonEnviarTexto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonEnviarTexto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -214,22 +221,23 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonEnviarImagen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldMessage)
+                .addComponent(jTextFieldMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 853, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonEnviarTexto)
                 .addContainerGap())
         );
         jPanelChatBottomLayout.setVerticalGroup(
             jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelChatBottomLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonEnviarArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldMessage)
-                    .addComponent(jButtonEnviarVideo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonEnviarAudio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonEnviarImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonEnviarTexto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelChatBottomLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonEnviarArchivo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEnviarVideo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEnviarAudio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEnviarImagen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldMessage, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonEnviarTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jScrollPaneChatsCenter.setOpaque(false);
@@ -254,9 +262,9 @@ public class ChatingPanel extends javax.swing.JPanel implements DisposeInterface
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelChatTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPaneChatsCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+                .addComponent(jScrollPaneChatsCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanelChatBottom, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanelChatBottom, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

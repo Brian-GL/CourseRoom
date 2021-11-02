@@ -43,9 +43,9 @@
           <Group type="102" attributes="0">
               <Component id="jPanelChatTop" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jScrollPaneChatsCenter" pref="536" max="32767" attributes="0"/>
+              <Component id="jScrollPaneChatsCenter" pref="519" max="32767" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jPanelChatBottom" min="-2" pref="44" max="-2" attributes="0"/>
+              <Component id="jPanelChatBottom" min="-2" pref="61" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,9 +70,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButtonRegresar" min="-2" pref="48" max="-2" attributes="0"/>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="32767" attributes="0"/>
                   <Component id="jLabelChatName" min="-2" pref="579" max="-2" attributes="0"/>
-                  <EmptySpace pref="439" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -99,6 +99,7 @@
               <Image iconType="3" name="/resources/icons/chat_1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre Del Chat O La Persona Con Quien Se Chatea"/>
+            <Property name="toolTipText" type="java.lang.String" value="Nombre Del Chat O La Persona Con Quien Se Chatea"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonRegresar">
@@ -106,6 +107,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/icons/reply.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Regresar A Mis Chats"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -144,7 +146,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButtonEnviarImagen" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jTextFieldMessage" max="32767" attributes="0"/>
+                  <Component id="jTextFieldMessage" pref="853" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButtonEnviarTexto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -153,16 +155,17 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButtonEnviarArchivo" max="32767" attributes="0"/>
-                      <Component id="jTextFieldMessage" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="jButtonEnviarArchivo" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButtonEnviarVideo" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButtonEnviarAudio" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButtonEnviarImagen" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButtonEnviarTexto" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jTextFieldMessage" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jButtonEnviarTexto" min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -171,9 +174,9 @@
         <Component class="javax.swing.JTextField" name="jTextFieldMessage">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gadugi" size="18" style="1"/>
+              <Font name="Gadugi" size="20" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Hola"/>
+            <Property name="toolTipText" type="java.lang.String" value="Redactar Menssaje"/>
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldMessageKeyPressed"/>
@@ -184,6 +187,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/icons/attachment.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Enviar Archivo"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -202,6 +206,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/icons/clapperboard.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Enviar Archivo De Video"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -220,6 +225,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/icons/microphone.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Enviar Archivo De Audio"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -238,6 +244,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/icons/edit-video.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Enviar Archivo De Imagen"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -256,6 +263,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/icons/send.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Enviar Mensaje"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

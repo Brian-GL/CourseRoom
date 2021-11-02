@@ -228,7 +228,7 @@ public class LoginPanel extends javax.swing.JPanel{
     private void jButtonIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            MainFrame.showDashboard();
         }
     }//GEN-LAST:event_jButtonIniciarSesionMouseClicked
 

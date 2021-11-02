@@ -79,6 +79,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nombre Del Miembro"/>
+        <Property name="toolTipText" type="java.lang.String" value="Nombre(s)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelMemberLastName">
@@ -88,6 +89,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Apellido Del Miembro"/>
+        <Property name="toolTipText" type="java.lang.String" value="Apellido(s)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelMemberUserName">
@@ -97,6 +99,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="UserName Del Miembro"/>
+        <Property name="toolTipText" type="java.lang.String" value="UserName"/>
       </Properties>
     </Component>
   </SubComponents>

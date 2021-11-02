@@ -113,6 +113,7 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelDate.setText("MIÉRCOLES 31 DE DICIEMBRE DE 2021 -  10:40 P.M");
+        jLabelDate.setToolTipText("Fecha & Hora Del Mensaje");
         jLabelDate.setOpaque(true);
 
         jLabelCoverArt.setMaximumSize(new java.awt.Dimension(380, 380));
@@ -122,10 +123,12 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelAlbum.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabelAlbum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelAlbum.setText("Álbum");
+        jLabelAlbum.setToolTipText("Álbum");
 
         jLabelArtist.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabelArtist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelArtist.setText("Artista");
+        jLabelArtist.setToolTipText("Artista");
 
         jLabelPlayPause.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPlayPause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/play-button.png"))); // NOI18N
@@ -147,6 +150,7 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelTitle.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jLabelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitle.setText("Titulo");
+        jLabelTitle.setToolTipText("Titulo Del Archivo De Audio");
 
         jSliderProgress.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         jSliderProgress.setValue(0);
@@ -225,6 +229,7 @@ public class AudioMessagePanel extends javax.swing.JPanel implements DisposeInte
         jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelSender.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelSender.setText("AMILDOALODLAOLSMDFFR");
+        jLabelSender.setToolTipText("Emisor Del Mensaje");
         jLabelSender.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

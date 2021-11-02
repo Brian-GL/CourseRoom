@@ -88,18 +88,21 @@ public class PlaylistEntryPanel extends javax.swing.JPanel {
 
         jLabelPlaylistEntryTitle.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jLabelPlaylistEntryTitle.setText("Title");
+        jLabelPlaylistEntryTitle.setToolTipText("Título Del Archivo");
         jLabelPlaylistEntryTitle.setMaximumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryTitle.setMinimumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryTitle.setPreferredSize(new java.awt.Dimension(220, 17));
 
         jLabelPlaylistEntryAlbum.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jLabelPlaylistEntryAlbum.setText("Album");
+        jLabelPlaylistEntryAlbum.setToolTipText("Álbum");
         jLabelPlaylistEntryAlbum.setMaximumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryAlbum.setMinimumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryAlbum.setPreferredSize(new java.awt.Dimension(220, 17));
 
         jLabelPlaylistEntryArtist.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jLabelPlaylistEntryArtist.setText("Artist");
+        jLabelPlaylistEntryArtist.setToolTipText("Artista");
         jLabelPlaylistEntryArtist.setMaximumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryArtist.setMinimumSize(new java.awt.Dimension(220, 17));
         jLabelPlaylistEntryArtist.setPreferredSize(new java.awt.Dimension(220, 17));

@@ -24,14 +24,12 @@ public class FileMessagePanel extends javax.swing.JPanel implements DisposeInter
         jLabelDate.setText(date);
         jLabelSender.setText(sender);
         jLabelFileName.setText(file.getName());
-        jLabelExtension.setText( FilenameUtils.getExtension(file.getName()));
         jLabelDate.setForeground(MainFrame.getFontColor());
         jLabelSender.setForeground(MainFrame.getFontColor());
         jLabelDate.setBackground(MainFrame.getFirstColor());
         jLabelSender.setBackground(MainFrame.getFirstColor());
         jPanelFileInfo.setBackground(MainFrame.getSecondColor());
         jLabelFileName.setForeground(MainFrame.getSecondFontColor());
-        jLabelExtension.setForeground(MainFrame.getSecondFontColor());
         date = null;
         sender = null;
         file = null;
@@ -49,35 +47,34 @@ public class FileMessagePanel extends javax.swing.JPanel implements DisposeInter
         jLabelSender = new javax.swing.JLabel();
         jLabelDate = new javax.swing.JLabel();
         jPanelFileInfo = new javax.swing.JPanel();
-        jLabelExtension = new javax.swing.JLabel();
         jLabelFileName = new javax.swing.JLabel();
         jLabelFileIcon = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(800, 115));
-        setMinimumSize(new java.awt.Dimension(800, 115));
+        setMaximumSize(new java.awt.Dimension(800, 80));
+        setMinimumSize(new java.awt.Dimension(800, 80));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(800, 115));
+        setPreferredSize(new java.awt.Dimension(800, 80));
 
         jLabelSender.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelSender.setText("USER_NAME10_APLDOAL1");
+        jLabelSender.setToolTipText("Emisor Del Mensaje");
         jLabelSender.setOpaque(true);
 
         jLabelDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelDate.setText("MIÉRCOLES 31 DE SEPTIEMBRE DE 2021 - 14:59 A.M");
+        jLabelDate.setToolTipText("Fecha & Hora Del Mensaje");
         jLabelDate.setOpaque(true);
 
-        jPanelFileInfo.setPreferredSize(new java.awt.Dimension(234, 120));
-
-        jLabelExtension.setFont(new java.awt.Font("Gadugi", 2, 18)); // NOI18N
-        jLabelExtension.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelExtension.setText("Extension");
+        jPanelFileInfo.setMaximumSize(new java.awt.Dimension(32767, 45));
+        jPanelFileInfo.setPreferredSize(new java.awt.Dimension(234, 45));
 
         jLabelFileName.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelFileName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelFileName.setText("File Name");
+        jLabelFileName.setToolTipText("Nombre Del Archivo");
 
-        jLabelFileIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/ImageIcons/documents.png"))); // NOI18N
+        jLabelFileIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/file.png"))); // NOI18N
         jLabelFileIcon.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanelFileInfoLayout = new javax.swing.GroupLayout(jPanelFileInfo);
@@ -86,25 +83,18 @@ public class FileMessagePanel extends javax.swing.JPanel implements DisposeInter
             jPanelFileInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFileInfoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelFileIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanelFileInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFileName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelExtension, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabelFileIcon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelFileName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelFileInfoLayout.setVerticalGroup(
             jPanelFileInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFileInfoLayout.createSequentialGroup()
-                .addGroup(jPanelFileInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanelFileInfoLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabelFileName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelExtension))
-                    .addGroup(jPanelFileInfoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelFileIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addGroup(jPanelFileInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelFileName, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelFileIcon))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -112,14 +102,14 @@ public class FileMessagePanel extends javax.swing.JPanel implements DisposeInter
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelFileInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelSender)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelFileInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                        .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -130,7 +120,7 @@ public class FileMessagePanel extends javax.swing.JPanel implements DisposeInter
                     .addComponent(jLabelSender)
                     .addComponent(jLabelDate))
                 .addGap(0, 0, 0)
-                .addComponent(jPanelFileInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelFileInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -138,7 +128,6 @@ public class FileMessagePanel extends javax.swing.JPanel implements DisposeInter
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelDate;
-    private javax.swing.JLabel jLabelExtension;
     private javax.swing.JLabel jLabelFileIcon;
     private javax.swing.JLabel jLabelFileName;
     private javax.swing.JLabel jLabelSender;

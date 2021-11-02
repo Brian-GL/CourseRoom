@@ -5,11 +5,9 @@
  */
 package panels;
 
-import courseroom.MainFrame;
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.SwingUtilities;
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -33,8 +31,8 @@ public class ToDoPanel extends javax.swing.JPanel {
         jTextAreaDescripcion.setForeground(secondFontColor);
         jTextAreaDescripcion.setBackground(secondColor);
         jLabelFechaTerminacionTareaPorHacer.setForeground(fontColor);
-        jToggleButtonFinalizado.setForeground(secondFontColor);
-        jToggleButtonFinalizado.setBackground(secondColor);
+        jToggleButtonEstatusPendiente.setForeground(secondFontColor);
+        jToggleButtonEstatusPendiente.setBackground(secondColor);
         
         this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
     }
@@ -51,13 +49,13 @@ public class ToDoPanel extends javax.swing.JPanel {
         jLabelMiembroImage = new javax.swing.JLabel();
         jLabelNombreTareaPorHacer = new javax.swing.JLabel();
         jLabelFechaTerminacionTareaPorHacer = new javax.swing.JLabel();
-        jToggleButtonFinalizado = new javax.swing.JToggleButton();
+        jToggleButtonEstatusPendiente = new javax.swing.JToggleButton();
         jScrollPaneDescripcion = new javax.swing.JScrollPane();
         jTextAreaDescripcion = new javax.swing.JTextArea();
 
-        setMaximumSize(new java.awt.Dimension(32767, 188));
-        setMinimumSize(new java.awt.Dimension(717, 188));
-        setPreferredSize(new java.awt.Dimension(717, 188));
+        setMaximumSize(new java.awt.Dimension(32767, 168));
+        setMinimumSize(new java.awt.Dimension(717, 168));
+        setPreferredSize(new java.awt.Dimension(717, 168));
 
         jLabelMiembroImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMiembroImage.setMaximumSize(new java.awt.Dimension(130, 130));
@@ -66,16 +64,18 @@ public class ToDoPanel extends javax.swing.JPanel {
 
         jLabelNombreTareaPorHacer.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelNombreTareaPorHacer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNombreTareaPorHacer.setText("Nombre Tarea Por Hacer");
+        jLabelNombreTareaPorHacer.setText("Nombre Pendiente");
+        jLabelNombreTareaPorHacer.setToolTipText("Nombre Del Pendiente A Realizar");
 
         jLabelFechaTerminacionTareaPorHacer.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jLabelFechaTerminacionTareaPorHacer.setText("Hast las");
+        jLabelFechaTerminacionTareaPorHacer.setText("Fecha Propuesta Para Terminar El Pendiente");
 
-        jToggleButtonFinalizado.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jToggleButtonFinalizado.setText("Pendiente");
-        jToggleButtonFinalizado.addMouseListener(new java.awt.event.MouseAdapter() {
+        jToggleButtonEstatusPendiente.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
+        jToggleButtonEstatusPendiente.setText("Pendiente");
+        jToggleButtonEstatusPendiente.setToolTipText("Estatus");
+        jToggleButtonEstatusPendiente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButtonFinalizadoMouseClicked(evt);
+                jToggleButtonEstatusPendienteMouseClicked(evt);
             }
         });
 
@@ -83,8 +83,10 @@ public class ToDoPanel extends javax.swing.JPanel {
         jScrollPaneDescripcion.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         jTextAreaDescripcion.setColumns(20);
-        jTextAreaDescripcion.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jTextAreaDescripcion.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jTextAreaDescripcion.setRows(5);
+        jTextAreaDescripcion.setText("Hola\nHola\nHola");
+        jTextAreaDescripcion.setToolTipText("Descripción Del Pendiente");
         jScrollPaneDescripcion.setViewportView(jTextAreaDescripcion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -94,38 +96,39 @@ public class ToDoPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFechaTerminacionTareaPorHacer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
-                    .addComponent(jLabelNombreTareaPorHacer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelMiembroImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButtonFinalizado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6))
+                    .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                    .addComponent(jLabelNombreTareaPorHacer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelFechaTerminacionTareaPorHacer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelMiembroImage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jToggleButtonEstatusPendiente, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNombreTareaPorHacer)
                         .addGap(5, 5, 5)
-                        .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelMiembroImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                        .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelMiembroImage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelFechaTerminacionTareaPorHacer, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButtonFinalizado, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jToggleButtonEstatusPendiente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButtonFinalizadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButtonFinalizadoMouseClicked
+    private void jToggleButtonEstatusPendienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButtonEstatusPendienteMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            jToggleButtonFinalizado.setText("Terminado");
+            jToggleButtonEstatusPendiente.setText("Terminado");
         }
-    }//GEN-LAST:event_jToggleButtonFinalizadoMouseClicked
+    }//GEN-LAST:event_jToggleButtonEstatusPendienteMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -134,6 +137,6 @@ public class ToDoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelNombreTareaPorHacer;
     private javax.swing.JScrollPane jScrollPaneDescripcion;
     private javax.swing.JTextArea jTextAreaDescripcion;
-    private javax.swing.JToggleButton jToggleButtonFinalizado;
+    private javax.swing.JToggleButton jToggleButtonEstatusPendiente;
     // End of variables declaration//GEN-END:variables
 }

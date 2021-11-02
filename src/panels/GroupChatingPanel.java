@@ -58,6 +58,8 @@ public class GroupChatingPanel extends JPanel implements  DisposeInterface{
         jPanelChatBottom.setMinimumSize(new java.awt.Dimension(1085, 70));
         jPanelChatBottom.setPreferredSize(new java.awt.Dimension(1085, 70));
 
+        jTextFieldMessage.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
+        jTextFieldMessage.setToolTipText("Redactar Mensaje");
         jTextFieldMessage.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldMessageKeyPressed(evt);
@@ -85,21 +87,19 @@ public class GroupChatingPanel extends JPanel implements  DisposeInterface{
             jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelChatBottomLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
+                .addComponent(jTextFieldMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 1021, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonEnviarTexto)
+                .addComponent(jButtonEnviarTexto, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelChatBottomLayout.setVerticalGroup(
             jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelChatBottomLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addGroup(jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonEnviarTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelChatBottomLayout.createSequentialGroup()
-                        .addComponent(jTextFieldMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jTextFieldMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPaneChatsCenter.setOpaque(false);
@@ -122,9 +122,9 @@ public class GroupChatingPanel extends JPanel implements  DisposeInterface{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPaneChatsCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                .addComponent(jScrollPaneChatsCenter, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanelChatBottom, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanelChatBottom, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

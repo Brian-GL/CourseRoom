@@ -649,6 +649,7 @@ public final class MusicPanel extends javax.swing.JPanel implements ColorInterfa
         jLabelPreset.setPreferredSize(new java.awt.Dimension(50, 32));
 
         jComboBoxPresets.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jComboBoxPresets.setToolTipText("Selet Preset");
         jComboBoxPresets.setMinimumSize(new java.awt.Dimension(250, 32));
         jComboBoxPresets.setPreferredSize(new java.awt.Dimension(250, 32));
         jComboBoxPresets.addItemListener(new java.awt.event.ItemListener() {

@@ -90,24 +90,29 @@ public class BoxHomeworkPanel extends javax.swing.JPanel implements ColorInterfa
         jLabelClaseDeLaTarea.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelClaseDeLaTarea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/course.png"))); // NOI18N
         jLabelClaseDeLaTarea.setText("Clase Que Pertenece La Tarea");
+        jLabelClaseDeLaTarea.setToolTipText("Clase Que Pertenece La Tarea");
 
         jLabelNombreTarea.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         jLabelNombreTarea.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelNombreTarea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_2.png"))); // NOI18N
         jLabelNombreTarea.setText("Nombre De La Tarea");
+        jLabelNombreTarea.setToolTipText("Nombre De La Tarea");
 
         jLabelFechaDeEntrega.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         jLabelFechaDeEntrega.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelFechaDeEntrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_1.png"))); // NOI18N
         jLabelFechaDeEntrega.setText("Fecha De Entrega");
+        jLabelFechaDeEntrega.setToolTipText("Fecha De Entrega");
 
         jLabelTipoDeTarea.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
         jLabelTipoDeTarea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/writing.png"))); // NOI18N
         jLabelTipoDeTarea.setText("Tipo De Tarea");
+        jLabelTipoDeTarea.setToolTipText("Tipo De Tarea");
 
         jLabelEstado.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
         jLabelEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_3.png"))); // NOI18N
         jLabelEstado.setText("Estado De La Tarea");
+        jLabelEstado.setToolTipText("Estado De La Tarea");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

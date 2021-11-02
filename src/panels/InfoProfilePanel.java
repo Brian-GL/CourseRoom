@@ -142,7 +142,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
         jLabelNombreDeUsuario.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         jLabelNombreDeUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNombreDeUsuario.setText("Nombre De Usuario");
-        jLabelNombreDeUsuario.setToolTipText("User Name");
+        jLabelNombreDeUsuario.setToolTipText("UserName");
         jLabelNombreDeUsuario.setMaximumSize(new java.awt.Dimension(430, 30));
         jLabelNombreDeUsuario.setMinimumSize(new java.awt.Dimension(430, 30));
         jLabelNombreDeUsuario.setOpaque(true);
@@ -210,6 +210,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
 
         jButtonMiDesempenoEscolar.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         jButtonMiDesempenoEscolar.setText("Mi Desempeño Escolar");
+        jButtonMiDesempenoEscolar.setToolTipText("Muestra Tu Desempeño Escolar & Predicciones De Estas");
         jButtonMiDesempenoEscolar.setBorder(null);
         jButtonMiDesempenoEscolar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -225,6 +226,7 @@ public class InfoProfilePanel extends javax.swing.JPanel {
 
         jButtonEditarPerfil.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         jButtonEditarPerfil.setText("Editar Perfil");
+        jButtonEditarPerfil.setToolTipText("Edita La Información De Tu Perfil");
         jButtonEditarPerfil.setBorder(null);
         jButtonEditarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

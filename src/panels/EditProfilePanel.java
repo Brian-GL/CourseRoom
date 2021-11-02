@@ -224,6 +224,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
 
         jToggleButtonEditarNombreUsuario.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jToggleButtonEditarNombreUsuario.setText("Editar?");
+        jToggleButtonEditarNombreUsuario.setToolTipText("");
         jToggleButtonEditarNombreUsuario.setMaximumSize(new java.awt.Dimension(80, 36));
         jToggleButtonEditarNombreUsuario.setMinimumSize(new java.awt.Dimension(80, 36));
         jToggleButtonEditarNombreUsuario.setPreferredSize(new java.awt.Dimension(80, 36));
@@ -267,6 +268,7 @@ public class EditProfilePanel extends javax.swing.JPanel {
         jToggleButtonEditarImagenPerfil.setPreferredSize(new java.awt.Dimension(80, 36));
 
         jButtonRegresarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresarPerfil.setText("Regresar A Mi Perfil");
         jButtonRegresarPerfil.setBorder(null);
         jButtonRegresarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

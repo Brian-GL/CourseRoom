@@ -65,6 +65,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="MI&#xc9;RCOLES 31 DE OCTUBRE DE 20201 - 10:00 P.M"/>
+        <Property name="toolTipText" type="java.lang.String" value="Fecha &amp; Hora Del Mensaje"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
@@ -103,6 +104,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="text" type="java.lang.String" value="AISMAOLSOALDOAMSIMAD"/>
+        <Property name="toolTipText" type="java.lang.String" value="Emisor Del Mensaje"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>

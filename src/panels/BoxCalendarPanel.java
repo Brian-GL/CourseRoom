@@ -65,6 +65,7 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
 
         jLabelDayNumber.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabelDayNumber.setText("01");
+        jLabelDayNumber.setToolTipText("Número De Día Del Mes");
 
         jScrollPaneNotice.setBorder(null);
         jScrollPaneNotice.setOpaque(false);
@@ -73,12 +74,14 @@ public class BoxCalendarPanel extends javax.swing.JPanel {
         jTextPaneNotice.setBorder(null);
         jTextPaneNotice.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jTextPaneNotice.setText("Introducción A Golang Y Sus Principales Usos");
+        jTextPaneNotice.setToolTipText("Pendiente");
         jTextPaneNotice.setOpaque(false);
         jScrollPaneNotice.setViewportView(jTextPaneNotice);
 
         jLabelHora.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabelHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelHora.setText("23:55 P.M");
+        jLabelHora.setToolTipText("Hora Máxima Del Pendiente");
         jLabelHora.setMaximumSize(new java.awt.Dimension(68, 32));
         jLabelHora.setMinimumSize(new java.awt.Dimension(68, 32));
         jLabelHora.setPreferredSize(new java.awt.Dimension(68, 32));

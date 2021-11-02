@@ -378,6 +378,7 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
         jButtonSalir.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/exit-door.png"))); // NOI18N
         jButtonSalir.setText("Salir");
+        jButtonSalir.setToolTipText("");
         jButtonSalir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSalir.setPreferredSize(new java.awt.Dimension(175, 35));
@@ -415,14 +416,15 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
         jLabelFechaHoraServidor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelFechaHoraServidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clock_2.png"))); // NOI18N
         jLabelFechaHoraServidor.setText("Viernes 10/07/2021 13:55:09 P.M");
+        jLabelFechaHoraServidor.setToolTipText("Horario Del Servidor");
         jLabelFechaHoraServidor.setMaximumSize(new java.awt.Dimension(127, 40));
         jLabelFechaHoraServidor.setMinimumSize(new java.awt.Dimension(127, 40));
         jLabelFechaHoraServidor.setPreferredSize(new java.awt.Dimension(127, 40));
 
         jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/menu.png"))); // NOI18N
+        jButtonMenu.setToolTipText("Mostrar/Ocultar Menú");
         jButtonMenu.setBorder(null);
         jButtonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonMenu.setLabel("");
         jButtonMenu.setMaximumSize(new java.awt.Dimension(40, 40));
         jButtonMenu.setMinimumSize(new java.awt.Dimension(40, 40));
         jButtonMenu.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -455,9 +457,8 @@ public class DashboardPanel extends javax.swing.JPanel implements ColorInterface
             jPanelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBarraSuperiorLayout.createSequentialGroup()
                 .addGroup(jPanelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelFechaHoraServidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );

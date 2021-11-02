@@ -91,14 +91,17 @@ public class MemberPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelMemberName.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         jLabelMemberName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMemberName.setText("Nombre Del Miembro");
+        jLabelMemberName.setToolTipText("Nombre(s)");
 
         jLabelMemberLastName.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
         jLabelMemberLastName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMemberLastName.setText("Apellido Del Miembro");
+        jLabelMemberLastName.setToolTipText("Apellido(s)");
 
         jLabelMemberUserName.setFont(new java.awt.Font("Gadugi", 3, 15)); // NOI18N
         jLabelMemberUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMemberUserName.setText("UserName Del Miembro");
+        jLabelMemberUserName.setToolTipText("UserName");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

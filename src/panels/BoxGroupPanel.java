@@ -22,7 +22,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import data.interfaces.ColorInterface;
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -43,16 +42,14 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
             System.out.println("Group ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
             URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
-            Image groupImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
+            Image groupImage = getImage.getScaledInstance(131,131,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(groupImage);
             jLabelFotoGrupo.setIcon(groupIcon);
             setColors(getImage);
             Faker faker = new Faker(new Locale("es","MX"));
             jLabelNombreGrupo.setText(faker.team().sport());
             jLabelUltimaActualizacion.setText(faker.team().state());
-            jLabelNumeroIntegrantes.setText(faker.number().digits(1) + " Integrantes" );
             jLabelClaseDelGrupo.setText(faker.team().name());
-            jLabelChatDelGrupo.setText(faker.gameOfThrones().character());
             this.id = _id;
             groupingPanel = new GroupingPanel(getImage,jLabelNombreGrupo.getText(),firstColor,secondColor,thirdColor,fontColor,secondFontColor,thirdFontColor);
             DashboardPanel.addView(groupingPanel,"group"+_id);
@@ -81,13 +78,11 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelFotoGrupo = new javax.swing.JLabel();
         jLabelNombreGrupo = new javax.swing.JLabel();
         jLabelClaseDelGrupo = new javax.swing.JLabel();
-        jLabelNumeroIntegrantes = new javax.swing.JLabel();
-        jLabelChatDelGrupo = new javax.swing.JLabel();
         jLabelUltimaActualizacion = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 174));
-        setMinimumSize(new java.awt.Dimension(1085, 174));
-        setPreferredSize(new java.awt.Dimension(1085, 174));
+        setMaximumSize(new java.awt.Dimension(32767, 131));
+        setMinimumSize(new java.awt.Dimension(1085, 131));
+        setPreferredSize(new java.awt.Dimension(1085, 131));
 
         jLabelFotoGrupo.setMaximumSize(new java.awt.Dimension(164, 164));
         jLabelFotoGrupo.setMinimumSize(new java.awt.Dimension(164, 164));
@@ -102,6 +97,7 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelNombreGrupo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelNombreGrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group_1.png"))); // NOI18N
         jLabelNombreGrupo.setText("Nombre Del Grupo");
+        jLabelNombreGrupo.setToolTipText("Nombre Del grupo");
         jLabelNombreGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelNombreGrupoMouseClicked(evt);
@@ -112,20 +108,13 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
         jLabelClaseDelGrupo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelClaseDelGrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/teacher.png"))); // NOI18N
         jLabelClaseDelGrupo.setText("Clase De Proveniencia Del Grupo");
-
-        jLabelNumeroIntegrantes.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
-        jLabelNumeroIntegrantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/chat.png"))); // NOI18N
-        jLabelNumeroIntegrantes.setText("10 Integrantes");
-
-        jLabelChatDelGrupo.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
-        jLabelChatDelGrupo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelChatDelGrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/talking.png"))); // NOI18N
-        jLabelChatDelGrupo.setText("Los Estudiosos Chat");
+        jLabelClaseDelGrupo.setToolTipText("Clase De Proveniencia Del Grupo");
 
         jLabelUltimaActualizacion.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         jLabelUltimaActualizacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelUltimaActualizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/volume.png"))); // NOI18N
         jLabelUltimaActualizacion.setText("User Ha Cambiado La Foto Del Grupo");
+        jLabelUltimaActualizacion.setToolTipText("Actualización Más Reciente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -133,18 +122,14 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelFotoGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabelFotoGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelNumeroIntegrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelChatDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE))
-                    .addComponent(jLabelNombreGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelClaseDelGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(3, 3, 3))
-                    .addComponent(jLabelUltimaActualizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelNombreGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelUltimaActualizacion, javax.swing.GroupLayout.DEFAULT_SIZE, 941, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -152,18 +137,14 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelFotoGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelFotoGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNombreGrupo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelClaseDelGrupo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelUltimaActualizacion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelChatDelGrupo)
-                            .addComponent(jLabelNumeroIntegrantes))))
-                .addGap(5, 5, 5))
+                        .addComponent(jLabelUltimaActualizacion)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -264,10 +245,8 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
 
                 colorList.clear();
                 
-                jLabelChatDelGrupo.setForeground(fontColor);
                 jLabelClaseDelGrupo.setForeground(fontColor);
                 jLabelNombreGrupo.setForeground(fontColor);
-                jLabelNumeroIntegrantes.setForeground(fontColor);
                 jLabelUltimaActualizacion.setForeground(fontColor);
                 this.setBackground(firstColor);
                 this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
@@ -285,11 +264,9 @@ public class BoxGroupPanel extends javax.swing.JPanel implements ColorInterface{
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelChatDelGrupo;
     private javax.swing.JLabel jLabelClaseDelGrupo;
     private javax.swing.JLabel jLabelFotoGrupo;
     private javax.swing.JLabel jLabelNombreGrupo;
-    private javax.swing.JLabel jLabelNumeroIntegrantes;
     private javax.swing.JLabel jLabelUltimaActualizacion;
     // End of variables declaration//GEN-END:variables
 

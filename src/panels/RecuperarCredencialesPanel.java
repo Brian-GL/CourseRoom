@@ -123,6 +123,7 @@ public class RecuperarCredencialesPanel extends javax.swing.JPanel implements Di
         });
 
         jButtonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonRegresar.setToolTipText("Regresar Al Login");
         jButtonRegresar.setBorder(null);
         jButtonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
