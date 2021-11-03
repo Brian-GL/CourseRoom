@@ -8,7 +8,7 @@ package courseroom;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import data.interfaces.DisposeInterface;
-import panels.DashboardPanel;
+import panels.StudentsPanel.StudentDashboardPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
@@ -24,19 +24,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import panels.LoginPanel;
-import panels.RecuperarCredencialesPanel;
-import panels.CrearCuentaPanel;
+import panels.GeneralPanels.GeneralLoginPanel;
+import panels.GeneralPanels.GeneralRecuperarCredencialesPanel;
+import panels.GeneralPanels.GeneralCrearCuentaPanel;
 /**
  *
  * @author LENOVO
  */
 public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
 
-    private static LoginPanel login;
-    private static RecuperarCredencialesPanel recuperarCredenciales;
-    private static CrearCuentaPanel crearCuenta;
-    private static DashboardPanel dashboard;
+    private static GeneralLoginPanel login;
+    private static GeneralRecuperarCredencialesPanel recuperarCredenciales;
+    private static GeneralCrearCuentaPanel crearCuenta;
+    private static StudentDashboardPanel dashboard;
     private static Color darkBlue, lightBlue;
     private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
     
@@ -74,7 +74,7 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         }
         
         jPanelViewer.setBackground(firstColor);
-        login = new LoginPanel();
+        login = new GeneralLoginPanel();
         jPanelViewer.add("login",login);
         
         boolean isConnected = checkConnection();
@@ -84,11 +84,11 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
             return;
         }
         
-        recuperarCredenciales = new RecuperarCredencialesPanel();
+        recuperarCredenciales = new GeneralRecuperarCredencialesPanel();
         jPanelViewer.add("recuperarCredenciales",recuperarCredenciales);
         
-        crearCuenta = new CrearCuentaPanel();
-        dashboard = new DashboardPanel();
+        crearCuenta = new GeneralCrearCuentaPanel();
+        dashboard = new StudentDashboardPanel();
         jPanelViewer.add("dashboard",dashboard);
         
         jPanelViewer.add("crearCuenta",crearCuenta);
@@ -176,7 +176,7 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         jPanelViewer.setBackground(darkBlue);
         dashboard.dispose();
         dashboard = null;
-        dashboard = new DashboardPanel();
+        dashboard = new StudentDashboardPanel();
         
     }
     
@@ -217,7 +217,7 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
     /**
      * @return the login
      */
-    public static LoginPanel getLogin() {
+    public static GeneralLoginPanel getLogin() {
         return login;
     }
     
