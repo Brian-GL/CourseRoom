@@ -8,7 +8,7 @@ package courseroom;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import data.interfaces.DisposeInterface;
-import panels.StudentsPanel.StudentDashboardPanel;
+import panels.students.StudentDashboardPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
@@ -24,9 +24,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import panels.GeneralPanels.GeneralLoginPanel;
-import panels.GeneralPanels.GeneralRecuperarCredencialesPanel;
-import panels.GeneralPanels.GeneralCrearCuentaPanel;
+import panels.generals.GeneralLoginPanel;
+import panels.generals.GeneralRecuperarCredencialesPanel;
+import panels.generals.GeneralCrearCuentaPanel;
+import panels.teachers.TeacherDashboardPanel;
 /**
  *
  * @author LENOVO
@@ -36,7 +37,8 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
     private static GeneralLoginPanel login;
     private static GeneralRecuperarCredencialesPanel recuperarCredenciales;
     private static GeneralCrearCuentaPanel crearCuenta;
-    private static StudentDashboardPanel dashboard;
+    private static StudentDashboardPanel studentDashboard;
+    private static TeacherDashboardPanel teacherDashboardPanel;
     private static Color darkBlue, lightBlue;
     private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
     
@@ -88,8 +90,9 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         jPanelViewer.add("recuperarCredenciales",recuperarCredenciales);
         
         crearCuenta = new GeneralCrearCuentaPanel();
-        dashboard = new StudentDashboardPanel();
-        jPanelViewer.add("dashboard",dashboard);
+        //studentDashboard = new StudentDashboardPanel();
+        teacherDashboardPanel = new TeacherDashboardPanel();
+        jPanelViewer.add("dashboard",teacherDashboardPanel);
         
         jPanelViewer.add("crearCuenta",crearCuenta);
         
@@ -164,7 +167,8 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
     }
     
     public static void showDashboard(){
-        dashboard.setColors();
+        //studentDashboard.setColors();
+        teacherDashboardPanel.setColors();
         viewerLayout.show(jPanelViewer,"dashboard");
     }
     
@@ -174,9 +178,9 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         secondColor = lightBlue;
         thirdColor = lightBlue;
         jPanelViewer.setBackground(darkBlue);
-        dashboard.dispose();
-        dashboard = null;
-        dashboard = new StudentDashboardPanel();
+        //studentDashboard.dispose();
+        //studentDashboard = null;
+        //studentDashboard = new StudentDashboardPanel();
         
     }
     
@@ -187,12 +191,12 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
    
     @Override
     public void dispose(){
-        dashboard.dispose();
+        //studentDashboard.dispose();
         recuperarCredenciales.dispose();
         login = null;
         recuperarCredenciales = null;
         crearCuenta = null;
-        dashboard = null;
+        studentDashboard = null;
         darkBlue = lightBlue = null;
         firstColor = secondColor = thirdColor = fontColor = secondFontColor = thirdFontColor = null;
         logoImage = null;
