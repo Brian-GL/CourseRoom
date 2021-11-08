@@ -7,7 +7,6 @@ package panels.students;
 
 import panels.generals.GeneralMusicPanel;
 import panels.generals.GeneralDatesPanel;
-import panels.generals.GeneralNoticesPanel;
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
 import data.collections.PairDoublyLinkedList;
@@ -31,7 +30,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import panels.generals.GeneralConfigurationPanel;
 
 /**
  *
@@ -46,11 +44,11 @@ public class StudentDashboardPanel extends javax.swing.JPanel implements ColorIn
     private static StudentInfoProfilePanel infoProfilePanel;
     private StudentEditProfilePanel editProfilePanel;
     private GeneralMusicPanel musicPanel;
-    private GeneralNoticesPanel noticesPanel;
+    private StudentNoticesPanel noticesPanel;
     private StudentGroupsPanel groupsPanel;
     private GeneralDatesPanel datesPanel;
     private StudentHomeworksPanel homeworksPanel;
-    private GeneralConfigurationPanel configurationPanel;
+    private StudentDashboardConfigurationPanel configurationPanel;
     
     private static CardLayout panelLayout;
     private ServerDateTime serverDateTime;
@@ -93,7 +91,7 @@ public class StudentDashboardPanel extends javax.swing.JPanel implements ColorIn
             datesPanel = new GeneralDatesPanel();
             jPanelInformacion.add("datesPanel",datesPanel);
             
-            noticesPanel = new GeneralNoticesPanel();
+            noticesPanel = new StudentNoticesPanel();
             jPanelInformacion.add("noticesPanel",noticesPanel);
             
             groupsPanel = new StudentGroupsPanel();
@@ -110,7 +108,7 @@ public class StudentDashboardPanel extends javax.swing.JPanel implements ColorIn
             musicPanel = new GeneralMusicPanel();
             jPanelInformacion.add("musicPanel",musicPanel);
             
-            configurationPanel = new GeneralConfigurationPanel();
+            configurationPanel = new StudentDashboardConfigurationPanel();
             jPanelInformacion.add("configurationPanel",configurationPanel);
             
             Faker faker = new Faker(new Locale("es","MX"));
@@ -829,8 +827,8 @@ public class StudentDashboardPanel extends javax.swing.JPanel implements ColorIn
                 MainFrame.setFontColor(fontColor);
                 MainFrame.setSecondFontColor(secondFontColor);
                 MainFrame.setThirdFontColor(thirdFontColor);
-                
-                MainFrame.repainting();
+
+                MainFrame.repainting();              
                 infoProfilePanel.colorMyComponents();
                 editProfilePanel.colorMyComponents();
                 aboutPanel.colorMyComponents();

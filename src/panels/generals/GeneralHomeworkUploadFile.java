@@ -53,6 +53,7 @@ public class GeneralHomeworkUploadFile extends javax.swing.JPanel {
 
         jLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/submit.png"))); // NOI18N
 
+        jScrollPaneFileName.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPaneFileName.setOpaque(false);
 
         jTextPaneFileName.setEditable(false);

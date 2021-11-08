@@ -15,13 +15,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
+import panels.generals.GeneralAttachmentPanel;
 import panels.generals.GeneralHomeworkCommentPanel;
 
 /**
@@ -43,7 +43,19 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
         thirdFontColor = _thirdFontColor;
         jLabelHomeworkName.setText(name);
         
-        initMyComponents();
+        jScrollPaneComments.getViewport().setOpaque(false);
+        jScrollPaneComments.getVerticalScrollBar().setUnitIncrement(15);
+
+        jScrollPaneHomeworkDescription.getViewport().setOpaque(false);
+        jScrollPaneHomeworkDescription.getVerticalScrollBar().setUnitIncrement(15);
+
+        jScrollPaneUploadedFiles.getViewport().setOpaque(false);
+        jScrollPaneUploadedFiles.getVerticalScrollBar().setUnitIncrement(15);
+        
+        jScrollPaneAttachments.getViewport().setOpaque(false);
+        jScrollPaneAttachments.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        colorMyComponents();
     }
 
     /**
@@ -75,7 +87,10 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
         jButtonRegresar = new javax.swing.JButton();
         jLabelHomeworkClass = new javax.swing.JLabel();
         jLabelHomeworkStatus = new javax.swing.JLabel();
+        jScrollPaneAttachments = new javax.swing.JScrollPane();
+        jPanelAttachments = new javax.swing.JPanel();
 
+        setBackground(java.awt.Color.white);
         setMinimumSize(new java.awt.Dimension(1085, 630));
 
         jLabelHomeworkName.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
@@ -120,15 +135,15 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
             .addGroup(jPanelMyWorkLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelMyWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonUploadFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneUploadedFiles))
+                    .addComponent(jButtonUploadFile, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneUploadedFiles, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanelMyWorkLayout.setVerticalGroup(
             jPanelMyWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMyWorkLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneUploadedFiles, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                .addComponent(jScrollPaneUploadedFiles, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonUploadFile, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -180,12 +195,12 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
             jPanelSendCommentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSendCommentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldComment)
+                .addComponent(jTextFieldComment, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxCommentType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSendComment)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelSendCommentLayout.setVerticalGroup(
             jPanelSendCommentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,13 +225,14 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
         jPanelHomeworkComments.setLayout(jPanelHomeworkCommentsLayout);
         jPanelHomeworkCommentsLayout.setHorizontalGroup(
             jPanelHomeworkCommentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelSendComment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPaneComments)
+            .addComponent(jPanelSendComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPaneComments, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanelHomeworkCommentsLayout.setVerticalGroup(
             jPanelHomeworkCommentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHomeworkCommentsLayout.createSequentialGroup()
-                .addComponent(jScrollPaneComments, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPaneComments)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelSendComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -271,36 +287,41 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
         });
 
         jLabelHomeworkStatus.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-        jLabelHomeworkStatus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelHomeworkStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelHomeworkStatus.setText("Pendiente");
+
+        jScrollPaneAttachments.setBorder(null);
+        jScrollPaneAttachments.setOpaque(false);
+
+        jPanelAttachments.setOpaque(false);
+        jPanelAttachments.setLayout(new javax.swing.BoxLayout(jPanelAttachments, javax.swing.BoxLayout.LINE_AXIS));
+        jScrollPaneAttachments.setViewportView(jPanelAttachments);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelHomeworkComments, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneHomeworkDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelHomeworkClass, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelTeacherName, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonRegresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelHomeworkName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPaneAttachments, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelHomeworkComments, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPaneHomeworkDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelHomeworkName, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButtonRegresar)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabelDateTimeFinished, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelHomeworkClass, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabelTeacherName, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelMyWork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonSendWork, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabelHomeworkStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(jLabelHomeworkStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelMyWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDateTimeFinished, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSendWork, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,25 +329,27 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelMyWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelHomeworkStatus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonSendWork, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelHomeworkName, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelHomeworkName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelHomeworkClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelTeacherName))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPaneHomeworkDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanelHomeworkComments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPaneHomeworkDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(jScrollPaneAttachments, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jPanelHomeworkComments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelHomeworkStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelDateTimeFinished, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jPanelMyWork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelDateTimeFinished)
+                        .addGap(131, 131, 131)
+                        .addComponent(jButtonSendWork, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -352,7 +375,7 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
 
     private void jButtonSendCommentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendCommentMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if(!jTextFieldComment.getText().isEmpty() && !jTextFieldComment.getText().isBlank()){
             sendComment();
         }
     }//GEN-LAST:event_jButtonSendCommentMouseClicked
@@ -366,7 +389,9 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
     private void jTextFieldCommentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCommentKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            sendComment();
+            if(!jTextFieldComment.getText().isEmpty() && !jTextFieldComment.getText().isBlank()){
+                sendComment();
+            }
         }
     }//GEN-LAST:event_jTextFieldCommentKeyPressed
 
@@ -421,6 +446,7 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
 
     private void sendComment(){
         try {
+            
             Locale mx = new Locale("es","MX");
             Faker faker = new Faker(mx);
             System.out.println("Comment Getting Image From https://loremflickr.com/50/50/sunset,beach/all");
@@ -431,6 +457,7 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
             getImage.flush();
             getImage = null;
             imageURL = null;
+            jTextFieldComment.setText("");
         } catch (MalformedURLException ex) {
             Logger.getLogger(StudentHomeworkPanel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -468,11 +495,13 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
     private javax.swing.JLabel jLabelHomeworkName;
     private javax.swing.JLabel jLabelHomeworkStatus;
     private javax.swing.JLabel jLabelTeacherName;
+    private javax.swing.JPanel jPanelAttachments;
     private javax.swing.JPanel jPanelComments;
     private javax.swing.JPanel jPanelHomeworkComments;
     private javax.swing.JPanel jPanelMyWork;
     private javax.swing.JPanel jPanelSendComment;
     private javax.swing.JPanel jPanelUploadedFiles;
+    private javax.swing.JScrollPane jScrollPaneAttachments;
     private javax.swing.JScrollPane jScrollPaneComments;
     private javax.swing.JScrollPane jScrollPaneHomeworkDescription;
     private javax.swing.JScrollPane jScrollPaneUploadedFiles;
@@ -480,16 +509,8 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
     private javax.swing.JTextPane jTextPaneHomeworkDescription;
     // End of variables declaration//GEN-END:variables
 
-    private void initMyComponents() {
-        jScrollPaneComments.getViewport().setOpaque(false);
-        jScrollPaneComments.getVerticalScrollBar().setUnitIncrement(15);
-
-        jScrollPaneHomeworkDescription.getViewport().setOpaque(false);
-        jScrollPaneHomeworkDescription.getVerticalScrollBar().setUnitIncrement(15);
-
-        jScrollPaneUploadedFiles.getViewport().setOpaque(false);
-        jScrollPaneUploadedFiles.getVerticalScrollBar().setUnitIncrement(15);
-
+    public void colorMyComponents() {
+        
         jButtonUploadFile.setBackground(thirdColor);
         jButtonUploadFile.setForeground(thirdFontColor);
         
@@ -503,9 +524,9 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
         jLabelHomeworkName.setForeground(secondFontColor);
         jLabelHomeworkName.setBackground(secondColor);
 
-        jLabelTeacherName.setBackground(fontColor);
+        jLabelTeacherName.setForeground(fontColor);
 
-        jLabelHomeworkClass.setBackground(fontColor);
+        jLabelHomeworkClass.setForeground(fontColor);
 
         jLabelDateTimeFinished.setForeground(fontColor);
 
@@ -529,6 +550,11 @@ public class StudentHomeworkPanel extends javax.swing.JPanel implements DisposeI
         
         jPanelMyWork.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(fontColor), "Mi Trabajo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 0, 18),fontColor));
         jPanelHomeworkComments.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(fontColor), "Comentarios De La Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 0, 18),fontColor));
+        
+        for(int i = 0; i < 4; i++){
+            GeneralAttachmentPanel generalAttachmentPanel = new GeneralAttachmentPanel(fontColor, secondColor, secondFontColor);
+            jPanelAttachments.add(generalAttachmentPanel);
+        }
     }
     
     @Override

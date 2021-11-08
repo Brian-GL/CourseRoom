@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package panels.generals;
+package panels.teachers;
 
 import courseroom.MainFrame;
 import java.io.File;
@@ -14,12 +14,12 @@ import javax.swing.SwingUtilities;
  *
  * @author LENOVO
  */
-public class GeneralConfigurationPanel extends javax.swing.JPanel {
+public class TeacherDashboardConfigurationPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form GeneralConfigurationPanel
      */
-    public GeneralConfigurationPanel() {
+    public TeacherDashboardConfigurationPanel() {
         initComponents();
         
         jLabelLogo.setIcon(MainFrame.getLogoImage());

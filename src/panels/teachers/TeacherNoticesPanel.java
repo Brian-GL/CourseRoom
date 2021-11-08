@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package panels.generals;
+package panels.teachers;
 
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
+import data.collections.DoublyLinkedList;
 import data.interfaces.DisposeInterface;
 
 
@@ -14,14 +15,15 @@ import data.interfaces.DisposeInterface;
  *
  * @author LENOVO
  */
-public class GeneralNoticesPanel extends javax.swing.JPanel implements DisposeInterface{
+public class TeacherNoticesPanel extends javax.swing.JPanel implements DisposeInterface{
 
+    private DoublyLinkedList<TeacherBoxNoticePanel> teacherBoxNoticesPanel;
     /**
      * Creates new form AvisosPanel
      */
-    public GeneralNoticesPanel() {
+    public TeacherNoticesPanel() {
         initComponents();
-        
+        teacherBoxNoticesPanel = new DoublyLinkedList<>();
         jScrollPaneMisAvisos.getViewport().setOpaque(false);
         jScrollPaneMisAvisos.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneMisAvisos.getHorizontalScrollBar().setUnitIncrement(15);
@@ -29,15 +31,20 @@ public class GeneralNoticesPanel extends javax.swing.JPanel implements DisposeIn
         
        Faker faker = new Faker();
         for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
-            GeneralBoxNoticePanel boxAvisoPanel = new GeneralBoxNoticePanel();
+            TeacherBoxNoticePanel boxAvisoPanel = new TeacherBoxNoticePanel();
             jPanelMisAvisos.add(boxAvisoPanel);
+            teacherBoxNoticesPanel.push_back(boxAvisoPanel);
         }
         
     }
 
     public void colorMyComponents(){
-        jLabelNoticesTitle.setBackground(MainFrame.getSecondColor());
-        jLabelNoticesTitle.setForeground(MainFrame.getSecondFontColor());
+        //jLabelNoticesTitle.setBackground(MainFrame.getSecondColor());
+        jLabelNoticesTitle.setForeground(MainFrame.getFontColor());
+        while(!teacherBoxNoticesPanel.is_empty()){
+            TeacherBoxNoticePanel teacherBoxNoticePanel = teacherBoxNoticesPanel.delist();
+            teacherBoxNoticePanel.colorMyComponents();
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -55,7 +62,6 @@ public class GeneralNoticesPanel extends javax.swing.JPanel implements DisposeIn
         jLabelNoticesTitle.setText("Avisos");
         jLabelNoticesTitle.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelNoticesTitle.setMinimumSize(new java.awt.Dimension(416, 84));
-        jLabelNoticesTitle.setOpaque(true);
         jLabelNoticesTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         jScrollPaneMisAvisos.setBorder(null);

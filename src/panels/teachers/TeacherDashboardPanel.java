@@ -7,25 +7,20 @@ package panels.teachers;
 
 import panels.generals.GeneralMusicPanel;
 import panels.generals.GeneralDatesPanel;
-import panels.generals.GeneralNoticesPanel;
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
-import data.collections.PairDoublyLinkedList;
 import data.interfaces.ColorInterface;
 import data.interfaces.DisposeInterface;
-import data.structures.Pair;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
-import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -45,8 +40,9 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
     private static TeacherInfoProfilePanel infoProfilePanel;
     private TeacherEditProfilePanel editProfilePanel;
     private GeneralMusicPanel musicPanel;
-    private GeneralNoticesPanel noticesPanel;
+    private TeacherNoticesPanel noticesPanel;
     private GeneralDatesPanel datesPanel;
+    private TeacherDashboardConfigurationPanel configurationPanel;
     
     private static CardLayout panelLayout;
     private ServerDateTime serverDateTime;
@@ -91,7 +87,7 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
             jPanelInformacion.add("datesPanel",datesPanel);
             
             //notices panel -> 6 en active page flag
-            noticesPanel = new GeneralNoticesPanel();
+            noticesPanel = new TeacherNoticesPanel();
             jPanelInformacion.add("noticesPanel",noticesPanel);
             
            
@@ -107,6 +103,9 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
             //musica panel -> 10 en active page flag
             musicPanel = new GeneralMusicPanel();
             jPanelInformacion.add("musicPanel",musicPanel);
+            
+            configurationPanel = new TeacherDashboardConfigurationPanel();
+            jPanelInformacion.add("configurationPanel",configurationPanel);
             
             
             Faker faker = new Faker(new Locale("es","MX"));
@@ -141,7 +140,6 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
         jButtonClases = new javax.swing.JButton();
         jButtonFechas = new javax.swing.JButton();
         jButtonAvisos = new javax.swing.JButton();
-        jButtonGrupos = new javax.swing.JButton();
         jButtonChats = new javax.swing.JButton();
         jButtonMusica = new javax.swing.JButton();
         jButtonAcerca = new javax.swing.JButton();
@@ -250,24 +248,6 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
         });
         jPanelMenu.add(jButtonAvisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, -1, -1));
 
-        jButtonGrupos.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jButtonGrupos.setText("Grupos");
-        jButtonGrupos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonGrupos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonGrupos.setPreferredSize(new java.awt.Dimension(175, 35));
-        jButtonGrupos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonGruposMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonGruposMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonGruposMouseExited(evt);
-            }
-        });
-        jPanelMenu.add(jButtonGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 315, -1, -1));
-
         jButtonChats.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jButtonChats.setText("Chats");
         jButtonChats.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -284,7 +264,7 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
                 jButtonChatsMouseExited(evt);
             }
         });
-        jPanelMenu.add(jButtonChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
+        jPanelMenu.add(jButtonChats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 315, -1, -1));
 
         jButtonMusica.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jButtonMusica.setText("Música");
@@ -302,7 +282,7 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
                 jButtonMusicaMouseExited(evt);
             }
         });
-        jPanelMenu.add(jButtonMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 385, -1, -1));
+        jPanelMenu.add(jButtonMusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
 
         jButtonAcerca.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jButtonAcerca.setText("Acerca");
@@ -320,7 +300,7 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
                 jButtonAcercaMouseExited(evt);
             }
         });
-        jPanelMenu.add(jButtonAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 455, -1, -1));
+        jPanelMenu.add(jButtonAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
 
         jButtonAjustes.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jButtonAjustes.setText("Ajustes");
@@ -338,7 +318,7 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
                 jButtonAjustesMouseExited(evt);
             }
         });
-        jPanelMenu.add(jButtonAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
+        jPanelMenu.add(jButtonAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 385, -1, -1));
 
         jButtonSalir.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jButtonSalir.setText("Salir");
@@ -357,7 +337,7 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
                 jButtonSalirMouseExited(evt);
             }
         });
-        jPanelMenu.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
+        jPanelMenu.add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 455, -1, -1));
 
         jPanelBarraSuperior.setBackground(java.awt.Color.black);
         jPanelBarraSuperior.setMinimumSize(new java.awt.Dimension(1260, 40));
@@ -618,7 +598,7 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
     private void jButtonAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjustesMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            TeacherDashboardPanel.showView("configurationPanel");
         }
     }//GEN-LAST:event_jButtonAjustesMouseClicked
 
@@ -654,139 +634,41 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
         jButtonSalir.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jButtonSalirMouseExited
 
-    private void jButtonGruposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGruposMouseExited
-        // TODO add your handling code here:
-        jButtonGrupos.setBackground(MainFrame.getSecondColor());
-        jButtonGrupos.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jButtonGruposMouseExited
-
-    private void jButtonGruposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGruposMouseEntered
-        // TODO add your handling code here:
-        jButtonGrupos.setBackground(MainFrame.getThirdColor());
-        jButtonGrupos.setForeground(MainFrame.getThirdFontColor());
-    }//GEN-LAST:event_jButtonGruposMouseEntered
-
-    private void jButtonGruposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGruposMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            TeacherDashboardPanel.showView("groupsPanel");
-        }
-    }//GEN-LAST:event_jButtonGruposMouseClicked
-
     
     public void setColors(){
-        try {
-            
-            int maximum = 0;
-            Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
-            firstColor = secondColor = thirdColor =  fontColor =  secondFontColor = thirdFontColor = Color.BLACK;
-            Random colorRandom = new Random(System.currentTimeMillis());
-            PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
-            PixelGrabber pg = new PixelGrabber(userImage, 0, 0, -1, -1, false);
-            int large = userImage.getWidth(null)/2;
-            if (pg.grabPixels()) {
-                int[] pixels = (int[]) pg.getPixels();
-                for(int i = 0; i < pixels.length; i++){
-                    int pixel = pixels[i];
-                    int  red = (pixel  & 0x00ff0000) >> 16;
-                    int  green = (pixel & 0x0000ff00) >> 8;
-                    int  blue = pixel & 0x000000ff;
-                    Color color = new Color(red,green,blue);
-                    Pair<Integer, Color> pair = colorList.get_from_second(color);
-            
-                    if (pair != null) {//exist
-                        int number = pair.first()+ 1;
-                        pair.first(number);
-                        if (number > maximum) {
-                            firstColor = color;
-                            maximum = number;
-                        }
-                    } else {
-                        colorList.push_back(1, color);
-                    }
+           
+        Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
+        firstColor = new Color(255,255,255,255);
+        secondColor = Color.BLACK;
+        thirdColor = new Color(30,30,30);
+        fontColor = Color.BLACK;
+        secondFontColor = Color.WHITE;
+        thirdFontColor = Color.WHITE;
 
-                    color = null;
-                    i+= colorRandom.nextInt(large + 1) + large;
-                }
+        Component[] components = jPanelMenu.getComponents();
 
-                secondColor = firstColor;
-            
-                int iterations = 0;
-                if(colorList.size() > 1){
-                    
-                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
-                        secondColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 25){
-                             while(firstColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                secondColor = colorList.get(position).second();
-                            }
-                             break;
-                        }
-                    }
-                }
-                
-
-               thirdColor = secondColor;
-                if(colorList.size() > 2){
-                    iterations = 0;
-                    
-                    while(Math.abs(thirdColor.getRGB() - firstColor.getRGB()) < 3000000 || Math.abs(secondColor.getRGB() - thirdColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
-                        thirdColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 50){
-                            while(thirdColor.getRGB() == firstColor.getRGB() || thirdColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                thirdColor = colorList.get(position).second();
-                            }
-                            break;
-                        }
-                    }
-                }
-                
-                int red = firstColor.getRed();
-                fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                red = secondColor.getRed();
-                secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                red = thirdColor.getRed();
-                thirdFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                colorList.clear();
-                Component[] components = jPanelMenu.getComponents();
-
-                for(Component component: components){
-                    component.setForeground(secondFontColor);
-                    component.setBackground(secondColor);
-                }
-                jLabelFechaHoraServidor.setForeground(fontColor);
-                jLabelUserName.setForeground(fontColor);
-                colorList = null;
-                pg = null;
-                pixels = null;
-                colorRandom = null;
-                
-                MainFrame.setFirstColor(firstColor);
-                MainFrame.setSecondColor(secondColor);
-                MainFrame.setThirdColor(thirdColor);
-                MainFrame.setFontColor(fontColor);
-                MainFrame.setSecondFontColor(secondFontColor);
-                MainFrame.setThirdFontColor(thirdFontColor);
-                
-                MainFrame.repainting();
-                infoProfilePanel.colorMyComponents();
-                editProfilePanel.colorMyComponents();
-                aboutPanel.colorMyComponents();
-                chatsPanel.colorMyComponents();
-                noticesPanel.colorMyComponents();
-                datesPanel.colorMyComponents();
-                
-            }
-            
-        } catch (InterruptedException ex) {
-            Logger.getLogger(GeneralMusicPanel.class.getName()).log(Level.SEVERE, null, ex);
+        for(Component component: components){
+            component.setForeground(secondFontColor);
+            component.setBackground(secondColor);
         }
+        jLabelFechaHoraServidor.setForeground(fontColor);
+        jLabelUserName.setForeground(fontColor);
+
+        MainFrame.setFirstColor(firstColor);
+        MainFrame.setSecondColor(secondColor);
+        MainFrame.setThirdColor(thirdColor);
+        MainFrame.setFontColor(fontColor);
+        MainFrame.setSecondFontColor(secondFontColor);
+        MainFrame.setThirdFontColor(thirdFontColor);
+
+        MainFrame.repainting();
+        infoProfilePanel.colorMyComponents();
+        editProfilePanel.colorMyComponents();
+        aboutPanel.colorMyComponents();
+        chatsPanel.colorMyComponents();
+        noticesPanel.colorMyComponents();
+        datesPanel.colorMyComponents();
+        configurationPanel.colorMyComponents();
             
     }
     
@@ -815,7 +697,6 @@ public class TeacherDashboardPanel extends javax.swing.JPanel implements ColorIn
     private javax.swing.JButton jButtonChats;
     private javax.swing.JButton jButtonClases;
     private javax.swing.JButton jButtonFechas;
-    private javax.swing.JButton jButtonGrupos;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonMenu;
     private javax.swing.JButton jButtonMusica;

@@ -5,18 +5,14 @@
  */
 package panels.teachers;
 
-import panels.generals.*;
 import com.github.javafaker.Faker;
-import data.collections.PairDoublyLinkedList;
-import data.structures.Pair;
+import courseroom.MainFrame;
 import java.awt.Color;
 import java.awt.Image;
-import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -31,15 +27,13 @@ import data.interfaces.DisposeInterface;
  */
 public class TeacherBoxChatPanel extends javax.swing.JPanel implements ColorInterface, DisposeInterface{
 
-    private Color firstColor, fontColor, secondColor;
-    private TeacherChatPanel chatPanel;
+    private TeacherChatPanel teacherChatPanel;
     private int id;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public TeacherBoxChatPanel(int _id) {
         initComponents();
         try {
-            firstColor = Color.BLACK;
             System.out.println("Chat ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
             URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
@@ -53,8 +47,8 @@ public class TeacherBoxChatPanel extends javax.swing.JPanel implements ColorInte
             jLabelUltimoMensaje.setText(faker.friends().character() + " Is There?");
             jLabelNumeroMensajesNoLeidos.setText(faker.number().digits(1));
             this.id = _id;
-            chatPanel = new TeacherChatPanel(jLabelNombreChat.getText(),firstColor, fontColor,secondColor);
-            TeacherDashboardPanel.addView(chatPanel,"chat_"+id);
+            teacherChatPanel = new TeacherChatPanel(jLabelNombreChat.getText());
+            TeacherDashboardPanel.addView(teacherChatPanel,"chat_"+id);
             
             getImage.flush();
             getImage = null;
@@ -74,7 +68,7 @@ public class TeacherBoxChatPanel extends javax.swing.JPanel implements ColorInte
     
     @Override
     public void setColors(Image image){
-        
+        /*
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
             int maximum = 0;
@@ -147,6 +141,12 @@ public class TeacherBoxChatPanel extends javax.swing.JPanel implements ColorInte
         } catch (InterruptedException ex) {
             Logger.getLogger(GeneralMusicPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+        
+        */
+        
+        
     }
     
     
@@ -184,7 +184,6 @@ public class TeacherBoxChatPanel extends javax.swing.JPanel implements ColorInte
         jLabelNombreChat.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         jLabelNombreChat.setForeground(java.awt.Color.white);
         jLabelNombreChat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelNombreChat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/online-chat_1.png"))); // NOI18N
         jLabelNombreChat.setText("Nombre Del Chat");
         jLabelNombreChat.setToolTipText("Nombre Del Chat");
         jLabelNombreChat.setMaximumSize(new java.awt.Dimension(488, 32));
@@ -199,7 +198,6 @@ public class TeacherBoxChatPanel extends javax.swing.JPanel implements ColorInte
         jLabelUltimoMensaje.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         jLabelUltimoMensaje.setForeground(java.awt.Color.white);
         jLabelUltimoMensaje.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelUltimoMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/messaging.png"))); // NOI18N
         jLabelUltimoMensaje.setText("Último Mensaje Recibido");
         jLabelUltimoMensaje.setToolTipText("Último Mensaje Recibido");
         jLabelUltimoMensaje.setMaximumSize(new java.awt.Dimension(417, 22));
@@ -215,7 +213,6 @@ public class TeacherBoxChatPanel extends javax.swing.JPanel implements ColorInte
         jLabelFechaHoraMensaje.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
         jLabelFechaHoraMensaje.setForeground(java.awt.Color.white);
         jLabelFechaHoraMensaje.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelFechaHoraMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/circular-clock.png"))); // NOI18N
         jLabelFechaHoraMensaje.setText("10/08/2021 05:42 P.M");
         jLabelFechaHoraMensaje.setToolTipText("Fecha & Hora Del Último Mensaje");
 
@@ -268,6 +265,15 @@ public class TeacherBoxChatPanel extends javax.swing.JPanel implements ColorInte
         }
     }//GEN-LAST:event_jLabelNombreChatMouseClicked
 
+    public void paintMyComponents(){
+        teacherChatPanel.paintMyComponents();
+        jLabelFechaHoraMensaje.setForeground(MainFrame.getFontColor());
+        jLabelNombreChat.setForeground(MainFrame.getFontColor());
+        jLabelNumeroMensajesNoLeidos.setForeground(MainFrame.getFontColor());
+        jLabelUltimoMensaje.setForeground(MainFrame.getFontColor());
+        this.setBackground(MainFrame.getFirstColor());
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(MainFrame.getFontColor()));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelFechaHoraMensaje;
@@ -279,7 +285,7 @@ public class TeacherBoxChatPanel extends javax.swing.JPanel implements ColorInte
 
     @Override
     public void dispose() {
-        chatPanel.dispose();
+        teacherChatPanel.dispose();
     }
 
    

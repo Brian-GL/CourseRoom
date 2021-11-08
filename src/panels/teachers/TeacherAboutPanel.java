@@ -52,7 +52,6 @@ public class TeacherAboutPanel extends javax.swing.JPanel {
         jLabelTitulo.setText("Acerca De CourseRoom");
         jLabelTitulo.setMaximumSize(new java.awt.Dimension(1071, 43));
         jLabelTitulo.setMinimumSize(new java.awt.Dimension(1071, 43));
-        jLabelTitulo.setOpaque(true);
         jLabelTitulo.setPreferredSize(new java.awt.Dimension(1071, 43));
 
         jScrollPaneTextPane.setBorder(null);
@@ -112,8 +111,8 @@ public class TeacherAboutPanel extends javax.swing.JPanel {
     }
     
     public void colorMyComponents(){
-        jLabelTitulo.setBackground(MainFrame.getSecondColor());
-        jLabelTitulo.setForeground(MainFrame.getSecondFontColor());
+        //jLabelTitulo.setBackground(MainFrame.getSecondColor());
+        jLabelTitulo.setForeground(MainFrame.getFontColor());
         jTextPaneAbout.setForeground(MainFrame.getFontColor());
     }
     

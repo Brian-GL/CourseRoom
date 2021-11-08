@@ -327,7 +327,7 @@ public class TeacherEditProfilePanel extends javax.swing.JPanel {
         jPanelAutenticacionLayout.setVerticalGroup(
             jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(jPanelAutenticacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
                         .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,7 +366,7 @@ public class TeacherEditProfilePanel extends javax.swing.JPanel {
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jButtonCargarImagenPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 48, Short.MAX_VALUE)
+                        .addGap(18, 51, Short.MAX_VALUE)
                         .addComponent(jButtonGuardarCambiosAutenticacion, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelAutenticacionLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -376,7 +376,7 @@ public class TeacherEditProfilePanel extends javax.swing.JPanel {
 
         jTextFieldNombreDeUsuario.getAccessibleContext().setAccessibleName("");
 
-        jTabbedPaneFondo.addTab(" Autenticación ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/avatar.png")), jPanelAutenticacion, "Editar Mis Credenciales Para Acceder Al Sistema."); // NOI18N
+        jTabbedPaneFondo.addTab(" Autenticación ", null, jPanelAutenticacion, "Editar Mis Credenciales Para Acceder Al Sistema.");
 
         jPanelDatosPersonales.setBackground(new java.awt.Color(14, 30, 64));
         jPanelDatosPersonales.setMinimumSize(new java.awt.Dimension(800, 600));
@@ -493,7 +493,7 @@ public class TeacherEditProfilePanel extends javax.swing.JPanel {
         jComboBoxPerfil.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         jComboBoxPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Maestro", "Ambos" }));
         jComboBoxPerfil.setToolTipText("<html>Aquí Puedes Seleccionar Tu Perfil De Las Posibles.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
-        jComboBoxPerfil.setBorder(null);
+        jComboBoxPerfil.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jComboBoxPerfil.setMaximumSize(new java.awt.Dimension(400, 36));
         jComboBoxPerfil.setMinimumSize(new java.awt.Dimension(400, 36));
         jComboBoxPerfil.setPreferredSize(new java.awt.Dimension(400, 36));
@@ -713,7 +713,7 @@ public class TeacherEditProfilePanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPaneFondo.addTab(" Datos Personales ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/personal-data.png")), jPanelDatosPersonales, "Editar Mis Datos Personales."); // NOI18N
+        jTabbedPaneFondo.addTab(" Datos Personales ", null, jPanelDatosPersonales, "Editar Mis Datos Personales.");
 
         add(jTabbedPaneFondo, "card2");
     }// </editor-fold>//GEN-END:initComponents

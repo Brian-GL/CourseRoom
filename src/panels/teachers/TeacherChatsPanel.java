@@ -7,6 +7,7 @@ package panels.teachers;
 
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
+import data.collections.DoublyLinkedList;
 import data.interfaces.DisposeInterface;
 
 
@@ -16,21 +17,22 @@ import data.interfaces.DisposeInterface;
  */
 public class TeacherChatsPanel extends javax.swing.JPanel implements DisposeInterface{
     
-    
+    private DoublyLinkedList<TeacherBoxChatPanel> teacherBoxChatsPanel;
    
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public TeacherChatsPanel(){
         
         initComponents();
-        
+        teacherBoxChatsPanel = new DoublyLinkedList<>();
         jScrollPaneChats.getViewport().setOpaque(false);
         jScrollPaneChats.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneChats.getHorizontalScrollBar().setUnitIncrement(15);
         
-       Faker faker = new Faker();
+        Faker faker = new Faker();
         for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
             TeacherBoxChatPanel boxChatPanel = new TeacherBoxChatPanel(i);
             jPanelChats.add(boxChatPanel);
+            teacherBoxChatsPanel.push_back(boxChatPanel);
         }
         
     }
@@ -57,7 +59,6 @@ public class TeacherChatsPanel extends javax.swing.JPanel implements DisposeInte
         jLabelChatsTitle.setText("Chats Personales");
         jLabelChatsTitle.setMaximumSize(new java.awt.Dimension(416, 84));
         jLabelChatsTitle.setMinimumSize(new java.awt.Dimension(416, 84));
-        jLabelChatsTitle.setOpaque(true);
         jLabelChatsTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
         jScrollPaneChats.setBorder(null);
@@ -93,8 +94,12 @@ public class TeacherChatsPanel extends javax.swing.JPanel implements DisposeInte
 
     
     public void colorMyComponents(){
-        jLabelChatsTitle.setBackground(MainFrame.getSecondColor());
-        jLabelChatsTitle.setForeground(MainFrame.getSecondFontColor());
+        //jLabelChatsTitle.setBackground(MainFrame.getSecondColor());
+        jLabelChatsTitle.setForeground(MainFrame.getFontColor());
+        while(!teacherBoxChatsPanel.is_empty()){
+            TeacherBoxChatPanel teacherBoxChatPanel = teacherBoxChatsPanel.delist();
+            teacherBoxChatPanel.paintMyComponents();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

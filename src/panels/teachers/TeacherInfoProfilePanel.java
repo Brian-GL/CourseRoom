@@ -64,8 +64,8 @@ public class TeacherInfoProfilePanel extends javax.swing.JPanel {
     }
     
     public void colorMyComponents(){
-        jLabelApellidos.setBackground(MainFrame.getThirdColor());
-        jLabelApellidos.setForeground(MainFrame.getThirdFontColor());
+        //jLabelApellidos.setBackground(MainFrame.getThirdColor());
+        jLabelApellidos.setForeground(MainFrame.getFontColor());
         jLabelCorreoElectronico.setForeground(MainFrame.getFontColor());
         jButtonEditarPerfil.setForeground(MainFrame.getFontColor());
         jButtonEditarPerfil.setBackground(MainFrame.getFirstColor());
@@ -76,8 +76,8 @@ public class TeacherInfoProfilePanel extends javax.swing.JPanel {
         jButtonMiDesempenoEscolar.setBackground(MainFrame.getFirstColor());
         jLabelNombreDeUsuario.setForeground(MainFrame.getSecondFontColor());
         jLabelNombreDeUsuario.setBackground(MainFrame.getSecondColor());
-        jLabelNombres.setBackground(MainFrame.getThirdColor());
-        jLabelNombres.setForeground(MainFrame.getThirdFontColor());
+        //jLabelNombres.setBackground(MainFrame.getThirdColor());
+        jLabelNombres.setForeground(MainFrame.getFontColor());
         jLabelNumeroTelefono.setForeground(MainFrame.getFontColor());
         jLabelPerfil.setForeground(MainFrame.getFontColor());
         jLabelProfilePhoto.setForeground(MainFrame.getFontColor());
@@ -126,7 +126,6 @@ public class TeacherInfoProfilePanel extends javax.swing.JPanel {
         jLabelApellidos.setMaximumSize(new java.awt.Dimension(380, 50));
         jLabelApellidos.setMinimumSize(new java.awt.Dimension(380, 50));
         jLabelApellidos.setName("label"); // NOI18N
-        jLabelApellidos.setOpaque(true);
         jLabelApellidos.setPreferredSize(new java.awt.Dimension(380, 50));
 
         jLabelNombres.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
@@ -136,7 +135,6 @@ public class TeacherInfoProfilePanel extends javax.swing.JPanel {
         jLabelNombres.setMaximumSize(new java.awt.Dimension(380, 50));
         jLabelNombres.setMinimumSize(new java.awt.Dimension(380, 50));
         jLabelNombres.setName("label"); // NOI18N
-        jLabelNombres.setOpaque(true);
         jLabelNombres.setPreferredSize(new java.awt.Dimension(380, 50));
 
         jLabelNombreDeUsuario.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
@@ -145,7 +143,6 @@ public class TeacherInfoProfilePanel extends javax.swing.JPanel {
         jLabelNombreDeUsuario.setToolTipText("UserName");
         jLabelNombreDeUsuario.setMaximumSize(new java.awt.Dimension(430, 30));
         jLabelNombreDeUsuario.setMinimumSize(new java.awt.Dimension(430, 30));
-        jLabelNombreDeUsuario.setOpaque(true);
         jLabelNombreDeUsuario.setPreferredSize(new java.awt.Dimension(430, 30));
 
         jLabelCorreoElectronico.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N

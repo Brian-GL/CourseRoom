@@ -3,20 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package panels.generals;
+package panels.teachers;
 
 import com.github.javafaker.Faker;
-import data.collections.PairDoublyLinkedList;
-import data.interfaces.ColorInterface;
-import data.structures.Pair;
-import java.awt.Color;
+import courseroom.MainFrame;
 import java.awt.Image;
-import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -26,13 +21,13 @@ import javax.swing.ImageIcon;
  *
  * @author LENOVO
  */
-public class GeneralBoxNoticePanel extends javax.swing.JPanel implements ColorInterface{
+public class TeacherBoxNoticePanel extends javax.swing.JPanel{
 
     /**
      * Creates new form BoxAvisoPanel
      */
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public GeneralBoxNoticePanel() {
+    public TeacherBoxNoticePanel() {
         initComponents();
         try {
             System.out.println("Aviso -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
@@ -47,8 +42,7 @@ public class GeneralBoxNoticePanel extends javax.swing.JPanel implements ColorIn
             Image getImage = ImageIO.read(imageURL);
             Image avisoImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
             ImageIcon avisoIcon = new ImageIcon(avisoImage);
-            jLabelFotoAviso.setIcon(avisoIcon);
-            setColors(getImage);
+            jLabelFotoAviso.setIcon(avisoIcon);;
             getImage.flush();
             getImage = null;
             avisoIcon = null;
@@ -58,9 +52,9 @@ public class GeneralBoxNoticePanel extends javax.swing.JPanel implements ColorIn
             faker = null;
             mx = null;
         } catch (MalformedURLException ex) {
-            Logger.getLogger(GeneralBoxNoticePanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TeacherBoxNoticePanel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(GeneralBoxNoticePanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TeacherBoxNoticePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -158,83 +152,13 @@ public class GeneralBoxNoticePanel extends javax.swing.JPanel implements ColorIn
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    @Override
-    public void setColors(Image image){
-        
-        try {
-            Random colorRandom = new Random(System.currentTimeMillis());
-            int maximum = 0;
-            Color firstColor = Color.BLACK;
-            PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
-            PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = image.getWidth(null)/2;
-            if (pg.grabPixels()) {
-                int[] pixels = (int[]) pg.getPixels();
-                for(int i = 0; i < pixels.length; i++){
-                    int pixel = pixels[i];
-                    int  red = (pixel  & 0x00ff0000) >> 16;
-                    int  green = (pixel & 0x0000ff00) >> 8;
-                    int  blue = pixel & 0x000000ff;
-                    Color color = new Color(red,green,blue);
-                    Pair<Integer, Color> pair = colorList.get_from_second(color);
-            
-                    if (pair != null) {//exist
-                        int number = pair.first()+ 1;
-                        pair.first(number);
-                        if (number > maximum) {
-                            firstColor = color;
-                            maximum = number;
-                        }
-                    } else {
-                        colorList.push_back(1, color);
-                    }
-
-                    color = null;
-                    i += colorRandom.nextInt(large+1) + large;
-                }
-
-                Color secondColor = firstColor;
-            
-                int iterations = 0;
-                if(colorList.size() > 1){
-                    
-                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
-                        secondColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 25){
-                             while(firstColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                secondColor = colorList.get(position).second();
-                            }
-                             break;
-                        }
-                    }
-                }
-              
-                int red = firstColor.getRed();
-                Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                
-                colorList.clear();
-
-                jLabelDescripcionAviso.setForeground(fontColor);
-                jLabelEstado.setForeground(fontColor);
-                jLabelFechaHoraAviso.setForeground(fontColor);
-                jLabelProvenenciaAviso.setForeground(fontColor);
-                this.setBackground(firstColor);
-                this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
-
-                fontColor = null;
-                colorRandom = null;
-                colorList = null;
-                firstColor = null;
-                pg = null;
-                pixels = null;
-            }
-            
-        } catch (InterruptedException ex) {
-            Logger.getLogger(GeneralMusicPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void colorMyComponents(){
+        jLabelDescripcionAviso.setForeground(MainFrame.getFontColor());
+        jLabelEstado.setForeground(MainFrame.getFontColor());
+        jLabelFechaHoraAviso.setForeground(MainFrame.getFontColor());
+        jLabelProvenenciaAviso.setForeground(MainFrame.getFontColor());
+        this.setBackground(MainFrame.getFirstColor());
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(MainFrame.getSecondColor()));
     }
     
 

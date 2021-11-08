@@ -7,6 +7,7 @@ package panels.students;
 
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
+import data.collections.DoublyLinkedList;
 import data.interfaces.DisposeInterface;
 
 /**
@@ -23,14 +24,12 @@ public class StudentHomeworksPanel extends javax.swing.JPanel implements Dispose
         
         jScrollPaneMisTareas.getViewport().setOpaque(false);
         jScrollPaneMisTareas.getVerticalScrollBar().setUnitIncrement(15);
-        
         Faker faker = new Faker();
         for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
             StudentBoxHomeworkPanel boxHomeworkPanel = new StudentBoxHomeworkPanel(i);
             jPanelMisTareas.add(boxHomeworkPanel);
         }
     }
-    
     
 
     /**

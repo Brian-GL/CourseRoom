@@ -5,11 +5,10 @@
  */
 package panels.teachers;
 
-import panels.generals.*;
 import com.github.javafaker.Faker;
 import components.ImageFilePreview;
+import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -23,6 +22,11 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import panels.generals.GeneralAudioMessagePanel;
+import panels.generals.GeneralFileMessagePanel;
+import panels.generals.GeneralImageMessagePanel;
+import panels.generals.GeneralTextMessagePanel;
+import panels.generals.GeneralVideoMessagePanel;
 
 /**
  *
@@ -30,13 +34,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class TeacherChatPanel extends javax.swing.JPanel implements DisposeInterface{
 
-    private Color firstColor, secondColor, fontColor;
     
-    public TeacherChatPanel(String name, Color _firstColor, Color _fontColor, Color _secondColor) {
+    public TeacherChatPanel(String name) {
         initComponents();
-        firstColor = _firstColor;
-        secondColor = _secondColor;
-        fontColor = _fontColor;
         jScrollPaneChatsCenter.getViewport().setOpaque(false);
         jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
         jLabelChatName.setText(name);
@@ -76,7 +76,6 @@ public class TeacherChatPanel extends javax.swing.JPanel implements DisposeInter
 
         jLabelChatName.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelChatName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelChatName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/chat_1.png"))); // NOI18N
         jLabelChatName.setText("Nombre Del Chat O La Persona Con Quien Se Chatea");
         jLabelChatName.setToolTipText("Nombre Del Chat O La Persona Con Quien Se Chatea");
 
@@ -296,22 +295,22 @@ public class TeacherChatPanel extends javax.swing.JPanel implements DisposeInter
 
     private void jButtonRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseEntered
         // TODO add your handling code here:
-        jButtonRegresar.setBackground(secondColor);
+        jButtonRegresar.setBackground(MainFrame.getSecondColor());
     }//GEN-LAST:event_jButtonRegresarMouseEntered
 
     private void jButtonRegresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseExited
         // TODO add your handling code here:
-        jButtonRegresar.setBackground(firstColor);
+        jButtonRegresar.setBackground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonRegresarMouseExited
 
     private void jButtonEnviarArchivoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarArchivoMouseExited
         // TODO add your handling code here:
-        jButtonEnviarArchivo.setBackground(secondColor);
+        jButtonEnviarArchivo.setBackground(MainFrame.getSecondColor());
     }//GEN-LAST:event_jButtonEnviarArchivoMouseExited
 
     private void jButtonEnviarArchivoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarArchivoMouseEntered
         // TODO add your handling code here:
-        jButtonEnviarArchivo.setBackground(firstColor);
+        jButtonEnviarArchivo.setBackground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonEnviarArchivoMouseEntered
 
     private void jButtonEnviarArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarArchivoMouseClicked
@@ -330,12 +329,12 @@ public class TeacherChatPanel extends javax.swing.JPanel implements DisposeInter
 
     private void jButtonEnviarVideoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarVideoMouseEntered
         // TODO add your handling code here:
-        jButtonEnviarVideo.setBackground(firstColor);
+        jButtonEnviarVideo.setBackground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonEnviarVideoMouseEntered
 
     private void jButtonEnviarVideoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarVideoMouseExited
         // TODO add your handling code here:
-        jButtonEnviarVideo.setBackground(secondColor);
+        jButtonEnviarVideo.setBackground(MainFrame.getSecondColor());
     }//GEN-LAST:event_jButtonEnviarVideoMouseExited
 
     private void jButtonEnviarAudioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarAudioMouseClicked
@@ -347,12 +346,12 @@ public class TeacherChatPanel extends javax.swing.JPanel implements DisposeInter
 
     private void jButtonEnviarAudioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarAudioMouseEntered
         // TODO add your handling code here:
-        jButtonEnviarAudio.setBackground(firstColor);
+        jButtonEnviarAudio.setBackground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonEnviarAudioMouseEntered
 
     private void jButtonEnviarAudioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarAudioMouseExited
         // TODO add your handling code here:
-        jButtonEnviarAudio.setBackground(secondColor);
+        jButtonEnviarAudio.setBackground(MainFrame.getSecondColor());
     }//GEN-LAST:event_jButtonEnviarAudioMouseExited
 
     private void jButtonEnviarImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarImagenMouseClicked
@@ -364,12 +363,12 @@ public class TeacherChatPanel extends javax.swing.JPanel implements DisposeInter
 
     private void jButtonEnviarImagenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarImagenMouseEntered
         // TODO add your handling code here:
-        jButtonEnviarImagen.setBackground(firstColor);
+        jButtonEnviarImagen.setBackground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonEnviarImagenMouseEntered
 
     private void jButtonEnviarImagenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarImagenMouseExited
         // TODO add your handling code here:
-        jButtonEnviarImagen.setBackground(secondColor);
+        jButtonEnviarImagen.setBackground(MainFrame.getSecondColor());
     }//GEN-LAST:event_jButtonEnviarImagenMouseExited
 
     private void jButtonEnviarTextoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoMouseClicked
@@ -381,12 +380,12 @@ public class TeacherChatPanel extends javax.swing.JPanel implements DisposeInter
 
     private void jButtonEnviarTextoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoMouseEntered
         // TODO add your handling code here:
-        jButtonEnviarTexto.setBackground(firstColor);
+        jButtonEnviarTexto.setBackground(MainFrame.getFirstColor());
     }//GEN-LAST:event_jButtonEnviarTextoMouseEntered
 
     private void jButtonEnviarTextoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoMouseExited
         // TODO add your handling code here:
-        jButtonEnviarTexto.setBackground(secondColor);
+        jButtonEnviarTexto.setBackground(MainFrame.getSecondColor());
     }//GEN-LAST:event_jButtonEnviarTextoMouseExited
 
     private void attachFile(){
@@ -503,19 +502,19 @@ public class TeacherChatPanel extends javax.swing.JPanel implements DisposeInter
     
     public void paintMyComponents(){
         
-        jButtonRegresar.setBackground(firstColor);
-        jLabelChatName.setForeground(fontColor);
-        jTextFieldMessage.setBackground(firstColor);
-        jTextFieldMessage.setForeground(fontColor);
-        jLabelChatName.setForeground(fontColor);
-        jPanelChatBottom.setBackground(secondColor);
-        jPanelChatTop.setBackground(firstColor);
+        jButtonRegresar.setBackground(MainFrame.getFirstColor());
+        jLabelChatName.setForeground(MainFrame.getFontColor());
+        jTextFieldMessage.setBackground(MainFrame.getFirstColor());
+        jTextFieldMessage.setForeground(MainFrame.getFontColor());
+        jLabelChatName.setForeground(MainFrame.getFontColor());
+        jPanelChatBottom.setBackground(MainFrame.getSecondColor());
+        jPanelChatTop.setBackground(MainFrame.getFirstColor());
         
-        jButtonEnviarArchivo.setBackground(secondColor);
-        jButtonEnviarAudio.setBackground(secondColor);
-        jButtonEnviarImagen.setBackground(secondColor);
-        jButtonEnviarTexto.setBackground(secondColor);
-        jButtonEnviarVideo.setBackground(secondColor);
+        jButtonEnviarArchivo.setBackground(MainFrame.getSecondColor());
+        jButtonEnviarAudio.setBackground(MainFrame.getSecondColor());
+        jButtonEnviarImagen.setBackground(MainFrame.getSecondColor());
+        jButtonEnviarTexto.setBackground(MainFrame.getSecondColor());
+        jButtonEnviarVideo.setBackground(MainFrame.getSecondColor());
         
     }
  

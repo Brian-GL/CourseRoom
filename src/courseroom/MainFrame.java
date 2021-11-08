@@ -38,7 +38,7 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
     private static GeneralRecuperarCredencialesPanel recuperarCredenciales;
     private static GeneralCrearCuentaPanel crearCuenta;
     private static StudentDashboardPanel studentDashboard;
-    private static TeacherDashboardPanel teacherDashboardPanel;
+    //private static TeacherDashboardPanel teacherDashboardPanel;
     private static Color darkBlue, lightBlue;
     private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
     
@@ -90,9 +90,11 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         jPanelViewer.add("recuperarCredenciales",recuperarCredenciales);
         
         crearCuenta = new GeneralCrearCuentaPanel();
-        //studentDashboard = new StudentDashboardPanel();
-        teacherDashboardPanel = new TeacherDashboardPanel();
-        jPanelViewer.add("dashboard",teacherDashboardPanel);
+        
+        //teacherDashboardPanel = new TeacherDashboardPanel();
+        //jPanelViewer.add("dashboard",teacherDashboardPanel);
+        studentDashboard = new StudentDashboardPanel();
+        jPanelViewer.add("dashboard",studentDashboard);
         
         jPanelViewer.add("crearCuenta",crearCuenta);
         
@@ -167,8 +169,8 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
     }
     
     public static void showDashboard(){
-        //studentDashboard.setColors();
-        teacherDashboardPanel.setColors();
+        studentDashboard.setColors();
+        //teacherDashboardPanel.setColors();
         viewerLayout.show(jPanelViewer,"dashboard");
     }
     
@@ -178,7 +180,7 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         secondColor = lightBlue;
         thirdColor = lightBlue;
         jPanelViewer.setBackground(darkBlue);
-        //studentDashboard.dispose();
+        studentDashboard.dispose();
         //studentDashboard = null;
         //studentDashboard = new StudentDashboardPanel();
         
@@ -191,12 +193,13 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
    
     @Override
     public void dispose(){
-        //studentDashboard.dispose();
+        studentDashboard.dispose();
+        //teacherDashboardPanel.dispose();
         recuperarCredenciales.dispose();
         login = null;
         recuperarCredenciales = null;
         crearCuenta = null;
-        studentDashboard = null;
+        //studentDashboard = null;
         darkBlue = lightBlue = null;
         firstColor = secondColor = thirdColor = fontColor = secondFontColor = thirdFontColor = null;
         logoImage = null;
