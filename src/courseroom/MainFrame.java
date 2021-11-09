@@ -8,7 +8,6 @@ package courseroom;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import data.interfaces.DisposeInterface;
-import panels.students.StudentDashboardPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
@@ -24,21 +23,22 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import panels.generals.GeneralLoginPanel;
-import panels.generals.GeneralRecuperarCredencialesPanel;
-import panels.generals.GeneralCrearCuentaPanel;
-import panels.teachers.TeacherDashboardPanel;
+import panels.generals.General_Login_Panel;
+import panels.generals.General_Recuperar_Credenciales_Panel;
+import panels.generals.General_Crear_Cuenta_Panel;
+import panels.students.Student_Dashboard_Panel;
+import panels.teachers.Teacher_Dashboard_Panel;
 /**
  *
  * @author LENOVO
  */
 public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
 
-    private static GeneralLoginPanel login;
-    private static GeneralRecuperarCredencialesPanel recuperarCredenciales;
-    private static GeneralCrearCuentaPanel crearCuenta;
-    private static StudentDashboardPanel studentDashboard;
-    //private static TeacherDashboardPanel teacherDashboardPanel;
+    private static General_Login_Panel login;
+    private static General_Recuperar_Credenciales_Panel recuperarCredenciales;
+    private static General_Crear_Cuenta_Panel crearCuenta;
+    private static Student_Dashboard_Panel studentDashboard;
+    //private static Teacher_Dashboard_Panel teacherDashboardPanel;
     private static Color darkBlue, lightBlue;
     private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
     
@@ -76,7 +76,7 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         }
         
         jPanelViewer.setBackground(firstColor);
-        login = new GeneralLoginPanel();
+        login = new General_Login_Panel();
         jPanelViewer.add("login",login);
         
         boolean isConnected = checkConnection();
@@ -86,14 +86,14 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
             return;
         }
         
-        recuperarCredenciales = new GeneralRecuperarCredencialesPanel();
+        recuperarCredenciales = new General_Recuperar_Credenciales_Panel();
         jPanelViewer.add("recuperarCredenciales",recuperarCredenciales);
         
-        crearCuenta = new GeneralCrearCuentaPanel();
+        crearCuenta = new General_Crear_Cuenta_Panel();
         
-        //teacherDashboardPanel = new TeacherDashboardPanel();
+        //teacherDashboardPanel = new Teacher_Dashboard_Panel();
         //jPanelViewer.add("dashboard",teacherDashboardPanel);
-        studentDashboard = new StudentDashboardPanel();
+        studentDashboard = new Student_Dashboard_Panel();
         jPanelViewer.add("dashboard",studentDashboard);
         
         jPanelViewer.add("crearCuenta",crearCuenta);
@@ -181,8 +181,12 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         thirdColor = lightBlue;
         jPanelViewer.setBackground(darkBlue);
         studentDashboard.dispose();
-        //studentDashboard = null;
-        //studentDashboard = new StudentDashboardPanel();
+        studentDashboard = null;
+        studentDashboard = new Student_Dashboard_Panel();
+        
+        //teacherDashboardPanel.dispose();
+        //teacherDashboardPanel = null;
+        //teacherDashboardPanel = new Teacher_Dashboard_Panel();
         
     }
     
@@ -199,7 +203,8 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         login = null;
         recuperarCredenciales = null;
         crearCuenta = null;
-        //studentDashboard = null;
+        studentDashboard = null;
+        //teacherDashboardPanel = null;
         darkBlue = lightBlue = null;
         firstColor = secondColor = thirdColor = fontColor = secondFontColor = thirdFontColor = null;
         logoImage = null;
@@ -224,7 +229,7 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
     /**
      * @return the login
      */
-    public static GeneralLoginPanel getLogin() {
+    public static General_Login_Panel getLogin() {
         return login;
     }
     
