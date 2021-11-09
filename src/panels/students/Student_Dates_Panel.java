@@ -54,6 +54,7 @@ public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeIn
         jLabelDomingo.setForeground(MainFrame.getFontColor());
         jLabelNextMonth.setForeground(MainFrame.getFontColor());
         jLabelPreviousMonth.setForeground(MainFrame.getFontColor());
+        jPanelCalendar.removeAll();
         createCalendar();
     }
 

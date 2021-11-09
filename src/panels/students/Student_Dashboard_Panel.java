@@ -48,6 +48,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
     private static Student_Dates_Panel datesPanel;
     private static Student_Homeworks_Panel homeworksPanel;
     private static Student_Dashboard_Configuration_Panel configurationPanel;
+    private static Student_Courses_Panel coursesPanel;
     
     private static CardLayout panelLayout;
     private ServerDateTime serverDateTime;
@@ -77,15 +78,11 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
             editProfilePanel = new Student_Edit_Profile_Panel();
             jPanelInformacion.add("editProfilePanel",editProfilePanel);
             
-            //home panel -> 2 en active page flag
-            
-            
-            //classes panel -> 3 en active page flag
-            
-            
             homeworksPanel = new Student_Homeworks_Panel();
             jPanelInformacion.add("homeworksPanel",homeworksPanel);
             
+            coursesPanel = new Student_Courses_Panel();
+            jPanelInformacion.add("coursesPanel",coursesPanel);
             
             datesPanel = new Student_Dates_Panel();
             jPanelInformacion.add("datesPanel",datesPanel);
@@ -96,10 +93,8 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
             groupsPanel = new Student_Groups_Panel();
             jPanelInformacion.add("groupsPanel",groupsPanel);
             
-            
             chatsPanel = new Student_Chats_Panel();
             jPanelInformacion.add("chatsPanel",chatsPanel);
-            
             
             aboutPanel = new General_About_Panel();
             jPanelInformacion.add("aboutPanel",aboutPanel);
@@ -139,7 +134,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         jPanelMenu = new javax.swing.JPanel();
         jLabelUserProfilePhoto = new javax.swing.JLabel();
         jButtonInicio = new javax.swing.JButton();
-        jButtonClases = new javax.swing.JButton();
+        jButtonCourses = new javax.swing.JButton();
         jButtonTareas = new javax.swing.JButton();
         jButtonFechas = new javax.swing.JButton();
         jButtonAvisos = new javax.swing.JButton();
@@ -197,24 +192,24 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         });
         jPanelMenu.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 175, -1, -1));
 
-        jButtonClases.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jButtonClases.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/training.png"))); // NOI18N
-        jButtonClases.setText("Clases");
-        jButtonClases.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonClases.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonClases.setPreferredSize(new java.awt.Dimension(175, 35));
-        jButtonClases.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonCourses.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonCourses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/training.png"))); // NOI18N
+        jButtonCourses.setText("Cursos");
+        jButtonCourses.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonCourses.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCourses.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonCourses.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonClasesMouseClicked(evt);
+                jButtonCoursesMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonClasesMouseEntered(evt);
+                jButtonCoursesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonClasesMouseExited(evt);
+                jButtonCoursesMouseExited(evt);
             }
         });
-        jPanelMenu.add(jButtonClases, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, -1));
+        jPanelMenu.add(jButtonCourses, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, -1));
 
         jButtonTareas.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jButtonTareas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework.png"))); // NOI18N
@@ -532,24 +527,24 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         jButtonInicio.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jButtonInicioMouseExited
 
-    private void jButtonClasesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClasesMouseClicked
+    private void jButtonCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCoursesMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            Student_Dashboard_Panel.showView("coursesPanel");
         }
-    }//GEN-LAST:event_jButtonClasesMouseClicked
+    }//GEN-LAST:event_jButtonCoursesMouseClicked
 
-    private void jButtonClasesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClasesMouseEntered
+    private void jButtonCoursesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCoursesMouseEntered
         // TODO add your handling code here:
-        jButtonClases.setBackground(MainFrame.getThirdColor());
-        jButtonClases.setForeground(MainFrame.getThirdFontColor());
-    }//GEN-LAST:event_jButtonClasesMouseEntered
+        jButtonCourses.setBackground(MainFrame.getThirdColor());
+        jButtonCourses.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonCoursesMouseEntered
 
-    private void jButtonClasesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClasesMouseExited
+    private void jButtonCoursesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCoursesMouseExited
         // TODO add your handling code here:
-        jButtonClases.setBackground(MainFrame.getSecondColor());
-        jButtonClases.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jButtonClasesMouseExited
+        jButtonCourses.setBackground(MainFrame.getSecondColor());
+        jButtonCourses.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonCoursesMouseExited
 
     private void jButtonTareasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTareasMouseClicked
         // TODO add your handling code here:
@@ -725,7 +720,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
     }//GEN-LAST:event_jButtonSalirMouseExited
 
     
-    public void setColors(){
+    public static void setColors(){
         try {
             
             int maximum = 0;
@@ -835,7 +830,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         jButtonAjustes.setForeground(MainFrame.getSecondFontColor());
         jButtonAvisos.setForeground(MainFrame.getSecondFontColor()); 
         jButtonChats.setForeground(MainFrame.getSecondFontColor());
-        jButtonClases.setForeground(MainFrame.getSecondFontColor()); 
+        jButtonCourses.setForeground(MainFrame.getSecondFontColor()); 
         jButtonFechas.setForeground(MainFrame.getSecondFontColor());
         jButtonGrupos.setForeground(MainFrame.getSecondFontColor()); 
         jButtonInicio.setForeground(MainFrame.getSecondFontColor());
@@ -847,7 +842,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         jButtonAjustes.setBackground(MainFrame.getSecondColor());
         jButtonAvisos.setBackground(MainFrame.getSecondColor()); 
         jButtonChats.setBackground(MainFrame.getSecondColor());
-        jButtonClases.setBackground(MainFrame.getSecondColor()); 
+        jButtonCourses.setBackground(MainFrame.getSecondColor()); 
         jButtonFechas.setBackground(MainFrame.getSecondColor());
         jButtonGrupos.setBackground(MainFrame.getSecondColor()); 
         jButtonInicio.setBackground(MainFrame.getSecondColor());
@@ -869,6 +864,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         noticesPanel.colorMyComponents();
         datesPanel.colorMyComponents();
         configurationPanel.colorMyComponents();
+        coursesPanel.colorMyComponents();
     }
     
     @Override
@@ -895,7 +891,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
     private static javax.swing.JButton jButtonAjustes;
     private static javax.swing.JButton jButtonAvisos;
     private static javax.swing.JButton jButtonChats;
-    private static javax.swing.JButton jButtonClases;
+    private static javax.swing.JButton jButtonCourses;
     private static javax.swing.JButton jButtonFechas;
     private static javax.swing.JButton jButtonGrupos;
     private static javax.swing.JButton jButtonInicio;

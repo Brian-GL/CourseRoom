@@ -130,7 +130,7 @@ public class Teacher_Dashboard_Panel extends javax.swing.JPanel implements Color
         jPanelMenu = new javax.swing.JPanel();
         jLabelUserProfilePhoto = new javax.swing.JLabel();
         jButtonInicio = new javax.swing.JButton();
-        jButtonClases = new javax.swing.JButton();
+        jButtonCourses = new javax.swing.JButton();
         jButtonTareas = new javax.swing.JButton();
         jButtonFechas = new javax.swing.JButton();
         jButtonAvisos = new javax.swing.JButton();
@@ -189,24 +189,24 @@ public class Teacher_Dashboard_Panel extends javax.swing.JPanel implements Color
         });
         jPanelMenu.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 175, -1, -1));
 
-        jButtonClases.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jButtonClases.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/training.png"))); // NOI18N
-        jButtonClases.setText("Clases");
-        jButtonClases.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonClases.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonClases.setPreferredSize(new java.awt.Dimension(175, 35));
-        jButtonClases.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonCourses.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonCourses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/training.png"))); // NOI18N
+        jButtonCourses.setText("Cursos");
+        jButtonCourses.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonCourses.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCourses.setPreferredSize(new java.awt.Dimension(175, 35));
+        jButtonCourses.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonClasesMouseClicked(evt);
+                jButtonCoursesMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonClasesMouseEntered(evt);
+                jButtonCoursesMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonClasesMouseExited(evt);
+                jButtonCoursesMouseExited(evt);
             }
         });
-        jPanelMenu.add(jButtonClases, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, -1));
+        jPanelMenu.add(jButtonCourses, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, -1));
 
         jButtonTareas.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jButtonTareas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework.png"))); // NOI18N
@@ -505,24 +505,24 @@ public class Teacher_Dashboard_Panel extends javax.swing.JPanel implements Color
         jButtonInicio.setForeground(MainFrame.getSecondFontColor());
     }//GEN-LAST:event_jButtonInicioMouseExited
 
-    private void jButtonClasesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClasesMouseClicked
+    private void jButtonCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCoursesMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
         }
-    }//GEN-LAST:event_jButtonClasesMouseClicked
+    }//GEN-LAST:event_jButtonCoursesMouseClicked
 
-    private void jButtonClasesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClasesMouseEntered
+    private void jButtonCoursesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCoursesMouseEntered
         // TODO add your handling code here:
-        jButtonClases.setBackground(MainFrame.getThirdColor());
-        jButtonClases.setForeground(MainFrame.getThirdFontColor());
-    }//GEN-LAST:event_jButtonClasesMouseEntered
+        jButtonCourses.setBackground(MainFrame.getThirdColor());
+        jButtonCourses.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonCoursesMouseEntered
 
-    private void jButtonClasesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClasesMouseExited
+    private void jButtonCoursesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCoursesMouseExited
         // TODO add your handling code here:
-        jButtonClases.setBackground(MainFrame.getSecondColor());
-        jButtonClases.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jButtonClasesMouseExited
+        jButtonCourses.setBackground(MainFrame.getSecondColor());
+        jButtonCourses.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonCoursesMouseExited
 
     private void jButtonTareasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTareasMouseClicked
         // TODO add your handling code here:
@@ -818,7 +818,7 @@ public class Teacher_Dashboard_Panel extends javax.swing.JPanel implements Color
     private javax.swing.JButton jButtonAjustes;
     private javax.swing.JButton jButtonAvisos;
     private javax.swing.JButton jButtonChats;
-    private javax.swing.JButton jButtonClases;
+    private javax.swing.JButton jButtonCourses;
     private javax.swing.JButton jButtonFechas;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonMenu;

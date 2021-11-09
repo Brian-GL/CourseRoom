@@ -46,10 +46,11 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
         jButtonSelectDownloadRoute = new javax.swing.JButton();
         jLabelLogo = new javax.swing.JLabel();
         jPanelInterfaz = new javax.swing.JPanel();
-        jButtonInvertirColores = new javax.swing.JButton();
+        jButtonColorInvert = new javax.swing.JButton();
         jTextFieldDominantColor = new javax.swing.JTextField();
         jTextFieldSecondColor = new javax.swing.JTextField();
         jTextFieldThirdColor = new javax.swing.JTextField();
+        jButtonColorRecharge = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
@@ -82,17 +83,17 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
 
         jPanelInterfaz.setOpaque(false);
 
-        jButtonInvertirColores.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jButtonInvertirColores.setText("Invertir Colores");
-        jButtonInvertirColores.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonColorInvert.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jButtonColorInvert.setText("Invertir Colores");
+        jButtonColorInvert.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonInvertirColoresMouseClicked(evt);
+                jButtonColorInvertMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonInvertirColoresMouseEntered(evt);
+                jButtonColorInvertMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonInvertirColoresMouseExited(evt);
+                jButtonColorInvertMouseExited(evt);
             }
         });
 
@@ -108,19 +109,35 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
         jTextFieldThirdColor.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jTextFieldThirdColor.setText("#FFFFFF");
 
+        jButtonColorRecharge.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jButtonColorRecharge.setText("Recargar Colores");
+        jButtonColorRecharge.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonColorRechargeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonColorRechargeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonColorRechargeMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelInterfazLayout = new javax.swing.GroupLayout(jPanelInterfaz);
         jPanelInterfaz.setLayout(jPanelInterfazLayout);
         jPanelInterfazLayout.setHorizontalGroup(
             jPanelInterfazLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInterfazLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldDominantColor, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelInterfazLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonInvertirColores, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                    .addComponent(jTextFieldSecondColor))
+                .addGroup(jPanelInterfazLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonColorInvert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldDominantColor, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldSecondColor, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextFieldThirdColor, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelInterfazLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldThirdColor)
+                    .addComponent(jButtonColorRecharge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelInterfazLayout.setVerticalGroup(
@@ -131,9 +148,11 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
                     .addComponent(jTextFieldDominantColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldSecondColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldThirdColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jButtonInvertirColores)
-                .addGap(15, 15, 15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(jPanelInterfazLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonColorInvert)
+                    .addComponent(jButtonColorRecharge))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -205,7 +224,7 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
         jButtonSelectDownloadRoute.setBackground(MainFrame.getThirdColor());
     }//GEN-LAST:event_jButtonSelectDownloadRouteMouseExited
 
-    private void jButtonInvertirColoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInvertirColoresMouseClicked
+    private void jButtonColorInvertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonColorInvertMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
@@ -236,26 +255,48 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
             jTextFieldThirdColor.setText(toRGB(thirdColor));
             
         }
-    }//GEN-LAST:event_jButtonInvertirColoresMouseClicked
+    }//GEN-LAST:event_jButtonColorInvertMouseClicked
 
-    private void jButtonInvertirColoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInvertirColoresMouseEntered
+    private void jButtonColorInvertMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonColorInvertMouseEntered
         // TODO add your handling code here:
-        jButtonInvertirColores.setBackground(MainFrame.getThirdColor());
-        jButtonInvertirColores.setForeground(MainFrame.getThirdFontColor());
-    }//GEN-LAST:event_jButtonInvertirColoresMouseEntered
+        jButtonColorInvert.setBackground(MainFrame.getThirdColor());
+        jButtonColorInvert.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonColorInvertMouseEntered
 
-    private void jButtonInvertirColoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInvertirColoresMouseExited
+    private void jButtonColorInvertMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonColorInvertMouseExited
         // TODO add your handling code here:
-        jButtonInvertirColores.setBackground(MainFrame.getSecondColor());
-        jButtonInvertirColores.setForeground(MainFrame.getSecondFontColor());
-    }//GEN-LAST:event_jButtonInvertirColoresMouseExited
+        jButtonColorInvert.setBackground(MainFrame.getSecondColor());
+        jButtonColorInvert.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonColorInvertMouseExited
+
+    private void jButtonColorRechargeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonColorRechargeMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+            Student_Dashboard_Panel.setColors();
+            
+        }
+    }//GEN-LAST:event_jButtonColorRechargeMouseClicked
+
+    private void jButtonColorRechargeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonColorRechargeMouseEntered
+        // TODO add your handling code here:
+        jButtonColorRecharge.setBackground(MainFrame.getThirdColor());
+        jButtonColorRecharge.setForeground(MainFrame.getThirdFontColor());
+    }//GEN-LAST:event_jButtonColorRechargeMouseEntered
+
+    private void jButtonColorRechargeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonColorRechargeMouseExited
+        // TODO add your handling code here:
+        jButtonColorRecharge.setBackground(MainFrame.getSecondColor());
+        jButtonColorRecharge.setForeground(MainFrame.getSecondFontColor());
+    }//GEN-LAST:event_jButtonColorRechargeMouseExited
 
     private String toRGB(Color color){
         return "RGB: ("+color.getRed()+","+color.getGreen()+","+color.getBlue()+")";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonInvertirColores;
+    private javax.swing.JButton jButtonColorInvert;
+    private javax.swing.JButton jButtonColorRecharge;
     private javax.swing.JButton jButtonSelectDownloadRoute;
     private javax.swing.JLabel jLabelDownloadRoute;
     private javax.swing.JLabel jLabelLogo;
@@ -279,6 +320,9 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
         
         jTextFieldDownloadRoute.setForeground(MainFrame.getSecondFontColor());
         jTextFieldDownloadRoute.setBackground(MainFrame.getSecondColor());
+        
+        jButtonColorRecharge.setForeground(MainFrame.getSecondFontColor());
+        jButtonColorRecharge.setBackground(MainFrame.getSecondColor());
         
         jButtonSelectDownloadRoute.setForeground(MainFrame.getThirdFontColor());
         jButtonSelectDownloadRoute.setBackground(MainFrame.getThirdColor());

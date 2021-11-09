@@ -117,14 +117,17 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextFieldDominantColor" min="-2" pref="168" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButtonInvertirColores" pref="168" max="32767" attributes="0"/>
-                      <Component id="jTextFieldSecondColor" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="jButtonColorInvert" max="32767" attributes="0"/>
+                      <Component id="jTextFieldDominantColor" pref="168" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jTextFieldSecondColor" min="-2" pref="168" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jTextFieldThirdColor" min="-2" pref="168" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jTextFieldThirdColor" max="32767" attributes="0"/>
+                      <Component id="jButtonColorRecharge" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -138,15 +141,18 @@
                       <Component id="jTextFieldSecondColor" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldThirdColor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="46" max="32767" attributes="0"/>
-                  <Component id="jButtonInvertirColores" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButtonColorInvert" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonColorRecharge" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButtonInvertirColores">
+        <Component class="javax.swing.JButton" name="jButtonColorInvert">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gadugi" size="18" style="1"/>
@@ -154,9 +160,9 @@
             <Property name="text" type="java.lang.String" value="Invertir Colores"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonInvertirColoresMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonInvertirColoresMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonInvertirColoresMouseExited"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonColorInvertMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonColorInvertMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonColorInvertMouseExited"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldDominantColor">
@@ -185,6 +191,19 @@
             </Property>
             <Property name="text" type="java.lang.String" value="#FFFFFF"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonColorRecharge">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Gadugi" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Recargar Colores"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonColorRechargeMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonColorRechargeMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonColorRechargeMouseExited"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
