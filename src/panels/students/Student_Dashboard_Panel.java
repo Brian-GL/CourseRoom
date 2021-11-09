@@ -164,9 +164,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         jPanelMenu.setPreferredSize(new java.awt.Dimension(175, 630));
         jPanelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelUserProfilePhoto.setBackground(new java.awt.Color(3, 111, 252));
         jLabelUserProfilePhoto.setToolTipText("Mostrar Perfil Del Usuario.");
-        jLabelUserProfilePhoto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelUserProfilePhoto.setMaximumSize(new java.awt.Dimension(175, 175));
         jLabelUserProfilePhoto.setMinimumSize(new java.awt.Dimension(175, 175));
         jLabelUserProfilePhoto.setOpaque(true);
@@ -807,14 +805,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
                 red = thirdColor.getRed();
                 thirdFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 colorList.clear();
-                Component[] components = jPanelMenu.getComponents();
-
-                for(Component component: components){
-                    component.setForeground(secondFontColor);
-                    component.setBackground(secondColor);
-                }
-                jLabelFechaHoraServidor.setForeground(fontColor);
-                jLabelUserName.setForeground(fontColor);
+                
                 colorList = null;
                 pg = null;
                 pixels = null;
@@ -839,6 +830,36 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
     }
     
     public static void colorMyComponents(){
+        
+        jButtonAcerca.setForeground(MainFrame.getSecondFontColor()); 
+        jButtonAjustes.setForeground(MainFrame.getSecondFontColor());
+        jButtonAvisos.setForeground(MainFrame.getSecondFontColor()); 
+        jButtonChats.setForeground(MainFrame.getSecondFontColor());
+        jButtonClases.setForeground(MainFrame.getSecondFontColor()); 
+        jButtonFechas.setForeground(MainFrame.getSecondFontColor());
+        jButtonGrupos.setForeground(MainFrame.getSecondFontColor()); 
+        jButtonInicio.setForeground(MainFrame.getSecondFontColor());
+        jButtonMusica.setForeground(MainFrame.getSecondFontColor()); 
+        jButtonSalir.setForeground(MainFrame.getSecondFontColor());
+        jButtonTareas.setForeground(MainFrame.getSecondFontColor()); 
+        
+        jButtonAcerca.setBackground(MainFrame.getSecondColor()); 
+        jButtonAjustes.setBackground(MainFrame.getSecondColor());
+        jButtonAvisos.setBackground(MainFrame.getSecondColor()); 
+        jButtonChats.setBackground(MainFrame.getSecondColor());
+        jButtonClases.setBackground(MainFrame.getSecondColor()); 
+        jButtonFechas.setBackground(MainFrame.getSecondColor());
+        jButtonGrupos.setBackground(MainFrame.getSecondColor()); 
+        jButtonInicio.setBackground(MainFrame.getSecondColor());
+        jButtonMusica.setBackground(MainFrame.getSecondColor()); 
+        jButtonSalir.setBackground(MainFrame.getSecondColor());
+        jButtonTareas.setBackground(MainFrame.getSecondColor()); 
+        
+        jLabelFechaHoraServidor.setForeground(MainFrame.getFontColor());
+        jLabelUserName.setForeground(MainFrame.getFontColor());
+        
+        jLabelFechaHoraServidor.setForeground(MainFrame.getFontColor());
+        jLabelUserName.setForeground(MainFrame.getFontColor());
         infoProfilePanel.colorMyComponents();
         editProfilePanel.colorMyComponents();
         aboutPanel.colorMyComponents();
@@ -870,20 +891,20 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAcerca;
-    private javax.swing.JButton jButtonAjustes;
-    private javax.swing.JButton jButtonAvisos;
-    private javax.swing.JButton jButtonChats;
-    private javax.swing.JButton jButtonClases;
-    private javax.swing.JButton jButtonFechas;
-    private javax.swing.JButton jButtonGrupos;
-    private javax.swing.JButton jButtonInicio;
+    private static javax.swing.JButton jButtonAcerca;
+    private static javax.swing.JButton jButtonAjustes;
+    private static javax.swing.JButton jButtonAvisos;
+    private static javax.swing.JButton jButtonChats;
+    private static javax.swing.JButton jButtonClases;
+    private static javax.swing.JButton jButtonFechas;
+    private static javax.swing.JButton jButtonGrupos;
+    private static javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonMenu;
-    private javax.swing.JButton jButtonMusica;
-    private javax.swing.JButton jButtonSalir;
-    private javax.swing.JButton jButtonTareas;
-    private javax.swing.JLabel jLabelFechaHoraServidor;
-    private javax.swing.JLabel jLabelUserName;
+    private static javax.swing.JButton jButtonMusica;
+    private static javax.swing.JButton jButtonSalir;
+    private static javax.swing.JButton jButtonTareas;
+    private static javax.swing.JLabel jLabelFechaHoraServidor;
+    private static javax.swing.JLabel jLabelUserName;
     private static javax.swing.JLabel jLabelUserProfilePhoto;
     private javax.swing.JPanel jPanelBarraSuperior;
     private static javax.swing.JPanel jPanelInformacion;
