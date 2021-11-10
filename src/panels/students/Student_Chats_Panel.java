@@ -25,7 +25,7 @@ public class Student_Chats_Panel extends javax.swing.JPanel implements DisposeIn
         jScrollPaneChats.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneChats.getHorizontalScrollBar().setUnitIncrement(15);
         
-       Faker faker = new Faker();
+        Faker faker = new Faker();
         for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
             Student_Box_Chat_Panel boxChatPanel = new Student_Box_Chat_Panel(i);
             jPanelChats.add(boxChatPanel);
@@ -83,8 +83,8 @@ public class Student_Chats_Panel extends javax.swing.JPanel implements DisposeIn
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jLabelChatsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPaneChats, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneChats, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
