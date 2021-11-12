@@ -5,9 +5,11 @@
  */
 package panels.generals;
 
+import data.collections.DoublyLinkedList;
 import data.collections.PairDoublyLinkedList;
 import data.interfaces.ColorInterface;
 import data.interfaces.DisposeInterface;
+import data.structures.Node;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
@@ -70,7 +72,8 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
     
     //Data Structures
     private Map<String,Equalizer> presets_map;
-    private File[] openFiles;
+    private static DoublyLinkedList<String> paths;
+    private static Node<String> actual_node;
      
     //Others
     private static int index;
@@ -896,6 +899,7 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
     private void initAttributes(){
         flag = true;
         zero_index = false;
+        paths = new DoublyLinkedList<>();
         moving_next = moving_previous = false;
         MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
         audio_list_player_component = new AudioListPlayerComponent(mediaPlayerFactory);
@@ -904,11 +908,9 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         presets_map = mediaPlayerFactory.equalizer().allPresetEqualizers();
         play_icon = new ImageIcon(getClass().getResource("/resources/icons/play-button.png"));
         pause_icon = new ImageIcon(getClass().getResource("/resources/icons/pause.png"));
-        mediaPlayerFactory = null;
         this.jLabelPlayPause.setIcon(play_icon);
         Color transparent = new Color(0,0,0,0);
-        jTabbedPanelControls.setBackground(transparent);
-        transparent = null;
+        jTabbedPanelControls.setBackground(transparent);;
         jScrollPaneLyrics.getViewport().setOpaque(false);
         jScrollPanePlaylist.getViewport().setOpaque(false);
         jScrollPaneLyrics.getHorizontalScrollBar().setUnitIncrement(15);
@@ -1036,7 +1038,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
             public void nextItem(MediaListPlayer mlp, MediaRef mr) {
                 moving_next = true;
                 moving_previous = false;
-                System.gc();
             }
 
             @Override
@@ -1048,23 +1049,25 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().events().addMediaPlayerEventListener(new MediaPlayerEventListener() {
             @Override
             public void mediaChanged(MediaPlayer mp, MediaRef mr) {
-                if(moving_next){
-                    if((index+1) < audio_list_player_component.mediaListPlayer().list().media().count()){
-                        if(!zero_index){
+                if (moving_next) {
+                    if (actual_node.has_next()) {
+                        if (!zero_index) {
+                            actual_node = actual_node.next();
                             index++;
-                        }else{
-                            index = 0;
+                        } else {
+                            actual_node = paths.front();
                             zero_index = false;
                         }
                         loadMetadata();
                         moving_next = true;
-                   }   
+                    }
                 }
-                if(moving_previous){
-                    if((index-1) >= 0){
-                       index--;
-                       loadMetadata();
-                   }   
+                if (moving_previous) {
+                    if (actual_node.has_previous()) {
+                        index--;
+                        actual_node = actual_node.previous();
+                        loadMetadata();
+                    }
                 }
             }
 
@@ -1115,15 +1118,15 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
 
             @Override
             public void positionChanged(MediaPlayer mp, float f) {
+                String seconds;
+                int tiempo, value;
                 if(flag){
                     if(audio_list_player_component != null){
-                        int tiempo = (int)audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().time();
-                     
-                        int value = tiempo / 1000;
+                        tiempo = (int)audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().time();
+                        value = tiempo / 1000;
                         jSliderProgress.setValue(tiempo);
-                        String seconds = secondsToString(value);
+                        seconds = secondsToString(value);
                         jLabelProgress.setText(seconds);
-                        seconds = null;
                     }
                     
                 }
@@ -1211,16 +1214,17 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
 
             @Override
             public void mediaPlayerReady(MediaPlayer mp) {
+                int lenght;
                 long longLenght = audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().length();
                 if(longLenght < Integer.MAX_VALUE){
-                    int lenght = (int)longLenght;
+                    lenght = (int)longLenght;
                     jSliderProgress.setMaximum(lenght);
                     jLabelTotalDuration.setText(secondsToString(lenght/1000));
                     jLabelPlayPause.setIcon(pause_icon);
                     audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setVolume(jSliderVolume.getValue());
                     
                 }else{
-                    JOptionPane.showMessageDialog(null, "Too Long File","ERROR",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Archivo Demasiado Grande","ERROR",JOptionPane.ERROR_MESSAGE);
                 } 
             }
         });
@@ -1281,8 +1285,9 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
 
     private void jLabelVolumeUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVolumeUpMouseClicked
         // TODO add your handling code here:
+        int volumen;
         if(SwingUtilities.isLeftMouseButton(evt)){
-            int volumen = audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().volume();
+            volumen = audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().volume();
             volumen+=10;
             if(volumen <= 100){
                 jSliderVolume.setValue(volumen);
@@ -1292,8 +1297,9 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
 
     private void jLabelVolumeDownMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVolumeDownMouseClicked
         // TODO add your handling code here:
+        int volumen;
         if(SwingUtilities.isLeftMouseButton(evt)){
-            int volumen = audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().volume();
+            volumen = audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().volume();
             volumen-=10;
             if(volumen >= 0){
                 jSliderVolume.setValue(volumen);
@@ -1303,8 +1309,9 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
 
     private void jLabelRateUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRateUpMouseClicked
         // TODO add your handling code here:
+        float rate;
         if(SwingUtilities.isLeftMouseButton(evt)){
-            float rate = audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().rate();
+            rate = audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().rate();
             rate += 0.1f;
             if (rate <= 1.5f) {
                 rate = rate * 100;
@@ -1316,8 +1323,9 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
 
     private void jLabelRateDownMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRateDownMouseClicked
         // TODO add your handling code here:
+        float rate;
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            float rate = audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().rate();
+            rate = audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().rate();
             rate -= 0.1f;
             if (rate >= 0.5f) {
                 rate = rate * 100;
@@ -1357,18 +1365,22 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
 
     private void jLabelOpenFolderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelOpenFolderMouseClicked
         // TODO add your handling code here:
-
+        JFileChooser fileChooser;
+        int result;
+        File folder;
+        FileFilter filter;
+        File[] files;
         if(SwingUtilities.isLeftMouseButton(evt)){
 
-            JFileChooser fileChooser = new JFileChooser();
+            fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            fileChooser.setApproveButtonText("Open Music Folder");
-            int result = fileChooser.showOpenDialog(this);
+            fileChooser.setApproveButtonText("Abrir Carpeta");
+            result = fileChooser.showOpenDialog(this);
 
             if (result == JFileChooser.APPROVE_OPTION) {
-                File folder = fileChooser.getSelectedFile();
+                folder = fileChooser.getSelectedFile();
                 if(folder != null){
-                    FileFilter filter = (File pathname) -> {
+                    filter = (File pathname) -> {
                         if(pathname != null){
                             return pathname.getName().endsWith(".mp3") ||
                                     pathname.getName().endsWith(".flac") ||
@@ -1379,8 +1391,9 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                         return false;
                     };
 
-                   File[] files = folder.listFiles(filter);
+                   files = folder.listFiles(filter);
                     if(files.length > 0){
+                        paths.clear();
                         zero_index = false;
                         moving_next = false;
                         moving_previous = true;
@@ -1388,21 +1401,25 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                         audio_list_player_component.mediaListPlayer().list().media().clear();
                         jPanelPlaylist.removeAll();
                         int idx = 0;
-                        for (File file : files){
-                            @SuppressWarnings("null")
-                            String path = file.getAbsolutePath();
-                            String filename = file.getName();
-                            General_Playlist_Entry_Panel playlistEntryPanel = new General_Playlist_Entry_Panel(filename,idx);
+                        
+                        File openFile;
+                        String path;
+                        String filename;
+                        General_Playlist_Entry_Panel playlistEntryPanel;
+                        
+                        for(int i = 0; i < files.length;i++){
+                            openFile = files[i];
+                            path = openFile.getAbsolutePath();
+                            filename = openFile.getName();
+                            playlistEntryPanel = new General_Playlist_Entry_Panel(filename,idx);
                             jPanelPlaylist.add(playlistEntryPanel);
+                            paths.push_back(path);
                             audio_list_player_component.mediaListPlayer().list().media().add(path);
-                            filename = null;
-                            path = null;
-                            playlistEntryPanel = null;
                             idx++;
-                            file = null;
                         }
+                        
+                        actual_node = paths.front();
                         index = 0;
-                        openFiles = files;
                         loadMetadata();
                         audio_list_player_component.mediaListPlayer().controls().play();
                         jSliderVolume.setEnabled(true);
@@ -1422,14 +1439,8 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                         jSliderBandPreamp.setEnabled(true);
                         jComboBoxPresets.setEnabled(true);
                     }
-                    //files = null;
-                    filter = null;
                 }
-                
-                folder = null;
             }
-
-            fileChooser = null;
         }
         
         System.gc();
@@ -1439,43 +1450,52 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
     private void jLabelOpenFilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelOpenFilesMouseClicked
 
         // TODO add your handling code here:
-
+        JFileChooser fileChooser;
+        FileNameExtensionFilter filter;
+        int result;
+        File[] files;
         if(SwingUtilities.isLeftMouseButton(evt)){
 
-            JFileChooser fileChooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Music Files", "mp3", "flac", "aac", "wav","ogg");
+            fileChooser = new JFileChooser();
+            filter = new FileNameExtensionFilter("Music Files", "mp3", "flac", "aac", "wav","ogg");
             fileChooser.addChoosableFileFilter(filter);
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             fileChooser.setAcceptAllFileFilterUsed(true);
             fileChooser.setApproveButtonText("Open Music File(s)");
             fileChooser.setMultiSelectionEnabled(true);
-            int result = fileChooser.showOpenDialog(this);
+            result = fileChooser.showOpenDialog(this);
 
             if (result == JFileChooser.APPROVE_OPTION) {
-                File[] files = fileChooser.getSelectedFiles();
+                files = fileChooser.getSelectedFiles();
                 if(files.length > 0){
                     int idx = 0;
+                    paths.clear();
                     moving_next = false;
                     moving_previous = true;
                     zero_index = false;
                     audio_list_player_component.mediaListPlayer().controls().stop();
                     audio_list_player_component.mediaListPlayer().list().media().clear();
                     jPanelPlaylist.removeAll();
-                    for (File file : files){
-                        String path = file.getAbsolutePath();
-                        String filename = file.getName();
-                        General_Playlist_Entry_Panel playlistEntryPanel = new General_Playlist_Entry_Panel(filename,idx);
+                    
+                    
+                    File openFile;
+                    String path;
+                    String filename;
+                    General_Playlist_Entry_Panel playlistEntryPanel;
+                    
+                    for(int i = 0; i < files.length;i++){
+                        openFile = files[i];
+                        path = openFile.getAbsolutePath();
+                        filename = openFile.getName();
+                        playlistEntryPanel = new General_Playlist_Entry_Panel(filename,idx);
                         jPanelPlaylist.add(playlistEntryPanel);
+                        paths.push_back(path);
                         audio_list_player_component.mediaListPlayer().list().media().add(path);
-                        filename = null;
-                        path = null;;
-                        playlistEntryPanel = null;
                         idx++;
-                        file = null;
                     }
 
+                    actual_node = paths.front();
                     index = 0;
-                    openFiles = files;
                     loadMetadata();
                     audio_list_player_component.mediaListPlayer().controls().play();
                     jSliderVolume.setEnabled(true);
@@ -1495,11 +1515,7 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                     jSliderBandPreamp.setEnabled(true);
                     jComboBoxPresets.setEnabled(true);
                 }
-                //files = null;
-                
             }
-
-            filter = null;
         }
         System.gc();
     }//GEN-LAST:event_jLabelOpenFilesMouseClicked
@@ -1510,7 +1526,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(6, value);
         String value_of = String.valueOf(value);
         jLabelBand6.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBand6StateChanged
 
     private void jSliderBand1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderBand1StateChanged
@@ -1519,7 +1534,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(1, value);
         String value_of = String.valueOf(value);
         jLabelBand1.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBand1StateChanged
 
     private void jSliderBand2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderBand2StateChanged
@@ -1528,7 +1542,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(2, value);
         String value_of = String.valueOf(value);
         jLabelBand2.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBand2StateChanged
 
     private void jSliderBand3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderBand3StateChanged
@@ -1537,7 +1550,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(3, value);
         String value_of = String.valueOf(value);
         jLabelBand3.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBand3StateChanged
 
     private void jSliderBand4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderBand4StateChanged
@@ -1546,7 +1558,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(4, value);
         String value_of = String.valueOf(value);
         jLabelBand4.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBand4StateChanged
 
     private void jSliderBand5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderBand5StateChanged
@@ -1555,7 +1566,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(5, value);
         String value_of = String.valueOf(value);
         jLabelBand5.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBand5StateChanged
 
     private void jSliderBand0StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderBand0StateChanged
@@ -1564,7 +1574,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(0, value);
         String value_of = String.valueOf(value);
         jLabelBand0.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBand0StateChanged
 
     private void jSliderBand7StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderBand7StateChanged
@@ -1573,7 +1582,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(7, value);
         String value_of = String.valueOf(value);
         jLabelBand7.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBand7StateChanged
 
     private void jSliderBand8StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderBand8StateChanged
@@ -1582,7 +1590,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(8, value);
         String value_of = String.valueOf(value);
         jLabelBand8.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBand8StateChanged
 
     private void jSliderBand9StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderBand9StateChanged
@@ -1591,7 +1598,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(9, value);
         String value_of = String.valueOf(value);
         jLabelBand9.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBand9StateChanged
 
     private void jSliderBandPreampStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderBandPreampStateChanged
@@ -1600,7 +1606,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setPreamp(value);
         String value_of = String.valueOf(value);
         jLabelPreamp.setText(value_of);
-        value_of = null;
     }//GEN-LAST:event_jSliderBandPreampStateChanged
 
     private void jComboBoxPresetsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxPresetsItemStateChanged
@@ -1654,7 +1659,7 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
     /**Sets Play And Pause Functions*/
     private void setPlayPause() {
         
-        if (audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && openFiles != null) {
+        if (audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && !paths.is_empty()) {
 
             if (audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING) {
                 audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().controls().setPause(true);
@@ -1668,29 +1673,27 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
     
     /**Sets Next Media Function*/
     private void moveNext(){
-        if(openFiles != null){
-            if((index+1) < audio_list_player_component.mediaListPlayer().list().media().count()){
+        if(actual_node != null){
+            if(actual_node.has_next()){
                 audio_list_player_component.mediaListPlayer().controls().playNext();
-                System.gc();
             }
         }
     }
     
     /**Sets Previous Media Function*/
     private void movePrevious(){
-        if(openFiles != null){
-            if((index-1) >= 0){
+        if(actual_node != null){
+            if(actual_node.has_previous()){
                 moving_previous = true;
                 moving_next = false;
                 audio_list_player_component.mediaListPlayer().controls().playPrevious();
-                System.gc();
             }
         }
     }
 
     /**Sets Stop Function*/
     private void setStop() {
-        if (audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && openFiles != null) {
+        if (audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && !paths.is_empty()) {
             audio_list_player_component.mediaListPlayer().mediaPlayer().mediaPlayer().controls().stop();
         }
     }
@@ -1722,7 +1725,6 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         jSliderBandPreamp.setEnabled(false);
         jComboBoxPresets.setEnabled(false);
         jPanelPlaylist.removeAll();
-        openFiles = null;
         System.gc();
     }
 
@@ -1730,14 +1732,16 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
     /**Charge Metadata On Screen*/
     private void loadMetadata(){
         try {
-            //File readFile = new File(actual_node.element());
-            File readFile = openFiles[index];
+            String mrl;
+            File readFile = new File(actual_node.element());
+            AudioFile audioFile;
+            Tag tag;
             
             if(readFile.exists()){      
                
-                AudioFile audioFile = AudioFileIO.read(readFile);
+                audioFile = AudioFileIO.read(readFile);
                 
-                Tag tag = audioFile.getTag();
+                tag = audioFile.getTag();
                 String title = tag.getFirst(FieldKey.TITLE);
                 String artist = tag.getFirst(FieldKey.ARTIST);
                 String album = tag.getFirst(FieldKey.ALBUM);
@@ -1777,10 +1781,7 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                         jLabelCoverArt.setIcon(cover);
                         setColors(coverImagen);
                         coverImagen.flush();
-                        coverImagen = null;
                         real_cover.flush();
-                        real_cover = null;
-                        cover = null;
                         
                     }
                 } 
@@ -1794,47 +1795,22 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                     }
                 }
                
-                playlistEntryPanel = null;
-                media_info = null;
-                playlistEntryImage = null;
-                audioFile = null;
-                tag = null;
-                title = null;
-                artist = null;
-                album = null;
-                artWork = null;
-                genre = null;
-                year = null;
-                lyricals = null;
             }else{
-                String mrl = readFile.getAbsolutePath();
+                mrl = actual_node.element();
                 JOptionPane.showMessageDialog(this, mrl,"UNABLE TO FIND MEDIA",JOptionPane.ERROR_MESSAGE);
-                audio_list_player_component.mediaListPlayer().list().media().remove(index);
-                if(openFiles != null){
-                    int aux_index = 0;
-                    File[] aux = new File[audio_list_player_component.mediaListPlayer().list().media().count()];
-                    for(int i = 0; i < openFiles.length;i++){
-                        if(i != index){
-                            aux[aux_index] = openFiles[i];
-                            aux_index++;
-                        }
-                    }
-                }
-                if((index+1) < audio_list_player_component.mediaListPlayer().list().media().count()){
+                paths.remove(mrl);
+                if((index+1) < paths.size()){
                     moveNext();
-                } else if((index - 1) >= 0){
+                } else if((index - 1) > 0){
                     movePrevious();
                 } else{
                     setStop();
                 }
             }
-            readFile = null;
         } catch (CannotReadException | IOException | TagException | ReadOnlyFileException | InvalidAudioFrameException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(),"Found Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(),"ERROR ENCONTRADO",JOptionPane.ERROR_MESSAGE);
         }
         
-        System.gc();
-
     }
     
     private String secondsToString(long seconds) {
@@ -1856,19 +1832,27 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
             Random colorRandom = new Random(System.currentTimeMillis());
             Color firstColor = Color.BLACK;
+            Color color;
+            Pair<Integer, Color> pair;
+            int pixel;
+            int red;
+            int green;
+            int blue;
+            int[] pixels;
+            int number;
             int large = image.getHeight(null)/2;
             if (pg.grabPixels()) {
-                int[] pixels = (int[]) pg.getPixels();
+                pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
-                    int pixel = pixels[i];
-                    int  red = (pixel  & 0x00ff0000) >> 16;
-                    int  green = (pixel & 0x0000ff00) >> 8;
-                    int  blue = pixel & 0x000000ff;
-                    Color color = new Color(red,green,blue);
-                    Pair<Integer, Color> pair = colorList.get_from_second(color);
+                    pixel = pixels[i];
+                    red = (pixel  & 0x00ff0000) >> 16;
+                    green = (pixel & 0x0000ff00) >> 8;
+                    blue = pixel & 0x000000ff;
+                    color = new Color(red,green,blue);
+                    pair = colorList.get_from_second(color);
             
                     if (pair != null) {//exist
-                        int number = pair.first()+ 1;
+                        number = pair.first()+ 1;
                         pair.first(number);
                         if (number > maximum) {
                             firstColor = color;
@@ -1878,19 +1862,20 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                         colorList.push_back(1, color);
                     }
 
-                    i+= colorRandom.nextInt(large+1) + large;
+                    i += colorRandom.nextInt(large+1) + large;
                 }
 
                 
-                int red = firstColor.getRed();
+                red = firstColor.getRed();
                 Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
 
                 colorList.clear();
 
-                
                 Component[] components = this.getComponents();
+                Component component;
 
-                for (Component component : components){
+                for(int i = 0; i < components.length;i++){
+                    component = components[i];
                     component.setForeground(fontColor);
                 }
 
@@ -1904,32 +1889,34 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                 jSliderProgress.setForeground(fontColor);
                 jLabelCoverArt.setForeground(fontColor);
                 
-               
                 components = jPanelMediaInformation.getComponents();
 
-                for (Component component : components){
+                for(int i = 0; i < components.length;i++){
+                    component = components[i];
                     component.setForeground(fontColor);
                 }
                 
                 components = jPanelEqualizer.getComponents();
 
-                for (Component component : components){
+                for(int i = 0; i < components.length;i++){
+                    component = components[i];
                     component.setForeground(fontColor);
                 }
                 
                 components = jPanelBands.getComponents();
-
-                for (Component component : components){
+                
+                for(int i = 0; i < components.length;i++){
+                    component = components[i];
                     component.setForeground(fontColor);
-                    component.setBackground(fontColor);
                 }
                 
                 components = jPanelPlaylist.getComponents();
                 
-                for (Component component : components){
-                    General_Playlist_Entry_Panel playlistEntryPanel = (General_Playlist_Entry_Panel)component;
+                General_Playlist_Entry_Panel playlistEntryPanel;
+                for(int i = 0; i < components.length;i++){
+                    component = components[i];
+                    playlistEntryPanel = (General_Playlist_Entry_Panel)component;
                     playlistEntryPanel.setForegrounds(fontColor);
-                    
                 }
                
                 TitledBorder border = (TitledBorder)jLabelGenreValue.getBorder();
@@ -1950,14 +1937,8 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                 jComboBoxPresets.setForeground(fontColor);
                 jComboBoxPresets.setBackground(firstColor);
                 jTextPaneLyrics.setForeground(fontColor);
-                this.setBackground(firstColor);
                 
-                firstColor = null;
-                colorList = null;
-                fontColor = null;
-                pg = null;
-                pixels = null;
-                colorRandom = null;
+                setBackground(firstColor);
             }
             
         } catch (InterruptedException ex) {
@@ -2032,11 +2013,14 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
 
     public static void playIndex(int idx){
         if(idx > 0){
-            index = idx-1;
+            index = (idx-1);
+            actual_node = paths.node(index);
             audio_list_player_component.mediaListPlayer().controls().play(idx);
+            zero_index = false;
         } else{
+            index = 0;
             zero_index = true;
-            audio_list_player_component.mediaListPlayer().controls().play(idx);
+            audio_list_player_component.mediaListPlayer().controls().play(0);
         }
     }
 
@@ -2046,10 +2030,7 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
         audio_list_player_component.release();
         play_icon.getImage().flush();
         pause_icon.getImage().flush();
-        play_icon = null;
-        openFiles = null;
-        pause_icon = null;
-        audio_list_player_component = null;
+        paths.clear();
     }
     
 }

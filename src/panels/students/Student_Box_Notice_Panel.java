@@ -5,7 +5,7 @@
  */
 package panels.students;
 
-import com.github.javafaker.Faker;
+import courseroom.MainFrame;
 import data.collections.PairDoublyLinkedList;
 import data.interfaces.ColorInterface;
 import data.structures.Pair;
@@ -15,7 +15,6 @@ import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,31 +35,22 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
         initComponents();
         try {
             System.out.println("Aviso -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
-            Locale mx = new Locale("es","MX");
-            Faker faker = new Faker(mx);
-            jLabelDescripcionAviso.setText(faker.lorem().paragraph(1));
-            jLabelFechaHoraAviso.setText(faker.date().birthday().toString());
-            jLabelProvenenciaAviso.setText(faker.company().name());
-            jLabelEstado.setText(faker.book().publisher());
-            jLabelEstado.setText((faker.bool().bool()) ? "Leído" : "No Leído");
+            URL imageURL = new URL("https://loremflickr.com/129/129/sunset,beach/all");
+            
+            jLabelDescripcionAviso.setText(MainFrame.getFaker().lorem().paragraph(1));
+            jLabelFechaHoraAviso.setText(MainFrame.getFaker().date().birthday().toString());
+            jLabelProvenenciaAviso.setText(MainFrame.getFaker().company().name());
+            jLabelEstado.setText(MainFrame.getFaker().book().publisher());
+            jLabelEstado.setText((MainFrame.getFaker().bool().bool()) ? "Leído" : "No Leído");
             Image getImage = ImageIO.read(imageURL);
-            Image avisoImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
-            ImageIcon avisoIcon = new ImageIcon(avisoImage);
+            ImageIcon avisoIcon = new ImageIcon(getImage);
             jLabelFotoAviso.setIcon(avisoIcon);
             setColors(getImage);
             getImage.flush();
-            getImage = null;
-            avisoIcon = null;
-            avisoImage.flush();
-            avisoImage = null;
-            imageURL = null;
-            faker = null;
-            mx = null;
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Student_Box_Notice_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Student_Box_Notice_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
     }
 
@@ -93,7 +83,6 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
         jLabelProvenenciaAviso.setForeground(java.awt.Color.white);
         jLabelProvenenciaAviso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelProvenenciaAviso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/notification.png"))); // NOI18N
-        jLabelProvenenciaAviso.setText("Provenencia Del Aviso");
         jLabelProvenenciaAviso.setToolTipText("Provenencia Del Aviso");
         jLabelProvenenciaAviso.setMaximumSize(new java.awt.Dimension(488, 32));
         jLabelProvenenciaAviso.setMinimumSize(new java.awt.Dimension(488, 32));
@@ -103,7 +92,6 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
         jLabelDescripcionAviso.setForeground(java.awt.Color.white);
         jLabelDescripcionAviso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelDescripcionAviso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/announcement.png"))); // NOI18N
-        jLabelDescripcionAviso.setText("Descripción Corta Del Aviso");
         jLabelDescripcionAviso.setToolTipText("Descripción Corta Del Aviso");
         jLabelDescripcionAviso.setMaximumSize(new java.awt.Dimension(417, 22));
         jLabelDescripcionAviso.setMinimumSize(new java.awt.Dimension(417, 22));
@@ -113,14 +101,12 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
         jLabelFechaHoraAviso.setForeground(java.awt.Color.white);
         jLabelFechaHoraAviso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelFechaHoraAviso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/time-limit.png"))); // NOI18N
-        jLabelFechaHoraAviso.setText("10/08/2021 05:42 P.M");
         jLabelFechaHoraAviso.setToolTipText("Fecha & Hora Del Aviso");
 
         jLabelEstado.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jLabelEstado.setForeground(java.awt.Color.white);
         jLabelEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/read.png"))); // NOI18N
-        jLabelEstado.setText("No Leído");
         jLabelEstado.setToolTipText("Estado Del Aviso");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -168,18 +154,25 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
             int large = image.getWidth(null)/2;
+            int pixel;
+            int red;
+            int green;
+            int blue;
+            Color color;
+            int number;
+            Pair<Integer, Color> pair;            
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
-                    int pixel = pixels[i];
-                    int  red = (pixel  & 0x00ff0000) >> 16;
-                    int  green = (pixel & 0x0000ff00) >> 8;
-                    int  blue = pixel & 0x000000ff;
-                    Color color = new Color(red,green,blue);
-                    Pair<Integer, Color> pair = colorList.get_from_second(color);
+                    pixel = pixels[i];
+                    red = (pixel  & 0x00ff0000) >> 16;
+                    green = (pixel & 0x0000ff00) >> 8;
+                    blue = pixel & 0x000000ff;
+                    color = new Color(red,green,blue);
+                    pair = colorList.get_from_second(color);
             
                     if (pair != null) {//exist
-                        int number = pair.first()+ 1;
+                        number = pair.first()+ 1;
                         pair.first(number);
                         if (number > maximum) {
                             firstColor = color;
@@ -196,10 +189,11 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
                 Color secondColor = firstColor;
             
                 int iterations = 0;
+                int position;
                 if(colorList.size() > 1){
                     
                     while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        position = colorRandom.nextInt((int)colorList.size()-1);
                         secondColor = colorList.get(position).second();
                         iterations++;
                         if(iterations > 25){
@@ -212,7 +206,7 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
                     }
                 }
               
-                int red = firstColor.getRed();
+                red = firstColor.getRed();
                 Color fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 
                 colorList.clear();
@@ -223,17 +217,10 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
                 jLabelProvenenciaAviso.setForeground(fontColor);
                 this.setBackground(firstColor);
                 this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
-
-                fontColor = null;
-                colorRandom = null;
-                colorList = null;
-                firstColor = null;
-                pg = null;
-                pixels = null;
             }
             
         } catch (InterruptedException ex) {
-            Logger.getLogger(Student_Box_Chat_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
     }
     

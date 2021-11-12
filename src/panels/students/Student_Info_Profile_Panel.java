@@ -5,7 +5,6 @@
  */
 package panels.students;
 
-import com.github.javafaker.Faker;
 import courseroom.MainFrame;
 import java.awt.Component;
 import java.awt.Image;
@@ -34,31 +33,30 @@ public class Student_Info_Profile_Panel extends javax.swing.JPanel {
     
     public void initMyComponents(){
         Component[] components = this.getComponents();
-        for(Component component : components){
+        Component component;
+        for(int i = 0; i < components.length;i++){
+            component = components[i];
             component.setForeground(MainFrame.getFontColor());
         }
         
         jScrollPaneDescripcion.getViewport().setOpaque(false);
         jTextPaneDescripcion.setForeground(MainFrame.getFontColor());
-        Faker faker = new Faker(new Locale("es","MX"));
-        jLabelNombres.setText(faker.name().firstName() + " " + faker.name().firstName());
-        jLabelApellidos.setText(faker.name().lastName() + " " + faker.name().lastName());
-        jLabelCorreoElectronico.setText(faker.internet().emailAddress());
-        jLabelLocalidad.setText(faker.address().fullAddress());
-        jLabelNombreDeUsuario.setText(faker.name().username());
-        jLabelNumeroTelefono.setText(faker.phoneNumber().cellPhone());
-        jTextPaneDescripcion.setText(faker.lorem().paragraph());
-        jLabelGenero.setText(faker.demographic().sex());
-        jLabelFechaDeNacimiento.setText(faker.backToTheFuture().date());
-        faker = null;
+       
+        jLabelNombres.setText(MainFrame.getFaker().name().firstName() + " " + MainFrame.getFaker().name().firstName());
+        jLabelApellidos.setText(MainFrame.getFaker().name().lastName() + " " + MainFrame.getFaker().name().lastName());
+        jLabelCorreoElectronico.setText(MainFrame.getFaker().internet().emailAddress());
+        jLabelLocalidad.setText(MainFrame.getFaker().address().fullAddress());
+        jLabelNombreDeUsuario.setText(MainFrame.getFaker().name().username());
+        jLabelNumeroTelefono.setText(MainFrame.getFaker().phoneNumber().cellPhone());
+        jTextPaneDescripcion.setText(MainFrame.getFaker().lorem().paragraph());
+        jLabelGenero.setText(MainFrame.getFaker().demographic().sex());
+        jLabelFechaDeNacimiento.setText(MainFrame.getFaker().backToTheFuture().date());
         
         ImageIcon imageIcon = new ImageIcon(Student_Dashboard_Panel.getUserImage());
         jLabelProfilePhoto.setIcon(imageIcon);
         jLabelNombres.setForeground(MainFrame.getSecondFontColor());
         jLabelApellidos.setForeground(MainFrame.getSecondFontColor());
         jLabelNombreDeUsuario.setForeground(MainFrame.getFontColor());
-        imageIcon.getImage().flush();
-        imageIcon = null;
         
         
     }
@@ -322,6 +320,9 @@ public class Student_Info_Profile_Panel extends javax.swing.JPanel {
 
     private void jButtonMiDesempenoEscolarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMiDesempenoEscolarMouseClicked
         // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
     }//GEN-LAST:event_jButtonMiDesempenoEscolarMouseClicked
 
     private void jButtonEditarPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarPerfilMouseEntered
@@ -347,7 +348,6 @@ public class Student_Info_Profile_Panel extends javax.swing.JPanel {
     public void setProfileImage(Image image){
         ImageIcon profileIcon = new ImageIcon(image.getScaledInstance(400,400,Image.SCALE_SMOOTH)); 
         jLabelProfilePhoto.setIcon(profileIcon);
-        profileIcon = null;
     }
    
     public JLabel getProfilePhotoLabel(){

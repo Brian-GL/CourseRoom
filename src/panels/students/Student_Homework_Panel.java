@@ -455,8 +455,6 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
             General_Homework_Comment_Panel homeworkCommentPanel = new General_Homework_Comment_Panel(getImage,faker.name().fullName()+":",jTextFieldComment.getText(),secondColor,secondFontColor);
             jPanelComments.add(homeworkCommentPanel,LEFT_ALIGNMENT);
             getImage.flush();
-            getImage = null;
-            imageURL = null;
             jTextFieldComment.setText("");
         } catch (MalformedURLException ex) {
             Logger.getLogger(Student_Homework_Panel.class.getName()).log(Level.SEVERE, null, ex);
@@ -476,10 +474,8 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
         if (result == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             if(file != null){
-
                 General_Homework_Uploaded_File homeworkUploadFile = new General_Homework_Uploaded_File(file,thirdColor,thirdFontColor,secondColor, secondFontColor);
                 jPanelUploadedFiles.add(homeworkUploadFile);
-
             }
         }
     }

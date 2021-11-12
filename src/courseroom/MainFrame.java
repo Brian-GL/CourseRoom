@@ -5,8 +5,8 @@
  */
 package courseroom;
 
-
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.github.javafaker.Faker;
 import data.interfaces.DisposeInterface;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -28,11 +29,12 @@ import panels.generals.General_Recuperar_Credenciales_Panel;
 import panels.generals.General_Crear_Cuenta_Panel;
 import panels.students.Student_Dashboard_Panel;
 import panels.teachers.Teacher_Dashboard_Panel;
+
 /**
  *
  * @author LENOVO
  */
-public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
+public class MainFrame extends javax.swing.JFrame implements DisposeInterface {
 
     private static General_Login_Panel login;
     private static General_Recuperar_Credenciales_Panel recuperarCredenciales;
@@ -40,76 +42,83 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
     private static Student_Dashboard_Panel studentDashboard;
     //private static Teacher_Dashboard_Panel teacherDashboardPanel;
     private static Color darkBlue, lightBlue;
-    private static Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
-    
+    private static Color firstColor, secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
+
     private static ImageIcon logoImage;
-    
+
     private static CardLayout viewerLayout;
+
+    private static Faker faker;
     
+    private static Logger logger;
+
     /**
      * Creates new form MainFrame
      */
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public MainFrame() {
-        
+
         initComponents();
-        
-        darkBlue = new Color(14,30,64);
-        lightBlue  = new Color(104,194,232);
+
+        darkBlue = new Color(14, 30, 64);
+        lightBlue = new Color(104, 194, 232);
         firstColor = darkBlue;
         secondColor = thirdColor = lightBlue;
         fontColor = secondFontColor = thirdFontColor = Color.BLACK;
-         
+        
+        Locale mx = new Locale("es", "MX");
+        faker = new Faker(mx);
+
+        logger = MainFrame.getLogger();
+        
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
-        
+
         Image darkImageLogo;
         try {
             darkImageLogo = ImageIO.read(getClass().getResource("/resources/images/Course_Room_Brand_Blue.png"));
             Image logo = ImageIO.read(getClass().getResource("/resources/images/Course_Room_Logo.png"));
             this.setIconImage(logo);
-            logoImage = new ImageIcon(darkImageLogo.getScaledInstance(150, 125, Image.SCALE_SMOOTH));
-            logo = null;
-            darkImageLogo = null;
+            Image darkIcon = darkImageLogo.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
+            logoImage = new ImageIcon(darkIcon);
+            darkIcon.flush();
+            darkImageLogo.flush();
         } catch (IOException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         }
-        
+
         jPanelViewer.setBackground(firstColor);
         login = new General_Login_Panel();
-        jPanelViewer.add("login",login);
-        
+        jPanelViewer.add("login", login);
+
         boolean isConnected = checkConnection();
-        
-        if (!isConnected){
-            JOptionPane.showMessageDialog(null,"There Is Not Internet Connection","SUPER ERROR",JOptionPane.ERROR_MESSAGE);
+
+        if (!isConnected) {
+            JOptionPane.showMessageDialog(null, "There Is Not Internet Connection", "SUPER ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         recuperarCredenciales = new General_Recuperar_Credenciales_Panel();
-        jPanelViewer.add("recuperarCredenciales",recuperarCredenciales);
-        
+        jPanelViewer.add("recuperarCredenciales", recuperarCredenciales);
+
         crearCuenta = new General_Crear_Cuenta_Panel();
-        
+
         //teacherDashboardPanel = new Teacher_Dashboard_Panel();
         //jPanelViewer.add("dashboard",teacherDashboardPanel);
         studentDashboard = new Student_Dashboard_Panel();
-        jPanelViewer.add("dashboard",studentDashboard);
-        
-        jPanelViewer.add("crearCuenta",crearCuenta);
-        
-        
-        viewerLayout = (CardLayout)jPanelViewer.getLayout();
-        
+        jPanelViewer.add("dashboard", studentDashboard);
+
+        jPanelViewer.add("crearCuenta", crearCuenta);
+
+        viewerLayout = (CardLayout) jPanelViewer.getLayout();
+
     }
-    
-    
-    public boolean checkConnection(){
+
+    public boolean checkConnection() {
         try {
             URL url = new URL("http://www.google.com");
             URLConnection connection = url.openConnection();
             connection.connect();
-            connection = null;
             return true;
         } catch (MalformedURLException e) {
             return false;
@@ -156,68 +165,69 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
-    public static void showLogin(){
-        viewerLayout.show(jPanelViewer,"login");
+    public static void showLogin() {
+        viewerLayout.show(jPanelViewer, "login");
     }
-    
-    public static void showRecuperarCredenciales(){
-        viewerLayout.show(jPanelViewer,"recuperarCredenciales");
+
+    public static void showRecuperarCredenciales() {
+        viewerLayout.show(jPanelViewer, "recuperarCredenciales");
     }
-    
-    public static void showCrearCuenta(){
-        viewerLayout.show(jPanelViewer,"crearCuenta");
+
+    public static void showCrearCuenta() {
+        viewerLayout.show(jPanelViewer, "crearCuenta");
     }
-    
-    public static void showDashboard(){
-        studentDashboard.setColors();
+
+    public static void showDashboard() {
+        Student_Dashboard_Panel.setColors();
         //teacherDashboardPanel.setColors();
-        viewerLayout.show(jPanelViewer,"dashboard");
+        viewerLayout.show(jPanelViewer, "dashboard");
     }
-    
-    public static void logOut(){
+
+    public static void logOut() {
         showLogin();
         firstColor = darkBlue;
         secondColor = lightBlue;
         thirdColor = lightBlue;
         jPanelViewer.setBackground(darkBlue);
         studentDashboard.dispose();
-        studentDashboard = null;
         studentDashboard = new Student_Dashboard_Panel();
-        
+
         //teacherDashboardPanel.dispose();
         //teacherDashboardPanel = null;
         //teacherDashboardPanel = new Teacher_Dashboard_Panel();
-        
     }
-    
-    public static void repainting(){
+
+    public static void repainting() {
         //jPanelViewer.repaint();
         jPanelViewer.setBackground(firstColor);
     }
-   
+
+    public static String Concatenate(String from, String to) {
+        StringBuilder stringBuilder = new StringBuilder(from);
+        stringBuilder.append(to);
+        return stringBuilder.toString();
+    }
+    
+    public static String Concatenate(String from, int to) {
+        StringBuilder stringBuilder = new StringBuilder(from);
+        stringBuilder.append(to);
+        return stringBuilder.toString();
+    }
+
     @Override
-    public void dispose(){
+    public void dispose() {
         studentDashboard.dispose();
         //teacherDashboardPanel.dispose();
         recuperarCredenciales.dispose();
-        login = null;
-        recuperarCredenciales = null;
-        crearCuenta = null;
-        studentDashboard = null;
-        //teacherDashboardPanel = null;
-        darkBlue = lightBlue = null;
         firstColor = secondColor = thirdColor = fontColor = secondFontColor = thirdFontColor = null;
-        logoImage = null;
-        viewerLayout = null;
         super.dispose();
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JPanel jPanelViewer;
     // End of variables declaration//GEN-END:variables
 
-   
     /**
      * @return the logoImage
      */
@@ -225,14 +235,13 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         return logoImage;
     }
 
-
     /**
      * @return the login
      */
     public static General_Login_Panel getLogin() {
         return login;
     }
-    
+
     /**
      * @return the firstColor
      */
@@ -289,7 +298,7 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         fontColor = aFontColor;
     }
 
-     /**
+    /**
      * @return the fontColor
      */
     public static Color getSecondFontColor() {
@@ -302,8 +311,8 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
     public static void setSecondFontColor(Color aFontColor) {
         secondFontColor = aFontColor;
     }
-    
-     /**
+
+    /**
      * @return the fontColor
      */
     public static Color getThirdFontColor() {
@@ -317,10 +326,9 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
         thirdFontColor = aFontColor;
     }
 
-
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         try {
             FlatDarkLaf ui = new FlatDarkLaf();
@@ -328,10 +336,23 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface{
             MainFrame m = new MainFrame();
             m.setVisible(true);
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
-    
+
+    /**
+     * @return the faker
+     */
+    public static Faker getFaker() {
+        return faker;
+    }
+
+    /**
+     * @return the logger
+     */
+    public static Logger getLogger() {
+        return logger;
+    }
+
 }

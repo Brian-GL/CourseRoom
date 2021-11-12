@@ -5,7 +5,6 @@
  */
 package panels.students;
 
-import com.github.javafaker.Faker;
 import courseroom.MainFrame;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,16 +24,19 @@ public class Student_Courses_Panel extends javax.swing.JPanel {
         
         initMyComponents();
         
-        Faker faker = new Faker();
-        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
-            Student_Box_Course_Panel boxCoursePanel = new Student_Box_Course_Panel(i);
+        Student_Box_Course_Panel boxCoursePanel;
+        String concatenate;
+        for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
+            concatenate = MainFrame.Concatenate("COURSE_", i);
+            boxCoursePanel = new Student_Box_Course_Panel(concatenate);
             boxCoursePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-350,187));
             jPanelActualCourses.add(boxCoursePanel);
             
         }
        
-        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
-            Student_Box_Course_Panel boxCoursePanel = new Student_Box_Course_Panel(i);
+        for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
+            concatenate = MainFrame.Concatenate("COURSE_", i);
+            boxCoursePanel = new Student_Box_Course_Panel(concatenate);
             boxCoursePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-350,187));
             jPanelFinishedCourses.add(boxCoursePanel);
         }

@@ -7,7 +7,6 @@ package panels.students;
 
 import panels.generals.General_About_Panel;
 import panels.generals.General_Music_Panel;
-import com.github.javafaker.Faker;
 import courseroom.MainFrame;
 import data.collections.PairDoublyLinkedList;
 import data.interfaces.DisposeInterface;
@@ -22,7 +21,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,7 +66,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
             Image image = userImage.getScaledInstance(175, 175, Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(image);
             jLabelUserProfilePhoto.setIcon(imageIcon);
-            //image.flush();
+            image.flush();
             //image = null;
             
             
@@ -105,19 +103,18 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
             configurationPanel = new Student_Dashboard_Configuration_Panel();
             jPanelInformacion.add("configurationPanel",configurationPanel);
             
-            Faker faker = new Faker(new Locale("es","MX"));
+          
             panelLayout = (CardLayout) jPanelInformacion.getLayout();
-            jLabelUserName.setText(faker.name().username());
+            jLabelUserName.setText(MainFrame.getFaker().name().username());
             
             serverDateTime = new ServerDateTime();
             serverDateTime.start();
             
-            imageURL = null;
             
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Student_Dashboard_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Student_Dashboard_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         } 
         
     }
@@ -730,18 +727,27 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(userImage, 0, 0, -1, -1, false);
             int large = userImage.getWidth(null)/2;
+            int[] pixels;
+            int pixel;
+            int red;
+            int green;
+            int blue;
+            Color color;
+            Pair<Integer, Color> pair;
+            int number;
+            int position;
             if (pg.grabPixels()) {
-                int[] pixels = (int[]) pg.getPixels();
+                pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
-                    int pixel = pixels[i];
-                    int  red = (pixel  & 0x00ff0000) >> 16;
-                    int  green = (pixel & 0x0000ff00) >> 8;
-                    int  blue = pixel & 0x000000ff;
-                    Color color = new Color(red,green,blue);
-                    Pair<Integer, Color> pair = colorList.get_from_second(color);
+                    pixel = pixels[i];
+                    red = (pixel  & 0x00ff0000) >> 16;
+                    green = (pixel & 0x0000ff00) >> 8;
+                    blue = pixel & 0x000000ff;
+                    color = new Color(red,green,blue);
+                    pair = colorList.get_from_second(color);
             
                     if (pair != null) {//exist
-                        int number = pair.first()+ 1;
+                        number = pair.first()+ 1;
                         pair.first(number);
                         if (number > maximum) {
                             firstColor = color;
@@ -751,8 +757,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
                         colorList.push_back(1, color);
                     }
 
-                    color = null;
-                    i+= colorRandom.nextInt(large + 1) + large;
+                    i += colorRandom.nextInt(large+1) + large;
                 }
 
                 secondColor = firstColor;
@@ -761,7 +766,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
                 if(colorList.size() > 1){
                     
                     while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        position = colorRandom.nextInt((int)colorList.size()-1);
                         secondColor = colorList.get(position).second();
                         iterations++;
                         if(iterations > 25){
@@ -773,14 +778,13 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
                         }
                     }
                 }
-                
-
-               thirdColor = secondColor;
+               
+                thirdColor = secondColor;
                 if(colorList.size() > 2){
                     iterations = 0;
                     
                     while(Math.abs(thirdColor.getRGB() - firstColor.getRGB()) < 3000000 || Math.abs(secondColor.getRGB() - thirdColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        position = colorRandom.nextInt((int)colorList.size()-1);
                         thirdColor = colorList.get(position).second();
                         iterations++;
                         if(iterations > 50){
@@ -793,18 +797,13 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
                     }
                 }
                 
-                int red = firstColor.getRed();
+                red = firstColor.getRed();
                 fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 red = secondColor.getRed();
                 secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 red = thirdColor.getRed();
                 thirdFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 colorList.clear();
-                
-                colorList = null;
-                pg = null;
-                pixels = null;
-                colorRandom = null;
                 
                 MainFrame.setFirstColor(firstColor);
                 MainFrame.setSecondColor(secondColor);
@@ -819,7 +818,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
             }
             
         } catch (InterruptedException ex) {
-            Logger.getLogger(General_Music_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
             
     }
@@ -926,8 +925,6 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         ImageIcon icon = new ImageIcon(imageProfile.getImage().getScaledInstance(imageWidth,imageHeight,Image.SCALE_SMOOTH));
         infoProfilePanel.getProfilePhotoLabel().setIcon(icon);
         imageProfile.getImage().flush();
-        imageProfile = null;
-        icon = null;
     }
 
     
@@ -940,17 +937,18 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         @Override
         @SuppressWarnings("SleepWhileInLoop")
         public void run(){
-            
+            Date date;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy hh:mm:ss a");;
+            String time;
             while(server_time_stop){
                 
                 try {
-                    Date date = new Date();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy hh:mm:ss a");
-                    String time = dateFormat.format(date);
+                    date = new Date();
+                    time = dateFormat.format(date);
                     jLabelFechaHoraServidor.setText(time);
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(ServerDateTime.class.getName()).log(Level.SEVERE, null, ex);
+                    MainFrame.getLogger().log(Level.SEVERE, null, ex);
                 }
             }
         }

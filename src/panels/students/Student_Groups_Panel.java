@@ -5,7 +5,6 @@
  */
 package panels.students;
 
-import com.github.javafaker.Faker;
 import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
 
@@ -25,9 +24,11 @@ public class Student_Groups_Panel extends javax.swing.JPanel implements DisposeI
         jScrollPaneMisGrupos.getViewport().setOpaque(false);
         jScrollPaneMisGrupos.getVerticalScrollBar().setUnitIncrement(15);
         
-        Faker faker = new Faker();
-        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
-            Student_Box_Group_Panel boxGroupPanel = new Student_Box_Group_Panel(i);
+        String concatenate;
+        Student_Box_Group_Panel boxGroupPanel;
+        for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
+            concatenate = MainFrame.Concatenate("GROUP_", i);
+            boxGroupPanel = new Student_Box_Group_Panel(concatenate);
             jPanelMisGrupos.add(boxGroupPanel);
         }
         

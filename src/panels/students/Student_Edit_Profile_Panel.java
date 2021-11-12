@@ -39,7 +39,6 @@ public class Student_Edit_Profile_Panel extends javax.swing.JPanel {
         jTabbedPaneFondo.setBackground(noColor);
         jTabbedPaneFondo.setForeground(MainFrame.getSecondFontColor());
         jScrollPaneDescripcion.getViewport().setOpaque(false);
-        noColor = null;
         
     }
 
@@ -733,7 +732,7 @@ public class Student_Edit_Profile_Panel extends javax.swing.JPanel {
             int result = fileChooser.showOpenDialog(this);
 
              if (result == JFileChooser.APPROVE_OPTION) {
-                 File file = fileChooser.getSelectedFile();
+                File file = fileChooser.getSelectedFile();
                  
                 try {
                     Image openImage = ImageIO.read(file);
@@ -754,7 +753,7 @@ public class Student_Edit_Profile_Panel extends javax.swing.JPanel {
                     
                     
                 } catch (IOException ex) {
-                    Logger.getLogger(Student_Edit_Profile_Panel.class.getName()).log(Level.SEVERE, null, ex);
+                    MainFrame.getLogger().log(Level.SEVERE, null, ex);
                 }
             }
              
@@ -771,6 +770,9 @@ public class Student_Edit_Profile_Panel extends javax.swing.JPanel {
 
     private void jButtonGuardarCambiosAutenticacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosAutenticacionMouseClicked
         // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
         
     }//GEN-LAST:event_jButtonGuardarCambiosAutenticacionMouseClicked
 

@@ -207,7 +207,6 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
                 
                 }
                 
-                folder = null;
             }
         }
     }//GEN-LAST:event_jButtonSelectDownloadRouteMouseClicked
@@ -291,7 +290,16 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonColorRechargeMouseExited
 
     private String toRGB(Color color){
-        return "RGB: ("+color.getRed()+","+color.getGreen()+","+color.getBlue()+")";
+        
+        
+        return MainFrame.Concatenate(
+                MainFrame.Concatenate(
+                MainFrame.Concatenate(
+                MainFrame.Concatenate(
+                MainFrame.Concatenate(
+                        MainFrame.Concatenate(
+                                "RGB: (", color.getRed()), ","),color.getGreen()),","),color.getBlue()),")");
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

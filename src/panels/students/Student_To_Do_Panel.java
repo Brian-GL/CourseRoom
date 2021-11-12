@@ -5,6 +5,7 @@
  */
 package panels.students;
 
+import courseroom.MainFrame;
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.SwingUtilities;
@@ -15,18 +16,32 @@ import javax.swing.SwingUtilities;
  */
 public class Student_To_Do_Panel extends javax.swing.JPanel {
     
-    public Student_To_Do_Panel(Icon miembro_image, Color firstColor, Color fontColor,Color secondColor, Color secondFontColor, String nombre, String descripcion, String fecha_terminacion, String nombre_miembro) {
+    @SuppressWarnings("OverridableMethodCallInConstructor")
+    public Student_To_Do_Panel(
+            Icon miembro_image, 
+            Color firstColor, 
+            Color fontColor,
+            Color secondColor, 
+            Color secondFontColor, 
+            String nombre, 
+            String descripcion, 
+            String fecha_terminacion, 
+            String nombre_miembro) {
+        
         initComponents();
         
         //Init my components
         jLabelNombreTareaPorHacer.setText(nombre);
         jTextAreaDescripcion.setText(descripcion);
-        jLabelFechaTerminacionTareaPorHacer.setText("Hasta Las: "+fecha_terminacion);
+        
+        jLabelFechaTerminacionTareaPorHacer.setText(fecha_terminacion);
         jLabelMiembroImage.setIcon(miembro_image);
-        jLabelMiembroImage.setToolTipText("Encargado: "+nombre_miembro);
+        jLabelMiembroImage.setToolTipText(MainFrame.Concatenate("Miembro A Cargo: ",nombre_miembro));
         
         //paint my components
-        this.setBackground(firstColor);
+        
+        setBackground(firstColor);
+        
         jLabelNombreTareaPorHacer.setForeground(fontColor);
         jTextAreaDescripcion.setForeground(secondFontColor);
         jTextAreaDescripcion.setBackground(secondColor);
@@ -34,7 +49,7 @@ public class Student_To_Do_Panel extends javax.swing.JPanel {
         jToggleButtonEstatusPendiente.setForeground(secondFontColor);
         jToggleButtonEstatusPendiente.setBackground(secondColor);
         
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
+        setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
     }
 
     /**
@@ -58,17 +73,19 @@ public class Student_To_Do_Panel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(717, 168));
 
         jLabelMiembroImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMiembroImage.setToolTipText("");
         jLabelMiembroImage.setMaximumSize(new java.awt.Dimension(130, 130));
         jLabelMiembroImage.setMinimumSize(new java.awt.Dimension(130, 130));
         jLabelMiembroImage.setPreferredSize(new java.awt.Dimension(130, 130));
 
         jLabelNombreTareaPorHacer.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelNombreTareaPorHacer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNombreTareaPorHacer.setText("Nombre Pendiente");
+        jLabelNombreTareaPorHacer.setText(" ");
         jLabelNombreTareaPorHacer.setToolTipText("Nombre Del Pendiente A Realizar");
 
         jLabelFechaTerminacionTareaPorHacer.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jLabelFechaTerminacionTareaPorHacer.setText("Fecha Propuesta Para Terminar El Pendiente");
+        jLabelFechaTerminacionTareaPorHacer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clock.png"))); // NOI18N
+        jLabelFechaTerminacionTareaPorHacer.setToolTipText("Fecha Propuesta Para Terminar El Pendiente");
 
         jToggleButtonEstatusPendiente.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jToggleButtonEstatusPendiente.setText("Pendiente");
@@ -85,7 +102,6 @@ public class Student_To_Do_Panel extends javax.swing.JPanel {
         jTextAreaDescripcion.setColumns(20);
         jTextAreaDescripcion.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jTextAreaDescripcion.setRows(5);
-        jTextAreaDescripcion.setText("Hola\nHola\nHola");
         jTextAreaDescripcion.setToolTipText("Descripción Del Pendiente");
         jScrollPaneDescripcion.setViewportView(jTextAreaDescripcion);
 

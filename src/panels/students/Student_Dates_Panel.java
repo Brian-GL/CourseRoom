@@ -322,8 +322,6 @@ public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeIn
             count++;
         }
         
-        localDate = null;
-        dayOfWeek = null;
     }    
     
     private String setMonthName(){

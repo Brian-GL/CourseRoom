@@ -5,9 +5,8 @@
  */
 package panels.students;
 
-import com.github.javafaker.Faker;
+import courseroom.MainFrame;
 import java.awt.Color;
-import java.util.Locale;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -29,19 +28,13 @@ public class Student_Box_Date_Panel extends javax.swing.JPanel {
     }
     
     private void initMyComponents(){
-        Locale mx = new Locale("es","MX");
-        Faker faker = new Faker(mx);
-        jLabelHora.setText(faker.number().randomNumber(2, true) + ":" + faker.number().randomNumber(2, false) + " P.M");
-        jTextPaneNotice.setText(faker.lorem().paragraph());
+        jLabelHora.setText(MainFrame.getFaker().number().randomNumber(2, true) + ":" + MainFrame.getFaker().number().randomNumber(2, false) + " P.M");
+        jTextPaneNotice.setText(MainFrame.getFaker().lorem().paragraph());
         StyledDocument doc = jTextPaneNotice.getStyledDocument();
         jScrollPaneNotice.getViewport().setOpaque(false);
         SimpleAttributeSet center = new SimpleAttributeSet();
         StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
         doc.setParagraphAttributes(0, doc.getLength(), center, false);
-        doc = null;
-        center = null;
-        faker = null;
-        mx = null;
     }
 
     /**
@@ -72,14 +65,12 @@ public class Student_Box_Date_Panel extends javax.swing.JPanel {
         jTextPaneNotice.setEditable(false);
         jTextPaneNotice.setBorder(null);
         jTextPaneNotice.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jTextPaneNotice.setText("Introducción A Golang Y Sus Principales Usos");
-        jTextPaneNotice.setToolTipText("Pendiente");
+        jTextPaneNotice.setToolTipText("Descripción Corta Del Pendiente");
         jTextPaneNotice.setOpaque(false);
         jScrollPaneNotice.setViewportView(jTextPaneNotice);
 
         jLabelHora.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabelHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelHora.setText("23:55 P.M");
         jLabelHora.setToolTipText("Hora Máxima Del Pendiente");
         jLabelHora.setMaximumSize(new java.awt.Dimension(68, 32));
         jLabelHora.setMinimumSize(new java.awt.Dimension(68, 32));

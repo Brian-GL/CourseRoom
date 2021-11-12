@@ -65,6 +65,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabelFotoGrupo">
       <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Abrir Grupo"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[164, 164]"/>
         </Property>
@@ -88,7 +89,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/group_1.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre Del Grupo"/>
         <Property name="toolTipText" type="java.lang.String" value="Nombre Del grupo"/>
       </Properties>
       <Events>
@@ -104,7 +104,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/teacher.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Clase De Proveniencia Del Grupo"/>
         <Property name="toolTipText" type="java.lang.String" value="Clase De Proveniencia Del Grupo"/>
       </Properties>
       <Events>
@@ -120,7 +119,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/volume.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="User Ha Cambiado La Foto Del Grupo"/>
         <Property name="toolTipText" type="java.lang.String" value="Actualizaci&#xf3;n M&#xe1;s Reciente"/>
       </Properties>
     </Component>

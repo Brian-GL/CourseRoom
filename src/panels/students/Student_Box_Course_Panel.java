@@ -5,6 +5,7 @@
  */
 package panels.students;
 
+import courseroom.MainFrame;
 import data.collections.PairDoublyLinkedList;
 import data.interfaces.ColorInterface;
 import data.structures.Pair;
@@ -16,7 +17,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
@@ -32,49 +32,37 @@ import javax.swing.text.StyledDocument;
  */
 public class Student_Box_Course_Panel extends javax.swing.JPanel implements ColorInterface{
 
-    private int id;
+    private String id;
     private Color firstColor, secondColor, fontColor, secondFontColor;
     
     /**
      * Creates new form General_Course_Box_Panel
      */
-    public Student_Box_Course_Panel(int _id) {
+    public Student_Box_Course_Panel(String _id) {
         initComponents();
         firstColor = secondColor = fontColor = secondFontColor =  Color.BLACK;
-        
-        initMyComponents(_id);
+        this.id = _id;
+        initMyComponents();
     }
     
-    private void initMyComponents(int _id){
+    private void initMyComponents(){
         try {
-            System.out.println("Course ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
+            System.out.println("Course ID: "+this.id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/226/226/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
-            Image courseImage = getImage.getScaledInstance(226, 226,Image.SCALE_SMOOTH);
-            ImageIcon courseIcon = new ImageIcon(courseImage);
+            ImageIcon courseIcon = new ImageIcon(getImage);
             jLabelCourseImage.setIcon(courseIcon);
             setColors(getImage);
             
-            System.out.println("Course Teacher ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageTeacherURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
+            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageTeacherURL = new URL("https://loremflickr.com/79/79/sunset,beach/all");
             Image getImageTeacher = ImageIO.read(imageTeacherURL);
-            Image courseTeacherImage = getImageTeacher.getScaledInstance(79, 79,Image.SCALE_SMOOTH);
-            ImageIcon courseTeacherIcon = new ImageIcon(courseTeacherImage);
+            ImageIcon courseTeacherIcon = new ImageIcon(getImageTeacher);
             jLabelTeacherImage.setIcon(courseTeacherIcon);
             
             getImageTeacher.flush();
-            getImageTeacher = null;
-            courseTeacherImage.flush();
-            courseTeacherImage = null;
-            courseTeacherIcon = null;
-            imageTeacherURL = null;
             
             getImage.flush();
-            getImage = null;
-            courseImage.flush();
-            courseImage = null;
-            courseIcon = null;
-            imageURL = null;
             
             SimpleAttributeSet attributeSet = new SimpleAttributeSet();
             StyleConstants.setItalic(attributeSet, true);
@@ -87,13 +75,13 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
                     StyleConstants.setIcon(style2, new ImageIcon(getClass().getResource("/resources/icons/star.png")));
                     doc2.insertString(doc2.getLength(), "invisible text", style2);
                 } catch (BadLocationException ex) {
-                    Logger.getLogger(Student_Box_Course_Panel.class.getName()).log(Level.SEVERE, null, ex);
+                    MainFrame.getLogger().log(Level.SEVERE, null, ex);
                 }
             }
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Student_Box_Course_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Student_Box_Course_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
         
     }
@@ -123,6 +111,7 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(824, 187));
 
+        jLabelCourseImage.setToolTipText("Imagen De Perfil Del Curso");
         jLabelCourseImage.setMaximumSize(new java.awt.Dimension(175, 175));
         jLabelCourseImage.setMinimumSize(new java.awt.Dimension(175, 175));
         jLabelCourseImage.setPreferredSize(new java.awt.Dimension(175, 175));
@@ -133,6 +122,7 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
         });
 
         jLabelTeacherImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTeacherImage.setToolTipText("Perfil Del Profesor");
         jLabelTeacherImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelTeacherImage.setMaximumSize(new java.awt.Dimension(64, 64));
         jLabelTeacherImage.setMinimumSize(new java.awt.Dimension(64, 64));
@@ -140,7 +130,7 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
 
         jLabelStudentsNumber.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
         jLabelStudentsNumber.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelStudentsNumber.setText("# Estudiantes");
+        jLabelStudentsNumber.setToolTipText("Número De Estudiantes");
         jLabelStudentsNumber.setFocusable(false);
         jLabelStudentsNumber.setRequestFocusEnabled(false);
         jLabelStudentsNumber.setVerifyInputWhenFocusTarget(false);
@@ -151,7 +141,7 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
         jTextPaneCourseRating.setEditable(false);
         jTextPaneCourseRating.setBorder(null);
         jTextPaneCourseRating.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jTextPaneCourseRating.setText("Calificación:");
+        jTextPaneCourseRating.setToolTipText("Calificación:");
         jTextPaneCourseRating.setFocusable(false);
         jTextPaneCourseRating.setOpaque(false);
         jTextPaneCourseRating.setPreferredSize(new java.awt.Dimension(71, 28));
@@ -161,11 +151,11 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
 
         jLabelCourseName.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelCourseName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/online-test.png"))); // NOI18N
-        jLabelCourseName.setText("Nombre Del Curso");
+        jLabelCourseName.setToolTipText("Nombre Del Curso");
 
         jLabelTeacherName.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabelTeacherName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/teacher.png"))); // NOI18N
-        jLabelTeacherName.setText("Nombre Del Maestro");
+        jLabelTeacherName.setToolTipText("Nombre Del Maestro");
 
         jButtonReviews.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jButtonReviews.setText("Ver Reseñas");
@@ -183,6 +173,7 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
 
         jLabelCourseInformation.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabelCourseInformation.setText("Información Resumida Del Curso");
+        jLabelCourseInformation.setToolTipText("Información Resumida Del Curso");
 
         javax.swing.GroupLayout jPanelCourseInformationLayout = new javax.swing.GroupLayout(jPanelCourseInformation);
         jPanelCourseInformation.setLayout(jPanelCourseInformationLayout);
@@ -200,9 +191,9 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
                         .addComponent(jLabelTeacherImage, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelCourseInformationLayout.createSequentialGroup()
                         .addComponent(jScrollPaneCourseRating, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGap(18, 54, Short.MAX_VALUE)
                         .addComponent(jButtonReviews)
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGap(18, 55, Short.MAX_VALUE)
                         .addComponent(jLabelStudentsNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -285,18 +276,27 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
             int large = image.getWidth(null)/2;
+            int pixel;
+            int red;
+            int green;
+            int blue;
+            Color color;
+            Pair<Integer, Color> pair;
+            int number;
+            int position;
+            int[] pixels;
             if (pg.grabPixels()) {
-                int[] pixels = (int[]) pg.getPixels();
+                pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
-                    int pixel = pixels[i];
-                    int  red = (pixel  & 0x00ff0000) >> 16;
-                    int  green = (pixel & 0x0000ff00) >> 8;
-                    int  blue = pixel & 0x000000ff;
-                    Color color = new Color(red,green,blue);
-                    Pair<Integer, Color> pair = colorList.get_from_second(color);
+                    pixel = pixels[i];
+                    red = (pixel  & 0x00ff0000) >> 16;
+                    green = (pixel & 0x0000ff00) >> 8;
+                    blue = pixel & 0x000000ff;
+                    color = new Color(red,green,blue);
+                    pair = colorList.get_from_second(color);
             
                     if (pair != null) {//exist
-                        int number = pair.first()+ 1;
+                        number = pair.first()+ 1;
                         pair.first(number);
                         if (number > maximum) {
                             firstColor = color;
@@ -306,7 +306,6 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
                         colorList.push_back(1, color);
                     }
 
-                    color = null;
                     i += colorRandom.nextInt(large+1) + large;
                 }
                 
@@ -317,7 +316,7 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
                 if(colorList.size() > 1){
                     
                     while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        position = colorRandom.nextInt((int)colorList.size()-1);
                         secondColor = colorList.get(position).second();
                         iterations++;
                         if(iterations > 25){
@@ -331,7 +330,7 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
                 }
 
                 
-                int red = firstColor.getRed();
+                red = firstColor.getRed();
                 fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 red = secondColor.getRed();
                 secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
@@ -354,15 +353,10 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
                 jPanelCourseInformation.setBackground(firstColor);
                 jPanelCourseInformation.setBorder(javax.swing.BorderFactory.createLineBorder(firstColor));
                 
-                firstColor = fontColor = null;
-                colorRandom = null;
-                colorList = null;
-                pg = null;
-                pixels = null;
             }
             
         } catch (InterruptedException ex) {
-            Logger.getLogger(Student_Box_Course_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
     }
 

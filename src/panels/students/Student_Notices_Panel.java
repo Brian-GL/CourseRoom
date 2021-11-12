@@ -26,10 +26,9 @@ public class Student_Notices_Panel extends javax.swing.JPanel implements Dispose
         jScrollPaneMisAvisos.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneMisAvisos.getHorizontalScrollBar().setUnitIncrement(15);
         
-        
-       Faker faker = new Faker();
-        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
-            Student_Box_Notice_Panel boxAvisoPanel = new Student_Box_Notice_Panel();
+        Student_Box_Notice_Panel boxAvisoPanel;
+        for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
+            boxAvisoPanel = new Student_Box_Notice_Panel();
             jPanelMisAvisos.add(boxAvisoPanel);
         }
         

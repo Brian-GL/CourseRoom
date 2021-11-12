@@ -25,9 +25,11 @@ public class Student_Chats_Panel extends javax.swing.JPanel implements DisposeIn
         jScrollPaneChats.getVerticalScrollBar().setUnitIncrement(15);
         jScrollPaneChats.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Faker faker = new Faker();
-        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
-            Student_Box_Chat_Panel boxChatPanel = new Student_Box_Chat_Panel(i);
+        Student_Box_Chat_Panel boxChatPanel;
+        String concatenate;
+        for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
+            concatenate = MainFrame.Concatenate("CHAT_",i);
+            boxChatPanel = new Student_Box_Chat_Panel(concatenate);
             jPanelChats.add(boxChatPanel);
         }
         

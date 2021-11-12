@@ -89,8 +89,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gadugi" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Introducci&#xf3;n A Golang Y Sus Principales Usos"/>
-            <Property name="toolTipText" type="java.lang.String" value="Pendiente"/>
+            <Property name="toolTipText" type="java.lang.String" value="Descripci&#xf3;n Corta Del Pendiente"/>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -102,7 +101,6 @@
           <Font name="Gadugi" size="14" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="23:55 P.M"/>
         <Property name="toolTipText" type="java.lang.String" value="Hora M&#xe1;xima Del Pendiente"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[68, 32]"/>

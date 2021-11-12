@@ -5,8 +5,8 @@
  */
 package panels.students;
 
-import com.github.javafaker.Faker;
 import components.ImageFilePreview;
+import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,7 +15,6 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -44,7 +43,7 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
         jScrollPaneChatsCenter.getViewport().setOpaque(false);
         jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
         jLabelChatName.setText(name);
-        paintMyComponents();
+        colorMyComponents();
     }
 
     /**
@@ -275,9 +274,8 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
     private void sendMessage(){
         String text = jTextFieldMessage.getText();
         if(!text.isEmpty() && !text.isBlank()){
-            Faker faker = new Faker(new Locale("es","MX"));
-            String sender = faker.dune().character();
-            String date = faker.backToTheFuture().date();
+            String sender = MainFrame.getFaker().dune().character();
+            String date = MainFrame.getFaker().backToTheFuture().date();
             General_Text_Message_Panel textMessagePanel = new General_Text_Message_Panel(sender,text,date);
             textMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
             jPanelChatCenter.add(textMessagePanel);
@@ -405,9 +403,8 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
             File file = fileChooser.getSelectedFile();
             if(file != null){
 
-                Faker faker = new Faker(new Locale("es","MX"));
-                String sender = faker.dune().character();
-                String date = faker.backToTheFuture().date();
+                String sender = MainFrame.getFaker().dune().character();
+                String date = MainFrame.getFaker().backToTheFuture().date();
                 General_File_Message_Panel fileMessagePanel = new General_File_Message_Panel(sender,date,file);
                 fileMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
                 jPanelChatCenter.add(fileMessagePanel);
@@ -430,17 +427,14 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
         if (result == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             if(file != null){
-                Faker faker = new Faker(new Locale("es","MX"));
-                String sender = faker.dune().character();
-                String date = faker.backToTheFuture().date();
+                String sender = MainFrame.getFaker().dune().character();
+                String date = MainFrame.getFaker().backToTheFuture().date();
                 General_Video_Message_Panel videoMessagePanel  = new General_Video_Message_Panel(sender,date,file.getAbsolutePath(),file.getName());
                 videoMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,569));
                 jPanelChatCenter.add(videoMessagePanel);
-                file = null;
             }
         }
 
-        filter = null;
     }
     
     private void attachImagen(){
@@ -460,23 +454,18 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
 
                 try {
                     Image openImage = ImageIO.read(file);
-                    Faker faker = new Faker(new Locale("es","MX"));
-                    String sender = faker.dune().character();
-                    String date = faker.backToTheFuture().date();
+                    String sender = MainFrame.getFaker().dune().character();
+                    String date = MainFrame.getFaker().backToTheFuture().date();
                     General_Image_Message_Panel imageMessagePanel = new General_Image_Message_Panel(sender,date,openImage,file.getName());
                     imageMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,600));
                     jPanelChatCenter.add(imageMessagePanel);
                     openImage.flush();
-                    openImage = null;
-                    file = null;
                 } catch (IOException ex) {
-                    Logger.getLogger(Student_Chat_Panel.class.getName()).log(Level.SEVERE, null, ex);
+                    MainFrame.getLogger().log(Level.SEVERE, null, ex);
                 }
 
             }
         }
-
-        filter = null;
     }
     
     private void attachAudio(){
@@ -492,20 +481,17 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
         if (result == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             if(file != null){
-                Faker faker = new Faker(new Locale("es","MX"));
-                String sender = faker.dune().character();
-                String date = faker.backToTheFuture().date();
+                String sender = MainFrame.getFaker().dune().character();
+                String date = MainFrame.getFaker().backToTheFuture().date();
                 General_Audio_Message_Panel audioMessagePanel  = new General_Audio_Message_Panel(sender,date,file.getAbsolutePath(),file.getName());
                 audioMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,474));
                 jPanelChatCenter.add(audioMessagePanel);
-                file = null;
             }
         }
 
-        filter = null;
     }
     
-    public void paintMyComponents(){
+    public void colorMyComponents(){
         
         jButtonRegresar.setBackground(firstColor);
         jLabelChatName.setForeground(fontColor);

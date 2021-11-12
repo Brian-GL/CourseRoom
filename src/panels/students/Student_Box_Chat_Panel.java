@@ -5,7 +5,7 @@
  */
 package panels.students;
 
-import com.github.javafaker.Faker;
+import courseroom.MainFrame;
 import data.collections.PairDoublyLinkedList;
 import data.structures.Pair;
 import java.awt.Color;
@@ -14,16 +14,13 @@ import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import data.interfaces.ColorInterface;
 import data.interfaces.DisposeInterface;
-import panels.generals.General_Music_Panel;
 
 /**
  *
@@ -33,42 +30,30 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
 
     private Color firstColor, fontColor, secondColor;
     private Student_Chat_Panel chatPanel;
-    private int id;
+    private String id;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Student_Box_Chat_Panel(int _id) {
+    public Student_Box_Chat_Panel(String _id) {
         initComponents();
         try {
-            firstColor = Color.BLACK;
+            
             System.out.println("Chat ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/129/129/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
-            Image chatImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
-            ImageIcon chatIcon = new ImageIcon(chatImage);
+            ImageIcon chatIcon = new ImageIcon(getImage);
             jLabelFotoChat.setIcon(chatIcon);
             setColors(getImage);
-            Locale mx = new Locale("es","MX");
-            Faker faker = new Faker(mx);
-            jLabelNombreChat.setText(faker.rickAndMorty().character());
-            jLabelUltimoMensaje.setText(faker.friends().character() + " Is There?");
-            jLabelNumeroMensajesNoLeidos.setText(faker.number().digits(1));
+            
             this.id = _id;
-            chatPanel = new Student_Chat_Panel(jLabelNombreChat.getText(),firstColor, fontColor,secondColor);
-            Student_Dashboard_Panel.addView(chatPanel,"chat_"+id);
+           
+            initMyComponents();
             
             getImage.flush();
-            getImage = null;
-            chatImage.flush();
-            chatImage = null;
-            chatIcon = null;
-            imageURL = null;
-            faker = null;
-            mx = null;
             
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Student_Box_Chat_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Student_Box_Chat_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
     }
     
@@ -76,43 +61,52 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
     public void setColors(Image image){
         
         try {
+            firstColor = Color.BLACK;
             Random colorRandom = new Random(System.currentTimeMillis());
             int maximum = 0;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
             int large = image.getWidth(null)/2;
+            Color fromRGB;
+            Pair<Integer, Color> pair;
+            int number;
+            int pixel;
+            int red;
+            int green;
+            int blue;
             if (pg.grabPixels()) {
                 int[] pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
-                    int pixel = pixels[i];
-                    int  red = (pixel  & 0x00ff0000) >> 16;
-                    int  green = (pixel & 0x0000ff00) >> 8;
-                    int  blue = pixel & 0x000000ff;
-                    Color color = new Color(red,green,blue);
-                    Pair<Integer, Color> pair = colorList.get_from_second(color);
+                    pixel = pixels[i];
+                    red = (pixel  & 0x00ff0000) >> 16;
+                    green = (pixel & 0x0000ff00) >> 8;
+                    blue = pixel & 0x000000ff;
+                    fromRGB = new Color(red,green,blue);
+                    pair = colorList.get_from_second(fromRGB);
             
                     if (pair != null) {//exist
-                        int number = pair.first()+ 1;
+                        number = pair.first()+ 1;
                         pair.first(number);
                         if (number > maximum) {
-                            firstColor = color;
+                            firstColor = fromRGB;
                             maximum = number;
                         }
                     } else {
-                        colorList.push_back(1, color);
+                        colorList.push_back(1, fromRGB);
                     }
 
-                    color = null;
                     i += colorRandom.nextInt(large+1) + large;
                 }
                 
                 secondColor = firstColor;
             
                 int iterations = 0;
+                int position;
+                
                 if(colorList.size() > 1){
                     
                     while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        position = colorRandom.nextInt((int)colorList.size()-1);
                         secondColor = colorList.get(position).second();
                         iterations++;
                         if(iterations > 25){
@@ -125,27 +119,23 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
                     }
                 }
 
-                int red = firstColor.getRed();
+                red = firstColor.getRed();
                 fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                
                 colorList.clear();
 
-                
                 jLabelFechaHoraMensaje.setForeground(fontColor);
                 jLabelNombreChat.setForeground(fontColor);
                 jLabelNumeroMensajesNoLeidos.setForeground(fontColor);
                 jLabelUltimoMensaje.setForeground(fontColor);
+                
                 this.setBackground(firstColor);
                 this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
-
-                colorRandom = null;
-                colorList = null;
-                pg = null;
-                pixels = null;
+                
             }
             
         } catch (InterruptedException ex) {
-            Logger.getLogger(Student_Box_Chat_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
     }
     
@@ -185,7 +175,6 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
         jLabelNombreChat.setForeground(java.awt.Color.white);
         jLabelNombreChat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelNombreChat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/online-chat_1.png"))); // NOI18N
-        jLabelNombreChat.setText("Nombre Del Chat");
         jLabelNombreChat.setToolTipText("Nombre Del Chat");
         jLabelNombreChat.setMaximumSize(new java.awt.Dimension(488, 32));
         jLabelNombreChat.setMinimumSize(new java.awt.Dimension(488, 32));
@@ -200,7 +189,6 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
         jLabelUltimoMensaje.setForeground(java.awt.Color.white);
         jLabelUltimoMensaje.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelUltimoMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/messaging.png"))); // NOI18N
-        jLabelUltimoMensaje.setText("Último Mensaje Recibido");
         jLabelUltimoMensaje.setToolTipText("Último Mensaje Recibido");
         jLabelUltimoMensaje.setMaximumSize(new java.awt.Dimension(417, 22));
         jLabelUltimoMensaje.setMinimumSize(new java.awt.Dimension(417, 22));
@@ -209,14 +197,12 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
         jLabelNumeroMensajesNoLeidos.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jLabelNumeroMensajesNoLeidos.setForeground(java.awt.Color.white);
         jLabelNumeroMensajesNoLeidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNumeroMensajesNoLeidos.setText("1");
         jLabelNumeroMensajesNoLeidos.setToolTipText("Número De Mensajes No Leídos");
 
         jLabelFechaHoraMensaje.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
         jLabelFechaHoraMensaje.setForeground(java.awt.Color.white);
         jLabelFechaHoraMensaje.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelFechaHoraMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/circular-clock.png"))); // NOI18N
-        jLabelFechaHoraMensaje.setText("10/08/2021 05:42 P.M");
         jLabelFechaHoraMensaje.setToolTipText("Fecha & Hora Del Último Mensaje");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -257,14 +243,14 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
     private void jLabelFotoChatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFotoChatMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Student_Dashboard_Panel.showView("chat_"+id);
+            Student_Dashboard_Panel.showView(this.id);
         }
     }//GEN-LAST:event_jLabelFotoChatMouseClicked
 
     private void jLabelNombreChatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNombreChatMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Student_Dashboard_Panel.showView("chat_"+id);
+            Student_Dashboard_Panel.showView(this.id);
         }
     }//GEN-LAST:event_jLabelNombreChatMouseClicked
 
@@ -280,6 +266,15 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
     @Override
     public void dispose() {
         chatPanel.dispose();
+    }
+
+    private void initMyComponents() {
+        jLabelNombreChat.setText(MainFrame.getFaker().rickAndMorty().character());
+        jLabelUltimoMensaje.setText(MainFrame.getFaker().shakespeare().romeoAndJulietQuote());
+        jLabelNumeroMensajesNoLeidos.setText(MainFrame.getFaker().number().digits(1));
+        jLabelFechaHoraMensaje.setText(MainFrame.getFaker().date().birthday().toString());
+        chatPanel = new Student_Chat_Panel(jLabelNombreChat.getText(),firstColor, fontColor,secondColor);
+        Student_Dashboard_Panel.addView(chatPanel,this.id);
     }
 
    

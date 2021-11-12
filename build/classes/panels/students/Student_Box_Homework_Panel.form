@@ -72,6 +72,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabelFotoTarea">
       <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Abrir Tarea"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[164, 164]"/>
         </Property>
@@ -95,7 +96,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/course.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Clase Que Pertenece La Tarea"/>
         <Property name="toolTipText" type="java.lang.String" value="Clase Que Pertenece La Tarea"/>
       </Properties>
       <Events>
@@ -111,7 +111,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/homework_2.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre De La Tarea"/>
         <Property name="toolTipText" type="java.lang.String" value="Nombre De La Tarea"/>
       </Properties>
       <Events>
@@ -127,7 +126,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/homework_1.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Fecha De Entrega"/>
         <Property name="toolTipText" type="java.lang.String" value="Fecha De Entrega"/>
       </Properties>
     </Component>
@@ -139,7 +137,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/writing.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Tipo De Tarea"/>
         <Property name="toolTipText" type="java.lang.String" value="Tipo De Tarea"/>
       </Properties>
     </Component>
@@ -151,7 +148,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/homework_3.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Estado De La Tarea"/>
         <Property name="toolTipText" type="java.lang.String" value="Estado De La Tarea"/>
       </Properties>
     </Component>

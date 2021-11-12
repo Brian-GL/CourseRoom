@@ -6,6 +6,7 @@
 package panels.students;
 
 import java.awt.Color;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -38,7 +39,7 @@ public class Student_Group_Shared_File_Panel extends javax.swing.JPanel {
         jLabelNombreArchivo.setForeground(fontColor);
         jLabelPersonaEnvioArchivo.setForeground(fontColor);
         
-         this.setBorder(javax.swing.BorderFactory.createLineBorder(fontColor));
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(fontColor));
         
     }
 
@@ -154,10 +155,16 @@ public class Student_Group_Shared_File_Panel extends javax.swing.JPanel {
 
     private void jButtonRemoverArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverArchivoMouseClicked
         // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
     }//GEN-LAST:event_jButtonRemoverArchivoMouseClicked
 
     private void jButtonDescargarArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDescargarArchivoMouseClicked
         // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
     }//GEN-LAST:event_jButtonDescargarArchivoMouseClicked
 
     private void jButtonRemoverArchivoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverArchivoMouseEntered

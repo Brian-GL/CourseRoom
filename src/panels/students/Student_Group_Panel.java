@@ -5,9 +5,9 @@
  */
 package panels.students;
 
-import com.github.javafaker.Faker;
 import com.github.lgooddatepicker.components.DateTimePicker;
 import components.ImageFilePreview;
+import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
 import java.awt.Color;
 import java.awt.Component;
@@ -18,9 +18,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-import java.util.Locale;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -49,7 +47,13 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
         thirdFontColor = _thirdFontColor;
         Image groupImage = image.getScaledInstance(440,440,Image.SCALE_SMOOTH);
         jLabelGroupName.setText(name);
-        initMyComponents(groupImage);
+        ImageIcon groupIcon = new ImageIcon(groupImage);
+        
+        jLabelGroupImage.setIcon(groupIcon);
+        jLabelEditarImagenGrupo.setIcon(groupIcon);
+        groupImage.flush();
+        
+        initMyComponents();
        
     }
 
@@ -640,16 +644,13 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
                     jLabelEditarImagenGrupo.setIcon(autenticacionIcon);
 
                     Student_Dashboard_Panel.setUserImage(autenticacionIcon.getImage());
-
-                    openImage = null;
-                    autenticacionIcon = null;
+                    openImage.flush();
 
                 } catch (IOException ex) {
-                    Logger.getLogger(Student_Group_Panel.class.getName()).log(Level.SEVERE, null, ex);
+                    MainFrame.getLogger().log(Level.SEVERE, null, ex);
                 }
             }
 
-            fileChooser = null;
         }
     }//GEN-LAST:event_jButtonEditarImagenGrupoMouseClicked
 
@@ -807,9 +808,9 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
     private void sendMessage(){
         String text = jTextFieldMessage.getText();
         if(!text.isEmpty() && !text.isBlank()){
-            Faker faker = new Faker(new Locale("es","MX"));
-            String sender = faker.dune().character();
-            String date = faker.backToTheFuture().date();
+            
+            String sender = MainFrame.getFaker().dune().character();
+            String date = MainFrame.getFaker().backToTheFuture().date();
             General_Text_Message_Panel textMessagePanel = new General_Text_Message_Panel(sender,text,date);
             textMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
             jPanelChatCenter.add(textMessagePanel);
@@ -829,10 +830,8 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
         if (result == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             if(file != null){
-
-                Faker faker = new Faker(new Locale("es","MX"));
                 
-                Date date = faker.date().birthday();
+                Date date = MainFrame.getFaker().date().birthday();
                 Student_Group_Shared_File_Panel groupSharedFilePanel = new Student_Group_Shared_File_Panel(file.getName(),"Nombre Del Usuario",date.toString(),secondColor,secondFontColor,thirdColor,thirdFontColor,fontColor);
                 
                 jPanelArchivosCompartidos.add(groupSharedFilePanel);
@@ -841,14 +840,8 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
         }
     }
     
-    public void initMyComponents(Image groupImage){
-        ImageIcon groupIcon = new ImageIcon(groupImage);
+    public void initMyComponents(){
         
-        jLabelGroupImage.setIcon(groupIcon);
-        jLabelEditarImagenGrupo.setIcon(groupIcon);
-        groupImage.flush();
-        groupImage = null;
-        groupIcon = null;
         
         jPanelAgregarPendiente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(fontColor), "Agregar Pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 0, 18),fontColor));
         
@@ -867,11 +860,9 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
         jTabbedPaneGrouping.setBackground(firstColor);
         jTabbedPaneGrouping.setForeground(fontColor);
         
-        groupIcon = null;
-        
-        Faker faker = new Faker();
-        for(int i = 0; i < faker.number().numberBetween(1, 10);i++){
-            General_Member_Panel memberPanel = new General_Member_Panel();
+        General_Member_Panel memberPanel;
+        for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
+            memberPanel = new General_Member_Panel();
             jComboBoxMiembros.addItem(memberPanel.getFullName());
             jComboBoxEliminarMiembro.addItem(memberPanel.getFullName());
             jPanelMembers.add(memberPanel);

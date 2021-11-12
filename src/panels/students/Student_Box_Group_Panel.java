@@ -5,7 +5,7 @@
  */
 package panels.students;
 
-import com.github.javafaker.Faker;
+import courseroom.MainFrame;
 import data.collections.PairDoublyLinkedList;
 import data.structures.Pair;
 import java.awt.Color;
@@ -14,10 +14,8 @@ import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
@@ -31,38 +29,31 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
 
     private Color firstColor , secondColor, thirdColor,fontColor, secondFontColor, thirdFontColor;
     private Student_Group_Panel groupPanel;
-    private int id;
+    private String id;
     /**
      * Creates new form BoxGroupPanel
      */
-    public Student_Box_Group_Panel(int _id) {
+    public Student_Box_Group_Panel(String _id) {
         initComponents();
         try {
             firstColor = Color.BLACK;
             System.out.println("Group ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageURL = new URL("https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/131/131/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
-            Image groupImage = getImage.getScaledInstance(131,131,Image.SCALE_SMOOTH);
-            ImageIcon groupIcon = new ImageIcon(groupImage);
+            ImageIcon groupIcon = new ImageIcon(getImage);
             jLabelFotoGrupo.setIcon(groupIcon);
             setColors(getImage);
-            Faker faker = new Faker(new Locale("es","MX"));
-            jLabelNombreGrupo.setText(faker.team().sport());
-            jLabelUltimaActualizacion.setText(faker.team().state());
-            jLabelClaseDelGrupo.setText(faker.team().name());
+            jLabelNombreGrupo.setText(MainFrame.getFaker().team().sport());
+            jLabelUltimaActualizacion.setText(MainFrame.getFaker().team().state());
+            jLabelClaseDelGrupo.setText(MainFrame.getFaker().team().name());
             this.id = _id;
             groupPanel = new Student_Group_Panel(getImage,jLabelNombreGrupo.getText(),firstColor,secondColor,thirdColor,fontColor,secondFontColor,thirdFontColor);
-            Student_Dashboard_Panel.addView(groupPanel,"group_"+_id);
+            Student_Dashboard_Panel.addView(groupPanel,id);
             getImage.flush();
-            getImage = null;
-            groupImage.flush();
-            groupImage = null;
-            groupIcon = null;
-            imageURL = null;
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Student_Box_Group_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Student_Box_Group_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
     }
 
@@ -84,6 +75,7 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
         setMinimumSize(new java.awt.Dimension(1085, 131));
         setPreferredSize(new java.awt.Dimension(1085, 131));
 
+        jLabelFotoGrupo.setToolTipText("Abrir Grupo");
         jLabelFotoGrupo.setMaximumSize(new java.awt.Dimension(164, 164));
         jLabelFotoGrupo.setMinimumSize(new java.awt.Dimension(164, 164));
         jLabelFotoGrupo.setPreferredSize(new java.awt.Dimension(164, 164));
@@ -96,7 +88,6 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
         jLabelNombreGrupo.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         jLabelNombreGrupo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelNombreGrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group_1.png"))); // NOI18N
-        jLabelNombreGrupo.setText("Nombre Del Grupo");
         jLabelNombreGrupo.setToolTipText("Nombre Del grupo");
         jLabelNombreGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,7 +98,6 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
         jLabelClaseDelGrupo.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
         jLabelClaseDelGrupo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelClaseDelGrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/teacher.png"))); // NOI18N
-        jLabelClaseDelGrupo.setText("Clase De Proveniencia Del Grupo");
         jLabelClaseDelGrupo.setToolTipText("Clase De Proveniencia Del Grupo");
         jLabelClaseDelGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,7 +108,6 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
         jLabelUltimaActualizacion.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         jLabelUltimaActualizacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelUltimaActualizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/volume.png"))); // NOI18N
-        jLabelUltimaActualizacion.setText("User Ha Cambiado La Foto Del Grupo");
         jLabelUltimaActualizacion.setToolTipText("Actualización Más Reciente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -156,19 +145,22 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
     private void jLabelFotoGrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFotoGrupoMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Student_Dashboard_Panel.showView("group_"+id);
+            Student_Dashboard_Panel.showView(this.id);
         }
     }//GEN-LAST:event_jLabelFotoGrupoMouseClicked
 
     private void jLabelNombreGrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNombreGrupoMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            Student_Dashboard_Panel.showView("group_"+ id);
+            Student_Dashboard_Panel.showView(this.id);
         }
     }//GEN-LAST:event_jLabelNombreGrupoMouseClicked
 
     private void jLabelClaseDelGrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClaseDelGrupoMouseClicked
         // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
     }//GEN-LAST:event_jLabelClaseDelGrupoMouseClicked
 
     
@@ -179,22 +171,31 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
             int maximum = 0;
-            
+            firstColor = Color.BLACK;
             PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
             PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
             int large = image.getWidth(null)/2;
+            int[] pixels;
+            int pixel;
+            int red;
+            int green;
+            int blue;
+            Color color;
+            Pair<Integer, Color> pair;
+            int number;
+            int position;
             if (pg.grabPixels()) {
-                int[] pixels = (int[]) pg.getPixels();
+                pixels = (int[]) pg.getPixels();
                 for(int i = 0; i < pixels.length; i++){
-                    int pixel = pixels[i];
-                    int  red = (pixel  & 0x00ff0000) >> 16;
-                    int  green = (pixel & 0x0000ff00) >> 8;
-                    int  blue = pixel & 0x000000ff;
-                    Color color = new Color(red,green,blue);
-                    Pair<Integer, Color> pair = colorList.get_from_second(color);
+                    pixel = pixels[i];
+                    red = (pixel  & 0x00ff0000) >> 16;
+                    green = (pixel & 0x0000ff00) >> 8;
+                    blue = pixel & 0x000000ff;
+                    color = new Color(red,green,blue);
+                    pair = colorList.get_from_second(color);
             
                     if (pair != null) {//exist
-                        int number = pair.first()+ 1;
+                        number = pair.first()+ 1;
                         pair.first(number);
                         if (number > maximum) {
                             firstColor = color;
@@ -204,7 +205,6 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
                         colorList.push_back(1, color);
                     }
 
-                    color = null;
                     i += colorRandom.nextInt(large+1) + large;
                 }
 
@@ -214,7 +214,7 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
                 if(colorList.size() > 1){
                     
                     while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        position = colorRandom.nextInt((int)colorList.size()-1);
                         secondColor = colorList.get(position).second();
                         iterations++;
                         if(iterations > 25){
@@ -226,13 +226,13 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
                         }
                     }
                 }
-              
-               thirdColor = secondColor;
+               
+                thirdColor = secondColor;
                 if(colorList.size() > 2){
                     iterations = 0;
                     
                     while(Math.abs(thirdColor.getRGB() - firstColor.getRGB()) < 3000000 || Math.abs(secondColor.getRGB() - thirdColor.getRGB()) < 3000000){
-                        int position = colorRandom.nextInt((int)colorList.size()-1);
+                        position = colorRandom.nextInt((int)colorList.size()-1);
                         thirdColor = colorList.get(position).second();
                         iterations++;
                         if(iterations > 50){
@@ -245,13 +245,12 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
                     }
                 }
                 
-                int red = firstColor.getRed();
+                red = firstColor.getRed();
                 fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 red = secondColor.getRed();
                 secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
                 red = thirdColor.getRed();
                 thirdFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-
                 colorList.clear();
                 
                 jLabelClaseDelGrupo.setForeground(fontColor);
@@ -259,15 +258,10 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
                 jLabelUltimaActualizacion.setForeground(fontColor);
                 this.setBackground(firstColor);
                 this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
-
-                colorRandom = null;
-                colorList = null;
-                pg = null;
-                pixels = null;
             }
             
         } catch (InterruptedException ex) {
-            Logger.getLogger(Student_Box_Group_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
     }
    
