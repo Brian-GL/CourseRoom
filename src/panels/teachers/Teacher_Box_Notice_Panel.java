@@ -48,7 +48,7 @@ public class Teacher_Box_Notice_Panel extends javax.swing.JPanel implements Colo
             Image avisoImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
             ImageIcon avisoIcon = new ImageIcon(avisoImage);
             jLabelFotoAviso.setIcon(avisoIcon);
-            setColors(getImage);
+            SetColors(getImage);
             getImage.flush();
             getImage = null;
             avisoIcon = null;
@@ -159,7 +159,7 @@ public class Teacher_Box_Notice_Panel extends javax.swing.JPanel implements Colo
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public void setColors(Image image){
+    public void SetColors(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());

@@ -26,27 +26,29 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jPanelHomeworkComments" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPaneHomeworkDescription" alignment="0" min="-2" pref="693" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabelHomeworkClass" min="-2" pref="396" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabelTeacherName" min="-2" pref="285" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jPanelHomeworkComments" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabelHomeworkClass" min="-2" pref="396" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabelTeacherName" min="-2" pref="285" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jButtonBackHomeworks" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabelHomeworkName" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="jScrollPaneAttachments" alignment="0" min="-2" pref="693" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButtonRegresar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabelHomeworkName" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="jScrollPaneAttachments" alignment="0" min="-2" pref="693" max="-2" attributes="0"/>
+                  <Component id="jLabelHomeworkDescription" min="-2" pref="693" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelHomeworkStatus" min="-2" pref="373" max="-2" attributes="0"/>
                   <Component id="jPanelMyWork" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelDateTimeFinished" alignment="0" min="-2" pref="374" max="-2" attributes="0"/>
-                  <Component id="jButtonSendWork" min="-2" pref="374" max="-2" attributes="0"/>
+                  <Component id="jLabelHomeworkDueDate" alignment="0" min="-2" pref="374" max="-2" attributes="0"/>
+                  <Component id="jButtonSendHomework" min="-2" pref="374" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -59,7 +61,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButtonRegresar" max="32767" attributes="0"/>
+                          <Component id="jButtonBackHomeworks" max="32767" attributes="0"/>
                           <Component id="jLabelHomeworkName" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -67,9 +69,9 @@
                           <Component id="jLabelHomeworkClass" max="32767" attributes="0"/>
                           <Component id="jLabelTeacherName" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPaneHomeworkDescription" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabelHomeworkDescription" min="-2" pref="79" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPaneAttachments" min="-2" pref="81" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jPanelHomeworkComments" max="32767" attributes="0"/>
@@ -79,9 +81,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanelMyWork" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelDateTimeFinished" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelHomeworkDueDate" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
-                      <Component id="jButtonSendWork" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="jButtonSendHomework" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -172,6 +174,7 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jPanelUploadedFiles">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Mis Archivos Adjuntos Para Enviar"/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
 
@@ -181,31 +184,6 @@
             </Container>
           </SubComponents>
         </Container>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JScrollPane" name="jScrollPaneHomeworkDescription">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
-        <Property name="opaque" type="boolean" value="false"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTextPane" name="jTextPaneHomeworkDescription">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gadugi" size="16" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Texto&#xa;De&#xa;Prueba"/>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanelHomeworkComments">
@@ -242,11 +220,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldComment" min="-2" pref="545" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBoxCommentType" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextFieldComment" min="-2" pref="631" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButtonSendComment" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -257,10 +233,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldComment" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBoxCommentType" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jTextFieldComment" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonSendComment" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -279,23 +252,6 @@
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldCommentKeyPressed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxCommentType">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Gadugi" size="14" style="2"/>
-                </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="P&#xfa;blico"/>
-                    <StringItem index="1" value="Privado"/>
-                  </StringArray>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Seleccionar Tipo De Comentario"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSendComment">
               <Properties>
@@ -327,6 +283,7 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jPanelComments">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Comentarios De La Tarea"/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
 
@@ -338,7 +295,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButtonSendWork">
+    <Component class="javax.swing.JButton" name="jButtonSendHomework">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="24" style="1"/>
@@ -349,12 +306,12 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSendWorkMouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSendWorkMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSendWorkMouseExited"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSendHomeworkMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSendHomeworkMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSendHomeworkMouseExited"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelDateTimeFinished">
+    <Component class="javax.swing.JLabel" name="jLabelHomeworkDueDate">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="18" style="3"/>
@@ -364,7 +321,7 @@
         <Property name="toolTipText" type="java.lang.String" value="Fecha &amp; Hora De Entrega"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonRegresar">
+    <Component class="javax.swing.JButton" name="jButtonBackHomeworks">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/reply.png"/>
@@ -378,9 +335,9 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonRegresarMouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonRegresarMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonRegresarMouseExited"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonBackHomeworksMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonBackHomeworksMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonBackHomeworksMouseExited"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelHomeworkClass">
@@ -409,6 +366,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="text" type="java.lang.String" value="Pendiente"/>
+        <Property name="toolTipText" type="java.lang.String" value="Estatus De La Tarea"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPaneAttachments">
@@ -423,6 +381,7 @@
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanelAttachments">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Archivos Adjuntos"/>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
 
@@ -430,5 +389,13 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLabelHomeworkDescription">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Gadugi" size="14" style="0"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Descripci&#xf3;n De La Tarea"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

@@ -53,7 +53,7 @@ public class Teacher_Box_Homework_Panel extends javax.swing.JPanel implements Co
             Image homeworkImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(homeworkImage);
             jLabelFotoTarea.setIcon(groupIcon);
-            setColors(getImage);
+            SetColors(getImage);
             //homeworkPanel = new Teacher_Homework_Panel(jLabelNombreTarea.getText(),firstColor,secondColor,thirdColor,fontColor,secondFontColor,thirdFontColor);
             //Teacher_Dashboard_Panel.addView(homeworkPanel,"homework_"+_id);
             getImage.flush();
@@ -194,7 +194,7 @@ public class Teacher_Box_Homework_Panel extends javax.swing.JPanel implements Co
 
     
     @Override
-    public void setColors(Image image){
+    public void SetColors(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());

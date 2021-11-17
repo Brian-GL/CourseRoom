@@ -10,13 +10,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.swing.SwingUtilities;
 import courseroom.MainFrame;
+import data.interfaces.ColorComponents;
 import data.interfaces.DisposeInterface;
 
 /**
  *
  * @author brian
  */
-public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeInterface{
+public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeInterface,ColorComponents{
 
     private int index_month;
     private int index_year;
@@ -41,7 +42,8 @@ public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeIn
         time_now = LocalDateTime.now();
     }
     
-    public void colorMyComponents(){
+    @Override
+    public void ColorComponents(){
         jLabelMonth.setBackground(MainFrame.getSecondColor());
         jLabelMonth.setForeground(MainFrame.getSecondFontColor());
         
@@ -296,7 +298,7 @@ public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeIn
         int until = dayOfWeek.getValue()-1;
         for(int i = until; i > 0;i--){
             Student_Box_Date_Panel calendarDayPanel = new Student_Box_Date_Panel(previous_index_month_days-i);
-            calendarDayPanel.paintMyComponents(MainFrame.getThirdColor(), MainFrame.getThirdFontColor());
+            calendarDayPanel.paintComponents(MainFrame.getThirdColor(), MainFrame.getThirdFontColor());
             jPanelCalendar.add(calendarDayPanel);
             count++;
         }
@@ -304,10 +306,10 @@ public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeIn
         for(int i = 1; i < index_month_days;i++){
             Student_Box_Date_Panel calendarDayPanel = new Student_Box_Date_Panel(i);
             if(time_now.getDayOfMonth() == i){
-                calendarDayPanel.paintMyComponents(MainFrame.getFirstColor(), MainFrame.getFontColor());
+                calendarDayPanel.paintComponents(MainFrame.getFirstColor(), MainFrame.getFontColor());
                 jPanelCalendar.add(calendarDayPanel);
             } else{
-                 calendarDayPanel.paintMyComponents(MainFrame.getSecondColor(), MainFrame.getSecondFontColor());
+                 calendarDayPanel.paintComponents(MainFrame.getSecondColor(), MainFrame.getSecondFontColor());
                 jPanelCalendar.add(calendarDayPanel);
             }
             count++;
@@ -316,7 +318,7 @@ public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeIn
         int i = 1;
         while(count < 42){
             Student_Box_Date_Panel calendarDayPanel = new Student_Box_Date_Panel(i);
-            calendarDayPanel.paintMyComponents(MainFrame.getThirdColor(), MainFrame.getFirstColor());
+            calendarDayPanel.paintComponents(MainFrame.getThirdColor(), MainFrame.getFirstColor());
             jPanelCalendar.add(calendarDayPanel);
             i++;
             count++;
@@ -385,7 +387,7 @@ public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeIn
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose()  {
+    public void Dispose()  {
         jPanelCalendar.removeAll();
     }
 }

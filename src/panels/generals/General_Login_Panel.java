@@ -228,7 +228,7 @@ public class General_Login_Panel extends javax.swing.JPanel{
     private void jButtonIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            MainFrame.showDashboard();
+            MainFrame.ShowDashboard();
         }
     }//GEN-LAST:event_jButtonIniciarSesionMouseClicked
 
@@ -236,7 +236,7 @@ public class General_Login_Panel extends javax.swing.JPanel{
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             this.setVisible(false);
-            MainFrame.showRecuperarCredenciales();  
+            MainFrame.ShowRecuperarCredenciales();  
         }
            
     }//GEN-LAST:event_jLabelRecuperarCredencialesMouseClicked
@@ -245,7 +245,7 @@ public class General_Login_Panel extends javax.swing.JPanel{
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             this.setVisible(false);
-            MainFrame.showCrearCuenta();
+            MainFrame.ShowCrearCuenta();
         }
     }//GEN-LAST:event_jLabelCrearCuentaMouseClicked
 

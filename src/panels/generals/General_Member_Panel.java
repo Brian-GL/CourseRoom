@@ -41,7 +41,7 @@ public class General_Member_Panel extends javax.swing.JPanel implements ColorInt
             System.out.println("Member -> Getting Image From https://loremflickr.com/142/142/sunset,beach/all");
             URL imageURL = new URL("https://loremflickr.com/142/142/sunset,beach/all");
             Image image = ImageIO.read(imageURL);
-            setColors(image);
+            SetColors(image);
             ImageIcon imageIcon = new ImageIcon(image);
             jLabelMemberPhoto.setIcon(imageIcon);
             image.flush();
@@ -135,7 +135,7 @@ public class General_Member_Panel extends javax.swing.JPanel implements ColorInt
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public void setColors(Image image){
+    public void SetColors(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());

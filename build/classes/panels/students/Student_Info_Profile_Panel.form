@@ -29,32 +29,32 @@
               <EmptySpace pref="22" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabelProfilePhoto" max="32767" attributes="0"/>
-                  <Component id="jLabelNombreDeUsuario" max="32767" attributes="0"/>
+                  <Component id="jLabelUserName" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" pref="34" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jLabelNumeroTelefono" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelPhoneNumber" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="jLabelFechaDeNacimiento" max="32767" attributes="0"/>
+                      <Component id="jLabelBirthDate" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jLabelGenero" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelGender" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="jLabelPerfil" max="32767" attributes="0"/>
+                      <Component id="jLabelProfileType" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabelNombres" alignment="0" min="-2" pref="540" max="-2" attributes="0"/>
-                          <Component id="jLabelLocalidad" min="-2" pref="540" max="-2" attributes="0"/>
+                          <Component id="jLabelNames" alignment="0" min="-2" pref="540" max="-2" attributes="0"/>
+                          <Component id="jLabelAddress" min="-2" pref="540" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jButtonMiDesempenoEscolar" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="jButtonSchoolPerformance" min="-2" pref="192" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jButtonEditarPerfil" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="jButtonEditProfile" min="-2" pref="102" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPaneDescripcion" alignment="0" min="-2" pref="540" max="-2" attributes="0"/>
-                          <Component id="jLabelApellidos" alignment="0" min="-2" pref="540" max="-2" attributes="0"/>
-                          <Component id="jLabelCorreoElectronico" alignment="0" min="-2" pref="540" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneDescription" alignment="0" min="-2" pref="540" max="-2" attributes="0"/>
+                          <Component id="jLabelLastNames" alignment="0" min="-2" pref="540" max="-2" attributes="0"/>
+                          <Component id="jLabelEmail" alignment="0" min="-2" pref="540" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
                   </Group>
@@ -70,32 +70,32 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelProfilePhoto" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabelNombres" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelNames" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="jLabelApellidos" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelLastNames" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="jLabelCorreoElectronico" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelGenero" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelPerfil" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelGender" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelProfileType" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelNumeroTelefono" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelFechaDeNacimiento" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelPhoneNumber" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelBirthDate" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jLabelLocalidad" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelAddress" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPaneDescripcion" min="-2" pref="174" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneDescription" min="-2" pref="174" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabelNombreDeUsuario" max="32767" attributes="0"/>
-                  <Component id="jButtonMiDesempenoEscolar" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jButtonEditarPerfil" max="32767" attributes="0"/>
+                  <Component id="jLabelUserName" max="32767" attributes="0"/>
+                  <Component id="jButtonSchoolPerformance" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jButtonEditProfile" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="76" max="32767" attributes="0"/>
           </Group>
@@ -129,13 +129,12 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelApellidos">
+    <Component class="javax.swing.JLabel" name="jLabelLastNames">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="36" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Apellido(s) Del Usuario"/>
         <Property name="toolTipText" type="java.lang.String" value="Apellido(s)"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[380, 50]"/>
@@ -150,13 +149,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelNombres">
+    <Component class="javax.swing.JLabel" name="jLabelNames">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="36" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Nombre(s) Del Usuario"/>
         <Property name="toolTipText" type="java.lang.String" value="Nombre(s)"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[380, 50]"/>
@@ -171,7 +169,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelNombreDeUsuario">
+    <Component class="javax.swing.JLabel" name="jLabelUserName">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="20" style="1"/>
@@ -191,13 +189,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelCorreoElectronico">
+    <Component class="javax.swing.JLabel" name="jLabelEmail">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="correo.electronico@courseroom.com"/>
         <Property name="toolTipText" type="java.lang.String" value="Correo Electr&#xf3;nico"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[380, 25]"/>
@@ -211,13 +208,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelNumeroTelefono">
+    <Component class="javax.swing.JLabel" name="jLabelPhoneNumber">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="16" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="33-34-35-36-37"/>
         <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero De Tel&#xe9;fono"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[163, 25]"/>
@@ -231,13 +227,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelPerfil">
+    <Component class="javax.swing.JLabel" name="jLabelProfileType">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Alumno"/>
         <Property name="toolTipText" type="java.lang.String" value="Tipo De Perfil"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[163, 25]"/>
@@ -251,13 +246,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelFechaDeNacimiento">
+    <Component class="javax.swing.JLabel" name="jLabelBirthDate">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="16" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="2021-02-22 (18 A&#xf1;os)"/>
         <Property name="toolTipText" type="java.lang.String" value="Fecha De Nacimiento"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[163, 25]"/>
@@ -271,13 +265,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelLocalidad">
+    <Component class="javax.swing.JLabel" name="jLabelAddress">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="14" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;Blvd. Gral. Marcelino Garc&#xed;a Barrag&#xe1;n 1421,&lt;br&gt;Ol&#xed;mpica, 44430 Guadalajara, Jal.&lt;/html&gt;"/>
         <Property name="toolTipText" type="java.lang.String" value="Localidad"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[380, 60]"/>
@@ -288,13 +281,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelGenero">
+    <Component class="javax.swing.JLabel" name="jLabelGender">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="16" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Mujer"/>
         <Property name="toolTipText" type="java.lang.String" value="G&#xe9;nero"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[163, 25]"/>
@@ -308,7 +300,7 @@
         </Property>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPaneDescripcion">
+    <Container class="javax.swing.JScrollPane" name="jScrollPaneDescription">
       <Properties>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
@@ -318,7 +310,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="jTextPaneDescripcion">
+        <Component class="javax.swing.JTextPane" name="jTextPaneDescription">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -329,7 +321,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButtonMiDesempenoEscolar">
+    <Component class="javax.swing.JButton" name="jButtonSchoolPerformance">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="16" style="1"/>
@@ -341,12 +333,12 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonMiDesempenoEscolarMouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonMiDesempenoEscolarMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonMiDesempenoEscolarMouseExited"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSchoolPerformanceMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSchoolPerformanceMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSchoolPerformanceMouseExited"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonEditarPerfil">
+    <Component class="javax.swing.JButton" name="jButtonEditProfile">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="16" style="1"/>
@@ -358,9 +350,9 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonEditarPerfilMouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonEditarPerfilMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonEditarPerfilMouseExited"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonEditProfileMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonEditProfileMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonEditProfileMouseExited"/>
       </Events>
     </Component>
   </SubComponents>

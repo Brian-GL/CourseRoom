@@ -35,30 +35,13 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Student_Box_Chat_Panel(String _id) {
         initComponents();
-        try {
-            
-            System.out.println("Chat ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageURL = new URL("https://loremflickr.com/129/129/sunset,beach/all");
-            Image getImage = ImageIO.read(imageURL);
-            ImageIcon chatIcon = new ImageIcon(getImage);
-            jLabelFotoChat.setIcon(chatIcon);
-            setColors(getImage);
-            
-            this.id = _id;
-           
-            initMyComponents();
-            
-            getImage.flush();
-            
-        } catch (MalformedURLException ex) {
-            MainFrame.getLogger().log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            MainFrame.getLogger().log(Level.SEVERE, null, ex);
-        }
+        this.id = _id;
+        InitComponents();
+        
     }
     
     @Override
-    public void setColors(Image image){
+    public void SetColors(Image image){
         
         try {
             firstColor = Color.BLACK;
@@ -139,6 +122,29 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
         }
     }
     
+    private void InitComponents(){
+        try {
+
+            System.out.println("Chat ID: " + id + " -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/129/129/sunset,beach/all");
+            Image getImage = ImageIO.read(imageURL);
+            ImageIcon chatIcon = new ImageIcon(getImage);
+            jLabelFotoChat.setIcon(chatIcon);
+            SetColors(getImage);
+            jLabelNombreChat.setText(MainFrame.getFaker().rickAndMorty().character());
+            jLabelUltimoMensaje.setText(MainFrame.getFaker().shakespeare().romeoAndJulietQuote());
+            jLabelNumeroMensajesNoLeidos.setText(MainFrame.getFaker().number().digits(1));
+            jLabelFechaHoraMensaje.setText(MainFrame.getFaker().date().birthday().toString());
+            chatPanel = new Student_Chat_Panel(jLabelNombreChat.getText(), firstColor, fontColor, secondColor);
+            Student_Dashboard_Panel.addView(chatPanel, this.id);
+            getImage.flush();
+
+        } catch (MalformedURLException ex) {
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
+        }
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -264,18 +270,8 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose() {
-        chatPanel.dispose();
+    public void Dispose() {
+        chatPanel.Dispose();
     }
 
-    private void initMyComponents() {
-        jLabelNombreChat.setText(MainFrame.getFaker().rickAndMorty().character());
-        jLabelUltimoMensaje.setText(MainFrame.getFaker().shakespeare().romeoAndJulietQuote());
-        jLabelNumeroMensajesNoLeidos.setText(MainFrame.getFaker().number().digits(1));
-        jLabelFechaHoraMensaje.setText(MainFrame.getFaker().date().birthday().toString());
-        chatPanel = new Student_Chat_Panel(jLabelNombreChat.getText(),firstColor, fontColor,secondColor);
-        Student_Dashboard_Panel.addView(chatPanel,this.id);
-    }
-
-   
 }

@@ -6,6 +6,7 @@
 package panels.students;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -15,29 +16,35 @@ import javax.swing.SwingUtilities;
 public class Student_Group_Shared_File_Panel extends javax.swing.JPanel {
 
     private Color secondColor, secondFontColor, thirdColor, thirdFontColor;
-    /**
-     * Creates new form GroupSharedFilePanel
-     */
-    public Student_Group_Shared_File_Panel(String filename,String member, String date, 
-        Color _secondColor, Color _secondFontColor, Color _thirdColor, Color _thirdFontColor, Color fontColor) {
+   
+    
+    public Student_Group_Shared_File_Panel(
+            String filename,
+            String member, 
+            String date, 
+            Color _secondColor, 
+            Color _secondFontColor, 
+            Color _thirdColor, 
+            Color _thirdFontColor, 
+            Color fontColor) {
         initComponents();
         secondColor = _secondColor;
         secondFontColor = _secondFontColor;
         thirdColor = _thirdColor;
         thirdFontColor = _thirdFontColor;
-        jLabelFechaEnvioArchivo.setText(date);
-        jLabelNombreArchivo.setText(filename);
-        jLabelPersonaEnvioArchivo.setText(member);
+        jLabelFileDate.setText(date);
+        jLabelFileName.setText(filename);
+        jLabelFileIssuer.setText(member);
         
-        jButtonDescargarArchivo.setBackground(thirdColor);
-        jButtonDescargarArchivo.setForeground(thirdFontColor);
+        jButtonDownloadFile.setBackground(thirdColor);
+        jButtonDownloadFile.setForeground(thirdFontColor);
         
-        jButtonRemoverArchivo.setBackground(thirdColor);
-        jButtonRemoverArchivo.setForeground(thirdFontColor);
+        jButtonRemoveFile.setBackground(thirdColor);
+        jButtonRemoveFile.setForeground(thirdFontColor);
         
-        jLabelFechaEnvioArchivo.setForeground(fontColor);
-        jLabelNombreArchivo.setForeground(fontColor);
-        jLabelPersonaEnvioArchivo.setForeground(fontColor);
+        jLabelFileDate.setForeground(fontColor);
+        jLabelFileName.setForeground(fontColor);
+        jLabelFileIssuer.setForeground(fontColor);
         
         this.setBorder(javax.swing.BorderFactory.createLineBorder(fontColor));
         
@@ -52,63 +59,63 @@ public class Student_Group_Shared_File_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelNombreArchivo = new javax.swing.JLabel();
-        jLabelPersonaEnvioArchivo = new javax.swing.JLabel();
-        jLabelFechaEnvioArchivo = new javax.swing.JLabel();
-        jButtonDescargarArchivo = new javax.swing.JButton();
+        jLabelFileName = new javax.swing.JLabel();
+        jLabelFileIssuer = new javax.swing.JLabel();
+        jLabelFileDate = new javax.swing.JLabel();
+        jButtonDownloadFile = new javax.swing.JButton();
         jLabelTipoArchivoImagen = new javax.swing.JLabel();
-        jButtonRemoverArchivo = new javax.swing.JButton();
+        jButtonRemoveFile = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(32767, 65));
         setMinimumSize(new java.awt.Dimension(1070, 65));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1070, 65));
 
-        jLabelNombreArchivo.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-        jLabelNombreArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNombreArchivo.setText("Nombre Del Archivo");
-        jLabelNombreArchivo.setToolTipText("Nombre Del Archivo");
+        jLabelFileName.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        jLabelFileName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFileName.setToolTipText("Nombre Del Archivo");
+        jLabelFileName.setMaximumSize(new java.awt.Dimension(373, 21));
+        jLabelFileName.setMinimumSize(new java.awt.Dimension(373, 21));
+        jLabelFileName.setPreferredSize(new java.awt.Dimension(373, 21));
 
-        jLabelPersonaEnvioArchivo.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-        jLabelPersonaEnvioArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelPersonaEnvioArchivo.setText("Quien envio el archivo");
-        jLabelPersonaEnvioArchivo.setToolTipText("Emisor Del Archivo");
+        jLabelFileIssuer.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        jLabelFileIssuer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFileIssuer.setToolTipText("Emisor Del Archivo");
 
-        jLabelFechaEnvioArchivo.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-        jLabelFechaEnvioArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelFechaEnvioArchivo.setText("Fecha del envio del archivo");
-        jLabelFechaEnvioArchivo.setToolTipText("Fecha Del Envío");
+        jLabelFileDate.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        jLabelFileDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFileDate.setToolTipText("Fecha Del Envío");
 
-        jButtonDescargarArchivo.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jButtonDescargarArchivo.setText("Descargar Archivo");
-        jButtonDescargarArchivo.setToolTipText("Descargar Archivo");
-        jButtonDescargarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonDownloadFile.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
+        jButtonDownloadFile.setText("Descargar Archivo");
+        jButtonDownloadFile.setToolTipText("Descargar Archivo");
+        jButtonDownloadFile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonDescargarArchivoMouseClicked(evt);
+                jButtonDownloadFileMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonDescargarArchivoMouseEntered(evt);
+                jButtonDownloadFileMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonDescargarArchivoMouseExited(evt);
+                jButtonDownloadFileMouseExited(evt);
             }
         });
 
         jLabelTipoArchivoImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTipoArchivoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/shelf.png"))); // NOI18N
 
-        jButtonRemoverArchivo.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jButtonRemoverArchivo.setText("Remover Archivo");
-        jButtonRemoverArchivo.setToolTipText("Remover Archivo Compartido (Eliminar Archivo)");
-        jButtonRemoverArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonRemoveFile.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
+        jButtonRemoveFile.setText("Remover Archivo");
+        jButtonRemoveFile.setToolTipText("Remover Archivo Compartido (Eliminar Archivo)");
+        jButtonRemoveFile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonRemoverArchivoMouseClicked(evt);
+                jButtonRemoveFileMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonRemoverArchivoMouseEntered(evt);
+                jButtonRemoveFileMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonRemoverArchivoMouseExited(evt);
+                jButtonRemoveFileMouseExited(evt);
             }
         });
 
@@ -122,16 +129,15 @@ public class Student_Group_Shared_File_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonRemoverArchivo)
+                        .addComponent(jButtonRemoveFile)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonDescargarArchivo)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jButtonDownloadFile))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelNombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelFileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelPersonaEnvioArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(jLabelFechaEnvioArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelFileIssuer, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jLabelFileDate, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -142,63 +148,66 @@ public class Student_Group_Shared_File_Panel extends javax.swing.JPanel {
                     .addComponent(jLabelTipoArchivoImagen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelNombreArchivo)
-                            .addComponent(jLabelPersonaEnvioArchivo)
-                            .addComponent(jLabelFechaEnvioArchivo))
+                            .addComponent(jLabelFileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelFileIssuer, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelFileDate, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonDescargarArchivo)
-                            .addComponent(jButtonRemoverArchivo))))
+                            .addComponent(jButtonDownloadFile)
+                            .addComponent(jButtonRemoveFile))))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonRemoverArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverArchivoMouseClicked
+    private void jButtonRemoveFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveFileMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            int result = JOptionPane.showConfirmDialog(this, "Mensaje De Confirmación", "Esta Segur@ De Eliminar Este Archivo", JOptionPane.QUESTION_MESSAGE);
+
+            if (result == JOptionPane.OK_OPTION) {
+                
+            }
+        }
+    }//GEN-LAST:event_jButtonRemoveFileMouseClicked
+
+    private void jButtonDownloadFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDownloadFileMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
         }
-    }//GEN-LAST:event_jButtonRemoverArchivoMouseClicked
+    }//GEN-LAST:event_jButtonDownloadFileMouseClicked
 
-    private void jButtonDescargarArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDescargarArchivoMouseClicked
+    private void jButtonRemoveFileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveFileMouseEntered
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-        }
-    }//GEN-LAST:event_jButtonDescargarArchivoMouseClicked
+        jButtonRemoveFile.setBackground(secondColor);
+        jButtonRemoveFile.setForeground(secondFontColor);
+    }//GEN-LAST:event_jButtonRemoveFileMouseEntered
 
-    private void jButtonRemoverArchivoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverArchivoMouseEntered
+    private void jButtonRemoveFileMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveFileMouseExited
         // TODO add your handling code here:
-        jButtonRemoverArchivo.setBackground(secondColor);
-        jButtonRemoverArchivo.setForeground(secondFontColor);
-    }//GEN-LAST:event_jButtonRemoverArchivoMouseEntered
+        jButtonRemoveFile.setBackground(thirdColor);
+        jButtonRemoveFile.setForeground(thirdFontColor);
+    }//GEN-LAST:event_jButtonRemoveFileMouseExited
 
-    private void jButtonRemoverArchivoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoverArchivoMouseExited
+    private void jButtonDownloadFileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDownloadFileMouseEntered
         // TODO add your handling code here:
-        jButtonRemoverArchivo.setBackground(thirdColor);
-        jButtonRemoverArchivo.setForeground(thirdFontColor);
-    }//GEN-LAST:event_jButtonRemoverArchivoMouseExited
-
-    private void jButtonDescargarArchivoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDescargarArchivoMouseEntered
-        // TODO add your handling code here:
-        jButtonDescargarArchivo.setBackground(secondColor);
-        jButtonDescargarArchivo.setForeground(secondFontColor);
+        jButtonDownloadFile.setBackground(secondColor);
+        jButtonDownloadFile.setForeground(secondFontColor);
         
-    }//GEN-LAST:event_jButtonDescargarArchivoMouseEntered
+    }//GEN-LAST:event_jButtonDownloadFileMouseEntered
 
-    private void jButtonDescargarArchivoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDescargarArchivoMouseExited
+    private void jButtonDownloadFileMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDownloadFileMouseExited
         // TODO add your handling code here:
-        jButtonDescargarArchivo.setBackground(thirdColor);
-        jButtonDescargarArchivo.setForeground(thirdFontColor);
-    }//GEN-LAST:event_jButtonDescargarArchivoMouseExited
+        jButtonDownloadFile.setBackground(thirdColor);
+        jButtonDownloadFile.setForeground(thirdFontColor);
+    }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonDescargarArchivo;
-    private javax.swing.JButton jButtonRemoverArchivo;
-    private javax.swing.JLabel jLabelFechaEnvioArchivo;
-    private javax.swing.JLabel jLabelNombreArchivo;
-    private javax.swing.JLabel jLabelPersonaEnvioArchivo;
+    // Variables declaration - do not modify//GEN-LAST:event_jButtonDownloadFileMouseExited
+    private javax.swing.JButton jButtonDownloadFile;//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonRemoveFile;
+    private javax.swing.JLabel jLabelFileDate;
+    private javax.swing.JLabel jLabelFileIssuer;
+    private javax.swing.JLabel jLabelFileName;
     private javax.swing.JLabel jLabelTipoArchivoImagen;
     // End of variables declaration//GEN-END:variables
 }

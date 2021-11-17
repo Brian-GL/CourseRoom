@@ -6,6 +6,7 @@
 package panels.students;
 
 import courseroom.MainFrame;
+import data.interfaces.ColorComponents;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -15,7 +16,7 @@ import javax.swing.SwingUtilities;
  *
  * @author LENOVO
  */
-public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
+public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel implements ColorComponents{
 
     private Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
     
@@ -246,8 +247,8 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
             MainFrame.setSecondFontColor(secondFontColor);
             MainFrame.setThirdFontColor(thirdFontColor);
             
-            MainFrame.repainting();
-            Student_Dashboard_Panel.colorMyComponents();
+            MainFrame.Repainting();
+            Student_Dashboard_Panel.ColorComponents();
             
             jTextFieldDominantColor.setText(toRGB(firstColor));
             jTextFieldSecondColor.setText(toRGB(secondColor));
@@ -315,7 +316,8 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldThirdColor;
     // End of variables declaration//GEN-END:variables
 
-    public void colorMyComponents() {
+    @Override
+    public void ColorComponents() {
         
         firstColor = MainFrame.getFirstColor();
         secondColor = MainFrame.getSecondColor();

@@ -107,7 +107,7 @@ public class General_Text_Message_Panel extends javax.swing.JPanel implements Di
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose() {
+    public void Dispose() {
         jTextAreaMessage.setText("");
     }
 }

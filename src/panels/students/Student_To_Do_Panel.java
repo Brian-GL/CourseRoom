@@ -6,50 +6,49 @@
 package panels.students;
 
 import courseroom.MainFrame;
+import data.interfaces.ColorComponents;
 import java.awt.Color;
 import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
  *
  * @author LENOVO
  */
-public class Student_To_Do_Panel extends javax.swing.JPanel {
+public class Student_To_Do_Panel extends javax.swing.JPanel implements ColorComponents{
+    
+    private Color firstColor,fontColor,secondColor, secondFontColor;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Student_To_Do_Panel(
-            Icon miembro_image, 
-            Color firstColor, 
-            Color fontColor,
-            Color secondColor, 
-            Color secondFontColor, 
-            String nombre, 
-            String descripcion, 
-            String fecha_terminacion, 
-            String nombre_miembro) {
+            Icon member_image, 
+            Color _firstColor, 
+            Color _fontColor,
+            Color _secondColor, 
+            Color _secondFontColor, 
+            String name, 
+            String description, 
+            String due_date, 
+            String member_name) {
         
         initComponents();
         
+        firstColor = _firstColor;
+        fontColor = _fontColor;
+        secondColor = _secondColor;
+        secondFontColor = _secondFontColor;
+        
         //Init my components
-        jLabelNombreTareaPorHacer.setText(nombre);
-        jTextAreaDescripcion.setText(descripcion);
+        jLabelToDoName.setText(name);
+        jLabelDescription.setText(MainFrame.ToHTMLCenterFormat(description));
         
-        jLabelFechaTerminacionTareaPorHacer.setText(fecha_terminacion);
-        jLabelMiembroImage.setIcon(miembro_image);
-        jLabelMiembroImage.setToolTipText(MainFrame.Concatenate("Miembro A Cargo: ",nombre_miembro));
+        jLabelDueDate.setText(due_date);
+        jLabelMemberInCharge.setIcon(member_image);
+        jLabelMemberInCharge.setToolTipText(MainFrame.Concatenate("Miembro A Cargo: ",member_name));
         
-        //paint my components
-        
-        setBackground(firstColor);
-        
-        jLabelNombreTareaPorHacer.setForeground(fontColor);
-        jTextAreaDescripcion.setForeground(secondFontColor);
-        jTextAreaDescripcion.setBackground(secondColor);
-        jLabelFechaTerminacionTareaPorHacer.setForeground(fontColor);
-        jToggleButtonEstatusPendiente.setForeground(secondFontColor);
-        jToggleButtonEstatusPendiente.setBackground(secondColor);
-        
-        setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
+        ColorComponents();
+       
     }
 
     /**
@@ -61,98 +60,131 @@ public class Student_To_Do_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelMiembroImage = new javax.swing.JLabel();
-        jLabelNombreTareaPorHacer = new javax.swing.JLabel();
-        jLabelFechaTerminacionTareaPorHacer = new javax.swing.JLabel();
-        jToggleButtonEstatusPendiente = new javax.swing.JToggleButton();
-        jScrollPaneDescripcion = new javax.swing.JScrollPane();
-        jTextAreaDescripcion = new javax.swing.JTextArea();
+        jPanelContent = new javax.swing.JPanel();
+        jLabelMemberInCharge = new javax.swing.JLabel();
+        jLabelToDoName = new javax.swing.JLabel();
+        jLabelDueDate = new javax.swing.JLabel();
+        jToggleButtonToDoStatus = new javax.swing.JToggleButton();
+        jLabelDescription = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 168));
-        setMinimumSize(new java.awt.Dimension(717, 168));
-        setPreferredSize(new java.awt.Dimension(717, 168));
+        setMaximumSize(new java.awt.Dimension(32767, 178));
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(717, 178));
 
-        jLabelMiembroImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelMiembroImage.setToolTipText("");
-        jLabelMiembroImage.setMaximumSize(new java.awt.Dimension(130, 130));
-        jLabelMiembroImage.setMinimumSize(new java.awt.Dimension(130, 130));
-        jLabelMiembroImage.setPreferredSize(new java.awt.Dimension(130, 130));
+        jLabelMemberInCharge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMemberInCharge.setToolTipText("");
+        jLabelMemberInCharge.setMaximumSize(new java.awt.Dimension(130, 130));
+        jLabelMemberInCharge.setMinimumSize(new java.awt.Dimension(130, 130));
+        jLabelMemberInCharge.setPreferredSize(new java.awt.Dimension(130, 130));
 
-        jLabelNombreTareaPorHacer.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelNombreTareaPorHacer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNombreTareaPorHacer.setText(" ");
-        jLabelNombreTareaPorHacer.setToolTipText("Nombre Del Pendiente A Realizar");
+        jLabelToDoName.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabelToDoName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelToDoName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/schedule.png"))); // NOI18N
+        jLabelToDoName.setText(" ");
+        jLabelToDoName.setToolTipText("Nombre Del Pendiente A Realizar");
 
-        jLabelFechaTerminacionTareaPorHacer.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jLabelFechaTerminacionTareaPorHacer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clock.png"))); // NOI18N
-        jLabelFechaTerminacionTareaPorHacer.setToolTipText("Fecha Propuesta Para Terminar El Pendiente");
+        jLabelDueDate.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
+        jLabelDueDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clock.png"))); // NOI18N
+        jLabelDueDate.setToolTipText("Fecha Propuesta Para Terminar El Pendiente");
 
-        jToggleButtonEstatusPendiente.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jToggleButtonEstatusPendiente.setText("Pendiente");
-        jToggleButtonEstatusPendiente.setToolTipText("Estatus");
-        jToggleButtonEstatusPendiente.addMouseListener(new java.awt.event.MouseAdapter() {
+        jToggleButtonToDoStatus.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
+        jToggleButtonToDoStatus.setText("Pendiente");
+        jToggleButtonToDoStatus.setToolTipText("Estatus Del Pendiente");
+        jToggleButtonToDoStatus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButtonEstatusPendienteMouseClicked(evt);
+                jToggleButtonToDoStatusMouseClicked(evt);
             }
         });
 
-        jScrollPaneDescripcion.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPaneDescripcion.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jLabelDescription.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jLabelDescription.setToolTipText("Descipción Del Pendiente");
 
-        jTextAreaDescripcion.setColumns(20);
-        jTextAreaDescripcion.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jTextAreaDescripcion.setRows(5);
-        jTextAreaDescripcion.setToolTipText("Descripción Del Pendiente");
-        jScrollPaneDescripcion.setViewportView(jTextAreaDescripcion);
+        javax.swing.GroupLayout jPanelContentLayout = new javax.swing.GroupLayout(jPanelContent);
+        jPanelContent.setLayout(jPanelContentLayout);
+        jPanelContentLayout.setHorizontalGroup(
+            jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelContentLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelToDoName, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+                    .addComponent(jLabelDueDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelMemberInCharge, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jToggleButtonToDoStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanelContentLayout.setVerticalGroup(
+            jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelContentLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelContentLayout.createSequentialGroup()
+                        .addComponent(jLabelToDoName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelMemberInCharge, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButtonToDoStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
-                    .addComponent(jLabelNombreTareaPorHacer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelFechaTerminacionTareaPorHacer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelMiembroImage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonEstatusPendiente, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelNombreTareaPorHacer)
-                        .addGap(5, 5, 5)
-                        .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelMiembroImage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFechaTerminacionTareaPorHacer, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButtonEstatusPendiente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelContent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButtonEstatusPendienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButtonEstatusPendienteMouseClicked
+    private void jToggleButtonToDoStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButtonToDoStatusMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            jToggleButtonEstatusPendiente.setText("Terminado");
+            
+            int result = JOptionPane.showConfirmDialog(this, "Mensaje De Confirmación", "Esta Segur@ De Terminar La Tarea Pendiente", JOptionPane.QUESTION_MESSAGE);
+            
+            if(result == JOptionPane.OK_OPTION){
+                jToggleButtonToDoStatus.setText("Terminado");
+                jToggleButtonToDoStatus.setEnabled(false);
+            }
+               
         }
-    }//GEN-LAST:event_jToggleButtonEstatusPendienteMouseClicked
+    }//GEN-LAST:event_jToggleButtonToDoStatusMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelFechaTerminacionTareaPorHacer;
-    private javax.swing.JLabel jLabelMiembroImage;
-    private javax.swing.JLabel jLabelNombreTareaPorHacer;
-    private javax.swing.JScrollPane jScrollPaneDescripcion;
-    private javax.swing.JTextArea jTextAreaDescripcion;
-    private javax.swing.JToggleButton jToggleButtonEstatusPendiente;
+    private javax.swing.JLabel jLabelDescription;
+    private javax.swing.JLabel jLabelDueDate;
+    private javax.swing.JLabel jLabelMemberInCharge;
+    private javax.swing.JLabel jLabelToDoName;
+    private javax.swing.JPanel jPanelContent;
+    private javax.swing.JToggleButton jToggleButtonToDoStatus;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void ColorComponents() {
+        
+        jPanelContent.setBackground(firstColor);
+
+        jLabelToDoName.setForeground(fontColor);
+        jLabelDescription.setForeground(secondFontColor);
+        jLabelDueDate.setForeground(fontColor);
+        jToggleButtonToDoStatus.setForeground(secondFontColor);
+        jToggleButtonToDoStatus.setBackground(secondColor);
+
+    }
+    
 }

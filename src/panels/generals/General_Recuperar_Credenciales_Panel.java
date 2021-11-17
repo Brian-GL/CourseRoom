@@ -210,7 +210,7 @@ public class General_Recuperar_Credenciales_Panel extends javax.swing.JPanel imp
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             this.setVisible(false);
-            MainFrame.showLogin();
+            MainFrame.ShowLogin();
         }
     }//GEN-LAST:event_jButtonRegresarMouseClicked
 
@@ -375,7 +375,7 @@ public class General_Recuperar_Credenciales_Panel extends javax.swing.JPanel imp
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose() {
+    public void Dispose() {
         session = null;
         msjHTML = null;
         mimeBodyPartHTML = null;

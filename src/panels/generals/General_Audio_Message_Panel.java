@@ -617,7 +617,7 @@ public class General_Audio_Message_Panel extends javax.swing.JPanel implements D
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose()  {
+    public void Dispose()  {
         
         audioPlayerComponent.release();
         audioPlayerComponent = null;

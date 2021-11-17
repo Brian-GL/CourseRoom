@@ -6,6 +6,7 @@
 package panels.students;
 
 import courseroom.MainFrame;
+import data.interfaces.ColorComponents;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -14,7 +15,7 @@ import java.awt.Toolkit;
  *
  * @author LENOVO
  */
-public class Student_Courses_Panel extends javax.swing.JPanel {
+public class Student_Courses_Panel extends javax.swing.JPanel implements ColorComponents{
 
     /**
      * Creates new form Student_Courses_Panel
@@ -22,7 +23,7 @@ public class Student_Courses_Panel extends javax.swing.JPanel {
     public Student_Courses_Panel() {
         initComponents();
         
-        initMyComponents();
+        InitComponents();
         
         Student_Box_Course_Panel boxCoursePanel;
         String concatenate;
@@ -42,7 +43,7 @@ public class Student_Courses_Panel extends javax.swing.JPanel {
         }
     }
 
-    private void initMyComponents(){
+    private void InitComponents(){
         jScrollPaneActualCourses.getViewport().setOpaque(false);
         jScrollPaneFinishedCourses.getViewport().setOpaque(false);
         jScrollPaneRelatedCourses.getViewport().setOpaque(false);
@@ -159,8 +160,8 @@ public class Student_Courses_Panel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
-    public void colorMyComponents(){
+    @Override
+    public void ColorComponents(){
         
         jLabelCoursesTitle.setBackground(MainFrame.getSecondColor());
         jLabelCoursesTitle.setForeground(MainFrame.getSecondFontColor());

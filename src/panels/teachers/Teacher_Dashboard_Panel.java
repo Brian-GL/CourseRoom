@@ -35,7 +35,7 @@ import javax.swing.SwingUtilities;
  *
  * @author LENOVO
  */
-public class Teacher_Dashboard_Panel extends javax.swing.JPanel implements ColorInterface, DisposeInterface{
+public class Teacher_Dashboard_Panel extends javax.swing.JPanel implements DisposeInterface{
 
     private static Image userImage;
     
@@ -661,8 +661,8 @@ public class Teacher_Dashboard_Panel extends javax.swing.JPanel implements Color
     private void jButtonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalirMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            MainFrame.showLogin();
-            this.dispose();
+            MainFrame.ShowLogin();
+            this.Dispose();
         }
     }//GEN-LAST:event_jButtonSalirMouseClicked
 
@@ -779,7 +779,7 @@ public class Teacher_Dashboard_Panel extends javax.swing.JPanel implements Color
                 MainFrame.setSecondFontColor(secondFontColor);
                 MainFrame.setThirdFontColor(thirdFontColor);
 
-                MainFrame.repainting();              
+                MainFrame.Repainting();              
                 infoProfilePanel.colorMyComponents();
                 editProfilePanel.colorMyComponents();
                 aboutPanel.colorMyComponents();
@@ -797,11 +797,11 @@ public class Teacher_Dashboard_Panel extends javax.swing.JPanel implements Color
     }
     
     @Override
-    public void dispose(){
-        musicPanel.dispose();
-        chatsPanel.dispose();
-        noticesPanel.dispose();
-        datesPanel.dispose();
+    public void Dispose(){
+        musicPanel.Dispose();
+        chatsPanel.Dispose();
+        noticesPanel.Dispose();
+        datesPanel.Dispose();
         
     }
     
@@ -856,11 +856,6 @@ public class Teacher_Dashboard_Panel extends javax.swing.JPanel implements Color
         icon = null;
     }
 
-    @Override
-    public void setColors(Image image) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public class ServerDateTime extends Thread{
     
 

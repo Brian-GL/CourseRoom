@@ -114,6 +114,6 @@ public class General_Image_Message_Panel extends javax.swing.JPanel implements D
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose() {
+    public void Dispose() {
     }
 }

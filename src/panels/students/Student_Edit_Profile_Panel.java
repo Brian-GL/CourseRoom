@@ -12,7 +12,6 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -22,19 +21,20 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import courseroom.MainFrame;
+import data.interfaces.ColorComponents;
 
 /**
  *
  * @author LENOVO
  */
-public class Student_Edit_Profile_Panel extends javax.swing.JPanel {
+public class Student_Edit_Profile_Panel extends javax.swing.JPanel implements ColorComponents{
     /**
      * Creates new form EditProfilePanel
      */
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Student_Edit_Profile_Panel() {
         initComponents();
-        initMyComponents();
+        InitComponents();
         Color noColor = new Color(0,0,0,0);
         jTabbedPaneFondo.setBackground(noColor);
         jTabbedPaneFondo.setForeground(MainFrame.getSecondFontColor());
@@ -887,7 +887,7 @@ public class Student_Edit_Profile_Panel extends javax.swing.JPanel {
     private javax.swing.JToggleButton jToggleButtonEditarTelefono;
     // End of variables declaration//GEN-END:variables
 
-    private void initMyComponents() {
+    private void InitComponents() {
         
         int large = jLabelImagenPerfilAutenticacion.getPreferredSize().height;
         Image scaled = Student_Dashboard_Panel.getUserImage().getScaledInstance(large, large, Image.SCALE_SMOOTH);
@@ -903,7 +903,8 @@ public class Student_Edit_Profile_Panel extends javax.swing.JPanel {
         
     }
     
-    public void colorMyComponents(){
+    @Override
+    public void ColorComponents(){
         Component[] components = jPanelDatosPersonales.getComponents();
         for (Component component : components) {
 

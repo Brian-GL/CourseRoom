@@ -9,7 +9,7 @@ package data.interfaces;
  *
  * @author LENOVO
  */
-public interface DisposeInterface{
+public interface ColorComponents {
     
-    public void Dispose();
+    public void ColorComponents();
 }

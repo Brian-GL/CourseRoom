@@ -99,7 +99,7 @@ public class Teacher_Notices_Panel extends javax.swing.JPanel implements Dispose
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose() {
+    public void Dispose() {
         jPanelMisAvisos.removeAll();
     }
 }

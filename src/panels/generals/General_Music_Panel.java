@@ -1779,7 +1779,7 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                         playlistEntryImage = real_cover.getScaledInstance(63, 63, Image.SCALE_SMOOTH);
                         ImageIcon cover = new ImageIcon(coverImagen);
                         jLabelCoverArt.setIcon(cover);
-                        setColors(coverImagen);
+                        SetColors(coverImagen);
                         coverImagen.flush();
                         real_cover.flush();
                         
@@ -1824,7 +1824,7 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
     }
     
     @Override
-    public void setColors(Image image) {
+    public void SetColors(Image image) {
         try {
             
             int maximum = 0;
@@ -2025,7 +2025,7 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
     }
 
     @Override
-    public void dispose()  {
+    public void Dispose()  {
         audio_list_player_component.mediaListPlayer().controls().stop();
         audio_list_player_component.release();
         play_icon.getImage().flush();

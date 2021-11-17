@@ -17,7 +17,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -33,25 +32,8 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Student_Box_Notice_Panel() {
         initComponents();
-        try {
-            System.out.println("Aviso -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageURL = new URL("https://loremflickr.com/129/129/sunset,beach/all");
-            
-            jLabelDescripcionAviso.setText(MainFrame.getFaker().lorem().paragraph(1));
-            jLabelFechaHoraAviso.setText(MainFrame.getFaker().date().birthday().toString());
-            jLabelProvenenciaAviso.setText(MainFrame.getFaker().company().name());
-            jLabelEstado.setText(MainFrame.getFaker().book().publisher());
-            jLabelEstado.setText((MainFrame.getFaker().bool().bool()) ? "Leído" : "No Leído");
-            Image getImage = ImageIO.read(imageURL);
-            ImageIcon avisoIcon = new ImageIcon(getImage);
-            jLabelFotoAviso.setIcon(avisoIcon);
-            setColors(getImage);
-            getImage.flush();
-        } catch (MalformedURLException ex) {
-            MainFrame.getLogger().log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            MainFrame.getLogger().log(Level.SEVERE, null, ex);
-        }
+        
+        InitComponents();
     }
 
     /**
@@ -145,7 +127,7 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public void setColors(Image image){
+    public void SetColors(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
@@ -182,7 +164,6 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
                         colorList.push_back(1, color);
                     }
 
-                    color = null;
                     i += colorRandom.nextInt(large+1) + large;
                 }
 
@@ -220,6 +201,28 @@ public class Student_Box_Notice_Panel extends javax.swing.JPanel implements Colo
             }
             
         } catch (InterruptedException ex) {
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void InitComponents(){
+        try {
+            System.out.println("Aviso -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/129/129/sunset,beach/all");
+            
+            jLabelDescripcionAviso.setText(MainFrame.getFaker().lorem().paragraph(1));
+            jLabelFechaHoraAviso.setText(MainFrame.getFaker().date().birthday().toString());
+            jLabelProvenenciaAviso.setText(MainFrame.getFaker().company().name());
+            jLabelEstado.setText(MainFrame.getFaker().book().publisher());
+            jLabelEstado.setText((MainFrame.getFaker().bool().bool()) ? "Leído" : "No Leído");
+            Image getImage = ImageIO.read(imageURL);
+            ImageIcon avisoIcon = new ImageIcon(getImage);
+            jLabelFotoAviso.setIcon(avisoIcon);
+            SetColors(getImage);
+            getImage.flush();
+        } catch (MalformedURLException ex) {
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
     }

@@ -6,14 +6,16 @@
 package panels.students;
 
 import courseroom.MainFrame;
+import data.interfaces.ColorComponents;
 import data.interfaces.DisposeInterface;
+import java.awt.Font;
 
 
 /**
  *
  * @author LENOVO
  */
-public class Student_Groups_Panel extends javax.swing.JPanel implements DisposeInterface{
+public class Student_Groups_Panel extends javax.swing.JPanel implements DisposeInterface, ColorComponents{
 
     /**
      * Creates new form GroupsPanel
@@ -21,15 +23,15 @@ public class Student_Groups_Panel extends javax.swing.JPanel implements DisposeI
     public Student_Groups_Panel() {
         initComponents();
         
-        jScrollPaneMisGrupos.getViewport().setOpaque(false);
-        jScrollPaneMisGrupos.getVerticalScrollBar().setUnitIncrement(15);
+        jScrollPaneAllGroups.getViewport().setOpaque(false);
+        jScrollPaneAllGroups.getVerticalScrollBar().setUnitIncrement(15);
         
         String concatenate;
         Student_Box_Group_Panel boxGroupPanel;
         for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
             concatenate = MainFrame.Concatenate("GROUP_", i);
             boxGroupPanel = new Student_Box_Group_Panel(concatenate);
-            jPanelMisGrupos.add(boxGroupPanel);
+            jPanelAllGroups.add(boxGroupPanel);
         }
         
     }
@@ -43,21 +45,22 @@ public class Student_Groups_Panel extends javax.swing.JPanel implements DisposeI
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPaneMisGrupos = new javax.swing.JScrollPane();
-        jPanelMisGrupos = new javax.swing.JPanel();
+        jScrollPaneAllGroups = new javax.swing.JScrollPane();
+        jPanelAllGroups = new javax.swing.JPanel();
         jLabelGroupsTitle = new javax.swing.JLabel();
+        jComboBoxOrderBy = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1085, 630));
 
-        jScrollPaneMisGrupos.setBorder(null);
-        jScrollPaneMisGrupos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPaneMisGrupos.setOpaque(false);
+        jScrollPaneAllGroups.setBorder(null);
+        jScrollPaneAllGroups.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPaneAllGroups.setOpaque(false);
 
-        jPanelMisGrupos.setOpaque(false);
-        jPanelMisGrupos.setLayout(new javax.swing.BoxLayout(jPanelMisGrupos, javax.swing.BoxLayout.PAGE_AXIS));
-        jScrollPaneMisGrupos.setViewportView(jPanelMisGrupos);
+        jPanelAllGroups.setOpaque(false);
+        jPanelAllGroups.setLayout(new javax.swing.BoxLayout(jPanelAllGroups, javax.swing.BoxLayout.PAGE_AXIS));
+        jScrollPaneAllGroups.setViewportView(jPanelAllGroups);
 
         jLabelGroupsTitle.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         jLabelGroupsTitle.setText("Grupos");
@@ -66,6 +69,12 @@ public class Student_Groups_Panel extends javax.swing.JPanel implements DisposeI
         jLabelGroupsTitle.setOpaque(true);
         jLabelGroupsTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
+        jComboBoxOrderBy.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
+        jComboBoxOrderBy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fecha: Más Reciente", "Fecha: Menos Reciente", "Nombre: Ascendente", "Nombre: Descendente" }));
+        jComboBoxOrderBy.setToolTipText("Ordenar Grupos Por");
+        jComboBoxOrderBy.setBorder(null);
+        jComboBoxOrderBy.setOpaque(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,36 +82,49 @@ public class Student_Groups_Panel extends javax.swing.JPanel implements DisposeI
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneMisGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneAllGroups, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelGroupsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxOrderBy, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelGroupsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelGroupsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxOrderBy, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneMisGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                .addComponent(jScrollPaneAllGroups, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void colorMyComponents(){
+    @Override
+    public void ColorComponents(){
+        Font gadugi = new java.awt.Font("Gadugi", 1, 20);
         jLabelGroupsTitle.setBackground(MainFrame.getSecondColor());
         jLabelGroupsTitle.setForeground(MainFrame.getSecondFontColor());
+        jComboBoxOrderBy.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(MainFrame.getSecondColor()), 
+                "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                gadugi, MainFrame.getSecondFontColor()));
+        
+        jComboBoxOrderBy.setBackground(MainFrame.getSecondColor());
+        jComboBoxOrderBy.setForeground(MainFrame.getSecondFontColor());
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBoxOrderBy;
     private javax.swing.JLabel jLabelGroupsTitle;
-    private javax.swing.JPanel jPanelMisGrupos;
-    private javax.swing.JScrollPane jScrollPaneMisGrupos;
+    private javax.swing.JPanel jPanelAllGroups;
+    private javax.swing.JScrollPane jScrollPaneAllGroups;
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose()  {
-        jPanelMisGrupos.removeAll();
+    public void Dispose() {
+        jPanelAllGroups.removeAll();
     }
 }

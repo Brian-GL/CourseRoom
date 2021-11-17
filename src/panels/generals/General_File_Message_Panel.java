@@ -135,7 +135,7 @@ public class General_File_Message_Panel extends javax.swing.JPanel implements Di
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose() {
+    public void Dispose() {
         
     }
 }

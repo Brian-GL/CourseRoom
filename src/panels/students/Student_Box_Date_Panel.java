@@ -22,12 +22,12 @@ public class Student_Box_Date_Panel extends javax.swing.JPanel {
      */
     public Student_Box_Date_Panel(int day) {
         initComponents();
-        initMyComponents();
+        InitComponents();
         jLabelDayNumber.setText(String.valueOf(day));
       
     }
     
-    private void initMyComponents(){
+    private void InitComponents(){
         jLabelHora.setText(MainFrame.getFaker().number().randomNumber(2, true) + ":" + MainFrame.getFaker().number().randomNumber(2, false) + " P.M");
         jTextPaneNotice.setText(MainFrame.getFaker().lorem().paragraph());
         StyledDocument doc = jTextPaneNotice.getStyledDocument();
@@ -105,7 +105,7 @@ public class Student_Box_Date_Panel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void paintMyComponents(Color background, Color foreground){
+    public void paintComponents(Color background, Color foreground){
         this.setBackground(background);
         this.setBorder(javax.swing.BorderFactory.createLineBorder(foreground));
         jLabelDayNumber.setForeground(foreground);

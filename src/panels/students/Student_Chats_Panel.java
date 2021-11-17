@@ -5,7 +5,6 @@
  */
 package panels.students;
 
-import com.github.javafaker.Faker;
 import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
 
@@ -104,7 +103,7 @@ public class Student_Chats_Panel extends javax.swing.JPanel implements DisposeIn
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose()  {
+    public void Dispose()  {
         jPanelChats.removeAll();
     }
 }

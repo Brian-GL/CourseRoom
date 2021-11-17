@@ -19,7 +19,6 @@ import uk.co.caprica.vlcj.player.base.State;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -497,7 +496,7 @@ public class General_Video_Message_Panel extends javax.swing.JPanel implements D
     }
    
     @Override
-    public void dispose(){
+    public void Dispose(){
         embeddedMediaPlayerComponent.release();
         embeddedMediaPlayerComponent = null;
         mrl = null;

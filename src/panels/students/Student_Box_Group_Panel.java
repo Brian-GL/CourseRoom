@@ -35,26 +35,8 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
      */
     public Student_Box_Group_Panel(String _id) {
         initComponents();
-        try {
-            firstColor = Color.BLACK;
-            System.out.println("Group ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageURL = new URL("https://loremflickr.com/131/131/sunset,beach/all");
-            Image getImage = ImageIO.read(imageURL);
-            ImageIcon groupIcon = new ImageIcon(getImage);
-            jLabelFotoGrupo.setIcon(groupIcon);
-            setColors(getImage);
-            jLabelNombreGrupo.setText(MainFrame.getFaker().team().sport());
-            jLabelUltimaActualizacion.setText(MainFrame.getFaker().team().state());
-            jLabelClaseDelGrupo.setText(MainFrame.getFaker().team().name());
-            this.id = _id;
-            groupPanel = new Student_Group_Panel(getImage,jLabelNombreGrupo.getText(),firstColor,secondColor,thirdColor,fontColor,secondFontColor,thirdFontColor);
-            Student_Dashboard_Panel.addView(groupPanel,id);
-            getImage.flush();
-        } catch (MalformedURLException ex) {
-            MainFrame.getLogger().log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            MainFrame.getLogger().log(Level.SEVERE, null, ex);
-        }
+        this.id = _id;
+        InitComponents();
     }
 
     /**
@@ -166,7 +148,7 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
     
     
     @Override
-    public void setColors(Image image){
+    public void SetColors(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
@@ -265,6 +247,28 @@ public class Student_Box_Group_Panel extends javax.swing.JPanel implements Color
         }
     }
    
+    private void InitComponents(){
+        try {
+            firstColor = Color.BLACK;
+            System.out.println("Group ID: " + id + " -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/131/131/sunset,beach/all");
+            Image getImage = ImageIO.read(imageURL);
+            ImageIcon groupIcon = new ImageIcon(getImage);
+            jLabelFotoGrupo.setIcon(groupIcon);
+            SetColors(getImage);
+            jLabelNombreGrupo.setText(MainFrame.getFaker().team().sport());
+            jLabelUltimaActualizacion.setText(MainFrame.getFaker().team().state());
+            jLabelClaseDelGrupo.setText(MainFrame.getFaker().team().name());
+            
+            groupPanel = new Student_Group_Panel(getImage, jLabelNombreGrupo.getText(), firstColor, secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor);
+            Student_Dashboard_Panel.addView(groupPanel, id);
+            getImage.flush();
+        } catch (MalformedURLException ex) {
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelClaseDelGrupo;

@@ -46,7 +46,7 @@ public class Teacher_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
             Image chatImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
             ImageIcon chatIcon = new ImageIcon(chatImage);
             jLabelFotoChat.setIcon(chatIcon);
-            setColors(getImage);
+            SetColors(getImage);
             Locale mx = new Locale("es","MX");
             Faker faker = new Faker(mx);
             jLabelNombreChat.setText(faker.rickAndMorty().character());
@@ -73,7 +73,7 @@ public class Teacher_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
     }
     
     @Override
-    public void setColors(Image image){
+    public void SetColors(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
@@ -278,8 +278,8 @@ public class Teacher_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose() {
-        chatPanel.dispose();
+    public void Dispose() {
+        chatPanel.Dispose();
     }
 
    

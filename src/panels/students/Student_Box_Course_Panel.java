@@ -42,17 +42,17 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
         initComponents();
         firstColor = secondColor = fontColor = secondFontColor =  Color.BLACK;
         this.id = _id;
-        initMyComponents();
+        InitComponents();
     }
     
-    private void initMyComponents(){
+    private void InitComponents(){
         try {
             System.out.println("Course ID: "+this.id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
             URL imageURL = new URL("https://loremflickr.com/226/226/sunset,beach/all");
             Image getImage = ImageIO.read(imageURL);
             ImageIcon courseIcon = new ImageIcon(getImage);
             jLabelCourseImage.setIcon(courseIcon);
-            setColors(getImage);
+            SetColors(getImage);
             
             System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
             URL imageTeacherURL = new URL("https://loremflickr.com/79/79/sunset,beach/all");
@@ -267,7 +267,7 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
     }//GEN-LAST:event_jLabelCourseImageMouseClicked
 
     @Override
-    public void setColors(Image image){
+    public void SetColors(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());

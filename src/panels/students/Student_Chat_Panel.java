@@ -8,6 +8,7 @@ package panels.students;
 import components.ImageFilePreview;
 import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
+import data.interfaces.ColorComponents;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -16,7 +17,6 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
@@ -31,19 +31,21 @@ import panels.generals.General_Video_Message_Panel;
  *
  * @author LENOVO
  */
-public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInterface{
+public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInterface, ColorComponents{
 
     private Color firstColor, secondColor, fontColor;
     
     public Student_Chat_Panel(String name, Color _firstColor, Color _fontColor, Color _secondColor) {
         initComponents();
+        
         firstColor = _firstColor;
         secondColor = _secondColor;
         fontColor = _fontColor;
         jScrollPaneChatsCenter.getViewport().setOpaque(false);
         jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
         jLabelChatName.setText(name);
-        colorMyComponents();
+        
+        ColorComponents();
     }
 
     /**
@@ -491,7 +493,8 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
 
     }
     
-    public void colorMyComponents(){
+    @Override
+    public void ColorComponents(){
         
         jButtonRegresar.setBackground(firstColor);
         jLabelChatName.setForeground(fontColor);
@@ -526,7 +529,7 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose()  {
+    public void Dispose()  {
         jPanelChatCenter.removeAll();
     }
 }

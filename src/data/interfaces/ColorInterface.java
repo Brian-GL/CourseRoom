@@ -14,5 +14,5 @@ import java.awt.Image;
  */
 public interface ColorInterface {
     
-    public void setColors(Image image);
+    public void SetColors(Image image);
 }

@@ -797,7 +797,7 @@ public class General_Crear_Cuenta_Panel extends javax.swing.JPanel{
         // TODO add your handling code here:
         
         if(SwingUtilities.isLeftMouseButton(evt)){
-            MainFrame.showLogin();
+            MainFrame.ShowLogin();
         }
         
     }//GEN-LAST:event_jButtonRegresarLoginMouseClicked
@@ -873,7 +873,7 @@ public class General_Crear_Cuenta_Panel extends javax.swing.JPanel{
     private void jButtonContinuarDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonContinuarDashboardMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            MainFrame.showDashboard();
+            MainFrame.ShowDashboard();
         }
     }//GEN-LAST:event_jButtonContinuarDashboardMouseClicked
 

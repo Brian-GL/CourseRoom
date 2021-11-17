@@ -99,7 +99,7 @@ public class Teacher_Homeworks_Panel extends javax.swing.JPanel implements Dispo
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose()  {
+    public void Dispose()  {
         jPanelMisTareas.removeAll();
     }
 }

@@ -91,7 +91,7 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface {
         login = new General_Login_Panel();
         jPanelViewer.add("login", login);
 
-        boolean isConnected = checkConnection();
+        boolean isConnected = CheckConnection();
 
         if (!isConnected) {
             JOptionPane.showMessageDialog(null, "There Is Not Internet Connection", "SUPER ERROR", JOptionPane.ERROR_MESSAGE);
@@ -114,7 +114,7 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface {
 
     }
 
-    public boolean checkConnection() {
+    public boolean CheckConnection() {
         try {
             URL url = new URL("http://www.google.com");
             URLConnection connection = url.openConnection();
@@ -160,36 +160,36 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        this.dispose();
+        this.Dispose();
         System.gc();
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
-    public static void showLogin() {
+    public static void ShowLogin() {
         viewerLayout.show(jPanelViewer, "login");
     }
 
-    public static void showRecuperarCredenciales() {
+    public static void ShowRecuperarCredenciales() {
         viewerLayout.show(jPanelViewer, "recuperarCredenciales");
     }
 
-    public static void showCrearCuenta() {
+    public static void ShowCrearCuenta() {
         viewerLayout.show(jPanelViewer, "crearCuenta");
     }
 
-    public static void showDashboard() {
+    public static void ShowDashboard() {
         Student_Dashboard_Panel.setColors();
         //teacherDashboardPanel.setColors();
         viewerLayout.show(jPanelViewer, "dashboard");
     }
 
     public static void logOut() {
-        showLogin();
+        ShowLogin();
         firstColor = darkBlue;
         secondColor = lightBlue;
         thirdColor = lightBlue;
         jPanelViewer.setBackground(darkBlue);
-        studentDashboard.dispose();
+        studentDashboard.Dispose();
         studentDashboard = new Student_Dashboard_Panel();
 
         //teacherDashboardPanel.dispose();
@@ -197,11 +197,13 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface {
         //teacherDashboardPanel = new Teacher_Dashboard_Panel();
     }
 
-    public static void repainting() {
+    public static void Repainting() {
         //jPanelViewer.repaint();
         jPanelViewer.setBackground(firstColor);
     }
 
+    /*General Static Methods*/
+    
     public static String Concatenate(String from, String to) {
         StringBuilder stringBuilder = new StringBuilder(from);
         stringBuilder.append(to);
@@ -213,12 +215,24 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface {
         stringBuilder.append(to);
         return stringBuilder.toString();
     }
+    
+    public static String ToHTMLCenterFormat(String text){
+        return "<html><div style='text-align:center;'>" + text  + "</div></html>";
+    }
+    
+    public static String ToHTMLLeftFormat(String text){
+        return "<html><div style='text-align:left;'>" + text  + "</div></html>";
+    }
+    
+    public static String ToHTMLRightFormat(String text){
+        return "<html><div style='text-align:right;'>" + text  + "</div></html>";
+    }
 
     @Override
-    public void dispose() {
-        studentDashboard.dispose();
+    public void Dispose() {
+        studentDashboard.Dispose();
         //teacherDashboardPanel.dispose();
-        recuperarCredenciales.dispose();
+        recuperarCredenciales.Dispose();
         firstColor = secondColor = thirdColor = fontColor = secondFontColor = thirdFontColor = null;
         super.dispose();
     }

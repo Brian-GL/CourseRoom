@@ -386,7 +386,7 @@ public class Teacher_Dates_Panel extends javax.swing.JPanel implements DisposeIn
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose()  {
+    public void Dispose()  {
         jPanelCalendar.removeAll();
     }
 }

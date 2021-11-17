@@ -7,6 +7,8 @@ package panels.students;
 
 import panels.generals.General_Homework_Uploaded_File;
 import com.github.javafaker.Faker;
+import courseroom.MainFrame;
+import data.interfaces.ColorComponents;
 import data.interfaces.DisposeInterface;
 import java.awt.Color;
 import java.awt.Image;
@@ -28,13 +30,14 @@ import panels.generals.General_Homework_Comment_Panel;
  *
  * @author LENOVO
  */
-public class Student_Homework_Panel extends javax.swing.JPanel implements DisposeInterface{
+public class Student_Homework_Panel extends javax.swing.JPanel implements DisposeInterface, ColorComponents{
     
     private Color firstColor, secondColor,thirdColor,fontColor, secondFontColor, thirdFontColor;
     
     
     public Student_Homework_Panel(String name, Color _firstColor, Color _secondColor, Color _thirdColor, Color _fontColor, Color _secondFontColor,Color _thirdFontColor ) {
         initComponents();
+        
         firstColor = _firstColor;
         secondColor = _secondColor;
         fontColor = _fontColor;
@@ -46,16 +49,13 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
         jScrollPaneComments.getViewport().setOpaque(false);
         jScrollPaneComments.getVerticalScrollBar().setUnitIncrement(15);
 
-        jScrollPaneHomeworkDescription.getViewport().setOpaque(false);
-        jScrollPaneHomeworkDescription.getVerticalScrollBar().setUnitIncrement(15);
-
         jScrollPaneUploadedFiles.getViewport().setOpaque(false);
         jScrollPaneUploadedFiles.getVerticalScrollBar().setUnitIncrement(15);
         
         jScrollPaneAttachments.getViewport().setOpaque(false);
         jScrollPaneAttachments.getHorizontalScrollBar().setUnitIncrement(15);
         
-        colorMyComponents();
+        ColorComponents();
     }
 
     /**
@@ -73,22 +73,20 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
         jButtonUploadFile = new javax.swing.JButton();
         jScrollPaneUploadedFiles = new javax.swing.JScrollPane();
         jPanelUploadedFiles = new javax.swing.JPanel();
-        jScrollPaneHomeworkDescription = new javax.swing.JScrollPane();
-        jTextPaneHomeworkDescription = new javax.swing.JTextPane();
         jPanelHomeworkComments = new javax.swing.JPanel();
         jPanelSendComment = new javax.swing.JPanel();
         jTextFieldComment = new javax.swing.JTextField();
-        jComboBoxCommentType = new javax.swing.JComboBox<>();
         jButtonSendComment = new javax.swing.JButton();
         jScrollPaneComments = new javax.swing.JScrollPane();
         jPanelComments = new javax.swing.JPanel();
-        jButtonSendWork = new javax.swing.JButton();
-        jLabelDateTimeFinished = new javax.swing.JLabel();
-        jButtonRegresar = new javax.swing.JButton();
+        jButtonSendHomework = new javax.swing.JButton();
+        jLabelHomeworkDueDate = new javax.swing.JLabel();
+        jButtonBackHomeworks = new javax.swing.JButton();
         jLabelHomeworkClass = new javax.swing.JLabel();
         jLabelHomeworkStatus = new javax.swing.JLabel();
         jScrollPaneAttachments = new javax.swing.JScrollPane();
         jPanelAttachments = new javax.swing.JPanel();
+        jLabelHomeworkDescription = new javax.swing.JLabel();
 
         setBackground(java.awt.Color.white);
         setMinimumSize(new java.awt.Dimension(1085, 630));
@@ -124,6 +122,7 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
         jScrollPaneUploadedFiles.setBorder(null);
         jScrollPaneUploadedFiles.setOpaque(false);
 
+        jPanelUploadedFiles.setToolTipText("Mis Archivos Adjuntos Para Enviar");
         jPanelUploadedFiles.setOpaque(false);
         jPanelUploadedFiles.setLayout(new javax.swing.BoxLayout(jPanelUploadedFiles, javax.swing.BoxLayout.PAGE_AXIS));
         jScrollPaneUploadedFiles.setViewportView(jPanelUploadedFiles);
@@ -149,15 +148,6 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
                 .addContainerGap())
         );
 
-        jScrollPaneHomeworkDescription.setBorder(null);
-        jScrollPaneHomeworkDescription.setOpaque(false);
-
-        jTextPaneHomeworkDescription.setEditable(false);
-        jTextPaneHomeworkDescription.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
-        jTextPaneHomeworkDescription.setText("Texto\nDe\nPrueba");
-        jTextPaneHomeworkDescription.setOpaque(false);
-        jScrollPaneHomeworkDescription.setViewportView(jTextPaneHomeworkDescription);
-
         jPanelHomeworkComments.setOpaque(false);
 
         jPanelSendComment.setOpaque(false);
@@ -169,10 +159,6 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
                 jTextFieldCommentKeyPressed(evt);
             }
         });
-
-        jComboBoxCommentType.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
-        jComboBoxCommentType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Público", "Privado" }));
-        jComboBoxCommentType.setToolTipText("Seleccionar Tipo De Comentario");
 
         jButtonSendComment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/send.png"))); // NOI18N
         jButtonSendComment.setToolTipText("Enviar Comentario");
@@ -195,10 +181,8 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
             jPanelSendCommentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSendCommentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldComment, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxCommentType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldComment, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonSendComment)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -207,9 +191,7 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSendCommentLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelSendCommentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanelSendCommentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBoxCommentType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonSendComment, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -217,6 +199,7 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
         jScrollPaneComments.setBorder(null);
         jScrollPaneComments.setOpaque(false);
 
+        jPanelComments.setToolTipText("Comentarios De La Tarea");
         jPanelComments.setOpaque(false);
         jPanelComments.setLayout(new javax.swing.BoxLayout(jPanelComments, javax.swing.BoxLayout.PAGE_AXIS));
         jScrollPaneComments.setViewportView(jPanelComments);
@@ -238,39 +221,39 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
                 .addGap(0, 0, 0))
         );
 
-        jButtonSendWork.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jButtonSendWork.setText("Enviar Trabajo");
-        jButtonSendWork.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonSendWork.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonSendHomework.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jButtonSendHomework.setText("Enviar Trabajo");
+        jButtonSendHomework.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSendHomework.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonSendWorkMouseClicked(evt);
+                jButtonSendHomeworkMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonSendWorkMouseEntered(evt);
+                jButtonSendHomeworkMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonSendWorkMouseExited(evt);
+                jButtonSendHomeworkMouseExited(evt);
             }
         });
 
-        jLabelDateTimeFinished.setFont(new java.awt.Font("Gadugi", 3, 18)); // NOI18N
-        jLabelDateTimeFinished.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDateTimeFinished.setText("Fecha & Hora De Entrega De La Tarea");
-        jLabelDateTimeFinished.setToolTipText("Fecha & Hora De Entrega");
+        jLabelHomeworkDueDate.setFont(new java.awt.Font("Gadugi", 3, 18)); // NOI18N
+        jLabelHomeworkDueDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelHomeworkDueDate.setText("Fecha & Hora De Entrega De La Tarea");
+        jLabelHomeworkDueDate.setToolTipText("Fecha & Hora De Entrega");
 
-        jButtonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jButtonRegresar.setToolTipText("Regresar A Mis Tareas");
-        jButtonRegresar.setBorder(null);
-        jButtonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonBackHomeworks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonBackHomeworks.setToolTipText("Regresar A Mis Tareas");
+        jButtonBackHomeworks.setBorder(null);
+        jButtonBackHomeworks.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBackHomeworks.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonRegresarMouseClicked(evt);
+                jButtonBackHomeworksMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonRegresarMouseEntered(evt);
+                jButtonBackHomeworksMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonRegresarMouseExited(evt);
+                jButtonBackHomeworksMouseExited(evt);
             }
         });
 
@@ -289,13 +272,18 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
         jLabelHomeworkStatus.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         jLabelHomeworkStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelHomeworkStatus.setText("Pendiente");
+        jLabelHomeworkStatus.setToolTipText("Estatus De La Tarea");
 
         jScrollPaneAttachments.setBorder(null);
         jScrollPaneAttachments.setOpaque(false);
 
+        jPanelAttachments.setToolTipText("Archivos Adjuntos");
         jPanelAttachments.setOpaque(false);
         jPanelAttachments.setLayout(new javax.swing.BoxLayout(jPanelAttachments, javax.swing.BoxLayout.LINE_AXIS));
         jScrollPaneAttachments.setViewportView(jPanelAttachments);
+
+        jLabelHomeworkDescription.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jLabelHomeworkDescription.setToolTipText("Descripción De La Tarea");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -303,24 +291,25 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelHomeworkComments, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPaneHomeworkDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelHomeworkClass, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelTeacherName, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonRegresar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelHomeworkName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPaneAttachments, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanelHomeworkComments, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabelHomeworkClass, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabelTeacherName, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButtonBackHomeworks)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabelHomeworkName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPaneAttachments, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelHomeworkDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelHomeworkStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelMyWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDateTimeFinished, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSendWork, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelHomeworkDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSendHomework, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -330,15 +319,15 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonBackHomeworks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelHomeworkName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelHomeworkClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelTeacherName))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPaneHomeworkDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelHomeworkDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPaneAttachments, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jPanelHomeworkComments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -347,31 +336,31 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanelMyWork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelDateTimeFinished)
+                        .addComponent(jLabelHomeworkDueDate)
                         .addGap(131, 131, 131)
-                        .addComponent(jButtonSendWork, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonSendHomework, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSendWorkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendWorkMouseClicked
+    private void jButtonSendHomeworkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendHomeworkMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
         }
-    }//GEN-LAST:event_jButtonSendWorkMouseClicked
+    }//GEN-LAST:event_jButtonSendHomeworkMouseClicked
 
-    private void jButtonSendWorkMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendWorkMouseEntered
+    private void jButtonSendHomeworkMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendHomeworkMouseEntered
         // TODO add your handling code here:
-        jButtonSendWork.setBackground(thirdColor);
-        jButtonSendWork.setForeground(thirdFontColor);
-    }//GEN-LAST:event_jButtonSendWorkMouseEntered
+        jButtonSendHomework.setBackground(thirdColor);
+        jButtonSendHomework.setForeground(thirdFontColor);
+    }//GEN-LAST:event_jButtonSendHomeworkMouseEntered
 
-    private void jButtonSendWorkMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendWorkMouseExited
+    private void jButtonSendHomeworkMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendHomeworkMouseExited
         // TODO add your handling code here:
-        jButtonSendWork.setBackground(secondColor);
-        jButtonSendWork.setForeground(secondFontColor);
-    }//GEN-LAST:event_jButtonSendWorkMouseExited
+        jButtonSendHomework.setBackground(secondColor);
+        jButtonSendHomework.setForeground(secondFontColor);
+    }//GEN-LAST:event_jButtonSendHomeworkMouseExited
 
     private void jButtonSendCommentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendCommentMouseClicked
         // TODO add your handling code here:
@@ -414,22 +403,22 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
         jButtonUploadFile.setForeground(secondFontColor);
     }//GEN-LAST:event_jButtonUploadFileMouseEntered
 
-    private void jButtonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseClicked
+    private void jButtonBackHomeworksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBackHomeworksMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             Student_Dashboard_Panel.showView("homeworksPanel");
         }
-    }//GEN-LAST:event_jButtonRegresarMouseClicked
+    }//GEN-LAST:event_jButtonBackHomeworksMouseClicked
 
-    private void jButtonRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseEntered
+    private void jButtonBackHomeworksMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBackHomeworksMouseEntered
         // TODO add your handling code here:
-        jButtonRegresar.setBackground(secondColor);
-    }//GEN-LAST:event_jButtonRegresarMouseEntered
+        jButtonBackHomeworks.setBackground(secondColor);
+    }//GEN-LAST:event_jButtonBackHomeworksMouseEntered
 
-    private void jButtonRegresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseExited
+    private void jButtonBackHomeworksMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBackHomeworksMouseExited
         // TODO add your handling code here:
-        jButtonRegresar.setBackground(thirdColor);
-    }//GEN-LAST:event_jButtonRegresarMouseExited
+        jButtonBackHomeworks.setBackground(thirdColor);
+    }//GEN-LAST:event_jButtonBackHomeworksMouseExited
 
     private void jLabelHomeworkClassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeworkClassMouseClicked
         // TODO add your handling code here:
@@ -481,13 +470,13 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonRegresar;
+    private javax.swing.JButton jButtonBackHomeworks;
     private javax.swing.JButton jButtonSendComment;
-    private javax.swing.JButton jButtonSendWork;
+    private javax.swing.JButton jButtonSendHomework;
     private javax.swing.JButton jButtonUploadFile;
-    private javax.swing.JComboBox<String> jComboBoxCommentType;
-    private javax.swing.JLabel jLabelDateTimeFinished;
     private javax.swing.JLabel jLabelHomeworkClass;
+    private javax.swing.JLabel jLabelHomeworkDescription;
+    private javax.swing.JLabel jLabelHomeworkDueDate;
     private javax.swing.JLabel jLabelHomeworkName;
     private javax.swing.JLabel jLabelHomeworkStatus;
     private javax.swing.JLabel jLabelTeacherName;
@@ -499,13 +488,12 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
     private javax.swing.JPanel jPanelUploadedFiles;
     private javax.swing.JScrollPane jScrollPaneAttachments;
     private javax.swing.JScrollPane jScrollPaneComments;
-    private javax.swing.JScrollPane jScrollPaneHomeworkDescription;
     private javax.swing.JScrollPane jScrollPaneUploadedFiles;
     private javax.swing.JTextField jTextFieldComment;
-    private javax.swing.JTextPane jTextPaneHomeworkDescription;
     // End of variables declaration//GEN-END:variables
 
-    public void colorMyComponents() {
+    @Override
+    public void ColorComponents() {
         
         jButtonUploadFile.setBackground(thirdColor);
         jButtonUploadFile.setForeground(thirdFontColor);
@@ -513,9 +501,6 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
         jTextFieldComment.setForeground(thirdFontColor);
         jTextFieldComment.setCaretColor(thirdFontColor);
         jTextFieldComment.setBackground(thirdColor);
-        
-        jComboBoxCommentType.setForeground(thirdFontColor);
-        jComboBoxCommentType.setBackground(thirdColor);
 
         jLabelHomeworkName.setForeground(secondFontColor);
         jLabelHomeworkName.setBackground(secondColor);
@@ -524,18 +509,15 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
 
         jLabelHomeworkClass.setForeground(fontColor);
 
-        jLabelDateTimeFinished.setForeground(fontColor);
+        jLabelHomeworkDueDate.setForeground(fontColor);
+        
+        jLabelHomeworkDescription.setForeground(fontColor);
+        jLabelHomeworkDescription.setText(MainFrame.ToHTMLLeftFormat(MainFrame.getFaker().lorem().paragraph(6)));
 
-        Locale mx = new Locale("es","MX");
-        Faker faker = new Faker(mx);
+        jButtonSendHomework.setBackground(secondColor);
+        jButtonSendHomework.setForeground(secondFontColor);
 
-        jTextPaneHomeworkDescription.setForeground(fontColor);
-        jTextPaneHomeworkDescription.setText(faker.lorem().paragraph(6));
-
-        jButtonSendWork.setBackground(secondColor);
-        jButtonSendWork.setForeground(secondFontColor);
-
-        jButtonRegresar.setBackground(thirdColor);
+        jButtonBackHomeworks.setBackground(thirdColor);
         
         jLabelHomeworkStatus.setForeground(fontColor);
 
@@ -547,14 +529,15 @@ public class Student_Homework_Panel extends javax.swing.JPanel implements Dispos
         jPanelMyWork.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(fontColor), "Mi Trabajo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 0, 18),fontColor));
         jPanelHomeworkComments.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(fontColor), "Comentarios De La Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 0, 18),fontColor));
         
-        for(int i = 0; i < 4; i++){
-            General_Attachment_Panel generalAttachmentPanel = new General_Attachment_Panel(fontColor, secondColor, secondFontColor);
+        General_Attachment_Panel generalAttachmentPanel;
+        for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1,10); i++){
+            generalAttachmentPanel = new General_Attachment_Panel(fontColor, secondColor, secondFontColor);
             jPanelAttachments.add(generalAttachmentPanel);
         }
     }
     
     @Override
-    public void dispose() {
+    public void Dispose() {
         jPanelComments.removeAll();
         jPanelUploadedFiles.removeAll();
     }

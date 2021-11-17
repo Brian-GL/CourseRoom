@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
@@ -699,8 +698,8 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
     private void jButtonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalirMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            MainFrame.showLogin();
-            this.dispose();
+            MainFrame.ShowLogin();
+            this.Dispose();
         }
     }//GEN-LAST:event_jButtonSalirMouseClicked
 
@@ -812,8 +811,8 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
                 MainFrame.setSecondFontColor(secondFontColor);
                 MainFrame.setThirdFontColor(thirdFontColor);
 
-                MainFrame.repainting();              
-                colorMyComponents();
+                MainFrame.Repainting();              
+                ColorComponents();
                 
             }
             
@@ -823,7 +822,7 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
             
     }
     
-    public static void colorMyComponents(){
+    public static void ColorComponents(){
         
         jButtonAcerca.setForeground(MainFrame.getSecondFontColor()); 
         jButtonAjustes.setForeground(MainFrame.getSecondFontColor());
@@ -854,26 +853,26 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         
         jLabelFechaHoraServidor.setForeground(MainFrame.getFontColor());
         jLabelUserName.setForeground(MainFrame.getFontColor());
-        infoProfilePanel.colorMyComponents();
-        editProfilePanel.colorMyComponents();
+        infoProfilePanel.ColorComponents();
+        editProfilePanel.ColorComponents();
         aboutPanel.colorMyComponents();
         chatsPanel.colorMyComponents();
-        homeworksPanel.colorMyComponents();
-        groupsPanel.colorMyComponents();
-        noticesPanel.colorMyComponents();
-        datesPanel.colorMyComponents();
-        configurationPanel.colorMyComponents();
-        coursesPanel.colorMyComponents();
+        homeworksPanel.ColorComponents();
+        groupsPanel.ColorComponents();
+        noticesPanel.ColorComponents();
+        datesPanel.ColorComponents();
+        configurationPanel.ColorComponents();
+        coursesPanel.ColorComponents();
     }
     
     @Override
-    public void dispose(){
-        homeworksPanel.dispose();
-        musicPanel.dispose();
-        chatsPanel.dispose();
-        noticesPanel.dispose();
-        datesPanel.dispose();
-        groupsPanel.dispose();
+    public void Dispose(){
+        homeworksPanel.Dispose();
+        musicPanel.Dispose();
+        chatsPanel.Dispose();
+        noticesPanel.Dispose();
+        datesPanel.Dispose();
+        groupsPanel.Dispose();
         
     }
     

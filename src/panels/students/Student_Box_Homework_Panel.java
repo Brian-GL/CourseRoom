@@ -35,28 +35,8 @@ public class Student_Box_Homework_Panel extends javax.swing.JPanel implements Co
     
     public Student_Box_Homework_Panel(String _id) {
         initComponents();
-         try {
-            
-            jLabelNombreTarea.setText(MainFrame.getFaker().book().title());
-            jLabelFechaDeEntrega.setText(MainFrame.getFaker().backToTheFuture().date());
-            jLabelTipoDeTarea.setText(MainFrame.getFaker().book().genre());
-            jLabelClaseDeLaTarea.setText(MainFrame.getFaker().book().publisher());
-            jLabelEstado.setText((MainFrame.getFaker().bool().bool()) ? "Entregada" : "No Entregada Aún");
-            this.id = _id;
-            System.out.println("Homework ID: "+_id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageURL = new URL("https://loremflickr.com/164/164/sunset,beach/all");
-            Image getImage = ImageIO.read(imageURL);
-            ImageIcon groupIcon = new ImageIcon(getImage);
-            jLabelFotoTarea.setIcon(groupIcon);
-            setColors(getImage);
-            homeworkPanel = new Student_Homework_Panel(jLabelNombreTarea.getText(),firstColor,secondColor,thirdColor,fontColor,secondFontColor,thirdFontColor);
-            Student_Dashboard_Panel.addView(homeworkPanel,id);
-            getImage.flush();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Student_Box_Homework_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Student_Box_Homework_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.id = _id;
+        InitComponents();
     }
 
     /**
@@ -183,7 +163,7 @@ public class Student_Box_Homework_Panel extends javax.swing.JPanel implements Co
 
     
     @Override
-    public void setColors(Image image){
+    public void SetColors(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());
@@ -282,6 +262,31 @@ public class Student_Box_Homework_Panel extends javax.swing.JPanel implements Co
             
         } catch (InterruptedException ex) {
             MainFrame.getLogger().log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void InitComponents(){
+        try {
+
+            jLabelNombreTarea.setText(MainFrame.getFaker().book().title());
+            jLabelFechaDeEntrega.setText(MainFrame.getFaker().backToTheFuture().date());
+            jLabelTipoDeTarea.setText(MainFrame.getFaker().book().genre());
+            jLabelClaseDeLaTarea.setText(MainFrame.getFaker().book().publisher());
+            jLabelEstado.setText((MainFrame.getFaker().bool().bool()) ? "Entregada" : "No Entregada Aún");
+            
+            System.out.println("Homework ID: " + this.id + " -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL imageURL = new URL("https://loremflickr.com/164/164/sunset,beach/all");
+            Image getImage = ImageIO.read(imageURL);
+            ImageIcon groupIcon = new ImageIcon(getImage);
+            jLabelFotoTarea.setIcon(groupIcon);
+            SetColors(getImage);
+            homeworkPanel = new Student_Homework_Panel(jLabelNombreTarea.getText(), firstColor, secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor);
+            Student_Dashboard_Panel.addView(homeworkPanel, id);
+            getImage.flush();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Student_Box_Homework_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Student_Box_Homework_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

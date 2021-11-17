@@ -28,10 +28,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPaneMisGrupos" pref="1073" max="32767" attributes="0"/>
+                  <Component id="jScrollPaneAllGroups" pref="1073" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jLabelGroupsTitle" min="-2" pref="169" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jComboBoxOrderBy" min="-2" pref="284" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -42,16 +43,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabelGroupsTitle" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabelGroupsTitle" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxOrderBy" min="-2" pref="62" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPaneMisGrupos" pref="528" max="32767" attributes="0"/>
+              <Component id="jScrollPaneAllGroups" pref="528" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="jScrollPaneMisGrupos">
+    <Container class="javax.swing.JScrollPane" name="jScrollPaneAllGroups">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -62,7 +66,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanelMisGrupos">
+        <Container class="javax.swing.JPanel" name="jPanelAllGroups">
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
@@ -90,6 +94,29 @@
           <Dimension value="[416, 84]"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxOrderBy">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Gadugi" size="17" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Fecha: M&#xe1;s Reciente"/>
+            <StringItem index="1" value="Fecha: Menos Reciente"/>
+            <StringItem index="2" value="Nombre: Ascendente"/>
+            <StringItem index="3" value="Nombre: Descendente"/>
+          </StringArray>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Ordenar Grupos Por"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="opaque" type="boolean" value="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

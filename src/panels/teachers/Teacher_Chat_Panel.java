@@ -540,7 +540,7 @@ public class Teacher_Chat_Panel extends javax.swing.JPanel implements DisposeInt
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose()  {
+    public void Dispose()  {
         jPanelChatCenter.removeAll();
     }
 }

@@ -9,6 +9,8 @@ import com.github.lgooddatepicker.components.DateTimePicker;
 import components.ImageFilePreview;
 import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
+import data.interfaces.ColorComponents;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -22,6 +24,8 @@ import java.util.logging.Level;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import panels.generals.General_Text_Message_Panel;
@@ -31,11 +35,12 @@ import panels.generals.General_Member_Panel;
  *
  * @author LENOVO
  */
-public class Student_Group_Panel extends javax.swing.JPanel implements DisposeInterface{
+public class Student_Group_Panel extends javax.swing.JPanel implements DisposeInterface, ColorComponents{
     
     private DateTimePicker dateTimePicker;
     private Color firstColor, secondColor,thirdColor,fontColor, secondFontColor, thirdFontColor;
-    
+    private JScrollPane jScrollPanePendingToDoList, jScrollPaneFinishedToDoList;
+    private JPanel jPanelPendingToDoList, jPanelFinishedToDoList;
    
     public Student_Group_Panel(Image image, String name, Color _firstColor, Color _secondColor, Color _thirdColor, Color _fontColor, Color _secondFontColor,Color _thirdFontColor ) {
         initComponents();
@@ -50,10 +55,12 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
         ImageIcon groupIcon = new ImageIcon(groupImage);
         
         jLabelGroupImage.setIcon(groupIcon);
-        jLabelEditarImagenGrupo.setIcon(groupIcon);
+        jLabelEditGroupImage.setIcon(groupIcon);
         groupImage.flush();
         
-        initMyComponents();
+        InitComponents();
+        
+        ColorComponents();
        
     }
 
@@ -72,47 +79,47 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
         jLabelGroupName = new javax.swing.JLabel();
         jScrollPaneMembers = new javax.swing.JScrollPane();
         jPanelMembers = new javax.swing.JPanel();
-        jLabelGroupClass = new javax.swing.JLabel();
-        jLabelFechaCreacion = new javax.swing.JLabel();
-        jLabelMiembros = new javax.swing.JLabel();
-        jButtonRegresar = new javax.swing.JButton();
+        jLabelGroupCourse = new javax.swing.JLabel();
+        jLabelCreationDate = new javax.swing.JLabel();
+        jLabelMembersTitle = new javax.swing.JLabel();
+        jButtonBackGroups = new javax.swing.JButton();
         jPanelGrupalChat = new javax.swing.JPanel();
         jScrollPaneChatsCenter = new javax.swing.JScrollPane();
         jPanelChatCenter = new javax.swing.JPanel();
         jPanelChatBottom = new javax.swing.JPanel();
         jTextFieldMessage = new javax.swing.JTextField();
-        jButtonEnviarTexto = new javax.swing.JButton();
-        jPanelArchivos = new javax.swing.JPanel();
-        jScrollPaneArchivosCompartidos = new javax.swing.JScrollPane();
-        jPanelArchivosCompartidos = new javax.swing.JPanel();
-        jButtonCompartirArchivo = new javax.swing.JButton();
-        jComboBoxOrdenarArchivosCompartidos = new javax.swing.JComboBox<>();
-        jLabelOrdenarPor = new javax.swing.JLabel();
-        jPanelPorHacer = new javax.swing.JPanel();
-        jScrollPaneListaTareasPendientes = new javax.swing.JScrollPane();
-        jPanelListaDeTareasPendientes = new javax.swing.JPanel();
-        jLabelListaTareasPendientes = new javax.swing.JLabel();
-        jPanelAgregarPendiente = new javax.swing.JPanel();
-        jLabelNombreTareaPendiente = new javax.swing.JLabel();
-        jButtonAgregarTareaPendiente = new javax.swing.JButton();
-        jLabelFechaFinalizacion = new javax.swing.JLabel();
-        jLabelDescripcion = new javax.swing.JLabel();
-        jComboBoxMiembros = new javax.swing.JComboBox<>();
-        jPanelFechaFinalizacion = new javax.swing.JPanel();
-        jTextFieldNombreTareaPendiente = new javax.swing.JTextField();
-        jScrollPaneDescripcionTareaPendiente = new javax.swing.JScrollPane();
-        jTextAreaDescripcionTareaPendiente = new javax.swing.JTextArea();
-        jLabelMiembroACargo = new javax.swing.JLabel();
-        jPanelConfiguraciones = new javax.swing.JPanel();
-        jButtonEditarImagenGrupo = new javax.swing.JButton();
-        jTextFieldEditarNombreGrupo = new javax.swing.JTextField();
+        jButtonSendMessage = new javax.swing.JButton();
+        jPanelSharedFiles = new javax.swing.JPanel();
+        jScrollPaneAllSharedFiles = new javax.swing.JScrollPane();
+        jPanelAllSharedFiles = new javax.swing.JPanel();
+        jButtonShareFile = new javax.swing.JButton();
+        jComboBoxOrderSharedFiles = new javax.swing.JComboBox<>();
+        jLabelOrderBy = new javax.swing.JLabel();
+        jPanelToDo = new javax.swing.JPanel();
+        jLabelToDoTitle = new javax.swing.JLabel();
+        jPanelAddToDo = new javax.swing.JPanel();
+        jLabelToDoName = new javax.swing.JLabel();
+        jButtonAddToDo = new javax.swing.JButton();
+        jLabelToDoDueDate = new javax.swing.JLabel();
+        jLabelToDoDescription = new javax.swing.JLabel();
+        jComboBoxMembers = new javax.swing.JComboBox<>();
+        jPanelToDoDueDate = new javax.swing.JPanel();
+        jTextFieldToDoName = new javax.swing.JTextField();
+        jScrollPaneToDoDescription = new javax.swing.JScrollPane();
+        jTextAreaToDoDescription = new javax.swing.JTextArea();
+        jLabelMemberCharge = new javax.swing.JLabel();
+        jComboBoxShowToDoByType = new javax.swing.JComboBox<>();
+        jPanelAllToDoList = new javax.swing.JPanel();
+        jPanelSettings = new javax.swing.JPanel();
+        jButtonEditGroupImage = new javax.swing.JButton();
+        jTextFieldEditGroupName = new javax.swing.JTextField();
         jLabelEditarNombreGrupo = new javax.swing.JLabel();
-        jLabelEditarImagenGrupo = new javax.swing.JLabel();
+        jLabelEditGroupImage = new javax.swing.JLabel();
         jLabelEliminarMiembro = new javax.swing.JLabel();
-        jComboBoxEliminarMiembro = new javax.swing.JComboBox<>();
-        jButtonEditarNombreGrupo = new javax.swing.JButton();
-        jButtonEliminarMiembro = new javax.swing.JButton();
-        jButtonAbandonarGrupo = new javax.swing.JButton();
+        jComboBoxRemoveMember = new javax.swing.JComboBox<>();
+        jButtonEditGroupName = new javax.swing.JButton();
+        jButtonRemoveMember = new javax.swing.JButton();
+        jButtonLeaveGroup = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
@@ -121,6 +128,9 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
 
         jTabbedPaneGrouping.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
 
+        jPanelAboutGroup.setToolTipText("");
+
+        jLabelGroupImage.setToolTipText("Imagen Del Grupo");
         jLabelGroupImage.setPreferredSize(new java.awt.Dimension(440, 440));
 
         jLabelGroupName.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
@@ -136,48 +146,49 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
         jScrollPaneMembers.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPaneMembers.setOpaque(false);
 
+        jPanelMembers.setToolTipText("Miembros Del Grupo");
         jPanelMembers.setOpaque(false);
         jPanelMembers.setLayout(new javax.swing.BoxLayout(jPanelMembers, javax.swing.BoxLayout.PAGE_AXIS));
         jScrollPaneMembers.setViewportView(jPanelMembers);
 
-        jLabelGroupClass.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabelGroupClass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelGroupClass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/teacher.png"))); // NOI18N
-        jLabelGroupClass.setText("De La Clase Sistemas Operativos");
-        jLabelGroupClass.setToolTipText("Clase De Proveniencia");
-        jLabelGroupClass.setOpaque(true);
-        jLabelGroupClass.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelGroupCourse.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jLabelGroupCourse.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelGroupCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/teacher.png"))); // NOI18N
+        jLabelGroupCourse.setText("Del Curso Sistemas Operativos");
+        jLabelGroupCourse.setToolTipText("Curso De Proveniencia Del Grupo");
+        jLabelGroupCourse.setOpaque(true);
+        jLabelGroupCourse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelGroupClassMouseClicked(evt);
+                jLabelGroupCourseMouseClicked(evt);
             }
         });
 
-        jLabelFechaCreacion.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jLabelFechaCreacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelFechaCreacion.setText("Creado El 22 De Octubre De 2021");
-        jLabelFechaCreacion.setToolTipText("Fecha De Creación Del Grupo");
+        jLabelCreationDate.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jLabelCreationDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCreationDate.setText("Creado El 22 De Octubre De 2021");
+        jLabelCreationDate.setToolTipText("Fecha De Creación Del Grupo");
 
-        jLabelMiembros.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
-        jLabelMiembros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelMiembros.setText("Miembros");
-        jLabelMiembros.setMaximumSize(new java.awt.Dimension(416, 84));
-        jLabelMiembros.setMinimumSize(new java.awt.Dimension(416, 84));
-        jLabelMiembros.setOpaque(true);
-        jLabelMiembros.setPreferredSize(new java.awt.Dimension(416, 84));
+        jLabelMembersTitle.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
+        jLabelMembersTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMembersTitle.setText("Miembros");
+        jLabelMembersTitle.setMaximumSize(new java.awt.Dimension(416, 84));
+        jLabelMembersTitle.setMinimumSize(new java.awt.Dimension(416, 84));
+        jLabelMembersTitle.setOpaque(true);
+        jLabelMembersTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
-        jButtonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
-        jButtonRegresar.setToolTipText("Regresar A Mis Grupos");
-        jButtonRegresar.setBorder(null);
-        jButtonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonBackGroups.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/reply.png"))); // NOI18N
+        jButtonBackGroups.setToolTipText("Regresar A Mis Grupos");
+        jButtonBackGroups.setBorder(null);
+        jButtonBackGroups.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBackGroups.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonRegresarMouseClicked(evt);
+                jButtonBackGroupsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonRegresarMouseEntered(evt);
+                jButtonBackGroupsMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonRegresarMouseExited(evt);
+                jButtonBackGroupsMouseExited(evt);
             }
         });
 
@@ -189,20 +200,20 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
                 .addContainerGap()
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                        .addComponent(jButtonRegresar)
+                        .addComponent(jButtonBackGroups)
                         .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jLabelFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelCreationDate, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabelGroupName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelGroupClass, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabelGroupCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabelGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPaneMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabelMembersTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(32, 32, 32))
         );
         jPanelAboutGroupLayout.setVerticalGroup(
@@ -211,20 +222,20 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
                 .addContainerGap()
                 .addGroup(jPanelAboutGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
-                        .addComponent(jLabelMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelMembersTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addComponent(jScrollPaneMembers)
                         .addGap(19, 19, 19)
-                        .addComponent(jLabelFechaCreacion))
+                        .addComponent(jLabelCreationDate))
                     .addGroup(jPanelAboutGroupLayout.createSequentialGroup()
                         .addGap(0, 15, Short.MAX_VALUE)
                         .addComponent(jLabelGroupName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelGroupClass)
+                        .addComponent(jLabelGroupCourse)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 19, Short.MAX_VALUE)
-                        .addComponent(jButtonRegresar)))
+                        .addComponent(jButtonBackGroups)))
                 .addContainerGap())
         );
 
@@ -239,25 +250,26 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
         jPanelChatBottom.setMinimumSize(new java.awt.Dimension(1085, 70));
 
         jTextFieldMessage.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
-        jTextFieldMessage.setToolTipText("Redactar Mensaje");
+        jTextFieldMessage.setToolTipText("Redacta Tu Mensaje");
         jTextFieldMessage.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldMessageKeyPressed(evt);
             }
         });
 
-        jButtonEnviarTexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/send.png"))); // NOI18N
-        jButtonEnviarTexto.setBorder(null);
-        jButtonEnviarTexto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonEnviarTexto.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonSendMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/send.png"))); // NOI18N
+        jButtonSendMessage.setToolTipText("Enviar Mensaje");
+        jButtonSendMessage.setBorder(null);
+        jButtonSendMessage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSendMessage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonEnviarTextoMouseClicked(evt);
+                jButtonSendMessageMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonEnviarTextoMouseEntered(evt);
+                jButtonSendMessageMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonEnviarTextoMouseExited(evt);
+                jButtonSendMessageMouseExited(evt);
             }
         });
 
@@ -269,7 +281,7 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
                 .addContainerGap()
                 .addComponent(jTextFieldMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 1021, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonEnviarTexto, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addComponent(jButtonSendMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelChatBottomLayout.setVerticalGroup(
@@ -277,7 +289,7 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
             .addGroup(jPanelChatBottomLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(jPanelChatBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonEnviarTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonSendMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -301,326 +313,341 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
 
         jTabbedPaneGrouping.addTab("Chat Grupal", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/group_3.png")), jPanelGrupalChat); // NOI18N
 
-        jScrollPaneArchivosCompartidos.setBorder(null);
-        jScrollPaneArchivosCompartidos.setOpaque(false);
+        jScrollPaneAllSharedFiles.setBorder(null);
+        jScrollPaneAllSharedFiles.setOpaque(false);
 
-        jPanelArchivosCompartidos.setOpaque(false);
-        jPanelArchivosCompartidos.setLayout(new javax.swing.BoxLayout(jPanelArchivosCompartidos, javax.swing.BoxLayout.PAGE_AXIS));
-        jScrollPaneArchivosCompartidos.setViewportView(jPanelArchivosCompartidos);
+        jPanelAllSharedFiles.setOpaque(false);
+        jPanelAllSharedFiles.setLayout(new javax.swing.BoxLayout(jPanelAllSharedFiles, javax.swing.BoxLayout.PAGE_AXIS));
+        jScrollPaneAllSharedFiles.setViewportView(jPanelAllSharedFiles);
 
-        jButtonCompartirArchivo.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jButtonCompartirArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/submit.png"))); // NOI18N
-        jButtonCompartirArchivo.setText("Compartir Archivo");
-        jButtonCompartirArchivo.setToolTipText("Compartir Y Subir Archivo");
-        jButtonCompartirArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonShareFile.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jButtonShareFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/submit.png"))); // NOI18N
+        jButtonShareFile.setText("Compartir Archivo");
+        jButtonShareFile.setToolTipText("Compartir Y Subir Archivo");
+        jButtonShareFile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonCompartirArchivoMouseClicked(evt);
+                jButtonShareFileMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonCompartirArchivoMouseEntered(evt);
+                jButtonShareFileMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonCompartirArchivoMouseExited(evt);
+                jButtonShareFileMouseExited(evt);
             }
         });
 
-        jComboBoxOrdenarArchivosCompartidos.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jComboBoxOrdenarArchivosCompartidos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Tipo", "Fecha", "Miembro" }));
+        jComboBoxOrderSharedFiles.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jComboBoxOrderSharedFiles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Tipo", "Fecha", "Miembro" }));
 
-        jLabelOrdenarPor.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jLabelOrdenarPor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelOrdenarPor.setText("Ordenar Por");
+        jLabelOrderBy.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabelOrderBy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelOrderBy.setText("Ordenar Por");
 
-        javax.swing.GroupLayout jPanelArchivosLayout = new javax.swing.GroupLayout(jPanelArchivos);
-        jPanelArchivos.setLayout(jPanelArchivosLayout);
-        jPanelArchivosLayout.setHorizontalGroup(
-            jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelArchivosLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelSharedFilesLayout = new javax.swing.GroupLayout(jPanelSharedFiles);
+        jPanelSharedFiles.setLayout(jPanelSharedFilesLayout);
+        jPanelSharedFilesLayout.setHorizontalGroup(
+            jPanelSharedFilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSharedFilesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneArchivosCompartidos)
-                    .addGroup(jPanelArchivosLayout.createSequentialGroup()
-                        .addComponent(jLabelOrdenarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelSharedFilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneAllSharedFiles)
+                    .addGroup(jPanelSharedFilesLayout.createSequentialGroup()
+                        .addComponent(jLabelOrderBy, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxOrdenarArchivosCompartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxOrderSharedFiles, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 566, Short.MAX_VALUE)
-                        .addComponent(jButtonCompartirArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonShareFile, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanelArchivosLayout.setVerticalGroup(
-            jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelArchivosLayout.createSequentialGroup()
+        jPanelSharedFilesLayout.setVerticalGroup(
+            jPanelSharedFilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSharedFilesLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCompartirArchivo)
-                    .addComponent(jComboBoxOrdenarArchivosCompartidos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelOrdenarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelSharedFilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonShareFile)
+                    .addComponent(jComboBoxOrderSharedFiles, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelOrderBy, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneArchivosCompartidos, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                .addComponent(jScrollPaneAllSharedFiles, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPaneGrouping.addTab("Archivos", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/file-upload.png")), jPanelArchivos); // NOI18N
+        jTabbedPaneGrouping.addTab("Archivos", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/file-upload.png")), jPanelSharedFiles); // NOI18N
 
-        jScrollPaneListaTareasPendientes.setBorder(null);
-        jScrollPaneListaTareasPendientes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPaneListaTareasPendientes.setOpaque(false);
+        jLabelToDoTitle.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
+        jLabelToDoTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelToDoTitle.setText("Lista De Tareas Pendientes");
+        jLabelToDoTitle.setMaximumSize(new java.awt.Dimension(416, 84));
+        jLabelToDoTitle.setMinimumSize(new java.awt.Dimension(416, 84));
+        jLabelToDoTitle.setOpaque(true);
+        jLabelToDoTitle.setPreferredSize(new java.awt.Dimension(416, 84));
 
-        jPanelListaDeTareasPendientes.setOpaque(false);
-        jPanelListaDeTareasPendientes.setLayout(new javax.swing.BoxLayout(jPanelListaDeTareasPendientes, javax.swing.BoxLayout.PAGE_AXIS));
-        jScrollPaneListaTareasPendientes.setViewportView(jPanelListaDeTareasPendientes);
+        jPanelAddToDo.setOpaque(false);
 
-        jLabelListaTareasPendientes.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
-        jLabelListaTareasPendientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelListaTareasPendientes.setText("Lista De Tareas Pendientes");
-        jLabelListaTareasPendientes.setMaximumSize(new java.awt.Dimension(416, 84));
-        jLabelListaTareasPendientes.setMinimumSize(new java.awt.Dimension(416, 84));
-        jLabelListaTareasPendientes.setOpaque(true);
-        jLabelListaTareasPendientes.setPreferredSize(new java.awt.Dimension(416, 84));
+        jLabelToDoName.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabelToDoName.setText("Nombre Del Pendiente");
 
-        jPanelAgregarPendiente.setOpaque(false);
-
-        jLabelNombreTareaPendiente.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelNombreTareaPendiente.setText("Nombre Del Pendiente");
-
-        jButtonAgregarTareaPendiente.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jButtonAgregarTareaPendiente.setText("Agregar Tarea Pendiente");
-        jButtonAgregarTareaPendiente.setActionCommand("Agregar Pendiente");
-        jButtonAgregarTareaPendiente.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonAddToDo.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jButtonAddToDo.setText("Agregar Tarea Pendiente");
+        jButtonAddToDo.setToolTipText("Agregar Tarea Pendiente");
+        jButtonAddToDo.setActionCommand("Agregar Pendiente");
+        jButtonAddToDo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonAgregarTareaPendienteMouseClicked(evt);
+                jButtonAddToDoMouseClicked(evt);
             }
         });
 
-        jLabelFechaFinalizacion.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelFechaFinalizacion.setText("Fecha De Finalización");
+        jLabelToDoDueDate.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabelToDoDueDate.setText("Fecha De Finalización");
 
-        jLabelDescripcion.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelDescripcion.setText("Descripción");
+        jLabelToDoDescription.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabelToDoDescription.setText("Descripción");
 
-        jComboBoxMiembros.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jComboBoxMembers.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
 
-        jPanelFechaFinalizacion.setOpaque(false);
-        jPanelFechaFinalizacion.setLayout(new java.awt.CardLayout());
+        jPanelToDoDueDate.setToolTipText("Fecha Posible De Terminación De La Tarea Pendiente");
+        jPanelToDoDueDate.setOpaque(false);
+        jPanelToDoDueDate.setLayout(new java.awt.CardLayout());
 
-        jTextFieldNombreTareaPendiente.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jTextFieldToDoName.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
 
-        jTextAreaDescripcionTareaPendiente.setColumns(20);
-        jTextAreaDescripcionTareaPendiente.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jTextAreaDescripcionTareaPendiente.setRows(5);
-        jScrollPaneDescripcionTareaPendiente.setViewportView(jTextAreaDescripcionTareaPendiente);
+        jTextAreaToDoDescription.setColumns(20);
+        jTextAreaToDoDescription.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jTextAreaToDoDescription.setRows(5);
+        jTextAreaToDoDescription.setToolTipText("Ingresa Aquí La Descripción De La Tarea Pendiente");
+        jScrollPaneToDoDescription.setViewportView(jTextAreaToDoDescription);
 
-        jLabelMiembroACargo.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabelMiembroACargo.setText("Miembro A Cargo");
+        jLabelMemberCharge.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabelMemberCharge.setText("Miembro A Cargo");
 
-        javax.swing.GroupLayout jPanelAgregarPendienteLayout = new javax.swing.GroupLayout(jPanelAgregarPendiente);
-        jPanelAgregarPendiente.setLayout(jPanelAgregarPendienteLayout);
-        jPanelAgregarPendienteLayout.setHorizontalGroup(
-            jPanelAgregarPendienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAgregarPendienteLayout.createSequentialGroup()
-                .addGroup(jPanelAgregarPendienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldNombreTareaPendiente)
-                    .addComponent(jLabelNombreTareaPendiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelMiembroACargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxMiembros, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneDescripcionTareaPendiente, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                    .addComponent(jLabelFechaFinalizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelFechaFinalizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonAgregarTareaPendiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanelAddToDoLayout = new javax.swing.GroupLayout(jPanelAddToDo);
+        jPanelAddToDo.setLayout(jPanelAddToDoLayout);
+        jPanelAddToDoLayout.setHorizontalGroup(
+            jPanelAddToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddToDoLayout.createSequentialGroup()
+                .addGroup(jPanelAddToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldToDoName)
+                    .addComponent(jLabelToDoName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelMemberCharge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxMembers, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelToDoDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneToDoDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                    .addComponent(jLabelToDoDueDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelToDoDueDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAddToDo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanelAgregarPendienteLayout.setVerticalGroup(
-            jPanelAgregarPendienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAgregarPendienteLayout.createSequentialGroup()
+        jPanelAddToDoLayout.setVerticalGroup(
+            jPanelAddToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddToDoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelMiembroACargo)
+                .addComponent(jLabelMemberCharge)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxMiembros, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelNombreTareaPendiente)
+                .addComponent(jLabelToDoName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldNombreTareaPendiente, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldToDoName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelDescripcion)
+                .addComponent(jLabelToDoDescription)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneDescripcionTareaPendiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneToDoDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelFechaFinalizacion)
+                .addComponent(jLabelToDoDueDate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelFechaFinalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelToDoDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonAgregarTareaPendiente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonAddToDo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanelPorHacerLayout = new javax.swing.GroupLayout(jPanelPorHacer);
-        jPanelPorHacer.setLayout(jPanelPorHacerLayout);
-        jPanelPorHacerLayout.setHorizontalGroup(
-            jPanelPorHacerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPorHacerLayout.createSequentialGroup()
+        jComboBoxShowToDoByType.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        jComboBoxShowToDoByType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendientes", "Finalizadas" }));
+        jComboBoxShowToDoByType.setToolTipText("Mostrar Lista De Tareas Pendientes O Finalizadas");
+        jComboBoxShowToDoByType.setBorder(null);
+        jComboBoxShowToDoByType.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxShowToDoByTypeItemStateChanged(evt);
+            }
+        });
+
+        jPanelAllToDoList.setOpaque(false);
+        jPanelAllToDoList.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout jPanelToDoLayout = new javax.swing.GroupLayout(jPanelToDo);
+        jPanelToDo.setLayout(jPanelToDoLayout);
+        jPanelToDoLayout.setHorizontalGroup(
+            jPanelToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelToDoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelAgregarPendiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelAddToDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelPorHacerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelListaTareasPendientes, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneListaTareasPendientes))
+                .addGroup(jPanelToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelToDoLayout.createSequentialGroup()
+                        .addComponent(jLabelToDoTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                        .addComponent(jComboBoxShowToDoByType, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelAllToDoList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanelPorHacerLayout.setVerticalGroup(
-            jPanelPorHacerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPorHacerLayout.createSequentialGroup()
+        jPanelToDoLayout.setVerticalGroup(
+            jPanelToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelToDoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelPorHacerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPorHacerLayout.createSequentialGroup()
-                        .addComponent(jLabelListaTareasPendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelToDoLayout.createSequentialGroup()
+                        .addGroup(jPanelToDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelToDoTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxShowToDoByType))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPaneListaTareasPendientes))
-                    .addGroup(jPanelPorHacerLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanelAgregarPendiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jPanelAllToDoList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelToDoLayout.createSequentialGroup()
+                        .addGap(0, 77, Short.MAX_VALUE)
+                        .addComponent(jPanelAddToDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 73, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jTabbedPaneGrouping.addTab("Pendientes", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/daily-tasks.png")), jPanelPorHacer); // NOI18N
+        jTabbedPaneGrouping.addTab("Pendientes", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/daily-tasks.png")), jPanelToDo); // NOI18N
 
-        jButtonEditarImagenGrupo.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
-        jButtonEditarImagenGrupo.setText("Cambiar Imagen");
-        jButtonEditarImagenGrupo.setToolTipText("<html>Click Para Cargar La Foto Del Grupo Desde Tu Ordenador.<br><b>NOTA: LA IMAGEN DE PERFIL TENDRÁ UNA RESOLUCIÓN DE 250x250 px.</b></html>");
-        jButtonEditarImagenGrupo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonEditarImagenGrupo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonEditarImagenGrupo.setMaximumSize(new java.awt.Dimension(400, 40));
-        jButtonEditarImagenGrupo.setMinimumSize(new java.awt.Dimension(400, 40));
-        jButtonEditarImagenGrupo.setPreferredSize(new java.awt.Dimension(400, 40));
-        jButtonEditarImagenGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonEditGroupImage.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
+        jButtonEditGroupImage.setText("Cambiar Imagen");
+        jButtonEditGroupImage.setToolTipText("Cambiar Imagen Del Grupo");
+        jButtonEditGroupImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonEditGroupImage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonEditGroupImage.setMaximumSize(new java.awt.Dimension(400, 40));
+        jButtonEditGroupImage.setMinimumSize(new java.awt.Dimension(400, 40));
+        jButtonEditGroupImage.setPreferredSize(new java.awt.Dimension(400, 40));
+        jButtonEditGroupImage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonEditarImagenGrupoMouseClicked(evt);
+                jButtonEditGroupImageMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonEditarImagenGrupoMouseEntered(evt);
+                jButtonEditGroupImageMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonEditarImagenGrupoMouseExited(evt);
+                jButtonEditGroupImageMouseExited(evt);
             }
         });
 
-        jTextFieldEditarNombreGrupo.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jTextFieldEditarNombreGrupo.setText("Nombre Del Grupo");
+        jTextFieldEditGroupName.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jTextFieldEditGroupName.setText("Nombre Del Grupo");
 
         jLabelEditarNombreGrupo.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelEditarNombreGrupo.setText("Nombre Del Grupo");
 
-        jLabelEditarImagenGrupo.setMaximumSize(new java.awt.Dimension(440, 440));
-        jLabelEditarImagenGrupo.setMinimumSize(new java.awt.Dimension(440, 440));
-        jLabelEditarImagenGrupo.setPreferredSize(new java.awt.Dimension(440, 440));
+        jLabelEditGroupImage.setMaximumSize(new java.awt.Dimension(440, 440));
+        jLabelEditGroupImage.setMinimumSize(new java.awt.Dimension(440, 440));
+        jLabelEditGroupImage.setPreferredSize(new java.awt.Dimension(440, 440));
 
         jLabelEliminarMiembro.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabelEliminarMiembro.setText("Eliminar Miembro");
 
-        jComboBoxEliminarMiembro.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jComboBoxRemoveMember.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
 
-        jButtonEditarNombreGrupo.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jButtonEditarNombreGrupo.setText("Editar");
-        jButtonEditarNombreGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonEditGroupName.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jButtonEditGroupName.setText("Editar");
+        jButtonEditGroupName.setToolTipText("Editar Nombre Del Grupo");
+        jButtonEditGroupName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonEditarNombreGrupoMouseClicked(evt);
+                jButtonEditGroupNameMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonEditarNombreGrupoMouseEntered(evt);
+                jButtonEditGroupNameMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonEditarNombreGrupoMouseExited(evt);
+                jButtonEditGroupNameMouseExited(evt);
             }
         });
 
-        jButtonEliminarMiembro.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jButtonEliminarMiembro.setText("Eliminar");
-        jButtonEliminarMiembro.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonRemoveMember.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jButtonRemoveMember.setText("Eliminar");
+        jButtonRemoveMember.setToolTipText("Eliminar Miembro Del Grupo");
+        jButtonRemoveMember.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonEliminarMiembroMouseClicked(evt);
+                jButtonRemoveMemberMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonEliminarMiembroMouseEntered(evt);
+                jButtonRemoveMemberMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonEliminarMiembroMouseExited(evt);
+                jButtonRemoveMemberMouseExited(evt);
             }
         });
 
-        jButtonAbandonarGrupo.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
-        jButtonAbandonarGrupo.setText("Abandonar Grupo");
-        jButtonAbandonarGrupo.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
-        jButtonAbandonarGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonLeaveGroup.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
+        jButtonLeaveGroup.setText("Abandonar Grupo");
+        jButtonLeaveGroup.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
+        jButtonLeaveGroup.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonAbandonarGrupoMouseClicked(evt);
+                jButtonLeaveGroupMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonAbandonarGrupoMouseEntered(evt);
+                jButtonLeaveGroupMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonAbandonarGrupoMouseExited(evt);
+                jButtonLeaveGroupMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanelConfiguracionesLayout = new javax.swing.GroupLayout(jPanelConfiguraciones);
-        jPanelConfiguraciones.setLayout(jPanelConfiguracionesLayout);
-        jPanelConfiguracionesLayout.setHorizontalGroup(
-            jPanelConfiguracionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConfiguracionesLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelSettingsLayout = new javax.swing.GroupLayout(jPanelSettings);
+        jPanelSettings.setLayout(jPanelSettingsLayout);
+        jPanelSettingsLayout.setHorizontalGroup(
+            jPanelSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSettingsLayout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addGroup(jPanelConfiguracionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelConfiguracionesLayout.createSequentialGroup()
-                        .addGroup(jPanelConfiguracionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelConfiguracionesLayout.createSequentialGroup()
-                                .addComponent(jComboBoxEliminarMiembro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelSettingsLayout.createSequentialGroup()
+                        .addGroup(jPanelSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelSettingsLayout.createSequentialGroup()
+                                .addComponent(jComboBoxRemoveMember, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(jPanelConfiguracionesLayout.createSequentialGroup()
-                                .addComponent(jTextFieldEditarNombreGrupo)
+                            .addGroup(jPanelSettingsLayout.createSequentialGroup()
+                                .addComponent(jTextFieldEditGroupName)
                                 .addGap(6, 6, 6)))
-                        .addGroup(jPanelConfiguracionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonEditarNombreGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEliminarMiembro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jButtonAbandonarGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+                        .addGroup(jPanelSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonEditGroupName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonRemoveMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButtonLeaveGroup, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
                     .addComponent(jLabelEditarNombreGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelEliminarMiembro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(62, 62, 62)
-                .addGroup(jPanelConfiguracionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonEditarImagenGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelEditarImagenGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonEditGroupImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelEditGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50))
         );
-        jPanelConfiguracionesLayout.setVerticalGroup(
-            jPanelConfiguracionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConfiguracionesLayout.createSequentialGroup()
+        jPanelSettingsLayout.setVerticalGroup(
+            jPanelSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSettingsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelConfiguracionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelEditarImagenGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelConfiguracionesLayout.createSequentialGroup()
+                .addGroup(jPanelSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelEditGroupImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelSettingsLayout.createSequentialGroup()
                         .addComponent(jLabelEditarNombreGrupo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelConfiguracionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonEditarNombreGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldEditarNombreGrupo))
+                        .addGroup(jPanelSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonEditGroupName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldEditGroupName))
                         .addGap(18, 18, 18)
                         .addComponent(jLabelEliminarMiembro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelConfiguracionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonEliminarMiembro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxEliminarMiembro, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))))
+                        .addGroup(jPanelSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonRemoveMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxRemoveMember, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelConfiguracionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonEditarImagenGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonAbandonarGrupo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonEditGroupImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonLeaveGroup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPaneGrouping.addTab("Configuraciones", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit-tool.png")), jPanelConfiguraciones); // NOI18N
+        jTabbedPaneGrouping.addTab("Configuraciones", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit-tool.png")), jPanelSettings); // NOI18N
 
         add(jTabbedPaneGrouping, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonEditarImagenGrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarImagenGrupoMouseClicked
+    private void jButtonEditGroupImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditGroupImageMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
 
@@ -638,10 +665,10 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
 
                 try {
                     Image openImage = ImageIO.read(file);
-                    int large = jLabelEditarImagenGrupo.getHeight();
+                    int large = jLabelEditGroupImage.getHeight();
                     ImageIcon autenticacionIcon = new ImageIcon(openImage.getScaledInstance(large,large,Image.SCALE_SMOOTH));
 
-                    jLabelEditarImagenGrupo.setIcon(autenticacionIcon);
+                    jLabelEditGroupImage.setIcon(autenticacionIcon);
 
                     Student_Dashboard_Panel.setUserImage(autenticacionIcon.getImage());
                     openImage.flush();
@@ -652,34 +679,34 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
             }
 
         }
-    }//GEN-LAST:event_jButtonEditarImagenGrupoMouseClicked
+    }//GEN-LAST:event_jButtonEditGroupImageMouseClicked
 
-    private void jButtonEditarImagenGrupoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarImagenGrupoMouseEntered
+    private void jButtonEditGroupImageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditGroupImageMouseEntered
         // TODO add your handling code here:
-        jButtonEditarImagenGrupo.setBackground(secondColor);
-        jButtonEditarImagenGrupo.setForeground(secondFontColor);
-    }//GEN-LAST:event_jButtonEditarImagenGrupoMouseEntered
+        jButtonEditGroupImage.setBackground(secondColor);
+        jButtonEditGroupImage.setForeground(secondFontColor);
+    }//GEN-LAST:event_jButtonEditGroupImageMouseEntered
 
-    private void jButtonEditarImagenGrupoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarImagenGrupoMouseExited
+    private void jButtonEditGroupImageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditGroupImageMouseExited
         // TODO add your handling code here:
-        jButtonEditarImagenGrupo.setBackground(thirdColor);
-        jButtonEditarImagenGrupo.setForeground(thirdFontColor);
-    }//GEN-LAST:event_jButtonEditarImagenGrupoMouseExited
+        jButtonEditGroupImage.setBackground(thirdColor);
+        jButtonEditGroupImage.setForeground(thirdFontColor);
+    }//GEN-LAST:event_jButtonEditGroupImageMouseExited
 
-    private void jLabelGroupClassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGroupClassMouseClicked
+    private void jLabelGroupCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGroupCourseMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
         }
-    }//GEN-LAST:event_jLabelGroupClassMouseClicked
+    }//GEN-LAST:event_jLabelGroupCourseMouseClicked
 
-    private void jButtonAgregarTareaPendienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarTareaPendienteMouseClicked
+    private void jButtonAddToDoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddToDoMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            General_Member_Panel memberPanel = (General_Member_Panel)jPanelMembers.getComponent(jComboBoxMiembros.getSelectedIndex());
-            String todo_name = jTextFieldNombreTareaPendiente.getText();
-            String todo_description = jTextAreaDescripcionTareaPendiente.getText();
+            General_Member_Panel memberPanel = (General_Member_Panel)jPanelMembers.getComponent(jComboBoxMembers.getSelectedIndex());
+            String todo_name = jTextFieldToDoName.getText();
+            String todo_description = jTextAreaToDoDescription.getText();
             String todo_datetime = dateTimePicker.getDatePicker().getDateStringOrEmptyString() + " - " +dateTimePicker.getTimePicker().getTimeStringOrEmptyString();
             
             if(!todo_name.isEmpty() && !todo_name.isBlank() && 
@@ -689,97 +716,100 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
                         memberPanel.getSecondColor(),memberPanel.getSecondFontColor(),
                 todo_name,todo_description,todo_datetime,memberPanel.getFullName());
 
-                jPanelListaDeTareasPendientes.add(toDoPanel);
+                jPanelPendingToDoList.add(toDoPanel);
             }
             
         }
-    }//GEN-LAST:event_jButtonAgregarTareaPendienteMouseClicked
+    }//GEN-LAST:event_jButtonAddToDoMouseClicked
 
-    private void jButtonCompartirArchivoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCompartirArchivoMouseExited
+    private void jButtonShareFileMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonShareFileMouseExited
         // TODO add your handling code here:
-        jButtonCompartirArchivo.setBackground(thirdColor);
-        jButtonCompartirArchivo.setForeground(thirdFontColor);
-    }//GEN-LAST:event_jButtonCompartirArchivoMouseExited
+        jButtonShareFile.setBackground(thirdColor);
+        jButtonShareFile.setForeground(thirdFontColor);
+    }//GEN-LAST:event_jButtonShareFileMouseExited
 
-    private void jButtonCompartirArchivoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCompartirArchivoMouseEntered
+    private void jButtonShareFileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonShareFileMouseEntered
         // TODO add your handling code here:
-        jButtonCompartirArchivo.setBackground(secondColor);
-        jButtonCompartirArchivo.setForeground(secondFontColor);
+        jButtonShareFile.setBackground(secondColor);
+        jButtonShareFile.setForeground(secondFontColor);
         
-    }//GEN-LAST:event_jButtonCompartirArchivoMouseEntered
+    }//GEN-LAST:event_jButtonShareFileMouseEntered
 
-    private void jButtonCompartirArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCompartirArchivoMouseClicked
+    private void jButtonShareFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonShareFileMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             attachFile();
         }
-    }//GEN-LAST:event_jButtonCompartirArchivoMouseClicked
+    }//GEN-LAST:event_jButtonShareFileMouseClicked
 
-    private void jButtonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseClicked
+    private void jButtonBackGroupsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBackGroupsMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             Student_Dashboard_Panel.showView("groupsPanel");
         }
-    }//GEN-LAST:event_jButtonRegresarMouseClicked
+    }//GEN-LAST:event_jButtonBackGroupsMouseClicked
 
-    private void jButtonRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseEntered
+    private void jButtonBackGroupsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBackGroupsMouseEntered
         // TODO add your handling code here:
-        jButtonRegresar.setBackground(secondColor);
-    }//GEN-LAST:event_jButtonRegresarMouseEntered
+        jButtonBackGroups.setBackground(secondColor);
+    }//GEN-LAST:event_jButtonBackGroupsMouseEntered
 
-    private void jButtonRegresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRegresarMouseExited
+    private void jButtonBackGroupsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBackGroupsMouseExited
         // TODO add your handling code here:
-        jButtonRegresar.setBackground(thirdColor);
-    }//GEN-LAST:event_jButtonRegresarMouseExited
+        jButtonBackGroups.setBackground(thirdColor);
+    }//GEN-LAST:event_jButtonBackGroupsMouseExited
 
-    private void jButtonEditarNombreGrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarNombreGrupoMouseClicked
+    private void jButtonEditGroupNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditGroupNameMouseClicked
         // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
         
-    }//GEN-LAST:event_jButtonEditarNombreGrupoMouseClicked
+    }//GEN-LAST:event_jButtonEditGroupNameMouseClicked
 
-    private void jButtonEditarNombreGrupoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarNombreGrupoMouseEntered
+    private void jButtonEditGroupNameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditGroupNameMouseEntered
         // TODO add your handling code here:
-        jButtonEditarNombreGrupo.setBackground(secondColor);
-        jButtonEditarNombreGrupo.setForeground(secondFontColor);
-    }//GEN-LAST:event_jButtonEditarNombreGrupoMouseEntered
+        jButtonEditGroupName.setBackground(secondColor);
+        jButtonEditGroupName.setForeground(secondFontColor);
+    }//GEN-LAST:event_jButtonEditGroupNameMouseEntered
 
-    private void jButtonEditarNombreGrupoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditarNombreGrupoMouseExited
+    private void jButtonEditGroupNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEditGroupNameMouseExited
         // TODO add your handling code here:
-        jButtonEditarNombreGrupo.setBackground(thirdColor);
-        jButtonEditarNombreGrupo.setForeground(thirdFontColor);
-    }//GEN-LAST:event_jButtonEditarNombreGrupoMouseExited
+        jButtonEditGroupName.setBackground(thirdColor);
+        jButtonEditGroupName.setForeground(thirdFontColor);
+    }//GEN-LAST:event_jButtonEditGroupNameMouseExited
 
-    private void jButtonEliminarMiembroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarMiembroMouseClicked
+    private void jButtonRemoveMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveMemberMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEliminarMiembroMouseClicked
+    }//GEN-LAST:event_jButtonRemoveMemberMouseClicked
 
-    private void jButtonEliminarMiembroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarMiembroMouseEntered
+    private void jButtonRemoveMemberMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveMemberMouseEntered
         // TODO add your handling code here:
-        jButtonEliminarMiembro.setBackground(secondColor);
-        jButtonEliminarMiembro.setForeground(secondFontColor);
-    }//GEN-LAST:event_jButtonEliminarMiembroMouseEntered
+        jButtonRemoveMember.setBackground(secondColor);
+        jButtonRemoveMember.setForeground(secondFontColor);
+    }//GEN-LAST:event_jButtonRemoveMemberMouseEntered
 
-    private void jButtonEliminarMiembroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarMiembroMouseExited
+    private void jButtonRemoveMemberMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveMemberMouseExited
         // TODO add your handling code here:
-        jButtonEliminarMiembro.setBackground(thirdColor);
-        jButtonEliminarMiembro.setForeground(thirdFontColor);
-    }//GEN-LAST:event_jButtonEliminarMiembroMouseExited
+        jButtonRemoveMember.setBackground(thirdColor);
+        jButtonRemoveMember.setForeground(thirdFontColor);
+    }//GEN-LAST:event_jButtonRemoveMemberMouseExited
 
-    private void jButtonAbandonarGrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAbandonarGrupoMouseClicked
+    private void jButtonLeaveGroupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLeaveGroupMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAbandonarGrupoMouseClicked
+    }//GEN-LAST:event_jButtonLeaveGroupMouseClicked
 
-    private void jButtonAbandonarGrupoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAbandonarGrupoMouseEntered
+    private void jButtonLeaveGroupMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLeaveGroupMouseEntered
         // TODO add your handling code here:
-        jButtonAbandonarGrupo.setBackground(secondColor.darker());
-        jButtonAbandonarGrupo.setForeground(secondFontColor.brighter());
-    }//GEN-LAST:event_jButtonAbandonarGrupoMouseEntered
+        jButtonLeaveGroup.setBackground(secondColor.darker());
+        jButtonLeaveGroup.setForeground(secondFontColor.brighter());
+    }//GEN-LAST:event_jButtonLeaveGroupMouseEntered
 
-    private void jButtonAbandonarGrupoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAbandonarGrupoMouseExited
+    private void jButtonLeaveGroupMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLeaveGroupMouseExited
         // TODO add your handling code here:
-        jButtonAbandonarGrupo.setBackground(thirdColor.darker());
-        jButtonAbandonarGrupo.setForeground(thirdFontColor.brighter());
-    }//GEN-LAST:event_jButtonAbandonarGrupoMouseExited
+        jButtonLeaveGroup.setBackground(thirdColor.darker());
+        jButtonLeaveGroup.setForeground(thirdFontColor.brighter());
+    }//GEN-LAST:event_jButtonLeaveGroupMouseExited
 
     private void jTextFieldMessageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMessageKeyPressed
         // TODO add your handling code here:
@@ -788,22 +818,35 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
         }
     }//GEN-LAST:event_jTextFieldMessageKeyPressed
 
-    private void jButtonEnviarTextoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoMouseClicked
+    private void jButtonSendMessageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendMessageMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             sendMessage();
         }
-    }//GEN-LAST:event_jButtonEnviarTextoMouseClicked
+    }//GEN-LAST:event_jButtonSendMessageMouseClicked
 
-    private void jButtonEnviarTextoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoMouseEntered
+    private void jButtonSendMessageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendMessageMouseEntered
         // TODO add your handling code here:
-        jButtonEnviarTexto.setBackground(firstColor);
-    }//GEN-LAST:event_jButtonEnviarTextoMouseEntered
+        jButtonSendMessage.setBackground(firstColor);
+    }//GEN-LAST:event_jButtonSendMessageMouseEntered
 
-    private void jButtonEnviarTextoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoMouseExited
+    private void jButtonSendMessageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendMessageMouseExited
         // TODO add your handling code here:
-        jButtonEnviarTexto.setBackground(secondColor);
-    }//GEN-LAST:event_jButtonEnviarTextoMouseExited
+        jButtonSendMessage.setBackground(secondColor);
+    }//GEN-LAST:event_jButtonSendMessageMouseExited
+
+    private void jComboBoxShowToDoByTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxShowToDoByTypeItemStateChanged
+        // TODO add your handling code here:
+        if(jComboBoxShowToDoByType.getSelectedIndex() == 0){
+            jLabelToDoTitle.setText("Lista De Tareas Pendientes");
+            ((CardLayout) jPanelAllToDoList.getLayout()).show(jPanelAllToDoList, "PendingToDo");
+            
+        } 
+        else{
+            jLabelToDoTitle.setText("Lista De Tareas Finalizadas");
+            ((CardLayout) jPanelAllToDoList.getLayout()).show(jPanelAllToDoList, "FinishedToDo");
+        }
+    }//GEN-LAST:event_jComboBoxShowToDoByTypeItemStateChanged
 
     private void sendMessage(){
         String text = jTextFieldMessage.getText();
@@ -834,42 +877,86 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
                 Date date = MainFrame.getFaker().date().birthday();
                 Student_Group_Shared_File_Panel groupSharedFilePanel = new Student_Group_Shared_File_Panel(file.getName(),"Nombre Del Usuario",date.toString(),secondColor,secondFontColor,thirdColor,thirdFontColor,fontColor);
                 
-                jPanelArchivosCompartidos.add(groupSharedFilePanel);
+                jPanelAllSharedFiles.add(groupSharedFilePanel);
 
             }
         }
     }
     
-    public void initMyComponents(){
+    public void InitComponents(){
         
+        jScrollPaneFinishedToDoList = new JScrollPane();
+        jScrollPanePendingToDoList  = new JScrollPane();
         
-        jPanelAgregarPendiente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(fontColor), "Agregar Pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 0, 18),fontColor));
+        jPanelFinishedToDoList = new JPanel();
+        jPanelPendingToDoList = new JPanel();
+        
+        jScrollPaneFinishedToDoList.setBorder(null);
+        jScrollPaneFinishedToDoList.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPaneFinishedToDoList.setOpaque(false);
+        
+        jScrollPanePendingToDoList.setBorder(null);
+        jScrollPanePendingToDoList.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPanePendingToDoList.setOpaque(false);
+
+        jScrollPaneFinishedToDoList.setViewportView(jPanelFinishedToDoList);
+        jScrollPaneFinishedToDoList.getViewport().setOpaque(false);
+        jScrollPaneFinishedToDoList.getVerticalScrollBar().setUnitIncrement(15);
+        
+        jScrollPanePendingToDoList.setViewportView(jPanelPendingToDoList);
+        jScrollPanePendingToDoList.getViewport().setOpaque(false);
+        jScrollPanePendingToDoList.getVerticalScrollBar().setUnitIncrement(15);
+        
+        jPanelFinishedToDoList.setOpaque(false);
+        jPanelFinishedToDoList.setLayout(new javax.swing.BoxLayout(jPanelFinishedToDoList, javax.swing.BoxLayout.PAGE_AXIS));
+        jScrollPaneFinishedToDoList.setViewportView(jPanelFinishedToDoList);
+        
+        jPanelPendingToDoList.setOpaque(false);
+        jPanelPendingToDoList.setLayout(new javax.swing.BoxLayout(jPanelPendingToDoList, javax.swing.BoxLayout.PAGE_AXIS));
+        jScrollPanePendingToDoList.setViewportView(jPanelPendingToDoList);
+        
+        jPanelAllToDoList.add(jScrollPaneFinishedToDoList, "FinishedToDo");
+        jPanelAllToDoList.add(jScrollPanePendingToDoList, "PendingToDo");
+        ((CardLayout)jPanelAllToDoList.getLayout()).show(jPanelAllToDoList, "PendingToDo");
+        
+        jPanelAddToDo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(fontColor), "Agregar Pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 0, 18),fontColor));
         
         jLabelGroupImage.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
-        jLabelEditarImagenGrupo.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
+        jLabelEditGroupImage.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
        
         jScrollPaneMembers.getViewport().setOpaque(false);
         jScrollPaneMembers.getVerticalScrollBar().setUnitIncrement(15);
         
-        jScrollPaneListaTareasPendientes.getViewport().setOpaque(false);
-        jScrollPaneListaTareasPendientes.getVerticalScrollBar().setUnitIncrement(15);
+        jScrollPaneAllSharedFiles.getViewport().setOpaque(false);
+        jScrollPaneAllSharedFiles.getVerticalScrollBar().setUnitIncrement(15);
         
-        jScrollPaneArchivosCompartidos.getViewport().setOpaque(false);
-        jScrollPaneArchivosCompartidos.getVerticalScrollBar().setUnitIncrement(15);
-        
-        jTabbedPaneGrouping.setBackground(firstColor);
-        jTabbedPaneGrouping.setForeground(fontColor);
-        
+       
         General_Member_Panel memberPanel;
         for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
             memberPanel = new General_Member_Panel();
-            jComboBoxMiembros.addItem(memberPanel.getFullName());
-            jComboBoxEliminarMiembro.addItem(memberPanel.getFullName());
+            jComboBoxMembers.addItem(memberPanel.getFullName());
+            jComboBoxRemoveMember.addItem(memberPanel.getFullName());
             jPanelMembers.add(memberPanel);
         }
         
-        jComboBoxMiembros.setSelectedIndex(0);
-        jScrollPaneDescripcionTareaPendiente.getViewport().setOpaque(false);
+        jComboBoxMembers.setSelectedIndex(0);
+        jScrollPaneToDoDescription.getViewport().setOpaque(false);
+        
+        jScrollPaneChatsCenter.getViewport().setOpaque(false);
+        jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
+        
+        dateTimePicker = new DateTimePicker();
+        dateTimePicker.setFont(jTextFieldToDoName.getFont());
+        jPanelToDoDueDate.add(dateTimePicker);
+        jPanelToDoDueDate.setBorder(jTextFieldToDoName.getBorder());
+        
+    }
+ 
+    @Override
+    public void ColorComponents(){
+        
+        jTabbedPaneGrouping.setBackground(firstColor);
+        jTabbedPaneGrouping.setForeground(fontColor);
         
         Component[] components = this.getComponents();
         for (Component component : components){
@@ -879,148 +966,149 @@ public class Student_Group_Panel extends javax.swing.JPanel implements DisposeIn
         jLabelGroupName.setBackground(secondColor);
         jLabelGroupName.setForeground(secondFontColor);
 
-        jLabelMiembros.setBackground(secondColor);
-        jLabelMiembros.setForeground(secondFontColor);
+        jLabelMembersTitle.setBackground(secondColor);
+        jLabelMembersTitle.setForeground(secondFontColor);
 
-        jButtonEditarImagenGrupo.setBackground(thirdColor);
-        jButtonEditarImagenGrupo.setForeground(thirdFontColor);
+        jButtonEditGroupImage.setBackground(thirdColor);
+        jButtonEditGroupImage.setForeground(thirdFontColor);
         
-        jButtonAbandonarGrupo.setBackground(thirdColor.darker());
-        jButtonAbandonarGrupo.setForeground(thirdFontColor.brighter());
+        jButtonLeaveGroup.setBackground(thirdColor.darker());
+        jButtonLeaveGroup.setForeground(thirdFontColor.brighter());
 
-        jLabelGroupClass.setBackground(thirdColor);
-        jLabelGroupClass.setForeground(thirdFontColor);
+        jLabelGroupCourse.setBackground(thirdColor);
+        jLabelGroupCourse.setForeground(thirdFontColor);
         
-        jLabelFechaCreacion.setForeground(fontColor);
+        jLabelCreationDate.setForeground(fontColor);
         jLabelEditarNombreGrupo.setForeground(fontColor);
 
-        jButtonAgregarTareaPendiente.setForeground(thirdFontColor);
-        jButtonAgregarTareaPendiente.setBackground(thirdColor);
+        jButtonAddToDo.setForeground(thirdFontColor);
+        jButtonAddToDo.setBackground(thirdColor);
         
-        jButtonCompartirArchivo.setForeground(thirdFontColor);
-        jButtonCompartirArchivo.setBackground(thirdColor);
+        jButtonShareFile.setForeground(thirdFontColor);
+        jButtonShareFile.setBackground(thirdColor);
         
-        jLabelOrdenarPor.setForeground(fontColor);
+        jLabelOrderBy.setForeground(fontColor);
         jLabelEliminarMiembro.setForeground(fontColor);
         
-        jComboBoxOrdenarArchivosCompartidos.setForeground(thirdFontColor);
-        jComboBoxOrdenarArchivosCompartidos.setBackground(thirdColor);
+        jComboBoxOrderSharedFiles.setForeground(thirdFontColor);
+        jComboBoxOrderSharedFiles.setBackground(thirdColor);
         
-        jLabelMiembroACargo.setForeground(fontColor);
-        jLabelNombreTareaPendiente.setForeground(fontColor);
+        jComboBoxShowToDoByType.setForeground(thirdFontColor);
+        jComboBoxShowToDoByType.setBackground(thirdColor);
+        jComboBoxShowToDoByType.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(secondColor), 
+                "Mostrar Lista Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                new java.awt.Font("Gadugi", 1, 14),secondFontColor)); // NOI18N
         
-        jLabelDescripcion.setForeground(fontColor);
-        jLabelFechaFinalizacion.setForeground(fontColor);
+        jLabelMemberCharge.setForeground(fontColor);
+        jLabelToDoName.setForeground(fontColor);
         
-        jLabelListaTareasPendientes.setForeground(thirdFontColor);
-        jLabelListaTareasPendientes.setBackground(thirdColor);
+        jLabelToDoDescription.setForeground(fontColor);
+        jLabelToDoDueDate.setForeground(fontColor);
+        
+        jLabelToDoTitle.setForeground(thirdFontColor);
+        jLabelToDoTitle.setBackground(thirdColor);
 
-        jComboBoxMiembros.setForeground(thirdFontColor);
-        jComboBoxMiembros.setBackground(thirdColor);
+        jComboBoxMembers.setForeground(thirdFontColor);
+        jComboBoxMembers.setBackground(thirdColor);
         
-        jComboBoxEliminarMiembro.setForeground(thirdFontColor);
-        jComboBoxEliminarMiembro.setBackground(thirdColor);
+        jComboBoxRemoveMember.setForeground(thirdFontColor);
+        jComboBoxRemoveMember.setBackground(thirdColor);
         
-        jButtonRegresar.setBackground(thirdColor);
-        jButtonRegresar.setForeground(thirdFontColor);
+        jButtonBackGroups.setBackground(thirdColor);
+        jButtonBackGroups.setForeground(thirdFontColor);
         
-        jButtonEditarNombreGrupo.setBackground(thirdColor);
-        jButtonEditarNombreGrupo.setForeground(thirdFontColor);
+        jButtonEditGroupName.setBackground(thirdColor);
+        jButtonEditGroupName.setForeground(thirdFontColor);
         
-        jButtonEliminarMiembro.setBackground(thirdColor);
-        jButtonEliminarMiembro.setForeground(thirdFontColor);
+        jButtonRemoveMember.setBackground(thirdColor);
+        jButtonRemoveMember.setForeground(thirdFontColor);
 
-        jTextFieldNombreTareaPendiente.setForeground(thirdFontColor);
-        jTextFieldNombreTareaPendiente.setCaretColor(thirdFontColor);
-        jTextFieldNombreTareaPendiente.setBackground(thirdColor);
+        jTextFieldToDoName.setForeground(thirdFontColor);
+        jTextFieldToDoName.setCaretColor(thirdFontColor);
+        jTextFieldToDoName.setBackground(thirdColor);
         
-        jTextFieldEditarNombreGrupo.setForeground(thirdFontColor);
-        jTextFieldEditarNombreGrupo.setCaretColor(thirdFontColor);
-        jTextFieldEditarNombreGrupo.setBackground(thirdColor);
+        jTextFieldEditGroupName.setForeground(thirdFontColor);
+        jTextFieldEditGroupName.setCaretColor(thirdFontColor);
+        jTextFieldEditGroupName.setBackground(thirdColor);
 
-        jTextAreaDescripcionTareaPendiente.setForeground(thirdFontColor);
-        jTextAreaDescripcionTareaPendiente.setCaretColor(thirdFontColor);
-        jTextAreaDescripcionTareaPendiente.setBackground(thirdColor);
+        jTextAreaToDoDescription.setForeground(thirdFontColor);
+        jTextAreaToDoDescription.setCaretColor(thirdFontColor);
+        jTextAreaToDoDescription.setBackground(thirdColor);
 
-        jPanelFechaFinalizacion.setBackground(thirdColor);
-        jPanelFechaFinalizacion.setForeground(thirdFontColor);
+        jPanelToDoDueDate.setBackground(thirdColor);
+        jPanelToDoDueDate.setForeground(thirdFontColor);
         
-        jScrollPaneChatsCenter.getViewport().setOpaque(false);
-        jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
+        jPanelAboutGroup.setBackground(firstColor);
+        jPanelGrupalChat.setBackground(firstColor);
+        jPanelToDo.setBackground(firstColor);
+        jPanelSettings.setBackground(firstColor);
+        jPanelSharedFiles.setBackground(firstColor);
+        
+        dateTimePicker.setForeground(thirdColor);
         jPanelChatBottom.setBackground(firstColor);
         jTextFieldMessage.setBackground(secondColor);
         jTextFieldMessage.setForeground(secondFontColor);
         jTextFieldMessage.setCaretColor(secondFontColor);
-        
-        dateTimePicker = new DateTimePicker();
-        dateTimePicker.setFont(jTextFieldNombreTareaPendiente.getFont());
-        dateTimePicker.setForeground(thirdColor);
-        jPanelFechaFinalizacion.add(dateTimePicker);
-        jPanelAboutGroup.setBackground(firstColor);
-        jPanelFechaFinalizacion.setBorder(jTextFieldNombreTareaPendiente.getBorder());
-        jPanelGrupalChat.setBackground(firstColor);
-        jPanelPorHacer.setBackground(firstColor);
-        jPanelConfiguraciones.setBackground(firstColor);
-        jPanelArchivos.setBackground(firstColor);
     }
- 
     
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAbandonarGrupo;
-    private javax.swing.JButton jButtonAgregarTareaPendiente;
-    private javax.swing.JButton jButtonCompartirArchivo;
-    private javax.swing.JButton jButtonEditarImagenGrupo;
-    private javax.swing.JButton jButtonEditarNombreGrupo;
-    private javax.swing.JButton jButtonEliminarMiembro;
-    private javax.swing.JButton jButtonEnviarTexto;
-    private javax.swing.JButton jButtonRegresar;
-    private javax.swing.JComboBox<String> jComboBoxEliminarMiembro;
-    private javax.swing.JComboBox<String> jComboBoxMiembros;
-    private javax.swing.JComboBox<String> jComboBoxOrdenarArchivosCompartidos;
-    private javax.swing.JLabel jLabelDescripcion;
-    private javax.swing.JLabel jLabelEditarImagenGrupo;
+    private javax.swing.JButton jButtonAddToDo;
+    private javax.swing.JButton jButtonBackGroups;
+    private javax.swing.JButton jButtonEditGroupImage;
+    private javax.swing.JButton jButtonEditGroupName;
+    private javax.swing.JButton jButtonLeaveGroup;
+    private javax.swing.JButton jButtonRemoveMember;
+    private javax.swing.JButton jButtonSendMessage;
+    private javax.swing.JButton jButtonShareFile;
+    private javax.swing.JComboBox<String> jComboBoxMembers;
+    private javax.swing.JComboBox<String> jComboBoxOrderSharedFiles;
+    private javax.swing.JComboBox<String> jComboBoxRemoveMember;
+    private javax.swing.JComboBox<String> jComboBoxShowToDoByType;
+    private javax.swing.JLabel jLabelCreationDate;
+    private javax.swing.JLabel jLabelEditGroupImage;
     private javax.swing.JLabel jLabelEditarNombreGrupo;
     private javax.swing.JLabel jLabelEliminarMiembro;
-    private javax.swing.JLabel jLabelFechaCreacion;
-    private javax.swing.JLabel jLabelFechaFinalizacion;
-    private javax.swing.JLabel jLabelGroupClass;
+    private javax.swing.JLabel jLabelGroupCourse;
     private javax.swing.JLabel jLabelGroupImage;
     private javax.swing.JLabel jLabelGroupName;
-    private javax.swing.JLabel jLabelListaTareasPendientes;
-    private javax.swing.JLabel jLabelMiembroACargo;
-    private javax.swing.JLabel jLabelMiembros;
-    private javax.swing.JLabel jLabelNombreTareaPendiente;
-    private javax.swing.JLabel jLabelOrdenarPor;
+    private javax.swing.JLabel jLabelMemberCharge;
+    private javax.swing.JLabel jLabelMembersTitle;
+    private javax.swing.JLabel jLabelOrderBy;
+    private javax.swing.JLabel jLabelToDoDescription;
+    private javax.swing.JLabel jLabelToDoDueDate;
+    private javax.swing.JLabel jLabelToDoName;
+    private javax.swing.JLabel jLabelToDoTitle;
     private javax.swing.JPanel jPanelAboutGroup;
-    private javax.swing.JPanel jPanelAgregarPendiente;
-    private javax.swing.JPanel jPanelArchivos;
-    private javax.swing.JPanel jPanelArchivosCompartidos;
+    private javax.swing.JPanel jPanelAddToDo;
+    private javax.swing.JPanel jPanelAllSharedFiles;
+    private javax.swing.JPanel jPanelAllToDoList;
     private javax.swing.JPanel jPanelChatBottom;
     private javax.swing.JPanel jPanelChatCenter;
-    private javax.swing.JPanel jPanelConfiguraciones;
-    private javax.swing.JPanel jPanelFechaFinalizacion;
     private javax.swing.JPanel jPanelGrupalChat;
-    private javax.swing.JPanel jPanelListaDeTareasPendientes;
     private javax.swing.JPanel jPanelMembers;
-    private javax.swing.JPanel jPanelPorHacer;
-    private javax.swing.JScrollPane jScrollPaneArchivosCompartidos;
+    private javax.swing.JPanel jPanelSettings;
+    private javax.swing.JPanel jPanelSharedFiles;
+    private javax.swing.JPanel jPanelToDo;
+    private javax.swing.JPanel jPanelToDoDueDate;
+    private javax.swing.JScrollPane jScrollPaneAllSharedFiles;
     private javax.swing.JScrollPane jScrollPaneChatsCenter;
-    private javax.swing.JScrollPane jScrollPaneDescripcionTareaPendiente;
-    private javax.swing.JScrollPane jScrollPaneListaTareasPendientes;
     private javax.swing.JScrollPane jScrollPaneMembers;
+    private javax.swing.JScrollPane jScrollPaneToDoDescription;
     private javax.swing.JTabbedPane jTabbedPaneGrouping;
-    private javax.swing.JTextArea jTextAreaDescripcionTareaPendiente;
-    private javax.swing.JTextField jTextFieldEditarNombreGrupo;
+    private javax.swing.JTextArea jTextAreaToDoDescription;
+    private javax.swing.JTextField jTextFieldEditGroupName;
     private javax.swing.JTextField jTextFieldMessage;
-    private javax.swing.JTextField jTextFieldNombreTareaPendiente;
+    private javax.swing.JTextField jTextFieldToDoName;
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void dispose() {
+    public void Dispose() {
         jPanelChatCenter.removeAll();
-        jPanelListaDeTareasPendientes.removeAll();
-        jPanelArchivosCompartidos.removeAll();
+        jPanelPendingToDoList.removeAll();
+        jPanelFinishedToDoList.removeAll();
+        jPanelAllSharedFiles.removeAll();
     }
 }
