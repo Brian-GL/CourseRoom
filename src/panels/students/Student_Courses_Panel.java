@@ -6,16 +6,16 @@
 package panels.students;
 
 import courseroom.MainFrame;
-import data.interfaces.ColorComponents;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import data.interfaces.Componentes_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class Student_Courses_Panel extends javax.swing.JPanel implements ColorComponents{
+public class Student_Courses_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
     /**
      * Creates new form Student_Courses_Panel
@@ -28,7 +28,7 @@ public class Student_Courses_Panel extends javax.swing.JPanel implements ColorCo
         Student_Box_Course_Panel boxCoursePanel;
         String concatenate;
         for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
-            concatenate = MainFrame.Concatenate("COURSE_", i);
+            concatenate = MainFrame.Concatenar("COURSE_", i);
             boxCoursePanel = new Student_Box_Course_Panel(concatenate);
             boxCoursePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-350,187));
             jPanelActualCourses.add(boxCoursePanel);
@@ -36,7 +36,7 @@ public class Student_Courses_Panel extends javax.swing.JPanel implements ColorCo
         }
        
         for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
-            concatenate = MainFrame.Concatenate("COURSE_", i);
+            concatenate = MainFrame.Concatenar("COURSE_", i);
             boxCoursePanel = new Student_Box_Course_Panel(concatenate);
             boxCoursePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-350,187));
             jPanelFinishedCourses.add(boxCoursePanel);
@@ -161,7 +161,7 @@ public class Student_Courses_Panel extends javax.swing.JPanel implements ColorCo
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public void ColorComponents(){
+    public void Colorear_Componentes(){
         
         jLabelCoursesTitle.setBackground(MainFrame.getSecondColor());
         jLabelCoursesTitle.setForeground(MainFrame.getSecondFontColor());

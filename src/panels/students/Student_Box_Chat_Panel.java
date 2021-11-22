@@ -19,14 +19,14 @@ import java.util.logging.Level;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import data.interfaces.ColorInterface;
 import data.interfaces.DisposeInterface;
+import data.interfaces.Color_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorInterface, DisposeInterface{
+public class Student_Box_Chat_Panel extends javax.swing.JPanel implements Color_Interface, DisposeInterface{
 
     private Color firstColor, fontColor, secondColor;
     private Student_Chat_Panel chatPanel;
@@ -41,7 +41,7 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
     }
     
     @Override
-    public void SetColors(Image image){
+    public void Establecer_Colores(Image image){
         
         try {
             firstColor = Color.BLACK;
@@ -130,7 +130,7 @@ public class Student_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
             Image getImage = ImageIO.read(imageURL);
             ImageIcon chatIcon = new ImageIcon(getImage);
             jLabelFotoChat.setIcon(chatIcon);
-            SetColors(getImage);
+            Establecer_Colores(getImage);
             jLabelNombreChat.setText(MainFrame.getFaker().rickAndMorty().character());
             jLabelUltimoMensaje.setText(MainFrame.getFaker().shakespeare().romeoAndJulietQuote());
             jLabelNumeroMensajesNoLeidos.setText(MainFrame.getFaker().number().digits(1));

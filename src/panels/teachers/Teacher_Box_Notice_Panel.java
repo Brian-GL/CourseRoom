@@ -7,7 +7,6 @@ package panels.teachers;
 
 import com.github.javafaker.Faker;
 import data.collections.PairDoublyLinkedList;
-import data.interfaces.ColorInterface;
 import data.structures.Pair;
 import java.awt.Color;
 import java.awt.Image;
@@ -21,12 +20,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import data.interfaces.Color_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class Teacher_Box_Notice_Panel extends javax.swing.JPanel implements ColorInterface{
+public class Teacher_Box_Notice_Panel extends javax.swing.JPanel implements Color_Interface{
 
     /**
      * Creates new form BoxAvisoPanel
@@ -48,7 +48,7 @@ public class Teacher_Box_Notice_Panel extends javax.swing.JPanel implements Colo
             Image avisoImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
             ImageIcon avisoIcon = new ImageIcon(avisoImage);
             jLabelFotoAviso.setIcon(avisoIcon);
-            SetColors(getImage);
+            Establecer_Colores(getImage);
             getImage.flush();
             getImage = null;
             avisoIcon = null;
@@ -159,7 +159,7 @@ public class Teacher_Box_Notice_Panel extends javax.swing.JPanel implements Colo
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public void SetColors(Image image){
+    public void Establecer_Colores(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());

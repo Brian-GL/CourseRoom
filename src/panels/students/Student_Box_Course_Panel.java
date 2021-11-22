@@ -7,7 +7,6 @@ package panels.students;
 
 import courseroom.MainFrame;
 import data.collections.PairDoublyLinkedList;
-import data.interfaces.ColorInterface;
 import data.structures.Pair;
 import java.awt.Color;
 import java.awt.Image;
@@ -25,12 +24,13 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+import data.interfaces.Color_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class Student_Box_Course_Panel extends javax.swing.JPanel implements ColorInterface{
+public class Student_Box_Course_Panel extends javax.swing.JPanel implements Color_Interface{
 
     private String id;
     private Color firstColor, secondColor, fontColor, secondFontColor;
@@ -52,7 +52,7 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
             Image getImage = ImageIO.read(imageURL);
             ImageIcon courseIcon = new ImageIcon(getImage);
             jLabelCourseImage.setIcon(courseIcon);
-            SetColors(getImage);
+            Establecer_Colores(getImage);
             
             System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
             URL imageTeacherURL = new URL("https://loremflickr.com/79/79/sunset,beach/all");
@@ -267,7 +267,7 @@ public class Student_Box_Course_Panel extends javax.swing.JPanel implements Colo
     }//GEN-LAST:event_jLabelCourseImageMouseClicked
 
     @Override
-    public void SetColors(Image image){
+    public void Establecer_Colores(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());

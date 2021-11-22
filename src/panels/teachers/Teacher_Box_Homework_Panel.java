@@ -21,14 +21,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import data.interfaces.ColorInterface;
 import javax.swing.SwingUtilities;
+import data.interfaces.Color_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class Teacher_Box_Homework_Panel extends javax.swing.JPanel implements ColorInterface{
+public class Teacher_Box_Homework_Panel extends javax.swing.JPanel implements Color_Interface{
 
     private Color firstColor, secondColor,thirdColor,fontColor, secondFontColor, thirdFontColor;
     private int id;
@@ -53,7 +53,7 @@ public class Teacher_Box_Homework_Panel extends javax.swing.JPanel implements Co
             Image homeworkImage = getImage.getScaledInstance(164,164,Image.SCALE_SMOOTH);
             ImageIcon groupIcon = new ImageIcon(homeworkImage);
             jLabelFotoTarea.setIcon(groupIcon);
-            SetColors(getImage);
+            Establecer_Colores(getImage);
             //homeworkPanel = new Teacher_Homework_Panel(jLabelNombreTarea.getText(),firstColor,secondColor,thirdColor,fontColor,secondFontColor,thirdFontColor);
             //Teacher_Dashboard_Panel.addView(homeworkPanel,"homework_"+_id);
             getImage.flush();
@@ -194,7 +194,7 @@ public class Teacher_Box_Homework_Panel extends javax.swing.JPanel implements Co
 
     
     @Override
-    public void SetColors(Image image){
+    public void Establecer_Colores(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());

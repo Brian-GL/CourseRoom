@@ -203,14 +203,19 @@ public class MainFrame extends javax.swing.JFrame implements DisposeInterface {
     }
 
     /*General Static Methods*/
+
     
-    public static String Concatenate(String from, String to) {
+    public static String Concatenar(String from, String ... args) {
         StringBuilder stringBuilder = new StringBuilder(from);
-        stringBuilder.append(to);
+        String argumento;
+        for(int i = 0; i < args.length;i++){
+            argumento = args[i];
+            stringBuilder.append(argumento);
+        }
         return stringBuilder.toString();
     }
     
-    public static String Concatenate(String from, int to) {
+    public static String Concatenar(String from, int to) {
         StringBuilder stringBuilder = new StringBuilder(from);
         stringBuilder.append(to);
         return stringBuilder.toString();

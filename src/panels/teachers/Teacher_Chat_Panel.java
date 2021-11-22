@@ -25,7 +25,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import panels.generals.General_Audio_Message_Panel;
 import panels.generals.General_File_Message_Panel;
 import panels.generals.General_Image_Message_Panel;
-import panels.generals.General_Text_Message_Panel;
+import panels.generals.Mensaje_Texto_General_Panel;
 import panels.generals.General_Video_Message_Panel;
 
 /**
@@ -278,7 +278,7 @@ public class Teacher_Chat_Panel extends javax.swing.JPanel implements DisposeInt
             Faker faker = new Faker(new Locale("es","MX"));
             String sender = faker.dune().character();
             String date = faker.backToTheFuture().date();
-            General_Text_Message_Panel textMessagePanel = new General_Text_Message_Panel(sender,text,date);
+            Mensaje_Texto_General_Panel textMessagePanel = new Mensaje_Texto_General_Panel(sender,text,date);
             textMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
             jPanelChatCenter.add(textMessagePanel);
             jTextFieldMessage.setText("");

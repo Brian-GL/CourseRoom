@@ -21,15 +21,15 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import data.interfaces.ColorInterface;
 import data.interfaces.DisposeInterface;
 import panels.generals.General_Music_Panel;
+import data.interfaces.Color_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class Teacher_Box_Chat_Panel extends javax.swing.JPanel implements ColorInterface, DisposeInterface{
+public class Teacher_Box_Chat_Panel extends javax.swing.JPanel implements Color_Interface, DisposeInterface{
 
     private Color firstColor, fontColor, secondColor;
     private Teacher_Chat_Panel chatPanel;
@@ -46,7 +46,7 @@ public class Teacher_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
             Image chatImage = getImage.getScaledInstance(129,129,Image.SCALE_SMOOTH);
             ImageIcon chatIcon = new ImageIcon(chatImage);
             jLabelFotoChat.setIcon(chatIcon);
-            SetColors(getImage);
+            Establecer_Colores(getImage);
             Locale mx = new Locale("es","MX");
             Faker faker = new Faker(mx);
             jLabelNombreChat.setText(faker.rickAndMorty().character());
@@ -73,7 +73,7 @@ public class Teacher_Box_Chat_Panel extends javax.swing.JPanel implements ColorI
     }
     
     @Override
-    public void SetColors(Image image){
+    public void Establecer_Colores(Image image){
         
         try {
             Random colorRandom = new Random(System.currentTimeMillis());

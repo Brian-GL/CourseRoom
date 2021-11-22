@@ -6,17 +6,17 @@
 package panels.students;
 
 import courseroom.MainFrame;
-import data.interfaces.ColorComponents;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
+import data.interfaces.Componentes_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel implements ColorComponents{
+public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
     private Color firstColor,secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor;
     
@@ -293,12 +293,7 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel im
     private String toRGB(Color color){
         
         
-        return MainFrame.Concatenate(
-                MainFrame.Concatenate(
-                MainFrame.Concatenate(
-                MainFrame.Concatenate(
-                MainFrame.Concatenate(
-                        MainFrame.Concatenate(
+        return MainFrame.Concatenar(MainFrame.Concatenar(MainFrame.Concatenar(MainFrame.Concatenar(MainFrame.Concatenar(MainFrame.Concatenar(
                                 "RGB: (", color.getRed()), ","),color.getGreen()),","),color.getBlue()),")");
         
     }
@@ -317,7 +312,7 @@ public class Student_Dashboard_Configuration_Panel extends javax.swing.JPanel im
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void ColorComponents() {
+    public void Colorear_Componentes() {
         
         firstColor = MainFrame.getFirstColor();
         secondColor = MainFrame.getSecondColor();

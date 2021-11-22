@@ -7,7 +7,6 @@ package panels.generals;
 
 import data.collections.DoublyLinkedList;
 import data.collections.PairDoublyLinkedList;
-import data.interfaces.ColorInterface;
 import data.interfaces.DisposeInterface;
 import data.structures.Node;
 import java.awt.Color;
@@ -51,12 +50,13 @@ import javax.swing.border.TitledBorder;
 import uk.co.caprica.vlcj.player.base.Equalizer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayerEventListener;
+import data.interfaces.Color_Interface;
 
 /**
  *
  * @author brian-gl
  */
-public final class General_Music_Panel extends javax.swing.JPanel implements ColorInterface, DisposeInterface{
+public final class General_Music_Panel extends javax.swing.JPanel implements Color_Interface, DisposeInterface{
 
     //Private attributes
     
@@ -1779,7 +1779,7 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
                         playlistEntryImage = real_cover.getScaledInstance(63, 63, Image.SCALE_SMOOTH);
                         ImageIcon cover = new ImageIcon(coverImagen);
                         jLabelCoverArt.setIcon(cover);
-                        SetColors(coverImagen);
+                        Establecer_Colores(coverImagen);
                         coverImagen.flush();
                         real_cover.flush();
                         
@@ -1824,7 +1824,7 @@ public final class General_Music_Panel extends javax.swing.JPanel implements Col
     }
     
     @Override
-    public void SetColors(Image image) {
+    public void Establecer_Colores(Image image) {
         try {
             
             int maximum = 0;

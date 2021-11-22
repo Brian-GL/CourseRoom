@@ -27,7 +27,7 @@ public class Student_Chats_Panel extends javax.swing.JPanel implements DisposeIn
         Student_Box_Chat_Panel boxChatPanel;
         String concatenate;
         for(int i = 0; i < MainFrame.getFaker().number().numberBetween(1, 10);i++){
-            concatenate = MainFrame.Concatenate("CHAT_",i);
+            concatenate = MainFrame.Concatenar("CHAT_",i);
             boxChatPanel = new Student_Box_Chat_Panel(concatenate);
             jPanelChats.add(boxChatPanel);
         }

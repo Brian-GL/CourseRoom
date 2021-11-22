@@ -21,13 +21,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import courseroom.MainFrame;
-import data.interfaces.ColorComponents;
+import data.interfaces.Componentes_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class Student_Edit_Profile_Panel extends javax.swing.JPanel implements ColorComponents{
+public class Student_Edit_Profile_Panel extends javax.swing.JPanel implements Componentes_Interface{
     /**
      * Creates new form EditProfilePanel
      */
@@ -904,7 +904,7 @@ public class Student_Edit_Profile_Panel extends javax.swing.JPanel implements Co
     }
     
     @Override
-    public void ColorComponents(){
+    public void Colorear_Componentes(){
         Component[] components = jPanelDatosPersonales.getComponents();
         for (Component component : components) {
 

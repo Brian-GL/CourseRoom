@@ -37,13 +37,13 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
     
     private static Student_Chats_Panel chatsPanel;
     private static General_About_Panel aboutPanel;
-    private static Student_Info_Profile_Panel infoProfilePanel;
+    private static Perfil_Estudiante_Panel infoProfilePanel;
     private static Student_Edit_Profile_Panel editProfilePanel;
     private static General_Music_Panel musicPanel;
-    private static Student_Notices_Panel noticesPanel;
-    private static Student_Groups_Panel groupsPanel;
+    private static Avisos_Estudiante_Panel noticesPanel;
+    private static Grupos_Estudiante_Panel groupsPanel;
     private static Student_Dates_Panel datesPanel;
-    private static Student_Homeworks_Panel homeworksPanel;
+    private static Tareas_Estudiante_Panel homeworksPanel;
     private static Student_Dashboard_Configuration_Panel configurationPanel;
     private static Student_Courses_Panel coursesPanel;
     
@@ -69,13 +69,13 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
             //image = null;
             
             
-            infoProfilePanel = new Student_Info_Profile_Panel();
+            infoProfilePanel = new Perfil_Estudiante_Panel();
             jPanelInformacion.add("infoProfilePanel",infoProfilePanel);
             
             editProfilePanel = new Student_Edit_Profile_Panel();
             jPanelInformacion.add("editProfilePanel",editProfilePanel);
             
-            homeworksPanel = new Student_Homeworks_Panel();
+            homeworksPanel = new Tareas_Estudiante_Panel();
             jPanelInformacion.add("homeworksPanel",homeworksPanel);
             
             coursesPanel = new Student_Courses_Panel();
@@ -84,10 +84,10 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
             datesPanel = new Student_Dates_Panel();
             jPanelInformacion.add("datesPanel",datesPanel);
             
-            noticesPanel = new Student_Notices_Panel();
+            noticesPanel = new Avisos_Estudiante_Panel();
             jPanelInformacion.add("noticesPanel",noticesPanel);
             
-            groupsPanel = new Student_Groups_Panel();
+            groupsPanel = new Grupos_Estudiante_Panel();
             jPanelInformacion.add("groupsPanel",groupsPanel);
             
             chatsPanel = new Student_Chats_Panel();
@@ -853,16 +853,16 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         
         jLabelFechaHoraServidor.setForeground(MainFrame.getFontColor());
         jLabelUserName.setForeground(MainFrame.getFontColor());
-        infoProfilePanel.ColorComponents();
-        editProfilePanel.ColorComponents();
+        infoProfilePanel.Colorear_Componentes();
+        editProfilePanel.Colorear_Componentes();
         aboutPanel.colorMyComponents();
         chatsPanel.colorMyComponents();
-        homeworksPanel.ColorComponents();
-        groupsPanel.ColorComponents();
-        noticesPanel.ColorComponents();
-        datesPanel.ColorComponents();
-        configurationPanel.ColorComponents();
-        coursesPanel.ColorComponents();
+        homeworksPanel.Colorear_Componentes();
+        groupsPanel.Colorear_Componentes();
+        noticesPanel.Colorear_Componentes();
+        datesPanel.Colorear_Componentes();
+        configurationPanel.Colorear_Componentes();
+        coursesPanel.Colorear_Componentes();
     }
     
     @Override
@@ -919,10 +919,10 @@ public class Student_Dashboard_Panel extends javax.swing.JPanel implements Dispo
         userImage = aUserImage;
         ImageIcon imageProfile = new ImageIcon(userImage.getScaledInstance(175,175, Image.SCALE_SMOOTH));
         jLabelUserProfilePhoto.setIcon(imageProfile);
-        int imageWidth = infoProfilePanel.getProfilePhotoLabel().getPreferredSize().width;
-        int imageHeight = infoProfilePanel.getProfilePhotoLabel().getPreferredSize().height;
+        int imageWidth = infoProfilePanel.Obtener_Imagen_Perfil_JLabel().getPreferredSize().width;
+        int imageHeight = infoProfilePanel.Obtener_Imagen_Perfil_JLabel().getPreferredSize().height;
         ImageIcon icon = new ImageIcon(imageProfile.getImage().getScaledInstance(imageWidth,imageHeight,Image.SCALE_SMOOTH));
-        infoProfilePanel.getProfilePhotoLabel().setIcon(icon);
+        infoProfilePanel.Obtener_Imagen_Perfil_JLabel().setIcon(icon);
         imageProfile.getImage().flush();
     }
 

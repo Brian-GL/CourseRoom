@@ -8,7 +8,6 @@ package panels.students;
 import components.ImageFilePreview;
 import courseroom.MainFrame;
 import data.interfaces.DisposeInterface;
-import data.interfaces.ColorComponents;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -24,14 +23,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import panels.generals.General_Audio_Message_Panel;
 import panels.generals.General_File_Message_Panel;
 import panels.generals.General_Image_Message_Panel;
-import panels.generals.General_Text_Message_Panel;
+import panels.generals.Mensaje_Texto_General_Panel;
 import panels.generals.General_Video_Message_Panel;
+import data.interfaces.Componentes_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInterface, ColorComponents{
+public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInterface, Componentes_Interface{
 
     private Color firstColor, secondColor, fontColor;
     
@@ -45,7 +45,7 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
         jScrollPaneChatsCenter.getVerticalScrollBar().setUnitIncrement(15);
         jLabelChatName.setText(name);
         
-        ColorComponents();
+        Colorear_Componentes();
     }
 
     /**
@@ -278,7 +278,7 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
         if(!text.isEmpty() && !text.isBlank()){
             String sender = MainFrame.getFaker().dune().character();
             String date = MainFrame.getFaker().backToTheFuture().date();
-            General_Text_Message_Panel textMessagePanel = new General_Text_Message_Panel(sender,text,date);
+            Mensaje_Texto_General_Panel textMessagePanel = new Mensaje_Texto_General_Panel(sender,text,date);
             textMessagePanel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
             jPanelChatCenter.add(textMessagePanel);
             jTextFieldMessage.setText("");
@@ -494,7 +494,7 @@ public class Student_Chat_Panel extends javax.swing.JPanel implements DisposeInt
     }
     
     @Override
-    public void ColorComponents(){
+    public void Colorear_Componentes(){
         
         jButtonRegresar.setBackground(firstColor);
         jLabelChatName.setForeground(fontColor);

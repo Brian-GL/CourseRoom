@@ -10,7 +10,6 @@ import panels.generals.General_Music_Panel;
 import com.github.javafaker.Faker;
 import courseroom.MainFrame;
 import data.collections.PairDoublyLinkedList;
-import data.interfaces.ColorInterface;
 import data.interfaces.DisposeInterface;
 import data.structures.Pair;
 import java.awt.CardLayout;
@@ -30,6 +29,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import data.interfaces.Color_Interface;
 
 /**
  *

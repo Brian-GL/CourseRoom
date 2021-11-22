@@ -10,14 +10,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.swing.SwingUtilities;
 import courseroom.MainFrame;
-import data.interfaces.ColorComponents;
 import data.interfaces.DisposeInterface;
+import data.interfaces.Componentes_Interface;
 
 /**
  *
  * @author brian
  */
-public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeInterface,ColorComponents{
+public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeInterface,Componentes_Interface{
 
     private int index_month;
     private int index_year;
@@ -43,7 +43,7 @@ public class Student_Dates_Panel extends javax.swing.JPanel implements DisposeIn
     }
     
     @Override
-    public void ColorComponents(){
+    public void Colorear_Componentes(){
         jLabelMonth.setBackground(MainFrame.getSecondColor());
         jLabelMonth.setForeground(MainFrame.getSecondFontColor());
         

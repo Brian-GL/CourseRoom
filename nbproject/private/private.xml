@@ -3,12 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Homework_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_To_Do_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Edit_Profile_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Box_Course_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Dashboard_Configuration_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Box_Homework_Panel.java</file>
             <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Group_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Dashboard_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Box_Chat_Panel.java</file>
             <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Groups_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Info_Profile_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Box_Notice_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Chat_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Courses_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Chats_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Dates_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Homework_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Box_Date_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Group_Shared_File_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Notices_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Dashboard_Panel.java</file>
             <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Homeworks_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/courseroom/MainFrame.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/panels/students/Student_Box_Group_Panel.java</file>
         </group>
     </open-files>
 </project-private>
