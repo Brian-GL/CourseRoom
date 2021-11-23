@@ -5,20 +5,17 @@
  */
 package panels.generals;
 
-import courseroom.MainFrame;
-import data.interfaces.DisposeInterface;
+import data.interfaces.Limpieza_Interface;
+import main.MainFrame;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
-import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -40,7 +37,7 @@ import uk.co.caprica.vlcj.player.component.AudioPlayerComponent;
  *
  * @author LENOVO
  */
-public class General_Audio_Message_Panel extends javax.swing.JPanel implements DisposeInterface{
+public class General_Audio_Message_Panel extends javax.swing.JPanel implements Limpieza_Interface{
 
     private AudioPlayerComponent audioPlayerComponent;
     private boolean flag;
@@ -617,7 +614,7 @@ public class General_Audio_Message_Panel extends javax.swing.JPanel implements D
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void Dispose()  {
+    public void Limpiar()  {
         
         audioPlayerComponent.release();
         audioPlayerComponent = null;

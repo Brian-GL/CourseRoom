@@ -5,7 +5,7 @@
  */
 package panels.students;
 
-import courseroom.MainFrame;
+import main.MainFrame;
 import data.collections.PairDoublyLinkedList;
 import data.structures.Pair;
 import java.awt.Color;
@@ -130,14 +130,14 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
     private void imagen_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Student_Dashboard_Panel.showView(this.id);
+            Tablero_Estudiante_Panel.showView(this.id);
         }
     }//GEN-LAST:event_imagen_JLabelMouseClicked
 
     private void nombre_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_JLabelMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            Student_Dashboard_Panel.showView(this.id);
+            Tablero_Estudiante_Panel.showView(this.id);
         }
     }//GEN-LAST:event_nombre_JLabelMouseClicked
 
@@ -173,7 +173,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
             curso_JLabel.setText(MainFrame.getFaker().team().name());
             
             grupo_Estudiante_Panel = new Grupo_Estudiante_Panel(obtener_Imagen, nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente);
-            Student_Dashboard_Panel.addView(grupo_Estudiante_Panel, id);
+            Tablero_Estudiante_Panel.addView(grupo_Estudiante_Panel, id);
             obtener_Imagen.flush();
             
             Colorear_Componentes();

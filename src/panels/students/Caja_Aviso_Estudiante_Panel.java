@@ -5,7 +5,7 @@
  */
 package panels.students;
 
-import courseroom.MainFrame;
+import main.MainFrame;
 import data.collections.PairDoublyLinkedList;
 import data.interfaces.Color_Interface;
 import data.structures.Pair;
@@ -56,7 +56,6 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         fecha_Hora_JLabel = new javax.swing.JLabel();
         estatus_JLabel = new javax.swing.JLabel();
 
-        setBackground(java.awt.Color.black);
         setMaximumSize(new java.awt.Dimension(32767, 139));
         setMinimumSize(new java.awt.Dimension(1085, 139));
         setPreferredSize(new java.awt.Dimension(1085, 139));

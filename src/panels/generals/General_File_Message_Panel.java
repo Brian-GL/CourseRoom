@@ -6,15 +6,14 @@
 package panels.generals;
 
 import java.io.File;
-import org.apache.commons.io.FilenameUtils;
-import courseroom.MainFrame;
-import data.interfaces.DisposeInterface;
+import main.MainFrame;
+import data.interfaces.Limpieza_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class General_File_Message_Panel extends javax.swing.JPanel implements DisposeInterface{
+public class General_File_Message_Panel extends javax.swing.JPanel implements Limpieza_Interface{
 
     /**
      * Creates new form FileMessagePanel
@@ -135,7 +134,7 @@ public class General_File_Message_Panel extends javax.swing.JPanel implements Di
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void Dispose() {
+    public void Limpiar() {
         
     }
 }

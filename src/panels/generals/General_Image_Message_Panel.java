@@ -5,17 +5,16 @@
  */
 package panels.generals;
 
+import data.interfaces.Limpieza_Interface;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import courseroom.MainFrame;
-import data.interfaces.DisposeInterface;
-import javax.swing.border.TitledBorder;
+import main.MainFrame;
 
 /**
  *
  * @author LENOVO
  */
-public class General_Image_Message_Panel extends javax.swing.JPanel implements DisposeInterface{
+public class General_Image_Message_Panel extends javax.swing.JPanel implements Limpieza_Interface{
 
     public General_Image_Message_Panel(String sender, String date, Image image, String filename) {
         initComponents();
@@ -114,6 +113,6 @@ public class General_Image_Message_Panel extends javax.swing.JPanel implements D
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void Dispose() {
+    public void Limpiar() {
     }
 }

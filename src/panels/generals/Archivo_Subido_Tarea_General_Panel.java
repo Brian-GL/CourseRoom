@@ -5,32 +5,42 @@
  */
 package panels.generals;
 
+import data.interfaces.Limpieza_Interface;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.SwingUtilities;
+import main.MainFrame;
 
 /**
  *
  * @author LENOVO
  */
-public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel {
+public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel implements Limpieza_Interface{
 
-    private Color foreground,secondForeground,backgroud, secondBackground;
-    /**
-     * Creates new form StudentHomeworkUploadFile
-     */
-    public Archivo_Subido_Tarea_General_Panel(File file, Color _background, Color _foreground, Color _secondBackground, Color _secondForeground) {
+    private Color primer_Color_Fuente,segundo_Color_Fuente,primer_Color_Fondo, segundo_Color_Fondo;
+    private File archivo_Subido;
+    
+    public Archivo_Subido_Tarea_General_Panel(
+            File archivo, 
+            Color _background, 
+            Color _primer_Color_Fuente, 
+            Color _segundo_Color_Fondo, 
+            Color _segundo_Color_Fuente) {
         initComponents();
-        secondForeground = _secondForeground;
-        backgroud = _background;
-        secondBackground = _secondBackground;
-        foreground = _foreground;
-        jTextPaneFileName.setForeground(foreground);
-        jTextPaneFileName.setBackground(_background);
-        jTextPaneFileName.setText(file.getName());
         
-        jButtonRemove.setForeground(foreground);
-        jButtonRemove.setBackground(backgroud);
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        primer_Color_Fondo = _background;
+        segundo_Color_Fondo = _segundo_Color_Fondo;
+        primer_Color_Fuente = _primer_Color_Fuente;
+        archivo_Subido = archivo;
+        
+        nombre_JLabel.setForeground(primer_Color_Fuente);
+        nombre_JLabel.setBackground(_background);
+        nombre_JLabel.setText(archivo_Subido.getName());
+        nombre_JLabel.setToolTipText(MainFrame.Concatenar("Nombre Del Archivo Subido: ", nombre_JLabel.getText()));
+        
+        remover_JButton.setForeground(primer_Color_Fuente);
+        remover_JButton.setBackground(primer_Color_Fondo);
     }
 
     /**
@@ -42,38 +52,35 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelIcon = new javax.swing.JLabel();
-        jScrollPaneFileName = new javax.swing.JScrollPane();
-        jTextPaneFileName = new javax.swing.JTextPane();
-        jButtonRemove = new javax.swing.JButton();
+        icono_JLabel = new javax.swing.JLabel();
+        remover_JButton = new javax.swing.JButton();
+        nombre_JLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(32767, 44));
         setMinimumSize(new java.awt.Dimension(400, 44));
         setOpaque(false);
 
-        jLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/submit.png"))); // NOI18N
+        icono_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/submit.png"))); // NOI18N
 
-        jScrollPaneFileName.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        jScrollPaneFileName.setOpaque(false);
-
-        jTextPaneFileName.setEditable(false);
-        jTextPaneFileName.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-        jTextPaneFileName.setText("Nombre Del Archivo");
-        jScrollPaneFileName.setViewportView(jTextPaneFileName);
-
-        jButtonRemove.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jButtonRemove.setText("X");
-        jButtonRemove.addMouseListener(new java.awt.event.MouseAdapter() {
+        remover_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        remover_JButton.setText("X");
+        remover_JButton.setToolTipText("Remover Archivo");
+        remover_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonRemoveMouseClicked(evt);
+                remover_JButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonRemoveMouseEntered(evt);
+                remover_JButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonRemoveMouseExited(evt);
+                remover_JButtonMouseExited(evt);
             }
         });
+
+        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombre_JLabel.setToolTipText("Nombre Del Archivo");
+        nombre_JLabel.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,11 +88,11 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelIcon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneFileName, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                .addComponent(icono_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonRemove)
+                .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(remover_JButton)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -93,37 +100,42 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneFileName)
-                    .addComponent(jButtonRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(icono_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(remover_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveMouseClicked
+    private void remover_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_remover_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             this.setVisible(false);
         }
-    }//GEN-LAST:event_jButtonRemoveMouseClicked
+    }//GEN-LAST:event_remover_JButtonMouseClicked
 
-    private void jButtonRemoveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveMouseEntered
+    private void remover_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_remover_JButtonMouseEntered
         // TODO add your handling code here:
-        jButtonRemove.setForeground(secondForeground);
-        jButtonRemove.setBackground(secondBackground);
-    }//GEN-LAST:event_jButtonRemoveMouseEntered
+        remover_JButton.setForeground(segundo_Color_Fuente);
+        remover_JButton.setBackground(segundo_Color_Fondo);
+    }//GEN-LAST:event_remover_JButtonMouseEntered
 
-    private void jButtonRemoveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRemoveMouseExited
+    private void remover_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_remover_JButtonMouseExited
         // TODO add your handling code here:
-        jButtonRemove.setForeground(foreground);
-        jButtonRemove.setBackground(backgroud);
-    }//GEN-LAST:event_jButtonRemoveMouseExited
+        remover_JButton.setForeground(primer_Color_Fuente);
+        remover_JButton.setBackground(primer_Color_Fondo);
+    }//GEN-LAST:event_remover_JButtonMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonRemove;
-    private javax.swing.JLabel jLabelIcon;
-    private javax.swing.JScrollPane jScrollPaneFileName;
-    private javax.swing.JTextPane jTextPaneFileName;
+    private javax.swing.JLabel icono_JLabel;
+    private javax.swing.JLabel nombre_JLabel;
+    private javax.swing.JButton remover_JButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Limpiar() {
+        primer_Color_Fuente = segundo_Color_Fuente = primer_Color_Fondo =  segundo_Color_Fondo = null;
+        archivo_Subido = null;
+    }
 }

@@ -5,7 +5,9 @@
  */
 package panels.generals;
 
-import courseroom.MainFrame;
+import data.interfaces.Limpieza_Interface;
+import data.interfaces.Reproductor_Interface;
+import main.MainFrame;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -22,28 +24,30 @@ import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
  *
  * @author LENOVO
  */
-public class General_Video_Panel extends javax.swing.JPanel {
+public class General_Video_Panel extends javax.swing.JPanel implements Reproductor_Interface, Limpieza_Interface{
 
-    private boolean flag;
-    private EmbeddedMediaPlayerComponent embeddedMediaPlayerComponent;
-    /**
-     * Creates new form VideoPanel
-     */
-    public General_Video_Panel(){
+    private boolean bandera_Barra_Progreso;
+    private EmbeddedMediaPlayerComponent componente_Embebido_Video;
+   
+    
+    public General_Video_Panel(String ruta){
         initComponents();
-        flag = true;
+        bandera_Barra_Progreso = true;
        
-        embeddedMediaPlayerComponent = new EmbeddedMediaPlayerComponent();
-        jPanelVideoView.add("videoView",embeddedMediaPlayerComponent.videoSurfaceComponent());
+        componente_Embebido_Video = new EmbeddedMediaPlayerComponent();
         
-        jLabelDuracionTotal.setForeground(MainFrame.getFirstColor());
-        jLabelProgreso.setForeground(MainFrame.getFirstColor());
-        jLabelTitulo.setForeground(MainFrame.getFirstColor());
-        jSliderProgreso.setBackground(MainFrame.getFirstColor());
-        jSliderProgreso.setForeground(MainFrame.getFontColor());
+        video_JPanel.add("Vista_Video",componente_Embebido_Video.videoSurfaceComponent());
+        
+        duracion_Total_JLabel.setForeground(MainFrame.getFirstColor());
+        progreso_JLabel.setForeground(MainFrame.getFirstColor());
+        titulo_JLabel.setForeground(MainFrame.getFirstColor());
+        progreso_JSlider.setBackground(MainFrame.getFirstColor());
+        progreso_JSlider.setForeground(MainFrame.getFontColor());
         
         
-        setPlayerEvents();
+        Establecer_Eventos_Reproductor();
+        
+        componente_Embebido_Video.mediaPlayer().media().play(ruta);
     }
 
     /**
@@ -55,114 +59,126 @@ public class General_Video_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelButtons = new javax.swing.JPanel();
-        jLabelTitulo = new javax.swing.JLabel();
-        jSliderProgreso = new javax.swing.JSlider();
-        jLabelDuracionTotal = new javax.swing.JLabel();
-        jLabelProgreso = new javax.swing.JLabel();
-        jPanelVideoView = new javax.swing.JPanel();
+        controles_JPanel = new javax.swing.JPanel();
+        titulo_JLabel = new javax.swing.JLabel();
+        progreso_JSlider = new javax.swing.JSlider();
+        duracion_Total_JLabel = new javax.swing.JLabel();
+        progreso_JLabel = new javax.swing.JLabel();
+        video_JPanel = new javax.swing.JPanel();
 
         setBackground(java.awt.Color.black);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
 
-        jPanelButtons.setBackground(new Color (49,88,186,185));
-        jPanelButtons.setFocusable(false);
-        jPanelButtons.setMinimumSize(new java.awt.Dimension(800, 90));
-        jPanelButtons.setOpaque(false);
+        controles_JPanel.setBackground(new Color (49,88,186,185));
+        controles_JPanel.setFocusable(false);
+        controles_JPanel.setMinimumSize(new java.awt.Dimension(800, 90));
+        controles_JPanel.setOpaque(false);
 
-        jLabelTitulo.setBackground(new Color (49,88,186,185));
-        jLabelTitulo.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
-        jLabelTitulo.setForeground(new java.awt.Color(104, 194, 232));
-        jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/boton-de-play-video.png"))); // NOI18N
-        jLabelTitulo.setText("Título Del Video");
-        jLabelTitulo.setFocusable(false);
-        jLabelTitulo.setPreferredSize(new java.awt.Dimension(650, 20));
+        titulo_JLabel.setBackground(new Color (49,88,186,185));
+        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
+        titulo_JLabel.setForeground(new java.awt.Color(104, 194, 232));
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/boton-de-play-video.png"))); // NOI18N
+        titulo_JLabel.setText("Título Del Video");
+        titulo_JLabel.setFocusable(false);
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(650, 20));
 
-        jSliderProgreso.setBackground(new Color (49,88,186,185));
-        jSliderProgreso.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jSliderProgreso.setForeground(new java.awt.Color(104, 194, 232));
-        jSliderProgreso.setMaximum(2147483647);
-        jSliderProgreso.setValue(0);
-        jSliderProgreso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jSliderProgreso.setEnabled(false);
-        jSliderProgreso.setFocusable(false);
-        jSliderProgreso.setPreferredSize(new java.awt.Dimension(650, 20));
-        jSliderProgreso.setValueIsAdjusting(true);
+        progreso_JSlider.setBackground(new Color (49,88,186,185));
+        progreso_JSlider.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        progreso_JSlider.setForeground(new java.awt.Color(104, 194, 232));
+        progreso_JSlider.setMaximum(2147483647);
+        progreso_JSlider.setValue(0);
+        progreso_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        progreso_JSlider.setEnabled(false);
+        progreso_JSlider.setFocusable(false);
+        progreso_JSlider.setPreferredSize(new java.awt.Dimension(650, 20));
+        progreso_JSlider.setValueIsAdjusting(true);
 
-        jLabelDuracionTotal.setBackground(new Color (49,88,186,185));
-        jLabelDuracionTotal.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        jLabelDuracionTotal.setForeground(new java.awt.Color(104, 194, 232));
-        jLabelDuracionTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDuracionTotal.setText("00:00:00");
-        jLabelDuracionTotal.setFocusable(false);
+        duracion_Total_JLabel.setBackground(new Color (49,88,186,185));
+        duracion_Total_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        duracion_Total_JLabel.setForeground(new java.awt.Color(104, 194, 232));
+        duracion_Total_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        duracion_Total_JLabel.setText("00:00:00");
+        duracion_Total_JLabel.setFocusable(false);
 
-        jLabelProgreso.setBackground(new Color (49,88,186,185));
-        jLabelProgreso.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        jLabelProgreso.setForeground(new java.awt.Color(104, 194, 232));
-        jLabelProgreso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelProgreso.setText("00:00:00");
-        jLabelProgreso.setFocusable(false);
+        progreso_JLabel.setBackground(new Color (49,88,186,185));
+        progreso_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        progreso_JLabel.setForeground(new java.awt.Color(104, 194, 232));
+        progreso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        progreso_JLabel.setText("00:00:00");
+        progreso_JLabel.setFocusable(false);
 
-        javax.swing.GroupLayout jPanelButtonsLayout = new javax.swing.GroupLayout(jPanelButtons);
-        jPanelButtons.setLayout(jPanelButtonsLayout);
-        jPanelButtonsLayout.setHorizontalGroup(
-            jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelButtonsLayout.createSequentialGroup()
+        javax.swing.GroupLayout controles_JPanelLayout = new javax.swing.GroupLayout(controles_JPanel);
+        controles_JPanel.setLayout(controles_JPanelLayout);
+        controles_JPanelLayout.setHorizontalGroup(
+            controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(controles_JPanelLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jLabelProgreso)
+                .addComponent(progreso_JLabel)
                 .addGap(8, 8, 8)
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSliderProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(progreso_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelDuracionTotal)
+                .addComponent(duracion_Total_JLabel)
                 .addGap(6, 6, 6))
         );
-        jPanelButtonsLayout.setVerticalGroup(
-            jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelButtonsLayout.createSequentialGroup()
-                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        controles_JPanelLayout.setVerticalGroup(
+            controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(controles_JPanelLayout.createSequentialGroup()
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelProgreso)
-                    .addComponent(jSliderProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDuracionTotal))
+                .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(progreso_JLabel)
+                    .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(duracion_Total_JLabel))
                 .addContainerGap())
         );
 
-        jPanelVideoView.setBackground(java.awt.Color.black);
-        jPanelVideoView.setMinimumSize(new java.awt.Dimension(800, 513));
-        jPanelVideoView.setPreferredSize(new java.awt.Dimension(800, 513));
-        jPanelVideoView.setLayout(new java.awt.CardLayout());
+        video_JPanel.setBackground(java.awt.Color.black);
+        video_JPanel.setMinimumSize(new java.awt.Dimension(800, 513));
+        video_JPanel.setPreferredSize(new java.awt.Dimension(800, 513));
+        video_JPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelVideoView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(video_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(controles_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelVideoView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(video_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanelButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(controles_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-   
-    private void cleanInfoMedia(){
-    }
 
-    private void setPlayerEvents() {
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel controles_JPanel;
+    private javax.swing.JLabel duracion_Total_JLabel;
+    private javax.swing.JLabel progreso_JLabel;
+    private javax.swing.JSlider progreso_JSlider;
+    private javax.swing.JLabel titulo_JLabel;
+    private javax.swing.JPanel video_JPanel;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Limpiar() {
+        componente_Embebido_Video.release();
+        componente_Embebido_Video = null;
+    }
+    
+     @Override
+    public void Establecer_Eventos_Reproductor(){
 
       
-
         //Listener para el slider progress
-        jSliderProgreso.addMouseListener(new MouseListener() {
+        progreso_JSlider.addMouseListener(new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -171,12 +187,12 @@ public class General_Video_Panel extends javax.swing.JPanel {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                flag = false;
+                bandera_Barra_Progreso = false;
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                flag = true;
+                bandera_Barra_Progreso = true;
             }
 
             @Override
@@ -190,14 +206,18 @@ public class General_Video_Panel extends javax.swing.JPanel {
         });
 
         //Control para cambiar a posicion de reproduccion
-        jSliderProgreso.addChangeListener((ChangeEvent e) -> {
-            if (!flag) {
-                Object source = e.getSource();
-                embeddedMediaPlayerComponent.mediaPlayer().controls().setTime(((JSlider) source).getValue());
+        progreso_JSlider.addChangeListener((ChangeEvent e) -> {
+            Object fuente;
+            if (!bandera_Barra_Progreso) {
+                fuente = e.getSource();
+                componente_Embebido_Video.mediaPlayer().controls().setTime(((JSlider) fuente).getValue());
             }
         });
         
-        embeddedMediaPlayerComponent.videoSurfaceComponent().addMouseMotionListener(new MouseMotionListener() {
+        componente_Embebido_Video.videoSurfaceComponent().addMouseMotionListener(new MouseMotionListener() {
+            
+            boolean es_Visible;
+            
             @Override
             public void mouseDragged(MouseEvent e) {
                 
@@ -205,16 +225,21 @@ public class General_Video_Panel extends javax.swing.JPanel {
 
             @Override
             public void mouseMoved(MouseEvent e) {
-                boolean hasToBeVisible = e.getLocationOnScreen().y >= jPanelVideoView.getPreferredSize().getHeight();
+                es_Visible = e.getLocationOnScreen().y >= video_JPanel.getPreferredSize().getHeight();
                 
-                if(hasToBeVisible && !jPanelButtons.isVisible())
-                    jPanelButtons.setVisible(true);
-                else if((!hasToBeVisible && jPanelButtons.isVisible()))
-                    jPanelButtons.setVisible(false);
+                if(es_Visible && !controles_JPanel.isVisible())
+                    controles_JPanel.setVisible(true);
+                else if((!es_Visible && controles_JPanel.isVisible()))
+                    controles_JPanel.setVisible(false);
             }
         });
         
-        embeddedMediaPlayerComponent.mediaPlayer().events().addMediaPlayerEventListener(new MediaPlayerEventListener() {
+        
+        componente_Embebido_Video.mediaPlayer().events().addMediaPlayerEventListener(new MediaPlayerEventListener() {
+            String segundos;
+            int tiempo;
+            int conversion_Tiempo;
+            
             @Override
             public void mediaChanged(MediaPlayer mp, MediaRef mr) {
                 
@@ -242,7 +267,7 @@ public class General_Video_Panel extends javax.swing.JPanel {
 
             @Override
             public void stopped(MediaPlayer mp) {
-                cleanInfoMedia();
+                
             }
 
             @Override
@@ -257,7 +282,7 @@ public class General_Video_Panel extends javax.swing.JPanel {
 
             @Override
             public void finished(MediaPlayer mp) {
-                cleanInfoMedia();
+                
             }
 
             @Override
@@ -267,13 +292,12 @@ public class General_Video_Panel extends javax.swing.JPanel {
 
             @Override
             public void positionChanged(MediaPlayer mp, float f) {
-                 if (flag) {
-                    int tiempo = (int) embeddedMediaPlayerComponent.mediaPlayer().status().time();
-                    int value = tiempo / 1000;
-                    jSliderProgreso.setValue(tiempo);
-                    String segundos = secondsToString(value);
-                    jLabelProgreso.setText(segundos);
-                    segundos = null;
+                 if (bandera_Barra_Progreso) {
+                    tiempo = (int) componente_Embebido_Video.mediaPlayer().status().time();
+                    conversion_Tiempo = tiempo / 1000;
+                    progreso_JSlider.setValue(tiempo);
+                    segundos = MainFrame.Convertir_Segundos(conversion_Tiempo);
+                    progreso_JLabel.setText(segundos);
                 }
             }
 
@@ -364,27 +388,5 @@ public class General_Video_Panel extends javax.swing.JPanel {
         });
     }
 
-    private String secondsToString(long seconds) {
-        long absSeconds = Math.abs(seconds);
-        String positive = String.format(
-                "%02d:%02d:%02d",
-                absSeconds / 3600,
-                (absSeconds % 3600) / 60,
-                absSeconds % 60);
-        return seconds < 0 ? "-" + positive : positive;
-    }
     
-    public void dispose(){
-        embeddedMediaPlayerComponent.release();
-        embeddedMediaPlayerComponent = null;
-    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelDuracionTotal;
-    private javax.swing.JLabel jLabelProgreso;
-    private javax.swing.JLabel jLabelTitulo;
-    private javax.swing.JPanel jPanelButtons;
-    private javax.swing.JPanel jPanelVideoView;
-    private javax.swing.JSlider jSliderProgreso;
-    // End of variables declaration//GEN-END:variables
 }

@@ -5,8 +5,8 @@
  */
 package panels.generals;
 
-import courseroom.MainFrame;
-import data.interfaces.DisposeInterface;
+import data.interfaces.Limpieza_Interface;
+import main.MainFrame;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,7 +30,7 @@ import javax.swing.SwingUtilities;
  *
  * @author LENOVO
  */
-public class General_Recuperar_Credenciales_Panel extends javax.swing.JPanel implements DisposeInterface{
+public class General_Recuperar_Credenciales_Panel extends javax.swing.JPanel implements Limpieza_Interface{
 
     private Session session;
     private StringBuilder msjHTML;
@@ -375,7 +375,7 @@ public class General_Recuperar_Credenciales_Panel extends javax.swing.JPanel imp
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void Dispose() {
+    public void Limpiar() {
         session = null;
         msjHTML = null;
         mimeBodyPartHTML = null;

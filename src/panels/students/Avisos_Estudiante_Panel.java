@@ -5,7 +5,7 @@
  */
 package panels.students;
 
-import courseroom.MainFrame;
+import main.MainFrame;
 import data.interfaces.Limpieza_Interface;
 import java.awt.Font;
 import data.interfaces.Componentes_Interface;

@@ -5,6 +5,7 @@
  */
 package panels.generals;
 
+import data.interfaces.Limpieza_Interface;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
@@ -17,14 +18,13 @@ import uk.co.caprica.vlcj.player.base.MediaPlayer;
 import uk.co.caprica.vlcj.player.base.MediaPlayerEventListener;
 import uk.co.caprica.vlcj.player.base.State;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
-import courseroom.MainFrame;
-import data.interfaces.DisposeInterface;
+import main.MainFrame;
 
 /**
  *
  * @author LENOVO
  */
-public class General_Video_Message_Panel extends javax.swing.JPanel implements DisposeInterface{
+public class General_Video_Message_Panel extends javax.swing.JPanel implements Limpieza_Interface{
 
     private EmbeddedMediaPlayerComponent embeddedMediaPlayerComponent;
     private boolean flag;
@@ -496,7 +496,7 @@ public class General_Video_Message_Panel extends javax.swing.JPanel implements D
     }
    
     @Override
-    public void Dispose(){
+    public void Limpiar(){
         embeddedMediaPlayerComponent.release();
         embeddedMediaPlayerComponent = null;
         mrl = null;

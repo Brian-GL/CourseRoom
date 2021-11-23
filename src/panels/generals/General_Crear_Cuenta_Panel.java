@@ -5,8 +5,8 @@
  */
 package panels.generals;
 
-import components.ImageFilePreview;
-import courseroom.MainFrame;
+import componentes.ImageFilePreview;
+import main.MainFrame;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;

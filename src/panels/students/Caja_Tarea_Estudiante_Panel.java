@@ -5,7 +5,7 @@
  */
 package panels.students;
 
-import courseroom.MainFrame;
+import main.MainFrame;
 import data.collections.PairDoublyLinkedList;
 import data.structures.Pair;
 import java.awt.Color;
@@ -16,27 +16,30 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import data.interfaces.Color_Interface;
+import data.interfaces.Componentes_Interface;
+import data.interfaces.Limpieza_Interface;
 
 /**
  *
  * @author LENOVO
  */
-public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements Color_Interface{
+public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements Color_Interface, Limpieza_Interface, Componentes_Interface{
 
-    private Color firstColor, secondColor,thirdColor,fontColor, secondFontColor, thirdFontColor;
+    private Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
     private String id;
-    private Tarea_Estudiante_Panel homeworkPanel;
+    private Tarea_Estudiante_Panel tarea_Estudiante_Panel;
     
     
     public Caja_Tarea_Estudiante_Panel(String _id) {
         initComponents();
+        
         this.id = _id;
-        InitComponents();
+        
+        Iniciar_Componentes();
     }
 
     /**
@@ -48,59 +51,59 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelFotoTarea = new javax.swing.JLabel();
-        jLabelClaseDeLaTarea = new javax.swing.JLabel();
-        jLabelNombreTarea = new javax.swing.JLabel();
-        jLabelFechaDeEntrega = new javax.swing.JLabel();
-        jLabelTipoDeTarea = new javax.swing.JLabel();
-        jLabelEstado = new javax.swing.JLabel();
+        imagen_Curso_JLabel = new javax.swing.JLabel();
+        curso_JLabel = new javax.swing.JLabel();
+        nombre_JLabel = new javax.swing.JLabel();
+        fecha_Entrega_JLabel = new javax.swing.JLabel();
+        tipo_JLabel = new javax.swing.JLabel();
+        estatus_JLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(32767, 174));
         setMinimumSize(new java.awt.Dimension(1085, 174));
         setPreferredSize(new java.awt.Dimension(1085, 174));
 
-        jLabelFotoTarea.setToolTipText("Abrir Tarea");
-        jLabelFotoTarea.setMaximumSize(new java.awt.Dimension(164, 164));
-        jLabelFotoTarea.setMinimumSize(new java.awt.Dimension(164, 164));
-        jLabelFotoTarea.setPreferredSize(new java.awt.Dimension(164, 164));
-        jLabelFotoTarea.addMouseListener(new java.awt.event.MouseAdapter() {
+        imagen_Curso_JLabel.setToolTipText("Imagen Del Curso");
+        imagen_Curso_JLabel.setMaximumSize(new java.awt.Dimension(164, 164));
+        imagen_Curso_JLabel.setMinimumSize(new java.awt.Dimension(164, 164));
+        imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(164, 164));
+        imagen_Curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelFotoTareaMouseClicked(evt);
+                imagen_Curso_JLabelMouseClicked(evt);
             }
         });
 
-        jLabelClaseDeLaTarea.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
-        jLabelClaseDeLaTarea.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelClaseDeLaTarea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/course.png"))); // NOI18N
-        jLabelClaseDeLaTarea.setToolTipText("Clase Que Pertenece La Tarea");
-        jLabelClaseDeLaTarea.addMouseListener(new java.awt.event.MouseAdapter() {
+        curso_JLabel.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
+        curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        curso_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/course.png"))); // NOI18N
+        curso_JLabel.setToolTipText("Curso De Proveniencia De La Tarea");
+        curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelClaseDeLaTareaMouseClicked(evt);
+                curso_JLabelMouseClicked(evt);
             }
         });
 
-        jLabelNombreTarea.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-        jLabelNombreTarea.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelNombreTarea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_2.png"))); // NOI18N
-        jLabelNombreTarea.setToolTipText("Nombre De La Tarea");
-        jLabelNombreTarea.addMouseListener(new java.awt.event.MouseAdapter() {
+        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+        nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nombre_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_2.png"))); // NOI18N
+        nombre_JLabel.setToolTipText("Nombre De La Tarea");
+        nombre_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelNombreTareaMouseClicked(evt);
+                nombre_JLabelMouseClicked(evt);
             }
         });
 
-        jLabelFechaDeEntrega.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
-        jLabelFechaDeEntrega.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelFechaDeEntrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_1.png"))); // NOI18N
-        jLabelFechaDeEntrega.setToolTipText("Fecha De Entrega");
+        fecha_Entrega_JLabel.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        fecha_Entrega_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        fecha_Entrega_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_1.png"))); // NOI18N
+        fecha_Entrega_JLabel.setToolTipText("Fecha De Entrega");
 
-        jLabelTipoDeTarea.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
-        jLabelTipoDeTarea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/writing.png"))); // NOI18N
-        jLabelTipoDeTarea.setToolTipText("Tipo De Tarea");
+        tipo_JLabel.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
+        tipo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/writing.png"))); // NOI18N
+        tipo_JLabel.setToolTipText("Tipo De Tarea");
 
-        jLabelEstado.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
-        jLabelEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_3.png"))); // NOI18N
-        jLabelEstado.setToolTipText("Estado De La Tarea");
+        estatus_JLabel.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
+        estatus_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/homework_3.png"))); // NOI18N
+        estatus_JLabel.setToolTipText("Estatus De La Tarea");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,16 +111,16 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelFotoTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelClaseDeLaTarea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelTipoDeTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(curso_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tipo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelFechaDeEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fecha_Entrega_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, Short.MAX_VALUE)
-                        .addComponent(jLabelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelNombreTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(estatus_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -125,178 +128,191 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelFotoTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelNombreTarea)
+                        .addComponent(nombre_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelClaseDeLaTarea)
+                        .addComponent(curso_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelTipoDeTarea)
+                        .addComponent(tipo_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelEstado)
-                            .addComponent(jLabelFechaDeEntrega))))
+                            .addComponent(estatus_JLabel)
+                            .addComponent(fecha_Entrega_JLabel))))
                 .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabelFotoTareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFotoTareaMouseClicked
+    private void imagen_Curso_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Curso_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Student_Dashboard_Panel.showView(this.id);
+            Tablero_Estudiante_Panel.showView(this.id);
         }
-    }//GEN-LAST:event_jLabelFotoTareaMouseClicked
+    }//GEN-LAST:event_imagen_Curso_JLabelMouseClicked
 
-    private void jLabelNombreTareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNombreTareaMouseClicked
+    private void nombre_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Student_Dashboard_Panel.showView(this.id);
+            Tablero_Estudiante_Panel.showView(this.id);
         }
-    }//GEN-LAST:event_jLabelNombreTareaMouseClicked
+    }//GEN-LAST:event_nombre_JLabelMouseClicked
 
-    private void jLabelClaseDeLaTareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClaseDeLaTareaMouseClicked
+    private void curso_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_curso_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
         }
-    }//GEN-LAST:event_jLabelClaseDeLaTareaMouseClicked
+    }//GEN-LAST:event_curso_JLabelMouseClicked
 
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel curso_JLabel;
+    private javax.swing.JLabel estatus_JLabel;
+    private javax.swing.JLabel fecha_Entrega_JLabel;
+    private javax.swing.JLabel imagen_Curso_JLabel;
+    private javax.swing.JLabel nombre_JLabel;
+    private javax.swing.JLabel tipo_JLabel;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Iniciar_Componentes() {
+        try {
+
+            nombre_JLabel.setText(MainFrame.getFaker().book().title());
+            fecha_Entrega_JLabel.setText(MainFrame.getFaker().backToTheFuture().date());
+            tipo_JLabel.setText(MainFrame.getFaker().book().genre());
+            curso_JLabel.setText(MainFrame.getFaker().book().publisher());
+            estatus_JLabel.setText((MainFrame.getFaker().bool().bool()) ? "Entregada" : "No Entregada Aún");
+            
+            System.out.println("Tarea ID: " + this.id + " -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            URL url_Imagen = new URL("https://loremflickr.com/164/164/sunset,beach/all");
+            Image obtener_Imagen = ImageIO.read(url_Imagen);
+            ImageIcon icono_Tarea = new ImageIcon(obtener_Imagen);
+            imagen_Curso_JLabel.setIcon(icono_Tarea);
+            
+            Establecer_Colores(obtener_Imagen);
+            Colorear_Componentes();
+            
+            tarea_Estudiante_Panel = new Tarea_Estudiante_Panel(nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, 
+                    segundo_Color_Fuente, tercer_Color_Fuente);
+            
+            Tablero_Estudiante_Panel.addView(tarea_Estudiante_Panel, id);
+            obtener_Imagen.flush();
+        } catch (MalformedURLException ex) {
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void Colorear_Componentes() {
+        estatus_JLabel.setForeground(primer_Color_Fuente);
+        curso_JLabel.setForeground(primer_Color_Fuente);
+        fecha_Entrega_JLabel.setForeground(primer_Color_Fuente);
+        nombre_JLabel.setForeground(primer_Color_Fuente);
+        tipo_JLabel.setForeground(primer_Color_Fuente);
+
+        this.setBackground(primer_Color);
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
+    }
+    
     
     @Override
     public void Establecer_Colores(Image image){
-        
-        try {
-            Random colorRandom = new Random(System.currentTimeMillis());
-            int maximum = 0;
-            firstColor = Color.BLACK;
-            PairDoublyLinkedList<Integer, Color> colorList = new PairDoublyLinkedList<>();
-            PixelGrabber pg = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int large = image.getWidth(null)/2;
-            int[] pixels;
-            int pixel;
-            int red;
-            int green;
-            int blue;
+       try {
+            Random numero_Aleatorio = new Random(System.currentTimeMillis());
+            int maximo_auxiliar = 0;
+            primer_Color = Color.BLACK;
+            PairDoublyLinkedList<Integer, Color> lista_Colores = new PairDoublyLinkedList<>();
+            PixelGrabber obtener_Pixeles = new PixelGrabber(image, 0, 0, -1, -1, false);
+            int largo_Imagen = image.getWidth(null)/2;
+            int[] pixeles;
+            int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
             Color color;
-            Pair<Integer, Color> pair;
-            int number;
-            int position;
-            if (pg.grabPixels()) {
-                pixels = (int[]) pg.getPixels();
-                for(int i = 0; i < pixels.length; i++){
-                    pixel = pixels[i];
-                    red = (pixel  & 0x00ff0000) >> 16;
-                    green = (pixel & 0x0000ff00) >> 8;
-                    blue = pixel & 0x000000ff;
-                    color = new Color(red,green,blue);
-                    pair = colorList.get_from_second(color);
+            Pair<Integer, Color> par;
+            if (obtener_Pixeles.grabPixels()) {
+                pixeles = (int[]) obtener_Pixeles.getPixels();
+                for(int i = 0; i < pixeles.length; i++){
+                    pixel = pixeles[i];
+                    rojo = (pixel  & 0x00ff0000) >> 16;
+                    verde = (pixel & 0x0000ff00) >> 8;
+                    azul = pixel & 0x000000ff;
+                    color = new Color(rojo,verde,azul);
+                    par = lista_Colores.get_from_second(color);
             
-                    if (pair != null) {//exist
-                        number = pair.first()+ 1;
-                        pair.first(number);
-                        if (number > maximum) {
-                            firstColor = color;
-                            maximum = number;
+                    if (par != null) { //existe
+                        numero_Auxiliar = par.first()+ 1;
+                        par.first(numero_Auxiliar);
+                        if (numero_Auxiliar > maximo_auxiliar) {
+                            primer_Color = color;
+                            maximo_auxiliar = numero_Auxiliar;
                         }
                     } else {
-                        colorList.push_back(1, color);
+                        lista_Colores.push_back(1, color);
                     }
 
-                    i += colorRandom.nextInt(large+1) + large;
+                    i += numero_Aleatorio.nextInt(largo_Imagen+1) + largo_Imagen;
                 }
 
-                secondColor = firstColor;
+                segundo_Color = primer_Color;
             
-                int iterations = 0;
-                if(colorList.size() > 1){
+                int iteraciones = 0;
+                if(lista_Colores.size() > 1){
                     
-                    while(Math.abs(secondColor.getRGB() - firstColor.getRGB()) < 3000000){
-                        position = colorRandom.nextInt((int)colorList.size()-1);
-                        secondColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 25){
-                             while(firstColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                secondColor = colorList.get(position).second();
+                    while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
+                        posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                        segundo_Color = lista_Colores.get(posicion).second();
+                        iteraciones++;
+                        if(iteraciones > 25){
+                             while(primer_Color.getRGB() == segundo_Color.getRGB()){
+                                posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                                segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
                         }
                     }
                 }
                
-                thirdColor = secondColor;
-                if(colorList.size() > 2){
-                    iterations = 0;
+                tercer_Color = segundo_Color;
+                if(lista_Colores.size() > 2){
+                    iteraciones = 0;
                     
-                    while(Math.abs(thirdColor.getRGB() - firstColor.getRGB()) < 3000000 || Math.abs(secondColor.getRGB() - thirdColor.getRGB()) < 3000000){
-                        position = colorRandom.nextInt((int)colorList.size()-1);
-                        thirdColor = colorList.get(position).second();
-                        iterations++;
-                        if(iterations > 50){
-                            while(thirdColor.getRGB() == firstColor.getRGB() || thirdColor.getRGB() == secondColor.getRGB()){
-                                position = colorRandom.nextInt((int)colorList.size()-1);
-                                thirdColor = colorList.get(position).second();
+                    while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
+                        posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                        tercer_Color = lista_Colores.get(posicion).second();
+                        iteraciones++;
+                        if(iteraciones > 50){
+                            while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
+                                posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                                tercer_Color = lista_Colores.get(posicion).second();
                             }
                             break;
                         }
                     }
                 }
                 
-                red = firstColor.getRed();
-                fontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                red = secondColor.getRed();
-                secondFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                red = thirdColor.getRed();
-                thirdFontColor = (red >= 155) ? Color.BLACK : Color.WHITE;
-                colorList.clear();
-
-                jLabelEstado.setForeground(fontColor);
-                jLabelClaseDeLaTarea.setForeground(fontColor);
-                jLabelFechaDeEntrega.setForeground(fontColor);
-                jLabelNombreTarea.setForeground(fontColor);
-                jLabelTipoDeTarea.setForeground(fontColor);
+                rojo = primer_Color.getRed();
+                primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                rojo = segundo_Color.getRed();
+                segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                rojo = tercer_Color.getRed();
+                tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                lista_Colores.clear();
                 
-                this.setBackground(firstColor);
-                this.setBorder(javax.swing.BorderFactory.createLineBorder(secondColor));
             }
             
         } catch (InterruptedException ex) {
             MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
+          
     }
     
-    public void InitComponents(){
-        try {
-
-            jLabelNombreTarea.setText(MainFrame.getFaker().book().title());
-            jLabelFechaDeEntrega.setText(MainFrame.getFaker().backToTheFuture().date());
-            jLabelTipoDeTarea.setText(MainFrame.getFaker().book().genre());
-            jLabelClaseDeLaTarea.setText(MainFrame.getFaker().book().publisher());
-            jLabelEstado.setText((MainFrame.getFaker().bool().bool()) ? "Entregada" : "No Entregada Aún");
-            
-            System.out.println("Homework ID: " + this.id + " -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL imageURL = new URL("https://loremflickr.com/164/164/sunset,beach/all");
-            Image getImage = ImageIO.read(imageURL);
-            ImageIcon groupIcon = new ImageIcon(getImage);
-            jLabelFotoTarea.setIcon(groupIcon);
-            Establecer_Colores(getImage);
-            homeworkPanel = new Tarea_Estudiante_Panel(jLabelNombreTarea.getText(), firstColor, secondColor, thirdColor, fontColor, secondFontColor, thirdFontColor);
-            Student_Dashboard_Panel.addView(homeworkPanel, id);
-            getImage.flush();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Caja_Tarea_Estudiante_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Caja_Tarea_Estudiante_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelClaseDeLaTarea;
-    private javax.swing.JLabel jLabelEstado;
-    private javax.swing.JLabel jLabelFechaDeEntrega;
-    private javax.swing.JLabel jLabelFotoTarea;
-    private javax.swing.JLabel jLabelNombreTarea;
-    private javax.swing.JLabel jLabelTipoDeTarea;
-    // End of variables declaration//GEN-END:variables
+     @Override
+    public void Limpiar() {
+        primer_Color = segundo_Color = tercer_Color =primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
+        id = null;
+        tarea_Estudiante_Panel.Limpiar();
+    }
 }

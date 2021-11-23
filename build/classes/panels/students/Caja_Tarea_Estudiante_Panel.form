@@ -29,17 +29,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabelFotoTarea" min="-2" max="-2" attributes="0"/>
+              <Component id="imagen_Curso_JLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelClaseDeLaTarea" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jLabelTipoDeTarea" max="32767" attributes="0"/>
+                  <Component id="curso_JLabel" alignment="1" max="32767" attributes="0"/>
+                  <Component id="tipo_JLabel" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jLabelFechaDeEntrega" min="-2" pref="249" max="-2" attributes="0"/>
+                      <Component id="fecha_Entrega_JLabel" min="-2" pref="249" max="-2" attributes="0"/>
                       <EmptySpace pref="475" max="32767" attributes="0"/>
-                      <Component id="jLabelEstado" min="-2" pref="167" max="-2" attributes="0"/>
+                      <Component id="estatus_JLabel" min="-2" pref="167" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabelNombreTarea" max="32767" attributes="0"/>
+                  <Component id="nombre_JLabel" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -50,17 +50,17 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabelFotoTarea" max="32767" attributes="0"/>
+                  <Component id="imagen_Curso_JLabel" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jLabelNombreTarea" min="-2" max="-2" attributes="0"/>
+                      <Component id="nombre_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabelClaseDeLaTarea" min="-2" max="-2" attributes="0"/>
+                      <Component id="curso_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabelTipoDeTarea" min="-2" max="-2" attributes="0"/>
+                      <Component id="tipo_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelFechaDeEntrega" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="estatus_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fecha_Entrega_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -70,9 +70,9 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabelFotoTarea">
+    <Component class="javax.swing.JLabel" name="imagen_Curso_JLabel">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Abrir Tarea"/>
+        <Property name="toolTipText" type="java.lang.String" value="Imagen Del Curso"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[164, 164]"/>
         </Property>
@@ -84,10 +84,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelFotoTareaMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imagen_Curso_JLabelMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelClaseDeLaTarea">
+    <Component class="javax.swing.JLabel" name="curso_JLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="16" style="3"/>
@@ -96,13 +96,13 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/course.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Clase Que Pertenece La Tarea"/>
+        <Property name="toolTipText" type="java.lang.String" value="Curso De Proveniencia De La Tarea"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelClaseDeLaTareaMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="curso_JLabelMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelNombreTarea">
+    <Component class="javax.swing.JLabel" name="nombre_JLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="16" style="1"/>
@@ -114,10 +114,10 @@
         <Property name="toolTipText" type="java.lang.String" value="Nombre De La Tarea"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelNombreTareaMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="nombre_JLabelMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelFechaDeEntrega">
+    <Component class="javax.swing.JLabel" name="fecha_Entrega_JLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="16" style="0"/>
@@ -129,7 +129,7 @@
         <Property name="toolTipText" type="java.lang.String" value="Fecha De Entrega"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelTipoDeTarea">
+    <Component class="javax.swing.JLabel" name="tipo_JLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="16" style="2"/>
@@ -140,7 +140,7 @@
         <Property name="toolTipText" type="java.lang.String" value="Tipo De Tarea"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelEstado">
+    <Component class="javax.swing.JLabel" name="estatus_JLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="16" style="2"/>
@@ -148,7 +148,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/icons/homework_3.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Estado De La Tarea"/>
+        <Property name="toolTipText" type="java.lang.String" value="Estatus De La Tarea"/>
       </Properties>
     </Component>
   </SubComponents>

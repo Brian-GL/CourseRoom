@@ -6,7 +6,7 @@
 package panels.students;
 
 import panels.generals.Archivo_Subido_Tarea_General_Panel;
-import courseroom.MainFrame;
+import main.MainFrame;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
@@ -407,7 +406,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Student_Dashboard_Panel.showView("homeworksPanel");
+            Tablero_Estudiante_Panel.showView("Tareas");
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
 
@@ -448,9 +447,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             enviar_Comentarios_JTextField.setText("");
             
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Tarea_Estudiante_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Tarea_Estudiante_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            MainFrame.getLogger().log(Level.SEVERE, null, ex);
         }
     }
     
@@ -459,18 +458,18 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         JFileChooser escogedor_Archivos = new JFileChooser();
         escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
         escogedor_Archivos.setMultiSelectionEnabled(true);
-        escogedor_Archivos.setApproveButtonText("Open File");
-        escogedor_Archivos.setMultiSelectionEnabled(false);
+        escogedor_Archivos.setApproveButtonText("Abrir Archivos");
+        escogedor_Archivos.setMultiSelectionEnabled(true);
         escogedor_Archivos.doLayout();
         int result = escogedor_Archivos.showOpenDialog(this);
 
         if (result == JFileChooser.APPROVE_OPTION) {
             File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
             File archivo_Abierto;
-           
+            Archivo_Subido_Tarea_General_Panel archivo_Subido_Tarea_General_Panel;
             for(int i = 0; i < archivos_Abiertos.length;i++){
                 archivo_Abierto = archivos_Abiertos[i];
-                Archivo_Subido_Tarea_General_Panel archivo_Subido_Tarea_General_Panel = 
+                archivo_Subido_Tarea_General_Panel = 
                         new Archivo_Subido_Tarea_General_Panel(archivo_Abierto,
                         tercer_Color,tercer_Color_Fuente,segundo_Color, segundo_Color_Fuente);
                 archivos_Subidos_JPanel.add(archivo_Subido_Tarea_General_Panel);
@@ -569,7 +568,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         archivos_Adjuntos_JPanel.removeAll();
         archivos_Subidos_JPanel.removeAll();
         primer_Color =  segundo_Color = tercer_Color = 
-                primer_Color_Fuente =  segundo_Color_Fuente =  tercer_Color_Fuente = null;
+        primer_Color_Fuente =  segundo_Color_Fuente =  tercer_Color_Fuente = null;
     }
 
 }

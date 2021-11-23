@@ -5,7 +5,7 @@
  */
 package panels.students;
 
-import courseroom.MainFrame;
+import main.MainFrame;
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;

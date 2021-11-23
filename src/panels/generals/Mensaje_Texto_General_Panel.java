@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package panels.generals;
-import courseroom.MainFrame;
+import main.MainFrame;
 import data.interfaces.Componentes_Interface;
 
 /**

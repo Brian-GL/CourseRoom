@@ -6,8 +6,8 @@
 package panels.students;
 
 import com.github.lgooddatepicker.components.DateTimePicker;
-import components.ImageFilePreview;
-import courseroom.MainFrame;
+import componentes.ImageFilePreview;
+import main.MainFrame;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -43,7 +43,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private JPanel lista_Tareas_Pendientes_JPanel, lista_Tareas_Finalizadas_JPanel;
    
     public Grupo_Estudiante_Panel(
-            Image imagen_Grupo, 
+            Image _imagen_Grupo, 
             String nombre_Grupo, 
             Color _primer_Color, 
             Color _segundo_Color, 
@@ -61,13 +61,13 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         tercer_Color = _tercer_Color;
         tercer_Color_Fuente = _tercer_Color_Fuente;
         
-        Image groupImage = imagen_Grupo.getScaledInstance(440,440,Image.SCALE_SMOOTH);
+        Image imagen_Grupo = _imagen_Grupo.getScaledInstance(440,440,Image.SCALE_SMOOTH);
         nombre_Grupo_JLabel.setText(nombre_Grupo);
-        ImageIcon groupIcon = new ImageIcon(groupImage);
+        ImageIcon icono_Grupo = new ImageIcon(imagen_Grupo);
         
-        imagen_Grupo_JLabel.setIcon(groupIcon);
-        editar_Imagen_Grupo_JLabel.setIcon(groupIcon);
-        groupImage.flush();
+        imagen_Grupo_JLabel.setIcon(icono_Grupo);
+        editar_Imagen_Grupo_JLabel.setIcon(icono_Grupo);
+        imagen_Grupo.flush();
         
         Iniciar_Componentes();
        
@@ -680,11 +680,11 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 try {
                     Image abrir_Imagen = ImageIO.read(archivo);
                     int largo_Imagen = editar_Imagen_Grupo_JLabel.getHeight();
-                    ImageIcon autenticacionIcon = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
+                    ImageIcon icono_Grupo = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
 
-                    editar_Imagen_Grupo_JLabel.setIcon(autenticacionIcon);
+                    editar_Imagen_Grupo_JLabel.setIcon(icono_Grupo);
 
-                    Student_Dashboard_Panel.setUserImage(autenticacionIcon.getImage());
+                    Tablero_Estudiante_Panel.Establecer_Imagen_Usuario(icono_Grupo.getImage());
                     abrir_Imagen.flush();
 
                 } catch (IOException ex) {
@@ -764,7 +764,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Student_Dashboard_Panel.showView("Grupos");
+            Tablero_Estudiante_Panel.showView("Grupos");
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
 
@@ -996,8 +996,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         anadir_Tarea_Pendiente_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(primer_Color_Fuente), "Agregar Pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 0, 18),primer_Color_Fuente));
         
-        imagen_Grupo_JLabel.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
-        editar_Imagen_Grupo_JLabel.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
        
         miembros_JScrollPane.getViewport().setOpaque(false);
         miembros_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1035,11 +1033,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         grupo_JTabbedPane.setBackground(primer_Color);
         grupo_JTabbedPane.setForeground(primer_Color_Fuente);
-        
-        Component[] components = this.getComponents();
-        for (Component component : components){
-            component.setForeground(primer_Color_Fuente);
-        }
 
         nombre_Grupo_JLabel.setBackground(segundo_Color);
         nombre_Grupo_JLabel.setForeground(segundo_Color_Fuente);
@@ -1137,6 +1130,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         lista_Tareas_Pendientes_JPanel.removeAll();
         lista_Tareas_Finalizadas_JPanel.removeAll();
         archivos_Compartidos_JPanel.removeAll();
-        primer_Color = segundo_Color =tercer_Color = primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
+        primer_Color = segundo_Color = tercer_Color = primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
     }
 }

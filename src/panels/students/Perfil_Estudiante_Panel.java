@@ -5,7 +5,7 @@
  */
 package panels.students;
 
-import courseroom.MainFrame;
+import main.MainFrame;
 import java.awt.Component;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -278,7 +278,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Perfil_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Student_Dashboard_Panel.showView("Editar_Perfil");
+            Tablero_Estudiante_Panel.showView("Editar_Perfil");
         }
         
     }//GEN-LAST:event_editar_Perfil_JButtonMouseClicked
@@ -329,7 +329,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         genero_JLabel.setText(MainFrame.getFaker().demographic().sex());
         fecha_Nacimiento_JLabel.setText(MainFrame.getFaker().backToTheFuture().date());
         
-        ImageIcon imagen = new ImageIcon(Student_Dashboard_Panel.getUserImage());
+        ImageIcon imagen = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());
         imagen_Perfil_JLabel.setIcon(imagen);
         nombres_JLabel.setForeground(MainFrame.getSecondFontColor());
         apellidos_JLabel.setForeground(MainFrame.getSecondFontColor());

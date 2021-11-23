@@ -5,7 +5,7 @@
  */
 package panels.generals;
 
-import courseroom.MainFrame;
+import main.MainFrame;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
