@@ -1,7 +1,7 @@
 # CourseRoom
-<div style="text-align:center;">
+<p align="center">
     <img src="src/resources/images/Course_Room_Brand_Readme.png" alt="CourseRoom Brand Logo">
-</div>
+</p>
 
 <br>
 

@@ -5,9 +5,9 @@
  */
 package data_structures;
 
-import data.collections.Collection;
-import data.collections.DoublyLinkedList;
-import data.structures.Node;
+import datos.colecciones.Coleccion;
+import datos.colecciones.Lista;
+import datos.estructuras.Node;
 import data_structures.Mode;
 import java.util.Comparator;
 
@@ -21,7 +21,7 @@ class DefaultComparator<T> implements Comparator<T>{
     }
 }
 
-public class PriorityQueue<T> extends Collection<T>{
+public class PriorityQueue<T> extends Coleccion<T>{
 	
     /**Private attributes*/
 
@@ -36,7 +36,7 @@ public class PriorityQueue<T> extends Collection<T>{
     public PriorityQueue(Mode mode) { super(); this._mode = mode; }
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public PriorityQueue(DoublyLinkedList<T> list, Mode mode) { 
+    public PriorityQueue(Lista<T> list, Mode mode) { 
             super();
             this._mode = mode; 
             Node<T> auxiliar = list.front();
@@ -71,7 +71,7 @@ public class PriorityQueue<T> extends Collection<T>{
     */
    
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public PriorityQueue(Collection<T> collection, Mode mode) { 
+    public PriorityQueue(Coleccion<T> collection, Mode mode) { 
             super(); 
             this._mode = mode; 
             Node<T> auxiliar = collection.list().front();
