@@ -55,10 +55,12 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         fecha_Hora_JLabel = new javax.swing.JLabel();
         estatus_JLabel = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMaximumSize(new java.awt.Dimension(32767, 139));
-        setMinimumSize(new java.awt.Dimension(1085, 139));
+        setMinimumSize(null);
         setPreferredSize(new java.awt.Dimension(1085, 139));
 
+        imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_JLabel.setMaximumSize(new java.awt.Dimension(129, 129));
         imagen_JLabel.setMinimumSize(new java.awt.Dimension(129, 129));
         imagen_JLabel.setPreferredSize(new java.awt.Dimension(129, 129));
@@ -173,7 +175,7 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         fecha_Hora_JLabel.setForeground(primer_Color_Fuente);
         nombre_JLabel.setForeground(primer_Color_Fuente);
         this.setBackground(primer_Color);
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
+       //this.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
     }
 
     @Override

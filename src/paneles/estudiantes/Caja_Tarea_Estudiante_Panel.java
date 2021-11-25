@@ -57,11 +57,13 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
         tipo_JLabel = new javax.swing.JLabel();
         estatus_JLabel = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMaximumSize(new java.awt.Dimension(32767, 174));
-        setMinimumSize(new java.awt.Dimension(1085, 174));
+        setMinimumSize(null);
         setPreferredSize(new java.awt.Dimension(1085, 174));
 
         imagen_Curso_JLabel.setToolTipText("Imagen Del Curso");
+        imagen_Curso_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Curso_JLabel.setMaximumSize(new java.awt.Dimension(164, 164));
         imagen_Curso_JLabel.setMinimumSize(new java.awt.Dimension(164, 164));
         imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(164, 164));
@@ -117,7 +119,7 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
                     .addComponent(tipo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(fecha_Entrega_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 475, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 471, Short.MAX_VALUE)
                         .addComponent(estatus_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -213,7 +215,7 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
         tipo_JLabel.setForeground(primer_Color_Fuente);
 
         this.setBackground(primer_Color);
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
+        //this.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
     }
     
     

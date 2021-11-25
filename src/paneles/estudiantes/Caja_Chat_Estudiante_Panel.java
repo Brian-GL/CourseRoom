@@ -58,11 +58,13 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
         jLabelNumeroMensajesNoLeidos = new javax.swing.JLabel();
         jLabelFechaHoraMensaje = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setForeground(java.awt.Color.white);
         setMaximumSize(new java.awt.Dimension(32767, 139));
-        setMinimumSize(new java.awt.Dimension(1085, 139));
+        setMinimumSize(null);
         setPreferredSize(new java.awt.Dimension(1085, 139));
 
+        jLabelFotoChat.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelFotoChat.setMaximumSize(new java.awt.Dimension(129, 129));
         jLabelFotoChat.setMinimumSize(new java.awt.Dimension(129, 129));
         jLabelFotoChat.setPreferredSize(new java.awt.Dimension(129, 129));
@@ -120,7 +122,7 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
                         .addComponent(jLabelFechaHoraMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelNumeroMensajesNoLeidos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelNombreChat, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
+                    .addComponent(jLabelNombreChat, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
                     .addComponent(jLabelUltimoMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
         );
@@ -204,7 +206,7 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
         jLabelUltimoMensaje.setForeground(primer_Color_Fuente);
 
         this.setBackground(primer_Color);
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
+        //this.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
     }
     
      @Override

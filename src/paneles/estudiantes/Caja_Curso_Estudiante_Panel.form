@@ -31,7 +31,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="informacion_JPanel" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="imagen_Curso_JLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -54,6 +54,11 @@
     <Component class="javax.swing.JLabel" name="imagen_Curso_JLabel">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Imagen De Perfil Del Curso"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[175, 175]"/>
         </Property>
@@ -69,6 +74,13 @@
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="informacion_JPanel">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -87,9 +99,9 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="calificacion_JScrollPane" min="-2" pref="268" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" pref="54" max="32767" attributes="0"/>
-                          <Component id="resenas_JButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" pref="55" max="32767" attributes="0"/>
+                          <Component id="resenas_JButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" pref="56" max="32767" attributes="0"/>
                           <Component id="numero_Estudiantes_JLabel" min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
                   </Group>

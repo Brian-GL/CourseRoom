@@ -55,11 +55,13 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         curso_JLabel = new javax.swing.JLabel();
         ultima_Actualizacion_JLabel = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMaximumSize(new java.awt.Dimension(32767, 131));
-        setMinimumSize(new java.awt.Dimension(1085, 131));
+        setMinimumSize(null);
         setPreferredSize(new java.awt.Dimension(1085, 131));
 
         imagen_JLabel.setToolTipText("Imagen Del Grupo");
+        imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_JLabel.setMaximumSize(new java.awt.Dimension(164, 164));
         imagen_JLabel.setMinimumSize(new java.awt.Dimension(164, 164));
         imagen_JLabel.setPreferredSize(new java.awt.Dimension(164, 164));
@@ -107,7 +109,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
                         .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(3, 3, 3))
                     .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ultima_Actualizacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 941, Short.MAX_VALUE))
+                    .addComponent(ultima_Actualizacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 937, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -190,7 +192,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         nombre_JLabel.setForeground(primer_Color_Fuente);
         ultima_Actualizacion_JLabel.setForeground(primer_Color_Fuente);
         this.setBackground(primer_Color);
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
+        //this.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
     }
     
      @Override

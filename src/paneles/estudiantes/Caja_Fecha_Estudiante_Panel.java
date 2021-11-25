@@ -39,6 +39,7 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
         horar_JLabel = new javax.swing.JLabel();
         descripcion_JLabel = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMinimumSize(new java.awt.Dimension(160, 100));
         setName("CalendarDay"); // NOI18N
         setPreferredSize(new java.awt.Dimension(160, 100));
@@ -66,7 +67,7 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(horar_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addComponent(numero_Dia_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -81,7 +82,7 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
                     .addComponent(horar_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(numero_Dia_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -107,11 +108,12 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
 
     @Override
     public void Colorear_Componentes() {
-        this.setBackground(color_Fondo);
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(color_Fuente));
+        
         numero_Dia_JLabel.setForeground(color_Fuente);
         horar_JLabel.setForeground(color_Fuente);
         descripcion_JLabel.setForeground(color_Fuente);
+        this.setBackground(color_Fondo);
+        //this.setBorder(javax.swing.BorderFactory.createLineBorder(color_Fuente));
     }
 
     
