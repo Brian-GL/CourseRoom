@@ -1005,6 +1005,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     
+                    
                 }
             }
         }

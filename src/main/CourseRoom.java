@@ -152,7 +152,6 @@ public class CourseRoom {
         return logo_Imagen;
     }
     
-
     public static String Formato_HTML_Izquierda(String text) {
         return Concatenar("<html><div style='text-align:left;'>",text,"</div></html>");
     }
