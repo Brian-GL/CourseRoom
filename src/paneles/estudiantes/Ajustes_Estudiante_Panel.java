@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import interfaces.Componentes_Interface;
 import javax.swing.ImageIcon;
+import javax.swing.JColorChooser;
 
 /**
  *
@@ -21,6 +22,7 @@ import javax.swing.ImageIcon;
 public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
     private Color primer_Color,segundo_Color, tercer_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
+    private Color primer_Color_Personalizado, segundo_Color_Personalizado, tercer_Color_Personalizado, primer_Color_Fuente_Personalizado, segundo_Color_Fuente_Personalizado, tercer_Color_Fuente_Personalizado;
     
     /**
      * Creates new form GeneralConfigurationPanel
@@ -47,10 +49,15 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         logo_JLabel = new javax.swing.JLabel();
         interfaz_JPanel = new javax.swing.JPanel();
         invertir_Colores_JButton = new javax.swing.JButton();
-        primer_Color_JTextField = new javax.swing.JTextField();
-        segundo_Color_JTextField = new javax.swing.JTextField();
-        tercer_Color_JTextField = new javax.swing.JTextField();
         recargar_Colores_JButton = new javax.swing.JButton();
+        primer_Color_JLabel = new javax.swing.JLabel();
+        segundo_Color_JLabel = new javax.swing.JLabel();
+        tercer_Color_JLabel = new javax.swing.JLabel();
+        interfaz_Personalizada_JPanel = new javax.swing.JPanel();
+        cargar_Colores_Personalizados_JButton = new javax.swing.JButton();
+        primer_Color_Personalizado_JLabel = new javax.swing.JLabel();
+        segundo_Color_Personalizado_JLabel = new javax.swing.JLabel();
+        tercer_Color_Personalizado_JLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
@@ -97,19 +104,7 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
             }
         });
 
-        primer_Color_JTextField.setEditable(false);
-        primer_Color_JTextField.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        primer_Color_JTextField.setText("#FFFFFF");
-
-        segundo_Color_JTextField.setEditable(false);
-        segundo_Color_JTextField.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        segundo_Color_JTextField.setText("#FFFFFF");
-
-        tercer_Color_JTextField.setEditable(false);
-        tercer_Color_JTextField.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        tercer_Color_JTextField.setText("#FFFFFF");
-
-        recargar_Colores_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        recargar_Colores_JButton.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         recargar_Colores_JButton.setText("Recargar Colores");
         recargar_Colores_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -123,35 +118,128 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
             }
         });
 
+        primer_Color_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        primer_Color_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        primer_Color_JLabel.setOpaque(true);
+        primer_Color_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
+
+        segundo_Color_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        segundo_Color_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        segundo_Color_JLabel.setOpaque(true);
+        segundo_Color_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
+
+        tercer_Color_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        tercer_Color_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tercer_Color_JLabel.setOpaque(true);
+        tercer_Color_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
+
         javax.swing.GroupLayout interfaz_JPanelLayout = new javax.swing.GroupLayout(interfaz_JPanel);
         interfaz_JPanel.setLayout(interfaz_JPanelLayout);
         interfaz_JPanelLayout.setHorizontalGroup(
             interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(interfaz_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(invertir_Colores_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(primer_Color_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(segundo_Color_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tercer_Color_JTextField)
-                    .addComponent(recargar_Colores_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(primer_Color_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(invertir_Colores_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(segundo_Color_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(recargar_Colores_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(interfaz_JPanelLayout.createSequentialGroup()
+                        .addComponent(tercer_Color_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 1, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         interfaz_JPanelLayout.setVerticalGroup(
             interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(interfaz_JPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(primer_Color_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(segundo_Color_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tercer_Color_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, interfaz_JPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(primer_Color_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tercer_Color_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(segundo_Color_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(invertir_Colores_JButton)
                     .addComponent(recargar_Colores_JButton))
+                .addContainerGap())
+        );
+
+        interfaz_Personalizada_JPanel.setOpaque(false);
+
+        cargar_Colores_Personalizados_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        cargar_Colores_Personalizados_JButton.setText("Cargar Colores Personalizados");
+        cargar_Colores_Personalizados_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cargar_Colores_Personalizados_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cargar_Colores_Personalizados_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cargar_Colores_Personalizados_JButtonMouseExited(evt);
+            }
+        });
+
+        primer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        primer_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        primer_Color_Personalizado_JLabel.setOpaque(true);
+        primer_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
+        primer_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                primer_Color_Personalizado_JLabelMouseClicked(evt);
+            }
+        });
+
+        segundo_Color_Personalizado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        segundo_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        segundo_Color_Personalizado_JLabel.setOpaque(true);
+        segundo_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
+        segundo_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                segundo_Color_Personalizado_JLabelMouseClicked(evt);
+            }
+        });
+
+        tercer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        tercer_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tercer_Color_Personalizado_JLabel.setOpaque(true);
+        tercer_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
+        tercer_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tercer_Color_Personalizado_JLabelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout interfaz_Personalizada_JPanelLayout = new javax.swing.GroupLayout(interfaz_Personalizada_JPanel);
+        interfaz_Personalizada_JPanel.setLayout(interfaz_Personalizada_JPanelLayout);
+        interfaz_Personalizada_JPanelLayout.setHorizontalGroup(
+            interfaz_Personalizada_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(interfaz_Personalizada_JPanelLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(cargar_Colores_Personalizados_JButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(interfaz_Personalizada_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(primer_Color_Personalizado_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(segundo_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tercer_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        interfaz_Personalizada_JPanelLayout.setVerticalGroup(
+            interfaz_Personalizada_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(interfaz_Personalizada_JPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(interfaz_Personalizada_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(primer_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tercer_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(segundo_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(cargar_Colores_Personalizados_JButton)
                 .addContainerGap())
         );
 
@@ -164,14 +252,15 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ruta_Descarga_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE)
+                            .addComponent(ruta_Descarga_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
                             .addComponent(ruta_Descarga_JTextField))
                         .addGap(18, 18, 18)
                         .addComponent(ruta_Descarga_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(logo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(interfaz_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(interfaz_Personalizada_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -185,9 +274,11 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ruta_Descarga_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ruta_Descarga_JButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(interfaz_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(interfaz_Personalizada_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(interfaz_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -223,51 +314,6 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         ruta_Descarga_JButton.setBackground(CourseRoom.Tercer_Color());
     }//GEN-LAST:event_ruta_Descarga_JButtonMouseExited
 
-    private void invertir_Colores_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invertir_Colores_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            Color temporal = primer_Color;
-            primer_Color = segundo_Color;
-            segundo_Color = tercer_Color;
-            tercer_Color = temporal;
-            
-            int rojo = primer_Color.getRed();
-            primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-            rojo = segundo_Color.getRed();
-            segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-            rojo = tercer_Color.getRed();
-            tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-
-            CourseRoom.Primer_Color(primer_Color);
-            CourseRoom.Segundo_Color(segundo_Color);
-            CourseRoom.Tercer_Color(tercer_Color);
-            CourseRoom.Primer_Color_Fuente(primer_Color_Fuente);
-            CourseRoom.Segundo_Color_Fuente(segundo_Color_Fuente);
-            CourseRoom.Tercer_Color_Fuente(tercer_Color_Fuente);
-            
-            CourseRoom_Frame.Colorear();
-            Tablero_Estudiante_Panel.Colorear();
-            
-            primer_Color_JTextField.setText(CourseRoom.RGB_Cadena(primer_Color));
-            segundo_Color_JTextField.setText(CourseRoom.RGB_Cadena(segundo_Color));
-            tercer_Color_JTextField.setText(CourseRoom.RGB_Cadena(tercer_Color));
-            
-        }
-    }//GEN-LAST:event_invertir_Colores_JButtonMouseClicked
-
-    private void invertir_Colores_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invertir_Colores_JButtonMouseEntered
-        // TODO add your handling code here:
-        invertir_Colores_JButton.setBackground(CourseRoom.Tercer_Color());
-        invertir_Colores_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_invertir_Colores_JButtonMouseEntered
-
-    private void invertir_Colores_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invertir_Colores_JButtonMouseExited
-        // TODO add your handling code here:
-        invertir_Colores_JButton.setBackground(CourseRoom.Segundo_Color());
-        invertir_Colores_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_invertir_Colores_JButtonMouseExited
-
     private void recargar_Colores_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recargar_Colores_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -289,19 +335,148 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         recargar_Colores_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_recargar_Colores_JButtonMouseExited
 
+    private void cargar_Colores_Personalizados_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Colores_Personalizados_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+            CourseRoom.Primer_Color(primer_Color_Personalizado);
+            CourseRoom.Segundo_Color(segundo_Color_Personalizado);
+            CourseRoom.Tercer_Color(tercer_Color_Personalizado);
+            CourseRoom.Primer_Color_Fuente(primer_Color_Fuente_Personalizado);
+            CourseRoom.Segundo_Color_Fuente(segundo_Color_Fuente_Personalizado);
+            CourseRoom.Tercer_Color_Fuente(tercer_Color_Fuente_Personalizado);
+
+            CourseRoom_Frame.Colorear();
+            Tablero_Estudiante_Panel.Colorear();
+        }
+    }//GEN-LAST:event_cargar_Colores_Personalizados_JButtonMouseClicked
+
+    private void cargar_Colores_Personalizados_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Colores_Personalizados_JButtonMouseEntered
+        // TODO add your handling code here:
+        cargar_Colores_Personalizados_JButton.setBackground(CourseRoom.Tercer_Color());
+        cargar_Colores_Personalizados_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_cargar_Colores_Personalizados_JButtonMouseEntered
+
+    private void cargar_Colores_Personalizados_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Colores_Personalizados_JButtonMouseExited
+        // TODO add your handling code here:
+        cargar_Colores_Personalizados_JButton.setBackground(CourseRoom.Segundo_Color());
+        cargar_Colores_Personalizados_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_cargar_Colores_Personalizados_JButtonMouseExited
+
+    private void invertir_Colores_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invertir_Colores_JButtonMouseExited
+        // TODO add your handling code here:
+        invertir_Colores_JButton.setBackground(CourseRoom.Segundo_Color());
+        invertir_Colores_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_invertir_Colores_JButtonMouseExited
+
+    private void invertir_Colores_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invertir_Colores_JButtonMouseEntered
+        // TODO add your handling code here:
+        invertir_Colores_JButton.setBackground(CourseRoom.Tercer_Color());
+        invertir_Colores_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_invertir_Colores_JButtonMouseEntered
+
+    private void invertir_Colores_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invertir_Colores_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+
+            Color temporal = primer_Color;
+            primer_Color = segundo_Color;
+            segundo_Color = tercer_Color;
+            tercer_Color = temporal;
+
+            int rojo = primer_Color.getRed();
+            primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+            rojo = segundo_Color.getRed();
+            segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+            rojo = tercer_Color.getRed();
+            tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+
+            CourseRoom.Primer_Color(primer_Color);
+            CourseRoom.Segundo_Color(segundo_Color);
+            CourseRoom.Tercer_Color(tercer_Color);
+            CourseRoom.Primer_Color_Fuente(primer_Color_Fuente);
+            CourseRoom.Segundo_Color_Fuente(segundo_Color_Fuente);
+            CourseRoom.Tercer_Color_Fuente(tercer_Color_Fuente);
+
+            CourseRoom_Frame.Colorear();
+            Tablero_Estudiante_Panel.Colorear();
+
+            primer_Color_JLabel.setText(CourseRoom.RGB_Cadena(primer_Color));
+            segundo_Color_JLabel.setText(CourseRoom.RGB_Cadena(segundo_Color));
+            tercer_Color_JLabel.setText(CourseRoom.RGB_Cadena(tercer_Color));
+
+        }
+    }//GEN-LAST:event_invertir_Colores_JButtonMouseClicked
+
+    private void primer_Color_Personalizado_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primer_Color_Personalizado_JLabelMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+           Color nuevo_Primer_Color  = JColorChooser.showDialog(this, "Escogedor De Primer Color", primer_Color_Personalizado);
+           if(nuevo_Primer_Color != null){
+               
+               primer_Color_Personalizado = nuevo_Primer_Color;
+               int rojo = primer_Color_Personalizado.getRed();
+               primer_Color_Fuente_Personalizado = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+               primer_Color_Personalizado_JLabel.setBackground(primer_Color_Personalizado);
+               primer_Color_Personalizado_JLabel.setForeground(primer_Color_Fuente_Personalizado);
+               primer_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(primer_Color_Personalizado));
+               primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), primer_Color_Fuente_Personalizado));
+           }
+        }
+    }//GEN-LAST:event_primer_Color_Personalizado_JLabelMouseClicked
+
+    private void segundo_Color_Personalizado_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundo_Color_Personalizado_JLabelMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Color nuevo_Segundo_Color = JColorChooser.showDialog(this, "Escogedor De Segundo Color", segundo_Color_Personalizado);
+            if (nuevo_Segundo_Color != null) {
+
+                segundo_Color_Personalizado = nuevo_Segundo_Color;
+                int rojo = segundo_Color_Personalizado.getRed();
+                segundo_Color_Fuente_Personalizado = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                segundo_Color_Personalizado_JLabel.setBackground(segundo_Color_Personalizado);
+                segundo_Color_Personalizado_JLabel.setForeground(segundo_Color_Fuente_Personalizado);
+                segundo_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(segundo_Color_Personalizado));
+                segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), segundo_Color_Fuente_Personalizado));
+            } 
+        }
+    }//GEN-LAST:event_segundo_Color_Personalizado_JLabelMouseClicked
+
+    private void tercer_Color_Personalizado_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tercer_Color_Personalizado_JLabelMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Color nuevo_Tercer_Color = JColorChooser.showDialog(this, "Escogedor De Tercer Color", tercer_Color_Personalizado);
+            if (nuevo_Tercer_Color != null) {
+
+                tercer_Color_Personalizado = nuevo_Tercer_Color;
+                int rojo = tercer_Color_Personalizado.getRed();
+                tercer_Color_Fuente_Personalizado = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                tercer_Color_Personalizado_JLabel.setBackground(tercer_Color_Personalizado);
+                tercer_Color_Personalizado_JLabel.setForeground(tercer_Color_Fuente_Personalizado);
+                tercer_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(tercer_Color_Personalizado));
+                tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), tercer_Color_Fuente_Personalizado));
+            }
+        }
+    }//GEN-LAST:event_tercer_Color_Personalizado_JLabelMouseClicked
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cargar_Colores_Personalizados_JButton;
     private javax.swing.JPanel interfaz_JPanel;
+    private javax.swing.JPanel interfaz_Personalizada_JPanel;
     private javax.swing.JButton invertir_Colores_JButton;
     private javax.swing.JLabel logo_JLabel;
-    private javax.swing.JTextField primer_Color_JTextField;
+    private javax.swing.JLabel primer_Color_JLabel;
+    private javax.swing.JLabel primer_Color_Personalizado_JLabel;
     private javax.swing.JButton recargar_Colores_JButton;
     private javax.swing.JButton ruta_Descarga_JButton;
     private javax.swing.JLabel ruta_Descarga_JLabel;
     private javax.swing.JTextField ruta_Descarga_JTextField;
-    private javax.swing.JTextField segundo_Color_JTextField;
-    private javax.swing.JTextField tercer_Color_JTextField;
+    private javax.swing.JLabel segundo_Color_JLabel;
+    private javax.swing.JLabel segundo_Color_Personalizado_JLabel;
+    private javax.swing.JLabel tercer_Color_JLabel;
+    private javax.swing.JLabel tercer_Color_Personalizado_JLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -312,14 +487,20 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         primer_Color_Fuente = CourseRoom.Primer_Color_Fuente();
         segundo_Color_Fuente = CourseRoom.Segundo_Color_Fuente();
         tercer_Color_Fuente = CourseRoom.Tercer_Color_Fuente();
+        
+        primer_Color_Personalizado = CourseRoom.Primer_Color();
+        segundo_Color_Personalizado = CourseRoom.Segundo_Color();
+        tercer_Color_Personalizado = CourseRoom.Tercer_Color();
+        primer_Color_Fuente_Personalizado = CourseRoom.Primer_Color_Fuente();
+        segundo_Color_Fuente_Personalizado = CourseRoom.Segundo_Color_Fuente();
+        tercer_Color_Fuente_Personalizado = CourseRoom.Tercer_Color_Fuente();
+        
         ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
         logo_JLabel.setIcon(icono);
     }
     
     @Override
     public void Colorear_Componentes() {
-        
-       
         
         ruta_Descarga_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         
@@ -329,26 +510,52 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         recargar_Colores_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         recargar_Colores_JButton.setBackground(CourseRoom.Segundo_Color());
         
+        invertir_Colores_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        invertir_Colores_JButton.setBackground(CourseRoom.Segundo_Color());
+        
+        cargar_Colores_Personalizados_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        cargar_Colores_Personalizados_JButton.setBackground(CourseRoom.Segundo_Color());
+        
         ruta_Descarga_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
         ruta_Descarga_JButton.setBackground(CourseRoom.Tercer_Color());
         
         interfaz_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Interfaz", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 18),CourseRoom.Primer_Color_Fuente())); // NOI18N
+        interfaz_Personalizada_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Interfaz Personalizada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 18),CourseRoom.Primer_Color_Fuente())); // NOI18N
         
-        primer_Color_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Color Dominante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14),CourseRoom.Primer_Color_Fuente()));
-        segundo_Color_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14),CourseRoom.Segundo_Color_Fuente()));
-        tercer_Color_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14),CourseRoom.Tercer_Color_Fuente()));
+        primer_Color_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14),CourseRoom.Primer_Color_Fuente()));
+        segundo_Color_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14),CourseRoom.Segundo_Color_Fuente()));
+        tercer_Color_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14),CourseRoom.Tercer_Color_Fuente()));
         
-        primer_Color_JTextField.setBackground(primer_Color);
-        primer_Color_JTextField.setForeground(primer_Color_Fuente);
-        primer_Color_JTextField.setCaretColor(primer_Color_Fuente);
+        primer_Color_JLabel.setBackground(CourseRoom.Primer_Color());
+        primer_Color_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         
-        segundo_Color_JTextField.setBackground(segundo_Color);
-        segundo_Color_JTextField.setForeground(segundo_Color_Fuente);
-        segundo_Color_JTextField.setCaretColor(segundo_Color_Fuente);
+        segundo_Color_JLabel.setBackground(CourseRoom.Segundo_Color());
+        segundo_Color_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         
-        tercer_Color_JTextField.setBackground(tercer_Color);
-        tercer_Color_JTextField.setForeground(tercer_Color_Fuente);
-        tercer_Color_JTextField.setCaretColor(tercer_Color_Fuente);
+        tercer_Color_JLabel.setBackground(CourseRoom.Tercer_Color());
+        tercer_Color_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        
+        primer_Color_JLabel.setText(CourseRoom.RGB_Cadena(CourseRoom.Primer_Color()));
+        segundo_Color_JLabel.setText(CourseRoom.RGB_Cadena(CourseRoom.Segundo_Color()));
+        tercer_Color_JLabel.setText(CourseRoom.RGB_Cadena(CourseRoom.Tercer_Color()));
+        
+        primer_Color_Personalizado_JLabel.setBackground(CourseRoom.Primer_Color());
+        primer_Color_Personalizado_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+
+        segundo_Color_Personalizado_JLabel.setBackground(CourseRoom.Segundo_Color());
+        segundo_Color_Personalizado_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+
+        tercer_Color_Personalizado_JLabel.setBackground(CourseRoom.Tercer_Color());
+        tercer_Color_Personalizado_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+
+        primer_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(CourseRoom.Primer_Color()));
+        segundo_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(CourseRoom.Segundo_Color()));
+        tercer_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(CourseRoom.Tercer_Color()));
+        
+        primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), CourseRoom.Primer_Color_Fuente()));
+        segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), CourseRoom.Segundo_Color_Fuente()));
+        tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), CourseRoom.Tercer_Color_Fuente()));
+        
     }
 
 

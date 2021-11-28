@@ -145,7 +145,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         desempeno_Escolar_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         desempeno_Escolar_JButton.setText("Mi Desempeño Escolar");
         desempeno_Escolar_JButton.setToolTipText("Muestra Tu Desempeño Escolar & Predicciones De Estas");
-        desempeno_Escolar_JButton.setBorder(null);
+        desempeno_Escolar_JButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         desempeno_Escolar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 desempeno_Escolar_JButtonMouseClicked(evt);
@@ -161,7 +161,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Perfil_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         editar_Perfil_JButton.setText("Editar Perfil");
         editar_Perfil_JButton.setToolTipText("Edita La Información De Tu Perfil");
-        editar_Perfil_JButton.setBorder(null);
+        editar_Perfil_JButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         editar_Perfil_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editar_Perfil_JButtonMouseClicked(evt);
@@ -197,7 +197,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nombre_Usuario_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,7 +228,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,12 +249,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                         .addGap(18, 18, 18)
                         .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nombre_Usuario_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(desempeno_Escolar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(editar_Perfil_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         imagen_Perfil_JLabel.getAccessibleContext().setAccessibleName("jLabelProfilePhoto");
@@ -262,14 +262,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void desempeno_Escolar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desempeno_Escolar_JButtonMouseExited
         // TODO add your handling code here:
-        desempeno_Escolar_JButton.setBackground(CourseRoom.Primer_Color());
-        desempeno_Escolar_JButton.setForeground(CourseRoom.Primer_Color_Fuente());
+        desempeno_Escolar_JButton.setBackground(CourseRoom.Segundo_Color());
+        desempeno_Escolar_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_desempeno_Escolar_JButtonMouseExited
 
     private void desempeno_Escolar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desempeno_Escolar_JButtonMouseEntered
         // TODO add your handling code here:
-        desempeno_Escolar_JButton.setBackground(CourseRoom.Segundo_Color());
-        desempeno_Escolar_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        desempeno_Escolar_JButton.setBackground(CourseRoom.Tercer_Color());
+        desempeno_Escolar_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_desempeno_Escolar_JButtonMouseEntered
 
     private void desempeno_Escolar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desempeno_Escolar_JButtonMouseClicked
@@ -281,14 +281,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Perfil_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Perfil_JButtonMouseEntered
         // TODO add your handling code here:
-        editar_Perfil_JButton.setBackground(CourseRoom.Segundo_Color());
-        editar_Perfil_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        editar_Perfil_JButton.setBackground(CourseRoom.Tercer_Color());
+        editar_Perfil_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_editar_Perfil_JButtonMouseEntered
 
     private void editar_Perfil_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Perfil_JButtonMouseExited
         // TODO add your handling code here:
-        editar_Perfil_JButton.setBackground(CourseRoom.Primer_Color());
-        editar_Perfil_JButton.setForeground(CourseRoom.Primer_Color_Fuente());
+        editar_Perfil_JButton.setBackground(CourseRoom.Segundo_Color());
+        editar_Perfil_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_editar_Perfil_JButtonMouseExited
 
     private void editar_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Perfil_JButtonMouseClicked
@@ -363,13 +363,13 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         apellidos_JLabel.setBackground(CourseRoom.Tercer_Color());
         apellidos_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
         correo_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        editar_Perfil_JButton.setForeground(CourseRoom.Primer_Color_Fuente());
-        editar_Perfil_JButton.setBackground(CourseRoom.Primer_Color());
+        editar_Perfil_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        editar_Perfil_JButton.setBackground(CourseRoom.Segundo_Color());
         fecha_Nacimiento_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         genero_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         localidad_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        desempeno_Escolar_JButton.setForeground(CourseRoom.Primer_Color_Fuente());
-        desempeno_Escolar_JButton.setBackground(CourseRoom.Primer_Color());
+        desempeno_Escolar_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        desempeno_Escolar_JButton.setBackground(CourseRoom.Segundo_Color());
         nombre_Usuario_jLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         nombre_Usuario_jLabel.setBackground(CourseRoom.Segundo_Color());
         nombres_JLabel.setBackground(CourseRoom.Tercer_Color());

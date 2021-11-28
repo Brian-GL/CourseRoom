@@ -62,12 +62,12 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         informacion_Contrasena_JLabel = new javax.swing.JLabel();
         imagen_Perfil_JLabel = new javax.swing.JLabel();
         guardar_Cambios_Autenticacion_JButton = new javax.swing.JButton();
-        nombre_Usuario_JToggleButton = new javax.swing.JToggleButton();
-        correo_Electronico_JToggleButton = new javax.swing.JToggleButton();
-        contrasena_JToggleButton = new javax.swing.JToggleButton();
-        imagen_Perfil_JButton = new javax.swing.JButton();
-        imagen_Perfil_JToggleButton = new javax.swing.JToggleButton();
+        imagen_Cambiar_JButton = new javax.swing.JButton();
         regresar_JButton = new javax.swing.JButton();
+        correo_Electronico_JButton = new javax.swing.JButton();
+        contrasena_JButton = new javax.swing.JButton();
+        nombre_Usuario_JButton = new javax.swing.JButton();
+        imagen_Editar_JButton = new javax.swing.JButton();
         datos_Personales_JPanel = new javax.swing.JPanel();
         nombres_JLabel = new javax.swing.JLabel();
         nombres_JTextField = new javax.swing.JTextField();
@@ -87,24 +87,23 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         guardar_Cambios_Datos_Personales_JButton = new javax.swing.JButton();
         promedio_General_JLabel = new javax.swing.JLabel();
         promedio_General_JFormattedTextField = new javax.swing.JFormattedTextField();
-        promedio_General_JToggleButton = new javax.swing.JToggleButton();
-        nombres_JToggleButton = new javax.swing.JToggleButton();
-        apellidos_JToggleButton = new javax.swing.JToggleButton();
-        localidad_JToggleButton = new javax.swing.JToggleButton();
-        fecha_Nacimiento_JToggleButton = new javax.swing.JToggleButton();
-        genero_JToggleButton = new javax.swing.JToggleButton();
-        telefono_JToggleButton = new javax.swing.JToggleButton();
-        tipo_Perfil_JToggleButton = new javax.swing.JToggleButton();
-        descripcion_JToggleButton = new javax.swing.JToggleButton();
         descripcion_JScrollPane = new javax.swing.JScrollPane();
         descripcion_JTextPane = new javax.swing.JTextPane();
+        apellidos_JButton = new javax.swing.JButton();
+        localidad_JButton = new javax.swing.JButton();
+        fecha_Nacimiento_JButton = new javax.swing.JButton();
+        genero_JButton = new javax.swing.JButton();
+        telefono_JButton = new javax.swing.JButton();
+        nombres_JButton = new javax.swing.JButton();
+        descripcion_JButton = new javax.swing.JButton();
+        promedio_General_JButton = new javax.swing.JButton();
+        tipo_Perfil_JButton = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1085, 630));
         setLayout(new java.awt.CardLayout());
 
-        editar_Perfil_JTabbedPane.setBackground(java.awt.Color.black);
         editar_Perfil_JTabbedPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Perfil_JTabbedPane.setMinimumSize(new java.awt.Dimension(1085, 630));
         editar_Perfil_JTabbedPane.setPreferredSize(new java.awt.Dimension(1085, 630));
@@ -212,90 +211,26 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
             }
         });
 
-        nombre_Usuario_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        nombre_Usuario_JToggleButton.setText("¿Editar?");
-        nombre_Usuario_JToggleButton.setToolTipText("");
-        nombre_Usuario_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        nombre_Usuario_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        nombre_Usuario_JToggleButton.setPreferredSize(new java.awt.Dimension(82, 36));
-        nombre_Usuario_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                nombre_Usuario_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        nombre_Usuario_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                nombre_Usuario_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                nombre_Usuario_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        correo_Electronico_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        correo_Electronico_JToggleButton.setText("¿Editar?");
-        correo_Electronico_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        correo_Electronico_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        correo_Electronico_JToggleButton.setPreferredSize(new java.awt.Dimension(82, 36));
-        correo_Electronico_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                correo_Electronico_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        correo_Electronico_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                correo_Electronico_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                correo_Electronico_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        contrasena_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        contrasena_JToggleButton.setText("¿Editar?");
-        contrasena_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        contrasena_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        contrasena_JToggleButton.setPreferredSize(new java.awt.Dimension(82, 36));
-        contrasena_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                contrasena_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        contrasena_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                contrasena_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                contrasena_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        imagen_Perfil_JButton.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
-        imagen_Perfil_JButton.setText("Cambiar Imagen");
-        imagen_Perfil_JButton.setToolTipText("<html>Click Para Cargar Tu Foto De Perfil Desde Tu Ordenador.<br><b>NOTA: LA IMAGEN DE PERFIL TENDRÁ UNA RESOLUCIÓN DE 250x250 px.</b></html>");
-        imagen_Perfil_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        imagen_Perfil_JButton.setEnabled(false);
-        imagen_Perfil_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        imagen_Perfil_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
-        imagen_Perfil_JButton.setMinimumSize(new java.awt.Dimension(400, 40));
-        imagen_Perfil_JButton.setPreferredSize(new java.awt.Dimension(400, 40));
-        imagen_Perfil_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        imagen_Cambiar_JButton.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
+        imagen_Cambiar_JButton.setText("Cambiar Imagen");
+        imagen_Cambiar_JButton.setToolTipText("<html>Click Para Cargar Tu Foto De Perfil Desde Tu Ordenador.<br><b>NOTA: LA IMAGEN DE PERFIL TENDRÁ UNA RESOLUCIÓN DE 250x250 px.</b></html>");
+        imagen_Cambiar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        imagen_Cambiar_JButton.setEnabled(false);
+        imagen_Cambiar_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        imagen_Cambiar_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
+        imagen_Cambiar_JButton.setMinimumSize(new java.awt.Dimension(400, 40));
+        imagen_Cambiar_JButton.setPreferredSize(new java.awt.Dimension(400, 40));
+        imagen_Cambiar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imagen_Perfil_JButtonMouseClicked(evt);
+                imagen_Cambiar_JButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                imagen_Perfil_JButtonMouseEntered(evt);
+                imagen_Cambiar_JButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                imagen_Perfil_JButtonMouseExited(evt);
+                imagen_Cambiar_JButtonMouseExited(evt);
             }
         });
-
-        imagen_Perfil_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        imagen_Perfil_JToggleButton.setText("¿Editar?");
-        imagen_Perfil_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        imagen_Perfil_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        imagen_Perfil_JToggleButton.setPreferredSize(new java.awt.Dimension(82, 36));
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mi Perfil");
@@ -309,6 +244,62 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 regresar_JButtonMouseExited(evt);
+            }
+        });
+
+        correo_Electronico_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        correo_Electronico_JButton.setText("¿Editar?");
+        correo_Electronico_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                correo_Electronico_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                correo_Electronico_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                correo_Electronico_JButtonMouseExited(evt);
+            }
+        });
+
+        contrasena_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        contrasena_JButton.setText("¿Editar?");
+        contrasena_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                contrasena_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                contrasena_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                contrasena_JButtonMouseExited(evt);
+            }
+        });
+
+        nombre_Usuario_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        nombre_Usuario_JButton.setText("¿Editar?");
+        nombre_Usuario_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombre_Usuario_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nombre_Usuario_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nombre_Usuario_JButtonMouseExited(evt);
+            }
+        });
+
+        imagen_Editar_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        imagen_Editar_JButton.setText("¿Editar?");
+        imagen_Editar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imagen_Editar_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                imagen_Editar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                imagen_Editar_JButtonMouseExited(evt);
             }
         });
 
@@ -340,42 +331,49 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(repetir_Contrasena_JPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(20, 20, 20)
-                        .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombre_Usuario_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(correo_Electronico_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contrasena_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57)
+                        .addGap(18, 18, 18)
                         .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(imagen_Perfil_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(contrasena_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                            .addComponent(correo_Electronico_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nombre_Usuario_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
+                        .addGap(53, 53, 53)
+                        .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(imagen_Cambiar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(26, 26, 26)
-                        .addComponent(imagen_Perfil_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(imagen_Editar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)))
                 .addContainerGap())
         );
         autenticacion_JPanelLayout.setVerticalGroup(
             autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(nombre_Usuario_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
+                        .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombre_Usuario_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombre_Usuario_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(informacion_Nombre_Usaurio_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(correo_Electronico_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(correo_Electronico_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(correo_Electronico_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(correo_Electronico_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
                         .addComponent(informacion_Correo_Electronico_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(contrasena_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
+                        .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(contrasena_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
                         .addComponent(informacion_Contrasena_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(repetir_Contrasena_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,20 +381,12 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                         .addComponent(repetir_Contrasena_JPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(informacion_Repetir_Contrasena_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(nombre_Usuario_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(correo_Electronico_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(contrasena_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imagen_Perfil_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imagen_Editar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(imagen_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addComponent(imagen_Cambiar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(guardar_Cambios_Autenticacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -539,248 +529,200 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         promedio_General_JFormattedTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         promedio_General_JFormattedTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
-        promedio_General_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        promedio_General_JToggleButton.setText("¿Editar?");
-        promedio_General_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        promedio_General_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        promedio_General_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
-        promedio_General_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                promedio_General_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        promedio_General_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                promedio_General_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                promedio_General_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        nombres_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        nombres_JToggleButton.setText("¿Editar?");
-        nombres_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        nombres_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        nombres_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
-        nombres_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                nombres_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        nombres_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                nombres_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                nombres_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        apellidos_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        apellidos_JToggleButton.setText("¿Editar?");
-        apellidos_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        apellidos_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        apellidos_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
-        apellidos_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                apellidos_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        apellidos_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                apellidos_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                apellidos_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        localidad_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        localidad_JToggleButton.setText("¿Editar?");
-        localidad_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        localidad_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        localidad_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
-        localidad_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                localidad_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        localidad_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                localidad_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                localidad_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        fecha_Nacimiento_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        fecha_Nacimiento_JToggleButton.setText("¿Editar?");
-        fecha_Nacimiento_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        fecha_Nacimiento_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        fecha_Nacimiento_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
-        fecha_Nacimiento_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                fecha_Nacimiento_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        fecha_Nacimiento_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                fecha_Nacimiento_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                fecha_Nacimiento_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        genero_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        genero_JToggleButton.setText("¿Editar?");
-        genero_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        genero_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        genero_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
-        genero_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                genero_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        genero_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                genero_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                genero_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        telefono_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        telefono_JToggleButton.setText("¿Editar?");
-        telefono_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        telefono_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        telefono_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
-        telefono_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                telefono_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        telefono_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                telefono_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                telefono_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        tipo_Perfil_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        tipo_Perfil_JToggleButton.setText("¿Editar?");
-        tipo_Perfil_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        tipo_Perfil_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        tipo_Perfil_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
-        tipo_Perfil_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                tipo_Perfil_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        tipo_Perfil_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tipo_Perfil_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                tipo_Perfil_JToggleButtonMouseExited(evt);
-            }
-        });
-
-        descripcion_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        descripcion_JToggleButton.setText("¿Editar?");
-        descripcion_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
-        descripcion_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        descripcion_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
-        descripcion_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                descripcion_JToggleButtonItemStateChanged(evt);
-            }
-        });
-        descripcion_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                descripcion_JToggleButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                descripcion_JToggleButtonMouseExited(evt);
-            }
-        });
-
         descripcion_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         descripcion_JTextPane.setEnabled(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
+        apellidos_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        apellidos_JButton.setText("¿Editar?");
+        apellidos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                apellidos_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                apellidos_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                apellidos_JButtonMouseExited(evt);
+            }
+        });
+
+        localidad_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        localidad_JButton.setText("¿Editar?");
+        localidad_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                localidad_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                localidad_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                localidad_JButtonMouseExited(evt);
+            }
+        });
+
+        fecha_Nacimiento_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        fecha_Nacimiento_JButton.setText("¿Editar?");
+        fecha_Nacimiento_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fecha_Nacimiento_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                fecha_Nacimiento_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                fecha_Nacimiento_JButtonMouseExited(evt);
+            }
+        });
+
+        genero_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        genero_JButton.setText("¿Editar?");
+        genero_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                genero_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                genero_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                genero_JButtonMouseExited(evt);
+            }
+        });
+
+        telefono_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        telefono_JButton.setText("¿Editar?");
+        telefono_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                telefono_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                telefono_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                telefono_JButtonMouseExited(evt);
+            }
+        });
+
+        nombres_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        nombres_JButton.setText("¿Editar?");
+        nombres_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombres_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nombres_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nombres_JButtonMouseExited(evt);
+            }
+        });
+
+        descripcion_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        descripcion_JButton.setText("¿Editar?");
+        descripcion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                descripcion_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                descripcion_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                descripcion_JButtonMouseExited(evt);
+            }
+        });
+
+        promedio_General_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        promedio_General_JButton.setText("¿Editar?");
+        promedio_General_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                promedio_General_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                promedio_General_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                promedio_General_JButtonMouseExited(evt);
+            }
+        });
+
+        tipo_Perfil_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        tipo_Perfil_JButton.setText("¿Editar?");
+        tipo_Perfil_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tipo_Perfil_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tipo_Perfil_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tipo_Perfil_JButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout datos_Personales_JPanelLayout = new javax.swing.GroupLayout(datos_Personales_JPanel);
         datos_Personales_JPanel.setLayout(datos_Personales_JPanelLayout);
         datos_Personales_JPanelLayout.setHorizontalGroup(
             datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addComponent(telefono_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 588, Short.MAX_VALUE))
-                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                         .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                        .addComponent(telefono_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(telefono_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(genero_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(genero_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(20, 20, 20)
-                                        .addComponent(genero_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(promedio_General_JFormattedTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addComponent(promedio_General_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(guardar_Cambios_Datos_Personales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(telefono_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(telefono_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(localidad_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(apellidos_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(localidad_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(fecha_Nacimiento_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(20, 20, 20)
-                                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(apellidos_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(localidad_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(fecha_Nacimiento_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                        .addComponent(nombres_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(nombres_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 70, Short.MAX_VALUE)
+                                    .addComponent(genero_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(genero_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(genero_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(68, 68, 68)
+                        .addComponent(guardar_Cambios_Datos_Personales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(promedio_General_JButton)
+                        .addGap(3, 3, 3))
+                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(apellidos_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(localidad_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(fecha_Nacimiento_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(localidad_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(apellidos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(localidad_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fecha_Nacimiento_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                                .addComponent(nombres_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(nombres_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(68, 68, 68)
+                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                                .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGap(103, 103, 103))
+                            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tipo_Perfil_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(descripcion_JScrollPane))))
-                        .addGap(18, 18, 18)))
-                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(promedio_General_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(descripcion_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tipo_Perfil_JToggleButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                                    .addComponent(descripcion_JScrollPane)
+                                    .addComponent(tipo_Perfil_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tipo_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(promedio_General_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(promedio_General_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(telefono_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         datos_Personales_JPanelLayout.setVerticalGroup(
             datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -790,56 +732,55 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                     .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nombres_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nombres_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tipo_Perfil_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tipo_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(3, 3, 3)
+                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombres_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombres_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipo_Perfil_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(apellidos_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(localidad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(localidad_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(fecha_Nacimiento_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(apellidos_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(localidad_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(fecha_Nacimiento_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(apellidos_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(apellidos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addComponent(localidad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(localidad_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(localidad_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fecha_Nacimiento_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fecha_Nacimiento_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                        .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(promedio_General_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(genero_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(genero_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(promedio_General_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(promedio_General_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addComponent(tipo_Perfil_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(descripcion_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, 6)
+                            .addComponent(descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(promedio_General_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(genero_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(genero_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(promedio_General_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(promedio_General_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addComponent(telefono_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(telefono_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(telefono_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(telefono_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(telefono_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(guardar_Cambios_Datos_Personales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -850,12 +791,12 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void imagen_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Perfil_JButtonMouseClicked
+    private void imagen_Cambiar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Cambiar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
             JFileChooser escogedor_Archivo = new JFileChooser();
-            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagenes", "png", "jpg", "jpeg", "bmp");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "png", "jpg", "jpeg", "bmp");
             escogedor_Archivo.addChoosableFileFilter(filtro);
             escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
             escogedor_Archivo.setAcceptAllFileFilterUsed(true);
@@ -889,7 +830,7 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
             }
              
         }
-    }//GEN-LAST:event_imagen_Perfil_JButtonMouseClicked
+    }//GEN-LAST:event_imagen_Cambiar_JButtonMouseClicked
 
     private void guardar_Cambios_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Personales_JButtonMouseClicked
         // TODO add your handling code here:
@@ -919,17 +860,17 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         guardar_Cambios_Autenticacion_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_guardar_Cambios_Autenticacion_JButtonMouseExited
 
-    private void imagen_Perfil_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Perfil_JButtonMouseEntered
+    private void imagen_Cambiar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Cambiar_JButtonMouseEntered
         // TODO add your handling code here:
-        imagen_Perfil_JButton.setBackground(CourseRoom.Segundo_Color());
-        imagen_Perfil_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_imagen_Perfil_JButtonMouseEntered
+        imagen_Cambiar_JButton.setBackground(CourseRoom.Segundo_Color());
+        imagen_Cambiar_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_imagen_Cambiar_JButtonMouseEntered
 
-    private void imagen_Perfil_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Perfil_JButtonMouseExited
+    private void imagen_Cambiar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Cambiar_JButtonMouseExited
         // TODO add your handling code here:
-        imagen_Perfil_JButton.setBackground(CourseRoom.Tercer_Color());
-        imagen_Perfil_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_imagen_Perfil_JButtonMouseExited
+        imagen_Cambiar_JButton.setBackground(CourseRoom.Tercer_Color());
+        imagen_Cambiar_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_imagen_Cambiar_JButtonMouseExited
 
     private void guardar_Cambios_Datos_Personales_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Personales_JButtonMouseEntered
         // TODO add your handling code here:
@@ -960,265 +901,273 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         regresar_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
-    private void nombre_Usuario_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_nombre_Usuario_JToggleButtonItemStateChanged
+    private void nombre_Usuario_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_Usuario_JButtonMouseClicked
         // TODO add your handling code here:
-        nombre_Usuario_JTextField.setEnabled(nombre_Usuario_JToggleButton.isSelected());
-    }//GEN-LAST:event_nombre_Usuario_JToggleButtonItemStateChanged
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            nombre_Usuario_JTextField.setEnabled(!nombre_Usuario_JTextField.isEnabled());
+        }
+    }//GEN-LAST:event_nombre_Usuario_JButtonMouseClicked
 
-    private void nombre_Usuario_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_Usuario_JToggleButtonMouseEntered
+    private void nombre_Usuario_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_Usuario_JButtonMouseEntered
         // TODO add your handling code here:
-        nombre_Usuario_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        nombre_Usuario_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_nombre_Usuario_JToggleButtonMouseEntered
+        nombre_Usuario_JButton.setBackground(CourseRoom.Tercer_Color());
+        nombre_Usuario_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_nombre_Usuario_JButtonMouseEntered
 
-    private void nombre_Usuario_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_Usuario_JToggleButtonMouseExited
+    private void nombre_Usuario_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_Usuario_JButtonMouseExited
         // TODO add your handling code here:
-        nombre_Usuario_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        nombre_Usuario_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_nombre_Usuario_JToggleButtonMouseExited
+        nombre_Usuario_JButton.setBackground(CourseRoom.Segundo_Color());
+        nombre_Usuario_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_nombre_Usuario_JButtonMouseExited
 
-    private void correo_Electronico_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_correo_Electronico_JToggleButtonItemStateChanged
+    private void correo_Electronico_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correo_Electronico_JButtonMouseClicked
         // TODO add your handling code here:
-        correo_Electronico_JToggleButton.setEnabled(correo_Electronico_JToggleButton.isSelected());
-    }//GEN-LAST:event_correo_Electronico_JToggleButtonItemStateChanged
-
-    private void correo_Electronico_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correo_Electronico_JToggleButtonMouseEntered
-        // TODO add your handling code here:
-        correo_Electronico_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        correo_Electronico_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_correo_Electronico_JToggleButtonMouseEntered
-
-    private void correo_Electronico_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correo_Electronico_JToggleButtonMouseExited
-        // TODO add your handling code here:
-        correo_Electronico_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        correo_Electronico_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_correo_Electronico_JToggleButtonMouseExited
-
-    private void contrasena_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_contrasena_JToggleButtonItemStateChanged
-        // TODO add your handling code here:
-        contrasena_JToggleButton.setEnabled(contrasena_JToggleButton.isSelected());
-    }//GEN-LAST:event_contrasena_JToggleButtonItemStateChanged
-
-    private void contrasena_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrasena_JToggleButtonMouseEntered
-        // TODO add your handling code here:
-        contrasena_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        contrasena_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_contrasena_JToggleButtonMouseEntered
-
-    private void contrasena_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrasena_JToggleButtonMouseExited
-        // TODO add your handling code here:
-        contrasena_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        contrasena_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_contrasena_JToggleButtonMouseExited
-
-    private void nombres_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_nombres_JToggleButtonItemStateChanged
-        // TODO add your handling code here:
-        nombres_JToggleButton.setEnabled(nombres_JToggleButton.isSelected());
         
-    }//GEN-LAST:event_nombres_JToggleButtonItemStateChanged
+        
+    }//GEN-LAST:event_correo_Electronico_JButtonMouseClicked
 
-    private void nombres_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombres_JToggleButtonMouseEntered
+    private void correo_Electronico_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correo_Electronico_JButtonMouseEntered
         // TODO add your handling code here:
-        nombres_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        nombres_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_nombres_JToggleButtonMouseEntered
+        correo_Electronico_JButton.setBackground(CourseRoom.Tercer_Color());
+        correo_Electronico_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_correo_Electronico_JButtonMouseEntered
 
-    private void nombres_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombres_JToggleButtonMouseExited
+    private void correo_Electronico_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correo_Electronico_JButtonMouseExited
         // TODO add your handling code here:
-        nombres_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        nombres_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_nombres_JToggleButtonMouseExited
+        correo_Electronico_JButton.setBackground(CourseRoom.Segundo_Color());
+        correo_Electronico_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_correo_Electronico_JButtonMouseExited
 
-    private void apellidos_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_apellidos_JToggleButtonItemStateChanged
+    private void contrasena_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrasena_JButtonMouseClicked
         // TODO add your handling code here:
-        apellidos_JToggleButton.setEnabled(apellidos_JToggleButton.isSelected());
-    }//GEN-LAST:event_apellidos_JToggleButtonItemStateChanged
+    }//GEN-LAST:event_contrasena_JButtonMouseClicked
 
-    private void apellidos_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidos_JToggleButtonMouseEntered
+    private void contrasena_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrasena_JButtonMouseEntered
         // TODO add your handling code here:
-        apellidos_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        apellidos_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_apellidos_JToggleButtonMouseEntered
+        contrasena_JButton.setBackground(CourseRoom.Tercer_Color());
+        contrasena_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_contrasena_JButtonMouseEntered
 
-    private void apellidos_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidos_JToggleButtonMouseExited
+    private void contrasena_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrasena_JButtonMouseExited
         // TODO add your handling code here:
-        apellidos_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        apellidos_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_apellidos_JToggleButtonMouseExited
+        contrasena_JButton.setBackground(CourseRoom.Segundo_Color());
+        contrasena_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_contrasena_JButtonMouseExited
 
-    private void localidad_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_localidad_JToggleButtonItemStateChanged
+    private void imagen_Editar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Editar_JButtonMouseClicked
         // TODO add your handling code here:
-        localidad_JToggleButton.setEnabled(localidad_JToggleButton.isSelected());
-    }//GEN-LAST:event_localidad_JToggleButtonItemStateChanged
+    }//GEN-LAST:event_imagen_Editar_JButtonMouseClicked
 
-    private void localidad_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localidad_JToggleButtonMouseEntered
+    private void imagen_Editar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Editar_JButtonMouseEntered
         // TODO add your handling code here:
-        localidad_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        localidad_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_localidad_JToggleButtonMouseEntered
+        imagen_Editar_JButton.setBackground(CourseRoom.Tercer_Color());
+        imagen_Editar_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_imagen_Editar_JButtonMouseEntered
 
-    private void localidad_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localidad_JToggleButtonMouseExited
+    private void imagen_Editar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Editar_JButtonMouseExited
         // TODO add your handling code here:
-        localidad_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        localidad_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_localidad_JToggleButtonMouseExited
+        imagen_Editar_JButton.setBackground(CourseRoom.Segundo_Color());
+        imagen_Editar_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_imagen_Editar_JButtonMouseExited
 
-    private void fecha_Nacimiento_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fecha_Nacimiento_JToggleButtonItemStateChanged
+    private void apellidos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidos_JButtonMouseClicked
         // TODO add your handling code here:
-        fecha_Nacimiento_JToggleButton.setEnabled(fecha_Nacimiento_JToggleButton.isSelected());
-    }//GEN-LAST:event_fecha_Nacimiento_JToggleButtonItemStateChanged
+    }//GEN-LAST:event_apellidos_JButtonMouseClicked
 
-    private void fecha_Nacimiento_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fecha_Nacimiento_JToggleButtonMouseEntered
+    private void apellidos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidos_JButtonMouseEntered
         // TODO add your handling code here:
-        fecha_Nacimiento_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        fecha_Nacimiento_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_fecha_Nacimiento_JToggleButtonMouseEntered
+        apellidos_JButton.setBackground(CourseRoom.Tercer_Color());
+        apellidos_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_apellidos_JButtonMouseEntered
 
-    private void fecha_Nacimiento_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fecha_Nacimiento_JToggleButtonMouseExited
+    private void apellidos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidos_JButtonMouseExited
         // TODO add your handling code here:
-        fecha_Nacimiento_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        fecha_Nacimiento_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_fecha_Nacimiento_JToggleButtonMouseExited
+        apellidos_JButton.setBackground(CourseRoom.Segundo_Color());
+        apellidos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_apellidos_JButtonMouseExited
 
-    private void genero_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_genero_JToggleButtonItemStateChanged
+    private void localidad_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localidad_JButtonMouseClicked
         // TODO add your handling code here:
-        genero_JToggleButton.setEnabled(genero_JToggleButton.isSelected());
-    }//GEN-LAST:event_genero_JToggleButtonItemStateChanged
+    }//GEN-LAST:event_localidad_JButtonMouseClicked
 
-    private void genero_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_genero_JToggleButtonMouseEntered
+    private void localidad_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localidad_JButtonMouseEntered
         // TODO add your handling code here:
-        genero_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        genero_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_genero_JToggleButtonMouseEntered
+        localidad_JButton.setBackground(CourseRoom.Tercer_Color());
+        localidad_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_localidad_JButtonMouseEntered
 
-    private void genero_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_genero_JToggleButtonMouseExited
+    private void localidad_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localidad_JButtonMouseExited
         // TODO add your handling code here:
-        genero_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        genero_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_genero_JToggleButtonMouseExited
+        localidad_JButton.setBackground(CourseRoom.Segundo_Color());
+        localidad_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_localidad_JButtonMouseExited
 
-    private void telefono_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_telefono_JToggleButtonItemStateChanged
+    private void fecha_Nacimiento_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fecha_Nacimiento_JButtonMouseClicked
         // TODO add your handling code here:
-        telefono_JToggleButton.setEnabled(telefono_JToggleButton.isSelected());
-    }//GEN-LAST:event_telefono_JToggleButtonItemStateChanged
+    }//GEN-LAST:event_fecha_Nacimiento_JButtonMouseClicked
 
-    private void telefono_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_JToggleButtonMouseEntered
+    private void fecha_Nacimiento_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fecha_Nacimiento_JButtonMouseEntered
         // TODO add your handling code here:
-        telefono_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        telefono_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_telefono_JToggleButtonMouseEntered
+        fecha_Nacimiento_JButton.setBackground(CourseRoom.Tercer_Color());
+        fecha_Nacimiento_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_fecha_Nacimiento_JButtonMouseEntered
 
-    private void telefono_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_JToggleButtonMouseExited
+    private void fecha_Nacimiento_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fecha_Nacimiento_JButtonMouseExited
         // TODO add your handling code here:
-        telefono_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        telefono_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_telefono_JToggleButtonMouseExited
+        fecha_Nacimiento_JButton.setBackground(CourseRoom.Segundo_Color());
+        fecha_Nacimiento_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_fecha_Nacimiento_JButtonMouseExited
 
-    private void tipo_Perfil_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tipo_Perfil_JToggleButtonItemStateChanged
+    private void genero_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_genero_JButtonMouseClicked
         // TODO add your handling code here:
-        tipo_Perfil_JToggleButton.setEnabled(tipo_Perfil_JToggleButton.isSelected());
-    }//GEN-LAST:event_tipo_Perfil_JToggleButtonItemStateChanged
+    }//GEN-LAST:event_genero_JButtonMouseClicked
 
-    private void tipo_Perfil_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipo_Perfil_JToggleButtonMouseEntered
+    private void genero_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_genero_JButtonMouseEntered
         // TODO add your handling code here:
-        tipo_Perfil_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        tipo_Perfil_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_tipo_Perfil_JToggleButtonMouseEntered
+        genero_JButton.setBackground(CourseRoom.Tercer_Color());
+        genero_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_genero_JButtonMouseEntered
 
-    private void tipo_Perfil_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipo_Perfil_JToggleButtonMouseExited
+    private void genero_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_genero_JButtonMouseExited
         // TODO add your handling code here:
-        tipo_Perfil_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        tipo_Perfil_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_tipo_Perfil_JToggleButtonMouseExited
+        genero_JButton.setBackground(CourseRoom.Segundo_Color());
+        genero_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_genero_JButtonMouseExited
 
-    private void descripcion_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_descripcion_JToggleButtonItemStateChanged
+    private void telefono_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_JButtonMouseClicked
         // TODO add your handling code here:
-        descripcion_JToggleButton.setEnabled(descripcion_JToggleButton.isSelected());
-    }//GEN-LAST:event_descripcion_JToggleButtonItemStateChanged
+    }//GEN-LAST:event_telefono_JButtonMouseClicked
 
-    private void descripcion_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcion_JToggleButtonMouseEntered
+    private void telefono_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_JButtonMouseEntered
         // TODO add your handling code here:
-        descripcion_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        descripcion_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_descripcion_JToggleButtonMouseEntered
+        telefono_JButton.setBackground(CourseRoom.Tercer_Color());
+        telefono_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_telefono_JButtonMouseEntered
 
-    private void descripcion_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcion_JToggleButtonMouseExited
+    private void telefono_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_JButtonMouseExited
         // TODO add your handling code here:
-        descripcion_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        descripcion_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_descripcion_JToggleButtonMouseExited
+        telefono_JButton.setBackground(CourseRoom.Segundo_Color());
+        telefono_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_telefono_JButtonMouseExited
 
-    private void promedio_General_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_promedio_General_JToggleButtonItemStateChanged
+    private void nombres_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombres_JButtonMouseClicked
         // TODO add your handling code here:
-        promedio_General_JToggleButton.setEnabled(promedio_General_JToggleButton.isSelected());
-    }//GEN-LAST:event_promedio_General_JToggleButtonItemStateChanged
+    }//GEN-LAST:event_nombres_JButtonMouseClicked
 
-    private void promedio_General_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_promedio_General_JToggleButtonMouseEntered
+    private void nombres_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombres_JButtonMouseEntered
         // TODO add your handling code here:
-        promedio_General_JToggleButton.setBackground(CourseRoom.Tercer_Color());
-        promedio_General_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_promedio_General_JToggleButtonMouseEntered
+        nombres_JButton.setBackground(CourseRoom.Tercer_Color());
+        nombres_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_nombres_JButtonMouseEntered
 
-    private void promedio_General_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_promedio_General_JToggleButtonMouseExited
+    private void nombres_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombres_JButtonMouseExited
         // TODO add your handling code here:
-        promedio_General_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        promedio_General_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_promedio_General_JToggleButtonMouseExited
+        nombres_JButton.setBackground(CourseRoom.Segundo_Color());
+        nombres_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_nombres_JButtonMouseExited
+
+    private void descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcion_JButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descripcion_JButtonMouseClicked
+
+    private void descripcion_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcion_JButtonMouseEntered
+        // TODO add your handling code here:
+        descripcion_JButton.setBackground(CourseRoom.Tercer_Color());
+        descripcion_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_descripcion_JButtonMouseEntered
+
+    private void descripcion_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcion_JButtonMouseExited
+        // TODO add your handling code here:
+        descripcion_JButton.setBackground(CourseRoom.Segundo_Color());
+        descripcion_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_descripcion_JButtonMouseExited
+
+    private void promedio_General_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_promedio_General_JButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_promedio_General_JButtonMouseClicked
+
+    private void promedio_General_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_promedio_General_JButtonMouseEntered
+        // TODO add your handling code here:
+        promedio_General_JButton.setBackground(CourseRoom.Tercer_Color());
+        promedio_General_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_promedio_General_JButtonMouseEntered
+
+    private void promedio_General_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_promedio_General_JButtonMouseExited
+        // TODO add your handling code here:
+        promedio_General_JButton.setBackground(CourseRoom.Segundo_Color());
+        promedio_General_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_promedio_General_JButtonMouseExited
+
+    private void tipo_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipo_Perfil_JButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipo_Perfil_JButtonMouseClicked
+
+    private void tipo_Perfil_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipo_Perfil_JButtonMouseEntered
+        // TODO add your handling code here:
+        tipo_Perfil_JButton.setBackground(CourseRoom.Tercer_Color());
+        tipo_Perfil_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_tipo_Perfil_JButtonMouseEntered
+
+    private void tipo_Perfil_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipo_Perfil_JButtonMouseExited
+        // TODO add your handling code here:
+        tipo_Perfil_JButton.setBackground(CourseRoom.Segundo_Color());
+        tipo_Perfil_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_tipo_Perfil_JButtonMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton apellidos_JButton;
     private javax.swing.JLabel apellidos_JLabel;
     private javax.swing.JTextField apellidos_JTextField;
-    private javax.swing.JToggleButton apellidos_JToggleButton;
     private javax.swing.JPanel autenticacion_JPanel;
+    private javax.swing.JButton contrasena_JButton;
     private javax.swing.JLabel contrasena_JLabel;
     private javax.swing.JPasswordField contrasena_JPasswordField;
-    private javax.swing.JToggleButton contrasena_JToggleButton;
+    private javax.swing.JButton correo_Electronico_JButton;
     private javax.swing.JLabel correo_Electronico_JLabel;
     private javax.swing.JTextField correo_Electronico_JTextField;
-    private javax.swing.JToggleButton correo_Electronico_JToggleButton;
     private javax.swing.JPanel datos_Personales_JPanel;
+    private javax.swing.JButton descripcion_JButton;
     private javax.swing.JLabel descripcion_JLabel;
     private javax.swing.JScrollPane descripcion_JScrollPane;
     private javax.swing.JTextPane descripcion_JTextPane;
-    private javax.swing.JToggleButton descripcion_JToggleButton;
     private javax.swing.JTabbedPane editar_Perfil_JTabbedPane;
+    private javax.swing.JButton fecha_Nacimiento_JButton;
     private javax.swing.JFormattedTextField fecha_Nacimiento_JFormattedTextField;
     private javax.swing.JLabel fecha_Nacimiento_JLabel;
-    private javax.swing.JToggleButton fecha_Nacimiento_JToggleButton;
+    private javax.swing.JButton genero_JButton;
     private javax.swing.JLabel genero_JLabel;
     private javax.swing.JTextField genero_JTextField;
-    private javax.swing.JToggleButton genero_JToggleButton;
     private javax.swing.JButton guardar_Cambios_Autenticacion_JButton;
     private javax.swing.JButton guardar_Cambios_Datos_Personales_JButton;
-    private javax.swing.JButton imagen_Perfil_JButton;
+    private javax.swing.JButton imagen_Cambiar_JButton;
+    private javax.swing.JButton imagen_Editar_JButton;
     private javax.swing.JLabel imagen_Perfil_JLabel;
-    private javax.swing.JToggleButton imagen_Perfil_JToggleButton;
     private javax.swing.JLabel informacion_Contrasena_JLabel;
     private javax.swing.JLabel informacion_Correo_Electronico_JLabel;
     private javax.swing.JLabel informacion_Nombre_Usaurio_JLabel;
     private javax.swing.JLabel informacion_Repetir_Contrasena_JLabel;
+    private javax.swing.JButton localidad_JButton;
     private javax.swing.JLabel localidad_JLabel;
     private javax.swing.JTextField localidad_JTextField;
-    private javax.swing.JToggleButton localidad_JToggleButton;
+    private javax.swing.JButton nombre_Usuario_JButton;
     private javax.swing.JLabel nombre_Usuario_JLabel;
     private javax.swing.JTextField nombre_Usuario_JTextField;
-    private javax.swing.JToggleButton nombre_Usuario_JToggleButton;
+    private javax.swing.JButton nombres_JButton;
     private javax.swing.JLabel nombres_JLabel;
     private javax.swing.JTextField nombres_JTextField;
-    private javax.swing.JToggleButton nombres_JToggleButton;
+    private javax.swing.JButton promedio_General_JButton;
     private javax.swing.JFormattedTextField promedio_General_JFormattedTextField;
     private javax.swing.JLabel promedio_General_JLabel;
-    private javax.swing.JToggleButton promedio_General_JToggleButton;
     private javax.swing.JButton regresar_JButton;
     private javax.swing.JLabel repetir_Contrasena_JLabel;
     private javax.swing.JPasswordField repetir_Contrasena_JPasswordField;
+    private javax.swing.JButton telefono_JButton;
     private javax.swing.JFormattedTextField telefono_JFormattedTextField;
     private javax.swing.JLabel telefono_JLabel;
-    private javax.swing.JToggleButton telefono_JToggleButton;
+    private javax.swing.JButton tipo_Perfil_JButton;
     private javax.swing.JComboBox<String> tipo_Perfil_JComboBox;
     private javax.swing.JLabel tipo_Perfil_JLabel;
-    private javax.swing.JToggleButton tipo_Perfil_JToggleButton;
     // End of variables declaration//GEN-END:variables
 
      @Override
@@ -1289,33 +1238,34 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         guardar_Cambios_Datos_Personales_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
         guardar_Cambios_Datos_Personales_JButton.setBackground(CourseRoom.Tercer_Color());
         
-        imagen_Perfil_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-        imagen_Perfil_JButton.setBackground(CourseRoom.Tercer_Color());
+        imagen_Cambiar_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        imagen_Cambiar_JButton.setBackground(CourseRoom.Tercer_Color());
         
-        nombre_Usuario_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        nombre_Usuario_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        correo_Electronico_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        correo_Electronico_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        contrasena_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        contrasena_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        nombres_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        nombres_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        apellidos_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        apellidos_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        localidad_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        localidad_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        fecha_Nacimiento_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        fecha_Nacimiento_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        genero_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        genero_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        telefono_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        telefono_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        tipo_Perfil_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        tipo_Perfil_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        descripcion_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        descripcion_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        promedio_General_JToggleButton.setBackground(CourseRoom.Segundo_Color());
-        promedio_General_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        nombre_Usuario_JButton.setBackground(CourseRoom.Segundo_Color());
+        nombre_Usuario_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        correo_Electronico_JButton.setBackground(CourseRoom.Segundo_Color());
+        correo_Electronico_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        contrasena_JButton.setBackground(CourseRoom.Segundo_Color());
+        contrasena_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
+        nombres_JButton.setBackground(CourseRoom.Segundo_Color());
+        nombres_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        apellidos_JButton.setBackground(CourseRoom.Segundo_Color());
+        apellidos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        localidad_JButton.setBackground(CourseRoom.Segundo_Color());
+        localidad_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        fecha_Nacimiento_JButton.setBackground(CourseRoom.Segundo_Color());
+        fecha_Nacimiento_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        genero_JButton.setBackground(CourseRoom.Segundo_Color());
+        genero_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        telefono_JButton.setBackground(CourseRoom.Segundo_Color());
+        telefono_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        tipo_Perfil_JButton.setBackground(CourseRoom.Segundo_Color());
+        tipo_Perfil_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        descripcion_JButton.setBackground(CourseRoom.Segundo_Color());
+        descripcion_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        promedio_General_JButton.setBackground(CourseRoom.Segundo_Color());
+        promedio_General_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         
     }
     

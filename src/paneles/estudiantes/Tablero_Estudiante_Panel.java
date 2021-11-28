@@ -773,40 +773,40 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     
     public static void Colorear(){
          
-        acerca_De_JButton.setForeground(CourseRoom.Segundo_Color_Fuente()); 
+        acerca_De_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         ajustes_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        avisos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente()); 
+        avisos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         chats_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        cursos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente()); 
+        cursos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         fechas_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        grupos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente()); 
+        grupos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         inicio_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        reproductor_Musica_JButton.setForeground(CourseRoom.Segundo_Color_Fuente()); 
+        reproductor_Musica_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         salir_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        tareas_JButton.setForeground(CourseRoom.Segundo_Color_Fuente()); 
-        
-        acerca_De_JButton.setBackground(CourseRoom.Segundo_Color()); 
+        tareas_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        imagen_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        acerca_De_JButton.setBackground(CourseRoom.Segundo_Color());
         ajustes_JButton.setBackground(CourseRoom.Segundo_Color());
-        avisos_JButton.setBackground(CourseRoom.Segundo_Color()); 
+        avisos_JButton.setBackground(CourseRoom.Segundo_Color());
         chats_JButton.setBackground(CourseRoom.Segundo_Color());
-        cursos_JButton.setBackground(CourseRoom.Segundo_Color()); 
+        cursos_JButton.setBackground(CourseRoom.Segundo_Color());
         fechas_JButton.setBackground(CourseRoom.Segundo_Color());
-        grupos_JButton.setBackground(CourseRoom.Segundo_Color()); 
+        grupos_JButton.setBackground(CourseRoom.Segundo_Color());
         inicio_JButton.setBackground(CourseRoom.Segundo_Color());
-        reproductor_Musica_JButton.setBackground(CourseRoom.Segundo_Color()); 
+        reproductor_Musica_JButton.setBackground(CourseRoom.Segundo_Color());
         salir_JButton.setBackground(CourseRoom.Segundo_Color());
-        tareas_JButton.setBackground(CourseRoom.Segundo_Color()); 
-        
+        tareas_JButton.setBackground(CourseRoom.Segundo_Color());
+
         fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         nombre_Usuario_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        
+
         fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         nombre_Usuario_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        acerca_De_Panel.Colorear_Componentes();
+       
         perfil_Panel.Colorear_Componentes();
         editar_Perfil_Panel.Colorear_Componentes();
         chats_Panel.Colorear_Componentes();
-        chats_Panel.Colorear_Componentes();
+        acerca_De_Panel.Colorear_Componentes();
         tareas_Panel.Colorear_Componentes();
         grupos_Panel.Colorear_Componentes();
         avisos_Panel.Colorear_Componentes();
@@ -973,7 +973,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         perfil_Panel.Colorear_Componentes();
         editar_Perfil_Panel.Colorear_Componentes();
         chats_Panel.Colorear_Componentes();
-        chats_Panel.Colorear_Componentes();
+        acerca_De_Panel.Colorear_Componentes();
         tareas_Panel.Colorear_Componentes();
         grupos_Panel.Colorear_Componentes();
         avisos_Panel.Colorear_Componentes();
