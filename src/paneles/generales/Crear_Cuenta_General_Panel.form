@@ -275,16 +275,16 @@
                           <Component id="contrasena_Autenticacion_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nombre_Usuario_Autenticacion_JTextField" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="contrasena_Autenticacion_JPasswordField" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="nombre_Usuario_Autenticacion_JTextField" pref="43" max="32767" attributes="0"/>
+                          <Component id="contrasena_Autenticacion_JPasswordField" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="informacion_Nombre_Usuario_Autenticacion_JLabel" max="32767" attributes="0"/>
-                          <Component id="informacion_Contrasena_Autenticacion_JLabel" max="32767" attributes="0"/>
+                          <Component id="informacion_Contrasena_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="correo_Electronico_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
@@ -292,16 +292,16 @@
                           </Group>
                           <Component id="repetir_Contrasena_Autenticacion_JLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="correo_Electronico_Autenticacion_JTextField" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
-                          <Component id="repetir_Contrasena_Autenticacion_JPasswordField" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="correo_Electronico_Autenticacion_JTextField" pref="45" max="32767" attributes="0"/>
+                          <Component id="repetir_Contrasena_Autenticacion_JPasswordField" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="informacion_Correo_Electronico_Autenticacion_JLabel" max="32767" attributes="0"/>
                           <Component id="informacion_Repetir_Contrasena_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="continuar_Datos_Personales_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="regresar_Inicio_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -455,7 +455,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="14" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="informaci&#xf3;n de la seguridad de la contrase&#xf1;a"/>
+                <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de la seguridad de la contrase&#xf1;a"/>
+                <Property name="toolTipText" type="java.lang.String" value="Informaci&#xf3;n de la seguridad de la contrase&#xf1;a"/>
                 <Property name="verticalAlignment" type="int" value="1"/>
               </Properties>
             </Component>
@@ -531,63 +532,6 @@
                       <Component id="continuar_Perfil_JButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nombres_JLabel" max="32767" attributes="0"/>
-                          <Component id="nombres_JTextField" pref="582" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="apellidos_JTextField" pref="583" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="apellidos_JLabel" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="genero_JTextField" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="genero_JLabel" max="32767" attributes="0"/>
-                                  <Component id="localidad_JTextField" alignment="1" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="descripcion_JScrollPane" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="telefono_JLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="localidad_JLabel" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="telefono_JFormattedTextField" alignment="1" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="fecha_Nacimiento_JFormattedTextField" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                      <Component id="fecha_Nacimiento_JLabel" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="descripcion_JLabel" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -596,49 +540,91 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="nombres_JTextField" pref="427" max="32767" attributes="0"/>
+                                  <Component id="nombres_JLabel" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="apellidos_JTextField" pref="423" max="32767" attributes="0"/>
+                                  <Component id="apellidos_JLabel" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="telefono_JFormattedTextField" pref="0" max="32767" attributes="0"/>
+                                  <Component id="telefono_JLabel" pref="299" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="descripcion_JLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="descripcion_JScrollPane" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="fecha_Nacimiento_JLabel" max="32767" attributes="0"/>
+                                  <Component id="fecha_Nacimiento_JFormattedTextField" min="-2" pref="329" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="genero_JLabel" pref="246" max="32767" attributes="0"/>
+                                  <Component id="genero_JTextField" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="localidad_JTextField" max="32767" attributes="0"/>
+                                  <Component id="localidad_JLabel" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="logo_Datos_Personales_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="titulo_Datos_Personales_JLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="59" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="nombres_JLabel" max="32767" attributes="0"/>
-                          <Component id="apellidos_JLabel" max="32767" attributes="0"/>
-                      </Group>
+                      <EmptySpace pref="50" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nombres_JTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="apellidos_JTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="telefono_JLabel" max="32767" attributes="0"/>
-                          <Component id="fecha_Nacimiento_JLabel" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="telefono_JFormattedTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="fecha_Nacimiento_JFormattedTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="localidad_JLabel" max="32767" attributes="0"/>
-                          <Component id="descripcion_JLabel" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="localidad_JTextField" min="-2" pref="33" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="genero_JLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="genero_JTextField" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="nombres_JLabel" max="32767" attributes="0"/>
+                                  <Component id="apellidos_JLabel" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="nombres_JTextField" pref="40" max="32767" attributes="0"/>
+                                  <Component id="apellidos_JTextField" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="descripcion_JScrollPane" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="telefono_JLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Component id="telefono_JFormattedTextField" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="fecha_Nacimiento_JLabel" max="32767" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="genero_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="localidad_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="localidad_JTextField" max="32767" attributes="0"/>
+                          <Component id="fecha_Nacimiento_JFormattedTextField" pref="40" max="32767" attributes="0"/>
+                          <Component id="genero_JTextField" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="descripcion_JLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="descripcion_JScrollPane" min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace pref="58" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="continuar_Perfil_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="regresar_Autenticacion_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -818,42 +804,6 @@
                 <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="descripcion_JScrollPane">
-              <Properties>
-                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[334, 136]"/>
-                </Property>
-                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[334, 136]"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTextArea" name="descripcion_JTextArea">
-                  <Properties>
-                    <Property name="columns" type="int" value="20"/>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Gadugi" size="19" style="0"/>
-                    </Property>
-                    <Property name="rows" type="int" value="5"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Ingresa Aqu&#xed; Una Descricpci&#xf3;n Sobre T&#xed;."/>
-                    <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="e8" green="c2" red="68" type="rgb"/>
-                    </Property>
-                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[332, 134]"/>
-                    </Property>
-                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[332, 134]"/>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
             <Component class="javax.swing.JButton" name="continuar_Perfil_JButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -892,6 +842,25 @@
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="regresar_Autenticacion_JButtonMouseExited"/>
               </Events>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="descripcion_JScrollPane">
+              <Properties>
+                <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextPane" name="descripcion_JTextPane">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Gadugi" size="19" style="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="perfil_JPanel">

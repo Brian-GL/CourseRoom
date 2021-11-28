@@ -208,6 +208,7 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
         apellidos_JLabel.setForeground(Primer_Color_Fuente());
         nombre_Usuario_JLabel.setForeground(Primer_Color_Fuente());
         nombres_JLabel.setForeground(Primer_Color_Fuente());
+        imagen_jLabel.setForeground(Primer_Color_Fuente());
         contenido_JPanel.setBackground(Primer_Color());
 
     }

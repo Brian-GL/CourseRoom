@@ -51,7 +51,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         avisos_JScrollPane.setPreferredSize(new java.awt.Dimension(1073, 516));
 
         avisos_JPanel.setOpaque(false);
-        avisos_JPanel.setLayout(new javax.swing.BoxLayout(avisos_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        avisos_JPanel.setLayout(new java.awt.GridLayout(0, 2));
         avisos_JScrollPane.setViewportView(avisos_JPanel);
 
         ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
@@ -85,7 +85,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 540, Short.MAX_VALUE)
                 .addContainerGap())

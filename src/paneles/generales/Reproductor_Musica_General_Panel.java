@@ -174,7 +174,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         controles_JPanel.setOpaque(false);
 
-        controles_JTabbedPane.setBackground(new java.awt.Color(0, 0, 0));
         controles_JTabbedPane.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
 
         abrir_Archivos_JPanel.setOpaque(false);
@@ -709,21 +708,21 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         genero_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         genero_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        genero_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Genre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 1, 16))); // NOI18N
+        genero_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Genre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 16))); // NOI18N
         genero_JLabel.setMaximumSize(new java.awt.Dimension(51, 45));
         genero_JLabel.setMinimumSize(new java.awt.Dimension(51, 45));
         genero_JLabel.setPreferredSize(new java.awt.Dimension(51, 55));
 
         informacion_Archivo_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         informacion_Archivo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        informacion_Archivo_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Media", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 1, 16))); // NOI18N
+        informacion_Archivo_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Media", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 16))); // NOI18N
         informacion_Archivo_JLabel.setMaximumSize(new java.awt.Dimension(51, 45));
         informacion_Archivo_JLabel.setMinimumSize(new java.awt.Dimension(51, 45));
         informacion_Archivo_JLabel.setPreferredSize(new java.awt.Dimension(51, 55));
 
         anio_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         anio_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        anio_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Year", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 1, 16))); // NOI18N
+        anio_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Year", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 16))); // NOI18N
         anio_JLabel.setMaximumSize(new java.awt.Dimension(51, 45));
         anio_JLabel.setMinimumSize(new java.awt.Dimension(51, 45));
         anio_JLabel.setPreferredSize(new java.awt.Dimension(51, 55));
@@ -732,7 +731,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         letras_JScrollPane.setOpaque(false);
 
         letras_JTextPane.setEditable(false);
-        letras_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lyrics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 1, 16))); // NOI18N
+        letras_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lyrics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 16))); // NOI18N
         letras_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         letras_JTextPane.setOpaque(false);
         letras_JScrollPane.setViewportView(letras_JTextPane);
@@ -1525,7 +1524,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         }
 
         rate_JSlider.setForeground(primer_Color_Fuente);
-        rate_JSlider.setForeground(primer_Color_Fuente);
+        volumen_JSlider.setForeground(primer_Color_Fuente);
         titulo_JLabel.setForeground(primer_Color_Fuente);
         album_JLabel.setForeground(primer_Color_Fuente);
         artista_JLabel.setForeground(primer_Color_Fuente);

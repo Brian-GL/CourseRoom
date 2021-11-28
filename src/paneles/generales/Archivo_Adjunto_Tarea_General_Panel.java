@@ -5,27 +5,38 @@
  */
 package paneles.generales;
 
+import interfaces.Componentes_Interface;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+import main.CourseRoom;
 
 /**
  *
  * @author LENOVO
  */
-public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel {
+public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
+    private Color primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
-    public Archivo_Adjunto_Tarea_General_Panel(Color color_Fuente, 
-            Color segundo_Color, Color 
-                    segundo_Color_Fuente) {
+    public Archivo_Adjunto_Tarea_General_Panel(
+            Color _primer_Color_Fuente, 
+            Color _segundo_Color, 
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente) {
         
         initComponents();
         
-        nombre_JLabel.setForeground(color_Fuente);
-        descargar_JButton.setForeground(segundo_Color_Fuente);
-        abrir_JButton.setForeground(segundo_Color_Fuente);
-        descargar_JButton.setBackground(segundo_Color);
-        abrir_JButton.setBackground(segundo_Color);
+        primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
+       
+        Iniciar_Componentes();
         
     }
 
@@ -38,15 +49,22 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenido_JPanel = new javax.swing.JPanel();
         icono_JLabel = new javax.swing.JLabel();
         descargar_JButton = new javax.swing.JButton();
         abrir_JButton = new javax.swing.JButton();
-        nombre_JLabel = new javax.swing.JLabel();
+        archivo_JScrollPane = new javax.swing.JScrollPane();
+        archivo_JTextPane = new javax.swing.JTextPane();
 
-        setMaximumSize(new java.awt.Dimension(300, 60));
-        setMinimumSize(new java.awt.Dimension(300, 60));
+        setMaximumSize(new java.awt.Dimension(350, 88));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(300, 60));
+        setPreferredSize(new java.awt.Dimension(350, 88));
+        setRequestFocusEnabled(false);
+        setVerifyInputWhenFocusTarget(false);
+
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contenido_JPanel.setMaximumSize(new java.awt.Dimension(338, 76));
 
         icono_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         icono_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/file.png"))); // NOI18N
@@ -58,6 +76,12 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 descargar_JButtonMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                descargar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                descargar_JButtonMouseExited(evt);
+            }
         });
 
         abrir_JButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
@@ -67,11 +91,62 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 abrir_JButtonMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                abrir_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                abrir_JButtonMouseExited(evt);
+            }
         });
 
-        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        nombre_JLabel.setText("Nombre Del Archivo Adjunto");
-        nombre_JLabel.setToolTipText("Nombre Del Archivo Adjunto");
+        archivo_JScrollPane.setBorder(null);
+        archivo_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        archivo_JScrollPane.setOpaque(false);
+        archivo_JScrollPane.setRequestFocusEnabled(false);
+        archivo_JScrollPane.setVerifyInputWhenFocusTarget(false);
+        archivo_JScrollPane.setWheelScrollingEnabled(false);
+
+        archivo_JTextPane.setEditable(false);
+        archivo_JTextPane.setBorder(null);
+        archivo_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        archivo_JTextPane.setFocusCycleRoot(false);
+        archivo_JTextPane.setFocusable(false);
+        archivo_JTextPane.setOpaque(false);
+        archivo_JTextPane.setRequestFocusEnabled(false);
+        archivo_JTextPane.setVerifyInputWhenFocusTarget(false);
+        archivo_JScrollPane.setViewportView(archivo_JTextPane);
+
+        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
+        contenido_JPanel.setLayout(contenido_JPanelLayout);
+        contenido_JPanelLayout.setHorizontalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(icono_JLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(archivo_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descargar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(abrir_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        contenido_JPanelLayout.setVerticalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                            .addComponent(abrir_JButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(descargar_JButton))
+                        .addComponent(archivo_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(icono_JLabel)))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,31 +154,15 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(icono_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 98, Short.MAX_VALUE)
-                        .addComponent(abrir_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(descargar_JButton))
-                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(icono_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(abrir_JButton)
-                            .addComponent(descargar_JButton))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -121,12 +180,72 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_descargar_JButtonMouseClicked
 
+    private void abrir_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrir_JButtonMouseEntered
+        // TODO add your handling code here:
+        abrir_JButton.setBackground(tercer_Color);
+        abrir_JButton.setForeground(tercer_Color_Fuente);
+        
+    }//GEN-LAST:event_abrir_JButtonMouseEntered
+
+    private void abrir_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrir_JButtonMouseExited
+        // TODO add your handling code here:
+        abrir_JButton.setBackground(segundo_Color);
+        abrir_JButton.setForeground(segundo_Color_Fuente);
+    }//GEN-LAST:event_abrir_JButtonMouseExited
+
+    private void descargar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descargar_JButtonMouseEntered
+        // TODO add your handling code here:
+        descargar_JButton.setBackground(tercer_Color);
+        descargar_JButton.setForeground(tercer_Color_Fuente);
+    }//GEN-LAST:event_descargar_JButtonMouseEntered
+
+    private void descargar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descargar_JButtonMouseExited
+        // TODO add your handling code here:
+        descargar_JButton.setBackground(segundo_Color);
+        descargar_JButton.setForeground(segundo_Color_Fuente);
+    }//GEN-LAST:event_descargar_JButtonMouseExited
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abrir_JButton;
+    private javax.swing.JScrollPane archivo_JScrollPane;
+    private javax.swing.JTextPane archivo_JTextPane;
+    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JButton descargar_JButton;
     private javax.swing.JLabel icono_JLabel;
-    private javax.swing.JLabel nombre_JLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Iniciar_Componentes() {
+        archivo_JScrollPane.getViewport().setOpaque(false);
+        archivo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        
+        String informacion_Archivo = CourseRoom.Faker().file().fileName();
+        StyledDocument documento_Estilizado = archivo_JTextPane.getStyledDocument();
+        SimpleAttributeSet atributo_Centro = new SimpleAttributeSet();
+        StyleConstants.setAlignment(atributo_Centro, StyleConstants.ALIGN_CENTER);
+        documento_Estilizado.setParagraphAttributes(0, documento_Estilizado.getLength(), atributo_Centro, false);
+        
+        archivo_JTextPane.setText(informacion_Archivo);
+        
+        Colorear_Componentes();
+    }
+
+    @Override
+    public void Colorear_Componentes() {
+        
+        contenido_JPanel.setBackground(tercer_Color);
+        contenido_JPanel.setForeground(tercer_Color_Fuente);
+        
+        archivo_JTextPane.setForeground(segundo_Color_Fuente);
+        archivo_JTextPane.setBackground(segundo_Color);
+        
+        abrir_JButton.setBackground(segundo_Color);
+        abrir_JButton.setForeground(segundo_Color_Fuente);
+        
+        descargar_JButton.setBackground(segundo_Color);
+        descargar_JButton.setForeground(segundo_Color_Fuente);
+        
+    }
 }

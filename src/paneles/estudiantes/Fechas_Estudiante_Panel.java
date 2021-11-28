@@ -19,9 +19,9 @@ import interfaces.Limpieza_Interface;
  */
 public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface,Componentes_Interface{
 
-    private int indice_mes;
-    private int indice_anio;
-    private LocalDateTime tiempo_actual;
+    private int indice_Mes;
+    private int indice_Anio;
+    private LocalDateTime tiempo_Actual;
     /**
      * Creates new form DatesPanel
      */
@@ -31,9 +31,7 @@ public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         
         Iniciar_Componentes();
         
-        
     }
-    
     
 
     /**
@@ -182,8 +180,8 @@ public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     private void siguiente_Mes_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguiente_Mes_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if((indice_mes+1) < 13){
-                indice_mes++;
+            if((indice_Mes+1) < 13){
+                indice_Mes++;
                 this.Limpiar();
                 Crear_Calendario();
             } 
@@ -193,8 +191,8 @@ public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     private void anterior_Mes_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anterior_Mes_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if((indice_mes-1) > 0 ){
-                indice_mes--;
+            if((indice_Mes-1) > 0 ){
+                indice_Mes--;
                 this.Limpiar();
                 Crear_Calendario();
             }
@@ -203,12 +201,12 @@ public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
 
     public void Crear_Calendario(){
         
-        switch(indice_mes){
+        switch(indice_Mes){
             case 1:
                 Establecer_Mes(32, 32);
             break;
             case 2:
-                if (Es_Anio_Bisiesto(indice_anio)) {
+                if (Es_Anio_Bisiesto(indice_Anio)) {
                     Establecer_Mes(30, 32);
                 } else{
                     Establecer_Mes(29, 32);
@@ -216,7 +214,7 @@ public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                 
             break;
             case 3:
-                if(Es_Anio_Bisiesto(indice_anio)){
+                if(Es_Anio_Bisiesto(indice_Anio)){
                     Establecer_Mes(32, 30);
                 }else{
                     Establecer_Mes(32, 29);
@@ -268,7 +266,7 @@ public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     private void Establecer_Mes(int dias_del_mes, int dias_del_mes_anterior){
         int cuenta = 0;
         mes_JLabel.setText(Establecer_Nombre_Mes());
-        LocalDate fecha_Local = LocalDate.of(indice_anio, indice_mes, 1);
+        LocalDate fecha_Local = LocalDate.of(indice_Anio, indice_Mes, 1);
         DayOfWeek dia_De_La_Semana = fecha_Local.getDayOfWeek();
         int hasta_Valor = dia_De_La_Semana.getValue()-1;
         
@@ -282,7 +280,7 @@ public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         
         for(int i = 1; i < dias_del_mes;i++){
             dia_Calendario_Panel = new Caja_Fecha_Estudiante_Panel(i);
-            if(tiempo_actual.getDayOfMonth() == i){
+            if(tiempo_Actual.getDayOfMonth() == i){
                 dia_Calendario_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente());
                 calendario_JPanel.add(dia_Calendario_Panel);
             } else{
@@ -305,7 +303,7 @@ public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     
     private String Establecer_Nombre_Mes(){
         String mes = "";
-        switch(indice_mes) {
+        switch(indice_Mes) {
             case 1:
                 mes = "Enero";
                 break;
@@ -367,9 +365,9 @@ public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     public void Iniciar_Componentes() {
         calendario_JScrollPane.getViewport().setOpaque(false);
         LocalDateTime tiempo_Actual_Local = LocalDateTime.now();  
-        indice_mes = tiempo_Actual_Local.getMonthValue();
-        indice_anio = tiempo_Actual_Local.getYear();
-        tiempo_actual = LocalDateTime.now();
+        indice_Mes = tiempo_Actual_Local.getMonthValue();
+        indice_Anio = tiempo_Actual_Local.getYear();
+        tiempo_Actual = LocalDateTime.now();
     }
     
     @Override

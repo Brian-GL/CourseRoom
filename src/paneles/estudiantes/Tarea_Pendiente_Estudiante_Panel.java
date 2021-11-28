@@ -42,7 +42,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         segundo_Color_Fuente = _segundo_Color_Fuente;
         
         nombre_JLabel.setText(nombre);
-        descripcion_JLabel.setText(CourseRoom.Formato_HTML_Centro(descripcion));
+        descripcion_JLabel.setText(CourseRoom.Formato_HTML_Izquierda(descripcion));
         fecha_Terminacion_jLabel.setText(fecha_Terminacion);
         miembro_Cargo_JLabel.setIcon(member_Icon);
         miembro_Cargo_JLabel.setToolTipText(CourseRoom.Concatenar("Miembro A Cargo: ",nombre_Miembro));
@@ -67,12 +67,15 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         estatus_JToggleButton = new javax.swing.JToggleButton();
         descripcion_JLabel = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 178));
+        setMaximumSize(new java.awt.Dimension(32767, 182));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(717, 178));
+        setPreferredSize(new java.awt.Dimension(717, 182));
+
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         miembro_Cargo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         miembro_Cargo_JLabel.setToolTipText("");
+        miembro_Cargo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         miembro_Cargo_JLabel.setMaximumSize(new java.awt.Dimension(130, 130));
         miembro_Cargo_JLabel.setMinimumSize(new java.awt.Dimension(130, 130));
         miembro_Cargo_JLabel.setPreferredSize(new java.awt.Dimension(130, 130));
@@ -97,6 +100,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         });
 
         descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        descripcion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         descripcion_JLabel.setToolTipText("Descipción Del Pendiente");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
@@ -106,7 +110,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
                     .addComponent(fecha_Terminacion_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -183,6 +187,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
     public void Colorear_Componentes() {
         
         contenido_JPanel.setBackground(primer_Color);
+        contenido_JPanel.setForeground(primer_Color_Fuente);
         nombre_JLabel.setForeground(primer_Color_Fuente);
         descripcion_JLabel.setForeground(segundo_Color_Fuente);
         fecha_Terminacion_jLabel.setForeground(primer_Color_Fuente);

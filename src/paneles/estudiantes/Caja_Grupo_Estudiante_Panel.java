@@ -50,15 +50,18 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenido_JPanel = new javax.swing.JPanel();
         imagen_JLabel = new javax.swing.JLabel();
         nombre_JLabel = new javax.swing.JLabel();
         curso_JLabel = new javax.swing.JLabel();
         ultima_Actualizacion_JLabel = new javax.swing.JLabel();
+        numero_Integrantes_JLabel = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        setMaximumSize(new java.awt.Dimension(32767, 131));
-        setMinimumSize(null);
-        setPreferredSize(new java.awt.Dimension(1085, 131));
+        setMaximumSize(new java.awt.Dimension(32767, 143));
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(526, 143));
+
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         imagen_JLabel.setToolTipText("Imagen Del Grupo");
         imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -96,34 +99,59 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         ultima_Actualizacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/volume.png"))); // NOI18N
         ultima_Actualizacion_JLabel.setToolTipText("Actualización Más Reciente Del Grupo");
 
+        numero_Integrantes_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
+        numero_Integrantes_JLabel.setForeground(java.awt.Color.white);
+        numero_Integrantes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numero_Integrantes_JLabel.setToolTipText("Número De Mensajes No Leídos");
+
+        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
+        contenido_JPanel.setLayout(contenido_JPanelLayout);
+        contenido_JPanelLayout.setHorizontalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(ultima_Actualizacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(numero_Integrantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        contenido_JPanelLayout.setVerticalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(curso_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ultima_Actualizacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(numero_Integrantes_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(3, 3, 3))
-                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ultima_Actualizacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 937, Short.MAX_VALUE))
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nombre_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(curso_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ultima_Actualizacion_JLabel)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -151,9 +179,11 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel curso_JLabel;
     private javax.swing.JLabel imagen_JLabel;
     private javax.swing.JLabel nombre_JLabel;
+    private javax.swing.JLabel numero_Integrantes_JLabel;
     private javax.swing.JLabel ultima_Actualizacion_JLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -172,6 +202,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
             nombre_JLabel.setText(CourseRoom.Faker().team().sport());
             ultima_Actualizacion_JLabel.setText(CourseRoom.Faker().team().state());
             curso_JLabel.setText(CourseRoom.Faker().team().name());
+            numero_Integrantes_JLabel.setText(CourseRoom.Concatenar(CourseRoom.Faker().number().digit()," Integrantes"));
             
             grupo_Estudiante_Panel = new Grupo_Estudiante_Panel(obtener_Imagen, nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente);
             Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id);
@@ -191,8 +222,8 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         curso_JLabel.setForeground(primer_Color_Fuente);
         nombre_JLabel.setForeground(primer_Color_Fuente);
         ultima_Actualizacion_JLabel.setForeground(primer_Color_Fuente);
-        this.setBackground(primer_Color);
-        //this.setBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color));
+        contenido_JPanel.setBackground(primer_Color);
+        contenido_JPanel.setForeground(primer_Color_Fuente);
     }
     
      @Override

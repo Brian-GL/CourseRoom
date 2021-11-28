@@ -51,7 +51,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         genero_JLabel = new javax.swing.JLabel();
         desempeno_Escolar_JButton = new javax.swing.JButton();
         editar_Perfil_JButton = new javax.swing.JButton();
-        descripcion_JLabel = new javax.swing.JLabel();
+        descripcion_JScrollPane = new javax.swing.JScrollPane();
+        descripcion_JTextPane = new javax.swing.JTextPane();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
@@ -67,6 +68,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         apellidos_JLabel.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         apellidos_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         apellidos_JLabel.setToolTipText("Apellido(s)");
+        apellidos_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         apellidos_JLabel.setMaximumSize(new java.awt.Dimension(380, 50));
         apellidos_JLabel.setMinimumSize(new java.awt.Dimension(380, 50));
         apellidos_JLabel.setName("label"); // NOI18N
@@ -76,6 +78,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         nombres_JLabel.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         nombres_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombres_JLabel.setToolTipText("Nombre(s)");
+        nombres_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nombres_JLabel.setMaximumSize(new java.awt.Dimension(380, 50));
         nombres_JLabel.setMinimumSize(new java.awt.Dimension(380, 50));
         nombres_JLabel.setName("label"); // NOI18N
@@ -86,6 +89,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         nombre_Usuario_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombre_Usuario_jLabel.setText("Nombre De Usuario");
         nombre_Usuario_jLabel.setToolTipText("Nombre De Usuario");
+        nombre_Usuario_jLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nombre_Usuario_jLabel.setMaximumSize(new java.awt.Dimension(430, 30));
         nombre_Usuario_jLabel.setMinimumSize(new java.awt.Dimension(430, 30));
         nombre_Usuario_jLabel.setOpaque(true);
@@ -170,8 +174,19 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
-        descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        descripcion_JLabel.setToolTipText("Tu Descripción");
+        descripcion_JScrollPane.setBorder(null);
+        descripcion_JScrollPane.setOpaque(false);
+        descripcion_JScrollPane.setRequestFocusEnabled(false);
+        descripcion_JScrollPane.setVerifyInputWhenFocusTarget(false);
+        descripcion_JScrollPane.setWheelScrollingEnabled(false);
+
+        descripcion_JTextPane.setEditable(false);
+        descripcion_JTextPane.setBorder(null);
+        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        descripcion_JTextPane.setOpaque(false);
+        descripcion_JTextPane.setRequestFocusEnabled(false);
+        descripcion_JTextPane.setVerifyInputWhenFocusTarget(false);
+        descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -207,7 +222,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                                 .addGap(0, 16, Short.MAX_VALUE)))
                         .addContainerGap(23, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -231,8 +246,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                             .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(5, 5, 5)
                         .addComponent(localidad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -297,7 +312,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidos_JLabel;
     private javax.swing.JLabel correo_JLabel;
-    private javax.swing.JLabel descripcion_JLabel;
+    private javax.swing.JScrollPane descripcion_JScrollPane;
+    private javax.swing.JTextPane descripcion_JTextPane;
     private javax.swing.JButton desempeno_Escolar_JButton;
     private javax.swing.JButton editar_Perfil_JButton;
     private javax.swing.JLabel fecha_Nacimiento_JLabel;
@@ -326,7 +342,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         localidad_JLabel.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().address().fullAddress()));
         nombre_Usuario_jLabel.setText(CourseRoom.Faker().name().username());
         telefono_JLabel.setText(CourseRoom.Faker().phoneNumber().cellPhone());
-        descripcion_JLabel.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph()));
+        descripcion_JTextPane.setText(CourseRoom.Faker().lorem().paragraph());
         genero_JLabel.setText(CourseRoom.Faker().demographic().sex());
         fecha_Nacimiento_JLabel.setText(CourseRoom.Faker().backToTheFuture().date());
         
@@ -334,11 +350,16 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         imagen_Perfil_JLabel.setIcon(imagen);
         nombres_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         apellidos_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        nombre_Usuario_jLabel.setForeground(CourseRoom.Primer_Color_Fuente());        
+        nombre_Usuario_jLabel.setForeground(CourseRoom.Primer_Color_Fuente()); 
+        
+        descripcion_JScrollPane.getViewport().setOpaque(false);
+        descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
     }
     
     @Override
     public void Colorear_Componentes(){
+        imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         apellidos_JLabel.setBackground(CourseRoom.Tercer_Color());
         apellidos_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
         correo_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
@@ -356,6 +377,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         telefono_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         tipo_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        descripcion_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Primer_Color_Fuente());
     }
 }

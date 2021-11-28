@@ -46,7 +46,7 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
         nombre_JLabel.setForeground(color_Fuente);
         emisor_JLabel.setForeground(color_Fuente);
         
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(color_Fuente));
+        this.setForeground(color_Fuente);
         
         Iniciar_Componentes();
         
@@ -68,6 +68,7 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
         icono_JLabel = new javax.swing.JLabel();
         remover_JButton = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMaximumSize(new java.awt.Dimension(32767, 65));
         setMinimumSize(new java.awt.Dimension(1070, 65));
         setOpaque(false);
@@ -138,7 +139,7 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
                         .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(fecha_Hora_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

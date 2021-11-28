@@ -10,7 +10,6 @@ import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Color;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -33,9 +32,9 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         fondo_Color = _fondo_Color;
         fuente_Color = _fuente_Color;
         
-        String concatenar = CourseRoom.Concatenar(nombre_Usuario,":",String.valueOf(KeyEvent.VK_ENTER),comentario);
-                
-        comentario_JLabel.setText(concatenar);
+        String concatenar = CourseRoom.Concatenar(nombre_Usuario+":\n",comentario);
+        
+        comentario_JTextPane.setText(concatenar);
         
         Image imagen_redimensionada = imagen_Usuario.getScaledInstance(50,50,Image.SCALE_SMOOTH);
         ImageIcon imagen_usuario = new ImageIcon(imagen_redimensionada);
@@ -56,20 +55,27 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
     private void initComponents() {
 
         imagen_Emisor_JLabel = new javax.swing.JLabel();
-        comentario_JLabel = new javax.swing.JLabel();
+        comentario_JScrollPane = new javax.swing.JScrollPane();
+        comentario_JTextPane = new javax.swing.JTextPane();
 
         setMaximumSize(new java.awt.Dimension(32767, 62));
         setMinimumSize(new java.awt.Dimension(576, 62));
         setOpaque(false);
 
+        imagen_Emisor_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Emisor_JLabel.setMaximumSize(new java.awt.Dimension(50, 50));
         imagen_Emisor_JLabel.setMinimumSize(new java.awt.Dimension(50, 50));
         imagen_Emisor_JLabel.setPreferredSize(new java.awt.Dimension(50, 50));
 
-        comentario_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        comentario_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        comentario_JLabel.setToolTipText("Comentario");
-        comentario_JLabel.setOpaque(true);
+        comentario_JScrollPane.setBorder(null);
+        comentario_JScrollPane.setRequestFocusEnabled(false);
+        comentario_JScrollPane.setVerifyInputWhenFocusTarget(false);
+        comentario_JScrollPane.setWheelScrollingEnabled(false);
+
+        comentario_JTextPane.setBorder(null);
+        comentario_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        comentario_JTextPane.setRequestFocusEnabled(false);
+        comentario_JScrollPane.setViewportView(comentario_JTextPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -78,24 +84,25 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(imagen_Emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(comentario_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comentario_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(imagen_Emisor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comentario_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(comentario_JScrollPane))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel comentario_JLabel;
+    private javax.swing.JScrollPane comentario_JScrollPane;
+    private javax.swing.JTextPane comentario_JTextPane;
     private javax.swing.JLabel imagen_Emisor_JLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -106,8 +113,8 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
     
     @Override
     public void Colorear_Componentes() {
-        comentario_JLabel.setForeground(fuente_Color);
-        comentario_JLabel.setBackground(fondo_Color);
+        comentario_JTextPane.setForeground(fuente_Color);
+        comentario_JTextPane.setBackground(fondo_Color);
     }
 
     @Override

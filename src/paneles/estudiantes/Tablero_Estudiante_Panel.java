@@ -95,13 +95,13 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1260, 670));
 
-        menu_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         menu_JPanel.setMinimumSize(new java.awt.Dimension(175, 630));
         menu_JPanel.setOpaque(false);
         menu_JPanel.setPreferredSize(new java.awt.Dimension(175, 630));
         menu_JPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imagen_Perfil_JLabel.setToolTipText("Mostrar Perfil Del Usuario.");
+        imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(175, 175));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(175, 175));
         imagen_Perfil_JLabel.setOpaque(true);
@@ -952,7 +952,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         reproductor_Musica_JButton.setForeground(CourseRoom.Segundo_Color_Fuente()); 
         salir_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         tareas_JButton.setForeground(CourseRoom.Segundo_Color_Fuente()); 
-        
+        imagen_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         acerca_De_JButton.setBackground(CourseRoom.Segundo_Color()); 
         ajustes_JButton.setBackground(CourseRoom.Segundo_Color());
         avisos_JButton.setBackground(CourseRoom.Segundo_Color()); 

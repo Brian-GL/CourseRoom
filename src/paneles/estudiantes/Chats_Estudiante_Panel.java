@@ -56,7 +56,7 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         chats_JScrollPane.setOpaque(false);
 
         chats_JPanel.setOpaque(false);
-        chats_JPanel.setLayout(new javax.swing.BoxLayout(chats_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        chats_JPanel.setLayout(new java.awt.GridLayout(0, 2));
         chats_JScrollPane.setViewportView(chats_JPanel);
 
         ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N

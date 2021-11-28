@@ -83,17 +83,19 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         estatus_JLabel = new javax.swing.JLabel();
         archivos_Adjuntos_JScrollPane = new javax.swing.JScrollPane();
         archivos_Adjuntos_JPanel = new javax.swing.JPanel();
-        descripcion_JLabel = new javax.swing.JLabel();
+        descripcion_JScrollPane = new javax.swing.JScrollPane();
+        descripcion_JTextPane = new javax.swing.JTextPane();
 
         setBackground(java.awt.Color.white);
         setMinimumSize(new java.awt.Dimension(1085, 630));
+        setPreferredSize(new java.awt.Dimension(1085, 630));
 
         nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         nombre_JLabel.setText("Nombre De La Tarea");
         nombre_JLabel.setToolTipText("Nombre De La Tarea");
         nombre_JLabel.setOpaque(true);
 
-        nombre_Profesor_JLabel.setFont(new java.awt.Font("Gadugi", 3, 15)); // NOI18N
+        nombre_Profesor_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         nombre_Profesor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombre_Profesor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/avatar.png"))); // NOI18N
         nombre_Profesor_JLabel.setText("Nombre Del Profesor");
@@ -179,10 +181,10 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             enviar_Comentarios_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(enviar_Comentarios_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(enviar_Comentarios_JTextField)
-                .addGap(18, 18, 18)
+                .addComponent(enviar_Comentarios_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(enviar_Comentarios_JButton)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         enviar_Comentarios_JPanelLayout.setVerticalGroup(
             enviar_Comentarios_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,16 +209,17 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         comentarios_JPanelLayout.setHorizontalGroup(
             comentarios_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, comentarios_JPanelLayout.createSequentialGroup()
-                .addGroup(comentarios_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(enviar_Comentarios_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comentarios_JScrollPane))
+                .addContainerGap()
+                .addGroup(comentarios_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(enviar_Comentarios_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comentarios_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         comentarios_JPanelLayout.setVerticalGroup(
             comentarios_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(comentarios_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(comentarios_JScrollPane)
+                .addComponent(comentarios_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(enviar_Comentarios_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -259,7 +262,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             }
         });
 
-        curso_JLabel.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
+        curso_JLabel.setFont(new java.awt.Font("Gadugi", 3, 15)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         curso_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
         curso_JLabel.setText("Del Curso Sistemas Operativos");
@@ -277,44 +280,58 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         estatus_JLabel.setToolTipText("Estatus De La Tarea");
 
         archivos_Adjuntos_JScrollPane.setBorder(null);
+        archivos_Adjuntos_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         archivos_Adjuntos_JScrollPane.setOpaque(false);
 
         archivos_Adjuntos_JPanel.setToolTipText("Archivos Adjuntos");
         archivos_Adjuntos_JPanel.setOpaque(false);
-        archivos_Adjuntos_JPanel.setLayout(new javax.swing.BoxLayout(archivos_Adjuntos_JPanel, javax.swing.BoxLayout.LINE_AXIS));
+        archivos_Adjuntos_JPanel.setLayout(new java.awt.GridLayout(0, 2));
         archivos_Adjuntos_JScrollPane.setViewportView(archivos_Adjuntos_JPanel);
 
-        descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        descripcion_JLabel.setToolTipText("Descripción De La Tarea");
+        descripcion_JScrollPane.setBorder(null);
+        descripcion_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        descripcion_JScrollPane.setFocusable(false);
+        descripcion_JScrollPane.setOpaque(false);
+        descripcion_JScrollPane.setRequestFocusEnabled(false);
+        descripcion_JScrollPane.setVerifyInputWhenFocusTarget(false);
+        descripcion_JScrollPane.setWheelScrollingEnabled(false);
+
+        descripcion_JTextPane.setEditable(false);
+        descripcion_JTextPane.setBorder(null);
+        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        descripcion_JTextPane.setToolTipText("");
+        descripcion_JTextPane.setFocusCycleRoot(false);
+        descripcion_JTextPane.setFocusable(false);
+        descripcion_JTextPane.setOpaque(false);
+        descripcion_JTextPane.setRequestFocusEnabled(false);
+        descripcion_JTextPane.setVerifyInputWhenFocusTarget(false);
+        descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(comentarios_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comentarios_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(archivos_Adjuntos_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(regresar_JButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(archivos_Adjuntos_JScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(estatus_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mi_Trabajo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fecha_Entrega_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(enviar_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,15 +343,15 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             .addComponent(regresar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(curso_JLabel)
                             .addComponent(nombre_Profesor_JLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(descripcion_JScrollPane)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(archivos_Adjuntos_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(archivos_Adjuntos_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(comentarios_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(comentarios_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(estatus_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -490,7 +507,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JScrollPane comentarios_JScrollPane;
     private javax.swing.JPanel comentarios_Subidos_JPanel;
     private javax.swing.JLabel curso_JLabel;
-    private javax.swing.JLabel descripcion_JLabel;
+    private javax.swing.JScrollPane descripcion_JScrollPane;
+    private javax.swing.JTextPane descripcion_JTextPane;
     private javax.swing.JButton enviar_Comentarios_JButton;
     private javax.swing.JPanel enviar_Comentarios_JPanel;
     private javax.swing.JTextField enviar_Comentarios_JTextField;
@@ -515,7 +533,11 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         archivos_Subidos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
         archivos_Adjuntos_JScrollPane.getViewport().setOpaque(false);
-        archivos_Adjuntos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        archivos_Adjuntos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        
+        descripcion_JTextPane.setText(CourseRoom.Faker().lorem().paragraph(6));
+        descripcion_JScrollPane.getViewport().setOpaque(false);
+        descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
         Colorear_Componentes();
     }
@@ -539,9 +561,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         fecha_Entrega_JLabel.setForeground(primer_Color_Fuente);
         
-        descripcion_JLabel.setForeground(primer_Color_Fuente);
-        descripcion_JLabel.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(6)));
-
+        descripcion_JTextPane.setForeground(primer_Color_Fuente);
+        
         enviar_Tarea_JButton.setBackground(segundo_Color);
         enviar_Tarea_JButton.setForeground(segundo_Color_Fuente);
 
@@ -560,12 +581,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Archivo_Adjunto_Tarea_General_Panel archivo_Adjunto_Tarea_General_Panel;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1,10); i++){
             archivo_Adjunto_Tarea_General_Panel = 
-                    new Archivo_Adjunto_Tarea_General_Panel(primer_Color_Fuente, segundo_Color, segundo_Color_Fuente);
+                    new Archivo_Adjunto_Tarea_General_Panel(primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color,tercer_Color_Fuente);
             archivos_Adjuntos_JPanel.add(archivo_Adjunto_Tarea_General_Panel);
         }
     }
     
-
+    
     @Override
     public void Limpiar() {
         comentarios_Subidos_JPanel.removeAll();

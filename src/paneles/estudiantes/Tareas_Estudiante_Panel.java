@@ -50,11 +50,10 @@ public class Tareas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
 
         tareas_JScrollPane.setBorder(null);
-        tareas_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         tareas_JScrollPane.setOpaque(false);
 
         tareas_JPanel.setOpaque(false);
-        tareas_JPanel.setLayout(new javax.swing.BoxLayout(tareas_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        tareas_JPanel.setLayout(new java.awt.GridLayout(0, 2));
         tareas_JScrollPane.setViewportView(tareas_JPanel);
 
         ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N

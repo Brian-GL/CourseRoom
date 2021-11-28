@@ -8,6 +8,9 @@ package paneles.estudiantes;
 import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import java.awt.Color;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -36,8 +39,9 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
     private void initComponents() {
 
         numero_Dia_JLabel = new javax.swing.JLabel();
-        horar_JLabel = new javax.swing.JLabel();
-        descripcion_JLabel = new javax.swing.JLabel();
+        hora_JLabel = new javax.swing.JLabel();
+        descripcion_JScrollPane = new javax.swing.JScrollPane();
+        descripcion_JTextPane = new javax.swing.JTextPane();
 
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setMinimumSize(new java.awt.Dimension(160, 100));
@@ -48,15 +52,20 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
         numero_Dia_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         numero_Dia_JLabel.setToolTipText("Número De Día Del Mes");
 
-        horar_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        horar_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        horar_JLabel.setToolTipText("Hora Máxima Del Pendiente");
-        horar_JLabel.setMaximumSize(new java.awt.Dimension(68, 32));
-        horar_JLabel.setMinimumSize(new java.awt.Dimension(68, 32));
-        horar_JLabel.setPreferredSize(new java.awt.Dimension(68, 32));
+        hora_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        hora_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hora_JLabel.setToolTipText("Hora Máxima Del Pendiente");
+        hora_JLabel.setMaximumSize(new java.awt.Dimension(68, 32));
+        hora_JLabel.setMinimumSize(new java.awt.Dimension(68, 32));
+        hora_JLabel.setPreferredSize(new java.awt.Dimension(68, 32));
 
-        descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 10)); // NOI18N
-        descripcion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        descripcion_JScrollPane.setBorder(null);
+        descripcion_JScrollPane.setOpaque(false);
+
+        descripcion_JTextPane.setBorder(null);
+        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        descripcion_JTextPane.setOpaque(false);
+        descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -66,12 +75,12 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addComponent(horar_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(hora_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addComponent(numero_Dia_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(descripcion_JScrollPane)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -79,18 +88,19 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(horar_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hora_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(numero_Dia_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel descripcion_JLabel;
-    private javax.swing.JLabel horar_JLabel;
+    private javax.swing.JScrollPane descripcion_JScrollPane;
+    private javax.swing.JTextPane descripcion_JTextPane;
+    private javax.swing.JLabel hora_JLabel;
     private javax.swing.JLabel numero_Dia_JLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -101,19 +111,24 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
         String concatenacion = 
         CourseRoom.Concatenar(String.valueOf(CourseRoom.Faker().number().randomNumber(2, true)),
                 ":",String.valueOf(CourseRoom.Faker().number().randomNumber(2, false))," P.M");
-        horar_JLabel.setText(concatenacion);
-        descripcion_JLabel.setText(CourseRoom.Formato_HTML_Centro(CourseRoom.Faker().lorem().paragraph()));
+        hora_JLabel.setText(concatenacion);
+        descripcion_JScrollPane.getViewport().setOpaque(false);
+        descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        StyledDocument documento_Estilizado = descripcion_JTextPane.getStyledDocument();
+        
+        SimpleAttributeSet atributo_Centro = new SimpleAttributeSet();
+        StyleConstants.setAlignment(atributo_Centro, StyleConstants.ALIGN_CENTER);
+        documento_Estilizado.setParagraphAttributes(0, documento_Estilizado.getLength(), atributo_Centro, false);
+        descripcion_JTextPane.setText(CourseRoom.Faker().lorem().paragraph());
        
     }
 
     @Override
     public void Colorear_Componentes() {
-        
         numero_Dia_JLabel.setForeground(color_Fuente);
-        horar_JLabel.setForeground(color_Fuente);
-        descripcion_JLabel.setForeground(color_Fuente);
+        hora_JLabel.setForeground(color_Fuente);
+        descripcion_JTextPane.setForeground(color_Fuente);
         this.setBackground(color_Fondo);
-        //this.setBorder(javax.swing.BorderFactory.createLineBorder(color_Fuente));
     }
 
     

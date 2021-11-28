@@ -10,6 +10,9 @@ import interfaces.Limpieza_Interface;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.SwingUtilities;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -34,13 +37,26 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel imple
         primer_Color_Fuente = _primer_Color_Fuente;
         archivo_Subido = archivo;
         
-        nombre_JLabel.setForeground(primer_Color_Fuente);
-        nombre_JLabel.setBackground(_background);
-        nombre_JLabel.setText(archivo_Subido.getName());
-        nombre_JLabel.setToolTipText(CourseRoom.Concatenar("Nombre Del Archivo Subido: ", nombre_JLabel.getText()));
+        archivo_JTextPane.setForeground(primer_Color_Fuente);
+        archivo_JTextPane.setBackground(_background);
+        
+        String informacion_Archivo = archivo_Subido.getName();
+        
+        
+        archivo_JTextPane.setText(informacion_Archivo);
+        archivo_JTextPane.setToolTipText("Archivo Subido");
+        
+        StyledDocument documento_Estilizado = archivo_JTextPane.getStyledDocument();
+
+        SimpleAttributeSet atributo_Centro = new SimpleAttributeSet();
+        StyleConstants.setAlignment(atributo_Centro, StyleConstants.ALIGN_CENTER);
+        documento_Estilizado.setParagraphAttributes(0, documento_Estilizado.getLength(), atributo_Centro, false);
         
         remover_JButton.setForeground(primer_Color_Fuente);
         remover_JButton.setBackground(primer_Color_Fondo);
+        
+        archivo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        archivo_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
     }
 
     /**
@@ -52,13 +68,19 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel imple
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenido_JPanel = new javax.swing.JPanel();
         icono_JLabel = new javax.swing.JLabel();
         remover_JButton = new javax.swing.JButton();
-        nombre_JLabel = new javax.swing.JLabel();
+        archivo_JScrollPane = new javax.swing.JScrollPane();
+        archivo_JTextPane = new javax.swing.JTextPane();
 
-        setMaximumSize(new java.awt.Dimension(32767, 44));
-        setMinimumSize(new java.awt.Dimension(400, 44));
+        setMaximumSize(new java.awt.Dimension(32767, 98));
         setOpaque(false);
+
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 86));
+        contenido_JPanel.setRequestFocusEnabled(false);
+        contenido_JPanel.setVerifyInputWhenFocusTarget(false);
 
         icono_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
 
@@ -77,10 +99,42 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel imple
             }
         });
 
-        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre_JLabel.setToolTipText("Nombre Del Archivo");
-        nombre_JLabel.setOpaque(true);
+        archivo_JScrollPane.setBorder(null);
+
+        archivo_JTextPane.setEditable(false);
+        archivo_JTextPane.setBorder(null);
+        archivo_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        archivo_JTextPane.setFocusCycleRoot(false);
+        archivo_JTextPane.setFocusable(false);
+        archivo_JTextPane.setRequestFocusEnabled(false);
+        archivo_JTextPane.setVerifyInputWhenFocusTarget(false);
+        archivo_JScrollPane.setViewportView(archivo_JTextPane);
+
+        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
+        contenido_JPanel.setLayout(contenido_JPanelLayout);
+        contenido_JPanelLayout.setHorizontalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(archivo_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(remover_JButton)
+                    .addComponent(icono_JLabel))
+                .addContainerGap())
+        );
+        contenido_JPanelLayout.setVerticalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(archivo_JScrollPane)
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(icono_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(remover_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -88,21 +142,14 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel imple
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(icono_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(remover_JButton)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(icono_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(remover_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -128,8 +175,10 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel imple
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane archivo_JScrollPane;
+    private javax.swing.JTextPane archivo_JTextPane;
+    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel icono_JLabel;
-    private javax.swing.JLabel nombre_JLabel;
     private javax.swing.JButton remover_JButton;
     // End of variables declaration//GEN-END:variables
 

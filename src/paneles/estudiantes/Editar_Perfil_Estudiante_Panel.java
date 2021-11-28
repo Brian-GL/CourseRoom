@@ -82,8 +82,6 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         fecha_Nacimiento_JFormattedTextField = new javax.swing.JFormattedTextField();
         fecha_Nacimiento_JLabel = new javax.swing.JLabel();
         descripcion_JLabel = new javax.swing.JLabel();
-        descipcion_JScrollPane = new javax.swing.JScrollPane();
-        descripcion_JTextArea = new javax.swing.JTextArea();
         tipo_Perfil_JLabel = new javax.swing.JLabel();
         tipo_Perfil_JComboBox = new javax.swing.JComboBox<>();
         guardar_Cambios_Datos_Personales_JButton = new javax.swing.JButton();
@@ -98,6 +96,8 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         telefono_JToggleButton = new javax.swing.JToggleButton();
         tipo_Perfil_JToggleButton = new javax.swing.JToggleButton();
         descripcion_JToggleButton = new javax.swing.JToggleButton();
+        descripcion_JScrollPane = new javax.swing.JScrollPane();
+        descripcion_JTextPane = new javax.swing.JTextPane();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
@@ -119,10 +119,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         nombre_Usuario_JLabel.setMinimumSize(new java.awt.Dimension(320, 29));
         nombre_Usuario_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
-        nombre_Usuario_JTextField.setEditable(false);
         nombre_Usuario_JTextField.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         nombre_Usuario_JTextField.setToolTipText("<html>\n\n<p>\n\nIngrese aquí el nombre de usuario de su elección. Sin embargo, tome las siguientes medidas:<br>\n<b>\n   * El nombre de usuario puede contener letras, números y carácteres con valor ascii entre 32 y 126.<br>\n   * Sólamente se permite un máximo de 20 carácteres.\n\n</b>\n\n</p>\n\n</html>");
-        nombre_Usuario_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        nombre_Usuario_JTextField.setEnabled(false);
         nombre_Usuario_JTextField.setMinimumSize(new java.awt.Dimension(320, 36));
         nombre_Usuario_JTextField.setPreferredSize(new java.awt.Dimension(320, 36));
 
@@ -132,10 +131,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         contrasena_JLabel.setMinimumSize(new java.awt.Dimension(320, 29));
         contrasena_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
-        contrasena_JPasswordField.setEditable(false);
         contrasena_JPasswordField.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         contrasena_JPasswordField.setToolTipText("Ingrese Aquí Su Contraseña (Mínimo 8 Carácteres)");
-        contrasena_JPasswordField.setCaretColor(new java.awt.Color(104, 194, 232));
+        contrasena_JPasswordField.setEnabled(false);
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
 
@@ -145,10 +143,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         correo_Electronico_JLabel.setMinimumSize(new java.awt.Dimension(500, 29));
         correo_Electronico_JLabel.setPreferredSize(new java.awt.Dimension(500, 29));
 
-        correo_Electronico_JTextField.setEditable(false);
         correo_Electronico_JTextField.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         correo_Electronico_JTextField.setToolTipText("Ingrese Aquí Su Correo Electrónico (Ingrese Uno Que Pueda Utilizar)");
-        correo_Electronico_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        correo_Electronico_JTextField.setEnabled(false);
         correo_Electronico_JTextField.setMinimumSize(new java.awt.Dimension(500, 36));
         correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(500, 36));
 
@@ -158,10 +155,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         repetir_Contrasena_JLabel.setMinimumSize(new java.awt.Dimension(320, 29));
         repetir_Contrasena_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
-        repetir_Contrasena_JPasswordField.setEditable(false);
         repetir_Contrasena_JPasswordField.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         repetir_Contrasena_JPasswordField.setToolTipText("Re-Ingrese Aquí La Contraseña");
-        repetir_Contrasena_JPasswordField.setCaretColor(new java.awt.Color(104, 194, 232));
+        repetir_Contrasena_JPasswordField.setEnabled(false);
         repetir_Contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         repetir_Contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
 
@@ -217,28 +213,68 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         nombre_Usuario_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        nombre_Usuario_JToggleButton.setText("Editar?");
+        nombre_Usuario_JToggleButton.setText("¿Editar?");
         nombre_Usuario_JToggleButton.setToolTipText("");
         nombre_Usuario_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         nombre_Usuario_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        nombre_Usuario_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        nombre_Usuario_JToggleButton.setPreferredSize(new java.awt.Dimension(82, 36));
+        nombre_Usuario_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                nombre_Usuario_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        nombre_Usuario_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nombre_Usuario_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nombre_Usuario_JToggleButtonMouseExited(evt);
+            }
+        });
 
         correo_Electronico_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        correo_Electronico_JToggleButton.setText("Editar?");
+        correo_Electronico_JToggleButton.setText("¿Editar?");
         correo_Electronico_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         correo_Electronico_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        correo_Electronico_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        correo_Electronico_JToggleButton.setPreferredSize(new java.awt.Dimension(82, 36));
+        correo_Electronico_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                correo_Electronico_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        correo_Electronico_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                correo_Electronico_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                correo_Electronico_JToggleButtonMouseExited(evt);
+            }
+        });
 
         contrasena_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        contrasena_JToggleButton.setText("Editar?");
+        contrasena_JToggleButton.setText("¿Editar?");
         contrasena_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         contrasena_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        contrasena_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        contrasena_JToggleButton.setPreferredSize(new java.awt.Dimension(82, 36));
+        contrasena_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                contrasena_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        contrasena_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                contrasena_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                contrasena_JToggleButtonMouseExited(evt);
+            }
+        });
 
         imagen_Perfil_JButton.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
-        imagen_Perfil_JButton.setText("Cambiar Imagen De Perfil");
+        imagen_Perfil_JButton.setText("Cambiar Imagen");
         imagen_Perfil_JButton.setToolTipText("<html>Click Para Cargar Tu Foto De Perfil Desde Tu Ordenador.<br><b>NOTA: LA IMAGEN DE PERFIL TENDRÁ UNA RESOLUCIÓN DE 250x250 px.</b></html>");
         imagen_Perfil_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        imagen_Perfil_JButton.setEnabled(false);
         imagen_Perfil_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         imagen_Perfil_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
         imagen_Perfil_JButton.setMinimumSize(new java.awt.Dimension(400, 40));
@@ -256,10 +292,10 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         imagen_Perfil_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        imagen_Perfil_JToggleButton.setText("Editar?");
+        imagen_Perfil_JToggleButton.setText("¿Editar?");
         imagen_Perfil_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         imagen_Perfil_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
-        imagen_Perfil_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        imagen_Perfil_JToggleButton.setPreferredSize(new java.awt.Dimension(82, 36));
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mi Perfil");
@@ -285,8 +321,8 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(guardar_Cambios_Autenticacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(guardar_Cambios_Autenticacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -360,7 +396,7 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(imagen_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addComponent(guardar_Cambios_Autenticacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -382,10 +418,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         nombres_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         nombres_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
-        nombres_JTextField.setEditable(false);
         nombres_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         nombres_JTextField.setToolTipText("<html>Ingresa Aquí Tu(s) Nombre(s).<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
-        nombres_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        nombres_JTextField.setEnabled(false);
         nombres_JTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         nombres_JTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
@@ -395,17 +430,15 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         apellidos_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         apellidos_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
-        apellidos_JTextField.setEditable(false);
         apellidos_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         apellidos_JTextField.setToolTipText("<html>Ingresa Aquí Tu(s) Apellido(s).<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
-        apellidos_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        apellidos_JTextField.setEnabled(false);
         apellidos_JTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         apellidos_JTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
-        localidad_JTextField.setEditable(false);
         localidad_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         localidad_JTextField.setToolTipText("Ingresa Tu Localidad En Este Campo.");
-        localidad_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        localidad_JTextField.setEnabled(false);
         localidad_JTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         localidad_JTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
@@ -415,10 +448,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         localidad_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         localidad_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
-        genero_JTextField.setEditable(false);
         genero_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         genero_JTextField.setToolTipText("Ingresa Aquí Tu Género, Sexo O Identidad De Género.");
-        genero_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        genero_JTextField.setEnabled(false);
         genero_JTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         genero_JTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
@@ -428,10 +460,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         genero_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         genero_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
-        telefono_JFormattedTextField.setEditable(false);
         telefono_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##########"))));
         telefono_JFormattedTextField.setToolTipText("<html>Ingresa Aquí Tu Número De Teléfono O Celular.<br><b>NOTA: SOLAMENTE SE PERMITEN INGRESAR VALORES NUMÉRICOS.</b></html>");
-        telefono_JFormattedTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        telefono_JFormattedTextField.setEnabled(false);
         telefono_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         telefono_JFormattedTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         telefono_JFormattedTextField.setPreferredSize(new java.awt.Dimension(400, 36));
@@ -442,10 +473,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         telefono_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         telefono_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
-        fecha_Nacimiento_JFormattedTextField.setEditable(false);
         fecha_Nacimiento_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-mm-yyyy"))));
         fecha_Nacimiento_JFormattedTextField.setToolTipText("<html>Ingresa Aquí Tu Fecha De Nacimiento.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.<br>ADEMÁS, DEBERÁS INGRESAR LA FECHA CON EL SIGUIENTE FORMATO: dd-mm-aaaa<br>d: dia, m: mes, a: año.</b>.</html>");
-        fecha_Nacimiento_JFormattedTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        fecha_Nacimiento_JFormattedTextField.setEnabled(false);
         fecha_Nacimiento_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         fecha_Nacimiento_JFormattedTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         fecha_Nacimiento_JFormattedTextField.setPreferredSize(new java.awt.Dimension(400, 36));
@@ -462,22 +492,6 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         descripcion_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         descripcion_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
-        descipcion_JScrollPane.setBackground(new java.awt.Color(104, 194, 232));
-        descipcion_JScrollPane.setForeground(new java.awt.Color(14, 30, 64));
-        descipcion_JScrollPane.setMaximumSize(new java.awt.Dimension(400, 188));
-        descipcion_JScrollPane.setMinimumSize(new java.awt.Dimension(400, 188));
-        descipcion_JScrollPane.setPreferredSize(new java.awt.Dimension(400, 188));
-
-        descripcion_JTextArea.setEditable(false);
-        descripcion_JTextArea.setColumns(20);
-        descripcion_JTextArea.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-        descripcion_JTextArea.setRows(5);
-        descripcion_JTextArea.setToolTipText("Ingresa Aquí Una Descricpción Sobre Tí.");
-        descripcion_JTextArea.setCaretColor(new java.awt.Color(104, 194, 232));
-        descripcion_JTextArea.setMaximumSize(new java.awt.Dimension(332, 134));
-        descripcion_JTextArea.setMinimumSize(new java.awt.Dimension(332, 134));
-        descipcion_JScrollPane.setViewportView(descripcion_JTextArea);
-
         tipo_Perfil_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         tipo_Perfil_JLabel.setText("Perfil");
         tipo_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(400, 30));
@@ -488,6 +502,7 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         tipo_Perfil_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Maestro", "Ambos" }));
         tipo_Perfil_JComboBox.setToolTipText("<html>Aquí Puedes Seleccionar Tu Perfil De Las Posibles.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
         tipo_Perfil_JComboBox.setBorder(null);
+        tipo_Perfil_JComboBox.setEnabled(false);
         tipo_Perfil_JComboBox.setMaximumSize(new java.awt.Dimension(400, 36));
         tipo_Perfil_JComboBox.setMinimumSize(new java.awt.Dimension(400, 36));
         tipo_Perfil_JComboBox.setPreferredSize(new java.awt.Dimension(400, 36));
@@ -517,67 +532,189 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         promedio_General_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         promedio_General_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
-        promedio_General_JFormattedTextField.setEditable(false);
         promedio_General_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.###"))));
         promedio_General_JFormattedTextField.setToolTipText("<html>Ingresa Aquí Tu Promedio De La Escuela.<br><b>NOTA: SOLAMENTE SE PERMITEN INGRESAR VALORES NUMÉRICOS.</b></html>");
-        promedio_General_JFormattedTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        promedio_General_JFormattedTextField.setEnabled(false);
         promedio_General_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         promedio_General_JFormattedTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         promedio_General_JFormattedTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
         promedio_General_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        promedio_General_JToggleButton.setText("Editar?");
+        promedio_General_JToggleButton.setText("¿Editar?");
         promedio_General_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         promedio_General_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
         promedio_General_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        promedio_General_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                promedio_General_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        promedio_General_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                promedio_General_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                promedio_General_JToggleButtonMouseExited(evt);
+            }
+        });
 
         nombres_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        nombres_JToggleButton.setText("Editar?");
+        nombres_JToggleButton.setText("¿Editar?");
         nombres_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         nombres_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
         nombres_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        nombres_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                nombres_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        nombres_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nombres_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nombres_JToggleButtonMouseExited(evt);
+            }
+        });
 
         apellidos_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        apellidos_JToggleButton.setText("Editar?");
+        apellidos_JToggleButton.setText("¿Editar?");
         apellidos_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         apellidos_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
         apellidos_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        apellidos_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                apellidos_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        apellidos_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                apellidos_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                apellidos_JToggleButtonMouseExited(evt);
+            }
+        });
 
         localidad_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        localidad_JToggleButton.setText("Editar?");
+        localidad_JToggleButton.setText("¿Editar?");
         localidad_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         localidad_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
         localidad_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        localidad_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                localidad_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        localidad_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                localidad_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                localidad_JToggleButtonMouseExited(evt);
+            }
+        });
 
         fecha_Nacimiento_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        fecha_Nacimiento_JToggleButton.setText("Editar?");
+        fecha_Nacimiento_JToggleButton.setText("¿Editar?");
         fecha_Nacimiento_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         fecha_Nacimiento_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
         fecha_Nacimiento_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        fecha_Nacimiento_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                fecha_Nacimiento_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        fecha_Nacimiento_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                fecha_Nacimiento_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                fecha_Nacimiento_JToggleButtonMouseExited(evt);
+            }
+        });
 
         genero_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        genero_JToggleButton.setText("Editar?");
+        genero_JToggleButton.setText("¿Editar?");
         genero_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         genero_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
         genero_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        genero_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                genero_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        genero_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                genero_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                genero_JToggleButtonMouseExited(evt);
+            }
+        });
 
         telefono_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        telefono_JToggleButton.setText("Editar?");
+        telefono_JToggleButton.setText("¿Editar?");
         telefono_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         telefono_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
         telefono_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        telefono_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                telefono_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        telefono_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                telefono_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                telefono_JToggleButtonMouseExited(evt);
+            }
+        });
 
         tipo_Perfil_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        tipo_Perfil_JToggleButton.setText("Editar?");
+        tipo_Perfil_JToggleButton.setText("¿Editar?");
         tipo_Perfil_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         tipo_Perfil_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
         tipo_Perfil_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        tipo_Perfil_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                tipo_Perfil_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        tipo_Perfil_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tipo_Perfil_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tipo_Perfil_JToggleButtonMouseExited(evt);
+            }
+        });
 
         descripcion_JToggleButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        descripcion_JToggleButton.setText("Editar?");
+        descripcion_JToggleButton.setText("¿Editar?");
         descripcion_JToggleButton.setMaximumSize(new java.awt.Dimension(80, 36));
         descripcion_JToggleButton.setMinimumSize(new java.awt.Dimension(80, 36));
         descripcion_JToggleButton.setPreferredSize(new java.awt.Dimension(80, 36));
+        descripcion_JToggleButton.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                descripcion_JToggleButtonItemStateChanged(evt);
+            }
+        });
+        descripcion_JToggleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                descripcion_JToggleButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                descripcion_JToggleButtonMouseExited(evt);
+            }
+        });
+
+        descripcion_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        descripcion_JTextPane.setEnabled(false);
+        descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         javax.swing.GroupLayout datos_Personales_JPanelLayout = new javax.swing.GroupLayout(datos_Personales_JPanel);
         datos_Personales_JPanel.setLayout(datos_Personales_JPanelLayout);
@@ -636,7 +773,7 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tipo_Perfil_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(descipcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(descripcion_JScrollPane))))
                         .addGap(18, 18, 18)))
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(promedio_General_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -682,9 +819,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                                 .addComponent(fecha_Nacimiento_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                                 .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(descipcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(8, 8, 8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(promedio_General_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -778,8 +915,8 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
 
     private void guardar_Cambios_Autenticacion_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Autenticacion_JButtonMouseExited
         // TODO add your handling code here:
-        guardar_Cambios_Autenticacion_JButton.setBackground(CourseRoom.Primer_Color());
-        guardar_Cambios_Autenticacion_JButton.setForeground(CourseRoom.Primer_Color_Fuente());
+        guardar_Cambios_Autenticacion_JButton.setBackground(CourseRoom.Tercer_Color());
+        guardar_Cambios_Autenticacion_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_guardar_Cambios_Autenticacion_JButtonMouseExited
 
     private void imagen_Perfil_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Perfil_JButtonMouseEntered
@@ -790,8 +927,8 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
 
     private void imagen_Perfil_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Perfil_JButtonMouseExited
         // TODO add your handling code here:
-        imagen_Perfil_JButton.setBackground(CourseRoom.Primer_Color());
-        imagen_Perfil_JButton.setForeground(CourseRoom.Primer_Color_Fuente());
+        imagen_Perfil_JButton.setBackground(CourseRoom.Tercer_Color());
+        imagen_Perfil_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_imagen_Perfil_JButtonMouseExited
 
     private void guardar_Cambios_Datos_Personales_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Personales_JButtonMouseEntered
@@ -802,8 +939,8 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
 
     private void guardar_Cambios_Datos_Personales_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Personales_JButtonMouseExited
         // TODO add your handling code here:
-       guardar_Cambios_Datos_Personales_JButton.setBackground(CourseRoom.Primer_Color());
-       guardar_Cambios_Datos_Personales_JButton.setForeground(CourseRoom.Primer_Color_Fuente());
+       guardar_Cambios_Datos_Personales_JButton.setBackground(CourseRoom.Tercer_Color());
+       guardar_Cambios_Datos_Personales_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_guardar_Cambios_Datos_Personales_JButtonMouseExited
 
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
@@ -823,6 +960,211 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         regresar_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
+    private void nombre_Usuario_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_nombre_Usuario_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        nombre_Usuario_JTextField.setEnabled(nombre_Usuario_JToggleButton.isSelected());
+    }//GEN-LAST:event_nombre_Usuario_JToggleButtonItemStateChanged
+
+    private void nombre_Usuario_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_Usuario_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        nombre_Usuario_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        nombre_Usuario_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_nombre_Usuario_JToggleButtonMouseEntered
+
+    private void nombre_Usuario_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_Usuario_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        nombre_Usuario_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        nombre_Usuario_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_nombre_Usuario_JToggleButtonMouseExited
+
+    private void correo_Electronico_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_correo_Electronico_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        correo_Electronico_JToggleButton.setEnabled(correo_Electronico_JToggleButton.isSelected());
+    }//GEN-LAST:event_correo_Electronico_JToggleButtonItemStateChanged
+
+    private void correo_Electronico_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correo_Electronico_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        correo_Electronico_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        correo_Electronico_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_correo_Electronico_JToggleButtonMouseEntered
+
+    private void correo_Electronico_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correo_Electronico_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        correo_Electronico_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        correo_Electronico_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_correo_Electronico_JToggleButtonMouseExited
+
+    private void contrasena_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_contrasena_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        contrasena_JToggleButton.setEnabled(contrasena_JToggleButton.isSelected());
+    }//GEN-LAST:event_contrasena_JToggleButtonItemStateChanged
+
+    private void contrasena_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrasena_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        contrasena_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        contrasena_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_contrasena_JToggleButtonMouseEntered
+
+    private void contrasena_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrasena_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        contrasena_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        contrasena_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_contrasena_JToggleButtonMouseExited
+
+    private void nombres_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_nombres_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        nombres_JToggleButton.setEnabled(nombres_JToggleButton.isSelected());
+        
+    }//GEN-LAST:event_nombres_JToggleButtonItemStateChanged
+
+    private void nombres_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombres_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        nombres_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        nombres_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_nombres_JToggleButtonMouseEntered
+
+    private void nombres_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombres_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        nombres_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        nombres_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_nombres_JToggleButtonMouseExited
+
+    private void apellidos_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_apellidos_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        apellidos_JToggleButton.setEnabled(apellidos_JToggleButton.isSelected());
+    }//GEN-LAST:event_apellidos_JToggleButtonItemStateChanged
+
+    private void apellidos_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidos_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        apellidos_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        apellidos_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_apellidos_JToggleButtonMouseEntered
+
+    private void apellidos_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidos_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        apellidos_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        apellidos_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_apellidos_JToggleButtonMouseExited
+
+    private void localidad_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_localidad_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        localidad_JToggleButton.setEnabled(localidad_JToggleButton.isSelected());
+    }//GEN-LAST:event_localidad_JToggleButtonItemStateChanged
+
+    private void localidad_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localidad_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        localidad_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        localidad_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_localidad_JToggleButtonMouseEntered
+
+    private void localidad_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_localidad_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        localidad_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        localidad_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_localidad_JToggleButtonMouseExited
+
+    private void fecha_Nacimiento_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fecha_Nacimiento_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        fecha_Nacimiento_JToggleButton.setEnabled(fecha_Nacimiento_JToggleButton.isSelected());
+    }//GEN-LAST:event_fecha_Nacimiento_JToggleButtonItemStateChanged
+
+    private void fecha_Nacimiento_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fecha_Nacimiento_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        fecha_Nacimiento_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        fecha_Nacimiento_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_fecha_Nacimiento_JToggleButtonMouseEntered
+
+    private void fecha_Nacimiento_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fecha_Nacimiento_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        fecha_Nacimiento_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        fecha_Nacimiento_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_fecha_Nacimiento_JToggleButtonMouseExited
+
+    private void genero_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_genero_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        genero_JToggleButton.setEnabled(genero_JToggleButton.isSelected());
+    }//GEN-LAST:event_genero_JToggleButtonItemStateChanged
+
+    private void genero_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_genero_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        genero_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        genero_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_genero_JToggleButtonMouseEntered
+
+    private void genero_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_genero_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        genero_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        genero_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_genero_JToggleButtonMouseExited
+
+    private void telefono_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_telefono_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        telefono_JToggleButton.setEnabled(telefono_JToggleButton.isSelected());
+    }//GEN-LAST:event_telefono_JToggleButtonItemStateChanged
+
+    private void telefono_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        telefono_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        telefono_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_telefono_JToggleButtonMouseEntered
+
+    private void telefono_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefono_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        telefono_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        telefono_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_telefono_JToggleButtonMouseExited
+
+    private void tipo_Perfil_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tipo_Perfil_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        tipo_Perfil_JToggleButton.setEnabled(tipo_Perfil_JToggleButton.isSelected());
+    }//GEN-LAST:event_tipo_Perfil_JToggleButtonItemStateChanged
+
+    private void tipo_Perfil_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipo_Perfil_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        tipo_Perfil_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        tipo_Perfil_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_tipo_Perfil_JToggleButtonMouseEntered
+
+    private void tipo_Perfil_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipo_Perfil_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        tipo_Perfil_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        tipo_Perfil_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_tipo_Perfil_JToggleButtonMouseExited
+
+    private void descripcion_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_descripcion_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        descripcion_JToggleButton.setEnabled(descripcion_JToggleButton.isSelected());
+    }//GEN-LAST:event_descripcion_JToggleButtonItemStateChanged
+
+    private void descripcion_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcion_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        descripcion_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        descripcion_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_descripcion_JToggleButtonMouseEntered
+
+    private void descripcion_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcion_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        descripcion_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        descripcion_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_descripcion_JToggleButtonMouseExited
+
+    private void promedio_General_JToggleButtonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_promedio_General_JToggleButtonItemStateChanged
+        // TODO add your handling code here:
+        promedio_General_JToggleButton.setEnabled(promedio_General_JToggleButton.isSelected());
+    }//GEN-LAST:event_promedio_General_JToggleButtonItemStateChanged
+
+    private void promedio_General_JToggleButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_promedio_General_JToggleButtonMouseEntered
+        // TODO add your handling code here:
+        promedio_General_JToggleButton.setBackground(CourseRoom.Tercer_Color());
+        promedio_General_JToggleButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_promedio_General_JToggleButtonMouseEntered
+
+    private void promedio_General_JToggleButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_promedio_General_JToggleButtonMouseExited
+        // TODO add your handling code here:
+        promedio_General_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        promedio_General_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_promedio_General_JToggleButtonMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidos_JLabel;
@@ -836,9 +1178,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
     private javax.swing.JTextField correo_Electronico_JTextField;
     private javax.swing.JToggleButton correo_Electronico_JToggleButton;
     private javax.swing.JPanel datos_Personales_JPanel;
-    private javax.swing.JScrollPane descipcion_JScrollPane;
     private javax.swing.JLabel descripcion_JLabel;
-    private javax.swing.JTextArea descripcion_JTextArea;
+    private javax.swing.JScrollPane descripcion_JScrollPane;
+    private javax.swing.JTextPane descripcion_JTextPane;
     private javax.swing.JToggleButton descripcion_JToggleButton;
     private javax.swing.JTabbedPane editar_Perfil_JTabbedPane;
     private javax.swing.JFormattedTextField fecha_Nacimiento_JFormattedTextField;
@@ -887,7 +1229,7 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         ImageIcon icono_Imagen = new ImageIcon(imagen_Escalada);
         imagen_Perfil_JLabel.setIcon(icono_Imagen);
         imagen_Escalada.flush();
-        descipcion_JScrollPane.getViewport().setOpaque(false);
+        descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
     }
     
@@ -896,7 +1238,7 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         
         Color color_Transparente = new Color(0,0,0,0);
         editar_Perfil_JTabbedPane.setBackground(color_Transparente);
-        editar_Perfil_JTabbedPane.setForeground(CourseRoom.Segundo_Color_Fuente());
+        editar_Perfil_JTabbedPane.setForeground(CourseRoom.Primer_Color_Fuente());
         
         autenticacion_JPanel.setForeground(CourseRoom.Primer_Color_Fuente());
         datos_Personales_JPanel.setForeground(CourseRoom.Primer_Color_Fuente());
@@ -911,13 +1253,13 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
             clase = componente.getClass().getSimpleName();
             switch (clase) {
                 case "JTextField" ->
-                    ((JTextField) componente).setCaretColor(CourseRoom.Primer_Color());
+                    ((JTextField) componente).setCaretColor(CourseRoom.Segundo_Color_Fuente());
                 case "JFormattedTextField" ->
-                    ((JFormattedTextField) componente).setCaretColor(CourseRoom.Primer_Color());
+                    ((JFormattedTextField) componente).setCaretColor(CourseRoom.Segundo_Color_Fuente());
             }
 
-            componente.setBackground(CourseRoom.Primer_Color());
-            componente.setForeground(CourseRoom.Primer_Color_Fuente());
+            componente.setBackground(CourseRoom.Segundo_Color());
+            componente.setForeground(CourseRoom.Segundo_Color_Fuente());
         }
         
         componentes = autenticacion_JPanel.getComponents();
@@ -928,18 +1270,53 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
             clase = componente.getClass().getSimpleName();
             switch (clase) {
                 case "JTextField" ->
-                    ((JTextField) componente).setCaretColor(CourseRoom.Primer_Color());
+                    ((JTextField) componente).setCaretColor(CourseRoom.Segundo_Color());
                 case "JFormattedTextField" ->
-                    ((JFormattedTextField) componente).setCaretColor(CourseRoom.Primer_Color());
+                    ((JFormattedTextField) componente).setCaretColor(CourseRoom.Segundo_Color());
             }
 
-            componente.setBackground(CourseRoom.Primer_Color());
-            componente.setForeground(CourseRoom.Primer_Color_Fuente());
+            componente.setBackground(CourseRoom.Segundo_Color());
+            componente.setForeground(CourseRoom.Segundo_Color_Fuente());
         }
     
-        descripcion_JTextArea.setBackground(CourseRoom.Primer_Color());
-        descripcion_JTextArea.setForeground(CourseRoom.Primer_Color_Fuente());
-        descripcion_JTextArea.setCaretColor(CourseRoom.Primer_Color() );
+        descripcion_JTextPane.setBackground(CourseRoom.Segundo_Color());
+        descripcion_JTextPane.setForeground(CourseRoom.Segundo_Color_Fuente());
+        descripcion_JTextPane.setCaretColor(CourseRoom.Segundo_Color());
+        descripcion_JScrollPane.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
+        guardar_Cambios_Autenticacion_JButton.setForeground(CourseRoom.Tercer_Color_Fuente()); 
+        guardar_Cambios_Autenticacion_JButton.setBackground(CourseRoom.Tercer_Color());
+        guardar_Cambios_Datos_Personales_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        guardar_Cambios_Datos_Personales_JButton.setBackground(CourseRoom.Tercer_Color());
+        
+        imagen_Perfil_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        imagen_Perfil_JButton.setBackground(CourseRoom.Tercer_Color());
+        
+        nombre_Usuario_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        nombre_Usuario_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        correo_Electronico_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        correo_Electronico_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        contrasena_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        contrasena_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        nombres_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        nombres_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        apellidos_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        apellidos_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        localidad_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        localidad_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        fecha_Nacimiento_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        fecha_Nacimiento_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        genero_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        genero_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        telefono_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        telefono_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        tipo_Perfil_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        tipo_Perfil_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        descripcion_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        descripcion_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        promedio_General_JToggleButton.setBackground(CourseRoom.Segundo_Color());
+        promedio_General_JToggleButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
     }
     
 }

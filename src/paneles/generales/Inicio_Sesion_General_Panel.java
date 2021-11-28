@@ -155,7 +155,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         contrasena_JLabel.setMinimumSize(new java.awt.Dimension(430, 30));
         contrasena_JLabel.setPreferredSize(new java.awt.Dimension(430, 30));
 
-        imagen_JLabel.setBackground(java.awt.Color.black);
+        imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -292,9 +292,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
         logo_JLabel.setIcon(icono);
         
-        System.out.println("Login -> Getting Image From https://loremflickr.com/644/720/university,school/all");
+        System.out.println("Login -> Getting Image From https://loremflickr.com/644/720/college/all");
         try {
-            URL url_Imagen = new URL("https://loremflickr.com/644/720/university,school/all");
+            URL url_Imagen = new URL("https://loremflickr.com/644/720/college/all");
             ImageIcon icono_Imagen = new ImageIcon(url_Imagen);
             imagen_JLabel.setIcon(icono_Imagen);
             String tooltip = CourseRoom.Concatenar("Imagen De ",url_Imagen.getHost());
@@ -315,7 +315,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     public void Colorear_Componentes() {
         usuario_JLabel.setForeground(CourseRoom.Segundo_Color());
         contrasena_JLabel.setForeground(CourseRoom.Segundo_Color());
-        
+        imagen_JLabel.setForeground(CourseRoom.Segundo_Color());
         usuario_JTextField.setBackground(CourseRoom.Segundo_Color());
         usuario_JTextField.setForeground(CourseRoom.Primer_Color());
         usuario_JTextField.setCaretColor(CourseRoom.Primer_Color());

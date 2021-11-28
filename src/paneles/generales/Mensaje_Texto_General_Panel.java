@@ -15,9 +15,10 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
 
     public Mensaje_Texto_General_Panel(String emisor, String mensaje, String fecha) {
         initComponents();
+        
         fecha_JLabel.setText(fecha);
         emisor_JLabel.setText(emisor);
-        mensaje_JLabel.setText(CourseRoom.Formato_HTML_Centro(mensaje));
+        mensaje_JTextPane.setText(mensaje);
         
         Iniciar_Componentes();
     }
@@ -31,30 +32,74 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenido_JPanel = new javax.swing.JPanel();
         fecha_JLabel = new javax.swing.JLabel();
         emisor_JLabel = new javax.swing.JLabel();
-        mensaje_JLabel = new javax.swing.JLabel();
+        mensaje_JScrollPane = new javax.swing.JScrollPane();
+        mensaje_JTextPane = new javax.swing.JTextPane();
 
-        setMaximumSize(new java.awt.Dimension(800, 150));
-        setMinimumSize(new java.awt.Dimension(800, 150));
+        setMaximumSize(new java.awt.Dimension(32767, 111));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(800, 150));
+        setPreferredSize(new java.awt.Dimension(800, 111));
+
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        fecha_JLabel.setText("MIÉRCOLES 31 DE OCTUBRE DE 20201 - 10:00 P.M");
+        fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fecha_JLabel.setToolTipText("Fecha & Hora Del Mensaje");
+        fecha_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        fecha_JLabel.setFocusable(false);
+        fecha_JLabel.setMaximumSize(new java.awt.Dimension(413, 25));
         fecha_JLabel.setOpaque(true);
+        fecha_JLabel.setPreferredSize(new java.awt.Dimension(413, 25));
+        fecha_JLabel.setRequestFocusEnabled(false);
+        fecha_JLabel.setVerifyInputWhenFocusTarget(false);
 
         emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        emisor_JLabel.setText("AISMAOLSOALDOAMSIMAD");
         emisor_JLabel.setToolTipText("Emisor Del Mensaje");
+        emisor_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        emisor_JLabel.setFocusable(false);
+        emisor_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
         emisor_JLabel.setOpaque(true);
+        emisor_JLabel.setRequestFocusEnabled(false);
+        emisor_JLabel.setVerifyInputWhenFocusTarget(false);
 
-        mensaje_JLabel.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        mensaje_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        mensaje_JLabel.setOpaque(true);
+        mensaje_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        mensaje_JScrollPane.setFocusable(false);
+        mensaje_JScrollPane.setRequestFocusEnabled(false);
+        mensaje_JScrollPane.setVerifyInputWhenFocusTarget(false);
+        mensaje_JScrollPane.setWheelScrollingEnabled(false);
+
+        mensaje_JTextPane.setEditable(false);
+        mensaje_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        mensaje_JScrollPane.setViewportView(mensaje_JTextPane);
+
+        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
+        contenido_JPanel.setLayout(contenido_JPanelLayout);
+        contenido_JPanelLayout.setHorizontalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mensaje_JScrollPane)
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                        .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        contenido_JPanelLayout.setVerticalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,47 +107,46 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mensaje_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(emisor_JLabel)
-                        .addGap(18, 121, Short.MAX_VALUE)
-                        .addComponent(fecha_JLabel)))
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecha_JLabel)
-                    .addComponent(emisor_JLabel))
-                .addGap(0, 0, 0)
-                .addComponent(mensaje_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel emisor_JLabel;
     private javax.swing.JLabel fecha_JLabel;
-    private javax.swing.JLabel mensaje_JLabel;
+    private javax.swing.JScrollPane mensaje_JScrollPane;
+    private javax.swing.JTextPane mensaje_JTextPane;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
+        mensaje_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         Colorear_Componentes();
     }
 
     @Override
     public void Colorear_Componentes() {
-        fecha_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        fecha_JLabel.setBackground(CourseRoom.Primer_Color());
-        emisor_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        emisor_JLabel.setBackground(CourseRoom.Primer_Color());
-        mensaje_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        mensaje_JLabel.setBackground(CourseRoom.Segundo_Color());
+        
+        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
+        
+        fecha_JLabel.setBackground(CourseRoom.Tercer_Color());
+        emisor_JLabel.setBackground(CourseRoom.Tercer_Color());
+        mensaje_JTextPane.setBackground(CourseRoom.Tercer_Color());
+        
+        fecha_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        emisor_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        mensaje_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
+        mensaje_JScrollPane.setForeground(CourseRoom.Tercer_Color_Fuente());
     }
 
 }

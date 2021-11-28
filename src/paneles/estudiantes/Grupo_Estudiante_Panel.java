@@ -255,8 +255,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         enviar_Mensajes_JPanel.setMinimumSize(new java.awt.Dimension(1085, 70));
 
-        enviar_Mensaje_JTextField.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
+        enviar_Mensaje_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         enviar_Mensaje_JTextField.setToolTipText("Redactar Mensaje");
+        enviar_Mensaje_JTextField.setPreferredSize(new java.awt.Dimension(64, 40));
         enviar_Mensaje_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 enviar_Mensaje_JTextFieldKeyPressed(evt);
@@ -287,17 +288,16 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 .addContainerGap()
                 .addComponent(enviar_Mensaje_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1021, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(enviar_Mensaje_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addComponent(enviar_Mensaje_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         enviar_Mensajes_JPanelLayout.setVerticalGroup(
             enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(enviar_Mensajes_JPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap()
                 .addGroup(enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(enviar_Mensaje_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(enviar_Mensaje_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(enviar_Mensaje_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(enviar_Mensaje_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout chat_Grupal_JPanelLayout = new javax.swing.GroupLayout(chat_Grupal_JPanel);
@@ -311,10 +311,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             chat_Grupal_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(chat_Grupal_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         grupo_JTabbedPane.addTab("Chat Grupal", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_3.png")), chat_Grupal_JPanel); // NOI18N
@@ -546,6 +546,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         editar_Nombre_Grupo_JLabel.setText("Nombre Del Grupo");
 
         editar_Imagen_Grupo_JLabel.setToolTipText("Imagen Del Grupo A Editar");
+        editar_Imagen_Grupo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         editar_Imagen_Grupo_JLabel.setMaximumSize(new java.awt.Dimension(440, 440));
         editar_Imagen_Grupo_JLabel.setMinimumSize(new java.awt.Dimension(440, 440));
         editar_Imagen_Grupo_JLabel.setPreferredSize(new java.awt.Dimension(440, 440));
@@ -1115,6 +1116,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         crear_Tareas_Pendientes_JPanel.setBackground(primer_Color);
         configuraciones_JPanel.setBackground(primer_Color);
         compartir_Archivos_JPanel.setBackground(primer_Color);
+        editar_Imagen_Grupo_JLabel.setForeground(primer_Color_Fuente);
         
         escogedor_Fecha_Hora.setForeground(tercer_Color);
         enviar_Mensajes_JPanel.setBackground(primer_Color);

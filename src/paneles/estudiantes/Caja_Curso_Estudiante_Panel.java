@@ -25,6 +25,7 @@ import javax.swing.text.StyledDocument;
 import interfaces.Color_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import main.CourseRoom;
 
 /**
  *
@@ -54,8 +55,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        imagen_Curso_JLabel = new javax.swing.JLabel();
-        informacion_JPanel = new javax.swing.JPanel();
+        contenido_JPanel = new javax.swing.JPanel();
         imagen_Profesor_JLabel = new javax.swing.JLabel();
         numero_Estudiantes_JLabel = new javax.swing.JLabel();
         calificacion_JScrollPane = new javax.swing.JScrollPane();
@@ -64,24 +64,14 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         nombre_Profesor_JLabel = new javax.swing.JLabel();
         resenas_JButton = new javax.swing.JButton();
         descripcion_JLabel = new javax.swing.JLabel();
+        imagen_Curso_JLabel = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 187));
-        setMinimumSize(new java.awt.Dimension(824, 187));
+        setMaximumSize(new java.awt.Dimension(32767, 255));
+        setMinimumSize(null);
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(824, 187));
+        setPreferredSize(new java.awt.Dimension(623, 255));
 
-        imagen_Curso_JLabel.setToolTipText("Imagen De Perfil Del Curso");
-        imagen_Curso_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        imagen_Curso_JLabel.setMaximumSize(new java.awt.Dimension(175, 175));
-        imagen_Curso_JLabel.setMinimumSize(new java.awt.Dimension(175, 175));
-        imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(175, 175));
-        imagen_Curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imagen_Curso_JLabelMouseClicked(evt);
-            }
-        });
-
-        informacion_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         imagen_Profesor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Profesor_JLabel.setToolTipText("Perfil Del Profesor");
@@ -134,50 +124,66 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         });
 
         descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        descripcion_JLabel.setText("Información Resumida Del Curso");
         descripcion_JLabel.setToolTipText("Información Resumida Del Curso");
 
-        javax.swing.GroupLayout informacion_JPanelLayout = new javax.swing.GroupLayout(informacion_JPanel);
-        informacion_JPanel.setLayout(informacion_JPanelLayout);
-        informacion_JPanelLayout.setHorizontalGroup(
-            informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(informacion_JPanelLayout.createSequentialGroup()
+        imagen_Curso_JLabel.setToolTipText("Imagen De Perfil Del Curso");
+        imagen_Curso_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        imagen_Curso_JLabel.setMaximumSize(new java.awt.Dimension(175, 175));
+        imagen_Curso_JLabel.setMinimumSize(new java.awt.Dimension(175, 175));
+        imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(143, 143));
+        imagen_Curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imagen_Curso_JLabelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
+        contenido_JPanel.setLayout(contenido_JPanelLayout);
+        contenido_JPanelLayout.setHorizontalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                                .addComponent(calificacion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(numero_Estudiantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                        .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                        .addComponent(calificacion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 55, Short.MAX_VALUE)
-                        .addComponent(resenas_JButton)
-                        .addGap(18, 56, Short.MAX_VALUE)
-                        .addComponent(numero_Estudiantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resenas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-        informacion_JPanelLayout.setVerticalGroup(
-            informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_JPanelLayout.createSequentialGroup()
+        contenido_JPanelLayout.setVerticalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(informacion_JPanelLayout.createSequentialGroup()
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
                         .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(descripcion_JLabel)
-                .addGap(18, 18, 18)
-                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(calificacion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(resenas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(numero_Estudiantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(resenas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(nombre_Profesor_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(calificacion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(numero_Estudiantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -186,18 +192,14 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(informacion_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(informacion_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -232,10 +234,10 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane calificacion_JScrollPane;
     private javax.swing.JTextPane calificacion_JTextPane;
+    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel descripcion_JLabel;
     private javax.swing.JLabel imagen_Curso_JLabel;
     private javax.swing.JLabel imagen_Profesor_JLabel;
-    private javax.swing.JPanel informacion_JPanel;
     private javax.swing.JLabel nombre_JLabel;
     private javax.swing.JLabel nombre_Profesor_JLabel;
     private javax.swing.JLabel numero_Estudiantes_JLabel;
@@ -246,26 +248,27 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
     @Override
     public void Iniciar_Componentes() {
         try {
-            System.out.println("Curso ID: "+this.id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
+            System.out.println("Curso ID: "+this.id+" -> Getting Image From https://loremflickr.com/143/143/sunset,beach/all");
             URL url_Imagen = new URL("https://loremflickr.com/226/226/sunset,beach/all");
-            Image obtener_Imagen_Curso = ImageIO.read(url_Imagen);
-            ImageIcon icono_Curso = new ImageIcon(obtener_Imagen_Curso);
-            imagen_Curso_JLabel.setIcon(icono_Curso);
-            Establecer_Colores(obtener_Imagen_Curso);
+            Image obtener_Imagen = ImageIO.read(url_Imagen);
+            ImageIcon icono = new ImageIcon(obtener_Imagen);
+            imagen_Curso_JLabel.setIcon(icono);
+            Establecer_Colores(obtener_Imagen);
             
             Colorear_Componentes();
             
-            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL url_Imagen_Profesor = new URL("https://loremflickr.com/79/79/sunset,beach/all");
-            Image obtener_Imagen_Profesor = ImageIO.read(url_Imagen_Profesor);
-            ImageIcon icono_Profesor = new ImageIcon(obtener_Imagen_Profesor);
-            imagen_Profesor_JLabel.setIcon(icono_Profesor);
+            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://loremflickr.com/64/64/sunset,beach/all");
+            url_Imagen = new URL("https://loremflickr.com/64/64/sunset,beach/all");
+            obtener_Imagen = ImageIO.read(url_Imagen);
+            icono = new ImageIcon(obtener_Imagen);
+            imagen_Profesor_JLabel.setIcon(icono);
             
-            obtener_Imagen_Profesor.flush();
+            obtener_Imagen.flush();
             
-            obtener_Imagen_Curso.flush();
-            
-            numero_Estudiantes_JLabel.setText("20");
+            numero_Estudiantes_JLabel.setText(CourseRoom.Concatenar(CourseRoom.Faker().number().digit(), " Integrantes"));
+            nombre_JLabel.setText(CourseRoom.Faker().ancient().god());
+            nombre_Profesor_JLabel.setText(CourseRoom.Faker().name().nameWithMiddle());
+            descripcion_JLabel.setText(CourseRoom.Formato_HTML_Centro(CourseRoom.Faker().lorem().paragraph()));
             
             SimpleAttributeSet atributos = new SimpleAttributeSet();
             StyleConstants.setItalic(atributos, true);
@@ -306,8 +309,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         resenas_JButton.setForeground(segundo_Color_Fuente);
         resenas_JButton.setBackground(segundo_Color);
 
-        informacion_JPanel.setBackground(primer_Color);
-        //informacion_JPanel.setBorder(javax.swing.BorderFactory.createLineBorder(primer_Color));
+        contenido_JPanel.setBackground(primer_Color);
     }
     
     @Override

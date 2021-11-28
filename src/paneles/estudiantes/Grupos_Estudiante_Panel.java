@@ -47,11 +47,10 @@ public class Grupos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         setPreferredSize(new java.awt.Dimension(1085, 630));
 
         grupos_JScrollPane.setBorder(null);
-        grupos_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         grupos_JScrollPane.setOpaque(false);
 
         grupos_JPanel.setOpaque(false);
-        grupos_JPanel.setLayout(new javax.swing.BoxLayout(grupos_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        grupos_JPanel.setLayout(new java.awt.GridLayout(0, 2));
         grupos_JScrollPane.setViewportView(grupos_JPanel);
 
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N

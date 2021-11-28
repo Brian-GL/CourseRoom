@@ -121,9 +121,6 @@
       <SubComponents>
         <Container class="javax.swing.JTabbedPane" name="controles_JTabbedPane">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="tabPlacement" type="int" value="4"/>
           </Properties>
           <AccessibilityProperties>
@@ -1156,7 +1153,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Genre">
-                          <Font PropertyName="font" name="Inter" size="16" style="1"/>
+                          <Font PropertyName="font" name="Gadugi" size="16" style="1"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1183,7 +1180,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Media">
-                          <Font PropertyName="font" name="Inter" size="16" style="1"/>
+                          <Font PropertyName="font" name="Gadugi" size="16" style="1"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1210,7 +1207,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Year">
-                          <Font PropertyName="font" name="Inter" size="16" style="1"/>
+                          <Font PropertyName="font" name="Gadugi" size="16" style="1"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1247,7 +1244,7 @@
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                             <TitledBorder title="Lyrics">
-                              <Font PropertyName="font" name="Inter" size="16" style="1"/>
+                              <Font PropertyName="font" name="Gadugi" size="16" style="1"/>
                             </TitledBorder>
                           </Border>
                         </Property>

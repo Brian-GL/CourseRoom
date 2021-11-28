@@ -42,7 +42,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="titulo_JLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="ordenar_Por_JComboBox" min="-2" pref="62" max="-2" attributes="0"/>
+                  <Component id="ordenar_Por_JComboBox" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="avisos_JScrollPane" pref="540" max="32767" attributes="0"/>
@@ -91,8 +91,9 @@
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
-            <Property name="axis" type="int" value="3"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="2"/>
+            <Property name="rows" type="int" value="0"/>
           </Layout>
         </Container>
       </SubComponents>

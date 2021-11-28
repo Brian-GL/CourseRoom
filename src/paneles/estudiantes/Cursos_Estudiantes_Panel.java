@@ -52,11 +52,12 @@ public class Cursos_Estudiantes_Panel extends javax.swing.JPanel implements Comp
 
         cursos_JTabbedPane.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
 
+        cursos_Actuales_JScrollPane.setBorder(null);
         cursos_Actuales_JScrollPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         cursos_Actuales_JScrollPane.setOpaque(false);
 
         cursos_Actuales_JPanel.setOpaque(false);
-        cursos_Actuales_JPanel.setLayout(new javax.swing.BoxLayout(cursos_Actuales_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        cursos_Actuales_JPanel.setLayout(new java.awt.GridLayout(0, 2));
         cursos_Actuales_JScrollPane.setViewportView(cursos_Actuales_JPanel);
 
         cursos_JTabbedPane.addTab("Mis Cursos Actuales", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-learning.png")), cursos_Actuales_JScrollPane); // NOI18N
@@ -88,10 +89,11 @@ public class Cursos_Estudiantes_Panel extends javax.swing.JPanel implements Comp
 
         cursos_JTabbedPane.addTab("Cursos Relacionados", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-education.png")), cursos_Relacionados_JScrollPane, ""); // NOI18N
 
+        cursos_Finalizados_JScrollPane.setBorder(null);
         cursos_Finalizados_JScrollPane.setOpaque(false);
 
         cursos_Finalizados_JPanel.setOpaque(false);
-        cursos_Finalizados_JPanel.setLayout(new javax.swing.BoxLayout(cursos_Finalizados_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        cursos_Finalizados_JPanel.setLayout(new java.awt.GridLayout(0, 2));
         cursos_Finalizados_JScrollPane.setViewportView(cursos_Finalizados_JPanel);
 
         cursos_JTabbedPane.addTab("Cursos Finalizados", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/login.png")), cursos_Finalizados_JScrollPane); // NOI18N
