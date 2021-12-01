@@ -28,8 +28,7 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
             Color _segundo_Color, 
             Color _segundo_Color_Fuente, 
             Color _tercer_Color, 
-            Color _tercer_Color_Fuente, 
-            Color color_Fuente) {
+            Color _tercer_Color_Fuente) {
         
         initComponents();
         
@@ -38,15 +37,10 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
         segundo_Color_Fuente = _segundo_Color_Fuente;
         tercer_Color = _tercer_Color;
         tercer_Color_Fuente = _tercer_Color_Fuente;
+        
         fecha_Hora_JLabel.setText(fecha_Hora);
         nombre_JLabel.setText(archivo.getName());
         emisor_JLabel.setText(nombre_Miembro);
-        
-        fecha_Hora_JLabel.setForeground(color_Fuente);
-        nombre_JLabel.setForeground(color_Fuente);
-        emisor_JLabel.setForeground(color_Fuente);
-        
-        this.setForeground(color_Fuente);
         
         Iniciar_Componentes();
         
@@ -61,6 +55,7 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenido_JPanel = new javax.swing.JPanel();
         nombre_JLabel = new javax.swing.JLabel();
         emisor_JLabel = new javax.swing.JLabel();
         fecha_Hora_JLabel = new javax.swing.JLabel();
@@ -68,11 +63,12 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
         icono_JLabel = new javax.swing.JLabel();
         remover_JButton = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        setMaximumSize(new java.awt.Dimension(32767, 65));
-        setMinimumSize(new java.awt.Dimension(1070, 65));
+        setMaximumSize(new java.awt.Dimension(32767, 146));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1070, 65));
+        setPreferredSize(new java.awt.Dimension(520, 146));
+
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         nombre_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -90,7 +86,7 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
         fecha_Hora_JLabel.setToolTipText("Fecha & Hora Del Envío");
 
         descargar_JButton.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        descargar_JButton.setText("Descargar Archivo");
+        descargar_JButton.setText("Descargar");
         descargar_JButton.setToolTipText("Descargar Archivo");
         descargar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,7 +104,7 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
         icono_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/shelf.png"))); // NOI18N
 
         remover_JButton.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        remover_JButton.setText("Remover Archivo");
+        remover_JButton.setText("Remover");
         remover_JButton.setToolTipText("Remover Archivo Compartido (Eliminar Archivo)");
         remover_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -122,42 +118,57 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
             }
         });
 
+        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
+        contenido_JPanel.setLayout(contenido_JPanelLayout);
+        contenido_JPanelLayout.setHorizontalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(icono_JLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(remover_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(descargar_JButton))
+                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fecha_Hora_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        contenido_JPanelLayout.setVerticalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fecha_Hora_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(icono_JLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(remover_JButton)
+                    .addComponent(descargar_JButton))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(icono_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(remover_JButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(descargar_JButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(fecha_Hora_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(icono_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fecha_Hora_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(descargar_JButton)
-                            .addComponent(remover_JButton))))
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -208,6 +219,7 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
 
     // Variables declaration - do not modify//GEN-LAST:event_descargar_JButtonMouseExited
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JButton descargar_JButton;
     private javax.swing.JLabel emisor_JLabel;
     private javax.swing.JLabel fecha_Hora_JLabel;
@@ -225,6 +237,12 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
 
     @Override
     public void Colorear_Componentes() {
+        
+        fecha_Hora_JLabel.setForeground(segundo_Color_Fuente);
+        nombre_JLabel.setForeground(segundo_Color_Fuente);
+        emisor_JLabel.setForeground(segundo_Color_Fuente);
+
+        contenido_JPanel.setBackground(segundo_Color);
         descargar_JButton.setBackground(tercer_Color);
         descargar_JButton.setForeground(tercer_Color_Fuente);
         remover_JButton.setBackground(tercer_Color);

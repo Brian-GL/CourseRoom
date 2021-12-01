@@ -73,7 +73,7 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         comentario_JScrollPane.setWheelScrollingEnabled(false);
 
         comentario_JTextPane.setBorder(null);
-        comentario_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        comentario_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         comentario_JTextPane.setRequestFocusEnabled(false);
         comentario_JScrollPane.setViewportView(comentario_JTextPane);
 

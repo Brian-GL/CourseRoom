@@ -293,12 +293,11 @@ public class Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         int i = 1;
         while(cuenta < 42){
             dia_Calendario_Panel = new Caja_Fecha_Estudiante_Panel(i);
-            dia_Calendario_Panel.Establecer_Colores(CourseRoom.Tercer_Color(), CourseRoom.Primer_Color());
+            dia_Calendario_Panel.Establecer_Colores(CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
             calendario_JPanel.add(dia_Calendario_Panel);
             i++;
             cuenta++;
         }
-        
     }    
     
     private String Establecer_Nombre_Mes(){

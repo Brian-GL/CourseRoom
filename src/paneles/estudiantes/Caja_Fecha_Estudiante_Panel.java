@@ -106,10 +106,11 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
 
     @Override
     public void Iniciar_Componentes() {
+        
         color_Fondo = CourseRoom.Tercer_Color();
         color_Fuente = CourseRoom.Tercer_Color_Fuente();
         String concatenacion = 
-        CourseRoom.Concatenar(String.valueOf(CourseRoom.Faker().number().randomNumber(2, true)),
+        CourseRoom.Concatenar(String.valueOf(CourseRoom.Faker().number().randomNumber(1, true)),
                 ":",String.valueOf(CourseRoom.Faker().number().randomNumber(2, false))," P.M");
         hora_JLabel.setText(concatenacion);
         descripcion_JScrollPane.getViewport().setOpaque(false);

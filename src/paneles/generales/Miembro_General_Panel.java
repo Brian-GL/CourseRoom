@@ -28,7 +28,7 @@ import interfaces.Limpieza_Interface;
 public class Miembro_General_Panel extends javax.swing.JPanel implements Limpieza_Interface,Color_Interface,Componentes_Interface{
     
     private String nombre_Completo;
-    private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente;
+    private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
 
     /**
      * Creates new form MemberPanel
@@ -53,11 +53,12 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
         imagen_jLabel = new javax.swing.JLabel();
         nombres_JLabel = new javax.swing.JLabel();
         apellidos_JLabel = new javax.swing.JLabel();
-        nombre_Usuario_JLabel = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 241));
+        setMaximumSize(new java.awt.Dimension(32767, 214));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(365, 241));
+        setPreferredSize(new java.awt.Dimension(365, 214));
+
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         imagen_jLabel.setToolTipText("Imagen Del Miembro");
         imagen_jLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -75,11 +76,6 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
         apellidos_JLabel.setText("Apellido Del Miembro");
         apellidos_JLabel.setToolTipText("Apellido(s) Del Miembro");
 
-        nombre_Usuario_JLabel.setFont(new java.awt.Font("Gadugi", 3, 15)); // NOI18N
-        nombre_Usuario_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre_Usuario_JLabel.setText("UserName Del Miembro");
-        nombre_Usuario_JLabel.setToolTipText("Nombre De Usuario Del Miembro");
-
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
         contenido_JPanelLayout.setHorizontalGroup(
@@ -87,26 +83,23 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                     .addComponent(apellidos_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(imagen_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imagen_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(imagen_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nombres_JLabel)
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(apellidos_JLabel)
-                .addGap(6, 6, 6)
-                .addComponent(nombre_Usuario_JLabel)
                 .addContainerGap())
         );
 
@@ -124,7 +117,7 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,7 +133,6 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     private javax.swing.JLabel apellidos_JLabel;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel imagen_jLabel;
-    private javax.swing.JLabel nombre_Usuario_JLabel;
     private javax.swing.JLabel nombres_JLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -171,6 +163,20 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     public Color Segundo_Color_Fuente() {
         return segundo_Color_Fuente;
     }
+    
+    /**
+     * @return the tercer_Color
+     */
+    public Color Tercer_Color() {
+        return tercer_Color;
+    }
+
+    /**
+     * @return the tercer_Color_Fuente
+     */
+    public Color Tercer_Color_Fuente() {
+        return tercer_Color_Fuente;
+    }
 
     @Override
     public void Iniciar_Componentes() {
@@ -188,12 +194,10 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
             
             String nombre = CourseRoom.Faker().name().firstName() + " " +CourseRoom.Faker().name().firstName();
             String apellido = CourseRoom.Faker().name().lastName() + " " + CourseRoom.Faker().name().lastName();
-            String nombre_Usuario = CourseRoom.Faker().name().username();
             
             nombre_Completo = CourseRoom.Concatenar(nombre," ",apellido);
             apellidos_JLabel.setText(apellido);
             nombres_JLabel.setText(nombre);
-            nombre_Usuario_JLabel.setText(nombre_Usuario);
             
             Colorear_Componentes();
             
@@ -206,7 +210,6 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     @Override
     public void Colorear_Componentes() {
         apellidos_JLabel.setForeground(Primer_Color_Fuente());
-        nombre_Usuario_JLabel.setForeground(Primer_Color_Fuente());
         nombres_JLabel.setForeground(Primer_Color_Fuente());
         imagen_jLabel.setForeground(Primer_Color_Fuente());
         contenido_JPanel.setBackground(Primer_Color());
@@ -217,7 +220,7 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     public void Establecer_Colores(Image imagen){
         
         try {
-            Random numero_aleatorio = new Random(System.currentTimeMillis());
+            Random numero_Aleatorio = new Random(System.currentTimeMillis());
             int auxiliar_maximo_int = 0;
             primer_Color = Color.BLACK;
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
@@ -247,7 +250,7 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += numero_aleatorio.nextInt(largo_imagen+1) + largo_imagen;
+                    i += numero_Aleatorio.nextInt(largo_imagen+1) + largo_imagen;
                 }
 
                 segundo_Color = primer_Color;
@@ -257,15 +260,33 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
                 if(lista_Colores.size() > 1){
                     
                     while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = numero_aleatorio.nextInt((int)lista_Colores.size()-1);
+                        posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 25){
                              while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = numero_aleatorio.nextInt((int)lista_Colores.size()-1);
+                                posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
+                        }
+                    }
+                }
+                
+                tercer_Color = segundo_Color;
+                if (lista_Colores.size() > 2) {
+                    iteraciones = 0;
+
+                    while (Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000) {
+                        posicion = numero_Aleatorio.nextInt((int) lista_Colores.size() - 1);
+                        tercer_Color = lista_Colores.get(posicion).second();
+                        iteraciones++;
+                        if (iteraciones > 50) {
+                            while (tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()) {
+                                posicion = numero_Aleatorio.nextInt((int) lista_Colores.size() - 1);
+                                tercer_Color = lista_Colores.get(posicion).second();
+                            }
+                            break;
                         }
                     }
                 }
@@ -274,6 +295,8 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
                 primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 rojo = segundo_Color.getRed();
                 segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                rojo = tercer_Color.getRed();
+                tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 
                 lista_Colores.clear();
             }
@@ -285,7 +308,8 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     
      @Override
     public void Limpiar() {
-        primer_Color = primer_Color_Fuente = segundo_Color = segundo_Color_Fuente = null;
+        primer_Color = primer_Color_Fuente = segundo_Color = segundo_Color_Fuente =
+        tercer_Color = tercer_Color_Fuente = null;
         nombre_Completo = null;
     }
 }

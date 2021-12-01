@@ -56,10 +56,10 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         archivo_JScrollPane = new javax.swing.JScrollPane();
         archivo_JTextPane = new javax.swing.JTextPane();
 
-        setMaximumSize(new java.awt.Dimension(350, 88));
+        setMaximumSize(new java.awt.Dimension(325, 88));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(350, 88));
+        setPreferredSize(new java.awt.Dimension(325, 88));
         setRequestFocusEnabled(false);
         setVerifyInputWhenFocusTarget(false);
 
@@ -100,7 +100,6 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         });
 
         archivo_JScrollPane.setBorder(null);
-        archivo_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         archivo_JScrollPane.setOpaque(false);
         archivo_JScrollPane.setRequestFocusEnabled(false);
         archivo_JScrollPane.setVerifyInputWhenFocusTarget(false);
@@ -124,11 +123,11 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
                 .addContainerGap()
                 .addComponent(icono_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(archivo_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(archivo_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descargar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(abrir_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(abrir_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descargar_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contenido_JPanelLayout.setVerticalGroup(
@@ -220,6 +219,7 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
     public void Iniciar_Componentes() {
         archivo_JScrollPane.getViewport().setOpaque(false);
         archivo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        archivo_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         String informacion_Archivo = CourseRoom.Faker().file().fileName();
         StyledDocument documento_Estilizado = archivo_JTextPane.getStyledDocument();

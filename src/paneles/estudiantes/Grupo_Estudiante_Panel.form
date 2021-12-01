@@ -373,7 +373,9 @@
                               <Component id="ordenar_Archivos_Compartidos_JLabel" min="-2" pref="109" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="ordenar_Archivos_Compatidos_JComboBox" min="-2" pref="160" max="-2" attributes="0"/>
-                              <EmptySpace pref="566" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="32767" attributes="0"/>
+                              <Component id="buscar_Archivo_Compartido_JTextField" min="-2" pref="362" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="32767" attributes="0"/>
                               <Component id="compartir_Archivo_JButton" min="-2" pref="232" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -389,9 +391,10 @@
                           <Component id="compartir_Archivo_JButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ordenar_Archivos_Compatidos_JComboBox" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="ordenar_Archivos_Compartidos_JLabel" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="buscar_Archivo_Compartido_JTextField" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="archivos_Compartidos_JScrollPane" pref="572" max="32767" attributes="0"/>
+                      <Component id="archivos_Compartidos_JScrollPane" pref="571" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -403,6 +406,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
+                <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
 
@@ -413,8 +417,9 @@
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
-                    <Property name="axis" type="int" value="3"/>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="2"/>
+                    <Property name="rows" type="int" value="0"/>
                   </Layout>
                 </Container>
               </SubComponents>
@@ -464,6 +469,17 @@
                 <Property name="text" type="java.lang.String" value="Ordenar Por"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JTextField" name="buscar_Archivo_Compartido_JTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Gadugi" size="16" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="buscar_Archivo_Compartido_JTextFieldKeyPressed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="crear_Tareas_Pendientes_JPanel">
@@ -484,10 +500,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="anadir_Tarea_Pendiente_JPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="tareas_Pendientes_JLabel" min="-2" pref="373" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="tareas_Pendientes_JLabel" min="-2" pref="416" max="-2" attributes="0"/>
                               <EmptySpace pref="89" max="32767" attributes="0"/>
                               <Component id="mostrar_Tarea_Pendiente_Tipo_JComboBox" min="-2" pref="149" max="-2" attributes="0"/>
                           </Group>
@@ -501,20 +517,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="tareas_Pendientes_JLabel" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="mostrar_Tarea_Pendiente_Tipo_JComboBox" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="tareas_Pendientes_JLabel" min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="mostrar_Tarea_Pendiente_Tipo_JComboBox" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tareas_Pendientes_JPanel" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="0" pref="77" max="32767" attributes="0"/>
-                              <Component id="anadir_Tarea_Pendiente_JPanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="73" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="anadir_Tarea_Pendiente_JPanel" max="32767" attributes="0"/>
+                          <Component id="tareas_Pendientes_JPanel" pref="572" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -550,16 +560,19 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="nombre_Tarea_Pendiente_JTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tarea_Pendiente_JLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="miembro_Cargo_Tarea_Pendiente_JLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="miembro_Cargo_Tarea_Pendiente_JComboBox" alignment="0" max="32767" attributes="0"/>
-                              <Component id="descripcion_Tarea_Pendiente_JLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="descripcion_Tarea_Pendiente_JScrollPane" alignment="0" pref="444" max="32767" attributes="0"/>
-                              <Component id="fecha_Finalizacion_Tarea_Pendiente_JLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="fecha_Finalizacion_Tarea_Pendiente_JPanel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="anadir_Tarea_Pendiente_JButton" alignment="1" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="tarea_Pendiente_JLabel" alignment="0" pref="401" max="32767" attributes="0"/>
+                                  <Component id="nombre_Tarea_Pendiente_JTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="descripcion_Tarea_Pendiente_JLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="descripcion_Tarea_Pendiente_JScrollPane" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="fecha_Finalizacion_Tarea_Pendiente_JLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="fecha_Finalizacion_Tarea_Pendiente_JPanel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="miembro_Cargo_Tarea_Pendiente_JLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="miembro_Cargo_Tarea_Pendiente_JComboBox" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="anadir_Tarea_Pendiente_JButton" alignment="1" pref="401" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -568,23 +581,23 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Component id="miembro_Cargo_Tarea_Pendiente_JLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="miembro_Cargo_Tarea_Pendiente_JComboBox" min="-2" pref="37" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="tarea_Pendiente_JLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="nombre_Tarea_Pendiente_JTextField" min="-2" pref="37" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="descripcion_Tarea_Pendiente_JLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="descripcion_Tarea_Pendiente_JScrollPane" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="descripcion_Tarea_Pendiente_JScrollPane" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="fecha_Finalizacion_Tarea_Pendiente_JLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="fecha_Finalizacion_Tarea_Pendiente_JPanel" min="-2" pref="37" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="anadir_Tarea_Pendiente_JButton" min="-2" pref="45" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -632,7 +645,7 @@
                 <Component class="javax.swing.JComboBox" name="miembro_Cargo_Tarea_Pendiente_JComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Gadugi" size="18" style="0"/>
+                      <Font name="Gadugi" size="17" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
@@ -646,6 +659,9 @@
                 <Container class="javax.swing.JPanel" name="fecha_Finalizacion_Tarea_Pendiente_JPanel">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Fecha Posible De Terminaci&#xf3;n De La Tarea Pendiente"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Gadugi" size="17" style="0"/>
+                    </Property>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
@@ -654,9 +670,17 @@
                 <Component class="javax.swing.JTextField" name="nombre_Tarea_Pendiente_JTextField">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Gadugi" size="18" style="0"/>
+                      <Font name="Gadugi" size="17" style="0"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value="Nombre De La Tarea Pendiente"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="miembro_Cargo_Tarea_Pendiente_JLabel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Gadugi" size="18" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Miembro A Cargo"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="descripcion_Tarea_Pendiente_JScrollPane">
@@ -666,26 +690,15 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="descripcion_Tarea_Pendiente_JTextArea">
+                    <Component class="javax.swing.JTextPane" name="descripcion_Tarea_Pendiente_JTextPane">
                       <Properties>
-                        <Property name="columns" type="int" value="20"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Gadugi" size="18" style="0"/>
+                          <Font name="Gadugi" size="17" style="0"/>
                         </Property>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="toolTipText" type="java.lang.String" value="Ingresa Aqu&#xed; La Descripci&#xf3;n De La Tarea Pendiente"/>
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="miembro_Cargo_Tarea_Pendiente_JLabel">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Gadugi" size="18" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Miembro A Cargo"/>
-                  </Properties>
-                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JComboBox" name="mostrar_Tarea_Pendiente_Tipo_JComboBox">
@@ -831,6 +844,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="editar_Nombre_Grupo_JTextField">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="18" style="0"/>
                 </Property>
@@ -891,7 +905,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Editar"/>
+                <Property name="text" type="java.lang.String" value="&#xbf;Editar?"/>
                 <Property name="toolTipText" type="java.lang.String" value="Editar Nombre Del Grupo"/>
               </Properties>
               <Events>

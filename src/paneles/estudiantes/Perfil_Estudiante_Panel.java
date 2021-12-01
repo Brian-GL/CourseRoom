@@ -174,7 +174,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
-        descripcion_JScrollPane.setBorder(null);
         descripcion_JScrollPane.setOpaque(false);
         descripcion_JScrollPane.setRequestFocusEnabled(false);
         descripcion_JScrollPane.setVerifyInputWhenFocusTarget(false);
@@ -228,7 +227,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,14 +246,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                         .addGap(5, 5, 5)
                         .addComponent(localidad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nombre_Usuario_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(desempeno_Escolar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(editar_Perfil_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         imagen_Perfil_JLabel.getAccessibleContext().setAccessibleName("jLabelProfilePhoto");
@@ -378,5 +377,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         tipo_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         descripcion_JTextPane.setForeground(CourseRoom.Primer_Color_Fuente());
+        descripcion_JScrollPane.setForeground(CourseRoom.Primer_Color_Fuente());
     }
 }

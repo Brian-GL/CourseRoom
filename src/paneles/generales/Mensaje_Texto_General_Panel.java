@@ -13,6 +13,8 @@ import interfaces.Componentes_Interface;
  */
 public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
+    private Color
+    
     public Mensaje_Texto_General_Panel(String emisor, String mensaje, String fecha) {
         initComponents();
         
@@ -47,7 +49,6 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fecha_JLabel.setToolTipText("Fecha & Hora Del Mensaje");
-        fecha_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fecha_JLabel.setFocusable(false);
         fecha_JLabel.setMaximumSize(new java.awt.Dimension(413, 25));
         fecha_JLabel.setOpaque(true);
@@ -58,13 +59,13 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
         emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emisor_JLabel.setToolTipText("Emisor Del Mensaje");
-        emisor_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         emisor_JLabel.setFocusable(false);
         emisor_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
         emisor_JLabel.setOpaque(true);
         emisor_JLabel.setRequestFocusEnabled(false);
         emisor_JLabel.setVerifyInputWhenFocusTarget(false);
 
+        mensaje_JScrollPane.setBorder(null);
         mensaje_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         mensaje_JScrollPane.setFocusable(false);
         mensaje_JScrollPane.setRequestFocusEnabled(false);
@@ -72,6 +73,7 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
         mensaje_JScrollPane.setWheelScrollingEnabled(false);
 
         mensaje_JTextPane.setEditable(false);
+        mensaje_JTextPane.setBorder(null);
         mensaje_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         mensaje_JScrollPane.setViewportView(mensaje_JTextPane);
 
@@ -84,8 +86,8 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mensaje_JScrollPane)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                        .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -93,11 +95,11 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
-                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 

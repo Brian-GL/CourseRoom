@@ -288,7 +288,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             Mensaje_Texto_General_Panel mensaje_Texto_General_Panel = 
                     new Mensaje_Texto_General_Panel(emisor,mensaje,fecha);
             mensaje_Texto_General_Panel.setMaximumSize(dimension);
-            mensajes_JPanel.add(mensaje_Texto_General_Panel);
+            mensajes_JPanel.add(mensaje_Texto_General_Panel, LEFT_ALIGNMENT);
             mensaje_JTextField.setText("");
         }
     }

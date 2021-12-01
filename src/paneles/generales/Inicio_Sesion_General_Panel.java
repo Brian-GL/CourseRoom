@@ -297,7 +297,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             URL url_Imagen = new URL("https://loremflickr.com/644/720/college/all");
             ImageIcon icono_Imagen = new ImageIcon(url_Imagen);
             imagen_JLabel.setIcon(icono_Imagen);
-            String tooltip = CourseRoom.Concatenar("Imagen De ",url_Imagen.getHost());
+            String tooltip = CourseRoom.Concatenar("Imagen Desde ",url_Imagen.getHost());
             imagen_JLabel.setToolTipText(tooltip);
             icono_Imagen.getImage().flush();
         } catch (MalformedURLException ex) {
@@ -336,5 +336,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         iniciar_Sesion_JButton.setForeground(CourseRoom.Primer_Color());
         
         mostrar_Contrasena_JCheckBox.setForeground(CourseRoom.Segundo_Color());
+        imagen_JLabel.setForeground(CourseRoom.Segundo_Color());
     }
 }

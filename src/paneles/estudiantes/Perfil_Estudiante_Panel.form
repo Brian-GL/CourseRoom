@@ -73,7 +73,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="71" max="32767" attributes="0"/>
+              <EmptySpace pref="68" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="nombres_JLabel" min="-2" max="-2" attributes="0"/>
@@ -94,17 +94,17 @@
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="localidad_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="descripcion_JScrollPane" min="-2" pref="162" max="-2" attributes="0"/>
+                      <Component id="descripcion_JScrollPane" min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
                   <Component id="imagen_Perfil_JLabel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="nombre_Usuario_jLabel" max="32767" attributes="0"/>
                   <Component id="desempeno_Escolar_JButton" alignment="0" max="32767" attributes="0"/>
                   <Component id="editar_Perfil_JButton" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="79" max="32767" attributes="0"/>
+              <EmptySpace pref="76" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -362,9 +362,6 @@
     </Component>
     <Container class="javax.swing.JScrollPane" name="descripcion_JScrollPane">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
         <Property name="opaque" type="boolean" value="false"/>
         <Property name="requestFocusEnabled" type="boolean" value="false"/>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>

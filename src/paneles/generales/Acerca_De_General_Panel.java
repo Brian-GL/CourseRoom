@@ -50,7 +50,6 @@ public class Acerca_De_General_Panel extends javax.swing.JPanel implements Compo
         logo_JLabel.setPreferredSize(new java.awt.Dimension(1071, 125));
 
         titulo_JLabe.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
-        titulo_JLabe.setForeground(new java.awt.Color(104, 194, 232));
         titulo_JLabe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabe.setText("Acerca De CourseRoom");
         titulo_JLabe.setMaximumSize(new java.awt.Dimension(1071, 43));
@@ -59,6 +58,7 @@ public class Acerca_De_General_Panel extends javax.swing.JPanel implements Compo
         titulo_JLabe.setPreferredSize(new java.awt.Dimension(1071, 43));
 
         descripcion_JScrollPane.setBorder(null);
+        descripcion_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         descripcion_JScrollPane.setMinimumSize(new java.awt.Dimension(1071, 400));
         descripcion_JScrollPane.setOpaque(false);
         descripcion_JScrollPane.setPreferredSize(new java.awt.Dimension(1071, 400));
@@ -109,8 +109,10 @@ public class Acerca_De_General_Panel extends javax.swing.JPanel implements Compo
 
     @Override
     public void Iniciar_Componentes() {
+        
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        
         ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
         logo_JLabel.setIcon(icono);
         
@@ -126,5 +128,6 @@ public class Acerca_De_General_Panel extends javax.swing.JPanel implements Compo
         titulo_JLabe.setBackground(CourseRoom.Segundo_Color());
         titulo_JLabe.setForeground(CourseRoom.Segundo_Color_Fuente());
         descripcion_JTextPane.setForeground(CourseRoom.Primer_Color_Fuente());
+        descripcion_JTextPane.setCaretColor(CourseRoom.Primer_Color_Fuente());
     }
 }

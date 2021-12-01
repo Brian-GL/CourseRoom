@@ -962,6 +962,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         descripcion_JTextPane.setBackground(CourseRoom.Segundo_Color());
         descripcion_JTextPane.setForeground(CourseRoom.Primer_Color());
         descripcion_JTextPane.setCaretColor(CourseRoom.Primer_Color());
+        
         descripcion_JScrollPane.setForeground(CourseRoom.Primer_Color());
         apellidos_JTextField.setBackground(CourseRoom.Segundo_Color());
         apellidos_JTextField.setForeground(CourseRoom.Primer_Color());
@@ -993,8 +994,10 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         tipo_Perfil_JComboBox.setForeground(CourseRoom.Primer_Color());
         fecha_Nacimiento_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
         fecha_Nacimiento_JFormattedTextField.setForeground(CourseRoom.Primer_Color());
+        fecha_Nacimiento_JFormattedTextField.setCaretColor(CourseRoom.Primer_Color());
         telefono_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
         telefono_JFormattedTextField.setForeground(CourseRoom.Primer_Color());
+        telefono_JFormattedTextField.setCaretColor(CourseRoom.Primer_Color());
         apellidos_JLabel.setForeground(CourseRoom.Segundo_Color());
         correo_Electronico_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         descripcion_JLabel.setForeground(CourseRoom.Segundo_Color());
