@@ -226,13 +226,13 @@
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="nombre_Usuario_Autenticacion_JLabel" max="32767" attributes="0"/>
-                          <Component id="nombre_Usuario_Autenticacion_JTextField" alignment="0" pref="586" max="32767" attributes="0"/>
+                          <Component id="txtUsuario" alignment="0" pref="586" max="32767" attributes="0"/>
                           <Component id="informacion_Nombre_Usuario_Autenticacion_JLabel" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="informacion_Contrasena_Autenticacion_JLabel" max="32767" attributes="0"/>
-                          <Component id="contrasena_Autenticacion_JPasswordField" alignment="1" pref="586" max="32767" attributes="0"/>
+                          <Component id="Pass" alignment="1" pref="586" max="32767" attributes="0"/>
                           <Component id="contrasena_Autenticacion_JLabel" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -241,14 +241,14 @@
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="informacion_Correo_Electronico_Autenticacion_JLabel" max="32767" attributes="0"/>
-                          <Component id="correo_Electronico_Autenticacion_JTextField" max="32767" attributes="0"/>
+                          <Component id="txtCorreo" max="32767" attributes="0"/>
                           <Component id="correo_Electronico_Autenticacion_JLabel" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="repetir_Contrasena_Autenticacion_JLabel" max="32767" attributes="0"/>
                           <Component id="informacion_Repetir_Contrasena_Autenticacion_JLabel" max="32767" attributes="0"/>
-                          <Component id="repetir_Contrasena_Autenticacion_JPasswordField" max="32767" attributes="0"/>
+                          <Component id="Pass2" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
@@ -276,8 +276,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="nombre_Usuario_Autenticacion_JTextField" pref="43" max="32767" attributes="0"/>
-                          <Component id="contrasena_Autenticacion_JPasswordField" max="32767" attributes="0"/>
+                          <Component id="txtUsuario" pref="43" max="32767" attributes="0"/>
+                          <Component id="Pass" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -293,8 +293,8 @@
                           <Component id="repetir_Contrasena_Autenticacion_JLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="correo_Electronico_Autenticacion_JTextField" pref="45" max="32767" attributes="0"/>
-                          <Component id="repetir_Contrasena_Autenticacion_JPasswordField" max="32767" attributes="0"/>
+                          <Component id="txtCorreo" pref="45" max="32767" attributes="0"/>
+                          <Component id="Pass2" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -334,7 +334,7 @@
                 <Property name="text" type="java.lang.String" value="Nombre De Usuario"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="nombre_Usuario_Autenticacion_JTextField">
+            <Component class="javax.swing.JTextField" name="txtUsuario">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
@@ -356,7 +356,7 @@
                 <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="contrasena_Autenticacion_JPasswordField">
+            <Component class="javax.swing.JPasswordField" name="Pass">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
@@ -387,7 +387,7 @@
                 <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="correo_Electronico_Autenticacion_JTextField">
+            <Component class="javax.swing.JTextField" name="txtCorreo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
@@ -409,7 +409,7 @@
                 <Property name="text" type="java.lang.String" value="Repetir Contrase&#xf1;a"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="repetir_Contrasena_Autenticacion_JPasswordField">
+            <Component class="javax.swing.JPasswordField" name="Pass2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
@@ -496,6 +496,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="continuar_Datos_Personales_JButtonMouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="continuar_Datos_Personales_JButtonMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="continuar_Datos_Personales_JButtonMouseExited"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="continuar_Datos_Personales_JButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
