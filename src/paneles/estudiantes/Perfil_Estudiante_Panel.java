@@ -181,7 +181,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
+        descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        descripcion_JTextPane.setText("");
         descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setRequestFocusEnabled(false);
         descripcion_JTextPane.setVerifyInputWhenFocusTarget(false);
@@ -341,7 +343,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         localidad_JLabel.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().address().fullAddress()));
         nombre_Usuario_jLabel.setText(CourseRoom.Faker().name().username());
         telefono_JLabel.setText(CourseRoom.Faker().phoneNumber().cellPhone());
-        descripcion_JTextPane.setText(CourseRoom.Faker().lorem().paragraph());
+        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph()));
         genero_JLabel.setText(CourseRoom.Faker().demographic().sex());
         fecha_Nacimiento_JLabel.setText(CourseRoom.Faker().backToTheFuture().date());
         

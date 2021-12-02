@@ -31,18 +31,24 @@ import interfaces.Limpieza_Interface;
  */
 public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Componentes_Interface, Limpieza_Interface{
 
-    private Color primer_Color, segundo_Color, primer_Color_Fuente;
+    private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
     public Chat_Estudiante_Panel(
             String nombre, 
             Color _primer_Color, 
             Color _primer_Color_Fuente, 
-            Color _segundo_Color) {
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente) {
         initComponents();
         
         primer_Color = _primer_Color;
-        segundo_Color = _segundo_Color;
         primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
         
         nombre_JLabel.setText(nombre);
         
@@ -282,12 +288,13 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         
         String mensaje = mensaje_JTextField.getText();
         if(!mensaje.isEmpty() && !mensaje.isBlank()){
-            Dimension dimension = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,111);
+            Dimension dimension = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200);
             String emisor = CourseRoom.Faker().dune().character();
             String fecha = CourseRoom.Faker().backToTheFuture().date();
             Mensaje_Texto_General_Panel mensaje_Texto_General_Panel = 
-                    new Mensaje_Texto_General_Panel(emisor,mensaje,fecha);
-            mensaje_Texto_General_Panel.setMaximumSize(dimension);
+                    new Mensaje_Texto_General_Panel(emisor,mensaje,fecha, primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente
+                    , tercer_Color, tercer_Color_Fuente);
+           mensaje_Texto_General_Panel.setMaximumSize(dimension);
             mensajes_JPanel.add(mensaje_Texto_General_Panel, LEFT_ALIGNMENT);
             mensaje_JTextField.setText("");
         }
@@ -595,6 +602,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     @Override
     public void Limpiar() {
         mensajes_JPanel.removeAll();
-        primer_Color = segundo_Color = primer_Color_Fuente = null; 
+        primer_Color = segundo_Color = primer_Color_Fuente = segundo_Color_Fuente = tercer_Color = tercer_Color_Fuente =  null; 
     }
 }

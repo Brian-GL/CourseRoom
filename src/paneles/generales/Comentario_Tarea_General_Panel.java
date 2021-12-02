@@ -32,9 +32,9 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         fondo_Color = _fondo_Color;
         fuente_Color = _fuente_Color;
         
-        String concatenar = CourseRoom.Concatenar(nombre_Usuario+":\n",comentario);
+        String concatenar = CourseRoom.Concatenar(nombre_Usuario,":<br>",comentario);
         
-        comentario_JTextPane.setText(concatenar);
+        comentario_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(concatenar));
         
         Image imagen_redimensionada = imagen_Usuario.getScaledInstance(50,50,Image.SCALE_SMOOTH);
         ImageIcon imagen_usuario = new ImageIcon(imagen_redimensionada);
@@ -73,7 +73,9 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         comentario_JScrollPane.setWheelScrollingEnabled(false);
 
         comentario_JTextPane.setBorder(null);
+        comentario_JTextPane.setContentType("text/html"); // NOI18N
         comentario_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        comentario_JTextPane.setText("");
         comentario_JTextPane.setRequestFocusEnabled(false);
         comentario_JScrollPane.setViewportView(comentario_JTextPane);
 

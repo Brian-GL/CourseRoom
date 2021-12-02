@@ -280,7 +280,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         estatus_JLabel.setToolTipText("Estatus De La Tarea");
 
         archivos_Adjuntos_JScrollPane.setBorder(null);
-        archivos_Adjuntos_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         archivos_Adjuntos_JScrollPane.setOpaque(false);
 
         archivos_Adjuntos_JPanel.setToolTipText("Archivos Adjuntos");
@@ -289,7 +288,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         archivos_Adjuntos_JScrollPane.setViewportView(archivos_Adjuntos_JPanel);
 
         descripcion_JScrollPane.setBorder(null);
-        descripcion_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         descripcion_JScrollPane.setFocusable(false);
         descripcion_JScrollPane.setOpaque(false);
         descripcion_JScrollPane.setRequestFocusEnabled(false);
@@ -298,13 +296,13 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
+        descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        descripcion_JTextPane.setText("");
         descripcion_JTextPane.setToolTipText("");
         descripcion_JTextPane.setFocusCycleRoot(false);
-        descripcion_JTextPane.setFocusable(false);
         descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setRequestFocusEnabled(false);
-        descripcion_JTextPane.setVerifyInputWhenFocusTarget(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -535,7 +533,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         archivos_Adjuntos_JScrollPane.getViewport().setOpaque(false);
         archivos_Adjuntos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
-        descripcion_JTextPane.setText(CourseRoom.Faker().lorem().paragraph(6));
+        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(6)));
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
@@ -581,7 +579,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Archivo_Adjunto_Tarea_General_Panel archivo_Adjunto_Tarea_General_Panel;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1,10); i++){
             archivo_Adjunto_Tarea_General_Panel = 
-                    new Archivo_Adjunto_Tarea_General_Panel(primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color,tercer_Color_Fuente);
+                    new Archivo_Adjunto_Tarea_General_Panel(segundo_Color, segundo_Color_Fuente, tercer_Color,tercer_Color_Fuente);
             archivos_Adjuntos_JPanel.add(archivo_Adjunto_Tarea_General_Panel);
         }
     }

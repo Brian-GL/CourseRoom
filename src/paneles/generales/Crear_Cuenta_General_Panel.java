@@ -469,8 +469,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
             }
         });
 
-        descripcion_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 

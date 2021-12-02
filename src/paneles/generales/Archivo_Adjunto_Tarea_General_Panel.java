@@ -6,23 +6,20 @@
 package paneles.generales;
 
 import interfaces.Componentes_Interface;
+import interfaces.Limpieza_Interface;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 import main.CourseRoom;
 
 /**
  *
  * @author LENOVO
  */
-public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
+public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel implements Limpieza_Interface,Componentes_Interface{
 
-    private Color primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
+    private Color segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
     public Archivo_Adjunto_Tarea_General_Panel(
-            Color _primer_Color_Fuente, 
             Color _segundo_Color, 
             Color _segundo_Color_Fuente,
             Color _tercer_Color,
@@ -30,7 +27,6 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         
         initComponents();
         
-        primer_Color_Fuente = _primer_Color_Fuente;
         segundo_Color = _segundo_Color;
         segundo_Color_Fuente = _segundo_Color_Fuente;
         tercer_Color = _tercer_Color;
@@ -107,7 +103,9 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
 
         archivo_JTextPane.setEditable(false);
         archivo_JTextPane.setBorder(null);
+        archivo_JTextPane.setContentType("text/html"); // NOI18N
         archivo_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        archivo_JTextPane.setText("");
         archivo_JTextPane.setFocusCycleRoot(false);
         archivo_JTextPane.setFocusable(false);
         archivo_JTextPane.setOpaque(false);
@@ -222,12 +220,7 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         archivo_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         String informacion_Archivo = CourseRoom.Faker().file().fileName();
-        StyledDocument documento_Estilizado = archivo_JTextPane.getStyledDocument();
-        SimpleAttributeSet atributo_Centro = new SimpleAttributeSet();
-        StyleConstants.setAlignment(atributo_Centro, StyleConstants.ALIGN_CENTER);
-        documento_Estilizado.setParagraphAttributes(0, documento_Estilizado.getLength(), atributo_Centro, false);
-        
-        archivo_JTextPane.setText(informacion_Archivo);
+        archivo_JTextPane.setText(CourseRoom.Formato_HTML_Centro(informacion_Archivo));
         
         Colorear_Componentes();
     }
@@ -247,5 +240,10 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         descargar_JButton.setBackground(segundo_Color);
         descargar_JButton.setForeground(segundo_Color_Fuente);
         
+    }
+
+    @Override
+    public void Limpiar() {
+        segundo_Color =  segundo_Color_Fuente =  tercer_Color =  tercer_Color_Fuente = null;
     }
 }

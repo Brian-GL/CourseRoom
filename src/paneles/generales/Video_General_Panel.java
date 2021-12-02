@@ -32,7 +32,9 @@ public class Video_General_Panel extends javax.swing.JPanel implements Reproduct
     private EmbeddedMediaPlayerComponent componente_Embebido_Video;
    
     
-    public Video_General_Panel(String ruta){
+    public Video_General_Panel(
+            String ruta
+    ){
         initComponents();
         
         titulo_JLabel.setText(ruta);
@@ -69,7 +71,6 @@ public class Video_General_Panel extends javax.swing.JPanel implements Reproduct
 
         titulo_JLabel.setBackground(new Color (49,88,186,185));
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
-        titulo_JLabel.setForeground(new java.awt.Color(104, 194, 232));
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/boton-de-play-video.png"))); // NOI18N
         titulo_JLabel.setText("Título Del Video");
@@ -78,7 +79,6 @@ public class Video_General_Panel extends javax.swing.JPanel implements Reproduct
 
         progreso_JSlider.setBackground(new Color (49,88,186,185));
         progreso_JSlider.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        progreso_JSlider.setForeground(new java.awt.Color(104, 194, 232));
         progreso_JSlider.setMaximum(2147483647);
         progreso_JSlider.setValue(0);
         progreso_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -89,14 +89,12 @@ public class Video_General_Panel extends javax.swing.JPanel implements Reproduct
 
         duracion_Total_JLabel.setBackground(new Color (49,88,186,185));
         duracion_Total_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        duracion_Total_JLabel.setForeground(new java.awt.Color(104, 194, 232));
         duracion_Total_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         duracion_Total_JLabel.setText("00:00:00");
         duracion_Total_JLabel.setFocusable(false);
 
         progreso_JLabel.setBackground(new Color (49,88,186,185));
         progreso_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        progreso_JLabel.setForeground(new java.awt.Color(104, 194, 232));
         progreso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         progreso_JLabel.setText("00:00:00");
         progreso_JLabel.setFocusable(false);

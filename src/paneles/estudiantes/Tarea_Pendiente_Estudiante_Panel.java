@@ -44,7 +44,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         tercer_Color_Fuente = _tercer_Color_Fuente;
         
         nombre_JLabel.setText(nombre);
-        descripcion_JTextPane.setText(descripcion);
+        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(descripcion));
         fecha_Terminacion_jLabel.setText(fecha_Terminacion);
         miembro_Cargo_JLabel.setIcon(member_Icon);
         miembro_Cargo_JLabel.setToolTipText(CourseRoom.Concatenar("Miembro A Cargo: ",nombre_Miembro));
@@ -99,7 +99,9 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
         descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
+        descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        descripcion_JTextPane.setText("");
         descripcion_JTextPane.setOpaque(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
@@ -129,11 +131,11 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(fecha_Terminacion_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fecha_Terminacion_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(estatus_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(descripcion_JScrollPane))
+                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(miembro_Cargo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)

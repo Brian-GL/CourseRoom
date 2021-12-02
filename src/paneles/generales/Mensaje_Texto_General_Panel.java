@@ -4,8 +4,12 @@
  * and open the template in the editor.
  */
 package paneles.generales;
-import main.CourseRoom;
 import interfaces.Componentes_Interface;
+import java.awt.Color;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+import main.CourseRoom;
 
 /**
  *
@@ -13,14 +17,31 @@ import interfaces.Componentes_Interface;
  */
 public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
-    private Color
+    private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
-    public Mensaje_Texto_General_Panel(String emisor, String mensaje, String fecha) {
+    public Mensaje_Texto_General_Panel(
+            String emisor, 
+            String mensaje, 
+            String fecha,
+            Color _primer_Color, 
+            Color _primer_Color_Fuente, 
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente) {
+        
         initComponents();
+        
+        primer_Color = _primer_Color;
+        primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
         
         fecha_JLabel.setText(fecha);
         emisor_JLabel.setText(emisor);
-        mensaje_JTextPane.setText(mensaje);
+        mensaje_JTextPane.setText(CourseRoom.Formato_HTML_Centro(mensaje));
         
         Iniciar_Componentes();
     }
@@ -40,9 +61,9 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
         mensaje_JScrollPane = new javax.swing.JScrollPane();
         mensaje_JTextPane = new javax.swing.JTextPane();
 
-        setMaximumSize(new java.awt.Dimension(32767, 111));
+        setMaximumSize(new java.awt.Dimension(32767, 200));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(800, 111));
+        setPreferredSize(new java.awt.Dimension(800, 200));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -60,13 +81,11 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emisor_JLabel.setToolTipText("Emisor Del Mensaje");
         emisor_JLabel.setFocusable(false);
-        emisor_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
         emisor_JLabel.setOpaque(true);
         emisor_JLabel.setRequestFocusEnabled(false);
         emisor_JLabel.setVerifyInputWhenFocusTarget(false);
 
         mensaje_JScrollPane.setBorder(null);
-        mensaje_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         mensaje_JScrollPane.setFocusable(false);
         mensaje_JScrollPane.setRequestFocusEnabled(false);
         mensaje_JScrollPane.setVerifyInputWhenFocusTarget(false);
@@ -74,7 +93,10 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
 
         mensaje_JTextPane.setEditable(false);
         mensaje_JTextPane.setBorder(null);
+        mensaje_JTextPane.setContentType("text/html"); // NOI18N
         mensaje_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        mensaje_JTextPane.setText("");
+        mensaje_JTextPane.setFocusTraversalPolicyProvider(true);
         mensaje_JScrollPane.setViewportView(mensaje_JTextPane);
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
@@ -98,8 +120,8 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(emisor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0)
-                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -116,8 +138,8 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -139,16 +161,16 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
     @Override
     public void Colorear_Componentes() {
         
-        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
+        contenido_JPanel.setBackground(segundo_Color);
         
-        fecha_JLabel.setBackground(CourseRoom.Tercer_Color());
-        emisor_JLabel.setBackground(CourseRoom.Tercer_Color());
-        mensaje_JTextPane.setBackground(CourseRoom.Tercer_Color());
+        fecha_JLabel.setBackground(tercer_Color);
+        emisor_JLabel.setBackground(tercer_Color);
+        mensaje_JTextPane.setBackground(tercer_Color);
         
-        fecha_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        emisor_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        mensaje_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
-        mensaje_JScrollPane.setForeground(CourseRoom.Tercer_Color_Fuente());
+        fecha_JLabel.setForeground(tercer_Color_Fuente);
+        emisor_JLabel.setForeground(tercer_Color_Fuente);
+        mensaje_JTextPane.setForeground(tercer_Color_Fuente);
+        mensaje_JScrollPane.setForeground(tercer_Color_Fuente);
     }
 
 }

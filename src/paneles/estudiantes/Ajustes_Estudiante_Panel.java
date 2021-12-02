@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 import interfaces.Componentes_Interface;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
+import main.CourseRoom_Frame;
 
 /**
  *
@@ -46,7 +47,6 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         ruta_Descarga_JButton = new javax.swing.JButton();
         logo_JLabel = new javax.swing.JLabel();
         interfaz_Personalizada_JPanel = new javax.swing.JPanel();
-        cargar_Colores_Personalizados_JButton = new javax.swing.JButton();
         primer_Color_Personalizado_JLabel = new javax.swing.JLabel();
         segundo_Color_Personalizado_JLabel = new javax.swing.JLabel();
         tercer_Color_Personalizado_JLabel = new javax.swing.JLabel();
@@ -88,20 +88,6 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         logo_JLabel.setPreferredSize(new java.awt.Dimension(1071, 125));
 
         interfaz_Personalizada_JPanel.setOpaque(false);
-
-        cargar_Colores_Personalizados_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        cargar_Colores_Personalizados_JButton.setText("Cargar Colores Personalizados");
-        cargar_Colores_Personalizados_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cargar_Colores_Personalizados_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cargar_Colores_Personalizados_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cargar_Colores_Personalizados_JButtonMouseExited(evt);
-            }
-        });
 
         primer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         primer_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -161,9 +147,9 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tercer_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, interfaz_Personalizada_JPanelLayout.createSequentialGroup()
-                        .addComponent(recargar_Colores_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cargar_Colores_Personalizados_JButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(recargar_Colores_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         interfaz_Personalizada_JPanelLayout.setVerticalGroup(
@@ -175,9 +161,7 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
                     .addComponent(tercer_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(segundo_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(interfaz_Personalizada_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cargar_Colores_Personalizados_JButton)
-                    .addComponent(recargar_Colores_JButton))
+                .addComponent(recargar_Colores_JButton)
                 .addContainerGap())
         );
 
@@ -333,12 +317,7 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         if(SwingUtilities.isLeftMouseButton(evt)){
             
             Tablero_Estudiante_Panel.Establecer_Colores();
-            primer_Color_Personalizado = CourseRoom.Primer_Color();
-            segundo_Color_Personalizado = CourseRoom.Segundo_Color();
-            tercer_Color_Personalizado = CourseRoom.Tercer_Color();
-            primer_Color_Fuente_Personalizado = CourseRoom.Primer_Color_Fuente();
-            segundo_Color_Fuente_Personalizado = CourseRoom.Segundo_Color_Fuente();
-            tercer_Color_Fuente_Personalizado = CourseRoom.Tercer_Color_Fuente();
+            
         }
     }//GEN-LAST:event_recargar_Colores_JButtonMouseClicked
 
@@ -354,33 +333,6 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         recargar_Colores_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_recargar_Colores_JButtonMouseExited
 
-    private void cargar_Colores_Personalizados_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Colores_Personalizados_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            CourseRoom.Primer_Color(primer_Color_Personalizado);
-            CourseRoom.Segundo_Color(segundo_Color_Personalizado);
-            CourseRoom.Tercer_Color(tercer_Color_Personalizado);
-            CourseRoom.Primer_Color_Fuente(primer_Color_Fuente_Personalizado);
-            CourseRoom.Segundo_Color_Fuente(segundo_Color_Fuente_Personalizado);
-            CourseRoom.Tercer_Color_Fuente(tercer_Color_Fuente_Personalizado);
-
-            Tablero_Estudiante_Panel.Colorear();
-        }
-    }//GEN-LAST:event_cargar_Colores_Personalizados_JButtonMouseClicked
-
-    private void cargar_Colores_Personalizados_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Colores_Personalizados_JButtonMouseEntered
-        // TODO add your handling code here:
-        cargar_Colores_Personalizados_JButton.setBackground(CourseRoom.Tercer_Color());
-        cargar_Colores_Personalizados_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_cargar_Colores_Personalizados_JButtonMouseEntered
-
-    private void cargar_Colores_Personalizados_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Colores_Personalizados_JButtonMouseExited
-        // TODO add your handling code here:
-        cargar_Colores_Personalizados_JButton.setBackground(CourseRoom.Segundo_Color());
-        cargar_Colores_Personalizados_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_cargar_Colores_Personalizados_JButtonMouseExited
-
     private void primer_Color_Personalizado_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primer_Color_Personalizado_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -394,6 +346,12 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
                primer_Color_Personalizado_JLabel.setForeground(primer_Color_Fuente_Personalizado);
                primer_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(primer_Color_Personalizado));
                primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), primer_Color_Fuente_Personalizado));
+               
+               CourseRoom.Primer_Color(primer_Color_Personalizado);
+               CourseRoom.Primer_Color_Fuente(primer_Color_Fuente_Personalizado);
+
+               CourseRoom_Frame.Colorear();
+               Tablero_Estudiante_Panel.Colorear();
            }
         }
     }//GEN-LAST:event_primer_Color_Personalizado_JLabelMouseClicked
@@ -411,6 +369,12 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
                 segundo_Color_Personalizado_JLabel.setForeground(segundo_Color_Fuente_Personalizado);
                 segundo_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(segundo_Color_Personalizado));
                 segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), segundo_Color_Fuente_Personalizado));
+                
+                CourseRoom.Segundo_Color(segundo_Color_Personalizado);
+                CourseRoom.Segundo_Color_Fuente(segundo_Color_Fuente_Personalizado);
+
+                CourseRoom_Frame.Colorear();
+                Tablero_Estudiante_Panel.Colorear();
             } 
         }
     }//GEN-LAST:event_segundo_Color_Personalizado_JLabelMouseClicked
@@ -428,6 +392,12 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
                 tercer_Color_Personalizado_JLabel.setForeground(tercer_Color_Fuente_Personalizado);
                 tercer_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(tercer_Color_Personalizado));
                 tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), tercer_Color_Fuente_Personalizado));
+                
+                CourseRoom.Tercer_Color(tercer_Color_Personalizado);
+                CourseRoom.Tercer_Color_Fuente(tercer_Color_Fuente_Personalizado);
+                
+                CourseRoom_Frame.Colorear();
+                Tablero_Estudiante_Panel.Colorear();
             }
         }
     }//GEN-LAST:event_tercer_Color_Personalizado_JLabelMouseClicked
@@ -474,7 +444,6 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cargar_Colores_Personalizados_JButton;
     private javax.swing.JPanel cuenta_JPanel;
     private javax.swing.JButton desactivar_Notificaciones_JButton;
     private javax.swing.JButton eliminar_Cuenta_JButton;
@@ -494,12 +463,7 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
 
     @Override
     public void Iniciar_Componentes() {
-        primer_Color_Personalizado = CourseRoom.Primer_Color();
-        segundo_Color_Personalizado = CourseRoom.Segundo_Color();
-        tercer_Color_Personalizado = CourseRoom.Tercer_Color();
-        primer_Color_Fuente_Personalizado = CourseRoom.Primer_Color_Fuente();
-        segundo_Color_Fuente_Personalizado = CourseRoom.Segundo_Color_Fuente();
-        tercer_Color_Fuente_Personalizado = CourseRoom.Tercer_Color_Fuente();
+       
         sesiones_Activas_JScrollPane.getViewport().setOpaque(false);
         sesiones_Activas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         sesiones_Activas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -511,7 +475,13 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
     @Override
     public void Colorear_Componentes() {
         
-   
+        primer_Color_Personalizado = CourseRoom.Primer_Color();
+        segundo_Color_Personalizado = CourseRoom.Segundo_Color();
+        tercer_Color_Personalizado = CourseRoom.Tercer_Color();
+        primer_Color_Fuente_Personalizado = CourseRoom.Primer_Color_Fuente();
+        segundo_Color_Fuente_Personalizado = CourseRoom.Segundo_Color_Fuente();
+        tercer_Color_Fuente_Personalizado = CourseRoom.Tercer_Color_Fuente();
+        
         titulo_JLabel.setBackground(CourseRoom.Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         
@@ -523,9 +493,6 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         
         recargar_Colores_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         recargar_Colores_JButton.setBackground(CourseRoom.Segundo_Color());
-        
-        cargar_Colores_Personalizados_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        cargar_Colores_Personalizados_JButton.setBackground(CourseRoom.Segundo_Color());
         
         ruta_Descarga_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
         ruta_Descarga_JButton.setBackground(CourseRoom.Tercer_Color());

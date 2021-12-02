@@ -8,9 +8,6 @@ package paneles.estudiantes;
 import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import java.awt.Color;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -63,7 +60,9 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
         descripcion_JScrollPane.setOpaque(false);
 
         descripcion_JTextPane.setBorder(null);
+        descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        descripcion_JTextPane.setText("");
         descripcion_JTextPane.setOpaque(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
@@ -115,12 +114,7 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
         hora_JLabel.setText(concatenacion);
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        StyledDocument documento_Estilizado = descripcion_JTextPane.getStyledDocument();
-        
-        SimpleAttributeSet atributo_Centro = new SimpleAttributeSet();
-        StyleConstants.setAlignment(atributo_Centro, StyleConstants.ALIGN_CENTER);
-        documento_Estilizado.setParagraphAttributes(0, documento_Estilizado.getLength(), atributo_Centro, false);
-        descripcion_JTextPane.setText(CourseRoom.Faker().lorem().paragraph());
+        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Centro(CourseRoom.Faker().lorem().paragraph()));
        
     }
 

@@ -50,8 +50,7 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
 
         //teacherDashboardPanel = new Teacher_Dashboard_Panel();
         //jPanelViewer.add("dashboard",teacherDashboardPanel);
-        tablero_Estudiante = new Tablero_Estudiante_Panel();
-        visualizador_JPanel.add("Tablero", tablero_Estudiante);
+        
 
         visualizador_JPanel.add("crear_Cuenta", crear_Cuenta);
 
@@ -110,6 +109,8 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     }
 
     public static void Mostrar_Tablero() {
+        tablero_Estudiante = new Tablero_Estudiante_Panel();
+        visualizador_JPanel.add("Tablero", tablero_Estudiante);
         Tablero_Estudiante_Panel.Establecer_Colores();
         layout_Tarjeta.show(visualizador_JPanel, "Tablero");
     }
@@ -119,11 +120,10 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         CourseRoom.Segundo_Color(CourseRoom.Color_Azul_Claro());
         CourseRoom.Tercer_Color(CourseRoom.Color_Azul_Claro());
         visualizador_JPanel.setBackground(CourseRoom.Color_Azul_Oscuro());
-        tablero_Estudiante.Limpiar();
-        tablero_Estudiante = new Tablero_Estudiante_Panel();
         Mostrar_Inicio_Sesion();
+        System.gc();
     }
-
+    
     public static void Colorear() {
         //jPanelViewer.repaint();
         visualizador_JPanel.setBackground(CourseRoom.Primer_Color());

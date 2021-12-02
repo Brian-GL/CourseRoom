@@ -8,9 +8,6 @@ package paneles.generales;
 import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import javax.swing.ImageIcon;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -65,8 +62,9 @@ public class Acerca_De_General_Panel extends javax.swing.JPanel implements Compo
 
         descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
+        descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
-        descripcion_JTextPane.setText("CourseRoom consists mainly of a set of applications developed in the language Java programming and based on the client-server software design model. Has as main objective to organize the processes of an educational course and provide statistics respective of this to users in general. The general operation, broadly speaking, consists of three main modules: an application for the end user (be it student or teacher) who raises the general behavior of a course (student-teacher interaction, as well as the management of student learning within the course), in addition to other functionalities that allow the user to view multimedia content, view information and statistics on their courses, learn about common courses, work in groups, chat, among others stuff; a server program that controls client requests and generates responses such as uploading, editing, deleting and viewing files, establishing communication through chats and perform specific functions and / or processes, among others; and finally, a set of programs tasked with doing various specific tasks, such as generating random computers, send notifications to users, generate and obtain statistics and relevant information about students and teachers within the courses, among others.\n\nCourseRoom - All Rights Reserved");
+        descripcion_JTextPane.setText("<html>\r\n  <head>\r\n\r\n  </head>\r\n  <body>\r\n    <p style=text-align:center\">\r\n      \rCourseRoom consists mainly of a set of applications developed in the language Java programming and based on the client-server software design model. \nHas as main objective to organize the processes of an educational course and provide statistics respective of this to users in general. \nThe general operation, broadly speaking, consists of three main modules: an application for the end user (be it student or teacher) who raises the general behavior of a course\n (student-teacher interaction, as well as the management of student learning within the course), in addition to other functionalities that allow the user to view multimedia content, view information and statistics on their courses, learn about common courses, work in groups, chat, among others stuff; a server program that controls client requests and generates responses such as uploading, editing, deleting and viewing files, establishing communication through chats and perform specific functions and / or processes, among others; and finally, a set of programs tasked with doing various specific tasks, such as generating random computers, send notifications to users, generate and obtain statistics and relevant information about students and teachers within the courses, among others.  \n<br><br>CourseRoom - All Rights Reserved\n    </p>\r\n  </body>\r\n</html>\r\n");
         descripcion_JTextPane.setMinimumSize(new java.awt.Dimension(1071, 400));
         descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setPreferredSize(new java.awt.Dimension(1071, 400));
@@ -115,12 +113,6 @@ public class Acerca_De_General_Panel extends javax.swing.JPanel implements Compo
         
         ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
         logo_JLabel.setIcon(icono);
-        
-        StyledDocument documento_Estilizado = descripcion_JTextPane.getStyledDocument();
-        
-        SimpleAttributeSet atributo_Centro = new SimpleAttributeSet();
-        StyleConstants.setAlignment(atributo_Centro, StyleConstants.ALIGN_CENTER);
-        documento_Estilizado.setParagraphAttributes(0, documento_Estilizado.getLength(), atributo_Centro, false);
     }
 
     @Override

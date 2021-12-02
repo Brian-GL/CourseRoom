@@ -78,7 +78,7 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         nombre_JLabel.setMinimumSize(new java.awt.Dimension(488, 32));
         nombre_JLabel.setPreferredSize(new java.awt.Dimension(488, 32));
 
-        descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         descripcion_JLabel.setForeground(java.awt.Color.white);
         descripcion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         descripcion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/announcement.png"))); // NOI18N

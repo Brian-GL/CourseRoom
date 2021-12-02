@@ -28,7 +28,7 @@ import interfaces.Limpieza_Interface;
  */
 public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Color_Interface,Limpieza_Interface,Componentes_Interface{
 
-    private Color primer_Color, primer_Color_Fuente, segundo_Color;
+    private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     private Chat_Estudiante_Panel chat_Estudiante_Panel;
     private String id;
     
@@ -206,7 +206,8 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
             ultimo_Mensaje_JLabel.setText(CourseRoom.Faker().shakespeare().romeoAndJulietQuote());
             numero_No_Leidos_JLabel.setText(CourseRoom.Faker().number().digits(1));
             fecha_Hora_Mensaje_JLabel.setText(CourseRoom.Faker().date().birthday().toString());
-            chat_Estudiante_Panel = new Chat_Estudiante_Panel(nombre_JLabel.getText(), primer_Color, primer_Color_Fuente, segundo_Color);
+            chat_Estudiante_Panel = new Chat_Estudiante_Panel(nombre_JLabel.getText(), 
+                    primer_Color, primer_Color_Fuente, segundo_Color,segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
             
             Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, this.id);
             obtener_imagen.flush();
@@ -233,7 +234,7 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
      @Override
     public void Establecer_Colores(Image imagen){
        try {
-            Random numero_aleatorio = new Random(System.currentTimeMillis());
+            Random numero_Aleatorio = new Random(System.currentTimeMillis());
             int auxiliar_maximo_int = 0;
             primer_Color = Color.BLACK;
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
@@ -263,7 +264,7 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += numero_aleatorio.nextInt(largo_imagen+1) + largo_imagen;
+                    i += numero_Aleatorio.nextInt(largo_imagen+1) + largo_imagen;
                 }
 
                 segundo_Color = primer_Color;
@@ -273,12 +274,12 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
                 if(lista_Colores.size() > 1){
                     
                     while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = numero_aleatorio.nextInt((int)lista_Colores.size()-1);
+                        posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 25){
                              while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = numero_aleatorio.nextInt((int)lista_Colores.size()-1);
+                                posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
@@ -286,8 +287,30 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
                     }
                 }
               
+                tercer_Color = segundo_Color;
+                if (lista_Colores.size() > 2) {
+                    iteraciones = 0;
+
+                    while (Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000) {
+                        posicion = numero_Aleatorio.nextInt((int) lista_Colores.size() - 1);
+                        tercer_Color = lista_Colores.get(posicion).second();
+                        iteraciones++;
+                        if (iteraciones > 50) {
+                            while (tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()) {
+                                posicion = numero_Aleatorio.nextInt((int) lista_Colores.size() - 1);
+                                tercer_Color = lista_Colores.get(posicion).second();
+                            }
+                            break;
+                        }
+                    }
+                }
+
                 rojo = primer_Color.getRed();
                 primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                rojo = segundo_Color.getRed();
+                segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                rojo = tercer_Color.getRed();
+                tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 
                 lista_Colores.clear();
 
@@ -300,7 +323,7 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
     
     @Override
     public void Limpiar() {
-        primer_Color = primer_Color_Fuente = segundo_Color = null;
+        primer_Color = primer_Color_Fuente = segundo_Color = segundo_Color_Fuente = tercer_Color = tercer_Color_Fuente = null;
         chat_Estudiante_Panel.Limpiar();
         id = null;
     }

@@ -6,7 +6,6 @@
 package paneles.estudiantes;
 
 import main.CourseRoom;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
@@ -19,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import interfaces.Componentes_Interface;
+import java.awt.Color;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -108,7 +108,6 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         editar_Perfil_JTabbedPane.setMinimumSize(new java.awt.Dimension(1085, 630));
         editar_Perfil_JTabbedPane.setPreferredSize(new java.awt.Dimension(1085, 630));
 
-        autenticacion_JPanel.setBackground(new java.awt.Color(14, 30, 64));
         autenticacion_JPanel.setMinimumSize(new java.awt.Dimension(800, 600));
         autenticacion_JPanel.setOpaque(false);
 
@@ -118,9 +117,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         nombre_Usuario_JLabel.setMinimumSize(new java.awt.Dimension(320, 29));
         nombre_Usuario_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
+        nombre_Usuario_JTextField.setEditable(false);
         nombre_Usuario_JTextField.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         nombre_Usuario_JTextField.setToolTipText("<html>\n\n<p>\n\nIngrese aquí el nombre de usuario de su elección. Sin embargo, tome las siguientes medidas:<br>\n<b>\n   * El nombre de usuario puede contener letras, números y carácteres con valor ascii entre 32 y 126.<br>\n   * Sólamente se permite un máximo de 20 carácteres.\n\n</b>\n\n</p>\n\n</html>");
-        nombre_Usuario_JTextField.setEnabled(false);
         nombre_Usuario_JTextField.setMinimumSize(new java.awt.Dimension(320, 36));
         nombre_Usuario_JTextField.setPreferredSize(new java.awt.Dimension(320, 36));
 
@@ -130,9 +129,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         contrasena_JLabel.setMinimumSize(new java.awt.Dimension(320, 29));
         contrasena_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
+        contrasena_JPasswordField.setEditable(false);
         contrasena_JPasswordField.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         contrasena_JPasswordField.setToolTipText("Ingrese Aquí Su Contraseña (Mínimo 8 Carácteres)");
-        contrasena_JPasswordField.setEnabled(false);
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
 
@@ -142,9 +141,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         correo_Electronico_JLabel.setMinimumSize(new java.awt.Dimension(500, 29));
         correo_Electronico_JLabel.setPreferredSize(new java.awt.Dimension(500, 29));
 
+        correo_Electronico_JTextField.setEditable(false);
         correo_Electronico_JTextField.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         correo_Electronico_JTextField.setToolTipText("Ingrese Aquí Su Correo Electrónico (Ingrese Uno Que Pueda Utilizar)");
-        correo_Electronico_JTextField.setEnabled(false);
         correo_Electronico_JTextField.setMinimumSize(new java.awt.Dimension(500, 36));
         correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(500, 36));
 
@@ -154,9 +153,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         repetir_Contrasena_JLabel.setMinimumSize(new java.awt.Dimension(320, 29));
         repetir_Contrasena_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
+        repetir_Contrasena_JPasswordField.setEditable(false);
         repetir_Contrasena_JPasswordField.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         repetir_Contrasena_JPasswordField.setToolTipText("Re-Ingrese Aquí La Contraseña");
-        repetir_Contrasena_JPasswordField.setEnabled(false);
         repetir_Contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         repetir_Contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
 
@@ -398,7 +397,6 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
 
         editar_Perfil_JTabbedPane.addTab(" Autenticación ", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/avatar.png")), autenticacion_JPanel, "Editar Mis Credenciales Para Acceder Al Sistema."); // NOI18N
 
-        datos_Personales_JPanel.setBackground(new java.awt.Color(14, 30, 64));
         datos_Personales_JPanel.setMinimumSize(new java.awt.Dimension(800, 600));
         datos_Personales_JPanel.setOpaque(false);
 
@@ -408,9 +406,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         nombres_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         nombres_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
+        nombres_JTextField.setEditable(false);
         nombres_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         nombres_JTextField.setToolTipText("<html>Ingresa Aquí Tu(s) Nombre(s).<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
-        nombres_JTextField.setEnabled(false);
         nombres_JTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         nombres_JTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
@@ -420,15 +418,15 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         apellidos_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         apellidos_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
+        apellidos_JTextField.setEditable(false);
         apellidos_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         apellidos_JTextField.setToolTipText("<html>Ingresa Aquí Tu(s) Apellido(s).<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
-        apellidos_JTextField.setEnabled(false);
         apellidos_JTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         apellidos_JTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
+        localidad_JTextField.setEditable(false);
         localidad_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         localidad_JTextField.setToolTipText("Ingresa Tu Localidad En Este Campo.");
-        localidad_JTextField.setEnabled(false);
         localidad_JTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         localidad_JTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
@@ -438,9 +436,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         localidad_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         localidad_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
+        genero_JTextField.setEditable(false);
         genero_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         genero_JTextField.setToolTipText("Ingresa Aquí Tu Género, Sexo O Identidad De Género.");
-        genero_JTextField.setEnabled(false);
         genero_JTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         genero_JTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
@@ -450,9 +448,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         genero_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         genero_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
+        telefono_JFormattedTextField.setEditable(false);
         telefono_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##########"))));
         telefono_JFormattedTextField.setToolTipText("<html>Ingresa Aquí Tu Número De Teléfono O Celular.<br><b>NOTA: SOLAMENTE SE PERMITEN INGRESAR VALORES NUMÉRICOS.</b></html>");
-        telefono_JFormattedTextField.setEnabled(false);
         telefono_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         telefono_JFormattedTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         telefono_JFormattedTextField.setPreferredSize(new java.awt.Dimension(400, 36));
@@ -463,9 +461,9 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         telefono_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         telefono_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
+        fecha_Nacimiento_JFormattedTextField.setEditable(false);
         fecha_Nacimiento_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-mm-yyyy"))));
         fecha_Nacimiento_JFormattedTextField.setToolTipText("<html>Ingresa Aquí Tu Fecha De Nacimiento.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.<br>ADEMÁS, DEBERÁS INGRESAR LA FECHA CON EL SIGUIENTE FORMATO: dd-mm-aaaa<br>d: dia, m: mes, a: año.</b>.</html>");
-        fecha_Nacimiento_JFormattedTextField.setEnabled(false);
         fecha_Nacimiento_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         fecha_Nacimiento_JFormattedTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         fecha_Nacimiento_JFormattedTextField.setPreferredSize(new java.awt.Dimension(400, 36));
@@ -492,7 +490,6 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         tipo_Perfil_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Maestro", "Ambos" }));
         tipo_Perfil_JComboBox.setToolTipText("<html>Aquí Puedes Seleccionar Tu Perfil De Las Posibles.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
         tipo_Perfil_JComboBox.setBorder(null);
-        tipo_Perfil_JComboBox.setEnabled(false);
         tipo_Perfil_JComboBox.setMaximumSize(new java.awt.Dimension(400, 36));
         tipo_Perfil_JComboBox.setMinimumSize(new java.awt.Dimension(400, 36));
         tipo_Perfil_JComboBox.setPreferredSize(new java.awt.Dimension(400, 36));
@@ -522,17 +519,20 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         promedio_General_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         promedio_General_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
 
+        promedio_General_JFormattedTextField.setEditable(false);
         promedio_General_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.###"))));
         promedio_General_JFormattedTextField.setToolTipText("<html>Ingresa Aquí Tu Promedio De La Escuela.<br><b>NOTA: SOLAMENTE SE PERMITEN INGRESAR VALORES NUMÉRICOS.</b></html>");
-        promedio_General_JFormattedTextField.setEnabled(false);
         promedio_General_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         promedio_General_JFormattedTextField.setMinimumSize(new java.awt.Dimension(400, 36));
         promedio_General_JFormattedTextField.setPreferredSize(new java.awt.Dimension(400, 36));
 
         descripcion_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        descripcion_JScrollPane.setPreferredSize(new java.awt.Dimension(400, 28));
 
+        descripcion_JTextPane.setEditable(false);
+        descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
-        descripcion_JTextPane.setEnabled(false);
+        descripcion_JTextPane.setText("");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         apellidos_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
@@ -671,40 +671,24 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                         .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                .addComponent(telefono_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(telefono_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(genero_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(genero_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(genero_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(68, 68, 68)
-                        .addComponent(guardar_Cambios_Datos_Personales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(promedio_General_JButton)
-                        .addGap(3, 3, 3))
-                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(apellidos_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(localidad_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(fecha_Nacimiento_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(localidad_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(apellidos_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(localidad_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fecha_Nacimiento_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(localidad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(apellidos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(localidad_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fecha_Nacimiento_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                                .addComponent(nombres_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(nombres_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nombres_JTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(nombres_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(nombres_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(68, 68, 68)
                         .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
@@ -713,16 +697,35 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(descripcion_JScrollPane)
-                                    .addComponent(tipo_Perfil_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tipo_Perfil_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tipo_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(promedio_General_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(promedio_General_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(telefono_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                                        .addComponent(telefono_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(telefono_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(genero_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(genero_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(68, 68, 68)
+                                .addComponent(guardar_Cambios_Datos_Personales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(promedio_General_JButton))
+                            .addComponent(telefono_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
         datos_Personales_JPanelLayout.setVerticalGroup(
             datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1185,48 +1188,30 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
     @Override
     public void Colorear_Componentes(){
         
-        Color color_Transparente = new Color(0,0,0,0);
-        editar_Perfil_JTabbedPane.setBackground(color_Transparente);
+        editar_Perfil_JTabbedPane.setBackground(CourseRoom.Primer_Color());
         editar_Perfil_JTabbedPane.setForeground(CourseRoom.Primer_Color_Fuente());
+        
+        apellidos_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        contrasena_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        correo_Electronico_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        descripcion_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        fecha_Nacimiento_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        genero_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        informacion_Contrasena_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        informacion_Correo_Electronico_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        informacion_Nombre_Usaurio_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        informacion_Repetir_Contrasena_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        localidad_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        nombre_Usuario_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        nombres_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        promedio_General_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        repetir_Contrasena_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        telefono_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        tipo_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         
         autenticacion_JPanel.setForeground(CourseRoom.Primer_Color_Fuente());
         datos_Personales_JPanel.setForeground(CourseRoom.Primer_Color_Fuente());
-        
-        Component[] componentes = datos_Personales_JPanel.getComponents();
-        Component componente;
-        String clase;
-        
-        for(int i = 0; i < componentes.length;i++){
-            
-            componente = componentes[i];
-            clase = componente.getClass().getSimpleName();
-            switch (clase) {
-                case "JTextField" ->
-                    ((JTextField) componente).setCaretColor(CourseRoom.Segundo_Color_Fuente());
-                case "JFormattedTextField" ->
-                    ((JFormattedTextField) componente).setCaretColor(CourseRoom.Segundo_Color_Fuente());
-            }
-
-            componente.setBackground(CourseRoom.Segundo_Color());
-            componente.setForeground(CourseRoom.Segundo_Color_Fuente());
-        }
-        
-        componentes = autenticacion_JPanel.getComponents();
-        
-        for(int i = 0; i < componentes.length;i++){
-            
-            componente = componentes[i];
-            clase = componente.getClass().getSimpleName();
-            switch (clase) {
-                case "JTextField" ->
-                    ((JTextField) componente).setCaretColor(CourseRoom.Segundo_Color());
-                case "JFormattedTextField" ->
-                    ((JFormattedTextField) componente).setCaretColor(CourseRoom.Segundo_Color());
-            }
-
-            componente.setBackground(CourseRoom.Segundo_Color());
-            componente.setForeground(CourseRoom.Segundo_Color_Fuente());
-        }
     
         descripcion_JTextPane.setBackground(CourseRoom.Segundo_Color());
         descripcion_JTextPane.setForeground(CourseRoom.Segundo_Color_Fuente());
@@ -1266,6 +1251,58 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         descripcion_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         promedio_General_JButton.setBackground(CourseRoom.Segundo_Color());
         promedio_General_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
+        imagen_Editar_JButton.setBackground(CourseRoom.Segundo_Color());
+        imagen_Editar_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+       
+        contrasena_JPasswordField.setBackground(CourseRoom.Segundo_Color());
+        contrasena_JPasswordField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        contrasena_JPasswordField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        fecha_Nacimiento_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
+        fecha_Nacimiento_JFormattedTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        fecha_Nacimiento_JFormattedTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        promedio_General_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
+        promedio_General_JFormattedTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        promedio_General_JFormattedTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        repetir_Contrasena_JPasswordField.setBackground(CourseRoom.Segundo_Color());
+        repetir_Contrasena_JPasswordField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        repetir_Contrasena_JPasswordField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        telefono_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
+        telefono_JFormattedTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        telefono_JFormattedTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        tipo_Perfil_JComboBox.setBackground(CourseRoom.Segundo_Color());
+        tipo_Perfil_JComboBox.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
+        nombre_Usuario_JTextField.setBackground(CourseRoom.Segundo_Color());
+        nombre_Usuario_JTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        nombre_Usuario_JTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        correo_Electronico_JTextField.setBackground(CourseRoom.Segundo_Color());
+        correo_Electronico_JTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        correo_Electronico_JTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        nombres_JTextField.setBackground(CourseRoom.Segundo_Color());
+        nombres_JTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        nombres_JTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        apellidos_JTextField.setBackground(CourseRoom.Segundo_Color());
+        apellidos_JTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        apellidos_JTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        localidad_JTextField.setBackground(CourseRoom.Segundo_Color());
+        localidad_JTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        localidad_JTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        genero_JTextField.setBackground(CourseRoom.Segundo_Color());
+        genero_JTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        genero_JTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        
+        regresar_JButton.setBackground(CourseRoom.Primer_Color());
         
     }
     
