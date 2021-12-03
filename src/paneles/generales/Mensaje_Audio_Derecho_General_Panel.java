@@ -9,6 +9,7 @@ import interfaces.Componentes_Interface;
 import main.CourseRoom;
 import interfaces.Limpieza_Interface;
 import interfaces.Reproductor_Interface;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -39,7 +40,7 @@ import uk.co.caprica.vlcj.player.component.AudioPlayerComponent;
  *
  * @author LENOVO
  */
-public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Reproductor_Interface{
+public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Reproductor_Interface{
 
     private AudioPlayerComponent componente_Reproductor_Audio;
     private boolean bandera_Mouse;
@@ -49,7 +50,14 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
     private ImageIcon icono_Play, icono_Pausa;
     
    
-    public Mensaje_Audio_General_Panel(String _emisor, String _fecha, String _mrl, String _titulo) {
+    public Mensaje_Audio_Derecho_General_Panel(
+            String _emisor, 
+            String _fecha, 
+            String _mrl, 
+            String _titulo,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente
+        ) {
         initComponents();
         
         fecha_JLabel.setText(_fecha);
@@ -61,6 +69,20 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
         mrl = _mrl;
 
         Iniciar_Componentes();
+        
+        fecha_JLabel.setForeground(_tercer_Color_Fuente);
+        emisor_JLabel.setForeground(_tercer_Color_Fuente);
+        contenido_JPanel.setBackground(_tercer_Color);
+        contenido_JPanel.setForeground(_tercer_Color_Fuente);
+        
+        
+        duracion_JLabel.setForeground(_tercer_Color_Fuente);
+        progreso_JLabel.setForeground(_tercer_Color_Fuente);
+        titulo_JLabel.setForeground(_tercer_Color_Fuente);
+        artista_JLabel.setForeground(_tercer_Color_Fuente);
+        album_JLabel.setForeground(_tercer_Color_Fuente);
+        progreso_JSlider.setForeground(_tercer_Color_Fuente);
+        progreso_JSlider.setBackground(_tercer_Color_Fuente);
     }
 
     /**
@@ -72,6 +94,7 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenido_JPanel = new javax.swing.JPanel();
         fecha_JLabel = new javax.swing.JLabel();
         informacion_Audio_JPanel = new javax.swing.JPanel();
         imagen_Arte_JLabel = new javax.swing.JLabel();
@@ -84,27 +107,31 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
         duracion_JLabel = new javax.swing.JLabel();
         alto_JLabel = new javax.swing.JLabel();
         emisor_JLabel = new javax.swing.JLabel();
+        auxiliar_JPanel = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(800, 432));
-        setMinimumSize(new java.awt.Dimension(800, 432));
+        setMaximumSize(new java.awt.Dimension(32767, 272));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(800, 432));
+        setPreferredSize(new java.awt.Dimension(1080, 272));
         setRequestFocusEnabled(false);
+
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        fecha_JLabel.setText("MIÉRCOLES 31 DE DICIEMBRE DE 2021 -  10:40 P.M");
         fecha_JLabel.setToolTipText("Fecha & Hora Del Mensaje");
-        fecha_JLabel.setOpaque(true);
 
+        informacion_Audio_JPanel.setOpaque(false);
+
+        imagen_Arte_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(380, 380));
         imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(380, 380));
-        imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(380, 380));
+        imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(300, 300));
 
         album_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         album_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        album_JLabel.setText("Álbum");
-        album_JLabel.setToolTipText("Álbum");
+        album_JLabel.setText("Album");
+        album_JLabel.setToolTipText("Album");
 
         artista_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         artista_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -160,14 +187,14 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
         informacion_Audio_JPanelLayout.setHorizontalGroup(
             informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 35, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
                         .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(duracion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(artista_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -176,19 +203,18 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
                     .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
                         .addGap(84, 84, 84)
                         .addComponent(alto_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addComponent(play_Pausa_JLabel)
                         .addGap(96, 96, 96)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         informacion_Audio_JPanelLayout.setVerticalGroup(
             informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
+                .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Audio_JPanelLayout.createSequentialGroup()
                         .addComponent(titulo_JLabel)
                         .addGap(10, 10, 10)
                         .addComponent(artista_JLabel)
@@ -208,35 +234,65 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
         );
 
         emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        emisor_JLabel.setText("AMILDOALODLAOLSMDFFR");
+        emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emisor_JLabel.setToolTipText("Emisor Del Mensaje");
-        emisor_JLabel.setOpaque(true);
+
+        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
+        contenido_JPanel.setLayout(contenido_JPanelLayout);
+        contenido_JPanelLayout.setHorizontalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(informacion_Audio_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        contenido_JPanelLayout.setVerticalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(informacion_Audio_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        auxiliar_JPanel.setOpaque(false);
+
+        javax.swing.GroupLayout auxiliar_JPanelLayout = new javax.swing.GroupLayout(auxiliar_JPanel);
+        auxiliar_JPanel.setLayout(auxiliar_JPanelLayout);
+        auxiliar_JPanelLayout.setHorizontalGroup(
+            auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 577, Short.MAX_VALUE)
+        );
+        auxiliar_JPanelLayout.setVerticalGroup(
+            auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(emisor_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fecha_JLabel))
-                    .addComponent(informacion_Audio_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecha_JLabel)
-                    .addComponent(emisor_JLabel))
-                .addGap(0, 0, 0)
-                .addComponent(informacion_Audio_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -304,6 +360,8 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
     private javax.swing.JLabel album_JLabel;
     private javax.swing.JLabel alto_JLabel;
     private javax.swing.JLabel artista_JLabel;
+    private javax.swing.JPanel auxiliar_JPanel;
+    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel duracion_JLabel;
     private javax.swing.JLabel emisor_JLabel;
     private javax.swing.JLabel fecha_JLabel;
@@ -333,7 +391,6 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
         icono_Pausa = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
         bandera_Mouse = true;
         componente_Reproductor_Audio = new AudioPlayerComponent();
-        Colorear_Componentes();
         
         Establecer_Eventos_Reproductor();
         
@@ -342,17 +399,7 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
 
     @Override
     public void Colorear_Componentes() {
-        fecha_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        fecha_JLabel.setBackground(CourseRoom.Primer_Color());
-        emisor_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        emisor_JLabel.setBackground(CourseRoom.Primer_Color());
-        informacion_Audio_JPanel.setBackground(CourseRoom.Segundo_Color());
-        duracion_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        progreso_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        artista_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        album_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        progreso_JSlider.setForeground(CourseRoom.Segundo_Color_Fuente());
+        // No Aplica
     }
 
     @Override
@@ -604,7 +651,7 @@ public class Mensaje_Audio_General_Panel extends javax.swing.JPanel implements L
                     
                     Image arte_Original = ((Image)arte.getImage());
                     if(arte_Original != null){
-                        Image imagen_Arte = arte_Original.getScaledInstance(380, 380, Image.SCALE_SMOOTH);
+                        Image imagen_Arte = arte_Original.getScaledInstance(170, 170, Image.SCALE_SMOOTH);
                         ImageIcon cover = new ImageIcon(imagen_Arte);
                         imagen_Arte_JLabel.setIcon(cover);
                         imagen_Arte.flush();

@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import paneles.generales.Mensaje_Audio_General_Panel;
+import paneles.generales.Mensaje_Audio_Derecho_General_Panel;
 import paneles.generales.Mensaje_Texto_Izquierdo_General_Panel;
 import paneles.generales.Mensaje_Texto_Derecho_General_Panel;
 import paneles.generales.Mensaje_Imagen_Izquierdo_General_Panel;
@@ -27,6 +27,7 @@ import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.util.Random;
+import paneles.generales.Mensaje_Audio_Izquierdo_General_Panel;
 
 /**
  *
@@ -593,14 +594,30 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 File archivo_Abierto;
                 String emisor;
                 String fecha;
-                Mensaje_Audio_General_Panel mensaje_Audio_Panel;
-                for(int i = 0; i < archivos_Abiertos.length;i++){
-                    archivo_Abierto = archivos_Abiertos[i];
-                    emisor  = CourseRoom.Faker().dune().character();
-                    fecha = CourseRoom.Faker().date().toString();
-                    mensaje_Audio_Panel  = new Mensaje_Audio_General_Panel(emisor,fecha,archivo_Abierto.getAbsolutePath(),archivo_Abierto.getName());
-                    mensajes_JPanel.add(mensaje_Audio_Panel);
+                Random r = new Random(System.currentTimeMillis());
+                if(r.nextInt(10) < 5){
+                    Mensaje_Audio_Izquierdo_General_Panel mensaje_Audio_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        emisor = CourseRoom.Faker().dune().character();
+                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        mensaje_Audio_Panel = new Mensaje_Audio_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
+                                archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
+                        mensajes_JPanel.add(mensaje_Audio_Panel);
+                    }
                 }
+                else{
+                    Mensaje_Audio_Derecho_General_Panel mensaje_Audio_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        emisor = CourseRoom.Faker().dune().character();
+                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        mensaje_Audio_Panel = new Mensaje_Audio_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
+                                archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
+                        mensajes_JPanel.add(mensaje_Audio_Panel);
+                    }
+                }
+                
                 
             }
             
