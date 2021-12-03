@@ -1089,7 +1089,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         nodo_actual = rutas.front();
                         indice = 0;
                         Cargar_Metadatos();
-                        componente_Reproducto_Lista_Audio.mediaListPlayer().controls().play();
                         volumen_JSlider.setEnabled(true);
                         volumen_JSlider.setValue(100);
                         rate_JSlider.setEnabled(true);
@@ -1106,6 +1105,12 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException ex) {
+                            
+                        }
+                        componente_Reproducto_Lista_Audio.mediaListPlayer().controls().play();
                     }
                 }
             }
@@ -1166,7 +1171,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         nodo_actual = rutas.front();
                         indice = 0;
                         Cargar_Metadatos();
-                        componente_Reproducto_Lista_Audio.mediaListPlayer().controls().play();
                         volumen_JSlider.setEnabled(true);
                         volumen_JSlider.setValue(100);
                         rate_JSlider.setEnabled(true);
@@ -1183,6 +1187,12 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException ex) {
+
+                        }
+                        componente_Reproducto_Lista_Audio.mediaListPlayer().controls().play();
                     }
                     
                 }
@@ -1513,6 +1523,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     @Override
     public void Colorear_Componentes() {
         
+        this.setBackground(primer_Color);
+        
         Color transparente = new Color(0,0,0,0);
         controles_JTabbedPane.setBackground(transparente);
         Component[] componentes = this.getComponents();
@@ -1581,8 +1593,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         presets_JComboBox.setForeground(primer_Color_Fuente);
         presets_JComboBox.setBackground(primer_Color);
         letras_JTextPane.setForeground(primer_Color_Fuente);
-
-        this.setBackground(primer_Color);
     }
     
     

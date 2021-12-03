@@ -10,11 +10,13 @@ import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import main.CourseRoom_Frame;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -239,7 +241,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     private void iniciar_Sesion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciar_Sesion_JButtonMouseClicked
         // TODO add your handling code here:
         //if(SwingUtilities.isLeftMouseButton(evt)){ } 
-        entrar();
+        Entrar();
     }//GEN-LAST:event_iniciar_Sesion_JButtonMouseClicked
 
     private void recuperar_Credenciales_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JLabelMouseClicked
@@ -347,7 +349,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         imagen_JLabel.setForeground(CourseRoom.Segundo_Color());
     }
     
-    public void entrar(){
+    public void Entrar(){
 
     String sql = "select nom_usuario,pass,status from usuarios where nom_usuario = ? and pass = ? and status = 'Active'";
     try{
@@ -367,7 +369,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             Pass.setText("");
             txtUsuario.requestFocus();
         }
-    catch (Exception e){
+    catch (HeadlessException | SQLException e){
         JOptionPane.showMessageDialog(null, e);
         }
     }

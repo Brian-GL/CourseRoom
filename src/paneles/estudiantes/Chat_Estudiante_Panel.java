@@ -7,9 +7,7 @@ package paneles.estudiantes;
 
 import main.CourseRoom;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -18,12 +16,17 @@ import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import paneles.generales.Mensaje_Audio_General_Panel;
-import paneles.generales.Mensaje_Archivo_General_Panel;
-import paneles.generales.Mensaje_Imagen_General_Panel;
-import paneles.generales.Mensaje_Texto_General_Panel;
-import paneles.generales.Mensaje_Video_General_Panel;
+import paneles.generales.Mensaje_Texto_Izquierdo_General_Panel;
+import paneles.generales.Mensaje_Texto_Derecho_General_Panel;
+import paneles.generales.Mensaje_Imagen_Izquierdo_General_Panel;
+import paneles.generales.Mensaje_Imagen_Derecho_General_Panel;
+import paneles.generales.Mensaje_Archivo_Derecho_General_Panel;
+import paneles.generales.Mensaje_Archivo_Izquierdo_General_Panel;
+import paneles.generales.Mensaje_Video_Derecho_General_Panel;
+import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import java.util.Random;
 
 /**
  *
@@ -259,7 +262,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         mensajes_JScrollPane.setOpaque(false);
 
         mensajes_JPanel.setOpaque(false);
-        mensajes_JPanel.setLayout(new javax.swing.BoxLayout(mensajes_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        mensajes_JPanel.setLayout(new java.awt.GridLayout(0, 1));
         mensajes_JScrollPane.setViewportView(mensajes_JPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -286,16 +289,21 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
 
     private void Enviar_Mensaje(){
         
+        
         String mensaje = mensaje_JTextField.getText();
         if(!mensaje.isEmpty() && !mensaje.isBlank()){
-            Dimension dimension = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200);
+            Random r = new Random(System.currentTimeMillis());
             String emisor = CourseRoom.Faker().dune().character();
-            String fecha = CourseRoom.Faker().backToTheFuture().date();
-            Mensaje_Texto_General_Panel mensaje_Texto_General_Panel = 
-                    new Mensaje_Texto_General_Panel(emisor,mensaje,fecha, primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente
-                    , tercer_Color, tercer_Color_Fuente);
-           mensaje_Texto_General_Panel.setMaximumSize(dimension);
-            mensajes_JPanel.add(mensaje_Texto_General_Panel, LEFT_ALIGNMENT);
+            String fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+            if(r.nextInt(10) < 5){
+                Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel = 
+                        new Mensaje_Texto_Izquierdo_General_Panel(emisor,fecha,mensaje,segundo_Color, segundo_Color_Fuente);
+                mensajes_JPanel.add(mensaje_Texto_General_Panel);
+            }else{
+                Mensaje_Texto_Derecho_General_Panel mensaje_Texto_General_Panel
+                        = new Mensaje_Texto_Derecho_General_Panel(emisor, fecha,mensaje,tercer_Color,tercer_Color_Fuente);
+                mensajes_JPanel.add(mensaje_Texto_General_Panel);
+            }
             mensaje_JTextField.setText("");
         }
     }
@@ -421,18 +429,31 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             if(archivos_Abiertos != null){
                 
                 File archivo_Abierto;
-                Dimension dimension = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200);
                 String emisor;
                 String fecha;
-                Mensaje_Archivo_General_Panel mensaje_Archivo_Panel;
-                for(int i = 0; i < archivos_Abiertos.length;i++){
-                    archivo_Abierto = archivos_Abiertos[i];
-                    emisor  = CourseRoom.Faker().dune().character();
-                    fecha = CourseRoom.Faker().backToTheFuture().date();
-                    mensaje_Archivo_Panel = 
-                            new Mensaje_Archivo_General_Panel(emisor,fecha,archivo_Abierto);
-                    mensaje_Archivo_Panel.setMaximumSize(dimension);
-                    mensajes_JPanel.add(mensaje_Archivo_Panel);
+                Random r = new Random(System.currentTimeMillis());
+                
+                if(r.nextInt(10) < 5){
+                    Mensaje_Archivo_Izquierdo_General_Panel mensaje_Archivo_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        emisor = CourseRoom.Faker().dune().character();
+                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        mensaje_Archivo_Panel
+                                = new Mensaje_Archivo_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto, segundo_Color,segundo_Color_Fuente);
+                        mensajes_JPanel.add(mensaje_Archivo_Panel);
+                    }
+                }
+                else{
+                    Mensaje_Archivo_Derecho_General_Panel mensaje_Archivo_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        emisor = CourseRoom.Faker().dune().character();
+                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        mensaje_Archivo_Panel
+                                = new Mensaje_Archivo_Derecho_General_Panel(emisor, fecha, archivo_Abierto, tercer_Color, tercer_Color_Fuente);
+                        mensajes_JPanel.add(mensaje_Archivo_Panel);
+                    }
                 }
                 
             }
@@ -458,18 +479,33 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             if(archivos_Abiertos != null){
                 
                 File archivo_Abierto;
-                Dimension dimension = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,520);
                 String emisor;
                 String fecha;
-                Mensaje_Video_General_Panel mensaje_Video_Panel;
-                for(int i = 0; i < archivos_Abiertos.length;i++){
-                    archivo_Abierto = archivos_Abiertos[i];
-                    emisor  = CourseRoom.Faker().dune().character();
-                    fecha = CourseRoom.Faker().backToTheFuture().date();
-                    mensaje_Video_Panel  = new Mensaje_Video_General_Panel(emisor,fecha,archivo_Abierto.getAbsolutePath(),archivo_Abierto.getName());
-                    mensaje_Video_Panel.setMaximumSize(dimension);
-                    mensajes_JPanel.add(mensaje_Video_Panel);
+                Random r = new Random(System.currentTimeMillis());
+
+                if (r.nextInt(10) < 5) {
+                    Mensaje_Video_Izquierdo_General_Panel mensaje_Video_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        emisor = CourseRoom.Faker().dune().character();
+                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        mensaje_Video_Panel = new Mensaje_Video_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
+                                archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
+                        mensajes_JPanel.add(mensaje_Video_Panel);
+                    }
                 }
+                else{
+                    Mensaje_Video_Derecho_General_Panel mensaje_Video_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        emisor = CourseRoom.Faker().dune().character();
+                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        mensaje_Video_Panel = new Mensaje_Video_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(), 
+                                archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
+                        mensajes_JPanel.add(mensaje_Video_Panel);
+                    }
+                }
+               
                 
             }
             
@@ -484,34 +520,54 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
         escogedor_Archivos.setAcceptAllFileFilterUsed(true);
         escogedor_Archivos.setApproveButtonText("Enviar Imagen(es)");
-        escogedor_Archivos.setMultiSelectionEnabled(false);
+        escogedor_Archivos.setMultiSelectionEnabled(true);
         int resultado = escogedor_Archivos.showOpenDialog(this);
         
         if (resultado == JFileChooser.APPROVE_OPTION) {
+            
             File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
             
             if(archivos_Abiertos != null){
                 
                 File archivo_Abierto;
-                Dimension dimension = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,535);
                 String emisor;
                 String fecha;
-                Mensaje_Imagen_General_Panel mensaje_Imagen_Panel;
                 Image abrir_Imagen;
-                for(int i = 0; i < archivos_Abiertos.length;i++){
-                    archivo_Abierto = archivos_Abiertos[i];
-                    try {
-                        abrir_Imagen = ImageIO.read(archivo_Abierto);
-                        emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().backToTheFuture().date();
-                        mensaje_Imagen_Panel = new Mensaje_Imagen_General_Panel(emisor,fecha,abrir_Imagen,archivo_Abierto.getName());
-                        mensaje_Imagen_Panel.setMaximumSize(dimension);
-                        mensajes_JPanel.add(mensaje_Imagen_Panel);
-                        abrir_Imagen.flush();
-                    } catch (IOException ex) {
-                        
+                Random r = new Random(System.currentTimeMillis());
+
+                if (r.nextInt(10) < 5) {
+                    Mensaje_Imagen_Izquierdo_General_Panel mensaje_Imagen_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        try {
+                            abrir_Imagen = ImageIO.read(archivo_Abierto);
+                            emisor = CourseRoom.Faker().dune().character();
+                            fecha = CourseRoom.Faker().date().birthday(22,23).toString();
+                            mensaje_Imagen_Panel
+                                    = new Mensaje_Imagen_Izquierdo_General_Panel(emisor, fecha, abrir_Imagen,
+                                            archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
+                            mensajes_JPanel.add(mensaje_Imagen_Panel);
+                        } catch (IOException ex) {
+                        }
                     }
                 }
+                else{
+                    Mensaje_Imagen_Derecho_General_Panel mensaje_Imagen_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        try {
+                            abrir_Imagen = ImageIO.read(archivo_Abierto);
+                            emisor = CourseRoom.Faker().dune().character();
+                            fecha = CourseRoom.Faker().date().birthday(22,23).toString();
+                            mensaje_Imagen_Panel
+                                    = new Mensaje_Imagen_Derecho_General_Panel(emisor, fecha, abrir_Imagen,
+                                            archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
+                            mensajes_JPanel.add(mensaje_Imagen_Panel);
+                        } catch (IOException ex) {
+                        }
+                    }
+                }
+                
                 
             }
             
@@ -535,16 +591,14 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             if(archivos_Abiertos != null){
                 
                 File archivo_Abierto;
-                Dimension dimension = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,432);
                 String emisor;
                 String fecha;
                 Mensaje_Audio_General_Panel mensaje_Audio_Panel;
                 for(int i = 0; i < archivos_Abiertos.length;i++){
                     archivo_Abierto = archivos_Abiertos[i];
                     emisor  = CourseRoom.Faker().dune().character();
-                    fecha = CourseRoom.Faker().backToTheFuture().date();
+                    fecha = CourseRoom.Faker().date().toString();
                     mensaje_Audio_Panel  = new Mensaje_Audio_General_Panel(emisor,fecha,archivo_Abierto.getAbsolutePath(),archivo_Abierto.getName());
-                    mensaje_Audio_Panel.setMaximumSize(dimension);
                     mensajes_JPanel.add(mensaje_Audio_Panel);
                 }
                 

@@ -9,6 +9,7 @@ import interfaces.Componentes_Interface;
 import main.CourseRoom;
 import interfaces.Limpieza_Interface;
 import interfaces.Reproductor_Interface;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
@@ -26,22 +27,38 @@ import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
  *
  * @author LENOVO
  */
-public class Mensaje_Video_General_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Reproductor_Interface{
+public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Reproductor_Interface{
 
     private EmbeddedMediaPlayerComponent componente_Embebido_Reproductor_Video;
     private boolean bandera_Barra_Progreso;
     private boolean bandera_Reproduccion;
     private String mrl;
     
-    public Mensaje_Video_General_Panel(String emisor, String fecha, String _mrl, String _titulo) {
+    public Mensaje_Video_Derecho_General_Panel(
+            String emisor, 
+            String fecha, 
+            String _mrl, 
+            String _titulo,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente
+        ) {
         
         initComponents();
         
         fecha_JLabel.setText(fecha);
         emisor_JLabel.setText(emisor);
-          
         titulo_JLabel.setText(_titulo);
         mrl = _mrl;
+        
+        fecha_JLabel.setForeground(_tercer_Color_Fuente);
+        emisor_JLabel.setForeground(_tercer_Color_Fuente);
+        contenido_JPanel.setBackground(_tercer_Color);
+        contenido_JPanel.setForeground(_tercer_Color_Fuente);
+
+        duracion_JLabel.setForeground(_tercer_Color_Fuente);
+        progreso_JLabel.setForeground(_tercer_Color_Fuente);
+        titulo_JLabel.setForeground(_tercer_Color_Fuente);
+        progreso_JSlider.setForeground(_tercer_Color_Fuente);
         
         Iniciar_Componentes();
       
@@ -56,33 +73,29 @@ public class Mensaje_Video_General_Panel extends javax.swing.JPanel implements L
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenido_JPanel = new javax.swing.JPanel();
         fecha_JLabel = new javax.swing.JLabel();
-        contenido_Video_JPanel = new javax.swing.JPanel();
-        vista_Video_JPanel = new javax.swing.JPanel();
         controles_JPanel = new javax.swing.JPanel();
         progreso_JLabel = new javax.swing.JLabel();
         titulo_JLabel = new javax.swing.JLabel();
         progreso_JSlider = new javax.swing.JSlider();
         duracion_JLabel = new javax.swing.JLabel();
+        vista_Video_JPanel = new javax.swing.JPanel();
         emisor_JLabel = new javax.swing.JLabel();
+        auxiliar_JPanel = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(800, 520));
-        setMinimumSize(new java.awt.Dimension(800, 520));
+        setMaximumSize(new java.awt.Dimension(32767, 571));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(800, 520));
+        setPreferredSize(new java.awt.Dimension(1080, 571));
+
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        fecha_JLabel.setText("MIÉRCOLES 25 De OCTUBRE DE 2021 - 10:10 A.M");
         fecha_JLabel.setToolTipText("Fecha & Hora Del Mensaje");
-        fecha_JLabel.setOpaque(true);
 
-        contenido_Video_JPanel.setOpaque(false);
-
-        vista_Video_JPanel.setOpaque(false);
-        vista_Video_JPanel.setLayout(new java.awt.CardLayout());
-
-        controles_JPanel.setBackground(java.awt.Color.black);
+        controles_JPanel.setOpaque(false);
 
         progreso_JLabel.setBackground(java.awt.Color.black);
         progreso_JLabel.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
@@ -113,13 +126,13 @@ public class Mensaje_Video_General_Panel extends javax.swing.JPanel implements L
             .addGroup(controles_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(controles_JPanelLayout.createSequentialGroup()
                         .addComponent(progreso_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(duracion_JLabel))
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(duracion_JLabel)))
                 .addContainerGap())
         );
         controles_JPanelLayout.setVerticalGroup(
@@ -129,64 +142,79 @@ public class Mensaje_Video_General_Panel extends javax.swing.JPanel implements L
                 .addComponent(titulo_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(progreso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                     .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(progreso_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(duracion_JLabel)))
-                .addContainerGap())
+                        .addComponent(duracion_JLabel))
+                    .addComponent(progreso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout contenido_Video_JPanelLayout = new javax.swing.GroupLayout(contenido_Video_JPanel);
-        contenido_Video_JPanel.setLayout(contenido_Video_JPanelLayout);
-        contenido_Video_JPanelLayout.setHorizontalGroup(
-            contenido_Video_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Video_JPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(contenido_Video_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(controles_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
-        );
-        contenido_Video_JPanelLayout.setVerticalGroup(
-            contenido_Video_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Video_JPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(controles_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5))
-        );
+        vista_Video_JPanel.setOpaque(false);
+        vista_Video_JPanel.setLayout(new java.awt.CardLayout());
 
         emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        emisor_JLabel.setText("AOLSMALDOEMRITMCODLA");
+        emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emisor_JLabel.setToolTipText("Emisor Del Mensaje");
-        emisor_JLabel.setOpaque(true);
+
+        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
+        contenido_JPanel.setLayout(contenido_JPanelLayout);
+        contenido_JPanelLayout.setHorizontalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(controles_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        contenido_JPanelLayout.setVerticalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(controles_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        auxiliar_JPanel.setOpaque(false);
+
+        javax.swing.GroupLayout auxiliar_JPanelLayout = new javax.swing.GroupLayout(auxiliar_JPanel);
+        auxiliar_JPanel.setLayout(auxiliar_JPanelLayout);
+        auxiliar_JPanelLayout.setHorizontalGroup(
+            auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 443, Short.MAX_VALUE)
+        );
+        auxiliar_JPanelLayout.setVerticalGroup(
+            auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contenido_Video_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(emisor_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                        .addComponent(fecha_JLabel)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecha_JLabel)
-                    .addComponent(emisor_JLabel))
-                .addGap(0, 0, 0)
-                .addComponent(contenido_Video_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -224,7 +252,8 @@ public class Mensaje_Video_General_Panel extends javax.swing.JPanel implements L
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel contenido_Video_JPanel;
+    private javax.swing.JPanel auxiliar_JPanel;
+    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JPanel controles_JPanel;
     private javax.swing.JLabel duracion_JLabel;
     private javax.swing.JLabel emisor_JLabel;
@@ -247,26 +276,13 @@ public class Mensaje_Video_General_Panel extends javax.swing.JPanel implements L
         Establecer_Eventos_Reproductor();
         componente_Embebido_Reproductor_Video.mediaPlayer().video().setAdjustVideo(true);
         
-       
-        
         Colorear_Componentes();
         
     }
 
     @Override
     public void Colorear_Componentes() {
-          
-        fecha_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        fecha_JLabel.setBackground(CourseRoom.Primer_Color());
-        
-        emisor_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        emisor_JLabel.setBackground(CourseRoom.Primer_Color());
-        
-        duracion_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        progreso_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        progreso_JSlider.setForeground(CourseRoom.Segundo_Color_Fuente());
-        controles_JPanel.setBackground(CourseRoom.Segundo_Color());
+      // No Aplica
     }
 
     @Override

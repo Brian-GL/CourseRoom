@@ -160,15 +160,19 @@ public class CourseRoom {
         return Concatenar("<html><div style='text-align:right;'>",text,"</div></html>");
     }
 
+    public static String Formato_HTML_Centro(String text) {
+        return Concatenar("<html><div style='text-align:center;'>", text, "</div></html>");
+    }
+    
+    public static String Formato_HTML_Central(String text) {
+        return Concatenar("<html><div style='text-align:center; display:flex; justify-content:center; align-items: center;'>", text, "</div></html>");
+    }
+    
     public static String RGB_Cadena(Color color) {
         return CourseRoom.Concatenar("RGB: (",
                 String.valueOf(color.getRed()), ",", 
                 String.valueOf(color.getGreen()), ",",
                 String.valueOf(color.getBlue()), ")");
-    }
-
-    public static String Formato_HTML_Centro(String text) {
-        return Concatenar("<html><div style='text-align:center;'>",text,"</div></html>");
     }
 
     public static String Concatenar(String cadena, String... args) {

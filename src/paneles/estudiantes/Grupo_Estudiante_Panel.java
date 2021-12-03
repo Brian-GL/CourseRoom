@@ -22,7 +22,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
-import paneles.generales.Mensaje_Texto_General_Panel;
+import paneles.generales.Mensaje_Texto_Izquierdo_General_Panel;
 import paneles.generales.Miembro_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
@@ -902,10 +902,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         if(!mensaje.isEmpty() && !mensaje.isBlank()){
             
             String emisor = CourseRoom.Faker().dune().character();
-            String fecha = CourseRoom.Faker().backToTheFuture().date();
-            Mensaje_Texto_General_Panel mensaje_Texto_General_Panel = 
-                    new Mensaje_Texto_General_Panel(emisor,mensaje,fecha, primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente
-                    , tercer_Color, tercer_Color_Fuente);
+            String fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+            Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel = 
+                    new Mensaje_Texto_Izquierdo_General_Panel(emisor,fecha,mensaje,segundo_Color, segundo_Color_Fuente);
             mensaje_Texto_General_Panel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
             mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
             enviar_Mensaje_JTextField.setText("");

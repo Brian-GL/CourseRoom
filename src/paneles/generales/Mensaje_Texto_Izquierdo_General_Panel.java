@@ -4,46 +4,42 @@
  * and open the template in the editor.
  */
 package paneles.generales;
-import interfaces.Componentes_Interface;
 import java.awt.Color;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 import main.CourseRoom;
 
 /**
  *
  * @author LENOVO
  */
-public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
+public class Mensaje_Texto_Izquierdo_General_Panel extends javax.swing.JPanel{
 
-    private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
-    public Mensaje_Texto_General_Panel(
+    public Mensaje_Texto_Izquierdo_General_Panel(
             String emisor, 
-            String mensaje, 
             String fecha,
-            Color _primer_Color, 
-            Color _primer_Color_Fuente, 
+            String mensaje, 
             Color _segundo_Color,
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color,
-            Color _tercer_Color_Fuente) {
+            Color _segundo_Color_Fuente) {
         
         initComponents();
         
-        primer_Color = _primer_Color;
-        primer_Color_Fuente = _primer_Color_Fuente;
-        segundo_Color = _segundo_Color;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-        tercer_Color = _tercer_Color;
-        tercer_Color_Fuente = _tercer_Color_Fuente;
         
         fecha_JLabel.setText(fecha);
         emisor_JLabel.setText(emisor);
-        mensaje_JTextPane.setText(CourseRoom.Formato_HTML_Centro(mensaje));
+        mensaje_JTextPane.setText(CourseRoom.Formato_HTML_Central(mensaje));
         
-        Iniciar_Componentes();
+        contenido_JPanel.setBackground(_segundo_Color);
+        contenido_JPanel.setForeground(_segundo_Color_Fuente);
+
+        fecha_JLabel.setForeground(_segundo_Color_Fuente);
+        emisor_JLabel.setForeground(_segundo_Color_Fuente);
+        mensaje_JTextPane.setForeground(_segundo_Color_Fuente);
+        mensaje_JScrollPane.setForeground(_segundo_Color_Fuente);
+        
+        mensaje_JScrollPane.getViewport().setOpaque(false);
+        mensaje_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        mensaje_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
     }
 
     /**
@@ -60,20 +56,20 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
         emisor_JLabel = new javax.swing.JLabel();
         mensaje_JScrollPane = new javax.swing.JScrollPane();
         mensaje_JTextPane = new javax.swing.JTextPane();
+        auxiliar_JPanel = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 200));
+        setMaximumSize(new java.awt.Dimension(32767, 224));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(800, 200));
+        setPreferredSize(new java.awt.Dimension(1080, 224));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         fecha_JLabel.setToolTipText("Fecha & Hora Del Mensaje");
         fecha_JLabel.setFocusable(false);
         fecha_JLabel.setMaximumSize(new java.awt.Dimension(413, 25));
-        fecha_JLabel.setOpaque(true);
-        fecha_JLabel.setPreferredSize(new java.awt.Dimension(413, 25));
+        fecha_JLabel.setPreferredSize(new java.awt.Dimension(467, 25));
         fecha_JLabel.setRequestFocusEnabled(false);
         fecha_JLabel.setVerifyInputWhenFocusTarget(false);
 
@@ -81,15 +77,14 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emisor_JLabel.setToolTipText("Emisor Del Mensaje");
         emisor_JLabel.setFocusable(false);
-        emisor_JLabel.setOpaque(true);
+        emisor_JLabel.setPreferredSize(new java.awt.Dimension(467, 0));
         emisor_JLabel.setRequestFocusEnabled(false);
         emisor_JLabel.setVerifyInputWhenFocusTarget(false);
 
         mensaje_JScrollPane.setBorder(null);
-        mensaje_JScrollPane.setFocusable(false);
-        mensaje_JScrollPane.setRequestFocusEnabled(false);
-        mensaje_JScrollPane.setVerifyInputWhenFocusTarget(false);
-        mensaje_JScrollPane.setWheelScrollingEnabled(false);
+        mensaje_JScrollPane.setFocusTraversalPolicyProvider(true);
+        mensaje_JScrollPane.setOpaque(false);
+        mensaje_JScrollPane.setPreferredSize(new java.awt.Dimension(467, 0));
 
         mensaje_JTextPane.setEditable(false);
         mensaje_JTextPane.setBorder(null);
@@ -97,54 +92,71 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
         mensaje_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         mensaje_JTextPane.setText("");
         mensaje_JTextPane.setFocusTraversalPolicyProvider(true);
+        mensaje_JTextPane.setOpaque(false);
         mensaje_JScrollPane.setViewportView(mensaje_JTextPane);
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
         contenido_JPanelLayout.setHorizontalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mensaje_JScrollPane)
-                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(7, 7, 7)
-                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+        );
+
+        auxiliar_JPanel.setOpaque(false);
+
+        javax.swing.GroupLayout auxiliar_JPanelLayout = new javax.swing.GroupLayout(auxiliar_JPanel);
+        auxiliar_JPanel.setLayout(auxiliar_JPanelLayout);
+        auxiliar_JPanelLayout.setHorizontalGroup(
+            auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 579, Short.MAX_VALUE)
+        );
+        auxiliar_JPanelLayout.setVerticalGroup(
+            auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel auxiliar_JPanel;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel emisor_JLabel;
     private javax.swing.JLabel fecha_JLabel;
@@ -152,25 +164,5 @@ public class Mensaje_Texto_General_Panel extends javax.swing.JPanel implements C
     private javax.swing.JTextPane mensaje_JTextPane;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void Iniciar_Componentes() {
-        mensaje_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        Colorear_Componentes();
-    }
-
-    @Override
-    public void Colorear_Componentes() {
-        
-        contenido_JPanel.setBackground(segundo_Color);
-        
-        fecha_JLabel.setBackground(tercer_Color);
-        emisor_JLabel.setBackground(tercer_Color);
-        mensaje_JTextPane.setBackground(tercer_Color);
-        
-        fecha_JLabel.setForeground(tercer_Color_Fuente);
-        emisor_JLabel.setForeground(tercer_Color_Fuente);
-        mensaje_JTextPane.setForeground(tercer_Color_Fuente);
-        mensaje_JScrollPane.setForeground(tercer_Color_Fuente);
-    }
 
 }
