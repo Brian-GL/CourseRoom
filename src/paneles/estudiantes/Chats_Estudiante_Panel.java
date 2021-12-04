@@ -121,7 +121,7 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Font gadugi = new java.awt.Font("Gadugi", 1, 20);
         titulo_JLabel.setBackground(CourseRoom.Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Segundo_Color()), 
+        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
                 gadugi, CourseRoom.Segundo_Color_Fuente()));

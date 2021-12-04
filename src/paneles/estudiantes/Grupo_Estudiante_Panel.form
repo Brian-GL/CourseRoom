@@ -247,85 +247,150 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="mensajes_Chat_JScrollPane" alignment="0" pref="1085" max="32767" attributes="0"/>
-                  <Component id="enviar_Mensajes_JPanel" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="mensajes_Chat_JScrollPane" alignment="0" pref="1085" max="32767" attributes="0"/>
+                          <Component id="enviar_Mensajes_JPanel" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="mensajes_Chat_JScrollPane" pref="586" max="32767" attributes="0"/>
+                      <Component id="mensajes_Chat_JScrollPane" pref="589" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="enviar_Mensajes_JPanel" min="-2" pref="47" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="enviar_Mensajes_JPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="mensajes_Chat_JScrollPane">
-              <Properties>
-                <Property name="opaque" type="boolean" value="false"/>
-              </Properties>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Container class="javax.swing.JPanel" name="mensajes_Chat_JPanel">
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
-                    <Property name="axis" type="int" value="1"/>
-                  </Layout>
-                </Container>
-              </SubComponents>
-            </Container>
             <Container class="javax.swing.JPanel" name="enviar_Mensajes_JPanel">
               <Properties>
-                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[1085, 70]"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[32767, 50]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1085, 50]"/>
                 </Property>
               </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="enviar_Mensaje_JTextField" pref="1021" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="enviar_Mensaje_JButton" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Component id="enviar_Videos_JButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="enviar_Audios_JButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="enviar_Imagenes_JButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="enviar_Mensaje_Chat_JTextField" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="enviar_Mensaje_JButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="enviar_Mensaje_JTextField" max="32767" attributes="0"/>
-                              <Component id="enviar_Mensaje_JButton" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="enviar_Mensaje_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="enviar_Videos_JButton" alignment="0" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="enviar_Mensaje_Chat_JTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="enviar_Audios_JButton" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="enviar_Imagenes_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="enviar_Mensaje_JTextField">
+                <Component class="javax.swing.JTextField" name="enviar_Mensaje_Chat_JTextField">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Gadugi" size="19" style="0"/>
+                      <Font name="Gadugi" size="18" style="1"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Redactar Mensaje"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Redactar Menssaje"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="enviar_Mensaje_Chat_JTextFieldKeyPressed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="enviar_Videos_JButton">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/recursos/iconos/clapperboard.png"/>
+                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Enviar Archivo De Video"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[64, 40]"/>
+                      <Dimension value="[42, 42]"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="enviar_Mensaje_JTextFieldKeyPressed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Videos_JButtonMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Videos_JButtonMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Videos_JButtonMouseExited"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="enviar_Audios_JButton">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/recursos/iconos/microphone.png"/>
+                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Enviar Archivo De Audio"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[42, 42]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Audios_JButtonMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Audios_JButtonMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Audios_JButtonMouseExited"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="enviar_Imagenes_JButton">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/recursos/iconos/edit-video.png"/>
+                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Enviar Archivo De Imagen"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[42, 42]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Imagenes_JButtonMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Imagenes_JButtonMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Imagenes_JButtonMouseExited"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="enviar_Mensaje_JButton">
@@ -340,6 +405,9 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[42, 42]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Mensaje_JButtonMouseClicked"/>
@@ -347,6 +415,25 @@
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Mensaje_JButtonMouseExited"/>
                   </Events>
                 </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="mensajes_Chat_JScrollPane">
+              <Properties>
+                <Property name="opaque" type="boolean" value="false"/>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="mensajes_Chat_JPanel">
+                  <Properties>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="1"/>
+                    <Property name="rows" type="int" value="0"/>
+                  </Layout>
+                </Container>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -371,9 +458,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="archivos_Compartidos_JScrollPane" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="ordenar_Archivos_Compartidos_JLabel" min="-2" pref="109" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ordenar_Archivos_Compatidos_JComboBox" min="-2" pref="160" max="-2" attributes="0"/>
+                              <Component id="ordenar_Archivos_Compatidos_JComboBox" min="-2" pref="134" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="filtrar_Archivos_Compatidos_JComboBox" min="-2" pref="121" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="filtro_Archivos_Compatidos_JComboBox" min="-2" pref="120" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="32767" attributes="0"/>
                               <Component id="buscar_Archivo_Compartido_JTextField" min="-2" pref="362" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="32767" attributes="0"/>
@@ -387,15 +476,18 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="compartir_Archivo_JButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ordenar_Archivos_Compatidos_JComboBox" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="ordenar_Archivos_Compartidos_JLabel" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="buscar_Archivo_Compartido_JTextField" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ordenar_Archivos_Compatidos_JComboBox" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="filtrar_Archivos_Compatidos_JComboBox" alignment="1" min="-2" pref="51" max="-2" attributes="0"/>
+                              <Component id="filtro_Archivos_Compatidos_JComboBox" alignment="1" min="-2" pref="51" max="-2" attributes="0"/>
+                              <Component id="buscar_Archivo_Compartido_JTextField" alignment="0" min="-2" pref="51" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="compartir_Archivo_JButton" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="archivos_Compartidos_JScrollPane" pref="571" max="32767" attributes="0"/>
+                      <Component id="archivos_Compartidos_JScrollPane" pref="570" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -445,7 +537,7 @@
             <Component class="javax.swing.JComboBox" name="ordenar_Archivos_Compatidos_JComboBox">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Gadugi" size="18" style="0"/>
+                  <Font name="Gadugi" size="16" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -457,18 +549,12 @@
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Ordenar Archivos Compartidos Por"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ordenar_Archivos_Compatidos_JComboBoxItemStateChanged"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="ordenar_Archivos_Compartidos_JLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Gadugi" size="18" style="0"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Ordenar Por"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="buscar_Archivo_Compartido_JTextField">
               <Properties>
@@ -480,6 +566,46 @@
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="buscar_Archivo_Compartido_JTextFieldKeyPressed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="filtrar_Archivos_Compatidos_JComboBox">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Gadugi" size="16" style="1"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="Nada"/>
+                    <StringItem index="1" value="Tipo"/>
+                    <StringItem index="2" value="Miembro"/>
+                  </StringArray>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Ordenar Archivos Compartidos Por"/>
+              </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="filtrar_Archivos_Compatidos_JComboBoxItemStateChanged"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="filtro_Archivos_Compatidos_JComboBox">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Gadugi" size="16" style="1"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="1">
+                    <StringItem index="0" value="Filtro"/>
+                  </StringArray>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Filtro Archivos Compartidos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="filtro_Archivos_Compatidos_JComboBoxItemStateChanged"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -506,7 +632,7 @@
                           <Group type="102" attributes="0">
                               <Component id="tareas_Pendientes_JLabel" min="-2" pref="391" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="mostrar_Tarea_Pendiente_Tipo_JComboBox" min="-2" pref="173" max="-2" attributes="0"/>
+                              <Component id="mostrar_Tarea_Pendiente_Tipo_JComboBox" min="-2" pref="217" max="-2" attributes="0"/>
                           </Group>
                           <Component id="tareas_Pendientes_JPanel" pref="654" max="32767" attributes="0"/>
                       </Group>
@@ -722,7 +848,7 @@
             <Component class="javax.swing.JComboBox" name="mostrar_Tarea_Pendiente_Tipo_JComboBox">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Gadugi" size="14" style="0"/>
+                  <Font name="Gadugi" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">

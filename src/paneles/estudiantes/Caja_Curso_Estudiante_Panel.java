@@ -25,6 +25,8 @@ import javax.swing.text.StyledDocument;
 import interfaces.Color_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import main.CourseRoom;
 
 /**
@@ -57,21 +59,21 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
 
         contenido_JPanel = new javax.swing.JPanel();
         imagen_Profesor_JLabel = new javax.swing.JLabel();
-        numero_Estudiantes_JLabel = new javax.swing.JLabel();
         calificacion_JScrollPane = new javax.swing.JScrollPane();
         calificacion_JTextPane = new javax.swing.JTextPane();
         nombre_JLabel = new javax.swing.JLabel();
         nombre_Profesor_JLabel = new javax.swing.JLabel();
         resenas_JButton = new javax.swing.JButton();
-        descripcion_JLabel = new javax.swing.JLabel();
         imagen_Curso_JLabel = new javax.swing.JLabel();
+        descripcion_JScrollPane = new javax.swing.JScrollPane();
+        descripcion_JTextPane = new javax.swing.JTextPane();
 
-        setMaximumSize(new java.awt.Dimension(32767, 255));
-        setMinimumSize(null);
+        setMaximumSize(new java.awt.Dimension(32767, 337));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(623, 255));
+        setPreferredSize(new java.awt.Dimension(521, 337));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contenido_JPanel.setPreferredSize(new java.awt.Dimension(619, 325));
 
         imagen_Profesor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Profesor_JLabel.setToolTipText("Perfil Del Profesor");
@@ -80,19 +82,16 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         imagen_Profesor_JLabel.setMinimumSize(new java.awt.Dimension(64, 64));
         imagen_Profesor_JLabel.setPreferredSize(new java.awt.Dimension(64, 64));
 
-        numero_Estudiantes_JLabel.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
-        numero_Estudiantes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        numero_Estudiantes_JLabel.setToolTipText("Número De Estudiantes");
-        numero_Estudiantes_JLabel.setFocusable(false);
-        numero_Estudiantes_JLabel.setRequestFocusEnabled(false);
-        numero_Estudiantes_JLabel.setVerifyInputWhenFocusTarget(false);
-
         calificacion_JScrollPane.setBorder(null);
+        calificacion_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        calificacion_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         calificacion_JScrollPane.setOpaque(false);
 
         calificacion_JTextPane.setEditable(false);
         calificacion_JTextPane.setBorder(null);
+        calificacion_JTextPane.setContentType("text/html"); // NOI18N
         calificacion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        calificacion_JTextPane.setText("");
         calificacion_JTextPane.setToolTipText("Calificación:");
         calificacion_JTextPane.setFocusable(false);
         calificacion_JTextPane.setOpaque(false);
@@ -109,8 +108,9 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         nombre_Profesor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/profile.png"))); // NOI18N
         nombre_Profesor_JLabel.setToolTipText("Nombre Del Maestro");
 
-        resenas_JButton.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        resenas_JButton.setText("Ver Reseñas");
+        resenas_JButton.setFont(new java.awt.Font("Gadugi", 3, 15)); // NOI18N
+        resenas_JButton.setText("Reseñas");
+        resenas_JButton.setOpaque(true);
         resenas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 resenas_JButtonMouseClicked(evt);
@@ -123,19 +123,26 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             }
         });
 
-        descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        descripcion_JLabel.setToolTipText("Información Resumida Del Curso");
-
+        imagen_Curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Curso_JLabel.setToolTipText("Imagen De Perfil Del Curso");
-        imagen_Curso_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        imagen_Curso_JLabel.setMaximumSize(new java.awt.Dimension(175, 175));
-        imagen_Curso_JLabel.setMinimumSize(new java.awt.Dimension(175, 175));
         imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(143, 143));
         imagen_Curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 imagen_Curso_JLabelMouseClicked(evt);
             }
         });
+
+        descripcion_JScrollPane.setBorder(null);
+        descripcion_JScrollPane.setToolTipText("");
+        descripcion_JScrollPane.setOpaque(false);
+
+        descripcion_JTextPane.setEditable(false);
+        descripcion_JTextPane.setBorder(null);
+        descripcion_JTextPane.setContentType("text/html"); // NOI18N
+        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        descripcion_JTextPane.setText("");
+        descripcion_JTextPane.setOpaque(false);
+        descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
@@ -144,46 +151,42 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(calificacion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(93, 93, 93))
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(descripcion_JScrollPane)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                                .addComponent(calificacion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(numero_Estudiantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resenas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(resenas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
                         .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(resenas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(nombre_Profesor_JLabel)
+                        .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(calificacion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numero_Estudiantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(resenas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(calificacion_JScrollPane))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -192,7 +195,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -235,12 +238,12 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
     private javax.swing.JScrollPane calificacion_JScrollPane;
     private javax.swing.JTextPane calificacion_JTextPane;
     private javax.swing.JPanel contenido_JPanel;
-    private javax.swing.JLabel descripcion_JLabel;
+    private javax.swing.JScrollPane descripcion_JScrollPane;
+    private javax.swing.JTextPane descripcion_JTextPane;
     private javax.swing.JLabel imagen_Curso_JLabel;
     private javax.swing.JLabel imagen_Profesor_JLabel;
     private javax.swing.JLabel nombre_JLabel;
     private javax.swing.JLabel nombre_Profesor_JLabel;
-    private javax.swing.JLabel numero_Estudiantes_JLabel;
     private javax.swing.JButton resenas_JButton;
     // End of variables declaration//GEN-END:variables
 
@@ -248,8 +251,13 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
     @Override
     public void Iniciar_Componentes() {
         try {
+            Dimension resolucion_Pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+            int ancho = (resolucion_Pantalla.width * 500) / 1270;
+            
             System.out.println("Curso ID: "+this.id+" -> Getting Image From https://loremflickr.com/143/143/sunset,beach/all");
-            URL url_Imagen = new URL("https://loremflickr.com/226/226/sunset,beach/all");
+            URL url_Imagen = new URL(
+                    CourseRoom.Concatenar("https://loremflickr.com/",String.valueOf(ancho),"/125/sunset,beach/all")
+            );
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             ImageIcon icono = new ImageIcon(obtener_Imagen);
             imagen_Curso_JLabel.setIcon(icono);
@@ -258,33 +266,23 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             Colorear_Componentes();
             
             System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://loremflickr.com/64/64/sunset,beach/all");
-            url_Imagen = new URL("https://loremflickr.com/64/64/sunset,beach/all");
+            url_Imagen = new URL("https://loremflickr.com/86/86/sunset,beach/all");
             obtener_Imagen = ImageIO.read(url_Imagen);
             icono = new ImageIcon(obtener_Imagen);
             imagen_Profesor_JLabel.setIcon(icono);
             
+            
             obtener_Imagen.flush();
             
-            numero_Estudiantes_JLabel.setText(CourseRoom.Concatenar(CourseRoom.Faker().number().digit(), " Integrantes"));
             nombre_JLabel.setText(CourseRoom.Faker().ancient().god());
             nombre_Profesor_JLabel.setText(CourseRoom.Faker().name().nameWithMiddle());
-            descripcion_JLabel.setText(CourseRoom.Formato_HTML_Centro(CourseRoom.Faker().lorem().paragraph()));
+            descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph()));
+            descripcion_JScrollPane.getViewport().setOpaque(false);
+            calificacion_JScrollPane.getViewport().setOpaque(false);
             
-            SimpleAttributeSet atributos = new SimpleAttributeSet();
-            StyleConstants.setItalic(atributos, true);
-            calificacion_JTextPane.setCharacterAttributes(atributos, true);
-            calificacion_JTextPane.setText("Calificación:    ");
-            StyledDocument documento = (StyledDocument) calificacion_JTextPane.getDocument();
-            Style estilo = documento.addStyle("StyleName", null);
-            ImageIcon estrella = new ImageIcon(getClass().getResource("/recursos/iconos/star.png"));
-            for(int i = 0; i < 4;i++){
-                try {
-                    StyleConstants.setIcon(estilo, estrella);
-                    documento.insertString(documento.getLength(), "", estilo);
-                } catch (BadLocationException ex) {
-                    
-                }
-            }
+            String aux = CourseRoom.Concatenar("Calificacion: ",CourseRoom.Faker().number().numberBetween(1, 5));
+            aux = CourseRoom.Concatenar(aux,"/5");
+            calificacion_JTextPane.setText(CourseRoom.Formato_HTML_Centro(aux));
             
             
         } catch (MalformedURLException ex) {
@@ -296,15 +294,13 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
 
     @Override
     public void Colorear_Componentes() {
-        descripcion_JLabel.setForeground(primer_Color_Fuente);
+        
+        descripcion_JTextPane.setForeground(primer_Color_Fuente);
                 
         calificacion_JTextPane.setForeground(primer_Color_Fuente);
-        calificacion_JTextPane.setBackground(primer_Color);
-        calificacion_JScrollPane.setBackground(primer_Color);
 
         nombre_JLabel.setForeground(primer_Color_Fuente);
         nombre_Profesor_JLabel.setForeground(primer_Color_Fuente);
-        numero_Estudiantes_JLabel.setForeground(primer_Color_Fuente);
 
         resenas_JButton.setForeground(segundo_Color_Fuente);
         resenas_JButton.setBackground(segundo_Color);

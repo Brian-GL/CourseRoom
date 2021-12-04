@@ -55,7 +55,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         avisos_JScrollPane.setViewportView(avisos_JPanel);
 
         ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
-        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fecha: Más Reciente", "Fecha: Menos Reciente", "Estatus: Leído", "Estatus: No Leído", " " }));
+        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fecha: Más Reciente", "Fecha: Menos Reciente", "Estatus: Leído", "Estatus: No Leído" }));
         ordenar_Por_JComboBox.setToolTipText("Ordenar Avisos Por");
         ordenar_Por_JComboBox.setBorder(null);
         ordenar_Por_JComboBox.setOpaque(true);
@@ -85,7 +85,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 540, Short.MAX_VALUE)
                 .addContainerGap())
@@ -122,7 +122,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         Font gadugi = new Font("Gadugi", 1, 20);
         titulo_JLabel.setBackground(CourseRoom.Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Segundo_Color()), 
+        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
                 gadugi, CourseRoom.Segundo_Color_Fuente()));

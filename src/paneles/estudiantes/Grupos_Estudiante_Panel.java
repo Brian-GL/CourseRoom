@@ -110,8 +110,7 @@ public class Grupos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         String concatenacion;
         Caja_Grupo_Estudiante_Panel caja_Grupo_Estudiante_Panel;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
-            
-            concatenacion = CourseRoom.Concatenar("Grupo_", i);
+            concatenacion = CourseRoom.Concatenar("Grupo_",i);
             caja_Grupo_Estudiante_Panel = new Caja_Grupo_Estudiante_Panel(concatenacion);
             grupos_JPanel.add(caja_Grupo_Estudiante_Panel);
         }
@@ -123,7 +122,7 @@ public class Grupos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         Font gadugi = new java.awt.Font("Gadugi", 1, 20);
         titulo_JLabel.setBackground(CourseRoom.Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Segundo_Color()), 
+        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
                 gadugi, CourseRoom.Segundo_Color_Fuente()));

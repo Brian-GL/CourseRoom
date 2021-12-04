@@ -42,7 +42,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="titulo_JLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="ordenar_Por_JComboBox" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="ordenar_Por_JComboBox" min="-2" pref="62" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="avisos_JScrollPane" pref="540" max="32767" attributes="0"/>
@@ -104,12 +104,11 @@
           <Font name="Gadugi" size="17" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
+          <StringArray count="4">
             <StringItem index="0" value="Fecha: M&#xe1;s Reciente"/>
             <StringItem index="1" value="Fecha: Menos Reciente"/>
             <StringItem index="2" value="Estatus: Le&#xed;do"/>
             <StringItem index="3" value="Estatus: No Le&#xed;do"/>
-            <StringItem index="4" value=" "/>
           </StringArray>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Ordenar Avisos Por"/>

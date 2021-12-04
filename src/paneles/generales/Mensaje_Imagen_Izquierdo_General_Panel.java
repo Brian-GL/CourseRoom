@@ -35,7 +35,7 @@ public class Mensaje_Imagen_Izquierdo_General_Panel extends javax.swing.JPanel{
 
         int ancho = (resolucion_Pantalla.width * 486) / 1270;
 
-        imagen = imagen.getScaledInstance(486, 488, Image.SCALE_DEFAULT);
+        imagen = imagen.getScaledInstance(ancho, 488, Image.SCALE_DEFAULT);
         ImageIcon icon = new ImageIcon(imagen);
         imagen_JLabel.setIcon(icon);
         imagen.flush();

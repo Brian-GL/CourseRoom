@@ -295,7 +295,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         if(!mensaje.isEmpty() && !mensaje.isBlank()){
             Random r = new Random(System.currentTimeMillis());
             String emisor = CourseRoom.Faker().dune().character();
-            String fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+            String fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
             if(r.nextInt(10) < 5){
                 Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel = 
                         new Mensaje_Texto_Izquierdo_General_Panel(emisor,fecha,mensaje,segundo_Color, segundo_Color_Fuente);
@@ -308,6 +308,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             mensaje_JTextField.setText("");
         }
     }
+    
     private void mensaje_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mensaje_JTextFieldKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
@@ -439,7 +440,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
                         emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
                         mensaje_Archivo_Panel
                                 = new Mensaje_Archivo_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto, segundo_Color,segundo_Color_Fuente);
                         mensajes_JPanel.add(mensaje_Archivo_Panel);
@@ -450,7 +451,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
                         emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
                         mensaje_Archivo_Panel
                                 = new Mensaje_Archivo_Derecho_General_Panel(emisor, fecha, archivo_Abierto, tercer_Color, tercer_Color_Fuente);
                         mensajes_JPanel.add(mensaje_Archivo_Panel);
@@ -489,7 +490,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
                         emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
                         mensajes_JPanel.add(mensaje_Video_Panel);
@@ -500,7 +501,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
                         emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(), 
                                 archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
                         mensajes_JPanel.add(mensaje_Video_Panel);
@@ -543,7 +544,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                         try {
                             abrir_Imagen = ImageIO.read(archivo_Abierto);
                             emisor = CourseRoom.Faker().dune().character();
-                            fecha = CourseRoom.Faker().date().birthday(22,23).toString();
+                            fecha = CourseRoom.Faker().date().birthday(0,1).toString();
                             mensaje_Imagen_Panel
                                     = new Mensaje_Imagen_Izquierdo_General_Panel(emisor, fecha, abrir_Imagen,
                                             archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
@@ -559,7 +560,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                         try {
                             abrir_Imagen = ImageIO.read(archivo_Abierto);
                             emisor = CourseRoom.Faker().dune().character();
-                            fecha = CourseRoom.Faker().date().birthday(22,23).toString();
+                            fecha = CourseRoom.Faker().date().birthday(0,1).toString();
                             mensaje_Imagen_Panel
                                     = new Mensaje_Imagen_Derecho_General_Panel(emisor, fecha, abrir_Imagen,
                                             archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
@@ -600,7 +601,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
                         emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        fecha = CourseRoom.Faker().date().birthday(0,1).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
                         mensajes_JPanel.add(mensaje_Audio_Panel);
@@ -611,7 +612,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
                         emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        fecha = CourseRoom.Faker().date().birthday(0,1).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
                         mensajes_JPanel.add(mensaje_Audio_Panel);
@@ -625,9 +626,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
 
     }
     
-    
- 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton enviar_Archivos_JButton;
     private javax.swing.JButton enviar_Audios_JButton;

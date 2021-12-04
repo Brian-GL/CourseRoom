@@ -27,8 +27,18 @@ import paneles.generales.Miembro_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.GridLayout;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import paneles.generales.Mensaje_Archivo_Derecho_General_Panel;
+import paneles.generales.Mensaje_Archivo_Izquierdo_General_Panel;
+import paneles.generales.Mensaje_Audio_Derecho_General_Panel;
+import paneles.generales.Mensaje_Audio_Izquierdo_General_Panel;
+import paneles.generales.Mensaje_Imagen_Derecho_General_Panel;
+import paneles.generales.Mensaje_Imagen_Izquierdo_General_Panel;
+import paneles.generales.Mensaje_Texto_Derecho_General_Panel;
+import paneles.generales.Mensaje_Video_Derecho_General_Panel;
+import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
 
 /**
  *
@@ -92,18 +102,22 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         miembros_Titulo_JLabel = new javax.swing.JLabel();
         regresar_JButton = new javax.swing.JButton();
         chat_Grupal_JPanel = new javax.swing.JPanel();
+        enviar_Mensajes_JPanel = new javax.swing.JPanel();
+        enviar_Mensaje_Chat_JTextField = new javax.swing.JTextField();
+        enviar_Videos_JButton = new javax.swing.JButton();
+        enviar_Audios_JButton = new javax.swing.JButton();
+        enviar_Imagenes_JButton = new javax.swing.JButton();
+        enviar_Mensaje_JButton = new javax.swing.JButton();
         mensajes_Chat_JScrollPane = new javax.swing.JScrollPane();
         mensajes_Chat_JPanel = new javax.swing.JPanel();
-        enviar_Mensajes_JPanel = new javax.swing.JPanel();
-        enviar_Mensaje_JTextField = new javax.swing.JTextField();
-        enviar_Mensaje_JButton = new javax.swing.JButton();
         compartir_Archivos_JPanel = new javax.swing.JPanel();
         archivos_Compartidos_JScrollPane = new javax.swing.JScrollPane();
         archivos_Compartidos_JPanel = new javax.swing.JPanel();
         compartir_Archivo_JButton = new javax.swing.JButton();
         ordenar_Archivos_Compatidos_JComboBox = new javax.swing.JComboBox<>();
-        ordenar_Archivos_Compartidos_JLabel = new javax.swing.JLabel();
         buscar_Archivo_Compartido_JTextField = new javax.swing.JTextField();
+        filtrar_Archivos_Compatidos_JComboBox = new javax.swing.JComboBox<>();
+        filtro_Archivos_Compatidos_JComboBox = new javax.swing.JComboBox<>();
         crear_Tareas_Pendientes_JPanel = new javax.swing.JPanel();
         tareas_Pendientes_JLabel = new javax.swing.JLabel();
         anadir_Tarea_Pendiente_JPanel = new javax.swing.JPanel();
@@ -250,20 +264,65 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         grupo_JTabbedPane.addTab("Información", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/information.png")), informacion_Grupo_JPanel); // NOI18N
 
-        mensajes_Chat_JScrollPane.setOpaque(false);
+        enviar_Mensajes_JPanel.setMaximumSize(new java.awt.Dimension(32767, 50));
+        enviar_Mensajes_JPanel.setPreferredSize(new java.awt.Dimension(1085, 50));
 
-        mensajes_Chat_JPanel.setOpaque(false);
-        mensajes_Chat_JPanel.setLayout(new javax.swing.BoxLayout(mensajes_Chat_JPanel, javax.swing.BoxLayout.Y_AXIS));
-        mensajes_Chat_JScrollPane.setViewportView(mensajes_Chat_JPanel);
-
-        enviar_Mensajes_JPanel.setMinimumSize(new java.awt.Dimension(1085, 70));
-
-        enviar_Mensaje_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        enviar_Mensaje_JTextField.setToolTipText("Redactar Mensaje");
-        enviar_Mensaje_JTextField.setPreferredSize(new java.awt.Dimension(64, 40));
-        enviar_Mensaje_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        enviar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        enviar_Mensaje_Chat_JTextField.setToolTipText("Redactar Menssaje");
+        enviar_Mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                enviar_Mensaje_JTextFieldKeyPressed(evt);
+                enviar_Mensaje_Chat_JTextFieldKeyPressed(evt);
+            }
+        });
+
+        enviar_Videos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clapperboard.png"))); // NOI18N
+        enviar_Videos_JButton.setToolTipText("Enviar Archivo De Video");
+        enviar_Videos_JButton.setBorder(null);
+        enviar_Videos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enviar_Videos_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        enviar_Videos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enviar_Videos_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                enviar_Videos_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                enviar_Videos_JButtonMouseExited(evt);
+            }
+        });
+
+        enviar_Audios_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/microphone.png"))); // NOI18N
+        enviar_Audios_JButton.setToolTipText("Enviar Archivo De Audio");
+        enviar_Audios_JButton.setBorder(null);
+        enviar_Audios_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enviar_Audios_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        enviar_Audios_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enviar_Audios_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                enviar_Audios_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                enviar_Audios_JButtonMouseExited(evt);
+            }
+        });
+
+        enviar_Imagenes_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-video.png"))); // NOI18N
+        enviar_Imagenes_JButton.setToolTipText("Enviar Archivo De Imagen");
+        enviar_Imagenes_JButton.setBorder(null);
+        enviar_Imagenes_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enviar_Imagenes_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        enviar_Imagenes_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enviar_Imagenes_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                enviar_Imagenes_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                enviar_Imagenes_JButtonMouseExited(evt);
             }
         });
 
@@ -271,6 +330,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         enviar_Mensaje_JButton.setToolTipText("Enviar Mensaje");
         enviar_Mensaje_JButton.setBorder(null);
         enviar_Mensaje_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enviar_Mensaje_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
         enviar_Mensaje_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviar_Mensaje_JButtonMouseClicked(evt);
@@ -287,37 +347,57 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         enviar_Mensajes_JPanel.setLayout(enviar_Mensajes_JPanelLayout);
         enviar_Mensajes_JPanelLayout.setHorizontalGroup(
             enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(enviar_Mensajes_JPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, enviar_Mensajes_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(enviar_Mensaje_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1021, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(enviar_Mensaje_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(enviar_Videos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(enviar_Audios_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(enviar_Mensaje_Chat_JTextField)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(enviar_Mensaje_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         enviar_Mensajes_JPanelLayout.setVerticalGroup(
             enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(enviar_Mensajes_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(enviar_Mensaje_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(enviar_Mensaje_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(4, 4, 4)
+                .addGroup(enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(enviar_Mensaje_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enviar_Videos_JButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(enviar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(enviar_Audios_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(4, 4, 4))
         );
+
+        mensajes_Chat_JScrollPane.setOpaque(false);
+
+        mensajes_Chat_JPanel.setOpaque(false);
+        mensajes_Chat_JPanel.setLayout(new java.awt.GridLayout(0, 1));
+        mensajes_Chat_JScrollPane.setViewportView(mensajes_Chat_JPanel);
 
         javax.swing.GroupLayout chat_Grupal_JPanelLayout = new javax.swing.GroupLayout(chat_Grupal_JPanel);
         chat_Grupal_JPanel.setLayout(chat_Grupal_JPanelLayout);
         chat_Grupal_JPanelLayout.setHorizontalGroup(
             chat_Grupal_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1085, Short.MAX_VALUE)
-            .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(chat_Grupal_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(chat_Grupal_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1085, Short.MAX_VALUE)
+                    .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         chat_Grupal_JPanelLayout.setVerticalGroup(
             chat_Grupal_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(chat_Grupal_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         grupo_JTabbedPane.addTab("Chat Grupal", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_3.png")), chat_Grupal_JPanel); // NOI18N
@@ -346,19 +426,38 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             }
         });
 
-        ordenar_Archivos_Compatidos_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        ordenar_Archivos_Compatidos_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         ordenar_Archivos_Compatidos_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Tipo", "Fecha", "Miembro" }));
         ordenar_Archivos_Compatidos_JComboBox.setToolTipText("Ordenar Archivos Compartidos Por");
-
-        ordenar_Archivos_Compartidos_JLabel.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        ordenar_Archivos_Compartidos_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ordenar_Archivos_Compartidos_JLabel.setText("Ordenar Por");
+        ordenar_Archivos_Compatidos_JComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ordenar_Archivos_Compatidos_JComboBoxItemStateChanged(evt);
+            }
+        });
 
         buscar_Archivo_Compartido_JTextField.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         buscar_Archivo_Compartido_JTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         buscar_Archivo_Compartido_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 buscar_Archivo_Compartido_JTextFieldKeyPressed(evt);
+            }
+        });
+
+        filtrar_Archivos_Compatidos_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+        filtrar_Archivos_Compatidos_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nada", "Tipo", "Miembro" }));
+        filtrar_Archivos_Compatidos_JComboBox.setToolTipText("Ordenar Archivos Compartidos Por");
+        filtrar_Archivos_Compatidos_JComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                filtrar_Archivos_Compatidos_JComboBoxItemStateChanged(evt);
+            }
+        });
+
+        filtro_Archivos_Compatidos_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+        filtro_Archivos_Compatidos_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtro" }));
+        filtro_Archivos_Compatidos_JComboBox.setToolTipText("Filtro Archivos Compartidos");
+        filtro_Archivos_Compatidos_JComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                filtro_Archivos_Compatidos_JComboBoxItemStateChanged(evt);
             }
         });
 
@@ -371,9 +470,11 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 .addGroup(compartir_Archivos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(archivos_Compartidos_JScrollPane)
                     .addGroup(compartir_Archivos_JPanelLayout.createSequentialGroup()
-                        .addComponent(ordenar_Archivos_Compartidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ordenar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ordenar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(filtrar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(filtro_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(buscar_Archivo_Compartido_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, Short.MAX_VALUE)
@@ -383,14 +484,16 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         compartir_Archivos_JPanelLayout.setVerticalGroup(
             compartir_Archivos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(compartir_Archivos_JPanelLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(compartir_Archivos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(compartir_Archivo_JButton)
-                    .addComponent(ordenar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ordenar_Archivos_Compartidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscar_Archivo_Compartido_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(compartir_Archivos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ordenar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(compartir_Archivos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(filtrar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(filtro_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buscar_Archivo_Compartido_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(compartir_Archivo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -491,7 +594,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 .addContainerGap())
         );
 
-        mostrar_Tarea_Pendiente_Tipo_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        mostrar_Tarea_Pendiente_Tipo_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         mostrar_Tarea_Pendiente_Tipo_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendientes", "Finalizadas" }));
         mostrar_Tarea_Pendiente_Tipo_JComboBox.setToolTipText("Mostrar Lista De Tareas Pendientes O Finalizadas");
         mostrar_Tarea_Pendiente_Tipo_JComboBox.setBorder(null);
@@ -516,7 +619,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     .addGroup(crear_Tareas_Pendientes_JPanelLayout.createSequentialGroup()
                         .addComponent(tareas_Pendientes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mostrar_Tarea_Pendiente_Tipo_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(mostrar_Tarea_Pendiente_Tipo_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tareas_Pendientes_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -777,7 +880,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void compartir_Archivo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivo_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Compartir_Archivo();
+            Compartir_Archivos();
         }
     }//GEN-LAST:event_compartir_Archivo_JButtonMouseClicked
 
@@ -853,12 +956,92 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         abandonar_Grupo_JButton.setForeground(tercer_Color_Fuente.brighter());
     }//GEN-LAST:event_abandonar_Grupo_JButtonMouseExited
 
-    private void enviar_Mensaje_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enviar_Mensaje_JTextFieldKeyPressed
+    private void mostrar_Tarea_Pendiente_Tipo_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_mostrar_Tarea_Pendiente_Tipo_JComboBoxItemStateChanged
+        // TODO add your handling code here:
+        if(mostrar_Tarea_Pendiente_Tipo_JComboBox.getSelectedIndex() == 0){
+            tareas_Pendientes_JLabel.setText("Lista De Tareas Pendientes");
+            ((CardLayout) tareas_Pendientes_JPanel.getLayout()).show(tareas_Pendientes_JPanel, "Tareas_Pendientes");
+            
+        } 
+        else{
+            tareas_Pendientes_JLabel.setText("Lista De Tareas Finalizadas");
+            ((CardLayout) tareas_Pendientes_JPanel.getLayout()).show(tareas_Pendientes_JPanel, "Tareas_Finalizadas");
+        }
+    }//GEN-LAST:event_mostrar_Tarea_Pendiente_Tipo_JComboBoxItemStateChanged
+
+    private void filtrar_Archivos_Compatidos_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtrar_Archivos_Compatidos_JComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtrar_Archivos_Compatidos_JComboBoxItemStateChanged
+
+    private void ordenar_Archivos_Compatidos_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ordenar_Archivos_Compatidos_JComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ordenar_Archivos_Compatidos_JComboBoxItemStateChanged
+
+    private void filtro_Archivos_Compatidos_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtro_Archivos_Compatidos_JComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtro_Archivos_Compatidos_JComboBoxItemStateChanged
+
+    private void buscar_Archivo_Compartido_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_Archivo_Compartido_JTextFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscar_Archivo_Compartido_JTextFieldKeyPressed
+
+    private void enviar_Mensaje_Chat_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enviar_Mensaje_Chat_JTextFieldKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             Enviar_Mensaje();
         }
-    }//GEN-LAST:event_enviar_Mensaje_JTextFieldKeyPressed
+    }//GEN-LAST:event_enviar_Mensaje_Chat_JTextFieldKeyPressed
+
+    private void enviar_Videos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Enviar_Videos();
+        }
+    }//GEN-LAST:event_enviar_Videos_JButtonMouseClicked
+
+    private void enviar_Videos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseEntered
+        // TODO add your handling code here:
+        enviar_Videos_JButton.setBackground(primer_Color);
+    }//GEN-LAST:event_enviar_Videos_JButtonMouseEntered
+
+    private void enviar_Videos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseExited
+        // TODO add your handling code here:
+        enviar_Videos_JButton.setBackground(segundo_Color);
+    }//GEN-LAST:event_enviar_Videos_JButtonMouseExited
+
+    private void enviar_Audios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseClicked
+        // TODO add your handling code here
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Enviar_Audios();
+        }
+    }//GEN-LAST:event_enviar_Audios_JButtonMouseClicked
+
+    private void enviar_Audios_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseEntered
+        // TODO add your handling code here:
+        enviar_Audios_JButton.setBackground(primer_Color);
+    }//GEN-LAST:event_enviar_Audios_JButtonMouseEntered
+
+    private void enviar_Audios_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseExited
+        // TODO add your handling code here:
+        enviar_Audios_JButton.setBackground(segundo_Color);
+    }//GEN-LAST:event_enviar_Audios_JButtonMouseExited
+
+    private void enviar_Imagenes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Enviar_Imagenes();
+        }
+    }//GEN-LAST:event_enviar_Imagenes_JButtonMouseClicked
+
+    private void enviar_Imagenes_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseEntered
+        // TODO add your handling code here:
+        enviar_Imagenes_JButton.setBackground(primer_Color);
+    }//GEN-LAST:event_enviar_Imagenes_JButtonMouseEntered
+
+    private void enviar_Imagenes_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseExited
+        // TODO add your handling code here:
+        enviar_Imagenes_JButton.setBackground(segundo_Color);
+    }//GEN-LAST:event_enviar_Imagenes_JButtonMouseExited
 
     private void enviar_Mensaje_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Mensaje_JButtonMouseClicked
         // TODO add your handling code here:
@@ -877,42 +1060,182 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         enviar_Mensaje_JButton.setBackground(segundo_Color);
     }//GEN-LAST:event_enviar_Mensaje_JButtonMouseExited
 
-    private void mostrar_Tarea_Pendiente_Tipo_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_mostrar_Tarea_Pendiente_Tipo_JComboBoxItemStateChanged
-        // TODO add your handling code here:
-        if(mostrar_Tarea_Pendiente_Tipo_JComboBox.getSelectedIndex() == 0){
-            tareas_Pendientes_JLabel.setText("Lista De Tareas Pendientes");
-            ((CardLayout) tareas_Pendientes_JPanel.getLayout()).show(tareas_Pendientes_JPanel, "Tareas_Pendientes");
-            
-        } 
-        else{
-            tareas_Pendientes_JLabel.setText("Lista De Tareas Finalizadas");
-            ((CardLayout) tareas_Pendientes_JPanel.getLayout()).show(tareas_Pendientes_JPanel, "Tareas_Finalizadas");
-        }
-    }//GEN-LAST:event_mostrar_Tarea_Pendiente_Tipo_JComboBoxItemStateChanged
+    private void Enviar_Mensaje() {
 
-    private void buscar_Archivo_Compartido_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_Archivo_Compartido_JTextFieldKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            
-        }
-    }//GEN-LAST:event_buscar_Archivo_Compartido_JTextFieldKeyPressed
-
-    private void Enviar_Mensaje(){
-        String mensaje = enviar_Mensaje_JTextField.getText();
-        if(!mensaje.isEmpty() && !mensaje.isBlank()){
-            
+        String mensaje = enviar_Mensaje_Chat_JTextField.getText();
+        if (!mensaje.isEmpty() && !mensaje.isBlank()) {
+            Random r = new Random(System.currentTimeMillis());
             String emisor = CourseRoom.Faker().dune().character();
-            String fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
-            Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel = 
-                    new Mensaje_Texto_Izquierdo_General_Panel(emisor,fecha,mensaje,segundo_Color, segundo_Color_Fuente);
-            mensaje_Texto_General_Panel.setMaximumSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width-400,200));
-            mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
-            enviar_Mensaje_JTextField.setText("");
-                    
+            String fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+            if (r.nextInt(10) < 5) {
+                Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel
+                        = new Mensaje_Texto_Izquierdo_General_Panel(emisor, fecha, mensaje, segundo_Color, segundo_Color_Fuente);
+                mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
+            } else {
+                Mensaje_Texto_Derecho_General_Panel mensaje_Texto_General_Panel
+                        = new Mensaje_Texto_Derecho_General_Panel(emisor, fecha, mensaje, tercer_Color, tercer_Color_Fuente);
+                mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
+            }
+            enviar_Mensaje_Chat_JTextField.setText("");
         }
     }
     
-    private void Compartir_Archivo(){
+    private void Enviar_Videos() {
+        JFileChooser escogedor_Archivos = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Video", "mp4", "mkv", "wmv", "3gp", "avi");
+        escogedor_Archivos.addChoosableFileFilter(filtro);
+        escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        escogedor_Archivos.setAcceptAllFileFilterUsed(true);
+        escogedor_Archivos.setApproveButtonText("Enviar Video(s)");
+        escogedor_Archivos.setMultiSelectionEnabled(true);
+
+        int resultado = escogedor_Archivos.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
+
+            if (archivos_Abiertos != null) {
+
+                File archivo_Abierto;
+                String emisor;
+                String fecha;
+                Random r = new Random(System.currentTimeMillis());
+
+                if (r.nextInt(10) < 5) {
+                    Mensaje_Video_Izquierdo_General_Panel mensaje_Video_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        emisor = CourseRoom.Faker().dune().character();
+                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                        mensaje_Video_Panel = new Mensaje_Video_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
+                                archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
+                        mensajes_Chat_JPanel.add(mensaje_Video_Panel);
+                    }
+                } else {
+                    Mensaje_Video_Derecho_General_Panel mensaje_Video_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        emisor = CourseRoom.Faker().dune().character();
+                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                        mensaje_Video_Panel = new Mensaje_Video_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
+                                archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
+                        mensajes_Chat_JPanel.add(mensaje_Video_Panel);
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+    private void Enviar_Imagenes() {
+        JFileChooser escogedor_Archivos = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imágenes", "png", "jpg", "jpeg", "bmp");
+        escogedor_Archivos.addChoosableFileFilter(filtro);
+        escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        escogedor_Archivos.setAcceptAllFileFilterUsed(true);
+        escogedor_Archivos.setApproveButtonText("Enviar Imagen(es)");
+        escogedor_Archivos.setMultiSelectionEnabled(true);
+        int resultado = escogedor_Archivos.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+
+            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
+
+            if (archivos_Abiertos != null) {
+
+                File archivo_Abierto;
+                String emisor;
+                String fecha;
+                Image abrir_Imagen;
+                Random r = new Random(System.currentTimeMillis());
+
+                if (r.nextInt(10) < 5) {
+                    Mensaje_Imagen_Izquierdo_General_Panel mensaje_Imagen_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        try {
+                            abrir_Imagen = ImageIO.read(archivo_Abierto);
+                            emisor = CourseRoom.Faker().dune().character();
+                            fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                            mensaje_Imagen_Panel
+                                    = new Mensaje_Imagen_Izquierdo_General_Panel(emisor, fecha, abrir_Imagen,
+                                            archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
+                            mensajes_Chat_JPanel.add(mensaje_Imagen_Panel);
+                        } catch (IOException ex) {
+                        }
+                    }
+                } else {
+                    Mensaje_Imagen_Derecho_General_Panel mensaje_Imagen_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        try {
+                            abrir_Imagen = ImageIO.read(archivo_Abierto);
+                            emisor = CourseRoom.Faker().dune().character();
+                            fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                            mensaje_Imagen_Panel
+                                    = new Mensaje_Imagen_Derecho_General_Panel(emisor, fecha, abrir_Imagen,
+                                            archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
+                            mensajes_Chat_JPanel.add(mensaje_Imagen_Panel);
+                        } catch (IOException ex) {
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    private void Enviar_Audios() {
+        JFileChooser escogedor_Archivos = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Audio", "mp3", "flac", "ogg", "m4a");
+        escogedor_Archivos.addChoosableFileFilter(filtro);
+        escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        escogedor_Archivos.setAcceptAllFileFilterUsed(true);
+        escogedor_Archivos.setApproveButtonText("Enviar Audio(s)");
+        escogedor_Archivos.setMultiSelectionEnabled(true);
+
+        int resultado = escogedor_Archivos.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
+
+            if (archivos_Abiertos != null) {
+
+                File archivo_Abierto;
+                String emisor;
+                String fecha;
+                Random r = new Random(System.currentTimeMillis());
+                if (r.nextInt(10) < 5) {
+                    Mensaje_Audio_Izquierdo_General_Panel mensaje_Audio_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        emisor = CourseRoom.Faker().dune().character();
+                        fecha = CourseRoom.Faker().date().birthday(0,1).toString();
+                        mensaje_Audio_Panel = new Mensaje_Audio_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
+                                archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
+                        mensajes_Chat_JPanel.add(mensaje_Audio_Panel);
+                    }
+                } else {
+                    Mensaje_Audio_Derecho_General_Panel mensaje_Audio_Panel;
+                    for (int i = 0; i < archivos_Abiertos.length; i++) {
+                        archivo_Abierto = archivos_Abiertos[i];
+                        emisor = CourseRoom.Faker().dune().character();
+                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        mensaje_Audio_Panel = new Mensaje_Audio_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
+                                archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
+                        mensajes_Chat_JPanel.add(mensaje_Audio_Panel);
+                    }
+                }
+
+            }
+
+        }
+    }
+    
+    private void Compartir_Archivos(){
         JFileChooser escogedor_Archivo = new JFileChooser();
         escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
         escogedor_Archivo.setApproveButtonText("Compartir Archivo(s)");
@@ -928,7 +1251,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 Date fecha;
                 for(int i = 0; i < archivos_Abiertos.length;i++){
                     archivo_Abierto = archivos_Abiertos[i];
-                    fecha = CourseRoom.Faker().date().birthday();
+                    fecha = CourseRoom.Faker().date().birthday(0,1);
                     archivo_Compartido_Grupo_Estudiante_Panel
                             = new Archivo_Compartido_Grupo_Estudiante_Panel(archivo_Abierto, CourseRoom.Faker().name().name(),
                                     fecha.toString(), segundo_Color, segundo_Color_Fuente, tercer_Color,
@@ -966,12 +1289,17 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JButton eliminar_Miembro_JButton;
     private javax.swing.JComboBox<String> eliminar_Miembro_JComboBox;
     private javax.swing.JLabel eliminar_Miembro_JLabel;
+    private javax.swing.JButton enviar_Audios_JButton;
+    private javax.swing.JButton enviar_Imagenes_JButton;
+    private javax.swing.JTextField enviar_Mensaje_Chat_JTextField;
     private javax.swing.JButton enviar_Mensaje_JButton;
-    private javax.swing.JTextField enviar_Mensaje_JTextField;
     private javax.swing.JPanel enviar_Mensajes_JPanel;
+    private javax.swing.JButton enviar_Videos_JButton;
     private javax.swing.JLabel fecha_Creacion_JLabel;
     private javax.swing.JLabel fecha_Finalizacion_Tarea_Pendiente_JLabel;
     private javax.swing.JPanel fecha_Finalizacion_Tarea_Pendiente_JPanel;
+    private javax.swing.JComboBox<String> filtrar_Archivos_Compatidos_JComboBox;
+    private javax.swing.JComboBox<String> filtro_Archivos_Compatidos_JComboBox;
     private javax.swing.JTabbedPane grupo_JTabbedPane;
     private javax.swing.JLabel imagen_Grupo_JLabel;
     private javax.swing.JPanel informacion_Grupo_JPanel;
@@ -985,7 +1313,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JComboBox<String> mostrar_Tarea_Pendiente_Tipo_JComboBox;
     private javax.swing.JLabel nombre_Grupo_JLabel;
     private javax.swing.JTextField nombre_Tarea_Pendiente_JTextField;
-    private javax.swing.JLabel ordenar_Archivos_Compartidos_JLabel;
     private javax.swing.JComboBox<String> ordenar_Archivos_Compatidos_JComboBox;
     private javax.swing.JButton regresar_JButton;
     private javax.swing.JLabel tarea_Pendiente_JLabel;
@@ -1098,15 +1425,32 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         compartir_Archivo_JButton.setForeground(tercer_Color_Fuente);
         compartir_Archivo_JButton.setBackground(tercer_Color);
         
-        ordenar_Archivos_Compartidos_JLabel.setForeground(primer_Color_Fuente);
         eliminar_Miembro_JLabel.setForeground(primer_Color_Fuente);
         
         ordenar_Archivos_Compatidos_JComboBox.setForeground(tercer_Color_Fuente);
         ordenar_Archivos_Compatidos_JComboBox.setBackground(tercer_Color);
+        ordenar_Archivos_Compatidos_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
+                "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                new java.awt.Font("Gadugi", 1, 14),tercer_Color_Fuente)); // NOI18N
+        
+        filtrar_Archivos_Compatidos_JComboBox.setForeground(tercer_Color_Fuente);
+        filtrar_Archivos_Compatidos_JComboBox.setBackground(tercer_Color);
+        filtrar_Archivos_Compatidos_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
+                "Filtrar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                new java.awt.Font("Gadugi", 1, 14),tercer_Color_Fuente)); // NOI18N
+        
+        filtro_Archivos_Compatidos_JComboBox.setForeground(tercer_Color_Fuente);
+        filtro_Archivos_Compatidos_JComboBox.setBackground(tercer_Color);
+        filtro_Archivos_Compatidos_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
+                "Filtro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                new java.awt.Font("Gadugi", 1, 14),tercer_Color_Fuente)); // NOI18N
         
         mostrar_Tarea_Pendiente_Tipo_JComboBox.setForeground(tercer_Color_Fuente);
         mostrar_Tarea_Pendiente_Tipo_JComboBox.setBackground(tercer_Color);
-        mostrar_Tarea_Pendiente_Tipo_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(segundo_Color), 
+        mostrar_Tarea_Pendiente_Tipo_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Mostrar Lista Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
                 new java.awt.Font("Gadugi", 1, 14),tercer_Color_Fuente)); // NOI18N
@@ -1146,6 +1490,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         buscar_Archivo_Compartido_JTextField.setForeground(tercer_Color_Fuente);
         buscar_Archivo_Compartido_JTextField.setCaretColor(tercer_Color_Fuente);
         buscar_Archivo_Compartido_JTextField.setBackground(tercer_Color);
+        buscar_Archivo_Compartido_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
+                "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                new java.awt.Font("Gadugi", 1, 14),tercer_Color_Fuente)); // NOI18N
 
         descripcion_Tarea_Pendiente_JTextPane.setForeground(tercer_Color_Fuente);
         descripcion_Tarea_Pendiente_JTextPane.setCaretColor(tercer_Color_Fuente);
@@ -1163,15 +1511,25 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         escogedor_Fecha_Hora.setForeground(tercer_Color);
         enviar_Mensajes_JPanel.setBackground(primer_Color);
-        enviar_Mensaje_JTextField.setBackground(segundo_Color);
-        enviar_Mensaje_JTextField.setForeground(segundo_Color_Fuente);
-        enviar_Mensaje_JTextField.setCaretColor(segundo_Color_Fuente);
+        enviar_Mensaje_Chat_JTextField.setBackground(segundo_Color);
+        enviar_Mensaje_Chat_JTextField.setForeground(segundo_Color_Fuente);
+        enviar_Mensaje_Chat_JTextField.setCaretColor(segundo_Color_Fuente);
+        
+        enviar_Mensaje_Chat_JTextField.setBackground(primer_Color);
+        enviar_Mensaje_Chat_JTextField.setForeground(primer_Color_Fuente);
+        enviar_Mensajes_JPanel.setBackground(segundo_Color);
+        mensajes_Chat_JPanel.setBackground(primer_Color);
+
+        enviar_Audios_JButton.setBackground(segundo_Color);
+        enviar_Imagenes_JButton.setBackground(segundo_Color);
+        enviar_Mensaje_JButton.setBackground(segundo_Color);
+        enviar_Videos_JButton.setBackground(segundo_Color);
     }
     
     
     @Override
     public void Limpiar() {
-        mensajes_Chat_JPanel.removeAll();
+        enviar_Mensaje_Chat_JTextField.removeAll();
         lista_Tareas_Pendientes_JPanel.removeAll();
         lista_Tareas_Finalizadas_JPanel.removeAll();
         archivos_Compartidos_JPanel.removeAll();
