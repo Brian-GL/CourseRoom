@@ -5,12 +5,13 @@
  */
 package datos.colecciones;
 
-import datos.estructuras.Node;
-import datos.estructuras.Pair;
+import datos.estructuras.Nodo;
+import datos.estructuras.Par;
 import java.util.Objects;
+import main.CourseRoom;
 
 
-public class Graph<T>{
+public class Grafo<T>{
 	
     /**Vertex class.*/
     public class Vertex{
@@ -355,7 +356,6 @@ public class Graph<T>{
                 this._total_weight -= erased_edge.weight();
                 _allEdges.remove(erased_edge);
                 this._edge_list.pop_front();
-                erased_edge = null;  
             }
         }
 
@@ -366,7 +366,6 @@ public class Graph<T>{
                 this._total_weight -= erased_edge.weight();
                 _allEdges.remove(erased_edge);
                 this._edge_list.pop_back();
-                erased_edge = null;
             }
         }
 
@@ -383,7 +382,6 @@ public class Graph<T>{
                 this._total_weight -= erased_edge.weight();
                 _allEdges.remove(erased_edge);
                 this._edge_list.remove(erased_edge);
-                erased_edge = null;
             }
         }
         
@@ -453,14 +451,13 @@ public class Graph<T>{
         }
 
         public void remove(Edge edge)  {
-            Node<Edge> edge_node = this._edge_list.node(edge);
+            Nodo<Edge> edge_node = this._edge_list.node(edge);
             if (edge_node != null) {
                 Edge erased_edge = edge_node.element();
                 _allWeight -= erased_edge.weight();
                 this._total_weight -= erased_edge.weight();
                 _allEdges.remove(erased_edge);
                 this._edge_list.remove(erased_edge);
-                erased_edge = null;
             }
         }
 
@@ -469,12 +466,12 @@ public class Graph<T>{
         @Override
         public String toString(){
 
-            String newString = new String();
+            String newString ="";
 
             Edge auxiliar = this.front();
 
             while(auxiliar != null){
-                    newString += "[" +auxiliar+"] ";
+                newString =  CourseRoom.Concatenar("[",auxiliar.toString(),"] ");
                     auxiliar = auxiliar.next();
             }
             return newString;
@@ -496,7 +493,7 @@ public class Graph<T>{
                 return true; 
             }
 
-            if (!(object instanceof Graph.Vertex)){
+            if (!(object instanceof Grafo.Vertex)){
                 return false; 
             }
 
@@ -704,7 +701,7 @@ public class Graph<T>{
                 return true; 
             }
 
-            if (!(object instanceof Graph<?>.Edge)){
+            if (!(object instanceof Grafo<?>.Edge)){
                 return false; 
             }
 
@@ -873,14 +870,13 @@ public class Graph<T>{
 
     /**Sets the initial elements of all attributes.*/
     private void _init() {
-            this._front = this._back = this._middle = null;
             this._size = 0;
             this._allWeight = 0.0;
             this._allEdges = new Lista<>();
     }
 
     /**Gets a pair of the vertexs who have the given elements.*/
-    private Pair<Vertex,Vertex> getVertexs(T firstElement, T secondElement){
+    private Par<Vertex,Vertex> getVertexs(T firstElement, T secondElement){
             Vertex firstVertex;
             Vertex secondVertex;
 
@@ -926,26 +922,26 @@ public class Graph<T>{
                     }	
 
             }
-            return new Pair<>(firstVertex, secondVertex);
+            return new Par<>(firstVertex, secondVertex);
     }
 
     //Public constructors
 
     /**Creates a new empty graph with initial elements.*/
-    public Graph() { _init();}
+    public Grafo() { _init();}
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Graph(Graph<T> graph) {
+    public Grafo(Grafo<T> graph) {
 
             this._init();
 
-            Graph<T>.Vertex middle = graph.getMiddleVertex();
+            Grafo<T>.Vertex middle = graph.getMiddleVertex();
 
             if(middle != null) {
 
                     this.push_back(middle.element());
-                    Graph<T>.Vertex previous = middle.previous();
-                    Graph<T>.Vertex next = middle.next();
+                    Grafo<T>.Vertex previous = middle.previous();
+                    Grafo<T>.Vertex next = middle.next();
 
                     while(previous != null || next != null) {
 
@@ -962,17 +958,17 @@ public class Graph<T>{
     }
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Graph(Lista<T> list) {
+    public Grafo(Lista<T> list) {
 
             this._init();
 
-           Node<T> middle = list.middle();
+           Nodo<T> middle = list.middle();
 
             if(middle != null) {
 
                    this.push_back(middle.element());
-                   Node<T> previous = middle.previous();
-                   Node<T> next = middle.next();
+                   Nodo<T> previous = middle.previous();
+                   Nodo<T> next = middle.next();
 
                     while(previous != null || next != null) {
 
@@ -989,17 +985,17 @@ public class Graph<T>{
     }
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Graph(Coleccion<T> structure) {
+    public Grafo(Coleccion<T> structure) {
 
             this._init();
 
-           Node<T> middle = structure.list().middle();
+           Nodo<T> middle = structure.list().middle();
 
             if(middle != null) {
 
                     this.push_back(middle.element());
-                   Node<T> previous = middle.previous();
-                   Node<T> next = middle.next();
+                   Nodo<T> previous = middle.previous();
+                   Nodo<T> next = middle.next();
 
                     while(previous != null || next != null) {
 
@@ -1027,8 +1023,8 @@ public class Graph<T>{
 
     public boolean existDestination(Vertex vertex) {
 
-            Node<Edge> firstDestinationNode = this._allEdges.front();
-            Node<Edge> lastDestinationNode = this._allEdges.back();
+            Nodo<Edge> firstDestinationNode = this._allEdges.front();
+            Nodo<Edge> lastDestinationNode = this._allEdges.back();
             double middleIndex = ((double)this._size)/2;
 
             for(double i = 0; i < middleIndex;i++) {
@@ -1048,8 +1044,8 @@ public class Graph<T>{
 
     public boolean xxistOrigin(Vertex vertex) {
 
-            Node<Edge> firstOriginNode = this._allEdges.front();
-            Node<Edge> lastOriginNode = this._allEdges.back();
+            Nodo<Edge> firstOriginNode = this._allEdges.front();
+            Nodo<Edge> lastOriginNode = this._allEdges.back();
             double middleIndex = ((double)this._size)/2;
 
             for(double i = 0; i < middleIndex;i++) {
@@ -1071,8 +1067,8 @@ public class Graph<T>{
 
     public boolean existEdge(T origin, T destination) {
 
-            Node<Edge> firstNode = this._allEdges.front();
-            Node<Edge> lastNode = this._allEdges.back();
+            Nodo<Edge> firstNode = this._allEdges.front();
+            Nodo<Edge> lastNode = this._allEdges.back();
 
             double middleIndex = ((double)this._size)/2;
 
@@ -1096,8 +1092,8 @@ public class Graph<T>{
 
     public Edge get(T origin, T destination) {
 
-            Node<Edge> firstNode = this._allEdges.front();
-            Node<Edge> lastNode = this._allEdges.back();
+            Nodo<Edge> firstNode = this._allEdges.front();
+            Nodo<Edge> lastNode = this._allEdges.back();
 
             double middleIndex = ((double)this._size)/2;
 
@@ -1118,13 +1114,13 @@ public class Graph<T>{
             return null;
     }
 
-    public Pair<Edge,Edge> edge_list(T origin, T destination) {
+    public Par<Edge,Edge> edge_list(T origin, T destination) {
 
             Edge firstEdge = null;
             Edge secondEdge = null;
 
-            Node<Edge> firstNode = this._allEdges.front();
-            Node<Edge> lastNode = this._allEdges.back();
+            Nodo<Edge> firstNode = this._allEdges.front();
+            Nodo<Edge> lastNode = this._allEdges.back();
 
             double middleIndex = ((double)this._size)/2;
 
@@ -1150,16 +1146,16 @@ public class Graph<T>{
                     lastNode = lastNode.previous();
             }
 
-            return new Pair<>(firstEdge,secondEdge);
+            return new Par<>(firstEdge,secondEdge);
     }
 
-    public Pair<Boolean,Boolean> existEdges(T origin, T destination){
+    public Par<Boolean,Boolean> existEdges(T origin, T destination){
 
             Boolean existFirstEdge = false;
             Boolean existSecondEdge = false;
 
-            Node<Edge> firstNode = this._allEdges.front();
-            Node<Edge> lastNode = this._allEdges.back();
+            Nodo<Edge> firstNode = this._allEdges.front();
+            Nodo<Edge> lastNode = this._allEdges.back();
 
             double middleIndex = ((double)this._size)/2;
 
@@ -1191,13 +1187,13 @@ public class Graph<T>{
                     lastNode = lastNode.previous();
             }
 
-            return new Pair<>(existFirstEdge, existSecondEdge);
+            return new Par<>(existFirstEdge, existSecondEdge);
     }
 
     public boolean isAddresed(){
 
-            Node<Edge> firstOriginNode = this._allEdges.front();
-            Node<Edge> lastOriginNode = this._allEdges.back();
+            Nodo<Edge> firstOriginNode = this._allEdges.front();
+            Nodo<Edge> lastOriginNode = this._allEdges.back();
 
             double middleIndex = ((double)this._allEdges.size())/2;
 
@@ -1657,7 +1653,6 @@ public class Graph<T>{
 
                     --this._size;
 
-                    erasedVertex = null;
             }
     }
 
@@ -1690,7 +1685,6 @@ public class Graph<T>{
                             this._back.next(null);
 
                     --this._size;
-                    erasedVertex = null;
             }
 
     }
@@ -1741,7 +1735,6 @@ public class Graph<T>{
 
                             previousVertex.next(nextVertex);
                             nextVertex.previous(previousVertex);
-                            erasedVertex = null;
 
                     this._size--;
 
@@ -1791,7 +1784,6 @@ public class Graph<T>{
 
                                     previousVertex.next(nextVertex);
                                     nextVertex.previous(previousVertex);
-                                    erasedVertex = null;
 
                             this._size--;
 
@@ -1808,12 +1800,11 @@ public class Graph<T>{
 
     public void addEdgeToBack(T origin, double weight, T destination) {
 
-            Pair<Vertex,Vertex> vertexPair = getVertexs(origin,destination);
+            Par<Vertex,Vertex> vertexPair = getVertexs(origin,destination);
 
             if(vertexPair.first()!= null && vertexPair.second() != null)
                     vertexPair.first().add_back(weight, vertexPair.second());
 
-            vertexPair = null;
     }
 
     public void addEdgeToBack(Vertex origin, double weight, Vertex destination) {
@@ -1824,12 +1815,11 @@ public class Graph<T>{
 
     public void addEdgeToFront(T origin, double weight, T destination) {
 
-            Pair<Vertex,Vertex> vertexPair = getVertexs(origin,destination);
+            Par<Vertex,Vertex> vertexPair = getVertexs(origin,destination);
 
             if(vertexPair.first() != null && vertexPair.second() != null)
                     vertexPair.first().push_front(weight, vertexPair.second());
 
-            vertexPair = null;
     }
 
 
@@ -1841,14 +1831,13 @@ public class Graph<T>{
 
     public void addEdgesToBack(T origin, double weight, T destination) {
 
-            Pair<Vertex,Vertex> vertexPair = getVertexs(origin,destination);
+            Par<Vertex,Vertex> vertexPair = getVertexs(origin,destination);
 
             if(vertexPair.first() != null && vertexPair.second() != null) {
                     vertexPair.first().push_back(weight,vertexPair.second());
                     vertexPair.second().push_back(weight,vertexPair.first());
             }
 
-            vertexPair = null; 
     }
 
     public void addEdgesToBack(Vertex origin, double weight, Vertex destination) {
@@ -1861,13 +1850,12 @@ public class Graph<T>{
 
     public void addEdgesToFront(T origin, double weight, T destination) {
 
-            Pair<Vertex,Vertex> vertexPair = getVertexs(origin,destination);
+            Par<Vertex,Vertex> vertexPair = getVertexs(origin,destination);
 
             if(vertexPair.first() != null && vertexPair.second() != null) {
                     vertexPair.first().push_front(weight,vertexPair.second());
                     vertexPair.second().push_front(weight,vertexPair.first());
             }
-            vertexPair = null;
     }
 
     public void addEdgesToFront(Vertex origin, double weight, Vertex destination) {
@@ -1888,7 +1876,7 @@ public class Graph<T>{
     }
 
     public void deleteEdges(T origin, T destination)  {
-            Pair<Edge,Edge> edges = edge_list(origin,destination);
+            Par<Edge,Edge> edges = edge_list(origin,destination);
 
 
             if(edges.first() != null) {
@@ -1900,7 +1888,6 @@ public class Graph<T>{
                     Vertex originVertex = edges.second().origin();
                     originVertex.remove(edges.second());
             }
-            edges = null;
     }
 
     public void updateEdge(T origin, double newWeight ,T destination) {
@@ -1916,7 +1903,7 @@ public class Graph<T>{
     }
 
     public void updateEdges(T origin, double newWeight,T destination) {
-            Pair<Edge,Edge> edges = edge_list(origin,destination);
+            Par<Edge,Edge> edges = edge_list(origin,destination);
 
             if(edges.first() != null) {
                     edges.first().origin()._total_weight -= edges.first().weight();
@@ -1934,7 +1921,6 @@ public class Graph<T>{
                     this._allWeight += newWeight;
             }
 
-            edges = null;
     }
 
 
@@ -1967,11 +1953,11 @@ public class Graph<T>{
             if (object == this) 
             return true; 
 
-        if (!(object instanceof Graph))
+        if (!(object instanceof Grafo))
             return false; 
 
                 @SuppressWarnings("unchecked")
-                Graph<T> objectGraph = (Graph<T>) object; 
+                Grafo<T> objectGraph = (Grafo<T>) object; 
 
         if(this._size == objectGraph._size) {
 
@@ -1993,16 +1979,6 @@ public class Graph<T>{
         return false;
     }
 
-    @Override
-    @SuppressWarnings("FinalizeDeclaration")
-    protected void finalize() throws Throwable  {
-          super.finalize();
-    }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone(); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
 }

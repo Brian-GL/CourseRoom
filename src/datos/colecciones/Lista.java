@@ -5,13 +5,13 @@
  */
 package datos.colecciones;
 
-import datos.estructuras.Node;
+import datos.estructuras.Nodo;
 
 public class Lista<T>{
     
-    private Node<T> _front;
-    private Node<T> _middle;
-    private Node<T> _back;
+    private Nodo<T> _front;
+    private Nodo<T> _middle;
+    private Nodo<T> _back;
     private int _size;
 
     //Public constructors
@@ -32,14 +32,14 @@ public class Lista<T>{
     public Lista(Coleccion<T> collection) {
         this._size = 0;
 
-        Node<T> middle = collection.list().middle();
+        Nodo<T> middle = collection.list().middle();
 
         if(middle != null) {
 
             this.push_back(middle.element());
             
-            Node<T> go_down = middle.previous();
-            Node<T> go_up = middle.next();
+            Nodo<T> go_down = middle.previous();
+            Nodo<T> go_up = middle.next();
 
             while(go_down != null || go_up != null) {
 
@@ -60,14 +60,14 @@ public class Lista<T>{
     public Lista(Lista<T> list) {
         this._size = 0;
 
-        Node<T> middle = list.middle();
+        Nodo<T> middle = list.middle();
 
         if(middle != null) {
 
             this.push_back(middle.element());
             
-            Node<T> go_down = middle.previous();
-            Node<T> go_up = middle.next();
+            Nodo<T> go_down = middle.previous();
+            Nodo<T> go_up = middle.next();
 
             while(go_down != null || go_up != null) {
 
@@ -95,11 +95,11 @@ public class Lista<T>{
 
     public T medium() throws NullPointerException {return (this._middle != null) ? this._middle.element() : null;}
 
-    public Node<T> front() throws NullPointerException{ return this._front; }
+    public Nodo<T> front() throws NullPointerException{ return this._front; }
 
-    public Node<T> back() throws NullPointerException { return this._back; }
+    public Nodo<T> back() throws NullPointerException { return this._back; }
 
-    public Node<T> middle() throws NullPointerException { return this._middle; }
+    public Nodo<T> middle() throws NullPointerException { return this._middle; }
 
     
     public T delist() throws NullPointerException{
@@ -122,14 +122,15 @@ public class Lista<T>{
     }
     
     public void push_back(T ... elements) {
+        Nodo<T> node;
         for(T element : elements){
             this._size = this._size + 1;
             if(is_empty()) {
-                Node<T> node = new Node<>(element);
+                node = new Nodo<>(element);
                 this._front = this._back = this._middle = node;
             }
             else {
-                Node<T> node = new Node<>(this._back,element,null);
+                node = new Nodo<>(this._back,element,null);
                 this._back.next(node);
                 this._back = node;
                 if(this._size % 2 != 0){
@@ -140,14 +141,15 @@ public class Lista<T>{
     }
 
     public void push_front(T ... elements) {
+        Nodo<T> node;
         for(T element: elements){
             this._size = this._size + 1;
             if(is_empty()) {
-                Node<T> node = new Node<>(element);
+                node = new Nodo<>(element);
                 this._front = this._back = this._middle = node;
             }
             else {
-                Node<T> node = new Node<>(null,element,this._front);
+                node = new Nodo<>(null,element,this._front);
                 this._front.previous(node);
                 this._front = node;
                 if(this._size % 2 == 0){
@@ -158,7 +160,7 @@ public class Lista<T>{
     }
 
     public void print(){
-        Node<T> iterator = this._front;
+        Nodo<T> iterator = this._front;
         while(iterator != null){
             System.out.println(iterator.element());
             iterator = iterator.next();
@@ -178,8 +180,8 @@ public class Lista<T>{
             return this._front.element().equals(element) || this._back.element().equals(element);
         }
         else{
-            Node<T> first = this._front;
-            Node<T> last = this._back;
+            Nodo<T> first = this._front;
+            Nodo<T> last = this._back;
 
             int middle_index = (this._size)/2;
             
@@ -254,7 +256,7 @@ public class Lista<T>{
                 
                 //Difference Front Is The Best
                 if(is_best(difference_front, difference_middle, difference_back)) {
-                    Node<T> auxiliar = this._front.next();
+                    Nodo<T> auxiliar = this._front.next();
                     for(int i = 1; i < real_index;i++){
                         auxiliar = auxiliar.next();
                     }
@@ -262,7 +264,7 @@ public class Lista<T>{
                 }
                 //Difference Back Is The Best
                 else if(is_best(difference_back, difference_front, difference_middle)){
-                    Node<T> auxiliar = this._back.previous();
+                    Nodo<T> auxiliar = this._back.previous();
                     for(int i = this._size-2; i > real_index;i--){
                         auxiliar = auxiliar.previous();
                     }
@@ -271,13 +273,13 @@ public class Lista<T>{
                 //Difference Middle Is The Best
                 else{
                     if(real_index > middle_index){
-                        Node<T> auxiliar = this._middle;
+                        Nodo<T> auxiliar = this._middle;
                         for(int i = middle_index; i < real_index;i++){
                             auxiliar = auxiliar.next();
                         }
                         return auxiliar.element();
                     }else if (real_index < middle_index){
-                        Node<T> auxiliar = this._middle;
+                        Nodo<T> auxiliar = this._middle;
                         for(int i = middle_index; i > real_index;i--){
                             auxiliar = auxiliar.previous();
                         }
@@ -295,7 +297,7 @@ public class Lista<T>{
     
     public void replace(T element_to_replace,T replacement){
 
-        Node<T> node = node(element_to_replace);
+        Nodo<T> node = node(element_to_replace);
 
         if(node != null){
             node.element(replacement);
@@ -323,8 +325,8 @@ public class Lista<T>{
             }
         }
         else{
-            Node<T> first = this._front;
-            Node<T> last = this._back;
+            Nodo<T> first = this._front;
+            Nodo<T> last = this._back;
 
             int middle_index = (this._size)/2;
             
@@ -361,14 +363,13 @@ public class Lista<T>{
                    _middle.element(replacement);
                }
             }
-            
         }   
     }
 
     
     public void replace(int position,T replacement){
 
-        Node<T> node = node(position);
+        Nodo<T> node = node(position);
 
         if(node != null){
             node.element(replacement);
@@ -395,8 +396,8 @@ public class Lista<T>{
         if(!is_empty()){
             if(firstPosition != secondPosition){
 
-                Node<T> first = node(firstPosition);
-                Node<T> second = node(secondPosition);
+                Nodo<T> first = node(firstPosition);
+                Nodo<T> second = node(secondPosition);
 
                 T auxiliar = second.element();
                 second.element(first.element());
@@ -409,8 +410,8 @@ public class Lista<T>{
     public void swap(T firstElement, T secondElement){
         if(!is_empty()){
 
-            Node<T> first_node = node(firstElement);
-            Node<T> second_node = node(secondElement);
+            Nodo<T> first_node = node(firstElement);
+            Nodo<T> second_node = node(secondElement);
 
             if(first_node != null && second_node != null) {
 
@@ -433,8 +434,8 @@ public class Lista<T>{
             return this._front.element().equals(element) ? 0  : (this._back.element().equals(element) ? 1 : -1);
         }
         else{
-            Node<T> first = this._front;
-            Node<T> last = this._back;
+            Nodo<T> first = this._front;
+            Nodo<T> last = this._back;
 
             int middle_index = (this._size)/2;
             
@@ -482,7 +483,7 @@ public class Lista<T>{
     }
 
     
-    public int node_position(Node node){
+    public int node_position(Nodo node){
         if(_size == 0){
             return -1;
         }
@@ -493,8 +494,8 @@ public class Lista<T>{
             return this._front.equals(node) ? 0  : (this._back.equals(node) ? 1 : -1);
         }
         else{
-            Node<T> first = this._front;
-            Node<T> last = this._back;
+            Nodo<T> first = this._front;
+            Nodo<T> last = this._back;
 
             int middle_index = (this._size)/2;
             
@@ -548,7 +549,7 @@ public class Lista<T>{
                 this._middle = this._middle.next();
             }
             
-            Node<T> erased_node = this._front;
+            Nodo<T> erased_node = this._front;
             this._front = erased_node.next();
            
             
@@ -556,7 +557,6 @@ public class Lista<T>{
                 
                 this._front.previous(null);
                 erased_node.dispose();
-                erased_node = null;
             }
 
             --this._size;
@@ -572,7 +572,7 @@ public class Lista<T>{
                 this._middle = this._middle.previous();
             }
             
-            Node<T> erased_node = this._back;
+            Nodo<T> erased_node = this._back;
             this._back = erased_node.previous();
            
             
@@ -580,7 +580,6 @@ public class Lista<T>{
                 
                 this._back.next(null);
                 erased_node.dispose();
-                erased_node = null;
             }
             
             --this._size;
@@ -591,7 +590,7 @@ public class Lista<T>{
     
     public void join_back(Lista<T> list){
         if(list != null){
-            Node<T> auxiliar = list.front();
+            Nodo<T> auxiliar = list.front();
 
             while(auxiliar != null) {
                 this.push_back(auxiliar.element());
@@ -603,7 +602,7 @@ public class Lista<T>{
     
     public void join_front(Lista<T> list){
         if(list != null){
-            Node<T> auxiliar = list.front();
+            Nodo<T> auxiliar = list.front();
 
             while(auxiliar != null) {
                 this.push_front(auxiliar.element());
@@ -615,7 +614,7 @@ public class Lista<T>{
     
     public void concatenate_front(Lista<T> list){
         if(list != null){
-            Node<T> auxiliar = list.front();
+            Nodo<T> auxiliar = list.front();
 
             while(auxiliar != null) {
                     this.add_front(auxiliar.element());
@@ -627,11 +626,11 @@ public class Lista<T>{
     
     public void concatenate_back(Lista<T> list){
         if(list != null){
-            Node<T> auxiliar = list.front();
+            Nodo<T> auxiliar = list.front();
 
             while(auxiliar != null) {
-                    this.add_back(auxiliar.element());
-                    auxiliar = auxiliar.next();
+                this.add_back(auxiliar.element());
+                auxiliar = auxiliar.next();
             }
         }
     }
@@ -648,14 +647,15 @@ public class Lista<T>{
             _back.element(first_value);
         }
         else{
-            Node<T> first = this._front;
-            Node<T> last = this._back;
+            Nodo<T> first = this._front;
+            Nodo<T> last = this._back;
 
             int middle_index = (this._size)/2;
+            T first_value;
             
             for (int i = 0; i < middle_index; i++) {
 
-                T first_value = first.element();
+                first_value = first.element();
                 first.element(last.element());
                 last.element(first_value);
 
@@ -677,7 +677,7 @@ public class Lista<T>{
     }
     
     private void update_middle(){
-        Node<T> aux = this._front;
+        Nodo<T> aux = this._front;
         int middle_index = ((this._size % 2 == 0)) ? ((this._size) / 2) - 1 : (this._size) / 2;
 
         for (int i = 0; i < middle_index; i++) {
@@ -689,7 +689,7 @@ public class Lista<T>{
     }
 
     
-    public void insert_next(Node<T> node, T element) {
+    public void insert_next(Nodo<T> node, T element) {
         if(!is_empty()){
 
             if(node != null) {
@@ -697,8 +697,8 @@ public class Lista<T>{
                     push_back(element);
                 }
                 else{
-                    Node<T> next_node = node.next();
-                    Node<T> new_node = new Node<>(node,element,next_node);
+                    Nodo<T> next_node = node.next();
+                    Nodo<T> new_node = new Nodo<>(node,element,next_node);
 
                     node.next(new_node);
                     if(next_node != null){
@@ -714,7 +714,7 @@ public class Lista<T>{
     }
 
     
-    public void insert_previous(Node<T> node, T element){
+    public void insert_previous(Nodo<T> node, T element){
         if(!is_empty()){
 
             if(node != null) {
@@ -723,8 +723,8 @@ public class Lista<T>{
                 }
                 else{
 
-                    Node<T> previous_node = node.previous();
-                    Node<T> new_node = new Node<>(previous_node,element,node);
+                    Nodo<T> previous_node = node.previous();
+                    Nodo<T> new_node = new Nodo<>(previous_node,element,node);
 
                     node.previous(new_node);
                     if(previous_node != null){
@@ -749,7 +749,7 @@ public class Lista<T>{
                 push_back(element);
             }
             else{
-                Node<T> node = node(position);
+                Nodo<T> node = node(position);
                 this.insert_previous(node, element);
             }
         }
@@ -763,7 +763,6 @@ public class Lista<T>{
         }
     }
 
-    
     public void erase_at(int position){
         if(!is_empty()){
 
@@ -779,10 +778,10 @@ public class Lista<T>{
 
             else{
 
-                Node<T> node = node(position);
+                Nodo<T> node = node(position);
                 if(node != null){
-                    Node<T> previous_node = node.previous();
-                    Node<T> next_node = node.next();
+                    Nodo<T> previous_node = node.previous();
+                    Nodo<T> next_node = node.next();
 
                     if(previous_node != null){
                         previous_node.next(next_node);
@@ -793,7 +792,6 @@ public class Lista<T>{
                     }
 
                     node.dispose();
-                    node = null;
 
                     this._size--;
                     update_middle();
@@ -812,10 +810,10 @@ public class Lista<T>{
                 pop_back();
             } else {
 
-                Node<T> node = node(element);
+                Nodo<T> node = node(element);
                 if (node != null) {
-                    Node<T> previous_node = node.previous();
-                    Node<T> next_node = node.next();
+                    Nodo<T> previous_node = node.previous();
+                    Nodo<T> next_node = node.next();
 
                     if (previous_node != null) {
                         previous_node.next(next_node);
@@ -826,7 +824,6 @@ public class Lista<T>{
                     }
 
                     node.dispose();
-                    node = null;
 
                     this._size--;
                     update_middle();
@@ -837,7 +834,7 @@ public class Lista<T>{
     }
     
     
-    public Node<T> node(T element) throws NullPointerException{
+    public Nodo<T> node(T element) throws NullPointerException{
          
         if (_size == 0) {
             return null;
@@ -848,8 +845,8 @@ public class Lista<T>{
         if (_size == 2) {
             return this.first().equals(element) ? _front : (this.last().equals(element) ? _back : null);
         } else {
-            Node<T> first = this._front;
-            Node<T> last = this._back;
+            Nodo<T> first = this._front;
+            Nodo<T> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -890,7 +887,7 @@ public class Lista<T>{
     }
     
     
-    public Node<T> node(int index) throws NullPointerException{
+    public Nodo<T> node(int index) throws NullPointerException{
         if(!is_empty()){
             int real_index = index % this._size;
             if(real_index == 0){
@@ -908,7 +905,7 @@ public class Lista<T>{
                 
                 //Difference Front Is The Best
                 if(is_best(difference_front, difference_middle, difference_back)) {
-                    Node<T> auxiliar = this._front.next();
+                    Nodo<T> auxiliar = this._front.next();
                     for(int i = 1; i < real_index;i++){
                         auxiliar = auxiliar.next();
                     }
@@ -916,7 +913,7 @@ public class Lista<T>{
                 }
                 //Difference Back Is The Best
                 else if(is_best(difference_back, difference_front, difference_middle)){
-                    Node<T> auxiliar = this._back.previous();
+                    Nodo<T> auxiliar = this._back.previous();
                     for(int i = this._size-2; i > real_index;i--){
                         auxiliar = auxiliar.previous();
                     }
@@ -925,13 +922,13 @@ public class Lista<T>{
                 //Difference Middle Is The Best
                 else{
                     if(real_index > middle_index){
-                        Node<T> auxiliar = this._middle;
+                        Nodo<T> auxiliar = this._middle;
                         for(int i = middle_index; i < real_index;i++){
                             auxiliar = auxiliar.next();
                         }
                         return auxiliar;
                     }else if (real_index < middle_index){
-                        Node<T> auxiliar = this._middle;
+                        Nodo<T> auxiliar = this._middle;
                         for(int i = middle_index; i > real_index;i--){
                             auxiliar = auxiliar.previous();
                         }
@@ -955,7 +952,7 @@ public class Lista<T>{
 
         String newString = new String();
 
-        Node<T> auxiliar = this._front;
+        Nodo<T> auxiliar = this._front;
 
         while(auxiliar != null){
                 newString += "["+auxiliar.element()+"]\n";
@@ -968,7 +965,7 @@ public class Lista<T>{
     @Override
     public int hashCode() {
         int hash = 7;
-        Node<T> aux = this._front;
+        Nodo<T> aux = this._front;
         while(aux != null){
             hash = 53 * hash + aux.element().hashCode();
             aux = aux.next();
@@ -993,8 +990,8 @@ public class Lista<T>{
          Lista<T> other = (Lista<T>) obj;
          
          if(other.size() == this._size){
-            Node<T> thisAux = this._front;
-            Node<T> otherAux = other.front();
+            Nodo<T> thisAux = this._front;
+            Nodo<T> otherAux = other.front();
             
             while(thisAux != null){
                 

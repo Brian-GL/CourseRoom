@@ -12,7 +12,7 @@ import main.CourseRoom_Frame;
 import datos.colecciones.Lista_Pares;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
-import datos.estructuras.Pair;
+import datos.estructuras.Par;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -723,7 +723,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             int[] pixeles;
             int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
             Color color;
-            Pair<Integer, Color> par;
+            Par<Integer, Color> par;
             if (obtener_Pixeles.grabPixels()) {
                 pixeles = (int[]) obtener_Pixeles.getPixels();
                 for(int i = 0; i < pixeles.length; i++){
@@ -856,7 +856,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         fechas_Panel.Colorear_Componentes();
         ajustes_Panel.Colorear_Componentes();
         cursos_Actuales_Panel.Colorear_Componentes();
-        reproductor_Musica_Panel.Colorear_Componentes();
     }
     
     

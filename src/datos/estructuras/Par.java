@@ -7,21 +7,21 @@ package datos.estructuras;
 
 import java.util.Objects;
 
-public class Pair<A,B> implements Comparable<Pair<A,B>>{
+public class Par<A,B> implements Comparable<Par<A,B>>{
     
     private A _first_element;
     private B _second_element;
     private Comparing<A> _first_comparing;
     private Comparing<B> _second_comparing;
     
-    public Pair(A first, B second){
+    public Par(A first, B second){
         this._first_element = first;
         this._second_element = second;
         _first_comparing = new Comparing<>();
         _second_comparing = new Comparing<>();
     }
     
-    public Pair(Pair<A,B> doublet){
+    public Par(Par<A,B> doublet){
         
         if(doublet != null){
             this._first_element = doublet.first();
@@ -81,10 +81,10 @@ public class Pair<A,B> implements Comparable<Pair<A,B>>{
         if (this == obj) 
             return true;
 
-        if (!(obj instanceof Pair<?,?>)) 
+        if (!(obj instanceof Par<?,?>)) 
             return false; 
         
-        Pair<A, B> other = (Pair<A, B>) obj;
+        Par<A, B> other = (Par<A, B>) obj;
         
         return this._first_element.equals(other.first()) && this._second_element.equals(other.second());
             
@@ -95,11 +95,11 @@ public class Pair<A,B> implements Comparable<Pair<A,B>>{
             
     }
 
-    public int compare_first(Pair<A,B> doublet){
+    public int compare_first(Par<A,B> doublet){
         return (doublet != null) ?  _first_comparing.compare(this._first_element, doublet.first()) : 1;
     }
     
-    public int conpare_second(Pair<A,B> doublet){
+    public int conpare_second(Par<A,B> doublet){
         return (doublet != null) ?  _second_comparing.compare(this._second_element, doublet.second()) : 1;
     }
     
@@ -112,7 +112,7 @@ public class Pair<A,B> implements Comparable<Pair<A,B>>{
     }
 
     @Override
-    public int compareTo(Pair<A, B> o) {
+    public int compareTo(Par<A, B> o) {
         return  compare_first(o.first()) + conpare_second(o.second());
     }
     

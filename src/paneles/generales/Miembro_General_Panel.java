@@ -14,7 +14,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import datos.colecciones.Lista_Pares;
-import datos.estructuras.Pair;
+import datos.estructuras.Par;
 import java.awt.image.PixelGrabber;
 import javax.swing.Icon;
 import interfaces.Color_Interface;
@@ -61,7 +61,6 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         imagen_jLabel.setToolTipText("Imagen Del Miembro");
-        imagen_jLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_jLabel.setMaximumSize(new java.awt.Dimension(130, 130));
         imagen_jLabel.setMinimumSize(new java.awt.Dimension(130, 130));
         imagen_jLabel.setPreferredSize(new java.awt.Dimension(130, 130));
@@ -211,7 +210,7 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     public void Colorear_Componentes() {
         apellidos_JLabel.setForeground(Primer_Color_Fuente());
         nombres_JLabel.setForeground(Primer_Color_Fuente());
-        imagen_jLabel.setForeground(Primer_Color_Fuente());
+        //imagen_jLabel.setForeground(Primer_Color_Fuente());
         contenido_JPanel.setBackground(Primer_Color());
 
     }
@@ -228,7 +227,7 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
             int largo_imagen = imagen.getWidth(null)/2;
             int pixel, rojo, verde, azul, numero_auxiliar;
             Color color;
-            Pair<Integer, Color> par_auxiliar;            
+            Par<Integer, Color> par_auxiliar;            
             if (obtener_Pixeles.grabPixels()) {
                 int[] pixeles = (int[]) obtener_Pixeles.getPixels();
                 for(int i = 0; i < pixeles.length; i++){

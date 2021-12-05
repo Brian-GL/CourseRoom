@@ -79,7 +79,6 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
         miembro_Cargo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         miembro_Cargo_JLabel.setToolTipText("");
-        miembro_Cargo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         miembro_Cargo_JLabel.setMaximumSize(new java.awt.Dimension(130, 130));
         miembro_Cargo_JLabel.setMinimumSize(new java.awt.Dimension(130, 130));
         miembro_Cargo_JLabel.setPreferredSize(new java.awt.Dimension(130, 130));
@@ -165,16 +164,16 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

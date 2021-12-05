@@ -20,15 +20,15 @@ public class Cola<T> extends Coleccion<T> {
     }
     
     public void enqueue(T element){ 
-        this._collection.push_back(element);
+        this._coleccion.push_back(element);
     }
 
     public boolean line_up(T element){ 
-        return this._collection.add_back(element);
+        return this._coleccion.add_back(element);
     }
 
     public T dequeue() throws NullPointerException{
-        return this._collection.delist();
+        return this._coleccion.delist();
     }
     
     

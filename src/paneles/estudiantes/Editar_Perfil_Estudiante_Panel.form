@@ -79,7 +79,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="nombre_Usuario_JLabel" max="32767" attributes="0"/>
                                   <Component id="nombre_Usuario_JTextField" max="32767" attributes="0"/>
-                                  <Component id="informacion_Nombre_Usaurio_JLabel" max="32767" attributes="0"/>
+                                  <Component id="informacion_Nombre_Usuario_JLabel" max="32767" attributes="0"/>
                                   <Component id="contrasena_JLabel" max="32767" attributes="0"/>
                                   <Component id="informacion_Contrasena_JLabel" max="32767" attributes="0"/>
                                   <Component id="repetir_Contrasena_JLabel" max="32767" attributes="0"/>
@@ -129,7 +129,7 @@
                                   <Component id="nombre_Usuario_JButton" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="informacion_Nombre_Usaurio_JLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="informacion_Nombre_Usuario_JLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Component id="correo_Electronico_JLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -306,7 +306,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="informacion_Nombre_Usaurio_JLabel">
+            <Component class="javax.swing.JLabel" name="informacion_Nombre_Usuario_JLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="14" style="3"/>
@@ -378,11 +378,6 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="toolTipText" type="java.lang.String" value="Imagen De Perfil Seleccionada."/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                    <BevelBorder/>
-                  </Border>
-                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[400, 400]"/>
                 </Property>

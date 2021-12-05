@@ -15,20 +15,20 @@ public class Pila<T> extends Coleccion<T>{
         super();
     }
 
-    public Pila(Lista<T> doublyLinkedList) {
-        super(doublyLinkedList);
+    public Pila(Lista<T> lista) {
+        super(lista);
     }
     
-    public void stack(T element){ 
-        this._collection.push_front(element);
+    public void Apilar(T elemento){ 
+        this._coleccion.push_front(elemento);
     }
 
-    public boolean pile_up(T element){
-        return this._collection.add_front(element);
+    public boolean Enpilar(T elemento){
+        return this._coleccion.add_front(elemento);
     }
 
-    public T unstack() throws NullPointerException{
-        return this._collection.unlist();
+    public T Desapilar() throws NullPointerException{
+        return this._coleccion.unlist();
     }
     
 }

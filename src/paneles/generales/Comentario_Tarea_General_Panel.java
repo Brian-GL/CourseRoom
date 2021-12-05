@@ -62,7 +62,6 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         setMinimumSize(new java.awt.Dimension(576, 62));
         setOpaque(false);
 
-        imagen_Emisor_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Emisor_JLabel.setMaximumSize(new java.awt.Dimension(50, 50));
         imagen_Emisor_JLabel.setMinimumSize(new java.awt.Dimension(50, 50));
         imagen_Emisor_JLabel.setPreferredSize(new java.awt.Dimension(50, 50));

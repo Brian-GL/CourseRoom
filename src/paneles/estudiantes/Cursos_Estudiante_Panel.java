@@ -106,6 +106,7 @@ public class Cursos_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void mostrar_Cursos_Por_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_mostrar_Cursos_Por_JComboBoxItemStateChanged
         // TODO add your handling code here:
+        System.out.println(cursos_JPanel.getSize());
         switch(mostrar_Cursos_Por_JComboBox.getSelectedIndex()){
             case 0:
                 ((CardLayout)cursos_JPanel.getLayout()).show(cursos_JPanel, "Actuales");

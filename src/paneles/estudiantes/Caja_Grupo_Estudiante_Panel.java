@@ -7,7 +7,7 @@ package paneles.estudiantes;
 
 import main.CourseRoom;
 import datos.colecciones.Lista_Pares;
-import datos.estructuras.Pair;
+import datos.estructuras.Par;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.PixelGrabber;
@@ -64,7 +64,6 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         imagen_JLabel.setToolTipText("Imagen Del Grupo");
-        imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_JLabel.setMaximumSize(new java.awt.Dimension(164, 164));
         imagen_JLabel.setMinimumSize(new java.awt.Dimension(164, 164));
         imagen_JLabel.setPreferredSize(new java.awt.Dimension(164, 164));
@@ -239,7 +238,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
             int[] pixeles;
             int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
             Color color;
-            Pair<Integer, Color> par;
+            Par<Integer, Color> par;
             if (obtener_Pixeles.grabPixels()) {
                 pixeles = (int[]) obtener_Pixeles.getPixels();
                 for(int i = 0; i < pixeles.length; i++){

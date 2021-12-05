@@ -8,7 +8,7 @@ package paneles.generales;
 import main.CourseRoom;
 import datos.colecciones.Lista;
 import datos.colecciones.Lista_Pares;
-import datos.estructuras.Node;
+import datos.estructuras.Nodo;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
@@ -41,7 +41,7 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagException;
 import org.jaudiotagger.tag.images.Artwork;
-import datos.estructuras.Pair;
+import datos.estructuras.Par;
 import java.io.FileFilter;
 import java.util.Iterator;
 import java.util.Map;
@@ -76,7 +76,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     //Data Structures
     private Map<String,Equalizer> mapa_presets;
     private static Lista<String> rutas;
-    private static Node<String> nodo_actual;
+    private static Nodo<String> nodo_actual;
      
     //Others
     private static int indice;
@@ -124,21 +124,21 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         subir_Volumen_JLabel = new javax.swing.JLabel();
         ecualizador_JPanel = new javax.swing.JPanel();
         bandas_JPanel = new javax.swing.JPanel();
-        banda6_JSlider = new javax.swing.JSlider();
+        banda0_JSlider = new javax.swing.JSlider();
         banda1_JSlider = new javax.swing.JSlider();
         banda2_JSlider = new javax.swing.JSlider();
         banda3_JSlider = new javax.swing.JSlider();
         banda4_JSlider = new javax.swing.JSlider();
         banda5_JSlider = new javax.swing.JSlider();
-        banda0_JSlider = new javax.swing.JSlider();
+        banda6_JSlider = new javax.swing.JSlider();
         banda7_JSlider = new javax.swing.JSlider();
         banda8_JSlider = new javax.swing.JSlider();
         banda9_JSlider = new javax.swing.JSlider();
-        banda1_JLabel = new javax.swing.JLabel();
         banda0_JLabel = new javax.swing.JLabel();
+        banda1_JLabel = new javax.swing.JLabel();
         banda2_JLabel = new javax.swing.JLabel();
-        banda4_JLabel = new javax.swing.JLabel();
         banda3_JLabel = new javax.swing.JLabel();
+        banda4_JLabel = new javax.swing.JLabel();
         banda5_JLabel = new javax.swing.JLabel();
         banda6_JLabel = new javax.swing.JLabel();
         banda7_JLabel = new javax.swing.JLabel();
@@ -167,7 +167,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         imagen_Arte_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Arte_JLabel.setToolTipText("");
-        imagen_Arte_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(550, 550));
@@ -416,207 +415,217 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         bandas_JPanel.setMinimumSize(new java.awt.Dimension(470, 350));
         bandas_JPanel.setOpaque(false);
         bandas_JPanel.setPreferredSize(new java.awt.Dimension(287, 256));
-        bandas_JPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        banda6_JSlider.setMajorTickSpacing(1);
-        banda6_JSlider.setMaximum(12);
-        banda6_JSlider.setMinimum(-12);
-        banda6_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
-        banda6_JSlider.setValue(0);
-        banda6_JSlider.setMaximumSize(new java.awt.Dimension(28, 300));
-        banda6_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
-        banda6_JSlider.setPreferredSize(new java.awt.Dimension(35, 300));
-        banda6_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                banda6_JSliderStateChanged(evt);
-            }
-        });
-        bandas_JPanel.add(banda6_JSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 20, 10, 240));
-
-        banda1_JSlider.setMajorTickSpacing(1);
-        banda1_JSlider.setMaximum(12);
-        banda1_JSlider.setMinimum(-12);
-        banda1_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
-        banda1_JSlider.setValue(0);
-        banda1_JSlider.setMaximumSize(new java.awt.Dimension(28, 300));
-        banda1_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
-        banda1_JSlider.setPreferredSize(new java.awt.Dimension(35, 300));
-        banda1_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                banda1_JSliderStateChanged(evt);
-            }
-        });
-        bandas_JPanel.add(banda1_JSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 20, 10, 240));
-
-        banda2_JSlider.setMajorTickSpacing(1);
-        banda2_JSlider.setMaximum(12);
-        banda2_JSlider.setMinimum(-12);
-        banda2_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
-        banda2_JSlider.setValue(0);
-        banda2_JSlider.setMaximumSize(new java.awt.Dimension(28, 300));
-        banda2_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
-        banda2_JSlider.setPreferredSize(new java.awt.Dimension(35, 300));
-        banda2_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                banda2_JSliderStateChanged(evt);
-            }
-        });
-        bandas_JPanel.add(banda2_JSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 20, 10, 240));
-
-        banda3_JSlider.setMajorTickSpacing(1);
-        banda3_JSlider.setMaximum(12);
-        banda3_JSlider.setMinimum(-12);
-        banda3_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
-        banda3_JSlider.setValue(0);
-        banda3_JSlider.setMaximumSize(new java.awt.Dimension(28, 300));
-        banda3_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
-        banda3_JSlider.setPreferredSize(new java.awt.Dimension(35, 300));
-        banda3_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                banda3_JSliderStateChanged(evt);
-            }
-        });
-        bandas_JPanel.add(banda3_JSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 20, 10, 240));
-
-        banda4_JSlider.setMajorTickSpacing(1);
-        banda4_JSlider.setMaximum(12);
-        banda4_JSlider.setMinimum(-12);
-        banda4_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
-        banda4_JSlider.setValue(0);
-        banda4_JSlider.setMaximumSize(new java.awt.Dimension(28, 300));
-        banda4_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
-        banda4_JSlider.setPreferredSize(new java.awt.Dimension(35, 300));
-        banda4_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                banda4_JSliderStateChanged(evt);
-            }
-        });
-        bandas_JPanel.add(banda4_JSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 20, 10, 240));
-
-        banda5_JSlider.setMajorTickSpacing(1);
-        banda5_JSlider.setMaximum(12);
-        banda5_JSlider.setMinimum(-12);
-        banda5_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
-        banda5_JSlider.setValue(0);
-        banda5_JSlider.setMaximumSize(new java.awt.Dimension(28, 300));
-        banda5_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
-        banda5_JSlider.setPreferredSize(new java.awt.Dimension(35, 300));
-        banda5_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                banda5_JSliderStateChanged(evt);
-            }
-        });
-        bandas_JPanel.add(banda5_JSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 20, 10, 240));
+        bandas_JPanel.setLayout(new java.awt.GridLayout(2, 2, 0, -250));
 
         banda0_JSlider.setMajorTickSpacing(1);
         banda0_JSlider.setMaximum(12);
         banda0_JSlider.setMinimum(-12);
         banda0_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
         banda0_JSlider.setValue(0);
-        banda0_JSlider.setMaximumSize(new java.awt.Dimension(20, 150));
+        banda0_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda0_JSlider.setMinimumSize(new java.awt.Dimension(20, 150));
-        banda0_JSlider.setPreferredSize(new java.awt.Dimension(20, 150));
+        banda0_JSlider.setPreferredSize(new java.awt.Dimension(35, 400));
         banda0_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 banda0_JSliderStateChanged(evt);
             }
         });
-        bandas_JPanel.add(banda0_JSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 20, 10, 240));
+        bandas_JPanel.add(banda0_JSlider);
+
+        banda1_JSlider.setMajorTickSpacing(1);
+        banda1_JSlider.setMaximum(12);
+        banda1_JSlider.setMinimum(-12);
+        banda1_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda1_JSlider.setValue(0);
+        banda1_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
+        banda1_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
+        banda1_JSlider.setPreferredSize(new java.awt.Dimension(35, 400));
+        banda1_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                banda1_JSliderStateChanged(evt);
+            }
+        });
+        bandas_JPanel.add(banda1_JSlider);
+
+        banda2_JSlider.setMajorTickSpacing(1);
+        banda2_JSlider.setMaximum(12);
+        banda2_JSlider.setMinimum(-12);
+        banda2_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda2_JSlider.setValue(0);
+        banda2_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
+        banda2_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
+        banda2_JSlider.setPreferredSize(new java.awt.Dimension(35, 400));
+        banda2_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                banda2_JSliderStateChanged(evt);
+            }
+        });
+        bandas_JPanel.add(banda2_JSlider);
+
+        banda3_JSlider.setMajorTickSpacing(1);
+        banda3_JSlider.setMaximum(12);
+        banda3_JSlider.setMinimum(-12);
+        banda3_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda3_JSlider.setValue(0);
+        banda3_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
+        banda3_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
+        banda3_JSlider.setPreferredSize(new java.awt.Dimension(35, 400));
+        banda3_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                banda3_JSliderStateChanged(evt);
+            }
+        });
+        bandas_JPanel.add(banda3_JSlider);
+
+        banda4_JSlider.setMajorTickSpacing(1);
+        banda4_JSlider.setMaximum(12);
+        banda4_JSlider.setMinimum(-12);
+        banda4_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda4_JSlider.setValue(0);
+        banda4_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
+        banda4_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
+        banda4_JSlider.setPreferredSize(new java.awt.Dimension(35, 400));
+        banda4_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                banda4_JSliderStateChanged(evt);
+            }
+        });
+        bandas_JPanel.add(banda4_JSlider);
+
+        banda5_JSlider.setMajorTickSpacing(1);
+        banda5_JSlider.setMaximum(12);
+        banda5_JSlider.setMinimum(-12);
+        banda5_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda5_JSlider.setValue(0);
+        banda5_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
+        banda5_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
+        banda5_JSlider.setPreferredSize(new java.awt.Dimension(35, 400));
+        banda5_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                banda5_JSliderStateChanged(evt);
+            }
+        });
+        bandas_JPanel.add(banda5_JSlider);
+
+        banda6_JSlider.setMajorTickSpacing(1);
+        banda6_JSlider.setMaximum(12);
+        banda6_JSlider.setMinimum(-12);
+        banda6_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda6_JSlider.setValue(0);
+        banda6_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
+        banda6_JSlider.setMinimumSize(new java.awt.Dimension(35, 400));
+        banda6_JSlider.setPreferredSize(new java.awt.Dimension(35, 400));
+        banda6_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                banda6_JSliderStateChanged(evt);
+            }
+        });
+        bandas_JPanel.add(banda6_JSlider);
 
         banda7_JSlider.setMajorTickSpacing(1);
         banda7_JSlider.setMaximum(12);
         banda7_JSlider.setMinimum(-12);
         banda7_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
         banda7_JSlider.setValue(0);
-        banda7_JSlider.setMaximumSize(new java.awt.Dimension(28, 300));
+        banda7_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda7_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
-        banda7_JSlider.setPreferredSize(new java.awt.Dimension(35, 300));
+        banda7_JSlider.setPreferredSize(new java.awt.Dimension(35, 400));
         banda7_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 banda7_JSliderStateChanged(evt);
             }
         });
-        bandas_JPanel.add(banda7_JSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 20, 10, 240));
+        bandas_JPanel.add(banda7_JSlider);
 
         banda8_JSlider.setMajorTickSpacing(1);
         banda8_JSlider.setMaximum(12);
         banda8_JSlider.setMinimum(-12);
         banda8_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
         banda8_JSlider.setValue(0);
-        banda8_JSlider.setMaximumSize(new java.awt.Dimension(28, 300));
+        banda8_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda8_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
-        banda8_JSlider.setPreferredSize(new java.awt.Dimension(35, 300));
+        banda8_JSlider.setPreferredSize(new java.awt.Dimension(35, 400));
         banda8_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 banda8_JSliderStateChanged(evt);
             }
         });
-        bandas_JPanel.add(banda8_JSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 10, 240));
+        bandas_JPanel.add(banda8_JSlider);
 
         banda9_JSlider.setMajorTickSpacing(1);
         banda9_JSlider.setMaximum(12);
         banda9_JSlider.setMinimum(-12);
         banda9_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
         banda9_JSlider.setValue(0);
-        banda9_JSlider.setMaximumSize(new java.awt.Dimension(28, 300));
+        banda9_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda9_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
-        banda9_JSlider.setPreferredSize(new java.awt.Dimension(35, 300));
+        banda9_JSlider.setPreferredSize(new java.awt.Dimension(35, 400));
         banda9_JSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 banda9_JSliderStateChanged(evt);
             }
         });
-        bandas_JPanel.add(banda9_JSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 10, 240));
-
-        banda1_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        banda1_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        banda1_JLabel.setText("0");
-        bandas_JPanel.add(banda1_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 260, 10, 20));
+        bandas_JPanel.add(banda9_JSlider);
 
         banda0_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         banda0_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banda0_JLabel.setText("0");
-        bandas_JPanel.add(banda0_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 260, 10, 20));
+        banda0_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        bandas_JPanel.add(banda0_JLabel);
+
+        banda1_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        banda1_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        banda1_JLabel.setText("0");
+        banda1_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        bandas_JPanel.add(banda1_JLabel);
 
         banda2_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         banda2_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banda2_JLabel.setText("0");
-        bandas_JPanel.add(banda2_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 260, 10, 20));
-
-        banda4_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        banda4_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        banda4_JLabel.setText("0");
-        bandas_JPanel.add(banda4_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 10, 20));
+        banda2_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        bandas_JPanel.add(banda2_JLabel);
 
         banda3_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         banda3_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banda3_JLabel.setText("0");
-        bandas_JPanel.add(banda3_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 260, 10, 20));
+        banda3_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        bandas_JPanel.add(banda3_JLabel);
+
+        banda4_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        banda4_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        banda4_JLabel.setText("0");
+        banda4_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        bandas_JPanel.add(banda4_JLabel);
 
         banda5_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         banda5_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banda5_JLabel.setText("0");
-        bandas_JPanel.add(banda5_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 260, 10, 20));
+        banda5_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        bandas_JPanel.add(banda5_JLabel);
 
         banda6_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         banda6_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banda6_JLabel.setText("0");
-        bandas_JPanel.add(banda6_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 260, 10, 20));
+        banda6_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        bandas_JPanel.add(banda6_JLabel);
 
         banda7_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         banda7_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banda7_JLabel.setText("0");
-        bandas_JPanel.add(banda7_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 260, 10, 20));
+        banda7_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        bandas_JPanel.add(banda7_JLabel);
 
         banda8_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         banda8_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banda8_JLabel.setText("0");
-        bandas_JPanel.add(banda8_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 260, 10, 20));
+        banda8_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        bandas_JPanel.add(banda8_JLabel);
 
         banda9_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         banda9_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banda9_JLabel.setText("0");
-        bandas_JPanel.add(banda9_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 260, 10, 20));
+        banda9_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        bandas_JPanel.add(banda9_JLabel);
 
         titulo_Preamp_JLabel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         titulo_Preamp_JLabel.setText("Preamp");
@@ -666,9 +675,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         ecualizador_JPanelLayout.setHorizontalGroup(
             ecualizador_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ecualizador_JPanelLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addGroup(ecualizador_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bandas_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ecualizador_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(ecualizador_JPanelLayout.createSequentialGroup()
                         .addGroup(ecualizador_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ecualizador_JPanelLayout.createSequentialGroup()
@@ -677,13 +685,14 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                             .addGroup(ecualizador_JPanelLayout.createSequentialGroup()
                                 .addComponent(preset_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(3, 3, 3)))
-                        .addGroup(ecualizador_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(ecualizador_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ecualizador_JPanelLayout.createSequentialGroup()
-                                .addComponent(preamp_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(preamp_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(preamp_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(presets_JComboBox, 0, 1, Short.MAX_VALUE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                            .addComponent(presets_JComboBox, 0, 262, Short.MAX_VALUE)))
+                    .addComponent(bandas_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ecualizador_JPanelLayout.setVerticalGroup(
             ecualizador_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -733,6 +742,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         letras_JTextPane.setEditable(false);
         letras_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lyrics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 16))); // NOI18N
         letras_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        letras_JTextPane.setText("");
         letras_JTextPane.setOpaque(false);
         letras_JScrollPane.setViewportView(letras_JTextPane);
 
@@ -1405,8 +1415,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         preamp_JSlider.setEnabled(false);
         presets_JComboBox.setEnabled(false);
         lista_Reproduccion_JPanel.removeAll();
+        System.gc();
     }
-
 
     public static void Play_Indice(int _indice){
         if(_indice > 0){
@@ -1505,21 +1515,14 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         letras_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         lista_Reproduccion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         lista_Reproduccion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
-        primer_Color = CourseRoom.Primer_Color();
-        segundo_Color = CourseRoom.Segundo_Color();
-        tercer_Color = CourseRoom.Tercer_Color();
-        primer_Color_Fuente = CourseRoom.Primer_Color_Fuente();
-        segundo_Color_Fuente = CourseRoom.Segundo_Color_Fuente();
-        tercer_Color_Fuente = CourseRoom.Tercer_Color_Fuente();
-        
+       
         Establecer_Eventos_Reproductor();
         
         Establecer_Presets_Ecualizador();
         
         Establecer_Amperajes();
     }
-
+    
     @Override
     public void Colorear_Componentes() {
         
@@ -1543,7 +1546,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         progreso_JLabel.setForeground(primer_Color_Fuente);
         duracion_Total_JLabel.setForeground(primer_Color_Fuente);
         progreso_JSlider.setForeground(primer_Color_Fuente);
-        imagen_Arte_JLabel.setForeground(primer_Color_Fuente);
+        //imagen_Arte_JLabel.setForeground(primer_Color_Fuente);
 
         componentes = informacion_Archivo_JPanel.getComponents();
 
@@ -1607,7 +1610,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             int[] pixeles;
             int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
             Color color;
-            Pair<Integer, Color> par;
+            Par<Integer, Color> par;
             if (obtener_Pixeles.grabPixels()) {
                 pixeles = (int[]) obtener_Pixeles.getPixels();
                 for(int i = 0; i < pixeles.length; i++){
@@ -1806,6 +1809,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         componente_Reproducto_Lista_Audio.mediaListPlayer().events().addMediaListPlayerEventListener(new MediaListPlayerEventListener() {
             @Override
             public void mediaListPlayerFinished(MediaListPlayer mlp) {
+                Limpiar_Informacion();
             }
 
             @Override
@@ -1885,8 +1889,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
             @Override
             public void finished(MediaPlayer mp) {
-                
-                
             }
 
             @Override

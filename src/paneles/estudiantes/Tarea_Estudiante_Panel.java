@@ -98,7 +98,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         nombre_Profesor_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         nombre_Profesor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombre_Profesor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/avatar.png"))); // NOI18N
-        nombre_Profesor_JLabel.setText("Nombre Del Profesor");
         nombre_Profesor_JLabel.setToolTipText("Nombre Del Profesor");
 
         mi_Trabajo_JPanel.setOpaque(false);
@@ -265,7 +264,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         curso_JLabel.setFont(new java.awt.Font("Gadugi", 3, 15)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         curso_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
-        curso_JLabel.setText("Del Curso Sistemas Operativos");
         curso_JLabel.setToolTipText("Curso De Proveniencia");
         curso_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -534,6 +532,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         archivos_Adjuntos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
         descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(6)));
+        nombre_Profesor_JLabel.setText(CourseRoom.Faker().name().name());
+        curso_JLabel.setText(CourseRoom.Faker().educator().course());
+        
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         

@@ -5,14 +5,14 @@
  */
 package datos.colecciones;
 
-import datos.estructuras.Pair;
-import datos.estructuras.PairNode;
+import datos.estructuras.Par;
+import datos.estructuras.Nodo_Par;
 
 public class Lista_Pares<A,B>{
 
-    private PairNode<A,B> _front;
-    private PairNode<A,B> _middle;
-    private PairNode<A,B> _back;
+    private Nodo_Par<A,B> _front;
+    private Nodo_Par<A,B> _middle;
+    private Nodo_Par<A,B> _back;
     private int _size;
 
     //Public constructors
@@ -24,14 +24,14 @@ public class Lista_Pares<A,B>{
     public Lista_Pares(Lista_Pares<A,B> list) {
         this._size = 0;
 
-        PairNode<A,B> middle = list.middle();
+        Nodo_Par<A,B> middle = list.middle();
 
         if (middle != null) {
 
             this.push_back(middle.element());
 
-            PairNode<A,B> go_down = middle.previous();
-            PairNode<A,B> go_up = middle.next();
+            Nodo_Par<A,B> go_down = middle.previous();
+            Nodo_Par<A,B> go_up = middle.next();
 
             while (go_down != null || go_up != null) {
 
@@ -59,39 +59,39 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public Pair<A,B> first() throws NullPointerException {
+    public Par<A,B> first() throws NullPointerException {
         return (this._front != null) ? this._front.element() : null;
     }
 
     
-    public Pair<A,B> last() throws NullPointerException {
+    public Par<A,B> last() throws NullPointerException {
         return (this._back != null) ? this._back.element() : null;
     }
 
     
-    public Pair<A,B> medium() throws NullPointerException {
+    public Par<A,B> medium() throws NullPointerException {
         return (this._middle != null) ? this._middle.element() : null;
     }
 
     
-    public PairNode<A,B> front() throws NullPointerException {
+    public Nodo_Par<A,B> front() throws NullPointerException {
         return this._front;
     }
 
     
-    public PairNode<A,B> back() throws NullPointerException {
+    public Nodo_Par<A,B> back() throws NullPointerException {
         return this._back;
     }
 
     
-    public PairNode<A,B> middle() throws NullPointerException {
+    public Nodo_Par<A,B> middle() throws NullPointerException {
         return this._middle;
     }
 
     
-    public Pair<A,B> unenlist_front() throws NullPointerException {
+    public Par<A,B> unenlist_front() throws NullPointerException {
         if (!is_empty()) {
-            Pair<A,B> auxiliar = this._front.element();
+            Par<A,B> auxiliar = this._front.element();
             pop_front();
             return auxiliar;
         }
@@ -99,9 +99,9 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public Pair<A,B> unenlist_back() throws NullPointerException {
+    public Par<A,B> unenlist_back() throws NullPointerException {
         if (!is_empty()) {
-            Pair<A,B> auxiliar = this._back.element();
+            Par<A,B> auxiliar = this._back.element();
             pop_back();
             return auxiliar;
         }
@@ -110,14 +110,15 @@ public class Lista_Pares<A,B>{
 
    
     
-    public void push_back(Pair<A,B> ... elements) {
-        for(Pair<A,B> element : elements){
+    public void push_back(Par<A,B> ... elements) {
+        Nodo_Par<A, B> node;
+        for(Par<A,B> element : elements){
             this._size = this._size + 1;
             if (is_empty()) {
-                PairNode<A, B> node = new PairNode<>(element.first(), element.second());
+                node = new Nodo_Par<>(element.first(), element.second());
                 this._front = this._back = this._middle = node;
             } else {
-                PairNode<A, B> node = new PairNode<>(this._back, element.first(), element.second(), null);
+                node = new Nodo_Par<>(this._back, element.first(), element.second(), null);
                 this._back.next(node);
                 this._back = node;
                 if (this._size % 2 != 0) {
@@ -128,12 +129,13 @@ public class Lista_Pares<A,B>{
     }
     
     public void push_back(A first_element, B second_element) {
+        Nodo_Par<A, B> node;
         this._size = this._size + 1;
         if (is_empty()) {
-            PairNode<A,B> node = new PairNode<>(first_element,second_element);
+            node = new Nodo_Par<>(first_element,second_element);
             this._front = this._back = this._middle = node;
         } else {
-            PairNode<A,B> node = new PairNode<>(this._back, first_element,second_element, null);
+            node = new Nodo_Par<>(this._back, first_element,second_element, null);
             this._back.next(node);
             this._back = node;
             if (this._size % 2 != 0) {
@@ -142,14 +144,15 @@ public class Lista_Pares<A,B>{
         }
     }
 
-    public void push_front(Pair<A,B> ... elements) {
-        for(Pair<A,B> element: elements){
+    public void push_front(Par<A,B> ... elements) {
+        Nodo_Par<A, B> node;
+        for(Par<A,B> element: elements){
             this._size = this._size + 1;
             if (is_empty()) {
-                PairNode<A, B> node = new PairNode<>(element.first(), element.second());
+                node = new Nodo_Par<>(element.first(), element.second());
                 this._front = this._back = this._middle = node;
             } else {
-                PairNode<A, B> node = new PairNode<>(null, element.first(), element.second(), this._front);
+                node = new Nodo_Par<>(null, element.first(), element.second(), this._front);
                 this._front.previous(node);
                 this._front = node;
                 if (this._size % 2 == 0) {
@@ -161,12 +164,13 @@ public class Lista_Pares<A,B>{
     
 
     public void push_front(A first_element, B second_element) {
+        Nodo_Par<A, B> node;
         this._size = this._size + 1;
         if (is_empty()) {
-            PairNode<A,B> node = new PairNode<>(first_element,second_element);
+            node = new Nodo_Par<>(first_element,second_element);
             this._front = this._back = this._middle = node;
         } else {
-            PairNode<A,B> node = new PairNode<>(null, first_element,second_element, this._front);
+            node = new Nodo_Par<>(null, first_element,second_element, this._front);
             this._front.previous(node);
             this._front = node;
             if (this._size % 2 == 0) {
@@ -176,14 +180,14 @@ public class Lista_Pares<A,B>{
     }
     
     public void print() {
-        PairNode<A,B> iterator = this._front;
+        Nodo_Par<A,B> iterator = this._front;
         while (iterator != null) {
             System.out.println(iterator.element());
             iterator = iterator.next();
         }
     }
 
-    public boolean contains(Pair<A,B> element) {
+    public boolean contains(Par<A,B> element) {
 
         if (_size == 0) {
             return false;
@@ -194,8 +198,8 @@ public class Lista_Pares<A,B>{
         if (_size == 2) {
             return this.first().equals(element) || this.last().equals(element);
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -244,8 +248,8 @@ public class Lista_Pares<A,B>{
         if (_size == 2) {
             return this.first().equals(first_element,second_element) || this.last().equals(first_element,second_element);
         } else {
-            PairNode<A, B> first = this._front;
-            PairNode<A, B> last = this._back;
+            Nodo_Par<A, B> first = this._front;
+            Nodo_Par<A, B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -295,8 +299,8 @@ public class Lista_Pares<A,B>{
         if (_size == 2) {
             return this.first().first().equals(first_element) || this.last().first().equals(first_element);
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -346,8 +350,8 @@ public class Lista_Pares<A,B>{
         if (_size == 2) {
             return this.first().second().equals(second_element) || this.last().second().equals(second_element);
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -386,7 +390,7 @@ public class Lista_Pares<A,B>{
         }
     }
     
-    public boolean add_front(Pair<A,B> element) {
+    public boolean add_front(Par<A,B> element) {
         boolean contains = contains(element);
         if (!contains) {
             push_front(element);
@@ -402,7 +406,7 @@ public class Lista_Pares<A,B>{
         return contains;
     }
     
-    public boolean add_back(Pair<A,B> element) {
+    public boolean add_back(Par<A,B> element) {
         boolean contains = contains(element);
         if (!contains) {
             push_back(element);
@@ -418,7 +422,7 @@ public class Lista_Pares<A,B>{
         return contains;
     }
 
-    public Pair<A,B> get(int index) throws NullPointerException {
+    public Par<A,B> get(int index) throws NullPointerException {
         if (!is_empty()) {
             int real_index = index % this._size;
             if (real_index == 0) {
@@ -434,14 +438,14 @@ public class Lista_Pares<A,B>{
 
                 //Difference Front Is Pair<A,B>he Best
                 if (is_best(difference_front, difference_middle, difference_back)) {
-                    PairNode<A,B> auxiliar = this._front.next();
+                    Nodo_Par<A,B> auxiliar = this._front.next();
                     for (int i = 1; i < real_index; i++) {
                         auxiliar = auxiliar.next();
                     }
                     return auxiliar.element();
                 } //Difference Back Is Pair<A,B>he Best
                 else if (is_best(difference_back, difference_front, difference_middle)) {
-                    PairNode<A,B> auxiliar = this._back.previous();
+                    Nodo_Par<A,B> auxiliar = this._back.previous();
                     for (int i = this._size - 2; i > real_index; i--) {
                         auxiliar = auxiliar.previous();
                     }
@@ -449,13 +453,13 @@ public class Lista_Pares<A,B>{
                 } //Difference Middle Is Pair<A,B>he Best
                 else {
                     if (real_index > middle_index) {
-                        PairNode<A,B> auxiliar = this._middle;
+                        Nodo_Par<A,B> auxiliar = this._middle;
                         for (int i = middle_index; i < real_index; i++) {
                             auxiliar = auxiliar.next();
                         }
                         return auxiliar.element();
                     } else if (real_index < middle_index) {
-                        PairNode<A,B> auxiliar = this._middle;
+                        Nodo_Par<A,B> auxiliar = this._middle;
                         for (int i = middle_index; i > real_index; i--) {
                             auxiliar = auxiliar.previous();
                         }
@@ -470,7 +474,7 @@ public class Lista_Pares<A,B>{
         return null;
     }
 
-    public Pair<A,B> get_from_first(A first_element) {
+    public Par<A,B> get_from_first(A first_element) {
 
         if (_size == 0) {
             return null;
@@ -481,8 +485,8 @@ public class Lista_Pares<A,B>{
         if (_size == 2) {
             return this.first().first().equals(first_element) ? this.first() : (this.last().first().equals(first_element) ? this.last() : null);
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -521,7 +525,7 @@ public class Lista_Pares<A,B>{
         }
     }
     
-    public Pair<A,B> get_from_second(B second_element) {
+    public Par<A,B> get_from_second(B second_element) {
 
         if (_size == 0) {
             return null;
@@ -532,8 +536,8 @@ public class Lista_Pares<A,B>{
         if (_size == 2) {
             return this.first().second().equals(second_element) ? this.first() : (this.last().second().equals(second_element) ? this.last() : null);
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -572,9 +576,9 @@ public class Lista_Pares<A,B>{
         }
     }
     
-    public void replace(Pair<A,B> element_to_replace, Pair<A,B> replacement) {
+    public void replace(Par<A,B> element_to_replace, Par<A,B> replacement) {
 
-        PairNode<A,B> node = node(element_to_replace);
+        Nodo_Par<A,B> node = node(element_to_replace);
 
         if (node != null) {
             node.element(replacement);
@@ -582,7 +586,7 @@ public class Lista_Pares<A,B>{
 
     }
 
-    public void replacing(Pair<A,B> element_to_replace, Pair<A,B> replacement) {
+    public void replacing(Par<A,B> element_to_replace, Par<A,B> replacement) {
 
         if (_size == 0) {
             return;
@@ -600,8 +604,8 @@ public class Lista_Pares<A,B>{
                 _back.element(replacement);
             }
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -643,9 +647,9 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public void replace(int position, Pair<A,B> replacement) {
+    public void replace(int position, Par<A,B> replacement) {
 
-        PairNode<A,B> node = node(position);
+        Nodo_Par<A,B> node = node(position);
 
         if (node != null) {
             node.element(replacement);
@@ -654,14 +658,14 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public void superSede(Pair<A,B> element_to_replace, Pair<A,B> replacement) {
+    public void superSede(Par<A,B> element_to_replace, Par<A,B> replacement) {
         if (!contains(replacement)) {
             replace(element_to_replace, replacement);
         }
     }
 
     
-    public void superSede(int position, Pair<A,B> replacement) {
+    public void superSede(int position, Par<A,B> replacement) {
         if (!contains(replacement)) {
             replace(position, replacement);
         }
@@ -672,10 +676,10 @@ public class Lista_Pares<A,B>{
         if (!is_empty()) {
             if (firstPosition != secondPosition) {
 
-                PairNode<A,B> first = node(firstPosition);
-                PairNode<A,B> second = node(secondPosition);
+                Nodo_Par<A,B> first = node(firstPosition);
+                Nodo_Par<A,B> second = node(secondPosition);
 
-                Pair<A,B> auxiliar = second.element();
+                Par<A,B> auxiliar = second.element();
                 second.element(first.element());
                 first.element(auxiliar);
             }
@@ -683,15 +687,15 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public void swap(Pair<A,B> firstElement, Pair<A,B> secondElement) {
+    public void swap(Par<A,B> firstElement, Par<A,B> secondElement) {
         if (!is_empty()) {
 
-            PairNode<A,B> first_node = node(firstElement);
-            PairNode<A,B> second_node = node(secondElement);
+            Nodo_Par<A,B> first_node = node(firstElement);
+            Nodo_Par<A,B> second_node = node(secondElement);
 
             if (first_node != null && second_node != null) {
 
-                Pair<A,B> auxiliar = first_node.element();
+                Par<A,B> auxiliar = first_node.element();
                 first_node.element(second_node.element());
                 second_node.element(auxiliar);
             }
@@ -699,7 +703,7 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public int position(Pair<A,B> element) {
+    public int position(Par<A,B> element) {
         if (_size == 0) {
             return -1;
         }
@@ -709,8 +713,8 @@ public class Lista_Pares<A,B>{
         if (_size == 2) {
             return this._front.element().equals(element) ? 0 : (this._back.element().equals(element) ? 1 : -1);
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -758,7 +762,7 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public int node_position(PairNode node) {
+    public int node_position(Nodo_Par node) {
         if (_size == 0) {
             return -1;
         }
@@ -768,8 +772,8 @@ public class Lista_Pares<A,B>{
         if (_size == 2) {
             return this._front.equals(node) ? 0 : (this._back.equals(node) ? 1 : -1);
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -823,14 +827,13 @@ public class Lista_Pares<A,B>{
                 this._middle = this._middle.next();
             }
 
-            PairNode<A,B> erased_node = this._front;
+            Nodo_Par<A,B> erased_node = this._front;
             this._front = erased_node.next();
 
             if (this._front != null) {
 
                 this._front.previous(null);
                 erased_node.dispose();
-                erased_node = null;
             }
 
             --this._size;
@@ -846,14 +849,13 @@ public class Lista_Pares<A,B>{
                 this._middle = this._middle.previous();
             }
 
-            PairNode<A,B> erased_node = this._back;
+            Nodo_Par<A,B> erased_node = this._back;
             this._back = erased_node.previous();
 
             if (this._back != null) {
 
                 this._back.next(null);
                 erased_node.dispose();
-                erased_node = null;
             }
 
             --this._size;
@@ -863,7 +865,7 @@ public class Lista_Pares<A,B>{
     
     public void join_back(Lista_Pares<A,B> list) {
         if (list != null) {
-            PairNode<A,B> auxiliar = list.front();
+            Nodo_Par<A,B> auxiliar = list.front();
 
             while (auxiliar != null) {
                 this.push_back(auxiliar.element());
@@ -875,7 +877,7 @@ public class Lista_Pares<A,B>{
     
     public void join_front(Lista_Pares<A,B> list) {
         if (list != null) {
-            PairNode<A,B> auxiliar = list.front();
+            Nodo_Par<A,B> auxiliar = list.front();
 
             while (auxiliar != null) {
                 this.push_front(auxiliar.element());
@@ -887,7 +889,7 @@ public class Lista_Pares<A,B>{
     
     public void concatenate_front(Lista_Pares<A,B> list) {
         if (list != null) {
-            PairNode<A,B> auxiliar = list.front();
+            Nodo_Par<A,B> auxiliar = list.front();
 
             while (auxiliar != null) {
                 this.add_front(auxiliar.element());
@@ -899,7 +901,7 @@ public class Lista_Pares<A,B>{
     
     public void concatenate_back(Lista_Pares<A,B> list) {
         if (list != null) {
-            PairNode<A,B> auxiliar = list.front();
+            Nodo_Par<A,B> auxiliar = list.front();
 
             while (auxiliar != null) {
                 this.add_back(auxiliar.element());
@@ -915,18 +917,18 @@ public class Lista_Pares<A,B>{
             return;
         }
         if (_size == 2) {
-            Pair<A,B> first_value = _front.element();
+            Par<A,B> first_value = _front.element();
             _front.element(_back.element());
             _back.element(first_value);
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
-
+            Par<A, B> first_value;
             for (int i = 0; i < middle_index; i++) {
 
-                Pair<A,B> first_value = first.element();
+                first_value = first.element();
                 first.element(last.element());
                 last.element(first_value);
 
@@ -948,7 +950,7 @@ public class Lista_Pares<A,B>{
     }
 
     private void update_middle() {
-        PairNode<A,B> aux = this._front;
+        Nodo_Par<A,B> aux = this._front;
         int middle_index = ((this._size % 2 == 0)) ? ((this._size) / 2) - 1 : (this._size) / 2;
 
         for (int i = 0; i < middle_index; i++) {
@@ -960,15 +962,15 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public void insert_next(PairNode<A,B> node, Pair<A,B> element) {
+    public void insert_next(Nodo_Par<A,B> node, Par<A,B> element) {
         if (!is_empty()) {
 
             if (node != null) {
                 if (node.equals(this._back)) {
                     push_back(element);
                 } else {
-                    PairNode<A,B> next_node = node.next();
-                    PairNode<A,B> new_node = new PairNode<>(node, element.first(),element.second(), next_node);
+                    Nodo_Par<A,B> next_node = node.next();
+                    Nodo_Par<A,B> new_node = new Nodo_Par<>(node, element.first(),element.second(), next_node);
 
                     node.next(new_node);
                     if (next_node != null) {
@@ -984,7 +986,7 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public void insert_previous(PairNode<A,B> node, Pair<A,B> element) {
+    public void insert_previous(Nodo_Par<A,B> node, Par<A,B> element) {
         if (!is_empty()) {
 
             if (node != null) {
@@ -992,8 +994,8 @@ public class Lista_Pares<A,B>{
                     push_front(element);
                 } else {
 
-                    PairNode<A,B> previous_node = node.previous();
-                    PairNode<A,B> new_node = new PairNode<>(previous_node, element.first(),element.second(), node);
+                    Nodo_Par<A,B> previous_node = node.previous();
+                    Nodo_Par<A,B> new_node = new Nodo_Par<>(previous_node, element.first(),element.second(), node);
 
                     node.previous(new_node);
                     if (previous_node != null) {
@@ -1008,7 +1010,7 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public void insert_at(int position, Pair<A,B> element) {
+    public void insert_at(int position, Par<A,B> element) {
         if (!is_empty()) {
             position = position % this._size;
             if (position == 0) {
@@ -1016,14 +1018,14 @@ public class Lista_Pares<A,B>{
             } else if (position == this._size - 1) {
                 push_back(element);
             } else {
-                PairNode<A,B> node = node(position);
+                Nodo_Par<A,B> node = node(position);
                 this.insert_previous(node, element);
             }
         }
     }
 
     
-    public void introduce_at(int index, Pair<A,B> element) {
+    public void introduce_at(int index, Par<A,B> element) {
 
         if (!contains(element)) {
             insert_at(index, element);
@@ -1042,10 +1044,10 @@ public class Lista_Pares<A,B>{
                 pop_back();
             } else {
 
-                PairNode<A,B> node = node(position);
+                Nodo_Par<A,B> node = node(position);
                 if (node != null) {
-                    PairNode<A,B> previous_node = node.previous();
-                    PairNode<A,B> next_node = node.next();
+                    Nodo_Par<A,B> previous_node = node.previous();
+                    Nodo_Par<A,B> next_node = node.next();
 
                     if (previous_node != null) {
                         previous_node.next(next_node);
@@ -1056,7 +1058,6 @@ public class Lista_Pares<A,B>{
                     }
 
                     node.dispose();
-                    node = null;
 
                     this._size--;
                     update_middle();
@@ -1067,7 +1068,7 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public void remove(Pair<A,B> element) {
+    public void remove(Par<A,B> element) {
         if (!is_empty()) {
             if (this.first().equals(element)) {
                 pop_front();
@@ -1075,10 +1076,10 @@ public class Lista_Pares<A,B>{
                 pop_back();
             } else {
 
-                PairNode<A,B> node = node(element);
+                Nodo_Par<A,B> node = node(element);
                 if (node != null) {
-                    PairNode<A,B> previous_node = node.previous();
-                    PairNode<A,B> next_node = node.next();
+                    Nodo_Par<A,B> previous_node = node.previous();
+                    Nodo_Par<A,B> next_node = node.next();
 
                     if (previous_node != null) {
                         previous_node.next(next_node);
@@ -1089,7 +1090,6 @@ public class Lista_Pares<A,B>{
                     }
 
                     node.dispose();
-                    node = null;
 
                     this._size--;
                     update_middle();
@@ -1100,7 +1100,7 @@ public class Lista_Pares<A,B>{
     }
 
     
-    public PairNode<A,B> node(Pair<A,B> element) throws NullPointerException {
+    public Nodo_Par<A,B> node(Par<A,B> element) throws NullPointerException {
 
         if (_size == 0) {
             return null;
@@ -1111,8 +1111,8 @@ public class Lista_Pares<A,B>{
         if (_size == 2) {
             return this.first().equals(element) ? _front : (this.last().equals(element) ? _back : null);
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -1152,7 +1152,7 @@ public class Lista_Pares<A,B>{
 
     }
 
-    public PairNode<A,B> node(A first_element, B second_element) throws NullPointerException {
+    public Nodo_Par<A,B> node(A first_element, B second_element) throws NullPointerException {
 
         if (_size == 0) {
             return null;
@@ -1163,8 +1163,8 @@ public class Lista_Pares<A,B>{
         if (_size == 2) {
             return this.first().equals(first_element,second_element) ? _front : (this.last().equals(first_element,second_element) ? _back : null);
         } else {
-            PairNode<A,B> first = this._front;
-            PairNode<A,B> last = this._back;
+            Nodo_Par<A,B> first = this._front;
+            Nodo_Par<A,B> last = this._back;
 
             int middle_index = (this._size) / 2;
 
@@ -1204,7 +1204,7 @@ public class Lista_Pares<A,B>{
 
     }
     
-    public PairNode<A,B> node(int index) throws NullPointerException {
+    public Nodo_Par<A,B> node(int index) throws NullPointerException {
         if (!is_empty()) {
             int real_index = index % this._size;
             if (real_index == 0) {
@@ -1220,14 +1220,14 @@ public class Lista_Pares<A,B>{
 
                 //Difference Front Is Pair<A,B>he Best
                 if (is_best(difference_front, difference_middle, difference_back)) {
-                    PairNode<A,B> auxiliar = this._front.next();
+                    Nodo_Par<A,B> auxiliar = this._front.next();
                     for (int i = 1; i < real_index; i++) {
                         auxiliar = auxiliar.next();
                     }
                     return auxiliar;
                 } //Difference Back Is Pair<A,B>he Best
                 else if (is_best(difference_back, difference_front, difference_middle)) {
-                    PairNode<A,B> auxiliar = this._back.previous();
+                    Nodo_Par<A,B> auxiliar = this._back.previous();
                     for (int i = this._size - 2; i > real_index; i--) {
                         auxiliar = auxiliar.previous();
                     }
@@ -1235,13 +1235,13 @@ public class Lista_Pares<A,B>{
                 } //Difference Middle Is Pair<A,B>he Best
                 else {
                     if (real_index > middle_index) {
-                        PairNode<A,B> auxiliar = this._middle;
+                        Nodo_Par<A,B> auxiliar = this._middle;
                         for (int i = middle_index; i < real_index; i++) {
                             auxiliar = auxiliar.next();
                         }
                         return auxiliar;
                     } else if (real_index < middle_index) {
-                        PairNode<A,B> auxiliar = this._middle;
+                        Nodo_Par<A,B> auxiliar = this._middle;
                         for (int i = middle_index; i > real_index; i--) {
                             auxiliar = auxiliar.previous();
                         }
@@ -1264,7 +1264,7 @@ public class Lista_Pares<A,B>{
 
         String newString = new String();
 
-        PairNode<A,B> auxiliar = this._front;
+        Nodo_Par<A,B> auxiliar = this._front;
 
         while (auxiliar != null) {
             newString += "[" + auxiliar.element() + "]\n";
@@ -1277,7 +1277,7 @@ public class Lista_Pares<A,B>{
     @Override
     public int hashCode() {
         int hash = 7;
-        PairNode<A,B> aux = this._front;
+        Nodo_Par<A,B> aux = this._front;
         while (aux != null) {
             hash = 53 * hash + aux.element().hashCode();
             aux = aux.next();
@@ -1305,8 +1305,8 @@ public class Lista_Pares<A,B>{
         Lista_Pares<A,B> other = (Lista_Pares<A,B>) obj;
 
         if (other.size() == this._size) {
-            PairNode<A,B> thisAux = this._front;
-            PairNode<A,B> otherAux = other.front();
+            Nodo_Par<A,B> thisAux = this._front;
+            Nodo_Par<A,B> otherAux = other.front();
 
             while (thisAux != null) {
 

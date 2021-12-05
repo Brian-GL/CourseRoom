@@ -112,7 +112,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/recursos/iconos/avatar.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre Del Profesor"/>
         <Property name="toolTipText" type="java.lang.String" value="Nombre Del Profesor"/>
       </Properties>
     </Component>
@@ -358,7 +357,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/recursos/iconos/training.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Del Curso Sistemas Operativos"/>
         <Property name="toolTipText" type="java.lang.String" value="Curso De Proveniencia"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>

@@ -60,7 +60,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
-        imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(2000, 2000));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(450, 450));
         imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(450, 450));
@@ -87,7 +86,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         nombre_Usuario_jLabel.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         nombre_Usuario_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre_Usuario_jLabel.setText("Nombre De Usuario");
         nombre_Usuario_jLabel.setToolTipText("Nombre De Usuario");
         nombre_Usuario_jLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nombre_Usuario_jLabel.setMaximumSize(new java.awt.Dimension(430, 30));
@@ -174,6 +172,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
+        descripcion_JScrollPane.setBorder(null);
         descripcion_JScrollPane.setOpaque(false);
         descripcion_JScrollPane.setRequestFocusEnabled(false);
         descripcion_JScrollPane.setVerifyInputWhenFocusTarget(false);
@@ -377,7 +376,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         nombres_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
         telefono_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         tipo_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        //imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         descripcion_JTextPane.setForeground(CourseRoom.Primer_Color_Fuente());
         descripcion_JScrollPane.setForeground(CourseRoom.Primer_Color_Fuente());
     }

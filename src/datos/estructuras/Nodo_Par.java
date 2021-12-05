@@ -11,33 +11,33 @@ import java.util.Objects;
  *
  * @author LENOVO
  */
-public class PairNode<A,B> implements Comparable<PairNode<A,B>>{
+public class Nodo_Par<A,B> implements Comparable<Nodo_Par<A,B>>{
     
-    private PairNode<A,B> _previous;
-    private Pair<A,B> _element;
-    private PairNode<A,B> _next;
+    private Nodo_Par<A,B> _previous;
+    private Par<A,B> _element;
+    private Nodo_Par<A,B> _next;
 
-    public PairNode(PairNode<A,B> previous, A first_element, B second_element, PairNode<A,B> next) {
+    public Nodo_Par(Nodo_Par<A,B> previous, A first_element, B second_element, Nodo_Par<A,B> next) {
         this._previous = previous;
-        this._element = new Pair<>(first_element,second_element);
+        this._element = new Par<>(first_element,second_element);
         this._next = next;
     }
 
-    public PairNode(A first_element, B second_element) {
-        this._element = new Pair<>(first_element,second_element);
+    public Nodo_Par(A first_element, B second_element) {
+        this._element = new Par<>(first_element,second_element);
     }
     
     /**
      * @return the _previous
      */
-    public PairNode<A,B> previous() {
+    public Nodo_Par<A,B> previous() {
         return _previous;
     }
 
     /**
      * @param _previous the _previous to set
      */
-    public void previous(PairNode<A,B> _previous) {
+    public void previous(Nodo_Par<A,B> _previous) {
         this._previous = _previous;
     }
 
@@ -72,7 +72,7 @@ public class PairNode<A,B> implements Comparable<PairNode<A,B>>{
     /**
      * @return the _value
      */
-    public Pair<A,B> element() {
+    public Par<A,B> element() {
         return _element;
     }
 
@@ -81,7 +81,7 @@ public class PairNode<A,B> implements Comparable<PairNode<A,B>>{
         this.second(second);
     }
     
-    public void element(Pair<A,B> element) {
+    public void element(Par<A,B> element) {
         this.first(element.first());
         this.second(element.second());
     }
@@ -89,14 +89,14 @@ public class PairNode<A,B> implements Comparable<PairNode<A,B>>{
     /**
      * @return the _next
      */
-    public PairNode<A,B> next() {
+    public Nodo_Par<A,B> next() {
         return _next;
     }
 
     /**
      * @param _next the _next to set
      */
-    public void next(PairNode<A,B> _next) {
+    public void next(Nodo_Par<A,B> _next) {
         this._next = _next;
     }
 
@@ -108,33 +108,33 @@ public class PairNode<A,B> implements Comparable<PairNode<A,B>>{
         return this.previous() != null;
     }
     
-     public Pair<A,B> next_element() {
+     public Par<A,B> next_element() {
        return (has_next()) ? this.next().element() : null;
     }
     
-    public Pair<A,B> previous_element(){
+    public Par<A,B> previous_element(){
         return (has_previous()) ? this.previous().element() : null;
     }
     
     @Override
     protected Object clone() throws CloneNotSupportedException {
         super.clone();
-        return new PairNode<>(this.previous(),this.first(),this.second(),this.next());
+        return new Nodo_Par<>(this.previous(),this.first(),this.second(),this.next());
     }
 
 
     @Override
     public String toString() throws NullPointerException{
-       String toString = new String();
+       String toString = "";
        
         if(has_previous()){
-            toString = toString + this.previous() + "\n";
+            toString = this.previous() + "\n";
         }
         
-        toString = toString + this.element()+ "\n";
+        toString = this.element()+ "\n";
         
         if(has_next()){
-            toString = toString + this.next() + "\n";
+            toString = this.next() + "\n";
         }
       
         return toString;
@@ -161,10 +161,10 @@ public class PairNode<A,B> implements Comparable<PairNode<A,B>>{
         if (this == obj) 
             return true;
 
-        if (!(obj instanceof PairNode<?,?>)) 
+        if (!(obj instanceof Nodo_Par<?,?>)) 
             return false; 
         
-         PairNode<A,B> other = (PairNode<A,B>) obj;
+         Nodo_Par<A,B> other = (Nodo_Par<A,B>) obj;
          
          if(has_next() && has_previous()
                  && other.has_next() && other.has_previous()){
@@ -195,7 +195,7 @@ public class PairNode<A,B> implements Comparable<PairNode<A,B>>{
 
     
     @Override
-    public int compareTo(PairNode<A, B> o) {
+    public int compareTo(Nodo_Par<A, B> o) {
         return  this._element.compareTo(o._element);
     }
     

@@ -155,7 +155,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         nombre_Grupo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         nombre_Grupo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre_Grupo_JLabel.setText("Group Name");
         nombre_Grupo_JLabel.setToolTipText("Nombre Del Grupo");
         nombre_Grupo_JLabel.setMaximumSize(new java.awt.Dimension(1000, 1000));
         nombre_Grupo_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -174,7 +173,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         curso_Grupo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         curso_Grupo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         curso_Grupo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/teacher.png"))); // NOI18N
-        curso_Grupo_JLabel.setText("Del Curso Sistemas Operativos");
         curso_Grupo_JLabel.setToolTipText("Curso De Proveniencia Del Grupo");
         curso_Grupo_JLabel.setOpaque(true);
         curso_Grupo_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -185,8 +183,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         fecha_Creacion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fecha_Creacion_JLabel.setText("Creado El 22 De Octubre De 2021");
         fecha_Creacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
+        fecha_Creacion_JLabel.setMaximumSize(new java.awt.Dimension(354, 20));
+        fecha_Creacion_JLabel.setMinimumSize(new java.awt.Dimension(354, 20));
+        fecha_Creacion_JLabel.setPreferredSize(new java.awt.Dimension(354, 20));
 
         miembros_Titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         miembros_Titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -222,7 +222,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     .addGroup(informacion_Grupo_JPanelLayout.createSequentialGroup()
                         .addComponent(regresar_JButton)
                         .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(fecha_Creacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(fecha_Creacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(informacion_Grupo_JPanelLayout.createSequentialGroup()
                         .addGap(0, 22, Short.MAX_VALUE)
                         .addGroup(informacion_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -244,8 +244,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         .addComponent(miembros_Titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addComponent(miembros_JScrollPane)
-                        .addGap(19, 19, 19)
-                        .addComponent(fecha_Creacion_JLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fecha_Creacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(informacion_Grupo_JPanelLayout.createSequentialGroup()
                         .addGap(0, 15, Short.MAX_VALUE)
                         .addComponent(nombre_Grupo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -657,13 +657,11 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         editar_Nombre_Grupo_JTextField.setEditable(false);
         editar_Nombre_Grupo_JTextField.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        editar_Nombre_Grupo_JTextField.setText("Nombre Del Grupo");
 
         editar_Nombre_Grupo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Nombre_Grupo_JLabel.setText("Nombre Del Grupo");
 
         editar_Imagen_Grupo_JLabel.setToolTipText("Imagen Del Grupo A Editar");
-        editar_Imagen_Grupo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         editar_Imagen_Grupo_JLabel.setMaximumSize(new java.awt.Dimension(440, 440));
         editar_Imagen_Grupo_JLabel.setMinimumSize(new java.awt.Dimension(440, 440));
         editar_Imagen_Grupo_JLabel.setPreferredSize(new java.awt.Dimension(440, 440));
@@ -1367,7 +1365,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         descripcion_Tarea_Pendiente_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Tarea_Pendiente_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-       
         Miembro_General_Panel miembro_Panel;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
             miembro_Panel = new Miembro_General_Panel();
@@ -1386,6 +1383,11 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         escogedor_Fecha_Hora.setFont(nombre_Tarea_Pendiente_JTextField.getFont());
         fecha_Finalizacion_Tarea_Pendiente_JPanel.add(escogedor_Fecha_Hora);
         fecha_Finalizacion_Tarea_Pendiente_JPanel.setBorder(nombre_Tarea_Pendiente_JTextField.getBorder());
+        
+        nombre_Grupo_JLabel.setText(CourseRoom.Faker().team().name());
+        editar_Nombre_Grupo_JTextField.setText(nombre_Grupo_JLabel.getText());
+        curso_Grupo_JLabel.setText(CourseRoom.Faker().educator().course());
+        fecha_Creacion_JLabel.setText(CourseRoom.Faker().date().birthday(0, 1).toString());
         
         Colorear_Componentes();
         

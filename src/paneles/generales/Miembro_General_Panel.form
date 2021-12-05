@@ -88,11 +88,6 @@
         <Component class="javax.swing.JLabel" name="imagen_jLabel">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Imagen Del Miembro"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                <BevelBorder/>
-              </Border>
-            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[130, 130]"/>
             </Property>

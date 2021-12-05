@@ -98,7 +98,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         setPreferredSize(new java.awt.Dimension(1260, 670));
         setLayout(new java.awt.CardLayout());
 
-        visualizador_JTabbedPane.setBackground(java.awt.Color.black);
         visualizador_JTabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         visualizador_JTabbedPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         visualizador_JTabbedPane.setMinimumSize(new java.awt.Dimension(1024, 700));
@@ -592,9 +591,8 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         tipo_Perfil_JComboBox.setMaximumSize(new java.awt.Dimension(350, 40));
         tipo_Perfil_JComboBox.setPreferredSize(new java.awt.Dimension(320, 40));
 
-        imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil Seleccionada.");
-        imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
         imagen_Perfil_JLabel.setName(""); // NOI18N
         imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
@@ -959,9 +957,8 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
 
     @Override
     public void Colorear_Componentes() {
-        Color noColor = new Color(0,0,0,0);
         visualizador_JTabbedPane.setForeground(CourseRoom.Segundo_Color());
-        visualizador_JTabbedPane.setBackground(noColor);
+        visualizador_JTabbedPane.setBackground(CourseRoom.Primer_Color());
         
         descripcion_JTextPane.setBackground(CourseRoom.Segundo_Color());
         descripcion_JTextPane.setForeground(CourseRoom.Primer_Color());
@@ -1007,7 +1004,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         descripcion_JLabel.setForeground(CourseRoom.Segundo_Color());
         fecha_Nacimiento_JLabel.setForeground(CourseRoom.Segundo_Color());
         genero_JLabel.setForeground(CourseRoom.Segundo_Color());
-        imagen_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
+        //imagen_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Correo_Electronico_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Inicio_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Nombre_Usuario_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());

@@ -11,21 +11,21 @@ import java.util.Objects;
  *
  * @author LENOVO
  */
-public class Node<T> implements Comparable<Node<T>>{
+public class Nodo<T> implements Comparable<Nodo<T>>{
 
-    protected Node<T> _previous;
+    protected Nodo<T> _previous;
     protected T _element;
-    protected Node<T> _next;
+    protected Nodo<T> _next;
     protected Comparing<T> _comparing;
 
-    public Node(Node<T> _previous, T _value, Node<T> _next) {
+    public Nodo(Nodo<T> _previous, T _value, Nodo<T> _next) {
         this._previous = _previous;
         this._element = _value;
         this._next = _next;
         this._comparing = new Comparing<>();
     }
 
-    public Node(T _value) {
+    public Nodo(T _value) {
         this._element = _value;
         this._comparing = new Comparing<>();
     }
@@ -33,14 +33,14 @@ public class Node<T> implements Comparable<Node<T>>{
     /**
      * @return the _previous
      */
-    public Node<T> previous() {
+    public Nodo<T> previous() {
         return _previous;
     }
 
     /**
      * @param _previous the _previous to set
      */
-    public void previous(Node<T> _previous) {
+    public void previous(Nodo<T> _previous) {
         this._previous = _previous;
     }
 
@@ -62,14 +62,14 @@ public class Node<T> implements Comparable<Node<T>>{
     /**
      * @return the _next
      */
-    public Node<T> next() {
+    public Nodo<T> next() {
         return _next;
     }
 
     /**
      * @param _next the _next to set
      */
-    public void next(Node<T> _next) {
+    public void next(Nodo<T> _next) {
         this._next = _next;
     }
 
@@ -92,22 +92,22 @@ public class Node<T> implements Comparable<Node<T>>{
     @Override
     protected Object clone() throws CloneNotSupportedException {
         super.clone();
-        return new Node<>(this.previous(),this.element(),this.next());
+        return new Nodo<>(this.previous(),this.element(),this.next());
     }
 
     
     @Override
     public String toString() throws NullPointerException{
-       String toString = new String();
+       String toString = "";
        
         if(has_previous()){
-            toString = toString + this.previous() + "\n";
+            toString = this.previous() + "\n";
         }
         
-        toString = toString + this._element + "\n";
+        toString = this._element + "\n";
         
         if(has_next()){
-            toString = toString + this.next() + "\n";
+            toString = this.next() + "\n";
         }
       
         return toString;
@@ -134,10 +134,10 @@ public class Node<T> implements Comparable<Node<T>>{
         if (this == obj) 
             return true;
 
-        if (!(obj instanceof Node<?>)) 
+        if (!(obj instanceof Nodo<?>)) 
             return false; 
         
-         Node<T> other = (Node<T>) obj;
+         Nodo<T> other = (Nodo<T>) obj;
          
          if(has_next() && has_previous()
                  && other.has_next() && other.has_previous()){
@@ -167,7 +167,7 @@ public class Node<T> implements Comparable<Node<T>>{
     }
 
     @Override
-    public int compareTo(Node<T> o) {
+    public int compareTo(Nodo<T> o) {
         return (o != null) ? this._comparing.compare(_element, o.element()) : 1;
     }
     

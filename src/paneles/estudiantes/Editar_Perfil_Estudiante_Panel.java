@@ -56,7 +56,7 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         correo_Electronico_JTextField = new javax.swing.JTextField();
         repetir_Contrasena_JLabel = new javax.swing.JLabel();
         repetir_Contrasena_JPasswordField = new javax.swing.JPasswordField();
-        informacion_Nombre_Usaurio_JLabel = new javax.swing.JLabel();
+        informacion_Nombre_Usuario_JLabel = new javax.swing.JLabel();
         informacion_Repetir_Contrasena_JLabel = new javax.swing.JLabel();
         informacion_Correo_Electronico_JLabel = new javax.swing.JLabel();
         informacion_Contrasena_JLabel = new javax.swing.JLabel();
@@ -159,11 +159,11 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         repetir_Contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         repetir_Contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
 
-        informacion_Nombre_Usaurio_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        informacion_Nombre_Usaurio_JLabel.setText("información sobre el nombre de usuario");
-        informacion_Nombre_Usaurio_JLabel.setMaximumSize(new java.awt.Dimension(320, 20));
-        informacion_Nombre_Usaurio_JLabel.setMinimumSize(new java.awt.Dimension(320, 20));
-        informacion_Nombre_Usaurio_JLabel.setPreferredSize(new java.awt.Dimension(320, 20));
+        informacion_Nombre_Usuario_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
+        informacion_Nombre_Usuario_JLabel.setText("información sobre el nombre de usuario");
+        informacion_Nombre_Usuario_JLabel.setMaximumSize(new java.awt.Dimension(320, 20));
+        informacion_Nombre_Usuario_JLabel.setMinimumSize(new java.awt.Dimension(320, 20));
+        informacion_Nombre_Usuario_JLabel.setPreferredSize(new java.awt.Dimension(320, 20));
 
         informacion_Repetir_Contrasena_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         informacion_Repetir_Contrasena_JLabel.setText("información de la repetición de la contraseña");
@@ -185,7 +185,6 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
 
         imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil Seleccionada.");
-        imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(400, 400));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(400, 400));
         imagen_Perfil_JLabel.setName(""); // NOI18N
@@ -317,7 +316,7 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                         .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nombre_Usuario_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(informacion_Nombre_Usaurio_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(informacion_Nombre_Usuario_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(contrasena_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(informacion_Contrasena_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(repetir_Contrasena_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -357,7 +356,7 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
                             .addComponent(nombre_Usuario_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nombre_Usuario_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(informacion_Nombre_Usaurio_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(informacion_Nombre_Usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(correo_Electronico_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1148,7 +1147,7 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
     private javax.swing.JLabel imagen_Perfil_JLabel;
     private javax.swing.JLabel informacion_Contrasena_JLabel;
     private javax.swing.JLabel informacion_Correo_Electronico_JLabel;
-    private javax.swing.JLabel informacion_Nombre_Usaurio_JLabel;
+    private javax.swing.JLabel informacion_Nombre_Usuario_JLabel;
     private javax.swing.JLabel informacion_Repetir_Contrasena_JLabel;
     private javax.swing.JButton localidad_JButton;
     private javax.swing.JLabel localidad_JLabel;
@@ -1182,7 +1181,6 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         imagen_Perfil_JLabel.setIcon(icono_Imagen);
         imagen_Escalada.flush();
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        
     }
     
     @Override
@@ -1197,10 +1195,10 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         descripcion_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         fecha_Nacimiento_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         genero_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        //imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         informacion_Contrasena_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         informacion_Correo_Electronico_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        informacion_Nombre_Usaurio_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        informacion_Nombre_Usuario_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         informacion_Repetir_Contrasena_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         localidad_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         nombre_Usuario_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());

@@ -8,7 +8,7 @@ package paneles.estudiantes;
 import main.CourseRoom;
 import datos.colecciones.Lista_Pares;
 import interfaces.Color_Interface;
-import datos.estructuras.Pair;
+import datos.estructuras.Par;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.PixelGrabber;
@@ -63,7 +63,6 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(526, 141));
 
-        imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_JLabel.setMaximumSize(new java.awt.Dimension(129, 129));
         imagen_JLabel.setMinimumSize(new java.awt.Dimension(129, 129));
         imagen_JLabel.setPreferredSize(new java.awt.Dimension(129, 129));
@@ -210,7 +209,7 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
             int largo_imagen = imagen.getWidth(null)/2;
             int pixel, rojo, verde, azul, numero_auxiliar;
             Color color;
-            Pair<Integer, Color> par_auxiliar;            
+            Par<Integer, Color> par_auxiliar;            
             if (obtener_Pixeles.grabPixels()) {
                 int[] pixeles = (int[]) obtener_Pixeles.getPixels();
                 for(int i = 0; i < pixeles.length; i++){

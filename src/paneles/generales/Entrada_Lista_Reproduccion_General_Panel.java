@@ -69,12 +69,12 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         album_JLabel = new javax.swing.JLabel();
         artista_JLabel = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(320, 75));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(320, 75));
 
+        imagen_Arte_JLabel.setBackground(java.awt.Color.black);
         imagen_Arte_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_Arte_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(63, 63));
         imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(63, 63));
         imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(63, 63));
@@ -84,18 +84,21 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
             }
         });
 
+        titulo_JLabel.setBackground(java.awt.Color.black);
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         titulo_JLabel.setToolTipText("Título Del Archivo");
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
 
+        album_JLabel.setBackground(java.awt.Color.black);
         album_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         album_JLabel.setToolTipText("Álbum");
         album_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         album_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
         album_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
 
+        artista_JLabel.setBackground(java.awt.Color.black);
         artista_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         artista_JLabel.setToolTipText("Artista");
         artista_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
@@ -107,19 +110,19 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(artista_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                    .addComponent(album_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
-                .addGap(11, 11, 11))
+                    .addComponent(artista_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                    .addComponent(album_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -128,7 +131,7 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
                         .addComponent(artista_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(album_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(5, 5, 5))
+                .addContainerGap())
         );
 
         imagen_Arte_JLabel.getAccessibleContext().setAccessibleName("jLabelPlaylistEntryCoverArt");

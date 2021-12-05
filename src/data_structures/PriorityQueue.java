@@ -7,7 +7,7 @@ package data_structures;
 
 import datos.colecciones.Coleccion;
 import datos.colecciones.Lista;
-import datos.estructuras.Node;
+import datos.estructuras.Nodo;
 import data_structures.Mode;
 import java.util.Comparator;
 
@@ -39,7 +39,7 @@ public class PriorityQueue<T> extends Coleccion<T>{
     public PriorityQueue(Lista<T> list, Mode mode) { 
             super();
             this._mode = mode; 
-            Node<T> auxiliar = list.front();
+            Nodo<T> auxiliar = list.front();
 
             while(auxiliar != null) {
                     enqueue(auxiliar.element());
@@ -74,7 +74,7 @@ public class PriorityQueue<T> extends Coleccion<T>{
     public PriorityQueue(Coleccion<T> collection, Mode mode) { 
             super(); 
             this._mode = mode; 
-            Node<T> auxiliar = collection.list().front();
+            Nodo<T> auxiliar = collection.list().front();
 
             while(auxiliar != null) {
                     enqueue(auxiliar.element());
@@ -86,26 +86,26 @@ public class PriorityQueue<T> extends Coleccion<T>{
 
     public void enqueue(T element) {
 
-        if(this._collection.is_empty())
-                this._collection.push_front(element);
+        if(this._coleccion.is_empty())
+                this._coleccion.push_front(element);
         else {
 
                 switch(this._mode) {
                         case ASCENDING:
                         {	
-                                T middleElement = this._collection.medium();
+                                T middleElement = this._coleccion.medium();
 
                                 Integer comparator = this._comparator.compare(element,middleElement);
 
                                 //Are the same value
                                 if(comparator == 0) 
-                                        this._collection.insert_next(this._collection.middle(), element);
+                                        this._coleccion.insert_next(this._coleccion.middle(), element);
 
                                 //It means the element if bigger than the middle value.
                                 else if(comparator > 0) {
 
                                         boolean broke = false;
-                                        Node<T> auxiliar = this._collection.middle();
+                                        Nodo<T> auxiliar = this._coleccion.middle();
 
                                         while(auxiliar.next() != null) {
 
@@ -114,7 +114,7 @@ public class PriorityQueue<T> extends Coleccion<T>{
 
                                                 if(previousComparator <= 0 && nextComparator >= 0) {
                                                         broke = true;
-                                                        this._collection.insert_next(auxiliar, element);
+                                                        this._coleccion.insert_next(auxiliar, element);
                                                         break;
                                                 }
 
@@ -122,13 +122,13 @@ public class PriorityQueue<T> extends Coleccion<T>{
                                         }
 
                                         if(!broke)
-                                                this._collection.insert_next(auxiliar,element);
+                                                this._coleccion.insert_next(auxiliar,element);
 
                                 }
                                 //It means the element is smaller than the middle value.
                                 else {
                                         boolean broke = false;
-                                        Node<T> auxiliar = this._collection.middle();
+                                        Nodo<T> auxiliar = this._coleccion.middle();
 
                                         while(auxiliar.previous() != null) {
 
@@ -137,7 +137,7 @@ public class PriorityQueue<T> extends Coleccion<T>{
 
                                                 if(previousComparator <= 0 && nextComparator >= 0) {
                                                         broke = true;
-                                                        this._collection.insert_previous(auxiliar, element);
+                                                        this._coleccion.insert_previous(auxiliar, element);
                                                         break;
                                                 }
 
@@ -145,24 +145,24 @@ public class PriorityQueue<T> extends Coleccion<T>{
                                         }
 
                                         if(!broke)
-                                                this._collection.insert_previous(auxiliar,element);
+                                                this._coleccion.insert_previous(auxiliar,element);
                                 }
                         }
                         break;
                         case DESCENDING:{
-                                T middleElement = this._collection.medium();
+                                T middleElement = this._coleccion.medium();
 
                                 Integer comparator = this._comparator.compare(element,middleElement);
 
                                 //Are the same value
                                 if(comparator == 0) 
-                                        this._collection.insert_next(this._collection.middle(), element);
+                                        this._coleccion.insert_next(this._coleccion.middle(), element);
 
                                 //It means the element if bigger than the middle value.
                                 else if(comparator > 0) {
 
                                         boolean broke = false;
-                                        Node<T> auxiliar = this._collection.middle();
+                                        Nodo<T> auxiliar = this._coleccion.middle();
 
                                         while(auxiliar.previous() != null){
 
@@ -171,7 +171,7 @@ public class PriorityQueue<T> extends Coleccion<T>{
 
                                                 if(previousComparator <= 0 && nextComparator >= 0) {
                                                         broke = true;
-                                                        this._collection.insert_previous(auxiliar, element);
+                                                        this._coleccion.insert_previous(auxiliar, element);
                                                         break;
                                                 }
 
@@ -179,13 +179,13 @@ public class PriorityQueue<T> extends Coleccion<T>{
                                         }
 
                                         if(!broke)
-                                                this._collection.insert_previous(auxiliar,element);
+                                                this._coleccion.insert_previous(auxiliar,element);
 
                                 }
                                 //It means the element is small than the middle value.
                                 else {
                                         boolean broke = false;
-                                        Node<T> auxiliar = this._collection.middle();
+                                        Nodo<T> auxiliar = this._coleccion.middle();
 
                                         while(auxiliar.next() != null) {
 
@@ -194,7 +194,7 @@ public class PriorityQueue<T> extends Coleccion<T>{
 
                                                 if(previousComparator >= 0 && nextComparator <= 0) {
                                                         broke = true;
-                                                        this._collection.insert_next(auxiliar, element);
+                                                        this._coleccion.insert_next(auxiliar, element);
                                                         break;
                                                 }
 
@@ -202,7 +202,7 @@ public class PriorityQueue<T> extends Coleccion<T>{
                                         }
 
                                         if(!broke)
-                                                this._collection.insert_next(auxiliar,element);
+                                                this._coleccion.insert_next(auxiliar,element);
                                 }
                         }
                         break;
@@ -211,12 +211,12 @@ public class PriorityQueue<T> extends Coleccion<T>{
     }
 
     public void queueUp(T element) {
-        if(!this._collection.contains(element))
+        if(!this._coleccion.contains(element))
             enqueue(element);
     }
 
     public T dequeue() throws NullPointerException{
-           return _collection.delist();
+           return _coleccion.delist();
     }
 	
 }

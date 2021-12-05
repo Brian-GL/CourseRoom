@@ -34,10 +34,10 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         initComponents();
         Iniciar_Componentes();
         conn = Conexion.ConnectDb();
-        txtUsuario.setText("");
-        Pass.setText("");
-        txtUsuario.setEditable(true);
-        txtUsuario.requestFocus();
+        usuario_JTextField.setText("");
+        contrasena_JPasswordField.setText("");
+        usuario_JTextField.setEditable(true);
+        usuario_JTextField.requestFocus();
         
     }
 
@@ -53,9 +53,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         imagen_JLabel = new javax.swing.JLabel();
         contenido_JPanel = new javax.swing.JPanel();
         crear_Cuenta_JLabel = new javax.swing.JLabel();
-        Pass = new javax.swing.JPasswordField();
+        contrasena_JPasswordField = new javax.swing.JPasswordField();
         usuario_JLabel = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
+        usuario_JTextField = new javax.swing.JTextField();
         iniciar_Sesion_JButton = new javax.swing.JButton();
         marca_JLabel = new javax.swing.JLabel();
         recuperar_Credenciales_JLabel = new javax.swing.JLabel();
@@ -84,10 +84,10 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             }
         });
 
-        Pass.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
-        Pass.setToolTipText("Ingresa Aquí Tu Contraseña");
-        Pass.setMinimumSize(new java.awt.Dimension(430, 45));
-        Pass.setPreferredSize(new java.awt.Dimension(430, 45));
+        contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
+        contrasena_JPasswordField.setToolTipText("Ingresa Aquí Tu Contraseña");
+        contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(430, 45));
+        contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(430, 45));
 
         usuario_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         usuario_JLabel.setText("Usuario");
@@ -96,10 +96,10 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         usuario_JLabel.setMinimumSize(new java.awt.Dimension(430, 30));
         usuario_JLabel.setPreferredSize(new java.awt.Dimension(430, 30));
 
-        txtUsuario.setFont(new java.awt.Font("Gadugi", 0, 25)); // NOI18N
-        txtUsuario.setToolTipText("Ingresa Aquí Tu Nombre De Usuario O  Correo");
-        txtUsuario.setMinimumSize(new java.awt.Dimension(430, 45));
-        txtUsuario.setPreferredSize(new java.awt.Dimension(430, 45));
+        usuario_JTextField.setFont(new java.awt.Font("Gadugi", 0, 25)); // NOI18N
+        usuario_JTextField.setToolTipText("Ingresa Aquí Tu Nombre De Usuario O  Correo");
+        usuario_JTextField.setMinimumSize(new java.awt.Dimension(430, 45));
+        usuario_JTextField.setPreferredSize(new java.awt.Dimension(430, 45));
 
         iniciar_Sesion_JButton.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         iniciar_Sesion_JButton.setText(" Iniciar Sesión ");
@@ -173,40 +173,24 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         contenido_JPanel.setLayout(contenido_JPanelLayout);
         contenido_JPanelLayout.setHorizontalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(mostrar_Contrasena_JCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mostrar_Contrasena_JCheckBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iniciar_Sesion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(marca_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(Pass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(iniciar_Sesion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(marca_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(recuperar_Credenciales_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(crear_Cuenta_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(logo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(contrasena_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
-                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(usuario_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(recuperar_Credenciales_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(crear_Cuenta_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE))
+                    .addComponent(logo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(contrasena_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usuario_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usuario_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,11 +200,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usuario_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(contrasena_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(Pass, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mostrar_Contrasena_JCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -261,10 +245,10 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             if (mostrar_Contrasena_JCheckBox.isSelected()){
-                Pass.setEchoChar((char)0);
+                contrasena_JPasswordField.setEchoChar((char)0);
             }
             else{
-                Pass.setEchoChar('\u25CF');
+                contrasena_JPasswordField.setEchoChar('\u25CF');
             }
         }
     }//GEN-LAST:event_mostrar_Contrasena_JCheckBoxMouseClicked
@@ -315,9 +299,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField Pass;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel contrasena_JLabel;
+    private javax.swing.JPasswordField contrasena_JPasswordField;
     private javax.swing.JLabel crear_Cuenta_JLabel;
     private javax.swing.JLabel imagen_JLabel;
     private javax.swing.JButton iniciar_Sesion_JButton;
@@ -325,8 +309,8 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     private javax.swing.JLabel marca_JLabel;
     private javax.swing.JCheckBox mostrar_Contrasena_JCheckBox;
     private javax.swing.JLabel recuperar_Credenciales_JLabel;
-    private javax.swing.JTextField txtUsuario;
     private javax.swing.JLabel usuario_JLabel;
+    private javax.swing.JTextField usuario_JTextField;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -348,14 +332,13 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     public void Colorear_Componentes() {
         usuario_JLabel.setForeground(CourseRoom.Segundo_Color());
         contrasena_JLabel.setForeground(CourseRoom.Segundo_Color());
-        imagen_JLabel.setForeground(CourseRoom.Segundo_Color());
-        txtUsuario.setBackground(CourseRoom.Segundo_Color());
-        txtUsuario.setForeground(CourseRoom.Primer_Color());
-        txtUsuario.setCaretColor(CourseRoom.Primer_Color());
+        usuario_JTextField.setBackground(CourseRoom.Segundo_Color());
+        usuario_JTextField.setForeground(CourseRoom.Primer_Color());
+        usuario_JTextField.setCaretColor(CourseRoom.Primer_Color());
         
-        Pass.setBackground(CourseRoom.Segundo_Color());
-        Pass.setForeground(CourseRoom.Primer_Color());
-        Pass.setCaretColor(CourseRoom.Primer_Color());
+        contrasena_JPasswordField.setBackground(CourseRoom.Segundo_Color());
+        contrasena_JPasswordField.setForeground(CourseRoom.Primer_Color());
+        contrasena_JPasswordField.setCaretColor(CourseRoom.Primer_Color());
         
         recuperar_Credenciales_JLabel.setBackground(CourseRoom.Segundo_Color());
         crear_Cuenta_JLabel.setBackground(CourseRoom.Segundo_Color());
@@ -377,20 +360,20 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     String sql = "select nom_usuario,pass,status from usuarios where nom_usuario = ? and pass = ? and status = 'Active'";
     try{
         pst = conn.prepareStatement(sql);
-        pst.setString(1, txtUsuario.getText().trim());
-        pst.setString(2, Pass.getText().trim());
+        pst.setString(1, usuario_JTextField.getText().trim());
+        pst.setString(2, contrasena_JPasswordField.getText().trim());
                 
         rs = pst.executeQuery();
         if (rs.next()){
-            JOptionPane.showMessageDialog(null, "  Bienvenido  \n "+" ¡¡¡ " + txtUsuario.getText()+" !!! ");
+            JOptionPane.showMessageDialog(null, CourseRoom.Concatenar("  Bienvenido  \n ¡¡¡  ",usuario_JTextField.getText()," !!! "));
             this.setVisible(false);
             CourseRoom_Frame.Mostrar_Tablero();   
         }
         else{
-            JOptionPane.showMessageDialog(null, "Usuario & Password Incorectos");  }   
-            txtUsuario.setText("");
-            Pass.setText("");
-            txtUsuario.requestFocus();
+            JOptionPane.showMessageDialog(null, "Usuario Y/O Password Incorectos");  }   
+            usuario_JTextField.setText("");
+            contrasena_JPasswordField.setText("");
+            usuario_JTextField.requestFocus();
         }
     catch (HeadlessException | SQLException e){
         JOptionPane.showMessageDialog(null, e);

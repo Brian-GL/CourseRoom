@@ -61,52 +61,27 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="mostrar_Contrasena_JCheckBox" min="-2" pref="195" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="Pass" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="iniciar_Sesion_JButton" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="marca_JLabel" pref="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace pref="123" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="recuperar_Credenciales_JLabel" pref="0" max="32767" attributes="0"/>
-                                      <Component id="crear_Cuenta_JLabel" min="-2" pref="354" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="119" max="32767" attributes="0"/>
-                              </Group>
+                      <Component id="mostrar_Contrasena_JCheckBox" alignment="1" min="-2" pref="195" max="-2" attributes="0"/>
+                      <Component id="contrasena_JPasswordField" max="32767" attributes="0"/>
+                      <Component id="iniciar_Sesion_JButton" max="32767" attributes="0"/>
+                      <Component id="marca_JLabel" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace pref="123" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="recuperar_Credenciales_JLabel" pref="0" max="32767" attributes="0"/>
+                              <Component id="crear_Cuenta_JLabel" min="-2" pref="354" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="119" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="logo_JLabel" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="contrasena_JLabel" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="txtUsuario" max="32767" attributes="0"/>
-                              <Component id="usuario_JLabel" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="logo_JLabel" alignment="1" max="32767" attributes="0"/>
+                      <Component id="contrasena_JLabel" alignment="1" max="32767" attributes="0"/>
+                      <Component id="usuario_JTextField" alignment="1" max="32767" attributes="0"/>
+                      <Component id="usuario_JLabel" alignment="1" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -118,11 +93,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="usuario_JLabel" min="-2" pref="46" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="txtUsuario" min="-2" pref="61" max="-2" attributes="0"/>
+                  <Component id="usuario_JTextField" min="-2" pref="61" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="contrasena_JLabel" min="-2" pref="46" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="Pass" min="-2" pref="61" max="-2" attributes="0"/>
+                  <Component id="contrasena_JPasswordField" min="-2" pref="61" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="mostrar_Contrasena_JCheckBox" min="-2" pref="46" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -159,7 +134,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear_Cuenta_JLabelMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="Pass">
+        <Component class="javax.swing.JPasswordField" name="contrasena_JPasswordField">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="25" style="0"/>
@@ -191,7 +166,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUsuario">
+        <Component class="javax.swing.JTextField" name="usuario_JTextField">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gadugi" size="25" style="0"/>

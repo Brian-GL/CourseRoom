@@ -5,7 +5,7 @@
  */
 package datos.colecciones;
 
-import datos.estructuras.Node;
+import datos.estructuras.Nodo;
 
 
 /**
@@ -14,111 +14,111 @@ import datos.estructuras.Node;
  * @param <T> The Collection Data Type
  */
 public class Coleccion<T>{
-    protected Lista<T> _collection;
+    protected Lista<T> _coleccion;
     
     public Coleccion(){
-        _collection = new Lista<>();
+        _coleccion = new Lista<>();
     }
     
-    public Coleccion(Lista<T> doublyLinkedList){
-        _collection.join_back(doublyLinkedList);
+    public Coleccion(Lista<T> lista_Doblemente_Ligada){
+        _coleccion.join_back(lista_Doblemente_Ligada);
     }
 
     public Lista list(){
-        return  this._collection;
+        return  this._coleccion;
     }
     
     public boolean is_empty() {
-        return _collection.is_empty();
+        return _coleccion.is_empty();
     }
 
     public int size() {
-        return _collection.size();
+        return _coleccion.size();
     }
 
     public T first() throws NullPointerException {
-        return _collection.first();
+        return _coleccion.first();
     }
 
     public T last() throws NullPointerException {
-        return _collection.last();
+        return _coleccion.last();
     }
 
     public T medium() throws NullPointerException {
-        return _collection.medium();
+        return _coleccion.medium();
     }
 
-    public Node<T> front() throws NullPointerException {
-        return _collection.front();
+    public Nodo<T> front() throws NullPointerException {
+        return _coleccion.front();
     }
 
-    public Node<T> back() throws NullPointerException {
-        return _collection.back();
+    public Nodo<T> back() throws NullPointerException {
+        return _coleccion.back();
     }
 
-    public Node<T> middle() throws NullPointerException {
-        return _collection.middle();
+    public Nodo<T> middle() throws NullPointerException {
+        return _coleccion.middle();
     }
 
     public void print() {
-        _collection.print();
+        _coleccion.print();
     }
 
     public boolean contains(T element) {
-        return _collection.contains(element);
+        return _coleccion.contains(element);
     }
 
     public T get(int index) throws NullPointerException {
-        return _collection.get(index);
+        return _coleccion.get(index);
     }
 
     public int position(T element) {
-        return _collection.position(element);
+        return _coleccion.position(element);
     }
 
-    public int node_position(Node node) {
-        return _collection.node_position(node);
+    public int node_position(Nodo node) {
+        return _coleccion.node_position(node);
     }
 
     public void clear() {
-        _collection.clear();
+        _coleccion.clear();
     }
 
     public void erase_at(int position) {
-        _collection.erase_at(position);
+        _coleccion.erase_at(position);
     }
 
     public void remove(T element) {
-        _collection.remove(element);
+        _coleccion.remove(element);
     }
 
-    public Node<T> node(T element) throws NullPointerException {
-        return _collection.node(element);
+    public Nodo<T> node(T element) throws NullPointerException {
+        return _coleccion.node(element);
     }
 
-    public Node<T> node(int index) throws NullPointerException {
-        return _collection.node(index);
+    public Nodo<T> node(int index) throws NullPointerException {
+        return _coleccion.node(index);
     }
 
     @Override
     public String toString() throws NullPointerException {
-        return _collection.toString();
+        return _coleccion.toString();
     }
 
     @Override
     public int hashCode() {
-        return _collection.hashCode();
+        return _coleccion.hashCode();
     }
 
     @Override
     @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     public boolean equals(Object obj) {
-        return _collection.equals(obj);
+        return _coleccion.equals(obj);
     }
     
     public void dispose(){
-        this._collection.clear();
-        this._collection = null;
+        this._coleccion.clear();
+        this._coleccion = null;
     }
       
     

@@ -9,6 +9,6 @@ package datos.estructuras;
  *
  * @author LENOVO
  */
-public class StructureSkeleton{
+public class Esqueleto_Estructura{
     
 }
