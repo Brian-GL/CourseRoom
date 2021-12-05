@@ -9,9 +9,7 @@ import main.CourseRoom;
 import com.github.lgooddatepicker.components.DateTimePicker;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -30,8 +28,6 @@ import java.awt.GridLayout;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import paneles.generales.Mensaje_Archivo_Derecho_General_Panel;
-import paneles.generales.Mensaje_Archivo_Izquierdo_General_Panel;
 import paneles.generales.Mensaje_Audio_Derecho_General_Panel;
 import paneles.generales.Mensaje_Audio_Izquierdo_General_Panel;
 import paneles.generales.Mensaje_Imagen_Derecho_General_Panel;
@@ -46,7 +42,7 @@ import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
  */
 public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
-    private DateTimePicker escogedor_Fecha_Hora;
+   
     private Color primer_Color, segundo_Color,tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
     private JScrollPane lista_Tareas_Pendientes_JScrollPane, lista_Tareas_Finalizadas_JScrollPane;
     private JPanel lista_Tareas_Pendientes_JPanel, lista_Tareas_Finalizadas_JPanel;
@@ -1320,6 +1316,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JPanel tareas_Pendientes_JPanel;
     // End of variables declaration//GEN-END:variables
 
+     private DateTimePicker escogedor_Fecha_Hora;
     
 
     @Override
@@ -1509,7 +1506,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         compartir_Archivos_JPanel.setBackground(primer_Color);
         editar_Imagen_Grupo_JLabel.setForeground(primer_Color_Fuente);
         
-        escogedor_Fecha_Hora.setForeground(tercer_Color);
+        escogedor_Fecha_Hora.setForeground(tercer_Color_Fuente);
+        escogedor_Fecha_Hora.setBackground(tercer_Color);
         enviar_Mensajes_JPanel.setBackground(primer_Color);
         enviar_Mensaje_Chat_JTextField.setBackground(segundo_Color);
         enviar_Mensaje_Chat_JTextField.setForeground(segundo_Color_Fuente);

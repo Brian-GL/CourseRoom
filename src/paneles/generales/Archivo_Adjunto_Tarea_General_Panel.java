@@ -231,8 +231,7 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         contenido_JPanel.setBackground(tercer_Color);
         contenido_JPanel.setForeground(tercer_Color_Fuente);
         
-        archivo_JTextPane.setForeground(segundo_Color_Fuente);
-        archivo_JTextPane.setBackground(segundo_Color);
+        archivo_JTextPane.setForeground(tercer_Color_Fuente);
         
         abrir_JButton.setBackground(segundo_Color);
         abrir_JButton.setForeground(segundo_Color_Fuente);

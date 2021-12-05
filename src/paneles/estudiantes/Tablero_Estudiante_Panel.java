@@ -46,11 +46,9 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Fechas_Estudiante_Panel fechas_Panel;
     private static Tareas_Estudiante_Panel tareas_Panel;
     private static Ajustes_Estudiante_Panel ajustes_Panel;
-    private static Cursos_Actuales_Estudiante_Panel cursos_Actuales_Panel;
-    private static Cursos_Finalizados_Estudiante_Panel cursos_Finalizados_Panel;
+    private static Cursos_Estudiante_Panel cursos_Actuales_Panel;
     
     private static CardLayout layout;
-    private static byte mostrar_Tipo_Curso;
     private Tiempo_Servidor tiempo_Servidor_Hilo;
     private volatile boolean tiempo_Servidor_Detenido;
     
@@ -503,7 +501,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Cursos_Actuales");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
         }
     }//GEN-LAST:event_cursos_JButtonMouseClicked
 
@@ -858,7 +856,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         fechas_Panel.Colorear_Componentes();
         ajustes_Panel.Colorear_Componentes();
         cursos_Actuales_Panel.Colorear_Componentes();
-        cursos_Finalizados_Panel.Colorear_Componentes();
         reproductor_Musica_Panel.Colorear_Componentes();
     }
     
@@ -927,7 +924,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     public void Iniciar_Componentes() {
          try {
             
-            mostrar_Tipo_Curso = 0;
             tiempo_Servidor_Detenido = true;
             System.out.println("Dashboard -> Getting Image From https://loremflickr.com/450/450/sunset,beach/all");
             URL url_Imagen = new URL("https://loremflickr.com/450/450/sunset,beach/all");
@@ -947,11 +943,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             tareas_Panel = new Tareas_Estudiante_Panel();
             visualizador_JPanel.add("Tareas",tareas_Panel);
             
-            cursos_Actuales_Panel = new Cursos_Actuales_Estudiante_Panel();
-            visualizador_JPanel.add("Cursos_Actuales",cursos_Actuales_Panel);
-            
-            cursos_Finalizados_Panel = new Cursos_Finalizados_Estudiante_Panel();
-            visualizador_JPanel.add("Cursos_Finalizados", cursos_Finalizados_Panel);
+            cursos_Actuales_Panel = new Cursos_Estudiante_Panel();
+            visualizador_JPanel.add("Cursos",cursos_Actuales_Panel);
             
             fechas_Panel = new Fechas_Estudiante_Panel();
             visualizador_JPanel.add("Fechas",fechas_Panel);
@@ -993,7 +986,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     public void Colorear_Componentes() {
         Colorear();
     }
-
     
     public class Tiempo_Servidor extends Thread{
     
@@ -1022,21 +1014,4 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         }
 
     }
-
-    /**
-     * @return the mostrar_Tipo_Curso
-     */
-    public static byte Mostrar_Tipo_Curso() {
-        return mostrar_Tipo_Curso;
-    }
-
-    /**
-     * @param aMostrar_Tipo_Curso the mostrar_Tipo_Curso to set
-     */
-    public static void Mostrar_Tipo_Curso(byte aMostrar_Tipo_Curso) {
-        mostrar_Tipo_Curso = aMostrar_Tipo_Curso;
-    }
-    
-    
-
 }

@@ -9,18 +9,21 @@ import main.CourseRoom;
 import java.awt.Font;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import java.awt.CardLayout;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
  * @author LENOVO
  */
-public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface{
+public class Cursos_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface{
 
-    
     /**
      * Creates new form Student_Courses_Panel
      */
-    public Cursos_Finalizados_Estudiante_Panel() {
+    public Cursos_Estudiante_Panel() {
         initComponents();
         
         Iniciar_Componentes();
@@ -35,38 +38,30 @@ public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel impl
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cursos_Finalizados_JScrollPane = new javax.swing.JScrollPane();
-        cursos_Finalizados_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
         ordenar_Por_JComboBox = new javax.swing.JComboBox<>();
         mostrar_Cursos_Por_JComboBox = new javax.swing.JComboBox<>();
+        cursos_JPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
-
-        cursos_Finalizados_JScrollPane.setBorder(null);
-        cursos_Finalizados_JScrollPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        cursos_Finalizados_JScrollPane.setOpaque(false);
-
-        cursos_Finalizados_JPanel.setOpaque(false);
-        cursos_Finalizados_JPanel.setLayout(new java.awt.GridLayout(0, 2));
-        cursos_Finalizados_JScrollPane.setViewportView(cursos_Finalizados_JPanel);
+        setPreferredSize(new java.awt.Dimension(1085, 630));
 
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
-        titulo_JLabel.setText("Cursos Finalizados");
+        titulo_JLabel.setText("Cursos");
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
 
         ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
-        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fecha: Más Reciente", "Fecha: Menos Reciente", "Nombre: A - Z", "Nombre: Z - A", "Nombre Del Profesor: A - Z", "Nombre Del Profesor: Z - A" }));
+        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fecha: Más Reciente", "Fecha: Menos Reciente", "Nombre: A - Z", "Nombre: Z - A", "Nombre Del Profesor: A - Z", "Nombre Del Profesor: Z - A", "Calificación: Mayor A Menor", "Calificación: Menor A Mayor" }));
         ordenar_Por_JComboBox.setToolTipText("Ordenar Cursos Por");
         ordenar_Por_JComboBox.setBorder(null);
         ordenar_Por_JComboBox.setOpaque(true);
 
         mostrar_Cursos_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
-        mostrar_Cursos_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finalizados", "Actuales", "Buscar", "Nuevos", "Recomendados" }));
+        mostrar_Cursos_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Actuales", "Buscar", "Nuevos", "Recomendados", "Finalizados" }));
         mostrar_Cursos_Por_JComboBox.setToolTipText("Ordenar Cursos Por");
         mostrar_Cursos_Por_JComboBox.setBorder(null);
         mostrar_Cursos_Por_JComboBox.setOpaque(true);
@@ -76,6 +71,9 @@ public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel impl
             }
         });
 
+        cursos_JPanel.setOpaque(false);
+        cursos_JPanel.setLayout(new java.awt.CardLayout());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,13 +81,13 @@ public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel impl
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cursos_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mostrar_Cursos_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cursos_Finalizados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE))
+                        .addComponent(mostrar_Cursos_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -101,46 +99,91 @@ public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel impl
                     .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mostrar_Cursos_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cursos_Finalizados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+                .addComponent(cursos_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void mostrar_Cursos_Por_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_mostrar_Cursos_Por_JComboBoxItemStateChanged
         // TODO add your handling code here:
-           
         switch(mostrar_Cursos_Por_JComboBox.getSelectedIndex()){
-            case 1:
-                Tablero_Estudiante_Panel.Mostrar_Vista("Cursos_Actuales");
-            break;   
+            case 0:
+                ((CardLayout)cursos_JPanel.getLayout()).show(cursos_JPanel, "Actuales");
+            break;
+            case 4:
+                ((CardLayout)cursos_JPanel.getLayout()).show(cursos_JPanel, "Finalizados");
+            break;
         }
+        
     }//GEN-LAST:event_mostrar_Cursos_Por_JComboBoxItemStateChanged
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel cursos_Finalizados_JPanel;
-    private javax.swing.JScrollPane cursos_Finalizados_JScrollPane;
+    private javax.swing.JPanel cursos_JPanel;
     private javax.swing.JComboBox<String> mostrar_Cursos_Por_JComboBox;
     private javax.swing.JComboBox<String> ordenar_Por_JComboBox;
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
 
+    private javax.swing.JPanel cursos_Actuales_JPanel;
+    private javax.swing.JScrollPane cursos_Actuales_JScrollPane;
+    private javax.swing.JPanel cursos_Finalizados_JPanel;
+    private javax.swing.JScrollPane cursos_Finalizados_JScrollPane;
+    
     @Override
     public void Iniciar_Componentes() {
+        
+        cursos_Actuales_JPanel = new JPanel();
+        cursos_Finalizados_JPanel = new JPanel();
+        
+        cursos_Actuales_JScrollPane = new JScrollPane();
+        cursos_Finalizados_JScrollPane = new JScrollPane();
+        
+        GridLayout grid_Layout = new GridLayout(0,2);
+        
+        cursos_Actuales_JPanel.setLayout(grid_Layout);
+        cursos_Finalizados_JPanel.setLayout(grid_Layout);
+        
+        cursos_Actuales_JPanel.setOpaque(false);
+        cursos_Finalizados_JPanel.setOpaque(false);
+        
+        cursos_Actuales_JScrollPane.setOpaque(false);
+        cursos_Finalizados_JScrollPane.setOpaque(false);
+        
+        cursos_Actuales_JPanel.setBorder(null);
+        cursos_Finalizados_JPanel.setBorder(null);
+        
+        cursos_Actuales_JScrollPane.setBorder(null);
+        cursos_Finalizados_JScrollPane.setBorder(null);
+        
+        cursos_Actuales_JScrollPane.setViewportView(cursos_Actuales_JPanel);
+        cursos_Finalizados_JScrollPane.setViewportView(cursos_Finalizados_JPanel);
+        
+        cursos_JPanel.add(cursos_Actuales_JScrollPane,"Actuales");
+        cursos_JPanel.add(cursos_Finalizados_JScrollPane,"Finalizados");
+        
+        cursos_Actuales_JScrollPane.getViewport().setOpaque(false);
+        cursos_Actuales_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        cursos_Actuales_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        cursos_Finalizados_JScrollPane.getViewport().setOpaque(false);
+        cursos_Finalizados_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        cursos_Finalizados_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
         
         Caja_Curso_Estudiante_Panel caja_Curso_Estudiante_Panel;
         String concatenacion;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
-            concatenacion = CourseRoom.Concatenar("Curso_Finalizado_", i);
+            concatenacion = CourseRoom.Concatenar("Curso_Actual_", i);
+            caja_Curso_Estudiante_Panel = new Caja_Curso_Estudiante_Panel(concatenacion);
+            cursos_Actuales_JPanel.add(caja_Curso_Estudiante_Panel);
+        }
+        
+        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
+            concatenacion = CourseRoom.Concatenar("Curso_Actual_", i);
             caja_Curso_Estudiante_Panel = new Caja_Curso_Estudiante_Panel(concatenacion);
             cursos_Finalizados_JPanel.add(caja_Curso_Estudiante_Panel);
         }
-       
-        cursos_Finalizados_JScrollPane.getViewport().setOpaque(false);
-        
-        cursos_Finalizados_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        
-        cursos_Finalizados_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);;
     }
     
     @Override
@@ -168,6 +211,7 @@ public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel impl
 
     @Override
     public void Limpiar() {
+        cursos_Actuales_JPanel.removeAll();
         cursos_Finalizados_JPanel.removeAll();
     }
 }

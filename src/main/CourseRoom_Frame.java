@@ -137,8 +137,12 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
 
     @Override
     public void Limpiar() {
-        tablero_Estudiante.Limpiar();
-        recuperar_Credenciales.Limpiar();
+        if(tablero_Estudiante != null){
+            tablero_Estudiante.Limpiar();
+        }
+        if(recuperar_Credenciales != null){
+            recuperar_Credenciales.Limpiar();
+        }
         super.dispose();
     }
 

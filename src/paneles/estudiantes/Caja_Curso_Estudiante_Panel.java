@@ -90,7 +90,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         calificacion_JTextPane.setEditable(false);
         calificacion_JTextPane.setBorder(null);
         calificacion_JTextPane.setContentType("text/html"); // NOI18N
-        calificacion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        calificacion_JTextPane.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
         calificacion_JTextPane.setText("");
         calificacion_JTextPane.setToolTipText("Calificación:");
         calificacion_JTextPane.setFocusable(false);
@@ -100,11 +100,11 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         calificacion_JTextPane.setVerifyInputWhenFocusTarget(false);
         calificacion_JScrollPane.setViewportView(calificacion_JTextPane);
 
-        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         nombre_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/teacher.png"))); // NOI18N
         nombre_JLabel.setToolTipText("Nombre Del Curso");
 
-        nombre_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        nombre_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
         nombre_Profesor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/profile.png"))); // NOI18N
         nombre_Profesor_JLabel.setToolTipText("Nombre Del Maestro");
 
@@ -194,16 +194,16 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
