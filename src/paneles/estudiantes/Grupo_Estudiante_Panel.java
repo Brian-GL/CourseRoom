@@ -25,7 +25,6 @@ import paneles.generales.Miembro_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.GridLayout;
-import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import paneles.generales.Mensaje_Audio_Derecho_General_Panel;
@@ -155,9 +154,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         nombre_Grupo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         nombre_Grupo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombre_Grupo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/target.png"))); // NOI18N
         nombre_Grupo_JLabel.setToolTipText("Nombre Del Grupo");
         nombre_Grupo_JLabel.setMaximumSize(new java.awt.Dimension(1000, 1000));
-        nombre_Grupo_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
         nombre_Grupo_JLabel.setOpaque(true);
         nombre_Grupo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
 
@@ -183,6 +182,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         fecha_Creacion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fecha_Creacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/calendar.png"))); // NOI18N
         fecha_Creacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
         fecha_Creacion_JLabel.setMaximumSize(new java.awt.Dimension(354, 20));
         fecha_Creacion_JLabel.setMinimumSize(new java.awt.Dimension(354, 20));
@@ -190,6 +190,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         miembros_Titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         miembros_Titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        miembros_Titulo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/team.png"))); // NOI18N
         miembros_Titulo_JLabel.setText("Miembros");
         miembros_Titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         miembros_Titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
@@ -509,6 +510,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         tarea_Pendiente_JLabel.setText("Nombre Del Pendiente");
 
         anadir_Tarea_Pendiente_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        anadir_Tarea_Pendiente_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/to-do-list.png"))); // NOI18N
         anadir_Tarea_Pendiente_JButton.setText("Agregar Tarea Pendiente");
         anadir_Tarea_Pendiente_JButton.setToolTipText("Agregar Nueva Tarea Pendiente");
         anadir_Tarea_Pendiente_JButton.setActionCommand("Agregar Pendiente");
@@ -636,10 +638,11 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         grupo_JTabbedPane.addTab("Pendientes", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/daily-tasks.png")), crear_Tareas_Pendientes_JPanel); // NOI18N
 
         editar_Imagen_Grupo_JButton.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
+        editar_Imagen_Grupo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/replace.png"))); // NOI18N
         editar_Imagen_Grupo_JButton.setText("Cambiar Imagen");
         editar_Imagen_Grupo_JButton.setToolTipText("Cambiar Imagen Del Grupo");
         editar_Imagen_Grupo_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        editar_Imagen_Grupo_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        editar_Imagen_Grupo_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         editar_Imagen_Grupo_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
         editar_Imagen_Grupo_JButton.setMinimumSize(new java.awt.Dimension(400, 40));
         editar_Imagen_Grupo_JButton.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -703,6 +706,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         abandonar_Grupo_JButton.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
+        abandonar_Grupo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/leave.png"))); // NOI18N
         abandonar_Grupo_JButton.setText("Abandonar Grupo");
         abandonar_Grupo_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
         abandonar_Grupo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1058,10 +1062,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         String mensaje = enviar_Mensaje_Chat_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
-            Random r = new Random(System.currentTimeMillis());
             String emisor = CourseRoom.Faker().dune().character();
             String fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
-            if (r.nextInt(10) < 5) {
+            if (CourseRoom.Random().nextInt(10) < 5) {
                 Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel
                         = new Mensaje_Texto_Izquierdo_General_Panel(emisor, fecha, mensaje, segundo_Color, segundo_Color_Fuente);
                 mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
@@ -1093,9 +1096,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 File archivo_Abierto;
                 String emisor;
                 String fecha;
-                Random r = new Random(System.currentTimeMillis());
 
-                if (r.nextInt(10) < 5) {
+                if (CourseRoom.Random().nextInt(10) < 5) {
                     Mensaje_Video_Izquierdo_General_Panel mensaje_Video_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
@@ -1143,9 +1145,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 String emisor;
                 String fecha;
                 Image abrir_Imagen;
-                Random r = new Random(System.currentTimeMillis());
 
-                if (r.nextInt(10) < 5) {
+                if (CourseRoom.Random().nextInt(10) < 5) {
                     Mensaje_Imagen_Izquierdo_General_Panel mensaje_Imagen_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
@@ -1201,8 +1202,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 File archivo_Abierto;
                 String emisor;
                 String fecha;
-                Random r = new Random(System.currentTimeMillis());
-                if (r.nextInt(10) < 5) {
+                if (CourseRoom.Random().nextInt(10) < 5) {
                     Mensaje_Audio_Izquierdo_General_Panel mensaje_Audio_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];

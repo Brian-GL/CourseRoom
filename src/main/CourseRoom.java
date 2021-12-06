@@ -14,6 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Locale;
+import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -27,6 +28,7 @@ import main.CourseRoom_Frame;
 public class CourseRoom {
     
     private static Faker faker;
+    private static Random random;
     private static Image logo_Imagen;
     private static Color tercer_Color;
     private static Color primer_Color;
@@ -45,6 +47,8 @@ public class CourseRoom {
             JOptionPane.showMessageDialog(null, "Lo Sentimos Pero No Hay Conexión A Internet", "SUPER ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        random = new Random(System.currentTimeMillis());
         
         color_Azul_Oscuro = new Color(14, 30, 64);
         color_Azul_Claro = new Color(104, 194, 232);
@@ -143,6 +147,13 @@ public class CourseRoom {
      */
     public static Faker Faker() {
        return faker;
+    }
+    
+    /**
+     * @return the random
+     */
+    public static Random Random() {
+       return random;
     }
     
      /**

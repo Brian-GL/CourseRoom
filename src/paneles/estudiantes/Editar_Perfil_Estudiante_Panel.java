@@ -6,19 +6,15 @@
 package paneles.estudiantes;
 
 import main.CourseRoom;
-import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import interfaces.Componentes_Interface;
-import java.awt.Color;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**

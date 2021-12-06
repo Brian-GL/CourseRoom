@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import datos.colecciones.Lista_Pares;
@@ -181,8 +180,8 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     public void Iniciar_Componentes() {
          try {
              
-            System.out.println("Member -> Getting Image From https://loremflickr.com/142/142/sunset,beach/all");
-            URL url_Imagen = new URL("https://loremflickr.com/142/142/sunset,beach/all");
+            System.out.println("Member -> Getting Image From https://loremflickr.com/142/142/teenager/all");
+            URL url_Imagen = new URL("https://loremflickr.com/142/142/teenager/all");
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             
             Establecer_Colores(obtener_Imagen);
@@ -219,7 +218,6 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     public void Establecer_Colores(Image imagen){
         
         try {
-            Random numero_Aleatorio = new Random(System.currentTimeMillis());
             int auxiliar_maximo_int = 0;
             primer_Color = Color.BLACK;
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
@@ -249,7 +247,7 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += numero_Aleatorio.nextInt(largo_imagen+1) + largo_imagen;
+                    i += CourseRoom.Random().nextInt(largo_imagen+1) + largo_imagen;
                 }
 
                 segundo_Color = primer_Color;
@@ -259,12 +257,12 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
                 if(lista_Colores.size() > 1){
                     
                     while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 25){
                              while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
@@ -277,12 +275,12 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
                     iteraciones = 0;
 
                     while (Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000) {
-                        posicion = numero_Aleatorio.nextInt((int) lista_Colores.size() - 1);
+                        posicion = CourseRoom.Random().nextInt((int) lista_Colores.size() - 1);
                         tercer_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if (iteraciones > 50) {
                             while (tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()) {
-                                posicion = numero_Aleatorio.nextInt((int) lista_Colores.size() - 1);
+                                posicion = CourseRoom.Random().nextInt((int) lista_Colores.size() - 1);
                                 tercer_Color = lista_Colores.get(posicion).second();
                             }
                             break;

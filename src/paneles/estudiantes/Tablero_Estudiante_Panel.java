@@ -23,7 +23,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
@@ -47,6 +46,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Tareas_Estudiante_Panel tareas_Panel;
     private static Ajustes_Estudiante_Panel ajustes_Panel;
     private static Cursos_Estudiante_Panel cursos_Actuales_Panel;
+    private static Dudas_Estudiante_Panel dudas_Panel;
     
     private static CardLayout layout;
     private Tiempo_Servidor tiempo_Servidor_Hilo;
@@ -90,6 +90,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         nombre_Usuario_JLabel = new javax.swing.JLabel();
         fecha_Hora_Servidor_JLabel = new javax.swing.JLabel();
         menu_JButton = new javax.swing.JButton();
+        actualizar_JButton = new javax.swing.JButton();
         visualizador_JPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
@@ -399,6 +400,25 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             }
         });
 
+        actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("Mostrar/Ocultar Menú");
+        actualizar_JButton.setBorder(null);
+        actualizar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        actualizar_JButton.setMaximumSize(new java.awt.Dimension(40, 40));
+        actualizar_JButton.setMinimumSize(new java.awt.Dimension(40, 40));
+        actualizar_JButton.setPreferredSize(new java.awt.Dimension(40, 40));
+        actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout barra_Superior_JPanelLayout = new javax.swing.GroupLayout(barra_Superior_JPanel);
         barra_Superior_JPanel.setLayout(barra_Superior_JPanelLayout);
         barra_Superior_JPanelLayout.setHorizontalGroup(
@@ -406,9 +426,11 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             .addGroup(barra_Superior_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -418,7 +440,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                 .addGroup(barra_Superior_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -694,7 +717,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void dudas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dudas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            Tablero_Estudiante_Panel.Mostrar_Vista("Dudas");
         }
     }//GEN-LAST:event_dudas_JButtonMouseClicked
 
@@ -710,11 +733,28 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         dudas_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_dudas_JButtonMouseExited
 
+    private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
+    }//GEN-LAST:event_actualizar_JButtonMouseClicked
+
+    private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        
+    }//GEN-LAST:event_actualizar_JButtonMouseEntered
+
+    private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Primer_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseExited
+
     
     public static void Establecer_Colores(){
         try {
             Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
-            Random numero_Aleatorio = new Random(System.currentTimeMillis());
             int maximo_auxiliar = 0;
             primer_Color = Color.BLACK;
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
@@ -745,7 +785,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += numero_Aleatorio.nextInt(largo_Imagen+1) + largo_Imagen;
+                    i += CourseRoom.Random().nextInt(largo_Imagen+1) + largo_Imagen;
                 }
 
                 segundo_Color = primer_Color;
@@ -754,12 +794,12 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                 if(lista_Colores.size() > 1){
                     
                     while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 25){
                              while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
@@ -772,12 +812,12 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                     iteraciones = 0;
                     
                     while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                        posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                         tercer_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 50){
                             while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                                 tercer_Color = lista_Colores.get(posicion).second();
                             }
                             break;
@@ -839,6 +879,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         salir_JButton.setBackground(CourseRoom.Segundo_Color());
         tareas_JButton.setBackground(CourseRoom.Segundo_Color());
         dudas_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Primer_Color());
+        menu_JButton.setBackground(CourseRoom.Primer_Color());
 
         fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         nombre_Usuario_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
@@ -855,6 +897,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         avisos_Panel.Colorear_Componentes();
         fechas_Panel.Colorear_Componentes();
         ajustes_Panel.Colorear_Componentes();
+        dudas_Panel.Colorear_Componentes();
         cursos_Actuales_Panel.Colorear_Componentes();
     }
     
@@ -880,6 +923,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton acerca_De_JButton;
+    private static javax.swing.JButton actualizar_JButton;
     private static javax.swing.JButton ajustes_JButton;
     private static javax.swing.JButton avisos_JButton;
     private javax.swing.JPanel barra_Superior_JPanel;
@@ -891,7 +935,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static javax.swing.JButton grupos_JButton;
     private static javax.swing.JLabel imagen_Perfil_JLabel;
     private static javax.swing.JButton inicio_JButton;
-    private javax.swing.JButton menu_JButton;
+    private static javax.swing.JButton menu_JButton;
     private javax.swing.JPanel menu_JPanel;
     private static javax.swing.JLabel nombre_Usuario_JLabel;
     private static javax.swing.JButton reproductor_Musica_JButton;
@@ -966,7 +1010,9 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             ajustes_Panel = new Ajustes_Estudiante_Panel();
             visualizador_JPanel.add("Ajustes",ajustes_Panel);
             
-          
+            dudas_Panel = new Dudas_Estudiante_Panel();
+            visualizador_JPanel.add("Dudas", dudas_Panel);
+            
             layout = (CardLayout) visualizador_JPanel.getLayout();
             nombre_Usuario_JLabel.setText(CourseRoom.Faker().name().username());
             

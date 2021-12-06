@@ -4,7 +4,6 @@ import ConexionSql.Conexion;
 import interfaces.Componentes_Interface;
 import main.CourseRoom;
 import main.CourseRoom_Frame;
-import java.awt.Color;
 import java.awt.Image;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.io.File;

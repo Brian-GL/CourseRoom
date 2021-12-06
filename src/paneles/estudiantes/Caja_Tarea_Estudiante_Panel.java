@@ -14,7 +14,6 @@ import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
@@ -199,10 +198,10 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
         try {
 
             nombre_JLabel.setText(CourseRoom.Faker().book().title());
-            fecha_Entrega_JLabel.setText(CourseRoom.Faker().backToTheFuture().date());
+            fecha_Entrega_JLabel.setText(CourseRoom.Faker().date().birthday(0, 1).toString());
             tipo_JLabel.setText(CourseRoom.Faker().book().genre());
-            curso_JLabel.setText(CourseRoom.Faker().book().publisher());
-            estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Entregada" : "No Entregada Aún");
+            curso_JLabel.setText(CourseRoom.Faker().educator().course());
+            estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Entregada" : "Pendiente");
             
             System.out.println("Tarea ID: " + this.id + " -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
             URL url_Imagen = new URL("https://loremflickr.com/164/164/sunset,beach/all");
@@ -241,7 +240,6 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
     @Override
     public void Establecer_Colores(Image image){
        try {
-            Random numero_Aleatorio = new Random(System.currentTimeMillis());
             int maximo_auxiliar = 0;
             primer_Color = Color.BLACK;
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
@@ -272,7 +270,7 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += numero_Aleatorio.nextInt(largo_Imagen+1) + largo_Imagen;
+                    i += CourseRoom.Random().nextInt(largo_Imagen+1) + largo_Imagen;
                 }
 
                 segundo_Color = primer_Color;
@@ -281,12 +279,12 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
                 if(lista_Colores.size() > 1){
                     
                     while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 25){
                              while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
@@ -299,12 +297,12 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
                     iteraciones = 0;
                     
                     while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                        posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                         tercer_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 50){
                             while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = numero_Aleatorio.nextInt((int)lista_Colores.size()-1);
+                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                                 tercer_Color = lista_Colores.get(posicion).second();
                             }
                             break;

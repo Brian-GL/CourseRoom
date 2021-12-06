@@ -26,7 +26,6 @@ import paneles.generales.Mensaje_Video_Derecho_General_Panel;
 import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
-import java.util.Random;
 import paneles.generales.Mensaje_Audio_Izquierdo_General_Panel;
 
 /**
@@ -293,10 +292,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         
         String mensaje = mensaje_JTextField.getText();
         if(!mensaje.isEmpty() && !mensaje.isBlank()){
-            Random r = new Random(System.currentTimeMillis());
             String emisor = CourseRoom.Faker().dune().character();
             String fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
-            if(r.nextInt(10) < 5){
+            if(CourseRoom.Random().nextInt(10) < 5){
                 Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel = 
                         new Mensaje_Texto_Izquierdo_General_Panel(emisor,fecha,mensaje,segundo_Color, segundo_Color_Fuente);
                 mensajes_JPanel.add(mensaje_Texto_General_Panel);
@@ -433,9 +431,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 File archivo_Abierto;
                 String emisor;
                 String fecha;
-                Random r = new Random(System.currentTimeMillis());
                 
-                if(r.nextInt(10) < 5){
+                if(CourseRoom.Random().nextInt(10) < 5){
                     Mensaje_Archivo_Izquierdo_General_Panel mensaje_Archivo_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
@@ -483,9 +480,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 File archivo_Abierto;
                 String emisor;
                 String fecha;
-                Random r = new Random(System.currentTimeMillis());
 
-                if (r.nextInt(10) < 5) {
+                if (CourseRoom.Random().nextInt(10) < 5) {
                     Mensaje_Video_Izquierdo_General_Panel mensaje_Video_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
@@ -535,9 +531,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 String emisor;
                 String fecha;
                 Image abrir_Imagen;
-                Random r = new Random(System.currentTimeMillis());
 
-                if (r.nextInt(10) < 5) {
+                if (CourseRoom.Random().nextInt(10) < 5) {
                     Mensaje_Imagen_Izquierdo_General_Panel mensaje_Imagen_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
@@ -595,8 +590,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 File archivo_Abierto;
                 String emisor;
                 String fecha;
-                Random r = new Random(System.currentTimeMillis());
-                if(r.nextInt(10) < 5){
+                if(CourseRoom.Random().nextInt(10) < 5){
                     Mensaje_Audio_Izquierdo_General_Panel mensaje_Audio_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];

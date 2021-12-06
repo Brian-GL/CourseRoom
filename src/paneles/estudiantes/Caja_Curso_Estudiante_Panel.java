@@ -13,7 +13,6 @@ import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
@@ -258,8 +257,8 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             
             Colorear_Componentes();
             
-            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://loremflickr.com/64/64/sunset,beach/all");
-            url_Imagen = new URL("https://loremflickr.com/86/86/sunset,beach/all");
+            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://loremflickr.com/64/64/person/all");
+            url_Imagen = new URL("https://loremflickr.com/86/86/person/all");
             obtener_Imagen = ImageIO.read(url_Imagen);
             icono = new ImageIcon(obtener_Imagen);
             imagen_Profesor_JLabel.setIcon(icono);
@@ -267,7 +266,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             
             obtener_Imagen.flush();
             
-            nombre_JLabel.setText(CourseRoom.Faker().ancient().god());
+            nombre_JLabel.setText(CourseRoom.Faker().educator().course());
             nombre_Profesor_JLabel.setText(CourseRoom.Faker().name().nameWithMiddle());
             descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph()));
             descripcion_JScrollPane.getViewport().setOpaque(false);
@@ -308,7 +307,6 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
     public void Establecer_Colores(Image imagen){
         
         try {
-            Random numero_aleatorio = new Random(System.currentTimeMillis());
             int auxiliar_maximo_int = 0;
             primer_Color = Color.BLACK;
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
@@ -338,7 +336,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += numero_aleatorio.nextInt(largo_imagen+1) + largo_imagen;
+                    i += CourseRoom.Random().nextInt(largo_imagen+1) + largo_imagen;
                 }
 
                 segundo_Color = primer_Color;
@@ -348,12 +346,12 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
                 if(lista_Colores.size() > 1){
                     
                     while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = numero_aleatorio.nextInt((int)lista_Colores.size()-1);
+                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 25){
                              while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = numero_aleatorio.nextInt((int)lista_Colores.size()-1);
+                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
@@ -367,9 +365,6 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
                 segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                
                 lista_Colores.clear();
-
-               
-                
             }
             
         } catch (InterruptedException ex) {

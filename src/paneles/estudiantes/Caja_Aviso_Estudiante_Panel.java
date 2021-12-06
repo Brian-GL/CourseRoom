@@ -15,7 +15,6 @@ import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import interfaces.Componentes_Interface;
@@ -167,9 +166,8 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
             URL url_imagen = new URL("https://loremflickr.com/129/129/sunset,beach/all");
             
             descripcion_JLabel.setText(CourseRoom.Faker().lorem().paragraph(1));
-            fecha_Hora_JLabel.setText(CourseRoom.Faker().date().birthday().toString());
-            nombre_JLabel.setText(CourseRoom.Faker().company().name());
-            estatus_JLabel.setText(CourseRoom.Faker().book().publisher());
+            fecha_Hora_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());
+            nombre_JLabel.setText(CourseRoom.Faker().university().name());
             estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Leído" : "No Leído");
             
             Image obtener_imagen = ImageIO.read(url_imagen);
@@ -201,7 +199,6 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
     @Override
     public void Establecer_Colores(Image imagen) {
          try {
-            Random numero_aleatorio = new Random(System.currentTimeMillis());
             int auxiliar_maximo_int = 0;
             primer_Color = Color.BLACK;
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
@@ -231,7 +228,7 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += numero_aleatorio.nextInt(largo_imagen+1) + largo_imagen;
+                    i += CourseRoom.Random().nextInt(largo_imagen+1) + largo_imagen;
                 }
 
                 segundo_Color = primer_Color;
@@ -241,12 +238,12 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
                 if(lista_Colores.size() > 1){
                     
                     while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = numero_aleatorio.nextInt((int)lista_Colores.size()-1);
+                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 25){
                              while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = numero_aleatorio.nextInt((int)lista_Colores.size()-1);
+                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
