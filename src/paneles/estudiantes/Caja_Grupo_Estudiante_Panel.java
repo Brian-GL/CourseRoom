@@ -199,11 +199,9 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
     public void Iniciar_Componentes() {
         try {
             
-            System.out.println("Group ID: " + id + " -> Getting Image From https://loremflickr.com/152/152/sunset,beach/all");
-            URL url_Imagen = new URL("https://loremflickr.com/152/152/sunset,beach/all");
+            System.out.println("Group ID: " + id + " -> Getting Image https://loremflickr.com/400/400/friends");
+            URL url_Imagen = new URL("https://loremflickr.com/400/400/friends");
             Image obtener_Imagen = ImageIO.read(url_Imagen);
-            ImageIcon groupIcon = new ImageIcon(obtener_Imagen);
-            imagen_JLabel.setIcon(groupIcon);
             
             Establecer_Colores(obtener_Imagen);
             
@@ -215,6 +213,11 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
             
             grupo_Estudiante_Panel = new Grupo_Estudiante_Panel(obtener_Imagen, nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente);
             Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id);
+            
+            obtener_Imagen = obtener_Imagen.getScaledInstance(152, 152, Image.SCALE_SMOOTH);
+            ImageIcon groupIcon = new ImageIcon(obtener_Imagen);
+            imagen_JLabel.setIcon(groupIcon);
+            
             obtener_Imagen.flush();
             
             Colorear_Componentes();

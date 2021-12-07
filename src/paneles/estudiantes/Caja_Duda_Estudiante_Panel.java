@@ -29,7 +29,7 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
 
     private Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
     private String id;
-    
+    private Duda_Estudiante_Panel duda_Estudiante_Panel;
     
     
     public Caja_Duda_Estudiante_Panel(String _id) {
@@ -57,9 +57,9 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
         duda_JScrollPane = new javax.swing.JScrollPane();
         duda_JTextPane = new javax.swing.JTextPane();
 
-        setMaximumSize(new java.awt.Dimension(32767, 154));
+        setMaximumSize(new java.awt.Dimension(32767, 136));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(538, 154));
+        setPreferredSize(new java.awt.Dimension(538, 136));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -92,7 +92,7 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
         duda_JTextPane.setEditable(false);
         duda_JTextPane.setBorder(null);
         duda_JTextPane.setContentType("text/html"); // NOI18N
-        duda_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+        duda_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         duda_JTextPane.setText("");
         duda_JTextPane.setOpaque(false);
         duda_JScrollPane.setViewportView(duda_JTextPane);
@@ -103,28 +103,28 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imagen_Preguntador_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagen_Preguntador_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(preguntador_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(estatus_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
-                    .addComponent(duda_JScrollPane))
+                        .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(estatus_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                    .addComponent(preguntador_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(duda_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagen_Preguntador_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(imagen_Preguntador_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(duda_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(duda_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(preguntador_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(estatus_JLabel)
                             .addComponent(fecha_JLabel))))
@@ -135,10 +135,10 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,8 +177,8 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
             preguntador_JLabel.setText(CourseRoom.Faker().name().name());
             estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Cerrada" : "Abierta");
             
-            System.out.println("Duda ID: " + this.id + " -> Getting Image From https://loremflickr.com/126/126/teenager/all");
-            URL url_Imagen = new URL("https://loremflickr.com/126/126/teenager/all");
+            System.out.println("Duda ID: " + this.id + " -> Getting Image From https://i.pravatar.cc/110");
+            URL url_Imagen = new URL("https://i.pravatar.cc/110");
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             ImageIcon icono_Tarea = new ImageIcon(obtener_Imagen);
             imagen_Preguntador_JLabel.setIcon(icono_Tarea);
@@ -189,11 +189,12 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
             
             Establecer_Colores(obtener_Imagen);
             Colorear_Componentes();
-//            
-//            tarea_Estudiante_Panel = new Tarea_Estudiante_Panel(nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, 
-//                    segundo_Color_Fuente, tercer_Color_Fuente);
-//            
-//            Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, id);
+            
+            duda_Estudiante_Panel = new Duda_Estudiante_Panel(duda_JTextPane.getText(),preguntador_JLabel.getText(),estatus_JLabel.getText(),
+            fecha_JLabel.getText(),imagen_Preguntador_JLabel.getIcon(),primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, 
+                    tercer_Color, tercer_Color_Fuente);
+            
+            Tablero_Estudiante_Panel.Agregar_Vista(duda_Estudiante_Panel, id);
 
             obtener_Imagen.flush();
         } catch (MalformedURLException ex) {
@@ -309,6 +310,6 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
     public void Limpiar() {
         primer_Color = segundo_Color = tercer_Color =primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
         id = null;
-        //tarea_Estudiante_Panel.Limpiar();
+        duda_Estudiante_Panel.Limpiar();
     }
 }

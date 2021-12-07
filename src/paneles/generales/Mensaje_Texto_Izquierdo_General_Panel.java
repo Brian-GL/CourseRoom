@@ -34,6 +34,7 @@ public class Mensaje_Texto_Izquierdo_General_Panel extends javax.swing.JPanel{
         fecha_JLabel.setForeground(_segundo_Color_Fuente);
         emisor_JLabel.setForeground(_segundo_Color_Fuente);
         mensaje_JTextPane.setForeground(_segundo_Color_Fuente);
+        mensaje_JTextPane.setCaretPosition(0);
         mensaje_JScrollPane.setForeground(_segundo_Color_Fuente);
         
         mensaje_JScrollPane.getViewport().setOpaque(false);

@@ -10,6 +10,11 @@ import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Color;
 import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -21,7 +26,6 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
     private Color fondo_Color, fuente_Color;
     
     public Comentario_Tarea_General_Panel(
-            Image imagen_Usuario, 
             String nombre_Usuario, 
             String comentario, 
             Color _fondo_Color, 
@@ -36,10 +40,14 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         
         comentario_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(concatenar));
         
-        Image imagen_redimensionada = imagen_Usuario.getScaledInstance(50,50,Image.SCALE_SMOOTH);
-        ImageIcon imagen_usuario = new ImageIcon(imagen_redimensionada);
-        imagen_Emisor_JLabel.setIcon(imagen_usuario);
-        imagen_redimensionada.flush();
+        try {
+            System.out.println("Comment Homework -> Getting Image From https://i.pravatar.cc/50");
+            URL url_Imagen = new URL("https://i.pravatar.cc/50");
+            Image obtener_imagen = ImageIO.read(url_Imagen);
+            ImageIcon icono_Comentario = new ImageIcon(obtener_imagen);
+            imagen_Emisor_JLabel.setIcon(icono_Comentario);
+        } catch (IOException ex) {
+        }
         
         Iniciar_Componentes();
         

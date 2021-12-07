@@ -11,10 +11,15 @@ import interfaces.Componentes_Interface;
 import main.CourseRoom_Frame;
 import java.awt.Font;
 import java.awt.HeadlessException;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -315,17 +320,28 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
 
     @Override
     public void Iniciar_Componentes() {
-        ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
-        logo_JLabel.setIcon(icono);
-        
-        ImageIcon icono_Imagen = new ImageIcon(getClass().getResource("/recursos/imagenes/cucei.jpg"));
-        imagen_JLabel.setIcon(icono_Imagen);
+        try {
+            ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
+            logo_JLabel.setIcon(icono);
+            
+            System.out.println("Login -> Getting Image From https://picsum.photos/700/700");
+            URL url_Imagen = new URL("https://picsum.photos/700/700");
+            Image obtener_Imagen = ImageIO.read(url_Imagen);
+            ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
+            imagen_JLabel.setIcon(icono_Imagen);
+            
+        } catch (MalformedURLException ex) {
+            
+        } catch (IOException ex) {
+            
+        }
         
         Font gadugi_18 = new Font("Gadugi", 3, 16);
         crear_Cuenta_JLabel.setFont(gadugi_18);
         recuperar_Credenciales_JLabel.setFont(gadugi_18);
-        
+
         Colorear_Componentes();
+        
     }
 
     @Override

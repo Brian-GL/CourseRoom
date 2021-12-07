@@ -8,13 +8,8 @@ package paneles.estudiantes;
 import main.CourseRoom;
 import paneles.generales.Archivo_Subido_Tarea_General_Panel;
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import paneles.generales.Archivo_Adjunto_Tarea_General_Panel;
@@ -451,23 +446,13 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     }//GEN-LAST:event_enviar_Comentarios_JButtonMouseEntered
 
     private void Enviar_Comentario(){
-        try {
-            
-            System.out.println("Comment Getting Image From https://loremflickr.com/50/50/sunset,beach/all");
-            URL url_imagen = new URL("https://loremflickr.com/50/50/sunset,beach/all");
-            Image obtener_imagen = ImageIO.read(url_imagen);
-            Comentario_Tarea_General_Panel comentario_Tarea_General_Panel = 
-                    new Comentario_Tarea_General_Panel(obtener_imagen,CourseRoom.Faker().name().fullName(),
-                            enviar_Comentarios_JTextField.getText(),segundo_Color,segundo_Color_Fuente);
-            comentarios_Subidos_JPanel.add(comentario_Tarea_General_Panel,LEFT_ALIGNMENT);
-            obtener_imagen.flush();
-            enviar_Comentarios_JTextField.setText("");
-            
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
-        }
+       
+        Comentario_Tarea_General_Panel comentario_Tarea_General_Panel = 
+                new Comentario_Tarea_General_Panel(CourseRoom.Faker().name().fullName(),
+                        enviar_Comentarios_JTextField.getText(),segundo_Color,segundo_Color_Fuente);
+        comentarios_Subidos_JPanel.add(comentario_Tarea_General_Panel,LEFT_ALIGNMENT);
+        enviar_Comentarios_JTextField.setText("");
+       
     }
     
     private void Subir_Archivos(){

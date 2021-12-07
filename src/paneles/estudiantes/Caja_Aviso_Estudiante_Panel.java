@@ -162,8 +162,8 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
      @Override
     public void Iniciar_Componentes() {
         try {
-            System.out.println("Aviso -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL url_imagen = new URL("https://loremflickr.com/129/129/sunset,beach/all");
+            System.out.println("Aviso -> Getting Image From https://loremflickr.com/130/130/night");
+            URL url_imagen = new URL("https://loremflickr.com/130/130/night");
             
             descripcion_JLabel.setText(CourseRoom.Faker().lorem().paragraph(1));
             fecha_Hora_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());

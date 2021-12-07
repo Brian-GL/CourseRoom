@@ -46,7 +46,6 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
     public void Imagen_Arte(Image imagen){
         ImageIcon icono = new ImageIcon(imagen);
         imagen_Arte_JLabel.setIcon(icono);
-        imagen.flush();
     }
     
     public void Colores_Fuente(Color color){
@@ -86,6 +85,7 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
 
         titulo_JLabel.setBackground(java.awt.Color.black);
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setToolTipText("Título Del Archivo");
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
@@ -93,6 +93,7 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
 
         album_JLabel.setBackground(java.awt.Color.black);
         album_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        album_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         album_JLabel.setToolTipText("Álbum");
         album_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         album_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
@@ -100,6 +101,7 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
 
         artista_JLabel.setBackground(java.awt.Color.black);
         artista_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        artista_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         artista_JLabel.setToolTipText("Artista");
         artista_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         artista_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
@@ -112,11 +114,11 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(artista_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(album_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                    .addComponent(artista_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(album_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

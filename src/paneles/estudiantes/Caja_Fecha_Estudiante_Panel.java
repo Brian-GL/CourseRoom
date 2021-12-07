@@ -114,7 +114,8 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
         hora_JLabel.setText(concatenacion);
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Centro(CourseRoom.Faker().lorem().paragraph()));
+        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Centro(CourseRoom.Faker().lorem().paragraph(2)));
+        descripcion_JTextPane.setCaretPosition(0);
        
     }
 

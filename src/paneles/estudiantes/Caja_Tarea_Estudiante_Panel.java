@@ -203,8 +203,8 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
             curso_JLabel.setText(CourseRoom.Faker().educator().course());
             estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Entregada" : "Pendiente");
             
-            System.out.println("Tarea ID: " + this.id + " -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL url_Imagen = new URL("https://loremflickr.com/164/164/sunset,beach/all");
+            System.out.println("Tarea ID: " + this.id + " -> Getting Image From https://picsum.photos/160/160?random="+id);
+            URL url_Imagen = new URL(CourseRoom.Concatenar("https://picsum.photos/160/160?random=",id));
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             ImageIcon icono_Tarea = new ImageIcon(obtener_Imagen);
             imagen_Curso_JLabel.setIcon(icono_Tarea);

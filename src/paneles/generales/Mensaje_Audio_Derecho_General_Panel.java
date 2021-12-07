@@ -651,10 +651,9 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
                     
                     Image arte_Original = ((Image)arte.getImage());
                     if(arte_Original != null){
-                        Image imagen_Arte = arte_Original.getScaledInstance(170, 170, Image.SCALE_SMOOTH);
-                        ImageIcon cover = new ImageIcon(imagen_Arte);
+                        arte_Original = arte_Original.getScaledInstance(170, 170, Image.SCALE_SMOOTH);
+                        ImageIcon cover = new ImageIcon(arte_Original);
                         imagen_Arte_JLabel.setIcon(cover);
-                        imagen_Arte.flush();
                         arte_Original.flush();
                         
                     }

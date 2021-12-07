@@ -243,12 +243,13 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
     @Override
     public void Iniciar_Componentes() {
         try {
+            
             Dimension resolucion_Pantalla = Toolkit.getDefaultToolkit().getScreenSize();
             int ancho = (resolucion_Pantalla.width * 500) / 1270;
             
-            System.out.println("Curso ID: "+this.id+" -> Getting Image From https://loremflickr.com/143/143/sunset,beach/all");
+            System.out.println("Curso ID: "+this.id+" -> Getting Image From https://picsum.photos/?random=1");
             URL url_Imagen = new URL(
-                    CourseRoom.Concatenar("https://loremflickr.com/",String.valueOf(ancho),"/125/sunset,beach/all")
+                    CourseRoom.Concatenar(" https://picsum.photos/",String.valueOf(ancho),"/125?random=",id)
             );
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             ImageIcon icono = new ImageIcon(obtener_Imagen);
@@ -257,8 +258,8 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             
             Colorear_Componentes();
             
-            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://loremflickr.com/64/64/person/all");
-            url_Imagen = new URL("https://loremflickr.com/86/86/person/all");
+            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://i.pravatar.cc/64");
+            url_Imagen = new URL("https://i.pravatar.cc/64");
             obtener_Imagen = ImageIO.read(url_Imagen);
             icono = new ImageIcon(obtener_Imagen);
             imagen_Profesor_JLabel.setIcon(icono);

@@ -45,7 +45,6 @@ import java.io.FileFilter;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import javax.swing.border.TitledBorder;
 import uk.co.caprica.vlcj.player.base.Equalizer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayerEventListener;
@@ -79,7 +78,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
      
     //Others
     private static int indice;
-    private Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
+    private Color primer_Color, segundo_Color, segundo_Color_Fuente;
 
     
     public Reproductor_Musica_General_Panel() {
@@ -169,8 +168,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(550, 550));
-
-        controles_JPanel.setOpaque(false);
 
         controles_JTabbedPane.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
 
@@ -410,7 +407,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         ecualizador_JPanel.setOpaque(false);
 
-        bandas_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Bands"));
         bandas_JPanel.setMinimumSize(new java.awt.Dimension(470, 350));
         bandas_JPanel.setOpaque(false);
         bandas_JPanel.setPreferredSize(new java.awt.Dimension(287, 256));
@@ -420,6 +416,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         banda0_JSlider.setMaximum(12);
         banda0_JSlider.setMinimum(-12);
         banda0_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda0_JSlider.setPaintTicks(true);
         banda0_JSlider.setValue(0);
         banda0_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda0_JSlider.setMinimumSize(new java.awt.Dimension(20, 150));
@@ -435,6 +432,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         banda1_JSlider.setMaximum(12);
         banda1_JSlider.setMinimum(-12);
         banda1_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda1_JSlider.setPaintTicks(true);
         banda1_JSlider.setValue(0);
         banda1_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda1_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -450,6 +448,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         banda2_JSlider.setMaximum(12);
         banda2_JSlider.setMinimum(-12);
         banda2_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda2_JSlider.setPaintTicks(true);
         banda2_JSlider.setValue(0);
         banda2_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda2_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -465,6 +464,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         banda3_JSlider.setMaximum(12);
         banda3_JSlider.setMinimum(-12);
         banda3_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda3_JSlider.setPaintTicks(true);
         banda3_JSlider.setValue(0);
         banda3_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda3_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -480,6 +480,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         banda4_JSlider.setMaximum(12);
         banda4_JSlider.setMinimum(-12);
         banda4_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda4_JSlider.setPaintTicks(true);
         banda4_JSlider.setValue(0);
         banda4_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda4_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -495,6 +496,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         banda5_JSlider.setMaximum(12);
         banda5_JSlider.setMinimum(-12);
         banda5_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda5_JSlider.setPaintTicks(true);
         banda5_JSlider.setValue(0);
         banda5_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda5_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -510,6 +512,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         banda6_JSlider.setMaximum(12);
         banda6_JSlider.setMinimum(-12);
         banda6_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda6_JSlider.setPaintTicks(true);
         banda6_JSlider.setValue(0);
         banda6_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda6_JSlider.setMinimumSize(new java.awt.Dimension(35, 400));
@@ -525,6 +528,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         banda7_JSlider.setMaximum(12);
         banda7_JSlider.setMinimum(-12);
         banda7_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda7_JSlider.setPaintTicks(true);
         banda7_JSlider.setValue(0);
         banda7_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda7_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -540,6 +544,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         banda8_JSlider.setMaximum(12);
         banda8_JSlider.setMinimum(-12);
         banda8_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda8_JSlider.setPaintTicks(true);
         banda8_JSlider.setValue(0);
         banda8_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda8_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -555,6 +560,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         banda9_JSlider.setMaximum(12);
         banda9_JSlider.setMinimum(-12);
         banda9_JSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        banda9_JSlider.setPaintTicks(true);
         banda9_JSlider.setValue(0);
         banda9_JSlider.setMaximumSize(new java.awt.Dimension(35, 400));
         banda9_JSlider.setMinimumSize(new java.awt.Dimension(28, 300));
@@ -635,6 +641,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         preamp_JSlider.setMajorTickSpacing(1);
         preamp_JSlider.setMaximum(12);
         preamp_JSlider.setMinimum(-12);
+        preamp_JSlider.setPaintTicks(true);
         preamp_JSlider.setValue(0);
         preamp_JSlider.setMaximumSize(new java.awt.Dimension(20, 150));
         preamp_JSlider.setMinimumSize(new java.awt.Dimension(20, 150));
@@ -716,21 +723,18 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         genero_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         genero_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        genero_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Genre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 16))); // NOI18N
         genero_JLabel.setMaximumSize(new java.awt.Dimension(51, 45));
         genero_JLabel.setMinimumSize(new java.awt.Dimension(51, 45));
         genero_JLabel.setPreferredSize(new java.awt.Dimension(51, 55));
 
         informacion_Archivo_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         informacion_Archivo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        informacion_Archivo_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Media", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 16))); // NOI18N
         informacion_Archivo_JLabel.setMaximumSize(new java.awt.Dimension(51, 45));
         informacion_Archivo_JLabel.setMinimumSize(new java.awt.Dimension(51, 45));
         informacion_Archivo_JLabel.setPreferredSize(new java.awt.Dimension(51, 55));
 
         anio_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         anio_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        anio_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Year", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 16))); // NOI18N
         anio_JLabel.setMaximumSize(new java.awt.Dimension(51, 45));
         anio_JLabel.setMinimumSize(new java.awt.Dimension(51, 45));
         anio_JLabel.setPreferredSize(new java.awt.Dimension(51, 55));
@@ -739,9 +743,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         letras_JScrollPane.setOpaque(false);
 
         letras_JTextPane.setEditable(false);
-        letras_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lyrics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 16))); // NOI18N
+        letras_JTextPane.setBorder(null);
         letras_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-        letras_JTextPane.setText("");
         letras_JTextPane.setOpaque(false);
         letras_JScrollPane.setViewportView(letras_JTextPane);
 
@@ -784,7 +787,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         titulo_JLabel.setForeground(java.awt.Color.white);
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/cd.png"))); // NOI18N
-        titulo_JLabel.setText("Title");
+        titulo_JLabel.setText("Título");
         titulo_JLabel.setToolTipText("");
         titulo_JLabel.setFocusable(false);
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -804,7 +807,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         artista_JLabel.setForeground(java.awt.Color.white);
         artista_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         artista_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/broadcaster.png"))); // NOI18N
-        artista_JLabel.setText("Artist");
+        artista_JLabel.setText("Artista");
         artista_JLabel.setToolTipText("");
         artista_JLabel.setFocusable(false);
         artista_JLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -817,7 +820,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         album_JLabel.setForeground(java.awt.Color.white);
         album_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         album_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/music-album.png"))); // NOI18N
-        album_JLabel.setText("Album");
+        album_JLabel.setText("Álbum");
         album_JLabel.setToolTipText("");
         album_JLabel.setFocusable(false);
         album_JLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -1526,6 +1529,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     public void Colorear_Componentes() {
         
         this.setBackground(primer_Color);
+        controles_JPanel.setBackground(segundo_Color);
         
         Color transparente = new Color(0,0,0,0);
         controles_JTabbedPane.setBackground(transparente);
@@ -1534,38 +1538,37 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         for(int i = 0; i < componentes.length;i++){
             componente = componentes[i];
-            componente.setForeground(primer_Color_Fuente);
+            componente.setForeground(segundo_Color_Fuente);
         }
 
-        rate_JSlider.setForeground(primer_Color_Fuente);
-        volumen_JSlider.setForeground(primer_Color_Fuente);
-        titulo_JLabel.setForeground(primer_Color_Fuente);
-        album_JLabel.setForeground(primer_Color_Fuente);
-        artista_JLabel.setForeground(primer_Color_Fuente);
-        progreso_JLabel.setForeground(primer_Color_Fuente);
-        duracion_Total_JLabel.setForeground(primer_Color_Fuente);
-        progreso_JSlider.setForeground(primer_Color_Fuente);
-        //imagen_Arte_JLabel.setForeground(primer_Color_Fuente);
+        rate_JSlider.setForeground(segundo_Color_Fuente);
+        volumen_JSlider.setForeground(segundo_Color_Fuente);
+        titulo_JLabel.setForeground(segundo_Color_Fuente);
+        album_JLabel.setForeground(segundo_Color_Fuente);
+        artista_JLabel.setForeground(segundo_Color_Fuente);
+        progreso_JLabel.setForeground(segundo_Color_Fuente);
+        duracion_Total_JLabel.setForeground(segundo_Color_Fuente);
+        progreso_JSlider.setForeground(segundo_Color_Fuente);
 
         componentes = informacion_Archivo_JPanel.getComponents();
 
         for(int i = 0; i < componentes.length;i++){
             componente = componentes[i];
-            componente.setForeground(primer_Color_Fuente);
+            componente.setForeground(segundo_Color_Fuente);
         }
 
         componentes = ecualizador_JPanel.getComponents();
 
         for(int i = 0; i < componentes.length;i++){
             componente = componentes[i];
-            componente.setForeground(primer_Color_Fuente);
+            componente.setForeground(segundo_Color_Fuente);
         }
 
         componentes = bandas_JPanel.getComponents();
 
         for(int i = 0; i < componentes.length;i++){
             componente = componentes[i];
-            componente.setForeground(primer_Color_Fuente);
+            componente.setForeground(segundo_Color_Fuente);
         }
 
         componentes = lista_Reproduccion_JPanel.getComponents();
@@ -1574,27 +1577,42 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         for(int i = 0; i < componentes.length;i++){
             componente = componentes[i];
             entrada_Lista_Reproduccion_General_Panel = (Entrada_Lista_Reproduccion_General_Panel)componente;
-            entrada_Lista_Reproduccion_General_Panel.Colores_Fuente(primer_Color_Fuente);
+            entrada_Lista_Reproduccion_General_Panel.Colores_Fuente(segundo_Color_Fuente);
         }
 
-        TitledBorder borde = (TitledBorder)genero_JLabel.getBorder();
-        borde.setTitleColor(primer_Color_Fuente);
-
-        borde = (TitledBorder)anio_JLabel.getBorder();
-        borde.setTitleColor(primer_Color_Fuente);
-
-        borde = (TitledBorder)informacion_Archivo_JLabel.getBorder();
-        borde.setTitleColor(primer_Color_Fuente);
-
-        borde = (TitledBorder)letras_JTextPane.getBorder();
-        borde.setTitleColor(primer_Color_Fuente);
-
-        borde = (TitledBorder)bandas_JPanel.getBorder();
-        borde.setTitleColor(primer_Color_Fuente);
-
-        presets_JComboBox.setForeground(primer_Color_Fuente);
-        presets_JComboBox.setBackground(primer_Color);
-        letras_JTextPane.setForeground(primer_Color_Fuente);
+        genero_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder
+        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Género", 
+                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                new java.awt.Font("Gadugi", 1, 16),segundo_Color_Fuente)); // NOI18N
+        
+        bandas_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder
+        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Bandas", 
+                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                new java.awt.Font("Gadugi", 1, 16),segundo_Color_Fuente));
+        
+        informacion_Archivo_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder
+        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Media", 
+                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                new java.awt.Font("Gadugi", 1, 16),segundo_Color_Fuente));
+        
+        anio_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder
+        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Año", 
+                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                new java.awt.Font("Gadugi", 1, 16),segundo_Color_Fuente));
+        
+        letras_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder
+        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Letras", 
+                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+                new java.awt.Font("Gadugi", 1, 16),segundo_Color_Fuente));
+        
+        presets_JComboBox.setForeground(segundo_Color_Fuente);
+        presets_JComboBox.setBackground(segundo_Color);
+        letras_JTextPane.setForeground(segundo_Color_Fuente);
     }
     
     
@@ -1652,30 +1670,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     }
                 }
                
-                tercer_Color = segundo_Color;
-                if(lista_Colores.size() > 2){
-                    iteraciones = 0;
-                    
-                    while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                        tercer_Color = lista_Colores.get(posicion).second();
-                        iteraciones++;
-                        if(iteraciones > 50){
-                            while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                                tercer_Color = lista_Colores.get(posicion).second();
-                            }
-                            break;
-                        }
-                    }
-                }
-                
-                rojo = primer_Color.getRed();
-                primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 rojo = segundo_Color.getRed();
                 segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                rojo = tercer_Color.getRed();
-                tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 lista_Colores.clear();
                 
                 Colorear_Componentes();
@@ -1839,6 +1835,12 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                             bandera_Indice_Cero = false;
                         }
                         Cargar_Metadatos();
+                        try{
+                            Thread.sleep(500);
+                        } catch(InterruptedException e){
+                            
+                        }
+                        
                         bandera_Siguiente_Pista = true;
                     }
                 }
@@ -1847,6 +1849,11 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         indice--;
                         nodo_actual = nodo_actual.previous();
                         Cargar_Metadatos();
+                        try{
+                            Thread.sleep(500);
+                        } catch(InterruptedException e){
+                            
+                        }
                     }
                 }
             }
@@ -2026,7 +2033,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 String genero = tag.getFirst(FieldKey.GENRE);
                 String anio = tag.getFirst(FieldKey.YEAR);
                 String informacion_archivo = 
-                        CourseRoom.Concatenar(archivo_Audio.getExt().toUpperCase()," File - ",archivo_Audio.getAudioHeader().getBitRate()," kbps");
+                        CourseRoom.Concatenar(archivo_Audio.getExt().toUpperCase()," Archivo - ",archivo_Audio.getAudioHeader().getBitRate()," kbps");
                 String letras = tag.getFirst(FieldKey.LYRICS);
                 if(titulo == null){
                     titulo = archivo_Leer.getName();
@@ -2046,34 +2053,45 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 anio_JLabel.setText(anio);
                 informacion_Archivo_JLabel.setText(informacion_archivo);
                 letras_JTextPane.setText(letras);
+                letras_JTextPane.setCaretPosition(0);
 
                 Artwork arte = tag.getFirstArtwork();
-                Image entrada_Lista_Reproduccion_Imagen = null;
+                Entrada_Lista_Reproduccion_General_Panel entrada_Lista_Reproduccion_General_Panel = 
+                        (Entrada_Lista_Reproduccion_General_Panel) lista_Reproduccion_JPanel.getComponent(indice);
                 if(arte != null){
                     
                     int largo_Imagen = imagen_Arte_JLabel.getHeight();
                     Image imagen_Real = ((Image)arte.getImage());
                     if(imagen_Real != null){
-                        Image arte_Real_Imagen = imagen_Real.getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH);
-                        entrada_Lista_Reproduccion_Imagen = imagen_Real.getScaledInstance(63, 63, Image.SCALE_SMOOTH);
-                        ImageIcon cover = new ImageIcon(arte_Real_Imagen);
+                        Establecer_Colores(imagen_Real);
+                        imagen_Real = imagen_Real.getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH);
+                        ImageIcon cover = new ImageIcon(imagen_Real);
                         imagen_Arte_JLabel.setIcon(cover);
-                        Establecer_Colores(arte_Real_Imagen);
-                        arte_Real_Imagen.flush();
-                        imagen_Real.flush();
+                        imagen_Real = imagen_Real.getScaledInstance(63, 63, Image.SCALE_SMOOTH);
                         
+                        if (entrada_Lista_Reproduccion_General_Panel.Vacio()) {
+                            entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);
+                            entrada_Lista_Reproduccion_General_Panel.Artista(artista);
+                            entrada_Lista_Reproduccion_General_Panel.Album(album);
+                            entrada_Lista_Reproduccion_General_Panel.Imagen_Arte(imagen_Real);
+                        }
+                        
+                        imagen_Real.flush();
+                    } else{
+                        if (entrada_Lista_Reproduccion_General_Panel.Vacio()) {
+                            entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);
+                            entrada_Lista_Reproduccion_General_Panel.Artista(artista);
+                            entrada_Lista_Reproduccion_General_Panel.Album(album);
+                        }
                     }
-                } 
-                Entrada_Lista_Reproduccion_General_Panel entrada_Lista_Reproduccion_General_Panel = (Entrada_Lista_Reproduccion_General_Panel)lista_Reproduccion_JPanel.getComponent(indice);
-                if(entrada_Lista_Reproduccion_General_Panel.Vacio()){
-                    entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);
-                    entrada_Lista_Reproduccion_General_Panel.Artista(artista);
-                    entrada_Lista_Reproduccion_General_Panel.Album(album);
-                    if(entrada_Lista_Reproduccion_Imagen != null){
-                        entrada_Lista_Reproduccion_General_Panel.Imagen_Arte(entrada_Lista_Reproduccion_Imagen);
+                } else{
+                    if (entrada_Lista_Reproduccion_General_Panel.Vacio()) {
+                        entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);
+                        entrada_Lista_Reproduccion_General_Panel.Artista(artista);
+                        entrada_Lista_Reproduccion_General_Panel.Album(album);
                     }
                 }
-               
+                
             }else{
                 mrl = nodo_actual.element();
                 JOptionPane.showMessageDialog(this, mrl,"El Archivo No Se Encontró",JOptionPane.ERROR_MESSAGE);

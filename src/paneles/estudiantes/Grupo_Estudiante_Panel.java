@@ -665,6 +665,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         editar_Nombre_Grupo_JLabel.setText("Nombre Del Grupo");
 
         editar_Imagen_Grupo_JLabel.setToolTipText("Imagen Del Grupo A Editar");
+        editar_Imagen_Grupo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         editar_Imagen_Grupo_JLabel.setMaximumSize(new java.awt.Dimension(440, 440));
         editar_Imagen_Grupo_JLabel.setMinimumSize(new java.awt.Dimension(440, 440));
         editar_Imagen_Grupo_JLabel.setPreferredSize(new java.awt.Dimension(440, 440));

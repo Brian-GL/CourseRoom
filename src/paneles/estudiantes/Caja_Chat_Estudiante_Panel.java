@@ -191,8 +191,8 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
     public void Iniciar_Componentes() {
         try {
 
-            System.out.println("Chat ID: " + id + " -> Getting Image From https://loremflickr.com/644/720/sunset,beach/all");
-            URL url_Imagen = new URL("https://loremflickr.com/129/129/sunset,beach/all");
+            System.out.println("Chat ID: " + id + " -> Getting Image From https://i.pravatar.cc/130");
+            URL url_Imagen = new URL("https://i.pravatar.cc/130");
             Image obtener_imagen = ImageIO.read(url_Imagen);
             ImageIcon icono_Chat = new ImageIcon(obtener_imagen);
             imagen_JLabel.setIcon(icono_Chat);
@@ -204,7 +204,10 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
             ultimo_Mensaje_JLabel.setText(CourseRoom.Faker().music().genre());
             numero_No_Leidos_JLabel.setText(CourseRoom.Faker().number().digits(1));
             fecha_Hora_Mensaje_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());
-            chat_Estudiante_Panel = new Chat_Estudiante_Panel(nombre_JLabel.getText(), 
+            
+            obtener_imagen = obtener_imagen.getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+            
+            chat_Estudiante_Panel = new Chat_Estudiante_Panel(nombre_JLabel.getText(), obtener_imagen,
                     primer_Color, primer_Color_Fuente, segundo_Color,segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
             
             Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, this.id);

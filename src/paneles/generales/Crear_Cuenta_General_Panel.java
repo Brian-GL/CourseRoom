@@ -592,7 +592,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
 
         imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil Seleccionada.");
-        imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
+        imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setName(""); // NOI18N
         imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
 
@@ -728,10 +728,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                     int largo = imagen_Perfil_JLabel.getHeight();
                     abrir_Imagen = abrir_Imagen.getScaledInstance(largo,largo,Image.SCALE_SMOOTH);
                     ImageIcon icono = new ImageIcon(abrir_Imagen);
-
                     imagen_Perfil_JLabel.setIcon(icono);
-
-                    
                     abrir_Imagen.flush();
 
                 } catch (IOException ex) {
@@ -1003,7 +1000,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         descripcion_JLabel.setForeground(CourseRoom.Segundo_Color());
         fecha_Nacimiento_JLabel.setForeground(CourseRoom.Segundo_Color());
         genero_JLabel.setForeground(CourseRoom.Segundo_Color());
-        //imagen_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
+        imagen_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Correo_Electronico_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Inicio_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Nombre_Usuario_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());

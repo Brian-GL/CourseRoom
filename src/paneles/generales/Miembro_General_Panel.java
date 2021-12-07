@@ -180,8 +180,8 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     public void Iniciar_Componentes() {
          try {
              
-            System.out.println("Member -> Getting Image From https://loremflickr.com/142/142/teenager/all");
-            URL url_Imagen = new URL("https://loremflickr.com/142/142/teenager/all");
+            System.out.println("Member -> Getting Image From https://i.pravatar.cc/140");
+            URL url_Imagen = new URL("https://i.pravatar.cc/140");
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             
             Establecer_Colores(obtener_Imagen);
@@ -209,7 +209,6 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     public void Colorear_Componentes() {
         apellidos_JLabel.setForeground(Primer_Color_Fuente());
         nombres_JLabel.setForeground(Primer_Color_Fuente());
-        //imagen_jLabel.setForeground(Primer_Color_Fuente());
         contenido_JPanel.setBackground(Primer_Color());
 
     }

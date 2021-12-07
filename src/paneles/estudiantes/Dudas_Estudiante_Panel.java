@@ -160,7 +160,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         String concatenacion;
         Caja_Duda_Estudiante_Panel caja_Duda_Estudiante_Panel;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
-            concatenacion = CourseRoom.Concatenar("Grupo_",i);
+            concatenacion = CourseRoom.Concatenar("Duda_",i);
             caja_Duda_Estudiante_Panel = new Caja_Duda_Estudiante_Panel(concatenacion);
             dudas_JPanel.add(caja_Duda_Estudiante_Panel);
         }
@@ -172,6 +172,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Font gadugi = new java.awt.Font("Gadugi", 1, 20);
         titulo_JLabel.setBackground(CourseRoom.Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
         ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
@@ -180,14 +181,14 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Segundo_Color_Fuente()));
+                gadugi, CourseRoom.Tercer_Color_Fuente()));
         
         ordenar_Por_JComboBox.setBackground(CourseRoom.Segundo_Color());
         ordenar_Por_JComboBox.setForeground(CourseRoom.Segundo_Color_Fuente());
         
-        buscar_JTextField.setBackground(CourseRoom.Segundo_Color());
-        buscar_JTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
+        buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
         
         agregar_Duda_JButton.setBackground(CourseRoom.Tercer_Color());
         agregar_Duda_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());

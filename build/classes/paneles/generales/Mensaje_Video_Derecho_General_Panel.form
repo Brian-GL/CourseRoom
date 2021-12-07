@@ -133,7 +133,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="progreso_JSlider" alignment="3" max="32767" attributes="0"/>
+                              <Component id="progreso_JSlider" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                               <Component id="duracion_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="progreso_JLabel" max="32767" attributes="0"/>

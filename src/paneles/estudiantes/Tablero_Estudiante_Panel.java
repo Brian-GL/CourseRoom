@@ -968,15 +968,13 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
          try {
             
             tiempo_Servidor_Detenido = true;
-            System.out.println("Dashboard -> Getting Image From https://loremflickr.com/450/450/sunset,beach/all");
-            URL url_Imagen = new URL("https://loremflickr.com/450/450/sunset,beach/all");
+            System.out.println("Dashboard -> Getting Image From https://i.pravatar.cc/450");
+            URL url_Imagen = new URL("https://i.pravatar.cc/450");
             imagen_Usuario = ImageIO.read(url_Imagen);
             Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(175, 175, Image.SCALE_SMOOTH);
             ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
             imagen_Perfil_JLabel.setIcon(icono_Imagen);
             imagen_Redimensionada.flush();
-            //image = null;
-            
             perfil_Panel = new Perfil_Estudiante_Panel();
             visualizador_JPanel.add("Perfil",perfil_Panel);
             

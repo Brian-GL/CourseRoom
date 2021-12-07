@@ -26,6 +26,7 @@ import paneles.generales.Mensaje_Video_Derecho_General_Panel;
 import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import javax.swing.ImageIcon;
 import paneles.generales.Mensaje_Audio_Izquierdo_General_Panel;
 
 /**
@@ -37,7 +38,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
     public Chat_Estudiante_Panel(
-            String nombre, 
+            String receptor_Nombre, 
+            Image receptor_Imagen,
             Color _primer_Color, 
             Color _primer_Color_Fuente, 
             Color _segundo_Color,
@@ -46,6 +48,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             Color _tercer_Color_Fuente) {
         initComponents();
         
+        ImageIcon icono = new ImageIcon(receptor_Imagen);
+        receptor_Imagen_JLabel.setIcon(icono);
+        
         primer_Color = _primer_Color;
         primer_Color_Fuente = _primer_Color_Fuente;
         segundo_Color = _segundo_Color;
@@ -53,7 +58,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         tercer_Color = _tercer_Color;
         tercer_Color_Fuente = _tercer_Color_Fuente;
         
-        nombre_JLabel.setText(nombre);
+        receptor_JLabel.setText(receptor_Nombre);
         
         Iniciar_Componentes();
     }
@@ -68,8 +73,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     private void initComponents() {
 
         informacion_JPanel = new javax.swing.JPanel();
-        nombre_JLabel = new javax.swing.JLabel();
+        receptor_JLabel = new javax.swing.JLabel();
         regresar_JButton = new javax.swing.JButton();
+        receptor_Imagen_JLabel = new javax.swing.JLabel();
         enviar_Mensajes_JPanel = new javax.swing.JPanel();
         mensaje_JTextField = new javax.swing.JTextField();
         enviar_Archivos_JButton = new javax.swing.JButton();
@@ -89,10 +95,10 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         informacion_JPanel.setMinimumSize(new java.awt.Dimension(1085, 50));
         informacion_JPanel.setPreferredSize(new java.awt.Dimension(1085, 50));
 
-        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/chat_1.png"))); // NOI18N
-        nombre_JLabel.setToolTipText("Nombre Del Chat O La Persona Con Quien Se Chatea");
+        receptor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        receptor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        receptor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/chat_1.png"))); // NOI18N
+        receptor_JLabel.setToolTipText("Nombre Del Chat O La Persona Con Quien Se Chatea");
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mis Chats");
@@ -110,6 +116,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             }
         });
 
+        receptor_Imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        receptor_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(48, 48));
+
         javax.swing.GroupLayout informacion_JPanelLayout = new javax.swing.GroupLayout(informacion_JPanel);
         informacion_JPanel.setLayout(informacion_JPanelLayout);
         informacion_JPanelLayout.setHorizontalGroup(
@@ -117,17 +126,23 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 232, Short.MAX_VALUE)
-                .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(receptor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(receptor_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         informacion_JPanelLayout.setVerticalGroup(
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(regresar_JButton))
-                .addContainerGap())
+                    .addGroup(informacion_JPanelLayout.createSequentialGroup()
+                        .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(receptor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(regresar_JButton))
+                        .addGap(0, 0, 0))
+                    .addComponent(receptor_Imagen_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
 
         enviar_Mensajes_JPanel.setMaximumSize(new java.awt.Dimension(32767, 50));
@@ -631,7 +646,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     private javax.swing.JTextField mensaje_JTextField;
     private javax.swing.JPanel mensajes_JPanel;
     private javax.swing.JScrollPane mensajes_JScrollPane;
-    private javax.swing.JLabel nombre_JLabel;
+    private javax.swing.JLabel receptor_Imagen_JLabel;
+    private javax.swing.JLabel receptor_JLabel;
     private javax.swing.JButton regresar_JButton;
     // End of variables declaration//GEN-END:variables
 
@@ -647,10 +663,10 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     public void Colorear_Componentes(){
         
         regresar_JButton.setBackground(primer_Color);
-        nombre_JLabel.setForeground(primer_Color_Fuente);
+        receptor_JLabel.setForeground(primer_Color_Fuente);
         mensaje_JTextField.setBackground(primer_Color);
         mensaje_JTextField.setForeground(primer_Color_Fuente);
-        nombre_JLabel.setForeground(primer_Color_Fuente);
+        receptor_JLabel.setForeground(primer_Color_Fuente);
         enviar_Mensajes_JPanel.setBackground(segundo_Color);
         informacion_JPanel.setBackground(primer_Color);
         
