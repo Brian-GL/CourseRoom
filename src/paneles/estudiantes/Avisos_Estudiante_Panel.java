@@ -33,6 +33,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         titulo_JLabel = new javax.swing.JLabel();
         avisos_JScrollPane = new javax.swing.JScrollPane();
         avisos_JPanel = new javax.swing.JPanel();
+        buscar_JTextField = new javax.swing.JTextField();
         ordenar_Por_JComboBox = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
@@ -54,16 +55,19 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         avisos_JPanel.setLayout(new java.awt.GridLayout(0, 2));
         avisos_JScrollPane.setViewportView(avisos_JPanel);
 
-        ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
-        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fecha: Más Reciente", "Fecha: Menos Reciente", "Estatus: Leído", "Estatus: No Leído" }));
-        ordenar_Por_JComboBox.setToolTipText("Ordenar Avisos Por");
-        ordenar_Por_JComboBox.setBorder(null);
-        ordenar_Por_JComboBox.setOpaque(true);
-        ordenar_Por_JComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ordenar_Por_JComboBoxItemStateChanged(evt);
+        buscar_JTextField.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        buscar_JTextField.setBorder(null);
+        buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscar_JTextFieldKeyPressed(evt);
             }
         });
+
+        ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defecto", "Fecha: Más Reciente", "Fecha: Menos Reciente", "Leídas", "No Leídas" }));
+        ordenar_Por_JComboBox.setToolTipText("Ordenar Grupos Por");
+        ordenar_Por_JComboBox.setBorder(null);
+        ordenar_Por_JComboBox.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,31 +79,36 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                     .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1085, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+                        .addGap(15, 15, 15)
+                        .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 540, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ordenar_Por_JComboBox)
+                    .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 484, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ordenar_Por_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ordenar_Por_JComboBoxItemStateChanged
+    private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_ordenar_Por_JComboBoxItemStateChanged
+    }//GEN-LAST:event_buscar_JTextFieldKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel avisos_JPanel;
     private javax.swing.JScrollPane avisos_JScrollPane;
+    private javax.swing.JTextField buscar_JTextField;
     private javax.swing.JComboBox<String> ordenar_Por_JComboBox;
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
@@ -119,16 +128,26 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     
     @Override
     public void Colorear_Componentes(){
-        Font gadugi = new Font("Gadugi", 1, 20);
+        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
         titulo_JLabel.setBackground(CourseRoom.Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
         ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
                 gadugi, CourseRoom.Segundo_Color_Fuente()));
         
+        buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
+                "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                gadugi, CourseRoom.Tercer_Color_Fuente()));
+        
         ordenar_Por_JComboBox.setBackground(CourseRoom.Segundo_Color());
         ordenar_Por_JComboBox.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
+        buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
+        buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
         
     }
     

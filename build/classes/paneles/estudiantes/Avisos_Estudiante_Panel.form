@@ -28,8 +28,12 @@
                   <Component id="avisos_JScrollPane" pref="1085" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="titulo_JLabel" min="-2" pref="157" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="ordenar_Por_JComboBox" min="-2" pref="284" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="buscar_JTextField" pref="881" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="ordenar_Por_JComboBox" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -40,12 +44,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="titulo_JLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="ordenar_Por_JComboBox" min="-2" pref="62" max="-2" attributes="0"/>
+              <Component id="titulo_JLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="ordenar_Por_JComboBox" max="32767" attributes="0"/>
+                  <Component id="buscar_JTextField" pref="38" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="avisos_JScrollPane" pref="540" max="32767" attributes="0"/>
+              <Component id="avisos_JScrollPane" pref="484" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -98,28 +104,39 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JTextField" name="buscar_JTextField">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Gadugi" size="18" style="0"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="buscar_JTextFieldKeyPressed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JComboBox" name="ordenar_Por_JComboBox">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Gadugi" size="17" style="0"/>
+          <Font name="Gadugi" size="15" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Fecha: M&#xe1;s Reciente"/>
-            <StringItem index="1" value="Fecha: Menos Reciente"/>
-            <StringItem index="2" value="Estatus: Le&#xed;do"/>
-            <StringItem index="3" value="Estatus: No Le&#xed;do"/>
+          <StringArray count="5">
+            <StringItem index="0" value="Defecto"/>
+            <StringItem index="1" value="Fecha: M&#xe1;s Reciente"/>
+            <StringItem index="2" value="Fecha: Menos Reciente"/>
+            <StringItem index="3" value="Le&#xed;das"/>
+            <StringItem index="4" value="No Le&#xed;das"/>
           </StringArray>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Ordenar Avisos Por"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ordenar Grupos Por"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ordenar_Por_JComboBoxItemStateChanged"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

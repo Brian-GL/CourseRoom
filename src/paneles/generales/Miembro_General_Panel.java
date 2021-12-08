@@ -19,6 +19,9 @@ import javax.swing.Icon;
 import interfaces.Color_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import javax.swing.SwingUtilities;
+import paneles.estudiantes.Chats_Estudiante_Panel;
+import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
  *
@@ -52,10 +55,12 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
         imagen_jLabel = new javax.swing.JLabel();
         nombres_JLabel = new javax.swing.JLabel();
         apellidos_JLabel = new javax.swing.JLabel();
+        nombre_Usuario_JLabel = new javax.swing.JLabel();
+        chat_JButton = new javax.swing.JButton();
 
-        setMaximumSize(new java.awt.Dimension(32767, 214));
+        setMaximumSize(new java.awt.Dimension(32767, 239));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(312, 214));
+        setPreferredSize(new java.awt.Dimension(312, 239));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -69,10 +74,30 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
         nombres_JLabel.setText("Nombre Del Miembro");
         nombres_JLabel.setToolTipText("Nombre(s) Del Miembro");
 
-        apellidos_JLabel.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
+        apellidos_JLabel.setFont(new java.awt.Font("Gadugi", 3, 15)); // NOI18N
         apellidos_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         apellidos_JLabel.setText("Apellido Del Miembro");
         apellidos_JLabel.setToolTipText("Apellido(s) Del Miembro");
+
+        nombre_Usuario_JLabel.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
+        nombre_Usuario_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombre_Usuario_JLabel.setText("Nombre De Usuario Del Miembro");
+        nombre_Usuario_JLabel.setToolTipText("Nombre De Usuario Del Miembro");
+
+        chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat.png"))); // NOI18N
+        chat_JButton.setBorder(null);
+        chat_JButton.setPreferredSize(new java.awt.Dimension(40, 40));
+        chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chat_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                chat_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                chat_JButtonMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
@@ -84,21 +109,27 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(imagen_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(apellidos_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombres_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
+                    .addComponent(nombres_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                    .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imagen_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imagen_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nombres_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(apellidos_JLabel)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombre_Usuario_JLabel)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -119,6 +150,27 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chat_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            int chat_Aleatorio = CourseRoom.Faker().number().numberBetween(1, Chats_Estudiante_Panel.Numero_Chats());
+            
+            String llave = CourseRoom.Concatenar("Chat_", chat_Aleatorio);
+            
+            Tablero_Estudiante_Panel.Mostrar_Vista(llave);
+        }
+    }//GEN-LAST:event_chat_JButtonMouseClicked
+
+    private void chat_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chat_JButtonMouseEntered
+        // TODO add your handling code here:
+        chat_JButton.setBackground(Tercer_Color());
+    }//GEN-LAST:event_chat_JButtonMouseEntered
+
+    private void chat_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chat_JButtonMouseExited
+        // TODO add your handling code here:
+        chat_JButton.setBackground(Primer_Color());
+    }//GEN-LAST:event_chat_JButtonMouseExited
+
     public String Nombre_Completo(){
         return this.nombre_Completo;
     }
@@ -129,8 +181,10 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidos_JLabel;
+    private javax.swing.JButton chat_JButton;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel imagen_jLabel;
+    private javax.swing.JLabel nombre_Usuario_JLabel;
     private javax.swing.JLabel nombres_JLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -192,10 +246,12 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
             
             String nombre = CourseRoom.Faker().name().firstName() + " " +CourseRoom.Faker().name().firstName();
             String apellido = CourseRoom.Faker().name().lastName() + " " + CourseRoom.Faker().name().lastName();
+            String nombre_Usuario = CourseRoom.Faker().name().username();
             
             nombre_Completo = CourseRoom.Concatenar(nombre," ",apellido);
             apellidos_JLabel.setText(apellido);
             nombres_JLabel.setText(nombre);
+            nombre_Usuario_JLabel.setText(nombre_Usuario);
             
             Colorear_Componentes();
             
@@ -209,7 +265,9 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     public void Colorear_Componentes() {
         apellidos_JLabel.setForeground(Primer_Color_Fuente());
         nombres_JLabel.setForeground(Primer_Color_Fuente());
+        nombre_Usuario_JLabel.setForeground(Primer_Color_Fuente());
         contenido_JPanel.setBackground(Primer_Color());
+        chat_JButton.setBackground(Primer_Color());
 
     }
     

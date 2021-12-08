@@ -52,6 +52,7 @@ import interfaces.Color_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import interfaces.Reproductor_Interface;
+import java.awt.Font;
 
 /**
  *
@@ -165,6 +166,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         imagen_Arte_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Arte_JLabel.setToolTipText("");
+        imagen_Arte_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(550, 550));
@@ -1579,36 +1581,38 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             entrada_Lista_Reproduccion_General_Panel = (Entrada_Lista_Reproduccion_General_Panel)componente;
             entrada_Lista_Reproduccion_General_Panel.Colores_Fuente(segundo_Color_Fuente);
         }
+        
+        Font gadugi = new Font("Gadugi", 1, 16);
 
         genero_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder
         (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Género", 
                 javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 1, 16),segundo_Color_Fuente)); // NOI18N
+                gadugi,segundo_Color_Fuente)); // NOI18N
         
         bandas_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder
         (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Bandas", 
                 javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 1, 16),segundo_Color_Fuente));
+                gadugi,segundo_Color_Fuente));
         
         informacion_Archivo_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder
         (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Media", 
                 javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 1, 16),segundo_Color_Fuente));
+                gadugi,segundo_Color_Fuente));
         
         anio_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder
         (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Año", 
                 javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 1, 16),segundo_Color_Fuente));
+                gadugi,segundo_Color_Fuente));
         
         letras_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder
         (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Letras", 
                 javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 1, 16),segundo_Color_Fuente));
+                gadugi,segundo_Color_Fuente));
         
         presets_JComboBox.setForeground(segundo_Color_Fuente);
         presets_JComboBox.setBackground(segundo_Color);

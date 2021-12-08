@@ -38,9 +38,9 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
     public Duda_Estudiante_Panel(
-            String duda, 
+            String _duda, 
+            String descripcion_Duda,
             String preguntador_Nombre,
-            String estatus,
             String fecha,
             Icon preguntador_Icono,
             Color _primer_Color, 
@@ -54,9 +54,11 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         preguntador_Imagen_JLabel.setIcon(preguntador_Icono);
         preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Concatenar("Duda Realizada Por ", preguntador_Nombre));
         
-        duda_JLabel.setText(CourseRoom.Concatenar(duda, " - ",estatus));
+        String duda = CourseRoom.Concatenar(_duda, " - Abierta");
+        System.err.println(duda);
+        duda_JLabel.setText(duda);
         
-        String descripcion = CourseRoom.Faker().lorem().paragraph(3);
+        String descripcion = descripcion_Duda;
         descripcion = CourseRoom.Concatenar(descripcion, "<br><br> Duda Realizada Por ",preguntador_Nombre," Con Fecha ",fecha);
         
         descripcion_Duda_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(descripcion));

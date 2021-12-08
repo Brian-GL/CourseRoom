@@ -9,6 +9,7 @@ import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Font;
+import javax.swing.SwingUtilities;
 
 
 /**
@@ -39,7 +40,9 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         titulo_JLabel = new javax.swing.JLabel();
         chats_JScrollPane = new javax.swing.JScrollPane();
         chats_JPanel = new javax.swing.JPanel();
+        buscar_JTextField = new javax.swing.JTextField();
         ordenar_Por_JComboBox = new javax.swing.JComboBox<>();
+        crear_Chat_JButton = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
@@ -59,11 +62,34 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         chats_JPanel.setLayout(new java.awt.GridLayout(0, 2));
         chats_JScrollPane.setViewportView(chats_JPanel);
 
-        ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
-        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fecha: Más Reciente", "Fecha: Menos Reciente", "Nombre: A - Z", "Nombre: Z - A" }));
+        buscar_JTextField.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        buscar_JTextField.setBorder(null);
+        buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscar_JTextFieldKeyPressed(evt);
+            }
+        });
+
+        ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defecto", "Fecha: Más Reciente", "Fecha: Menos Reciente", "Duda: A - Z", "Duda: Z - A", "Estudiante: A - Z", "Estudiante: Z - A", "Abiertas", "Cerradas" }));
         ordenar_Por_JComboBox.setToolTipText("Ordenar Grupos Por");
         ordenar_Por_JComboBox.setBorder(null);
         ordenar_Por_JComboBox.setOpaque(true);
+
+        crear_Chat_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        crear_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/talking.png"))); // NOI18N
+        crear_Chat_JButton.setText("Crear Chat");
+        crear_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                crear_Chat_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crear_Chat_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crear_Chat_JButtonMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,27 +102,66 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(crear_Chat_JButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
+                        .addGap(15, 15, 15)
+                        .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(crear_Chat_JButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(ordenar_Por_JComboBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                .addComponent(chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void crear_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Chat_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
+    }//GEN-LAST:event_crear_Chat_JButtonMouseClicked
+
+    private void crear_Chat_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Chat_JButtonMouseEntered
+        // TODO add your handling code here:
+        crear_Chat_JButton.setBackground(CourseRoom.Segundo_Color());
+        crear_Chat_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_crear_Chat_JButtonMouseEntered
+
+    private void crear_Chat_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Chat_JButtonMouseExited
+        // TODO add your handling code here:
+        crear_Chat_JButton.setBackground(CourseRoom.Tercer_Color());
+        crear_Chat_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_crear_Chat_JButtonMouseExited
+
+    private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscar_JTextFieldKeyPressed
+
+    public static int Numero_Chats(){
+        return chats_JPanel.getComponentCount();
+    }
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel chats_JPanel;
+    private javax.swing.JTextField buscar_JTextField;
+    private static javax.swing.JPanel chats_JPanel;
     private javax.swing.JScrollPane chats_JScrollPane;
+    private javax.swing.JButton crear_Chat_JButton;
     private javax.swing.JComboBox<String> ordenar_Por_JComboBox;
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
@@ -118,16 +183,29 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     @Override
     public void Colorear_Componentes() {
-        Font gadugi = new java.awt.Font("Gadugi", 1, 20);
+        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
         titulo_JLabel.setBackground(CourseRoom.Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
         ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
                 gadugi, CourseRoom.Segundo_Color_Fuente()));
         
+        buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
+                "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                gadugi, CourseRoom.Tercer_Color_Fuente()));
+        
         ordenar_Por_JComboBox.setBackground(CourseRoom.Segundo_Color());
         ordenar_Por_JComboBox.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
+        buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
+        buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        
+        crear_Chat_JButton.setBackground(CourseRoom.Tercer_Color());
+        crear_Chat_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }
     
     @Override

@@ -233,6 +233,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
     public void Colorear_Componentes() {
         curso_JLabel.setForeground(primer_Color_Fuente);
         nombre_JLabel.setForeground(primer_Color_Fuente);
+        fecha_Hora_JLabel.setForeground(primer_Color_Fuente);
         ultima_Actualizacion_JLabel.setForeground(primer_Color_Fuente);
         contenido_JPanel.setBackground(primer_Color);
         contenido_JPanel.setForeground(primer_Color_Fuente);

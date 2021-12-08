@@ -24,6 +24,7 @@ import paneles.generales.Mensaje_Texto_Izquierdo_General_Panel;
 import paneles.generales.Miembro_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -1427,33 +1428,35 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         eliminar_Miembro_JLabel.setForeground(primer_Color_Fuente);
         
+        Font gadugi = new Font("Gadugi", 1, 14);
+        
         ordenar_Archivos_Compatidos_JComboBox.setForeground(tercer_Color_Fuente);
         ordenar_Archivos_Compatidos_JComboBox.setBackground(tercer_Color);
         ordenar_Archivos_Compatidos_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 1, 14),tercer_Color_Fuente)); // NOI18N
+                gadugi,tercer_Color_Fuente)); // NOI18N
         
         filtrar_Archivos_Compatidos_JComboBox.setForeground(tercer_Color_Fuente);
         filtrar_Archivos_Compatidos_JComboBox.setBackground(tercer_Color);
         filtrar_Archivos_Compatidos_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Filtrar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 1, 14),tercer_Color_Fuente)); // NOI18N
+                gadugi,tercer_Color_Fuente)); // NOI18N
         
         filtro_Archivos_Compatidos_JComboBox.setForeground(tercer_Color_Fuente);
         filtro_Archivos_Compatidos_JComboBox.setBackground(tercer_Color);
         filtro_Archivos_Compatidos_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Filtro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 1, 14),tercer_Color_Fuente)); // NOI18N
+                gadugi,tercer_Color_Fuente)); // NOI18N
         
         mostrar_Tarea_Pendiente_Tipo_JComboBox.setForeground(tercer_Color_Fuente);
         mostrar_Tarea_Pendiente_Tipo_JComboBox.setBackground(tercer_Color);
         mostrar_Tarea_Pendiente_Tipo_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Mostrar Lista Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 1, 14),tercer_Color_Fuente)); // NOI18N
+                gadugi,tercer_Color_Fuente)); // NOI18N
         
         miembro_Cargo_Tarea_Pendiente_JLabel.setForeground(primer_Color_Fuente);
         tarea_Pendiente_JLabel.setForeground(primer_Color_Fuente);
@@ -1493,7 +1496,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         buscar_Archivo_Compartido_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 1, 14),tercer_Color_Fuente)); // NOI18N
+                gadugi,tercer_Color_Fuente)); // NOI18N
 
         descripcion_Tarea_Pendiente_JTextPane.setForeground(tercer_Color_Fuente);
         descripcion_Tarea_Pendiente_JTextPane.setCaretColor(tercer_Color_Fuente);

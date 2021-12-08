@@ -249,7 +249,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             
             System.out.println("Curso ID: "+this.id+" -> Getting Image From https://picsum.photos/?random=1");
             URL url_Imagen = new URL(
-                    CourseRoom.Concatenar(" https://picsum.photos/",String.valueOf(ancho),"/125?random=",id)
+                    CourseRoom.Concatenar(" https://picsum.photos/",String.valueOf(ancho),"/125")
             );
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             ImageIcon icono = new ImageIcon(obtener_Imagen);

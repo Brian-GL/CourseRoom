@@ -60,6 +60,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
+        imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(2000, 2000));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(450, 450));
         imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(450, 450));
@@ -308,9 +309,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         return Perfil_Estudiante_Panel.imagen_Perfil_JLabel;
     }
     
+    public static String Nombre_Completo(){
+        return CourseRoom.Concatenar(nombres_JLabel.getText(), " ",apellidos_JLabel.getText());
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel apellidos_JLabel;
+    private static javax.swing.JLabel apellidos_JLabel;
     private javax.swing.JLabel correo_JLabel;
     private javax.swing.JScrollPane descripcion_JScrollPane;
     private javax.swing.JTextPane descripcion_JTextPane;
@@ -321,7 +325,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private static javax.swing.JLabel imagen_Perfil_JLabel;
     private javax.swing.JLabel localidad_JLabel;
     private javax.swing.JLabel nombre_Usuario_jLabel;
-    private javax.swing.JLabel nombres_JLabel;
+    private static javax.swing.JLabel nombres_JLabel;
     private javax.swing.JLabel telefono_JLabel;
     private javax.swing.JLabel tipo_Perfil_JLabel;
     // End of variables declaration//GEN-END:variables
@@ -376,7 +380,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         nombres_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
         telefono_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         tipo_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        //imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         descripcion_JTextPane.setForeground(CourseRoom.Primer_Color_Fuente());
         descripcion_JScrollPane.setForeground(CourseRoom.Primer_Color_Fuente());
     }

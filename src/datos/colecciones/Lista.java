@@ -20,10 +20,10 @@ public class Lista<T>{
         _size = 0;
     }
 
-    @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Lista(T[] array) {
+    
+    public Lista(T... elements) {
        _size = 0;
-        for(T value:array){
+        for(T value:elements){
             this.push_back(value);
         }
     }

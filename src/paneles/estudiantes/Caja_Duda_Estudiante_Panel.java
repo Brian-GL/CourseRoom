@@ -5,37 +5,60 @@
  */
 package paneles.estudiantes;
 
-import main.CourseRoom;
-import datos.colecciones.Lista_Pares;
-import datos.estructuras.Par;
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.image.PixelGrabber;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import interfaces.Color_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import javax.swing.Icon;
+import main.CourseRoom;
 
 /**
  *
  * @author LENOVO
  */
-public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Color_Interface, Limpieza_Interface, Componentes_Interface{
+public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
 
     private Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
     private String id;
     private Duda_Estudiante_Panel duda_Estudiante_Panel;
     
     
-    public Caja_Duda_Estudiante_Panel(String _id) {
+    public Caja_Duda_Estudiante_Panel(String _id,
+            String duda, 
+            String descripcion_Duda,
+            String preguntador_Nombre,
+            String fecha,
+            Icon preguntador_Icono,
+            Color _primer_Color, 
+            Color _primer_Color_Fuente, 
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente) {
         initComponents();
         
         this.id = _id;
+        
+        primer_Color = CourseRoom.Primer_Color();
+        primer_Color_Fuente = CourseRoom.Primer_Color_Fuente();
+        
+        segundo_Color = CourseRoom.Segundo_Color();
+        segundo_Color_Fuente = CourseRoom.Segundo_Color_Fuente();
+        
+        tercer_Color = CourseRoom.Tercer_Color();
+        tercer_Color_Fuente = CourseRoom.Tercer_Color_Fuente();
+        
+        duda_JTextPane.setText(duda);
+        preguntador_JLabel.setText(preguntador_Nombre);
+        fecha_JLabel.setText(fecha);
+        estatus_JLabel.setText("Abierta");
+        
+        imagen_Preguntador_JLabel.setIcon(preguntador_Icono);
+        
+        duda_Estudiante_Panel = new Duda_Estudiante_Panel(duda_JTextPane.getText(), descripcion_Duda,preguntador_JLabel.getText(),
+           fecha_JLabel.getText(),imagen_Preguntador_JLabel.getIcon(),primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, 
+                   tercer_Color, tercer_Color_Fuente);
+            
         
         Iniciar_Componentes();
     }
@@ -91,9 +114,7 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
 
         duda_JTextPane.setEditable(false);
         duda_JTextPane.setBorder(null);
-        duda_JTextPane.setContentType("text/html"); // NOI18N
         duda_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
-        duda_JTextPane.setText("");
         duda_JTextPane.setOpaque(false);
         duda_JScrollPane.setViewportView(duda_JTextPane);
 
@@ -107,9 +128,9 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                        .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estatus_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                        .addComponent(estatus_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
                     .addComponent(preguntador_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(duda_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -136,9 +157,9 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +177,6 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
         }
     }//GEN-LAST:event_imagen_Preguntador_JLabelMouseClicked
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JScrollPane duda_JScrollPane;
@@ -169,39 +189,15 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
 
     @Override
     public void Iniciar_Componentes() {
-        try {
 
-            duda_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(
-                    CourseRoom.Concatenar(CourseRoom.Faker().superhero().name(), " Is A Thread?")));
-            fecha_JLabel.setText(CourseRoom.Faker().date().birthday(0, 1).toString());
-            preguntador_JLabel.setText(CourseRoom.Faker().name().name());
-            estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Cerrada" : "Abierta");
-            
-            System.out.println("Duda ID: " + this.id + " -> Getting Image From https://i.pravatar.cc/110");
-            URL url_Imagen = new URL("https://i.pravatar.cc/110");
-            Image obtener_Imagen = ImageIO.read(url_Imagen);
-            ImageIcon icono_Tarea = new ImageIcon(obtener_Imagen);
-            imagen_Preguntador_JLabel.setIcon(icono_Tarea);
-            
-            duda_JScrollPane.getViewport().setOpaque(false);
-            duda_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-            duda_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-            
-            Establecer_Colores(obtener_Imagen);
-            Colorear_Componentes();
-            
-            duda_Estudiante_Panel = new Duda_Estudiante_Panel(duda_JTextPane.getText(),preguntador_JLabel.getText(),estatus_JLabel.getText(),
-            fecha_JLabel.getText(),imagen_Preguntador_JLabel.getIcon(),primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, 
-                    tercer_Color, tercer_Color_Fuente);
-            
-            Tablero_Estudiante_Panel.Agregar_Vista(duda_Estudiante_Panel, id);
+        duda_JScrollPane.getViewport().setOpaque(false);
+        duda_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        duda_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
-            obtener_Imagen.flush();
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
-        }
+
+        Colorear_Componentes();
+
+        Tablero_Estudiante_Panel.Agregar_Vista(duda_Estudiante_Panel, id);
     }
 
     @Override
@@ -214,97 +210,6 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Co
         contenido_JPanel.setBackground(primer_Color);
         contenido_JPanel.setForeground(primer_Color_Fuente);
     }
-    
-    
-    @Override
-    public void Establecer_Colores(Image image){
-       try {
-            int maximo_auxiliar = 0;
-            primer_Color = Color.BLACK;
-            Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
-            PixelGrabber obtener_Pixeles = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int largo_Imagen = image.getWidth(null)/2;
-            int[] pixeles;
-            int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
-            Color color;
-            Par<Integer, Color> par;
-            if (obtener_Pixeles.grabPixels()) {
-                pixeles = (int[]) obtener_Pixeles.getPixels();
-                for(int i = 0; i < pixeles.length; i++){
-                    pixel = pixeles[i];
-                    rojo = (pixel  & 0x00ff0000) >> 16;
-                    verde = (pixel & 0x0000ff00) >> 8;
-                    azul = pixel & 0x000000ff;
-                    color = new Color(rojo,verde,azul);
-                    par = lista_Colores.get_from_second(color);
-            
-                    if (par != null) { //existe
-                        numero_Auxiliar = par.first()+ 1;
-                        par.first(numero_Auxiliar);
-                        if (numero_Auxiliar > maximo_auxiliar) {
-                            primer_Color = color;
-                            maximo_auxiliar = numero_Auxiliar;
-                        }
-                    } else {
-                        lista_Colores.push_back(1, color);
-                    }
-
-                    i += CourseRoom.Random().nextInt(largo_Imagen+1) + largo_Imagen;
-                }
-
-                segundo_Color = primer_Color;
-            
-                int iteraciones = 0;
-                if(lista_Colores.size() > 1){
-                    
-                    while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                        segundo_Color = lista_Colores.get(posicion).second();
-                        iteraciones++;
-                        if(iteraciones > 25){
-                             while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                                segundo_Color = lista_Colores.get(posicion).second();
-                            }
-                             break;
-                        }
-                    }
-                }
-               
-                tercer_Color = segundo_Color;
-                if(lista_Colores.size() > 2){
-                    iteraciones = 0;
-                    
-                    while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                        tercer_Color = lista_Colores.get(posicion).second();
-                        iteraciones++;
-                        if(iteraciones > 50){
-                            while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                                tercer_Color = lista_Colores.get(posicion).second();
-                            }
-                            break;
-                        }
-                    }
-                }
-                
-                rojo = primer_Color.getRed();
-                primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                rojo = segundo_Color.getRed();
-                segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                rojo = tercer_Color.getRed();
-                tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                lista_Colores.clear();
-                
-            }
-            
-        } catch (InterruptedException ex) {
-            
-        }
-          
-    }
-    
     
      @Override
     public void Limpiar() {
