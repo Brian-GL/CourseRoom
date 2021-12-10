@@ -11,9 +11,12 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import interfaces.Componentes_Interface;
+import java.awt.Component;
+import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import main.CourseRoom_Frame;
+import paneles.generales.Sesion_Activa_General_Panel;
 
 /**
  *
@@ -470,10 +473,19 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         
         ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
         logo_JLabel.setIcon(icono);
+        
+        Sesion_Activa_General_Panel sesion_Activa_General_Panel;
+        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5);i++){
+            sesion_Activa_General_Panel = new Sesion_Activa_General_Panel();
+            sesiones_Activas_JPanel.add(sesion_Activa_General_Panel);
+        }
     }
     
     @Override
     public void Colorear_Componentes() {
+        
+        Font gadugi_18 = new Font("Gadugi", 1, 18);
+        Font gadugi_14 = new Font("Gadugi", 1, 14);
         
         primer_Color_Personalizado = CourseRoom.Primer_Color();
         segundo_Color_Personalizado = CourseRoom.Segundo_Color();
@@ -503,9 +515,9 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         desactivar_Notificaciones_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
         desactivar_Notificaciones_JButton.setBackground(CourseRoom.Tercer_Color());
         
-        interfaz_Personalizada_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Interfaz Personalizada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 18),CourseRoom.Primer_Color_Fuente())); // NOI18N
-        sesiones_Activas_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sesiones Activas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 18),CourseRoom.Primer_Color_Fuente())); // NOI18N
-        cuenta_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cuenta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 18),CourseRoom.Primer_Color_Fuente())); // NOI18N
+        interfaz_Personalizada_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Interfaz Personalizada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,gadugi_18 ,CourseRoom.Primer_Color_Fuente())); // NOI18N
+        sesiones_Activas_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sesiones Activas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi_18,CourseRoom.Primer_Color_Fuente())); // NOI18N
+        cuenta_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cuenta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi_18,CourseRoom.Primer_Color_Fuente())); // NOI18N
 
         primer_Color_Personalizado_JLabel.setBackground(CourseRoom.Primer_Color());
         primer_Color_Personalizado_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
@@ -520,10 +532,16 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         segundo_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(CourseRoom.Segundo_Color()));
         tercer_Color_Personalizado_JLabel.setText(CourseRoom.RGB_Cadena(CourseRoom.Tercer_Color()));
         
-        primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), CourseRoom.Primer_Color_Fuente()));
-        segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), CourseRoom.Segundo_Color_Fuente()));
-        tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), CourseRoom.Tercer_Color_Fuente()));
+        primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi_14, CourseRoom.Primer_Color_Fuente()));
+        segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi_14, CourseRoom.Segundo_Color_Fuente()));
+        tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi_14, CourseRoom.Tercer_Color_Fuente()));
         
+        Component[] componentes = sesiones_Activas_JPanel.getComponents();
+        Component componente;
+        for(int i = 0; i < componentes.length;i++){
+            componente = componentes[i];
+            ((Componentes_Interface)componente).Colorear_Componentes();
+        }
     }
 
 

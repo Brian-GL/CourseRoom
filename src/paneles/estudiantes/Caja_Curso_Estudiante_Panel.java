@@ -30,8 +30,8 @@ import main.CourseRoom;
 public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements Color_Interface,Limpieza_Interface,Componentes_Interface{
 
     private String id;
-    private Color primer_Color, segundo_Color, primer_Color_Fuente, segundo_Color_Fuente;
-    
+    private Color primer_Color, segundo_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
+    private Pagina_Curso_Estudiante_Panel pagina_Curso_Estudiante_Panel;
    
     public Caja_Curso_Estudiante_Panel(String _id) {
         initComponents();
@@ -221,7 +221,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
     private void imagen_Curso_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Curso_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            Tablero_Estudiante_Panel.Mostrar_Vista(id);
         }
     }//GEN-LAST:event_imagen_Curso_JLabelMouseClicked
 
@@ -245,27 +245,30 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         try {
             
             Dimension resolucion_Pantalla = Toolkit.getDefaultToolkit().getScreenSize();
-            int ancho = (resolucion_Pantalla.width * 500) / 1270;
+            int ancho = resolucion_Pantalla.width-175;
             
             System.out.println("Curso ID: "+this.id+" -> Getting Image From https://picsum.photos/?random=1");
             URL url_Imagen = new URL(
-                    CourseRoom.Concatenar(" https://picsum.photos/",String.valueOf(ancho),"/125")
+                    CourseRoom.Concatenar(" https://picsum.photos/",String.valueOf(ancho),"/175")
             );
-            Image obtener_Imagen = ImageIO.read(url_Imagen);
-            ImageIcon icono = new ImageIcon(obtener_Imagen);
+            
+            ancho = (resolucion_Pantalla.width * 525) / 1270;
+            
+            Image curso_Imagen = ImageIO.read(url_Imagen);
+            Image redimension = curso_Imagen.getScaledInstance(ancho, 125, Image.SCALE_SMOOTH);
+            ImageIcon icono = new ImageIcon(redimension);
             imagen_Curso_JLabel.setIcon(icono);
-            Establecer_Colores(obtener_Imagen);
+            Establecer_Colores(redimension);
             
             Colorear_Componentes();
             
-            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://i.pravatar.cc/64");
-            url_Imagen = new URL("https://i.pravatar.cc/64");
-            obtener_Imagen = ImageIO.read(url_Imagen);
-            icono = new ImageIcon(obtener_Imagen);
+            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://i.pravatar.cc/175");
+            url_Imagen = new URL("https://i.pravatar.cc/175");
+            Image profesor_Imagen = ImageIO.read(url_Imagen);
+            redimension = profesor_Imagen.getScaledInstance(64,64, Image.SCALE_SMOOTH);
+            icono = new ImageIcon(redimension);
             imagen_Profesor_JLabel.setIcon(icono);
             
-            
-            obtener_Imagen.flush();
             
             nombre_JLabel.setText(CourseRoom.Faker().educator().course());
             nombre_Profesor_JLabel.setText(CourseRoom.Faker().name().nameWithMiddle());
@@ -279,7 +282,14 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             aux = CourseRoom.Concatenar(aux,"/5");
             calificacion_JTextPane.setText(CourseRoom.Formato_HTML_Centro(aux));
             
-            
+            pagina_Curso_Estudiante_Panel = 
+                    new Pagina_Curso_Estudiante_Panel(nombre_JLabel.getText(), 
+                            nombre_Profesor_JLabel.getText(), curso_Imagen,profesor_Imagen, primer_Color, primer_Color_Fuente, 
+                            segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
+            Tablero_Estudiante_Panel.Agregar_Vista(pagina_Curso_Estudiante_Panel, this.id);
+            curso_Imagen.flush();
+            profesor_Imagen.flush();
+            redimension.flush();
         } catch (MalformedURLException ex) {
             
         } catch (IOException ex) {
@@ -360,11 +370,30 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
                     }
                 }
               
+               tercer_Color = segundo_Color;
+                if(lista_Colores.size() > 2){
+                    iteraciones = 0;
+                    
+                    while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
+                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
+                        tercer_Color = lista_Colores.get(posicion).second();
+                        iteraciones++;
+                        if(iteraciones > 50){
+                            while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
+                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
+                                tercer_Color = lista_Colores.get(posicion).second();
+                            }
+                            break;
+                        }
+                    }
+                }
+                
                 rojo = primer_Color.getRed();
                 primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 rojo = segundo_Color.getRed();
                 segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-               
+                rojo = tercer_Color.getRed();
+                tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 lista_Colores.clear();
             }
             
@@ -375,7 +404,8 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
     
      @Override
     public void Limpiar() {
-        primer_Color = segundo_Color = primer_Color_Fuente = segundo_Color_Fuente = null;
+        primer_Color = segundo_Color = tercer_Color = primer_Color_Fuente 
+                = segundo_Color_Fuente = tercer_Color_Fuente = null;
         id = null;
     }
 }

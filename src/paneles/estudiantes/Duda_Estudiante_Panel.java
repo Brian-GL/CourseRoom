@@ -199,8 +199,9 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Respuestas_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         enviar_Respuestas_JPanel.setPreferredSize(new java.awt.Dimension(1085, 50));
 
-        respuesta_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        respuesta_JTextField.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         respuesta_JTextField.setToolTipText("Redactar Menssaje");
+        respuesta_JTextField.setPreferredSize(new java.awt.Dimension(64, 34));
         respuesta_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 respuesta_JTextFieldKeyPressed(evt);
@@ -312,16 +313,15 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Respuestas_JPanelLayout.setVerticalGroup(
             enviar_Respuestas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(enviar_Respuestas_JPanelLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(enviar_Respuestas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(enviar_Respuesta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enviar_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enviar_Videos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(enviar_Respuestas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(respuesta_JTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(enviar_Audios_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(4, 4, 4))
+                .addContainerGap()
+                .addGroup(enviar_Respuestas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(enviar_Archivos_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(enviar_Videos_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(enviar_Audios_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(respuesta_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(enviar_Respuesta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         respuestas_JScrollPane.setOpaque(false);
@@ -348,7 +348,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 .addGap(0, 0, 0)
                 .addComponent(respuestas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(enviar_Respuestas_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(enviar_Respuestas_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

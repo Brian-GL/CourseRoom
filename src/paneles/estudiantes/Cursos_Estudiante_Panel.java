@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
  */
 public class Cursos_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface{
 
+    private int curso_ID;
     /**
      * Creates new form Student_Courses_Panel
      */
@@ -150,6 +151,7 @@ public class Cursos_Estudiante_Panel extends javax.swing.JPanel implements Compo
     @Override
     public void Iniciar_Componentes() {
         
+        curso_ID = 0;
         cursos_Buscar_Estudiante_Panel = new Cursos_Buscar_Estudiante_Panel();
         
         cursos_Actuales_JPanel = new JPanel();
@@ -219,13 +221,15 @@ public class Cursos_Estudiante_Panel extends javax.swing.JPanel implements Compo
         Caja_Curso_Estudiante_Panel caja_Curso_Estudiante_Panel;
         String concatenacion;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
-            concatenacion = CourseRoom.Concatenar("Curso_Actual_", i);
+            concatenacion = CourseRoom.Concatenar("Curso_", curso_ID);
+            curso_ID++;
             caja_Curso_Estudiante_Panel = new Caja_Curso_Estudiante_Panel(concatenacion);
             cursos_Actuales_JPanel.add(caja_Curso_Estudiante_Panel);
         }
         
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
-            concatenacion = CourseRoom.Concatenar("Curso_Finalizado_", i);
+            concatenacion = CourseRoom.Concatenar("Curso_", curso_ID);
+            curso_ID++;
             caja_Curso_Estudiante_Panel = new Caja_Curso_Estudiante_Panel(concatenacion);
             cursos_Finalizados_JPanel.add(caja_Curso_Estudiante_Panel);
         }
@@ -236,7 +240,8 @@ public class Cursos_Estudiante_Panel extends javax.swing.JPanel implements Compo
         for(int j = 0; j < CourseRoom.Faker().number().numberBetween(1, 10);j++){
             cursos_Agrupados_Estudiante_Panel = new Cursos_Agrupados_Estudiante_Panel(CourseRoom.Faker().music().genre());
             for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
-                concatenacion = CourseRoom.Concatenar("Curso_Recomendado_", cuenta);
+                concatenacion = CourseRoom.Concatenar("Curso_", curso_ID);
+                curso_ID++;
                 caja_Curso_Estudiante_Panel = new Caja_Curso_Estudiante_Panel(concatenacion);
                 cursos_Agrupados_Estudiante_Panel.Agregar_Caja_Curso(caja_Curso_Estudiante_Panel);
                 cuenta++;
@@ -250,7 +255,8 @@ public class Cursos_Estudiante_Panel extends javax.swing.JPanel implements Compo
             aux = lista.delist();
             cursos_Agrupados_Estudiante_Panel = new Cursos_Agrupados_Estudiante_Panel(aux);
             for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
-                concatenacion = CourseRoom.Concatenar("Curso_",aux, String.valueOf(i));
+                concatenacion = CourseRoom.Concatenar("Curso_", curso_ID);
+                curso_ID++;
                 caja_Curso_Estudiante_Panel = new Caja_Curso_Estudiante_Panel(concatenacion);
                 cursos_Agrupados_Estudiante_Panel.Agregar_Caja_Curso(caja_Curso_Estudiante_Panel);
             }

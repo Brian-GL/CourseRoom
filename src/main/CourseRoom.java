@@ -7,25 +7,29 @@ package main;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.github.javafaker.Faker;
+import interfaces.Limpieza_Interface;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import main.CourseRoom_Frame;
 
 /**
  *
  * @author LENOVO
  */
-public class CourseRoom {
+public class CourseRoom implements Limpieza_Interface{
     
     private static Faker faker;
     private static Random random;
@@ -37,6 +41,7 @@ public class CourseRoom {
     private static Color primer_Color_Fuente;
     private static Color segundo_Color_Fuente;
     private static Color color_Azul_Oscuro, color_Azul_Claro;
+    private CourseRoom_Frame courseRoom_Frame;
 
 
     public CourseRoom(){
@@ -66,24 +71,10 @@ public class CourseRoom {
 
         Locale mx = new Locale("es", "MX");
         faker = new Faker(mx);
-        CourseRoom_Frame courseRoom_Frame = new CourseRoom_Frame(); 
+        courseRoom_Frame = new CourseRoom_Frame(); 
         courseRoom_Frame.setVisible(true);
     }
     
-     /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-       
-        try {
-            FlatDarkLaf ui = new FlatDarkLaf();
-            UIManager.setLookAndFeel(ui);
-            CourseRoom courseRoom = new CourseRoom();
-        } catch (UnsupportedLookAndFeelException ex) {
-            
-        }
-    }
-
     public static Color Segundo_Color() {
         return segundo_Color;
     }
@@ -219,6 +210,54 @@ public class CourseRoom {
         } catch (IOException e) {
             return false;
         }
+    }
+    
+    public static String Direccion_IP(){
+          
+        try {
+            NetworkInterface interfaz_Red = NetworkInterface.getByIndex(8);
+            Enumeration enumeracion;
+            InetAddress direccion_Red;
+            int count = 0;
+            enumeracion = interfaz_Red.getInetAddresses();
+            while (enumeracion.hasMoreElements()) {
+                
+                direccion_Red = (InetAddress) enumeracion.nextElement();
+                if(direccion_Red.isSiteLocalAddress()){
+                    System.out.println("Count: "+count);
+                    System.out.println(direccion_Red.getCanonicalHostName());
+                    return direccion_Red.getHostAddress();
+                }
+                count++;
+            }
+
+            return "";
+        } catch (SocketException ex) {
+            
+        }
+        
+        return "";
+    }
+    
+    
+    /**
+    * @param args the command line arguments
+    */
+    public static void main(String args[]) {
+        
+        try {
+            FlatDarkLaf ui = new FlatDarkLaf();
+            UIManager.setLookAndFeel(ui);
+            CourseRoom courseRoom = new CourseRoom();
+            
+        } catch (UnsupportedLookAndFeelException ex) {
+            
+        }
+    }
+
+    @Override
+    public void Limpiar() {
+        courseRoom_Frame.Limpiar();
     }
     
 }
