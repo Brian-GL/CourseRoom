@@ -31,7 +31,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
 
     private String id;
     private Color primer_Color, segundo_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
-    private Pagina_Curso_Estudiante_Panel pagina_Curso_Estudiante_Panel;
+    private Curso_Estudiante_Panel curso_Estudiante_Panel;
    
     public Caja_Curso_Estudiante_Panel(String _id) {
         initComponents();
@@ -282,11 +282,11 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             aux = CourseRoom.Concatenar(aux,"/5");
             calificacion_JTextPane.setText(CourseRoom.Formato_HTML_Centro(aux));
             
-            pagina_Curso_Estudiante_Panel = 
-                    new Pagina_Curso_Estudiante_Panel(nombre_JLabel.getText(), 
+            curso_Estudiante_Panel = 
+                    new Curso_Estudiante_Panel(nombre_JLabel.getText(), 
                             nombre_Profesor_JLabel.getText(), curso_Imagen,profesor_Imagen, primer_Color, primer_Color_Fuente, 
                             segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
-            Tablero_Estudiante_Panel.Agregar_Vista(pagina_Curso_Estudiante_Panel, this.id);
+            Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, this.id);
             curso_Imagen.flush();
             profesor_Imagen.flush();
             redimension.flush();

@@ -7,10 +7,8 @@ package paneles.estudiantes;
 
 import interfaces.Componentes_Interface;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import main.CourseRoom;
 
@@ -38,8 +36,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Compon
         
         initComponents();
         
-        nombre_Curso_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(nombre_Curso));
-        nombre_Profesor_JLabel.setText(nombre_Profesor);
+        nombre_Curso_JTextPane.setText(CourseRoom.Formato_HTML_Centro(nombre_Curso));
+        nombre_Profesor_JTextPane.setText(CourseRoom.Formato_HTML_Centro(nombre_Profesor));
         
         ImageIcon icono = new ImageIcon(imagen_Curso);
         imagen_Curso_JLabel.setIcon(icono);
@@ -65,34 +63,23 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Compon
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        curso_JTabbedPane = new javax.swing.JTabbedPane();
+        informacion_Curso_JPanel = new javax.swing.JPanel();
+        imagen_Profesor_JLabel = new javax.swing.JLabel();
         imagen_Curso_JLabel = new javax.swing.JLabel();
+        regresar_JButton = new javax.swing.JButton();
         nombre_Curso_JScrollPane = new javax.swing.JScrollPane();
         nombre_Curso_JTextPane = new javax.swing.JTextPane();
-        nombre_Profesor_JLabel = new javax.swing.JLabel();
-        imagen_Profesor_JLabel = new javax.swing.JLabel();
-        informacion_Curso_JTabbedPane = new javax.swing.JTabbedPane();
-        tablero_Curso_JScrollPane = new javax.swing.JScrollPane();
-        tablero_Curso_JPanel = new javax.swing.JPanel();
-        regresar_JButton = new javax.swing.JButton();
+        nombre_Profesor_JScrollPane = new javax.swing.JScrollPane();
+        nombre_Profesor_JTextPane = new javax.swing.JTextPane();
+        descripcion_Curso_JScrollPane = new javax.swing.JScrollPane();
+        descripcion_Curso_JTextPane = new javax.swing.JTextPane();
 
-        setPreferredSize(new java.awt.Dimension(1080, 1080));
+        setPreferredSize(new java.awt.Dimension(1080, 630));
+        setLayout(new java.awt.CardLayout());
 
-        imagen_Curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_Curso_JLabel.setMinimumSize(new java.awt.Dimension(1068, 175));
-        imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(1068, 175));
-
-        nombre_Curso_JScrollPane.setBorder(null);
-
-        nombre_Curso_JTextPane.setEditable(false);
-        nombre_Curso_JTextPane.setBorder(null);
-        nombre_Curso_JTextPane.setContentType("text/html"); // NOI18N
-        nombre_Curso_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        nombre_Curso_JTextPane.setText("");
-        nombre_Curso_JScrollPane.setViewportView(nombre_Curso_JTextPane);
-
-        nombre_Profesor_JLabel.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
-        nombre_Profesor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        nombre_Profesor_JLabel.setOpaque(true);
+        curso_JTabbedPane.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        curso_JTabbedPane.setOpaque(true);
 
         imagen_Profesor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Profesor_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -100,17 +87,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Compon
         imagen_Profesor_JLabel.setMinimumSize(new java.awt.Dimension(175, 175));
         imagen_Profesor_JLabel.setPreferredSize(new java.awt.Dimension(175, 175));
 
-        informacion_Curso_JTabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        informacion_Curso_JTabbedPane.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-
-        tablero_Curso_JScrollPane.setBorder(null);
-        tablero_Curso_JScrollPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        tablero_Curso_JScrollPane.setOpaque(false);
-
-        tablero_Curso_JPanel.setOpaque(false);
-        tablero_Curso_JScrollPane.setViewportView(tablero_Curso_JPanel);
-
-        informacion_Curso_JTabbedPane.addTab("", tablero_Curso_JScrollPane);
+        imagen_Curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen_Curso_JLabel.setMinimumSize(new java.awt.Dimension(1068, 175));
+        imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(1068, 175));
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setBorder(null);
@@ -127,42 +106,82 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Compon
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        nombre_Curso_JScrollPane.setBorder(null);
+
+        nombre_Curso_JTextPane.setEditable(false);
+        nombre_Curso_JTextPane.setBorder(null);
+        nombre_Curso_JTextPane.setContentType("text/html"); // NOI18N
+        nombre_Curso_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        nombre_Curso_JTextPane.setText("");
+        nombre_Curso_JScrollPane.setViewportView(nombre_Curso_JTextPane);
+
+        nombre_Profesor_JScrollPane.setBorder(null);
+
+        nombre_Profesor_JTextPane.setEditable(false);
+        nombre_Profesor_JTextPane.setBorder(null);
+        nombre_Profesor_JTextPane.setContentType("text/html"); // NOI18N
+        nombre_Profesor_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        nombre_Profesor_JTextPane.setText("");
+        nombre_Profesor_JScrollPane.setViewportView(nombre_Profesor_JTextPane);
+
+        descripcion_Curso_JScrollPane.setBorder(null);
+        descripcion_Curso_JScrollPane.setOpaque(false);
+
+        descripcion_Curso_JTextPane.setEditable(false);
+        descripcion_Curso_JTextPane.setBorder(null);
+        descripcion_Curso_JTextPane.setContentType("text/html"); // NOI18N
+        descripcion_Curso_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        descripcion_Curso_JTextPane.setText("");
+        descripcion_Curso_JTextPane.setOpaque(false);
+        descripcion_Curso_JScrollPane.setViewportView(descripcion_Curso_JTextPane);
+
+        javax.swing.GroupLayout informacion_Curso_JPanelLayout = new javax.swing.GroupLayout(informacion_Curso_JPanel);
+        informacion_Curso_JPanel.setLayout(informacion_Curso_JPanelLayout);
+        informacion_Curso_JPanelLayout.setHorizontalGroup(
+            informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(informacion_Curso_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(informacion_Curso_JTabbedPane)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombre_Curso_JScrollPane)
+                    .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Curso_JPanelLayout.createSequentialGroup()
+                        .addGroup(informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Curso_JPanelLayout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(75, 75, 75))
+                            .addComponent(nombre_Profesor_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
+                        .addComponent(descripcion_Curso_JScrollPane))
+                    .addGroup(informacion_Curso_JPanelLayout.createSequentialGroup()
                         .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombre_Curso_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        informacion_Curso_JPanelLayout.setVerticalGroup(
+            informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(informacion_Curso_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(regresar_JButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombre_Curso_JScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(34, 34, 34)
-                .addComponent(informacion_Curso_JTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE)
+                .addComponent(nombre_Curso_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(informacion_Curso_JPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(descripcion_Curso_JScrollPane))
+                    .addGroup(informacion_Curso_JPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombre_Profesor_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addComponent(regresar_JButton)))
                 .addContainerGap())
         );
+
+        curso_JTabbedPane.addTab("Información", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-learning.png")), informacion_Curso_JPanel); // NOI18N
+
+        add(curso_JTabbedPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
@@ -184,34 +203,33 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Compon
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane curso_JTabbedPane;
+    private javax.swing.JScrollPane descripcion_Curso_JScrollPane;
+    private javax.swing.JTextPane descripcion_Curso_JTextPane;
     private javax.swing.JLabel imagen_Curso_JLabel;
     private javax.swing.JLabel imagen_Profesor_JLabel;
-    private javax.swing.JTabbedPane informacion_Curso_JTabbedPane;
+    private javax.swing.JPanel informacion_Curso_JPanel;
     private javax.swing.JScrollPane nombre_Curso_JScrollPane;
     private javax.swing.JTextPane nombre_Curso_JTextPane;
-    private javax.swing.JLabel nombre_Profesor_JLabel;
+    private javax.swing.JScrollPane nombre_Profesor_JScrollPane;
+    private javax.swing.JTextPane nombre_Profesor_JTextPane;
     private javax.swing.JButton regresar_JButton;
-    private javax.swing.JPanel tablero_Curso_JPanel;
-    private javax.swing.JScrollPane tablero_Curso_JScrollPane;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
-        Font gadugi = new Font("Gadugi", 1, 24);
-        JLabel tablero_Curso_JLabel = new JLabel("Tablero Del Curso", JLabel.CENTER);
-        tablero_Curso_JLabel.setForeground(primer_Color_Fuente);
-        tablero_Curso_JLabel.setFont(gadugi);
-        ImageIcon icono = new ImageIcon(getClass().getResource("/recursos/iconos/online-learning.png"));
-        tablero_Curso_JLabel.setIcon(icono);
-        informacion_Curso_JTabbedPane.setTabComponentAt(0, tablero_Curso_JLabel);
-        
-        
+       
+        descripcion_Curso_JScrollPane.getViewport().setOpaque(false);
         nombre_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         nombre_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        tablero_Curso_JScrollPane.getViewport().setOpaque(false);
-        tablero_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        tablero_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        nombre_Profesor_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        nombre_Profesor_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        descripcion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        descripcion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        descripcion_Curso_JTextPane.setText(CourseRoom.Formato_HTML_Centro(CourseRoom.Faker().lorem().paragraph(6)));
         
         Colorear_Componentes();
     }
@@ -219,18 +237,20 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Compon
     @Override
     public void Colorear_Componentes() {
         
-        this.setBackground(primer_Color);
-        //informacion_Curso_JTabbedPane.setBackground(primer_Color);
+        curso_JTabbedPane.setBackground(segundo_Color);
+        curso_JTabbedPane.setForeground(segundo_Color_Fuente);
+        informacion_Curso_JPanel.setBackground(primer_Color);
         
         nombre_Curso_JTextPane.setBackground(segundo_Color);
         nombre_Curso_JTextPane.setForeground(segundo_Color_Fuente);
         nombre_Curso_JTextPane.setCaretColor(segundo_Color_Fuente);
         
-        nombre_Profesor_JLabel.setBackground(tercer_Color);
-        nombre_Profesor_JLabel.setForeground(tercer_Color_Fuente);
+        nombre_Profesor_JTextPane.setBackground(tercer_Color);
+        nombre_Profesor_JTextPane.setForeground(tercer_Color_Fuente);
+        nombre_Profesor_JTextPane.setCaretColor(tercer_Color_Fuente);
         
         regresar_JButton.setBackground(primer_Color);
-        
+        descripcion_Curso_JTextPane.setForeground(primer_Color_Fuente);
         
     }
 }
