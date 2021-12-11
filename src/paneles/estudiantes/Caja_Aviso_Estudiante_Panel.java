@@ -55,16 +55,18 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         fecha_Hora_JLabel = new javax.swing.JLabel();
         estatus_JLabel = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 153));
+        setMaximumSize(new java.awt.Dimension(32767, 133));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(538, 153));
+        setPreferredSize(new java.awt.Dimension(1080, 133));
+        setRequestFocusEnabled(false);
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        contenido_JPanel.setPreferredSize(new java.awt.Dimension(526, 141));
+        contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 121));
+        contenido_JPanel.setPreferredSize(new java.awt.Dimension(1068, 121));
 
-        imagen_JLabel.setMaximumSize(new java.awt.Dimension(129, 129));
-        imagen_JLabel.setMinimumSize(new java.awt.Dimension(129, 129));
-        imagen_JLabel.setPreferredSize(new java.awt.Dimension(129, 129));
+        imagen_JLabel.setMaximumSize(new java.awt.Dimension(105, 105));
+        imagen_JLabel.setMinimumSize(new java.awt.Dimension(105, 105));
+        imagen_JLabel.setPreferredSize(new java.awt.Dimension(105, 105));
         imagen_JLabel.setRequestFocusEnabled(false);
 
         nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
@@ -103,15 +105,15 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
                         .addComponent(fecha_Hora_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(estatus_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 379, Short.MAX_VALUE))
+                    .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 941, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
@@ -119,15 +121,16 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagen_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
                         .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(estatus_JLabel)
-                            .addComponent(fecha_Hora_JLabel))))
+                            .addComponent(fecha_Hora_JLabel))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -135,9 +138,9 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -162,8 +165,8 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
      @Override
     public void Iniciar_Componentes() {
         try {
-            System.out.println("Aviso -> Getting Image From https://loremflickr.com/130/130/night");
-            URL url_imagen = new URL("https://loremflickr.com/130/130/night");
+            System.out.println("Aviso -> Getting Image From https://loremflickr.com/105/105/night");
+            URL url_imagen = new URL("https://loremflickr.com/105/105/night");
             
             descripcion_JLabel.setText(CourseRoom.Faker().lorem().paragraph(1));
             fecha_Hora_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());

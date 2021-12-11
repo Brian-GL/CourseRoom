@@ -6,24 +6,27 @@
 package paneles.estudiantes;
 
 import main.CourseRoom;
-import java.awt.Font;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+
 
 /**
  *
  * @author LENOVO
  */
 public class Tareas_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
-
+    
+    private Titulo_Tareas_Estudiante_Panel titulo_Tareas_Estudiante_Panel;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Tareas_Estudiante_Panel() {
+    public Tareas_Estudiante_Panel(){
         
-        initComponents();
-       
-        Iniciar_Componentes();
+       initComponents();
+        
+       Iniciar_Componentes();
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,132 +37,59 @@ public class Tareas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        titulo_JLabel = new javax.swing.JLabel();
-        tareas_JScrollPane = new javax.swing.JScrollPane();
-        tareas_JPanel = new javax.swing.JPanel();
-        buscar_JTextField = new javax.swing.JTextField();
-        ordenar_Por_JComboBox = new javax.swing.JComboBox<>();
+        contenido_JScrollPane = new javax.swing.JScrollPane();
+        contenido_JPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1085, 630));
+        setLayout(new java.awt.CardLayout());
 
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
-        titulo_JLabel.setText("Tareas");
-        titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
-        titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
-        titulo_JLabel.setOpaque(true);
-        titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+        contenido_JScrollPane.setBorder(null);
+        contenido_JScrollPane.setOpaque(false);
 
-        tareas_JScrollPane.setBorder(null);
-        tareas_JScrollPane.setOpaque(false);
+        contenido_JPanel.setOpaque(false);
+        contenido_JPanel.setLayout(new javax.swing.BoxLayout(contenido_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        contenido_JScrollPane.setViewportView(contenido_JPanel);
 
-        tareas_JPanel.setOpaque(false);
-        tareas_JPanel.setLayout(new java.awt.GridLayout(0, 2));
-        tareas_JScrollPane.setViewportView(tareas_JPanel);
-
-        buscar_JTextField.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        buscar_JTextField.setBorder(null);
-        buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                buscar_JTextFieldKeyReleased(evt);
-            }
-        });
-
-        ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defecto", "Fecha: Más Reciente", "Fecha: Menos Reciente", "Curso: A - Z", "Curso: Z - A", "Entregadas", "Pendientes" }));
-        ordenar_Por_JComboBox.setToolTipText("Ordenar Grupos Por");
-        ordenar_Por_JComboBox.setBorder(null);
-        ordenar_Por_JComboBox.setOpaque(true);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
-                        .addGap(15, 15, 15)
-                        .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ordenar_Por_JComboBox)
-                    .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(contenido_JScrollPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buscar_JTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscar_JTextFieldKeyReleased
-
+    public static int Numero_Tareas(){
+        return contenido_JPanel.getComponentCount()-1;
+    }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField buscar_JTextField;
-    private javax.swing.JComboBox<String> ordenar_Por_JComboBox;
-    private javax.swing.JPanel tareas_JPanel;
-    private javax.swing.JScrollPane tareas_JScrollPane;
-    private javax.swing.JLabel titulo_JLabel;
+    private static javax.swing.JPanel contenido_JPanel;
+    private javax.swing.JScrollPane contenido_JScrollPane;
     // End of variables declaration//GEN-END:variables
 
-    
     @Override
     public void Iniciar_Componentes() {
         
-        tareas_JScrollPane.getViewport().setOpaque(false);
-        tareas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        contenido_JScrollPane.getViewport().setOpaque(false);
+        contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        String concatenacion;
+        titulo_Tareas_Estudiante_Panel = new Titulo_Tareas_Estudiante_Panel();
+        contenido_JPanel.add(titulo_Tareas_Estudiante_Panel);
+       
         Caja_Tarea_Estudiante_Panel caja_Tarea_Estudiante_Panel;
-        
+        String concatenacion;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
             concatenacion = CourseRoom.Concatenar("Tarea_",i);
             caja_Tarea_Estudiante_Panel = new Caja_Tarea_Estudiante_Panel(concatenacion);
-            tareas_JPanel.add(caja_Tarea_Estudiante_Panel);
+            contenido_JPanel.add(caja_Tarea_Estudiante_Panel);
         }
+    }
+
+    @Override
+    public void Colorear_Componentes() {
+       titulo_Tareas_Estudiante_Panel.Colorear_Componentes();
     }
     
     @Override
-    public void Colorear_Componentes(){
-        
-        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
-        titulo_JLabel.setBackground(CourseRoom.Segundo_Color());
-        titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        
-        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
-                "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                gadugi, CourseRoom.Segundo_Color_Fuente()));
-        
-        buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Tercer_Color_Fuente()));
-        
-        ordenar_Por_JComboBox.setBackground(CourseRoom.Segundo_Color());
-        ordenar_Por_JComboBox.setForeground(CourseRoom.Segundo_Color_Fuente());
-        
-        buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
-        buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
-    }
-
-    @Override
     public void Limpiar() {
-        tareas_JPanel.removeAll();
+        contenido_JPanel.removeAll();
     }
-
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import main.CourseRoom_Frame;
 
 /**
  *
@@ -18,11 +19,10 @@ public class Conexion {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/prueba", "root", "");
-            //Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/login", "root", "");
             JOptionPane.showMessageDialog(null, "Conexón Establecida");
             return conn;
         }catch (ClassNotFoundException | SQLException e){
-            JOptionPane.showMessageDialog(null, "Hubo Un Problema Al Intentar Conectarse A La Base De Datos");
+            JOptionPane.showMessageDialog(CourseRoom_Frame.getFrames()[0], "Hubo Un Problema Al Intentar Conectarse A La Base De Datos");
             return null;
         }
     }

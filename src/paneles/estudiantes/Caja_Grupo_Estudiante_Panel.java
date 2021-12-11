@@ -59,14 +59,15 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
 
         setMaximumSize(new java.awt.Dimension(32767, 180));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(526, 180));
+        setPreferredSize(new java.awt.Dimension(1080, 180));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 168));
 
         imagen_JLabel.setToolTipText("Imagen Del Grupo");
         imagen_JLabel.setMaximumSize(new java.awt.Dimension(148, 152));
         imagen_JLabel.setMinimumSize(new java.awt.Dimension(148, 152));
-        imagen_JLabel.setPreferredSize(new java.awt.Dimension(148, 152));
+        imagen_JLabel.setPreferredSize(new java.awt.Dimension(152, 152));
         imagen_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 imagen_JLabelMouseClicked(evt);
@@ -114,11 +115,11 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(fecha_Hora_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                        .addComponent(fecha_Hora_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numero_Integrantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ultima_Actualizacion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -141,7 +142,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
                         .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fecha_Hora_JLabel)
                             .addComponent(numero_Integrantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -206,7 +207,6 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
             Establecer_Colores(obtener_Imagen);
             
             nombre_JLabel.setText(CourseRoom.Faker().team().sport());
-            ultima_Actualizacion_JLabel.setText(CourseRoom.Faker().team().state());
             fecha_Hora_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());
             curso_JLabel.setText(CourseRoom.Faker().team().name());
             numero_Integrantes_JLabel.setText(CourseRoom.Concatenar(CourseRoom.Faker().number().digit()," Integrantes"));
@@ -234,7 +234,6 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         curso_JLabel.setForeground(primer_Color_Fuente);
         nombre_JLabel.setForeground(primer_Color_Fuente);
         fecha_Hora_JLabel.setForeground(primer_Color_Fuente);
-        ultima_Actualizacion_JLabel.setForeground(primer_Color_Fuente);
         contenido_JPanel.setBackground(primer_Color);
         contenido_JPanel.setForeground(primer_Color_Fuente);
     }
@@ -326,12 +325,11 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         } catch (InterruptedException ex) {
             
         }
-          
     }
 
     @Override
     public void Limpiar() {
-        primer_Color = segundo_Color = tercer_Color =primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
+        primer_Color = segundo_Color = tercer_Color = primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
         id = null;
         grupo_Estudiante_Panel.Limpiar();
     }

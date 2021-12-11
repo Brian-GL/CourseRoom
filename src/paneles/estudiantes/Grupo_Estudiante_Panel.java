@@ -889,7 +889,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Grupos");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Grupos");
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
 

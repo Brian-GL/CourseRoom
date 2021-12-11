@@ -99,6 +99,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         receptor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         receptor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/chat_1.png"))); // NOI18N
         receptor_JLabel.setToolTipText("Nombre Del Chat O La Persona Con Quien Se Chatea");
+        receptor_JLabel.setPreferredSize(new java.awt.Dimension(32, 38));
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mis Chats");
@@ -117,7 +118,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         });
 
         receptor_Imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        receptor_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(48, 48));
+        receptor_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(38, 38));
 
         javax.swing.GroupLayout informacion_JPanelLayout = new javax.swing.GroupLayout(informacion_JPanel);
         informacion_JPanel.setLayout(informacion_JPanelLayout);
@@ -129,18 +130,18 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(receptor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(receptor_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(receptor_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         informacion_JPanelLayout.setVerticalGroup(
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(receptor_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(receptor_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(receptor_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(regresar_JButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(regresar_JButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0))
         );
 
         enviar_Mensajes_JPanel.setMaximumSize(new java.awt.Dimension(32767, 50));
@@ -330,7 +331,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-           Tablero_Estudiante_Panel.Mostrar_Vista("Chats");
+           Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Chats");
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
 

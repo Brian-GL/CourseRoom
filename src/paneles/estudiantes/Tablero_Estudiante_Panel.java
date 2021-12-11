@@ -35,15 +35,15 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private static Image imagen_Usuario;
     
-    private static Chats_Estudiante_Panel chats_Panel;
+    private static Pagina_Chats_Estudiante_Panel pagina_Chats_Panel;
     private static Acerca_De_General_Panel acerca_De_Panel;
     private static Perfil_Estudiante_Panel perfil_Panel;
     private static Editar_Perfil_Estudiante_Panel editar_Perfil_Panel;
     private static Reproductor_Musica_General_Panel reproductor_Musica_Panel;
-    private static Avisos_Estudiante_Panel avisos_Panel;
-    private static Grupos_Estudiante_Panel grupos_Panel;
+    private static Pagina_Avisos_Estudiante_Panel pagina_Avisos_Panel;
+    private static Pagina_Grupos_Estudiante_Panel pagina_Grupos_Panel;
     private static Fechas_Estudiante_Panel fechas_Panel;
-    private static Tareas_Estudiante_Panel tareas_Panel;
+    private static Pagina_Tareas_Estudiante_Panel pagina_Tareas_Panel;
     private static Ajustes_Estudiante_Panel ajustes_Panel;
     private static Cursos_Estudiante_Panel cursos_Actuales_Panel;
     private static Dudas_Estudiante_Panel dudas_Panel;
@@ -543,7 +543,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void tareas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Tareas");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Tareas");
         }
         
     }//GEN-LAST:event_tareas_JButtonMouseClicked
@@ -582,7 +582,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void avisos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_avisos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Avisos");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Avisos");
         }
     }//GEN-LAST:event_avisos_JButtonMouseClicked
 
@@ -601,7 +601,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void grupos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grupos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Grupos");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Grupos");
         }
     }//GEN-LAST:event_grupos_JButtonMouseClicked
 
@@ -620,7 +620,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void chats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chats_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Chats");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Chats");
         }
     }//GEN-LAST:event_chats_JButtonMouseClicked
 
@@ -751,6 +751,17 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         actualizar_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
+    public static Pagina_Chats_Estudiante_Panel Pagina_Chats(){
+        return pagina_Chats_Panel;
+    }
+    
+    public static Pagina_Grupos_Estudiante_Panel Pagina_Grupos(){
+        return pagina_Grupos_Panel;
+    }
+    
+    public static Pagina_Tareas_Estudiante_Panel Pagina_Tareas(){
+        return pagina_Tareas_Panel;
+    }
     
     public static void Establecer_Colores(){
         try {
@@ -890,11 +901,11 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
        
         perfil_Panel.Colorear_Componentes();
         editar_Perfil_Panel.Colorear_Componentes();
-        chats_Panel.Colorear_Componentes();
+        pagina_Chats_Panel.Colorear_Componentes();
         acerca_De_Panel.Colorear_Componentes();
-        tareas_Panel.Colorear_Componentes();
-        grupos_Panel.Colorear_Componentes();
-        avisos_Panel.Colorear_Componentes();
+        pagina_Tareas_Panel.Colorear_Componentes();
+        pagina_Grupos_Panel.Colorear_Componentes();
+        pagina_Avisos_Panel.Colorear_Componentes();
         fechas_Panel.Colorear_Componentes();
         ajustes_Panel.Colorear_Componentes();
         dudas_Panel.Colorear_Componentes();
@@ -904,12 +915,12 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     
     @Override
     public void Limpiar(){
-        tareas_Panel.Limpiar();
+        pagina_Tareas_Panel.Limpiar();
         reproductor_Musica_Panel.Limpiar();
-        chats_Panel.Limpiar();
-        avisos_Panel.Limpiar();
+        pagina_Chats_Panel.Limpiar();
+        pagina_Avisos_Panel.Limpiar();
         fechas_Panel.Limpiar();
-        grupos_Panel.Limpiar();
+        pagina_Grupos_Panel.Limpiar();
         
     }
     
@@ -981,8 +992,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             editar_Perfil_Panel = new Editar_Perfil_Estudiante_Panel();
             visualizador_JPanel.add("Editar_Perfil",editar_Perfil_Panel);
             
-            tareas_Panel = new Tareas_Estudiante_Panel();
-            visualizador_JPanel.add("Tareas",tareas_Panel);
+            pagina_Tareas_Panel = new Pagina_Tareas_Estudiante_Panel();
+            visualizador_JPanel.add("Pagina_Tareas",pagina_Tareas_Panel);
             
             cursos_Actuales_Panel = new Cursos_Estudiante_Panel();
             visualizador_JPanel.add("Cursos",cursos_Actuales_Panel);
@@ -990,14 +1001,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             fechas_Panel = new Fechas_Estudiante_Panel();
             visualizador_JPanel.add("Fechas",fechas_Panel);
             
-            avisos_Panel = new Avisos_Estudiante_Panel();
-            visualizador_JPanel.add("Avisos",avisos_Panel);
+            pagina_Avisos_Panel = new Pagina_Avisos_Estudiante_Panel();
+            visualizador_JPanel.add("Pagina_Avisos",pagina_Avisos_Panel);
             
-            grupos_Panel = new Grupos_Estudiante_Panel();
-            visualizador_JPanel.add("Grupos",grupos_Panel);
+            pagina_Grupos_Panel = new Pagina_Grupos_Estudiante_Panel();
+            visualizador_JPanel.add("Pagina_Grupos",pagina_Grupos_Panel);
             
-            chats_Panel = new Chats_Estudiante_Panel();
-            visualizador_JPanel.add("Chats",chats_Panel);
+            pagina_Chats_Panel = new Pagina_Chats_Estudiante_Panel();
+            visualizador_JPanel.add("Pagina_Chats",pagina_Chats_Panel);
             
             acerca_De_Panel = new Acerca_De_General_Panel();
             visualizador_JPanel.add("Acerca_De",acerca_De_Panel);
