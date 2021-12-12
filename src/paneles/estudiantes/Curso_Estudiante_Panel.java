@@ -22,6 +22,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Compon
     
     
     public Curso_Estudiante_Panel(
+            String id,
             String nombre_Curso,
             String nombre_Profesor,
             Image imagen_Curso,
@@ -187,7 +188,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Compon
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Cursos");
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
 

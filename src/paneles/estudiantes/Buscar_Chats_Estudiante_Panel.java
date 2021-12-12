@@ -140,7 +140,7 @@ public class Buscar_Chats_Estudiante_Panel extends javax.swing.JPanel implements
         buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Buscar Chat", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Segundo_Color_Fuente()));
+                gadugi, CourseRoom.Tercer_Color_Fuente()));
         
         buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
         buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());

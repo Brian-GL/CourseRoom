@@ -5,14 +5,8 @@
  */
 package paneles.estudiantes;
 
-import frames.estudiantes.Crear_Duda_Estudiante_Frame;
-import main.CourseRoom;
-import java.awt.Font;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.SwingUtilities;
 
 
 /**
@@ -20,23 +14,19 @@ import javax.swing.SwingUtilities;
  * @author LENOVO
  */
 public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
-
-    private ImageIcon icono_Usuario;
     
-    /**
-     * Creates new form GroupsPanel
-     */
-    public Dudas_Estudiante_Panel() {
+    private Titulo_Dudas_Estudiante_Panel titulo_Dudas_Estudiante_Panel;
+    
+    
+    @SuppressWarnings("OverridableMethodCallInConstructor")
+    public Dudas_Estudiante_Panel(){
         
-        initComponents();
-        Image imagen_usuario = Tablero_Estudiante_Panel.Imagen_Usuario().getScaledInstance(164, 164, Image.SCALE_SMOOTH);
-        icono_Usuario = new ImageIcon(imagen_usuario);
+       initComponents();
         
-        imagen_usuario.flush();
-        
-        Iniciar_Componentes();
+       Iniciar_Componentes();
         
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,180 +37,56 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dudas_JScrollPane = new javax.swing.JScrollPane();
-        dudas_JPanel = new javax.swing.JPanel();
-        titulo_JLabel = new javax.swing.JLabel();
-        ordenar_Por_JComboBox = new javax.swing.JComboBox<>();
-        buscar_JTextField = new javax.swing.JTextField();
-        crear_Duda_JButton = new javax.swing.JButton();
+        contenido_JScrollPane = new javax.swing.JScrollPane();
+        contenido_JPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1085, 630));
+        setLayout(new java.awt.CardLayout());
 
-        dudas_JScrollPane.setBorder(null);
-        dudas_JScrollPane.setOpaque(false);
+        contenido_JScrollPane.setBorder(null);
+        contenido_JScrollPane.setOpaque(false);
 
-        dudas_JPanel.setOpaque(false);
-        dudas_JPanel.setLayout(new java.awt.GridLayout(0, 2));
-        dudas_JScrollPane.setViewportView(dudas_JPanel);
+        contenido_JPanel.setOpaque(false);
+        contenido_JPanel.setLayout(new javax.swing.BoxLayout(contenido_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        contenido_JScrollPane.setViewportView(contenido_JPanel);
 
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
-        titulo_JLabel.setText("Dudas");
-        titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
-        titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
-        titulo_JLabel.setOpaque(true);
-        titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
-
-        ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defecto", "Fecha: Más Reciente", "Fecha: Menos Reciente", "Duda: A - Z", "Duda: Z - A", "Estudiante: A - Z", "Estudiante: Z - A", "Abiertas", "Cerradas" }));
-        ordenar_Por_JComboBox.setToolTipText("Ordenar Grupos Por");
-        ordenar_Por_JComboBox.setBorder(null);
-        ordenar_Por_JComboBox.setOpaque(true);
-
-        buscar_JTextField.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        buscar_JTextField.setBorder(null);
-        buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                buscar_JTextFieldKeyPressed(evt);
-            }
-        });
-
-        crear_Duda_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        crear_Duda_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/wonder.png"))); // NOI18N
-        crear_Duda_JButton.setText("Crear Duda");
-        crear_Duda_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                crear_Duda_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                crear_Duda_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                crear_Duda_JButtonMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dudas_JScrollPane)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(crear_Duda_JButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(crear_Duda_JButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(ordenar_Por_JComboBox))
-                .addGap(7, 7, 7)
-                .addComponent(dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(contenido_JScrollPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void crear_Duda_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Duda_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            Crear_Duda_Estudiante_Frame crear_Duda_Estudiante_Frame 
-                    = new Crear_Duda_Estudiante_Frame(icono_Usuario);
-            
-            crear_Duda_Estudiante_Frame.setVisible(true);
-        }
-    }//GEN-LAST:event_crear_Duda_JButtonMouseClicked
-
-    private void crear_Duda_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Duda_JButtonMouseEntered
-        // TODO add your handling code here:
-        crear_Duda_JButton.setBackground(CourseRoom.Segundo_Color());
-        crear_Duda_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_crear_Duda_JButtonMouseEntered
-
-    private void crear_Duda_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Duda_JButtonMouseExited
-        // TODO add your handling code here:
-        crear_Duda_JButton.setBackground(CourseRoom.Tercer_Color());
-        crear_Duda_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_crear_Duda_JButtonMouseExited
-
-    private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscar_JTextFieldKeyPressed
-
-    public static void Agregar_Caja_Dudas(Caja_Duda_Estudiante_Panel caja_Duda_Estudiante_Panel){
-        dudas_JPanel.add(caja_Duda_Estudiante_Panel);
-    }
-    
     public static int Numero_Dudas(){
-        return dudas_JPanel.getComponentCount();
+        return contenido_JPanel.getComponentCount()-1;
     }
     
+    public static void Agregar_Caja_Dudas(Caja_Duda_Estudiante_Panel caja_Duda_Estudiante_Panel) {
+        contenido_JPanel.add(caja_Duda_Estudiante_Panel);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField buscar_JTextField;
-    private javax.swing.JButton crear_Duda_JButton;
-    private static javax.swing.JPanel dudas_JPanel;
-    private javax.swing.JScrollPane dudas_JScrollPane;
-    private javax.swing.JComboBox<String> ordenar_Por_JComboBox;
-    private javax.swing.JLabel titulo_JLabel;
+    private static javax.swing.JPanel contenido_JPanel;
+    private javax.swing.JScrollPane contenido_JScrollPane;
     // End of variables declaration//GEN-END:variables
 
-    
     @Override
     public void Iniciar_Componentes() {
-        dudas_JScrollPane.getViewport().setOpaque(false);
-        dudas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        
+        contenido_JScrollPane.getViewport().setOpaque(false);
+        contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        titulo_Dudas_Estudiante_Panel = new Titulo_Dudas_Estudiante_Panel();
+        contenido_JPanel.add(titulo_Dudas_Estudiante_Panel);
+        
     }
-    
+
     @Override
-    public void Colorear_Componentes(){
-        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
-        titulo_JLabel.setBackground(CourseRoom.Segundo_Color());
-        titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        
-        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
-                "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                gadugi, CourseRoom.Segundo_Color_Fuente()));
-        
-        buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Tercer_Color_Fuente()));
-        
-        ordenar_Por_JComboBox.setBackground(CourseRoom.Segundo_Color());
-        ordenar_Por_JComboBox.setForeground(CourseRoom.Segundo_Color_Fuente());
-        
-        buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
-        buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
-        
-        crear_Duda_JButton.setBackground(CourseRoom.Tercer_Color());
-        crear_Duda_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    public void Colorear_Componentes() {
+       titulo_Dudas_Estudiante_Panel.Colorear_Componentes();
     }
     
     @Override
     public void Limpiar() {
-        dudas_JPanel.removeAll();
+        contenido_JPanel.removeAll();
     }
 }

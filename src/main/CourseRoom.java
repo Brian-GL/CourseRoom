@@ -211,34 +211,7 @@ public class CourseRoom implements Limpieza_Interface{
             return false;
         }
     }
-    
-    public static String Direccion_IP(){
-          
-        try {
-            NetworkInterface interfaz_Red = NetworkInterface.getByIndex(8);
-            Enumeration enumeracion;
-            InetAddress direccion_Red;
-            int count = 0;
-            enumeracion = interfaz_Red.getInetAddresses();
-            while (enumeracion.hasMoreElements()) {
-                
-                direccion_Red = (InetAddress) enumeracion.nextElement();
-                if(direccion_Red.isSiteLocalAddress()){
-                    System.out.println("Count: "+count);
-                    System.out.println(direccion_Red.getCanonicalHostName());
-                    return direccion_Red.getHostAddress();
-                }
-                count++;
-            }
 
-            return "";
-        } catch (SocketException ex) {
-            
-        }
-        
-        return "";
-    }
-    
     
     /**
     * @param args the command line arguments

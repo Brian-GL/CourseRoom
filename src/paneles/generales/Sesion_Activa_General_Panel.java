@@ -6,8 +6,13 @@
 package paneles.generales;
 
 import interfaces.Componentes_Interface;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.util.Iterator;
 import main.CourseRoom;
+import oshi.SystemInfo;
+import oshi.hardware.NetworkIF;
+import oshi.software.os.InternetProtocolStats.IPConnection;
+import oshi.software.os.OSSession;
 
 /**
  *
@@ -36,7 +41,7 @@ public class Sesion_Activa_General_Panel extends javax.swing.JPanel implements C
         icono_JLabel = new javax.swing.JLabel();
         dispositivo_JLabel = new javax.swing.JLabel();
         fecha_JLabel = new javax.swing.JLabel();
-        ip_JLabel = new javax.swing.JLabel();
+        uuid_JLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(32767, 100));
         setOpaque(false);
@@ -54,8 +59,8 @@ public class Sesion_Activa_General_Panel extends javax.swing.JPanel implements C
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_JLabel.setPreferredSize(new java.awt.Dimension(306, 18));
 
-        ip_JLabel.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
-        ip_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        uuid_JLabel.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
+        uuid_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
@@ -68,7 +73,7 @@ public class Sesion_Activa_General_Panel extends javax.swing.JPanel implements C
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dispositivo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ip_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(uuid_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
@@ -82,7 +87,7 @@ public class Sesion_Activa_General_Panel extends javax.swing.JPanel implements C
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ip_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(uuid_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -110,18 +115,20 @@ public class Sesion_Activa_General_Panel extends javax.swing.JPanel implements C
     private javax.swing.JLabel dispositivo_JLabel;
     private javax.swing.JLabel fecha_JLabel;
     private javax.swing.JLabel icono_JLabel;
-    private javax.swing.JLabel ip_JLabel;
+    private javax.swing.JLabel uuid_JLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
         String valor  = System.getProperty("os.name");
-        valor =  CourseRoom.Concatenar(valor, "- ",System.getProperty("user.name"));
+        valor =  CourseRoom.Concatenar(valor, " - ",System.getProperty("user.name"));
         dispositivo_JLabel.setText(valor);
         
-        ip_JLabel.setText(CourseRoom.Direccion_IP());
-        
-        fecha_JLabel.setText(LocalTime.now().toString());
+        SystemInfo informacion_Sistema = new SystemInfo();
+        var hardware = informacion_Sistema.getHardware();
+
+        fecha_JLabel.setText(LocalDateTime.now().toString());
+        uuid_JLabel.setText(hardware.getComputerSystem().getHardwareUUID());
         
         
     }
@@ -131,7 +138,7 @@ public class Sesion_Activa_General_Panel extends javax.swing.JPanel implements C
         contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
         dispositivo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         fecha_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        ip_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        uuid_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         
     }
 }

@@ -45,8 +45,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Fechas_Estudiante_Panel fechas_Panel;
     private static Pagina_Tareas_Estudiante_Panel pagina_Tareas_Panel;
     private static Ajustes_Estudiante_Panel ajustes_Panel;
-    private static Cursos_Estudiante_Panel cursos_Actuales_Panel;
-    private static Dudas_Estudiante_Panel dudas_Panel;
+    private static Pagina_Cursos_Estudiante_Panel pagina_Cursos_Panel;
+    private static Pagina_Dudas_Estudiante_Panel pagina_Dudas_Panel;
     
     private static CardLayout layout;
     private Tiempo_Servidor tiempo_Servidor_Hilo;
@@ -524,7 +524,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Cursos");
         }
     }//GEN-LAST:event_cursos_JButtonMouseClicked
 
@@ -717,7 +717,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void dudas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dudas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Dudas");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Dudas");
         }
     }//GEN-LAST:event_dudas_JButtonMouseClicked
 
@@ -761,6 +761,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     
     public static Pagina_Tareas_Estudiante_Panel Pagina_Tareas(){
         return pagina_Tareas_Panel;
+    }
+    
+    public static Pagina_Dudas_Estudiante_Panel Pagina_Dudas(){
+        return pagina_Dudas_Panel;
+    }
+    
+    public static Pagina_Cursos_Estudiante_Panel Pagina_Cursos(){
+        return pagina_Cursos_Panel;
     }
     
     public static void Establecer_Colores(){
@@ -908,8 +916,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         pagina_Avisos_Panel.Colorear_Componentes();
         fechas_Panel.Colorear_Componentes();
         ajustes_Panel.Colorear_Componentes();
-        dudas_Panel.Colorear_Componentes();
-        cursos_Actuales_Panel.Colorear_Componentes();
+        pagina_Dudas_Panel.Colorear_Componentes();
+        pagina_Cursos_Panel.Colorear_Componentes();
     }
     
     
@@ -995,8 +1003,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             pagina_Tareas_Panel = new Pagina_Tareas_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Tareas",pagina_Tareas_Panel);
             
-            cursos_Actuales_Panel = new Cursos_Estudiante_Panel();
-            visualizador_JPanel.add("Cursos",cursos_Actuales_Panel);
+            pagina_Cursos_Panel = new Pagina_Cursos_Estudiante_Panel();
+            visualizador_JPanel.add("Pagina_Cursos",pagina_Cursos_Panel);
             
             fechas_Panel = new Fechas_Estudiante_Panel();
             visualizador_JPanel.add("Fechas",fechas_Panel);
@@ -1019,8 +1027,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             ajustes_Panel = new Ajustes_Estudiante_Panel();
             visualizador_JPanel.add("Ajustes",ajustes_Panel);
             
-            dudas_Panel = new Dudas_Estudiante_Panel();
-            visualizador_JPanel.add("Dudas", dudas_Panel);
+            pagina_Dudas_Panel = new Pagina_Dudas_Estudiante_Panel();
+            visualizador_JPanel.add("Pagina_Dudas", pagina_Dudas_Panel);
             
             layout = (CardLayout) visualizador_JPanel.getLayout();
             nombre_Usuario_JLabel.setText(CourseRoom.Faker().name().username());

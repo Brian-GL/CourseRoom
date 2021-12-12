@@ -35,8 +35,9 @@ public class Titulo_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         titulo_JLabel = new javax.swing.JLabel();
         ordenar_Por_JComboBox = new javax.swing.JComboBox<>();
 
-        setMaximumSize(new java.awt.Dimension(32767, 130));
+        setMaximumSize(new java.awt.Dimension(32767, 118));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1080, 118));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
@@ -46,6 +47,7 @@ public class Titulo_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         titulo_JLabel.setText("Avisos");
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
 
         ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
@@ -59,20 +61,20 @@ public class Titulo_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         contenido_JPanelLayout.setHorizontalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 673, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 683, Short.MAX_VALUE)
                 .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -110,7 +112,9 @@ public class Titulo_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
         
         Font gadugi = new java.awt.Font("Gadugi", 1, 16);
-        titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        
+        titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
         
         ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 

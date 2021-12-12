@@ -82,7 +82,7 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Li
 
         setMaximumSize(new java.awt.Dimension(32767, 136));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(538, 136));
+        setPreferredSize(new java.awt.Dimension(1080, 136));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -128,9 +128,9 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Li
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                        .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estatus_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                        .addComponent(estatus_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE))
                     .addComponent(preguntador_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(duda_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -156,7 +156,7 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Li
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

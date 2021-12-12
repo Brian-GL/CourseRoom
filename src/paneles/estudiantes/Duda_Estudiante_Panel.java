@@ -477,7 +477,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Dudas");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Dudas");
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
 

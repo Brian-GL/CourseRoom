@@ -895,12 +895,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void regresar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_JButton.setBackground(segundo_Color);
+        regresar_JButton.setBackground(tercer_Color);
     }//GEN-LAST:event_regresar_JButtonMouseEntered
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_JButton.setBackground(tercer_Color);
+        regresar_JButton.setBackground(primer_Color);
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private void editar_Nombre_Grupo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_Grupo_JButtonMouseClicked
@@ -1475,8 +1475,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         eliminar_Miembro_JComboBox.setForeground(tercer_Color_Fuente);
         eliminar_Miembro_JComboBox.setBackground(tercer_Color);
         
-        regresar_JButton.setBackground(tercer_Color);
-        regresar_JButton.setForeground(tercer_Color_Fuente);
+        regresar_JButton.setBackground(primer_Color);
         
         editar_Nombre_Grupo_JButton.setBackground(tercer_Color);
         editar_Nombre_Grupo_JButton.setForeground(tercer_Color_Fuente);
