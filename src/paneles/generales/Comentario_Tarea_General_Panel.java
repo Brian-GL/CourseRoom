@@ -79,6 +79,7 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         comentario_JScrollPane.setVerifyInputWhenFocusTarget(false);
         comentario_JScrollPane.setWheelScrollingEnabled(false);
 
+        comentario_JTextPane.setEditable(false);
         comentario_JTextPane.setBorder(null);
         comentario_JTextPane.setContentType("text/html"); // NOI18N
         comentario_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
@@ -91,11 +92,11 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(imagen_Emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comentario_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +104,7 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(imagen_Emisor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comentario_JScrollPane))
+                    .addComponent(comentario_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

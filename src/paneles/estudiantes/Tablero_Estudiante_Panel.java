@@ -42,7 +42,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Reproductor_Musica_General_Panel reproductor_Musica_Panel;
     private static Pagina_Avisos_Estudiante_Panel pagina_Avisos_Panel;
     private static Pagina_Grupos_Estudiante_Panel pagina_Grupos_Panel;
-    private static Fechas_Estudiante_Panel fechas_Panel;
+    private static Pagina_Fechas_Estudiante_Panel pagina_Fechas_Panel;
     private static Pagina_Tareas_Estudiante_Panel pagina_Tareas_Panel;
     private static Ajustes_Estudiante_Panel ajustes_Panel;
     private static Pagina_Cursos_Estudiante_Panel pagina_Cursos_Panel;
@@ -563,7 +563,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void fechas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Fechas");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Fechas");
         }
     }//GEN-LAST:event_fechas_JButtonMouseClicked
 
@@ -914,7 +914,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         pagina_Tareas_Panel.Colorear_Componentes();
         pagina_Grupos_Panel.Colorear_Componentes();
         pagina_Avisos_Panel.Colorear_Componentes();
-        fechas_Panel.Colorear_Componentes();
+        pagina_Fechas_Panel.Colorear_Componentes();
         ajustes_Panel.Colorear_Componentes();
         pagina_Dudas_Panel.Colorear_Componentes();
         pagina_Cursos_Panel.Colorear_Componentes();
@@ -927,7 +927,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         reproductor_Musica_Panel.Limpiar();
         pagina_Chats_Panel.Limpiar();
         pagina_Avisos_Panel.Limpiar();
-        fechas_Panel.Limpiar();
+        pagina_Fechas_Panel.Limpiar();
         pagina_Grupos_Panel.Limpiar();
         
     }
@@ -1006,8 +1006,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             pagina_Cursos_Panel = new Pagina_Cursos_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Cursos",pagina_Cursos_Panel);
             
-            fechas_Panel = new Fechas_Estudiante_Panel();
-            visualizador_JPanel.add("Fechas",fechas_Panel);
+            pagina_Fechas_Panel = new Pagina_Fechas_Estudiante_Panel();
+            visualizador_JPanel.add("Pagina_Fechas",pagina_Fechas_Panel);
             
             pagina_Avisos_Panel = new Pagina_Avisos_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Avisos",pagina_Avisos_Panel);
