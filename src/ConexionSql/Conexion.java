@@ -17,7 +17,8 @@ public class Conexion {
     
     public static Connection ConnectDb(){
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/prueba", "root", "");
             JOptionPane.showMessageDialog(null, "Conexón Establecida");
             return conn;

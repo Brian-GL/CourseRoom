@@ -1119,11 +1119,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException ex) {
-                            
-                        }
+                        
                         componente_Reproducto_Lista_Audio.mediaListPlayer().controls().play();
                     }
                 }
@@ -1201,11 +1197,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException ex) {
-
-                        }
                         componente_Reproducto_Lista_Audio.mediaListPlayer().controls().play();
                     }
                     
@@ -1839,11 +1830,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                             bandera_Indice_Cero = false;
                         }
                         Cargar_Metadatos();
-                        try{
-                            Thread.sleep(500);
-                        } catch(InterruptedException e){
-                            
-                        }
                         
                         bandera_Siguiente_Pista = true;
                     }
@@ -1853,11 +1839,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         indice--;
                         nodo_actual = nodo_actual.previous();
                         Cargar_Metadatos();
-                        try{
-                            Thread.sleep(500);
-                        } catch(InterruptedException e){
-                            
-                        }
                     }
                 }
             }
