@@ -6,6 +6,7 @@
 package frames.generales;
 
 import interfaces.Componentes_Interface;
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import main.CourseRoom;
@@ -50,10 +51,10 @@ public class Mensaje_Error_General_Frame extends javax.swing.JFrame implements C
         setTitle("CourseRoom - Mensaje De Error");
         setAlwaysOnTop(true);
         setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        setMaximumSize(new java.awt.Dimension(800, 375));
+        setMaximumSize(new java.awt.Dimension(800, 315));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 375));
+        setPreferredSize(new java.awt.Dimension(800, 315));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -125,13 +126,13 @@ public class Mensaje_Error_General_Frame extends javax.swing.JFrame implements C
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(logo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(imagen_Mensaje_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         getContentPane().add(contenido_JPanel, "card2");
@@ -196,6 +197,7 @@ public class Mensaje_Error_General_Frame extends javax.swing.JFrame implements C
         
         cerrar_JButton.setBackground(CourseRoom.Color_Azul_Oscuro());
         
+        titulo_JLabel.setForeground(CourseRoom.Color_Azul_Claro());
                
     }
 }

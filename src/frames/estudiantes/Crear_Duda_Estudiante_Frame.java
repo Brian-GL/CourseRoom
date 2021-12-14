@@ -56,16 +56,15 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JFrame implements C
         setTitle("Crear Nueva Duda");
         setAlwaysOnTop(true);
         setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        setMaximumSize(new java.awt.Dimension(800, 265));
-        setMinimumSize(new java.awt.Dimension(800, 265));
+        setMaximumSize(new java.awt.Dimension(800, 227));
+        setMinimumSize(new java.awt.Dimension(800, 227));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 265));
+        setPreferredSize(new java.awt.Dimension(800, 227));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
-        contenido_JPanel.setMaximumSize(new java.awt.Dimension(783, 228));
-        contenido_JPanel.setPreferredSize(new java.awt.Dimension(783, 228));
+        contenido_JPanel.setPreferredSize(new java.awt.Dimension(800, 245));
 
         preguntador_Imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         preguntador_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(164, 164));
@@ -122,10 +121,19 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JFrame implements C
                         .addComponent(preguntador_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(crear_Duda_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(44, 44, 44))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(contenido_JPanel, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
