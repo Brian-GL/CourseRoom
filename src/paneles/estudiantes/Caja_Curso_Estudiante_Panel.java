@@ -31,7 +31,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
 
     private String id;
     private Color primer_Color, segundo_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
-    private Curso_Estudiante_Panel curso_Estudiante_Panel;
+    private Pagina_Curso_Estudiante_Panel pagina_Curso_Estudiante_Panel;
    
     public Caja_Curso_Estudiante_Panel(String _id) {
         initComponents();
@@ -260,8 +260,8 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             
             Colorear_Componentes();
             
-            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://i.pravatar.cc/175");
-            url_Imagen = new URL("https://i.pravatar.cc/175");
+            System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://i.pravatar.cc/300");
+            url_Imagen = new URL("https://i.pravatar.cc/300");
             Image profesor_Imagen = ImageIO.read(url_Imagen);
             redimension = profesor_Imagen.getScaledInstance(134,134, Image.SCALE_SMOOTH);
             icono = new ImageIcon(redimension);
@@ -280,11 +280,11 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             aux = CourseRoom.Concatenar(aux,"/5");
             calificacion_JTextPane.setText(CourseRoom.Formato_HTML_Centro(aux));
             
-            curso_Estudiante_Panel = 
-                    new Curso_Estudiante_Panel(this.id,nombre_JLabel.getText(), 
+            pagina_Curso_Estudiante_Panel = 
+                    new Pagina_Curso_Estudiante_Panel(this.id,nombre_JLabel.getText(), 
                             nombre_Profesor_JLabel.getText(), curso_Imagen,profesor_Imagen, primer_Color, primer_Color_Fuente, 
                             segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
-            Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, this.id);
+            Tablero_Estudiante_Panel.Agregar_Vista(pagina_Curso_Estudiante_Panel, this.id);
             curso_Imagen.flush();
             profesor_Imagen.flush();
             redimension.flush();

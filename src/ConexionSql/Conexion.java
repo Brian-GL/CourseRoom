@@ -1,5 +1,6 @@
 package ConexionSql;
 
+import frames.generales.Mensaje_Advertencia_General_Frame;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,7 +24,9 @@ public class Conexion {
             JOptionPane.showMessageDialog(null, "Conexón Establecida");
             return conn;
         }catch (ClassNotFoundException | SQLException e){
-            JOptionPane.showMessageDialog(CourseRoom_Frame.getFrames()[0], "Hubo Un Problema Al Intentar Conectarse A La Base De Datos");
+            Mensaje_Advertencia_General_Frame mensaje_Advertencia_General_Frame 
+                    = new Mensaje_Advertencia_General_Frame("Hubo Un Problema Al Intentar Conectarse A La Base De Datos",e.getMessage());
+            mensaje_Advertencia_General_Frame.setVisible(true);
             return null;
         }
     }

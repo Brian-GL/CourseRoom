@@ -11,13 +11,9 @@ import interfaces.Limpieza_Interface;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.MalformedURLException;
-import java.net.NetworkInterface;
-import java.net.SocketException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Random;
 import javax.imageio.ImageIO;
@@ -157,6 +153,11 @@ public class CourseRoom implements Limpieza_Interface{
     public static String Formato_HTML_Izquierda(String text) {
         return Concatenar("<html><div style='text-align:left;'>",text,"</div></html>");
     }
+    
+    public static String Formato_HTML_Centro_Izquierda(String text) {
+        return Concatenar("<html><div style='text-align:left; align-items: center; justify-content: center;'><p>",
+                text,"</p></div></html>");
+    }
 
     public static String Formato_HTML_Derecha(String text) {
         return Concatenar("<html><div style='text-align:right;'>",text,"</div></html>");
@@ -167,7 +168,8 @@ public class CourseRoom implements Limpieza_Interface{
     }
     
     public static String Formato_HTML_Central(String text) {
-        return Concatenar("<html><div style='text-align:center; display:flex; justify-content:center; align-items: center;'>", text, "</div></html>");
+        return Concatenar("<html><div style='text-align:center; align-items: center; justify-content: center;'><p>",
+                text,"</p></div></html>");
     }
     
     public static String RGB_Cadena(Color color) {

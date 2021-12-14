@@ -27,7 +27,11 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JFrame implements C
      */
     public Crear_Duda_Estudiante_Frame(Icon icono) {
         
+        
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        this.setAlwaysOnTop(true);
         preguntador_Imagen_JLabel.setIcon(icono);
         Iniciar_Componentes();
     }
@@ -53,7 +57,9 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JFrame implements C
         setAlwaysOnTop(true);
         setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         setMaximumSize(new java.awt.Dimension(800, 265));
-        setModalExclusionType(java.awt.Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
+        setMinimumSize(new java.awt.Dimension(800, 265));
+        setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(800, 265));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);

@@ -490,14 +490,14 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
 
     private void cerrar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseEntered
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(segundo_Color);
-        cerrar_JButton.setForeground(segundo_Color_Fuente);
+        cerrar_JButton.setBackground(tercer_Color);
+        cerrar_JButton.setForeground(tercer_Color_Fuente);
     }//GEN-LAST:event_cerrar_JButtonMouseEntered
 
     private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseExited
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(tercer_Color);
-        cerrar_JButton.setForeground(tercer_Color_Fuente);
+        cerrar_JButton.setBackground(segundo_Color);
+        cerrar_JButton.setForeground(segundo_Color_Fuente);
     }//GEN-LAST:event_cerrar_JButtonMouseExited
 
     private void Enviar_Archivos(){
@@ -740,12 +740,13 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     public void Colorear_Componentes(){
         
         regresar_JButton.setBackground(primer_Color);
-        duda_JLabel.setForeground(primer_Color_Fuente);
+        duda_JLabel.setForeground(tercer_Color_Fuente);
         respuesta_JTextField.setBackground(primer_Color);
         respuesta_JTextField.setForeground(primer_Color_Fuente);
-        descripcion_Duda_JTextPane.setForeground(primer_Color_Fuente);
+        descripcion_Duda_JTextPane.setForeground(tercer_Color_Fuente);
         enviar_Respuestas_JPanel.setBackground(segundo_Color);
-        informacion_JPanel.setBackground(primer_Color);
+       
+        informacion_JPanel.setBackground(tercer_Color);
         
         enviar_Archivos_JButton.setBackground(segundo_Color);
         enviar_Audios_JButton.setBackground(segundo_Color);
@@ -753,8 +754,8 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Respuesta_JButton.setBackground(segundo_Color);
         enviar_Videos_JButton.setBackground(segundo_Color);
         
-        cerrar_JButton.setBackground(tercer_Color);
-        cerrar_JButton.setForeground(tercer_Color_Fuente);
+        cerrar_JButton.setBackground(segundo_Color);
+        cerrar_JButton.setForeground(segundo_Color_Fuente);
         
     }
 
