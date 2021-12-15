@@ -250,7 +250,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
                     CourseRoom.Concatenar(" https://picsum.photos/",String.valueOf(ancho),"/175")
             );
             
-            ancho = (resolucion_Pantalla.width * 525) / 1270;
+            ancho = (resolucion_Pantalla.width * 1056) / 1270;
             
             Image curso_Imagen = ImageIO.read(url_Imagen);
             Image redimension = curso_Imagen.getScaledInstance(ancho, 125, Image.SCALE_SMOOTH);

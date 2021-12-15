@@ -71,7 +71,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         comentarios_JScrollPane = new javax.swing.JScrollPane();
         comentarios_Subidos_JPanel = new javax.swing.JPanel();
         enviar_Comentarios_JTextField = new javax.swing.JTextField();
-        enviar_Comentarios_JButton = new javax.swing.JButton();
         enviar_Tarea_JButton = new javax.swing.JButton();
         fecha_Entrega_JLabel = new javax.swing.JLabel();
         regresar_JButton = new javax.swing.JButton();
@@ -163,21 +162,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             }
         });
 
-        enviar_Comentarios_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/send.png"))); // NOI18N
-        enviar_Comentarios_JButton.setToolTipText("Enviar Comentario");
-        enviar_Comentarios_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enviar_Comentarios_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                enviar_Comentarios_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                enviar_Comentarios_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                enviar_Comentarios_JButtonMouseExited(evt);
-            }
-        });
-
         javax.swing.GroupLayout comentarios_JPanelLayout = new javax.swing.GroupLayout(comentarios_JPanel);
         comentarios_JPanel.setLayout(comentarios_JPanelLayout);
         comentarios_JPanelLayout.setHorizontalGroup(
@@ -185,11 +169,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             .addGroup(comentarios_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(comentarios_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comentarios_JScrollPane)
-                    .addGroup(comentarios_JPanelLayout.createSequentialGroup()
-                        .addComponent(enviar_Comentarios_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(enviar_Comentarios_JButton)))
+                    .addComponent(comentarios_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                    .addComponent(enviar_Comentarios_JTextField))
                 .addContainerGap())
         );
         comentarios_JPanelLayout.setVerticalGroup(
@@ -198,9 +179,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(comentarios_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(comentarios_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(enviar_Comentarios_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enviar_Comentarios_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(enviar_Comentarios_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -262,7 +241,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         archivos_Adjuntos_JPanel.setToolTipText("Archivos Adjuntos");
         archivos_Adjuntos_JPanel.setOpaque(false);
-        archivos_Adjuntos_JPanel.setLayout(new java.awt.GridLayout());
+        archivos_Adjuntos_JPanel.setLayout(new java.awt.GridLayout(1, 0));
         archivos_Adjuntos_JScrollPane.setViewportView(archivos_Adjuntos_JPanel);
 
         descripcion_JScrollPane.setBorder(null);
@@ -381,19 +360,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         enviar_Tarea_JButton.setForeground(segundo_Color_Fuente);
     }//GEN-LAST:event_enviar_Tarea_JButtonMouseExited
 
-    private void enviar_Comentarios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Comentarios_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(!enviar_Comentarios_JTextField.getText().isEmpty() && !enviar_Comentarios_JTextField.getText().isBlank()){
-            Enviar_Comentario();
-        }
-    }//GEN-LAST:event_enviar_Comentarios_JButtonMouseClicked
-
-    private void enviar_Comentarios_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Comentarios_JButtonMouseExited
-        // TODO add your handling code here:
-        enviar_Comentarios_JButton.setBackground(tercer_Color);
-        enviar_Comentarios_JButton.setForeground(tercer_Color_Fuente);
-    }//GEN-LAST:event_enviar_Comentarios_JButtonMouseExited
-
     private void enviar_Comentarios_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enviar_Comentarios_JTextFieldKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
@@ -446,12 +412,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         }
     }//GEN-LAST:event_curso_JLabelMouseClicked
 
-    private void enviar_Comentarios_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Comentarios_JButtonMouseEntered
-        // TODO add your handling code here:
-        enviar_Comentarios_JButton.setBackground(segundo_Color);
-        enviar_Comentarios_JButton.setForeground(segundo_Color_Fuente);
-    }//GEN-LAST:event_enviar_Comentarios_JButtonMouseEntered
-
     private void Enviar_Comentario(){
        
         Comentario_Tarea_General_Panel comentario_Tarea_General_Panel = 
@@ -498,7 +458,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JLabel curso_JLabel;
     private javax.swing.JScrollPane descripcion_JScrollPane;
     private javax.swing.JTextPane descripcion_JTextPane;
-    private javax.swing.JButton enviar_Comentarios_JButton;
     private javax.swing.JTextField enviar_Comentarios_JTextField;
     private javax.swing.JButton enviar_Tarea_JButton;
     private javax.swing.JLabel estatus_JLabel;
@@ -560,9 +519,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         regresar_JButton.setBackground(tercer_Color);
         
         estatus_JLabel.setForeground(primer_Color_Fuente);
-
-        enviar_Comentarios_JButton.setBackground(tercer_Color);
-        enviar_Comentarios_JButton.setForeground(tercer_Color_Fuente);
 
         this.setBackground(primer_Color);
         

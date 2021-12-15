@@ -7,7 +7,6 @@ package paneles.estudiantes;
 
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
 
@@ -17,11 +16,8 @@ import java.awt.Image;
  * @author LENOVO
  */
 public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
-    
-    private static Pagina_Curso_Estudiante_Panel este;
-    private Pagina_Curso_Informacion_Estudiante_Panel pagina_Curso_Informacion_Estudiante_Panel;
-    private Pagina_Curso_Profesor_Estudiante_Panel pagina_Curso_Profesor_Estudiante_Panel;
-    private static CardLayout layout;
+   
+    private Curso_Informacion_Estudiante_Panel curso_Informacion_Estudiante_Panel;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Pagina_Curso_Estudiante_Panel(String id,
@@ -37,33 +33,19 @@ public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements
             Color _tercer_Color_Fuente){
         
        initComponents();
+     
+       contenido_JTabbedPane.setBackground(_primer_Color);
        
-       pagina_Curso_Informacion_Estudiante_Panel = new Pagina_Curso_Informacion_Estudiante_Panel(id, nombre_Curso, 
-               imagen_Curso, _primer_Color, _primer_Color_Fuente,
-               _segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
+        curso_Informacion_Estudiante_Panel = 
+                new Curso_Informacion_Estudiante_Panel(nombre_Curso, nombre_Profesor, imagen_Curso, imagen_Profesor, 
+                        _primer_Color,_primer_Color_Fuente,_segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
        
-       pagina_Curso_Profesor_Estudiante_Panel = new Pagina_Curso_Profesor_Estudiante_Panel(nombre_Curso, nombre_Profesor,
-               imagen_Profesor, _primer_Color, _primer_Color_Fuente, _segundo_Color, 
-               _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
         
        Iniciar_Componentes();
-       
-       este = this;
-       layout = (CardLayout)this.getLayout();
-       
        
         
     }
    
-    
-    public static void Mostrar_Informacion_Curso(){
-        layout.show(este, "Informacion");
-    }
-    
-    public static void Mostrar_Informacion_Profesor(){
-        layout.show(este, "Profesor");
-    }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,27 +56,119 @@ public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenido_JTabbedPane = new javax.swing.JTabbedPane();
+        informacion_Curso_JScrollPane = new javax.swing.JScrollPane();
+        informacion_Curso_JPanel = new javax.swing.JPanel();
+        tablero_Curso_JScrollPane = new javax.swing.JScrollPane();
+        tablero_Curso_JPanel = new javax.swing.JPanel();
+        tu_Trabajo_JScrollPane = new javax.swing.JScrollPane();
+        tu_Trabajo_JPanel = new javax.swing.JPanel();
+        recursos_JScrollPane = new javax.swing.JScrollPane();
+        recursos_JPanel = new javax.swing.JPanel();
+        foro_JScrollPane = new javax.swing.JScrollPane();
+        foro_JPanel = new javax.swing.JPanel();
+
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setPreferredSize(new java.awt.Dimension(1085, 630));
         setLayout(new java.awt.CardLayout());
+
+        contenido_JTabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        contenido_JTabbedPane.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
+        contenido_JTabbedPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        contenido_JTabbedPane.setOpaque(true);
+
+        informacion_Curso_JScrollPane.setBorder(null);
+        informacion_Curso_JScrollPane.setOpaque(false);
+
+        informacion_Curso_JPanel.setOpaque(false);
+        informacion_Curso_JPanel.setLayout(new javax.swing.BoxLayout(informacion_Curso_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        informacion_Curso_JScrollPane.setViewportView(informacion_Curso_JPanel);
+
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_2.png")), informacion_Curso_JScrollPane); // NOI18N
+
+        tablero_Curso_JScrollPane.setBorder(null);
+        tablero_Curso_JScrollPane.setOpaque(false);
+
+        tablero_Curso_JPanel.setOpaque(false);
+        tablero_Curso_JPanel.setLayout(new javax.swing.BoxLayout(tablero_Curso_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        tablero_Curso_JScrollPane.setViewportView(tablero_Curso_JPanel);
+
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/dashboard.png")), tablero_Curso_JScrollPane); // NOI18N
+
+        tu_Trabajo_JScrollPane.setBorder(null);
+        tu_Trabajo_JScrollPane.setOpaque(false);
+
+        tu_Trabajo_JPanel.setOpaque(false);
+        tu_Trabajo_JPanel.setLayout(new javax.swing.BoxLayout(tu_Trabajo_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        tu_Trabajo_JScrollPane.setViewportView(tu_Trabajo_JPanel);
+
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/work-from-home.png")), tu_Trabajo_JScrollPane); // NOI18N
+
+        recursos_JScrollPane.setBorder(null);
+        recursos_JScrollPane.setOpaque(false);
+
+        recursos_JPanel.setOpaque(false);
+        recursos_JPanel.setLayout(new javax.swing.BoxLayout(recursos_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        recursos_JScrollPane.setViewportView(recursos_JPanel);
+
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/book.png")), recursos_JScrollPane); // NOI18N
+
+        foro_JScrollPane.setBorder(null);
+        foro_JScrollPane.setOpaque(false);
+
+        foro_JPanel.setOpaque(false);
+        foro_JPanel.setLayout(new javax.swing.BoxLayout(foro_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        foro_JScrollPane.setViewportView(foro_JPanel);
+
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/synergy.png")), foro_JScrollPane); // NOI18N
+
+        add(contenido_JTabbedPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane contenido_JTabbedPane;
+    private javax.swing.JPanel foro_JPanel;
+    private javax.swing.JScrollPane foro_JScrollPane;
+    private javax.swing.JPanel informacion_Curso_JPanel;
+    private javax.swing.JScrollPane informacion_Curso_JScrollPane;
+    private javax.swing.JPanel recursos_JPanel;
+    private javax.swing.JScrollPane recursos_JScrollPane;
+    private javax.swing.JPanel tablero_Curso_JPanel;
+    private javax.swing.JScrollPane tablero_Curso_JScrollPane;
+    private javax.swing.JPanel tu_Trabajo_JPanel;
+    private javax.swing.JScrollPane tu_Trabajo_JScrollPane;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
-       
-        this.add(pagina_Curso_Informacion_Estudiante_Panel, "Informacion");
-        this.add(pagina_Curso_Profesor_Estudiante_Panel,"Profesor");
+        
+        foro_JScrollPane.getViewport().setOpaque(false);
+        informacion_Curso_JScrollPane.getViewport().setOpaque(false);
+        recursos_JScrollPane.getViewport().setOpaque(false);
+        tablero_Curso_JScrollPane.getViewport().setOpaque(false);
+        tu_Trabajo_JScrollPane.getViewport().setOpaque(false);
+        
+        foro_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        informacion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        recursos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        tablero_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        tu_Trabajo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        
+        foro_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        informacion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        recursos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        tablero_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        tu_Trabajo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        
+        informacion_Curso_JPanel.add(curso_Informacion_Estudiante_Panel);
+        
         Colorear_Componentes();
     }
 
     @Override
     public void Colorear_Componentes() {
-        pagina_Curso_Informacion_Estudiante_Panel.Colorear_Componentes();
-        pagina_Curso_Profesor_Estudiante_Panel.Colorear_Componentes();
+        
     }
     
     @Override

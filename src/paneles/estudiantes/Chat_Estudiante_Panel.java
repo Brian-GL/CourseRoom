@@ -82,7 +82,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Videos_JButton = new javax.swing.JButton();
         enviar_Audios_JButton = new javax.swing.JButton();
         enviar_Imagenes_JButton = new javax.swing.JButton();
-        enviar_Mensaje_JButton = new javax.swing.JButton();
         mensajes_JScrollPane = new javax.swing.JScrollPane();
         mensajes_JPanel = new javax.swing.JPanel();
 
@@ -127,9 +126,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 204, Short.MAX_VALUE)
                 .addComponent(receptor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 204, Short.MAX_VALUE)
                 .addComponent(receptor_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -225,23 +224,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             }
         });
 
-        enviar_Mensaje_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/send.png"))); // NOI18N
-        enviar_Mensaje_JButton.setToolTipText("Enviar Mensaje");
-        enviar_Mensaje_JButton.setBorder(null);
-        enviar_Mensaje_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enviar_Mensaje_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
-        enviar_Mensaje_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                enviar_Mensaje_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                enviar_Mensaje_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                enviar_Mensaje_JButtonMouseExited(evt);
-            }
-        });
-
         javax.swing.GroupLayout enviar_Mensajes_JPanelLayout = new javax.swing.GroupLayout(enviar_Mensajes_JPanel);
         enviar_Mensajes_JPanel.setLayout(enviar_Mensajes_JPanelLayout);
         enviar_Mensajes_JPanelLayout.setHorizontalGroup(
@@ -256,8 +238,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mensaje_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(enviar_Mensaje_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         enviar_Mensajes_JPanelLayout.setVerticalGroup(
             enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,8 +249,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                     .addComponent(enviar_Videos_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(enviar_Audios_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(mensaje_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(enviar_Mensaje_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mensaje_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -412,23 +392,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         // TODO add your handling code here:
         enviar_Imagenes_JButton.setBackground(segundo_Color);
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseExited
-
-    private void enviar_Mensaje_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Mensaje_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Mensaje();
-        }
-    }//GEN-LAST:event_enviar_Mensaje_JButtonMouseClicked
-
-    private void enviar_Mensaje_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Mensaje_JButtonMouseEntered
-        // TODO add your handling code here:
-        enviar_Mensaje_JButton.setBackground(primer_Color);
-    }//GEN-LAST:event_enviar_Mensaje_JButtonMouseEntered
-
-    private void enviar_Mensaje_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Mensaje_JButtonMouseExited
-        // TODO add your handling code here:
-        enviar_Mensaje_JButton.setBackground(segundo_Color);
-    }//GEN-LAST:event_enviar_Mensaje_JButtonMouseExited
 
     private void Enviar_Archivos(){
         JFileChooser escogedor_Archivos = new JFileChooser();
@@ -638,7 +601,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     private javax.swing.JButton enviar_Archivos_JButton;
     private javax.swing.JButton enviar_Audios_JButton;
     private javax.swing.JButton enviar_Imagenes_JButton;
-    private javax.swing.JButton enviar_Mensaje_JButton;
     private javax.swing.JPanel enviar_Mensajes_JPanel;
     private javax.swing.JButton enviar_Videos_JButton;
     private javax.swing.JPanel informacion_JPanel;
@@ -672,7 +634,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Archivos_JButton.setBackground(segundo_Color);
         enviar_Audios_JButton.setBackground(segundo_Color);
         enviar_Imagenes_JButton.setBackground(segundo_Color);
-        enviar_Mensaje_JButton.setBackground(segundo_Color);
         enviar_Videos_JButton.setBackground(segundo_Color);
         
     }

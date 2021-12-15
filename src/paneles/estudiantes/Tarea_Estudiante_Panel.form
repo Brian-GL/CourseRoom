@@ -235,12 +235,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="comentarios_JScrollPane" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="enviar_Comentarios_JTextField" pref="595" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="enviar_Comentarios_JButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="comentarios_JScrollPane" pref="639" max="32767" attributes="0"/>
+                          <Component id="enviar_Comentarios_JTextField" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -252,10 +248,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="comentarios_JScrollPane" min="-2" pref="502" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="enviar_Comentarios_JTextField" min="-2" max="-2" attributes="0"/>
-                          <Component id="enviar_Comentarios_JButton" alignment="0" min="-2" pref="26" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="enviar_Comentarios_JTextField" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -293,22 +286,6 @@
               </Properties>
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="enviar_Comentarios_JTextFieldKeyPressed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="enviar_Comentarios_JButton">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/iconos/send.png"/>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Enviar Comentario"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Comentarios_JButtonMouseClicked"/>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Comentarios_JButtonMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Comentarios_JButtonMouseExited"/>
               </Events>
             </Component>
           </SubComponents>
