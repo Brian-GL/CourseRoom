@@ -98,6 +98,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         setLayout(new java.awt.CardLayout());
 
         visualizador_JTabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        visualizador_JTabbedPane.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         visualizador_JTabbedPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         visualizador_JTabbedPane.setMinimumSize(new java.awt.Dimension(1024, 700));
         visualizador_JTabbedPane.setPreferredSize(new java.awt.Dimension(1024, 700));
@@ -167,7 +168,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                         .addComponent(regresar_Inicio_Sesion_JButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(continuar_Autenticacion_JButton))
-                    .addComponent(titulo_Inicio_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)
+                    .addComponent(titulo_Inicio_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
                     .addComponent(informacion_Inicio_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -180,14 +181,14 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addComponent(titulo_Inicio_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(informacion_Inicio_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                 .addGroup(inicio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(continuar_Autenticacion_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(regresar_Inicio_Sesion_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
-        visualizador_JTabbedPane.addTab(" Inicio ", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png")), inicio_JPanel, "Muestra El Inicio Del Registro De Tu Cuenta."); // NOI18N
+        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png")), inicio_JPanel, "Muestra El Inicio Del Registro De Tu Cuenta."); // NOI18N
 
         autenticacion_JPanel.setBackground(new java.awt.Color(14, 30, 64));
         autenticacion_JPanel.setMinimumSize(new java.awt.Dimension(1260, 629));
@@ -302,12 +303,12 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addGap(30, 30, 30)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nombre_Usuario_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                     .addComponent(informacion_Nombre_Usuario_Autenticacion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(informacion_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Pass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                    .addComponent(Pass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
                     .addComponent(contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40))
             .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
@@ -336,7 +337,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addComponent(logo_Autenticacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(titulo_Autenticacion_JLabel)
-                .addGap(18, 58, Short.MAX_VALUE)
+                .addGap(18, 79, Short.MAX_VALUE)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombre_Usuario_Autenticacion_JLabel)
                     .addComponent(contrasena_Autenticacion_JLabel))
@@ -361,14 +362,14 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(informacion_Correo_Electronico_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(informacion_Repetir_Contrasena_Autenticacion_JLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(continuar_Datos_Personales_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(regresar_Inicio_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
-        visualizador_JTabbedPane.addTab(" Autenticación ", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png")), autenticacion_JPanel, "Pestaña Sobre Creación De Credenciales Para Acceder Al Sistema."); // NOI18N
+        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png")), autenticacion_JPanel, "Pestaña Sobre Creación De Credenciales Para Acceder Al Sistema."); // NOI18N
 
         datos_Personales_JPanel.setBackground(new java.awt.Color(14, 30, 64));
         datos_Personales_JPanel.setMinimumSize(new java.awt.Dimension(1260, 629));
@@ -496,7 +497,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                             .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(apellidos_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                            .addComponent(apellidos_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                             .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -525,7 +526,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addComponent(logo_Datos_Personales_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(titulo_Datos_Personales_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datos_Personales_JPanelLayout.createSequentialGroup()
                         .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -552,14 +553,14 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addComponent(descripcion_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(continuar_Perfil_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(regresar_Autenticacion_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
-        visualizador_JTabbedPane.addTab(" Datos Personales ", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/personal-information.png")), datos_Personales_JPanel, "Pestaña Sobre Datos Personales."); // NOI18N
+        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/personal-information.png")), datos_Personales_JPanel, "Pestaña Sobre Datos Personales."); // NOI18N
 
         perfil_JPanel.setBackground(new java.awt.Color(14, 30, 64));
         perfil_JPanel.setMinimumSize(new java.awt.Dimension(1260, 629));
@@ -659,14 +660,14 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                         .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(regresar_Datos_Personales_JButton)
                             .addGroup(perfil_JPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
                                 .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tipo_Perfil_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                     .addComponent(cargar_Imagen_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 191, Short.MAX_VALUE)
+                        .addGap(18, 173, Short.MAX_VALUE)
                         .addComponent(continuar_Tablero_JButton)
                         .addContainerGap())
                     .addGroup(perfil_JPanelLayout.createSequentialGroup()
@@ -686,7 +687,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(perfil_JPanelLayout.createSequentialGroup()
                         .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 27, Short.MAX_VALUE))
+                        .addGap(0, 67, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, perfil_JPanelLayout.createSequentialGroup()
                         .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -701,7 +702,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addContainerGap())
         );
 
-        visualizador_JTabbedPane.addTab(" Perfil ", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/profile.png")), perfil_JPanel, "Pestaña Sobre Información Del Perfil."); // NOI18N
+        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/profile.png")), perfil_JPanel, "Pestaña Sobre Información Del Perfil."); // NOI18N
 
         add(visualizador_JTabbedPane, "card2");
     }// </editor-fold>//GEN-END:initComponents

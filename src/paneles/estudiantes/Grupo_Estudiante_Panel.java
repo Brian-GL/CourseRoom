@@ -111,9 +111,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         contenido_Barra_Compartir_Archivos_JPanel = new javax.swing.JPanel();
         compartir_Archivo_JButton = new javax.swing.JButton();
         ordenar_Archivos_Compatidos_JComboBox = new javax.swing.JComboBox<>();
-        buscar_Archivo_Compartido_JTextField = new javax.swing.JTextField();
-        filtrar_Archivos_Compatidos_JComboBox = new javax.swing.JComboBox<>();
-        filtro_Archivos_Compatidos_JComboBox = new javax.swing.JComboBox<>();
         crear_Tareas_Pendientes_JPanel = new javax.swing.JPanel();
         tareas_Pendientes_JLabel = new javax.swing.JLabel();
         anadir_Tarea_Pendiente_JPanel = new javax.swing.JPanel();
@@ -139,6 +136,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         editar_Nombre_Grupo_JButton = new javax.swing.JButton();
         eliminar_Miembro_JButton = new javax.swing.JButton();
         abandonar_Grupo_JButton = new javax.swing.JButton();
+        buscar_JPanel = new javax.swing.JPanel();
+        resultados_Busqueda_JScrollPane = new javax.swing.JScrollPane();
+        resultados_Busqueda_JPanel = new javax.swing.JPanel();
+        buscar_Archivo_Compartido_JTextField = new javax.swing.JTextField();
+        filtrar_Archivos_Compatidos_JComboBox = new javax.swing.JComboBox<>();
+        filtro_Archivos_Compatidos_JComboBox = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
@@ -420,32 +423,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             }
         });
 
-        buscar_Archivo_Compartido_JTextField.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
-        buscar_Archivo_Compartido_JTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        buscar_Archivo_Compartido_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                buscar_Archivo_Compartido_JTextFieldKeyPressed(evt);
-            }
-        });
-
-        filtrar_Archivos_Compatidos_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-        filtrar_Archivos_Compatidos_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nada", "Tipo", "Miembro" }));
-        filtrar_Archivos_Compatidos_JComboBox.setToolTipText("Ordenar Archivos Compartidos Por");
-        filtrar_Archivos_Compatidos_JComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                filtrar_Archivos_Compatidos_JComboBoxItemStateChanged(evt);
-            }
-        });
-
-        filtro_Archivos_Compatidos_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-        filtro_Archivos_Compatidos_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtro" }));
-        filtro_Archivos_Compatidos_JComboBox.setToolTipText("Filtro Archivos Compartidos");
-        filtro_Archivos_Compatidos_JComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                filtro_Archivos_Compatidos_JComboBoxItemStateChanged(evt);
-            }
-        });
-
         javax.swing.GroupLayout contenido_Barra_Compartir_Archivos_JPanelLayout = new javax.swing.GroupLayout(contenido_Barra_Compartir_Archivos_JPanel);
         contenido_Barra_Compartir_Archivos_JPanel.setLayout(contenido_Barra_Compartir_Archivos_JPanelLayout);
         contenido_Barra_Compartir_Archivos_JPanelLayout.setHorizontalGroup(
@@ -453,13 +430,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             .addGroup(contenido_Barra_Compartir_Archivos_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ordenar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(filtrar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(filtro_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buscar_Archivo_Compartido_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 645, Short.MAX_VALUE)
                 .addComponent(compartir_Archivo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -467,14 +438,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             contenido_Barra_Compartir_Archivos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Barra_Compartir_Archivos_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contenido_Barra_Compartir_Archivos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ordenar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contenido_Barra_Compartir_Archivos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(filtrar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(filtro_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buscar_Archivo_Compartido_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(compartir_Archivo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(contenido_Barra_Compartir_Archivos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(compartir_Archivo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ordenar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout barra_Compatir_Archivos_JPanelLayout = new javax.swing.GroupLayout(barra_Compatir_Archivos_JPanel);
@@ -484,7 +451,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             .addGroup(barra_Compatir_Archivos_JPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(contenido_Barra_Compartir_Archivos_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         barra_Compatir_Archivos_JPanelLayout.setVerticalGroup(
             barra_Compatir_Archivos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -784,6 +751,72 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         grupo_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-tool.png")), configuraciones_JPanel); // NOI18N
 
+        buscar_JPanel.setOpaque(false);
+
+        resultados_Busqueda_JScrollPane.setBorder(null);
+        resultados_Busqueda_JScrollPane.setOpaque(false);
+
+        resultados_Busqueda_JPanel.setOpaque(false);
+        resultados_Busqueda_JPanel.setLayout(new java.awt.GridLayout(0, 2));
+        resultados_Busqueda_JScrollPane.setViewportView(resultados_Busqueda_JPanel);
+
+        buscar_Archivo_Compartido_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        buscar_Archivo_Compartido_JTextField.setBorder(null);
+        buscar_Archivo_Compartido_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscar_Archivo_Compartido_JTextFieldKeyPressed(evt);
+            }
+        });
+
+        filtrar_Archivos_Compatidos_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+        filtrar_Archivos_Compatidos_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nada", "Tipo", "Miembro" }));
+        filtrar_Archivos_Compatidos_JComboBox.setToolTipText("Ordenar Archivos Compartidos Por");
+        filtrar_Archivos_Compatidos_JComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                filtrar_Archivos_Compatidos_JComboBoxItemStateChanged(evt);
+            }
+        });
+
+        filtro_Archivos_Compatidos_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+        filtro_Archivos_Compatidos_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtro" }));
+        filtro_Archivos_Compatidos_JComboBox.setToolTipText("Filtro Archivos Compartidos");
+        filtro_Archivos_Compatidos_JComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                filtro_Archivos_Compatidos_JComboBoxItemStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout buscar_JPanelLayout = new javax.swing.GroupLayout(buscar_JPanel);
+        buscar_JPanel.setLayout(buscar_JPanelLayout);
+        buscar_JPanelLayout.setHorizontalGroup(
+            buscar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buscar_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(buscar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultados_Busqueda_JScrollPane)
+                    .addGroup(buscar_JPanelLayout.createSequentialGroup()
+                        .addComponent(buscar_Archivo_Compartido_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(filtrar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(filtro_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        buscar_JPanelLayout.setVerticalGroup(
+            buscar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buscar_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(buscar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(filtro_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(filtrar_Archivos_Compatidos_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buscar_Archivo_Compartido_JTextField, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(resultados_Busqueda_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        grupo_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png")), buscar_JPanel); // NOI18N
+
         add(grupo_JTabbedPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -976,21 +1009,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         }
     }//GEN-LAST:event_mostrar_Tarea_Pendiente_Tipo_JComboBoxItemStateChanged
 
-    private void filtrar_Archivos_Compatidos_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtrar_Archivos_Compatidos_JComboBoxItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_filtrar_Archivos_Compatidos_JComboBoxItemStateChanged
-
     private void ordenar_Archivos_Compatidos_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ordenar_Archivos_Compatidos_JComboBoxItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_ordenar_Archivos_Compatidos_JComboBoxItemStateChanged
-
-    private void filtro_Archivos_Compatidos_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtro_Archivos_Compatidos_JComboBoxItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_filtro_Archivos_Compatidos_JComboBoxItemStateChanged
-
-    private void buscar_Archivo_Compartido_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_Archivo_Compartido_JTextFieldKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscar_Archivo_Compartido_JTextFieldKeyPressed
 
     private void enviar_Mensaje_Chat_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enviar_Mensaje_Chat_JTextFieldKeyPressed
         // TODO add your handling code here:
@@ -1049,6 +1070,18 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         // TODO add your handling code here:
         enviar_Imagenes_JButton.setBackground(segundo_Color);
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseExited
+
+    private void filtrar_Archivos_Compatidos_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtrar_Archivos_Compatidos_JComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtrar_Archivos_Compatidos_JComboBoxItemStateChanged
+
+    private void filtro_Archivos_Compatidos_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtro_Archivos_Compatidos_JComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtro_Archivos_Compatidos_JComboBoxItemStateChanged
+
+    private void buscar_Archivo_Compartido_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_Archivo_Compartido_JTextFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscar_Archivo_Compartido_JTextFieldKeyPressed
 
     private void Enviar_Mensaje() {
 
@@ -1257,6 +1290,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JPanel anadir_Tarea_Pendiente_JPanel;
     private javax.swing.JPanel barra_Compatir_Archivos_JPanel;
     private javax.swing.JTextField buscar_Archivo_Compartido_JTextField;
+    private javax.swing.JPanel buscar_JPanel;
     private javax.swing.JPanel chat_Grupal_JPanel;
     private javax.swing.JButton compartir_Archivo_JButton;
     private javax.swing.JPanel compartir_Archivos_JPanel;
@@ -1301,6 +1335,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JTextField nombre_Tarea_Pendiente_JTextField;
     private javax.swing.JComboBox<String> ordenar_Archivos_Compatidos_JComboBox;
     private javax.swing.JButton regresar_JButton;
+    private javax.swing.JPanel resultados_Busqueda_JPanel;
+    private javax.swing.JScrollPane resultados_Busqueda_JScrollPane;
     private javax.swing.JLabel tarea_Pendiente_JLabel;
     private javax.swing.JLabel tareas_Pendientes_JLabel;
     private javax.swing.JPanel tareas_Pendientes_JPanel;
@@ -1384,6 +1420,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         editar_Nombre_Grupo_JTextField.setText(nombre_Grupo_JLabel.getText());
         curso_Grupo_JLabel.setText(CourseRoom.Faker().educator().course());
         fecha_Creacion_JLabel.setText(CourseRoom.Faker().date().birthday(0, 1).toString());
+        
+        resultados_Busqueda_JScrollPane.getViewport().setOpaque(false);
+        resultados_Busqueda_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        resultados_Busqueda_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         Colorear_Componentes();
         
@@ -1483,13 +1523,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         editar_Nombre_Grupo_JTextField.setCaretColor(tercer_Color_Fuente);
         editar_Nombre_Grupo_JTextField.setBackground(tercer_Color);
         
+        buscar_Archivo_Compartido_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
+                "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                gadugi, primer_Color));
+
+        buscar_Archivo_Compartido_JTextField.setBackground(tercer_Color);
         buscar_Archivo_Compartido_JTextField.setForeground(tercer_Color_Fuente);
         buscar_Archivo_Compartido_JTextField.setCaretColor(tercer_Color_Fuente);
-        buscar_Archivo_Compartido_JTextField.setBackground(tercer_Color);
-        buscar_Archivo_Compartido_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
-                "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                gadugi,tercer_Color_Fuente)); // NOI18N
 
         descripcion_Tarea_Pendiente_JTextPane.setForeground(tercer_Color_Fuente);
         descripcion_Tarea_Pendiente_JTextPane.setCaretColor(tercer_Color_Fuente);

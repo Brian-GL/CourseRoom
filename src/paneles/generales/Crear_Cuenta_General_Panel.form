@@ -28,6 +28,7 @@
     <Container class="javax.swing.JTabbedPane" name="visualizador_JTabbedPane">
       <Properties>
         <Property name="tabLayoutPolicy" type="int" value="1"/>
+        <Property name="tabPlacement" type="int" value="4"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="18" style="1"/>
         </Property>
@@ -60,8 +61,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName=" Inicio " toolTip="Muestra El Inicio Del Registro De Tu Cuenta.">
-                <Property name="tabTitle" type="java.lang.String" value=" Inicio "/>
+              <JTabbedPaneConstraints tabName="" toolTip="Muestra El Inicio Del Registro De Tu Cuenta.">
+                <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/info_1.png"/>
                 </Property>
@@ -82,7 +83,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="continuar_Autenticacion_JButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="titulo_Inicio_JLabel" alignment="1" pref="1248" max="32767" attributes="0"/>
+                          <Component id="titulo_Inicio_JLabel" alignment="1" pref="1187" max="32767" attributes="0"/>
                           <Component id="informacion_Inicio_JLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -98,7 +99,7 @@
                       <Component id="titulo_Inicio_JLabel" min="-2" pref="71" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Component id="informacion_Inicio_JLabel" min="-2" pref="156" max="-2" attributes="0"/>
-                      <EmptySpace pref="202" max="32767" attributes="0"/>
+                      <EmptySpace pref="243" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="continuar_Autenticacion_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="regresar_Inicio_Sesion_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -199,8 +200,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName=" Autenticaci&#xf3;n " toolTip="Pesta&#xf1;a Sobre Creaci&#xf3;n De Credenciales Para Acceder Al Sistema.">
-                <Property name="tabTitle" type="java.lang.String" value=" Autenticaci&#xf3;n "/>
+              <JTabbedPaneConstraints tabName="" toolTip="Pesta&#xf1;a Sobre Creaci&#xf3;n De Credenciales Para Acceder Al Sistema.">
+                <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/authentication.png"/>
                 </Property>
@@ -223,13 +224,13 @@
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="nombre_Usuario_Autenticacion_JLabel" max="32767" attributes="0"/>
-                          <Component id="txtUsuario" alignment="0" pref="586" max="32767" attributes="0"/>
+                          <Component id="txtUsuario" alignment="0" pref="555" max="32767" attributes="0"/>
                           <Component id="informacion_Nombre_Usuario_Autenticacion_JLabel" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="informacion_Contrasena_Autenticacion_JLabel" max="32767" attributes="0"/>
-                          <Component id="Pass" alignment="1" pref="586" max="32767" attributes="0"/>
+                          <Component id="Pass" alignment="1" pref="556" max="32767" attributes="0"/>
                           <Component id="contrasena_Autenticacion_JLabel" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -266,7 +267,7 @@
                       <Component id="logo_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="titulo_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" pref="58" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" pref="79" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="nombre_Usuario_Autenticacion_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="contrasena_Autenticacion_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -298,7 +299,7 @@
                           <Component id="informacion_Correo_Electronico_Autenticacion_JLabel" max="32767" attributes="0"/>
                           <Component id="informacion_Repetir_Contrasena_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                      <EmptySpace pref="90" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="continuar_Datos_Personales_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="regresar_Inicio_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -510,8 +511,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName=" Datos Personales " toolTip="Pesta&#xf1;a Sobre Datos Personales.">
-                <Property name="tabTitle" type="java.lang.String" value=" Datos Personales "/>
+              <JTabbedPaneConstraints tabName="" toolTip="Pesta&#xf1;a Sobre Datos Personales.">
+                <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/personal-information.png"/>
                 </Property>
@@ -548,7 +549,7 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="apellidos_JTextField" pref="423" max="32767" attributes="0"/>
+                                  <Component id="apellidos_JTextField" pref="362" max="32767" attributes="0"/>
                                   <Component id="apellidos_JLabel" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -587,7 +588,7 @@
                       <Component id="logo_Datos_Personales_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="titulo_Datos_Personales_JLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -622,7 +623,7 @@
                       <Component id="descripcion_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="descripcion_JScrollPane" min="-2" pref="92" max="-2" attributes="0"/>
-                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="continuar_Perfil_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="regresar_Autenticacion_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -873,8 +874,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName=" Perfil " toolTip="Pesta&#xf1;a Sobre Informaci&#xf3;n Del Perfil.">
-                <Property name="tabTitle" type="java.lang.String" value=" Perfil "/>
+              <JTabbedPaneConstraints tabName="" toolTip="Pesta&#xf1;a Sobre Informaci&#xf3;n Del Perfil.">
+                <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/profile.png"/>
                 </Property>
@@ -893,7 +894,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="regresar_Datos_Personales_JButton" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace pref="227" max="32767" attributes="0"/>
+                                      <EmptySpace pref="209" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="tipo_Perfil_JComboBox" alignment="0" max="32767" attributes="0"/>
                                           <Component id="tipo_Perfil_JLabel" alignment="0" pref="0" max="32767" attributes="0"/>
@@ -901,9 +902,9 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="62" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="imagen_Perfil_JLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" pref="191" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" pref="173" max="32767" attributes="0"/>
                               <Component id="continuar_Tablero_JButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -929,7 +930,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="imagen_Perfil_JLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="67" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="tipo_Perfil_JLabel" min="-2" pref="46" max="-2" attributes="0"/>
