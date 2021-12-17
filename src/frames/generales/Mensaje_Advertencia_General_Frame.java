@@ -14,7 +14,7 @@ import main.CourseRoom;
  *
  * @author LENOVO
  */
-public class Mensaje_Advertencia_General_Frame extends javax.swing.JFrame implements Componentes_Interface{
+public class Mensaje_Advertencia_General_Frame extends javax.swing.JDialog implements Componentes_Interface{
 
     
     public Mensaje_Advertencia_General_Frame(String titulo, String mensaje) {

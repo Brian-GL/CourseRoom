@@ -220,7 +220,7 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         archivo_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         String informacion_Archivo = CourseRoom.Faker().file().fileName();
-        archivo_JTextPane.setText(CourseRoom.Formato_HTML_Centro(informacion_Archivo));
+        archivo_JTextPane.setText(CourseRoom.Formato_HTML_Centro_Izquierda(informacion_Archivo));
         
         Colorear_Componentes();
     }

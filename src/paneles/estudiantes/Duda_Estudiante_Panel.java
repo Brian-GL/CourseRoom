@@ -54,14 +54,12 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         preguntador_Imagen_JLabel.setIcon(preguntador_Icono);
         preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Concatenar("Duda Realizada Por ", preguntador_Nombre));
         
-        String duda = CourseRoom.Concatenar(_duda, " - Abierta");
-        System.err.println(duda);
-        duda_JLabel.setText(duda);
+        String valor = CourseRoom.Concatenar(_duda, " - Abierta");
+        duda_JLabel.setText(valor);
         
-        String descripcion = descripcion_Duda;
-        descripcion = CourseRoom.Concatenar(descripcion, "<br><br> Duda Realizada Por ",preguntador_Nombre," Con Fecha ",fecha);
+        valor = CourseRoom.Concatenar(descripcion_Duda, "<br><br> Duda Realizada Por ",preguntador_Nombre," Con Fecha ",fecha);
         
-        descripcion_Duda_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(descripcion));
+        descripcion_Duda_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(valor));
         descripcion_Duda_JTextPane.setCaretPosition(0);
         
         primer_Color = _primer_Color;

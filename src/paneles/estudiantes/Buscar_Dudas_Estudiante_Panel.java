@@ -39,6 +39,7 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         contenido_JPanel = new javax.swing.JPanel();
         buscar_JTextField = new javax.swing.JTextField();
         dudas_JButton = new javax.swing.JButton();
+        filtrar_Por_JComboBox = new javax.swing.JComboBox<>();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1080, 630));
@@ -72,6 +73,15 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
             }
         });
 
+        filtrar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+        filtrar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General", "Abiertas", "Cerradas" }));
+        filtrar_Por_JComboBox.setToolTipText("Filt Archivos Compartidos Por");
+        filtrar_Por_JComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                filtrar_Por_JComboBoxItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,17 +92,21 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
                     .addComponent(contenido_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(dudas_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buscar_JTextField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscar_JTextField)))
+                        .addComponent(filtrar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buscar_JTextField)
-                    .addComponent(dudas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(buscar_JTextField)
+                        .addComponent(dudas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(filtrar_Por_JComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(contenido_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -106,7 +120,7 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
     private void dudas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dudas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Pagina_Tareas_Estudiante_Panel.Mostrar_Tareas();
+            Pagina_Dudas_Estudiante_Panel.Mostrar_Dudas();
         }
     }//GEN-LAST:event_dudas_JButtonMouseClicked
 
@@ -120,11 +134,16 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         dudas_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_dudas_JButtonMouseExited
 
+    private void filtrar_Por_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtrar_Por_JComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtrar_Por_JComboBoxItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscar_JTextField;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JScrollPane contenido_JScrollPane;
     private javax.swing.JButton dudas_JButton;
+    private javax.swing.JComboBox<String> filtrar_Por_JComboBox;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -147,6 +166,13 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
         
         dudas_JButton.setBackground(CourseRoom.Primer_Color());
+        
+        filtrar_Por_JComboBox.setBackground(CourseRoom.Tercer_Color());
+        filtrar_Por_JComboBox.setForeground(CourseRoom.Tercer_Color_Fuente());
+        filtrar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
+                "Filtro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                gadugi, CourseRoom.Tercer_Color_Fuente())); // NOI18N
         
     }
     

@@ -214,7 +214,6 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            this.setVisible(false);
             CourseRoom_Frame.Mostrar_Inicio_Sesion();
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
@@ -230,8 +229,7 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private boolean esCorreoElectronico(String value){
-        Pattern patron = Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE);
-        return patron.matcher(value).find();
+        return Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE).matcher(value).find();
     }
     
     public boolean enviarCorreoRecuperacion() {

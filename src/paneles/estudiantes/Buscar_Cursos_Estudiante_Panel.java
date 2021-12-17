@@ -39,6 +39,7 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
         contenido_JPanel = new javax.swing.JPanel();
         buscar_JTextField = new javax.swing.JTextField();
         cursos_JButton = new javax.swing.JButton();
+        filtrar_Por_JComboBox = new javax.swing.JComboBox<>();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1080, 630));
@@ -72,6 +73,15 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
             }
         });
 
+        filtrar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+        filtrar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General", "Actuales", "Nuevos", "Recomendados", "Finalizados" }));
+        filtrar_Por_JComboBox.setToolTipText("Filt Archivos Compartidos Por");
+        filtrar_Por_JComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                filtrar_Por_JComboBoxItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,11 +89,13 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contenido_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                    .addComponent(contenido_JScrollPane)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cursos_JButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscar_JTextField)))
+                        .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(filtrar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -92,7 +104,8 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buscar_JTextField)
-                    .addComponent(cursos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cursos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(filtrar_Por_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(contenido_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -120,11 +133,16 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
         cursos_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_cursos_JButtonMouseExited
 
+    private void filtrar_Por_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtrar_Por_JComboBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtrar_Por_JComboBoxItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscar_JTextField;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JScrollPane contenido_JScrollPane;
     private javax.swing.JButton cursos_JButton;
+    private javax.swing.JComboBox<String> filtrar_Por_JComboBox;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -145,6 +163,13 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
         buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
         buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
         buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        
+        filtrar_Por_JComboBox.setBackground(CourseRoom.Tercer_Color());
+        filtrar_Por_JComboBox.setForeground(CourseRoom.Tercer_Color_Fuente());
+        filtrar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
+                "Filtro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                gadugi, CourseRoom.Tercer_Color_Fuente())); // NOI18N
         
         cursos_JButton.setBackground(CourseRoom.Primer_Color());
         

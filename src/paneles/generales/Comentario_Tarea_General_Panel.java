@@ -12,8 +12,6 @@ import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -46,6 +44,7 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
             Image obtener_imagen = ImageIO.read(url_Imagen);
             ImageIcon icono_Comentario = new ImageIcon(obtener_imagen);
             imagen_Emisor_JLabel.setIcon(icono_Comentario);
+            obtener_imagen.flush();
         } catch (IOException ex) {
         }
         

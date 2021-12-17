@@ -6,7 +6,6 @@
 package frames.generales;
 
 import interfaces.Componentes_Interface;
-import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import main.CourseRoom;
@@ -15,7 +14,7 @@ import main.CourseRoom;
  *
  * @author LENOVO
  */
-public class Mensaje_Error_General_Frame extends javax.swing.JFrame implements Componentes_Interface{
+public class Mensaje_Error_General_Frame extends javax.swing.JDialog implements Componentes_Interface{
 
     
     public Mensaje_Error_General_Frame(String titulo, String mensaje) {

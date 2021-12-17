@@ -39,7 +39,6 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel imple
         
         String informacion_Archivo = archivo_Subido.getName();
         
-        
         archivo_JTextPane.setText(CourseRoom.Formato_HTML_Centro(informacion_Archivo));
         archivo_JTextPane.setToolTipText("Archivo Subido");
         remover_JButton.setForeground(primer_Color_Fuente);

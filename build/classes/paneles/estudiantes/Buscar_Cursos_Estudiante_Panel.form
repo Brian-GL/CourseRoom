@@ -23,16 +23,18 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="contenido_JScrollPane" pref="1068" max="32767" attributes="0"/>
+                  <Component id="contenido_JScrollPane" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="cursos_JButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buscar_JTextField" max="32767" attributes="0"/>
+                      <Component id="buscar_JTextField" pref="843" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="filtrar_Por_JComboBox" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,6 +45,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="buscar_JTextField" max="32767" attributes="0"/>
                   <Component id="cursos_JButton" max="32767" attributes="0"/>
+                  <Component id="filtrar_Por_JComboBox" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="contenido_JScrollPane" min="-2" pref="558" max="-2" attributes="0"/>
@@ -101,6 +104,29 @@
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cursos_JButtonMouseEntered"/>
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cursos_JButtonMouseExited"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="filtrar_Por_JComboBox">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Gadugi" size="16" style="1"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="General"/>
+            <StringItem index="1" value="Actuales"/>
+            <StringItem index="2" value="Nuevos"/>
+            <StringItem index="3" value="Recomendados"/>
+            <StringItem index="4" value="Finalizados"/>
+          </StringArray>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Filt Archivos Compartidos Por"/>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="filtrar_Por_JComboBoxItemStateChanged"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

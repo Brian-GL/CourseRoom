@@ -329,6 +329,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
             imagen_JLabel.setIcon(icono_Imagen);
+            obtener_Imagen.flush();
             
         } catch (MalformedURLException ex) {
             

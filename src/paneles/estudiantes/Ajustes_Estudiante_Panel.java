@@ -294,9 +294,7 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
             if (resultado == JFileChooser.APPROVE_OPTION) {
                 File carpeta = escogedor_Ruta.getSelectedFile();
                 if(carpeta != null){
-                    
                     ruta_Descarga_JTextField.setText(carpeta.getAbsolutePath());
-                
                 }
                 
             }

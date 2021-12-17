@@ -1191,7 +1191,6 @@ public class Editar_Perfil_Estudiante_Panel extends javax.swing.JPanel implement
         descripcion_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         fecha_Nacimiento_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         genero_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        //imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         informacion_Contrasena_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         informacion_Correo_Electronico_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         informacion_Nombre_Usuario_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());

@@ -340,8 +340,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             componente.setForeground(CourseRoom.Primer_Color_Fuente());
         }
        
-        nombres_JLabel.setText(CourseRoom.Faker().name().firstName() + " " + CourseRoom.Faker().name().firstName());
-        apellidos_JLabel.setText(CourseRoom.Faker().name().lastName() + " " + CourseRoom.Faker().name().lastName());
+        nombres_JLabel.setText(CourseRoom.Concatenar(CourseRoom.Faker().name().firstName() ," " ,CourseRoom.Faker().name().firstName()));
+        apellidos_JLabel.setText(CourseRoom.Concatenar(CourseRoom.Faker().name().lastName(), " ", CourseRoom.Faker().name().lastName()));
         correo_JLabel.setText(CourseRoom.Faker().internet().emailAddress());
         localidad_JLabel.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().address().fullAddress()));
         nombre_Usuario_jLabel.setText(CourseRoom.Faker().name().username());

@@ -707,9 +707,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         add(visualizador_JTabbedPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
     private void cargar_Imagen_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Imagen_Perfil_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -941,7 +938,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     @Override
     public void Iniciar_Componentes() {
           
-       
         ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
         logo_Inicio_JLabel.setIcon(icono);
         logo_Autenticacion_JLabel.setIcon(icono);
@@ -1034,30 +1030,30 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     }
     
     public void checar_Usuario()
-{
-    String sql = "select nom_usuario from usuarios where nom_usuario =?";
-    try
     {
-        pst = conn.prepareStatement(sql);
-        pst.setString(1, txtUsuario.getText().trim());
-        rs = pst.executeQuery();
-        if (rs.next())
+        String sql = "select nom_usuario from usuarios where nom_usuario =?";
+        try
         {
-            JOptionPane.showMessageDialog(null, "El Nombre De Usuario Ya Existe!!!");
-            txtUsuario.setText("");
-            txtUsuario.requestFocus();
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, txtUsuario.getText().trim());
+            rs = pst.executeQuery();
+            if (rs.next())
+            {
+                JOptionPane.showMessageDialog(null, "El Nombre De Usuario Ya Existe!!!");
+                txtUsuario.setText("");
+                txtUsuario.requestFocus();
+            }
+            else
+            {
+                validar_Correo(txtCorreo.getText().trim());
+                //checkCorreo();
+            }
         }
-        else
+        catch(Exception e)
         {
-            validar_Correo(txtCorreo.getText().trim());
-            //checkCorreo();
+            JOptionPane.showMessageDialog(null, e);
         }
     }
-    catch(Exception e)
-    {
-        JOptionPane.showMessageDialog(null, e);
-    }
-}
 
 public boolean validar_Correo(String correo)
 {

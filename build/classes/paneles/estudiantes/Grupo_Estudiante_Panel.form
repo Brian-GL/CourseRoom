@@ -1151,12 +1151,12 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
-                    <StringItem index="0" value="Nada"/>
+                    <StringItem index="0" value="Default"/>
                     <StringItem index="1" value="Tipo"/>
                     <StringItem index="2" value="Miembro"/>
                   </StringArray>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Ordenar Archivos Compartidos Por"/>
+                <Property name="toolTipText" type="java.lang.String" value="Filt Archivos Compartidos Por"/>
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="filtrar_Archivos_Compatidos_JComboBoxItemStateChanged"/>

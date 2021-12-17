@@ -8,7 +8,6 @@ package paneles.estudiantes;
 import datos.colecciones.Lista;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
-import java.awt.Component;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -144,7 +143,7 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
 
         for (int i = 1; i < dias_del_mes; i++) {
             dia_Calendario_Panel = new Caja_Fecha_Estudiante_Panel(i);
-            if (LocalDateTime.now().getDayOfMonth() == i) {
+            if (fecha_Local.getDayOfMonth() == i) {
                 dia_Calendario_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente());
             } else {
                 dia_Calendario_Panel.Establecer_Colores(CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente());

@@ -42,7 +42,7 @@ public class Curso_Informacion_Estudiante_Panel extends javax.swing.JPanel imple
         imagen_Profesor_JLabel.setIcon(icono);
        
         segundo_Color = _segundo_Color;
-        primer_Color = primer_Color;
+        primer_Color = _primer_Color;
         
         titulo_JTextPane.setBackground(_tercer_Color);
         titulo_JTextPane.setForeground(_tercer_Color_Fuente);
@@ -58,13 +58,13 @@ public class Curso_Informacion_Estudiante_Panel extends javax.swing.JPanel imple
                 javax.swing.BorderFactory.createEmptyBorder(),
                 "Sobre El Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi,_primer_Color_Fuente ));
+                gadugi,_tercer_Color_Fuente ));
         
         informacion_Profesor_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(
                 javax.swing.BorderFactory.createEmptyBorder(),
                 "Sobre El Profesor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, _primer_Color_Fuente));
+                gadugi, _tercer_Color_Fuente));
 
         informacion_Curso_JPanel.setBackground(_tercer_Color);
         regresar_JButton.setBackground(_tercer_Color);
@@ -305,7 +305,6 @@ public class Curso_Informacion_Estudiante_Panel extends javax.swing.JPanel imple
         descripcion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        //titulo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         titulo_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         descripcion_Curso_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(20)));
@@ -318,7 +317,6 @@ public class Curso_Informacion_Estudiante_Panel extends javax.swing.JPanel imple
         nombre_Profesor_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
         descripcion_Profesor_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(20)));
-        
         
     }
 

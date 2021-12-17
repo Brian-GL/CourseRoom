@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paneles.generales;
+package paneles.estudiantes;
 
 import main.CourseRoom;
 import java.awt.Color;
@@ -15,27 +15,22 @@ import javax.swing.ImageIcon;
 import datos.colecciones.Lista_Pares;
 import datos.estructuras.Par;
 import java.awt.image.PixelGrabber;
-import javax.swing.Icon;
 import interfaces.Color_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import javax.swing.SwingUtilities;
-import paneles.estudiantes.Chats_Estudiante_Panel;
-import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
  *
  * @author LENOVO
  */
-public class Miembro_General_Panel extends javax.swing.JPanel implements Limpieza_Interface,Color_Interface,Componentes_Interface{
-    
-    private String nombre_Completo;
-    private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
+public class Miembro_Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface,Color_Interface,Componentes_Interface{
+    Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
 
     /**
      * Creates new form MemberPanel
      */
-    public Miembro_General_Panel() {
+    public Miembro_Curso_Estudiante_Panel() {
         initComponents();
         
        Iniciar_Componentes();
@@ -58,16 +53,16 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
         nombre_Usuario_JLabel = new javax.swing.JLabel();
         chat_JButton = new javax.swing.JButton();
 
-        setMaximumSize(new java.awt.Dimension(32767, 239));
+        setMaximumSize(new java.awt.Dimension(32767, 103));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(312, 239));
+        setPreferredSize(new java.awt.Dimension(1080, 103));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         imagen_jLabel.setToolTipText("Imagen Del Miembro");
-        imagen_jLabel.setMaximumSize(new java.awt.Dimension(130, 130));
-        imagen_jLabel.setMinimumSize(new java.awt.Dimension(130, 130));
-        imagen_jLabel.setPreferredSize(new java.awt.Dimension(130, 130));
+        imagen_jLabel.setMaximumSize(new java.awt.Dimension(75, 75));
+        imagen_jLabel.setMinimumSize(new java.awt.Dimension(75, 75));
+        imagen_jLabel.setPreferredSize(new java.awt.Dimension(75, 75));
 
         nombres_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         nombres_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -103,33 +98,34 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
         contenido_JPanel.setLayout(contenido_JPanelLayout);
         contenido_JPanelLayout.setHorizontalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(imagen_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(imagen_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(apellidos_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombres_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                    .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
+                    .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagen_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombres_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(apellidos_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombre_Usuario_JLabel)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(imagen_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                                .addComponent(nombres_JLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(apellidos_JLabel))
+                            .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombre_Usuario_JLabel)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -163,22 +159,15 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
 
     private void chat_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chat_JButtonMouseEntered
         // TODO add your handling code here:
-        chat_JButton.setBackground(Tercer_Color());
+        chat_JButton.setBackground(tercer_Color);
     }//GEN-LAST:event_chat_JButtonMouseEntered
 
     private void chat_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chat_JButtonMouseExited
         // TODO add your handling code here:
-        chat_JButton.setBackground(Primer_Color());
+        chat_JButton.setBackground(primer_Color);
     }//GEN-LAST:event_chat_JButtonMouseExited
 
-    public String Nombre_Completo(){
-        return this.nombre_Completo;
-    }
-    
-    public Icon Icono_Imagen(){
-        return imagen_jLabel.getIcon();
-    }
-    
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidos_JLabel;
     private javax.swing.JButton chat_JButton;
@@ -188,54 +177,13 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     private javax.swing.JLabel nombres_JLabel;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * @return the primer_Color
-     */
-    public Color Primer_Color() {
-        return primer_Color;
-    }
-
-    /**
-     * @return the primer_Color_Fuente
-     */
-    public Color Primer_Color_Fuente() {
-        return primer_Color_Fuente;
-    }
-
-    /**
-     * @return the segundo_Color
-     */
-    public Color Segundo_Color() {
-        return segundo_Color;
-    }
-
-    /**
-     * @return the segundo_Color_Fuente
-     */
-    public Color Segundo_Color_Fuente() {
-        return segundo_Color_Fuente;
-    }
-    
-    /**
-     * @return the tercer_Color
-     */
-    public Color Tercer_Color() {
-        return tercer_Color;
-    }
-
-    /**
-     * @return the tercer_Color_Fuente
-     */
-    public Color Tercer_Color_Fuente() {
-        return tercer_Color_Fuente;
-    }
-
+   
     @Override
     public void Iniciar_Componentes() {
          try {
              
-            System.out.println("Member -> Getting Image From https://i.pravatar.cc/140");
-            URL url_Imagen = new URL("https://i.pravatar.cc/140");
+            System.out.println("Member -> Getting Image From https://i.pravatar.cc/75");
+            URL url_Imagen = new URL("https://i.pravatar.cc/75");
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             
             Establecer_Colores(obtener_Imagen);
@@ -244,14 +192,14 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
             imagen_jLabel.setIcon(icono_Imagen);
             obtener_Imagen.flush();
             
-            String nombre = CourseRoom.Faker().name().firstName() + " " +CourseRoom.Faker().name().firstName();
-            String apellido = CourseRoom.Faker().name().lastName() + " " + CourseRoom.Faker().name().lastName();
-            String nombre_Usuario = CourseRoom.Faker().name().username();
+            String valor = CourseRoom.Concatenar(CourseRoom.Faker().name().firstName(), " ", CourseRoom.Faker().name().firstName());
+            nombres_JLabel.setText(valor);
             
-            nombre_Completo = CourseRoom.Concatenar(nombre," ",apellido);
-            apellidos_JLabel.setText(apellido);
-            nombres_JLabel.setText(nombre);
-            nombre_Usuario_JLabel.setText(nombre_Usuario);
+            valor = CourseRoom.Concatenar(CourseRoom.Faker().name().lastName(), " ", CourseRoom.Faker().name().lastName());
+            apellidos_JLabel.setText(valor);
+            
+            valor  = CourseRoom.Faker().name().username();
+            nombre_Usuario_JLabel.setText(valor);
             
             Colorear_Componentes();
             
@@ -263,11 +211,11 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
 
     @Override
     public void Colorear_Componentes() {
-        apellidos_JLabel.setForeground(Primer_Color_Fuente());
-        nombres_JLabel.setForeground(Primer_Color_Fuente());
-        nombre_Usuario_JLabel.setForeground(Primer_Color_Fuente());
-        contenido_JPanel.setBackground(Primer_Color());
-        chat_JButton.setBackground(Primer_Color());
+        apellidos_JLabel.setForeground(primer_Color_Fuente);
+        nombres_JLabel.setForeground(primer_Color_Fuente);
+        nombre_Usuario_JLabel.setForeground(primer_Color_Fuente);
+        contenido_JPanel.setBackground(primer_Color);
+        chat_JButton.setBackground(primer_Color);
 
     }
     
@@ -364,6 +312,5 @@ public class Miembro_General_Panel extends javax.swing.JPanel implements Limpiez
     public void Limpiar() {
         primer_Color = primer_Color_Fuente = segundo_Color = segundo_Color_Fuente =
         tercer_Color = tercer_Color_Fuente = null;
-        nombre_Completo = null;
     }
 }

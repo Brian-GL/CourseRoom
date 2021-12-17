@@ -33,7 +33,7 @@ public class Video_General_Panel extends javax.swing.JPanel implements Reproduct
    
     
     public Video_General_Panel(
-            String ruta
+        String ruta
     ){
         initComponents();
         

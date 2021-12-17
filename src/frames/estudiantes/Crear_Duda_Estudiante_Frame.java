@@ -20,7 +20,7 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  *
  * @author LENOVO
  */
-public class Crear_Duda_Estudiante_Frame extends javax.swing.JFrame implements Componentes_Interface{
+public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements Componentes_Interface{
 
     /**
      * Creates new form Crear_Duda_Estudiante_Frame
@@ -60,7 +60,6 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JFrame implements C
         setMinimumSize(new java.awt.Dimension(800, 227));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 227));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 

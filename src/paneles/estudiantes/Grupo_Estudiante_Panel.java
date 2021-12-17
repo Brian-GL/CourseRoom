@@ -21,7 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 import paneles.generales.Mensaje_Texto_Izquierdo_General_Panel;
-import paneles.generales.Miembro_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Font;
@@ -769,8 +768,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         filtrar_Archivos_Compatidos_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-        filtrar_Archivos_Compatidos_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nada", "Tipo", "Miembro" }));
-        filtrar_Archivos_Compatidos_JComboBox.setToolTipText("Ordenar Archivos Compartidos Por");
+        filtrar_Archivos_Compatidos_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Default", "Tipo", "Miembro" }));
+        filtrar_Archivos_Compatidos_JComboBox.setToolTipText("Filt Archivos Compartidos Por");
         filtrar_Archivos_Compatidos_JComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 filtrar_Archivos_Compatidos_JComboBoxItemStateChanged(evt);
@@ -876,8 +875,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            Miembro_General_Panel miembro_General_Panel = 
-                    (Miembro_General_Panel)miembros_JPanel.getComponent(
+            Miembro_Grupo_Estudiante_Panel miembro_General_Panel = 
+                    (Miembro_Grupo_Estudiante_Panel)miembros_JPanel.getComponent(
                             miembro_Cargo_Tarea_Pendiente_JComboBox.getSelectedIndex());
             
             String tarea_Pendiente_nombre = nombre_Tarea_Pendiente_JTextField.getText();
@@ -1397,9 +1396,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         descripcion_Tarea_Pendiente_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Tarea_Pendiente_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Miembro_General_Panel miembro_Panel;
+        Miembro_Grupo_Estudiante_Panel miembro_Panel;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
-            miembro_Panel = new Miembro_General_Panel();
+            miembro_Panel = new Miembro_Grupo_Estudiante_Panel();
             miembro_Cargo_Tarea_Pendiente_JComboBox.addItem(miembro_Panel.Nombre_Completo());
             eliminar_Miembro_JComboBox.addItem(miembro_Panel.Nombre_Completo());
             miembros_JPanel.add(miembro_Panel);
@@ -1539,11 +1538,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         fecha_Finalizacion_Tarea_Pendiente_JPanel.setBackground(tercer_Color);
         fecha_Finalizacion_Tarea_Pendiente_JPanel.setForeground(tercer_Color_Fuente);
         
-//        informacion_Grupo_JPanel.setBackground(primer_Color);
         chat_Grupal_JPanel.setBackground(primer_Color);
-//        crear_Tareas_Pendientes_JPanel.setBackground(primer_Color);
-//        configuraciones_JPanel.setBackground(primer_Color);
-//        editar_Imagen_Grupo_JLabel.setForeground(primer_Color_Fuente);
         
         escogedor_Fecha_Hora.setForeground(tercer_Color_Fuente);
         escogedor_Fecha_Hora.setBackground(tercer_Color);

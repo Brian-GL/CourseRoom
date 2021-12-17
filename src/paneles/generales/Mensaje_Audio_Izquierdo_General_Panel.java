@@ -621,28 +621,35 @@ public class Mensaje_Audio_Izquierdo_General_Panel extends javax.swing.JPanel im
                 AudioFile archivo_Audio = AudioFileIO.read(leer_Archivo);
                 
                 Tag tag = archivo_Audio.getTag();
-                String titulo = tag.getFirst(FieldKey.TITLE);
-                String artista = tag.getFirst(FieldKey.ARTIST);
-                String album = tag.getFirst(FieldKey.ALBUM);
-                
-                if(titulo == null){
-                    titulo = leer_Archivo.getName();
+                String valor = tag.getFirst(FieldKey.TITLE);
+                if (valor == null) {
+                    valor = leer_Archivo.getName();
                 }
-                
-                if (titulo.isEmpty() || titulo.isBlank()){
-                    titulo = leer_Archivo.getName();
+                if (valor.isEmpty() || valor.isBlank()) {
+                    valor = leer_Archivo.getName();
                 }
-                
-                if(artista == null){
-                    artista = "";
+                titulo_JLabel.setToolTipText(CourseRoom.Concatenar("Titulo: ", valor));
+                titulo_JLabel.setText(valor);
+
+                valor = tag.getFirst(FieldKey.ARTIST);
+                if (valor == null) {
+                    valor = "Desconocid@";
                 }
-               
-                if (album == null){
-                    album = "";
+                if (valor.isEmpty() || valor.isBlank()) {
+                    valor = "Desconocid@";
                 }
-                titulo_JLabel.setText(titulo);
-                artista_JLabel.setText(artista);
-                album_JLabel.setText(album);
+                artista_JLabel.setToolTipText(CourseRoom.Concatenar("Artista: ", valor));
+                artista_JLabel.setText(valor);
+
+                valor = tag.getFirst(FieldKey.ALBUM);
+                if (valor == null) {
+                    valor = "Desconocid@";
+                }
+                if (valor.isEmpty() || valor.isBlank()) {
+                    valor = "Desconocid@";
+                }
+                album_JLabel.setToolTipText(CourseRoom.Concatenar("Album: ", valor));
+                album_JLabel.setText(valor);
               
                 Artwork arte = tag.getFirstArtwork();
                 if(arte != null){

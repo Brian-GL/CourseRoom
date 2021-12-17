@@ -7,12 +7,8 @@ package paneles.generales;
 
 import interfaces.Componentes_Interface;
 import java.time.LocalDateTime;
-import java.util.Iterator;
 import main.CourseRoom;
 import oshi.SystemInfo;
-import oshi.hardware.NetworkIF;
-import oshi.software.os.InternetProtocolStats.IPConnection;
-import oshi.software.os.OSSession;
 
 /**
  *
