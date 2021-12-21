@@ -28,7 +28,7 @@
                   <Component id="contenido_JScrollPane" pref="1068" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="dudas_JButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="buscar_JTextField" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="filtrar_Por_JComboBox" min="-2" max="-2" attributes="0"/>
@@ -84,6 +84,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="18" style="1"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Buscar dudas. Presiona ENTER para realizar la b&#xfa;squeda&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -97,6 +98,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/recursos/iconos/shrug.png"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Regresar a la p&#xe1;gina de dudas&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -119,7 +121,7 @@
             <StringItem index="2" value="Cerradas"/>
           </StringArray>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Filt Archivos Compartidos Por"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Filtrar b&#xfa;squeda de dudas por&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="filtrar_Por_JComboBoxItemStateChanged"/>

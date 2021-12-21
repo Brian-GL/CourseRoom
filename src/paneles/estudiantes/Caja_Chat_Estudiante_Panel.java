@@ -80,7 +80,7 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
         nombre_JLabel.setForeground(java.awt.Color.white);
         nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombre_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat_1.png"))); // NOI18N
-        nombre_JLabel.setToolTipText("Nombre Del Chat");
+        nombre_JLabel.setToolTipText("<html>\n<h3>Nombre del chat</h3>\n</html>");
         nombre_JLabel.setMaximumSize(new java.awt.Dimension(488, 32));
         nombre_JLabel.setMinimumSize(new java.awt.Dimension(488, 32));
         nombre_JLabel.setPreferredSize(new java.awt.Dimension(488, 32));
@@ -94,7 +94,7 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
         ultimo_Mensaje_JLabel.setForeground(java.awt.Color.white);
         ultimo_Mensaje_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ultimo_Mensaje_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/messaging.png"))); // NOI18N
-        ultimo_Mensaje_JLabel.setToolTipText("Último Mensaje Recibido");
+        ultimo_Mensaje_JLabel.setToolTipText("<html>\n<h3>Último mensaje recibido</h3>\n</html>");
         ultimo_Mensaje_JLabel.setMaximumSize(new java.awt.Dimension(417, 22));
         ultimo_Mensaje_JLabel.setMinimumSize(new java.awt.Dimension(417, 22));
         ultimo_Mensaje_JLabel.setPreferredSize(new java.awt.Dimension(417, 22));
@@ -102,13 +102,13 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
         numero_No_Leidos_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         numero_No_Leidos_JLabel.setForeground(java.awt.Color.white);
         numero_No_Leidos_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        numero_No_Leidos_JLabel.setToolTipText("Número De Mensajes No Leídos");
+        numero_No_Leidos_JLabel.setToolTipText("<html>\n<h3>Número de mensajes<br> no leídos</h3>\n</html>");
 
         fecha_Hora_Mensaje_JLabel.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
         fecha_Hora_Mensaje_JLabel.setForeground(java.awt.Color.white);
         fecha_Hora_Mensaje_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fecha_Hora_Mensaje_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
-        fecha_Hora_Mensaje_JLabel.setToolTipText("Fecha & Hora Del Último Mensaje");
+        fecha_Hora_Mensaje_JLabel.setToolTipText("<html>\n<h3>Fecha y hora del último mensaje</h3>\n</html>");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
@@ -193,11 +193,11 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
 
             System.out.println("Chat ID: " + id + " -> Getting Image From https://i.pravatar.cc/105");
             URL url_Imagen = new URL("https://i.pravatar.cc/105");
-            Image obtener_imagen = ImageIO.read(url_Imagen);
-            ImageIcon icono_Chat = new ImageIcon(obtener_imagen);
+            Image obtener_Imagen = ImageIO.read(url_Imagen);
+            ImageIcon icono_Chat = new ImageIcon(obtener_Imagen);
             imagen_JLabel.setIcon(icono_Chat);
             
-            Establecer_Colores(obtener_imagen);
+            Establecer_Colores(obtener_Imagen);
             Colorear_Componentes();
             
             nombre_JLabel.setText(CourseRoom.Faker().rickAndMorty().character());
@@ -205,13 +205,13 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
             numero_No_Leidos_JLabel.setText(CourseRoom.Faker().number().digits(1));
             fecha_Hora_Mensaje_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());
             
-            obtener_imagen = obtener_imagen.getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+            obtener_Imagen = obtener_Imagen.getScaledInstance(48, 48, Image.SCALE_SMOOTH);
             
-            chat_Estudiante_Panel = new Chat_Estudiante_Panel(nombre_JLabel.getText(), obtener_imagen,
+            chat_Estudiante_Panel = new Chat_Estudiante_Panel(nombre_JLabel.getText(), obtener_Imagen,
                     primer_Color, primer_Color_Fuente, segundo_Color,segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
             
             Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, this.id);
-            obtener_imagen.flush();
+            obtener_Imagen.flush();
 
         } catch (MalformedURLException ex) {
             

@@ -67,10 +67,10 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         setPreferredSize(new java.awt.Dimension(1080, 339));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        contenido_JPanel.setPreferredSize(new java.awt.Dimension(513, 327));
+        contenido_JPanel.setPreferredSize(new java.awt.Dimension(1068, 327));
 
         imagen_Profesor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_Profesor_JLabel.setToolTipText("Perfil Del Profesor");
+        imagen_Profesor_JLabel.setToolTipText("<html>\n<h3>Imagen del profesor</h3>\n</html>");
         imagen_Profesor_JLabel.setMaximumSize(new java.awt.Dimension(64, 64));
         imagen_Profesor_JLabel.setMinimumSize(new java.awt.Dimension(64, 64));
         imagen_Profesor_JLabel.setPreferredSize(new java.awt.Dimension(64, 64));
@@ -85,7 +85,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         calificacion_JTextPane.setContentType("text/html"); // NOI18N
         calificacion_JTextPane.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
         calificacion_JTextPane.setText("");
-        calificacion_JTextPane.setToolTipText("Calificación:");
+        calificacion_JTextPane.setToolTipText("<html>\n<h3>Calificación (Rating) del curso</h3>\n</html>");
         calificacion_JTextPane.setFocusable(false);
         calificacion_JTextPane.setOpaque(false);
         calificacion_JTextPane.setPreferredSize(new java.awt.Dimension(71, 28));
@@ -95,14 +95,15 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
 
         nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         nombre_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/teacher.png"))); // NOI18N
-        nombre_JLabel.setToolTipText("Nombre Del Curso");
+        nombre_JLabel.setToolTipText("<html>\n<h3>Nombre del curso</h3>\n</html>");
 
         nombre_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
         nombre_Profesor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/profile.png"))); // NOI18N
-        nombre_Profesor_JLabel.setToolTipText("Nombre Del Maestro");
+        nombre_Profesor_JLabel.setToolTipText("<html>\n<h3>Profesor</h3>\n</html>");
 
         resenas_JButton.setFont(new java.awt.Font("Gadugi", 3, 15)); // NOI18N
         resenas_JButton.setText("Reseñas");
+        resenas_JButton.setToolTipText("<html>\n<h3>Mostrar reseñas del curso hechas por estudiantes<br>\nsobre este curso</h3>\n</html>");
         resenas_JButton.setOpaque(true);
         resenas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -117,7 +118,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         });
 
         imagen_Curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_Curso_JLabel.setToolTipText("Imagen De Perfil Del Curso");
+        imagen_Curso_JLabel.setToolTipText("<html>\n<h3>Imagen del curso</h3>\n</html>");
         imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(143, 143));
         imagen_Curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,6 +135,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
+        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción del curso</h3>\n</html>");
         descripcion_JTextPane.setOpaque(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
@@ -185,7 +187,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -285,8 +287,11 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
                             nombre_Profesor_JLabel.getText(), curso_Imagen,profesor_Imagen, primer_Color, primer_Color_Fuente, 
                             segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
             Tablero_Estudiante_Panel.Agregar_Vista(pagina_Curso_Estudiante_Panel, this.id);
+            
             curso_Imagen.flush();
+            curso_Imagen.getGraphics().dispose();
             profesor_Imagen.flush();
+            profesor_Imagen.getGraphics().dispose();
             redimension.flush();
         } catch (MalformedURLException ex) {
             

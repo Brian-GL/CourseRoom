@@ -82,6 +82,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Gadugi" size="18" style="1"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Buscar chats. Presiona ENTER para realizar la b&#xfa;squeda&lt;/h3&gt; &lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -95,6 +96,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/recursos/iconos/webinar.png"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Regresar a la p&#xe1;gina de cursos&lt;/h3&gt; &lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -119,7 +121,7 @@
             <StringItem index="4" value="Finalizados"/>
           </StringArray>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Filt Archivos Compartidos Por"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Filtrar b&#xfa;squeda de cursos por&lt;/h3&gt; &lt;/html&gt;"/>
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="filtrar_Por_JComboBoxItemStateChanged"/>

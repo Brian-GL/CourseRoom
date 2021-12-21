@@ -52,6 +52,7 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         contenido_JScrollPane.setViewportView(contenido_JPanel);
 
         buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        buscar_JTextField.setToolTipText("<html>\n<h3>Buscar dudas. Presiona ENTER para realizar la búsqueda</h3>\n</html>");
         buscar_JTextField.setBorder(null);
         buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -60,6 +61,7 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         });
 
         dudas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/shrug.png"))); // NOI18N
+        dudas_JButton.setToolTipText("<html>\n<h3>Regresar a la página de dudas</h3>\n</html>");
         dudas_JButton.setBorder(null);
         dudas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -75,7 +77,7 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
 
         filtrar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         filtrar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General", "Abiertas", "Cerradas" }));
-        filtrar_Por_JComboBox.setToolTipText("Filt Archivos Compartidos Por");
+        filtrar_Por_JComboBox.setToolTipText("<html>\n<h3>Filtrar búsqueda de dudas por</h3>\n</html>");
         filtrar_Por_JComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 filtrar_Por_JComboBoxItemStateChanged(evt);
@@ -92,7 +94,7 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
                     .addComponent(contenido_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(dudas_JButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buscar_JTextField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(filtrar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))

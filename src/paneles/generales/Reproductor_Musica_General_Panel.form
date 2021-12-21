@@ -50,7 +50,7 @@
     <Component class="javax.swing.JLabel" name="imagen_Arte_JLabel">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Car&#xe1;tula&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
             <BevelBorder/>
@@ -181,7 +181,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/carpeta.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Abrir Carpeta De M&#xfa;sica"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Abrir carpeta&lt;/h3&gt; &lt;/html&gt; "/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="abrir_Carpeta_JLabelMouseClicked"/>
@@ -193,7 +193,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/folder.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Abrir Archivo De M&#xfa;sica"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Abrir archivo(s)&lt;/h3&gt; &lt;/html&gt; "/>
                   </Properties>
                   <AccessibilityProperties>
                     <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="jLabelOpenFile"/>
@@ -279,7 +279,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/stop.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Stop Media"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Parar&lt;/h3&gt;&#xa;&lt;/html&gt;&#xa;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -292,7 +292,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/previous.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Previous Media"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Anterior&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -305,7 +305,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/play-button.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Play/Pause Media"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Reproducir/Pausar&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -321,7 +321,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/next-button.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Next Media"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Siguiente&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -400,7 +400,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/snail.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Slow Rate"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Bajar velocidad&lt;/h3&gt; &lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -442,7 +442,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/rabbit.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Fast Rate"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Subir velocidad&lt;/h3&gt; &lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -454,7 +454,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/volume-down.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Volume Down"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Bajar volumen&lt;/h3&gt; &lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -494,7 +494,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/volume-up.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Volume Up"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Subir volumen&lt;/h3&gt; &lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -987,7 +987,7 @@
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Selet Preset"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Seleccionar preset&lt;/h3&gt; &lt;/html&gt;"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[250, 32]"/>
                     </Property>

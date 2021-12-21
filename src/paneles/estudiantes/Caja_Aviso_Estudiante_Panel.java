@@ -73,7 +73,7 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         nombre_JLabel.setForeground(java.awt.Color.white);
         nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombre_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/notification.png"))); // NOI18N
-        nombre_JLabel.setToolTipText("Provenencia Del Aviso");
+        nombre_JLabel.setToolTipText("<html>\n<h3>Nombre del aviso</h3>\n</html>");
         nombre_JLabel.setMaximumSize(new java.awt.Dimension(488, 32));
         nombre_JLabel.setMinimumSize(new java.awt.Dimension(488, 32));
         nombre_JLabel.setPreferredSize(new java.awt.Dimension(488, 32));
@@ -82,7 +82,7 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         descripcion_JLabel.setForeground(java.awt.Color.white);
         descripcion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         descripcion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/announcement.png"))); // NOI18N
-        descripcion_JLabel.setToolTipText("Descripción Corta Del Aviso");
+        descripcion_JLabel.setToolTipText("<html>\n<h3>Descripción corta del aviso</h3>\n</html>");
         descripcion_JLabel.setMaximumSize(new java.awt.Dimension(417, 22));
         descripcion_JLabel.setMinimumSize(new java.awt.Dimension(417, 22));
         descripcion_JLabel.setPreferredSize(new java.awt.Dimension(417, 22));
@@ -91,13 +91,13 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         fecha_Hora_JLabel.setForeground(java.awt.Color.white);
         fecha_Hora_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fecha_Hora_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/time-limit.png"))); // NOI18N
-        fecha_Hora_JLabel.setToolTipText("Fecha & Hora Del Aviso");
+        fecha_Hora_JLabel.setToolTipText("<html>\n<h3>Fecha y hora del aviso</h3>\n</html>");
 
         estatus_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         estatus_JLabel.setForeground(java.awt.Color.white);
         estatus_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         estatus_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/read.png"))); // NOI18N
-        estatus_JLabel.setToolTipText("Estado Del Aviso");
+        estatus_JLabel.setToolTipText("<html>\n<h3>Estatus del aviso</h3>\n</html>");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
@@ -173,11 +173,12 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
             nombre_JLabel.setText(CourseRoom.Faker().university().name());
             estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Leído" : "No Leído");
             
-            Image obtener_imagen = ImageIO.read(url_imagen);
-            ImageIcon icono_imagen = new ImageIcon(obtener_imagen);
+            Image obtener_Imagen = ImageIO.read(url_imagen);
+            ImageIcon icono_imagen = new ImageIcon(obtener_Imagen);
             imagen_JLabel.setIcon(icono_imagen);
-            Establecer_Colores(obtener_imagen);
-            obtener_imagen.flush();
+            Establecer_Colores(obtener_Imagen);
+            obtener_Imagen.flush();
+            obtener_Imagen.getGraphics().dispose();
             
             Colorear_Componentes();
             

@@ -44,7 +44,7 @@ public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements
                         _primer_Color,_primer_Color_Fuente,_segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
        
        
-       curso_Tablero_Estudiante_Panel = new Curso_Tablero_Estudiante_Panel(_segundo_Color, _segundo_Color_Fuente);
+       curso_Tablero_Estudiante_Panel = new Curso_Tablero_Estudiante_Panel(_segundo_Color, _tercer_Color, _tercer_Color_Fuente);
        curso_Miembros_Estudiante_Panel = new Curso_Miembros_Estudiante_Panel(_tercer_Color, _tercer_Color_Fuente);
         
        Iniciar_Componentes();

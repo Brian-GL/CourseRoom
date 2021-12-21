@@ -49,14 +49,17 @@ public class Sesion_Activa_General_Panel extends javax.swing.JPanel implements C
 
         dispositivo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         dispositivo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dispositivo_JLabel.setToolTipText("<html>\n<h3>\nDispositivo\n</h3>\n<ul>\n<li>Sistema operativo</li>\n<li>Nombre de usuario de la máquina</li>\n</ul>\n</html>");
         dispositivo_JLabel.setPreferredSize(new java.awt.Dimension(306, 22));
 
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fecha_JLabel.setToolTipText("<html>\n<h3>Última conexión de la sesión</h3>\n</html>");
         fecha_JLabel.setPreferredSize(new java.awt.Dimension(306, 18));
 
         uuid_JLabel.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
         uuid_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        uuid_JLabel.setToolTipText("<html>\n<h3>\nHardware UUID\n</h3>\n<p>\nUn UUID es una cadena de letras y dígitos que forma un patrón único, los cuales  son específicos para cada dispositivo y, \n<br>de forma similar a un número de serie, los desarrolladores los utilizan para identificarlos individualmente\n</p>\n</html>");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);

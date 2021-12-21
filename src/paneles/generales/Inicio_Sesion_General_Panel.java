@@ -5,7 +5,7 @@
  */
 package paneles.generales;
 
-import ConexionSql.Conexion;
+import sql.Conexion;
 import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import main.CourseRoom_Frame;
@@ -79,7 +79,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         crear_Cuenta_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         crear_Cuenta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         crear_Cuenta_JLabel.setText("¿No Tienes Cuenta? Crea Tu Cuenta Aquí");
-        crear_Cuenta_JLabel.setToolTipText("Crea Tu Cuenta Aquí");
+        crear_Cuenta_JLabel.setToolTipText("<html>\n<h3>Crear cuenta</h3>\n</html>");
         crear_Cuenta_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         crear_Cuenta_JLabel.setOpaque(true);
         crear_Cuenta_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
@@ -90,7 +90,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         });
 
         contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
-        contrasena_JPasswordField.setToolTipText("Ingresa Aquí Tu Contraseña");
+        contrasena_JPasswordField.setToolTipText("");
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(430, 45));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(430, 45));
 
@@ -102,13 +102,13 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         usuario_JLabel.setPreferredSize(new java.awt.Dimension(430, 30));
 
         usuario_JTextField.setFont(new java.awt.Font("Gadugi", 0, 25)); // NOI18N
-        usuario_JTextField.setToolTipText("Ingresa Aquí Tu Nombre De Usuario O  Correo");
+        usuario_JTextField.setToolTipText("<html>\n<h3>Ingresa tu nombre de usuario o correo electrónico<br>\ncon el que te registraste</h3></html>");
         usuario_JTextField.setMinimumSize(new java.awt.Dimension(430, 45));
         usuario_JTextField.setPreferredSize(new java.awt.Dimension(430, 45));
 
         iniciar_Sesion_JButton.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         iniciar_Sesion_JButton.setText(" Iniciar Sesión ");
-        iniciar_Sesion_JButton.setToolTipText("Click Para Iniciar Sesión Con Tus Credenciales");
+        iniciar_Sesion_JButton.setToolTipText("<html>\n<h3>Inicia sesión con tus credenciales</h3>\n</html>");
         iniciar_Sesion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         iniciar_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         iniciar_Sesion_JButton.setPreferredSize(new java.awt.Dimension(430, 54));
@@ -138,7 +138,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         recuperar_Credenciales_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         recuperar_Credenciales_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         recuperar_Credenciales_JLabel.setText("¿Olvidaste Tus Credenciales? Recupera Aquí");
-        recuperar_Credenciales_JLabel.setToolTipText("Recuperar Credenciales");
+        recuperar_Credenciales_JLabel.setToolTipText("<html>\n<h3>Recupera tu nombre de usuario y/o contraseña</h3>\n</html>");
         recuperar_Credenciales_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         recuperar_Credenciales_JLabel.setOpaque(true);
         recuperar_Credenciales_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
@@ -330,6 +330,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
             imagen_JLabel.setIcon(icono_Imagen);
             obtener_Imagen.flush();
+            obtener_Imagen.getGraphics().dispose();
             
         } catch (MalformedURLException ex) {
             

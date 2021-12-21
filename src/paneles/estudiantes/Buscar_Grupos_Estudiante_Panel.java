@@ -51,6 +51,7 @@ public class Buscar_Grupos_Estudiante_Panel extends javax.swing.JPanel implement
         contenido_JScrollPane.setViewportView(contenido_JPanel);
 
         buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        buscar_JTextField.setToolTipText("<html>\n<h3>Buscar grupos. Presiona ENTER para realizar la búsqueda</h3>\n</html>");
         buscar_JTextField.setBorder(null);
         buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -59,6 +60,7 @@ public class Buscar_Grupos_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/vegan.png"))); // NOI18N
+        grupos_JButton.setToolTipText("<html> <h3>Regresar a mis grupos</h3> </html>");
         grupos_JButton.setBorder(null);
         grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

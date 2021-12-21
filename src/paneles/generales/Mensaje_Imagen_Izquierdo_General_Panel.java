@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import main.CourseRoom;
 
 /**
  *
@@ -39,12 +40,12 @@ public class Mensaje_Imagen_Izquierdo_General_Panel extends javax.swing.JPanel{
         ImageIcon icon = new ImageIcon(imagen);
         imagen_JLabel.setIcon(icon);
         imagen.flush();
+        imagen.getGraphics().dispose();
         
         fecha_JLabel.setForeground(_segundo_Color_Fuente);
         emisor_JLabel.setForeground(_segundo_Color_Fuente);
         contenido_JPanel.setBackground(_segundo_Color);
         contenido_JPanel.setForeground(_segundo_Color_Fuente);
-        
         
     }
     

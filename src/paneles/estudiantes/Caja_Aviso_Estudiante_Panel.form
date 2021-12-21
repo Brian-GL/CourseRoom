@@ -129,7 +129,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/notification.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Provenencia Del Aviso"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Nombre del aviso&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[488, 32]"/>
             </Property>
@@ -153,7 +153,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/announcement.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Descripci&#xf3;n Corta Del Aviso"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Descripci&#xf3;n corta del aviso&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[417, 22]"/>
             </Property>
@@ -177,7 +177,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/time-limit.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Fecha &amp; Hora Del Aviso"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Fecha y hora del aviso&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="estatus_JLabel">
@@ -192,7 +192,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/read.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Estado Del Aviso"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Estatus del aviso&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
       </SubComponents>

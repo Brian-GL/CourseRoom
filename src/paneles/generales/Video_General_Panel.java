@@ -74,6 +74,7 @@ public class Video_General_Panel extends javax.swing.JPanel implements Reproduct
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/boton-de-play-video.png"))); // NOI18N
         titulo_JLabel.setText("Título Del Video");
+        titulo_JLabel.setToolTipText("<html> <h3>Título del video</h3> </html>");
         titulo_JLabel.setFocusable(false);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(650, 20));
 

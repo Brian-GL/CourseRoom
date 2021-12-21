@@ -165,7 +165,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         setPreferredSize(new java.awt.Dimension(1085, 630));
 
         imagen_Arte_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_Arte_JLabel.setToolTipText("");
+        imagen_Arte_JLabel.setToolTipText("<html>\n<h3>Carátula</h3>\n</html>");
         imagen_Arte_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(550, 550));
@@ -177,7 +177,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         abrir_Carpeta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         abrir_Carpeta_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/carpeta.png"))); // NOI18N
-        abrir_Carpeta_JLabel.setToolTipText("Abrir Carpeta De Música");
+        abrir_Carpeta_JLabel.setToolTipText("<html> <h3>Abrir carpeta</h3> </html> ");
         abrir_Carpeta_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 abrir_Carpeta_JLabelMouseClicked(evt);
@@ -186,7 +186,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         abrir_Archivos_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         abrir_Archivos_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/folder.png"))); // NOI18N
-        abrir_Archivos_JLabel.setToolTipText("Abrir Archivo De Música");
+        abrir_Archivos_JLabel.setToolTipText("<html> <h3>Abrir archivo(s)</h3> </html> ");
         abrir_Archivos_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 abrir_Archivos_JLabelMouseClicked(evt);
@@ -235,7 +235,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         alto_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         alto_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stop.png"))); // NOI18N
-        alto_JLabel.setToolTipText("Stop Media");
+        alto_JLabel.setToolTipText("<html>\n<h3>Parar</h3>\n</html>\n");
         alto_JLabel.setEnabled(false);
         alto_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -245,7 +245,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         anterior_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         anterior_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/previous.png"))); // NOI18N
-        anterior_JLabel.setToolTipText("Previous Media");
+        anterior_JLabel.setToolTipText("<html>\n<h3>Anterior</h3>\n</html>");
         anterior_JLabel.setEnabled(false);
         anterior_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -255,7 +255,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         play_Pausa_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         play_Pausa_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"))); // NOI18N
-        play_Pausa_JLabel.setToolTipText("Play/Pause Media");
+        play_Pausa_JLabel.setToolTipText("<html>\n<h3>Reproducir/Pausar</h3>\n</html>");
         play_Pausa_JLabel.setEnabled(false);
         play_Pausa_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -265,7 +265,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         siguiente_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         siguiente_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/next-button.png"))); // NOI18N
-        siguiente_JLabel.setToolTipText("Next Media");
+        siguiente_JLabel.setToolTipText("<html>\n<h3>Siguiente</h3>\n</html>");
         siguiente_JLabel.setEnabled(false);
         siguiente_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -305,7 +305,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         controles_Audio_JPanel.setOpaque(false);
 
         bajar_Rate_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/snail.png"))); // NOI18N
-        bajar_Rate_JLabel.setToolTipText("Slow Rate");
+        bajar_Rate_JLabel.setToolTipText("<html> <h3>Bajar velocidad</h3> </html>");
         bajar_Rate_JLabel.setEnabled(false);
         bajar_Rate_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -328,7 +328,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         rate_JSlider.setPreferredSize(new java.awt.Dimension(137, 32));
 
         subir_Rate_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rabbit.png"))); // NOI18N
-        subir_Rate_JLabel.setToolTipText("Fast Rate");
+        subir_Rate_JLabel.setToolTipText("<html> <h3>Subir velocidad</h3> </html>");
         subir_Rate_JLabel.setEnabled(false);
         subir_Rate_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -337,7 +337,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         });
 
         bajar_Volumen_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/volume-down.png"))); // NOI18N
-        bajar_Volumen_JLabel.setToolTipText("Volume Down");
+        bajar_Volumen_JLabel.setToolTipText("<html> <h3>Bajar volumen</h3> </html>");
         bajar_Volumen_JLabel.setEnabled(false);
         bajar_Volumen_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -358,7 +358,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         volumen_JSlider.setPreferredSize(new java.awt.Dimension(137, 32));
 
         subir_Volumen_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/volume-up.png"))); // NOI18N
-        subir_Volumen_JLabel.setToolTipText("Volume Up");
+        subir_Volumen_JLabel.setToolTipText("<html> <h3>Subir volumen</h3> </html>");
         subir_Volumen_JLabel.setEnabled(false);
         subir_Volumen_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -669,7 +669,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         preset_JLabel.setPreferredSize(new java.awt.Dimension(50, 32));
 
         presets_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        presets_JComboBox.setToolTipText("Selet Preset");
+        presets_JComboBox.setToolTipText("<html> <h3>Seleccionar preset</h3> </html>");
         presets_JComboBox.setMinimumSize(new java.awt.Dimension(250, 32));
         presets_JComboBox.setPreferredSize(new java.awt.Dimension(250, 32));
         presets_JComboBox.addItemListener(new java.awt.event.ItemListener() {
@@ -2026,9 +2026,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 if(titulo.isEmpty()){
                     titulo = archivo_Leer.getName();
                 }
-                titulo_JLabel.setToolTipText(CourseRoom.Concatenar("Titulo: ",titulo));
-                artista_JLabel.setToolTipText(CourseRoom.Concatenar("Artista: ",artista));
-                album_JLabel.setToolTipText(CourseRoom.Concatenar("Album: ",album));
+                titulo_JLabel.setToolTipText(CourseRoom.Concatenar("<html><h3>Titulo: ",titulo,"</h3></html>"));
+                artista_JLabel.setToolTipText(CourseRoom.Concatenar("<html><h3>Artista: ",artista,"</h3></html>"));
+                album_JLabel.setToolTipText(CourseRoom.Concatenar("<html><h3>Album: ",album,"</h3></html>"));
 
                 titulo_JLabel.setText(titulo);
                 artista_JLabel.setText(artista);

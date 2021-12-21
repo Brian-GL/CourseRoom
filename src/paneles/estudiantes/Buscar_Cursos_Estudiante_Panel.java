@@ -52,6 +52,7 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
         contenido_JScrollPane.setViewportView(contenido_JPanel);
 
         buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        buscar_JTextField.setToolTipText("<html> <h3>Buscar chats. Presiona ENTER para realizar la búsqueda</h3> </html>");
         buscar_JTextField.setBorder(null);
         buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -60,6 +61,7 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/webinar.png"))); // NOI18N
+        cursos_JButton.setToolTipText("<html> <h3>Regresar a la página de cursos</h3> </html>");
         cursos_JButton.setBorder(null);
         cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -75,7 +77,7 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
 
         filtrar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         filtrar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General", "Actuales", "Nuevos", "Recomendados", "Finalizados" }));
-        filtrar_Por_JComboBox.setToolTipText("Filt Archivos Compartidos Por");
+        filtrar_Por_JComboBox.setToolTipText("<html> <h3>Filtrar búsqueda de cursos por</h3> </html>");
         filtrar_Por_JComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 filtrar_Por_JComboBoxItemStateChanged(evt);

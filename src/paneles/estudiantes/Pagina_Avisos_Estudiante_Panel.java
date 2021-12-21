@@ -8,6 +8,7 @@ package paneles.estudiantes;
 import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import java.awt.Font;
 
 
 /**
@@ -16,7 +17,6 @@ import interfaces.Limpieza_Interface;
  */
 public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
-    private Titulo_Avisos_Estudiante_Panel titulo_Avisos_Estudiante_Panel;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Pagina_Avisos_Estudiante_Panel(){
@@ -39,6 +39,10 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
 
         contenido_JScrollPane = new javax.swing.JScrollPane();
         contenido_JPanel = new javax.swing.JPanel();
+        titulo_JPanel = new javax.swing.JPanel();
+        contenido_Titulo_JPanel = new javax.swing.JPanel();
+        titulo_JLabel = new javax.swing.JLabel();
+        ordenar_Por_JComboBox = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
@@ -50,6 +54,68 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
 
         contenido_JPanel.setOpaque(false);
         contenido_JPanel.setLayout(new javax.swing.BoxLayout(contenido_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+
+        titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        titulo_JPanel.setOpaque(false);
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 118));
+
+        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+
+        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setText("Avisos");
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setOpaque(true);
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+
+        ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
+        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defecto", "Fecha: Más Reciente", "Fecha: Menos Reciente", "Leídos", "No Leídos" }));
+        ordenar_Por_JComboBox.setToolTipText("Ordenar Cursos Por");
+        ordenar_Por_JComboBox.setBorder(null);
+        ordenar_Por_JComboBox.setOpaque(true);
+
+        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
+        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
+        contenido_Titulo_JPanelLayout.setHorizontalGroup(
+            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 685, Short.MAX_VALUE)
+                .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        contenido_Titulo_JPanelLayout.setVerticalGroup(
+            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+
+        javax.swing.GroupLayout titulo_JPanelLayout = new javax.swing.GroupLayout(titulo_JPanel);
+        titulo_JPanel.setLayout(titulo_JPanelLayout);
+        titulo_JPanelLayout.setHorizontalGroup(
+            titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titulo_JPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        titulo_JPanelLayout.setVerticalGroup(
+            titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titulo_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        contenido_JPanel.add(titulo_JPanel);
+
         contenido_JScrollPane.setViewportView(contenido_JPanel);
 
         add(contenido_JScrollPane, "card2");
@@ -62,6 +128,10 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JPanel contenido_JPanel;
     private javax.swing.JScrollPane contenido_JScrollPane;
+    private javax.swing.JPanel contenido_Titulo_JPanel;
+    private javax.swing.JComboBox<String> ordenar_Por_JComboBox;
+    private javax.swing.JLabel titulo_JLabel;
+    private javax.swing.JPanel titulo_JPanel;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -71,8 +141,6 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        titulo_Avisos_Estudiante_Panel = new Titulo_Avisos_Estudiante_Panel();
-        contenido_JPanel.add(titulo_Avisos_Estudiante_Panel);
        
         Caja_Aviso_Estudiante_Panel caja_Aviso_Estudiante_Panel;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
@@ -83,7 +151,19 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
 
     @Override
     public void Colorear_Componentes() {
-       titulo_Avisos_Estudiante_Panel.Colorear_Componentes();
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
+
+        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
+
+        titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+
+        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
+                "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                gadugi, CourseRoom.Tercer_Color_Fuente()));
+        ordenar_Por_JComboBox.setBackground(CourseRoom.Tercer_Color());
+        ordenar_Por_JComboBox.setForeground(CourseRoom.Tercer_Color_Fuente());
     }
     
     @Override

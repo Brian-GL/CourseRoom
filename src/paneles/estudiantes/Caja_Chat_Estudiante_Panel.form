@@ -130,7 +130,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/online-chat_1.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Nombre Del Chat"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Nombre del chat&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[488, 32]"/>
             </Property>
@@ -157,7 +157,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/messaging.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&#xda;ltimo Mensaje Recibido"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;&#xda;ltimo mensaje recibido&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[417, 22]"/>
             </Property>
@@ -178,7 +178,7 @@
               <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero De Mensajes No Le&#xed;dos"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;N&#xfa;mero de mensajes&lt;br&gt; no le&#xed;dos&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="fecha_Hora_Mensaje_JLabel">
@@ -193,7 +193,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/circular-clock.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Fecha &amp; Hora Del &#xda;ltimo Mensaje"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Fecha y hora del &#xfa;ltimo mensaje&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -243,6 +243,7 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
             ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
             imagen_jLabel.setIcon(icono_Imagen);
             obtener_Imagen.flush();
+            obtener_Imagen.getGraphics().dispose();
             
             String nombre = CourseRoom.Concatenar(CourseRoom.Faker().name().firstName()," ",CourseRoom.Faker().name().firstName());
             String apellido = CourseRoom.Concatenar(CourseRoom.Faker().name().lastName()," ", CourseRoom.Faker().name().lastName());

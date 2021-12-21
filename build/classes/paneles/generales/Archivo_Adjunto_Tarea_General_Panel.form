@@ -69,9 +69,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="archivo_JScrollPane" min="-2" pref="167" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="abrir_JButton" min="-2" pref="58" max="-2" attributes="0"/>
-                      <Component id="descargar_JButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="descargar_JButton" max="32767" attributes="0"/>
+                      <Component id="abrir_JButton" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -164,6 +164,7 @@
                   <Font name="Gadugi" size="15" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Nombre del archivo adjunto&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                 <Property name="focusCycleRoot" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="opaque" type="boolean" value="false"/>

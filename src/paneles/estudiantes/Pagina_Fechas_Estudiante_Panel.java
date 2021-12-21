@@ -20,8 +20,6 @@ import main.CourseRoom;
  */
 public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
-    private Titulo_Fechas_Estudiante_Panel titulo_Fechas_Estudiante_Panel;
-    
     public Pagina_Fechas_Estudiante_Panel(){
         
        initComponents();
@@ -43,6 +41,18 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
 
         contenido_JScrollPane = new javax.swing.JScrollPane();
         contenido_JPanel = new javax.swing.JPanel();
+        titulo_JPanel = new javax.swing.JPanel();
+        contenido_Titulo_JPanel = new javax.swing.JPanel();
+        titulo_JLabel = new javax.swing.JLabel();
+        mes_JLabel = new javax.swing.JLabel();
+        dias_JPanel = new javax.swing.JPanel();
+        lunes_JLabel = new javax.swing.JLabel();
+        martes_JLabel = new javax.swing.JLabel();
+        miercoles_JLabel = new javax.swing.JLabel();
+        jueves_JLabel = new javax.swing.JLabel();
+        viernes_JLabel = new javax.swing.JLabel();
+        sabado_JLabel = new javax.swing.JLabel();
+        domingo_JLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
@@ -54,6 +64,126 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
 
         contenido_JPanel.setOpaque(false);
         contenido_JPanel.setLayout(new javax.swing.BoxLayout(contenido_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+
+        titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 168));
+        titulo_JPanel.setOpaque(false);
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 168));
+
+        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+
+        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setText("Fechas");
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setOpaque(true);
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+
+        mes_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        mes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mes_JLabel.setText("Diciembre");
+        mes_JLabel.setToolTipText("Mes Actual");
+        mes_JLabel.setMaximumSize(new java.awt.Dimension(327573, 32));
+        mes_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
+        mes_JLabel.setOpaque(true);
+        mes_JLabel.setPreferredSize(new java.awt.Dimension(1080, 32));
+
+        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
+        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
+        contenido_Titulo_JPanelLayout.setHorizontalGroup(
+            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        contenido_Titulo_JPanelLayout.setVerticalGroup(
+            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(titulo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mes_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        dias_JPanel.setMaximumSize(new java.awt.Dimension(32767, 32));
+        dias_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
+        dias_JPanel.setOpaque(false);
+        dias_JPanel.setPreferredSize(new java.awt.Dimension(1068, 32));
+        dias_JPanel.setLayout(new java.awt.GridLayout(1, 7));
+
+        lunes_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        lunes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lunes_JLabel.setText("Lunes");
+        lunes_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lunes_JLabel.setOpaque(true);
+        dias_JPanel.add(lunes_JLabel);
+
+        martes_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        martes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        martes_JLabel.setText("Martes");
+        martes_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        martes_JLabel.setOpaque(true);
+        dias_JPanel.add(martes_JLabel);
+
+        miercoles_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        miercoles_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        miercoles_JLabel.setText("Miércoles");
+        miercoles_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        miercoles_JLabel.setOpaque(true);
+        dias_JPanel.add(miercoles_JLabel);
+
+        jueves_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jueves_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jueves_JLabel.setText("Jueves");
+        jueves_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jueves_JLabel.setOpaque(true);
+        dias_JPanel.add(jueves_JLabel);
+
+        viernes_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        viernes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viernes_JLabel.setText("Viernes");
+        viernes_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        viernes_JLabel.setOpaque(true);
+        dias_JPanel.add(viernes_JLabel);
+
+        sabado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        sabado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sabado_JLabel.setText("Sábado");
+        sabado_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sabado_JLabel.setOpaque(true);
+        dias_JPanel.add(sabado_JLabel);
+
+        domingo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        domingo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        domingo_JLabel.setText("Domingo");
+        domingo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        domingo_JLabel.setOpaque(true);
+        dias_JPanel.add(domingo_JLabel);
+
+        javax.swing.GroupLayout titulo_JPanelLayout = new javax.swing.GroupLayout(titulo_JPanel);
+        titulo_JPanel.setLayout(titulo_JPanelLayout);
+        titulo_JPanelLayout.setHorizontalGroup(
+            titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titulo_JPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dias_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        titulo_JPanelLayout.setVerticalGroup(
+            titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titulo_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dias_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        contenido_JPanel.add(titulo_JPanel);
+
         contenido_JScrollPane.setViewportView(contenido_JPanel);
 
         add(contenido_JScrollPane, "card2");
@@ -110,6 +240,50 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
 
         }
     }
+    
+    private String Establecer_Nombre_Mes() {
+        String mes = "";
+        switch (LocalDateTime.now().getMonthValue()) {
+            case 1:
+                mes = "Enero";
+                break;
+            case 2:
+                mes = "Febrero";
+                break;
+            case 3:
+                mes = "Marzo";
+                break;
+            case 4:
+                mes = "Abril";
+                break;
+            case 5:
+                mes = "Mayo";
+                break;
+            case 6:
+                mes = "Junio";
+                break;
+            case 7:
+                mes = "Julio";
+                break;
+            case 8:
+                mes = "Agosto";
+                break;
+            case 9:
+                mes = "Septiembre";
+                break;
+            case 10:
+                mes = "Octubre";
+                break;
+            case 11:
+                mes = "Noviembre";
+                break;
+            case 12:
+                mes = "Diciembre";
+                break;
+        }
+
+        return mes;
+    }
 
     public boolean Es_Anio_Bisiesto(int anio) {
         if (anio % 4 != 0) {
@@ -126,9 +300,8 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
     @SuppressWarnings("null")
     private void Establecer_Mes(int dias_del_mes, int dias_del_mes_anterior) {
         int cuenta = 0;
-
-        LocalDate fecha_Local = LocalDate.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(), 1);
-        DayOfWeek dia_De_La_Semana = fecha_Local.getDayOfWeek();
+        LocalDateTime tiempo_Actual = LocalDateTime.now();
+        DayOfWeek dia_De_La_Semana = tiempo_Actual.getDayOfWeek();
         int hasta_Valor = dia_De_La_Semana.getValue() - 1;
 
         Lista<Caja_Fecha_Estudiante_Panel> lista_Cajas = new Lista<>();
@@ -143,7 +316,7 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
 
         for (int i = 1; i < dias_del_mes; i++) {
             dia_Calendario_Panel = new Caja_Fecha_Estudiante_Panel(i);
-            if (fecha_Local.getDayOfMonth() == i) {
+            if (tiempo_Actual.getDayOfMonth() == i) {
                 dia_Calendario_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente());
             } else {
                 dia_Calendario_Panel.Establecer_Colores(CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente());
@@ -185,24 +358,57 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JScrollPane contenido_JScrollPane;
+    private javax.swing.JPanel contenido_Titulo_JPanel;
+    private javax.swing.JPanel dias_JPanel;
+    private javax.swing.JLabel domingo_JLabel;
+    private javax.swing.JLabel jueves_JLabel;
+    private javax.swing.JLabel lunes_JLabel;
+    private javax.swing.JLabel martes_JLabel;
+    private javax.swing.JLabel mes_JLabel;
+    private javax.swing.JLabel miercoles_JLabel;
+    private javax.swing.JLabel sabado_JLabel;
+    private javax.swing.JLabel titulo_JLabel;
+    private javax.swing.JPanel titulo_JPanel;
+    private javax.swing.JLabel viernes_JLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
-        titulo_Fechas_Estudiante_Panel = new Titulo_Fechas_Estudiante_Panel();
         contenido_JScrollPane.getViewport().setOpaque(false);
         contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
-        contenido_JPanel.add(titulo_Fechas_Estudiante_Panel);
+        mes_JLabel.setText(Establecer_Nombre_Mes());
         
     }
 
     @Override
     public void Colorear_Componentes() {
-       titulo_Fechas_Estudiante_Panel.Colorear_Componentes();
-       this.Limpiar();
-       Crear_Calendario();
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
+
+        titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+
+        mes_JLabel.setBackground(CourseRoom.Tercer_Color());
+        mes_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+
+        lunes_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        martes_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        miercoles_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        jueves_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        viernes_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        sabado_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        domingo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+
+        lunes_JLabel.setBackground(CourseRoom.Tercer_Color());
+        martes_JLabel.setBackground(CourseRoom.Tercer_Color());
+        miercoles_JLabel.setBackground(CourseRoom.Tercer_Color());
+        jueves_JLabel.setBackground(CourseRoom.Tercer_Color());
+        viernes_JLabel.setBackground(CourseRoom.Tercer_Color());
+        sabado_JLabel.setBackground(CourseRoom.Tercer_Color());
+        domingo_JLabel.setBackground(CourseRoom.Tercer_Color());
+        
+        this.Limpiar();
+        Crear_Calendario();
        
     }
     

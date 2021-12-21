@@ -6,6 +6,7 @@
 package paneles.estudiantes;
 
 import java.awt.Color;
+import java.awt.Font;
 
 /**
  *
@@ -16,12 +17,25 @@ public class Curso_Tablero_Estudiante_Panel extends javax.swing.JPanel{
     
     public Curso_Tablero_Estudiante_Panel(
         Color _segundo_Color,
-        Color _segundo_Color_Fuente) {
+        Color _tercer_Color,
+        Color _tercer_Color_Fuente) {
         
         initComponents();
      
-        titulo_JLabel.setBackground(_segundo_Color);
-        titulo_JLabel.setForeground(_segundo_Color_Fuente);
+        contenido_JPanel.setBackground(_segundo_Color);
+        titulo_JLabel.setBackground(_tercer_Color);
+        titulo_JLabel.setForeground(_tercer_Color_Fuente);
+        
+        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
+        
+        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
+                "Módulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                gadugi, _tercer_Color_Fuente));
+        ordenar_Por_JComboBox.setBackground(_tercer_Color);
+        ordenar_Por_JComboBox.setForeground(_tercer_Color_Fuente);
+        
+        
     }
 
     /**
@@ -34,20 +48,51 @@ public class Curso_Tablero_Estudiante_Panel extends javax.swing.JPanel{
     private void initComponents() {
 
         titulo_JPanel = new javax.swing.JPanel();
+        contenido_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
+        ordenar_Por_JComboBox = new javax.swing.JComboBox<>();
+        modulos_JPanel = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(32767, 1100));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1080, 1100));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
-        titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
+        titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
         titulo_JPanel.setOpaque(false);
-        titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 68));
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 118));
+
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Tablero");
         titulo_JLabel.setOpaque(true);
+
+        ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
+        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General" }));
+        ordenar_Por_JComboBox.setToolTipText("Ordenar Cursos Por");
+        ordenar_Por_JComboBox.setBorder(null);
+        ordenar_Por_JComboBox.setOpaque(true);
+
+        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
+        contenido_JPanel.setLayout(contenido_JPanelLayout);
+        contenido_JPanelLayout.setHorizontalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        contenido_JPanelLayout.setVerticalGroup(
+            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout titulo_JPanelLayout = new javax.swing.GroupLayout(titulo_JPanel);
         titulo_JPanel.setLayout(titulo_JPanelLayout);
@@ -57,24 +102,32 @@ public class Curso_Tablero_Estudiante_Panel extends javax.swing.JPanel{
             .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(titulo_JPanelLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         titulo_JPanelLayout.setVerticalGroup(
             titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 68, Short.MAX_VALUE)
+            .addGap(0, 122, Short.MAX_VALUE)
             .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(titulo_JPanelLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
         add(titulo_JPanel);
+
+        modulos_JPanel.setMaximumSize(new java.awt.Dimension(2147483647, 982));
+        modulos_JPanel.setOpaque(false);
+        modulos_JPanel.setLayout(new java.awt.CardLayout());
+        add(modulos_JPanel);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contenido_JPanel;
+    private javax.swing.JPanel modulos_JPanel;
+    private javax.swing.JComboBox<String> ordenar_Por_JComboBox;
     private javax.swing.JLabel titulo_JLabel;
     private javax.swing.JPanel titulo_JPanel;
     // End of variables declaration//GEN-END:variables

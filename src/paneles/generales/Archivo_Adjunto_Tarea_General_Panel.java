@@ -106,6 +106,7 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         archivo_JTextPane.setContentType("text/html"); // NOI18N
         archivo_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         archivo_JTextPane.setText("");
+        archivo_JTextPane.setToolTipText("<html>\n<h3>Nombre del archivo adjunto</h3>\n</html>");
         archivo_JTextPane.setFocusCycleRoot(false);
         archivo_JTextPane.setFocusable(false);
         archivo_JTextPane.setOpaque(false);
@@ -123,9 +124,9 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(archivo_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(abrir_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(descargar_JButton))
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(descargar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(abrir_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contenido_JPanelLayout.setVerticalGroup(

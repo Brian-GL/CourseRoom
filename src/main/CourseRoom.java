@@ -7,6 +7,7 @@ package main;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.github.javafaker.Faker;
+import dialogos.generales.Mensaje_Error_Dialog;
 import interfaces.Limpieza_Interface;
 import java.awt.Color;
 import java.awt.Image;
@@ -45,7 +46,9 @@ public class CourseRoom implements Limpieza_Interface{
         boolean hay_Conexion = Comprobar_Conexion_Internet();
 
         if (!hay_Conexion) {
-            JOptionPane.showMessageDialog(null, "Lo Sentimos Pero No Hay Conexión A Internet", "SUPER ERROR", JOptionPane.ERROR_MESSAGE);
+            
+            Mensaje_Error_Dialog mensaje_Error_Dialog
+                    = new Mensaje_Error_Dialog(null,true,"Error Grave","Lo Sentimos Pero No Hay Conexión A Internet");
             return;
         }
         
@@ -213,7 +216,7 @@ public class CourseRoom implements Limpieza_Interface{
             return false;
         }
     }
-
+    
     
     /**
     * @param args the command line arguments

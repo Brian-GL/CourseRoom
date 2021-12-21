@@ -51,6 +51,7 @@ public class Buscar_Tareas_Estudiante_Panel extends javax.swing.JPanel implement
         contenido_JScrollPane.setViewportView(contenido_JPanel);
 
         buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        buscar_JTextField.setToolTipText("<html>\n<h3>Buscar tareas. Presiona ENTER para realizar la búsqueda</h3>\n</html>");
         buscar_JTextField.setBorder(null);
         buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -59,6 +60,7 @@ public class Buscar_Tareas_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_5.png"))); // NOI18N
+        tareas_JButton.setToolTipText("<html>\n<h3>Regresar a la página de tareas</h3>\n</html>");
         tareas_JButton.setBorder(null);
         tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -1,6 +1,6 @@
 package paneles.generales;
 
-import ConexionSql.Conexion;
+import sql.Conexion;
 import interfaces.Componentes_Interface;
 import main.CourseRoom;
 import main.CourseRoom_Frame;

@@ -219,6 +219,7 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
             
             Tablero_Estudiante_Panel.Agregar_Vista(pagina_Tarea_Estudiante_Panel, id);
             obtener_Imagen.flush();
+            obtener_Imagen.getGraphics().dispose();
         } catch (MalformedURLException ex) {
             
         } catch (IOException ex) {

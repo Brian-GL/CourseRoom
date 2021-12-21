@@ -51,6 +51,7 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
         descripcion_Duda_JScrollPane = new javax.swing.JScrollPane();
         descripcion_Duda_JTextPane = new javax.swing.JTextPane();
         duda_JTextField = new javax.swing.JTextField();
+        cerrar_JButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear Nueva Duda");
@@ -92,6 +93,20 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
         duda_JTextField.setBorder(null);
         duda_JTextField.setOpaque(true);
 
+        cerrar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
+        cerrar_JButton.setBorder(null);
+        cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrar_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cerrar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cerrar_JButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
         contenido_JPanelLayout.setHorizontalGroup(
@@ -100,7 +115,10 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(descripcion_Duda_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(duda_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(duda_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(preguntador_Imagen_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -113,7 +131,9 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(duda_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(duda_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                            .addComponent(cerrar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(descripcion_Duda_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
@@ -176,8 +196,26 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
         crear_Duda_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_crear_Duda_JButtonMouseExited
 
+    private void cerrar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            this.dispose();
+        }
+    }//GEN-LAST:event_cerrar_JButtonMouseClicked
+
+    private void cerrar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseEntered
+        // TODO add your handling code here:
+        cerrar_JButton.setBackground(CourseRoom.Color_Azul_Claro());
+    }//GEN-LAST:event_cerrar_JButtonMouseEntered
+
+    private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseExited
+        // TODO add your handling code here:
+        cerrar_JButton.setBackground(CourseRoom.Color_Azul_Oscuro());
+    }//GEN-LAST:event_cerrar_JButtonMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cerrar_JButton;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JButton crear_Duda_JButton;
     private javax.swing.JScrollPane descripcion_Duda_JScrollPane;

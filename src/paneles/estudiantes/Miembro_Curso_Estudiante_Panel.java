@@ -204,6 +204,7 @@ public class Miembro_Curso_Estudiante_Panel extends javax.swing.JPanel implement
             Colorear_Componentes();
             
             
+            
         } catch (IOException ex) {
             
         }
