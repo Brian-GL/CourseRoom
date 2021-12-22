@@ -100,7 +100,7 @@
               <Font name="Gadugi" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="X"/>
-            <Property name="toolTipText" type="java.lang.String" value="Remover Archivo"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Remover archivo&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="remover_JButtonMouseClicked"/>
@@ -131,6 +131,7 @@
                   <Font name="Gadugi" size="18" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Nombre del archivo subido&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="focusCycleRoot" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>

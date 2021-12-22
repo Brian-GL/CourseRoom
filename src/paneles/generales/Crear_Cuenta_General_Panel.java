@@ -105,6 +105,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         visualizador_JTabbedPane.setRequestFocusEnabled(false);
 
         inicio_JPanel.setBackground(new java.awt.Color(14, 30, 64));
+        inicio_JPanel.setToolTipText("");
         inicio_JPanel.setMinimumSize(new java.awt.Dimension(1260, 629));
         inicio_JPanel.setName("crearCuentaFrame"); // NOI18N
         inicio_JPanel.setOpaque(false);
@@ -125,7 +126,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         informacion_Inicio_JLabel.setPreferredSize(new java.awt.Dimension(670, 104));
 
         continuar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Autenticacion_JButton.setToolTipText("Continuar A Autenticación");
+        continuar_Autenticacion_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
         continuar_Autenticacion_JButton.setBorder(null);
         continuar_Autenticacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         continuar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,7 +142,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         });
 
         regresar_Inicio_Sesion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Inicio_Sesion_JButton.setToolTipText("Regresar Al Login");
+        regresar_Inicio_Sesion_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
         regresar_Inicio_Sesion_JButton.setBorder(null);
         regresar_Inicio_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_Inicio_Sesion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -188,7 +189,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addContainerGap())
         );
 
-        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png")), inicio_JPanel, "Muestra El Inicio Del Registro De Tu Cuenta."); // NOI18N
+        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png")), inicio_JPanel, "<html> <h3>Página de inicio<br>para crear cuenta</h3> </html>"); // NOI18N
 
         autenticacion_JPanel.setBackground(new java.awt.Color(14, 30, 64));
         autenticacion_JPanel.setMinimumSize(new java.awt.Dimension(1260, 629));
@@ -203,7 +204,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         nombre_Usuario_Autenticacion_JLabel.setText("Nombre De Usuario");
 
         txtUsuario.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        txtUsuario.setToolTipText("<html>\n\n<p>\n\nIngrese aquí el nombre de usuario de su elección. Sin embargo, tome las siguientes medidas:<br>\n<b>\n   * El nombre de usuario puede contener letras, números y carácteres con valor ascii entre 32 y 126.<br>\n   * Sólamente se permite un máximo de 20 carácteres.\n\n</b>\n\n</p>\n\n</html>");
+        txtUsuario.setToolTipText("<html>\n\n<h3>\nNombre de usuario\n</h3>\n\n<ul>\n   <li>El nombre de usuario puede contener letras, números y carácteres con valor ascii entre 32 y 126</li>\n   <li>Sólamente se permite un máximo de 20 carácteres</li>\n</ul>\n\n</html>");
         txtUsuario.setCaretColor(new java.awt.Color(104, 194, 232));
         txtUsuario.setPreferredSize(new java.awt.Dimension(350, 32));
 
@@ -211,7 +212,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         contrasena_Autenticacion_JLabel.setText("Contraseña");
 
         Pass.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        Pass.setToolTipText("Ingrese Aquí Su Contraseña (Mínimo 8 Carácteres)");
+        Pass.setToolTipText("<html>  <h3>Contraseña </h3>  <ul>    <li>Debe contener mínimo 8 caráteres</li>    <li>Debe contener mínimo un carácter especial</li> \n<li>Debe contener mínimo un carácter en mayúscula</li><li>Debe contener mínimo un carácter numérico</li></ul>  </html>");
         Pass.setCaretColor(new java.awt.Color(104, 194, 232));
         Pass.setPreferredSize(new java.awt.Dimension(350, 32));
 
@@ -223,7 +224,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         correo_Electronico_Autenticacion_JLabel.setText("Correo Electrónico");
 
         txtCorreo.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        txtCorreo.setToolTipText("Ingrese Aquí Su Correo Electrónico (Ingrese Uno Que Pueda Utilizar)");
+        txtCorreo.setToolTipText("");
         txtCorreo.setCaretColor(new java.awt.Color(104, 194, 232));
         txtCorreo.setPreferredSize(new java.awt.Dimension(350, 32));
 
@@ -231,7 +232,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         repetir_Contrasena_Autenticacion_JLabel.setText("Repetir Contraseña");
 
         Pass2.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        Pass2.setToolTipText("Re-Ingrese Aquí La Contraseña");
+        Pass2.setToolTipText("");
         Pass2.setCaretColor(new java.awt.Color(104, 194, 232));
         Pass2.setPreferredSize(new java.awt.Dimension(350, 32));
 
@@ -253,7 +254,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         informacion_Contrasena_Autenticacion_JLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         regresar_Inicio_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Inicio_JButton.setToolTipText("Regresar Al Inicio");
+        regresar_Inicio_JButton.setToolTipText("<html>\n<h3>Regresar a la pestaña de inicio</h3>\n</html>");
         regresar_Inicio_JButton.setBorder(null);
         regresar_Inicio_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_Inicio_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -269,7 +270,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         });
 
         continuar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Datos_Personales_JButton.setToolTipText("Continuar A Datos Personales");
+        continuar_Datos_Personales_JButton.setToolTipText("<html>\n<h3>Continuar a la pestaña de datos personales</h3>\n</html>");
         continuar_Datos_Personales_JButton.setBorder(null);
         continuar_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         continuar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -369,7 +370,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addContainerGap())
         );
 
-        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png")), autenticacion_JPanel, "Pestaña Sobre Creación De Credenciales Para Acceder Al Sistema."); // NOI18N
+        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png")), autenticacion_JPanel, "<html> <h3>Página de autenticación<br>(Crear credenciales de acceso)</h3> </html>"); // NOI18N
 
         datos_Personales_JPanel.setBackground(new java.awt.Color(14, 30, 64));
         datos_Personales_JPanel.setMinimumSize(new java.awt.Dimension(1260, 629));
@@ -388,7 +389,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         nombres_JLabel.setText("Nombre(s)*");
 
         nombres_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        nombres_JTextField.setToolTipText("<html>Ingresa Aquí Tu(s) Nombre(s).<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
+        nombres_JTextField.setToolTipText("<html>  <h3> Nombre(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
         nombres_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         nombres_JTextField.setPreferredSize(new java.awt.Dimension(350, 32));
 
@@ -396,12 +397,12 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         apellidos_JLabel.setText("Apellido(s)*");
 
         apellidos_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        apellidos_JTextField.setToolTipText("<html>Ingresa Aquí Tu(s) Apellido(s).<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
+        apellidos_JTextField.setToolTipText("<html>  <h3> Apellido(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
         apellidos_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         apellidos_JTextField.setPreferredSize(new java.awt.Dimension(350, 32));
 
         localidad_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        localidad_JTextField.setToolTipText("Ingresa Tu Localidad En Este Campo.");
+        localidad_JTextField.setToolTipText("<html>  <h3> Localidad </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
         localidad_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         localidad_JTextField.setPreferredSize(new java.awt.Dimension(350, 32));
 
@@ -409,7 +410,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         localidad_JLabel.setText("Localidad");
 
         genero_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        genero_JTextField.setToolTipText("Ingresa Aquí Tu Género, Sexo O Identidad De Género.");
+        genero_JTextField.setToolTipText("<html>  <h3> Identidad de género </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
         genero_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         genero_JTextField.setPreferredSize(new java.awt.Dimension(350, 32));
 
@@ -417,7 +418,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         genero_JLabel.setText("Género");
 
         telefono_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##########"))));
-        telefono_JFormattedTextField.setToolTipText("<html>Ingresa Aquí Tu Número De Teléfono O Celular.<br><b>NOTA: SOLAMENTE SE PERMITEN INGRESAR VALORES NUMÉRICOS.</b></html>");
+        telefono_JFormattedTextField.setToolTipText("<html>  <h3> Teléfono/Celular </h3>  <ul>    <li>Opcionar</li><li>Sólo se permiten carácteres numéricos </ul>  </html>");
         telefono_JFormattedTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         telefono_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         telefono_JFormattedTextField.setPreferredSize(new java.awt.Dimension(350, 32));
@@ -426,7 +427,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         telefono_JLabel.setText("Número De Teléfono O Celular");
 
         fecha_Nacimiento_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-mm-yyyy"))));
-        fecha_Nacimiento_JFormattedTextField.setToolTipText("<html>Ingresa Aquí Tu Fecha De Nacimiento.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.<br>ADEMÁS, DEBERÁS INGRESAR LA FECHA CON EL SIGUIENTE FORMATO: dd-mm-aaaa<br>d: dia, m: mes, a: año.</b>.</html>");
+        fecha_Nacimiento_JFormattedTextField.setToolTipText("<html>  <h3> Fecha de nacimiento </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
         fecha_Nacimiento_JFormattedTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         fecha_Nacimiento_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         fecha_Nacimiento_JFormattedTextField.setPreferredSize(new java.awt.Dimension(350, 32));
@@ -438,7 +439,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         descripcion_JLabel.setText("Descripción");
 
         continuar_Perfil_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Perfil_JButton.setToolTipText("Continuar A Perfil");
+        continuar_Perfil_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         continuar_Perfil_JButton.setBorder(null);
         continuar_Perfil_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         continuar_Perfil_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -454,7 +455,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         });
 
         regresar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Autenticacion_JButton.setToolTipText("Regresar A Autenticación");
+        regresar_Autenticacion_JButton.setToolTipText("<html> <h3>Regresar a la pestaña de autenticación</h3> </html>");
         regresar_Autenticacion_JButton.setBorder(null);
         regresar_Autenticacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -470,6 +471,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         });
 
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        descripcion_JTextPane.setToolTipText("<html>  <h3> Descripción breve sobre tí </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         javax.swing.GroupLayout datos_Personales_JPanelLayout = new javax.swing.GroupLayout(datos_Personales_JPanel);
@@ -560,7 +562,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addContainerGap())
         );
 
-        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/personal-information.png")), datos_Personales_JPanel, "Pestaña Sobre Datos Personales."); // NOI18N
+        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/personal-information.png")), datos_Personales_JPanel, "<html>\n<h3>Página de registro<br>\nde datos personales</h3>\n</html>"); // NOI18N
 
         perfil_JPanel.setBackground(new java.awt.Color(14, 30, 64));
         perfil_JPanel.setMinimumSize(new java.awt.Dimension(1260, 629));
@@ -585,7 +587,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
 
         tipo_Perfil_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         tipo_Perfil_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Maestro" }));
-        tipo_Perfil_JComboBox.setToolTipText("<html>Aquí Puedes Seleccionar Tu Perfil De Las Posibles.<br><b>NOTA: ES UN CAMPO OBLIGATORIO.</b></html>");
+        tipo_Perfil_JComboBox.setToolTipText("<html>  <h3> Tipo de perfil</h3></html>");
         tipo_Perfil_JComboBox.setBorder(null);
         tipo_Perfil_JComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tipo_Perfil_JComboBox.setMaximumSize(new java.awt.Dimension(350, 40));
@@ -617,8 +619,8 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
             }
         });
 
-        continuar_Tablero_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Tablero_JButton.setToolTipText("Crear Perfil");
+        continuar_Tablero_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
+        continuar_Tablero_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
         continuar_Tablero_JButton.setBorder(null);
         continuar_Tablero_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         continuar_Tablero_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -634,7 +636,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         });
 
         regresar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Datos_Personales_JButton.setToolTipText("Regresar A Datos Personales");
+        regresar_Datos_Personales_JButton.setToolTipText("<html> <h3>Regresar a la pestaña de datos personales</h3> </html>");
         regresar_Datos_Personales_JButton.setBorder(null);
         regresar_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -702,7 +704,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addContainerGap())
         );
 
-        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/profile.png")), perfil_JPanel, "Pestaña Sobre Información Del Perfil."); // NOI18N
+        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/profile.png")), perfil_JPanel, "<html>\n<h3>Página de registro<br>\nde perfil</h3>\n</html>"); // NOI18N
 
         add(visualizador_JTabbedPane, "card2");
     }// </editor-fold>//GEN-END:initComponents

@@ -53,6 +53,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="40" green="1e" red="e" type="rgb"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[1260, 629]"/>
             </Property>
@@ -61,12 +62,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="" toolTip="Muestra El Inicio Del Registro De Tu Cuenta.">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt; &lt;h3&gt;P&#xe1;gina de inicio&lt;br&gt;para crear cuenta&lt;/h3&gt; &lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/info_1.png"/>
                 </Property>
-                <Property name="tabToolTip" type="java.lang.String" value="Muestra El Inicio Del Registro De Tu Cuenta."/>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;P&#xe1;gina de inicio&lt;br&gt;para crear cuenta&lt;/h3&gt; &lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -153,7 +154,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/inreply.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Continuar A Autenticaci&#xf3;n"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Continuar a la pesta&#xf1;a de autenticaci&#xf3;n&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -172,7 +173,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/reply.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Regresar Al Login"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Regresar a la p&#xe1;gina de inicio de sesi&#xf3;n&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -200,12 +201,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="" toolTip="Pesta&#xf1;a Sobre Creaci&#xf3;n De Credenciales Para Acceder Al Sistema.">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt; &lt;h3&gt;P&#xe1;gina de autenticaci&#xf3;n&lt;br&gt;(Crear credenciales de acceso)&lt;/h3&gt; &lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/authentication.png"/>
                 </Property>
-                <Property name="tabToolTip" type="java.lang.String" value="Pesta&#xf1;a Sobre Creaci&#xf3;n De Credenciales Para Acceder Al Sistema."/>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;P&#xe1;gina de autenticaci&#xf3;n&lt;br&gt;(Crear credenciales de acceso)&lt;/h3&gt; &lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -337,7 +338,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&#xa;&lt;p&gt;&#xa;&#xa;Ingrese aqu&#xed; el nombre de usuario de su elecci&#xf3;n. Sin embargo, tome las siguientes medidas:&lt;br&gt;&#xa;&lt;b&gt;&#xa;   * El nombre de usuario puede contener letras, n&#xfa;meros y car&#xe1;cteres con valor ascii entre 32 y 126.&lt;br&gt;&#xa;   * S&#xf3;lamente se permite un m&#xe1;ximo de 20 car&#xe1;cteres.&#xa;&#xa;&lt;/b&gt;&#xa;&#xa;&lt;/p&gt;&#xa;&#xa;&lt;/html&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&#xa;&lt;h3&gt;&#xa;Nombre de usuario&#xa;&lt;/h3&gt;&#xa;&#xa;&lt;ul&gt;&#xa;   &lt;li&gt;El nombre de usuario puede contener letras, n&#xfa;meros y car&#xe1;cteres con valor ascii entre 32 y 126&lt;/li&gt;&#xa;   &lt;li&gt;S&#xf3;lamente se permite un m&#xe1;ximo de 20 car&#xe1;cteres&lt;/li&gt;&#xa;&lt;/ul&gt;&#xa;&#xa;&lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
@@ -359,7 +360,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Ingrese Aqu&#xed; Su Contrase&#xf1;a (M&#xed;nimo 8 Car&#xe1;cteres)"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt;Contrase&#xf1;a &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Debe contener m&#xed;nimo 8 car&#xe1;teres&lt;/li&gt;    &lt;li&gt;Debe contener m&#xed;nimo un car&#xe1;cter especial&lt;/li&gt; &#xa;&lt;li&gt;Debe contener m&#xed;nimo un car&#xe1;cter en may&#xfa;scula&lt;/li&gt;&lt;li&gt;Debe contener m&#xed;nimo un car&#xe1;cter num&#xe9;rico&lt;/li&gt;&lt;/ul&gt;  &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
@@ -390,7 +391,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Ingrese Aqu&#xed; Su Correo Electr&#xf3;nico (Ingrese Uno Que Pueda Utilizar)"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
@@ -412,7 +413,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Re-Ingrese Aqu&#xed; La Contrase&#xf1;a"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
@@ -463,7 +464,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/reply.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Regresar Al Inicio"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Regresar a la pesta&#xf1;a de inicio&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -482,7 +483,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/inreply.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Continuar A Datos Personales"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Continuar a la pesta&#xf1;a de datos personales&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -511,12 +512,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="" toolTip="Pesta&#xf1;a Sobre Datos Personales.">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt;&#xa;&lt;h3&gt;P&#xe1;gina de registro&lt;br&gt;&#xa;de datos personales&lt;/h3&gt;&#xa;&lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/personal-information.png"/>
                 </Property>
-                <Property name="tabToolTip" type="java.lang.String" value="Pesta&#xf1;a Sobre Datos Personales."/>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;P&#xe1;gina de registro&lt;br&gt;&#xa;de datos personales&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -670,7 +671,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Ingresa Aqu&#xed; Tu(s) Nombre(s).&lt;br&gt;&lt;b&gt;NOTA: ES UN CAMPO OBLIGATORIO.&lt;/b&gt;&lt;/html&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Nombre(s) &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
@@ -692,7 +693,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Ingresa Aqu&#xed; Tu(s) Apellido(s).&lt;br&gt;&lt;b&gt;NOTA: ES UN CAMPO OBLIGATORIO.&lt;/b&gt;&lt;/html&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Apellido(s) &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
@@ -706,7 +707,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Ingresa Tu Localidad En Este Campo."/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Localidad &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Opcional&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
@@ -728,7 +729,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Ingresa Aqu&#xed; Tu G&#xe9;nero, Sexo O Identidad De G&#xe9;nero."/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Identidad de g&#xe9;nero &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Opcional&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
@@ -750,7 +751,7 @@
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format format="##########" subtype="-1" type="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Ingresa Aqu&#xed; Tu N&#xfa;mero De Tel&#xe9;fono O Celular.&lt;br&gt;&lt;b&gt;NOTA: SOLAMENTE SE PERMITEN INGRESAR VALORES NUM&#xc9;RICOS.&lt;/b&gt;&lt;/html&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Tel&#xe9;fono/Celular &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Opcionar&lt;/li&gt;&lt;li&gt;S&#xf3;lo se permiten car&#xe1;cteres num&#xe9;ricos &lt;/ul&gt;  &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
@@ -775,7 +776,7 @@
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format format="dd-mm-yyyy" subtype="-1" type="1"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Ingresa Aqu&#xed; Tu Fecha De Nacimiento.&lt;br&gt;&lt;b&gt;NOTA: ES UN CAMPO OBLIGATORIO.&lt;br&gt;ADEM&#xc1;S, DEBER&#xc1;S INGRESAR LA FECHA CON EL SIGUIENTE FORMATO: dd-mm-aaaa&lt;br&gt;d: dia, m: mes, a: a&#xf1;o.&lt;/b&gt;.&lt;/html&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Fecha de nacimiento &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
@@ -808,7 +809,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/inreply.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Continuar A Perfil"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Continuar a la pesta&#xf1;a de perfil&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -827,7 +828,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/reply.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Regresar A Autenticaci&#xf3;n"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Regresar a la pesta&#xf1;a de autenticaci&#xf3;n&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -853,6 +854,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Gadugi" size="19" style="0"/>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Descripci&#xf3;n breve sobre t&#xed; &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Opcional&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -874,12 +876,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="" toolTip="Pesta&#xf1;a Sobre Informaci&#xf3;n Del Perfil.">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt;&#xa;&lt;h3&gt;P&#xe1;gina de registro&lt;br&gt;&#xa;de perfil&lt;/h3&gt;&#xa;&lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/profile.png"/>
                 </Property>
-                <Property name="tabToolTip" type="java.lang.String" value="Pesta&#xf1;a Sobre Informaci&#xf3;n Del Perfil."/>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;P&#xe1;gina de registro&lt;br&gt;&#xa;de perfil&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -1006,7 +1008,7 @@
                     <StringItem index="1" value="Maestro"/>
                   </StringArray>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Aqu&#xed; Puedes Seleccionar Tu Perfil De Las Posibles.&lt;br&gt;&lt;b&gt;NOTA: ES UN CAMPO OBLIGATORIO.&lt;/b&gt;&lt;/html&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Tipo de perfil&lt;/h3&gt;&lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -1071,9 +1073,9 @@
             <Component class="javax.swing.JButton" name="continuar_Tablero_JButton">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/iconos/inreply.png"/>
+                  <Image iconType="3" name="/recursos/iconos/check.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Crear Perfil"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Crear nueva cuenta&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -1092,7 +1094,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/reply.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Regresar A Datos Personales"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Regresar a la pesta&#xf1;a de datos personales&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>

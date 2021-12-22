@@ -90,7 +90,7 @@
           <Font name="Gadugi" size="14" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="toolTipText" type="java.lang.String" value="T&#xed;tulo Del Archivo"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;T&#xed;tulo&lt;/h3&gt; &lt;/html&gt;"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[220, 17]"/>
         </Property>
@@ -111,7 +111,7 @@
           <Font name="Gadugi" size="14" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="toolTipText" type="java.lang.String" value="&#xc1;lbum"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;&#xc1;lbum&lt;/h3&gt; &lt;/html&gt;"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[220, 17]"/>
         </Property>
@@ -132,7 +132,7 @@
           <Font name="Gadugi" size="14" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="toolTipText" type="java.lang.String" value="Artista"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Artista&lt;/h3&gt; &lt;/html&gt;"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[220, 17]"/>
         </Property>

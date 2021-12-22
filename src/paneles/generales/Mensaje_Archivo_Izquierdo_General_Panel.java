@@ -63,17 +63,17 @@ public class Mensaje_Archivo_Izquierdo_General_Panel extends javax.swing.JPanel{
 
         emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        emisor_JLabel.setToolTipText("Emisor Del Mensaje");
+        emisor_JLabel.setToolTipText("<html> <h3>Emisor del mensaje</h3> </html>");
 
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        fecha_JLabel.setToolTipText("Fecha & Hora Del Mensaje");
+        fecha_JLabel.setToolTipText("<html> <h3>Fecha y hora del mensaje recibido</h3> </html>");
         fecha_JLabel.setMaximumSize(new java.awt.Dimension(33210, 25));
 
         nombre_Archivo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         nombre_Archivo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombre_Archivo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/file.png"))); // NOI18N
-        nombre_Archivo_JLabel.setToolTipText("Nombre Del Archivo");
+        nombre_Archivo_JLabel.setToolTipText("<html> <h3>Nombre del archivo</h3> </html>");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);

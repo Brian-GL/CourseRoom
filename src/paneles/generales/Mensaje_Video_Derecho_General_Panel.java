@@ -93,7 +93,7 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
 
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        fecha_JLabel.setToolTipText("Fecha & Hora Del Mensaje");
+        fecha_JLabel.setToolTipText("<html>\n<h3>Fecha y hora del mensaje recibido</h3>\n</html>");
 
         controles_JPanel.setOpaque(false);
 
@@ -107,7 +107,7 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
         titulo_JLabel.setForeground(java.awt.Color.white);
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Title");
-        titulo_JLabel.setToolTipText("Nombre Del Archivo De Video");
+        titulo_JLabel.setToolTipText("<html>\n<h3>Título del video</h3>\n</html>");
 
         progreso_JSlider.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         progreso_JSlider.setValue(0);
@@ -154,7 +154,7 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
 
         emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        emisor_JLabel.setToolTipText("Emisor Del Mensaje");
+        emisor_JLabel.setToolTipText("<html>\n<h3>Emisor del mensaje</h3>\n</html>");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);

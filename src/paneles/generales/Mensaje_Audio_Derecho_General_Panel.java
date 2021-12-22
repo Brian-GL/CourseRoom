@@ -79,8 +79,6 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
         duracion_JLabel.setForeground(_tercer_Color_Fuente);
         progreso_JLabel.setForeground(_tercer_Color_Fuente);
         titulo_JLabel.setForeground(_tercer_Color_Fuente);
-        artista_JLabel.setForeground(_tercer_Color_Fuente);
-        album_JLabel.setForeground(_tercer_Color_Fuente);
         progreso_JSlider.setForeground(_tercer_Color_Fuente);
         progreso_JSlider.setBackground(_tercer_Color_Fuente);
     }
@@ -97,9 +95,6 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
         contenido_JPanel = new javax.swing.JPanel();
         fecha_JLabel = new javax.swing.JLabel();
         informacion_Audio_JPanel = new javax.swing.JPanel();
-        imagen_Arte_JLabel = new javax.swing.JLabel();
-        album_JLabel = new javax.swing.JLabel();
-        artista_JLabel = new javax.swing.JLabel();
         play_Pausa_JLabel = new javax.swing.JLabel();
         progreso_JLabel = new javax.swing.JLabel();
         titulo_JLabel = new javax.swing.JLabel();
@@ -109,38 +104,23 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
         emisor_JLabel = new javax.swing.JLabel();
         auxiliar_JPanel = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 272));
+        setMaximumSize(new java.awt.Dimension(32767, 184));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 272));
+        setPreferredSize(new java.awt.Dimension(1080, 184));
         setRequestFocusEnabled(false);
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        fecha_JLabel.setToolTipText("Fecha & Hora Del Mensaje");
+        fecha_JLabel.setToolTipText("<html> <h3>Fecha y hora del mensaje recibido</h3> </html>");
 
         informacion_Audio_JPanel.setOpaque(false);
 
-        imagen_Arte_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(380, 380));
-        imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(380, 380));
-        imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(300, 300));
-
-        album_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        album_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        album_JLabel.setText("Album");
-        album_JLabel.setToolTipText("Album");
-
-        artista_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        artista_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        artista_JLabel.setText("Artista");
-        artista_JLabel.setToolTipText("Artista");
-
         play_Pausa_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         play_Pausa_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"))); // NOI18N
-        play_Pausa_JLabel.setToolTipText("Play/Pause Media");
+        play_Pausa_JLabel.setToolTipText("<html> <h3>Pausar/Reproducir</h3> </html>");
         play_Pausa_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 play_Pausa_JLabelMouseClicked(evt);
@@ -158,7 +138,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Titulo");
-        titulo_JLabel.setToolTipText("Titulo Del Archivo De Audio");
+        titulo_JLabel.setToolTipText("<html> <h3>Titulo del archivo de audio</h3> </html>");
 
         progreso_JSlider.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         progreso_JSlider.setValue(0);
@@ -175,7 +155,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
 
         alto_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         alto_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stop.png"))); // NOI18N
-        alto_JLabel.setToolTipText("Stop Media");
+        alto_JLabel.setToolTipText("<html> <h3>Parar</h3> </html>");
         alto_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 alto_JLabelMouseClicked(evt);
@@ -187,55 +167,45 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
         informacion_Audio_JPanelLayout.setHorizontalGroup(
             informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, Short.MAX_VALUE)
+                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 1, Short.MAX_VALUE))
                     .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
                         .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(duracion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(artista_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(album_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
                         .addComponent(alto_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                        .addComponent(play_Pausa_JLabel)
-                        .addGap(96, 96, 96)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(play_Pausa_JLabel)))
+                .addContainerGap())
         );
         informacion_Audio_JPanelLayout.setVerticalGroup(
             informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Audio_JPanelLayout.createSequentialGroup()
-                        .addComponent(titulo_JLabel)
-                        .addGap(10, 10, 10)
-                        .addComponent(artista_JLabel)
-                        .addGap(10, 10, 10)
-                        .addComponent(album_JLabel)
-                        .addGap(18, 18, 18)
-                        .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(duracion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(play_Pausa_JLabel)
-                            .addComponent(alto_JLabel))))
+                .addComponent(titulo_JLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(duracion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(alto_JLabel)
+                    .addComponent(play_Pausa_JLabel))
                 .addContainerGap())
         );
 
         emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        emisor_JLabel.setToolTipText("Emisor Del Mensaje");
+        emisor_JLabel.setToolTipText("<html> <h3>Emisor del mensaje</h3> </html>");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
@@ -267,11 +237,11 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
         auxiliar_JPanel.setLayout(auxiliar_JPanelLayout);
         auxiliar_JPanelLayout.setHorizontalGroup(
             auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
+            .addGap(0, 574, Short.MAX_VALUE)
         );
         auxiliar_JPanelLayout.setVerticalGroup(
             auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -289,10 +259,10 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(90, 90, 90))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -357,15 +327,12 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel album_JLabel;
     private javax.swing.JLabel alto_JLabel;
-    private javax.swing.JLabel artista_JLabel;
     private javax.swing.JPanel auxiliar_JPanel;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel duracion_JLabel;
     private javax.swing.JLabel emisor_JLabel;
     private javax.swing.JLabel fecha_JLabel;
-    private javax.swing.JLabel imagen_Arte_JLabel;
     private javax.swing.JPanel informacion_Audio_JPanel;
     public javax.swing.JLabel play_Pausa_JLabel;
     private javax.swing.JLabel progreso_JLabel;
@@ -632,39 +599,6 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
                 }
                 titulo_JLabel.setToolTipText(CourseRoom.Concatenar("Titulo: ", valor));
                 titulo_JLabel.setText(valor);
-
-                valor = tag.getFirst(FieldKey.ARTIST);
-                if (valor == null) {
-                    valor = "Desconocid@";
-                }
-                if (valor.isEmpty() || valor.isBlank()) {
-                    valor = "Desconocid@";
-                }
-                artista_JLabel.setToolTipText(CourseRoom.Concatenar("Artista: ", valor));
-                artista_JLabel.setText(valor);
-
-                valor = tag.getFirst(FieldKey.ALBUM);
-                if (valor == null) {
-                    valor = "Desconocid@";
-                }
-                if (valor.isEmpty() || valor.isBlank()) {
-                    valor = "Desconocid@";
-                }
-                album_JLabel.setToolTipText(CourseRoom.Concatenar("Album: ", valor));
-                album_JLabel.setText(valor);
-              
-                Artwork arte = tag.getFirstArtwork();
-                if(arte != null){
-                    
-                    Image arte_Original = ((Image)arte.getImage());
-                    if(arte_Original != null){
-                        arte_Original = arte_Original.getScaledInstance(170, 170, Image.SCALE_SMOOTH);
-                        ImageIcon cover = new ImageIcon(arte_Original);
-                        imagen_Arte_JLabel.setIcon(cover);
-                        arte_Original.flush();
-                    }
-                } 
-                
             }
         } catch (CannotReadException | IOException | TagException | InvalidAudioFrameException | ReadOnlyFileException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(),"Found Error",JOptionPane.ERROR_MESSAGE);

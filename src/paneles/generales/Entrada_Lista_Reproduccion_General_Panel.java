@@ -86,7 +86,7 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         titulo_JLabel.setBackground(java.awt.Color.black);
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setToolTipText("Título Del Archivo");
+        titulo_JLabel.setToolTipText("<html> <h3>Título</h3> </html>");
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
@@ -94,7 +94,7 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         album_JLabel.setBackground(java.awt.Color.black);
         album_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         album_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        album_JLabel.setToolTipText("Álbum");
+        album_JLabel.setToolTipText("<html> <h3>Álbum</h3> </html>");
         album_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         album_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
         album_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
@@ -102,7 +102,7 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         artista_JLabel.setBackground(java.awt.Color.black);
         artista_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         artista_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        artista_JLabel.setToolTipText("Artista");
+        artista_JLabel.setToolTipText("<html> <h3>Artista</h3> </html>");
         artista_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         artista_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
         artista_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));

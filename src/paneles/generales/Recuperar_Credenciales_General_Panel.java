@@ -97,7 +97,7 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         correo_Electronico_JLabel.setPreferredSize(new java.awt.Dimension(500, 30));
 
         correo_Electronico_JTextField.setFont(new java.awt.Font("Gadugi", 0, 24)); // NOI18N
-        correo_Electronico_JTextField.setToolTipText("Ingresa Aquí Tu Correo Electrónico De Tu Cuenta Para Enviarte Tus Credenciales");
+        correo_Electronico_JTextField.setToolTipText("");
         correo_Electronico_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(500, 43));
         correo_Electronico_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -109,7 +109,7 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         recuperar_Credenciales_JButton.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         recuperar_Credenciales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/id-card_1.png"))); // NOI18N
         recuperar_Credenciales_JButton.setText(" Recuperar Credenciales ");
-        recuperar_Credenciales_JButton.setToolTipText("Click Para Enviar Correo De Recuperación De Credenciales");
+        recuperar_Credenciales_JButton.setToolTipText("");
         recuperar_Credenciales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         recuperar_Credenciales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         recuperar_Credenciales_JButton.setPreferredSize(new java.awt.Dimension(500, 54));
@@ -126,7 +126,7 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar Al Login");
+        regresar_JButton.setToolTipText("<html>\n<h3>Regresar a la página de inicio de sesión</h3>\n</html>");
         regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {

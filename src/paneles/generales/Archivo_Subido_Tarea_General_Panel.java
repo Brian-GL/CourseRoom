@@ -39,7 +39,7 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel imple
         
         String informacion_Archivo = archivo_Subido.getName();
         
-        archivo_JTextPane.setText(CourseRoom.Formato_HTML_Centro(informacion_Archivo));
+        archivo_JTextPane.setText(CourseRoom.Formato_HTML_Central(informacion_Archivo));
         archivo_JTextPane.setToolTipText("Archivo Subido");
         remover_JButton.setForeground(primer_Color_Fuente);
         remover_JButton.setBackground(primer_Color_Fondo);
@@ -75,7 +75,7 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel imple
 
         remover_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         remover_JButton.setText("X");
-        remover_JButton.setToolTipText("Remover Archivo");
+        remover_JButton.setToolTipText("<html> <h3>Remover archivo</h3> </html>");
         remover_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 remover_JButtonMouseClicked(evt);
@@ -95,6 +95,7 @@ public class Archivo_Subido_Tarea_General_Panel extends javax.swing.JPanel imple
         archivo_JTextPane.setContentType("text/html"); // NOI18N
         archivo_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         archivo_JTextPane.setText("");
+        archivo_JTextPane.setToolTipText("<html> <h3>Nombre del archivo subido</h3> </html>");
         archivo_JTextPane.setFocusCycleRoot(false);
         archivo_JTextPane.setFocusable(false);
         archivo_JTextPane.setRequestFocusEnabled(false);
