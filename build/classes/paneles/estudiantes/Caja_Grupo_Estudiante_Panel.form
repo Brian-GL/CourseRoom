@@ -63,14 +63,10 @@
                   <Component id="imagen_JLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="fecha_Hora_JLabel" pref="799" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="numero_Integrantes_JLabel" min="-2" pref="89" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="ultima_Actualizacion_JLabel" alignment="1" max="32767" attributes="0"/>
+                      <Component id="ultima_Actualizacion_JLabel" alignment="1" pref="894" max="32767" attributes="0"/>
                       <Component id="curso_JLabel" alignment="1" max="32767" attributes="0"/>
                       <Component id="nombre_JLabel" alignment="1" max="32767" attributes="0"/>
+                      <Component id="fecha_Hora_JLabel" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
@@ -88,10 +84,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ultima_Actualizacion_JLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fecha_Hora_JLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="numero_Integrantes_JLabel" min="-2" pref="32" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="fecha_Hora_JLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="imagen_JLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -103,7 +96,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="imagen_JLabel">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Imagen Del Grupo"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[148, 152]"/>
             </Property>
@@ -127,7 +120,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/group_1.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Nombre Del Grupo"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Nombre del grupo&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="nombre_JLabelMouseClicked"/>
@@ -142,7 +135,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/teacher.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Curso De Proveniencia Del Grupo"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Curso de provenencia&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="curso_JLabelMouseClicked"/>
@@ -157,19 +150,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/volume.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Actualizaci&#xf3;n M&#xe1;s Reciente Del Grupo"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="numero_Integrantes_JLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gadugi" size="14" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero De Mensajes No Le&#xed;dos"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;&#xda;ltima actualizaci&#xf3;n&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="fecha_Hora_JLabel">
@@ -181,7 +162,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/clock.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Actualizaci&#xf3;n M&#xe1;s Reciente Del Grupo"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Fecha y hora de la &#xfa;ltima actualizaci&#xf3;n&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -89,19 +89,19 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(1068, 1182));
 
         nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        nombre_JLabel.setToolTipText("Nombre De La Tarea");
+        nombre_JLabel.setToolTipText("<html>\n<h3>Nombre de la tarea</h3>\n</html>");
         nombre_JLabel.setOpaque(true);
 
         nombre_Profesor_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         nombre_Profesor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombre_Profesor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/avatar.png"))); // NOI18N
-        nombre_Profesor_JLabel.setToolTipText("Nombre Del Profesor");
+        nombre_Profesor_JLabel.setToolTipText("<html>\n<h3>Nombre del profesor</h3>\n</html>");
 
         mi_Trabajo_JPanel.setOpaque(false);
 
         subir_Archivos_JButton.setFont(new java.awt.Font("Gadugi", 3, 18)); // NOI18N
         subir_Archivos_JButton.setText("Añadir Archivo(s)");
-        subir_Archivos_JButton.setToolTipText("Sube Un Archivo (O Varios) A Entregar");
+        subir_Archivos_JButton.setToolTipText("<html>\n<h3>Subir archivo para entrega</h3>\n</html>");
         subir_Archivos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         subir_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -155,7 +155,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         comentarios_JScrollPane.setViewportView(comentarios_Subidos_JPanel);
 
         enviar_Comentarios_JTextField.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        enviar_Comentarios_JTextField.setToolTipText("Redacta aquí tu comentario");
+        enviar_Comentarios_JTextField.setToolTipText("<html>\n<h3>Redactar comentario. Presiona ENTER para enviar</h3>\n</html>");
         enviar_Comentarios_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 enviar_Comentarios_JTextFieldKeyPressed(evt);
@@ -202,10 +202,10 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         fecha_Entrega_JLabel.setFont(new java.awt.Font("Gadugi", 3, 18)); // NOI18N
         fecha_Entrega_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Entrega_JLabel.setText("Fecha & Hora De Entrega De La Tarea");
-        fecha_Entrega_JLabel.setToolTipText("Fecha & Hora De Entrega");
+        fecha_Entrega_JLabel.setToolTipText("<html>\n<h3>Fecha y hora límite de entrega</h3>\n</html>");
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Tareas");
+        regresar_JButton.setToolTipText("<html>\n<h3>Regresar a la página de tareas</h3>\n</html>");
         regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -223,7 +223,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         curso_JLabel.setFont(new java.awt.Font("Gadugi", 3, 15)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         curso_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
-        curso_JLabel.setToolTipText("Curso De Proveniencia");
+        curso_JLabel.setToolTipText("<html>\n<h3>Curso de provenencia</h3>\n</html>");
         curso_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -234,7 +234,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         estatus_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         estatus_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         estatus_JLabel.setText("Pendiente");
-        estatus_JLabel.setToolTipText("Estatus De La Tarea");
+        estatus_JLabel.setToolTipText("<html>\n<h3>Estatus de la tarea</h3>\n</html>");
 
         archivos_Adjuntos_JScrollPane.setBorder(null);
         archivos_Adjuntos_JScrollPane.setOpaque(false);
@@ -256,7 +256,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         descripcion_JTextPane.setText("");
-        descripcion_JTextPane.setToolTipText("");
+        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción</h3>\n</html>");
         descripcion_JTextPane.setFocusCycleRoot(false);
         descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setRequestFocusEnabled(false);

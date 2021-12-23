@@ -50,11 +50,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt;&lt;h3&gt;Informaci&#xf3;n del curso&lt;/h3&gt;&lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/info_2.png"/>
                 </Property>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Informaci&#xf3;n del curso&lt;/h3&gt;&lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -70,11 +71,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt;&lt;h3&gt;Tablero del curso&lt;/h3&gt;&lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/dashboard.png"/>
                 </Property>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Tablero del curso&lt;/h3&gt;&lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -90,11 +92,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt;&lt;h3&gt;Tu trabajo&lt;/h3&gt;&lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/work-from-home.png"/>
                 </Property>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Tu trabajo&lt;/h3&gt;&lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -110,11 +113,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt;&lt;h3&gt;Recursos y materiales&lt;/h3&gt;&lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/book.png"/>
                 </Property>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Recursos y materiales&lt;/h3&gt;&lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -130,11 +134,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt;&lt;h3&gt;Miembros del curso&lt;/h3&gt;&lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/group_2.png"/>
                 </Property>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Miembros del curso&lt;/h3&gt;&lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -150,11 +155,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt;&lt;h3&gt;Foro del curso&lt;/h3&gt;&lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/synergy.png"/>
                 </Property>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Foro del curso&lt;/h3&gt;&lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -170,11 +176,12 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="">
+              <JTabbedPaneConstraints tabName="" toolTip="&lt;html&gt;&lt;h3&gt;Buscar materiales y/o recursos&lt;/h3&gt;&lt;/html&gt;">
                 <Property name="tabTitle" type="java.lang.String" value=""/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/search.png"/>
                 </Property>
+                <Property name="tabToolTip" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Buscar materiales y/o recursos&lt;/h3&gt;&lt;/html&gt;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

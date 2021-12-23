@@ -60,10 +60,10 @@
                   <Component id="imagen_Preguntador_JLabel" min="-2" pref="108" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="fecha_JLabel" pref="512" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="estatus_JLabel" pref="420" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="fecha_JLabel" pref="620" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="estatus_JLabel" min="-2" pref="312" max="-2" attributes="0"/>
                       </Group>
                       <Component id="preguntador_JLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="duda_JScrollPane" alignment="1" max="32767" attributes="0"/>
@@ -97,7 +97,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="imagen_Preguntador_JLabel">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Imagen Del Curso"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[164, 164]"/>
             </Property>
@@ -121,7 +121,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/circular-clock.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Fecha De Entrega"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Fecha y hora de creaci&#xf3;n&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="preguntador_JLabel">
@@ -132,7 +132,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/problem.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Tipo De Tarea"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Preguntador&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="estatus_JLabel">
@@ -143,7 +143,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/homework_3.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Estatus De La Tarea"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Estatus&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="duda_JScrollPane">
@@ -168,6 +168,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="20" style="1"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Nombre de la duda&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
             </Component>

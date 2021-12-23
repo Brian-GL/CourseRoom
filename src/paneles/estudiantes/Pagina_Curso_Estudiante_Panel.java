@@ -44,7 +44,8 @@ public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements
                         _primer_Color,_primer_Color_Fuente,_segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
        
        
-       curso_Tablero_Estudiante_Panel = new Curso_Tablero_Estudiante_Panel(_segundo_Color, _tercer_Color, _tercer_Color_Fuente);
+       curso_Tablero_Estudiante_Panel = new Curso_Tablero_Estudiante_Panel(_primer_Color, _primer_Color_Fuente,
+               _segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
        curso_Miembros_Estudiante_Panel = new Curso_Miembros_Estudiante_Panel(_tercer_Color, _tercer_Color_Fuente);
         
        Iniciar_Componentes();
@@ -82,31 +83,31 @@ public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements
 
         informacion_Curso_JScrollPane.setBorder(null);
         informacion_Curso_JScrollPane.setOpaque(false);
-        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_2.png")), informacion_Curso_JScrollPane); // NOI18N
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_2.png")), informacion_Curso_JScrollPane, "<html><h3>Información del curso</h3></html>"); // NOI18N
 
         tablero_Curso_JScrollPane.setBorder(null);
         tablero_Curso_JScrollPane.setOpaque(false);
-        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/dashboard.png")), tablero_Curso_JScrollPane); // NOI18N
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/dashboard.png")), tablero_Curso_JScrollPane, "<html><h3>Tablero del curso</h3></html>"); // NOI18N
 
         tu_Trabajo_JScrollPane.setBorder(null);
         tu_Trabajo_JScrollPane.setOpaque(false);
-        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/work-from-home.png")), tu_Trabajo_JScrollPane); // NOI18N
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/work-from-home.png")), tu_Trabajo_JScrollPane, "<html><h3>Tu trabajo</h3></html>"); // NOI18N
 
         recursos_JScrollPane.setBorder(null);
         recursos_JScrollPane.setOpaque(false);
-        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/book.png")), recursos_JScrollPane); // NOI18N
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/book.png")), recursos_JScrollPane, "<html><h3>Recursos y materiales</h3></html>"); // NOI18N
 
         miembros_JScrollPane.setBorder(null);
         miembros_JScrollPane.setOpaque(false);
-        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_2.png")), miembros_JScrollPane); // NOI18N
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_2.png")), miembros_JScrollPane, "<html><h3>Miembros del curso</h3></html>"); // NOI18N
 
         foro_JScrollPane.setBorder(null);
         foro_JScrollPane.setOpaque(false);
-        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/synergy.png")), foro_JScrollPane); // NOI18N
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/synergy.png")), foro_JScrollPane, "<html><h3>Foro del curso</h3></html>"); // NOI18N
 
         buscar_JScrollPane.setBorder(null);
         buscar_JScrollPane.setOpaque(false);
-        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png")), buscar_JScrollPane); // NOI18N
+        contenido_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png")), buscar_JScrollPane, "<html><h3>Buscar materiales y/o recursos</h3></html>"); // NOI18N
 
         add(contenido_JTabbedPane, "card2");
     }// </editor-fold>//GEN-END:initComponents

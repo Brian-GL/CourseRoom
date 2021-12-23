@@ -52,7 +52,7 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         contenido_JScrollPane.setViewportView(contenido_JPanel);
 
         buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        buscar_JTextField.setToolTipText("<html>\n<h3>Buscar dudas. Presiona ENTER para realizar la búsqueda</h3>\n</html>");
+        buscar_JTextField.setToolTipText("<html>\n<h3>Buscar duda(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
         buscar_JTextField.setBorder(null);
         buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

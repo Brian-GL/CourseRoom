@@ -54,7 +54,6 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         nombre_JLabel = new javax.swing.JLabel();
         curso_JLabel = new javax.swing.JLabel();
         ultima_Actualizacion_JLabel = new javax.swing.JLabel();
-        numero_Integrantes_JLabel = new javax.swing.JLabel();
         fecha_Hora_JLabel = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(32767, 180));
@@ -64,7 +63,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 168));
 
-        imagen_JLabel.setToolTipText("Imagen Del Grupo");
+        imagen_JLabel.setToolTipText("");
         imagen_JLabel.setMaximumSize(new java.awt.Dimension(148, 152));
         imagen_JLabel.setMinimumSize(new java.awt.Dimension(148, 152));
         imagen_JLabel.setPreferredSize(new java.awt.Dimension(152, 152));
@@ -77,7 +76,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombre_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_1.png"))); // NOI18N
-        nombre_JLabel.setToolTipText("Nombre Del Grupo");
+        nombre_JLabel.setToolTipText("<html> <h3>Nombre del grupo</h3> </html>");
         nombre_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nombre_JLabelMouseClicked(evt);
@@ -87,7 +86,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         curso_JLabel.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         curso_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/teacher.png"))); // NOI18N
-        curso_JLabel.setToolTipText("Curso De Proveniencia Del Grupo");
+        curso_JLabel.setToolTipText("<html> <h3>Curso de provenencia</h3> </html>");
         curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 curso_JLabelMouseClicked(evt);
@@ -97,17 +96,12 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         ultima_Actualizacion_JLabel.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         ultima_Actualizacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ultima_Actualizacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/volume.png"))); // NOI18N
-        ultima_Actualizacion_JLabel.setToolTipText("Actualización Más Reciente Del Grupo");
-
-        numero_Integrantes_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        numero_Integrantes_JLabel.setForeground(java.awt.Color.white);
-        numero_Integrantes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        numero_Integrantes_JLabel.setToolTipText("Número De Mensajes No Leídos");
+        ultima_Actualizacion_JLabel.setToolTipText("<html> <h3>Última actualización</h3> </html>");
 
         fecha_Hora_JLabel.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         fecha_Hora_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fecha_Hora_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock.png"))); // NOI18N
-        fecha_Hora_JLabel.setToolTipText("Actualización Más Reciente Del Grupo");
+        fecha_Hora_JLabel.setToolTipText("<html> <h3>Fecha y hora de la última actualización</h3> </html>");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
@@ -118,13 +112,10 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
                 .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(fecha_Hora_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numero_Integrantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ultima_Actualizacion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ultima_Actualizacion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
                     .addComponent(curso_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(nombre_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fecha_Hora_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
@@ -139,9 +130,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ultima_Actualizacion_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fecha_Hora_JLabel)
-                            .addComponent(numero_Integrantes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(fecha_Hora_JLabel))
                     .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -192,7 +181,6 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
     private javax.swing.JLabel fecha_Hora_JLabel;
     private javax.swing.JLabel imagen_JLabel;
     private javax.swing.JLabel nombre_JLabel;
-    private javax.swing.JLabel numero_Integrantes_JLabel;
     private javax.swing.JLabel ultima_Actualizacion_JLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -209,7 +197,6 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
             nombre_JLabel.setText(CourseRoom.Faker().team().sport());
             fecha_Hora_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());
             curso_JLabel.setText(CourseRoom.Faker().team().name());
-            numero_Integrantes_JLabel.setText(CourseRoom.Concatenar(CourseRoom.Faker().number().digit()," Integrantes"));
             
             grupo_Estudiante_Panel = new Grupo_Estudiante_Panel(obtener_Imagen, nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente);
             Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id);

@@ -47,7 +47,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(descripcion));
         fecha_Terminacion_jLabel.setText(fecha_Terminacion);
         miembro_Cargo_JLabel.setIcon(member_Icon);
-        miembro_Cargo_JLabel.setToolTipText(CourseRoom.Concatenar("Miembro A Cargo: ",nombre_Miembro));
+        miembro_Cargo_JLabel.setToolTipText(CourseRoom.Concatenar("<html><h3>Miembro a cargo:<br>",nombre_Miembro,"</h3></html>"));
         
         Iniciar_Componentes();
        
@@ -86,12 +86,12 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
         nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombre_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/schedule.png"))); // NOI18N
-        nombre_JLabel.setToolTipText("Nombre Del Pendiente A Realizar");
+        nombre_JLabel.setToolTipText("<html>\n<h3>Nombre del pendiente</h3>\n</html>");
         nombre_JLabel.setOpaque(true);
 
         fecha_Terminacion_jLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         fecha_Terminacion_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock.png"))); // NOI18N
-        fecha_Terminacion_jLabel.setToolTipText("Fecha Propuesta Para Terminar El Pendiente");
+        fecha_Terminacion_jLabel.setToolTipText("<html>\n<h3>Fecha y hora propuesta de terminación</h3>\n</html>");
 
         descripcion_JScrollPane.setBorder(null);
         descripcion_JScrollPane.setOpaque(false);
@@ -101,15 +101,18 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
+        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción del pendiente</h3>\n</html>");
         descripcion_JTextPane.setOpaque(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         estatus_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         estatus_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         estatus_JLabel.setText("Pendiente");
+        estatus_JLabel.setToolTipText("<html>\n<h3>Estatus</h3>\n</html>");
 
         finalizar_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         finalizar_JButton.setText("¿Finalizar?");
+        finalizar_JButton.setToolTipText("<html> <h3>Cambiar a estatus finalizada</h3> </html>");
         finalizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 finalizar_JButtonMouseClicked(evt);

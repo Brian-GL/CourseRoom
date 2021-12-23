@@ -5,18 +5,44 @@
  */
 package paneles.estudiantes;
 
+import main.CourseRoom;
+import interfaces.Componentes_Interface;
+import interfaces.Limpieza_Interface;
+import java.awt.Color;
+
+
 /**
  *
  * @author LENOVO
  */
-public class Curso_Modulo_Estudiante_Panel extends javax.swing.JPanel {
-
-    /**
-     * Creates new form Curso_Modulo_Estudiante_Panel
-     */
-    public Curso_Modulo_Estudiante_Panel() {
-        initComponents();
+public class Curso_Modulo_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
+    
+    private Color primer_Color, segundo_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
+    
+    @SuppressWarnings("OverridableMethodCallInConstructor")
+    public Curso_Modulo_Estudiante_Panel(String nombre_Modulo,
+            Color _primer_Color,
+            Color _primer_Color_Fuente,
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente){
+        
+       initComponents();
+       
+        primer_Color = _primer_Color;
+        primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
+       
+       nombre_Modulo_JTextPane.setText(CourseRoom.Formato_HTML_Central(nombre_Modulo));
+        
+       Iniciar_Componentes();
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,23 +53,144 @@ public class Curso_Modulo_Estudiante_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setMaximumSize(new java.awt.Dimension(32767, 982));
-        setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 982));
+        contenido_JScrollPane = new javax.swing.JScrollPane();
+        contenido_JPanel = new javax.swing.JPanel();
+        titulo_JPanel = new javax.swing.JPanel();
+        nombre_Modulo_JScrollPane = new javax.swing.JScrollPane();
+        nombre_Modulo_JTextPane = new javax.swing.JTextPane();
+        descripcion_JPanel = new javax.swing.JPanel();
+        descripcion_Modulo_JScrollPane = new javax.swing.JScrollPane();
+        descripcion_Modulo_JTextPane = new javax.swing.JTextPane();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+        setMinimumSize(new java.awt.Dimension(0, 0));
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1080, 932));
+        setLayout(new java.awt.CardLayout());
+
+        contenido_JScrollPane.setBorder(null);
+        contenido_JScrollPane.setOpaque(false);
+
+        contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 982));
+        contenido_JPanel.setOpaque(false);
+        contenido_JPanel.setPreferredSize(new java.awt.Dimension(1080, 982));
+        contenido_JPanel.setLayout(new javax.swing.BoxLayout(contenido_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+
+        titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        titulo_JPanel.setOpaque(false);
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 118));
+
+        nombre_Modulo_JScrollPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        nombre_Modulo_JTextPane.setEditable(false);
+        nombre_Modulo_JTextPane.setBorder(null);
+        nombre_Modulo_JTextPane.setContentType("text/html"); // NOI18N
+        nombre_Modulo_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
+        nombre_Modulo_JTextPane.setText("");
+        nombre_Modulo_JTextPane.setToolTipText("<html><h3>Nombre del módulo</h3></html>");
+        nombre_Modulo_JScrollPane.setViewportView(nombre_Modulo_JTextPane);
+
+        javax.swing.GroupLayout titulo_JPanelLayout = new javax.swing.GroupLayout(titulo_JPanel);
+        titulo_JPanel.setLayout(titulo_JPanelLayout);
+        titulo_JPanelLayout.setHorizontalGroup(
+            titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titulo_JPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nombre_Modulo_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 982, Short.MAX_VALUE)
+        titulo_JPanelLayout.setVerticalGroup(
+            titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titulo_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nombre_Modulo_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        contenido_JPanel.add(titulo_JPanel);
+
+        descripcion_JPanel.setMaximumSize(new java.awt.Dimension(32767, 200));
+        descripcion_JPanel.setOpaque(false);
+        descripcion_JPanel.setPreferredSize(new java.awt.Dimension(1080, 200));
+
+        descripcion_Modulo_JScrollPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        descripcion_Modulo_JTextPane.setEditable(false);
+        descripcion_Modulo_JTextPane.setBorder(null);
+        descripcion_Modulo_JTextPane.setContentType("text/html"); // NOI18N
+        descripcion_Modulo_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 20)); // NOI18N
+        descripcion_Modulo_JTextPane.setText("");
+        descripcion_Modulo_JTextPane.setToolTipText("<html><h3>Descripción del módulo</h3></html>");
+        descripcion_Modulo_JScrollPane.setViewportView(descripcion_Modulo_JTextPane);
+
+        javax.swing.GroupLayout descripcion_JPanelLayout = new javax.swing.GroupLayout(descripcion_JPanel);
+        descripcion_JPanel.setLayout(descripcion_JPanelLayout);
+        descripcion_JPanelLayout.setHorizontalGroup(
+            descripcion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(descripcion_JPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(descripcion_Modulo_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        descripcion_JPanelLayout.setVerticalGroup(
+            descripcion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(descripcion_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(descripcion_Modulo_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        contenido_JPanel.add(descripcion_JPanel);
+
+        contenido_JScrollPane.setViewportView(contenido_JPanel);
+
+        add(contenido_JScrollPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-
+    public static int Numero_Tareas(){
+        return contenido_JPanel.getComponentCount()-1;
+    }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static javax.swing.JPanel contenido_JPanel;
+    private javax.swing.JScrollPane contenido_JScrollPane;
+    private javax.swing.JPanel descripcion_JPanel;
+    private javax.swing.JScrollPane descripcion_Modulo_JScrollPane;
+    private javax.swing.JTextPane descripcion_Modulo_JTextPane;
+    private javax.swing.JScrollPane nombre_Modulo_JScrollPane;
+    private javax.swing.JTextPane nombre_Modulo_JTextPane;
+    private javax.swing.JPanel titulo_JPanel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Iniciar_Componentes() {
+        
+        contenido_JScrollPane.getViewport().setOpaque(false);
+        contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        nombre_Modulo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        nombre_Modulo_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+       
+        Caja_Tablero_Tarea_Curso_Estudiante_Panel caja_Tablero_Tarea_Curso_Estudiante_Panel;
+        String concatenacion;
+        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
+            concatenacion = CourseRoom.Concatenar("Tarea_",i);
+            caja_Tablero_Tarea_Curso_Estudiante_Panel = new Caja_Tablero_Tarea_Curso_Estudiante_Panel(concatenacion,
+                    primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
+            contenido_JPanel.add(caja_Tablero_Tarea_Curso_Estudiante_Panel);
+        }
+        
+        Colorear_Componentes();
+    }
+
+    @Override
+    public void Colorear_Componentes() {
+       nombre_Modulo_JTextPane.setBackground(tercer_Color);
+       nombre_Modulo_JTextPane.setForeground(tercer_Color_Fuente);
+    }
+    
+    @Override
+    public void Limpiar() {
+        contenido_JPanel.removeAll();
+    }
 }

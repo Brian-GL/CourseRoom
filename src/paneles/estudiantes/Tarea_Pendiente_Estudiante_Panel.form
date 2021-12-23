@@ -123,7 +123,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/schedule.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Nombre Del Pendiente A Realizar"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Nombre del pendiente&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
@@ -135,7 +135,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/clock.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Fecha Propuesta Para Terminar El Pendiente"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Fecha y hora propuesta de terminaci&#xf3;n&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="descripcion_JScrollPane">
@@ -162,6 +162,7 @@
                   <Font name="Gadugi" size="16" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Descripci&#xf3;n del pendiente&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -174,6 +175,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Pendiente"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Estatus&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="finalizar_JButton">
@@ -182,6 +184,7 @@
               <Font name="Gadugi" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#xbf;Finalizar?"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Cambiar a estatus finalizada&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="finalizar_JButtonMouseClicked"/>

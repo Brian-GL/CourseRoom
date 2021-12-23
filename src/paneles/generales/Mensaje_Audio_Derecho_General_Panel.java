@@ -10,25 +10,13 @@ import main.CourseRoom;
 import interfaces.Limpieza_Interface;
 import interfaces.Reproductor_Interface;
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.audio.exceptions.CannotReadException;
-import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
-import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
-import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.TagException;
-import org.jaudiotagger.tag.images.Artwork;
 import uk.co.caprica.vlcj.media.MediaRef;
 import uk.co.caprica.vlcj.media.TrackType;
 import uk.co.caprica.vlcj.player.base.MediaPlayer;
@@ -360,8 +348,6 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
         componente_Reproductor_Audio = new AudioPlayerComponent();
         
         Establecer_Eventos_Reproductor();
-        
-        Cargar_Metadatos();
     }
 
     @Override
@@ -582,27 +568,6 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
 
     @Override
     public void Cargar_Metadatos() {
-        try {
-            File leer_Archivo = new File(mrl);
-            
-            if(leer_Archivo.exists()){      
-               
-                AudioFile archivo_Audio = AudioFileIO.read(leer_Archivo);
-                
-                Tag tag = archivo_Audio.getTag();
-                String valor = tag.getFirst(FieldKey.TITLE);
-                if (valor == null) {
-                    valor = leer_Archivo.getName();
-                }
-                if (valor.isEmpty() || valor.isBlank()) {
-                    valor = leer_Archivo.getName();
-                }
-                titulo_JLabel.setToolTipText(CourseRoom.Concatenar("Titulo: ", valor));
-                titulo_JLabel.setText(valor);
-            }
-        } catch (CannotReadException | IOException | TagException | InvalidAudioFrameException | ReadOnlyFileException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(),"Found Error",JOptionPane.ERROR_MESSAGE);
-        }
-        
+      //No soportado
     }
 }

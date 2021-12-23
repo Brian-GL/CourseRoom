@@ -86,7 +86,7 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Li
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        imagen_Preguntador_JLabel.setToolTipText("Imagen Del Curso");
+        imagen_Preguntador_JLabel.setToolTipText("");
         imagen_Preguntador_JLabel.setMaximumSize(new java.awt.Dimension(164, 164));
         imagen_Preguntador_JLabel.setMinimumSize(new java.awt.Dimension(164, 164));
         imagen_Preguntador_JLabel.setPreferredSize(new java.awt.Dimension(164, 164));
@@ -99,15 +99,15 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Li
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fecha_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
-        fecha_JLabel.setToolTipText("Fecha De Entrega");
+        fecha_JLabel.setToolTipText("<html> <h3>Fecha y hora de creación</h3> </html>");
 
         preguntador_JLabel.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
         preguntador_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/problem.png"))); // NOI18N
-        preguntador_JLabel.setToolTipText("Tipo De Tarea");
+        preguntador_JLabel.setToolTipText("<html> <h3>Preguntador</h3> </html>");
 
         estatus_JLabel.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
         estatus_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_3.png"))); // NOI18N
-        estatus_JLabel.setToolTipText("Estatus De La Tarea");
+        estatus_JLabel.setToolTipText("<html> <h3>Estatus</h3> </html>");
 
         duda_JScrollPane.setBorder(null);
         duda_JScrollPane.setOpaque(false);
@@ -115,6 +115,7 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Li
         duda_JTextPane.setEditable(false);
         duda_JTextPane.setBorder(null);
         duda_JTextPane.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
+        duda_JTextPane.setToolTipText("<html> <h3>Nombre de la duda</h3> </html>");
         duda_JTextPane.setOpaque(false);
         duda_JScrollPane.setViewportView(duda_JTextPane);
 
@@ -128,9 +129,9 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Li
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                        .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estatus_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE))
+                        .addComponent(estatus_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(preguntador_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(duda_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())

@@ -78,11 +78,12 @@ public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel impl
 
         ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
         ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defecto", "Fecha: Más Reciente", "Fecha: Menos Reciente", "Nombre: A - Z", "Nombre: Z - A", "Nombre Del Profesor: A - Z", "Nombre Del Profesor: Z - A", "Calificación: Mayor A Menor", "Calificación: Menor A Mayor", "Categoria: A - Z", "Categoria: Z - A" }));
-        ordenar_Por_JComboBox.setToolTipText("Ordenar Cursos Por");
+        ordenar_Por_JComboBox.setToolTipText("<html>\n<h3>Ordenar cursos por</h3>\n</html>");
         ordenar_Por_JComboBox.setBorder(null);
         ordenar_Por_JComboBox.setOpaque(true);
 
         buscar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
+        buscar_JButton.setToolTipText("<html> <h3>Buscar curso(s)</h3> </html>");
         buscar_JButton.setBorder(null);
         buscar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         buscar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,6 +99,7 @@ public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel impl
         });
 
         nuevos_Cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/new.png"))); // NOI18N
+        nuevos_Cursos_JButton.setToolTipText("<html> <h3>Cursos nuevos</h3> </html>");
         nuevos_Cursos_JButton.setBorder(null);
         nuevos_Cursos_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         nuevos_Cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,6 +115,7 @@ public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel impl
         });
 
         recomendados_Cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/quality.png"))); // NOI18N
+        recomendados_Cursos_JButton.setToolTipText("<html> <h3>Cursos recomendados</h3> </html>");
         recomendados_Cursos_JButton.setBorder(null);
         recomendados_Cursos_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         recomendados_Cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,6 +131,7 @@ public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel impl
         });
 
         finalizados_Cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
+        finalizados_Cursos_JButton.setToolTipText("<html> <h3>Cursos finalizados</h3> </html>");
         finalizados_Cursos_JButton.setBorder(null);
         finalizados_Cursos_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         finalizados_Cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -143,6 +147,7 @@ public class Cursos_Finalizados_Estudiante_Panel extends javax.swing.JPanel impl
         });
 
         actuales_Cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/work-from-home.png"))); // NOI18N
+        actuales_Cursos_JButton.setToolTipText("<html> <h3>Cursos actuales</h3> </html>");
         actuales_Cursos_JButton.setBorder(null);
         actuales_Cursos_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         actuales_Cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {

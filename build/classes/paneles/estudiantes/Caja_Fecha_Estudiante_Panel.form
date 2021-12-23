@@ -80,8 +80,8 @@
                   <Component id="numero_Dia_JLabel" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="hora_JLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
-                  <Component id="descripcion_JScrollPane" min="-2" pref="140" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="descripcion_JScrollPane" pref="146" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -112,6 +112,7 @@
                   <Font name="Gadugi" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Descripci&#xf3;n corta&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -123,7 +124,7 @@
               <Font name="Gadugi" size="20" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero De D&#xed;a Del Mes"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;N&#xfa;mero de d&#xed;a&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="hora_JLabel">
@@ -132,7 +133,7 @@
               <Font name="Gadugi" size="14" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="toolTipText" type="java.lang.String" value="Hora M&#xe1;xima Del Pendiente"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Hora de finalizaci&#xf3;n&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[68, 32]"/>
             </Property>

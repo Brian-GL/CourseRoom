@@ -5,35 +5,38 @@
  */
 package paneles.estudiantes;
 
+import interfaces.Componentes_Interface;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
+import main.CourseRoom;
 
 /**
  *
  * @author LENOVO
  */
-public class Curso_Tablero_Estudiante_Panel extends javax.swing.JPanel{
+public class Curso_Tablero_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
+    private Color primer_Color, segundo_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
     public Curso_Tablero_Estudiante_Panel(
+        Color _primer_Color,
+        Color _primer_Color_Fuente,
         Color _segundo_Color,
+        Color _segundo_Color_Fuente,
         Color _tercer_Color,
         Color _tercer_Color_Fuente) {
         
         initComponents();
      
-        contenido_JPanel.setBackground(_segundo_Color);
-        titulo_JLabel.setBackground(_tercer_Color);
-        titulo_JLabel.setForeground(_tercer_Color_Fuente);
+        primer_Color = _primer_Color;
+        primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
         
-        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
-        
-        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Módulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, _tercer_Color_Fuente));
-        ordenar_Por_JComboBox.setBackground(_tercer_Color);
-        ordenar_Por_JComboBox.setForeground(_tercer_Color_Fuente);
+        Iniciar_Componentes();
         
         
     }
@@ -50,7 +53,7 @@ public class Curso_Tablero_Estudiante_Panel extends javax.swing.JPanel{
         titulo_JPanel = new javax.swing.JPanel();
         contenido_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
-        ordenar_Por_JComboBox = new javax.swing.JComboBox<>();
+        modulos_JComboBox = new javax.swing.JComboBox<>();
         modulos_JPanel = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(32767, 1100));
@@ -69,11 +72,16 @@ public class Curso_Tablero_Estudiante_Panel extends javax.swing.JPanel{
         titulo_JLabel.setText("Tablero");
         titulo_JLabel.setOpaque(true);
 
-        ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
-        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General" }));
-        ordenar_Por_JComboBox.setToolTipText("Ordenar Cursos Por");
-        ordenar_Por_JComboBox.setBorder(null);
-        ordenar_Por_JComboBox.setOpaque(true);
+        modulos_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
+        modulos_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General" }));
+        modulos_JComboBox.setToolTipText("<html>\n<h3>Seleccionar módulo</h3>\n</html>");
+        modulos_JComboBox.setBorder(null);
+        modulos_JComboBox.setOpaque(true);
+        modulos_JComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                modulos_JComboBoxItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
@@ -83,7 +91,7 @@ public class Curso_Tablero_Estudiante_Panel extends javax.swing.JPanel{
                 .addGap(0, 0, 0)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
-                .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(modulos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         contenido_JPanelLayout.setVerticalGroup(
@@ -91,7 +99,7 @@ public class Curso_Tablero_Estudiante_Panel extends javax.swing.JPanel{
             .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(modulos_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout titulo_JPanelLayout = new javax.swing.GroupLayout(titulo_JPanel);
@@ -123,13 +131,52 @@ public class Curso_Tablero_Estudiante_Panel extends javax.swing.JPanel{
         add(modulos_JPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void modulos_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_modulos_JComboBoxItemStateChanged
+        // TODO add your handling code here:
+        ((CardLayout)modulos_JPanel.getLayout()).show(modulos_JPanel, modulos_JComboBox.getSelectedItem().toString());
+    }//GEN-LAST:event_modulos_JComboBoxItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
+    private javax.swing.JComboBox<String> modulos_JComboBox;
     private javax.swing.JPanel modulos_JPanel;
-    private javax.swing.JComboBox<String> ordenar_Por_JComboBox;
     private javax.swing.JLabel titulo_JLabel;
     private javax.swing.JPanel titulo_JPanel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Iniciar_Componentes() {
+        String nombre_modulo;
+        Curso_Modulo_Estudiante_Panel curso_Modulo_Estudiante_Panel;
+        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5);i++){
+            nombre_modulo = CourseRoom.Faker().artist().name();
+            modulos_JComboBox.addItem(nombre_modulo);
+            curso_Modulo_Estudiante_Panel = new Curso_Modulo_Estudiante_Panel(nombre_modulo,primer_Color,
+                    primer_Color_Fuente,segundo_Color,segundo_Color_Fuente,tercer_Color,tercer_Color_Fuente);
+            modulos_JPanel.add(curso_Modulo_Estudiante_Panel, nombre_modulo);
+        }
+        
+        ((CardLayout)modulos_JPanel.getLayout()).show(modulos_JPanel, modulos_JComboBox.getItemAt(1));
+        modulos_JComboBox.setSelectedIndex(1);
+        
+        Colorear_Componentes();
+    }
+
+    @Override
+    public void Colorear_Componentes() {
+        contenido_JPanel.setBackground(segundo_Color);
+        titulo_JLabel.setBackground(tercer_Color);
+        titulo_JLabel.setForeground(tercer_Color_Fuente);
+        
+        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
+        
+        modulos_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
+                "Módulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                gadugi, tercer_Color_Fuente));
+        modulos_JComboBox.setBackground(tercer_Color);
+        modulos_JComboBox.setForeground(tercer_Color_Fuente);
+    }
 
 }

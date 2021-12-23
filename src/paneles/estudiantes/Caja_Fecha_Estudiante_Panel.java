@@ -57,16 +57,17 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         descripcion_JTextPane.setText("");
+        descripcion_JTextPane.setToolTipText("<html> <h3>Descripción corta</h3> </html>");
         descripcion_JTextPane.setOpaque(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         numero_Dia_JLabel.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         numero_Dia_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        numero_Dia_JLabel.setToolTipText("Número De Día Del Mes");
+        numero_Dia_JLabel.setToolTipText("<html> <h3>Número de día</h3> </html>");
 
         hora_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         hora_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        hora_JLabel.setToolTipText("Hora Máxima Del Pendiente");
+        hora_JLabel.setToolTipText("<html> <h3>Hora de finalización</h3> </html>");
         hora_JLabel.setMaximumSize(new java.awt.Dimension(68, 32));
         hora_JLabel.setMinimumSize(new java.awt.Dimension(68, 32));
         hora_JLabel.setPreferredSize(new java.awt.Dimension(68, 32));
@@ -92,8 +93,8 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
                 .addComponent(numero_Dia_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hora_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

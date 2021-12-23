@@ -107,7 +107,7 @@
               <Font name="Gadugi" size="15" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Nombre del archivo&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Nombre del archivo compartido&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[373, 21]"/>
             </Property>
@@ -125,7 +125,7 @@
               <Font name="Gadugi" size="15" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Emisor del archivo&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Compartido por&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="fecha_Hora_JLabel">
@@ -134,7 +134,7 @@
               <Font name="Gadugi" size="15" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Fecha y hora del env&#xed;o&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Fecha y hora de la compartici&#xf3;n&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="descargar_JButton">

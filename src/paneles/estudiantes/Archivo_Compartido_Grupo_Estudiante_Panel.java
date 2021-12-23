@@ -72,18 +72,18 @@ public class Archivo_Compartido_Grupo_Estudiante_Panel extends javax.swing.JPane
 
         nombre_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre_JLabel.setToolTipText("<html>\n<h3>Nombre del archivo</h3>\n</html>");
+        nombre_JLabel.setToolTipText("<html>\n<h3>Nombre del archivo compartido</h3>\n</html>");
         nombre_JLabel.setMaximumSize(new java.awt.Dimension(373, 21));
         nombre_JLabel.setMinimumSize(new java.awt.Dimension(373, 21));
         nombre_JLabel.setPreferredSize(new java.awt.Dimension(373, 21));
 
         emisor_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        emisor_JLabel.setToolTipText("<html>\n<h3>Emisor del archivo</h3>\n</html>");
+        emisor_JLabel.setToolTipText("<html>\n<h3>Compartido por</h3>\n</html>");
 
         fecha_Hora_JLabel.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         fecha_Hora_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fecha_Hora_JLabel.setToolTipText("<html>\n<h3>Fecha y hora del envío</h3>\n</html>");
+        fecha_Hora_JLabel.setToolTipText("<html>\n<h3>Fecha y hora de la compartición</h3>\n</html>");
 
         descargar_JButton.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         descargar_JButton.setText("Descargar");

@@ -74,11 +74,12 @@ public class Tareas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
 
         ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
         ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defecto", "Fecha: Más Reciente", "Fecha: Menos Reciente", "Nombre: A - Z", "Nombre: Z - A", "Curso: A - Z", "Curso: Z - A", "Pendientes", "Entregadas" }));
-        ordenar_Por_JComboBox.setToolTipText("Ordenar Cursos Por");
+        ordenar_Por_JComboBox.setToolTipText("<html>\n<h3>Ordenar tareas por</h3>\n</html>");
         ordenar_Por_JComboBox.setBorder(null);
         ordenar_Por_JComboBox.setOpaque(true);
 
         buscar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
+        buscar_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         buscar_JButton.setBorder(null);
         buscar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         buscar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {

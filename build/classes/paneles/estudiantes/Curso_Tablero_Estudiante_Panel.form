@@ -81,7 +81,7 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="titulo_JLabel" min="-2" pref="144" max="-2" attributes="0"/>
                       <EmptySpace pref="138" max="32767" attributes="0"/>
-                      <Component id="ordenar_Por_JComboBox" min="-2" pref="782" max="-2" attributes="0"/>
+                      <Component id="modulos_JComboBox" min="-2" pref="782" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -91,7 +91,7 @@
                   <Component id="titulo_JLabel" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="ordenar_Por_JComboBox" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="modulos_JComboBox" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -107,7 +107,7 @@
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="ordenar_Por_JComboBox">
+            <Component class="javax.swing.JComboBox" name="modulos_JComboBox">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="17" style="0"/>
@@ -117,12 +117,15 @@
                     <StringItem index="0" value="General"/>
                   </StringArray>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Ordenar Cursos Por"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Seleccionar m&#xf3;dulo&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="modulos_JComboBoxItemStateChanged"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>

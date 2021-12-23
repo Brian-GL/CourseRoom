@@ -64,7 +64,7 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 162));
 
-        imagen_Curso_JLabel.setToolTipText("Imagen Del Curso");
+        imagen_Curso_JLabel.setToolTipText("");
         imagen_Curso_JLabel.setMaximumSize(new java.awt.Dimension(146, 146));
         imagen_Curso_JLabel.setMinimumSize(new java.awt.Dimension(146, 146));
         imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(146, 146));
@@ -77,7 +77,7 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
         curso_JLabel.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         curso_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/course.png"))); // NOI18N
-        curso_JLabel.setToolTipText("Curso De Proveniencia De La Tarea");
+        curso_JLabel.setToolTipText("<html> <h3>Curso de provenencia</h3> </html>");
         curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 curso_JLabelMouseClicked(evt);
@@ -87,7 +87,7 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
         nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombre_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_2.png"))); // NOI18N
-        nombre_JLabel.setToolTipText("Nombre De La Tarea");
+        nombre_JLabel.setToolTipText("<html> <h3>Nombre de la tarea</h3> </html>");
         nombre_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nombre_JLabelMouseClicked(evt);
@@ -97,15 +97,15 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
         fecha_Entrega_JLabel.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         fecha_Entrega_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fecha_Entrega_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_1.png"))); // NOI18N
-        fecha_Entrega_JLabel.setToolTipText("Fecha De Entrega");
+        fecha_Entrega_JLabel.setToolTipText("<html> <h3>Fecha y hora de entrega</h3> </html>");
 
         tipo_JLabel.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
         tipo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/writing.png"))); // NOI18N
-        tipo_JLabel.setToolTipText("Tipo De Tarea");
+        tipo_JLabel.setToolTipText("<html> <h3>Tipo de tarea</h3> </html>");
 
         estatus_JLabel.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
         estatus_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_3.png"))); // NOI18N
-        estatus_JLabel.setToolTipText("Estatus De La Tarea");
+        estatus_JLabel.setToolTipText("<html> <h3>Estatus</h3> </html>");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);

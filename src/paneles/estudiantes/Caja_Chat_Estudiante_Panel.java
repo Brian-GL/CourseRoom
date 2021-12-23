@@ -80,7 +80,7 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
         nombre_JLabel.setForeground(java.awt.Color.white);
         nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nombre_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat_1.png"))); // NOI18N
-        nombre_JLabel.setToolTipText("<html>\n<h3>Nombre del chat</h3>\n</html>");
+        nombre_JLabel.setToolTipText("<html>\n<h3>Nombre de la persona con quién chateas</h3>\n</html>");
         nombre_JLabel.setMaximumSize(new java.awt.Dimension(488, 32));
         nombre_JLabel.setMinimumSize(new java.awt.Dimension(488, 32));
         nombre_JLabel.setPreferredSize(new java.awt.Dimension(488, 32));

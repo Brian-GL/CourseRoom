@@ -166,7 +166,7 @@
                             <StringItem index="8" value="Entregadas"/>
                           </StringArray>
                         </Property>
-                        <Property name="toolTipText" type="java.lang.String" value="Ordenar Cursos Por"/>
+                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Ordenar tareas por&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
@@ -181,6 +181,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/recursos/iconos/search.png"/>
                         </Property>
+                        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Buscar tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
