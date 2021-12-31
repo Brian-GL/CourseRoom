@@ -95,7 +95,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(430, 45));
 
         usuario_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        usuario_JLabel.setText("Usuario");
+        usuario_JLabel.setText("Nombre De Usuario O Correo Electrónico");
         usuario_JLabel.setToolTipText("");
         usuario_JLabel.setMaximumSize(new java.awt.Dimension(430, 30));
         usuario_JLabel.setMinimumSize(new java.awt.Dimension(430, 30));

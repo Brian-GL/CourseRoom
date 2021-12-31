@@ -129,7 +129,6 @@ public class Sesion_Activa_General_Panel extends javax.swing.JPanel implements C
         fecha_JLabel.setText(LocalDateTime.now().toString());
         uuid_JLabel.setText(hardware.getComputerSystem().getHardwareUUID());
         
-        
     }
 
     @Override

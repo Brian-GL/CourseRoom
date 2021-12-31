@@ -3,32 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Curso_Miembros_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Pagina_Tarea_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Chats_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Pagina_Cursos_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Pagina_Grupos_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Curso_Informacion_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Pagina_Fechas_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Miembro_Curso_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Dudas_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Caja_Curso_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Grupo_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Cursos_Recomendados_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Cursos_Actuales_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Chat_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Ajustes_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Pagina_Avisos_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Cursos_Nuevos_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Tablero_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Perfil_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Pagina_Chats_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Editar_Perfil_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Duda_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Pagina_Dudas_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Miembro_Grupo_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Grupos_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/Pagina_Tareas_Estudiante_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/generales/Crear_Cuenta_General_Panel.java</file>
         </group>
     </open-files>
 </project-private>

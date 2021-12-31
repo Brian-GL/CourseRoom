@@ -2,6 +2,7 @@ package paneles.generales;
 
 import sql.Conexion;
 import interfaces.Componentes_Interface;
+import java.awt.HeadlessException;
 import main.CourseRoom;
 import main.CourseRoom_Frame;
 import java.awt.Image;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
@@ -47,8 +49,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         regresar_Inicio_Sesion_JButton = new javax.swing.JButton();
         autenticacion_JPanel = new javax.swing.JPanel();
         logo_Autenticacion_JLabel = new javax.swing.JLabel();
-        nombre_Usuario_Autenticacion_JLabel = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
         contrasena_Autenticacion_JLabel = new javax.swing.JLabel();
         Pass = new javax.swing.JPasswordField();
         titulo_Autenticacion_JLabel = new javax.swing.JLabel();
@@ -56,7 +56,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         txtCorreo = new javax.swing.JTextField();
         repetir_Contrasena_Autenticacion_JLabel = new javax.swing.JLabel();
         Pass2 = new javax.swing.JPasswordField();
-        informacion_Nombre_Usuario_Autenticacion_JLabel = new javax.swing.JLabel();
         informacion_Repetir_Contrasena_Autenticacion_JLabel = new javax.swing.JLabel();
         informacion_Correo_Electronico_Autenticacion_JLabel = new javax.swing.JLabel();
         informacion_Contrasena_Autenticacion_JLabel = new javax.swing.JLabel();
@@ -67,21 +66,20 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         titulo_Datos_Personales_JLabel = new javax.swing.JLabel();
         nombres_JLabel = new javax.swing.JLabel();
         nombres_JTextField = new javax.swing.JTextField();
-        apellidos_JLabel = new javax.swing.JLabel();
-        apellidos_JTextField = new javax.swing.JTextField();
-        localidad_JTextField = new javax.swing.JTextField();
+        apellido_Paterno_JLabel = new javax.swing.JLabel();
+        apellido_Paterno_JTextField = new javax.swing.JTextField();
         localidad_JLabel = new javax.swing.JLabel();
         genero_JTextField = new javax.swing.JTextField();
         genero_JLabel = new javax.swing.JLabel();
-        telefono_JFormattedTextField = new javax.swing.JFormattedTextField();
-        telefono_JLabel = new javax.swing.JLabel();
-        fecha_Nacimiento_JFormattedTextField = new javax.swing.JFormattedTextField();
         fecha_Nacimiento_JLabel = new javax.swing.JLabel();
-        descripcion_JLabel = new javax.swing.JLabel();
         continuar_Perfil_JButton = new javax.swing.JButton();
         regresar_Autenticacion_JButton = new javax.swing.JButton();
-        descripcion_JScrollPane = new javax.swing.JScrollPane();
-        descripcion_JTextPane = new javax.swing.JTextPane();
+        apellido_Materno_JLabel = new javax.swing.JLabel();
+        apellido_Materno_JTextField = new javax.swing.JTextField();
+        fecha_Nacimiento_JPanel = new javax.swing.JPanel();
+        estado_JLabel = new javax.swing.JLabel();
+        estado_JComboBox = new javax.swing.JComboBox<>();
+        localidad_JComboBox = new javax.swing.JComboBox<>();
         perfil_JPanel = new javax.swing.JPanel();
         logo_Perfil_JLabel = new javax.swing.JLabel();
         titulo_Perfil_JLabel = new javax.swing.JLabel();
@@ -91,6 +89,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         cargar_Imagen_Perfil_JButton = new javax.swing.JButton();
         continuar_Tablero_JButton = new javax.swing.JButton();
         regresar_Datos_Personales_JButton = new javax.swing.JButton();
+        informacion_Extra_JPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
         setOpaque(false);
@@ -122,7 +121,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
 
         informacion_Inicio_JLabel.setFont(new java.awt.Font("Gadugi", 0, 24)); // NOI18N
         informacion_Inicio_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        informacion_Inicio_JLabel.setText("<html>\n\n<p style=\"text-align:center;\">\n\nA continuación, te pediremos algunos datos que requerimos<br>\nde tu parte para que puedas acceder y tener una cuenta de<br>\nacceso al sistema. No te preocupes,  no toma demasiado<br>\ntiempo y, sobre todo, tus datos están<br>\nseguros con nosotros.\n\n</p>\n\n</html>");
+        informacion_Inicio_JLabel.setText("<html>\n\n<p style=\"text-align:center;\">\n\nA continuación te pediremos algunos datos personales que requerimos<br>\nde tu parte para que puedas acceder al sistema y puedas disfrutar de tu nueva<br> forma de aprendizaje.\nNo te preocupes,  no toma demasiado tiempo y<br>, sobre todo, tus datos no serán utilizados para un uso indebido.\n</p>\n\n</html>");
         informacion_Inicio_JLabel.setPreferredSize(new java.awt.Dimension(670, 104));
 
         continuar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
@@ -200,21 +199,13 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         logo_Autenticacion_JLabel.setMinimumSize(new java.awt.Dimension(150, 125));
         logo_Autenticacion_JLabel.setPreferredSize(new java.awt.Dimension(150, 125));
 
-        nombre_Usuario_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        nombre_Usuario_Autenticacion_JLabel.setText("Nombre De Usuario");
-
-        txtUsuario.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        txtUsuario.setToolTipText("<html>\n\n<h3>\nNombre de usuario\n</h3>\n\n<ul>\n   <li>El nombre de usuario puede contener letras, números y carácteres con valor ascii entre 32 y 126</li>\n   <li>Sólamente se permite un máximo de 20 carácteres</li>\n</ul>\n\n</html>");
-        txtUsuario.setCaretColor(new java.awt.Color(104, 194, 232));
-        txtUsuario.setPreferredSize(new java.awt.Dimension(350, 32));
-
         contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         contrasena_Autenticacion_JLabel.setText("Contraseña");
 
         Pass.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         Pass.setToolTipText("<html>  <h3>Contraseña </h3>  <ul>    <li>Debe contener mínimo 8 caráteres</li>    <li>Debe contener mínimo un carácter especial</li> \n<li>Debe contener mínimo un carácter en mayúscula</li><li>Debe contener mínimo un carácter numérico</li></ul>  </html>");
         Pass.setCaretColor(new java.awt.Color(104, 194, 232));
-        Pass.setPreferredSize(new java.awt.Dimension(350, 32));
+        Pass.setPreferredSize(new java.awt.Dimension(350, 43));
 
         titulo_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
         titulo_Autenticacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -226,7 +217,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         txtCorreo.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         txtCorreo.setToolTipText("");
         txtCorreo.setCaretColor(new java.awt.Color(104, 194, 232));
-        txtCorreo.setPreferredSize(new java.awt.Dimension(350, 32));
+        txtCorreo.setPreferredSize(new java.awt.Dimension(350, 43));
 
         repetir_Contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         repetir_Contrasena_Autenticacion_JLabel.setText("Repetir Contraseña");
@@ -234,11 +225,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         Pass2.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         Pass2.setToolTipText("");
         Pass2.setCaretColor(new java.awt.Color(104, 194, 232));
-        Pass2.setPreferredSize(new java.awt.Dimension(350, 32));
-
-        informacion_Nombre_Usuario_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        informacion_Nombre_Usuario_Autenticacion_JLabel.setText("información sobre el nombre de usuario");
-        informacion_Nombre_Usuario_Autenticacion_JLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Pass2.setPreferredSize(new java.awt.Dimension(350, 43));
 
         informacion_Repetir_Contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         informacion_Repetir_Contrasena_Autenticacion_JLabel.setText("información de la repetición de la contraseña");
@@ -294,41 +281,28 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         autenticacion_JPanel.setLayout(autenticacion_JPanelLayout);
         autenticacion_JPanelLayout.setHorizontalGroup(
             autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, autenticacion_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(regresar_Inicio_JButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(continuar_Datos_Personales_JButton)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, autenticacion_JPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombre_Usuario_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
-                    .addComponent(informacion_Nombre_Usuario_Autenticacion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(informacion_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Pass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
-                    .addComponent(contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40))
-            .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(informacion_Correo_Electronico_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(correo_Electronico_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(repetir_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(informacion_Repetir_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Pass2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40))
             .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, autenticacion_JPanelLayout.createSequentialGroup()
+                        .addComponent(regresar_Inicio_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(continuar_Datos_Personales_JButton))
                     .addComponent(logo_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titulo_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(titulo_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
+                    .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(informacion_Correo_Electronico_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(repetir_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                            .addComponent(correo_Electronico_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Pass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(informacion_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Pass2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(informacion_Repetir_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         autenticacion_JPanelLayout.setVerticalGroup(
@@ -338,32 +312,25 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addComponent(logo_Autenticacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(titulo_Autenticacion_JLabel)
-                .addGap(18, 79, Short.MAX_VALUE)
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombre_Usuario_Autenticacion_JLabel)
-                    .addComponent(contrasena_Autenticacion_JLabel))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(correo_Electronico_Autenticacion_JLabel)
                 .addGap(2, 2, 2)
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                    .addComponent(Pass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(informacion_Nombre_Usuario_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(informacion_Contrasena_Autenticacion_JLabel))
-                .addGap(75, 75, 75)
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
-                        .addComponent(correo_Electronico_Autenticacion_JLabel)
-                        .addGap(2, 2, 2))
-                    .addComponent(repetir_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                    .addComponent(Pass2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(informacion_Correo_Electronico_Autenticacion_JLabel)
+                .addGap(18, 18, 18)
+                .addComponent(contrasena_Autenticacion_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(informacion_Correo_Electronico_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(informacion_Repetir_Contrasena_Autenticacion_JLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(Pass, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(informacion_Contrasena_Autenticacion_JLabel)
+                .addGap(18, 18, 18)
+                .addComponent(repetir_Contrasena_Autenticacion_JLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Pass2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(informacion_Repetir_Contrasena_Autenticacion_JLabel)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(continuar_Datos_Personales_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(regresar_Inicio_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -386,25 +353,20 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         titulo_Datos_Personales_JLabel.setText("Registra Tus Datos Personales");
 
         nombres_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        nombres_JLabel.setText("Nombre(s)*");
+        nombres_JLabel.setText("Nombre(s) *");
 
         nombres_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         nombres_JTextField.setToolTipText("<html>  <h3> Nombre(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
         nombres_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
-        nombres_JTextField.setPreferredSize(new java.awt.Dimension(350, 32));
+        nombres_JTextField.setPreferredSize(new java.awt.Dimension(427, 40));
 
-        apellidos_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        apellidos_JLabel.setText("Apellido(s)*");
+        apellido_Paterno_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        apellido_Paterno_JLabel.setText("Apellido Paterno *");
 
-        apellidos_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        apellidos_JTextField.setToolTipText("<html>  <h3> Apellido(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
-        apellidos_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
-        apellidos_JTextField.setPreferredSize(new java.awt.Dimension(350, 32));
-
-        localidad_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        localidad_JTextField.setToolTipText("<html>  <h3> Localidad </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
-        localidad_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
-        localidad_JTextField.setPreferredSize(new java.awt.Dimension(350, 32));
+        apellido_Paterno_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        apellido_Paterno_JTextField.setToolTipText("<html>  <h3> Apellido paterno </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
+        apellido_Paterno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        apellido_Paterno_JTextField.setPreferredSize(new java.awt.Dimension(316, 40));
 
         localidad_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         localidad_JLabel.setText("Localidad");
@@ -412,31 +374,13 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         genero_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         genero_JTextField.setToolTipText("<html>  <h3> Identidad de género </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
         genero_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
-        genero_JTextField.setPreferredSize(new java.awt.Dimension(350, 32));
+        genero_JTextField.setPreferredSize(new java.awt.Dimension(350, 40));
 
         genero_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         genero_JLabel.setText("Género");
 
-        telefono_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##########"))));
-        telefono_JFormattedTextField.setToolTipText("<html>  <h3> Teléfono/Celular </h3>  <ul>    <li>Opcionar</li><li>Sólo se permiten carácteres numéricos </ul>  </html>");
-        telefono_JFormattedTextField.setCaretColor(new java.awt.Color(104, 194, 232));
-        telefono_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        telefono_JFormattedTextField.setPreferredSize(new java.awt.Dimension(350, 32));
-
-        telefono_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        telefono_JLabel.setText("Número De Teléfono O Celular");
-
-        fecha_Nacimiento_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-mm-yyyy"))));
-        fecha_Nacimiento_JFormattedTextField.setToolTipText("<html>  <h3> Fecha de nacimiento </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
-        fecha_Nacimiento_JFormattedTextField.setCaretColor(new java.awt.Color(104, 194, 232));
-        fecha_Nacimiento_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        fecha_Nacimiento_JFormattedTextField.setPreferredSize(new java.awt.Dimension(350, 32));
-
         fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento (dd-mm-aaaa)*");
-
-        descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        descripcion_JLabel.setText("Descripción");
+        fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
 
         continuar_Perfil_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
         continuar_Perfil_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
@@ -470,56 +414,74 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
             }
         });
 
-        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        descripcion_JTextPane.setToolTipText("<html>  <h3> Descripción breve sobre tí </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
-        descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
+        apellido_Materno_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        apellido_Materno_JLabel.setText("Apellido Materno");
+
+        apellido_Materno_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        apellido_Materno_JTextField.setToolTipText("<html>  <h3> Apellido materno </h3> </html>");
+        apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        apellido_Materno_JTextField.setPreferredSize(new java.awt.Dimension(316, 40));
+
+        fecha_Nacimiento_JPanel.setOpaque(false);
+        fecha_Nacimiento_JPanel.setPreferredSize(new java.awt.Dimension(439, 40));
+
+        javax.swing.GroupLayout fecha_Nacimiento_JPanelLayout = new javax.swing.GroupLayout(fecha_Nacimiento_JPanel);
+        fecha_Nacimiento_JPanel.setLayout(fecha_Nacimiento_JPanelLayout);
+        fecha_Nacimiento_JPanelLayout.setHorizontalGroup(
+            fecha_Nacimiento_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 571, Short.MAX_VALUE)
+        );
+        fecha_Nacimiento_JPanelLayout.setVerticalGroup(
+            fecha_Nacimiento_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        estado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        estado_JLabel.setText("Estado");
+
+        estado_JComboBox.setToolTipText("<html>\n<h3>Estado mexicano, o bien del extranjero</h3>\n</html>");
+        estado_JComboBox.setPreferredSize(new java.awt.Dimension(72, 40));
+
+        localidad_JComboBox.setToolTipText("<html>\n<h3>Localidad del estado mexicano, o bien del extranjero</h3>\n</html>");
+        localidad_JComboBox.setPreferredSize(new java.awt.Dimension(72, 40));
 
         javax.swing.GroupLayout datos_Personales_JPanelLayout = new javax.swing.GroupLayout(datos_Personales_JPanel);
         datos_Personales_JPanel.setLayout(datos_Personales_JPanelLayout);
         datos_Personales_JPanelLayout.setHorizontalGroup(
             datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(apellido_Materno_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(apellido_Paterno_JTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE))
+                    .addComponent(apellido_Materno_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(apellido_Paterno_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(nombres_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(fecha_Nacimiento_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                    .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(genero_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                        .addComponent(genero_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(localidad_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(localidad_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(estado_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(estado_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(regresar_Autenticacion_JButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(continuar_Perfil_JButton)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datos_Personales_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(titulo_Datos_Personales_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logo_Datos_Personales_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datos_Personales_JPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombres_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
-                            .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(apellidos_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                            .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(telefono_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(telefono_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)))
-                    .addComponent(descripcion_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fecha_Nacimiento_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(genero_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                            .addComponent(genero_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(localidad_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(localidad_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(45, 45, 45))
+                        .addComponent(regresar_Autenticacion_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(continuar_Perfil_JButton))
+                    .addComponent(titulo_Datos_Personales_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logo_Datos_Personales_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         datos_Personales_JPanelLayout.setVerticalGroup(
             datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,34 +490,39 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addComponent(logo_Datos_Personales_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(titulo_Datos_Personales_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addGap(18, 25, Short.MAX_VALUE)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombres_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(apellidos_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addComponent(telefono_JLabel)
-                        .addGap(0, 0, 0)
-                        .addComponent(telefono_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                        .addComponent(estado_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(estado_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                        .addComponent(nombres_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombres_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                        .addComponent(localidad_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(localidad_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(genero_JLabel)
-                        .addComponent(localidad_JLabel)))
-                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(localidad_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fecha_Nacimiento_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(genero_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(genero_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                        .addComponent(apellido_Paterno_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(apellido_Paterno_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(apellido_Materno_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(apellido_Materno_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(descripcion_JLabel)
+                .addComponent(fecha_Nacimiento_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(fecha_Nacimiento_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 75, Short.MAX_VALUE)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(continuar_Perfil_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(regresar_Autenticacion_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -662,14 +629,14 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                         .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(regresar_Datos_Personales_JButton)
                             .addGroup(perfil_JPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                                 .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tipo_Perfil_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                     .addComponent(cargar_Imagen_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 173, Short.MAX_VALUE)
+                        .addGap(18, 188, Short.MAX_VALUE)
                         .addComponent(continuar_Tablero_JButton)
                         .addContainerGap())
                     .addGroup(perfil_JPanelLayout.createSequentialGroup()
@@ -705,6 +672,21 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         );
 
         visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/profile.png")), perfil_JPanel, "<html>\n<h3>Página de registro<br>\nde perfil</h3>\n</html>"); // NOI18N
+
+        informacion_Extra_JPanel.setOpaque(false);
+
+        javax.swing.GroupLayout informacion_Extra_JPanelLayout = new javax.swing.GroupLayout(informacion_Extra_JPanel);
+        informacion_Extra_JPanel.setLayout(informacion_Extra_JPanelLayout);
+        informacion_Extra_JPanelLayout.setHorizontalGroup(
+            informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1199, Short.MAX_VALUE)
+        );
+        informacion_Extra_JPanelLayout.setVerticalGroup(
+            informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 670, Short.MAX_VALUE)
+        );
+
+        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/programmer.png")), informacion_Extra_JPanel); // NOI18N
 
         add(visualizador_JTabbedPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
@@ -876,7 +858,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
 
     private void continuar_Datos_Personales_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuar_Datos_Personales_JButtonActionPerformed
         // TODO add your handling code here:
-        checar_Usuario();
+     
     }//GEN-LAST:event_continuar_Datos_Personales_JButtonActionPerformed
 
   
@@ -884,8 +866,10 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Pass;
     private javax.swing.JPasswordField Pass2;
-    private javax.swing.JLabel apellidos_JLabel;
-    private javax.swing.JTextField apellidos_JTextField;
+    private javax.swing.JLabel apellido_Materno_JLabel;
+    private javax.swing.JTextField apellido_Materno_JTextField;
+    private javax.swing.JLabel apellido_Paterno_JLabel;
+    private javax.swing.JTextField apellido_Paterno_JTextField;
     private javax.swing.JPanel autenticacion_JPanel;
     private javax.swing.JButton cargar_Imagen_Perfil_JButton;
     private javax.swing.JButton continuar_Autenticacion_JButton;
@@ -895,27 +879,25 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JLabel contrasena_Autenticacion_JLabel;
     private javax.swing.JLabel correo_Electronico_Autenticacion_JLabel;
     private javax.swing.JPanel datos_Personales_JPanel;
-    private javax.swing.JLabel descripcion_JLabel;
-    private javax.swing.JScrollPane descripcion_JScrollPane;
-    private javax.swing.JTextPane descripcion_JTextPane;
-    private javax.swing.JFormattedTextField fecha_Nacimiento_JFormattedTextField;
+    private javax.swing.JComboBox<String> estado_JComboBox;
+    private javax.swing.JLabel estado_JLabel;
     private javax.swing.JLabel fecha_Nacimiento_JLabel;
+    private javax.swing.JPanel fecha_Nacimiento_JPanel;
     private javax.swing.JLabel genero_JLabel;
     private javax.swing.JTextField genero_JTextField;
     private javax.swing.JLabel imagen_Perfil_JLabel;
     private javax.swing.JLabel informacion_Contrasena_Autenticacion_JLabel;
     private javax.swing.JLabel informacion_Correo_Electronico_Autenticacion_JLabel;
+    private javax.swing.JPanel informacion_Extra_JPanel;
     private javax.swing.JLabel informacion_Inicio_JLabel;
-    private javax.swing.JLabel informacion_Nombre_Usuario_Autenticacion_JLabel;
     private javax.swing.JLabel informacion_Repetir_Contrasena_Autenticacion_JLabel;
     private javax.swing.JPanel inicio_JPanel;
+    private javax.swing.JComboBox<String> localidad_JComboBox;
     private javax.swing.JLabel localidad_JLabel;
-    private javax.swing.JTextField localidad_JTextField;
     private javax.swing.JLabel logo_Autenticacion_JLabel;
     private javax.swing.JLabel logo_Datos_Personales_JLabel;
     private javax.swing.JLabel logo_Inicio_JLabel;
     private javax.swing.JLabel logo_Perfil_JLabel;
-    private javax.swing.JLabel nombre_Usuario_Autenticacion_JLabel;
     private javax.swing.JLabel nombres_JLabel;
     private javax.swing.JTextField nombres_JTextField;
     private javax.swing.JPanel perfil_JPanel;
@@ -924,8 +906,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JButton regresar_Inicio_JButton;
     private javax.swing.JButton regresar_Inicio_Sesion_JButton;
     private javax.swing.JLabel repetir_Contrasena_Autenticacion_JLabel;
-    private javax.swing.JFormattedTextField telefono_JFormattedTextField;
-    private javax.swing.JLabel telefono_JLabel;
     private javax.swing.JComboBox<String> tipo_Perfil_JComboBox;
     private javax.swing.JLabel tipo_Perfil_JLabel;
     private javax.swing.JLabel titulo_Autenticacion_JLabel;
@@ -933,7 +913,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JLabel titulo_Inicio_JLabel;
     private javax.swing.JLabel titulo_Perfil_JLabel;
     private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtUsuario;
     private javax.swing.JTabbedPane visualizador_JTabbedPane;
     // End of variables declaration//GEN-END:variables
 
@@ -960,9 +939,9 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         descripcion_JTextPane.setCaretColor(CourseRoom.Primer_Color());
         
         descripcion_JScrollPane.setForeground(CourseRoom.Primer_Color());
-        apellidos_JTextField.setBackground(CourseRoom.Segundo_Color());
-        apellidos_JTextField.setForeground(CourseRoom.Primer_Color());
-        apellidos_JTextField.setCaretColor(CourseRoom.Primer_Color());
+        apellido_Paterno_JTextField.setBackground(CourseRoom.Segundo_Color());
+        apellido_Paterno_JTextField.setForeground(CourseRoom.Primer_Color());
+        apellido_Paterno_JTextField.setCaretColor(CourseRoom.Primer_Color());
         txtCorreo.setBackground(CourseRoom.Segundo_Color());
         txtCorreo.setForeground(CourseRoom.Primer_Color());
         txtCorreo.setCaretColor(CourseRoom.Primer_Color());
@@ -971,10 +950,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         genero_JTextField.setCaretColor(CourseRoom.Primer_Color());
         localidad_JTextField.setBackground(CourseRoom.Segundo_Color());
         localidad_JTextField.setForeground(CourseRoom.Primer_Color());
-        localidad_JTextField.setCaretColor(CourseRoom.Primer_Color());
-        txtUsuario.setBackground(CourseRoom.Segundo_Color());
-        txtUsuario.setForeground(CourseRoom.Primer_Color());
-        txtUsuario.setCaretColor(CourseRoom.Primer_Color());
         nombres_JTextField.setBackground(CourseRoom.Segundo_Color());
         nombres_JTextField.setForeground(CourseRoom.Primer_Color());
         nombres_JTextField.setCaretColor(CourseRoom.Primer_Color());
@@ -991,10 +966,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         fecha_Nacimiento_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
         fecha_Nacimiento_JFormattedTextField.setForeground(CourseRoom.Primer_Color());
         fecha_Nacimiento_JFormattedTextField.setCaretColor(CourseRoom.Primer_Color());
-        telefono_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
-        telefono_JFormattedTextField.setForeground(CourseRoom.Primer_Color());
-        telefono_JFormattedTextField.setCaretColor(CourseRoom.Primer_Color());
-        apellidos_JLabel.setForeground(CourseRoom.Segundo_Color());
+        apellido_Paterno_JLabel.setForeground(CourseRoom.Segundo_Color());
         correo_Electronico_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         descripcion_JLabel.setForeground(CourseRoom.Segundo_Color());
         fecha_Nacimiento_JLabel.setForeground(CourseRoom.Segundo_Color());
@@ -1002,7 +974,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         imagen_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Correo_Electronico_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Inicio_JLabel.setForeground(CourseRoom.Segundo_Color());
-        informacion_Nombre_Usuario_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Repetir_Contrasena_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Contrasena_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         localidad_JLabel.setForeground(CourseRoom.Segundo_Color());
@@ -1010,12 +981,10 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         logo_Datos_Personales_JLabel.setForeground(CourseRoom.Segundo_Color());
         logo_Inicio_JLabel.setForeground(CourseRoom.Segundo_Color());
         logo_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
-        nombre_Usuario_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         nombres_JLabel.setForeground(CourseRoom.Segundo_Color());
         contrasena_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         tipo_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
         repetir_Contrasena_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
-        telefono_JLabel.setForeground(CourseRoom.Segundo_Color());
         titulo_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         titulo_Datos_Personales_JLabel.setForeground(CourseRoom.Segundo_Color());
         titulo_Inicio_JLabel.setForeground(CourseRoom.Segundo_Color());
@@ -1030,50 +999,21 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         regresar_Inicio_JButton.setBackground(CourseRoom.Primer_Color());
         regresar_Inicio_Sesion_JButton.setBackground(CourseRoom.Primer_Color());
     }
-    
-    public void checar_Usuario()
-    {
-        String sql = "select nom_usuario from usuarios where nom_usuario =?";
-        try
-        {
-            pst = conn.prepareStatement(sql);
-            pst.setString(1, txtUsuario.getText().trim());
-            rs = pst.executeQuery();
-            if (rs.next())
-            {
-                JOptionPane.showMessageDialog(null, "El Nombre De Usuario Ya Existe!!!");
-                txtUsuario.setText("");
-                txtUsuario.requestFocus();
-            }
-            else
-            {
-                validar_Correo(txtCorreo.getText().trim());
-                //checkCorreo();
-            }
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
+ 
 
 public boolean validar_Correo(String correo)
 {
-    boolean resultado;
     Pattern pat = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z]{3})((\\.[A-Za-z]{2}))?$");  
     Matcher mat = pat.matcher(correo);
     if (mat.find())
     {         
         //System.out.println("Si we. Correo Ingresado BIEN:" + "*** "  +correo + " ***\n\n");
         checar_Correo();
-        resultado = true;
     }else
     {
         JOptionPane.showMessageDialog(null, "El Correo\n'" +correo+ "'\nNo Es Valido");
         txtCorreo.setText("");
         txtCorreo.requestFocus();
-                    //System.out.println("No we. Correo Ingresado MAL:" + "*** "  +correo+ " ***\n\n");
-        resultado = false;
                 }
     return mat.find();
 }
@@ -1110,7 +1050,7 @@ public void verificar_Campos(){
     String Password2 = String.valueOf(Pass2.getPassword());
     
     // Checa Los Campos Vacíos.
-    if (txtUsuario.getText().equals("") ||  txtCorreo.getText().equals("") 
+    if (txtCorreo.getText().equals("") 
             || Password.equals("")  ||  Password2.equals("")){
         // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
         JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
@@ -1134,7 +1074,6 @@ public void agregar_Usuarios(){
         String sql = "INSERT INTO usuarios (id_usuario,nom_usuario,pass,correo,status) VALUES (null,?,?,?,'Active')";
         try {
             pst = conn.prepareStatement(sql);
-            pst.setString(1, txtUsuario.getText());
             pst.setString(2, pass);
             pst.setString(3, txtCorreo.getText());
             pst.execute();
@@ -1144,14 +1083,13 @@ public void agregar_Usuarios(){
             limpiar_Datos();
             CourseRoom_Frame.Mostrar_Inicio_Sesion();
             
-        } catch(Exception e){
+        } catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(null, "Error En El Registro!!!");
             con.Desconectar();
         }
     }
 
     private void limpiar_Datos(){
-        txtUsuario.setText("");
         Pass.setText("");
         txtCorreo.setText("");
         Pass2.setText("");

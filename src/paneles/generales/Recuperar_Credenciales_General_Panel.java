@@ -82,12 +82,12 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
 
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 28)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setText("¿Has Olvidado Tu Usuario Y/O Contraseña?");
+        titulo_JLabel.setText("¿Has Olvidado Tu Contraseña?");
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(500, 38));
 
         frase_JLabel.setFont(new java.awt.Font("Gadugi", 0, 21)); // NOI18N
         frase_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        frase_JLabel.setText("<html><p style=\"text-align:center;\">No te preocupes. Solamente te pediremos que ingreses<br>el correo electrónico que registraste en tu cuenta.<br>Te mandaremos tu nombre de usuario y contraseña.</p></html>");
+        frase_JLabel.setText("<html><p style=\"text-align:center;\">No te preocupes. Solamente te pediremos que ingreses<br>el correo electrónico que registraste en tu cuenta.<br>Te mandaremos tu contraseña de inmediato.</p></html>");
         frase_JLabel.setPreferredSize(new java.awt.Dimension(500, 116));
 
         correo_Electronico_JLabel.setFont(new java.awt.Font("Gadugi", 1, 21)); // NOI18N
