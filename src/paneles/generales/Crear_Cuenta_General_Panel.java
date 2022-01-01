@@ -1,7 +1,10 @@
 package paneles.generales;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import sql.Conexion;
 import interfaces.Componentes_Interface;
+import java.awt.Color;
 import java.awt.HeadlessException;
 import main.CourseRoom;
 import main.CourseRoom_Frame;
@@ -13,12 +16,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -50,12 +57,12 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         autenticacion_JPanel = new javax.swing.JPanel();
         logo_Autenticacion_JLabel = new javax.swing.JLabel();
         contrasena_Autenticacion_JLabel = new javax.swing.JLabel();
-        Pass = new javax.swing.JPasswordField();
+        contrasenia_JPasswordField = new javax.swing.JPasswordField();
         titulo_Autenticacion_JLabel = new javax.swing.JLabel();
         correo_Electronico_Autenticacion_JLabel = new javax.swing.JLabel();
-        txtCorreo = new javax.swing.JTextField();
+        correo_JTextField = new javax.swing.JTextField();
         repetir_Contrasena_Autenticacion_JLabel = new javax.swing.JLabel();
-        Pass2 = new javax.swing.JPasswordField();
+        repetir_Contrasenia_JTextField = new javax.swing.JPasswordField();
         informacion_Repetir_Contrasena_Autenticacion_JLabel = new javax.swing.JLabel();
         informacion_Correo_Electronico_Autenticacion_JLabel = new javax.swing.JLabel();
         informacion_Contrasena_Autenticacion_JLabel = new javax.swing.JLabel();
@@ -87,9 +94,12 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         tipo_Perfil_JComboBox = new javax.swing.JComboBox<>();
         imagen_Perfil_JLabel = new javax.swing.JLabel();
         cargar_Imagen_Perfil_JButton = new javax.swing.JButton();
-        continuar_Tablero_JButton = new javax.swing.JButton();
         regresar_Datos_Personales_JButton = new javax.swing.JButton();
+        continuar_Informacion_Extra_JButton = new javax.swing.JButton();
         informacion_Extra_JPanel = new javax.swing.JPanel();
+        crear_Cuenta_JButton = new javax.swing.JButton();
+        logo_Informacion_Extra_JLabel = new javax.swing.JLabel();
+        titulo_Informacion_Extra_JLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
         setOpaque(false);
@@ -202,10 +212,10 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         contrasena_Autenticacion_JLabel.setText("Contraseña");
 
-        Pass.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        Pass.setToolTipText("<html>  <h3>Contraseña </h3>  <ul>    <li>Debe contener mínimo 8 caráteres</li>    <li>Debe contener mínimo un carácter especial</li> \n<li>Debe contener mínimo un carácter en mayúscula</li><li>Debe contener mínimo un carácter numérico</li></ul>  </html>");
-        Pass.setCaretColor(new java.awt.Color(104, 194, 232));
-        Pass.setPreferredSize(new java.awt.Dimension(350, 43));
+        contrasenia_JPasswordField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        contrasenia_JPasswordField.setToolTipText("<html>  <h3>Contraseña </h3>  <ul>    <li>Debe contener mínimo 8 caráteres</li>    <li>Debe contener mínimo un carácter especial</li> \n<li>Debe contener mínimo un carácter en mayúscula</li><li>Debe contener mínimo un carácter numérico</li></ul>  </html>");
+        contrasenia_JPasswordField.setCaretColor(new java.awt.Color(104, 194, 232));
+        contrasenia_JPasswordField.setPreferredSize(new java.awt.Dimension(350, 43));
 
         titulo_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
         titulo_Autenticacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -214,18 +224,18 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         correo_Electronico_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         correo_Electronico_Autenticacion_JLabel.setText("Correo Electrónico");
 
-        txtCorreo.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        txtCorreo.setToolTipText("");
-        txtCorreo.setCaretColor(new java.awt.Color(104, 194, 232));
-        txtCorreo.setPreferredSize(new java.awt.Dimension(350, 43));
+        correo_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        correo_JTextField.setToolTipText("");
+        correo_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        correo_JTextField.setPreferredSize(new java.awt.Dimension(350, 43));
 
         repetir_Contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         repetir_Contrasena_Autenticacion_JLabel.setText("Repetir Contraseña");
 
-        Pass2.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        Pass2.setToolTipText("");
-        Pass2.setCaretColor(new java.awt.Color(104, 194, 232));
-        Pass2.setPreferredSize(new java.awt.Dimension(350, 43));
+        repetir_Contrasenia_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        repetir_Contrasenia_JTextField.setToolTipText("");
+        repetir_Contrasenia_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        repetir_Contrasenia_JTextField.setPreferredSize(new java.awt.Dimension(350, 43));
 
         informacion_Repetir_Contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         informacion_Repetir_Contrasena_Autenticacion_JLabel.setText("información de la repetición de la contraseña");
@@ -297,10 +307,10 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                             .addComponent(informacion_Correo_Electronico_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(repetir_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
                             .addComponent(correo_Electronico_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Pass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(correo_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(contrasenia_JPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(informacion_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Pass2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(repetir_Contrasenia_JTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(informacion_Repetir_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -315,19 +325,19 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(correo_Electronico_Autenticacion_JLabel)
                 .addGap(2, 2, 2)
-                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(correo_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(informacion_Correo_Electronico_Autenticacion_JLabel)
                 .addGap(18, 18, 18)
                 .addComponent(contrasena_Autenticacion_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pass, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contrasenia_JPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(informacion_Contrasena_Autenticacion_JLabel)
                 .addGap(18, 18, 18)
                 .addComponent(repetir_Contrasena_Autenticacion_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pass2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(repetir_Contrasenia_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(informacion_Repetir_Contrasena_Autenticacion_JLabel)
                 .addGap(18, 18, Short.MAX_VALUE)
@@ -422,19 +432,8 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         apellido_Materno_JTextField.setPreferredSize(new java.awt.Dimension(316, 40));
 
-        fecha_Nacimiento_JPanel.setOpaque(false);
         fecha_Nacimiento_JPanel.setPreferredSize(new java.awt.Dimension(439, 40));
-
-        javax.swing.GroupLayout fecha_Nacimiento_JPanelLayout = new javax.swing.GroupLayout(fecha_Nacimiento_JPanel);
-        fecha_Nacimiento_JPanel.setLayout(fecha_Nacimiento_JPanelLayout);
-        fecha_Nacimiento_JPanelLayout.setHorizontalGroup(
-            fecha_Nacimiento_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
-        );
-        fecha_Nacimiento_JPanelLayout.setVerticalGroup(
-            fecha_Nacimiento_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
+        fecha_Nacimiento_JPanel.setLayout(new java.awt.CardLayout());
 
         estado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         estado_JLabel.setText("Estado");
@@ -450,31 +449,30 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         datos_Personales_JPanelLayout.setHorizontalGroup(
             datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(apellido_Materno_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(apellido_Paterno_JTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE))
-                    .addComponent(apellido_Materno_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(apellido_Paterno_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nombres_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fecha_Nacimiento_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
-                    .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(genero_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
-                        .addComponent(genero_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(localidad_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(localidad_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(estado_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(estado_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(apellido_Materno_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(apellido_Paterno_JTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE))
+                            .addComponent(apellido_Materno_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(apellido_Paterno_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(nombres_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fecha_Nacimiento_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                            .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(genero_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                            .addComponent(genero_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(localidad_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(localidad_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(estado_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(estado_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                         .addComponent(regresar_Autenticacion_JButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -550,7 +548,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
 
         tipo_Perfil_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         tipo_Perfil_JLabel.setText("Perfil*");
-        tipo_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(389, 25));
+        tipo_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
 
         tipo_Perfil_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         tipo_Perfil_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Maestro" }));
@@ -586,22 +584,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
             }
         });
 
-        continuar_Tablero_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
-        continuar_Tablero_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
-        continuar_Tablero_JButton.setBorder(null);
-        continuar_Tablero_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        continuar_Tablero_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                continuar_Tablero_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                continuar_Tablero_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                continuar_Tablero_JButtonMouseExited(evt);
-            }
-        });
-
         regresar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_Datos_Personales_JButton.setToolTipText("<html> <h3>Regresar a la pestaña de datos personales</h3> </html>");
         regresar_Datos_Personales_JButton.setBorder(null);
@@ -618,6 +600,22 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
             }
         });
 
+        continuar_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
+        continuar_Informacion_Extra_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
+        continuar_Informacion_Extra_JButton.setBorder(null);
+        continuar_Informacion_Extra_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        continuar_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                continuar_Informacion_Extra_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                continuar_Informacion_Extra_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                continuar_Informacion_Extra_JButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout perfil_JPanelLayout = new javax.swing.GroupLayout(perfil_JPanel);
         perfil_JPanel.setLayout(perfil_JPanelLayout);
         perfil_JPanelLayout.setHorizontalGroup(
@@ -626,24 +624,24 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addContainerGap()
                 .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(perfil_JPanelLayout.createSequentialGroup()
-                        .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(regresar_Datos_Personales_JButton)
-                            .addGroup(perfil_JPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
-                                .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tipo_Perfil_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(cargar_Imagen_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 188, Short.MAX_VALUE)
-                        .addComponent(continuar_Tablero_JButton)
+                        .addComponent(regresar_Datos_Personales_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1091, Short.MAX_VALUE)
+                        .addComponent(continuar_Informacion_Extra_JButton)
                         .addContainerGap())
                     .addGroup(perfil_JPanelLayout.createSequentialGroup()
                         .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(logo_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(titulo_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(6, 6, 6))))
+                            .addComponent(titulo_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE))
+                        .addGap(6, 6, 6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, perfil_JPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tipo_Perfil_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cargar_Imagen_Perfil_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         perfil_JPanelLayout.setVerticalGroup(
             perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -652,38 +650,83 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addComponent(logo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addComponent(titulo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 19, Short.MAX_VALUE)
                 .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(perfil_JPanelLayout.createSequentialGroup()
-                        .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 67, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, perfil_JPanelLayout.createSequentialGroup()
-                        .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipo_Perfil_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(cargar_Imagen_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(regresar_Datos_Personales_JButton))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, perfil_JPanelLayout.createSequentialGroup()
+                        .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(perfil_JPanelLayout.createSequentialGroup()
+                                .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tipo_Perfil_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cargar_Imagen_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addComponent(continuar_Informacion_Extra_JButton))
+                    .addGroup(perfil_JPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(continuar_Tablero_JButton)))
+                        .addComponent(regresar_Datos_Personales_JButton)))
                 .addContainerGap())
         );
 
         visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/profile.png")), perfil_JPanel, "<html>\n<h3>Página de registro<br>\nde perfil</h3>\n</html>"); // NOI18N
 
+        informacion_Extra_JPanel.setMinimumSize(new java.awt.Dimension(1260, 629));
         informacion_Extra_JPanel.setOpaque(false);
+        informacion_Extra_JPanel.setPreferredSize(new java.awt.Dimension(1260, 629));
+
+        crear_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
+        crear_Cuenta_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
+        crear_Cuenta_JButton.setBorder(null);
+        crear_Cuenta_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        crear_Cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                crear_Cuenta_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crear_Cuenta_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crear_Cuenta_JButtonMouseExited(evt);
+            }
+        });
+
+        logo_Informacion_Extra_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo_Informacion_Extra_JLabel.setMaximumSize(new java.awt.Dimension(150, 125));
+        logo_Informacion_Extra_JLabel.setMinimumSize(new java.awt.Dimension(150, 125));
+        logo_Informacion_Extra_JLabel.setPreferredSize(new java.awt.Dimension(150, 125));
+
+        titulo_Informacion_Extra_JLabel.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
+        titulo_Informacion_Extra_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_Informacion_Extra_JLabel.setText("Agrega Información Extra A Tu Perfil");
+        titulo_Informacion_Extra_JLabel.setMaximumSize(new java.awt.Dimension(490, 41));
+        titulo_Informacion_Extra_JLabel.setMinimumSize(new java.awt.Dimension(490, 41));
+        titulo_Informacion_Extra_JLabel.setPreferredSize(new java.awt.Dimension(490, 41));
 
         javax.swing.GroupLayout informacion_Extra_JPanelLayout = new javax.swing.GroupLayout(informacion_Extra_JPanel);
         informacion_Extra_JPanel.setLayout(informacion_Extra_JPanelLayout);
         informacion_Extra_JPanelLayout.setHorizontalGroup(
             informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1199, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(crear_Cuenta_JButton))
+                    .addComponent(titulo_Informacion_Extra_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
+                    .addComponent(logo_Informacion_Extra_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         informacion_Extra_JPanelLayout.setVerticalGroup(
             informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logo_Informacion_Extra_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(titulo_Informacion_Extra_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 438, Short.MAX_VALUE)
+                .addComponent(crear_Cuenta_JButton)
+                .addContainerGap())
         );
 
         visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/programmer.png")), informacion_Extra_JPanel); // NOI18N
@@ -825,23 +868,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         regresar_Autenticacion_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_regresar_Autenticacion_JButtonMouseExited
 
-    private void continuar_Tablero_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Tablero_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            CourseRoom_Frame.Mostrar_Tablero();
-        }
-    }//GEN-LAST:event_continuar_Tablero_JButtonMouseClicked
-
-    private void continuar_Tablero_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Tablero_JButtonMouseEntered
-        // TODO add your handling code here:
-        continuar_Tablero_JButton.setBackground(CourseRoom.Segundo_Color());
-    }//GEN-LAST:event_continuar_Tablero_JButtonMouseEntered
-
-    private void continuar_Tablero_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Tablero_JButtonMouseExited
-        // TODO add your handling code here:
-        continuar_Tablero_JButton.setBackground(CourseRoom.Primer_Color());
-    }//GEN-LAST:event_continuar_Tablero_JButtonMouseExited
-
     private void regresar_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Datos_Personales_JButtonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_regresar_Datos_Personales_JButtonMouseClicked
@@ -861,11 +887,36 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
      
     }//GEN-LAST:event_continuar_Datos_Personales_JButtonActionPerformed
 
-  
+    private void crear_Cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crear_Cuenta_JButtonMouseClicked
+
+    private void crear_Cuenta_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JButtonMouseEntered
+        // TODO add your handling code here:
+        crear_Cuenta_JButton.setBackground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_crear_Cuenta_JButtonMouseEntered
+
+    private void crear_Cuenta_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JButtonMouseExited
+        // TODO add your handling code here:
+        crear_Cuenta_JButton.setBackground(CourseRoom.Primer_Color());
+    }//GEN-LAST:event_crear_Cuenta_JButtonMouseExited
+
+    private void continuar_Informacion_Extra_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Informacion_Extra_JButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_continuar_Informacion_Extra_JButtonMouseClicked
+
+    private void continuar_Informacion_Extra_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Informacion_Extra_JButtonMouseEntered
+        // TODO add your handling code here:
+        continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_continuar_Informacion_Extra_JButtonMouseEntered
+
+    private void continuar_Informacion_Extra_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Informacion_Extra_JButtonMouseExited
+        // TODO add your handling code here:
+        continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Primer_Color());
+    }//GEN-LAST:event_continuar_Informacion_Extra_JButtonMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField Pass;
-    private javax.swing.JPasswordField Pass2;
     private javax.swing.JLabel apellido_Materno_JLabel;
     private javax.swing.JTextField apellido_Materno_JTextField;
     private javax.swing.JLabel apellido_Paterno_JLabel;
@@ -874,10 +925,13 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JButton cargar_Imagen_Perfil_JButton;
     private javax.swing.JButton continuar_Autenticacion_JButton;
     private javax.swing.JButton continuar_Datos_Personales_JButton;
+    private javax.swing.JButton continuar_Informacion_Extra_JButton;
     private javax.swing.JButton continuar_Perfil_JButton;
-    private javax.swing.JButton continuar_Tablero_JButton;
     private javax.swing.JLabel contrasena_Autenticacion_JLabel;
+    private javax.swing.JPasswordField contrasenia_JPasswordField;
     private javax.swing.JLabel correo_Electronico_Autenticacion_JLabel;
+    private javax.swing.JTextField correo_JTextField;
+    private javax.swing.JButton crear_Cuenta_JButton;
     private javax.swing.JPanel datos_Personales_JPanel;
     private javax.swing.JComboBox<String> estado_JComboBox;
     private javax.swing.JLabel estado_JLabel;
@@ -896,6 +950,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JLabel localidad_JLabel;
     private javax.swing.JLabel logo_Autenticacion_JLabel;
     private javax.swing.JLabel logo_Datos_Personales_JLabel;
+    private javax.swing.JLabel logo_Informacion_Extra_JLabel;
     private javax.swing.JLabel logo_Inicio_JLabel;
     private javax.swing.JLabel logo_Perfil_JLabel;
     private javax.swing.JLabel nombres_JLabel;
@@ -906,16 +961,19 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JButton regresar_Inicio_JButton;
     private javax.swing.JButton regresar_Inicio_Sesion_JButton;
     private javax.swing.JLabel repetir_Contrasena_Autenticacion_JLabel;
+    private javax.swing.JPasswordField repetir_Contrasenia_JTextField;
     private javax.swing.JComboBox<String> tipo_Perfil_JComboBox;
     private javax.swing.JLabel tipo_Perfil_JLabel;
     private javax.swing.JLabel titulo_Autenticacion_JLabel;
     private javax.swing.JLabel titulo_Datos_Personales_JLabel;
+    private javax.swing.JLabel titulo_Informacion_Extra_JLabel;
     private javax.swing.JLabel titulo_Inicio_JLabel;
     private javax.swing.JLabel titulo_Perfil_JLabel;
-    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTabbedPane visualizador_JTabbedPane;
     // End of variables declaration//GEN-END:variables
 
+    private DatePicker fecha_Nacimiento_DatePicker;
+    
     @Override
     public void Iniciar_Componentes() {
           
@@ -924,7 +982,31 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         logo_Autenticacion_JLabel.setIcon(icono);
         logo_Datos_Personales_JLabel.setIcon(icono);
         logo_Perfil_JLabel.setIcon(icono);
-        descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        logo_Informacion_Extra_JLabel.setIcon(icono);
+        
+        LocalDate fecha_Minima = LocalDate.of(1900, Month.JANUARY, 1);
+        LocalDate fecha_Maxima = LocalDate.of(2010,Month.JANUARY,1);
+        DatePickerSettings ajustes_Fecha_Nacimiento = new DatePickerSettings(CourseRoom.Locale());
+        ajustes_Fecha_Nacimiento.setFirstDayOfWeek(DayOfWeek.MONDAY);
+        ajustes_Fecha_Nacimiento.setFontVetoedDate(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontValidDate(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontCalendarDateLabels(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontCalendarWeekNumberLabels(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontCalendarWeekdayLabels(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontTodayLabel(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontMonthAndYearMenuLabels(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontTodayLabel(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setVisibleClearButton(false);
+        ajustes_Fecha_Nacimiento.setVisibleTodayButton(false);
+        fecha_Nacimiento_DatePicker = new DatePicker(ajustes_Fecha_Nacimiento);
+        fecha_Nacimiento_DatePicker.getComponent(0).setFont(nombres_JLabel.getFont());
+        fecha_Nacimiento_DatePicker.getSettings().setDateRangeLimits(fecha_Minima, fecha_Maxima);
+        fecha_Nacimiento_DatePicker.setDate(LocalDate.of(1998, Month.JANUARY, 1));
+        fecha_Nacimiento_DatePicker.setOpaque(false);
+        fecha_Nacimiento_JPanel.add(fecha_Nacimiento_DatePicker);
+        fecha_Nacimiento_DatePicker.setVisible(true);
+        
+        //descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
         Colorear_Componentes();
     }
@@ -933,42 +1015,48 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     public void Colorear_Componentes() {
         visualizador_JTabbedPane.setForeground(CourseRoom.Segundo_Color());
         visualizador_JTabbedPane.setBackground(CourseRoom.Primer_Color());
-        
-        descripcion_JTextPane.setBackground(CourseRoom.Segundo_Color());
-        descripcion_JTextPane.setForeground(CourseRoom.Primer_Color());
-        descripcion_JTextPane.setCaretColor(CourseRoom.Primer_Color());
-        
-        descripcion_JScrollPane.setForeground(CourseRoom.Primer_Color());
+//        
+//        descripcion_JTextPane.setBackground(CourseRoom.Segundo_Color());
+//        descripcion_JTextPane.setForeground(CourseRoom.Primer_Color());
+//        descripcion_JTextPane.setCaretColor(CourseRoom.Primer_Color());
+//        
+//        descripcion_JScrollPane.setForeground(CourseRoom.Primer_Color());
         apellido_Paterno_JTextField.setBackground(CourseRoom.Segundo_Color());
         apellido_Paterno_JTextField.setForeground(CourseRoom.Primer_Color());
         apellido_Paterno_JTextField.setCaretColor(CourseRoom.Primer_Color());
-        txtCorreo.setBackground(CourseRoom.Segundo_Color());
-        txtCorreo.setForeground(CourseRoom.Primer_Color());
-        txtCorreo.setCaretColor(CourseRoom.Primer_Color());
+        apellido_Materno_JTextField.setBackground(CourseRoom.Segundo_Color());
+        apellido_Materno_JTextField.setForeground(CourseRoom.Primer_Color());
+        apellido_Materno_JTextField.setCaretColor(CourseRoom.Primer_Color());
+        correo_JTextField.setBackground(CourseRoom.Segundo_Color());
+        correo_JTextField.setForeground(CourseRoom.Primer_Color());
+        correo_JTextField.setCaretColor(CourseRoom.Primer_Color());
         genero_JTextField.setBackground(CourseRoom.Segundo_Color());
         genero_JTextField.setForeground(CourseRoom.Primer_Color());
         genero_JTextField.setCaretColor(CourseRoom.Primer_Color());
-        localidad_JTextField.setBackground(CourseRoom.Segundo_Color());
-        localidad_JTextField.setForeground(CourseRoom.Primer_Color());
+        localidad_JComboBox.setBackground(CourseRoom.Segundo_Color());
+        localidad_JComboBox.setForeground(CourseRoom.Primer_Color());
+        estado_JComboBox.setBackground(CourseRoom.Segundo_Color());
+        estado_JComboBox.setForeground(CourseRoom.Primer_Color());
         nombres_JTextField.setBackground(CourseRoom.Segundo_Color());
         nombres_JTextField.setForeground(CourseRoom.Primer_Color());
         nombres_JTextField.setCaretColor(CourseRoom.Primer_Color());
-        Pass.setBackground(CourseRoom.Segundo_Color());
-        Pass.setForeground(CourseRoom.Primer_Color());
-        Pass.setCaretColor(CourseRoom.Primer_Color());
-        Pass2.setBackground(CourseRoom.Segundo_Color());
-        Pass2.setForeground(CourseRoom.Primer_Color());
-        Pass2.setCaretColor(CourseRoom.Primer_Color());
+        contrasenia_JPasswordField.setBackground(CourseRoom.Segundo_Color());
+        contrasenia_JPasswordField.setForeground(CourseRoom.Primer_Color());
+        contrasenia_JPasswordField.setCaretColor(CourseRoom.Primer_Color());
+        repetir_Contrasenia_JTextField.setBackground(CourseRoom.Segundo_Color());
+        repetir_Contrasenia_JTextField.setForeground(CourseRoom.Primer_Color());
+        repetir_Contrasenia_JTextField.setCaretColor(CourseRoom.Primer_Color());
         cargar_Imagen_Perfil_JButton.setBackground(CourseRoom.Segundo_Color());
         cargar_Imagen_Perfil_JButton.setForeground(CourseRoom.Primer_Color());
         tipo_Perfil_JComboBox.setBackground(CourseRoom.Segundo_Color());
         tipo_Perfil_JComboBox.setForeground(CourseRoom.Primer_Color());
-        fecha_Nacimiento_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
-        fecha_Nacimiento_JFormattedTextField.setForeground(CourseRoom.Primer_Color());
-        fecha_Nacimiento_JFormattedTextField.setCaretColor(CourseRoom.Primer_Color());
+//        fecha_Nacimiento_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
+//        fecha_Nacimiento_JFormattedTextField.setForeground(CourseRoom.Primer_Color());
+//        fecha_Nacimiento_JFormattedTextField.setCaretColor(CourseRoom.Primer_Color());
         apellido_Paterno_JLabel.setForeground(CourseRoom.Segundo_Color());
+        apellido_Materno_JLabel.setForeground(CourseRoom.Segundo_Color());
         correo_Electronico_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
-        descripcion_JLabel.setForeground(CourseRoom.Segundo_Color());
+//        descripcion_JLabel.setForeground(CourseRoom.Segundo_Color());
         fecha_Nacimiento_JLabel.setForeground(CourseRoom.Segundo_Color());
         genero_JLabel.setForeground(CourseRoom.Segundo_Color());
         imagen_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
@@ -977,6 +1065,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         informacion_Repetir_Contrasena_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         informacion_Contrasena_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         localidad_JLabel.setForeground(CourseRoom.Segundo_Color());
+        estado_JLabel.setForeground(CourseRoom.Segundo_Color());
         logo_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
         logo_Datos_Personales_JLabel.setForeground(CourseRoom.Segundo_Color());
         logo_Inicio_JLabel.setForeground(CourseRoom.Segundo_Color());
@@ -989,15 +1078,37 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         titulo_Datos_Personales_JLabel.setForeground(CourseRoom.Segundo_Color());
         titulo_Inicio_JLabel.setForeground(CourseRoom.Segundo_Color());
         titulo_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
+        titulo_Informacion_Extra_JLabel.setForeground(CourseRoom.Segundo_Color());
+        
 
         continuar_Autenticacion_JButton.setBackground(CourseRoom.Primer_Color());
-        continuar_Tablero_JButton.setBackground(CourseRoom.Primer_Color());
+        crear_Cuenta_JButton.setBackground(CourseRoom.Primer_Color());
         continuar_Datos_Personales_JButton.setBackground(CourseRoom.Primer_Color());
         continuar_Perfil_JButton.setBackground(CourseRoom.Primer_Color());
+        continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Primer_Color());
         regresar_Autenticacion_JButton.setBackground(CourseRoom.Primer_Color());
         regresar_Datos_Personales_JButton.setBackground(CourseRoom.Primer_Color());
         regresar_Inicio_JButton.setBackground(CourseRoom.Primer_Color());
         regresar_Inicio_Sesion_JButton.setBackground(CourseRoom.Primer_Color());
+        
+        fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.CalendarBackgroundNormalDates,
+                CourseRoom.Segundo_Color());
+        fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.CalendarTextNormalDates,
+                CourseRoom.Primer_Color());
+        fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextMonthAndYearMenuLabels, 
+                CourseRoom.Primer_Color());
+        fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextMonthAndYearMenuLabels,
+                CourseRoom.Primer_Color());
+        fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.BackgroundCalendarPanelLabelsOnHover,
+                CourseRoom.Segundo_Color());
+        fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.BackgroundMonthAndYearNavigationButtons,
+                CourseRoom.Primer_Color());
+        fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextMonthAndYearNavigationButtons,
+                CourseRoom.Segundo_Color());
+        fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextCalendarPanelLabelsOnHover,
+                CourseRoom.Primer_Color());
+        ((JTextField)fecha_Nacimiento_DatePicker.getComponent(0)).setEditable(false);
+        
     }
  
 
@@ -1012,8 +1123,8 @@ public boolean validar_Correo(String correo)
     }else
     {
         JOptionPane.showMessageDialog(null, "El Correo\n'" +correo+ "'\nNo Es Valido");
-        txtCorreo.setText("");
-        txtCorreo.requestFocus();
+        correo_JTextField.setText("");
+        correo_JTextField.requestFocus();
                 }
     return mat.find();
 }
@@ -1024,13 +1135,13 @@ public void checar_Correo()
     try
     {
         pst = conn.prepareStatement(sql);
-        pst.setString(1, txtCorreo.getText().trim());
+        pst.setString(1, correo_JTextField.getText().trim());
         rs = pst.executeQuery();
         if (rs.next())
         {
             JOptionPane.showMessageDialog(null, "El Correo Ingresado Ya Existe!!!");
-            txtCorreo.setText("");
-            txtCorreo.requestFocus();
+            correo_JTextField.setText("");
+            correo_JTextField.requestFocus();
         }
         else
         {
@@ -1038,7 +1149,7 @@ public void checar_Correo()
             verificar_Campos();
         }
     }
-    catch(Exception e)
+    catch(HeadlessException | SQLException e)
     {
         JOptionPane.showMessageDialog(null, e);
     }
@@ -1046,11 +1157,11 @@ public void checar_Correo()
     
 public void verificar_Campos(){
   
-    String Password = String.valueOf(Pass.getPassword());
-    String Password2 = String.valueOf(Pass2.getPassword());
+    String Password = String.valueOf(contrasenia_JPasswordField.getPassword());
+    String Password2 = String.valueOf(repetir_Contrasenia_JTextField.getPassword());
     
     // Checa Los Campos Vacíos.
-    if (txtCorreo.getText().equals("") 
+    if (correo_JTextField.getText().equals("") 
             || Password.equals("")  ||  Password2.equals("")){
         // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
         JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
@@ -1070,12 +1181,12 @@ public void verificar_Campos(){
     
 public void agregar_Usuarios(){
         
-        String pass = String.valueOf(Pass.getPassword());
+        String pass = String.valueOf(contrasenia_JPasswordField.getPassword());
         String sql = "INSERT INTO usuarios (id_usuario,nom_usuario,pass,correo,status) VALUES (null,?,?,?,'Active')";
         try {
             pst = conn.prepareStatement(sql);
             pst.setString(2, pass);
-            pst.setString(3, txtCorreo.getText());
+            pst.setString(3, correo_JTextField.getText());
             pst.execute();
             
             JOptionPane.showMessageDialog(null, "Registro Exitoso!!!,"
@@ -1090,8 +1201,8 @@ public void agregar_Usuarios(){
     }
 
     private void limpiar_Datos(){
-        Pass.setText("");
-        txtCorreo.setText("");
-        Pass2.setText("");
+        contrasenia_JPasswordField.setText("");
+        correo_JTextField.setText("");
+        repetir_Contrasenia_JTextField.setText("");
     }
 }

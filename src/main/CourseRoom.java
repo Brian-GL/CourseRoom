@@ -29,6 +29,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class CourseRoom implements Limpieza_Interface{
     
     private static Faker faker;
+    private static Locale locale;
     private static Random random;
     private static Image logo_Imagen;
     private static Color tercer_Color;
@@ -49,6 +50,7 @@ public class CourseRoom implements Limpieza_Interface{
             
             Mensaje_Error_Dialog mensaje_Error_Dialog
                     = new Mensaje_Error_Dialog(null,true,"Error Grave","Lo Sentimos Pero No Hay Conexión A Internet");
+            mensaje_Error_Dialog.setVisible(true);
             return;
         }
         
@@ -68,8 +70,8 @@ public class CourseRoom implements Limpieza_Interface{
             
         }
 
-        Locale mx = new Locale("es", "MX");
-        faker = new Faker(mx);
+        locale = new Locale("es", "MX");
+        faker = new Faker(locale);
         courseRoom_Frame = new CourseRoom_Frame(); 
         courseRoom_Frame.setVisible(true);
     }
@@ -137,6 +139,10 @@ public class CourseRoom implements Limpieza_Interface{
      */
     public static Faker Faker() {
        return faker;
+    }
+    
+    public static Locale Locale(){
+        return locale;
     }
     
     /**

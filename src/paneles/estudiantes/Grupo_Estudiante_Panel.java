@@ -1341,7 +1341,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JPanel tareas_Pendientes_JPanel;
     // End of variables declaration//GEN-END:variables
 
-     private DateTimePicker escogedor_Fecha_Hora;
+    private DateTimePicker escogedor_Fecha_Hora;
     
 
     @Override
