@@ -301,8 +301,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         iniciar_Sesion_JButton.setForeground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_iniciar_Sesion_JButtonMouseExited
 
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel contrasena_JLabel;
