@@ -4,7 +4,6 @@ import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import sql.Conexion;
 import interfaces.Componentes_Interface;
-import java.awt.Color;
 import java.awt.HeadlessException;
 import main.CourseRoom;
 import main.CourseRoom_Frame;
@@ -83,10 +82,10 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         regresar_Autenticacion_JButton = new javax.swing.JButton();
         apellido_Materno_JLabel = new javax.swing.JLabel();
         apellido_Materno_JTextField = new javax.swing.JTextField();
-        fecha_Nacimiento_JPanel = new javax.swing.JPanel();
         estado_JLabel = new javax.swing.JLabel();
-        estado_JComboBox = new javax.swing.JComboBox<>();
-        localidad_JComboBox = new javax.swing.JComboBox<>();
+        estado_AutoCompletionComboBox = new com.jidesoft.swing.AutoCompletionComboBox();
+        localidad_AutoCompletionComboBox = new com.jidesoft.swing.AutoCompletionComboBox();
+        fecha_Nacimiento_DatePicker = new com.github.lgooddatepicker.components.DatePicker();
         perfil_JPanel = new javax.swing.JPanel();
         logo_Perfil_JLabel = new javax.swing.JLabel();
         titulo_Perfil_JLabel = new javax.swing.JLabel();
@@ -100,6 +99,18 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         crear_Cuenta_JButton = new javax.swing.JButton();
         logo_Informacion_Extra_JLabel = new javax.swing.JLabel();
         titulo_Informacion_Extra_JLabel = new javax.swing.JLabel();
+        regresar_Perfil_JButton = new javax.swing.JButton();
+        promedio_General_JLabel = new javax.swing.JLabel();
+        promedio_General_JFormattedTextField = new javax.swing.JFormattedTextField();
+        descripcion_JLabel = new javax.swing.JLabel();
+        descripcion_JScrollPane = new javax.swing.JScrollPane();
+        descripcion_JTextPane = new javax.swing.JTextPane();
+        agregar_Intereses_Tematicas_JPanel = new javax.swing.JPanel();
+        intereses_Tematicas_Agregadas_JScrollPane = new javax.swing.JScrollPane();
+        intereses_Tematicas_Agregadas_JPanel = new javax.swing.JPanel();
+        interes_Tematica_JLabel = new javax.swing.JLabel();
+        agregar_Interes_Tematica_JButton = new javax.swing.JButton();
+        intereses_Tematicas_AutoCompletionComboBox = new com.jidesoft.swing.AutoCompletionComboBox();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
         setOpaque(false);
@@ -281,11 +292,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 continuar_Datos_Personales_JButtonMouseExited(evt);
             }
         });
-        continuar_Datos_Personales_JButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuar_Datos_Personales_JButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout autenticacion_JPanelLayout = new javax.swing.GroupLayout(autenticacion_JPanel);
         autenticacion_JPanel.setLayout(autenticacion_JPanelLayout);
@@ -432,17 +438,16 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         apellido_Materno_JTextField.setPreferredSize(new java.awt.Dimension(316, 40));
 
-        fecha_Nacimiento_JPanel.setPreferredSize(new java.awt.Dimension(439, 40));
-        fecha_Nacimiento_JPanel.setLayout(new java.awt.CardLayout());
-
         estado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         estado_JLabel.setText("Estado");
 
-        estado_JComboBox.setToolTipText("<html>\n<h3>Estado mexicano, o bien del extranjero</h3>\n</html>");
-        estado_JComboBox.setPreferredSize(new java.awt.Dimension(72, 40));
+        estado_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Estado de proveniencia</h3>\n</html>");
+        estado_AutoCompletionComboBox.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
 
-        localidad_JComboBox.setToolTipText("<html>\n<h3>Localidad del estado mexicano, o bien del extranjero</h3>\n</html>");
-        localidad_JComboBox.setPreferredSize(new java.awt.Dimension(72, 40));
+        localidad_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Localidad de provenencia</h3>\n</html>");
+
+        fecha_Nacimiento_DatePicker.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        fecha_Nacimiento_DatePicker.setToolTipText("");
 
         javax.swing.GroupLayout datos_Personales_JPanelLayout = new javax.swing.GroupLayout(datos_Personales_JPanel);
         datos_Personales_JPanel.setLayout(datos_Personales_JPanelLayout);
@@ -452,7 +457,13 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addContainerGap()
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(regresar_Autenticacion_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(continuar_Perfil_JButton))
+                    .addComponent(titulo_Datos_Personales_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logo_Datos_Personales_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
+                        .addGap(0, 57, Short.MAX_VALUE)
                         .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(apellido_Materno_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -462,23 +473,18 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                             .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(nombres_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGap(18, 75, Short.MAX_VALUE)
                         .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fecha_Nacimiento_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
-                            .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(genero_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
-                            .addComponent(genero_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(localidad_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(localidad_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(estado_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(estado_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                        .addComponent(regresar_Autenticacion_JButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(continuar_Perfil_JButton))
-                    .addComponent(titulo_Datos_Personales_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logo_Datos_Personales_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(fecha_Nacimiento_DatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                            .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(genero_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                                .addComponent(genero_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(localidad_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(estado_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(estado_AutoCompletionComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(localidad_AutoCompletionComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 57, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         datos_Personales_JPanelLayout.setVerticalGroup(
@@ -493,7 +499,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                         .addComponent(estado_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(estado_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(estado_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                         .addComponent(nombres_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -503,7 +509,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                         .addComponent(localidad_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(localidad_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(localidad_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(genero_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -519,8 +525,8 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addGap(18, 18, 18)
                 .addComponent(fecha_Nacimiento_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fecha_Nacimiento_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 75, Short.MAX_VALUE)
+                .addComponent(fecha_Nacimiento_DatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(continuar_Perfil_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(regresar_Autenticacion_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -562,11 +568,11 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil Seleccionada.");
         imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setName(""); // NOI18N
-        imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
+        imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(450, 450));
 
         cargar_Imagen_Perfil_JButton.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         cargar_Imagen_Perfil_JButton.setText("Cargar Imagen De Perfil");
-        cargar_Imagen_Perfil_JButton.setToolTipText("<html>Click Para Cargar Tu Foto De Perfil Desde Tu Ordenador.<br><b>NOTA: LA IMAGEN DE PERFIL TENDRÁ UNA RESOLUCIÓN DE 250x250 px.</b></html>");
+        cargar_Imagen_Perfil_JButton.setToolTipText("<html>\n<h3>Subir Imagen De Perfil</h3>\n<ul>\n<li>\nLa imagen se redimensionará a un tamaño de 450 x 450 pixeles\n</li>\n</ul>\n</html>");
         cargar_Imagen_Perfil_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cargar_Imagen_Perfil_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cargar_Imagen_Perfil_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -601,7 +607,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         });
 
         continuar_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Informacion_Extra_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
+        continuar_Informacion_Extra_JButton.setToolTipText("<html> <h3>Continuar a la pestaña<br>de información extra</h3> </html>");
         continuar_Informacion_Extra_JButton.setBorder(null);
         continuar_Informacion_Extra_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         continuar_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -622,26 +628,21 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
             perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(perfil_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(perfil_JPanelLayout.createSequentialGroup()
                         .addComponent(regresar_Datos_Personales_JButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1091, Short.MAX_VALUE)
-                        .addComponent(continuar_Informacion_Extra_JButton)
-                        .addContainerGap())
-                    .addGroup(perfil_JPanelLayout.createSequentialGroup()
-                        .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(logo_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(titulo_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE))
-                        .addGap(6, 6, 6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, perfil_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tipo_Perfil_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cargar_Imagen_Perfil_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(continuar_Informacion_Extra_JButton))
+                    .addComponent(logo_Perfil_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(titulo_Perfil_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE))
+                .addGap(6, 6, 6))
         );
         perfil_JPanelLayout.setVerticalGroup(
             perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -650,23 +651,24 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addComponent(logo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addComponent(titulo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 19, Short.MAX_VALUE)
                 .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(perfil_JPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(perfil_JPanelLayout.createSequentialGroup()
-                                .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tipo_Perfil_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cargar_Imagen_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addComponent(continuar_Informacion_Extra_JButton))
-                    .addGroup(perfil_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(regresar_Datos_Personales_JButton)))
-                .addContainerGap())
+                                .addComponent(cargar_Imagen_Perfil_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, perfil_JPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(perfil_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(regresar_Datos_Personales_JButton)
+                            .addComponent(continuar_Informacion_Extra_JButton))
+                        .addContainerGap())))
         );
 
         visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/profile.png")), perfil_JPanel, "<html>\n<h3>Página de registro<br>\nde perfil</h3>\n</html>"); // NOI18N
@@ -703,18 +705,121 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         titulo_Informacion_Extra_JLabel.setMinimumSize(new java.awt.Dimension(490, 41));
         titulo_Informacion_Extra_JLabel.setPreferredSize(new java.awt.Dimension(490, 41));
 
+        regresar_Perfil_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_Perfil_JButton.setToolTipText("<html> <h3>Regresar a la pestaña de perfil</h3> </html>");
+        regresar_Perfil_JButton.setBorder(null);
+        regresar_Perfil_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar_Perfil_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar_Perfil_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                regresar_Perfil_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                regresar_Perfil_JButtonMouseExited(evt);
+            }
+        });
+
+        promedio_General_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        promedio_General_JLabel.setText("Promedio General");
+
+        promedio_General_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##.00"))));
+        promedio_General_JFormattedTextField.setToolTipText("<html>\n<h3>Promedio general de tu escuela</h3>\n<ul><li>Esto nos ayudará a generar mayores estadísticas sobre ti<br>\na la hora de tomar tus cursos.</li></ul>\n</html>");
+        promedio_General_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        promedio_General_JFormattedTextField.setPreferredSize(new java.awt.Dimension(126, 40));
+
+        descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        descripcion_JLabel.setText("Descripción");
+
+        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
+        descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
+
+        agregar_Intereses_Tematicas_JPanel.setOpaque(false);
+
+        intereses_Tematicas_Agregadas_JScrollPane.setBorder(null);
+        intereses_Tematicas_Agregadas_JScrollPane.setOpaque(false);
+
+        intereses_Tematicas_Agregadas_JPanel.setOpaque(false);
+        intereses_Tematicas_Agregadas_JPanel.setLayout(new javax.swing.BoxLayout(intereses_Tematicas_Agregadas_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
+        intereses_Tematicas_Agregadas_JScrollPane.setViewportView(intereses_Tematicas_Agregadas_JPanel);
+
+        interes_Tematica_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        interes_Tematica_JLabel.setText("Interes / Temática");
+        interes_Tematica_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
+
+        agregar_Interes_Tematica_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        agregar_Interes_Tematica_JButton.setText("Agregar Interes / Temática");
+        agregar_Interes_Tematica_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregar_Interes_Tematica_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                agregar_Interes_Tematica_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                agregar_Interes_Tematica_JButtonMouseExited(evt);
+            }
+        });
+
+        intereses_Tematicas_AutoCompletionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isaiah Leblanc", "Fitzgerald Dean", "Emma Doyle", "Galvin Gillespie", "Hunter Ross", "Kellie Valencia", "Miranda Holder", "Drake Mendoza", "Uma Parks", "Julian Hill" }));
+        intereses_Tematicas_AutoCompletionComboBox.setSelectedIndex(-1);
+        intereses_Tematicas_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
+        intereses_Tematicas_AutoCompletionComboBox.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+
+        javax.swing.GroupLayout agregar_Intereses_Tematicas_JPanelLayout = new javax.swing.GroupLayout(agregar_Intereses_Tematicas_JPanel);
+        agregar_Intereses_Tematicas_JPanel.setLayout(agregar_Intereses_Tematicas_JPanelLayout);
+        agregar_Intereses_Tematicas_JPanelLayout.setHorizontalGroup(
+            agregar_Intereses_Tematicas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agregar_Intereses_Tematicas_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(agregar_Intereses_Tematicas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(interes_Tematica_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(agregar_Interes_Tematica_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                    .addComponent(intereses_Tematicas_AutoCompletionComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(intereses_Tematicas_Agregadas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        agregar_Intereses_Tematicas_JPanelLayout.setVerticalGroup(
+            agregar_Intereses_Tematicas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agregar_Intereses_Tematicas_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(agregar_Intereses_Tematicas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(agregar_Intereses_Tematicas_JPanelLayout.createSequentialGroup()
+                        .addComponent(interes_Tematica_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(intereses_Tematicas_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(agregar_Interes_Tematica_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(intereses_Tematicas_Agregadas_JScrollPane))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout informacion_Extra_JPanelLayout = new javax.swing.GroupLayout(informacion_Extra_JPanel);
         informacion_Extra_JPanel.setLayout(informacion_Extra_JPanelLayout);
         informacion_Extra_JPanelLayout.setHorizontalGroup(
             informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createSequentialGroup()
+            .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createSequentialGroup()
+                        .addComponent(regresar_Perfil_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(crear_Cuenta_JButton))
-                    .addComponent(titulo_Informacion_Extra_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
-                    .addComponent(logo_Informacion_Extra_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(titulo_Informacion_Extra_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
+                    .addComponent(logo_Informacion_Extra_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(promedio_General_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+                            .addComponent(promedio_General_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(descripcion_JScrollPane))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(agregar_Intereses_Tematicas_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         informacion_Extra_JPanelLayout.setVerticalGroup(
@@ -724,12 +829,25 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
                 .addComponent(logo_Informacion_Extra_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addComponent(titulo_Informacion_Extra_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 438, Short.MAX_VALUE)
-                .addComponent(crear_Cuenta_JButton)
+                .addGap(18, 18, 18)
+                .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
+                        .addComponent(promedio_General_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(promedio_General_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(descripcion_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE))
+                    .addComponent(agregar_Intereses_Tematicas_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(crear_Cuenta_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(regresar_Perfil_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
-        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/programmer.png")), informacion_Extra_JPanel); // NOI18N
+        visualizador_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/programmer.png")), informacion_Extra_JPanel, "<html>\n<h3>Información Extra</h3>\n</html>"); // NOI18N
 
         add(visualizador_JTabbedPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
@@ -882,13 +1000,11 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         regresar_Datos_Personales_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_regresar_Datos_Personales_JButtonMouseExited
 
-    private void continuar_Datos_Personales_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuar_Datos_Personales_JButtonActionPerformed
-        // TODO add your handling code here:
-     
-    }//GEN-LAST:event_continuar_Datos_Personales_JButtonActionPerformed
-
     private void crear_Cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JButtonMouseClicked
         // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            CourseRoom_Frame.Mostrar_Tablero();
+        }
     }//GEN-LAST:event_crear_Cuenta_JButtonMouseClicked
 
     private void crear_Cuenta_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JButtonMouseEntered
@@ -915,8 +1031,46 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_continuar_Informacion_Extra_JButtonMouseExited
 
+    private void regresar_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Perfil_JButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regresar_Perfil_JButtonMouseClicked
+
+    private void regresar_Perfil_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Perfil_JButtonMouseEntered
+        // TODO add your handling code here:
+        regresar_Perfil_JButton.setBackground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_regresar_Perfil_JButtonMouseEntered
+
+    private void regresar_Perfil_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Perfil_JButtonMouseExited
+        // TODO add your handling code here:
+        regresar_Perfil_JButton.setBackground(CourseRoom.Primer_Color());
+    }//GEN-LAST:event_regresar_Perfil_JButtonMouseExited
+
+    private void agregar_Interes_Tematica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_Tematica_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Interes_Tematica_General_Panel interes_Tematica_General_Panel =
+                    new Interes_Tematica_General_Panel((String)intereses_Tematicas_AutoCompletionComboBox.getSelectedItem());
+            
+            intereses_Tematicas_Agregadas_JPanel.add(interes_Tematica_General_Panel);
+        }
+    }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseClicked
+
+    private void agregar_Interes_Tematica_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_Tematica_JButtonMouseEntered
+        // TODO add your handling code here:
+        agregar_Interes_Tematica_JButton.setBackground(CourseRoom.Primer_Color());
+        agregar_Interes_Tematica_JButton.setForeground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseEntered
+
+    private void agregar_Interes_Tematica_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_Tematica_JButtonMouseExited
+        // TODO add your handling code here:
+        agregar_Interes_Tematica_JButton.setBackground(CourseRoom.Segundo_Color());
+        agregar_Interes_Tematica_JButton.setForeground(CourseRoom.Primer_Color());
+    }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton agregar_Interes_Tematica_JButton;
+    private javax.swing.JPanel agregar_Intereses_Tematicas_JPanel;
     private javax.swing.JLabel apellido_Materno_JLabel;
     private javax.swing.JTextField apellido_Materno_JTextField;
     private javax.swing.JLabel apellido_Paterno_JLabel;
@@ -933,10 +1087,13 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JTextField correo_JTextField;
     private javax.swing.JButton crear_Cuenta_JButton;
     private javax.swing.JPanel datos_Personales_JPanel;
-    private javax.swing.JComboBox<String> estado_JComboBox;
+    private javax.swing.JLabel descripcion_JLabel;
+    private javax.swing.JScrollPane descripcion_JScrollPane;
+    private javax.swing.JTextPane descripcion_JTextPane;
+    private com.jidesoft.swing.AutoCompletionComboBox estado_AutoCompletionComboBox;
     private javax.swing.JLabel estado_JLabel;
+    private com.github.lgooddatepicker.components.DatePicker fecha_Nacimiento_DatePicker;
     private javax.swing.JLabel fecha_Nacimiento_JLabel;
-    private javax.swing.JPanel fecha_Nacimiento_JPanel;
     private javax.swing.JLabel genero_JLabel;
     private javax.swing.JTextField genero_JTextField;
     private javax.swing.JLabel imagen_Perfil_JLabel;
@@ -946,7 +1103,11 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JLabel informacion_Inicio_JLabel;
     private javax.swing.JLabel informacion_Repetir_Contrasena_Autenticacion_JLabel;
     private javax.swing.JPanel inicio_JPanel;
-    private javax.swing.JComboBox<String> localidad_JComboBox;
+    private javax.swing.JLabel interes_Tematica_JLabel;
+    private javax.swing.JPanel intereses_Tematicas_Agregadas_JPanel;
+    private javax.swing.JScrollPane intereses_Tematicas_Agregadas_JScrollPane;
+    private com.jidesoft.swing.AutoCompletionComboBox intereses_Tematicas_AutoCompletionComboBox;
+    private com.jidesoft.swing.AutoCompletionComboBox localidad_AutoCompletionComboBox;
     private javax.swing.JLabel localidad_JLabel;
     private javax.swing.JLabel logo_Autenticacion_JLabel;
     private javax.swing.JLabel logo_Datos_Personales_JLabel;
@@ -956,10 +1117,13 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JLabel nombres_JLabel;
     private javax.swing.JTextField nombres_JTextField;
     private javax.swing.JPanel perfil_JPanel;
+    private javax.swing.JFormattedTextField promedio_General_JFormattedTextField;
+    private javax.swing.JLabel promedio_General_JLabel;
     private javax.swing.JButton regresar_Autenticacion_JButton;
     private javax.swing.JButton regresar_Datos_Personales_JButton;
     private javax.swing.JButton regresar_Inicio_JButton;
     private javax.swing.JButton regresar_Inicio_Sesion_JButton;
+    private javax.swing.JButton regresar_Perfil_JButton;
     private javax.swing.JLabel repetir_Contrasena_Autenticacion_JLabel;
     private javax.swing.JPasswordField repetir_Contrasenia_JTextField;
     private javax.swing.JComboBox<String> tipo_Perfil_JComboBox;
@@ -972,7 +1136,6 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JTabbedPane visualizador_JTabbedPane;
     // End of variables declaration//GEN-END:variables
 
-    private DatePicker fecha_Nacimiento_DatePicker;
     
     @Override
     public void Iniciar_Componentes() {
@@ -998,15 +1161,20 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         ajustes_Fecha_Nacimiento.setFontTodayLabel(nombres_JLabel.getFont());
         ajustes_Fecha_Nacimiento.setVisibleClearButton(false);
         ajustes_Fecha_Nacimiento.setVisibleTodayButton(false);
-        fecha_Nacimiento_DatePicker = new DatePicker(ajustes_Fecha_Nacimiento);
+        fecha_Nacimiento_DatePicker.setSettings(ajustes_Fecha_Nacimiento);
         fecha_Nacimiento_DatePicker.getComponent(0).setFont(nombres_JLabel.getFont());
         fecha_Nacimiento_DatePicker.getSettings().setDateRangeLimits(fecha_Minima, fecha_Maxima);
         fecha_Nacimiento_DatePicker.setDate(LocalDate.of(1998, Month.JANUARY, 1));
         fecha_Nacimiento_DatePicker.setOpaque(false);
-        fecha_Nacimiento_JPanel.add(fecha_Nacimiento_DatePicker);
         fecha_Nacimiento_DatePicker.setVisible(true);
         
-        //descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        intereses_Tematicas_Agregadas_JScrollPane.getViewport().setOpaque(false);
+        intereses_Tematicas_Agregadas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        
+
         
         Colorear_Componentes();
     }
@@ -1015,12 +1183,12 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
     public void Colorear_Componentes() {
         visualizador_JTabbedPane.setForeground(CourseRoom.Segundo_Color());
         visualizador_JTabbedPane.setBackground(CourseRoom.Primer_Color());
-//        
-//        descripcion_JTextPane.setBackground(CourseRoom.Segundo_Color());
-//        descripcion_JTextPane.setForeground(CourseRoom.Primer_Color());
-//        descripcion_JTextPane.setCaretColor(CourseRoom.Primer_Color());
-//        
-//        descripcion_JScrollPane.setForeground(CourseRoom.Primer_Color());
+        
+        descripcion_JTextPane.setBackground(CourseRoom.Segundo_Color());
+        descripcion_JTextPane.setForeground(CourseRoom.Primer_Color());
+        descripcion_JTextPane.setCaretColor(CourseRoom.Primer_Color());
+        
+        descripcion_JScrollPane.setForeground(CourseRoom.Primer_Color());
         apellido_Paterno_JTextField.setBackground(CourseRoom.Segundo_Color());
         apellido_Paterno_JTextField.setForeground(CourseRoom.Primer_Color());
         apellido_Paterno_JTextField.setCaretColor(CourseRoom.Primer_Color());
@@ -1030,13 +1198,18 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         correo_JTextField.setBackground(CourseRoom.Segundo_Color());
         correo_JTextField.setForeground(CourseRoom.Primer_Color());
         correo_JTextField.setCaretColor(CourseRoom.Primer_Color());
+        promedio_General_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
+        promedio_General_JFormattedTextField.setForeground(CourseRoom.Primer_Color());
+        promedio_General_JFormattedTextField.setCaretColor(CourseRoom.Primer_Color());
         genero_JTextField.setBackground(CourseRoom.Segundo_Color());
         genero_JTextField.setForeground(CourseRoom.Primer_Color());
         genero_JTextField.setCaretColor(CourseRoom.Primer_Color());
-        localidad_JComboBox.setBackground(CourseRoom.Segundo_Color());
-        localidad_JComboBox.setForeground(CourseRoom.Primer_Color());
-        estado_JComboBox.setBackground(CourseRoom.Segundo_Color());
-        estado_JComboBox.setForeground(CourseRoom.Primer_Color());
+        localidad_AutoCompletionComboBox.setBackground(CourseRoom.Segundo_Color());
+        localidad_AutoCompletionComboBox.setForeground(CourseRoom.Primer_Color());
+        intereses_Tematicas_AutoCompletionComboBox.setBackground(CourseRoom.Segundo_Color());
+        intereses_Tematicas_AutoCompletionComboBox.setForeground(CourseRoom.Primer_Color());
+        estado_AutoCompletionComboBox.setBackground(CourseRoom.Segundo_Color());
+        estado_AutoCompletionComboBox.setForeground(CourseRoom.Primer_Color());
         nombres_JTextField.setBackground(CourseRoom.Segundo_Color());
         nombres_JTextField.setForeground(CourseRoom.Primer_Color());
         nombres_JTextField.setCaretColor(CourseRoom.Primer_Color());
@@ -1048,15 +1221,16 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         repetir_Contrasenia_JTextField.setCaretColor(CourseRoom.Primer_Color());
         cargar_Imagen_Perfil_JButton.setBackground(CourseRoom.Segundo_Color());
         cargar_Imagen_Perfil_JButton.setForeground(CourseRoom.Primer_Color());
+        agregar_Interes_Tematica_JButton.setBackground(CourseRoom.Segundo_Color());
+        agregar_Interes_Tematica_JButton.setForeground(CourseRoom.Primer_Color());
         tipo_Perfil_JComboBox.setBackground(CourseRoom.Segundo_Color());
         tipo_Perfil_JComboBox.setForeground(CourseRoom.Primer_Color());
-//        fecha_Nacimiento_JFormattedTextField.setBackground(CourseRoom.Segundo_Color());
-//        fecha_Nacimiento_JFormattedTextField.setForeground(CourseRoom.Primer_Color());
-//        fecha_Nacimiento_JFormattedTextField.setCaretColor(CourseRoom.Primer_Color());
+        
         apellido_Paterno_JLabel.setForeground(CourseRoom.Segundo_Color());
         apellido_Materno_JLabel.setForeground(CourseRoom.Segundo_Color());
         correo_Electronico_Autenticacion_JLabel.setForeground(CourseRoom.Segundo_Color());
-//        descripcion_JLabel.setForeground(CourseRoom.Segundo_Color());
+        descripcion_JLabel.setForeground(CourseRoom.Segundo_Color());
+        promedio_General_JLabel.setForeground(CourseRoom.Segundo_Color());
         fecha_Nacimiento_JLabel.setForeground(CourseRoom.Segundo_Color());
         genero_JLabel.setForeground(CourseRoom.Segundo_Color());
         imagen_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
@@ -1079,8 +1253,9 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         titulo_Inicio_JLabel.setForeground(CourseRoom.Segundo_Color());
         titulo_Perfil_JLabel.setForeground(CourseRoom.Segundo_Color());
         titulo_Informacion_Extra_JLabel.setForeground(CourseRoom.Segundo_Color());
+        interes_Tematica_JLabel.setForeground(CourseRoom.Segundo_Color());
         
-
+        
         continuar_Autenticacion_JButton.setBackground(CourseRoom.Primer_Color());
         crear_Cuenta_JButton.setBackground(CourseRoom.Primer_Color());
         continuar_Datos_Personales_JButton.setBackground(CourseRoom.Primer_Color());
@@ -1090,6 +1265,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         regresar_Datos_Personales_JButton.setBackground(CourseRoom.Primer_Color());
         regresar_Inicio_JButton.setBackground(CourseRoom.Primer_Color());
         regresar_Inicio_Sesion_JButton.setBackground(CourseRoom.Primer_Color());
+        regresar_Perfil_JButton.setBackground(CourseRoom.Primer_Color());
         
         fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.CalendarBackgroundNormalDates,
                 CourseRoom.Segundo_Color());

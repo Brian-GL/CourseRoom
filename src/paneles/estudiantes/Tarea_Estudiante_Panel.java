@@ -6,7 +6,6 @@
 package paneles.estudiantes;
 
 import main.CourseRoom;
-import paneles.generales.Archivo_Subido_Tarea_General_Panel;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -435,11 +434,11 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         if (result == JFileChooser.APPROVE_OPTION) {
             File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
             File archivo_Abierto;
-            Archivo_Subido_Tarea_General_Panel archivo_Subido_Tarea_General_Panel;
+            Archivo_Subido_Tarea_Estudiante_Panel archivo_Subido_Tarea_General_Panel;
             for(int i = 0; i < archivos_Abiertos.length;i++){
                 archivo_Abierto = archivos_Abiertos[i];
                 archivo_Subido_Tarea_General_Panel = 
-                        new Archivo_Subido_Tarea_General_Panel(archivo_Abierto,
+                        new Archivo_Subido_Tarea_Estudiante_Panel(archivo_Abierto,
                         tercer_Color,tercer_Color_Fuente,segundo_Color, segundo_Color_Fuente);
                 archivos_Subidos_JPanel.add(archivo_Subido_Tarea_General_Panel);
             }     
