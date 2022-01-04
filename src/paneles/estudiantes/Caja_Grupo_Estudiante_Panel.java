@@ -201,7 +201,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
             grupo_Estudiante_Panel = new Grupo_Estudiante_Panel(obtener_Imagen, nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente);
             Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id);
             
-            obtener_Imagen = obtener_Imagen.getScaledInstance(152, 152, Image.SCALE_SMOOTH);
+            obtener_Imagen = obtener_Imagen.getScaledInstance(150, 150, Image.SCALE_AREA_AVERAGING);
             ImageIcon groupIcon = new ImageIcon(obtener_Imagen);
             imagen_JLabel.setIcon(groupIcon);
             

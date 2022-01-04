@@ -245,17 +245,13 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
         try {
             
             Dimension resolucion_Pantalla = Toolkit.getDefaultToolkit().getScreenSize();
-            int ancho = resolucion_Pantalla.width-24;
             
             System.out.println("Curso ID: "+this.id+" -> Getting Image From https://picsum.photos/?random=1");
-            URL url_Imagen = new URL(
-                    CourseRoom.Concatenar(" https://picsum.photos/",String.valueOf(ancho),"/175")
-            );
+            URL url_Imagen = new URL("https://picsum.photos/1056/175");
             
-            ancho = (resolucion_Pantalla.width * 1056) / 1270;
             
             Image curso_Imagen = ImageIO.read(url_Imagen);
-            Image redimension = curso_Imagen.getScaledInstance(ancho, 125, Image.SCALE_SMOOTH);
+            Image redimension = curso_Imagen.getScaledInstance(1056, 125, Image.SCALE_AREA_AVERAGING);
             ImageIcon icono = new ImageIcon(redimension);
             imagen_Curso_JLabel.setIcon(icono);
             Establecer_Colores(redimension);
@@ -265,7 +261,7 @@ public class Caja_Curso_Estudiante_Panel extends javax.swing.JPanel implements C
             System.out.println("Course Teacher ID: "+this.id+" -> Getting Image From https://i.pravatar.cc/300");
             url_Imagen = new URL("https://i.pravatar.cc/300");
             Image profesor_Imagen = ImageIO.read(url_Imagen);
-            redimension = profesor_Imagen.getScaledInstance(134,134, Image.SCALE_SMOOTH);
+            redimension = profesor_Imagen.getScaledInstance(134,134, Image.SCALE_AREA_AVERAGING);
             icono = new ImageIcon(redimension);
             imagen_Profesor_JLabel.setIcon(icono);
             

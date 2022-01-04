@@ -205,7 +205,7 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
             numero_No_Leidos_JLabel.setText(CourseRoom.Faker().number().digits(1));
             fecha_Hora_Mensaje_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());
             
-            obtener_Imagen = obtener_Imagen.getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+            obtener_Imagen = obtener_Imagen.getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
             
             chat_Estudiante_Panel = new Chat_Estudiante_Panel(nombre_JLabel.getText(), obtener_Imagen,
                     primer_Color, primer_Color_Fuente, segundo_Color,segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);

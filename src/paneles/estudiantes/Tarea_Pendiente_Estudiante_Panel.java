@@ -44,7 +44,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         tercer_Color_Fuente = _tercer_Color_Fuente;
         
         nombre_JLabel.setText(nombre);
-        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(descripcion));
+        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Centro_Izquierda(descripcion));
         fecha_Terminacion_jLabel.setText(fecha_Terminacion);
         miembro_Cargo_JLabel.setIcon(member_Icon);
         miembro_Cargo_JLabel.setToolTipText(CourseRoom.Concatenar("<html><h3>Miembro a cargo:<br>",nombre_Miembro,"</h3></html>"));

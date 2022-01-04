@@ -166,7 +166,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         imagen_Arte_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Arte_JLabel.setToolTipText("<html>\n<h3>Carátula</h3>\n</html>");
-        imagen_Arte_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(550, 550));
@@ -2045,14 +2044,13 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         (Entrada_Lista_Reproduccion_General_Panel) lista_Reproduccion_JPanel.getComponent(indice);
                 if(arte != null){
                     
-                    int largo_Imagen = imagen_Arte_JLabel.getHeight();
                     Image imagen_Real = ((Image)arte.getImage());
                     if(imagen_Real != null){
                         Establecer_Colores(imagen_Real);
-                        imagen_Real = imagen_Real.getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH);
+                        imagen_Real = imagen_Real.getScaledInstance(500, 500, Image.SCALE_AREA_AVERAGING);
                         ImageIcon cover = new ImageIcon(imagen_Real);
                         imagen_Arte_JLabel.setIcon(cover);
-                        imagen_Real = imagen_Real.getScaledInstance(63, 63, Image.SCALE_SMOOTH);
+                        imagen_Real = imagen_Real.getScaledInstance(60, 60, Image.SCALE_AREA_AVERAGING);
                         
                         if (entrada_Lista_Reproduccion_General_Panel.Vacio()) {
                             entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);

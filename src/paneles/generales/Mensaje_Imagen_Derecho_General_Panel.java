@@ -6,11 +6,8 @@
 package paneles.generales;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.ImageIcon;
-import main.CourseRoom;
 
 /**
  *
@@ -32,11 +29,7 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel{
         emisor_JLabel.setText(emisor);
         imagen_JLabel.setToolTipText(nombre_Imagen);
         
-        Dimension resolucion_Pantalla = Toolkit.getDefaultToolkit().getScreenSize();
-
-        int ancho = (resolucion_Pantalla.width * 486) / 1270;
-
-        imagen = imagen.getScaledInstance(ancho, 488, Image.SCALE_DEFAULT);
+        imagen = imagen.getScaledInstance(480, 480, Image.SCALE_AREA_AVERAGING);
         ImageIcon icon = new ImageIcon(imagen);
         imagen_JLabel.setIcon(icon);
         imagen.flush();

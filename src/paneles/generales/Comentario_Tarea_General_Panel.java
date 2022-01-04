@@ -41,10 +41,11 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         try {
             System.out.println("Comment Homework -> Getting Image From https://i.pravatar.cc/50");
             URL url_Imagen = new URL("https://i.pravatar.cc/50");
-            Image obtener_imagen = ImageIO.read(url_Imagen);
-            ImageIcon icono_Comentario = new ImageIcon(obtener_imagen);
+            Image obtener_Imagen = ImageIO.read(url_Imagen);
+            ImageIcon icono_Comentario = new ImageIcon(obtener_Imagen);
             imagen_Emisor_JLabel.setIcon(icono_Comentario);
-            obtener_imagen.flush();
+            obtener_Imagen.flush();
+            obtener_Imagen.getGraphics().dispose();
         } catch (IOException ex) {
         }
         
@@ -72,18 +73,20 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         imagen_Emisor_JLabel.setMaximumSize(new java.awt.Dimension(50, 50));
         imagen_Emisor_JLabel.setMinimumSize(new java.awt.Dimension(50, 50));
         imagen_Emisor_JLabel.setPreferredSize(new java.awt.Dimension(50, 50));
+        imagen_Emisor_JLabel.setToolTipText("");
 
         comentario_JScrollPane.setBorder(null);
         comentario_JScrollPane.setRequestFocusEnabled(false);
         comentario_JScrollPane.setVerifyInputWhenFocusTarget(false);
         comentario_JScrollPane.setWheelScrollingEnabled(false);
 
-        comentario_JTextPane.setEditable(false);
         comentario_JTextPane.setBorder(null);
         comentario_JTextPane.setContentType("text/html"); // NOI18N
+        comentario_JTextPane.setEditable(false);
         comentario_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         comentario_JTextPane.setText("");
         comentario_JTextPane.setRequestFocusEnabled(false);
+        comentario_JTextPane.setToolTipText("<html>\n<h3>Comentario de la tarea</h3>\n</html>");
         comentario_JScrollPane.setViewportView(comentario_JTextPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
