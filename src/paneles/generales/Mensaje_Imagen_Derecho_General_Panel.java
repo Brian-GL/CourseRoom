@@ -29,7 +29,7 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel{
         emisor_JLabel.setText(emisor);
         imagen_JLabel.setToolTipText(nombre_Imagen);
         
-        imagen = imagen.getScaledInstance(480, 480, Image.SCALE_AREA_AVERAGING);
+        imagen = imagen.getScaledInstance(450, 450, Image.SCALE_AREA_AVERAGING);
         ImageIcon icon = new ImageIcon(imagen);
         imagen_JLabel.setIcon(icon);
         imagen.flush();
@@ -39,7 +39,6 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel{
         emisor_JLabel.setForeground(_tercer_Color_Fuente);
         contenido_JPanel.setBackground(_tercer_Color);
         contenido_JPanel.setForeground(_tercer_Color_Fuente);
-        
         
     }
     

@@ -193,6 +193,11 @@ public class Tareas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
 
     @Override
     public void Colorear_Componentes() {
+        
+        for(int i = 1; i < contenido_JPanel.getComponentCount();i++){
+          ((Caja_Tarea_Estudiante_Panel)contenido_JPanel.getComponent(i)).Colorear_Componentes();
+        }
+        
         contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
 
         Font gadugi = new java.awt.Font("Gadugi", 1, 16);

@@ -909,6 +909,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
        
         perfil_Panel.Colorear_Componentes();
         editar_Perfil_Panel.Colorear_Componentes();
+        pagina_Avisos_Panel.Colorear_Componentes();
+        pagina_Tareas_Panel.Colorear_Componentes();
         pagina_Chats_Panel.Colorear_Componentes();
         acerca_De_Panel.Colorear_Componentes();
         pagina_Tareas_Panel.Colorear_Componentes();
@@ -929,6 +931,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         pagina_Avisos_Panel.Limpiar();
         pagina_Fechas_Panel.Limpiar();
         pagina_Grupos_Panel.Limpiar();
+        pagina_Cursos_Panel.Limpiar();
         
     }
     

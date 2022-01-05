@@ -552,4 +552,16 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         primer_Color_Fuente =  segundo_Color_Fuente =  tercer_Color_Fuente = null;
     }
 
+    public void Establecer_Colores(Color _primer_Color, Color _segundo_Color, Color _tercer_Color, Color _primer_Color_Fuente, Color _segundo_Color_Fuente, Color _tercer_Color_Fuente) {
+        
+        primer_Color = _primer_Color;
+        segundo_Color = _segundo_Color;
+        primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
+        
+        Colorear_Componentes();
+    }
+
 }

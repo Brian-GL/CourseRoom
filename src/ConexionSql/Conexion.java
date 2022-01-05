@@ -1,11 +1,11 @@
-package sql;
+package ConexionSql;
 
-import dialogos.generales.Mensaje_Advertencia_Dialog;
+import datos.enumeraciones.Tipo_Mensaje_Dialog_Enum;
+import dialogos.generales.Mensaje_Dialog;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import main.CourseRoom_Frame;
 
 /**
  *
@@ -24,8 +24,8 @@ public class Conexion {
             JOptionPane.showMessageDialog(null, "Conexón Establecida");
             return conn;
         }catch (ClassNotFoundException | SQLException e){
-            Mensaje_Advertencia_Dialog mensaje_Advertencia_Dialog = new Mensaje_Advertencia_Dialog(CourseRoom_Frame.getFrames()[0], true,"Hubo Un Problema Al Intentar Conectarse A La Base De Datos",e.getMessage());
-            mensaje_Advertencia_Dialog.setVisible(true);
+            Mensaje_Dialog mensaje_Dialog = new Mensaje_Dialog( true,"Hubo Un Problema Al Intentar Conectarse A La Base De Datos",e.getMessage(),Tipo_Mensaje_Dialog_Enum.ADVERTENCIA);
+            mensaje_Dialog.setVisible(true);
             return null;
         }
     }

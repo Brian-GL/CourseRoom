@@ -6,29 +6,19 @@
 package paneles.estudiantes;
 
 import main.CourseRoom;
-import datos.colecciones.Lista_Pares;
-import datos.estructuras.Par;
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.image.PixelGrabber;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import interfaces.Color_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author LENOVO
  */
-public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements Color_Interface, Limpieza_Interface, Componentes_Interface{
+public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
 
-    private Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
-    private String id;
+    private final String id;
     private Pagina_Tarea_Estudiante_Panel pagina_Tarea_Estudiante_Panel;
     
     
@@ -50,27 +40,27 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
     private void initComponents() {
 
         contenido_JPanel = new javax.swing.JPanel();
-        imagen_Curso_JLabel = new javax.swing.JLabel();
+        imagen_JLabel = new javax.swing.JLabel();
         curso_JLabel = new javax.swing.JLabel();
         nombre_JLabel = new javax.swing.JLabel();
         fecha_Entrega_JLabel = new javax.swing.JLabel();
-        tipo_JLabel = new javax.swing.JLabel();
         estatus_JLabel = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 174));
+        setMaximumSize(new java.awt.Dimension(32767, 136));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 174));
+        setPreferredSize(new java.awt.Dimension(1080, 136));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 162));
 
-        imagen_Curso_JLabel.setToolTipText("");
-        imagen_Curso_JLabel.setMaximumSize(new java.awt.Dimension(146, 146));
-        imagen_Curso_JLabel.setMinimumSize(new java.awt.Dimension(146, 146));
-        imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(146, 146));
-        imagen_Curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen_JLabel.setToolTipText("");
+        imagen_JLabel.setMaximumSize(new java.awt.Dimension(146, 146));
+        imagen_JLabel.setMinimumSize(new java.awt.Dimension(146, 146));
+        imagen_JLabel.setPreferredSize(new java.awt.Dimension(146, 146));
+        imagen_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imagen_Curso_JLabelMouseClicked(evt);
+                imagen_JLabelMouseClicked(evt);
             }
         });
 
@@ -99,10 +89,6 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
         fecha_Entrega_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_1.png"))); // NOI18N
         fecha_Entrega_JLabel.setToolTipText("<html> <h3>Fecha y hora de entrega</h3> </html>");
 
-        tipo_JLabel.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
-        tipo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/writing.png"))); // NOI18N
-        tipo_JLabel.setToolTipText("<html> <h3>Tipo de tarea</h3> </html>");
-
         estatus_JLabel.setFont(new java.awt.Font("Gadugi", 2, 16)); // NOI18N
         estatus_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_3.png"))); // NOI18N
         estatus_JLabel.setToolTipText("<html> <h3>Estatus</h3> </html>");
@@ -113,14 +99,13 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(fecha_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+                        .addComponent(fecha_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(estatus_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tipo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nombre_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -129,20 +114,17 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
                         .addComponent(nombre_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(curso_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipo_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fecha_Entrega_JLabel)
-                            .addComponent(estatus_JLabel))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(estatus_JLabel))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -159,16 +141,16 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void imagen_Curso_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Curso_JLabelMouseClicked
+    private void imagen_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             Tablero_Estudiante_Panel.Mostrar_Vista(this.id);
         }
-    }//GEN-LAST:event_imagen_Curso_JLabelMouseClicked
+    }//GEN-LAST:event_imagen_JLabelMouseClicked
 
     private void nombre_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombre_JLabelMouseClicked
         // TODO add your handling code here:
@@ -184,156 +166,68 @@ public class Caja_Tarea_Estudiante_Panel extends javax.swing.JPanel implements C
         }
     }//GEN-LAST:event_curso_JLabelMouseClicked
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel curso_JLabel;
     private javax.swing.JLabel estatus_JLabel;
     private javax.swing.JLabel fecha_Entrega_JLabel;
-    private javax.swing.JLabel imagen_Curso_JLabel;
+    private javax.swing.JLabel imagen_JLabel;
     private javax.swing.JLabel nombre_JLabel;
-    private javax.swing.JLabel tipo_JLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
-        try {
+       
+        nombre_JLabel.setText(CourseRoom.Faker().book().title());
+        fecha_Entrega_JLabel.setText(CourseRoom.Faker().date().birthday(0, 1).toString());
+        curso_JLabel.setText(CourseRoom.Faker().educator().course());
+        estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Entregada" : "Pendiente");
 
-            nombre_JLabel.setText(CourseRoom.Faker().book().title());
-            fecha_Entrega_JLabel.setText(CourseRoom.Faker().date().birthday(0, 1).toString());
-            tipo_JLabel.setText(CourseRoom.Faker().book().genre());
-            curso_JLabel.setText(CourseRoom.Faker().educator().course());
-            estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Entregada" : "Pendiente");
-            
-            System.out.println("Tarea ID: " + this.id + " -> Getting Image From https://picsum.photos/146/146?random="+id);
-            URL url_Imagen = new URL(CourseRoom.Concatenar("https://picsum.photos/146/146?random=",id));
-            Image obtener_Imagen = ImageIO.read(url_Imagen);
-            ImageIcon icono_Tarea = new ImageIcon(obtener_Imagen);
-            imagen_Curso_JLabel.setIcon(icono_Tarea);
-            
-            Establecer_Colores(obtener_Imagen);
-            Colorear_Componentes();
-            
-            pagina_Tarea_Estudiante_Panel = new Pagina_Tarea_Estudiante_Panel(nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, 
-                    segundo_Color_Fuente, tercer_Color_Fuente);
-            
-            Tablero_Estudiante_Panel.Agregar_Vista(pagina_Tarea_Estudiante_Panel, id);
-            obtener_Imagen.flush();
-            obtener_Imagen.getGraphics().dispose();
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
+        Colorear_Componentes();
+        
+        switch (CourseRoom.Faker().number().numberBetween(1, 5)) {
+            case 1:
+                imagen_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/homework_test.png")));
+                break;
+            case 2:
+                imagen_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/homework_make.png")));
+                break;
+            case 3:
+                imagen_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/homework_investigation.png")));
+                break;
+            case 4:
+                imagen_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/homework_evidence.png")));
+                break;
         }
+
+       
+          
     }
 
     @Override
     public void Colorear_Componentes() {
-        estatus_JLabel.setForeground(primer_Color_Fuente);
-        curso_JLabel.setForeground(primer_Color_Fuente);
-        fecha_Entrega_JLabel.setForeground(primer_Color_Fuente);
-        nombre_JLabel.setForeground(primer_Color_Fuente);
-        tipo_JLabel.setForeground(primer_Color_Fuente);
+        estatus_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        curso_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        fecha_Entrega_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        nombre_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
 
-        contenido_JPanel.setBackground(primer_Color);
-        contenido_JPanel.setForeground(primer_Color_Fuente);
+        contenido_JPanel.setBackground(CourseRoom.Tercer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        
+        if(pagina_Tarea_Estudiante_Panel == null){
+            pagina_Tarea_Estudiante_Panel = new Pagina_Tarea_Estudiante_Panel(nombre_JLabel.getText(), CourseRoom.Primer_Color(), CourseRoom.Segundo_Color(), CourseRoom.Tercer_Color(), 
+                    CourseRoom.Tercer_Color(), CourseRoom.Segundo_Color_Fuente(), CourseRoom.Tercer_Color_Fuente());
+
+            Tablero_Estudiante_Panel.Agregar_Vista(pagina_Tarea_Estudiante_Panel, id);
+        } else{
+            pagina_Tarea_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Segundo_Color(), CourseRoom.Tercer_Color(), 
+                    CourseRoom.Tercer_Color(), CourseRoom.Segundo_Color_Fuente(), CourseRoom.Tercer_Color_Fuente());
+        }
     }
-    
+  
     
     @Override
-    public void Establecer_Colores(Image image){
-       try {
-            int maximo_auxiliar = 0;
-            primer_Color = Color.BLACK;
-            Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
-            PixelGrabber obtener_Pixeles = new PixelGrabber(image, 0, 0, -1, -1, false);
-            int largo_Imagen = image.getWidth(null)/2;
-            int[] pixeles;
-            int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
-            Color color;
-            Par<Integer, Color> par;
-            if (obtener_Pixeles.grabPixels()) {
-                pixeles = (int[]) obtener_Pixeles.getPixels();
-                for(int i = 0; i < pixeles.length; i++){
-                    pixel = pixeles[i];
-                    rojo = (pixel  & 0x00ff0000) >> 16;
-                    verde = (pixel & 0x0000ff00) >> 8;
-                    azul = pixel & 0x000000ff;
-                    color = new Color(rojo,verde,azul);
-                    par = lista_Colores.get_from_second(color);
-            
-                    if (par != null) { //existe
-                        numero_Auxiliar = par.first()+ 1;
-                        par.first(numero_Auxiliar);
-                        if (numero_Auxiliar > maximo_auxiliar) {
-                            primer_Color = color;
-                            maximo_auxiliar = numero_Auxiliar;
-                        }
-                    } else {
-                        lista_Colores.push_back(1, color);
-                    }
-
-                    i += CourseRoom.Random().nextInt(largo_Imagen+1) + largo_Imagen;
-                }
-
-                segundo_Color = primer_Color;
-            
-                int iteraciones = 0;
-                if(lista_Colores.size() > 1){
-                    
-                    while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                        segundo_Color = lista_Colores.get(posicion).second();
-                        iteraciones++;
-                        if(iteraciones > 25){
-                             while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                                segundo_Color = lista_Colores.get(posicion).second();
-                            }
-                             break;
-                        }
-                    }
-                }
-               
-                tercer_Color = segundo_Color;
-                if(lista_Colores.size() > 2){
-                    iteraciones = 0;
-                    
-                    while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                        tercer_Color = lista_Colores.get(posicion).second();
-                        iteraciones++;
-                        if(iteraciones > 50){
-                            while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                                tercer_Color = lista_Colores.get(posicion).second();
-                            }
-                            break;
-                        }
-                    }
-                }
-                
-                rojo = primer_Color.getRed();
-                primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                rojo = segundo_Color.getRed();
-                segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                rojo = tercer_Color.getRed();
-                tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                lista_Colores.clear();
-                
-            }
-            
-        } catch (InterruptedException ex) {
-            
-        }
-          
-    }
-    
-    
-     @Override
     public void Limpiar() {
-        primer_Color = segundo_Color = tercer_Color =primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
-        id = null;
         pagina_Tarea_Estudiante_Panel.Limpiar();
     }
 }

@@ -63,6 +63,7 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 168));
 
+        imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_JLabel.setToolTipText("");
         imagen_JLabel.setMaximumSize(new java.awt.Dimension(148, 152));
         imagen_JLabel.setMinimumSize(new java.awt.Dimension(148, 152));
@@ -197,11 +198,12 @@ public class Caja_Grupo_Estudiante_Panel extends javax.swing.JPanel implements L
             nombre_JLabel.setText(CourseRoom.Faker().team().sport());
             fecha_Hora_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());
             curso_JLabel.setText(CourseRoom.Faker().team().name());
+            ultima_Actualizacion_JLabel.setText(CourseRoom.Faker().food().dish());
             
             grupo_Estudiante_Panel = new Grupo_Estudiante_Panel(obtener_Imagen, nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente);
             Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id);
             
-            obtener_Imagen = obtener_Imagen.getScaledInstance(150, 150, Image.SCALE_AREA_AVERAGING);
+            obtener_Imagen = obtener_Imagen.getScaledInstance(128,128, Image.SCALE_AREA_AVERAGING);
             ImageIcon groupIcon = new ImageIcon(obtener_Imagen);
             imagen_JLabel.setIcon(groupIcon);
             

@@ -5,7 +5,7 @@
  */
 package paneles.generales;
 
-import sql.Conexion;
+import ConexionSql.Conexion;
 import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import main.CourseRoom_Frame;
@@ -69,20 +69,20 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         contrasena_JLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1260, 670));
+        setOpaque(false);
 
         imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         contenido_JPanel.setOpaque(false);
 
-        crear_Cuenta_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         crear_Cuenta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         crear_Cuenta_JLabel.setText("¿No Tienes Cuenta? Crea Tu Cuenta Aquí");
-        crear_Cuenta_JLabel.setToolTipText("<html>\n<h3>Crear cuenta</h3>\n</html>");
         crear_Cuenta_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        crear_Cuenta_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         crear_Cuenta_JLabel.setOpaque(true);
         crear_Cuenta_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
+        crear_Cuenta_JLabel.setToolTipText("<html>\n<h3>Crear cuenta</h3>\n</html>");
         crear_Cuenta_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 crear_Cuenta_JLabelMouseClicked(evt);
@@ -106,12 +106,12 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         usuario_JTextField.setMinimumSize(new java.awt.Dimension(430, 45));
         usuario_JTextField.setPreferredSize(new java.awt.Dimension(430, 45));
 
-        iniciar_Sesion_JButton.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         iniciar_Sesion_JButton.setText(" Iniciar Sesión ");
-        iniciar_Sesion_JButton.setToolTipText("<html>\n<h3>Inicia sesión con tus credenciales</h3>\n</html>");
         iniciar_Sesion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         iniciar_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iniciar_Sesion_JButton.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         iniciar_Sesion_JButton.setPreferredSize(new java.awt.Dimension(430, 54));
+        iniciar_Sesion_JButton.setToolTipText("<html>\n<h3>Inicia sesión con tus credenciales</h3>\n</html>");
         iniciar_Sesion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 iniciar_Sesion_JButtonMouseClicked(evt);
@@ -135,27 +135,27 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             }
         });
 
-        recuperar_Credenciales_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         recuperar_Credenciales_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         recuperar_Credenciales_JLabel.setText("¿Olvidaste Tus Credenciales? Recupera Aquí");
-        recuperar_Credenciales_JLabel.setToolTipText("<html>\n<h3>Recupera tu nombre de usuario y/o contraseña</h3>\n</html>");
         recuperar_Credenciales_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        recuperar_Credenciales_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         recuperar_Credenciales_JLabel.setOpaque(true);
         recuperar_Credenciales_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
+        recuperar_Credenciales_JLabel.setToolTipText("<html>\n<h3>Recupera tu nombre de usuario y/o contraseña</h3>\n</html>");
         recuperar_Credenciales_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 recuperar_Credenciales_JLabelMouseClicked(evt);
             }
         });
 
-        mostrar_Contrasena_JCheckBox.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         mostrar_Contrasena_JCheckBox.setText("Mostrar Contraseña");
-        mostrar_Contrasena_JCheckBox.setToolTipText("Muestra La Contraseña");
         mostrar_Contrasena_JCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mostrar_Contrasena_JCheckBox.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         mostrar_Contrasena_JCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         mostrar_Contrasena_JCheckBox.setMaximumSize(new java.awt.Dimension(430, 30));
         mostrar_Contrasena_JCheckBox.setMinimumSize(new java.awt.Dimension(430, 30));
         mostrar_Contrasena_JCheckBox.setPreferredSize(new java.awt.Dimension(430, 30));
+        mostrar_Contrasena_JCheckBox.setToolTipText("Muestra La Contraseña");
         mostrar_Contrasena_JCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mostrar_Contrasena_JCheckBoxMouseClicked(evt);
@@ -186,11 +186,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
                     .addComponent(iniciar_Sesion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(marca_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                         .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(recuperar_Credenciales_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(crear_Cuenta_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE))
                     .addComponent(logo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(contrasena_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(usuario_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -230,9 +230,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imagen_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,8 +322,8 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
             logo_JLabel.setIcon(icono);
             
-            System.out.println("Login -> Getting Image From https://picsum.photos/700/700");
-            URL url_Imagen = new URL("https://picsum.photos/700/700");
+            System.out.println("Login -> Getting Image From https://picsum.photos/500/700");
+            URL url_Imagen = new URL("https://picsum.photos/500/700");
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
             imagen_JLabel.setIcon(icono_Imagen);

@@ -141,7 +141,6 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-       
         Caja_Aviso_Estudiante_Panel caja_Aviso_Estudiante_Panel;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
             caja_Aviso_Estudiante_Panel = new Caja_Aviso_Estudiante_Panel();
@@ -151,6 +150,11 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
 
     @Override
     public void Colorear_Componentes() {
+        
+        for(int i = 1; i < contenido_JPanel.getComponentCount();i++){
+          ((Caja_Aviso_Estudiante_Panel)contenido_JPanel.getComponent(i)).Colorear_Componentes();
+        }
+        
         contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
 
         Font gadugi = new java.awt.Font("Gadugi", 1, 16);

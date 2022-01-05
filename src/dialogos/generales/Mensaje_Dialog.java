@@ -5,29 +5,43 @@
  */
 package dialogos.generales;
 
+import datos.enumeraciones.Tipo_Mensaje_Dialog_Enum;
 import interfaces.Componentes_Interface;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import main.CourseRoom;
+import main.CourseRoom_Frame;
 
 /**
  *
  * @author LENOVO
  */
-public class Mensaje_Confirmacion_Dialog extends javax.swing.JDialog implements Componentes_Interface{
+public class Mensaje_Dialog extends javax.swing.JDialog implements Componentes_Interface{
 
-    /**
-     * Creates new form Mensaje_Confirmacion_Dialog
-     */
-    public Mensaje_Confirmacion_Dialog(java.awt.Frame parent, boolean modal, String titulo, String mensaje) {
-        super(parent, modal);
+    
+    @SuppressWarnings("OverridableMethodCallInConstructor")
+    public Mensaje_Dialog(boolean modal, String titulo, String mensaje, Tipo_Mensaje_Dialog_Enum tipo_Mensaje_Dialog_Enum) {
+        super(CourseRoom_Frame.getFrames()[0], modal);
         initComponents();
+        
         this.setLocationRelativeTo(null);
         this.setAlwaysOnTop(true);
-        ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
-        logo_JLabel.setIcon(icono);
         titulo_JLabel.setText(titulo);
         mensaje_JTextPane.setText(CourseRoom.Formato_HTML_Central(mensaje));
+        
+        switch(tipo_Mensaje_Dialog_Enum){
+            case ERROR:
+                imagen_Mensaje_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/computer_1.png")));
+                break;
+            case ADVERTENCIA:
+                imagen_Mensaje_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/warning-sign.png")));
+                break;
+                
+            case CONFIRMACION:
+                imagen_Mensaje_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/audit.png")));
+                break;
+        }
+        
         Iniciar_Componentes();
     }
 
@@ -44,22 +58,21 @@ public class Mensaje_Confirmacion_Dialog extends javax.swing.JDialog implements 
         imagen_Mensaje_JLabel = new javax.swing.JLabel();
         mensaje_JScrollPane = new javax.swing.JScrollPane();
         mensaje_JTextPane = new javax.swing.JTextPane();
-        logo_JLabel = new javax.swing.JLabel();
         titulo_JLabel = new javax.swing.JLabel();
-        cerrar_JButton = new javax.swing.JButton();
+        aceptar_JButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 315));
+        setMaximumSize(new java.awt.Dimension(800, 372));
+        setMinimumSize(new java.awt.Dimension(800, 372));
         setName("dialog_advertencia"); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 315));
+        setPreferredSize(new java.awt.Dimension(800, 372));
         getContentPane().setLayout(new java.awt.CardLayout());
 
         contenido_JPanel.setMaximumSize(new java.awt.Dimension(783, 228));
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(783, 228));
 
         imagen_Mensaje_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_Mensaje_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/audit.png"))); // NOI18N
         imagen_Mensaje_JLabel.setPreferredSize(new java.awt.Dimension(164, 164));
 
         mensaje_JScrollPane.setBorder(null);
@@ -71,22 +84,22 @@ public class Mensaje_Confirmacion_Dialog extends javax.swing.JDialog implements 
         mensaje_JTextPane.setText("");
         mensaje_JScrollPane.setViewportView(mensaje_JTextPane);
 
-        logo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        cerrar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
-        cerrar_JButton.setBorder(null);
-        cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        aceptar_JButton.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        aceptar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/verified-user.png"))); // NOI18N
+        aceptar_JButton.setText(" Aceptar");
+        aceptar_JButton.setBorder(null);
+        aceptar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cerrar_JButtonMouseClicked(evt);
+                aceptar_JButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cerrar_JButtonMouseEntered(evt);
+                aceptar_JButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                cerrar_JButtonMouseExited(evt);
+                aceptar_JButtonMouseExited(evt);
             }
         });
 
@@ -96,33 +109,32 @@ public class Mensaje_Confirmacion_Dialog extends javax.swing.JDialog implements 
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imagen_Mensaje_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                                .addComponent(logo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                                .addComponent(imagen_Mensaje_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(mensaje_JScrollPane)))))
+                            .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(mensaje_JScrollPane))))
                 .addContainerGap())
+            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+                .addGap(292, 292, 292)
+                .addComponent(aceptar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(278, Short.MAX_VALUE))
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(imagen_Mensaje_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(imagen_Mensaje_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(aceptar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -131,29 +143,30 @@ public class Mensaje_Confirmacion_Dialog extends javax.swing.JDialog implements 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cerrar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseClicked
+    private void aceptar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aceptar_JButtonMouseExited
+        // TODO add your handling code here:
+        aceptar_JButton.setBackground(CourseRoom.Color_Azul_Claro());
+        aceptar_JButton.setForeground(CourseRoom.Color_Azul_Oscuro());
+    }//GEN-LAST:event_aceptar_JButtonMouseExited
+
+    private void aceptar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aceptar_JButtonMouseEntered
+        // TODO add your handling code here:
+        aceptar_JButton.setBackground(CourseRoom.Color_Azul_Oscuro());
+        aceptar_JButton.setForeground(CourseRoom.Color_Azul_Claro());
+    }//GEN-LAST:event_aceptar_JButtonMouseEntered
+
+    private void aceptar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aceptar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             this.dispose();
         }
-    }//GEN-LAST:event_cerrar_JButtonMouseClicked
-
-    private void cerrar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseEntered
-        // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Color_Azul_Claro());
-    }//GEN-LAST:event_cerrar_JButtonMouseEntered
-
-    private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseExited
-        // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Color_Azul_Oscuro());
-    }//GEN-LAST:event_cerrar_JButtonMouseExited
+    }//GEN-LAST:event_aceptar_JButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cerrar_JButton;
+    private javax.swing.JButton aceptar_JButton;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel imagen_Mensaje_JLabel;
-    private javax.swing.JLabel logo_JLabel;
     private javax.swing.JScrollPane mensaje_JScrollPane;
     private javax.swing.JTextPane mensaje_JTextPane;
     private javax.swing.JLabel titulo_JLabel;
@@ -181,9 +194,12 @@ public class Mensaje_Confirmacion_Dialog extends javax.swing.JDialog implements 
         mensaje_JTextPane.setForeground(CourseRoom.Color_Azul_Oscuro());
         mensaje_JTextPane.setCaretColor(CourseRoom.Color_Azul_Oscuro());
 
-        cerrar_JButton.setBackground(CourseRoom.Color_Azul_Oscuro());
+        aceptar_JButton.setBackground(CourseRoom.Color_Azul_Oscuro());
 
         titulo_JLabel.setForeground(CourseRoom.Color_Azul_Claro());
+        
+        aceptar_JButton.setBackground(CourseRoom.Color_Azul_Claro());
+        aceptar_JButton.setForeground(CourseRoom.Color_Azul_Oscuro());
 
     }
 

@@ -39,7 +39,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     
     public Chat_Estudiante_Panel(
             String receptor_Nombre, 
-            Image receptor_Imagen,
             Color _primer_Color, 
             Color _primer_Color_Fuente, 
             Color _segundo_Color,
@@ -47,9 +46,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             Color _tercer_Color,
             Color _tercer_Color_Fuente) {
         initComponents();
-        
-        ImageIcon icono = new ImageIcon(receptor_Imagen);
-        receptor_Imagen_JLabel.setIcon(icono);
         
         primer_Color = _primer_Color;
         primer_Color_Fuente = _primer_Color_Fuente;
@@ -75,7 +71,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         informacion_JPanel = new javax.swing.JPanel();
         receptor_JLabel = new javax.swing.JLabel();
         regresar_JButton = new javax.swing.JButton();
-        receptor_Imagen_JLabel = new javax.swing.JLabel();
         enviar_Mensajes_JPanel = new javax.swing.JPanel();
         mensaje_JTextField = new javax.swing.JTextField();
         enviar_Archivos_JButton = new javax.swing.JButton();
@@ -116,9 +111,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             }
         });
 
-        receptor_Imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        receptor_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(38, 38));
-
         javax.swing.GroupLayout informacion_JPanelLayout = new javax.swing.GroupLayout(informacion_JPanel);
         informacion_JPanel.setLayout(informacion_JPanelLayout);
         informacion_JPanelLayout.setHorizontalGroup(
@@ -126,20 +118,16 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 204, Short.MAX_VALUE)
-                .addComponent(receptor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 204, Short.MAX_VALUE)
-                .addComponent(receptor_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(receptor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         informacion_JPanelLayout.setVerticalGroup(
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(receptor_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(receptor_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(regresar_JButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(receptor_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(regresar_JButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
 
@@ -607,7 +595,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     private javax.swing.JTextField mensaje_JTextField;
     private javax.swing.JPanel mensajes_JPanel;
     private javax.swing.JScrollPane mensajes_JScrollPane;
-    private javax.swing.JLabel receptor_Imagen_JLabel;
     private javax.swing.JLabel receptor_JLabel;
     private javax.swing.JButton regresar_JButton;
     // End of variables declaration//GEN-END:variables

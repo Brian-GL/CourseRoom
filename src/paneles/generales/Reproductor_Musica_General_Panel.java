@@ -2047,10 +2047,10 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     Image imagen_Real = ((Image)arte.getImage());
                     if(imagen_Real != null){
                         Establecer_Colores(imagen_Real);
-                        imagen_Real = imagen_Real.getScaledInstance(500, 500, Image.SCALE_AREA_AVERAGING);
+                        imagen_Real = imagen_Real.getScaledInstance(450, 450, Image.SCALE_AREA_AVERAGING);
                         ImageIcon cover = new ImageIcon(imagen_Real);
                         imagen_Arte_JLabel.setIcon(cover);
-                        imagen_Real = imagen_Real.getScaledInstance(60, 60, Image.SCALE_AREA_AVERAGING);
+                        imagen_Real = imagen_Real.getScaledInstance(45, 45, Image.SCALE_AREA_AVERAGING);
                         
                         if (entrada_Lista_Reproduccion_General_Panel.Vacio()) {
                             entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);

@@ -103,6 +103,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="imagen_JLabel">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[129, 129]"/>
             </Property>

@@ -86,6 +86,7 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Li
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        imagen_Preguntador_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Preguntador_JLabel.setToolTipText("");
         imagen_Preguntador_JLabel.setMaximumSize(new java.awt.Dimension(164, 164));
         imagen_Preguntador_JLabel.setMinimumSize(new java.awt.Dimension(164, 164));
@@ -195,7 +196,6 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Li
         duda_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         duda_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
-
         Colorear_Componentes();
 
         Tablero_Estudiante_Panel.Agregar_Vista(duda_Estudiante_Panel, id);
@@ -214,7 +214,7 @@ public class Caja_Duda_Estudiante_Panel extends javax.swing.JPanel implements Li
     
      @Override
     public void Limpiar() {
-        primer_Color = segundo_Color = tercer_Color =primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
+        primer_Color = segundo_Color = tercer_Color = primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
         id = null;
         duda_Estudiante_Panel.Limpiar();
     }

@@ -228,14 +228,11 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="contrasena_Autenticacion_JLabel" max="32767" attributes="0"/>
-                                  <Component id="informacion_Correo_Electronico_Autenticacion_JLabel" alignment="1" max="32767" attributes="0"/>
                                   <Component id="repetir_Contrasena_Autenticacion_JLabel" alignment="0" pref="706" max="32767" attributes="0"/>
                                   <Component id="correo_Electronico_Autenticacion_JLabel" max="32767" attributes="0"/>
                                   <Component id="correo_JTextField" alignment="1" max="32767" attributes="0"/>
                                   <Component id="contrasenia_JPasswordField" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="informacion_Contrasena_Autenticacion_JLabel" alignment="1" max="32767" attributes="0"/>
                                   <Component id="repetir_Contrasenia_JTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="informacion_Repetir_Contrasena_Autenticacion_JLabel" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -251,25 +248,19 @@
                       <Component id="logo_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="titulo_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" pref="52" max="32767" attributes="0"/>
                       <Component id="correo_Electronico_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Component id="correo_JTextField" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="informacion_Correo_Electronico_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="contrasena_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="contrasenia_JPasswordField" min="-2" pref="43" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="informacion_Contrasena_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="repetir_Contrasena_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="repetir_Contrasenia_JTextField" min="-2" pref="45" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="informacion_Repetir_Contrasena_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="continuar_Datos_Personales_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="regresar_Inicio_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -367,34 +358,6 @@
                   <Dimension value="[350, 43]"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="informacion_Repetir_Contrasena_Autenticacion_JLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="informaci&#xf3;n de la repetici&#xf3;n de la contrase&#xf1;a"/>
-                <Property name="verticalAlignment" type="int" value="1"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Gadugi" size="14" style="3"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="informacion_Correo_Electronico_Autenticacion_JLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="informaci&#xf3;n sobre el correo electr&#xf3;nico"/>
-                <Property name="verticalAlignment" type="int" value="1"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Gadugi" size="14" style="3"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="informacion_Contrasena_Autenticacion_JLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de la seguridad de la contrase&#xf1;a"/>
-                <Property name="verticalAlignment" type="int" value="1"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Gadugi" size="14" style="3"/>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Informaci&#xf3;n de la seguridad de la contrase&#xf1;a"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="regresar_Inicio_JButton">

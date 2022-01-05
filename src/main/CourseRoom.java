@@ -7,7 +7,8 @@ package main;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.github.javafaker.Faker;
-import dialogos.generales.Mensaje_Error_Dialog;
+import datos.enumeraciones.Tipo_Mensaje_Dialog_Enum;
+import dialogos.generales.Mensaje_Dialog;
 import interfaces.Limpieza_Interface;
 import java.awt.Color;
 import java.awt.Image;
@@ -18,7 +19,6 @@ import java.net.URLConnection;
 import java.util.Locale;
 import java.util.Random;
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -48,9 +48,9 @@ public class CourseRoom implements Limpieza_Interface{
 
         if (!hay_Conexion) {
             
-            Mensaje_Error_Dialog mensaje_Error_Dialog
-                    = new Mensaje_Error_Dialog(null,true,"Error Grave","Lo Sentimos Pero No Hay Conexión A Internet");
-            mensaje_Error_Dialog.setVisible(true);
+            Mensaje_Dialog mensaje_Dialog
+                    = new Mensaje_Dialog(true,"Error Grave","Lo Sentimos Pero No Hay Conexión A Internet",Tipo_Mensaje_Dialog_Enum.ERROR);
+            mensaje_Dialog.setVisible(true);
             return;
         }
         

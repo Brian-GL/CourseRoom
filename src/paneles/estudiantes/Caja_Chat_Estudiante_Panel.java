@@ -66,6 +66,7 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
         contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 121));
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(1068, 121));
 
+        imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_JLabel.setMaximumSize(new java.awt.Dimension(129, 129));
         imagen_JLabel.setMinimumSize(new java.awt.Dimension(129, 129));
         imagen_JLabel.setPreferredSize(new java.awt.Dimension(129, 129));
@@ -191,8 +192,8 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
     public void Iniciar_Componentes() {
         try {
 
-            System.out.println("Chat ID: " + id + " -> Getting Image From https://i.pravatar.cc/105");
-            URL url_Imagen = new URL("https://i.pravatar.cc/105");
+            System.out.println("Chat ID: " + id + " -> Getting Image From https://i.pravatar.cc/96");
+            URL url_Imagen = new URL("https://i.pravatar.cc/96");
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             ImageIcon icono_Chat = new ImageIcon(obtener_Imagen);
             imagen_JLabel.setIcon(icono_Chat);
@@ -205,10 +206,9 @@ public class Caja_Chat_Estudiante_Panel extends javax.swing.JPanel implements Co
             numero_No_Leidos_JLabel.setText(CourseRoom.Faker().number().digits(1));
             fecha_Hora_Mensaje_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());
             
-            obtener_Imagen = obtener_Imagen.getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
             
-            chat_Estudiante_Panel = new Chat_Estudiante_Panel(nombre_JLabel.getText(), obtener_Imagen,
-                    primer_Color, primer_Color_Fuente, segundo_Color,segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
+            chat_Estudiante_Panel = new Chat_Estudiante_Panel(nombre_JLabel.getText(),primer_Color, primer_Color_Fuente, 
+                    segundo_Color,segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
             
             Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, this.id);
             obtener_Imagen.flush();

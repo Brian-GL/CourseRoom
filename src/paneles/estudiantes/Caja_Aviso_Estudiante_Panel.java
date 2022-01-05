@@ -6,28 +6,16 @@
 package paneles.estudiantes;
 
 import main.CourseRoom;
-import datos.colecciones.Lista_Pares;
-import interfaces.Color_Interface;
-import datos.estructuras.Par;
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.image.PixelGrabber;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import interfaces.Componentes_Interface;
-import interfaces.Limpieza_Interface;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author LENOVO
  */
-public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Color_Interface, Limpieza_Interface{
+public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
-    private Color primer_Color,primer_Color_Fuente, segundo_Color;
-    
+   
     /**
      * Creates new form BoxAvisoPanel
      */
@@ -64,6 +52,7 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
         contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 121));
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(1068, 121));
 
+        imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_JLabel.setMaximumSize(new java.awt.Dimension(105, 105));
         imagen_JLabel.setMinimumSize(new java.awt.Dimension(105, 105));
         imagen_JLabel.setPreferredSize(new java.awt.Dimension(105, 105));
@@ -105,7 +94,7 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
@@ -164,112 +153,42 @@ public class Caja_Aviso_Estudiante_Panel extends javax.swing.JPanel implements C
 
      @Override
     public void Iniciar_Componentes() {
-        try {
-            System.out.println("Aviso -> Getting Image From https://loremflickr.com/105/105/night");
-            URL url_imagen = new URL("https://loremflickr.com/105/105/night");
-            
-            descripcion_JLabel.setText(CourseRoom.Faker().lorem().paragraph(1));
-            fecha_Hora_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());
-            nombre_JLabel.setText(CourseRoom.Faker().university().name());
-            estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Leído" : "No Leído");
-            
-            Image obtener_Imagen = ImageIO.read(url_imagen);
-            ImageIcon icono_imagen = new ImageIcon(obtener_Imagen);
-            imagen_JLabel.setIcon(icono_imagen);
-            Establecer_Colores(obtener_Imagen);
-            obtener_Imagen.flush();
-            obtener_Imagen.getGraphics().dispose();
-            
-            Colorear_Componentes();
-            
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
+
+        descripcion_JLabel.setText(CourseRoom.Faker().lorem().paragraph(1));
+        fecha_Hora_JLabel.setText(CourseRoom.Faker().date().birthday(0,1).toString());
+        nombre_JLabel.setText(CourseRoom.Faker().university().name());
+        estatus_JLabel.setText((CourseRoom.Faker().bool().bool()) ? "Leído" : "No Leído");
+        
+        switch(CourseRoom.Faker().number().numberBetween(1,5)){
+            case 1:
+                imagen_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png")));
+                break;
+            case 2:
+                imagen_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png")));
+                break;
+            case 3:
+                imagen_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png")));
+                break;
+            case 4:
+                imagen_JLabel.setIcon(new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png")));
+                break;
         }
+        
+
+        Colorear_Componentes();
     }
     
     @Override
     public void Colorear_Componentes() {
         
-        descripcion_JLabel.setForeground(primer_Color_Fuente);
-        estatus_JLabel.setForeground(primer_Color_Fuente);
-        fecha_Hora_JLabel.setForeground(primer_Color_Fuente);
-        nombre_JLabel.setForeground(primer_Color_Fuente);
-        contenido_JPanel.setBackground(primer_Color);
-        contenido_JPanel.setForeground(primer_Color_Fuente);
+        descripcion_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        estatus_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        fecha_Hora_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        nombre_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Tercer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Tercer_Color_Fuente());
     }
 
-    @Override
-    public void Establecer_Colores(Image imagen) {
-         try {
-            int auxiliar_maximo_int = 0;
-            primer_Color = Color.BLACK;
-            Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
-            PixelGrabber obtener_Pixeles = new PixelGrabber(imagen, 0, 0, -1, -1, false);
-            int largo_imagen = imagen.getWidth(null)/2;
-            int pixel, rojo, verde, azul, numero_auxiliar;
-            Color color;
-            Par<Integer, Color> par_auxiliar;            
-            if (obtener_Pixeles.grabPixels()) {
-                int[] pixeles = (int[]) obtener_Pixeles.getPixels();
-                for(int i = 0; i < pixeles.length; i++){
-                    pixel = pixeles[i];
-                    rojo = (pixel  & 0x00ff0000) >> 16;
-                    verde = (pixel & 0x0000ff00) >> 8;
-                    azul = pixel & 0x000000ff;
-                    color = new Color(rojo,verde,azul);
-                    par_auxiliar = lista_Colores.get_from_second(color);
-            
-                    if (par_auxiliar != null) {//exist
-                        numero_auxiliar = par_auxiliar.first()+ 1;
-                        par_auxiliar.first(numero_auxiliar);
-                        if (numero_auxiliar > auxiliar_maximo_int) {
-                            primer_Color = color;
-                            auxiliar_maximo_int = numero_auxiliar;
-                        }
-                    } else {
-                        lista_Colores.push_back(1, color);
-                    }
-
-                    i += CourseRoom.Random().nextInt(largo_imagen+1) + largo_imagen;
-                }
-
-                segundo_Color = primer_Color;
-            
-                int posicion, iteraciones = 0;
-                
-                if(lista_Colores.size() > 1){
-                    
-                    while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                        segundo_Color = lista_Colores.get(posicion).second();
-                        iteraciones++;
-                        if(iteraciones > 25){
-                             while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
-                                segundo_Color = lista_Colores.get(posicion).second();
-                            }
-                             break;
-                        }
-                    }
-                }
-              
-                rojo = primer_Color.getRed();
-                primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                
-                lista_Colores.clear();
-
-            }
-            
-        } catch (InterruptedException ex) {
-            
-        }
-    }
-
-    @Override
-    public void Limpiar() {
-        primer_Color = primer_Color_Fuente =  segundo_Color = null;
-    }
+  
     
 }

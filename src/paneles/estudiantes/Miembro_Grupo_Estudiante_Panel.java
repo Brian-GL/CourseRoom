@@ -64,6 +64,7 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        imagen_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_jLabel.setToolTipText("Imagen Del Miembro");
         imagen_jLabel.setMaximumSize(new java.awt.Dimension(130, 130));
         imagen_jLabel.setMinimumSize(new java.awt.Dimension(130, 130));
@@ -234,8 +235,8 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
     public void Iniciar_Componentes() {
          try {
              
-            System.out.println("Member -> Getting Image From https://i.pravatar.cc/140");
-            URL url_Imagen = new URL("https://i.pravatar.cc/140");
+            System.out.println("Member -> Getting Image From https://i.pravatar.cc/96");
+            URL url_Imagen = new URL("https://i.pravatar.cc/96");
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             
             Establecer_Colores(obtener_Imagen);

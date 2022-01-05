@@ -39,8 +39,8 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         comentario_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(concatenar));
         
         try {
-            System.out.println("Comment Homework -> Getting Image From https://i.pravatar.cc/50");
-            URL url_Imagen = new URL("https://i.pravatar.cc/50");
+            System.out.println("Comment Homework -> Getting Image From https://i.pravatar.cc/40");
+            URL url_Imagen = new URL("https://i.pravatar.cc/40");
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             ImageIcon icono_Comentario = new ImageIcon(obtener_Imagen);
             imagen_Emisor_JLabel.setIcon(icono_Comentario);
@@ -70,6 +70,7 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
         setMinimumSize(new java.awt.Dimension(576, 62));
         setOpaque(false);
 
+        imagen_Emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Emisor_JLabel.setMaximumSize(new java.awt.Dimension(50, 50));
         imagen_Emisor_JLabel.setMinimumSize(new java.awt.Dimension(50, 50));
         imagen_Emisor_JLabel.setPreferredSize(new java.awt.Dimension(50, 50));
