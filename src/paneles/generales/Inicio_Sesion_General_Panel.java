@@ -5,23 +5,16 @@
  */
 package paneles.generales;
 
-import ConexionSql.Conexion;
 import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import main.CourseRoom_Frame;
 import java.awt.Font;
-import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -29,21 +22,13 @@ import javax.swing.SwingUtilities;
  * @author LENOVO
  */
 public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
-    Conexion con = new Conexion();
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
+  
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Inicio_Sesion_General_Panel() {
         initComponents();
         Iniciar_Componentes();
-        conn = Conexion.ConnectDb();
-        usuario_JTextField.setText("");
-        contrasena_JPasswordField.setText("");
-        usuario_JTextField.setEditable(true);
         usuario_JTextField.requestFocus();
-        
     }
 
     /**
@@ -261,7 +246,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     private void iniciar_Sesion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciar_Sesion_JButtonMouseClicked
         // TODO add your handling code here:
         //if(SwingUtilities.isLeftMouseButton(evt)){ } 
-        Entrar();
+        
     }//GEN-LAST:event_iniciar_Sesion_JButtonMouseClicked
 
     private void recuperar_Credenciales_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JLabelMouseClicked
@@ -371,28 +356,5 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         imagen_JLabel.setForeground(CourseRoom.Segundo_Color());
     }
     
-    public void Entrar(){
-
-    String sql = "select nom_usuario,pass,status from usuarios where nom_usuario = ? and pass = ? and status = 'Active'";
-    try{
-        pst = conn.prepareStatement(sql);
-        pst.setString(1, usuario_JTextField.getText().trim());
-        pst.setString(2, contrasena_JPasswordField.getText().trim());
-                
-        rs = pst.executeQuery();
-        if (rs.next()){
-            JOptionPane.showMessageDialog(null, CourseRoom.Concatenar("  Bienvenido  \n ¡¡¡  ",usuario_JTextField.getText()," !!! "));
-            this.setVisible(false);
-            CourseRoom_Frame.Mostrar_Tablero();   
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Usuario Y/O Password Incorectos");  }   
-            usuario_JTextField.setText("");
-            contrasena_JPasswordField.setText("");
-            usuario_JTextField.requestFocus();
-        }
-    catch (HeadlessException | SQLException e){
-        JOptionPane.showMessageDialog(null, e);
-        }
-    }
+   
 }

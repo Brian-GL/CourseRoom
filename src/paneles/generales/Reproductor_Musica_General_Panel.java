@@ -1569,7 +1569,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         for(int i = 0; i < componentes.length;i++){
             componente = componentes[i];
             entrada_Lista_Reproduccion_General_Panel = (Entrada_Lista_Reproduccion_General_Panel)componente;
-            entrada_Lista_Reproduccion_General_Panel.Colores_Fuente(segundo_Color_Fuente);
+            entrada_Lista_Reproduccion_General_Panel.Colores(segundo_Color_Fuente, segundo_Color);
         }
         
         Font gadugi = new Font("Gadugi", 1, 16);
@@ -2017,7 +2017,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 String genero = tag.getFirst(FieldKey.GENRE);
                 String anio = tag.getFirst(FieldKey.YEAR);
                 String informacion_archivo = 
-                        CourseRoom.Concatenar(archivo_Audio.getExt().toUpperCase()," Archivo - ",archivo_Audio.getAudioHeader().getBitRate()," kbps");
+                CourseRoom.Concatenar(archivo_Audio.getExt().toUpperCase()," Archivo - ",archivo_Audio.getAudioHeader().getBitRate()," kbps");
                 String letras = tag.getFirst(FieldKey.LYRICS);
                 if(titulo == null){
                     titulo = archivo_Leer.getName();
@@ -2046,34 +2046,21 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     
                     Image imagen_Real = ((Image)arte.getImage());
                     if(imagen_Real != null){
+                        imagen_Real = imagen_Real.getScaledInstance(500, 500, Image.SCALE_AREA_AVERAGING);
                         Establecer_Colores(imagen_Real);
-                        imagen_Real = imagen_Real.getScaledInstance(450, 450, Image.SCALE_AREA_AVERAGING);
                         ImageIcon cover = new ImageIcon(imagen_Real);
                         imagen_Arte_JLabel.setIcon(cover);
-                        imagen_Real = imagen_Real.getScaledInstance(45, 45, Image.SCALE_AREA_AVERAGING);
-                        
-                        if (entrada_Lista_Reproduccion_General_Panel.Vacio()) {
-                            entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);
-                            entrada_Lista_Reproduccion_General_Panel.Artista(artista);
-                            entrada_Lista_Reproduccion_General_Panel.Album(album);
-                            entrada_Lista_Reproduccion_General_Panel.Imagen_Arte(imagen_Real);
-                        }
-                        
                         imagen_Real.flush();
-                    } else{
-                        if (entrada_Lista_Reproduccion_General_Panel.Vacio()) {
-                            entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);
-                            entrada_Lista_Reproduccion_General_Panel.Artista(artista);
-                            entrada_Lista_Reproduccion_General_Panel.Album(album);
-                        }
-                    }
-                } else{
-                    if (entrada_Lista_Reproduccion_General_Panel.Vacio()) {
-                        entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);
-                        entrada_Lista_Reproduccion_General_Panel.Artista(artista);
-                        entrada_Lista_Reproduccion_General_Panel.Album(album);
-                    }
+                    } 
+                } 
+                
+
+                if (entrada_Lista_Reproduccion_General_Panel.Vacio()) {
+                    entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);
+                    entrada_Lista_Reproduccion_General_Panel.Artista(artista);
+                    entrada_Lista_Reproduccion_General_Panel.Album(album);
                 }
+                
                 
             }else{
                 mrl = nodo_actual.element();
@@ -2088,7 +2075,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 }
             }
         } catch (CannotReadException | IOException | TagException | ReadOnlyFileException | InvalidAudioFrameException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(),"ERROR ENCONTRADO",JOptionPane.ERROR_MESSAGE);
+            
         }
         
     }

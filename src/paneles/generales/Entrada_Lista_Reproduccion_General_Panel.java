@@ -6,8 +6,7 @@
 package paneles.generales;
 
 import java.awt.Color;
-import java.awt.Image;
-import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -43,15 +42,12 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         album_JLabel.setText(album);
     }
     
-    public void Imagen_Arte(Image imagen){
-        ImageIcon icono = new ImageIcon(imagen);
-        imagen_Arte_JLabel.setIcon(icono);
-    }
-    
-    public void Colores_Fuente(Color color){
-        album_JLabel.setForeground(color);
-        artista_JLabel.setForeground(color);
-        titulo_JLabel.setForeground(color);
+    public void Colores(Color color_Fuente, Color color_Fondo){
+        album_JLabel.setForeground(color_Fuente);
+        artista_JLabel.setForeground(color_Fuente);
+        titulo_JLabel.setForeground(color_Fuente);
+        contenido_JPanel.setForeground(color_Fuente);
+        contenido_JPanel.setBackground(color_Fondo);
     }
 
     /**
@@ -63,33 +59,20 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        imagen_Arte_JLabel = new javax.swing.JLabel();
-        titulo_JLabel = new javax.swing.JLabel();
+        contenido_JPanel = new javax.swing.JPanel();
         album_JLabel = new javax.swing.JLabel();
+        titulo_JLabel = new javax.swing.JLabel();
         artista_JLabel = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(32767, 83));
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(320, 75));
+        setPreferredSize(new java.awt.Dimension(312, 83));
         setOpaque(false);
 
-        imagen_Arte_JLabel.setBackground(java.awt.Color.black);
-        imagen_Arte_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(63, 63));
-        imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(63, 63));
-        imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(63, 63));
-        imagen_Arte_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imagen_Arte_JLabelMouseClicked(evt);
-            }
-        });
-
-        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setBackground(java.awt.Color.black);
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
-        titulo_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
-        titulo_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
-        titulo_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
-        titulo_JLabel.setToolTipText("<html> <h3>Título</h3> </html>");
+        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 71));
+        contenido_JPanel.setPreferredSize(new java.awt.Dimension(300, 71));
+        contenido_JPanel.setLayout(new java.awt.GridLayout(3, 1, 0, 2));
 
         album_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         album_JLabel.setBackground(java.awt.Color.black);
@@ -98,6 +81,26 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         album_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
         album_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
         album_JLabel.setToolTipText("<html> <h3>Álbum</h3> </html>");
+        album_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                album_JLabelMouseClicked(evt);
+            }
+        });
+        contenido_JPanel.add(album_JLabel);
+
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setBackground(java.awt.Color.black);
+        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
+        titulo_JLabel.setToolTipText("<html> <h3>Título</h3> </html>");
+        titulo_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                titulo_JLabelMouseClicked(evt);
+            }
+        });
+        contenido_JPanel.add(titulo_JLabel);
 
         artista_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         artista_JLabel.setBackground(java.awt.Color.black);
@@ -106,6 +109,12 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         artista_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
         artista_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
         artista_JLabel.setToolTipText("<html> <h3>Artista</h3> </html>");
+        artista_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                artista_JLabelMouseClicked(evt);
+            }
+        });
+        contenido_JPanel.add(artista_JLabel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -113,43 +122,44 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(artista_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(album_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(artista_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(album_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        imagen_Arte_JLabel.getAccessibleContext().setAccessibleName("jLabelPlaylistEntryCoverArt");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void imagen_Arte_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Arte_JLabelMouseClicked
+    private void titulo_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_titulo_JLabelMouseClicked
         // TODO add your handling code here:
-        Reproductor_Musica_General_Panel.Play_Indice(indice);
-        
-    }//GEN-LAST:event_imagen_Arte_JLabelMouseClicked
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Reproductor_Musica_General_Panel.Play_Indice(indice);
+        }
+    }//GEN-LAST:event_titulo_JLabelMouseClicked
+
+    private void artista_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_artista_JLabelMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Reproductor_Musica_General_Panel.Play_Indice(indice);
+        }
+    }//GEN-LAST:event_artista_JLabelMouseClicked
+
+    private void album_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_album_JLabelMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Reproductor_Musica_General_Panel.Play_Indice(indice);
+        }
+    }//GEN-LAST:event_album_JLabelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel album_JLabel;
     private javax.swing.JLabel artista_JLabel;
-    private javax.swing.JLabel imagen_Arte_JLabel;
+    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
 
