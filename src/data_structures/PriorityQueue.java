@@ -8,8 +8,6 @@ package data_structures;
 import datos.colecciones.Coleccion;
 import datos.colecciones.Lista;
 import datos.estructuras.Nodo;
-import data_structures.Mode;
-import java.util.Comparator;
 
 /**Comparator class useful for element's comparison in Priority Queue*/
 class DefaultComparator<T> implements Comparator<T>{

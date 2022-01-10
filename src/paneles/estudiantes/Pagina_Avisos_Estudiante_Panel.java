@@ -5,10 +5,16 @@
  */
 package paneles.estudiantes;
 
+import clases.Celda_Renderer;
 import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -37,27 +43,14 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contenido_JScrollPane = new javax.swing.JScrollPane();
-        contenido_JPanel = new javax.swing.JPanel();
-        titulo_JPanel = new javax.swing.JPanel();
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
-        ordenar_Por_JComboBox = new javax.swing.JComboBox<>();
+        avisos_JScrollPane = new javax.swing.JScrollPane();
+        avisos_JTable = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(1085, 630));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1085, 630));
-        setLayout(new java.awt.CardLayout());
-
-        contenido_JScrollPane.setBorder(null);
-        contenido_JScrollPane.setOpaque(false);
-
-        contenido_JPanel.setOpaque(false);
-        contenido_JPanel.setLayout(new javax.swing.BoxLayout(contenido_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
-
-        titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
-        titulo_JPanel.setOpaque(false);
-        titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 118));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
@@ -70,12 +63,6 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
 
-        ordenar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
-        ordenar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Defecto", "Fecha: Más Reciente", "Fecha: Menos Reciente", "Leídos", "No Leídos" }));
-        ordenar_Por_JComboBox.setToolTipText("Ordenar Cursos Por");
-        ordenar_Por_JComboBox.setBorder(null);
-        ordenar_Por_JComboBox.setOpaque(true);
-
         javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
         contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
@@ -83,95 +70,177 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 685, Short.MAX_VALUE)
-                .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
+            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ordenar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
-        javax.swing.GroupLayout titulo_JPanelLayout = new javax.swing.GroupLayout(titulo_JPanel);
-        titulo_JPanel.setLayout(titulo_JPanelLayout);
-        titulo_JPanelLayout.setHorizontalGroup(
-            titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titulo_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        titulo_JPanelLayout.setVerticalGroup(
-            titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(titulo_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        avisos_JScrollPane.setBorder(null);
+        avisos_JScrollPane.setOpaque(false);
 
-        contenido_JPanel.add(titulo_JPanel);
+        avisos_JTable.setAutoCreateRowSorter(true);
+        avisos_JTable.setModel(
 
-        contenido_JScrollPane.setViewportView(contenido_JPanel);
+            new javax.swing.table.DefaultTableModel(
+                new Object [][] {
 
-        add(contenido_JScrollPane, "card2");
-    }// </editor-fold>//GEN-END:initComponents
+                },
+                new String [] {
+                    "Aviso", "Descripción", "Fecha", "Estatus"
+                }
+            ) {
+                boolean[] canEdit = new boolean [] {
+                    false, false, false, false
+                };
 
-    public static int Numero_Grupos(){
-        return contenido_JPanel.getComponentCount()-1;
-    }
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit [columnIndex];
+                }
+
+                @Override
+                public Class getColumnClass(int column)
+                {
+                    for(int i = 0; i < avisos_JTable.getRowCount(); i++)
+                    {
+                        //The first valid value of a cell of given column is retrieved.
+                        if(getValueAt(i,column) != null)
+                        {
+                            return getValueAt(i, column).getClass();
+                        }
+                    }
+                    //if no valid value is found, default renderer is returned.
+                    return super.getColumnClass(column);
+                }
+            });
+            avisos_JTable.setOpaque(false);
+            avisos_JTable.setRowHeight(100);
+            avisos_JTable.setRowMargin(15);
+            avisos_JTable.setShowGrid(true);
+            avisos_JTable.setShowVerticalLines(false);
+            avisos_JScrollPane.setViewportView(avisos_JTable);
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+            this.setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+        }// </editor-fold>//GEN-END:initComponents
+
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JPanel contenido_JPanel;
-    private javax.swing.JScrollPane contenido_JScrollPane;
+    private javax.swing.JScrollPane avisos_JScrollPane;
+    private javax.swing.JTable avisos_JTable;
     private javax.swing.JPanel contenido_Titulo_JPanel;
-    private javax.swing.JComboBox<String> ordenar_Por_JComboBox;
     private javax.swing.JLabel titulo_JLabel;
-    private javax.swing.JPanel titulo_JPanel;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
         
-        contenido_JScrollPane.getViewport().setOpaque(false);
-        contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        avisos_JScrollPane.getViewport().setOpaque(false);
+        avisos_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
+        avisos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(20);
         
-        Caja_Aviso_Estudiante_Panel caja_Aviso_Estudiante_Panel;
-        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
-            caja_Aviso_Estudiante_Panel = new Caja_Aviso_Estudiante_Panel();
-            contenido_JPanel.add(caja_Aviso_Estudiante_Panel);
+        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        avisos_JTable.getTableHeader().setFont(gadugi);
+        
+        avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        gadugi = new Font("Gadugi", Font.PLAIN, 14);
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
+        
+        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1,20);i++){
+            switch(CourseRoom.Faker().number().numberBetween(1,5)){
+                case 1:
+                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png")),gadugi);
+                    break;
+                case 2:
+                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png")),gadugi);
+                    break;
+                case 3:
+                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png")),gadugi);
+                    break;
+                case 4:
+                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png")),gadugi);
+                    break;
+            }
+            
+            celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(), gadugi);
+            celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0,1).toString(), gadugi);
+            celdas[3] = new Celda_Renderer((CourseRoom.Faker().bool().bool()) ? "Leído" : "No Leído", gadugi);
+            
+            modelo.addRow(celdas);
         }
+        
+        avisos_JTable.addMouseListener(new MouseAdapter() {
+            
+            @Override
+            public void mousePressed(MouseEvent e) {
+              if (e.getClickCount() == 2) {
+                JTable target = (JTable)e.getSource();
+                int fila = target.getSelectedRow();
+                int columna = target.getSelectedColumn();
+               
+                DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
+                
+                Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
+                
+                System.out.println(fila);
+                System.out.println(columna);
+                System.out.println(celda.Label().getText());
+                
+                
+              }
+            }
+        });
+        
     }
 
     @Override
     public void Colorear_Componentes() {
-        
-        for(int i = 1; i < contenido_JPanel.getComponentCount();i++){
-          ((Caja_Aviso_Estudiante_Panel)contenido_JPanel.getComponent(i)).Colorear_Componentes();
-        }
-        
+      
         contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
-
-        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
 
         titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
 
-        ordenar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Ordenar Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Tercer_Color_Fuente()));
-        ordenar_Por_JComboBox.setBackground(CourseRoom.Tercer_Color());
-        ordenar_Por_JComboBox.setForeground(CourseRoom.Tercer_Color_Fuente());
+        avisos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
+        avisos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        
+        DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
+        for(int i = 0; i < avisos_JTable.getRowCount();i++){
+            for(int j = 0; j < 4; j++){
+                Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+            }
+        }
+        
     }
     
     @Override
     public void Limpiar() {
-        contenido_JPanel.removeAll();
+        avisos_JTable.removeAll();
     }
+    
+    
 }
