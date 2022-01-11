@@ -170,25 +170,28 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         Celda_Renderer[] celdas = new Celda_Renderer[4];
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
         
+        String id = "";
+        ImageIcon icono = null;
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(5,20);i++){
             switch(CourseRoom.Faker().number().numberBetween(1,5)){
                 case 1:
-                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png")),i);
+                    icono = new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png"));
                     break;
                 case 2:
-                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png")),i);
+                    icono = new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png"));
                     break;
                 case 3:
-                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png")),i);
+                    icono = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
                     break;
                 case 4:
-                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png")),i);
+                    icono = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
                     break;
             }
             
-            celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(),i);
-            celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0,1).toString(),i);
-            celdas[3] = new Celda_Renderer((CourseRoom.Faker().bool().bool()) ? "Leído" : "No Leído",i);
+            celdas[0] = new Celda_Renderer(icono,id);
+            celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(),id);
+            celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0,1).toString(),id);
+            celdas[3] = new Celda_Renderer((CourseRoom.Faker().bool().bool()) ? "Leído" : "No Leído",id);
             
             modelo.addRow(celdas);
         }
@@ -225,10 +228,11 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         avisos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
         avisos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
         
+        Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
         for(int i = 0; i < avisos_JTable.getRowCount();i++){
             for(int j = 0; j < 4; j++){
-                Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(i, j);
+                celda = (Celda_Renderer)modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }
         }

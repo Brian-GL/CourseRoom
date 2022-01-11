@@ -5,10 +5,19 @@
  */
 package paneles.estudiantes;
 
+import clases.Celda_Renderer;
+import datos.colecciones.Lista;
+import datos.estructuras.Nodo;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import main.CourseRoom;
 
 /**
@@ -17,6 +26,8 @@ import main.CourseRoom;
  */
 public class Buscar_Grupos_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
 
+    private Lista<Grupo_Estudiante_Panel> lista_Grupos;
+    
     /**
      * Creates new form Cursos_Agrupados_Estudiante_Panel
      */
@@ -35,20 +46,13 @@ public class Buscar_Grupos_Estudiante_Panel extends javax.swing.JPanel implement
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contenido_JScrollPane = new javax.swing.JScrollPane();
-        contenido_JPanel = new javax.swing.JPanel();
         buscar_JTextField = new javax.swing.JTextField();
         grupos_JButton = new javax.swing.JButton();
+        grupos_JScrollPane = new javax.swing.JScrollPane();
+        grupos_JTable = new javax.swing.JTable();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1080, 630));
-
-        contenido_JScrollPane.setBorder(null);
-        contenido_JScrollPane.setOpaque(false);
-
-        contenido_JPanel.setOpaque(false);
-        contenido_JPanel.setLayout(new java.awt.GridLayout(0, 2));
-        contenido_JScrollPane.setViewportView(contenido_JPanel);
 
         buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         buscar_JTextField.setToolTipText("<html>\n<h3>Buscar grupo(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
@@ -74,35 +78,83 @@ public class Buscar_Grupos_Estudiante_Panel extends javax.swing.JPanel implement
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contenido_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(grupos_JButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscar_JTextField)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buscar_JTextField)
-                    .addComponent(grupos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contenido_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-    }// </editor-fold>//GEN-END:initComponents
+        grupos_JScrollPane.setBorder(null);
+        grupos_JScrollPane.setOpaque(false);
+
+        grupos_JTable.setAutoCreateRowSorter(true);
+        grupos_JTable.setModel(
+
+            new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+
+                },
+                new String [] {
+                    "Imagen", "Grupo", "Ultimo Aviso", "Fecha", "Curso"
+                }
+            ) {
+                boolean[] canEdit = new boolean [] {
+                    false, false, false, false, false
+                };
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit [columnIndex];
+                }
+
+                @Override
+                public Class getColumnClass(int column)
+                {
+                    for(int i = 0; i < grupos_JTable.getRowCount(); i++)
+                    {
+                        //The first valid value of a cell of given column is retrieved.
+                        if(getValueAt(i,column) != null)
+                        {
+                            return getValueAt(i, column).getClass();
+                        }
+                    }
+                    //if no valid value is found, default renderer is returned.
+                    return super.getColumnClass(column);
+                }
+            });
+            grupos_JTable.setOpaque(false);
+            grupos_JTable.setRowHeight(100);
+            grupos_JTable.setRowMargin(15);
+            grupos_JTable.setShowGrid(true);
+            grupos_JTable.setShowVerticalLines(false);
+            grupos_JTable.setRowSorter(new TableRowSorter(grupos_JTable.getModel()));
+            grupos_JScrollPane.setViewportView(grupos_JTable);
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+            this.setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(grupos_JButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE))
+                        .addComponent(grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(buscar_JTextField)
+                        .addComponent(grupos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+        }// </editor-fold>//GEN-END:initComponents
 
     private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            
+        }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
 
     private void grupos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grupos_JButtonMouseClicked
@@ -124,37 +176,85 @@ public class Buscar_Grupos_Estudiante_Panel extends javax.swing.JPanel implement
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscar_JTextField;
-    private javax.swing.JPanel contenido_JPanel;
-    private javax.swing.JScrollPane contenido_JScrollPane;
     private javax.swing.JButton grupos_JButton;
+    private javax.swing.JScrollPane grupos_JScrollPane;
+    private static javax.swing.JTable grupos_JTable;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
-        contenido_JScrollPane.getViewport().setOpaque(false);
-        contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        grupos_JScrollPane.getViewport().setOpaque(false);
+        grupos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        grupos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+
+        lista_Grupos = new Lista<>();
+
+        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        grupos_JTable.getTableHeader().setFont(gadugi);
+
+        grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+
+        grupos_JTable.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+
+                    JTable tabla = (JTable) e.getComponent();
+                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                    int columna = tabla.getSelectedColumn();
+
+                    DefaultTableModel modelo = (DefaultTableModel) grupos_JTable.getModel();
+
+                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                }
+            }
+        });
     }
 
     @Override
     public void Colorear_Componentes() {
         Font gadugi = new java.awt.Font("Gadugi", 1, 16);
         buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Buscar Grupo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                "Buscar Grupos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
                 gadugi, CourseRoom.Tercer_Color_Fuente()));
-        
+
         buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
         buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
         buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
-        
+
         grupos_JButton.setBackground(CourseRoom.Primer_Color());
+
+        grupos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
+        grupos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+
+        Celda_Renderer celda;
+        DefaultTableModel modelo = (DefaultTableModel) grupos_JTable.getModel();
+        for (int i = 0; i < grupos_JTable.getRowCount(); i++) {
+            for (int j = 0; j < 5; j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+            }
+        }
+
+        Grupo_Estudiante_Panel grupo_Estudiante_Panel;
+        for (Nodo<Grupo_Estudiante_Panel> nodo = lista_Grupos.front(); nodo != null; nodo = nodo.next()) {
+            grupo_Estudiante_Panel = nodo.element();
+            grupo_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
+                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
+                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+        }
         
     }
     
     @Override
     public void Limpiar() {
-        contenido_JPanel.removeAll();
+        lista_Grupos.clear();
+        grupos_JTable.removeAll();
     }
 
 }

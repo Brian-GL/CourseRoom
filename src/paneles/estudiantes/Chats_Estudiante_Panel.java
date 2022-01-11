@@ -59,7 +59,7 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         chats_JScrollPane = new javax.swing.JScrollPane();
         chats_JTable = new javax.swing.JTable();
 
-        setMinimumSize(new java.awt.Dimension(1085, 630));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1085, 630));
 
@@ -160,11 +160,11 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             this.setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE))
+                        .addComponent(chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
@@ -223,23 +223,28 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         DefaultTableModel modelo = (DefaultTableModel) chats_JTable.getModel();
 
+        String id;
+        URL url_Imagen ;
+        Image obtener_Imagen = null;
+        ImageIcon icono_Chat = null;
+        Chat_Estudiante_Panel chat_Estudiante_Panel;
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(5, 20); i++) {
-            
+            id = CourseRoom.Concatenar("Chat_",i);
             try {
                 System.out.println("Chat ID: " + i + " -> Getting Image From https://i.pravatar.cc/96");
-                URL url_Imagen = new URL("https://i.pravatar.cc/96");
-                Image obtener_Imagen = ImageIO.read(url_Imagen);
-                ImageIcon icono_Chat = new ImageIcon(obtener_Imagen);
+                url_Imagen = new URL("https://i.pravatar.cc/96");
+                obtener_Imagen = ImageIO.read(url_Imagen);
+                icono_Chat = new ImageIcon(obtener_Imagen);
                 
-                celdas[0] = new Celda_Renderer(icono_Chat,i);
-                celdas[1] = new Celda_Renderer(CourseRoom.Faker().name().fullName(),i);
-                celdas[2] = new Celda_Renderer(CourseRoom.Faker().lorem().sentence(),i);
-                celdas[3] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(),i);
-                celdas[4] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)),i);
+                celdas[0] = new Celda_Renderer(icono_Chat,id);
+                celdas[1] = new Celda_Renderer(CourseRoom.Faker().name().fullName(),id);
+                celdas[2] = new Celda_Renderer(CourseRoom.Faker().lorem().sentence(),id);
+                celdas[3] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(),id);
+                celdas[4] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)),id);
                 
-                Chat_Estudiante_Panel chat_Estudiante_Panel = new Chat_Estudiante_Panel(celdas[1].Label().getText(),i);
+                chat_Estudiante_Panel = new Chat_Estudiante_Panel(celdas[1].Label().getText(),id);
                 lista_Chats.push_back(chat_Estudiante_Panel);
-                Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, CourseRoom.Concatenar("Chat_",i));
+                Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel,id);
                 modelo.addRow(celdas);
                 
                 obtener_Imagen.flush();
@@ -265,8 +270,7 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                     Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila,columna);
 
-                    System.out.println(" ID: "+celda.ID()+" Valor: "+celda.Label().getText());
-                    Tablero_Estudiante_Panel.Mostrar_Vista(CourseRoom.Concatenar("Chat_",celda.ID()));
+                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
                     
                 }
             }
@@ -287,15 +291,17 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         chats_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) chats_JTable.getModel();
+        Celda_Renderer celda;
         for (int i = 0; i < chats_JTable.getRowCount(); i++) {
             for (int j = 0; j < 5; j++) {
-                Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }
         }
         
+        Chat_Estudiante_Panel chat_Estudiante_Panel;
         for(Nodo<Chat_Estudiante_Panel> nodo = lista_Chats.front(); nodo != null; nodo = nodo.next()){
-            Chat_Estudiante_Panel chat_Estudiante_Panel = nodo.element();
+            chat_Estudiante_Panel = nodo.element();
             chat_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(), 
                     CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(), 
                     CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());

@@ -41,7 +41,7 @@ import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
  */
 public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
-   
+    private final String ID;
     private Color primer_Color, segundo_Color,tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
     private JScrollPane lista_Tareas_Pendientes_JScrollPane, lista_Tareas_Finalizadas_JScrollPane;
     private JPanel lista_Tareas_Pendientes_JPanel, lista_Tareas_Finalizadas_JPanel;
@@ -49,29 +49,17 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     public Grupo_Estudiante_Panel(
             Image _imagen_Grupo, 
             String nombre_Grupo, 
-            Color _primer_Color, 
-            Color _segundo_Color, 
-            Color _tercer_Color, 
-            Color _primer_Color_Fuente, 
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color_Fuente ) {
+            String _id) {
         
         initComponents();
         
-        primer_Color = _primer_Color;
-        segundo_Color = _segundo_Color;
-        primer_Color_Fuente = _primer_Color_Fuente;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-        tercer_Color = _tercer_Color;
-        tercer_Color_Fuente = _tercer_Color_Fuente;
-        
-        Image imagen_Grupo = _imagen_Grupo.getScaledInstance(440,440,Image.SCALE_SMOOTH);
+        this.ID = _id;
+      
         nombre_Grupo_JLabel.setText(nombre_Grupo);
-        ImageIcon icono_Grupo = new ImageIcon(imagen_Grupo);
+        ImageIcon icono_Grupo = new ImageIcon(_imagen_Grupo);
         
         imagen_Grupo_JLabel.setIcon(icono_Grupo);
         editar_Imagen_Grupo_JLabel.setIcon(icono_Grupo);
-        imagen_Grupo.flush();
         
         Iniciar_Componentes();
        
@@ -1282,6 +1270,27 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         }
     }
     
+    public String ID(){
+        return this.ID;
+    }
+    
+    public void Establecer_Colores(Color _primer_Color, 
+            Color _primer_Color_Fuente, 
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente) {
+        
+        primer_Color = _primer_Color;
+        primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
+        
+        Colorear_Componentes();
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abandonar_Grupo_JButton;
@@ -1381,12 +1390,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         tareas_Pendientes_JPanel.add(lista_Tareas_Pendientes_JScrollPane, "Tareas_Pendientes");
         ((CardLayout)tareas_Pendientes_JPanel.getLayout()).show(tareas_Pendientes_JPanel, "Tareas_Pendientes");
         
-        anadir_Tarea_Pendiente_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(
-                javax.swing.BorderFactory.createLineBorder(primer_Color_Fuente), 
-                "Agregar Pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                new java.awt.Font("Gadugi", 0, 18),primer_Color_Fuente));
-        
         miembros_JScrollPane.getViewport().setOpaque(false);
         miembros_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
@@ -1423,14 +1426,20 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         resultados_Busqueda_JScrollPane.getViewport().setOpaque(false);
         resultados_Busqueda_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         resultados_Busqueda_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
-        Colorear_Componentes();
-        
+       
     }
     
      
     @Override
     public void Colorear_Componentes(){
+        
+        Font gadugi = new java.awt.Font("Gadugi", 0, 18);
+        
+        anadir_Tarea_Pendiente_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(
+               javax.swing.BorderFactory.createLineBorder(primer_Color_Fuente), 
+               "Agregar Pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+               javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+               gadugi,primer_Color_Fuente));
         
         grupo_JTabbedPane.setBackground(primer_Color);
         grupo_JTabbedPane.setForeground(primer_Color_Fuente);
@@ -1461,7 +1470,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         eliminar_Miembro_JLabel.setForeground(primer_Color_Fuente);
         
-        Font gadugi = new Font("Gadugi", 1, 14);
+        gadugi = new Font("Gadugi", 1, 14);
         
         ordenar_Archivos_Compatidos_JComboBox.setForeground(tercer_Color_Fuente);
         ordenar_Archivos_Compatidos_JComboBox.setBackground(tercer_Color);

@@ -35,10 +35,10 @@ import paneles.generales.Mensaje_Audio_Izquierdo_General_Panel;
 public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Componentes_Interface, Limpieza_Interface{
 
     private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
-    private int ID;
+    private String ID;
     
     public Chat_Estudiante_Panel(
-            String receptor_Nombre,int _id) {
+            String receptor_Nombre,String _id) {
         initComponents();
       
         this.ID = _id;
@@ -572,7 +572,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
 
     }
     
-    public int ID(){
+    public String ID(){
         return this.ID;
     }
     

@@ -74,8 +74,6 @@ public class Pagina_Grupos_Estudiante_Panel extends javax.swing.JPanel implement
        buscar_Grupos_Estudiante_Panel.Colorear_Componentes();
     }
     
-    
-    
     @Override
     public void Limpiar() {
         grupos_Estudiante_Panel.Limpiar();

@@ -31,18 +31,19 @@ import main.CourseRoom;
  * @author LENOVO
  */
 public class Celda_Renderer extends DefaultTableCellRenderer implements Comparable<Object>{
-    //The JLabel that is used to display image
+    
+//The JLabel that is used to display image
     private final JLabel label = new JLabel();
-    private final int ID;
+    private final String ID;
 
     public Celda_Renderer(){
         super();
-        ID = -1;
+        ID = "";
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
     }
    
-    public Celda_Renderer(String texto, int _id) {
+    public Celda_Renderer(String texto, String _id) {
         super();
         this.ID = _id;
         label.setVerticalAlignment(JLabel.TOP);
@@ -51,7 +52,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         label.setFont(new Font("Gadugi", Font.PLAIN, 14));
     }
     
-    public Celda_Renderer(ImageIcon icono, int _id) {
+    public Celda_Renderer(ImageIcon icono, String _id) {
         super();
         this.ID = _id;
         if(icono != null){
@@ -66,7 +67,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         return label;
     }
     
-    public int ID(){
+    public String ID(){
         return this.ID;
     } 
     
