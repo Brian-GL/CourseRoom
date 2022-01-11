@@ -29,11 +29,10 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel{
         emisor_JLabel.setText(emisor);
         imagen_JLabel.setToolTipText(nombre_Imagen);
         
-        imagen = imagen.getScaledInstance(450, 450, Image.SCALE_AREA_AVERAGING);
+        imagen = imagen.getScaledInstance(400, 400, Image.SCALE_AREA_AVERAGING);
         ImageIcon icon = new ImageIcon(imagen);
         imagen_JLabel.setIcon(icon);
         imagen.flush();
-        imagen.getGraphics().dispose();
         
         fecha_JLabel.setForeground(_tercer_Color_Fuente);
         emisor_JLabel.setForeground(_tercer_Color_Fuente);
@@ -57,10 +56,10 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel{
         emisor_JLabel = new javax.swing.JLabel();
         auxiliar_JPanel = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 574));
+        setMaximumSize(new java.awt.Dimension(32767, 480));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 574));
+        setPreferredSize(new java.awt.Dimension(1080, 480));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -69,11 +68,11 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel{
         imagen_JLabel.setMinimumSize(new java.awt.Dimension(789, 500));
         imagen_JLabel.setPreferredSize(new java.awt.Dimension(789, 500));
 
-        fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         fecha_JLabel.setToolTipText("<html> <h3>Fecha y hora del mensaje recibido</h3> </html>");
 
-        emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emisor_JLabel.setToolTipText("<html> <h3>Emisor del mensaje</h3> </html>");
 
@@ -85,7 +84,7 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel{
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(imagen_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 486, Short.MAX_VALUE)
+                    .addComponent(imagen_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 411, Short.MAX_VALUE)
                     .addComponent(emisor_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -93,11 +92,11 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel{
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -107,7 +106,7 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel{
         auxiliar_JPanel.setLayout(auxiliar_JPanelLayout);
         auxiliar_JPanelLayout.setHorizontalGroup(
             auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
         auxiliar_JPanelLayout.setVerticalGroup(
             auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,11 +118,11 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

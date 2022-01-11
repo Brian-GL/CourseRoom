@@ -3,14 +3,14 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[32767, 571]"/>
+      <Dimension value="[32767, 525]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[0, 0]"/>
     </Property>
     <Property name="opaque" type="boolean" value="false"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1080, 571]"/>
+      <Dimension value="[1080, 525]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -32,7 +32,7 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="auxiliar_JPanel" max="32767" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="contenido_JPanel" max="32767" attributes="0"/>
+              <Component id="contenido_JPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -42,8 +42,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="auxiliar_JPanel" max="32767" attributes="0"/>
                   <Component id="contenido_JPanel" max="32767" attributes="0"/>
+                  <Component id="auxiliar_JPanel" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -63,15 +63,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="vista_Video_JPanel" min="-2" pref="600" max="-2" attributes="0"/>
-                      <Component id="emisor_JLabel" alignment="1" min="-2" pref="600" max="-2" attributes="0"/>
-                      <Component id="controles_JPanel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="fecha_JLabel" alignment="1" min="-2" pref="600" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="fecha_JLabel" max="32767" attributes="0"/>
+                      <Component id="controles_JPanel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="emisor_JLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="vista_Video_JPanel" pref="486" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -79,13 +79,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="emisor_JLabel" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="emisor_JLabel" min="-2" pref="20" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="vista_Video_JPanel" min="-2" pref="420" max="-2" attributes="0"/>
+                  <Component id="vista_Video_JPanel" min="-2" pref="386" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="controles_JPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="fecha_JLabel" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="fecha_JLabel" min="-2" pref="20" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -95,7 +95,7 @@
         <Component class="javax.swing.JLabel" name="fecha_JLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gadugi" size="18" style="1"/>
+              <Font name="Gadugi" size="15" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Fecha y hora del mensaje recibido&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
@@ -110,18 +110,18 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="titulo_JLabel" min="-2" pref="578" max="-2" attributes="0"/>
+                          <Component id="titulo_JLabel" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="progreso_JLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="progreso_JSlider" min="-2" pref="480" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="progreso_JSlider" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="duracion_JLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -131,14 +131,17 @@
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Component id="titulo_JLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="progreso_JSlider" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="duracion_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="progreso_JSlider" pref="17" max="32767" attributes="0"/>
+                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="progreso_JLabel" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="duracion_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="progreso_JLabel" alignment="3" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -207,6 +210,9 @@
         <Container class="javax.swing.JPanel" name="vista_Video_JPanel">
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[400, 420]"/>
+            </Property>
           </Properties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
@@ -214,7 +220,7 @@
         <Component class="javax.swing.JLabel" name="emisor_JLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gadugi" size="18" style="1"/>
+              <Font name="Gadugi" size="15" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Emisor del mensaje&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
@@ -230,7 +236,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="446" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="560" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

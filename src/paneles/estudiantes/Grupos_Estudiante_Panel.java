@@ -248,7 +248,9 @@ public class Grupos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                 celdas[0] = new Celda_Renderer(icono_Grupo, id);
                 
                 grupo_Estudiante_Panel
-                        = new Grupo_Estudiante_Panel(obtener_Imagen, celdas[1].Label().getText(), id);
+                        = new Grupo_Estudiante_Panel(obtener_Imagen, celdas[1].Label().getText(), 
+                                celdas[4].Label().getText(),celdas[3].Label().getText(),id);
+                
                 lista_Grupos.push_back(grupo_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id);
                 modelo.addRow(celdas);

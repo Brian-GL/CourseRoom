@@ -278,6 +278,7 @@
     </Container>
     <Container class="javax.swing.JScrollPane" name="mensajes_JScrollPane">
       <Properties>
+        <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
 
@@ -288,9 +289,8 @@
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-            <Property name="columns" type="int" value="1"/>
-            <Property name="rows" type="int" value="0"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
+            <Property name="axis" type="int" value="3"/>
           </Layout>
         </Container>
       </SubComponents>

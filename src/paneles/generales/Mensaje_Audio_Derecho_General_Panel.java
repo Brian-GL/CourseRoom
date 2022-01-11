@@ -92,15 +92,15 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
         emisor_JLabel = new javax.swing.JLabel();
         auxiliar_JPanel = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 184));
+        setMaximumSize(new java.awt.Dimension(32767, 178));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 184));
+        setPreferredSize(new java.awt.Dimension(1080, 178));
         setRequestFocusEnabled(false);
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         fecha_JLabel.setToolTipText("<html> <h3>Fecha y hora del mensaje recibido</h3> </html>");
 
@@ -191,7 +191,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
                 .addContainerGap())
         );
 
-        emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emisor_JLabel.setToolTipText("<html> <h3>Emisor del mensaje</h3> </html>");
 
@@ -203,7 +203,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(informacion_Audio_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(informacion_Audio_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emisor_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -211,11 +211,11 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(informacion_Audio_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -238,7 +238,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -250,7 +250,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(90, 90, 90))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

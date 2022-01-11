@@ -49,17 +49,21 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     public Grupo_Estudiante_Panel(
             Image _imagen_Grupo, 
             String nombre_Grupo, 
+            String _curso,
+            String _fecha_Creacion,
             String _id) {
         
         initComponents();
         
         this.ID = _id;
       
+        
         nombre_Grupo_JLabel.setText(nombre_Grupo);
         ImageIcon icono_Grupo = new ImageIcon(_imagen_Grupo);
-        
+        curso_Grupo_JLabel.setText(_curso);
         imagen_Grupo_JLabel.setIcon(icono_Grupo);
         editar_Imagen_Grupo_JLabel.setIcon(icono_Grupo);
+        fecha_Creacion_JLabel.setText(_fecha_Creacion);
         
         Iniciar_Componentes();
        
@@ -1418,11 +1422,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         fecha_Finalizacion_Tarea_Pendiente_JPanel.add(escogedor_Fecha_Hora);
         fecha_Finalizacion_Tarea_Pendiente_JPanel.setBorder(nombre_Tarea_Pendiente_JTextField.getBorder());
         
-        nombre_Grupo_JLabel.setText(CourseRoom.Faker().team().name());
         editar_Nombre_Grupo_JTextField.setText(nombre_Grupo_JLabel.getText());
-        curso_Grupo_JLabel.setText(CourseRoom.Faker().educator().course());
-        fecha_Creacion_JLabel.setText(CourseRoom.Faker().date().birthday(0, 1).toString());
-        
         resultados_Busqueda_JScrollPane.getViewport().setOpaque(false);
         resultados_Busqueda_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         resultados_Busqueda_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);

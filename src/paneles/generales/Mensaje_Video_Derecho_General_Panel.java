@@ -39,8 +39,8 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
             String fecha, 
             String _mrl, 
             String _titulo,
-            Color _tercer_Color,
-            Color _tercer_Color_Fuente
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente
         ) {
         
         initComponents();
@@ -50,15 +50,15 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
         titulo_JLabel.setText(_titulo);
         mrl = _mrl;
         
-        fecha_JLabel.setForeground(_tercer_Color_Fuente);
-        emisor_JLabel.setForeground(_tercer_Color_Fuente);
-        contenido_JPanel.setBackground(_tercer_Color);
-        contenido_JPanel.setForeground(_tercer_Color_Fuente);
+        fecha_JLabel.setForeground(_segundo_Color_Fuente);
+        emisor_JLabel.setForeground(_segundo_Color_Fuente);
+        contenido_JPanel.setBackground(_segundo_Color);
+        contenido_JPanel.setForeground(_segundo_Color_Fuente);
 
-        duracion_JLabel.setForeground(_tercer_Color_Fuente);
-        progreso_JLabel.setForeground(_tercer_Color_Fuente);
-        titulo_JLabel.setForeground(_tercer_Color_Fuente);
-        progreso_JSlider.setForeground(_tercer_Color_Fuente);
+        duracion_JLabel.setForeground(_segundo_Color_Fuente);
+        progreso_JLabel.setForeground(_segundo_Color_Fuente);
+        titulo_JLabel.setForeground(_segundo_Color_Fuente);
+        progreso_JSlider.setForeground(_segundo_Color_Fuente);
         
         Iniciar_Componentes();
       
@@ -84,14 +84,14 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
         emisor_JLabel = new javax.swing.JLabel();
         auxiliar_JPanel = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 571));
+        setMaximumSize(new java.awt.Dimension(32767, 525));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 571));
+        setPreferredSize(new java.awt.Dimension(1080, 525));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         fecha_JLabel.setToolTipText("<html>\n<h3>Fecha y hora del mensaje recibido</h3>\n</html>");
 
@@ -126,12 +126,12 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
             .addGroup(controles_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(controles_JPanelLayout.createSequentialGroup()
                         .addComponent(progreso_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(duracion_JLabel)))
                 .addContainerGap())
         );
@@ -141,18 +141,21 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
                 .addGap(7, 7, 7)
                 .addComponent(titulo_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(controles_JPanelLayout.createSequentialGroup()
+                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                        .addGap(1, 1, 1))
                     .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(duracion_JLabel))
-                    .addComponent(progreso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(duracion_JLabel)
+                        .addComponent(progreso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         vista_Video_JPanel.setOpaque(false);
+        vista_Video_JPanel.setPreferredSize(new java.awt.Dimension(400, 420));
         vista_Video_JPanel.setLayout(new java.awt.CardLayout());
 
-        emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emisor_JLabel.setToolTipText("<html>\n<h3>Emisor del mensaje</h3>\n</html>");
 
@@ -160,26 +163,26 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
         contenido_JPanel.setLayout(contenido_JPanelLayout);
         contenido_JPanelLayout.setHorizontalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(controles_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(controles_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE))
+                .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(controles_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -189,7 +192,7 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
         auxiliar_JPanel.setLayout(auxiliar_JPanelLayout);
         auxiliar_JPanelLayout.setHorizontalGroup(
             auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 443, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
         auxiliar_JPanelLayout.setVerticalGroup(
             auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +205,7 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -212,8 +215,8 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

@@ -59,13 +59,13 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel{
         mensaje_JTextPane = new javax.swing.JTextPane();
         auxiliar_JPanel = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 224));
+        setMaximumSize(new java.awt.Dimension(32767, 156));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 224));
+        setPreferredSize(new java.awt.Dimension(1080, 156));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         fecha_JLabel.setToolTipText("<html>\n<h3>Fecha y hora del mensaje recibido</h3>\n</html>");
         fecha_JLabel.setFocusable(false);
@@ -74,7 +74,7 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel{
         fecha_JLabel.setRequestFocusEnabled(false);
         fecha_JLabel.setVerifyInputWhenFocusTarget(false);
 
-        emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         emisor_JLabel.setToolTipText("<html>\n<h3>Emisor del mensaje</h3>\n</html>");
         emisor_JLabel.setFocusable(false);
@@ -90,7 +90,7 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel{
         mensaje_JTextPane.setEditable(false);
         mensaje_JTextPane.setBorder(null);
         mensaje_JTextPane.setContentType("text/html"); // NOI18N
-        mensaje_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        mensaje_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         mensaje_JTextPane.setText("");
         mensaje_JTextPane.setFocusTraversalPolicyProvider(true);
         mensaje_JTextPane.setOpaque(false);
@@ -112,11 +112,11 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel{
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -139,7 +139,7 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

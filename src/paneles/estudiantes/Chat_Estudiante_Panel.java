@@ -229,10 +229,11 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 .addContainerGap())
         );
 
+        mensajes_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         mensajes_JScrollPane.setOpaque(false);
 
         mensajes_JPanel.setOpaque(false);
-        mensajes_JPanel.setLayout(new java.awt.GridLayout(0, 1));
+        mensajes_JPanel.setLayout(new javax.swing.BoxLayout(mensajes_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
         mensajes_JScrollPane.setViewportView(mensajes_JPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
