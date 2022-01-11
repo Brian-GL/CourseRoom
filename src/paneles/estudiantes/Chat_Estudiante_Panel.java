@@ -26,7 +26,6 @@ import paneles.generales.Mensaje_Video_Derecho_General_Panel;
 import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
-import javax.swing.ImageIcon;
 import paneles.generales.Mensaje_Audio_Izquierdo_General_Panel;
 
 /**
@@ -36,24 +35,13 @@ import paneles.generales.Mensaje_Audio_Izquierdo_General_Panel;
 public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Componentes_Interface, Limpieza_Interface{
 
     private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
+    private int ID;
     
     public Chat_Estudiante_Panel(
-            String receptor_Nombre, 
-            Color _primer_Color, 
-            Color _primer_Color_Fuente, 
-            Color _segundo_Color,
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color,
-            Color _tercer_Color_Fuente) {
+            String receptor_Nombre,int _id) {
         initComponents();
-        
-        primer_Color = _primer_Color;
-        primer_Color_Fuente = _primer_Color_Fuente;
-        segundo_Color = _segundo_Color;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-        tercer_Color = _tercer_Color;
-        tercer_Color_Fuente = _tercer_Color_Fuente;
-        
+      
+        this.ID = _id;
         receptor_JLabel.setText(receptor_Nombre);
         
         Iniciar_Componentes();
@@ -270,7 +258,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     }// </editor-fold>//GEN-END:initComponents
 
     private void Enviar_Mensaje(){
-        
         
         String mensaje = mensaje_JTextField.getText();
         if(!mensaje.isEmpty() && !mensaje.isBlank()){
@@ -585,6 +572,28 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
 
     }
     
+    public int ID(){
+        return this.ID;
+    }
+    
+    public void Establecer_Colores(Color _primer_Color, 
+            Color _primer_Color_Fuente, 
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente) {
+        
+        primer_Color = _primer_Color;
+        primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
+        
+        Colorear_Componentes();
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton enviar_Archivos_JButton;
     private javax.swing.JButton enviar_Audios_JButton;
@@ -604,7 +613,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     public void Iniciar_Componentes() {
         mensajes_JScrollPane.getViewport().setOpaque(false);
         mensajes_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        Colorear_Componentes();
     }
     
     @Override

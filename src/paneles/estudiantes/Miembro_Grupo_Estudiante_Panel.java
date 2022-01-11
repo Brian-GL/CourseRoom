@@ -20,15 +20,13 @@ import interfaces.Color_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import javax.swing.SwingUtilities;
-import paneles.estudiantes.Chats_Estudiante_Panel;
-import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
  *
  * @author LENOVO
  */
-public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface,Color_Interface,Componentes_Interface{
-    
+public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Color_Interface, Componentes_Interface {
+
     private String nombre_Completo;
     private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
 
@@ -37,10 +35,9 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
      */
     public Miembro_Grupo_Estudiante_Panel() {
         initComponents();
-        
-       Iniciar_Componentes();
+
+        Iniciar_Componentes();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -153,11 +150,11 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
 
     private void chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chat_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             int chat_Aleatorio = CourseRoom.Faker().number().numberBetween(1, Chats_Estudiante_Panel.Numero_Chats());
-            
+
             String llave = CourseRoom.Concatenar("Chat_", chat_Aleatorio);
-            
+
             Tablero_Estudiante_Panel.Mostrar_Vista(llave);
         }
     }//GEN-LAST:event_chat_JButtonMouseClicked
@@ -172,14 +169,14 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
         chat_JButton.setBackground(Primer_Color());
     }//GEN-LAST:event_chat_JButtonMouseExited
 
-    public String Nombre_Completo(){
+    public String Nombre_Completo() {
         return this.nombre_Completo;
     }
-    
-    public Icon Icono_Imagen(){
+
+    public Icon Icono_Imagen() {
         return imagen_jLabel.getIcon();
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidos_JLabel;
     private javax.swing.JButton chat_JButton;
@@ -216,7 +213,7 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
     public Color Segundo_Color_Fuente() {
         return segundo_Color_Fuente;
     }
-    
+
     /**
      * @return the tercer_Color
      */
@@ -233,32 +230,31 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
 
     @Override
     public void Iniciar_Componentes() {
-         try {
-             
+        try {
+
             System.out.println("Member -> Getting Image From https://i.pravatar.cc/96");
             URL url_Imagen = new URL("https://i.pravatar.cc/96");
             Image obtener_Imagen = ImageIO.read(url_Imagen);
-            
+
             Establecer_Colores(obtener_Imagen);
-            
+
             ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
             imagen_jLabel.setIcon(icono_Imagen);
             obtener_Imagen.flush();
             obtener_Imagen.getGraphics().dispose();
-            
-            String nombre = CourseRoom.Concatenar(CourseRoom.Faker().name().firstName()," ",CourseRoom.Faker().name().firstName());
-            String apellido = CourseRoom.Concatenar(CourseRoom.Faker().name().lastName()," ", CourseRoom.Faker().name().lastName());
-            
-            nombre_Completo = CourseRoom.Concatenar(nombre," ",apellido);
+
+            String nombre = CourseRoom.Concatenar(CourseRoom.Faker().name().firstName(), " ", CourseRoom.Faker().name().firstName());
+            String apellido = CourseRoom.Concatenar(CourseRoom.Faker().name().lastName(), " ", CourseRoom.Faker().name().lastName());
+
+            nombre_Completo = CourseRoom.Concatenar(nombre, " ", apellido);
             apellidos_JLabel.setText(apellido);
             nombres_JLabel.setText(nombre);
             nombre_Usuario_JLabel.setText(CourseRoom.Faker().name().username());
-            
+
             Colorear_Componentes();
-            
-            
+
         } catch (IOException ex) {
-            
+
         }
     }
 
@@ -271,31 +267,31 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
         chat_JButton.setBackground(Primer_Color());
 
     }
-    
+
     @Override
-    public void Establecer_Colores(Image imagen){
-        
+    public void Establecer_Colores(Image imagen) {
+
         try {
             int auxiliar_maximo_int = 0;
             primer_Color = Color.BLACK;
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
             PixelGrabber obtener_Pixeles = new PixelGrabber(imagen, 0, 0, -1, -1, false);
-            int largo_imagen = imagen.getWidth(null)/2;
+            int largo_imagen = imagen.getWidth(null) / 2;
             int pixel, rojo, verde, azul, numero_auxiliar;
             Color color;
-            Par<Integer, Color> par_auxiliar;            
+            Par<Integer, Color> par_auxiliar;
             if (obtener_Pixeles.grabPixels()) {
                 int[] pixeles = (int[]) obtener_Pixeles.getPixels();
-                for(int i = 0; i < pixeles.length; i++){
+                for (int i = 0; i < pixeles.length; i++) {
                     pixel = pixeles[i];
-                    rojo = (pixel  & 0x00ff0000) >> 16;
+                    rojo = (pixel & 0x00ff0000) >> 16;
                     verde = (pixel & 0x0000ff00) >> 8;
                     azul = pixel & 0x000000ff;
-                    color = new Color(rojo,verde,azul);
+                    color = new Color(rojo, verde, azul);
                     par_auxiliar = lista_Colores.get_from_second(color);
-            
+
                     if (par_auxiliar != null) {//exist
-                        numero_auxiliar = par_auxiliar.first()+ 1;
+                        numero_auxiliar = par_auxiliar.first() + 1;
                         par_auxiliar.first(numero_auxiliar);
                         if (numero_auxiliar > auxiliar_maximo_int) {
                             primer_Color = color;
@@ -305,29 +301,29 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += CourseRoom.Random().nextInt(largo_imagen+1) + largo_imagen;
+                    i += CourseRoom.Random().nextInt(largo_imagen + 1) + largo_imagen;
                 }
 
                 segundo_Color = primer_Color;
-            
+
                 int posicion, iteraciones = 0;
-                
-                if(lista_Colores.size() > 1){
-                    
-                    while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
+
+                if (lista_Colores.size() > 1) {
+
+                    while (Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000) {
+                        posicion = CourseRoom.Random().nextInt((int) lista_Colores.size() - 1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
-                        if(iteraciones > 25){
-                             while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
+                        if (iteraciones > 25) {
+                            while (primer_Color.getRGB() == segundo_Color.getRGB()) {
+                                posicion = CourseRoom.Random().nextInt((int) lista_Colores.size() - 1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
-                             break;
+                            break;
                         }
                     }
                 }
-                
+
                 tercer_Color = segundo_Color;
                 if (lista_Colores.size() > 2) {
                     iteraciones = 0;
@@ -345,26 +341,26 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
                         }
                     }
                 }
-              
+
                 rojo = primer_Color.getRed();
                 primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 rojo = segundo_Color.getRed();
                 segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 rojo = tercer_Color.getRed();
                 tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                
+
                 lista_Colores.clear();
             }
-            
+
         } catch (InterruptedException ex) {
-            
+
         }
     }
-    
-     @Override
+
+    @Override
     public void Limpiar() {
-        primer_Color = primer_Color_Fuente = segundo_Color = segundo_Color_Fuente =
-        tercer_Color = tercer_Color_Fuente = null;
+        primer_Color = primer_Color_Fuente = segundo_Color = segundo_Color_Fuente
+                = tercer_Color = tercer_Color_Fuente = null;
         nombre_Completo = null;
     }
 }

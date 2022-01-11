@@ -127,6 +127,9 @@
             <Property name="showGrid" type="boolean" value="true"/>
             <Property name="showVerticalLines" type="boolean" value="false"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="avisos_JTable.setRowSorter(new TableRowSorter(avisos_JTable.getModel()));"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

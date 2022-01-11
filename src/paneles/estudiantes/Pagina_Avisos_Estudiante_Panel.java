@@ -15,6 +15,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 
 /**
@@ -122,6 +123,7 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
             avisos_JTable.setRowMargin(15);
             avisos_JTable.setShowGrid(true);
             avisos_JTable.setShowVerticalLines(false);
+            avisos_JTable.setRowSorter(new TableRowSorter(avisos_JTable.getModel()));
             avisos_JScrollPane.setViewportView(avisos_JTable);
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -165,29 +167,28 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         avisos_JTable.getTableHeader().setFont(gadugi);
         
         avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        gadugi = new Font("Gadugi", Font.PLAIN, 14);
         Celda_Renderer[] celdas = new Celda_Renderer[4];
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
         
-        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1,20);i++){
+        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(5,20);i++){
             switch(CourseRoom.Faker().number().numberBetween(1,5)){
                 case 1:
-                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png")),gadugi);
+                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png")),i);
                     break;
                 case 2:
-                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png")),gadugi);
+                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png")),i);
                     break;
                 case 3:
-                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png")),gadugi);
+                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png")),i);
                     break;
                 case 4:
-                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png")),gadugi);
+                    celdas[0] = new Celda_Renderer(new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png")),i);
                     break;
             }
             
-            celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(), gadugi);
-            celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0,1).toString(), gadugi);
-            celdas[3] = new Celda_Renderer((CourseRoom.Faker().bool().bool()) ? "Leído" : "No Leído", gadugi);
+            celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(),i);
+            celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0,1).toString(),i);
+            celdas[3] = new Celda_Renderer((CourseRoom.Faker().bool().bool()) ? "Leído" : "No Leído",i);
             
             modelo.addRow(celdas);
         }
@@ -197,18 +198,15 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
             @Override
             public void mousePressed(MouseEvent e) {
               if (e.getClickCount() == 2) {
-                JTable target = (JTable)e.getSource();
-                int fila = target.getSelectedRow();
-                int columna = target.getSelectedColumn();
-               
+                JTable tabla = (JTable) e.getComponent();
+                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                int columna = tabla.getSelectedColumn();
+
                 DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
+
+                Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
                 
-                Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
-                
-                System.out.println(fila);
-                System.out.println(columna);
-                System.out.println(celda.Label().getText());
-                
+                System.out.println(" ID: "+celda.ID()+" Valor: "+celda.Label().getText());
                 
               }
             }

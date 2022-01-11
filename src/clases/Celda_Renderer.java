@@ -33,50 +33,42 @@ import main.CourseRoom;
 public class Celda_Renderer extends DefaultTableCellRenderer implements Comparable<Object>{
     //The JLabel that is used to display image
     private final JLabel label = new JLabel();
+    private final int ID;
 
     public Celda_Renderer(){
         super();
+        ID = -1;
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
     }
    
-    public Celda_Renderer( ImageIcon icono) {
+    public Celda_Renderer(String texto, int _id) {
         super();
-        label.setVerticalAlignment(JLabel.TOP);
-        label.setHorizontalAlignment(JLabel.CENTER);
-        if(icono != null){
-            label.setIcon(icono);
-        }
-    }
-
-    public Celda_Renderer(String texto) {
-        super();
+        this.ID = _id;
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setText(CourseRoom.Formato_HTML_Central(texto));
+        label.setFont(new Font("Gadugi", Font.PLAIN, 14));
     }
     
-    public Celda_Renderer(String texto, Font fuente) {
+    public Celda_Renderer(ImageIcon icono, int _id) {
         super();
-        label.setVerticalAlignment(JLabel.TOP);
-        label.setHorizontalAlignment(JLabel.CENTER);
-        label.setText(CourseRoom.Formato_HTML_Central(texto));
-        label.setFont(fuente);
-    }
-    
-    public Celda_Renderer(ImageIcon icono,Font fuente) {
-        super();
+        this.ID = _id;
         if(icono != null){
             label.setIcon(icono);
         }
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
-        label.setFont(fuente);
+        label.setFont(new Font("Gadugi", Font.PLAIN, 14));
     }
 
     public JLabel Label() {
         return label;
     }
+    
+    public int ID(){
+        return this.ID;
+    } 
     
     public void Color_Fuente(Color color){
         label.setForeground(color);
