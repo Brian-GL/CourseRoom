@@ -15,6 +15,7 @@ import paneles.generales.Archivo_Adjunto_Tarea_General_Panel;
 import paneles.generales.Comentario_Tarea_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import java.awt.Component;
 import java.awt.Font;
 
 /**
@@ -24,27 +25,16 @@ import java.awt.Font;
 public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
     private Color primer_Color, segundo_Color,tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
-    
+    private String ID;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Tarea_Estudiante_Panel(
-            String nombre, 
-            Color _primer_Color, 
-            Color _segundo_Color, 
-            Color _tercer_Color, 
-            Color _primer_Color_Fuente, 
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color_Fuente ) {
+            String nombre,
+            String _id) {
         
         initComponents();
-        
-        primer_Color = _primer_Color;
-        segundo_Color = _segundo_Color;
-        primer_Color_Fuente = _primer_Color_Fuente;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-        tercer_Color = _tercer_Color;
-        tercer_Color_Fuente = _tercer_Color_Fuente;
         nombre_JLabel.setText(nombre);
+        this.ID = _id;
       
         Iniciar_Componentes();
         
@@ -438,11 +428,32 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             for(int i = 0; i < archivos_Abiertos.length;i++){
                 archivo_Abierto = archivos_Abiertos[i];
                 archivo_Subido_Tarea_General_Panel = 
-                        new Archivo_Subido_Tarea_Estudiante_Panel(archivo_Abierto,
-                        tercer_Color,tercer_Color_Fuente,segundo_Color, segundo_Color_Fuente);
+                        new Archivo_Subido_Tarea_Estudiante_Panel(archivo_Abierto);
                 archivos_Subidos_JPanel.add(archivo_Subido_Tarea_General_Panel);
             }     
         }
+    }
+    
+    public String ID(){
+        return this.ID;
+    }
+    
+    public void Establecer_Colores(Color _primer_Color, 
+            Color _primer_Color_Fuente, 
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente) {
+        
+        primer_Color = _primer_Color;
+        primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
+        
+        Colorear_Componentes();
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -488,7 +499,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
-        Colorear_Componentes();
+        Archivo_Adjunto_Tarea_General_Panel archivo_Adjunto_Tarea_General_Panel;
+        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
+            archivo_Adjunto_Tarea_General_Panel = new Archivo_Adjunto_Tarea_General_Panel();
+            archivos_Adjuntos_JPanel.add(archivo_Adjunto_Tarea_General_Panel);
+        }
+        
     }
     
     @Override
@@ -534,12 +550,21 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         descripcion_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(primer_Color_Fuente), "Descripcion De La Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi,primer_Color_Fuente));
         
-        Archivo_Adjunto_Tarea_General_Panel archivo_Adjunto_Tarea_General_Panel;
-        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1,10); i++){
-            archivo_Adjunto_Tarea_General_Panel = 
-                    new Archivo_Adjunto_Tarea_General_Panel(segundo_Color, segundo_Color_Fuente, tercer_Color,tercer_Color_Fuente);
-            archivos_Adjuntos_JPanel.add(archivo_Adjunto_Tarea_General_Panel);
+        Component[] archivos = archivos_Adjuntos_JPanel.getComponents();
+        Component componente;
+        for(int i = 0; i < archivos.length;i++){
+            componente = archivos[i];
+            ((Archivo_Adjunto_Tarea_General_Panel)componente).Establecer_Colores(segundo_Color, segundo_Color_Fuente, 
+                    tercer_Color, tercer_Color_Fuente);
         }
+        
+        archivos = archivos_Subidos_JPanel.getComponents();
+        for(int i = 0; i < archivos.length;i++){
+            componente = archivos[i];
+            ((Archivo_Subido_Tarea_Estudiante_Panel)componente).Establecer_Colores(primer_Color, primer_Color_Fuente,
+                    segundo_Color, segundo_Color_Fuente);
+        }
+        
     }
     
     
@@ -551,17 +576,4 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         primer_Color =  segundo_Color = tercer_Color = 
         primer_Color_Fuente =  segundo_Color_Fuente =  tercer_Color_Fuente = null;
     }
-
-    public void Establecer_Colores(Color _primer_Color, Color _segundo_Color, Color _tercer_Color, Color _primer_Color_Fuente, Color _segundo_Color_Fuente, Color _tercer_Color_Fuente) {
-        
-        primer_Color = _primer_Color;
-        segundo_Color = _segundo_Color;
-        primer_Color_Fuente = _primer_Color_Fuente;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-        tercer_Color = _tercer_Color;
-        tercer_Color_Fuente = _tercer_Color_Fuente;
-        
-        Colorear_Componentes();
-    }
-
 }

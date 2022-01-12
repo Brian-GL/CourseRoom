@@ -19,18 +19,10 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
 
     private Color segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
-    public Archivo_Adjunto_Tarea_General_Panel(
-            Color _segundo_Color, 
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color,
-            Color _tercer_Color_Fuente) {
+    public Archivo_Adjunto_Tarea_General_Panel() {
         
         initComponents();
-        
-        segundo_Color = _segundo_Color;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-        tercer_Color = _tercer_Color;
-        tercer_Color_Fuente = _tercer_Color_Fuente;
+     
        
         Iniciar_Componentes();
         
@@ -203,6 +195,20 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         descargar_JButton.setForeground(segundo_Color_Fuente);
     }//GEN-LAST:event_descargar_JButtonMouseExited
 
+    public void Establecer_Colores(
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente) {
+        
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
+        
+        Colorear_Componentes();
+        
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -222,8 +228,7 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         
         String informacion_Archivo = CourseRoom.Faker().file().fileName();
         archivo_JTextPane.setText(CourseRoom.Formato_HTML_Central(informacion_Archivo));
-        
-        Colorear_Componentes();
+       
     }
 
     @Override

@@ -19,7 +19,7 @@ public class Caja_Tablero_Tarea_Curso_Estudiante_Panel extends javax.swing.JPane
 
     private Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
     private String id;
-    private Pagina_Tarea_Estudiante_Panel pagina_Tarea_Estudiante_Panel;
+    //private Pagina_Tarea_Estudiante_Panel pagina_Tarea_Estudiante_Panel;
     
     
     public Caja_Tablero_Tarea_Curso_Estudiante_Panel(String _id,
@@ -187,11 +187,11 @@ public class Caja_Tablero_Tarea_Curso_Estudiante_Panel extends javax.swing.JPane
         tipo_JLabel.setText(CourseRoom.Faker().job().position());
 
         Colorear_Componentes();
-
-        pagina_Tarea_Estudiante_Panel = new Pagina_Tarea_Estudiante_Panel(nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, 
-                segundo_Color_Fuente, tercer_Color_Fuente);
-
-        Tablero_Estudiante_Panel.Agregar_Vista(pagina_Tarea_Estudiante_Panel, id);
+//
+//        pagina_Tarea_Estudiante_Panel = new Pagina_Tarea_Estudiante_Panel(nombre_JLabel.getText(), primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, 
+//                segundo_Color_Fuente, tercer_Color_Fuente);
+//
+//        Tablero_Estudiante_Panel.Agregar_Vista(pagina_Tarea_Estudiante_Panel, id);
 
     }
 
@@ -209,6 +209,6 @@ public class Caja_Tablero_Tarea_Curso_Estudiante_Panel extends javax.swing.JPane
     public void Limpiar() {
         primer_Color = segundo_Color = tercer_Color = primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
         id = null;
-        pagina_Tarea_Estudiante_Panel.Limpiar();
+        //pagina_Tarea_Estudiante_Panel.Limpiar();
     }
 }

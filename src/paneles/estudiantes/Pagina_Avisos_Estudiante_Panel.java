@@ -174,25 +174,24 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         String id = "";
         ImageIcon icono = null;
         
-        ImageIcon icono1 = new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png"));
-        ImageIcon icono2 = new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png"));
-        ImageIcon icono3 = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
-        ImageIcon icono4 = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
-        
+        ImageIcon aviso_Curso = new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png"));
+        ImageIcon aviso_Notificacion = new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png"));
+        ImageIcon aviso_Grupo = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
+        ImageIcon aviso_Chat = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
         
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(5,20);i++){
             switch(CourseRoom.Faker().number().numberBetween(1,5)){
                 case 1:
-                    icono = icono1;
+                    icono = aviso_Curso;
                     break;
                 case 2:
-                    icono = icono2;
+                    icono = aviso_Notificacion;
                     break;
                 case 3:
-                    icono = icono3;
+                    icono = aviso_Grupo;
                     break;
                 case 4:
-                    icono = icono4;
+                    icono = aviso_Chat;
                     break;
             }
             

@@ -16,25 +16,18 @@ import java.awt.Color;
  */
 public class Pagina_Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
-    private Tarea_Estudiante_Panel tarea_Estudiante_Panel;
     
-    public Pagina_Tarea_Estudiante_Panel(String nombre, 
-            Color _primer_Color, 
-            Color _segundo_Color, 
-            Color _tercer_Color, 
-            Color _primer_Color_Fuente, 
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color_Fuente ){
+    private Tarea_Estudiante_Panel tarea_Estudiante_Panel;
+    private String ID;
+    
+    public Pagina_Tarea_Estudiante_Panel(String nombre, String _id){
         
        initComponents();
        
+       this.ID = _id;
+       
        tarea_Estudiante_Panel = new Tarea_Estudiante_Panel(nombre, 
-            _primer_Color, 
-            _segundo_Color, 
-            _tercer_Color, 
-            _primer_Color_Fuente, 
-            _segundo_Color_Fuente,
-            _tercer_Color_Fuente );
+            _id);
         
        Iniciar_Componentes();
         
@@ -100,9 +93,8 @@ public class Pagina_Tarea_Estudiante_Panel extends javax.swing.JPanel implements
 
     @Override
     public void Colorear_Componentes() {
-       tarea_Estudiante_Panel.Colorear_Componentes();
+       //No Soportado
     }
-    
     
     
     @Override

@@ -62,6 +62,18 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setFont(new Font("Gadugi", Font.PLAIN, 14));
     }
+    
+    public Celda_Renderer(ImageIcon icono, String texto, String _id) {
+        super();
+        this.ID = _id;
+        if(icono != null){
+            label.setIcon(icono);
+        }
+        label.setText(texto);
+        label.setVerticalAlignment(JLabel.TOP);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setFont(new Font("Gadugi", Font.PLAIN, 14));
+    }
 
     public JLabel Label() {
         return label;
