@@ -49,12 +49,13 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         avisos_JScrollPane = new javax.swing.JScrollPane();
         avisos_JTable = new javax.swing.JTable();
 
-        setMinimumSize(new java.awt.Dimension(1085, 630));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1085, 630));
+        setPreferredSize(new java.awt.Dimension(1080, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
 
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -132,9 +133,9 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
@@ -172,19 +173,26 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         
         String id = "";
         ImageIcon icono = null;
+        
+        ImageIcon icono1 = new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png"));
+        ImageIcon icono2 = new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png"));
+        ImageIcon icono3 = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
+        ImageIcon icono4 = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
+        
+        
         for(int i = 0; i < CourseRoom.Faker().number().numberBetween(5,20);i++){
             switch(CourseRoom.Faker().number().numberBetween(1,5)){
                 case 1:
-                    icono = new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png"));
+                    icono = icono1;
                     break;
                 case 2:
-                    icono = new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png"));
+                    icono = icono2;
                     break;
                 case 3:
-                    icono = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
+                    icono = icono3;
                     break;
                 case 4:
-                    icono = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
+                    icono = icono4;
                     break;
             }
             

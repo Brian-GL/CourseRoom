@@ -61,7 +61,7 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1085, 630));
+        setPreferredSize(new java.awt.Dimension(1080, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));

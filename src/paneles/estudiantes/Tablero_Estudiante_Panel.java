@@ -751,6 +751,11 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         actualizar_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
+    
+    public static String Nombre_Usuario(){
+        return nombre_Usuario_JLabel.getText();
+    }
+    
     public static Pagina_Chats_Estudiante_Panel Pagina_Chats(){
         return pagina_Chats_Panel;
     }
