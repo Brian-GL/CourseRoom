@@ -18,35 +18,25 @@ import main.CourseRoom;
  */
 public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
    
+    private final String ID;
+    private Color primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
     private Curso_Informacion_Estudiante_Panel curso_Informacion_Estudiante_Panel;
     private Curso_Tablero_Estudiante_Panel curso_Tablero_Estudiante_Panel;
     private Curso_Miembros_Estudiante_Panel curso_Miembros_Estudiante_Panel;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Pagina_Curso_Estudiante_Panel(String id,
+    public Pagina_Curso_Estudiante_Panel(
             String nombre_Curso,
-            String nombre_Profesor,
             Image imagen_Curso,
+            String nombre_Profesor,
             Image imagen_Profesor,
-            Color _primer_Color,
-            Color _primer_Color_Fuente,
-            Color _segundo_Color,
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color,
-            Color _tercer_Color_Fuente){
+            String tematicas,
+            String fecha,
+            String _id){
         
        initComponents();
      
-       contenido_JTabbedPane.setBackground(_primer_Color);
-       
-       curso_Informacion_Estudiante_Panel = 
-                new Curso_Informacion_Estudiante_Panel(nombre_Curso, nombre_Profesor, imagen_Curso, imagen_Profesor, 
-                        _primer_Color,_primer_Color_Fuente,_segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
-       
-       
-       curso_Tablero_Estudiante_Panel = new Curso_Tablero_Estudiante_Panel(_primer_Color, _primer_Color_Fuente,
-               _segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
-       curso_Miembros_Estudiante_Panel = new Curso_Miembros_Estudiante_Panel(_tercer_Color, _tercer_Color_Fuente);
+       this.ID = _id;
         
        Iniciar_Componentes();
        
@@ -112,6 +102,27 @@ public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements
         add(contenido_JTabbedPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
+    public String ID() {
+        return this.ID;
+    }
+
+    public void Establecer_Colores(Color _primer_Color,
+            Color _primer_Color_Fuente,
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente) {
+
+        primer_Color = _primer_Color;
+        primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
+
+        Colorear_Componentes();
+
+    }
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane buscar_JScrollPane;
@@ -151,23 +162,31 @@ public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements
         tablero_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         tu_Trabajo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
-        Miembro_Curso_Estudiante_Panel miembro_Panel;
-        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
-           miembro_Panel = new Miembro_Curso_Estudiante_Panel();
-           curso_Miembros_Estudiante_Panel.Agregar_Miembro(miembro_Panel);
-        }
-        
+//        Miembro_Curso_Estudiante_Panel miembro_Panel;
+//        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
+//           miembro_Panel = new Miembro_Curso_Estudiante_Panel();
+//           curso_Miembros_Estudiante_Panel.Agregar_Miembro(miembro_Panel);
+//        }
+//        
         informacion_Curso_JScrollPane.setViewportView(curso_Informacion_Estudiante_Panel);
         tablero_Curso_JScrollPane.setViewportView(curso_Tablero_Estudiante_Panel);
         miembros_JScrollPane.setViewportView(curso_Miembros_Estudiante_Panel);
         
         
-        Colorear_Componentes();
+
+//        curso_Informacion_Estudiante_Panel
+//                = new Curso_Informacion_Estudiante_Panel(nombre_Curso, nombre_Profesor, imagen_Curso, imagen_Profesor,
+//                        _primer_Color, _primer_Color_Fuente, _segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
+//
+//        curso_Tablero_Estudiante_Panel = new Curso_Tablero_Estudiante_Panel(_primer_Color, _primer_Color_Fuente,
+//                _segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
+//        curso_Miembros_Estudiante_Panel = new Curso_Miembros_Estudiante_Panel(_tercer_Color, _tercer_Color_Fuente);
+        
     }
 
     @Override
     public void Colorear_Componentes() {
-        
+        contenido_JTabbedPane.setBackground(primer_Color);
     }
     
     @Override

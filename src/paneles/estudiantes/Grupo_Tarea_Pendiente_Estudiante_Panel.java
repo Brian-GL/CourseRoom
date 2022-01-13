@@ -7,49 +7,45 @@ package paneles.estudiantes;
 
 import main.CourseRoom;
 import java.awt.Color;
-import javax.swing.Icon;
 import javax.swing.SwingUtilities;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author LENOVO
  */
-public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface{
+public class Grupo_Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface{
     
     private Color primer_Color,primer_Color_Fuente,segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Tarea_Pendiente_Estudiante_Panel(
-            Icon member_Icon, 
-            Color _primer_Color, 
-            Color _primer_Color_Fuente,
-            Color _segundo_Color, 
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color,
-            Color _tercer_Color_Fuente,
+    public Grupo_Tarea_Pendiente_Estudiante_Panel(
+            ImageIcon miembro_Icono, 
             String nombre, 
             String descripcion, 
             String fecha_Terminacion, 
-            String nombre_Miembro) {
+            String nombre_Miembro,
+            Color _primer_Color, 
+            Color _primer_Color_Fuente, 
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente){
         
         initComponents();
-        
-        primer_Color = _primer_Color;
-        primer_Color_Fuente = _primer_Color_Fuente;
-        segundo_Color = _segundo_Color;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-        tercer_Color = _tercer_Color;
-        tercer_Color_Fuente = _tercer_Color_Fuente;
+       
         
         nombre_JLabel.setText(nombre);
         descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Centro_Izquierda(descripcion));
         fecha_Terminacion_jLabel.setText(fecha_Terminacion);
-        miembro_Cargo_JLabel.setIcon(member_Icon);
-        miembro_Cargo_JLabel.setToolTipText(CourseRoom.Concatenar("<html><h3>Miembro a cargo:<br>",nombre_Miembro,"</h3></html>"));
+        miembro_Cargo_JLabel.setIcon(miembro_Icono);
+        miembro_Cargo_JLabel.setToolTipText(CourseRoom.Concatenar("<html><h3>Creado por:<br>",nombre_Miembro,"</h3></html>"));
         
         Iniciar_Componentes();
+        
+        Establecer_Colores(primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
        
     }
 
@@ -199,6 +195,23 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         finalizar_JButton.setBackground(segundo_Color);
     }//GEN-LAST:event_finalizar_JButtonMouseExited
 
+    public void Establecer_Colores(Color _primer_Color,
+            Color _primer_Color_Fuente,
+            Color _segundo_Color,
+            Color _segundo_Color_Fuente,
+            Color _tercer_Color,
+            Color _tercer_Color_Fuente) {
+
+        primer_Color = _primer_Color;
+        primer_Color_Fuente = _primer_Color_Fuente;
+        segundo_Color = _segundo_Color;
+        segundo_Color_Fuente = _segundo_Color_Fuente;
+        tercer_Color = _tercer_Color;
+        tercer_Color_Fuente = _tercer_Color_Fuente;
+
+        Colorear_Componentes();
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
@@ -216,7 +229,6 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        Colorear_Componentes();
     }
     
     @Override
