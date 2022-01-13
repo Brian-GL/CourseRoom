@@ -123,11 +123,11 @@ public class Grupos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
 
                 },
                 new String [] {
-                    "Imagen", "Grupo", "Ultimo Aviso", "Fecha", "Curso"
+                    "Grupo", "Ultimo Aviso", "Fecha", "Curso"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -222,7 +222,7 @@ public class Grupos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
 
         grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
         DefaultTableModel modelo = (DefaultTableModel) grupos_JTable.getModel();
 
         String id;
@@ -237,19 +237,18 @@ public class Grupos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                 url_Imagen = new URL("https://picsum.photos/450/450");
                 obtener_Imagen = ImageIO.read(url_Imagen);
                
-                celdas[1] = new Celda_Renderer(CourseRoom.Faker().team().name(), id);
-                celdas[2] = new Celda_Renderer(CourseRoom.Faker().lorem().sentence(), id);
-                celdas[3] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(), id);
-                celdas[4] = new Celda_Renderer(CourseRoom.Faker().educator().course(),id);
+                celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().sentence(), id);
+                celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(), id);
+                celdas[3] = new Celda_Renderer(CourseRoom.Faker().educator().course(),id);
 
                 grupo = obtener_Imagen.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
                 icono_Grupo = new ImageIcon(grupo);
 
-                celdas[0] = new Celda_Renderer(icono_Grupo, id);
+                celdas[0] = new Celda_Renderer(icono_Grupo,CourseRoom.Faker().team().name(), id);
                 
                 grupo_Estudiante_Panel
-                        = new Grupo_Estudiante_Panel(obtener_Imagen, celdas[1].Label().getText(), 
-                                celdas[4].Label().getText(),celdas[3].Label().getText(),id);
+                        = new Grupo_Estudiante_Panel(obtener_Imagen, celdas[0].Label().getText(), 
+                                celdas[3].Label().getText(),celdas[2].Label().getText(),id);
                 
                 lista_Grupos.push_back(grupo_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id);
@@ -302,7 +301,7 @@ public class Grupos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) grupos_JTable.getModel();
         for (int i = 0; i < grupos_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }

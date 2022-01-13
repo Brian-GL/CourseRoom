@@ -122,11 +122,11 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                 },
                 new String [] {
-                    "Imagen", "Chat", "Ultimo Mensaje", "Fecha", "No Leídos"
+                    "Chat", "Ultimo Mensaje", "Fecha", "No Leídos"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -162,7 +162,7 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -220,7 +220,7 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         chats_JTable.getTableHeader().setFont(gadugi);
 
         chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
         DefaultTableModel modelo = (DefaultTableModel) chats_JTable.getModel();
 
         String id;
@@ -236,13 +236,12 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 obtener_Imagen = ImageIO.read(url_Imagen);
                 icono_Chat = new ImageIcon(obtener_Imagen);
                 
-                celdas[0] = new Celda_Renderer(icono_Chat,id);
-                celdas[1] = new Celda_Renderer(CourseRoom.Faker().name().fullName(),id);
-                celdas[2] = new Celda_Renderer(CourseRoom.Faker().lorem().sentence(),id);
-                celdas[3] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(),id);
-                celdas[4] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)),id);
+                celdas[0] = new Celda_Renderer(icono_Chat,CourseRoom.Faker().name().fullName(),id);
+                celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().sentence(),id);
+                celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(),id);
+                celdas[3] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)),id);
                 
-                chat_Estudiante_Panel = new Chat_Estudiante_Panel(celdas[1].Label().getText(),id);
+                chat_Estudiante_Panel = new Chat_Estudiante_Panel(celdas[0].Label().getText(),id);
                 lista_Chats.push_back(chat_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel,id);
                 modelo.addRow(celdas);
@@ -293,7 +292,7 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         DefaultTableModel modelo = (DefaultTableModel) chats_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < chats_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }

@@ -89,11 +89,11 @@ public class Buscar_Grupos_Estudiante_Panel extends javax.swing.JPanel implement
 
                 },
                 new String [] {
-                    "Imagen", "Grupo", "Ultimo Aviso", "Fecha", "Curso"
+                    "Grupo", "Ultimo Aviso", "Fecha", "Curso"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -235,7 +235,7 @@ public class Buscar_Grupos_Estudiante_Panel extends javax.swing.JPanel implement
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) grupos_JTable.getModel();
         for (int i = 0; i < grupos_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }

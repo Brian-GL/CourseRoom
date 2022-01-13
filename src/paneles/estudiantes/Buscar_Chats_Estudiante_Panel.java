@@ -89,11 +89,11 @@ public class Buscar_Chats_Estudiante_Panel extends javax.swing.JPanel implements
 
                 },
                 new String [] {
-                    "Imagen", "Chat", "Ultimo Mensaje", "Fecha", "No Leídos"
+                    "Chat", "Ultimo Mensaje", "Fecha", "No Leídos"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -236,7 +236,7 @@ public class Buscar_Chats_Estudiante_Panel extends javax.swing.JPanel implements
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) chats_JTable.getModel();
         for (int i = 0; i < chats_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }

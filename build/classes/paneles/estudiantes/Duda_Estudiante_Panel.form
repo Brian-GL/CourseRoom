@@ -70,15 +70,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="regresar_JButton" min="-2" pref="48" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="preguntador_Imagen_JLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="descripcion_Duda_JScrollPane" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="duda_JLabel" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="cerrar_JButton" min="-2" pref="91" max="-2" attributes="0"/>
+                          <Component id="duda_JLabel" pref="685" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cerrar_JButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -183,9 +183,9 @@
         <Component class="javax.swing.JButton" name="cerrar_JButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Gadugi" size="18" style="1"/>
+              <Font name="Gadugi" size="15" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
+            <Property name="text" type="java.lang.String" value="Marcar Como Solucionada"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cerrar_JButtonMouseClicked"/>
@@ -220,7 +220,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="enviar_Imagenes_JButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="respuesta_JTextField" pref="845" max="32767" attributes="0"/>
+                  <Component id="respuesta_JTextField" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="enviar_Respuesta_JButton" min="-2" max="-2" attributes="0"/>
               </Group>
