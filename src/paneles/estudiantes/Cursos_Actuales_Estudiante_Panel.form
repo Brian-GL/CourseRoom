@@ -66,9 +66,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="titulo_JLabel" min="-2" pref="373" max="-2" attributes="0"/>
-                  <EmptySpace pref="439" max="32767" attributes="0"/>
-                  <Component id="actuales_Cursos_JButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="finalizados_Cursos_JButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="recomendados_Cursos_JButton" min="-2" max="-2" attributes="0"/>
@@ -88,7 +86,6 @@
                       <Component id="nuevos_Cursos_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="recomendados_Cursos_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="finalizados_Cursos_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="actuales_Cursos_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -190,24 +187,6 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="finalizados_Cursos_JButtonMouseClicked"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="finalizados_Cursos_JButtonMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="finalizados_Cursos_JButtonMouseExited"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="actuales_Cursos_JButton">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/recursos/iconos/work-from-home.png"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[36, 36]"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="actuales_Cursos_JButtonMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="actuales_Cursos_JButtonMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="actuales_Cursos_JButtonMouseExited"/>
           </Events>
         </Component>
       </SubComponents>

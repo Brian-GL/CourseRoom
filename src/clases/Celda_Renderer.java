@@ -72,7 +72,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         }
         label.setText(CourseRoom.Formato_HTML_Central(texto));
         label.setVerticalAlignment(JLabel.TOP);
-        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setHorizontalAlignment(JLabel.LEFT);
         label.setFont(new Font("Gadugi", Font.PLAIN, 14));
     }
 

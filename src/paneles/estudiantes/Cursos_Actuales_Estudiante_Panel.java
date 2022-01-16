@@ -59,7 +59,6 @@ public class Cursos_Actuales_Estudiante_Panel extends javax.swing.JPanel impleme
         nuevos_Cursos_JButton = new javax.swing.JButton();
         recomendados_Cursos_JButton = new javax.swing.JButton();
         finalizados_Cursos_JButton = new javax.swing.JButton();
-        actuales_Cursos_JButton = new javax.swing.JButton();
         cursos_Actuales_JScrollPane = new javax.swing.JScrollPane();
         cursos_Actuales_JTable = new javax.swing.JTable();
 
@@ -138,21 +137,6 @@ public class Cursos_Actuales_Estudiante_Panel extends javax.swing.JPanel impleme
             }
         });
 
-        actuales_Cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/work-from-home.png"))); // NOI18N
-        actuales_Cursos_JButton.setBorder(null);
-        actuales_Cursos_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-        actuales_Cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                actuales_Cursos_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                actuales_Cursos_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                actuales_Cursos_JButtonMouseExited(evt);
-            }
-        });
-
         javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
         contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
@@ -160,9 +144,7 @@ public class Cursos_Actuales_Estudiante_Panel extends javax.swing.JPanel impleme
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 439, Short.MAX_VALUE)
-                .addComponent(actuales_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(finalizados_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(recomendados_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,8 +161,7 @@ public class Cursos_Actuales_Estudiante_Panel extends javax.swing.JPanel impleme
                     .addComponent(buscar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nuevos_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(recomendados_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(finalizados_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actuales_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(finalizados_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -323,25 +304,7 @@ public class Cursos_Actuales_Estudiante_Panel extends javax.swing.JPanel impleme
         finalizados_Cursos_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_finalizados_Cursos_JButtonMouseExited
 
-    private void actuales_Cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actuales_Cursos_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            Pagina_Cursos_Estudiante_Panel.Mostrar_Cursos_Actuales();
-        }
-    }//GEN-LAST:event_actuales_Cursos_JButtonMouseClicked
-
-    private void actuales_Cursos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actuales_Cursos_JButtonMouseEntered
-        // TODO add your handling code here:
-        actuales_Cursos_JButton.setBackground(CourseRoom.Tercer_Color());
-    }//GEN-LAST:event_actuales_Cursos_JButtonMouseEntered
-
-    private void actuales_Cursos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actuales_Cursos_JButtonMouseExited
-        // TODO add your handling code here:
-        actuales_Cursos_JButton.setBackground(CourseRoom.Segundo_Color());
-    }//GEN-LAST:event_actuales_Cursos_JButtonMouseExited
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton actuales_Cursos_JButton;
     private javax.swing.JButton buscar_JButton;
     private javax.swing.JPanel contenido_Titulo_JPanel;
     private javax.swing.JScrollPane cursos_Actuales_JScrollPane;
@@ -375,7 +338,7 @@ public class Cursos_Actuales_Estudiante_Panel extends javax.swing.JPanel impleme
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(5, 20); i++) {
             id = CourseRoom.Concatenar("Curso_Actual_", i);
             try {
-                System.out.println("Curso ID: " + i + " -> Getting Image From https://picsum.photos/450/450");
+                System.out.println("Curso Actual ID: " + i + " -> Getting Image From https://picsum.photos/450/450");
                 url_Imagen = new URL("https://picsum.photos/450/450");
                 obtener_Imagen_Curso = ImageIO.read(url_Imagen);
 
@@ -384,7 +347,7 @@ public class Cursos_Actuales_Estudiante_Panel extends javax.swing.JPanel impleme
 
                 celdas[0] = new Celda_Renderer(icono, CourseRoom.Faker().educator().course(), id);
                 
-                System.out.println("Curso ID Profesor: " + i + " -> Getting Image From https://i.pravatar.cc/450");
+                System.out.println("Curso Actual ID Profesor: " + i + " -> Getting Image From https://i.pravatar.cc/450");
                 url_Imagen = new URL("https://i.pravatar.cc/450");
                 obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
 
@@ -446,7 +409,6 @@ public class Cursos_Actuales_Estudiante_Panel extends javax.swing.JPanel impleme
         titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
 
-        actuales_Cursos_JButton.setBackground(CourseRoom.Segundo_Color());
         finalizados_Cursos_JButton.setBackground(CourseRoom.Segundo_Color());
         recomendados_Cursos_JButton.setBackground(CourseRoom.Segundo_Color());
         nuevos_Cursos_JButton.setBackground(CourseRoom.Segundo_Color());
