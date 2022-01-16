@@ -335,10 +335,10 @@ public class Cursos_Actuales_Estudiante_Panel extends javax.swing.JPanel impleme
         Image obtener_Imagen_Curso, obtener_Imagen_Profesor, imagen = null;
         ImageIcon icono = null;
         Pagina_Curso_Estudiante_Panel curso_Estudiante_Panel;
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(5, 20); i++) {
+        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
             id = CourseRoom.Concatenar("Curso_Actual_", i);
             try {
-                System.out.println("Curso Actual ID: " + i + " -> Getting Image From https://picsum.photos/450/450");
+                System.out.println(id + " -> Getting Image From https://picsum.photos/450/450");
                 url_Imagen = new URL("https://picsum.photos/450/450");
                 obtener_Imagen_Curso = ImageIO.read(url_Imagen);
 
@@ -347,7 +347,7 @@ public class Cursos_Actuales_Estudiante_Panel extends javax.swing.JPanel impleme
 
                 celdas[0] = new Celda_Renderer(icono, CourseRoom.Faker().educator().course(), id);
                 
-                System.out.println("Curso Actual ID Profesor: " + i + " -> Getting Image From https://i.pravatar.cc/450");
+                System.out.println(id + " Profesor: -> Getting Image From https://i.pravatar.cc/450");
                 url_Imagen = new URL("https://i.pravatar.cc/450");
                 obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
 

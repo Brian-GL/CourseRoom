@@ -228,7 +228,7 @@ public class Tareas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         String tipo_Tarea = "";
          
         Pagina_Tarea_Estudiante_Panel tarea_Estudiante_Panel;
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(5, 20); i++) {
+        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
             id = CourseRoom.Concatenar("Tarea_",i);
           
             switch (CourseRoom.Faker().number().numberBetween(1, 5)) {

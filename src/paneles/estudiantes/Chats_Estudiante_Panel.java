@@ -32,7 +32,7 @@ import javax.swing.table.TableRowSorter;
  */
 public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
 
-    private Lista<Chat_Estudiante_Panel> lista_Chats;
+    private static Lista<Chat_Estudiante_Panel> lista_Chats;
    
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Chats_Estudiante_Panel(){
@@ -196,8 +196,28 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     }//GEN-LAST:event_buscar_JButtonMouseExited
 
     public static int Numero_Chats() {
-        return chats_JTable.getRowCount();
+        return lista_Chats.size();
     }
+    
+    public static void Agregar_Chat(Celda_Renderer nombre_Completo, Celda_Renderer fecha, String id){
+        
+        DefaultTableModel modelo = (DefaultTableModel) chats_JTable.getModel();
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        celdas[0] = nombre_Completo;
+        celdas[0].Color_Fuente(CourseRoom.Primer_Color_Fuente());
+        celdas[1] = new Celda_Renderer("",id);
+        celdas[1].Color_Fuente(CourseRoom.Primer_Color_Fuente());
+        celdas[2] = fecha;
+        celdas[2].Color_Fuente(CourseRoom.Primer_Color_Fuente());
+        celdas[3] = new Celda_Renderer("",id);
+        celdas[3].Color_Fuente(CourseRoom.Primer_Color_Fuente());
+        modelo.addRow(celdas);
+        Chat_Estudiante_Panel chat_Estudiante_Panel = 
+                new Chat_Estudiante_Panel(nombre_Completo.Label().getText(), id);
+        lista_Chats.push_back(chat_Estudiante_Panel);
+        Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id);
+    }
+    
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar_JButton;
@@ -228,10 +248,10 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Image obtener_Imagen = null;
         ImageIcon icono_Chat = null;
         Chat_Estudiante_Panel chat_Estudiante_Panel;
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(5, 20); i++) {
+        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
             id = CourseRoom.Concatenar("Chat_",i);
             try {
-                System.out.println("Chat ID: " + i + " -> Getting Image From https://i.pravatar.cc/96");
+                System.out.println(id + " -> Getting Image From https://i.pravatar.cc/96");
                 url_Imagen = new URL("https://i.pravatar.cc/96");
                 obtener_Imagen = ImageIO.read(url_Imagen);
                 icono_Chat = new ImageIcon(obtener_Imagen);

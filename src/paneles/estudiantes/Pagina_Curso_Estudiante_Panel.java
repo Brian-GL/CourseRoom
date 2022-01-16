@@ -9,7 +9,6 @@ import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Color;
 import java.awt.Image;
-import main.CourseRoom;
 
 
 /**
@@ -138,6 +137,8 @@ public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements
     @Override
     public void Iniciar_Componentes() {
         
+        curso_Miembros_Estudiante_Panel = new Curso_Miembros_Estudiante_Panel();
+        
         miembros_JScrollPane.getViewport().setOpaque(false);
         buscar_JScrollPane.getViewport().setOpaque(false);
         foro_JScrollPane.getViewport().setOpaque(false);
@@ -162,31 +163,25 @@ public class Pagina_Curso_Estudiante_Panel extends javax.swing.JPanel implements
         tablero_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         tu_Trabajo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
-//        Miembro_Curso_Estudiante_Panel miembro_Panel;
-//        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
-//           miembro_Panel = new Miembro_Curso_Estudiante_Panel();
-//           curso_Miembros_Estudiante_Panel.Agregar_Miembro(miembro_Panel);
-//        }
-//        
         informacion_Curso_JScrollPane.setViewportView(curso_Informacion_Estudiante_Panel);
         tablero_Curso_JScrollPane.setViewportView(curso_Tablero_Estudiante_Panel);
         miembros_JScrollPane.setViewportView(curso_Miembros_Estudiante_Panel);
         
-        
-
 //        curso_Informacion_Estudiante_Panel
 //                = new Curso_Informacion_Estudiante_Panel(nombre_Curso, nombre_Profesor, imagen_Curso, imagen_Profesor,
-//                        _primer_Color, _primer_Color_Fuente, _segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
+//                        primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
 //
 //        curso_Tablero_Estudiante_Panel = new Curso_Tablero_Estudiante_Panel(_primer_Color, _primer_Color_Fuente,
 //                _segundo_Color, _segundo_Color_Fuente, _tercer_Color, _tercer_Color_Fuente);
-//        curso_Miembros_Estudiante_Panel = new Curso_Miembros_Estudiante_Panel(_tercer_Color, _tercer_Color_Fuente);
+        
+        
         
     }
 
     @Override
     public void Colorear_Componentes() {
         contenido_JTabbedPane.setBackground(primer_Color);
+        curso_Miembros_Estudiante_Panel.Establecer_Colores(primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
     }
     
     @Override

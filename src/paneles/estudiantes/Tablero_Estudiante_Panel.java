@@ -1005,26 +1005,25 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             perfil_Panel = new Perfil_Estudiante_Panel();
             visualizador_JPanel.add("Perfil",perfil_Panel);
             
+            pagina_Chats_Panel = new Pagina_Chats_Estudiante_Panel();
+            visualizador_JPanel.add("Pagina_Chats", pagina_Chats_Panel);
+            
+            pagina_Grupos_Panel = new Pagina_Grupos_Estudiante_Panel();
+            visualizador_JPanel.add("Pagina_Grupos", pagina_Grupos_Panel);
+
             editar_Perfil_Panel = new Editar_Perfil_Estudiante_Panel();
             visualizador_JPanel.add("Editar_Perfil",editar_Perfil_Panel);
             
             pagina_Tareas_Panel = new Pagina_Tareas_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Tareas",pagina_Tareas_Panel);
             
-            pagina_Cursos_Panel = new Pagina_Cursos_Estudiante_Panel();
-            visualizador_JPanel.add("Pagina_Cursos",pagina_Cursos_Panel);
+            
             
             pagina_Fechas_Panel = new Pagina_Fechas_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Fechas",pagina_Fechas_Panel);
             
             pagina_Avisos_Panel = new Pagina_Avisos_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Avisos",pagina_Avisos_Panel);
-            
-            pagina_Grupos_Panel = new Pagina_Grupos_Estudiante_Panel();
-            visualizador_JPanel.add("Pagina_Grupos",pagina_Grupos_Panel);
-            
-            pagina_Chats_Panel = new Pagina_Chats_Estudiante_Panel();
-            visualizador_JPanel.add("Pagina_Chats",pagina_Chats_Panel);
             
             acerca_De_Panel = new Acerca_De_General_Panel();
             visualizador_JPanel.add("Acerca_De",acerca_De_Panel);
@@ -1037,6 +1036,9 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             
             pagina_Dudas_Panel = new Pagina_Dudas_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Dudas", pagina_Dudas_Panel);
+            
+            pagina_Cursos_Panel = new Pagina_Cursos_Estudiante_Panel();
+            visualizador_JPanel.add("Pagina_Cursos", pagina_Cursos_Panel);
             
             layout = (CardLayout) visualizador_JPanel.getLayout();
             nombre_Usuario_JLabel.setText(CourseRoom.Faker().name().username());

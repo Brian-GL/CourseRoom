@@ -1333,7 +1333,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         descripcion_Tarea_Pendiente_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         Miembro_Grupo_Estudiante_Panel miembro_Panel;
-        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10);i++){
+        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5);i++){
             miembro_Panel = new Miembro_Grupo_Estudiante_Panel();
             eliminar_Miembro_JComboBox.addItem(miembro_Panel.Nombre_Completo());
             miembros_JPanel.add(miembro_Panel);
@@ -1487,8 +1487,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         enviar_Imagenes_JButton.setBackground(segundo_Color);
         enviar_Videos_JButton.setBackground(segundo_Color);
         
-        archivos_Compartidos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        archivos_Compartidos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        archivos_Compartidos_JTable.getTableHeader().setBackground(segundo_Color);
+        archivos_Compartidos_JTable.getTableHeader().setForeground(segundo_Color_Fuente);
         
         DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
         Celda_Renderer celda;

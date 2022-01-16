@@ -5,6 +5,7 @@
  */
 package paneles.estudiantes;
 
+import clases.Celda_Renderer;
 import main.CourseRoom;
 import java.awt.Color;
 import java.awt.Image;
@@ -19,6 +20,7 @@ import javax.swing.Icon;
 import interfaces.Color_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
+import java.time.LocalDate;
 import javax.swing.SwingUtilities;
 
 /**
@@ -28,6 +30,7 @@ import javax.swing.SwingUtilities;
 public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Color_Interface, Componentes_Interface {
 
     private String nombre_Completo;
+    private String id_Chat;
     private Color primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
 
     /**
@@ -151,11 +154,8 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
     private void chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chat_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            int chat_Aleatorio = CourseRoom.Faker().number().numberBetween(1, Chats_Estudiante_Panel.Numero_Chats());
-
-            String llave = CourseRoom.Concatenar("Chat_", chat_Aleatorio);
-
-            Tablero_Estudiante_Panel.Mostrar_Vista(llave);
+            
+            Tablero_Estudiante_Panel.Mostrar_Vista(id_Chat);
         }
     }//GEN-LAST:event_chat_JButtonMouseClicked
 
@@ -240,8 +240,7 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
 
             ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
             imagen_jLabel.setIcon(icono_Imagen);
-            obtener_Imagen.flush();
-            obtener_Imagen.getGraphics().dispose();
+            
 
             String nombre = CourseRoom.Concatenar(CourseRoom.Faker().name().firstName(), " ", CourseRoom.Faker().name().firstName());
             String apellido = CourseRoom.Concatenar(CourseRoom.Faker().name().lastName(), " ", CourseRoom.Faker().name().lastName());
@@ -250,7 +249,19 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
             apellidos_JLabel.setText(apellido);
             nombres_JLabel.setText(nombre);
             nombre_Usuario_JLabel.setText(CourseRoom.Faker().name().username());
+            
+            id_Chat = CourseRoom.Concatenar("Chat_", Chats_Estudiante_Panel.Numero_Chats());
+            
+            Celda_Renderer nombre_Completo_Celda = 
+                    new Celda_Renderer(icono_Imagen,CourseRoom.Concatenar(nombre, apellido),
+                            id_Chat);
+            
+            Celda_Renderer fecha = new Celda_Renderer(LocalDate.now().toString(),id_Chat);
+            
+            Chats_Estudiante_Panel.Agregar_Chat(nombre_Completo_Celda, fecha, id_Chat);
 
+            obtener_Imagen.flush();
+            obtener_Imagen.getGraphics().dispose();
             Colorear_Componentes();
 
         } catch (IOException ex) {

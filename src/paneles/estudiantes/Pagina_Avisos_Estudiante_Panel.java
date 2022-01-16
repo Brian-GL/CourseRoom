@@ -179,7 +179,7 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         ImageIcon aviso_Grupo = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
         ImageIcon aviso_Chat = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
         
-        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(5,20);i++){
+        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1,5);i++){
             switch(CourseRoom.Faker().number().numberBetween(1,5)){
                 case 1:
                     icono = aviso_Curso;

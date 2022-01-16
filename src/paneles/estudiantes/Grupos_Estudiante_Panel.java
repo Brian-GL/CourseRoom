@@ -230,10 +230,10 @@ public class Grupos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         Image obtener_Imagen,grupo;
         ImageIcon icono_Grupo;
         Grupo_Estudiante_Panel grupo_Estudiante_Panel;
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(5, 20); i++) {
+        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
             id = CourseRoom.Concatenar("Grupo_", i);
             try {
-                System.out.println("Grupo ID: " + i + " -> Getting Image From https://picsum.photos/450/450");
+                System.out.println(id + " -> Getting Image From https://picsum.photos/450/450");
                 url_Imagen = new URL("https://picsum.photos/450/450");
                 obtener_Imagen = ImageIO.read(url_Imagen);
                

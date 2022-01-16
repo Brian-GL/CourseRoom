@@ -5,10 +5,18 @@
  */
 package paneles.estudiantes;
 
+import clases.Celda_Renderer;
+import datos.colecciones.Lista;
+import datos.estructuras.Nodo;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import main.CourseRoom;
 
 /**
@@ -17,6 +25,8 @@ import main.CourseRoom;
  */
 public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
 
+    private Lista<Pagina_Curso_Estudiante_Panel> lista_Cursos;
+    
     /**
      * Creates new form Cursos_Agrupados_Estudiante_Panel
      */
@@ -35,21 +45,13 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contenido_JScrollPane = new javax.swing.JScrollPane();
-        contenido_JPanel = new javax.swing.JPanel();
         buscar_JTextField = new javax.swing.JTextField();
         cursos_JButton = new javax.swing.JButton();
-        filtrar_Por_JComboBox = new javax.swing.JComboBox<>();
+        cursos_JScrollPane = new javax.swing.JScrollPane();
+        cursos_JTable = new javax.swing.JTable();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1080, 630));
-
-        contenido_JScrollPane.setBorder(null);
-        contenido_JScrollPane.setOpaque(false);
-
-        contenido_JPanel.setOpaque(false);
-        contenido_JPanel.setLayout(new java.awt.GridLayout(0, 2));
-        contenido_JScrollPane.setViewportView(contenido_JPanel);
 
         buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         buscar_JTextField.setToolTipText("<html> <h3>Buscar curso(s). Presiona ENTER para realizar la búsqueda</h3> </html>");
@@ -75,44 +77,77 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
             }
         });
 
-        filtrar_Por_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-        filtrar_Por_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General", "Actuales", "Nuevos", "Recomendados", "Finalizados" }));
-        filtrar_Por_JComboBox.setToolTipText("<html> <h3>Filtrar búsqueda de cursos por</h3> </html>");
-        filtrar_Por_JComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                filtrar_Por_JComboBoxItemStateChanged(evt);
-            }
-        });
+        cursos_JScrollPane.setBorder(null);
+        cursos_JScrollPane.setOpaque(false);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contenido_JScrollPane)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cursos_JButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filtrar_Por_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buscar_JTextField)
-                    .addComponent(cursos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(filtrar_Por_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contenido_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-    }// </editor-fold>//GEN-END:initComponents
+        cursos_JTable.setAutoCreateRowSorter(true);
+        cursos_JTable.setModel(
+
+            new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+
+                },
+                new String [] {
+                    "Curso", "Profesor", "Temáticas", "Fecha" ,"Calificación"
+                }
+            ) {
+                boolean[] canEdit = new boolean [] {
+                    false, false, false, false, false
+                };
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit [columnIndex];
+                }
+
+                @Override
+                public Class getColumnClass(int column)
+                {
+                    for(int i = 0; i < cursos_JTable.getRowCount(); i++)
+                    {
+                        //The first valid value of a cell of given column is retrieved.
+                        if(getValueAt(i,column) != null)
+                        {
+                            return getValueAt(i, column).getClass();
+                        }
+                    }
+                    //if no valid value is found, default renderer is returned.
+                    return super.getColumnClass(column);
+                }
+            });
+            cursos_JTable.setOpaque(false);
+            cursos_JTable.setRowHeight(100);
+            cursos_JTable.setRowMargin(15);
+            cursos_JTable.setShowGrid(true);
+            cursos_JTable.setShowVerticalLines(false);
+            cursos_JTable.setRowSorter(new TableRowSorter(cursos_JTable.getModel()));
+            cursos_JScrollPane.setViewportView(cursos_JTable);
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+            this.setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(cursos_JButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(buscar_JTextField))
+                        .addComponent(cursos_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(buscar_JTextField)
+                        .addComponent(cursos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cursos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+        }// </editor-fold>//GEN-END:initComponents
 
     private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
         // TODO add your handling code here:
@@ -135,30 +170,53 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
         cursos_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_cursos_JButtonMouseExited
 
-    private void filtrar_Por_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtrar_Por_JComboBoxItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_filtrar_Por_JComboBoxItemStateChanged
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscar_JTextField;
-    private javax.swing.JPanel contenido_JPanel;
-    private javax.swing.JScrollPane contenido_JScrollPane;
     private javax.swing.JButton cursos_JButton;
-    private javax.swing.JComboBox<String> filtrar_Por_JComboBox;
+    private javax.swing.JScrollPane cursos_JScrollPane;
+    private static javax.swing.JTable cursos_JTable;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
-        contenido_JScrollPane.getViewport().setOpaque(false);
-        contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        cursos_JScrollPane.getViewport().setOpaque(false);
+        cursos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        cursos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+
+        lista_Cursos = new Lista<>();
+
+        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        cursos_JTable.getTableHeader().setFont(gadugi);
+
+        cursos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+ 
+
+        cursos_JTable.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+
+                    JTable tabla = (JTable) e.getComponent();
+                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                    int columna = tabla.getSelectedColumn();
+
+                    DefaultTableModel modelo = (DefaultTableModel) cursos_JTable.getModel();
+
+                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                }
+            }
+        });
     }
 
     @Override
     public void Colorear_Componentes() {
         Font gadugi = new java.awt.Font("Gadugi", 1, 16);
         buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Buscar Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                "Buscar Cursos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
                 gadugi, CourseRoom.Tercer_Color_Fuente()));
         
@@ -166,20 +224,30 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
         buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
         buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
         
-        filtrar_Por_JComboBox.setBackground(CourseRoom.Tercer_Color());
-        filtrar_Por_JComboBox.setForeground(CourseRoom.Tercer_Color_Fuente());
-        filtrar_Por_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Filtro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Tercer_Color_Fuente())); // NOI18N
-        
         cursos_JButton.setBackground(CourseRoom.Primer_Color());
         
+        DefaultTableModel modelo = (DefaultTableModel) cursos_JTable.getModel();
+        Celda_Renderer celda;
+        for (int i = 0; i < cursos_JTable.getRowCount(); i++) {
+            for (int j = 0; j < 5; j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+            }
+        }
+
+        Pagina_Curso_Estudiante_Panel curso_Estudiante_Panel;
+        for (Nodo<Pagina_Curso_Estudiante_Panel> nodo = lista_Cursos.front(); nodo != null; nodo = nodo.next()) {
+            curso_Estudiante_Panel = nodo.element();
+            curso_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
+                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
+                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+        }
     }
-    
+
     @Override
     public void Limpiar() {
-        contenido_JPanel.removeAll();
+        lista_Cursos.clear();
+        cursos_JTable.removeAll();
     }
 
 }
