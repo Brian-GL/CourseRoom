@@ -237,9 +237,7 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         Duda_Estudiante_Panel duda_Estudiante_Panel;
         for (Nodo<Duda_Estudiante_Panel> nodo = lista_Dudas.front(); nodo != null; nodo = nodo.next()) {
             duda_Estudiante_Panel = nodo.element();
-            duda_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            duda_Estudiante_Panel.Colorear_Componentes();
         }
         
     }

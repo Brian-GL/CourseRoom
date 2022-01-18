@@ -6,7 +6,6 @@
 package paneles.estudiantes;
 
 import main.CourseRoom;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -24,7 +23,6 @@ import java.awt.Font;
  */
 public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
-    private Color primer_Color, segundo_Color,tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
     private String ID;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
@@ -230,7 +228,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         archivos_Adjuntos_JPanel.setToolTipText("Archivos Adjuntos");
         archivos_Adjuntos_JPanel.setOpaque(false);
-        archivos_Adjuntos_JPanel.setLayout(new java.awt.GridLayout(1, 0));
+        archivos_Adjuntos_JPanel.setLayout(new javax.swing.BoxLayout(archivos_Adjuntos_JPanel, javax.swing.BoxLayout.X_AXIS));
         archivos_Adjuntos_JScrollPane.setViewportView(archivos_Adjuntos_JPanel);
 
         descripcion_JScrollPane.setBorder(null);
@@ -339,14 +337,14 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void enviar_Tarea_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Tarea_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Tarea_JButton.setBackground(tercer_Color);
-        enviar_Tarea_JButton.setForeground(tercer_Color_Fuente);
+        enviar_Tarea_JButton.setBackground(CourseRoom.Tercer_Color());
+        enviar_Tarea_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_enviar_Tarea_JButtonMouseEntered
 
     private void enviar_Tarea_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Tarea_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Tarea_JButton.setBackground(segundo_Color);
-        enviar_Tarea_JButton.setForeground(segundo_Color_Fuente);
+        enviar_Tarea_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Tarea_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_enviar_Tarea_JButtonMouseExited
 
     private void enviar_Comentarios_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enviar_Comentarios_JTextFieldKeyPressed
@@ -367,14 +365,14 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void subir_Archivos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Archivos_JButtonMouseExited
         // TODO add your handling code here:
-        subir_Archivos_JButton.setBackground(tercer_Color);
-        subir_Archivos_JButton.setForeground(tercer_Color_Fuente);
+        subir_Archivos_JButton.setBackground(CourseRoom.Tercer_Color());
+        subir_Archivos_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_subir_Archivos_JButtonMouseExited
 
     private void subir_Archivos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Archivos_JButtonMouseEntered
         // TODO add your handling code here:
-        subir_Archivos_JButton.setBackground(segundo_Color);
-        subir_Archivos_JButton.setForeground(segundo_Color_Fuente);
+        subir_Archivos_JButton.setBackground(CourseRoom.Segundo_Color());
+        subir_Archivos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_subir_Archivos_JButtonMouseEntered
 
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
@@ -386,12 +384,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void regresar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_JButton.setBackground(segundo_Color);
+        regresar_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_regresar_JButtonMouseEntered
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_JButton.setBackground(tercer_Color);
+        regresar_JButton.setBackground(CourseRoom.Tercer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private void curso_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_curso_JLabelMouseClicked
@@ -405,7 +403,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
        
         Comentario_Tarea_General_Panel comentario_Tarea_General_Panel = 
                 new Comentario_Tarea_General_Panel(CourseRoom.Faker().name().fullName(),
-                        enviar_Comentarios_JTextField.getText(),segundo_Color,segundo_Color_Fuente);
+                        enviar_Comentarios_JTextField.getText());
         comentarios_Subidos_JPanel.add(comentario_Tarea_General_Panel,LEFT_ALIGNMENT);
         enviar_Comentarios_JTextField.setText("");
        
@@ -436,24 +434,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     
     public String ID(){
         return this.ID;
-    }
-    
-    public void Establecer_Colores(Color _primer_Color, 
-            Color _primer_Color_Fuente, 
-            Color _segundo_Color,
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color,
-            Color _tercer_Color_Fuente) {
-        
-        primer_Color = _primer_Color;
-        primer_Color_Fuente = _primer_Color_Fuente;
-        segundo_Color = _segundo_Color;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-        tercer_Color = _tercer_Color;
-        tercer_Color_Fuente = _tercer_Color_Fuente;
-        
-        Colorear_Componentes();
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -510,60 +490,65 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     @Override
     public void Colorear_Componentes() {
         
-        subir_Archivos_JButton.setBackground(tercer_Color);
-        subir_Archivos_JButton.setForeground(tercer_Color_Fuente);
+        subir_Archivos_JButton.setBackground(CourseRoom.Tercer_Color());
+        subir_Archivos_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
         
-        enviar_Comentarios_JTextField.setForeground(tercer_Color_Fuente);
-        enviar_Comentarios_JTextField.setCaretColor(tercer_Color_Fuente);
-        enviar_Comentarios_JTextField.setBackground(tercer_Color);
+        enviar_Comentarios_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
+        enviar_Comentarios_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        enviar_Comentarios_JTextField.setBackground(CourseRoom.Tercer_Color());
 
-        nombre_JLabel.setForeground(segundo_Color_Fuente);
-        nombre_JLabel.setBackground(segundo_Color);
+        nombre_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        nombre_JLabel.setBackground(CourseRoom.Segundo_Color());
 
-        nombre_Profesor_JLabel.setForeground(primer_Color_Fuente);
+        nombre_Profesor_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
 
-        curso_JLabel.setForeground(primer_Color_Fuente);
+        curso_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
 
-        fecha_Entrega_JLabel.setForeground(primer_Color_Fuente);
+        fecha_Entrega_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         
-        descripcion_JTextPane.setForeground(primer_Color_Fuente);
+        descripcion_JTextPane.setForeground(CourseRoom.Primer_Color_Fuente());
         
-        enviar_Tarea_JButton.setBackground(segundo_Color);
-        enviar_Tarea_JButton.setForeground(segundo_Color_Fuente);
+        enviar_Tarea_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Tarea_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
 
-        regresar_JButton.setBackground(tercer_Color);
+        regresar_JButton.setBackground(CourseRoom.Tercer_Color());
         
-        estatus_JLabel.setForeground(primer_Color_Fuente);
+        estatus_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
 
-        this.setBackground(primer_Color);
+        this.setBackground(CourseRoom.Primer_Color());
         
         Font gadugi = new Font("Gadugi", 0, 18);
         
-        mi_Trabajo_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(primer_Color_Fuente), "Mi Trabajo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION,gadugi ,primer_Color_Fuente));
-        comentarios_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(primer_Color_Fuente), "Comentarios De La Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi,primer_Color_Fuente));
+        mi_Trabajo_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Primer_Color_Fuente()), "Mi Trabajo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,gadugi ,CourseRoom.Primer_Color_Fuente()));
+        comentarios_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Primer_Color_Fuente()), "Comentarios De La Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi,CourseRoom.Primer_Color_Fuente()));
         
-        archivos_Adjuntos_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(primer_Color_Fuente), "Archivos Adjuntos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi,primer_Color_Fuente));
+        archivos_Adjuntos_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Primer_Color_Fuente()), "Archivos Adjuntos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi,CourseRoom.Primer_Color_Fuente()));
         
-        descripcion_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(primer_Color_Fuente), "Descripcion De La Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi,primer_Color_Fuente));
+        descripcion_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Primer_Color_Fuente()), "Descripcion De La Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi,CourseRoom.Primer_Color_Fuente()));
         
-        Component[] archivos = archivos_Adjuntos_JPanel.getComponents();
+        Component[] componentes = archivos_Adjuntos_JPanel.getComponents();
         Component componente;
-        for(int i = 0; i < archivos.length;i++){
-            componente = archivos[i];
-            ((Archivo_Adjunto_Tarea_General_Panel)componente).Establecer_Colores(segundo_Color, segundo_Color_Fuente, 
-                    tercer_Color, tercer_Color_Fuente);
+        for(int i = 0; i < componentes.length;i++){
+            componente = componentes[i];
+            ((Archivo_Adjunto_Tarea_General_Panel)componente).Colorear_Componentes();
         }
         
-        archivos = archivos_Subidos_JPanel.getComponents();
-        for(int i = 0; i < archivos.length;i++){
-            componente = archivos[i];
-            ((Archivo_Subido_Tarea_Estudiante_Panel)componente).Establecer_Colores(primer_Color, primer_Color_Fuente,
-                    segundo_Color, segundo_Color_Fuente);
+        componentes = archivos_Subidos_JPanel.getComponents();
+        for(int i = 0; i < componentes.length;i++){
+            componente = componentes[i];
+            ((Archivo_Subido_Tarea_Estudiante_Panel)componente).Colorear_Componentes();
         }
+        
+        componentes = comentarios_Subidos_JPanel.getComponents();
+        for(int i = 0; i < componentes.length;i++){
+            componente = componentes[i];
+            ((Comentario_Tarea_General_Panel)componente).Colorear_Componentes();
+        }
+        
         
     }
     
@@ -573,7 +558,5 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         comentarios_Subidos_JPanel.removeAll();
         archivos_Adjuntos_JPanel.removeAll();
         archivos_Subidos_JPanel.removeAll();
-        primer_Color =  segundo_Color = tercer_Color = 
-        primer_Color_Fuente =  segundo_Color_Fuente =  tercer_Color_Fuente = null;
     }
 }

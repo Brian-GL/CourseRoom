@@ -5,24 +5,21 @@
  */
 package paneles.generales;
 
-import java.awt.Color;
+import interfaces.Componentes_Interface;
 import java.io.File;
+import main.CourseRoom;
 
 /**
  *
  * @author LENOVO
  */
-public class Mensaje_Archivo_Izquierdo_General_Panel extends javax.swing.JPanel{
+public class Mensaje_Archivo_Izquierdo_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
-    /**
-     * Creates new form FileMessagePanel
-     */
+    
     public Mensaje_Archivo_Izquierdo_General_Panel(
             String emisor,
             String fecha,
-            File archivo,
-            Color _segundo_Color,
-            Color _segundo_Color_Fuente) {
+            File archivo) {
 
         initComponents();
 
@@ -30,12 +27,7 @@ public class Mensaje_Archivo_Izquierdo_General_Panel extends javax.swing.JPanel{
         emisor_JLabel.setText(emisor);
         nombre_Archivo_JLabel.setText(archivo.getName());
 
-        contenido_JPanel.setBackground(_segundo_Color);
-        contenido_JPanel.setForeground(_segundo_Color_Fuente);
-
-        fecha_JLabel.setForeground(_segundo_Color_Fuente);
-        emisor_JLabel.setForeground(_segundo_Color_Fuente);
-        nombre_Archivo_JLabel.setForeground(_segundo_Color_Fuente);
+        Iniciar_Componentes();
         
     }
 
@@ -143,5 +135,20 @@ public class Mensaje_Archivo_Izquierdo_General_Panel extends javax.swing.JPanel{
     private javax.swing.JLabel fecha_JLabel;
     private javax.swing.JLabel nombre_Archivo_JLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Iniciar_Componentes() {
+        Colorear_Componentes();
+    }
+
+    @Override
+    public void Colorear_Componentes() {
+        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
+        contenido_JPanel.setForeground(CourseRoom.Segundo_Color_Fuente());
+
+        fecha_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        emisor_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        nombre_Archivo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }
 
 }

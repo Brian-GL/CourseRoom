@@ -7,8 +7,6 @@ package paneles.estudiantes;
 
 import interfaces.Componentes_Interface;
 import main.CourseRoom;
-import interfaces.Limpieza_Interface;
-import java.awt.Color;
 import java.io.File;
 import javax.swing.SwingUtilities;
 
@@ -16,9 +14,8 @@ import javax.swing.SwingUtilities;
  *
  * @author LENOVO
  */
-public class Archivo_Subido_Tarea_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface,Limpieza_Interface{
+public class Archivo_Subido_Tarea_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
-    private Color primer_Color,primer_Color_Fuente,segundo_Color, segundo_Color_Fuente;
     private File archivo_Subido;
     
     public Archivo_Subido_Tarea_Estudiante_Panel(
@@ -137,32 +134,15 @@ public class Archivo_Subido_Tarea_Estudiante_Panel extends javax.swing.JPanel im
 
     private void remover_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_remover_JButtonMouseEntered
         // TODO add your handling code here:
-        remover_JButton.setForeground(primer_Color_Fuente);
-        remover_JButton.setBackground(primer_Color);
+        remover_JButton.setForeground(CourseRoom.Primer_Color_Fuente());
+        remover_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_remover_JButtonMouseEntered
 
     private void remover_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_remover_JButtonMouseExited
         // TODO add your handling code here:
-        remover_JButton.setForeground(segundo_Color_Fuente);
-        remover_JButton.setBackground(segundo_Color);
+        remover_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        remover_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_remover_JButtonMouseExited
-
-    public void Establecer_Colores(
-            Color _primer_Color,
-            Color _primer_Color_Fuente,
-            Color _segundo_Color,
-            Color _segundo_Color_Fuente) {
-        
-
-        primer_Color = _primer_Color;
-        primer_Color_Fuente = _primer_Color_Fuente;
-        segundo_Color = _segundo_Color;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-    
-        
-        Colorear_Componentes();
-        
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane archivo_JScrollPane;
@@ -178,22 +158,18 @@ public class Archivo_Subido_Tarea_Estudiante_Panel extends javax.swing.JPanel im
         archivo_JTextPane.setText(CourseRoom.Formato_HTML_Central(informacion_Archivo));
         archivo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         archivo_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        Colorear_Componentes();
     }
 
     @Override
     public void Colorear_Componentes() {
-        archivo_JTextPane.setForeground(primer_Color_Fuente);
-        archivo_JTextPane.setBackground(primer_Color);
+        archivo_JTextPane.setForeground(CourseRoom.Primer_Color_Fuente());
+        archivo_JTextPane.setBackground(CourseRoom.Primer_Color());
         
-        remover_JButton.setForeground(segundo_Color_Fuente);
-        remover_JButton.setBackground(segundo_Color);
+        remover_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        remover_JButton.setBackground(CourseRoom.Segundo_Color());
     }
     
-    @Override
-    public void Limpiar() {
-        primer_Color_Fuente = segundo_Color_Fuente = primer_Color =  segundo_Color = null;
-        archivo_Subido = null;
-    }
-
     
 }

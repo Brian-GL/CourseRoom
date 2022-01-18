@@ -244,9 +244,7 @@ public class Buscar_Grupos_Estudiante_Panel extends javax.swing.JPanel implement
         Grupo_Estudiante_Panel grupo_Estudiante_Panel;
         for (Nodo<Grupo_Estudiante_Panel> nodo = lista_Grupos.front(); nodo != null; nodo = nodo.next()) {
             grupo_Estudiante_Panel = nodo.element();
-            grupo_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            grupo_Estudiante_Panel.Colorear_Componentes();
         }
         
     }

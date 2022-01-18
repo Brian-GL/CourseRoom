@@ -168,7 +168,7 @@ public class Tareas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                     .addContainerGap())
             );
@@ -308,9 +308,7 @@ public class Tareas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         Pagina_Tarea_Estudiante_Panel tarea_Estudiante_Panel;
         for (Nodo<Pagina_Tarea_Estudiante_Panel> nodo = lista_Tareas.front(); nodo != null; nodo = nodo.next()) {
             tarea_Estudiante_Panel = nodo.element();
-            tarea_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            tarea_Estudiante_Panel.Colorear_Componentes();
         }
     }
     

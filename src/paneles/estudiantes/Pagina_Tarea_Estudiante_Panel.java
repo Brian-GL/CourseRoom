@@ -7,7 +7,6 @@ package paneles.estudiantes;
 
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
-import java.awt.Color;
 
 
 /**
@@ -61,22 +60,7 @@ public class Pagina_Tarea_Estudiante_Panel extends javax.swing.JPanel implements
         add(contenido_JScrollPane, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    public void Establecer_Colores(
-            Color _primer_Color, 
-            Color _segundo_Color, 
-            Color _tercer_Color, 
-            Color _primer_Color_Fuente, 
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color_Fuente ){
-        if(tarea_Estudiante_Panel != null){
-            tarea_Estudiante_Panel.Establecer_Colores( _primer_Color, 
-             _segundo_Color, 
-             _tercer_Color, 
-             _primer_Color_Fuente, 
-             _segundo_Color_Fuente,
-             _tercer_Color_Fuente );
-        }
-    }
+    
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
@@ -93,7 +77,7 @@ public class Pagina_Tarea_Estudiante_Panel extends javax.swing.JPanel implements
 
     @Override
     public void Colorear_Componentes() {
-       //No Soportado
+       tarea_Estudiante_Panel.Colorear_Componentes();
     }
     
     

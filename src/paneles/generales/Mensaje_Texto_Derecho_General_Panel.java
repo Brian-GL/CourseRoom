@@ -4,42 +4,28 @@
  * and open the template in the editor.
  */
 package paneles.generales;
-import java.awt.Color;
+import interfaces.Componentes_Interface;
 import main.CourseRoom;
 
 /**
  *
  * @author LENOVO
  */
-public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel{
+public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
     
     public Mensaje_Texto_Derecho_General_Panel(
             String emisor, 
             String fecha,
-            String mensaje, 
-            Color _tercer_Color,
-            Color _tercer_Color_Fuente) {
+            String mensaje) {
         
         initComponents();
-        
         
         fecha_JLabel.setText(fecha);
         emisor_JLabel.setText(emisor);
         mensaje_JTextPane.setText(CourseRoom.Formato_HTML_Central(mensaje));
         
-        contenido_JPanel.setBackground(_tercer_Color);
-        contenido_JPanel.setForeground(_tercer_Color_Fuente);
-
-        fecha_JLabel.setForeground(_tercer_Color_Fuente);
-        emisor_JLabel.setForeground(_tercer_Color_Fuente);
-        mensaje_JTextPane.setForeground(_tercer_Color_Fuente);
-        mensaje_JTextPane.setCaretPosition(0);
-        mensaje_JScrollPane.setForeground(_tercer_Color_Fuente);
-        
-        mensaje_JScrollPane.getViewport().setOpaque(false);
-        mensaje_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        mensaje_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        Iniciar_Componentes();
         
     }
 
@@ -164,6 +150,28 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel{
     private javax.swing.JScrollPane mensaje_JScrollPane;
     private javax.swing.JTextPane mensaje_JTextPane;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Iniciar_Componentes() {
+        mensaje_JTextPane.setCaretPosition(0);
+        mensaje_JScrollPane.getViewport().setOpaque(false);
+        mensaje_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        mensaje_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        Colorear_Componentes();
+    }
+
+    @Override
+    public void Colorear_Componentes() {
+        contenido_JPanel.setBackground(CourseRoom.Tercer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Tercer_Color_Fuente());
+
+        fecha_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        emisor_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        mensaje_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
+
+        mensaje_JScrollPane.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }
 
 
 }

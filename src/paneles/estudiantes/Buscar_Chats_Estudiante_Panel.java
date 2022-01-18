@@ -245,9 +245,7 @@ public class Buscar_Chats_Estudiante_Panel extends javax.swing.JPanel implements
         Chat_Estudiante_Panel chat_Estudiante_Panel;
         for (Nodo<Chat_Estudiante_Panel> nodo = lista_Chats.front(); nodo != null; nodo = nodo.next()) {
             chat_Estudiante_Panel = nodo.element();
-            chat_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            chat_Estudiante_Panel.Colorear_Componentes();
         }
         
     }

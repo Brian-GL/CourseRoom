@@ -6,8 +6,6 @@
 package paneles.generales;
 
 import interfaces.Componentes_Interface;
-import interfaces.Limpieza_Interface;
-import java.awt.Color;
 import javax.swing.SwingUtilities;
 import main.CourseRoom;
 
@@ -15,9 +13,8 @@ import main.CourseRoom;
  *
  * @author LENOVO
  */
-public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel implements Limpieza_Interface,Componentes_Interface{
+public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
-    private Color segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente;
     
     public Archivo_Adjunto_Tarea_General_Panel() {
         
@@ -172,43 +169,29 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
 
     private void abrir_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrir_JButtonMouseEntered
         // TODO add your handling code here:
-        abrir_JButton.setBackground(tercer_Color);
-        abrir_JButton.setForeground(tercer_Color_Fuente);
+        abrir_JButton.setBackground(CourseRoom.Tercer_Color());
+        abrir_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
         
     }//GEN-LAST:event_abrir_JButtonMouseEntered
 
     private void abrir_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrir_JButtonMouseExited
         // TODO add your handling code here:
-        abrir_JButton.setBackground(segundo_Color);
-        abrir_JButton.setForeground(segundo_Color_Fuente);
+        abrir_JButton.setBackground(CourseRoom.Segundo_Color());
+        abrir_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_abrir_JButtonMouseExited
 
     private void descargar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descargar_JButtonMouseEntered
         // TODO add your handling code here:
-        descargar_JButton.setBackground(tercer_Color);
-        descargar_JButton.setForeground(tercer_Color_Fuente);
+        descargar_JButton.setBackground(CourseRoom.Tercer_Color());
+        descargar_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_descargar_JButtonMouseEntered
 
     private void descargar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descargar_JButtonMouseExited
         // TODO add your handling code here:
-        descargar_JButton.setBackground(segundo_Color);
-        descargar_JButton.setForeground(segundo_Color_Fuente);
+        descargar_JButton.setBackground(CourseRoom.Segundo_Color());
+        descargar_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_descargar_JButtonMouseExited
 
-    public void Establecer_Colores(
-            Color _segundo_Color,
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color,
-            Color _tercer_Color_Fuente) {
-        
-        segundo_Color = _segundo_Color;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-        tercer_Color = _tercer_Color;
-        tercer_Color_Fuente = _tercer_Color_Fuente;
-        
-        Colorear_Componentes();
-        
-    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -228,27 +211,23 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         
         String informacion_Archivo = CourseRoom.Faker().file().fileName();
         archivo_JTextPane.setText(CourseRoom.Formato_HTML_Central(informacion_Archivo));
+        
+        Colorear_Componentes();
        
     }
 
     @Override
     public void Colorear_Componentes() {
         
-        contenido_JPanel.setBackground(tercer_Color);
-        contenido_JPanel.setForeground(tercer_Color_Fuente);
+        contenido_JPanel.setBackground(CourseRoom.Tercer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Tercer_Color_Fuente());
         
-        archivo_JTextPane.setForeground(tercer_Color_Fuente);
+        archivo_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
         
-        abrir_JButton.setBackground(segundo_Color);
-        abrir_JButton.setForeground(segundo_Color_Fuente);
+        abrir_JButton.setBackground(CourseRoom.Segundo_Color());
+        abrir_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         
-        descargar_JButton.setBackground(segundo_Color);
-        descargar_JButton.setForeground(segundo_Color_Fuente);
-        
-    }
-
-    @Override
-    public void Limpiar() {
-        segundo_Color =  segundo_Color_Fuente =  tercer_Color =  tercer_Color_Fuente = null;
+        descargar_JButton.setBackground(CourseRoom.Segundo_Color());
+        descargar_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }
 }

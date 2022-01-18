@@ -190,7 +190,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
                     .addContainerGap())
             );
@@ -263,9 +263,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         modelo.addRow(celdas);
         
         Duda_Estudiante_Panel duda_Estudiante_Panel = 
-                new Duda_Estudiante_Panel(nombre_Duda, descripcion_Duda, preguntador_Nombre, fecha, preguntador_Icono, id,
-                    CourseRoom.Primer_Color(),CourseRoom.Primer_Color_Fuente(),CourseRoom.Segundo_Color(),
-            CourseRoom.Segundo_Color_Fuente(),CourseRoom.Tercer_Color(),CourseRoom.Tercer_Color_Fuente());
+                new Duda_Estudiante_Panel(nombre_Duda, descripcion_Duda, preguntador_Nombre, fecha, preguntador_Icono, id);
         lista_Dudas.push_back(duda_Estudiante_Panel);
         Tablero_Estudiante_Panel.Agregar_Vista(duda_Estudiante_Panel, id);
         
@@ -343,9 +341,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Duda_Estudiante_Panel duda_Estudiante_Panel;
         for (Nodo<Duda_Estudiante_Panel> nodo = lista_Dudas.front(); nodo != null; nodo = nodo.next()) {
             duda_Estudiante_Panel = nodo.element();
-            duda_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            duda_Estudiante_Panel.Colorear_Componentes();
         }
     }
 

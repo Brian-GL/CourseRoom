@@ -9,7 +9,6 @@ import clases.Celda_Renderer;
 import main.CourseRoom;
 import com.github.lgooddatepicker.components.DateTimePicker;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -49,7 +48,6 @@ import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
 public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
     private final String ID;
-    private Color primer_Color, segundo_Color,tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
     private JScrollPane lista_Tareas_Pendientes_JScrollPane, lista_Tareas_Finalizadas_JScrollPane;
     private JPanel lista_Tareas_Pendientes_JPanel, lista_Tareas_Finalizadas_JPanel;
    
@@ -779,14 +777,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void editar_Imagen_Grupo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Imagen_Grupo_JButtonMouseEntered
         // TODO add your handling code here:
-        editar_Imagen_Grupo_JButton.setBackground(segundo_Color);
-        editar_Imagen_Grupo_JButton.setForeground(segundo_Color_Fuente);
+        editar_Imagen_Grupo_JButton.setBackground(CourseRoom.Segundo_Color());
+        editar_Imagen_Grupo_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_editar_Imagen_Grupo_JButtonMouseEntered
 
     private void editar_Imagen_Grupo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Imagen_Grupo_JButtonMouseExited
         // TODO add your handling code here:
-        editar_Imagen_Grupo_JButton.setBackground(tercer_Color);
-        editar_Imagen_Grupo_JButton.setForeground(tercer_Color_Fuente);
+        editar_Imagen_Grupo_JButton.setBackground(CourseRoom.Tercer_Color());
+        editar_Imagen_Grupo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_editar_Imagen_Grupo_JButtonMouseExited
 
     private void curso_Grupo_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_curso_Grupo_JLabelMouseClicked
@@ -815,7 +813,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 Grupo_Tarea_Pendiente_Estudiante_Panel grupo_Tarea_Pendiente_Estudiante_Panel
                         = new Grupo_Tarea_Pendiente_Estudiante_Panel(icono_Usuario,
                 tarea_Pendiente_nombre,tarea_Pendiente_descricion,tarea_Pendiente_fecha,Perfil_Estudiante_Panel.Nombre_Completo(),
-                                primer_Color, primer_Color_Fuente, segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
+                                CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(), CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(), CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
 
                 lista_Tareas_Pendientes_JPanel.add(grupo_Tarea_Pendiente_Estudiante_Panel);
                 
@@ -829,14 +827,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void compartir_Archivo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivo_JButtonMouseExited
         // TODO add your handling code here:
-        compartir_Archivo_JButton.setBackground(tercer_Color);
-        compartir_Archivo_JButton.setForeground(tercer_Color_Fuente);
+        compartir_Archivo_JButton.setBackground(CourseRoom.Tercer_Color());
+        compartir_Archivo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_compartir_Archivo_JButtonMouseExited
 
     private void compartir_Archivo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivo_JButtonMouseEntered
         // TODO add your handling code here:
-        compartir_Archivo_JButton.setBackground(segundo_Color);
-        compartir_Archivo_JButton.setForeground(segundo_Color_Fuente);
+        compartir_Archivo_JButton.setBackground(CourseRoom.Segundo_Color());
+        compartir_Archivo_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
         
     }//GEN-LAST:event_compartir_Archivo_JButtonMouseEntered
 
@@ -856,12 +854,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void regresar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_JButton.setBackground(tercer_Color);
+        regresar_JButton.setBackground(CourseRoom.Tercer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseEntered
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_JButton.setBackground(primer_Color);
+        regresar_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private void editar_Nombre_Grupo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_Grupo_JButtonMouseClicked
@@ -877,14 +875,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void editar_Nombre_Grupo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_Grupo_JButtonMouseEntered
         // TODO add your handling code here:
-        editar_Nombre_Grupo_JButton.setBackground(segundo_Color);
-        editar_Nombre_Grupo_JButton.setForeground(segundo_Color_Fuente);
+        editar_Nombre_Grupo_JButton.setBackground(CourseRoom.Segundo_Color());
+        editar_Nombre_Grupo_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_editar_Nombre_Grupo_JButtonMouseEntered
 
     private void editar_Nombre_Grupo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_Grupo_JButtonMouseExited
         // TODO add your handling code here:
-        editar_Nombre_Grupo_JButton.setBackground(tercer_Color);
-        editar_Nombre_Grupo_JButton.setForeground(tercer_Color_Fuente);
+        editar_Nombre_Grupo_JButton.setBackground(CourseRoom.Tercer_Color());
+        editar_Nombre_Grupo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_editar_Nombre_Grupo_JButtonMouseExited
 
     private void eliminar_Miembro_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Miembro_JButtonMouseClicked
@@ -893,14 +891,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void eliminar_Miembro_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Miembro_JButtonMouseEntered
         // TODO add your handling code here:
-        eliminar_Miembro_JButton.setBackground(segundo_Color);
-        eliminar_Miembro_JButton.setForeground(segundo_Color_Fuente);
+        eliminar_Miembro_JButton.setBackground(CourseRoom.Segundo_Color());
+        eliminar_Miembro_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_eliminar_Miembro_JButtonMouseEntered
 
     private void eliminar_Miembro_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Miembro_JButtonMouseExited
         // TODO add your handling code here:
-        eliminar_Miembro_JButton.setBackground(tercer_Color);
-        eliminar_Miembro_JButton.setForeground(tercer_Color_Fuente);
+        eliminar_Miembro_JButton.setBackground(CourseRoom.Tercer_Color());
+        eliminar_Miembro_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_eliminar_Miembro_JButtonMouseExited
 
     private void abandonar_Grupo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abandonar_Grupo_JButtonMouseClicked
@@ -909,14 +907,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void abandonar_Grupo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abandonar_Grupo_JButtonMouseEntered
         // TODO add your handling code here:
-        abandonar_Grupo_JButton.setBackground(segundo_Color.darker());
-        abandonar_Grupo_JButton.setForeground(segundo_Color_Fuente.brighter());
+        abandonar_Grupo_JButton.setBackground(CourseRoom.Segundo_Color().darker());
+        abandonar_Grupo_JButton.setForeground(CourseRoom.Segundo_Color_Fuente().brighter());
     }//GEN-LAST:event_abandonar_Grupo_JButtonMouseEntered
 
     private void abandonar_Grupo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abandonar_Grupo_JButtonMouseExited
         // TODO add your handling code here:
-        abandonar_Grupo_JButton.setBackground(tercer_Color.darker());
-        abandonar_Grupo_JButton.setForeground(tercer_Color_Fuente.brighter());
+        abandonar_Grupo_JButton.setBackground(CourseRoom.Tercer_Color().darker());
+        abandonar_Grupo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente().brighter());
     }//GEN-LAST:event_abandonar_Grupo_JButtonMouseExited
 
     private void mostrar_Tarea_Pendiente_Tipo_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_mostrar_Tarea_Pendiente_Tipo_JComboBoxItemStateChanged
@@ -948,12 +946,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void enviar_Videos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Videos_JButton.setBackground(primer_Color);
+        enviar_Videos_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_enviar_Videos_JButtonMouseEntered
 
     private void enviar_Videos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Videos_JButton.setBackground(segundo_Color);
+        enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_enviar_Videos_JButtonMouseExited
 
     private void enviar_Audios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseClicked
@@ -965,12 +963,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void enviar_Audios_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Audios_JButton.setBackground(primer_Color);
+        enviar_Audios_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_enviar_Audios_JButtonMouseEntered
 
     private void enviar_Audios_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Audios_JButton.setBackground(segundo_Color);
+        enviar_Audios_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_enviar_Audios_JButtonMouseExited
 
     private void enviar_Imagenes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseClicked
@@ -982,24 +980,24 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void enviar_Imagenes_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Imagenes_JButton.setBackground(primer_Color);
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseEntered
 
     private void enviar_Imagenes_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Imagenes_JButton.setBackground(segundo_Color);
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseExited
 
     private void anadir_Tarea_Pendiente_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anadir_Tarea_Pendiente_JButtonMouseEntered
         // TODO add your handling code here:
-        anadir_Tarea_Pendiente_JButton.setForeground(segundo_Color_Fuente);
-        anadir_Tarea_Pendiente_JButton.setBackground(segundo_Color);
+        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_anadir_Tarea_Pendiente_JButtonMouseEntered
 
     private void anadir_Tarea_Pendiente_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anadir_Tarea_Pendiente_JButtonMouseExited
         // TODO add your handling code here:
-        anadir_Tarea_Pendiente_JButton.setForeground(tercer_Color_Fuente);
-        anadir_Tarea_Pendiente_JButton.setBackground(tercer_Color);
+        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Tercer_Color());
     }//GEN-LAST:event_anadir_Tarea_Pendiente_JButtonMouseExited
 
     private void Enviar_Mensaje() {
@@ -1010,11 +1008,11 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             String fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
             if (CourseRoom.Random().nextInt(10) < 5) {
                 Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel
-                        = new Mensaje_Texto_Izquierdo_General_Panel(emisor, fecha, mensaje, segundo_Color, segundo_Color_Fuente);
+                        = new Mensaje_Texto_Izquierdo_General_Panel(emisor, fecha, mensaje);
                 mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
             } else {
                 Mensaje_Texto_Derecho_General_Panel mensaje_Texto_General_Panel
-                        = new Mensaje_Texto_Derecho_General_Panel(emisor, fecha, mensaje, tercer_Color, tercer_Color_Fuente);
+                        = new Mensaje_Texto_Derecho_General_Panel(emisor, fecha, mensaje);
                 mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
             }
             enviar_Mensaje_Chat_JTextField.setText("");
@@ -1048,7 +1046,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         emisor = CourseRoom.Faker().dune().character();
                         fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
-                                archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
+                                archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Video_Panel);
                     }
                 } else {
@@ -1058,7 +1056,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         emisor = CourseRoom.Faker().dune().character();
                         fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
-                                archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
+                                archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Video_Panel);
                     }
                 }
@@ -1100,7 +1098,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
                             mensaje_Imagen_Panel
                                     = new Mensaje_Imagen_Izquierdo_General_Panel(emisor, fecha, abrir_Imagen,
-                                            archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
+                                            archivo_Abierto.getName());
                             mensajes_Chat_JPanel.add(mensaje_Imagen_Panel);
                         } catch (IOException ex) {
                         }
@@ -1114,8 +1112,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             emisor = CourseRoom.Faker().dune().character();
                             fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
                             mensaje_Imagen_Panel
-                                    = new Mensaje_Imagen_Derecho_General_Panel(emisor, fecha, abrir_Imagen,
-                                            archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
+                                    = new Mensaje_Imagen_Derecho_General_Panel(emisor, fecha, abrir_Imagen, archivo_Abierto.getName());
                             mensajes_Chat_JPanel.add(mensaje_Imagen_Panel);
                         } catch (IOException ex) {
                         }
@@ -1153,7 +1150,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         emisor = CourseRoom.Faker().dune().character();
                         fecha = CourseRoom.Faker().date().birthday(0,1).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
-                                archivo_Abierto.getName(), segundo_Color, segundo_Color_Fuente);
+                                archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Audio_Panel);
                     }
                 } else {
@@ -1163,7 +1160,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         emisor = CourseRoom.Faker().dune().character();
                         fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
-                                archivo_Abierto.getName(), tercer_Color, tercer_Color_Fuente);
+                                archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Audio_Panel);
                     }
                 }
@@ -1194,15 +1191,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     id = CourseRoom.Concatenar("Archivo_Compartido_Grupo_", i);
                     archivo_Abierto = archivos_Abiertos[i];
                     celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),id);
-                    celdas[0].Color_Fuente(primer_Color_Fuente);
+                    celdas[0].Color_Fuente(CourseRoom.Primer_Color_Fuente());
                     celdas[1] = new Celda_Renderer(Tablero_Estudiante_Panel.Nombre_Usuario(),id);
-                    celdas[1].Color_Fuente(primer_Color_Fuente);
+                    celdas[1].Color_Fuente(CourseRoom.Primer_Color_Fuente());
                     celdas[2] = new Celda_Renderer(LocalDateTime.now().toString(),id);
-                    celdas[2].Color_Fuente(primer_Color_Fuente);
+                    celdas[2].Color_Fuente(CourseRoom.Primer_Color_Fuente());
                     celdas[3] = new Celda_Renderer(icono_Descargar,id);
-                    celdas[3].Color_Fuente(primer_Color_Fuente);
+                    celdas[3].Color_Fuente(CourseRoom.Primer_Color_Fuente());
                     celdas[4] = new Celda_Renderer(icono_Remover,id);
-                    celdas[4].Color_Fuente(primer_Color_Fuente);
+                    celdas[4].Color_Fuente(CourseRoom.Primer_Color_Fuente());
                     modelo.addRow(celdas);
                 }
             }
@@ -1211,24 +1208,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     
     public String ID(){
         return this.ID;
-    }
-    
-    public void Establecer_Colores(Color _primer_Color, 
-            Color _primer_Color_Fuente, 
-            Color _segundo_Color,
-            Color _segundo_Color_Fuente,
-            Color _tercer_Color,
-            Color _tercer_Color_Fuente) {
-        
-        primer_Color = _primer_Color;
-        primer_Color_Fuente = _primer_Color_Fuente;
-        segundo_Color = _segundo_Color;
-        segundo_Color_Fuente = _segundo_Color_Fuente;
-        tercer_Color = _tercer_Color;
-        tercer_Color_Fuente = _tercer_Color_Fuente;
-        
-        Colorear_Componentes();
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1383,6 +1362,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 }
             }
         });
+        
+        Colorear_Componentes();
+        
     }
     
      
@@ -1392,126 +1374,132 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Font gadugi = new java.awt.Font("Gadugi", 0, 18);
         
         anadir_Tarea_Pendiente_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(
-               javax.swing.BorderFactory.createLineBorder(primer_Color_Fuente), 
+               javax.swing.BorderFactory.createLineBorder(CourseRoom.Primer_Color_Fuente()), 
                "Agregar Pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-               gadugi,primer_Color_Fuente));
+               gadugi,CourseRoom.Primer_Color_Fuente()));
         
-        grupo_JTabbedPane.setBackground(primer_Color);
-        grupo_JTabbedPane.setForeground(primer_Color_Fuente);
+        grupo_JTabbedPane.setBackground(CourseRoom.Primer_Color());
+        grupo_JTabbedPane.setForeground(CourseRoom.Primer_Color_Fuente());
 
-        nombre_Grupo_JLabel.setBackground(segundo_Color);
-        nombre_Grupo_JLabel.setForeground(segundo_Color_Fuente);
+        nombre_Grupo_JLabel.setBackground(CourseRoom.Segundo_Color());
+        nombre_Grupo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
 
-        miembros_Titulo_JLabel.setBackground(segundo_Color);
-        miembros_Titulo_JLabel.setForeground(segundo_Color_Fuente);
+        miembros_Titulo_JLabel.setBackground(CourseRoom.Segundo_Color());
+        miembros_Titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
 
-        editar_Imagen_Grupo_JButton.setBackground(tercer_Color);
-        editar_Imagen_Grupo_JButton.setForeground(tercer_Color_Fuente);
+        editar_Imagen_Grupo_JButton.setBackground(CourseRoom.Tercer_Color());
+        editar_Imagen_Grupo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
         
-        abandonar_Grupo_JButton.setBackground(tercer_Color.darker());
-        abandonar_Grupo_JButton.setForeground(tercer_Color_Fuente.brighter());
+        abandonar_Grupo_JButton.setBackground(CourseRoom.Tercer_Color().darker());
+        abandonar_Grupo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente().brighter());
 
-        curso_Grupo_JLabel.setBackground(tercer_Color);
-        curso_Grupo_JLabel.setForeground(tercer_Color_Fuente);
+        curso_Grupo_JLabel.setBackground(CourseRoom.Tercer_Color());
+        curso_Grupo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
         
-        fecha_Creacion_JLabel.setForeground(primer_Color_Fuente);
-        editar_Nombre_Grupo_JLabel.setForeground(primer_Color_Fuente);
+        fecha_Creacion_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        editar_Nombre_Grupo_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
 
-        anadir_Tarea_Pendiente_JButton.setForeground(tercer_Color_Fuente);
-        anadir_Tarea_Pendiente_JButton.setBackground(tercer_Color);
+        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Tercer_Color());
         
-        compartir_Archivo_JButton.setForeground(tercer_Color_Fuente);
-        compartir_Archivo_JButton.setBackground(tercer_Color);
+        compartir_Archivo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        compartir_Archivo_JButton.setBackground(CourseRoom.Tercer_Color());
         
-        eliminar_Miembro_JLabel.setForeground(primer_Color_Fuente);
+        eliminar_Miembro_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         
         gadugi = new Font("Gadugi", 1, 14);
       
-        mostrar_Tarea_Pendiente_Tipo_JComboBox.setForeground(tercer_Color_Fuente);
-        mostrar_Tarea_Pendiente_Tipo_JComboBox.setBackground(tercer_Color);
+        mostrar_Tarea_Pendiente_Tipo_JComboBox.setForeground(CourseRoom.Tercer_Color_Fuente());
+        mostrar_Tarea_Pendiente_Tipo_JComboBox.setBackground(CourseRoom.Tercer_Color());
         mostrar_Tarea_Pendiente_Tipo_JComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(), 
                 "Mostrar Lista Por", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                gadugi,tercer_Color_Fuente)); // NOI18N
+                gadugi,CourseRoom.Tercer_Color_Fuente())); // NOI18N
         
-        tarea_Pendiente_JLabel.setForeground(primer_Color_Fuente);
+        tarea_Pendiente_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         
-        descripcion_Tarea_Pendiente_JLabel.setForeground(primer_Color_Fuente);
-        fecha_Finalizacion_Tarea_Pendiente_JLabel.setForeground(primer_Color_Fuente);
+        descripcion_Tarea_Pendiente_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        fecha_Finalizacion_Tarea_Pendiente_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         
-        tareas_Pendientes_JLabel.setForeground(tercer_Color_Fuente);
-        tareas_Pendientes_JLabel.setBackground(tercer_Color);
+        tareas_Pendientes_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        tareas_Pendientes_JLabel.setBackground(CourseRoom.Tercer_Color());
 
-        eliminar_Miembro_JComboBox.setForeground(tercer_Color_Fuente);
-        eliminar_Miembro_JComboBox.setBackground(tercer_Color);
+        eliminar_Miembro_JComboBox.setForeground(CourseRoom.Tercer_Color_Fuente());
+        eliminar_Miembro_JComboBox.setBackground(CourseRoom.Tercer_Color());
         
-        regresar_JButton.setBackground(primer_Color);
+        regresar_JButton.setBackground(CourseRoom.Primer_Color());
         
-        editar_Nombre_Grupo_JButton.setBackground(tercer_Color);
-        editar_Nombre_Grupo_JButton.setForeground(tercer_Color_Fuente);
+        editar_Nombre_Grupo_JButton.setBackground(CourseRoom.Tercer_Color());
+        editar_Nombre_Grupo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
         
-        eliminar_Miembro_JButton.setBackground(tercer_Color);
-        eliminar_Miembro_JButton.setForeground(tercer_Color_Fuente);
+        eliminar_Miembro_JButton.setBackground(CourseRoom.Tercer_Color());
+        eliminar_Miembro_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
 
-        nombre_Tarea_Pendiente_JTextField.setForeground(tercer_Color_Fuente);
-        nombre_Tarea_Pendiente_JTextField.setCaretColor(tercer_Color_Fuente);
-        nombre_Tarea_Pendiente_JTextField.setBackground(tercer_Color);
+        nombre_Tarea_Pendiente_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
+        nombre_Tarea_Pendiente_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        nombre_Tarea_Pendiente_JTextField.setBackground(CourseRoom.Tercer_Color());
         
-        editar_Nombre_Grupo_JTextField.setForeground(tercer_Color_Fuente);
-        editar_Nombre_Grupo_JTextField.setCaretColor(tercer_Color_Fuente);
-        editar_Nombre_Grupo_JTextField.setBackground(tercer_Color);
+        editar_Nombre_Grupo_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
+        editar_Nombre_Grupo_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        editar_Nombre_Grupo_JTextField.setBackground(CourseRoom.Tercer_Color());
         
-        descripcion_Tarea_Pendiente_JTextPane.setForeground(tercer_Color_Fuente);
-        descripcion_Tarea_Pendiente_JTextPane.setCaretColor(tercer_Color_Fuente);
-        descripcion_Tarea_Pendiente_JTextPane.setBackground(tercer_Color);
+        descripcion_Tarea_Pendiente_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
+        descripcion_Tarea_Pendiente_JTextPane.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        descripcion_Tarea_Pendiente_JTextPane.setBackground(CourseRoom.Tercer_Color());
 
-        fecha_Finalizacion_Tarea_Pendiente_JPanel.setBackground(tercer_Color);
-        fecha_Finalizacion_Tarea_Pendiente_JPanel.setForeground(tercer_Color_Fuente);
+        fecha_Finalizacion_Tarea_Pendiente_JPanel.setBackground(CourseRoom.Tercer_Color());
+        fecha_Finalizacion_Tarea_Pendiente_JPanel.setForeground(CourseRoom.Tercer_Color_Fuente());
         
-        chat_Grupal_JPanel.setBackground(primer_Color);
+        chat_Grupal_JPanel.setBackground(CourseRoom.Primer_Color());
         
-        escogedor_Fecha_Hora.setForeground(tercer_Color_Fuente);
-        escogedor_Fecha_Hora.setBackground(tercer_Color);
-        enviar_Mensajes_JPanel.setBackground(primer_Color);
-        enviar_Mensaje_Chat_JTextField.setBackground(segundo_Color);
-        enviar_Mensaje_Chat_JTextField.setForeground(segundo_Color_Fuente);
-        enviar_Mensaje_Chat_JTextField.setCaretColor(segundo_Color_Fuente);
+        escogedor_Fecha_Hora.setForeground(CourseRoom.Tercer_Color_Fuente());
+        escogedor_Fecha_Hora.setBackground(CourseRoom.Tercer_Color());
+        enviar_Mensajes_JPanel.setBackground(CourseRoom.Primer_Color());
+        enviar_Mensaje_Chat_JTextField.setBackground(CourseRoom.Segundo_Color());
+        enviar_Mensaje_Chat_JTextField.setForeground(CourseRoom.Segundo_Color_Fuente());
+        enviar_Mensaje_Chat_JTextField.setCaretColor(CourseRoom.Segundo_Color_Fuente());
         
-        enviar_Mensaje_Chat_JTextField.setBackground(primer_Color);
-        enviar_Mensaje_Chat_JTextField.setForeground(primer_Color_Fuente);
-        enviar_Mensajes_JPanel.setBackground(segundo_Color);
-        mensajes_Chat_JPanel.setBackground(primer_Color);
+        enviar_Mensaje_Chat_JTextField.setBackground(CourseRoom.Primer_Color());
+        enviar_Mensaje_Chat_JTextField.setForeground(CourseRoom.Primer_Color_Fuente());
+        enviar_Mensajes_JPanel.setBackground(CourseRoom.Segundo_Color());
+        mensajes_Chat_JPanel.setBackground(CourseRoom.Primer_Color());
 
-        enviar_Audios_JButton.setBackground(segundo_Color);
-        enviar_Imagenes_JButton.setBackground(segundo_Color);
-        enviar_Videos_JButton.setBackground(segundo_Color);
+        enviar_Audios_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
         
-        archivos_Compartidos_JTable.getTableHeader().setBackground(segundo_Color);
-        archivos_Compartidos_JTable.getTableHeader().setForeground(segundo_Color_Fuente);
+        archivos_Compartidos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
+        archivos_Compartidos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < archivos_Compartidos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 5; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(primer_Color_Fuente);
+                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }
         }
         
-        Component[] tareas_Pendientes = lista_Tareas_Pendientes_JPanel.getComponents();
+        Component[] componentes = mensajes_Chat_JPanel.getComponents();
         Component componente;
-        for(int i = 0; i < tareas_Pendientes.length;i++){
-            componente = tareas_Pendientes[i];
-            ((Grupo_Tarea_Pendiente_Estudiante_Panel)componente).Establecer_Colores(primer_Color, primer_Color_Fuente, 
-                    segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
+        for (int i = 0; i < componentes.length; i++) {
+            componente = componentes[i];
+            ((Componentes_Interface) componente).Colorear_Componentes();
         }
         
-        tareas_Pendientes = lista_Tareas_Finalizadas_JPanel.getComponents();
-        for(int i = 0; i < tareas_Pendientes.length;i++){
-            componente = tareas_Pendientes[i];
-            ((Grupo_Tarea_Pendiente_Estudiante_Panel)componente).Establecer_Colores(primer_Color, primer_Color_Fuente, 
-                    segundo_Color, segundo_Color_Fuente, tercer_Color, tercer_Color_Fuente);
+        componentes = lista_Tareas_Pendientes_JPanel.getComponents();
+        for(int i = 0; i < componentes.length;i++){
+            componente = componentes[i];
+            ((Grupo_Tarea_Pendiente_Estudiante_Panel)componente).Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(), 
+                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(), CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+        }
+        
+        componentes = lista_Tareas_Finalizadas_JPanel.getComponents();
+        for(int i = 0; i < componentes.length;i++){
+            componente = componentes[i];
+            ((Grupo_Tarea_Pendiente_Estudiante_Panel)componente).Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(), 
+                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(), CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
         }
     }
     
@@ -1521,10 +1509,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         enviar_Mensaje_Chat_JTextField.removeAll();
         lista_Tareas_Pendientes_JPanel.removeAll();
         lista_Tareas_Finalizadas_JPanel.removeAll();
-        
-        for(int i = compartir_Archivos_JPanel.getComponentCount() - 1 ;i > 1;i++) {
-            compartir_Archivos_JPanel.remove(i);
-        }
-        primer_Color = segundo_Color = tercer_Color = primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = null;
+        archivos_Compartidos_JTable.removeAll();
     }
 }

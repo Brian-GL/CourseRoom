@@ -9,7 +9,6 @@ import interfaces.Componentes_Interface;
 import main.CourseRoom;
 import interfaces.Limpieza_Interface;
 import interfaces.Reproductor_Interface;
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
@@ -42,9 +41,7 @@ public class Mensaje_Audio_Izquierdo_General_Panel extends javax.swing.JPanel im
             String _emisor, 
             String _fecha, 
             String _mrl, 
-            String _titulo,
-            Color _segundo_Color,
-            Color _segundo_Color_Fuente
+            String _titulo
         ) {
         initComponents();
         
@@ -57,17 +54,7 @@ public class Mensaje_Audio_Izquierdo_General_Panel extends javax.swing.JPanel im
         mrl = _mrl;
 
         Iniciar_Componentes();
-        
-        fecha_JLabel.setForeground(_segundo_Color_Fuente);
-        emisor_JLabel.setForeground(_segundo_Color_Fuente);
-        contenido_JPanel.setBackground(_segundo_Color);
-        contenido_JPanel.setForeground(_segundo_Color_Fuente);
-        
-        duracion_JLabel.setForeground(_segundo_Color_Fuente);
-        progreso_JLabel.setForeground(_segundo_Color_Fuente);
-        titulo_JLabel.setForeground(_segundo_Color_Fuente);
-        progreso_JSlider.setForeground(_segundo_Color_Fuente);
-        progreso_JSlider.setBackground(_segundo_Color_Fuente);
+   
     }
 
     /**
@@ -346,12 +333,23 @@ public class Mensaje_Audio_Izquierdo_General_Panel extends javax.swing.JPanel im
         bandera_Mouse = true;
         componente_Reproductor_Audio = new AudioPlayerComponent();
         
+        Colorear_Componentes();
         Establecer_Eventos_Reproductor();
     }
 
     @Override
     public void Colorear_Componentes() {
-        // No Aplica
+        
+        fecha_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        emisor_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
+        contenido_JPanel.setForeground(CourseRoom.Segundo_Color_Fuente());
+
+        duracion_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        progreso_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        progreso_JSlider.setForeground(CourseRoom.Segundo_Color_Fuente());
+        progreso_JSlider.setBackground(CourseRoom.Segundo_Color_Fuente());
     }
 
     @Override

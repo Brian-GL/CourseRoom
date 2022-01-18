@@ -5,11 +5,6 @@ import java.awt.CardLayout;
 
 public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
    
-    private static Inicio_Crear_Cuenta_General_Panel inicio_Crear_Cuenta_General_Panel;
-    private static Autenticacion_Crear_Cuenta_General_Panel autenticacion_Crear_Cuenta_General_Panel;
-    private static Datos_Personales_Crear_Cuenta_General_Panel datos_Personales_Crear_Cuenta_General_Panel;
-    private static Perfil_Crear_Cuenta_General_Panel perfil_Crear_Cuenta_General_Panel;
-    private static Informacion_Extra_Crear_Cuenta_General_Panel informacion_Extra_Crear_Cuenta_General_Panel;
     
     private static CardLayout layout;
     
@@ -49,6 +44,12 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
         
         layout = (CardLayout)visualizador_JPanel.getLayout();
         
+        Inicio_Crear_Cuenta_General_Panel inicio_Crear_Cuenta_General_Panel;
+        Autenticacion_Crear_Cuenta_General_Panel autenticacion_Crear_Cuenta_General_Panel;
+        Datos_Personales_Crear_Cuenta_General_Panel datos_Personales_Crear_Cuenta_General_Panel;
+        Perfil_Crear_Cuenta_General_Panel perfil_Crear_Cuenta_General_Panel;
+        Informacion_Extra_Crear_Cuenta_General_Panel informacion_Extra_Crear_Cuenta_General_Panel;
+        
         inicio_Crear_Cuenta_General_Panel = new Inicio_Crear_Cuenta_General_Panel();
         visualizador_JPanel.add(inicio_Crear_Cuenta_General_Panel, "Inicio");
         autenticacion_Crear_Cuenta_General_Panel = new Autenticacion_Crear_Cuenta_General_Panel();
@@ -66,9 +67,7 @@ public class Crear_Cuenta_General_Panel extends javax.swing.JPanel implements Co
 
     @Override
     public void Colorear_Componentes() {
-
-        
-        
+        //No Soportado
     }
     
 }

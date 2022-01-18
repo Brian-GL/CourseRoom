@@ -7,8 +7,6 @@ package paneles.generales;
 
 import main.CourseRoom;
 import interfaces.Componentes_Interface;
-import interfaces.Limpieza_Interface;
-import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
@@ -19,35 +17,18 @@ import javax.swing.ImageIcon;
  *
  * @author LENOVO
  */
-public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implements Limpieza_Interface,Componentes_Interface{
+public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
-    private Color fondo_Color, fuente_Color;
     
     public Comentario_Tarea_General_Panel(
             String nombre_Usuario, 
-            String comentario, 
-            Color _fondo_Color, 
-            Color _fuente_Color) {
+            String comentario) {
         
         initComponents();
-        
-        fondo_Color = _fondo_Color;
-        fuente_Color = _fuente_Color;
         
         String concatenar = CourseRoom.Concatenar(nombre_Usuario,":<br>",comentario);
         
         comentario_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(concatenar));
-        
-        try {
-            System.out.println("Comment Homework -> Getting Image From https://i.pravatar.cc/40");
-            URL url_Imagen = new URL("https://i.pravatar.cc/40");
-            Image obtener_Imagen = ImageIO.read(url_Imagen);
-            ImageIcon icono_Comentario = new ImageIcon(obtener_Imagen);
-            imagen_Emisor_JLabel.setIcon(icono_Comentario);
-            obtener_Imagen.flush();
-            obtener_Imagen.getGraphics().dispose();
-        } catch (IOException ex) {
-        }
         
         Iniciar_Componentes();
         
@@ -121,18 +102,27 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
 
      @Override
     public void Iniciar_Componentes() {
+        
+        try {
+            System.out.println("Comment Homework -> Getting Image From https://i.pravatar.cc/40");
+            URL url_Imagen = new URL("https://i.pravatar.cc/40");
+            Image obtener_Imagen = ImageIO.read(url_Imagen);
+            ImageIcon icono_Comentario = new ImageIcon(obtener_Imagen);
+            imagen_Emisor_JLabel.setIcon(icono_Comentario);
+            obtener_Imagen.flush();
+            obtener_Imagen.getGraphics().dispose();
+        } catch (IOException ex) {
+            
+        }
+        
        Colorear_Componentes();
     }
     
     @Override
     public void Colorear_Componentes() {
-        comentario_JTextPane.setForeground(fuente_Color);
-        comentario_JTextPane.setBackground(fondo_Color);
+        comentario_JTextPane.setForeground(CourseRoom.Segundo_Color_Fuente());
+        comentario_JTextPane.setBackground(CourseRoom.Segundo_Color());
     }
 
-    @Override
-    public void Limpiar() {
-        fondo_Color = fuente_Color = null;
-    }
 
 }

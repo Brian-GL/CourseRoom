@@ -143,7 +143,7 @@ public class Buscar_Tareas_Estudiante_Panel extends javax.swing.JPanel implement
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(tareas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buscar_JTextField))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
                     .addContainerGap())
             );
@@ -240,9 +240,7 @@ public class Buscar_Tareas_Estudiante_Panel extends javax.swing.JPanel implement
         Pagina_Tarea_Estudiante_Panel tarea_Estudiante_Panel;
         for (Nodo<Pagina_Tarea_Estudiante_Panel> nodo = lista_Tareas.front(); nodo != null; nodo = nodo.next()) {
             tarea_Estudiante_Panel = nodo.element();
-            tarea_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            tarea_Estudiante_Panel.Colorear_Componentes();
         }
        
     }

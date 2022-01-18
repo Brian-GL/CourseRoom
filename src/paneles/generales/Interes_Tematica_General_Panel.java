@@ -5,6 +5,7 @@
  */
 package paneles.generales;
 
+import interfaces.Componentes_Interface;
 import main.CourseRoom;
 import javax.swing.SwingUtilities;
 
@@ -12,23 +13,16 @@ import javax.swing.SwingUtilities;
  *
  * @author LENOVO
  */
-public class Interes_Tematica_General_Panel extends javax.swing.JPanel{
+public class Interes_Tematica_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
     
     public Interes_Tematica_General_Panel(
             String nombre) {
         initComponents();
     
-        
-        interes_Tematica_JTextPane.setForeground(CourseRoom.Primer_Color());
-        
         interes_Tematica_JTextPane.setText(CourseRoom.Formato_HTML_Central(nombre));
-        remover_JButton.setForeground(CourseRoom.Segundo_Color());
-        remover_JButton.setBackground(CourseRoom.Primer_Color());
-        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
-        archivo_JScrollPane.getViewport().setOpaque(false);
-        archivo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        archivo_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        Iniciar_Componentes();
     }
 
     /**
@@ -159,5 +153,22 @@ public class Interes_Tematica_General_Panel extends javax.swing.JPanel{
     private javax.swing.JTextPane interes_Tematica_JTextPane;
     private javax.swing.JButton remover_JButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Iniciar_Componentes() {
+        archivo_JScrollPane.getViewport().setOpaque(false);
+        archivo_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        archivo_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        Colorear_Componentes();
+    }
+
+    @Override
+    public void Colorear_Componentes() {
+        interes_Tematica_JTextPane.setForeground(CourseRoom.Primer_Color());
+        remover_JButton.setForeground(CourseRoom.Segundo_Color());
+        remover_JButton.setBackground(CourseRoom.Primer_Color());
+        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
+    }
 
 }

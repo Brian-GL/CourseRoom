@@ -5,23 +5,22 @@
  */
 package paneles.generales;
 
-import java.awt.Color;
+import interfaces.Componentes_Interface;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import main.CourseRoom;
 
 /**
  *
  * @author LENOVO
  */
-public class Mensaje_Imagen_Izquierdo_General_Panel extends javax.swing.JPanel{
+public class Mensaje_Imagen_Izquierdo_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
     public Mensaje_Imagen_Izquierdo_General_Panel(
             String emisor, 
             String fecha, 
             Image imagen, 
-            String nombre_Imagen,
-            Color _segundo_Color,
-            Color _segundo_Color_Fuente) {
+            String nombre_Imagen) {
         
         initComponents();
         
@@ -34,10 +33,8 @@ public class Mensaje_Imagen_Izquierdo_General_Panel extends javax.swing.JPanel{
         imagen_JLabel.setIcon(icon);
         imagen.flush();
         
-        fecha_JLabel.setForeground(_segundo_Color_Fuente);
-        emisor_JLabel.setForeground(_segundo_Color_Fuente);
-        contenido_JPanel.setBackground(_segundo_Color);
-        contenido_JPanel.setForeground(_segundo_Color_Fuente);
+        Iniciar_Componentes();
+
         
     }
     
@@ -141,6 +138,19 @@ public class Mensaje_Imagen_Izquierdo_General_Panel extends javax.swing.JPanel{
     private javax.swing.JLabel fecha_JLabel;
     private javax.swing.JLabel imagen_JLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Iniciar_Componentes() {
+        Colorear_Componentes();
+    }
+
+    @Override
+    public void Colorear_Componentes() {
+        fecha_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        emisor_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
+        contenido_JPanel.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }
 
  
 }
