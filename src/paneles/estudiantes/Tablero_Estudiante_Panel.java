@@ -5,6 +5,7 @@
  */
 package paneles.estudiantes;
 
+import paneles.estudiantes.calendario.Pagina_Calendario_Estudiante_Panel;
 import main.CourseRoom;
 import paneles.generales.Acerca_De_General_Panel;
 import paneles.generales.Reproductor_Musica_General_Panel;
@@ -42,7 +43,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Reproductor_Musica_General_Panel reproductor_Musica_Panel;
     private static Pagina_Avisos_Estudiante_Panel pagina_Avisos_Panel;
     private static Pagina_Grupos_Estudiante_Panel pagina_Grupos_Panel;
-    private static Pagina_Fechas_Estudiante_Panel pagina_Fechas_Panel;
+    private static Pagina_Calendario_Estudiante_Panel pagina_Fechas_Panel;
     private static Pagina_Tareas_Estudiante_Panel pagina_Tareas_Panel;
     private static Ajustes_Estudiante_Panel ajustes_Panel;
     private static Pagina_Cursos_Estudiante_Panel pagina_Cursos_Panel;
@@ -1019,7 +1020,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             
             
             
-            pagina_Fechas_Panel = new Pagina_Fechas_Estudiante_Panel();
+            pagina_Fechas_Panel = new Pagina_Calendario_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Fechas",pagina_Fechas_Panel);
             
             pagina_Avisos_Panel = new Pagina_Avisos_Estudiante_Panel();

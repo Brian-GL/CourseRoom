@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paneles.estudiantes;
+package paneles.estudiantes.calendario;
+
+import interfaces.Limpieza_Interface;
 
 
 
@@ -11,12 +13,12 @@ package paneles.estudiantes;
  *
  * @author LENOVO
  */
-public class Tira_Fechas_Estudiante_Panel extends javax.swing.JPanel{
+public class Tira_Calendario_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface{
 
     /**
      * Creates new form Tira_Fechas_Estudiante_Panel
      */
-    public Tira_Fechas_Estudiante_Panel() {
+    public Tira_Calendario_Estudiante_Panel() {
         initComponents();
     }
 
@@ -57,13 +59,18 @@ public class Tira_Fechas_Estudiante_Panel extends javax.swing.JPanel{
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void Agregar_Fecha(Caja_Fecha_Estudiante_Panel caja_Fecha_Estudiante_Panel){
+    public void Agregar_Fecha(Fecha_Estudiante_Panel caja_Fecha_Estudiante_Panel){
         contenido_JPanel.add(caja_Fecha_Estudiante_Panel);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Limpiar() {
+        contenido_JPanel.removeAll();
+    }
 
 
 }

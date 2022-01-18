@@ -3,21 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paneles.estudiantes;
+package paneles.estudiantes.calendario;
 
 import main.CourseRoom;
 import interfaces.Componentes_Interface;
-import java.awt.Color;
 
 /**
  *
  * @author brian
  */
-public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface{
+public class Fecha_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
-    private Color color_Fondo, color_Fuente;
     
-    public Caja_Fecha_Estudiante_Panel(int day) {
+    public Fecha_Estudiante_Panel(int day) {
         initComponents();
         
         numero_Dia_JLabel.setText(String.valueOf(day));
@@ -116,6 +114,25 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void Establecer_Primer_Color(){
+        numero_Dia_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        hora_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Primer_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Primer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Primer_Color_Fuente());
+    }
+    
+    public void Establecer_Segundo_Color(){
+        numero_Dia_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        hora_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Segundo_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
+        contenido_JPanel.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }
+    
+    public void Establecer_Tercer_Color(){
+        Colorear_Componentes();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
@@ -128,8 +145,6 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
     @Override
     public void Iniciar_Componentes() {
         
-        color_Fondo = CourseRoom.Tercer_Color();
-        color_Fuente = CourseRoom.Tercer_Color_Fuente();
         String concatenacion = 
         CourseRoom.Concatenar(String.valueOf(CourseRoom.Faker().number().randomNumber(1, true)),
                 ":",String.valueOf(CourseRoom.Faker().number().randomNumber(2, false))," P.M");
@@ -138,26 +153,19 @@ public class Caja_Fecha_Estudiante_Panel extends javax.swing.JPanel implements C
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Centro(CourseRoom.Faker().lorem().paragraph(2)));
         descripcion_JTextPane.setCaretPosition(0);
+        
+        Colorear_Componentes();
        
     }
 
     @Override
     public void Colorear_Componentes() {
-        numero_Dia_JLabel.setForeground(color_Fuente);
-        hora_JLabel.setForeground(color_Fuente);
-        descripcion_JTextPane.setForeground(color_Fuente);
-        contenido_JPanel.setBackground(color_Fondo);
-        contenido_JPanel.setForeground(color_Fuente);
+        numero_Dia_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        hora_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Tercer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Tercer_Color_Fuente());
     }
 
-    
-    public void Establecer_Colores(Color _color_Fondo, Color _color_Fuente) {
-        this.color_Fondo = _color_Fondo;
-        this.color_Fuente = _color_Fuente;
-        
-        Colorear_Componentes();
-    }
-
-    
     
 }

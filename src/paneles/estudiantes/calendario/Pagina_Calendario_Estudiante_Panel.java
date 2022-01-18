@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paneles.estudiantes;
+package paneles.estudiantes.calendario;
 
 import datos.colecciones.Lista;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import main.CourseRoom;
 
@@ -18,12 +17,11 @@ import main.CourseRoom;
  *
  * @author LENOVO
  */
-public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
+public class Pagina_Calendario_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
-    public Pagina_Fechas_Estudiante_Panel(){
+    public Pagina_Calendario_Estudiante_Panel(){
         
        initComponents();
-       
        
        Iniciar_Componentes();
         
@@ -304,22 +302,22 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
         DayOfWeek dia_De_La_Semana = tiempo_Actual.getDayOfWeek();
         int hasta_Valor = dia_De_La_Semana.getValue() - 1;
 
-        Lista<Caja_Fecha_Estudiante_Panel> lista_Cajas = new Lista<>();
+        Lista<Fecha_Estudiante_Panel> lista_Cajas = new Lista<>();
         
-        Caja_Fecha_Estudiante_Panel dia_Calendario_Panel;
+        Fecha_Estudiante_Panel dia_Calendario_Panel;
         for (int i = hasta_Valor; i > 0; i--) {
-            dia_Calendario_Panel = new Caja_Fecha_Estudiante_Panel(dias_del_mes_anterior - i);
-            dia_Calendario_Panel.Establecer_Colores(CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            dia_Calendario_Panel = new Fecha_Estudiante_Panel(dias_del_mes_anterior - i);
+            dia_Calendario_Panel.Establecer_Tercer_Color();
             lista_Cajas.push_back(dia_Calendario_Panel);
             cuenta++;
         }
 
         for (int i = 1; i < dias_del_mes; i++) {
-            dia_Calendario_Panel = new Caja_Fecha_Estudiante_Panel(i);
+            dia_Calendario_Panel = new Fecha_Estudiante_Panel(i);
             if (tiempo_Actual.getDayOfMonth() == i) {
-                dia_Calendario_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente());
+                dia_Calendario_Panel.Establecer_Primer_Color();
             } else {
-                dia_Calendario_Panel.Establecer_Colores(CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente());
+                dia_Calendario_Panel.Establecer_Segundo_Color();
             }
             lista_Cajas.push_back(dia_Calendario_Panel);
             cuenta++;
@@ -327,22 +325,22 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
 
         int i = 1;
         while (cuenta < 42) {
-            dia_Calendario_Panel = new Caja_Fecha_Estudiante_Panel(i);
-            dia_Calendario_Panel.Establecer_Colores(CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            dia_Calendario_Panel = new Fecha_Estudiante_Panel(i);
+            dia_Calendario_Panel.Establecer_Tercer_Color();
             lista_Cajas.push_back(dia_Calendario_Panel);
             i++;
             cuenta++;
         }
         
-        Tira_Fechas_Estudiante_Panel tira_Fechas_Estudiante_Panel = null;
-        Caja_Fecha_Estudiante_Panel caja_Fecha_Estudiante_Panel;
+        Tira_Calendario_Estudiante_Panel tira_Fechas_Estudiante_Panel = null;
+        Fecha_Estudiante_Panel caja_Fecha_Estudiante_Panel;
         cuenta = 0;
         while(!lista_Cajas.is_empty()){
             
             if(cuenta < 7){
                 caja_Fecha_Estudiante_Panel = lista_Cajas.delist();
                 if(cuenta == 0){
-                    tira_Fechas_Estudiante_Panel = new Tira_Fechas_Estudiante_Panel();
+                    tira_Fechas_Estudiante_Panel = new Tira_Calendario_Estudiante_Panel();
                 }
                 tira_Fechas_Estudiante_Panel.Agregar_Fecha(caja_Fecha_Estudiante_Panel);
                 cuenta++;
