@@ -5,6 +5,8 @@
  */
 package paneles.estudiantes;
 
+import paneles.estudiantes.dudas.Pagina_Dudas_Estudiante_Panel;
+import paneles.estudiantes.avisos.Pagina_Avisos_Estudiante_Panel;
 import paneles.estudiantes.calendario.Pagina_Calendario_Estudiante_Panel;
 import main.CourseRoom;
 import paneles.generales.Acerca_De_General_Panel;
