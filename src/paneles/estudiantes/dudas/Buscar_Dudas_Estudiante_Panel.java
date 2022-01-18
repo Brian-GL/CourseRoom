@@ -49,7 +49,7 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         dudas_JTable = new javax.swing.JTable();
 
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 630));
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         buscar_JTextField.setToolTipText("<html>\n<h3>Buscar duda(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
@@ -131,7 +131,7 @@ public class Buscar_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
                             .addComponent(dudas_JButton)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(buscar_JTextField))
-                        .addComponent(dudas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
+                        .addComponent(dudas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1084, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(

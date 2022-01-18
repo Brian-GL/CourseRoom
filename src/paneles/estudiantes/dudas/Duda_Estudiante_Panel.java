@@ -84,14 +84,13 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Videos_JButton = new javax.swing.JButton();
         enviar_Audios_JButton = new javax.swing.JButton();
         enviar_Imagenes_JButton = new javax.swing.JButton();
-        enviar_Respuesta_JButton = new javax.swing.JButton();
         respuestas_JScrollPane = new javax.swing.JScrollPane();
         respuestas_JPanel = new javax.swing.JPanel();
 
         setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        setMinimumSize(new java.awt.Dimension(1085, 630));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1085, 630));
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         informacion_JPanel.setMaximumSize(new java.awt.Dimension(32767, 50));
         informacion_JPanel.setMinimumSize(new java.awt.Dimension(1085, 50));
@@ -159,7 +158,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(descripcion_Duda_JScrollPane)
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                        .addComponent(duda_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+                        .addComponent(duda_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cerrar_JButton)))
                 .addContainerGap())
@@ -263,23 +262,6 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             }
         });
 
-        enviar_Respuesta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/send.png"))); // NOI18N
-        enviar_Respuesta_JButton.setToolTipText("Enviar Mensaje");
-        enviar_Respuesta_JButton.setBorder(null);
-        enviar_Respuesta_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enviar_Respuesta_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
-        enviar_Respuesta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                enviar_Respuesta_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                enviar_Respuesta_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                enviar_Respuesta_JButtonMouseExited(evt);
-            }
-        });
-
         javax.swing.GroupLayout enviar_Respuestas_JPanelLayout = new javax.swing.GroupLayout(enviar_Respuestas_JPanel);
         enviar_Respuestas_JPanel.setLayout(enviar_Respuestas_JPanelLayout);
         enviar_Respuestas_JPanelLayout.setHorizontalGroup(
@@ -294,8 +276,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                 .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(respuesta_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(enviar_Respuesta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         enviar_Respuestas_JPanelLayout.setVerticalGroup(
             enviar_Respuestas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,8 +287,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                     .addComponent(enviar_Videos_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(enviar_Audios_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(respuesta_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(enviar_Respuesta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(respuesta_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -323,9 +303,9 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(informacion_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(informacion_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
                     .addComponent(respuestas_JScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(enviar_Respuestas_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(enviar_Respuestas_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
@@ -433,23 +413,6 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         // TODO add your handling code here:
         enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseExited
-
-    private void enviar_Respuesta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Respuesta_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Mensaje();
-        }
-    }//GEN-LAST:event_enviar_Respuesta_JButtonMouseClicked
-
-    private void enviar_Respuesta_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Respuesta_JButtonMouseEntered
-        // TODO add your handling code here:
-        enviar_Respuesta_JButton.setBackground(CourseRoom.Primer_Color());
-    }//GEN-LAST:event_enviar_Respuesta_JButtonMouseEntered
-
-    private void enviar_Respuesta_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Respuesta_JButtonMouseExited
-        // TODO add your handling code here:
-        enviar_Respuesta_JButton.setBackground(CourseRoom.Segundo_Color());
-    }//GEN-LAST:event_enviar_Respuesta_JButtonMouseExited
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
@@ -699,7 +662,6 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     private javax.swing.JButton enviar_Archivos_JButton;
     private javax.swing.JButton enviar_Audios_JButton;
     private javax.swing.JButton enviar_Imagenes_JButton;
-    private javax.swing.JButton enviar_Respuesta_JButton;
     private javax.swing.JPanel enviar_Respuestas_JPanel;
     private javax.swing.JButton enviar_Videos_JButton;
     private javax.swing.JPanel informacion_JPanel;
@@ -747,7 +709,6 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Archivos_JButton.setBackground(CourseRoom.Segundo_Color());
         enviar_Audios_JButton.setBackground(CourseRoom.Segundo_Color());
         enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
-        enviar_Respuesta_JButton.setBackground(CourseRoom.Segundo_Color());
         enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
         
         cerrar_JButton.setBackground(CourseRoom.Segundo_Color());

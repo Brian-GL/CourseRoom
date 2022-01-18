@@ -61,7 +61,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 630));
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
@@ -179,11 +179,11 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             this.setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(dudas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
@@ -192,7 +192,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+                    .addComponent(dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                     .addContainerGap())
             );
         }// </editor-fold>//GEN-END:initComponents
@@ -251,15 +251,10 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         DefaultTableModel modelo = (DefaultTableModel) dudas_JTable.getModel();
         
         celdas[0] = new Celda_Renderer(preguntador_Icono, preguntador_Nombre,id);
-        celdas[0].Color_Fuente(CourseRoom.Primer_Color_Fuente());
         celdas[1] = new Celda_Renderer(nombre_Duda,id);
-        celdas[1].Color_Fuente(CourseRoom.Primer_Color_Fuente());
         celdas[2] = new Celda_Renderer(descripcion_Duda,id);
-        celdas[2].Color_Fuente(CourseRoom.Primer_Color_Fuente());
         celdas[3] = new Celda_Renderer(fecha,id);
-        celdas[3].Color_Fuente(CourseRoom.Primer_Color_Fuente());
         celdas[4] = new Celda_Renderer("Abierta",id);
-        celdas[4].Color_Fuente(CourseRoom.Primer_Color_Fuente());
         
         modelo.addRow(celdas);
         

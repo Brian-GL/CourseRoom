@@ -48,7 +48,7 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
 
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 630));
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
@@ -169,30 +169,27 @@ public class Pagina_Avisos_Estudiante_Panel extends javax.swing.JPanel implement
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
         
         String id = "";
-        ImageIcon icono = null;
-        
         ImageIcon aviso_Curso = new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png"));
         ImageIcon aviso_Notificacion = new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png"));
         ImageIcon aviso_Grupo = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
         ImageIcon aviso_Chat = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
         
-        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1,5);i++){
+        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1,10);i++){
             switch(CourseRoom.Faker().number().numberBetween(1,5)){
                 case 1:
-                    icono = aviso_Curso;
+                    celdas[0] = new Celda_Renderer(aviso_Curso,"Curso",id);
                     break;
                 case 2:
-                    icono = aviso_Notificacion;
+                    celdas[0] = new Celda_Renderer(aviso_Notificacion,"Notificación",id);
                     break;
                 case 3:
-                    icono = aviso_Grupo;
+                    celdas[0] = new Celda_Renderer(aviso_Grupo,"Grupo",id);
                     break;
                 case 4:
-                    icono = aviso_Chat;
+                    celdas[0] = new Celda_Renderer(aviso_Chat,"Chat",id);
                     break;
             }
             
-            celdas[0] = new Celda_Renderer(icono,id);
             celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(),id);
             celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0,1).toString(),id);
             

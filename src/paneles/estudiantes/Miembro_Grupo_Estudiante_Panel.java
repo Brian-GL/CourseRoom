@@ -5,6 +5,7 @@
  */
 package paneles.estudiantes;
 
+import paneles.estudiantes.chats.Chats_Estudiante_Panel;
 import clases.Celda_Renderer;
 import main.CourseRoom;
 import java.awt.Color;
