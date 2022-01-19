@@ -52,7 +52,7 @@ public class Pagina_Chats_Estudiante_Panel extends javax.swing.JPanel implements
 
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 630));
+        setPreferredSize(new java.awt.Dimension(1110, 630));
         setLayout(new java.awt.CardLayout());
     }// </editor-fold>//GEN-END:initComponents
 

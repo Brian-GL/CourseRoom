@@ -19,7 +19,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
-import paneles.generales.Mensaje_Texto_Izquierdo_General_Panel;
+import paneles.generales.mensajes.Mensaje_Texto_Izquierdo_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Component;
@@ -33,13 +33,13 @@ import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import paneles.generales.Mensaje_Audio_Derecho_General_Panel;
-import paneles.generales.Mensaje_Audio_Izquierdo_General_Panel;
-import paneles.generales.Mensaje_Imagen_Derecho_General_Panel;
-import paneles.generales.Mensaje_Imagen_Izquierdo_General_Panel;
-import paneles.generales.Mensaje_Texto_Derecho_General_Panel;
-import paneles.generales.Mensaje_Video_Derecho_General_Panel;
-import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
+import paneles.generales.mensajes.Mensaje_Audio_Derecho_General_Panel;
+import paneles.generales.mensajes.Mensaje_Audio_Izquierdo_General_Panel;
+import paneles.generales.mensajes.Mensaje_Imagen_Derecho_General_Panel;
+import paneles.generales.mensajes.Mensaje_Imagen_Izquierdo_General_Panel;
+import paneles.generales.mensajes.Mensaje_Texto_Derecho_General_Panel;
+import paneles.generales.mensajes.Mensaje_Video_Derecho_General_Panel;
+import paneles.generales.mensajes.Mensaje_Video_Izquierdo_General_Panel;
 
 /**
  *

@@ -53,7 +53,7 @@ public class Buscar_Chats_Estudiante_Panel extends javax.swing.JPanel implements
         chats_JTable = new javax.swing.JTable();
 
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 630));
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         buscar_JTextField.setToolTipText("<html> <h3>Buscar chats. Presiona ENTER para realizar la búsqueda</h3> </html>");
@@ -134,8 +134,8 @@ public class Buscar_Chats_Estudiante_Panel extends javax.swing.JPanel implements
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(chats_JButton)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE))
-                        .addComponent(chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
+                            .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE))
+                        .addComponent(chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1078, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(

@@ -14,21 +14,21 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import paneles.generales.Mensaje_Audio_Derecho_General_Panel;
-import paneles.generales.Mensaje_Texto_Izquierdo_General_Panel;
-import paneles.generales.Mensaje_Texto_Derecho_General_Panel;
-import paneles.generales.Mensaje_Imagen_Izquierdo_General_Panel;
-import paneles.generales.Mensaje_Imagen_Derecho_General_Panel;
-import paneles.generales.Mensaje_Archivo_Derecho_General_Panel;
-import paneles.generales.Mensaje_Archivo_Izquierdo_General_Panel;
-import paneles.generales.Mensaje_Video_Derecho_General_Panel;
-import paneles.generales.Mensaje_Video_Izquierdo_General_Panel;
+import paneles.generales.mensajes.Mensaje_Audio_Derecho_General_Panel;
+import paneles.generales.mensajes.Mensaje_Texto_Izquierdo_General_Panel;
+import paneles.generales.mensajes.Mensaje_Texto_Derecho_General_Panel;
+import paneles.generales.mensajes.Mensaje_Imagen_Izquierdo_General_Panel;
+import paneles.generales.mensajes.Mensaje_Imagen_Derecho_General_Panel;
+import paneles.generales.mensajes.Mensaje_Archivo_Derecho_General_Panel;
+import paneles.generales.mensajes.Mensaje_Archivo_Izquierdo_General_Panel;
+import paneles.generales.mensajes.Mensaje_Video_Derecho_General_Panel;
+import paneles.generales.mensajes.Mensaje_Video_Izquierdo_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Component;
 import javax.swing.ImageIcon;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
-import paneles.generales.Mensaje_Audio_Izquierdo_General_Panel;
+import paneles.generales.mensajes.Mensaje_Audio_Izquierdo_General_Panel;
 
 /**
  *

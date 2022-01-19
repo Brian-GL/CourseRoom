@@ -10,7 +10,6 @@ import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.time.Month;
 import main.CourseRoom;
 
 
@@ -64,9 +63,9 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
         contenido_JPanel.setOpaque(false);
         contenido_JPanel.setLayout(new javax.swing.BoxLayout(contenido_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
 
-        titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 168));
+        titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 134));
         titulo_JPanel.setOpaque(false);
-        titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 168));
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 134));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
@@ -74,10 +73,10 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Fechas");
-        titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
-        titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(176, 68));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(176, 68));
         titulo_JLabel.setOpaque(true);
-        titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(176, 68));
 
         mes_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         mes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -94,14 +93,14 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(mes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titulo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(titulo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(mes_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -165,11 +164,11 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
         titulo_JPanelLayout.setHorizontalGroup(
             titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(64, 64, 64)
                 .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dias_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dias_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
         );
         titulo_JPanelLayout.setVerticalGroup(
             titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

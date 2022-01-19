@@ -50,14 +50,18 @@ public class Pagina_Chat_Estudiante_Panel extends javax.swing.JPanel implements 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 630));
+        setPreferredSize(new java.awt.Dimension(1110, 630));
         setLayout(new java.awt.CardLayout());
+        add(jLayeredPane1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 
     @Override

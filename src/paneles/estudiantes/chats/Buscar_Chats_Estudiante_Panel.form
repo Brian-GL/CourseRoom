@@ -4,7 +4,7 @@
   <Properties>
     <Property name="opaque" type="boolean" value="false"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1080, 630]"/>
+      <Dimension value="[1110, 630]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -28,9 +28,9 @@
                   <Group type="102" attributes="0">
                       <Component id="chats_JButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buscar_JTextField" pref="1008" max="32767" attributes="0"/>
+                      <Component id="buscar_JTextField" pref="1018" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="chats_JScrollPane" alignment="0" pref="1068" max="32767" attributes="0"/>
+                  <Component id="chats_JScrollPane" alignment="0" pref="1078" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>

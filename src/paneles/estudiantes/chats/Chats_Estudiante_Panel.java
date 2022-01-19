@@ -62,7 +62,7 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1080, 630));
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
@@ -165,7 +165,7 @@ public class Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
+                        .addComponent(chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1084, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
