@@ -103,6 +103,9 @@
               <Dimension value="[32, 38]"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)receptor_JLabel.getIcon()).getImage().flush();"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="regresar_JButton">
           <Properties>
@@ -122,6 +125,9 @@
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="regresar_JButtonMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="regresar_JButtonMouseExited"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)regresar_JButton.getIcon()).getImage().flush();"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -207,6 +213,9 @@
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Archivos_JButtonMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Archivos_JButtonMouseExited"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)enviar_Archivos_JButton.getIcon()).getImage().flush();"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="enviar_Videos_JButton">
           <Properties>
@@ -229,6 +238,9 @@
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Videos_JButtonMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Videos_JButtonMouseExited"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)enviar_Videos_JButton.getIcon()).getImage().flush();"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="enviar_Audios_JButton">
           <Properties>
@@ -251,6 +263,9 @@
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Audios_JButtonMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Audios_JButtonMouseExited"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)enviar_Audios_JButton.getIcon()).getImage().flush();"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="enviar_Imagenes_JButton">
           <Properties>
@@ -273,6 +288,9 @@
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Imagenes_JButtonMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Imagenes_JButtonMouseExited"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)enviar_Imagenes_JButton.getIcon()).getImage().flush();"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

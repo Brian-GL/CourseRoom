@@ -109,6 +109,7 @@ public class Comentario_Tarea_General_Panel extends javax.swing.JPanel implement
             Image obtener_Imagen = ImageIO.read(url_Imagen);
             ImageIcon icono_Comentario = new ImageIcon(obtener_Imagen);
             imagen_Emisor_JLabel.setIcon(icono_Comentario);
+            icono_Comentario.getImage().flush();
             obtener_Imagen.flush();
             obtener_Imagen.getGraphics().dispose();
         } catch (IOException ex) {

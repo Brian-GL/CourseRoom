@@ -26,6 +26,7 @@ import paneles.generales.mensajes.Mensaje_Video_Izquierdo_General_Panel;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.Component;
+import javax.swing.ImageIcon;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.generales.mensajes.Mensaje_Audio_Izquierdo_General_Panel;
 
@@ -83,11 +84,13 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         receptor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/chat_1.png"))); // NOI18N
         receptor_JLabel.setToolTipText("Nombre Del Chat O La Persona Con Quien Se Chatea");
         receptor_JLabel.setPreferredSize(new java.awt.Dimension(32, 38));
+        ((ImageIcon)receptor_JLabel.getIcon()).getImage().flush();
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mis Chats");
         regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 regresar_JButtonMouseClicked(evt);
@@ -138,6 +141,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Archivos_JButton.setBorder(null);
         enviar_Archivos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Archivos_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        ((ImageIcon)enviar_Archivos_JButton.getIcon()).getImage().flush();
         enviar_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviar_Archivos_JButtonMouseClicked(evt);
@@ -155,6 +159,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Videos_JButton.setBorder(null);
         enviar_Videos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Videos_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        ((ImageIcon)enviar_Videos_JButton.getIcon()).getImage().flush();
         enviar_Videos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviar_Videos_JButtonMouseClicked(evt);
@@ -172,6 +177,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Audios_JButton.setBorder(null);
         enviar_Audios_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Audios_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        ((ImageIcon)enviar_Audios_JButton.getIcon()).getImage().flush();
         enviar_Audios_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviar_Audios_JButtonMouseClicked(evt);
@@ -189,6 +195,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Imagenes_JButton.setBorder(null);
         enviar_Imagenes_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Imagenes_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        ((ImageIcon)enviar_Imagenes_JButton.getIcon()).getImage().flush();
         enviar_Imagenes_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviar_Imagenes_JButtonMouseClicked(evt);

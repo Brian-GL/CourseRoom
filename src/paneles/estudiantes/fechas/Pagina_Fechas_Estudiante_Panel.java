@@ -69,10 +69,12 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(436, 68));
 
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Fechas");
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(176, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(176, 68));
         titulo_JLabel.setOpaque(true);
@@ -82,6 +84,7 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
         mes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mes_JLabel.setText("Diciembre");
         mes_JLabel.setToolTipText("Mes Actual");
+        mes_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         mes_JLabel.setMaximumSize(new java.awt.Dimension(327573, 32));
         mes_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
         mes_JLabel.setOpaque(true);
@@ -167,7 +170,7 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
                 .addGap(64, 64, 64)
                 .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dias_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
-                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
                 .addGap(64, 64, 64))
         );
         titulo_JPanelLayout.setVerticalGroup(

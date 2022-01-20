@@ -97,6 +97,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
         play_Pausa_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         play_Pausa_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"))); // NOI18N
         play_Pausa_JLabel.setToolTipText("<html> <h3>Pausar/Reproducir</h3> </html>");
+        ((ImageIcon)play_Pausa_JLabel.getIcon()).getImage().flush();
         play_Pausa_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 play_Pausa_JLabelMouseClicked(evt);
@@ -132,6 +133,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
         alto_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         alto_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stop.png"))); // NOI18N
         alto_JLabel.setToolTipText("<html> <h3>Parar</h3> </html>");
+        ((ImageIcon)alto_JLabel.getIcon()).getImage().flush();
         alto_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 alto_JLabelMouseClicked(evt);
@@ -147,8 +149,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
                 .addGroup(informacion_Audio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(informacion_Audio_JPanelLayout.createSequentialGroup()
                         .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
@@ -333,6 +334,8 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
     public void Iniciar_Componentes() {
         icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
         icono_Pausa = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
+        icono_Pausa.getImage().flush();
+        icono_Play.getImage().flush();
         bandera_Mouse = true;
         componente_Reproductor_Audio = new AudioPlayerComponent();
         progreso_JSlider.setEnabled(false);

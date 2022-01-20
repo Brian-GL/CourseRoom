@@ -10,8 +10,8 @@ import paneles.estudiantes.dudas.Pagina_Dudas_Estudiante_Panel;
 import paneles.estudiantes.avisos.Pagina_Avisos_Estudiante_Panel;
 import paneles.estudiantes.fechas.Pagina_Fechas_Estudiante_Panel;
 import main.CourseRoom;
-import paneles.generales.Acerca_De_General_Panel;
-import paneles.generales.Reproductor_Musica_General_Panel;
+import paneles.generales.tablero.Acerca_General_Panel;
+import paneles.generales.tablero.Reproductor_Musica_General_Panel;
 import main.CourseRoom_Frame;
 import datos.colecciones.Lista_Pares;
 import interfaces.Componentes_Interface;
@@ -40,7 +40,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Image imagen_Usuario;
     
     private static Pagina_Chats_Estudiante_Panel pagina_Chats_Panel;
-    private static Acerca_De_General_Panel acerca_De_Panel;
+    private static Acerca_General_Panel acerca_De_Panel;
     private static Perfil_Estudiante_Panel perfil_Panel;
     private static Editar_Perfil_Estudiante_Panel editar_Perfil_Panel;
     private static Reproductor_Musica_General_Panel reproductor_Musica_Panel;
@@ -109,8 +109,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
         imagen_Perfil_JLabel.setToolTipText("Mostrar Perfil Del Usuario.");
         imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(175, 175));
-        imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(175, 175));
+        imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(150, 150));
+        imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setOpaque(true);
         imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setRequestFocusEnabled(false);
@@ -1003,9 +1003,10 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             System.out.println("Dashboard -> Getting Image From https://i.pravatar.cc/450");
             URL url_Imagen = new URL("https://i.pravatar.cc/450");
             imagen_Usuario = ImageIO.read(url_Imagen);
-            Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(175, 175, Image.SCALE_SMOOTH);
+            Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
             ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
             imagen_Perfil_JLabel.setIcon(icono_Imagen);
+            icono_Imagen.getImage().flush();
             imagen_Redimensionada.flush();
             perfil_Panel = new Perfil_Estudiante_Panel();
             visualizador_JPanel.add("Perfil",perfil_Panel);
@@ -1030,7 +1031,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             pagina_Avisos_Panel = new Pagina_Avisos_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Avisos",pagina_Avisos_Panel);
             
-            acerca_De_Panel = new Acerca_De_General_Panel();
+            acerca_De_Panel = new Acerca_General_Panel();
             visualizador_JPanel.add("Acerca_De",acerca_De_Panel);
             
             reproductor_Musica_Panel = new Reproductor_Musica_General_Panel();

@@ -29,8 +29,9 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel imp
         imagen_JLabel.setToolTipText(nombre_Imagen);
         
         imagen = imagen.getScaledInstance(400, 400, Image.SCALE_AREA_AVERAGING);
-        ImageIcon icon = new ImageIcon(imagen);
-        imagen_JLabel.setIcon(icon);
+        ImageIcon icono = new ImageIcon(imagen);
+        imagen_JLabel.setIcon(icono);
+        icono.getImage().flush();
         imagen.flush();
         
         Iniciar_Componentes();

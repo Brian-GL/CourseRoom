@@ -7,6 +7,7 @@ package paneles.generales.mensajes;
 
 import interfaces.Componentes_Interface;
 import java.io.File;
+import javax.swing.ImageIcon;
 import main.CourseRoom;
 
 /**
@@ -68,6 +69,7 @@ public class Mensaje_Archivo_Izquierdo_General_Panel extends javax.swing.JPanel 
         nombre_Archivo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombre_Archivo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/file.png"))); // NOI18N
         nombre_Archivo_JLabel.setToolTipText("<html> <h3>Nombre del archivo</h3> </html>");
+        ((ImageIcon)nombre_Archivo_JLabel.getIcon()).getImage().flush();
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);

@@ -50,6 +50,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         
         this.ID = _id;
         preguntador_Imagen_JLabel.setIcon(_preguntador_Icono);
+        _preguntador_Icono.getImage().flush();
         preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Concatenar("Duda De ", _preguntador_Nombre));
         
         String valor = CourseRoom.Concatenar(_duda, " - Abierta");
@@ -199,6 +200,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Archivos_JButton.setBorder(null);
         enviar_Archivos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Archivos_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        ((ImageIcon)enviar_Archivos_JButton.getIcon()).getImage().flush();
         enviar_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviar_Archivos_JButtonMouseClicked(evt);
@@ -216,6 +218,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Videos_JButton.setBorder(null);
         enviar_Videos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Videos_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        ((ImageIcon)enviar_Videos_JButton.getIcon()).getImage().flush();
         enviar_Videos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviar_Videos_JButtonMouseClicked(evt);
@@ -233,6 +236,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Audios_JButton.setBorder(null);
         enviar_Audios_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Audios_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        ((ImageIcon)enviar_Audios_JButton.getIcon()).getImage().flush();
         enviar_Audios_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviar_Audios_JButtonMouseClicked(evt);
@@ -250,6 +254,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Imagenes_JButton.setBorder(null);
         enviar_Imagenes_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Imagenes_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        ((ImageIcon)enviar_Imagenes_JButton.getIcon()).getImage().flush();
         enviar_Imagenes_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviar_Imagenes_JButtonMouseClicked(evt);

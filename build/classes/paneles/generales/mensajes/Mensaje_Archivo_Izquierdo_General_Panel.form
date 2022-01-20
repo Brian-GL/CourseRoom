@@ -127,6 +127,9 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Nombre del archivo&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)nombre_Archivo_JLabel.getIcon()).getImage().flush();"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

@@ -8,9 +8,9 @@ package main;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
-import paneles.generales.Inicio_Sesion_General_Panel;
-import paneles.generales.Recuperar_Credenciales_General_Panel;
-import paneles.generales.Crear_Cuenta_General_Panel;
+import paneles.generales.inicio_sesion.Inicio_Sesion_General_Panel;
+import paneles.generales.inicio_sesion.Recuperar_Credenciales_General_Panel;
+import paneles.generales.inicio_sesion.Crear_Cuenta_General_Panel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**

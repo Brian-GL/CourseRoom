@@ -7,6 +7,7 @@ package paneles.generales.mensajes;
 
 import interfaces.Componentes_Interface;
 import java.io.File;
+import javax.swing.ImageIcon;
 import main.CourseRoom;
 
 /**
@@ -68,6 +69,7 @@ public class Mensaje_Archivo_Derecho_General_Panel extends javax.swing.JPanel im
         nombre_Archivo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombre_Archivo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/file.png"))); // NOI18N
         nombre_Archivo_JLabel.setToolTipText("<html> <h3>Nombre del archivo</h3> </html>");
+        ((ImageIcon)nombre_Archivo_JLabel.getIcon()).getImage().flush();
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
@@ -76,9 +78,9 @@ public class Mensaje_Archivo_Derecho_General_Panel extends javax.swing.JPanel im
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre_Archivo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombre_Archivo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(

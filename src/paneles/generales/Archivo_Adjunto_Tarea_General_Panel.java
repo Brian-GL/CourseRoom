@@ -6,6 +6,7 @@
 package paneles.generales;
 
 import interfaces.Componentes_Interface;
+import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import main.CourseRoom;
 
@@ -53,6 +54,7 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
 
         icono_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         icono_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/file.png"))); // NOI18N
+        ((ImageIcon)icono_JLabel.getIcon()).getImage().flush();
 
         descargar_JButton.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         descargar_JButton.setText("Descargar");
@@ -90,16 +92,16 @@ public class Archivo_Adjunto_Tarea_General_Panel extends javax.swing.JPanel impl
         archivo_JScrollPane.setVerifyInputWhenFocusTarget(false);
         archivo_JScrollPane.setWheelScrollingEnabled(false);
 
-        archivo_JTextPane.setEditable(false);
         archivo_JTextPane.setBorder(null);
         archivo_JTextPane.setContentType("text/html"); // NOI18N
+        archivo_JTextPane.setEditable(false);
         archivo_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         archivo_JTextPane.setText("");
-        archivo_JTextPane.setToolTipText("<html>\n<h3>Nombre del archivo adjunto</h3>\n</html>");
         archivo_JTextPane.setFocusCycleRoot(false);
         archivo_JTextPane.setFocusable(false);
         archivo_JTextPane.setOpaque(false);
         archivo_JTextPane.setRequestFocusEnabled(false);
+        archivo_JTextPane.setToolTipText("<html>\n<h3>Nombre del archivo adjunto</h3>\n</html>");
         archivo_JTextPane.setVerifyInputWhenFocusTarget(false);
         archivo_JScrollPane.setViewportView(archivo_JTextPane);
 

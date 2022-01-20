@@ -80,11 +80,13 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         mostrar_Dudas_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
+        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
 
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Dudas");
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
@@ -92,7 +94,7 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
 
         buscar_Dudas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
         buscar_Dudas_JButton.setBorder(null);
-        buscar_Dudas_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)buscar_Dudas_JButton.getIcon()).getImage().flush();
         buscar_Dudas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buscar_Dudas_JButtonMouseClicked(evt);
@@ -107,7 +109,7 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
 
         crear_Duda_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/wonder.png"))); // NOI18N
         crear_Duda_JButton.setBorder(null);
-        crear_Duda_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)crear_Duda_JButton.getIcon()).getImage().flush();
         crear_Duda_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 crear_Duda_JButtonMouseClicked(evt);
@@ -128,17 +130,17 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
                 .addGap(0, 0, 0)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(crear_Duda_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(crear_Duda_JButton)
                 .addGap(18, 18, 18)
-                .addComponent(buscar_Dudas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscar_Dudas_JButton)
                 .addGap(0, 0, 0))
         );
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buscar_Dudas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(crear_Duda_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buscar_Dudas_JButton)
+                    .addComponent(crear_Duda_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -196,19 +198,19 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
             mostrar_Dudas_JPanelLayout.setHorizontalGroup(
                 mostrar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrar_Dudas_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(mostrar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGap(64, 64, 64)
+                    .addGroup(mostrar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mostrar_Dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE))
+                    .addGap(64, 64, 64))
             );
             mostrar_Dudas_JPanelLayout.setVerticalGroup(
                 mostrar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Dudas_JPanelLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(mostrar_Dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                    .addComponent(mostrar_Dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                     .addContainerGap())
             );
 
@@ -229,6 +231,7 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
             mostrar_Dudas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/shrug.png"))); // NOI18N
             mostrar_Dudas_JButton.setToolTipText("<html>\n<h3>Regresar a la página de dudas</h3>\n</html>");
             mostrar_Dudas_JButton.setBorder(null);
+            ((ImageIcon)mostrar_Dudas_JButton.getIcon()).getImage().flush();
             mostrar_Dudas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     mostrar_Dudas_JButtonMouseClicked(evt);
@@ -402,6 +405,7 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         Duda_Estudiante_Panel duda_Estudiante_Panel = 
                 new Duda_Estudiante_Panel(nombre_Duda, descripcion_Duda, preguntador_Nombre, fecha, preguntador_Icono, id);
         mostrar_Dudas_Lista.push_back(duda_Estudiante_Panel);
+        preguntador_Icono.getImage().flush();
         Tablero_Estudiante_Panel.Agregar_Vista(duda_Estudiante_Panel, id);
         
     }
@@ -430,6 +434,7 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         icono_Usuario = new ImageIcon(imagen_usuario);
         imagen_usuario.flush();
 
+        icono_Usuario.getImage().flush();
         mostrar_Dudas_JScrollPane.getViewport().setOpaque(false);
         mostrar_Dudas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         mostrar_Dudas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);

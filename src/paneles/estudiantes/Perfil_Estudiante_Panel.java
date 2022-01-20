@@ -352,6 +352,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         
         ImageIcon imagen = new ImageIcon(Tablero_Estudiante_Panel.Imagen_Usuario());
         imagen_Perfil_JLabel.setIcon(imagen);
+        imagen.getImage().flush();
         nombres_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         apellidos_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         nombre_Usuario_jLabel.setForeground(CourseRoom.Primer_Color_Fuente()); 

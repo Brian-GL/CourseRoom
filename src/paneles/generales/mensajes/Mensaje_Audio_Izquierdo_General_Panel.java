@@ -97,6 +97,7 @@ public class Mensaje_Audio_Izquierdo_General_Panel extends javax.swing.JPanel im
         play_Pausa_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         play_Pausa_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"))); // NOI18N
         play_Pausa_JLabel.setToolTipText("<html> <h3>Pausar/Reproducir</h3> </html>");
+        ((ImageIcon)play_Pausa_JLabel.getIcon()).getImage().flush();
         play_Pausa_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 play_Pausa_JLabelMouseClicked(evt);
@@ -132,6 +133,7 @@ public class Mensaje_Audio_Izquierdo_General_Panel extends javax.swing.JPanel im
         alto_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         alto_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stop.png"))); // NOI18N
         alto_JLabel.setToolTipText("<html> <h3>Parar</h3> </html>");
+        ((ImageIcon)alto_JLabel.getIcon()).getImage().flush();
         alto_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 alto_JLabelMouseClicked(evt);
@@ -334,6 +336,8 @@ public class Mensaje_Audio_Izquierdo_General_Panel extends javax.swing.JPanel im
     public void Iniciar_Componentes() {
         icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
         icono_Pausa = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
+        icono_Play.getImage().flush();
+        icono_Pausa.getImage().flush();
         bandera_Mouse = true;
         componente_Reproductor_Audio = new AudioPlayerComponent();
         progreso_JSlider.setEnabled(false);
