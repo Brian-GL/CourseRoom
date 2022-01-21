@@ -21,7 +21,7 @@ import javax.swing.JLayeredPane;
 import clases.Celda_Renderer;
 import datos.colecciones.Lista;
 import datos.estructuras.Nodo;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;

@@ -7,7 +7,7 @@ package paneles.generales;
 
 import interfaces.Componentes_Interface;
 import java.time.LocalDateTime;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import oshi.SystemInfo;
 
 /**

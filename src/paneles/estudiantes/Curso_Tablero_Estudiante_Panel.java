@@ -9,7 +9,7 @@ import interfaces.Componentes_Interface;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 
 /**
  *

@@ -6,7 +6,7 @@
 package paneles.estudiantes;
 
 import clases.Celda_Renderer;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import com.github.lgooddatepicker.components.DateTimePicker;
 import java.awt.CardLayout;
 import java.awt.Image;

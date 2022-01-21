@@ -46,8 +46,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import main.CourseRoom;
-import main.CourseRoom_Frame;
+import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 
 /**
  *

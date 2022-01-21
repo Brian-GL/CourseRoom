@@ -8,7 +8,7 @@ package datos.colecciones;
 import datos.estructuras.Nodo;
 import datos.estructuras.Par;
 import java.util.Objects;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 
 
 public class Grafo<T>{

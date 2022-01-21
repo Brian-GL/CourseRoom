@@ -19,7 +19,7 @@ package paneles.estudiantes.chats;
 
 import clases.Celda_Renderer;
 import javax.swing.JLayeredPane;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -848,7 +848,7 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JLabel apellidos_JLabel;
+    private javax.swing.JLabel apellidos_JLabel;
     private javax.swing.JPanel chat_JPanel;
     private javax.swing.JLabel correo_JLabel;
     private javax.swing.JPanel encabezado_Chat_JPanel;
@@ -862,13 +862,13 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
     private javax.swing.JButton informacion_Chat_JButton;
     private javax.swing.JPanel informacion_Chat_JPanel;
     private javax.swing.JScrollPane intereses_Tematicas_JScrollPane;
-    private static javax.swing.JTable intereses_Tematicas_JTable;
+    private javax.swing.JTable intereses_Tematicas_JTable;
     private javax.swing.JTextField mensaje_JTextField;
     private javax.swing.JPanel mensajes_JPanel;
     private javax.swing.JScrollPane mensajes_JScrollPane;
     private javax.swing.JButton mostrar_Chat_JButton;
     private javax.swing.JLabel nombre_Usuario_jLabel;
-    private static javax.swing.JLabel nombres_JLabel;
+    private javax.swing.JLabel nombres_JLabel;
     private javax.swing.JLabel receptor_Chat_JLabel;
     private javax.swing.JButton regresar_Pagina_Chats_JButton;
     private javax.swing.JLabel tipo_Perfil_JLabel;

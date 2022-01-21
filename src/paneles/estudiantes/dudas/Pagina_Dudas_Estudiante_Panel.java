@@ -21,7 +21,7 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 

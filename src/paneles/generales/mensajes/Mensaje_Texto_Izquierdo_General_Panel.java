@@ -5,7 +5,7 @@
  */
 package paneles.generales.mensajes;
 import interfaces.Componentes_Interface;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 
 /**
  *

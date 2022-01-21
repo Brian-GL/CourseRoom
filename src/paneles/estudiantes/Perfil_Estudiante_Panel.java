@@ -5,7 +5,7 @@
  */
 package paneles.estudiantes;
 
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import java.awt.Component;
 import java.awt.Image;
 import javax.swing.ImageIcon;

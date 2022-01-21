@@ -5,7 +5,7 @@
  */
 package paneles.estudiantes;
 
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -15,7 +15,7 @@ import java.awt.Component;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
-import main.CourseRoom_Frame;
+import courseroom.CourseRoom_Frame;
 import paneles.generales.Sesion_Activa_General_Panel;
 
 /**

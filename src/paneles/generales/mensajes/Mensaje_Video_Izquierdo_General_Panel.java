@@ -6,7 +6,7 @@
 package paneles.generales.mensajes;
 
 import interfaces.Componentes_Interface;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import interfaces.Limpieza_Interface;
 import interfaces.Reproductor_Interface;
 import java.awt.event.MouseEvent;

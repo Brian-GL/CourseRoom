@@ -5,7 +5,7 @@
  */
 package paneles.estudiantes;
 
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import javax.swing.JFileChooser;

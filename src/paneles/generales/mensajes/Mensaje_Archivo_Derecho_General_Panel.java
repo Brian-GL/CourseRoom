@@ -8,7 +8,7 @@ package paneles.generales.mensajes;
 import interfaces.Componentes_Interface;
 import java.io.File;
 import javax.swing.ImageIcon;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 
 /**
  *

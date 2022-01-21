@@ -11,7 +11,7 @@ import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 
 /**
  *

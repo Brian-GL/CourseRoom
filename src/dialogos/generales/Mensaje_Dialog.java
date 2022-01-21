@@ -9,8 +9,8 @@ import datos.enumeraciones.Tipo_Mensaje_Dialog_Enum;
 import interfaces.Componentes_Interface;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import main.CourseRoom;
-import main.CourseRoom_Frame;
+import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 
 /**
  *

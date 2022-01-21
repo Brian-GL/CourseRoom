@@ -5,7 +5,7 @@
  */
 package paneles.generales.tablero;
 
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import datos.colecciones.Lista;
 import datos.colecciones.Lista_Pares;
 import datos.estructuras.Nodo;
@@ -167,7 +167,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         imagen_Arte_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_Arte_JLabel.setToolTipText("<html>\n<h3>Carátula</h3>\n</html>");
-        imagen_Arte_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(550, 550));
@@ -2068,7 +2067,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     
                     Image imagen_Real = ((Image)arte.getImage());
                     if(imagen_Real != null){
-                        imagen_Real = imagen_Real.getScaledInstance(550, 550, Image.SCALE_AREA_AVERAGING);
+                        imagen_Real = imagen_Real.getScaledInstance(500, 500, Image.SCALE_AREA_AVERAGING);
                         Establecer_Colores(imagen_Real);
                         ImageIcon cover = new ImageIcon(imagen_Real);
                         imagen_Arte_JLabel.setIcon(cover);

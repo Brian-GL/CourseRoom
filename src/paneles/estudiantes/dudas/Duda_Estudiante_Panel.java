@@ -5,7 +5,7 @@
  */
 package paneles.estudiantes.dudas;
 
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;

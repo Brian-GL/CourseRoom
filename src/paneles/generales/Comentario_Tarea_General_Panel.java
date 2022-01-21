@@ -5,7 +5,7 @@
  */
 package paneles.generales;
 
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import interfaces.Componentes_Interface;
 import java.awt.Image;
 import java.io.IOException;

@@ -5,7 +5,7 @@
  */
 package paneles.estudiantes.fechas;
 
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import interfaces.Componentes_Interface;
 
 /**

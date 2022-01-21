@@ -6,7 +6,7 @@
 package paneles.estudiantes;
 
 import interfaces.Componentes_Interface;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import java.io.File;
 import javax.swing.SwingUtilities;
 

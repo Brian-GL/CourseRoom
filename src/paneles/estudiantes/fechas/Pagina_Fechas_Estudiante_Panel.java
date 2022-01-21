@@ -23,7 +23,7 @@ import interfaces.Limpieza_Interface;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import javax.swing.JScrollPane;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 
 /**
  *

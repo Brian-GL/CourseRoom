@@ -5,7 +5,7 @@
  */
 package paneles.generales.tablero;
 
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import interfaces.Componentes_Interface;
 import javax.swing.ImageIcon;
 

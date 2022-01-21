@@ -6,9 +6,9 @@
 package paneles.generales.inicio_sesion;
 
 import interfaces.Componentes_Interface;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import interfaces.Limpieza_Interface;
-import main.CourseRoom_Frame;
+import courseroom.CourseRoom_Frame;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;

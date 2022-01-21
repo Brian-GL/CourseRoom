@@ -21,7 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import paneles.estudiantes.chats.Pagina_Chats_Estudiante_Panel;
 
 /**

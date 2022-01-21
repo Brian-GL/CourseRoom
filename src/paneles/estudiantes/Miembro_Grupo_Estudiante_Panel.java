@@ -6,7 +6,7 @@
 package paneles.estudiantes;
 
 import clases.Celda_Renderer;
-import main.CourseRoom;
+import courseroom.CourseRoom;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
