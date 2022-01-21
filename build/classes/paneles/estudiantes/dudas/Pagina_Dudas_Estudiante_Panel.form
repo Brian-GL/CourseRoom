@@ -54,7 +54,7 @@
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="mostrar_Dudas_JScrollPane" alignment="0" pref="1094" max="32767" attributes="0"/>
-                          <Component id="contenido_Titulo_JPanel" alignment="0" pref="1094" max="32767" attributes="0"/>
+                          <Component id="contenido_Titulo_JPanel" alignment="0" pref="982" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
@@ -234,7 +234,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="mostrar_Dudas_JButton" min="-2" max="-2" attributes="0"/>
@@ -243,7 +243,7 @@
                           </Group>
                           <Component id="buscar_Dudas_JScrollPane" alignment="1" pref="1094" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

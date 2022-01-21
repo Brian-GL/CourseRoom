@@ -5,7 +5,6 @@
  */
 package paneles.estudiantes;
 
-import paneles.estudiantes.chats.Chats_Estudiante_Panel;
 import clases.Celda_Renderer;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
@@ -23,6 +22,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import main.CourseRoom;
+import paneles.estudiantes.chats.Pagina_Chats_Estudiante_Panel;
 
 /**
  *
@@ -190,7 +190,7 @@ public class Curso_Miembros_Estudiante_Panel extends javax.swing.JPanel implemen
         var icono_Chatear = new ImageIcon(getClass().getResource("/recursos/iconos/online-chat.png"));
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
             
-            id = CourseRoom.Concatenar("Chat_", i+Chats_Estudiante_Panel.Numero_Chats());
+            id = CourseRoom.Concatenar("Chat_", i+Pagina_Chats_Estudiante_Panel.Numero_Chats());
             try {
                 System.out.println(id + " -> Getting Image From https://i.pravatar.cc/96");
                 url_Imagen = new URL("https://i.pravatar.cc/96");
@@ -202,7 +202,7 @@ public class Curso_Miembros_Estudiante_Panel extends javax.swing.JPanel implemen
                 celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(), id);
                 celdas[3] = new Celda_Renderer(icono_Chatear, id);
 
-                Chats_Estudiante_Panel.Agregar_Chat(celdas[0], celdas[2], id);
+                Pagina_Chats_Estudiante_Panel.Agregar_Chat(celdas[0], celdas[2], id);
                 modelo.addRow(celdas);
 
                 obtener_Imagen.flush();

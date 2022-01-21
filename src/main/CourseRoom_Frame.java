@@ -48,10 +48,6 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
 
         crear_Cuenta = new Crear_Cuenta_General_Panel();
 
-        //teacherDashboardPanel = new Teacher_Dashboard_Panel();
-        //jPanelViewer.add("dashboard",teacherDashboardPanel);
-        
-
         visualizador_JPanel.add("crear_Cuenta", crear_Cuenta);
 
         layout_Tarjeta = (CardLayout) visualizador_JPanel.getLayout();

@@ -201,7 +201,7 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
                     .addGap(64, 64, 64)
                     .addGroup(mostrar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mostrar_Dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
                     .addGap(64, 64, 64))
             );
             mostrar_Dudas_JPanelLayout.setVerticalGroup(
@@ -294,14 +294,14 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
                 buscar_Dudas_JPanelLayout.setHorizontalGroup(
                     buscar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buscar_Dudas_JPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(64, 64, 64)
                         .addGroup(buscar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(buscar_Dudas_JPanelLayout.createSequentialGroup()
                                 .addComponent(mostrar_Dudas_JButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(buscar_Dudas_JTextField))
                             .addComponent(buscar_Dudas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(64, 64, 64))
                 );
                 buscar_Dudas_JPanelLayout.setVerticalGroup(
                     buscar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

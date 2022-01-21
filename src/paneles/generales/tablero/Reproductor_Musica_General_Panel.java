@@ -166,10 +166,13 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
         imagen_Arte_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen_Arte_JLabel.setToolTipText("<html>\n<h3>Carátula</h3>\n</html>");
+        imagen_Arte_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         imagen_Arte_JLabel.setMaximumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setMinimumSize(new java.awt.Dimension(550, 550));
         imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(550, 550));
-        imagen_Arte_JLabel.setToolTipText("<html>\n<h3>Carátula</h3>\n</html>");
+
+        controles_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         controles_JTabbedPane.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
 
@@ -199,7 +202,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         lista_Reproduccion_JScrollPane.setOpaque(false);
 
         lista_Reproduccion_JPanel.setOpaque(false);
-        lista_Reproduccion_JPanel.setLayout(new java.awt.GridLayout(0, 1));
+        lista_Reproduccion_JPanel.setLayout(new javax.swing.BoxLayout(lista_Reproduccion_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
         lista_Reproduccion_JScrollPane.setViewportView(lista_Reproduccion_JPanel);
 
         javax.swing.GroupLayout abrir_Archivos_JPanelLayout = new javax.swing.GroupLayout(abrir_Archivos_JPanel);
@@ -2065,7 +2068,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     
                     Image imagen_Real = ((Image)arte.getImage());
                     if(imagen_Real != null){
-                        imagen_Real = imagen_Real.getScaledInstance(500, 500, Image.SCALE_AREA_AVERAGING);
+                        imagen_Real = imagen_Real.getScaledInstance(550, 550, Image.SCALE_AREA_AVERAGING);
                         Establecer_Colores(imagen_Real);
                         ImageIcon cover = new ImageIcon(imagen_Real);
                         imagen_Arte_JLabel.setIcon(cover);

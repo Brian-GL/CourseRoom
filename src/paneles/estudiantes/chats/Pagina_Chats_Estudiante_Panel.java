@@ -1,45 +1,63 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2022 LENOVO
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package paneles.estudiantes.chats;
 
+import javax.swing.JLayeredPane;
+import clases.Celda_Renderer;
+import datos.colecciones.Lista;
+import datos.estructuras.Nodo;
+import main.CourseRoom;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
-
 
 /**
  *
  * @author LENOVO
  */
-public class Pagina_Chats_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
+public class Pagina_Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface{
+
+    private static Lista<Chat_Estudiante_Panel> mostrar_Chats_Lista;
+    private Lista<Chat_Estudiante_Panel> buscar_Chats_Lista;
     
-    private Chats_Estudiante_Panel chats_Estudiante_Panel;
-    private Buscar_Chats_Estudiante_Panel buscar_Chats_Estudiante_Panel;
-    private static CardLayout layout;
-    
-    @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Pagina_Chats_Estudiante_Panel(){
+    /**
+     * Creates new form Pagina_Chats_Estudiante
+     */
+    public Pagina_Chats_Estudiante_Panel() {
+        initComponents();
         
-       initComponents();
-        
-       Iniciar_Componentes();
-       
-       layout = (CardLayout)this.getLayout();
-        
+        Iniciar_Componentes();
     }
-   
-    public static void Buscar_Chats(){
-        layout.show(Tablero_Estudiante_Panel.Pagina_Chats(), "Buscar");
-    }
-    
-    public static void Mostrar_Chats(){
-        layout.show(Tablero_Estudiante_Panel.Pagina_Chats(), "Chats");
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,34 +68,477 @@ public class Pagina_Chats_Estudiante_Panel extends javax.swing.JPanel implements
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setMinimumSize(new java.awt.Dimension(0, 0));
-        setOpaque(false);
+        mostrar_Chats_JPanel = new javax.swing.JPanel();
+        contenido_Titulo_JPanel = new javax.swing.JPanel();
+        titulo_JLabel = new javax.swing.JLabel();
+        buscar_Chats_JButton = new javax.swing.JButton();
+        mostrar_Chats_JScrollPane = new javax.swing.JScrollPane();
+        mostrar_Chats_JTable = new javax.swing.JTable();
+        buscar_Chats_JPanel = new javax.swing.JPanel();
+        buscar_JTextField = new javax.swing.JTextField();
+        mostrar_Chats_JButton = new javax.swing.JButton();
+        buscar_Chats_JScrollPane = new javax.swing.JScrollPane();
+        buscar_Chats_JTable = new javax.swing.JTable();
+
         setPreferredSize(new java.awt.Dimension(1110, 630));
         setLayout(new java.awt.CardLayout());
-    }// </editor-fold>//GEN-END:initComponents
 
-  
+        mostrar_Chats_JPanel.setOpaque(false);
+        mostrar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+
+        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+
+        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setText("Chats Personales");
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setOpaque(true);
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+
+        buscar_Chats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
+        buscar_Chats_JButton.setBorder(null);
+        buscar_Chats_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        buscar_Chats_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscar_Chats_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buscar_Chats_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buscar_Chats_JButtonMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
+        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
+        contenido_Titulo_JPanelLayout.setHorizontalGroup(
+            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buscar_Chats_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        contenido_Titulo_JPanelLayout.setVerticalGroup(
+            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
+                .addComponent(buscar_Chats_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
+        );
+
+        mostrar_Chats_JScrollPane.setBorder(null);
+        mostrar_Chats_JScrollPane.setOpaque(false);
+
+        mostrar_Chats_JTable.setAutoCreateRowSorter(true);
+        mostrar_Chats_JTable.setModel(
+
+            new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+
+                },
+                new String [] {
+                    "Chat", "Ultimo Mensaje", "Fecha", "No Leídos"
+                }
+            ) {
+                boolean[] canEdit = new boolean [] {
+                    false, false, false, false
+                };
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit [columnIndex];
+                }
+
+                @Override
+                public Class getColumnClass(int column)
+                {
+                    for(int i = 0; i < mostrar_Chats_JTable.getRowCount(); i++)
+                    {
+                        //The first valid value of a cell of given column is retrieved.
+                        if(getValueAt(i,column) != null)
+                        {
+                            return getValueAt(i, column).getClass();
+                        }
+                    }
+                    //if no valid value is found, default renderer is returned.
+                    return super.getColumnClass(column);
+                }
+            });
+            mostrar_Chats_JTable.setOpaque(false);
+            mostrar_Chats_JTable.setRowHeight(100);
+            mostrar_Chats_JTable.setRowMargin(15);
+            mostrar_Chats_JTable.setShowGrid(true);
+            mostrar_Chats_JTable.setShowVerticalLines(false);
+            mostrar_Chats_JTable.setRowSorter(new TableRowSorter(mostrar_Chats_JTable.getModel()));
+            mostrar_Chats_JScrollPane.setViewportView(mostrar_Chats_JTable);
+
+            javax.swing.GroupLayout mostrar_Chats_JPanelLayout = new javax.swing.GroupLayout(mostrar_Chats_JPanel);
+            mostrar_Chats_JPanel.setLayout(mostrar_Chats_JPanelLayout);
+            mostrar_Chats_JPanelLayout.setHorizontalGroup(
+                mostrar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mostrar_Chats_JPanelLayout.createSequentialGroup()
+                    .addGap(64, 64, 64)
+                    .addGroup(mostrar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mostrar_Chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
+                    .addGap(64, 64, 64))
+            );
+            mostrar_Chats_JPanelLayout.setVerticalGroup(
+                mostrar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mostrar_Chats_JPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(mostrar_Chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+
+            add(mostrar_Chats_JPanel, "Mostrar_Chats");
+
+            buscar_Chats_JPanel.setOpaque(false);
+            buscar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+
+            buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+            buscar_JTextField.setToolTipText("<html> <h3>Buscar chats. Presiona ENTER para realizar la búsqueda</h3> </html>");
+            buscar_JTextField.setBorder(null);
+            buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    buscar_JTextFieldKeyPressed(evt);
+                }
+            });
+
+            mostrar_Chats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/video-chat.png"))); // NOI18N
+            mostrar_Chats_JButton.setToolTipText("<html>\n<h3>Regresar a mis chats personales</h3>\n</html>");
+            mostrar_Chats_JButton.setBorder(null);
+            mostrar_Chats_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    mostrar_Chats_JButtonMouseClicked(evt);
+                }
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    mostrar_Chats_JButtonMouseEntered(evt);
+                }
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    mostrar_Chats_JButtonMouseExited(evt);
+                }
+            });
+
+            buscar_Chats_JScrollPane.setBorder(null);
+            buscar_Chats_JScrollPane.setOpaque(false);
+
+            buscar_Chats_JTable.setAutoCreateRowSorter(true);
+            buscar_Chats_JTable.setModel(
+
+                new javax.swing.table.DefaultTableModel(
+                    new Object [][] {
+
+                    },
+                    new String [] {
+                        "Chat", "Ultimo Mensaje", "Fecha", "No Leídos"
+                    }
+                ) {
+                    boolean[] canEdit = new boolean [] {
+                        false, false, false, false
+                    };
+
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit [columnIndex];
+                    }
+
+                    @Override
+                    public Class getColumnClass(int column)
+                    {
+                        for(int i = 0; i < buscar_Chats_JTable.getRowCount(); i++)
+                        {
+                            //The first valid value of a cell of given column is retrieved.
+                            if(getValueAt(i,column) != null)
+                            {
+                                return getValueAt(i, column).getClass();
+                            }
+                        }
+                        //if no valid value is found, default renderer is returned.
+                        return super.getColumnClass(column);
+                    }
+                });
+                buscar_Chats_JTable.setOpaque(false);
+                buscar_Chats_JTable.setRowHeight(100);
+                buscar_Chats_JTable.setRowMargin(15);
+                buscar_Chats_JTable.setShowGrid(true);
+                buscar_Chats_JTable.setShowVerticalLines(false);
+                buscar_Chats_JTable.setRowSorter(new TableRowSorter(buscar_Chats_JTable.getModel()));
+                buscar_Chats_JScrollPane.setViewportView(buscar_Chats_JTable);
+
+                javax.swing.GroupLayout buscar_Chats_JPanelLayout = new javax.swing.GroupLayout(buscar_Chats_JPanel);
+                buscar_Chats_JPanel.setLayout(buscar_Chats_JPanelLayout);
+                buscar_Chats_JPanelLayout.setHorizontalGroup(
+                    buscar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(buscar_Chats_JPanelLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addGroup(buscar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(buscar_Chats_JPanelLayout.createSequentialGroup()
+                                .addComponent(mostrar_Chats_JButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 922, Short.MAX_VALUE))
+                            .addComponent(buscar_Chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
+                        .addGap(64, 64, 64))
+                );
+                buscar_Chats_JPanelLayout.setVerticalGroup(
+                    buscar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscar_Chats_JPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(buscar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(buscar_JTextField)
+                            .addComponent(mostrar_Chats_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buscar_Chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+                        .addContainerGap())
+                );
+
+                add(buscar_Chats_JPanel, "Buscar_Chats");
+            }// </editor-fold>//GEN-END:initComponents
+
+    private void buscar_Chats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Chats_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            ((CardLayout)this.getLayout()).show(this, "Buscar_Chats");
+        }
+    }//GEN-LAST:event_buscar_Chats_JButtonMouseClicked
+
+    private void buscar_Chats_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Chats_JButtonMouseEntered
+        // TODO add your handling code here:
+        buscar_Chats_JButton.setBackground(CourseRoom.Tercer_Color());
+    }//GEN-LAST:event_buscar_Chats_JButtonMouseEntered
+
+    private void buscar_Chats_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Chats_JButtonMouseExited
+        // TODO add your handling code here:
+        buscar_Chats_JButton.setBackground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_buscar_Chats_JButtonMouseExited
+
+    private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+
+        }
+
+    }//GEN-LAST:event_buscar_JTextFieldKeyPressed
+
+    private void mostrar_Chats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Chats_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            ((CardLayout)this.getLayout()).show(this, "Mostrar_Chats");
+        }
+    }//GEN-LAST:event_mostrar_Chats_JButtonMouseClicked
+
+    private void mostrar_Chats_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Chats_JButtonMouseEntered
+        // TODO add your handling code here:
+        mostrar_Chats_JButton.setBackground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_mostrar_Chats_JButtonMouseEntered
+
+    private void mostrar_Chats_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Chats_JButtonMouseExited
+        // TODO add your handling code here:
+        mostrar_Chats_JButton.setBackground(CourseRoom.Primer_Color());
+    }//GEN-LAST:event_mostrar_Chats_JButtonMouseExited
+
+    public static int Numero_Chats() {
+        return mostrar_Chats_Lista.size();
+    }
+
+    public static void Agregar_Chat(Celda_Renderer nombre_Completo, Celda_Renderer fecha, String id) {
+
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        celdas[0] = nombre_Completo;
+        celdas[1] = new Celda_Renderer("", id);
+        celdas[2] = fecha;
+        celdas[3] = new Celda_Renderer("", id);
+        modelo.addRow(celdas);
+        Chat_Estudiante_Panel chat_Estudiante_Panel
+                = new Chat_Estudiante_Panel(nombre_Completo.Label().getText(), id);
+        mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
+        Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscar_Chats_JButton;
+    private javax.swing.JPanel buscar_Chats_JPanel;
+    private javax.swing.JScrollPane buscar_Chats_JScrollPane;
+    private static javax.swing.JTable buscar_Chats_JTable;
+    private javax.swing.JTextField buscar_JTextField;
+    private javax.swing.JPanel contenido_Titulo_JPanel;
+    private javax.swing.JButton mostrar_Chats_JButton;
+    private javax.swing.JPanel mostrar_Chats_JPanel;
+    private javax.swing.JScrollPane mostrar_Chats_JScrollPane;
+    private static javax.swing.JTable mostrar_Chats_JTable;
+    private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
-        chats_Estudiante_Panel = new Chats_Estudiante_Panel();
-        buscar_Chats_Estudiante_Panel = new Buscar_Chats_Estudiante_Panel();
+
+        mostrar_Chats_JScrollPane.getViewport().setOpaque(false);
+        mostrar_Chats_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        mostrar_Chats_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+
+        mostrar_Chats_Lista = new Lista<>();
+
+        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        mostrar_Chats_JTable.getTableHeader().setFont(gadugi);
+
+        mostrar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
+
+        String id;
+        URL url_Imagen;
+        Image obtener_Imagen = null;
+        ImageIcon icono_Chat = null;
+        Chat_Estudiante_Panel chat_Estudiante_Panel;
+        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
+            id = CourseRoom.Concatenar("Chat_", i);
+            try {
+                System.out.println(id + " -> Getting Image From https://i.pravatar.cc/96");
+                url_Imagen = new URL("https://i.pravatar.cc/96");
+                obtener_Imagen = ImageIO.read(url_Imagen);
+                icono_Chat = new ImageIcon(obtener_Imagen);
+
+                celdas[0] = new Celda_Renderer(icono_Chat, CourseRoom.Faker().name().fullName(), id);
+                celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().sentence(), id);
+                celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(), id);
+                celdas[3] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)), id);
+
+                chat_Estudiante_Panel = new Chat_Estudiante_Panel(celdas[0].Label().getText(), id);
+                mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
+                Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id);
+                modelo.addRow(celdas);
+
+                obtener_Imagen.flush();
+                obtener_Imagen.getGraphics().dispose();
+            } catch (MalformedURLException ex) {
+
+            } catch (IOException ex) {
+
+            }
+        }
+
+        mostrar_Chats_JTable.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+
+                    JTable tabla = (JTable) e.getComponent();
+                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                    int columna = tabla.getSelectedColumn();
+
+                    DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
+
+                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                }
+            }
+        });
         
-        this.add(chats_Estudiante_Panel, "Chats");
-        this.add(buscar_Chats_Estudiante_Panel,"Buscar");
+        buscar_Chats_JScrollPane.getViewport().setOpaque(false);
+        buscar_Chats_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        buscar_Chats_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+
+        buscar_Chats_Lista = new Lista<>();
+
+        buscar_Chats_JTable.getTableHeader().setFont(gadugi);
+
+        buscar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+
+        buscar_Chats_JTable.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+
+                    JTable tabla = (JTable) e.getComponent();
+                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                    int columna = tabla.getSelectedColumn();
+
+                    DefaultTableModel modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
+
+                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                }
+            }
+        });
+
     }
 
     @Override
     public void Colorear_Componentes() {
-       chats_Estudiante_Panel.Colorear_Componentes();
-       buscar_Chats_Estudiante_Panel.Colorear_Componentes();
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
+
+        titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+
+        buscar_Chats_JButton.setBackground(CourseRoom.Segundo_Color());
+
+        mostrar_Chats_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
+        mostrar_Chats_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
+        Celda_Renderer celda;
+        for (int i = 0; i < mostrar_Chats_JTable.getRowCount(); i++) {
+            for (int j = 0; j < 4; j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+            }
+        }
+
+        Chat_Estudiante_Panel chat_Estudiante_Panel;
+        for (Nodo<Chat_Estudiante_Panel> nodo = mostrar_Chats_Lista.front(); nodo != null; nodo = nodo.next()) {
+            chat_Estudiante_Panel = nodo.element();
+            chat_Estudiante_Panel.Colorear_Componentes();
+        }
+        
+        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
+        buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
+                "Buscar Chats", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION,
+                gadugi, CourseRoom.Tercer_Color_Fuente()));
+
+        buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
+        buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+
+        mostrar_Chats_JButton.setBackground(CourseRoom.Primer_Color());
+
+        buscar_Chats_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
+        buscar_Chats_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+
+        modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
+        for (int i = 0; i < buscar_Chats_JTable.getRowCount(); i++) {
+            for (int j = 0; j < 4; j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+            }
+        }
+
+        for (Nodo<Chat_Estudiante_Panel> nodo = buscar_Chats_Lista.front(); nodo != null; nodo = nodo.next()) {
+            chat_Estudiante_Panel = nodo.element();
+            chat_Estudiante_Panel.Colorear_Componentes();
+        }
     }
-    
+
     @Override
     public void Limpiar() {
-        chats_Estudiante_Panel.Limpiar();
-        buscar_Chats_Estudiante_Panel.Limpiar();
+        mostrar_Chats_Lista.clear();
+        mostrar_Chats_JTable.removeAll();
+        buscar_Chats_Lista.clear();
+        buscar_Chats_JTable.removeAll();
     }
 }

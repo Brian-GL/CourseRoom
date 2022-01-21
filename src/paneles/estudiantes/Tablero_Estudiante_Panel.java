@@ -788,7 +788,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             primer_Color = Color.BLACK;
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
             PixelGrabber obtener_Pixeles = new PixelGrabber(imagen_Usuario, 0, 0, -1, -1, false);
-            int largo_Imagen = imagen_Usuario.getWidth(null)/2;
+            int largo_Imagen = imagen_Usuario.getWidth(null);
             int[] pixeles;
             int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
             Color color;
@@ -872,7 +872,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                 CourseRoom_Frame.Colorear(); 
                 
                 Colorear();
-                
             }
             
         } catch (InterruptedException ex) {
@@ -1022,8 +1021,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             
             pagina_Tareas_Panel = new Pagina_Tareas_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Tareas",pagina_Tareas_Panel);
-            
-            
             
             pagina_Fechas_Panel = new Pagina_Fechas_Estudiante_Panel();
             visualizador_JPanel.add("Pagina_Fechas",pagina_Fechas_Panel);

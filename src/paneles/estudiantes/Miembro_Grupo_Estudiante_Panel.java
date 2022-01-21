@@ -5,7 +5,6 @@
  */
 package paneles.estudiantes;
 
-import paneles.estudiantes.chats.Chats_Estudiante_Panel;
 import clases.Celda_Renderer;
 import main.CourseRoom;
 import java.awt.Color;
@@ -23,6 +22,7 @@ import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.time.LocalDate;
 import javax.swing.SwingUtilities;
+import paneles.estudiantes.chats.Pagina_Chats_Estudiante_Panel;
 
 /**
  *
@@ -251,7 +251,8 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
             nombres_JLabel.setText(nombre);
             nombre_Usuario_JLabel.setText(CourseRoom.Faker().name().username());
             
-            id_Chat = CourseRoom.Concatenar("Chat_", Chats_Estudiante_Panel.Numero_Chats());
+            
+            id_Chat = CourseRoom.Concatenar("Chat_", Pagina_Chats_Estudiante_Panel.Numero_Chats());
             
             Celda_Renderer nombre_Completo_Celda = 
                     new Celda_Renderer(icono_Imagen,CourseRoom.Concatenar(nombre, apellido),
@@ -259,8 +260,9 @@ public class Miembro_Grupo_Estudiante_Panel extends javax.swing.JPanel implement
             
             Celda_Renderer fecha = new Celda_Renderer(LocalDate.now().toString(),id_Chat);
             
-            Chats_Estudiante_Panel.Agregar_Chat(nombre_Completo_Celda, fecha, id_Chat);
+            Pagina_Chats_Estudiante_Panel.Agregar_Chat(nombre_Completo_Celda, fecha, id_Chat);
 
+            
             obtener_Imagen.flush();
             obtener_Imagen.getGraphics().dispose();
             Colorear_Componentes();

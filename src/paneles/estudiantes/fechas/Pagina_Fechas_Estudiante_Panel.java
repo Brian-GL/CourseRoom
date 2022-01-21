@@ -1,7 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2022 LENOVO
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package paneles.estudiantes.fechas;
 
@@ -10,23 +22,21 @@ import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import javax.swing.JScrollPane;
 import main.CourseRoom;
-
 
 /**
  *
  * @author LENOVO
  */
-public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
-    
-    public Pagina_Fechas_Estudiante_Panel(){
-        
-       initComponents();
-       
-       Iniciar_Componentes();
-        
+public class Pagina_Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Interface, Componentes_Interface{
+
+    /**
+     * Creates new form Pagina_Fechas_Estudiante
+     */
+    public Pagina_Fechas_Estudiante_Panel() {
+        initComponents();
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,7 +47,6 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contenido_JScrollPane = new javax.swing.JScrollPane();
         contenido_JPanel = new javax.swing.JPanel();
         titulo_JPanel = new javax.swing.JPanel();
         contenido_Titulo_JPanel = new javax.swing.JPanel();
@@ -53,12 +62,7 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
         domingo_JLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
-        setLayout(new java.awt.CardLayout());
-
-        contenido_JScrollPane.setBorder(null);
-        contenido_JScrollPane.setOpaque(false);
 
         contenido_JPanel.setOpaque(false);
         contenido_JPanel.setLayout(new javax.swing.BoxLayout(contenido_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
@@ -169,8 +173,8 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dias_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
-                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
+                    .addComponent(dias_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
+                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE))
                 .addGap(64, 64, 64))
         );
         titulo_JPanelLayout.setVerticalGroup(
@@ -185,9 +189,7 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
 
         contenido_JPanel.add(titulo_JPanel);
 
-        contenido_JScrollPane.setViewportView(contenido_JPanel);
-
-        add(contenido_JScrollPane, "card2");
+        setViewportView(contenido_JPanel);
     }// </editor-fold>//GEN-END:initComponents
 
     public void Crear_Calendario() {
@@ -355,11 +357,8 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
         }
     }
 
-    
-  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
-    private javax.swing.JScrollPane contenido_JScrollPane;
     private javax.swing.JPanel contenido_Titulo_JPanel;
     private javax.swing.JPanel dias_JPanel;
     private javax.swing.JLabel domingo_JLabel;
@@ -376,9 +375,9 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
 
     @Override
     public void Iniciar_Componentes() {
-        contenido_JScrollPane.getViewport().setOpaque(false);
-        contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        this.getViewport().setOpaque(false);
+        this.getVerticalScrollBar().setUnitIncrement(15);
+        this.getHorizontalScrollBar().setUnitIncrement(15);
         mes_JLabel.setText(Establecer_Nombre_Mes());
         
     }
@@ -420,4 +419,5 @@ public class Pagina_Fechas_Estudiante_Panel extends javax.swing.JPanel implement
            contenido_JPanel.remove(1);
        }
     }
+
 }
