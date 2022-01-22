@@ -898,7 +898,6 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-
         Celda_Renderer[] celda = new Celda_Renderer[1];
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
             celda[0] = new Celda_Renderer(CourseRoom.Faker().music().genre(), "");
