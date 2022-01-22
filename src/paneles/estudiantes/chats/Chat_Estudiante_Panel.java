@@ -952,7 +952,6 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
             componente = chat_Componentes[i];
             ((Componentes_Interface) componente).Colorear_Componentes();
         }
-        
     }
 
     @Override
