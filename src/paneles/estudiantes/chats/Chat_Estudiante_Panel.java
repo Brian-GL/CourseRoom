@@ -838,9 +838,7 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
                 }
 
             }
-
         }
-
     }
 
     public String ID() {
