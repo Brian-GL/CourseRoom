@@ -530,7 +530,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Cursos");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
         }
     }//GEN-LAST:event_cursos_JButtonMouseClicked
 
@@ -549,7 +549,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void tareas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Tareas");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Tareas");
         }
         
     }//GEN-LAST:event_tareas_JButtonMouseClicked
@@ -569,7 +569,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void fechas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Fechas");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Fechas");
         }
     }//GEN-LAST:event_fechas_JButtonMouseClicked
 
@@ -588,7 +588,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void avisos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_avisos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Avisos");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Avisos");
         }
     }//GEN-LAST:event_avisos_JButtonMouseClicked
 
@@ -607,7 +607,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void grupos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grupos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Grupos");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Grupos");
         }
     }//GEN-LAST:event_grupos_JButtonMouseClicked
 
@@ -626,7 +626,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void chats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chats_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Chats");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Chats");
         }
     }//GEN-LAST:event_chats_JButtonMouseClicked
 
@@ -645,7 +645,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void reproductor_Musica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reproductor_Musica_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Reproductor_Musica");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Musica");
         }
     }//GEN-LAST:event_reproductor_Musica_JButtonMouseClicked
 
@@ -723,7 +723,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void dudas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dudas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista("Pagina_Dudas");
+            Tablero_Estudiante_Panel.Mostrar_Vista("Dudas");
         }
     }//GEN-LAST:event_dudas_JButtonMouseClicked
 
@@ -992,37 +992,37 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             visualizador_JPanel.add("Perfil",perfil_Panel);
             
             pagina_Chats_Panel = new Pagina_Chats_Estudiante_Panel();
-            visualizador_JPanel.add("Pagina_Chats", pagina_Chats_Panel);
+            visualizador_JPanel.add("Chats", pagina_Chats_Panel);
             
             pagina_Grupos_Panel = new Pagina_Grupos_Estudiante_Panel();
-            visualizador_JPanel.add("Pagina_Grupos", pagina_Grupos_Panel);
+            visualizador_JPanel.add("Grupos", pagina_Grupos_Panel);
 
             editar_Perfil_Panel = new Editar_Perfil_Estudiante_Panel();
             visualizador_JPanel.add("Editar_Perfil",editar_Perfil_Panel);
             
             pagina_Tareas_Panel = new Pagina_Tareas_Estudiante_Panel();
-            visualizador_JPanel.add("Pagina_Tareas",pagina_Tareas_Panel);
+            visualizador_JPanel.add("Tareas",pagina_Tareas_Panel);
             
             pagina_Fechas_Panel = new Pagina_Fechas_Estudiante_Panel();
-            visualizador_JPanel.add("Pagina_Fechas",pagina_Fechas_Panel);
+            visualizador_JPanel.add("Fechas",pagina_Fechas_Panel);
             
             pagina_Avisos_Panel = new Pagina_Avisos_Estudiante_Panel();
-            visualizador_JPanel.add("Pagina_Avisos",pagina_Avisos_Panel);
+            visualizador_JPanel.add("Avisos",pagina_Avisos_Panel);
             
             acerca_De_Panel = new Acerca_General_Panel();
             visualizador_JPanel.add("Acerca_De",acerca_De_Panel);
             
             reproductor_Musica_Panel = new Reproductor_Musica_General_Panel();
-            visualizador_JPanel.add("Reproductor_Musica",reproductor_Musica_Panel);
+            visualizador_JPanel.add("Musica",reproductor_Musica_Panel);
             
             ajustes_Panel = new Ajustes_Estudiante_Panel();
             visualizador_JPanel.add("Ajustes",ajustes_Panel);
             
             pagina_Dudas_Panel = new Pagina_Dudas_Estudiante_Panel();
-            visualizador_JPanel.add("Pagina_Dudas", pagina_Dudas_Panel);
+            visualizador_JPanel.add("Dudas", pagina_Dudas_Panel);
             
             pagina_Cursos_Panel = new Pagina_Cursos_Estudiante_Panel();
-            visualizador_JPanel.add("Pagina_Cursos", pagina_Cursos_Panel);
+            visualizador_JPanel.add("Cursos", pagina_Cursos_Panel);
             
             layout = (CardLayout) visualizador_JPanel.getLayout();
             nombre_Usuario_JLabel.setText(CourseRoom.Faker().name().username());

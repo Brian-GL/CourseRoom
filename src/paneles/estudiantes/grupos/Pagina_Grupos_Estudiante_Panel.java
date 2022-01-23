@@ -385,6 +385,7 @@ public class Pagina_Grupos_Estudiante_Panel extends JLayeredPane implements Limp
         Image obtener_Imagen, grupo;
         ImageIcon icono_Grupo;
         Grupo_Estudiante_Panel grupo_Estudiante_Panel;
+        String nombre;
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
             id = CourseRoom.Concatenar("Grupo_", i);
             try {
@@ -399,10 +400,11 @@ public class Pagina_Grupos_Estudiante_Panel extends JLayeredPane implements Limp
                 grupo = obtener_Imagen.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
                 icono_Grupo = new ImageIcon(grupo);
 
-                celdas[0] = new Celda_Renderer(icono_Grupo, CourseRoom.Faker().team().name(), id);
+                nombre = CourseRoom.Faker().team().name();
+                celdas[0] = new Celda_Renderer(icono_Grupo, nombre , id);
 
                 grupo_Estudiante_Panel
-                        = new Grupo_Estudiante_Panel(obtener_Imagen, celdas[0].Label().getText(),
+                        = new Grupo_Estudiante_Panel(obtener_Imagen, nombre,
                                 celdas[3].Label().getText(), celdas[2].Label().getText(), id);
 
                 mostrar_Grupos_Lista.push_back(grupo_Estudiante_Panel);
