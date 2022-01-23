@@ -5,6 +5,7 @@
  */
 package paneles.estudiantes;
 
+import paneles.estudiantes.grupos.Pagina_Grupos_Estudiante_Panel;
 import paneles.estudiantes.chats.Pagina_Chats_Estudiante_Panel;
 import paneles.estudiantes.dudas.Pagina_Dudas_Estudiante_Panel;
 import paneles.estudiantes.avisos.Pagina_Avisos_Estudiante_Panel;
@@ -760,27 +761,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     public static String Nombre_Usuario(){
         return nombre_Usuario_JLabel.getText();
     }
-    
-    public static Pagina_Chats_Estudiante_Panel Pagina_Chats(){
-        return pagina_Chats_Panel;
-    }
-    
-    public static Pagina_Grupos_Estudiante_Panel Pagina_Grupos(){
-        return pagina_Grupos_Panel;
-    }
-    
-    public static Pagina_Tareas_Estudiante_Panel Pagina_Tareas(){
-        return pagina_Tareas_Panel;
-    }
-    
-    public static Pagina_Dudas_Estudiante_Panel Pagina_Dudas(){
-        return pagina_Dudas_Panel;
-    }
-    
-    public static Pagina_Cursos_Estudiante_Panel Pagina_Cursos(){
-        return pagina_Cursos_Panel;
-    }
-    
+   
     public static void Establecer_Colores(){
         try {
             Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;

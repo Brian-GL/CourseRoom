@@ -177,7 +177,7 @@ public class Tareas_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     private void buscar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Pagina_Tareas_Estudiante_Panel.Buscar_Tareas();
+            
         }
     }//GEN-LAST:event_buscar_JButtonMouseClicked
 

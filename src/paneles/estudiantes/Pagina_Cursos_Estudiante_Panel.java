@@ -33,26 +33,7 @@ public class Pagina_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
        layout = (CardLayout)this.getLayout();
         
     }
-   
-    public static void Buscar_Cursos(){
-        layout.show(Tablero_Estudiante_Panel.Pagina_Cursos(), "Buscar");
-    }
-    
-    public static void Mostrar_Cursos_Actuales(){
-        layout.show(Tablero_Estudiante_Panel.Pagina_Cursos(), "Actuales");
-    }
-    
-    public static void Mostrar_Cursos_Finalizados(){
-        layout.show(Tablero_Estudiante_Panel.Pagina_Cursos(), "Finalizados");
-    }
-    
-    public static void Mostrar_Cursos_Nuevos(){
-        layout.show(Tablero_Estudiante_Panel.Pagina_Cursos(), "Nuevos");
-    }
-    
-    public static void Mostrar_Cursos_Recomendados(){
-        layout.show(Tablero_Estudiante_Panel.Pagina_Cursos(), "Recomendados");
-    }
+ 
  
 
     /**

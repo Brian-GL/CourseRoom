@@ -156,7 +156,7 @@ public class Buscar_Tareas_Estudiante_Panel extends javax.swing.JPanel implement
     private void tareas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Pagina_Tareas_Estudiante_Panel.Mostrar_Tareas();
+            
         }
     }//GEN-LAST:event_tareas_JButtonMouseClicked
 

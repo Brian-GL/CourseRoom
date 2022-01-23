@@ -31,14 +31,6 @@ public class Pagina_Tareas_Estudiante_Panel extends javax.swing.JPanel implement
         
     }
    
-    public static void Buscar_Tareas(){
-        layout.show(Tablero_Estudiante_Panel.Pagina_Tareas(), "Buscar");
-    }
-    
-    public static void Mostrar_Tareas(){
-        layout.show(Tablero_Estudiante_Panel.Pagina_Tareas(), "Tareas");
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

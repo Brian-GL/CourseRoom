@@ -239,7 +239,7 @@ public class Cursos_Nuevos_Estudiante_Panel extends javax.swing.JPanel implement
     private void buscar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Pagina_Cursos_Estudiante_Panel.Buscar_Cursos();
+            
         }
     }//GEN-LAST:event_buscar_JButtonMouseClicked
 
@@ -256,7 +256,7 @@ public class Cursos_Nuevos_Estudiante_Panel extends javax.swing.JPanel implement
     private void recomendados_Cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recomendados_Cursos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Pagina_Cursos_Estudiante_Panel.Mostrar_Cursos_Recomendados();
+            
         }
     }//GEN-LAST:event_recomendados_Cursos_JButtonMouseClicked
 
@@ -273,7 +273,7 @@ public class Cursos_Nuevos_Estudiante_Panel extends javax.swing.JPanel implement
     private void finalizados_Cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizados_Cursos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Pagina_Cursos_Estudiante_Panel.Mostrar_Cursos_Finalizados();
+            
         }
     }//GEN-LAST:event_finalizados_Cursos_JButtonMouseClicked
 
@@ -290,7 +290,7 @@ public class Cursos_Nuevos_Estudiante_Panel extends javax.swing.JPanel implement
     private void actuales_Cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actuales_Cursos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Pagina_Cursos_Estudiante_Panel.Mostrar_Cursos_Actuales();
+            
         }
     }//GEN-LAST:event_actuales_Cursos_JButtonMouseClicked
 

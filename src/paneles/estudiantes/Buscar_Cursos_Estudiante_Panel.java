@@ -156,7 +156,7 @@ public class Buscar_Cursos_Estudiante_Panel extends javax.swing.JPanel implement
     private void cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Pagina_Cursos_Estudiante_Panel.Mostrar_Cursos_Actuales();
+            
         }
     }//GEN-LAST:event_cursos_JButtonMouseClicked
 
