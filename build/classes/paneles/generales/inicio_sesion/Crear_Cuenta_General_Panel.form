@@ -1195,7 +1195,6 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));"/>
                 <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Chats_Estudiante_Panel_chats_JTable"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
               </AuxValues>
             </Component>
           </SubComponents>

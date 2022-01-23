@@ -5,11 +5,11 @@
  */
 package paneles.estudiantes;
 
-import paneles.estudiantes.grupos.Pagina_Grupos_Estudiante_Panel;
-import paneles.estudiantes.chats.Pagina_Chats_Estudiante_Panel;
-import paneles.estudiantes.dudas.Pagina_Dudas_Estudiante_Panel;
-import paneles.estudiantes.avisos.Pagina_Avisos_Estudiante_Panel;
-import paneles.estudiantes.fechas.Pagina_Fechas_Estudiante_Panel;
+import paneles.estudiantes.grupos.Grupos_Estudiante_Panel;
+import paneles.estudiantes.chats.Chats_Estudiante_Panel;
+import paneles.estudiantes.dudas.Dudas_Estudiante_Panel;
+import paneles.estudiantes.avisos.Avisos_Estudiante_Panel;
+import paneles.estudiantes.fechas.Fechas_Estudiante_Panel;
 import courseroom.CourseRoom;
 import paneles.generales.tablero.Acerca_General_Panel;
 import paneles.generales.tablero.Reproductor_Musica_General_Panel;
@@ -40,18 +40,18 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private static Image imagen_Usuario;
     
-    private static Pagina_Chats_Estudiante_Panel pagina_Chats_Panel;
+    private static Chats_Estudiante_Panel pagina_Chats_Panel;
     private static Acerca_General_Panel acerca_De_Panel;
     private static Perfil_Estudiante_Panel perfil_Panel;
     private static Editar_Perfil_Estudiante_Panel editar_Perfil_Panel;
     private static Reproductor_Musica_General_Panel reproductor_Musica_Panel;
-    private static Pagina_Avisos_Estudiante_Panel pagina_Avisos_Panel;
-    private static Pagina_Grupos_Estudiante_Panel pagina_Grupos_Panel;
-    private static Pagina_Fechas_Estudiante_Panel pagina_Fechas_Panel;
+    private static Avisos_Estudiante_Panel pagina_Avisos_Panel;
+    private static Grupos_Estudiante_Panel pagina_Grupos_Panel;
+    private static Fechas_Estudiante_Panel pagina_Fechas_Panel;
     private static Pagina_Tareas_Estudiante_Panel pagina_Tareas_Panel;
     private static Ajustes_Estudiante_Panel ajustes_Panel;
     private static Pagina_Cursos_Estudiante_Panel pagina_Cursos_Panel;
-    private static Pagina_Dudas_Estudiante_Panel pagina_Dudas_Panel;
+    private static Dudas_Estudiante_Panel pagina_Dudas_Panel;
     
     private static CardLayout layout;
     private Tiempo_Servidor tiempo_Servidor_Hilo;
@@ -991,10 +991,10 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             perfil_Panel = new Perfil_Estudiante_Panel();
             visualizador_JPanel.add("Perfil",perfil_Panel);
             
-            pagina_Chats_Panel = new Pagina_Chats_Estudiante_Panel();
+            pagina_Chats_Panel = new Chats_Estudiante_Panel();
             visualizador_JPanel.add("Chats", pagina_Chats_Panel);
             
-            pagina_Grupos_Panel = new Pagina_Grupos_Estudiante_Panel();
+            pagina_Grupos_Panel = new Grupos_Estudiante_Panel();
             visualizador_JPanel.add("Grupos", pagina_Grupos_Panel);
 
             editar_Perfil_Panel = new Editar_Perfil_Estudiante_Panel();
@@ -1003,10 +1003,10 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             pagina_Tareas_Panel = new Pagina_Tareas_Estudiante_Panel();
             visualizador_JPanel.add("Tareas",pagina_Tareas_Panel);
             
-            pagina_Fechas_Panel = new Pagina_Fechas_Estudiante_Panel();
+            pagina_Fechas_Panel = new Fechas_Estudiante_Panel();
             visualizador_JPanel.add("Fechas",pagina_Fechas_Panel);
             
-            pagina_Avisos_Panel = new Pagina_Avisos_Estudiante_Panel();
+            pagina_Avisos_Panel = new Avisos_Estudiante_Panel();
             visualizador_JPanel.add("Avisos",pagina_Avisos_Panel);
             
             acerca_De_Panel = new Acerca_General_Panel();
@@ -1018,7 +1018,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             ajustes_Panel = new Ajustes_Estudiante_Panel();
             visualizador_JPanel.add("Ajustes",ajustes_Panel);
             
-            pagina_Dudas_Panel = new Pagina_Dudas_Estudiante_Panel();
+            pagina_Dudas_Panel = new Dudas_Estudiante_Panel();
             visualizador_JPanel.add("Dudas", pagina_Dudas_Panel);
             
             pagina_Cursos_Panel = new Pagina_Cursos_Estudiante_Panel();

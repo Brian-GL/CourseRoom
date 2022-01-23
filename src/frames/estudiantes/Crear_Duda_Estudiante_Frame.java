@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 import courseroom.CourseRoom;
 import paneles.estudiantes.Perfil_Estudiante_Panel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
-import paneles.estudiantes.dudas.Pagina_Dudas_Estudiante_Panel;
+import paneles.estudiantes.dudas.Dudas_Estudiante_Panel;
 
 /**
  *
@@ -144,11 +144,11 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
         if(SwingUtilities.isLeftMouseButton(evt)){
             if(!duda_JTextField.getText().isBlank() && !duda_JTextField.getText().isEmpty()){
                 if (!descripcion_Duda_JTextPane.getText().isBlank() && !descripcion_Duda_JTextPane.getText().isEmpty()) {
-                    int cuenta = Pagina_Dudas_Estudiante_Panel.Numero_Dudas()+1;
+                    int cuenta = Dudas_Estudiante_Panel.Numero_Dudas()+1;
                     LocalDateTime tiempo_Actual = LocalDateTime.now();
                     String id = CourseRoom.Concatenar("Duda_", cuenta);
                     
-                    Pagina_Dudas_Estudiante_Panel.Agregar_Duda(duda_JTextField.getText(), descripcion_Duda_JTextPane.getText(),
+                    Dudas_Estudiante_Panel.Agregar_Duda(duda_JTextField.getText(), descripcion_Duda_JTextPane.getText(),
                     Perfil_Estudiante_Panel.Nombre_Completo(),tiempo_Actual.toString(),id);
                     Tablero_Estudiante_Panel.Mostrar_Vista(id);
                     

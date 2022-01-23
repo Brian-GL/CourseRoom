@@ -83,7 +83,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         duda_JLabel = new javax.swing.JLabel();
         descripcion_Duda_JScrollPane = new javax.swing.JScrollPane();
         descripcion_Duda_JTextPane = new javax.swing.JTextPane();
-        cerrar_JButton = new javax.swing.JButton();
+        marcar_Solucionada_JButton = new javax.swing.JButton();
         respuestas_JScrollPane = new javax.swing.JScrollPane();
         respuestas_JPanel = new javax.swing.JPanel();
         enviar_Respuestas_JPanel = new javax.swing.JPanel();
@@ -140,17 +140,17 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         descripcion_Duda_JTextPane.setOpaque(false);
         descripcion_Duda_JScrollPane.setViewportView(descripcion_Duda_JTextPane);
 
-        cerrar_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-        cerrar_JButton.setText("Marcar Solucionada");
-        cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        marcar_Solucionada_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+        marcar_Solucionada_JButton.setText("Marcar Solucionada");
+        marcar_Solucionada_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cerrar_JButtonMouseClicked(evt);
+                marcar_Solucionada_JButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cerrar_JButtonMouseEntered(evt);
+                marcar_Solucionada_JButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                cerrar_JButtonMouseExited(evt);
+                marcar_Solucionada_JButtonMouseExited(evt);
             }
         });
 
@@ -168,7 +168,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(duda_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cerrar_JButton))
+                        .addComponent(marcar_Solucionada_JButton))
                     .addComponent(descripcion_Duda_JScrollPane))
                 .addContainerGap())
         );
@@ -180,7 +180,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(duda_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cerrar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(marcar_Solucionada_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(descripcion_Duda_JScrollPane))
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
@@ -367,7 +367,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
 
     private void enviar_Archivos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivos_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Archivos_JButton.setBackground(CourseRoom.Primer_Color());
+        enviar_Archivos_JButton.setBackground(CourseRoom.Tercer_Color());
     }//GEN-LAST:event_enviar_Archivos_JButtonMouseEntered
 
     private void enviar_Archivos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivos_JButtonMouseClicked
@@ -386,12 +386,12 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
 
     private void enviar_Videos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Videos_JButton.setBackground(CourseRoom.Tercer_Color());
     }//GEN-LAST:event_enviar_Videos_JButtonMouseEntered
 
     private void enviar_Videos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Videos_JButton.setBackground(CourseRoom.Tercer_Color());
+        enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_enviar_Videos_JButtonMouseExited
 
     private void enviar_Audios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseClicked
@@ -403,12 +403,12 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
 
     private void enviar_Audios_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Audios_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Audios_JButton.setBackground(CourseRoom.Tercer_Color());
     }//GEN-LAST:event_enviar_Audios_JButtonMouseEntered
 
     private void enviar_Audios_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Audios_JButton.setBackground(CourseRoom.Tercer_Color());
+        enviar_Audios_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_enviar_Audios_JButtonMouseExited
 
     private void enviar_Imagenes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseClicked
@@ -420,12 +420,12 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
 
     private void enviar_Imagenes_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Tercer_Color());
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseEntered
 
     private void enviar_Imagenes_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Tercer_Color());
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseExited
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
@@ -445,24 +445,24 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
 
-    private void cerrar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseClicked
+    private void marcar_Solucionada_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_marcar_Solucionada_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
         }
-    }//GEN-LAST:event_cerrar_JButtonMouseClicked
+    }//GEN-LAST:event_marcar_Solucionada_JButtonMouseClicked
 
-    private void cerrar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseEntered
+    private void marcar_Solucionada_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_marcar_Solucionada_JButtonMouseEntered
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Segundo_Color());
-        cerrar_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_cerrar_JButtonMouseEntered
+        marcar_Solucionada_JButton.setBackground(CourseRoom.Primer_Color());
+        marcar_Solucionada_JButton.setForeground(CourseRoom.Primer_Color_Fuente());
+    }//GEN-LAST:event_marcar_Solucionada_JButtonMouseEntered
 
-    private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseExited
+    private void marcar_Solucionada_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_marcar_Solucionada_JButtonMouseExited
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Tercer_Color());
-        cerrar_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_cerrar_JButtonMouseExited
+        marcar_Solucionada_JButton.setBackground(CourseRoom.Tercer_Color());
+        marcar_Solucionada_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_marcar_Solucionada_JButtonMouseExited
 
     
     public String ID() {
@@ -470,7 +470,6 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cerrar_JButton;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JScrollPane descripcion_Duda_JScrollPane;
     private javax.swing.JTextPane descripcion_Duda_JTextPane;
@@ -481,6 +480,7 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
     private javax.swing.JPanel enviar_Respuestas_JPanel;
     private javax.swing.JButton enviar_Videos_JButton;
     private javax.swing.JPanel informacion_JPanel;
+    private javax.swing.JButton marcar_Solucionada_JButton;
     private javax.swing.JLabel preguntador_Imagen_JLabel;
     private javax.swing.JButton regresar_JButton;
     private javax.swing.JTextField respuesta_JTextField;
@@ -515,8 +515,8 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         
         regresar_JButton.setBackground(CourseRoom.Segundo_Color());
         duda_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        respuesta_JTextField.setBackground(CourseRoom.Tercer_Color());
-        respuesta_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
+        respuesta_JTextField.setBackground(CourseRoom.Primer_Color());
+        respuesta_JTextField.setForeground(CourseRoom.Primer_Color_Fuente());
         descripcion_Duda_JTextPane.setForeground(CourseRoom.Segundo_Color_Fuente());
         enviar_Respuestas_JPanel.setBackground(CourseRoom.Segundo_Color());
        
@@ -527,8 +527,8 @@ public class Duda_Estudiante_Panel extends javax.swing.JPanel implements  Compon
         enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
         enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
         
-        cerrar_JButton.setBackground(CourseRoom.Tercer_Color());
-        cerrar_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        marcar_Solucionada_JButton.setBackground(CourseRoom.Tercer_Color());
+        marcar_Solucionada_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
         
     }
     
