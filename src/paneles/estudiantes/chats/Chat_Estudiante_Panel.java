@@ -98,7 +98,6 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
         imagen_Perfil_JLabel = new javax.swing.JLabel();
         apellidos_JLabel = new javax.swing.JLabel();
         nombres_JLabel = new javax.swing.JLabel();
-        nombre_Usuario_jLabel = new javax.swing.JLabel();
         correo_JLabel = new javax.swing.JLabel();
         tipo_Perfil_JLabel = new javax.swing.JLabel();
         mostrar_Chat_JButton = new javax.swing.JButton();
@@ -350,15 +349,6 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
         nombres_JLabel.setOpaque(true);
         nombres_JLabel.setPreferredSize(new java.awt.Dimension(560, 50));
 
-        nombre_Usuario_jLabel.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
-        nombre_Usuario_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre_Usuario_jLabel.setToolTipText("Nombre De Usuario");
-        nombre_Usuario_jLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        nombre_Usuario_jLabel.setMaximumSize(new java.awt.Dimension(430, 30));
-        nombre_Usuario_jLabel.setMinimumSize(new java.awt.Dimension(430, 30));
-        nombre_Usuario_jLabel.setOpaque(true);
-        nombre_Usuario_jLabel.setPreferredSize(new java.awt.Dimension(430, 30));
-
         correo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         correo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         correo_JLabel.setToolTipText("Correo Electrónico");
@@ -450,16 +440,14 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
             informacion_Chat_JPanelLayout.setHorizontalGroup(
                 informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(informacion_Chat_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(42, Short.MAX_VALUE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(informacion_Chat_JPanelLayout.createSequentialGroup()
                             .addComponent(mostrar_Chat_JButton)
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(informacion_Chat_JPanelLayout.createSequentialGroup()
-                            .addGroup(informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nombre_Usuario_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                            .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(informacion_Chat_JPanelLayout.createSequentialGroup()
                                     .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -469,7 +457,7 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
                                 .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(nombres_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addContainerGap(30, Short.MAX_VALUE))))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             );
             informacion_Chat_JPanelLayout.setVerticalGroup(
                 informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,10 +466,7 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
                     .addComponent(mostrar_Chat_JButton)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(informacion_Chat_JPanelLayout.createSequentialGroup()
-                            .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(nombre_Usuario_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(informacion_Chat_JPanelLayout.createSequentialGroup()
                             .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
@@ -865,7 +850,6 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
     private javax.swing.JPanel mensajes_JPanel;
     private javax.swing.JScrollPane mensajes_JScrollPane;
     private javax.swing.JButton mostrar_Chat_JButton;
-    private javax.swing.JLabel nombre_Usuario_jLabel;
     private javax.swing.JLabel nombres_JLabel;
     private javax.swing.JLabel receptor_Chat_JLabel;
     private javax.swing.JButton regresar_Pagina_Chats_JButton;
@@ -879,7 +863,6 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
         nombres_JLabel.setText(receptor_Chat_JLabel.getText());
         apellidos_JLabel.setText(CourseRoom.Concatenar(CourseRoom.Faker().name().lastName(), " ", CourseRoom.Faker().name().lastName()));
         correo_JLabel.setText(CourseRoom.Faker().internet().emailAddress());
-        nombre_Usuario_jLabel.setText(CourseRoom.Faker().name().username());
         genero_JLabel.setText(CourseRoom.Faker().demographic().sex());
         tipo_Perfil_JLabel.setText(CourseRoom.Faker().bool().bool() ? "Estudiante" : "Profesor");
 
@@ -923,8 +906,6 @@ public class Chat_Estudiante_Panel extends JLayeredPane implements Componentes_I
 
         nombres_JLabel.setBackground(CourseRoom.Tercer_Color());
         nombres_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        nombre_Usuario_jLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        nombre_Usuario_jLabel.setBackground(CourseRoom.Segundo_Color());
         imagen_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         apellidos_JLabel.setBackground(CourseRoom.Tercer_Color());
         apellidos_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());

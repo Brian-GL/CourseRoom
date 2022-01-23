@@ -24,11 +24,10 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
     /**
      * Creates new form Crear_Duda_Estudiante_Frame
      */
-    public Crear_Duda_Estudiante_Frame(ImageIcon icono) {
+    public Crear_Duda_Estudiante_Frame() {
         
         initComponents();
         
-        preguntador_Imagen_JLabel.setIcon(icono);
         Iniciar_Componentes();
     }
 
@@ -42,7 +41,6 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
     private void initComponents() {
 
         contenido_JPanel = new javax.swing.JPanel();
-        preguntador_Imagen_JLabel = new javax.swing.JLabel();
         crear_Duda_JButton = new javax.swing.JButton();
         descripcion_Duda_JScrollPane = new javax.swing.JScrollPane();
         descripcion_Duda_JTextPane = new javax.swing.JTextPane();
@@ -53,22 +51,23 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
         setTitle("Crear Nueva Duda");
         setAlwaysOnTop(true);
         setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        setMaximumSize(new java.awt.Dimension(706, 182));
-        setMinimumSize(new java.awt.Dimension(706, 182));
+        setMaximumSize(new java.awt.Dimension(1000, 300));
+        setMinimumSize(new java.awt.Dimension(1000, 300));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(706, 182));
+        setPreferredSize(new java.awt.Dimension(1000, 300));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
-        contenido_JPanel.setPreferredSize(new java.awt.Dimension(800, 245));
-
-        preguntador_Imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        preguntador_Imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        preguntador_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(96, 96));
+        contenido_JPanel.setMaximumSize(new java.awt.Dimension(800, 227));
+        contenido_JPanel.setMinimumSize(new java.awt.Dimension(800, 227));
+        contenido_JPanel.setPreferredSize(new java.awt.Dimension(800, 227));
 
         crear_Duda_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        crear_Duda_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/doubt.png"))); // NOI18N
         crear_Duda_JButton.setText("<html>Crear<br>Duda</html>");
+        ((ImageIcon)crear_Duda_JButton.getIcon()).getImage().flush();
         crear_Duda_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 crear_Duda_JButtonMouseClicked(evt);
@@ -93,6 +92,7 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
 
         cerrar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
         cerrar_JButton.setBorder(null);
+        ((ImageIcon)cerrar_JButton.getIcon()).getImage().flush();
         cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cerrar_JButtonMouseClicked(evt);
@@ -112,45 +112,29 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descripcion_Duda_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
                         .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(duda_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(preguntador_Imagen_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(crear_Duda_JButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 614, Short.MAX_VALUE)
+                        .addComponent(crear_Duda_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(descripcion_Duda_JScrollPane)
+                    .addComponent(duda_JTextField, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(duda_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                            .addComponent(cerrar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(descripcion_Duda_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(preguntador_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(crear_Duda_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addComponent(duda_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(descripcion_Duda_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cerrar_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crear_Duda_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(contenido_JPanel, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,7 +149,7 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
                     String id = CourseRoom.Concatenar("Duda_", cuenta);
                     
                     Pagina_Dudas_Estudiante_Panel.Agregar_Duda(duda_JTextField.getText(), descripcion_Duda_JTextPane.getText(),
-                    Perfil_Estudiante_Panel.Nombre_Completo(),tiempo_Actual.toString(),(ImageIcon)preguntador_Imagen_JLabel.getIcon(),id);
+                    Perfil_Estudiante_Panel.Nombre_Completo(),tiempo_Actual.toString(),id);
                     Tablero_Estudiante_Panel.Mostrar_Vista(id);
                     
                     this.dispose();
@@ -212,7 +196,6 @@ public class Crear_Duda_Estudiante_Frame extends javax.swing.JDialog implements 
     private javax.swing.JScrollPane descripcion_Duda_JScrollPane;
     private javax.swing.JTextPane descripcion_Duda_JTextPane;
     private javax.swing.JTextField duda_JTextField;
-    private javax.swing.JLabel preguntador_Imagen_JLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override

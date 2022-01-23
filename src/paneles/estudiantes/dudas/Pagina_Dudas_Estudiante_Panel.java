@@ -33,7 +33,6 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
     
     private static Lista<Duda_Estudiante_Panel> mostrar_Dudas_Lista;
     private Lista<Duda_Estudiante_Panel> buscar_Dudas_Lista;
-    private ImageIcon icono_Usuario;
     private static CardLayout layout;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
@@ -342,7 +341,7 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         if (SwingUtilities.isLeftMouseButton(evt)) {
 
             Crear_Duda_Estudiante_Frame crear_Duda_Estudiante_Frame
-            = new Crear_Duda_Estudiante_Frame(icono_Usuario);
+            = new Crear_Duda_Estudiante_Frame();
 
             crear_Duda_Estudiante_Frame.setVisible(true);
         }
@@ -387,14 +386,16 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
             String descripcion_Duda,
             String preguntador_Nombre,
             String fecha,
-            ImageIcon preguntador_Icono,
             String id) {
         
         
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Dudas_JTable.getModel();
+        Image imagen_usuario = Tablero_Estudiante_Panel.Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
+        ImageIcon icono_Usuario = new ImageIcon(imagen_usuario);
         
-        celdas[0] = new Celda_Renderer(preguntador_Icono, preguntador_Nombre,id);
+        
+        celdas[0] = new Celda_Renderer(icono_Usuario, preguntador_Nombre,id);
         celdas[1] = new Celda_Renderer(nombre_Duda,id);
         celdas[2] = new Celda_Renderer(descripcion_Duda,id);
         celdas[3] = new Celda_Renderer(fecha,id);
@@ -403,9 +404,8 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
         modelo.addRow(celdas);
         
         Duda_Estudiante_Panel duda_Estudiante_Panel = 
-                new Duda_Estudiante_Panel(nombre_Duda, descripcion_Duda, preguntador_Nombre, fecha, preguntador_Icono, id);
+                new Duda_Estudiante_Panel(nombre_Duda, descripcion_Duda, preguntador_Nombre, fecha, id);
         mostrar_Dudas_Lista.push_back(duda_Estudiante_Panel);
-        preguntador_Icono.getImage().flush();
         Tablero_Estudiante_Panel.Agregar_Vista(duda_Estudiante_Panel, id);
         
     }
@@ -430,11 +430,7 @@ public class Pagina_Dudas_Estudiante_Panel extends javax.swing.JPanel implements
     public void Iniciar_Componentes() {
         layout = (CardLayout)dudas_JLayeredPane.getLayout();
         
-        Image imagen_usuario = Tablero_Estudiante_Panel.Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
-        icono_Usuario = new ImageIcon(imagen_usuario);
-        imagen_usuario.flush();
 
-        icono_Usuario.getImage().flush();
         mostrar_Dudas_JScrollPane.getViewport().setOpaque(false);
         mostrar_Dudas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         mostrar_Dudas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
