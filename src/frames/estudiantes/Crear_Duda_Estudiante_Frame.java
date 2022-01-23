@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import courseroom.CourseRoom;
-import paneles.estudiantes.Perfil_Estudiante_Panel;
+import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.dudas.Dudas_Estudiante_Panel;
 

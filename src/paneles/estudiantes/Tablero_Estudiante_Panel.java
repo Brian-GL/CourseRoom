@@ -5,6 +5,8 @@
  */
 package paneles.estudiantes;
 
+import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
+import paneles.estudiantes.tareas.Pagina_Tareas_Estudiante_Panel;
 import paneles.estudiantes.grupos.Grupos_Estudiante_Panel;
 import paneles.estudiantes.chats.Chats_Estudiante_Panel;
 import paneles.estudiantes.dudas.Dudas_Estudiante_Panel;
@@ -43,7 +45,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Chats_Estudiante_Panel pagina_Chats_Panel;
     private static Acerca_General_Panel acerca_De_Panel;
     private static Perfil_Estudiante_Panel perfil_Panel;
-    private static Editar_Perfil_Estudiante_Panel editar_Perfil_Panel;
     private static Reproductor_Musica_General_Panel reproductor_Musica_Panel;
     private static Avisos_Estudiante_Panel pagina_Avisos_Panel;
     private static Grupos_Estudiante_Panel pagina_Grupos_Panel;
@@ -898,7 +899,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         nombre_Usuario_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
        
         perfil_Panel.Colorear_Componentes();
-        editar_Perfil_Panel.Colorear_Componentes();
         pagina_Avisos_Panel.Colorear_Componentes();
         pagina_Tareas_Panel.Colorear_Componentes();
         pagina_Chats_Panel.Colorear_Componentes();
@@ -997,9 +997,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             pagina_Grupos_Panel = new Grupos_Estudiante_Panel();
             visualizador_JPanel.add("Grupos", pagina_Grupos_Panel);
 
-            editar_Perfil_Panel = new Editar_Perfil_Estudiante_Panel();
-            visualizador_JPanel.add("Editar_Perfil",editar_Perfil_Panel);
-            
             pagina_Tareas_Panel = new Pagina_Tareas_Estudiante_Panel();
             visualizador_JPanel.add("Tareas",pagina_Tareas_Panel);
             
