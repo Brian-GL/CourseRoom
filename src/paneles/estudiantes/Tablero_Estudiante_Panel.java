@@ -922,6 +922,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         pagina_Fechas_Panel.Limpiar();
         pagina_Grupos_Panel.Limpiar();
         pagina_Cursos_Panel.Limpiar();
+        perfil_Panel.Limpiar();
         
     }
     
