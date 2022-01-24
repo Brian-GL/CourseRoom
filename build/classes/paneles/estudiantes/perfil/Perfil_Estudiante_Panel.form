@@ -79,22 +79,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                          <Component id="titulo_JLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="editar_Autenticacion_JButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="informacion_JButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="editar_Datos_Personales_JButton" max="32767" attributes="0"/>
-                              <Component id="editar_Informacion_Extra_JButton" max="32767" attributes="0"/>
-                              <Component id="desempeno_Escolar_JButton" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="titulo_JLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="editar_Autenticacion_JButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="informacion_JButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="editar_Datos_Personales_JButton" max="32767" attributes="0"/>
+                          <Component id="editar_Informacion_Extra_JButton" max="32767" attributes="0"/>
+                          <Component id="desempeno_Escolar_JButton" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -477,6 +471,18 @@
               </SubComponents>
             </Container>
           </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="desempeno_Escolar_JPanel">
+          <Properties>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="Desempeno_Escolar"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
         </Container>
         <Container class="javax.swing.JPanel" name="autenticacion_JPanel">
           <Properties>

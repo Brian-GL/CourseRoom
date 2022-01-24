@@ -85,6 +85,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         genero_JLabel = new javax.swing.JLabel();
         descripcion_JScrollPane = new javax.swing.JScrollPane();
         descripcion_JTextPane = new javax.swing.JTextPane();
+        desempeno_Escolar_JPanel = new javax.swing.JPanel();
         autenticacion_JPanel = new javax.swing.JPanel();
         contrasena_JLabel = new javax.swing.JLabel();
         contrasena_JPasswordField = new javax.swing.JPasswordField();
@@ -216,18 +217,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                        .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(editar_Autenticacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(informacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editar_Datos_Personales_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editar_Informacion_Extra_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(desempeno_Escolar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(editar_Autenticacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(informacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editar_Datos_Personales_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editar_Informacion_Extra_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(desempeno_Escolar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         perfil_JLayeredPane.setLayout(new java.awt.CardLayout());
@@ -285,12 +282,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         fecha_Nacimiento_JLabel.setName("label"); // NOI18N
         fecha_Nacimiento_JLabel.setPreferredSize(new java.awt.Dimension(163, 25));
 
-        localidad_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         localidad_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        localidad_JLabel.setToolTipText("Localidad");
+        localidad_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         localidad_JLabel.setMinimumSize(new java.awt.Dimension(380, 60));
         localidad_JLabel.setName("label"); // NOI18N
         localidad_JLabel.setPreferredSize(new java.awt.Dimension(380, 60));
+        localidad_JLabel.setToolTipText("Localidad");
 
         genero_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         genero_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -364,6 +361,10 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         perfil_JLayeredPane.add(informacion_JPanel, "Informacion");
 
+        desempeno_Escolar_JPanel.setOpaque(false);
+        desempeno_Escolar_JPanel.setLayout(new java.awt.CardLayout());
+        perfil_JLayeredPane.add(desempeno_Escolar_JPanel, "Desempeno_Escolar");
+
         autenticacion_JPanel.setMinimumSize(new java.awt.Dimension(800, 600));
         autenticacion_JPanel.setOpaque(false);
 
@@ -375,9 +376,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         contrasena_JPasswordField.setEditable(false);
         contrasena_JPasswordField.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-        contrasena_JPasswordField.setToolTipText("Ingrese Aquí Su Contraseña (Mínimo 8 Carácteres)");
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
+        contrasena_JPasswordField.setToolTipText("Ingrese Aquí Su Contraseña (Mínimo 8 Carácteres)");
 
         editar_Correo_Electronico_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Correo_Electronico_JLabel.setText("Correo Electrónico");
@@ -387,9 +388,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Correo_Electronico_JTextField.setEditable(false);
         editar_Correo_Electronico_JTextField.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-        editar_Correo_Electronico_JTextField.setToolTipText("Ingrese Aquí Su Correo Electrónico (Ingrese Uno Que Pueda Utilizar)");
         editar_Correo_Electronico_JTextField.setMinimumSize(new java.awt.Dimension(500, 36));
         editar_Correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(500, 36));
+        editar_Correo_Electronico_JTextField.setToolTipText("Ingrese Aquí Su Correo Electrónico (Ingrese Uno Que Pueda Utilizar)");
 
         repetir_Contrasena_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         repetir_Contrasena_JLabel.setText("Repetir Contraseña");
@@ -399,9 +400,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         repetir_Contrasena_JPasswordField.setEditable(false);
         repetir_Contrasena_JPasswordField.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-        repetir_Contrasena_JPasswordField.setToolTipText("Re-Ingrese Aquí La Contraseña");
         repetir_Contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         repetir_Contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
+        repetir_Contrasena_JPasswordField.setToolTipText("Re-Ingrese Aquí La Contraseña");
 
         editar_Imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         editar_Imagen_JLabel.setToolTipText("Imagen De Perfil Seleccionada.");
@@ -454,8 +455,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
-        editar_Correo_Electronico_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         editar_Correo_Electronico_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
+        editar_Correo_Electronico_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         ((ImageIcon)editar_Correo_Electronico_JButton.getIcon()).getImage().flush();
         editar_Correo_Electronico_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -469,8 +470,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
-        editar_Contrasena_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         editar_Contrasena_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
+        editar_Contrasena_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         ((ImageIcon)editar_Contrasena_JButton.getIcon()).getImage().flush();
         editar_Contrasena_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -543,35 +544,35 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         datos_Personales_JPanel.setOpaque(false);
 
-        editar_Nombres_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Nombres_JLabel.setText("Nombre(s) *");
+        editar_Nombres_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
         editar_Nombres_JTextField.setEditable(false);
         editar_Nombres_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        editar_Nombres_JTextField.setToolTipText("<html>  <h3> Nombre(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
         editar_Nombres_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        editar_Nombres_JTextField.setToolTipText("<html>  <h3> Nombre(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
 
-        editar_Apellido_Paterno_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Apellido_Paterno_JLabel.setText("Apellido Paterno *");
+        editar_Apellido_Paterno_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
         editar_Apellido_Paterno_JTextField.setEditable(false);
         editar_Apellido_Paterno_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        editar_Apellido_Paterno_JTextField.setToolTipText("<html>  <h3> Apellido paterno </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
         editar_Apellido_Paterno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        editar_Apellido_Paterno_JTextField.setToolTipText("<html>  <h3> Apellido paterno </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
 
-        editar_Localidad_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Localidad_JLabel.setText("Localidad");
+        editar_Localidad_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
         editar_Genero_JTextField.setEditable(false);
         editar_Genero_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        editar_Genero_JTextField.setToolTipText("<html>  <h3> Identidad de género </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
         editar_Genero_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        editar_Genero_JTextField.setToolTipText("<html>  <h3> Identidad de género </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
 
-        editar_Genero_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Genero_JLabel.setText("Género");
+        editar_Genero_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
-        editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
+        editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
         guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
@@ -592,20 +593,20 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
-        editar_Apellido_Materno_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Apellido_Materno_JLabel.setText("Apellido Materno");
+        editar_Apellido_Materno_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
         editar_Apellido_Materno_JTextField.setEditable(false);
         editar_Apellido_Materno_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        editar_Apellido_Materno_JTextField.setToolTipText("<html>  <h3> Apellido materno </h3> </html>");
         editar_Apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        editar_Apellido_Materno_JTextField.setToolTipText("<html>  <h3> Apellido materno </h3> </html>");
 
-        editar_Estado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Estado_JLabel.setText("Estado");
+        editar_Estado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
         editar_Estado_AutoCompletionComboBox.setEditable(false);
-        editar_Estado_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Estado de proveniencia</h3>\n</html>");
         editar_Estado_AutoCompletionComboBox.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        editar_Estado_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Estado de proveniencia</h3>\n</html>");
 
         editar_Localidad_AutoCompletionComboBox.setEditable(false);
         editar_Localidad_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Localidad de provenencia</h3>\n</html>");
@@ -835,9 +836,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Promedio_General_JLabel.setPreferredSize(new java.awt.Dimension(409, 25));
 
         editar_Promedio_General_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##.00"))));
-        editar_Promedio_General_JFormattedTextField.setToolTipText("<html>\n<h3>Promedio general de tu escuela</h3>\n<ul><li>Esto nos ayudará a generar mayores estadísticas sobre ti<br>\na la hora de tomar tus cursos.</li></ul>\n</html>");
         editar_Promedio_General_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         editar_Promedio_General_JFormattedTextField.setPreferredSize(new java.awt.Dimension(126, 40));
+        editar_Promedio_General_JFormattedTextField.setToolTipText("<html>\n<h3>Promedio general de tu escuela</h3>\n<ul><li>Esto nos ayudará a generar mayores estadísticas sobre ti<br>\na la hora de tomar tus cursos.</li></ul>\n</html>");
 
         editar_Descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Descripcion_JLabel.setText("Descripción");
@@ -849,12 +850,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
         editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
-        interes_Tematica_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         interes_Tematica_JLabel.setText("Interes / Temática");
+        interes_Tematica_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         interes_Tematica_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
 
-        agregar_Interes_Tematica_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         agregar_Interes_Tematica_JButton.setText("Agregar Interes / Temática");
+        agregar_Interes_Tematica_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         agregar_Interes_Tematica_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 agregar_Interes_Tematica_JButtonMouseClicked(evt);
@@ -869,8 +870,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         intereses_Tematicas_AutoCompletionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isaiah Leblanc", "Fitzgerald Dean", "Emma Doyle", "Galvin Gillespie", "Hunter Ross", "Kellie Valencia", "Miranda Holder", "Drake Mendoza", "Uma Parks", "Julian Hill" }));
         intereses_Tematicas_AutoCompletionComboBox.setSelectedIndex(-1);
-        intereses_Tematicas_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
         intereses_Tematicas_AutoCompletionComboBox.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        intereses_Tematicas_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
 
         intereses_Tematicas_JScrollPane.setBorder(null);
         intereses_Tematicas_JScrollPane.setOpaque(false);
@@ -1440,6 +1441,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private javax.swing.JScrollPane descripcion_JScrollPane;
     private javax.swing.JTextPane descripcion_JTextPane;
     private javax.swing.JButton desempeno_Escolar_JButton;
+    private javax.swing.JPanel desempeno_Escolar_JPanel;
     private javax.swing.JButton editar_Apellido_Materno_JButton;
     private javax.swing.JLabel editar_Apellido_Materno_JLabel;
     private javax.swing.JTextField editar_Apellido_Materno_JTextField;
@@ -1554,7 +1556,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
         
-        
+        desempeno_Escolar_JPanel.add(new Desempeno_Escolar_JPanel());
         
     }
 
