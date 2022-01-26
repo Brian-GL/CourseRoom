@@ -17,13 +17,23 @@
  */
 package paneles.estudiantes.desempeno_escolar;
 
+import clases.Celda_Renderer;
 import courseroom.CourseRoom;
+import datos.colecciones.Lista;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -34,6 +44,8 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import paneles.estudiantes.Pagina_Curso_Estudiante_Panel;
+import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
  *
@@ -67,6 +79,9 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         desempeno_Escolar_JLayeredPane = new javax.swing.JLayeredPane();
         regresion_Lineal_JPanel = new javax.swing.JPanel();
         grafica_Pastel_JPanel = new javax.swing.JPanel();
+        estadisticas_JPanel = new javax.swing.JPanel();
+        estadisticas_JScrollPane = new javax.swing.JScrollPane();
+        estadisticas_JTable = new javax.swing.JTable();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -116,7 +131,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 395, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(regresion_Lineal_JButton)
                 .addGap(18, 18, 18)
                 .addComponent(grafica_Pastel_JButton)
@@ -145,27 +160,79 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         grafica_Pastel_JPanel.setLayout(new java.awt.BorderLayout());
         desempeno_Escolar_JLayeredPane.add(grafica_Pastel_JPanel, "Grafica_Pastel");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        estadisticas_JPanel.setOpaque(false);
+        estadisticas_JPanel.setLayout(new java.awt.CardLayout());
+
+        estadisticas_JScrollPane.setBorder(null);
+        estadisticas_JScrollPane.setOpaque(false);
+
+        estadisticas_JTable.setAutoCreateRowSorter(true);
+        estadisticas_JTable.setModel(
+
+            new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+
+                },
+                new String [] {
+                    "Curso", "Tareas Calificadas", "Promedio Curso", "Promedio General" ,"Predicción", "Rumbo"
+                }
+            ) {
+                boolean[] canEdit = new boolean [] {
+                    false, false, false, false, false, false
+                };
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit [columnIndex];
+                }
+
+                @Override
+                public Class getColumnClass(int column)
+                {
+                    for(int i = 0; i < estadisticas_JTable.getRowCount(); i++)
+                    {
+                        //The first valid value of a cell of given column is retrieved.
+                        if(getValueAt(i,column) != null)
+                        {
+                            return getValueAt(i, column).getClass();
+                        }
+                    }
+                    //if no valid value is found, default renderer is returned.
+                    return super.getColumnClass(column);
+                }
+            });
+            estadisticas_JTable.setOpaque(false);
+            estadisticas_JTable.setRowHeight(100);
+            estadisticas_JTable.setRowMargin(15);
+            estadisticas_JTable.setShowGrid(true);
+            estadisticas_JTable.setShowVerticalLines(false);
+            estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
+            estadisticas_JScrollPane.setViewportView(estadisticas_JTable);
+
+            estadisticas_JPanel.add(estadisticas_JScrollPane, "card2");
+
+            desempeno_Escolar_JLayeredPane.add(estadisticas_JPanel, "Estadisticas");
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+            this.setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(64, 64, 64)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(desempeno_Escolar_JLayeredPane)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
+                    .addGap(64, 64, 64))
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(desempeno_Escolar_JLayeredPane)
-                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
-                .addGap(64, 64, 64))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(desempeno_Escolar_JLayeredPane)
-                .addContainerGap())
-        );
-    }// </editor-fold>//GEN-END:initComponents
+                    .addContainerGap())
+            );
+        }// </editor-fold>//GEN-END:initComponents
 
     private void grafica_Pastel_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grafica_Pastel_JButtonMouseClicked
         // TODO add your handling code here:
@@ -245,6 +312,9 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
     private javax.swing.JPanel contenido_Titulo_JPanel;
     private javax.swing.JLayeredPane desempeno_Escolar_JLayeredPane;
     private javax.swing.JButton estadisticas_JButton;
+    private javax.swing.JPanel estadisticas_JPanel;
+    private javax.swing.JScrollPane estadisticas_JScrollPane;
+    private static javax.swing.JTable estadisticas_JTable;
     private javax.swing.JButton grafica_Pastel_JButton;
     private javax.swing.JPanel grafica_Pastel_JPanel;
     private javax.swing.JButton regresion_Lineal_JButton;
@@ -255,6 +325,46 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
     @Override
     public void Iniciar_Componentes() {
 
+        //Tabla estadisticas:
+        estadisticas_JScrollPane.getViewport().setOpaque(false);
+        estadisticas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        estadisticas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+
+        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        estadisticas_JTable.getTableHeader().setFont(gadugi);
+
+        estadisticas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        Celda_Renderer[] celdas = new Celda_Renderer[6];
+        DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
+        
+        URL url_Imagen;
+        ImageIcon icono = null;
+        ImageIcon icono_Reprobado = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
+        ImageIcon icono_Aprobado = new ImageIcon(getClass().getResource("/recursos/iconos/check.png"));
+        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
+            
+            try {
+                System.out.println("Estadisticas Curso " + i + " -> Getting Image From https://picsum.photos/96/96");
+                url_Imagen = new URL("https://picsum.photos/96/96");
+                icono = new ImageIcon(url_Imagen);
+
+                celdas[0] = new Celda_Renderer(icono, CourseRoom.Faker().educator().course(), "");
+                celdas[1] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)), "");
+                celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().randomDouble(2, 1, 100)), "");
+                celdas[3] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().randomDouble(2, 1, 100)), "");
+                celdas[4] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().randomDouble(2, 1, 100)), "");
+                boolean rumbo = CourseRoom.Faker().bool().bool();
+                
+                celdas[5] =  (rumbo) ? new Celda_Renderer(icono_Aprobado,"A Aprobar", ""):
+                        new Celda_Renderer(icono_Reprobado,"A Reprobar", "");
+
+                modelo.addRow(celdas);
+
+            } catch (MalformedURLException ex) {
+
+            } 
+        }
+        
         
         //Regresion Lineal:
         // Create dataset  
@@ -323,6 +433,18 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         regresion_Lineal_JButton.setBackground(CourseRoom.Tercer_Color());
         grafica_Pastel_JButton.setBackground(CourseRoom.Segundo_Color());
         estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+        
+        estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
+        estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        
+        DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
+        Celda_Renderer celda;
+        for (int i = 0; i < estadisticas_JTable.getRowCount(); i++) {
+            for (int j = 0; j < 6; j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+            }
+        }
        
     }
 
