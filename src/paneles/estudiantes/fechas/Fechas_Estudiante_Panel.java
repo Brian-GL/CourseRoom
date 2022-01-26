@@ -36,6 +36,8 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
      */
     public Fechas_Estudiante_Panel() {
         initComponents();
+        
+        Iniciar_Componentes();
     }
 
     /**
@@ -62,6 +64,7 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         domingo_JLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_JPanel.setOpaque(false);

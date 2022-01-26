@@ -65,8 +65,6 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="informacion_JButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="desempeno_Escolar_JButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="editar_Autenticacion_JButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="editar_Datos_Personales_JButton" min="-2" max="-2" attributes="0"/>
@@ -85,7 +83,6 @@
                           <Component id="informacion_JButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="editar_Datos_Personales_JButton" max="32767" attributes="0"/>
                           <Component id="editar_Informacion_Extra_JButton" max="32767" attributes="0"/>
-                          <Component id="desempeno_Escolar_JButton" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -175,23 +172,6 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)editar_Informacion_Extra_JButton.getIcon()).getImage().flush();"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="desempeno_Escolar_JButton">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/recursos/iconos/qualification_1.png"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="desempeno_Escolar_JButtonMouseClicked"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)desempeno_Escolar_JButton.getIcon()).getImage().flush();"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -471,18 +451,6 @@
               </SubComponents>
             </Container>
           </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="desempeno_Escolar_JPanel">
-          <Properties>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="Desempeno_Escolar"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
         </Container>
         <Container class="javax.swing.JPanel" name="autenticacion_JPanel">
           <Properties>

@@ -72,7 +72,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         informacion_JButton = new javax.swing.JButton();
         editar_Datos_Personales_JButton = new javax.swing.JButton();
         editar_Informacion_Extra_JButton = new javax.swing.JButton();
-        desempeno_Escolar_JButton = new javax.swing.JButton();
         perfil_JLayeredPane = new javax.swing.JLayeredPane();
         informacion_JPanel = new javax.swing.JPanel();
         imagen_Perfil_JLabel = new javax.swing.JLabel();
@@ -85,7 +84,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         genero_JLabel = new javax.swing.JLabel();
         descripcion_JScrollPane = new javax.swing.JScrollPane();
         descripcion_JTextPane = new javax.swing.JTextPane();
-        desempeno_Escolar_JPanel = new javax.swing.JPanel();
         autenticacion_JPanel = new javax.swing.JPanel();
         contrasena_JLabel = new javax.swing.JLabel();
         contrasena_JPasswordField = new javax.swing.JPasswordField();
@@ -186,16 +184,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
-        desempeno_Escolar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/qualification_1.png"))); // NOI18N
-        desempeno_Escolar_JButton.setBorder(null);
-        desempeno_Escolar_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ((ImageIcon)desempeno_Escolar_JButton.getIcon()).getImage().flush();
-        desempeno_Escolar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                desempeno_Escolar_JButtonMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
         contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
@@ -204,8 +192,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(informacion_JButton)
-                .addGap(18, 18, 18)
-                .addComponent(desempeno_Escolar_JButton)
                 .addGap(18, 18, 18)
                 .addComponent(editar_Autenticacion_JButton)
                 .addGap(18, 18, 18)
@@ -222,8 +208,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                         .addComponent(editar_Autenticacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(informacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(editar_Datos_Personales_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editar_Informacion_Extra_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(desempeno_Escolar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(editar_Informacion_Extra_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -360,10 +345,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         );
 
         perfil_JLayeredPane.add(informacion_JPanel, "Informacion");
-
-        desempeno_Escolar_JPanel.setOpaque(false);
-        desempeno_Escolar_JPanel.setLayout(new java.awt.CardLayout());
-        perfil_JLayeredPane.add(desempeno_Escolar_JPanel, "Desempeno_Escolar");
 
         autenticacion_JPanel.setMinimumSize(new java.awt.Dimension(800, 600));
         autenticacion_JPanel.setOpaque(false);
@@ -1031,7 +1012,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Autenticacion");
             informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            desempeno_Escolar_JButton.setBackground(CourseRoom.Segundo_Color());
             editar_Autenticacion_JButton.setBackground(CourseRoom.Tercer_Color());
             editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
             editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
@@ -1043,7 +1023,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         if (SwingUtilities.isLeftMouseButton(evt)) {
             ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion");
             informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-            desempeno_Escolar_JButton.setBackground(CourseRoom.Segundo_Color());
             editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
             editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
             editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
@@ -1056,7 +1035,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Datos_Personales");
             informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            desempeno_Escolar_JButton.setBackground(CourseRoom.Segundo_Color());
             editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
             editar_Datos_Personales_JButton.setBackground(CourseRoom.Tercer_Color());
             editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
@@ -1199,7 +1177,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion_Extra");
             informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            desempeno_Escolar_JButton.setBackground(CourseRoom.Segundo_Color());
             editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
             editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
             editar_Informacion_Extra_JButton.setBackground(CourseRoom.Tercer_Color());
@@ -1408,18 +1385,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Descripcion_JButton.setBackground(CourseRoom.Tercer_Color());
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseExited
 
-    private void desempeno_Escolar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desempeno_Escolar_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Desempeno_Escolar");
-            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            desempeno_Escolar_JButton.setBackground(CourseRoom.Tercer_Color());
-            editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
-        }
-    }//GEN-LAST:event_desempeno_Escolar_JButtonMouseClicked
-
     public static String Nombre_Completo(){
         return CourseRoom.Concatenar(nombres_JLabel.getText(), " " ,apellidos_JLabel.getText());
     }
@@ -1440,8 +1405,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private javax.swing.JPanel datos_Personales_JPanel;
     private javax.swing.JScrollPane descripcion_JScrollPane;
     private javax.swing.JTextPane descripcion_JTextPane;
-    private javax.swing.JButton desempeno_Escolar_JButton;
-    private javax.swing.JPanel desempeno_Escolar_JPanel;
     private javax.swing.JButton editar_Apellido_Materno_JButton;
     private javax.swing.JLabel editar_Apellido_Materno_JLabel;
     private javax.swing.JTextField editar_Apellido_Materno_JTextField;
@@ -1514,6 +1477,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         tipo_Perfil_JLabel.setText("Alumno");
         ImageIcon imagen_Icono = new ImageIcon(Tablero_Estudiante_Panel.Imagen_Usuario());
         imagen_Perfil_JLabel.setIcon(imagen_Icono);
+        editar_Imagen_JLabel.setIcon(imagen_Icono);
         imagen_Icono.getImage().flush();
         nombres_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         apellidos_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
@@ -1556,7 +1520,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
         
-        desempeno_Escolar_JPanel.add(new Desempeno_Escolar_JPanel());
         
     }
 
@@ -1568,7 +1531,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
         
         informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-        desempeno_Escolar_JButton.setBackground(CourseRoom.Segundo_Color());
         editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
         editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
         editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
@@ -1580,8 +1542,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         fecha_Nacimiento_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         genero_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         localidad_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        desempeno_Escolar_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        desempeno_Escolar_JButton.setBackground(CourseRoom.Segundo_Color());
         nombres_JLabel.setBackground(CourseRoom.Tercer_Color());
         nombres_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
         tipo_Perfil_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
