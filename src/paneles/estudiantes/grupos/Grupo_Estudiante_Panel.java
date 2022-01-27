@@ -1291,15 +1291,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 ImageIcon icono_Pendiente = new ImageIcon(getClass().getResource("/recursos/iconos/clock.png"));
                 tarea_Pendiente_nombre = CourseRoom.Concatenar(tarea_Pendiente_nombre,": <br><br>",tarea_Pendiente_descricion);
                 celdas[0] = new Celda_Renderer(CourseRoom.Formato_HTML_Central(tarea_Pendiente_nombre),"");
-                
                 celdas[1] = new Celda_Renderer(icono_Usuario,nombre_JLabel.getText(),"");
-                
                 celdas[2] = new Celda_Renderer(tarea_Pendiente_fecha,"");
-                
                 celdas[3] = new Celda_Renderer(icono_Pendiente,"Pendiente","");
-                
                 modelo.addRow(celdas);
-               
                
                 nombre_Tarea_Pendiente_JTextField.setText("");
                 descripcion_Tarea_Pendiente_JTextPane.setText("");
@@ -1341,15 +1336,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     id = CourseRoom.Concatenar("Archivo_Compartido_Grupo_", i);
                     archivo_Abierto = archivos_Abiertos[i];
                     celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),id);
-                    celdas[0].Color_Fuente(CourseRoom.Primer_Color_Fuente());
                     celdas[1] = new Celda_Renderer(Tablero_Estudiante_Panel.Nombre_Usuario(),id);
-                    celdas[1].Color_Fuente(CourseRoom.Primer_Color_Fuente());
                     celdas[2] = new Celda_Renderer(LocalDateTime.now().toString(),id);
-                    celdas[2].Color_Fuente(CourseRoom.Primer_Color_Fuente());
                     celdas[3] = new Celda_Renderer(icono_Descargar,id);
-                    celdas[3].Color_Fuente(CourseRoom.Primer_Color_Fuente());
                     celdas[4] = new Celda_Renderer(icono_Remover,id);
-                    celdas[4].Color_Fuente(CourseRoom.Primer_Color_Fuente());
                     modelo.addRow(celdas);
                 }
             }

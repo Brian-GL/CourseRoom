@@ -229,7 +229,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         logo_Autenticacion_JLabel.setMinimumSize(new java.awt.Dimension(150, 125));
         logo_Autenticacion_JLabel.setPreferredSize(new java.awt.Dimension(150, 125));
 
-        contrasena_Autenticacion_JLabel.setText("Contraseña");
+        contrasena_Autenticacion_JLabel.setText("Contraseña*");
         contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
         contrasenia_Autenticacion_JPasswordField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
@@ -241,7 +241,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         titulo_Autenticacion_JLabel.setText("Registra Tus Credenciales Para Acceder Al Sistema");
         titulo_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
 
-        correo_Electronico_Autenticacion_JLabel.setText("Correo Electrónico");
+        correo_Electronico_Autenticacion_JLabel.setText("Correo Electrónico*");
         correo_Electronico_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
         correo_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
@@ -249,7 +249,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         correo_JTextField.setPreferredSize(new java.awt.Dimension(350, 43));
         correo_JTextField.setToolTipText("");
 
-        repetir_Contrasena_Autenticacion_JLabel.setText("Repetir Contraseña");
+        repetir_Contrasena_Autenticacion_JLabel.setText("Repetir Contraseña*");
         repetir_Contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
         repetir_Contrasenia_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N

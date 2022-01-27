@@ -240,7 +240,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="contrasena_Autenticacion_JLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
+            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a*"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gadugi" size="18" style="1"/>
             </Property>
@@ -271,7 +271,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="correo_Electronico_Autenticacion_JLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico"/>
+            <Property name="text" type="java.lang.String" value="Correo Electr&#xf3;nico*"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gadugi" size="18" style="1"/>
             </Property>
@@ -293,7 +293,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="repetir_Contrasena_Autenticacion_JLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Repetir Contrase&#xf1;a"/>
+            <Property name="text" type="java.lang.String" value="Repetir Contrase&#xf1;a*"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gadugi" size="18" style="1"/>
             </Property>

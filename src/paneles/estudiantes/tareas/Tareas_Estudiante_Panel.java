@@ -41,8 +41,8 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  */
 public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface{
 
-    private Lista<Pagina_Tarea_Estudiante_Panel> mostrar_Tareas_Lista;
-    private Lista<Pagina_Tarea_Estudiante_Panel> buscar_Tareas_Lista;
+    private Lista<Tarea_Estudiante_Panel> mostrar_Tareas_Lista;
+    private Lista<Tarea_Estudiante_Panel> buscar_Tareas_Lista;
     
     /**
      * Creates new form Tareas_Estudiante
@@ -141,7 +141,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                 },
                 new String [] {
-                    "Tipo", "Tarea", "Curso", "Fecha", "Estatus"
+                    "Tipo", "Tarea", "Curso", "Fecha Entrega", "Estatus"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
@@ -375,9 +375,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         ImageIcon tarea_Investigacion = new ImageIcon(getClass().getResource("/recursos/iconos/homework_investigation.png"));
         ImageIcon tarea_Evidencia = new ImageIcon(getClass().getResource("/recursos/iconos/homework_evidence.png"));
         ImageIcon icono_Tarea = null;
-        String tipo_Tarea = "";
+        String tipo_Tarea = "", nombre = "", curso = "", fecha = "", estatus = "";
          
-        Pagina_Tarea_Estudiante_Panel tarea_Estudiante_Panel;
+        Tarea_Estudiante_Panel tarea_Estudiante_Panel;
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
             id = CourseRoom.Concatenar("Tarea_",i);
           
@@ -400,13 +400,18 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     break;
             }
             
+            
+            nombre = CourseRoom.Faker().university().name();
+            curso = CourseRoom.Faker().educator().course();
+            fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+            estatus = CourseRoom.Faker().bool().bool() ? "Entregado" : "Pendiente";
             celdas[0] = new Celda_Renderer(icono_Tarea,tipo_Tarea,id);
-            celdas[1] = new Celda_Renderer(CourseRoom.Faker().university().name(),id);
-            celdas[2] = new Celda_Renderer(CourseRoom.Faker().educator().course(),id);
-            celdas[3] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(),id);
-            celdas[4] = new Celda_Renderer((CourseRoom.Faker().bool().bool()) ? "Entregado" : "Pendiente",id);
+            celdas[1] = new Celda_Renderer(nombre,id);
+            celdas[2] = new Celda_Renderer(curso,id);
+            celdas[3] = new Celda_Renderer(fecha,id);
+            celdas[4] = new Celda_Renderer(estatus,id);
 
-            tarea_Estudiante_Panel = new Pagina_Tarea_Estudiante_Panel(celdas[1].Label().getText(),id);
+            tarea_Estudiante_Panel = new Tarea_Estudiante_Panel(tipo_Tarea, nombre, curso, fecha, estatus, id);
             mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
             Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel,id);
             modelo.addRow(celdas);
@@ -485,8 +490,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        Pagina_Tarea_Estudiante_Panel tarea_Estudiante_Panel;
-        for (Nodo<Pagina_Tarea_Estudiante_Panel> nodo = mostrar_Tareas_Lista.front(); nodo != null; nodo = nodo.next()) {
+        Tarea_Estudiante_Panel tarea_Estudiante_Panel;
+        for (Nodo<Tarea_Estudiante_Panel> nodo = mostrar_Tareas_Lista.front(); nodo != null; nodo = nodo.next()) {
             tarea_Estudiante_Panel = nodo.element();
             tarea_Estudiante_Panel.Colorear_Componentes();
         }
@@ -514,7 +519,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
         
-        for (Nodo<Pagina_Tarea_Estudiante_Panel> nodo = buscar_Tareas_Lista.front(); nodo != null; nodo = nodo.next()) {
+        for (Nodo<Tarea_Estudiante_Panel> nodo = buscar_Tareas_Lista.front(); nodo != null; nodo = nodo.next()) {
             tarea_Estudiante_Panel = nodo.element();
             tarea_Estudiante_Panel.Colorear_Componentes();
         }
