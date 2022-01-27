@@ -139,6 +139,9 @@
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buscar_Grupos_JButtonMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buscar_Grupos_JButtonMouseExited"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)buscar_Grupos_JButton.getIcon()).getImage().flush();"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -251,6 +254,9 @@
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mostrar_Grupos_JButtonMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mostrar_Grupos_JButtonMouseExited"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)mostrar_Grupos_JButton.getIcon()).getImage().flush();"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="buscar_Grupos_JScrollPane">
           <Properties>

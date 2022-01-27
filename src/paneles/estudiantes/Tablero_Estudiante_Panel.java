@@ -6,7 +6,7 @@
 package paneles.estudiantes;
 
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
-import paneles.estudiantes.tareas.Pagina_Tareas_Estudiante_Panel;
+import paneles.estudiantes.tareas.Tareas_Estudiante_Panel;
 import paneles.estudiantes.grupos.Grupos_Estudiante_Panel;
 import paneles.estudiantes.chats.Chats_Estudiante_Panel;
 import paneles.estudiantes.dudas.Dudas_Estudiante_Panel;
@@ -51,7 +51,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Avisos_Estudiante_Panel pagina_Avisos_Panel;
     private static Grupos_Estudiante_Panel pagina_Grupos_Panel;
     private static Fechas_Estudiante_Panel pagina_Fechas_Panel;
-    private static Pagina_Tareas_Estudiante_Panel pagina_Tareas_Panel;
+    private static Tareas_Estudiante_Panel pagina_Tareas_Panel;
     private static Ajustes_Estudiante_Panel ajustes_Panel;
     private static Pagina_Cursos_Estudiante_Panel pagina_Cursos_Panel;
     private static Dudas_Estudiante_Panel pagina_Dudas_Panel;
@@ -973,10 +973,10 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         imagen_Usuario = _imagen_Usuario;
         ImageIcon imagen_Perfil = new ImageIcon(imagen_Usuario.getScaledInstance(175,175, Image.SCALE_SMOOTH));
         imagen_Perfil_JLabel.setIcon(imagen_Perfil);
-        int ancho_Imagen = perfil_Panel.Obtener_Imagen_Perfil_JLabel().getPreferredSize().width;
-        int largo_Imagen = perfil_Panel.Obtener_Imagen_Perfil_JLabel().getPreferredSize().height;
+        int ancho_Imagen = Perfil_Estudiante_Panel.Obtener_Imagen_Perfil_JLabel().getPreferredSize().width;
+        int largo_Imagen = Perfil_Estudiante_Panel.Obtener_Imagen_Perfil_JLabel().getPreferredSize().height;
         ImageIcon icono = new ImageIcon(imagen_Perfil.getImage().getScaledInstance(ancho_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
-        perfil_Panel.Obtener_Imagen_Perfil_JLabel().setIcon(icono);
+        Perfil_Estudiante_Panel.Obtener_Imagen_Perfil_JLabel().setIcon(icono);
         imagen_Perfil.getImage().flush();
     }
 
@@ -1005,7 +1005,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             pagina_Grupos_Panel = new Grupos_Estudiante_Panel();
             visualizador_JPanel.add("Grupos", pagina_Grupos_Panel);
 
-            pagina_Tareas_Panel = new Pagina_Tareas_Estudiante_Panel();
+            pagina_Tareas_Panel = new Tareas_Estudiante_Panel();
             visualizador_JPanel.add("Tareas",pagina_Tareas_Panel);
             
             pagina_Fechas_Panel = new Fechas_Estudiante_Panel();

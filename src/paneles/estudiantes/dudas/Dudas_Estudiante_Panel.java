@@ -215,7 +215,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     .addContainerGap())
             );
 
-            dudas_JLayeredPane.add(mostrar_Dudas_JPanel, "Mostrar_Dudas");
+            dudas_JLayeredPane.add(mostrar_Dudas_JPanel, "Mostrar");
 
             buscar_Dudas_JPanel.setOpaque(false);
             buscar_Dudas_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -316,7 +316,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         .addContainerGap())
                 );
 
-                dudas_JLayeredPane.add(buscar_Dudas_JPanel, "Buscar_Dudas");
+                dudas_JLayeredPane.add(buscar_Dudas_JPanel, "Buscar");
 
                 add(dudas_JLayeredPane, "card2");
             }// </editor-fold>//GEN-END:initComponents
@@ -324,7 +324,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void buscar_Dudas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Dudas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            layout.show(dudas_JLayeredPane, "Buscar_Dudas");
+            layout.show(dudas_JLayeredPane, "Buscar");
         }
     }//GEN-LAST:event_buscar_Dudas_JButtonMouseClicked
 
@@ -366,7 +366,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void mostrar_Dudas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Dudas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            layout.show(dudas_JLayeredPane, "Mostrar_Dudas");
+            layout.show(dudas_JLayeredPane, "Mostrar");
         }
     }//GEN-LAST:event_mostrar_Dudas_JButtonMouseClicked
 

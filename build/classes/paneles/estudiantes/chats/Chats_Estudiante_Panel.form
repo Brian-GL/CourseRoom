@@ -30,7 +30,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-          <CardConstraints cardName="Mostrar_Chats"/>
+          <CardConstraints cardName="Mostrar"/>
         </Constraint>
       </Constraints>
 
@@ -135,6 +135,9 @@
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buscar_Chats_JButtonMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buscar_Chats_JButtonMouseExited"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)buscar_Chats_JButton.getIcon()).getImage().flush();"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -181,7 +184,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-          <CardConstraints cardName="Buscar_Chats"/>
+          <CardConstraints cardName="Buscar"/>
         </Constraint>
       </Constraints>
 
@@ -247,6 +250,9 @@
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mostrar_Chats_JButtonMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mostrar_Chats_JButtonMouseExited"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)mostrar_Chats_JButton.getIcon()).getImage().flush();"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="buscar_Chats_JScrollPane">
           <Properties>

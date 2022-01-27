@@ -101,6 +101,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_Grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
         buscar_Grupos_JButton.setBorder(null);
         buscar_Grupos_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)buscar_Grupos_JButton.getIcon()).getImage().flush();
         buscar_Grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buscar_Grupos_JButtonMouseClicked(evt);
@@ -218,6 +219,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             mostrar_Grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/vegan.png"))); // NOI18N
             mostrar_Grupos_JButton.setToolTipText("<html> <h3>Regresar a mis grupos</h3> </html>");
             mostrar_Grupos_JButton.setBorder(null);
+            ((ImageIcon)mostrar_Grupos_JButton.getIcon()).getImage().flush();
             mostrar_Grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     mostrar_Grupos_JButtonMouseClicked(evt);

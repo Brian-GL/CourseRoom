@@ -101,6 +101,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         buscar_Chats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
         buscar_Chats_JButton.setBorder(null);
         buscar_Chats_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)buscar_Chats_JButton.getIcon()).getImage().flush();
         buscar_Chats_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buscar_Chats_JButtonMouseClicked(evt);
@@ -201,7 +202,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                     .addContainerGap())
             );
 
-            add(mostrar_Chats_JPanel, "Mostrar_Chats");
+            add(mostrar_Chats_JPanel, "Mostrar");
 
             buscar_Chats_JPanel.setOpaque(false);
             buscar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -218,6 +219,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             mostrar_Chats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/video-chat.png"))); // NOI18N
             mostrar_Chats_JButton.setToolTipText("<html>\n<h3>Regresar a mis chats personales</h3>\n</html>");
             mostrar_Chats_JButton.setBorder(null);
+            ((ImageIcon)mostrar_Chats_JButton.getIcon()).getImage().flush();
             mostrar_Chats_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     mostrar_Chats_JButtonMouseClicked(evt);
@@ -301,13 +303,13 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                         .addContainerGap())
                 );
 
-                add(buscar_Chats_JPanel, "Buscar_Chats");
+                add(buscar_Chats_JPanel, "Buscar");
             }// </editor-fold>//GEN-END:initComponents
 
     private void buscar_Chats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Chats_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this, "Buscar_Chats");
+            ((CardLayout)this.getLayout()).show(this, "Buscar");
         }
     }//GEN-LAST:event_buscar_Chats_JButtonMouseClicked
 
@@ -332,7 +334,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
     private void mostrar_Chats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Chats_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this, "Mostrar_Chats");
+            ((CardLayout)this.getLayout()).show(this, "Mostrar");
         }
     }//GEN-LAST:event_mostrar_Chats_JButtonMouseClicked
 
