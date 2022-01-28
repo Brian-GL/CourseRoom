@@ -131,7 +131,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         enviar_Audios_JButton = new javax.swing.JButton();
         enviar_Imagenes_JButton = new javax.swing.JButton();
         archivos_Compartidos_Grupo_JPanel = new javax.swing.JPanel();
-        compartir_Archivo_JButton = new javax.swing.JButton();
+        compartir_Archivos_JButton = new javax.swing.JButton();
         archivos_Compartidos_JScrollPane = new javax.swing.JScrollPane();
         archivos_Compartidos_JTable = new javax.swing.JTable();
         tareas_Pendientes_JPanel = new javax.swing.JPanel();
@@ -325,9 +325,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         fecha_Creacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
         ((ImageIcon)fecha_Creacion_JLabel.getIcon()).getImage().flush();
 
-        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
+        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
         descripcion_JTextPane.setText("");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
@@ -573,19 +573,20 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             archivos_Compartidos_Grupo_JPanel.setToolTipText("");
             archivos_Compartidos_Grupo_JPanel.setOpaque(false);
 
-            compartir_Archivo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
-            compartir_Archivo_JButton.setText("Compartir Archivo");
-            compartir_Archivo_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-            compartir_Archivo_JButton.setToolTipText("Compartir Y Subir Archivo");
-            compartir_Archivo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            compartir_Archivos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
+            compartir_Archivos_JButton.setText("Compartir Archivo(s)");
+            compartir_Archivos_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+            compartir_Archivos_JButton.setToolTipText("Compartir Y Subir Archivo");
+            ((ImageIcon)compartir_Archivos_JButton.getIcon()).getImage().flush();
+            compartir_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    compartir_Archivo_JButtonMouseClicked(evt);
+                    compartir_Archivos_JButtonMouseClicked(evt);
                 }
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    compartir_Archivo_JButtonMouseEntered(evt);
+                    compartir_Archivos_JButtonMouseEntered(evt);
                 }
                 public void mouseExited(java.awt.event.MouseEvent evt) {
-                    compartir_Archivo_JButtonMouseExited(evt);
+                    compartir_Archivos_JButtonMouseExited(evt);
                 }
             });
 
@@ -600,7 +601,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                     },
                     new String [] {
-                        "Archivo", "Emisor", "Fecha", "Descagar", "Remover"
+                        "Archivo", "Emisor", "Fecha", "Descargar", "Remover"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
@@ -627,7 +628,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     }
                 });
                 archivos_Compartidos_JTable.setOpaque(false);
-                archivos_Compartidos_JTable.setRowHeight(100);
+                archivos_Compartidos_JTable.setRowHeight(50);
                 archivos_Compartidos_JTable.setRowMargin(15);
                 archivos_Compartidos_JTable.setShowGrid(true);
                 archivos_Compartidos_JTable.setShowVerticalLines(false);
@@ -641,19 +642,19 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
+                            .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                            .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(compartir_Archivo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE))
+                                .addComponent(compartir_Archivos_JButton)))
                         .addContainerGap())
                 );
                 archivos_Compartidos_Grupo_JPanelLayout.setVerticalGroup(
                     archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(compartir_Archivo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+                        .addComponent(compartir_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                         .addContainerGap())
                 );
 
@@ -1148,24 +1149,24 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseExited
 
-    private void compartir_Archivo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivo_JButtonMouseClicked
+    private void compartir_Archivos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             Compartir_Archivos();
         }
-    }//GEN-LAST:event_compartir_Archivo_JButtonMouseClicked
+    }//GEN-LAST:event_compartir_Archivos_JButtonMouseClicked
 
-    private void compartir_Archivo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivo_JButtonMouseEntered
+    private void compartir_Archivos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivos_JButtonMouseEntered
         // TODO add your handling code here:
-        compartir_Archivo_JButton.setBackground(CourseRoom.Segundo_Color());
-        compartir_Archivo_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-    }//GEN-LAST:event_compartir_Archivo_JButtonMouseEntered
+        compartir_Archivos_JButton.setBackground(CourseRoom.Segundo_Color());
+        compartir_Archivos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+    }//GEN-LAST:event_compartir_Archivos_JButtonMouseEntered
 
-    private void compartir_Archivo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivo_JButtonMouseExited
+    private void compartir_Archivos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivos_JButtonMouseExited
         // TODO add your handling code here:
-        compartir_Archivo_JButton.setBackground(CourseRoom.Tercer_Color());
-        compartir_Archivo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-    }//GEN-LAST:event_compartir_Archivo_JButtonMouseExited
+        compartir_Archivos_JButton.setBackground(CourseRoom.Tercer_Color());
+        compartir_Archivos_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+    }//GEN-LAST:event_compartir_Archivos_JButtonMouseExited
 
     private void cambiar_Imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseClicked
         // TODO add your handling code here:
@@ -1329,17 +1330,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 File archivo_Abierto;
                 Celda_Renderer[] celdas = new Celda_Renderer[5];
                 DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
-                String id;
                 ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
                 ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
                 for(int i = 0; i < archivos_Abiertos.length;i++){
-                    id = CourseRoom.Concatenar("Archivo_Compartido_Grupo_", i);
                     archivo_Abierto = archivos_Abiertos[i];
-                    celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),id);
-                    celdas[1] = new Celda_Renderer(Tablero_Estudiante_Panel.Nombre_Usuario(),id);
-                    celdas[2] = new Celda_Renderer(LocalDateTime.now().toString(),id);
-                    celdas[3] = new Celda_Renderer(icono_Descargar,id);
-                    celdas[4] = new Celda_Renderer(icono_Remover,id);
+                    celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),"");
+                    celdas[1] = new Celda_Renderer(Tablero_Estudiante_Panel.Nombre_Usuario(),"");
+                    celdas[2] = new Celda_Renderer(LocalDateTime.now().toString(),"");
+                    celdas[3] = new Celda_Renderer(icono_Descargar,"");
+                    celdas[4] = new Celda_Renderer(icono_Remover,"");
                     modelo.addRow(celdas);
                 }
             }
@@ -1362,7 +1361,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private javax.swing.JPanel chat_Grupo_JPanel;
     private javax.swing.JButton chat_JButton;
     private javax.swing.JPanel chat_JPanel;
-    private javax.swing.JButton compartir_Archivo_JButton;
+    private javax.swing.JButton compartir_Archivos_JButton;
     private javax.swing.JLabel curso_JLabel;
     private javax.swing.JScrollPane descripcion_JScrollPane;
     private javax.swing.JTextPane descripcion_JTextPane;
@@ -1714,8 +1713,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         miembros_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
         miembros_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
 
-        compartir_Archivo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-        compartir_Archivo_JButton.setBackground(CourseRoom.Tercer_Color());
+        compartir_Archivos_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        compartir_Archivos_JButton.setBackground(CourseRoom.Tercer_Color());
        
         Component[] componentes = mensajes_Chat_JPanel.getComponents();
         Component componente;

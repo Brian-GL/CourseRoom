@@ -98,7 +98,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         nombre_Usuario_JLabel = new javax.swing.JLabel();
         fecha_Hora_Servidor_JLabel = new javax.swing.JLabel();
         menu_JButton = new javax.swing.JButton();
-        actualizar_JButton = new javax.swing.JButton();
         visualizador_JPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
@@ -409,25 +408,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             }
         });
 
-        actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setToolTipText("Mostrar/Ocultar Menú");
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        actualizar_JButton.setMaximumSize(new java.awt.Dimension(40, 40));
-        actualizar_JButton.setMinimumSize(new java.awt.Dimension(40, 40));
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(40, 40));
-        actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                actualizar_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                actualizar_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                actualizar_JButtonMouseExited(evt);
-            }
-        });
-
         javax.swing.GroupLayout barra_Superior_JPanelLayout = new javax.swing.GroupLayout(barra_Superior_JPanel);
         barra_Superior_JPanel.setLayout(barra_Superior_JPanelLayout);
         barra_Superior_JPanelLayout.setHorizontalGroup(
@@ -435,8 +415,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             .addGroup(barra_Superior_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
@@ -449,8 +427,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                 .addGroup(barra_Superior_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -742,24 +719,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         dudas_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_dudas_JButtonMouseExited
 
-    private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-        }
-    }//GEN-LAST:event_actualizar_JButtonMouseClicked
-
-    private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
-        // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
-        
-    }//GEN-LAST:event_actualizar_JButtonMouseEntered
-
-    private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
-        // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Primer_Color());
-    }//GEN-LAST:event_actualizar_JButtonMouseExited
-
     
     public static String Nombre_Usuario(){
         return nombre_Usuario_JLabel.getText();
@@ -891,7 +850,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         salir_JButton.setBackground(CourseRoom.Segundo_Color());
         tareas_JButton.setBackground(CourseRoom.Segundo_Color());
         dudas_JButton.setBackground(CourseRoom.Segundo_Color());
-        actualizar_JButton.setBackground(CourseRoom.Primer_Color());
         menu_JButton.setBackground(CourseRoom.Primer_Color());
 
         fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
@@ -940,7 +898,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton acerca_De_JButton;
-    private static javax.swing.JButton actualizar_JButton;
     private static javax.swing.JButton ajustes_JButton;
     private static javax.swing.JButton avisos_JButton;
     private javax.swing.JPanel barra_Superior_JPanel;
