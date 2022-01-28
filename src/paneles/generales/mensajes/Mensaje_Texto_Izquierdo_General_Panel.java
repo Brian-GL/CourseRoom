@@ -79,7 +79,7 @@ public class Mensaje_Texto_Izquierdo_General_Panel extends javax.swing.JPanel im
         mensaje_JTextPane.setEditable(false);
         mensaje_JTextPane.setBorder(null);
         mensaje_JTextPane.setContentType("text/html"); // NOI18N
-        mensaje_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        mensaje_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         mensaje_JTextPane.setText("");
         mensaje_JTextPane.setFocusTraversalPolicyProvider(true);
         mensaje_JTextPane.setOpaque(false);

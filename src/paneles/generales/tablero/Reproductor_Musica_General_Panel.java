@@ -1579,7 +1579,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         for(int i = 0; i < componentes.length;i++){
             componente = componentes[i];
-            componente.setBackground(segundo_Color_Fuente);
+            componente.setBackground(primer_Color);
+            componente.setForeground(segundo_Color_Fuente);
         }
         
         preamp_JSlider.setBackground(segundo_Color_Fuente);

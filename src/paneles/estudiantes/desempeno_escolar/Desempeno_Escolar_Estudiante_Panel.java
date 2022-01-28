@@ -76,6 +76,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         grafica_Pastel_JButton = new javax.swing.JButton();
         regresion_Lineal_JButton = new javax.swing.JButton();
         estadisticas_JButton = new javax.swing.JButton();
+        actualizar_JButton = new javax.swing.JButton();
         desempeno_Escolar_JLayeredPane = new javax.swing.JLayeredPane();
         regresion_Lineal_JPanel = new javax.swing.JPanel();
         grafica_Pastel_JPanel = new javax.swing.JPanel();
@@ -90,9 +91,9 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
 
+        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Desempeño Escolar");
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setOpaque(true);
@@ -125,18 +126,36 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             }
         });
 
+        actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setBorder(null);
+        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
+        actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
         contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)
                 .addComponent(regresion_Lineal_JButton)
                 .addGap(18, 18, 18)
                 .addComponent(grafica_Pastel_JButton)
                 .addGap(18, 18, 18)
-                .addComponent(estadisticas_JButton))
+                .addComponent(estadisticas_JButton)
+                .addGap(18, 18, 18)
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,8 +165,9 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
                     .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(grafica_Pastel_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(regresion_Lineal_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(estadisticas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(estadisticas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
 
         desempeno_Escolar_JLayeredPane.setLayout(new java.awt.CardLayout());
@@ -217,11 +237,11 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(64, 64, 64)
+                    .addGap(32, 32, 32)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(desempeno_Escolar_JLayeredPane)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
-                    .addGap(64, 64, 64))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                    .addGap(32, 32, 32))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,6 +284,23 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             estadisticas_JButton.setBackground(CourseRoom.Tercer_Color());
         }
     }//GEN-LAST:event_estadisticas_JButtonMouseClicked
+
+    private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+
+        }
+    }//GEN-LAST:event_actualizar_JButtonMouseClicked
+
+    private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseEntered
+
+    private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private XYDataset createDataset() {  
         XYSeriesCollection dataset = new XYSeriesCollection();  
@@ -309,6 +346,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         }  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar_JButton;
     private javax.swing.JPanel contenido_Titulo_JPanel;
     private javax.swing.JLayeredPane desempeno_Escolar_JLayeredPane;
     private javax.swing.JButton estadisticas_JButton;
@@ -433,6 +471,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         regresion_Lineal_JButton.setBackground(CourseRoom.Tercer_Color());
         grafica_Pastel_JButton.setBackground(CourseRoom.Segundo_Color());
         estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+        
+        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
         
         estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
         estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());

@@ -22,6 +22,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
+import java.awt.Color;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 
@@ -61,6 +62,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         titulo_JLabel = new javax.swing.JLabel();
         buscar_Dudas_JButton = new javax.swing.JButton();
         crear_Duda_JButton = new javax.swing.JButton();
+        actualizar_JButton = new javax.swing.JButton();
         mostrar_Dudas_JScrollPane = new javax.swing.JScrollPane();
         mostrar_Dudas_JTable = new javax.swing.JTable();
         buscar_Dudas_JPanel = new javax.swing.JPanel();
@@ -121,6 +123,22 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             }
         });
 
+        actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setBorder(null);
+        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
+        actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
         contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
@@ -132,20 +150,20 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 .addComponent(crear_Duda_JButton)
                 .addGap(18, 18, 18)
                 .addComponent(buscar_Dudas_JButton)
-                .addGap(0, 0, 0))
+                .addGap(18, 18, 18)
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                         .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buscar_Dudas_JButton)
-                            .addComponent(crear_Duda_JButton))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(crear_Duda_JButton)
+                            .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -199,11 +217,11 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             mostrar_Dudas_JPanelLayout.setHorizontalGroup(
                 mostrar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrar_Dudas_JPanelLayout.createSequentialGroup()
-                    .addGap(64, 64, 64)
+                    .addGap(32, 32, 32)
                     .addGroup(mostrar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(mostrar_Dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
-                    .addGap(64, 64, 64))
+                        .addComponent(mostrar_Dudas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                    .addGap(32, 32, 32))
             );
             mostrar_Dudas_JPanelLayout.setVerticalGroup(
                 mostrar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,14 +313,14 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 buscar_Dudas_JPanelLayout.setHorizontalGroup(
                     buscar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buscar_Dudas_JPanelLayout.createSequentialGroup()
-                        .addGap(64, 64, 64)
+                        .addGap(32, 32, 32)
                         .addGroup(buscar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(buscar_Dudas_JPanelLayout.createSequentialGroup()
                                 .addComponent(mostrar_Dudas_JButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(buscar_Dudas_JTextField))
-                            .addComponent(buscar_Dudas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE))
-                        .addGap(64, 64, 64))
+                            .addComponent(buscar_Dudas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                        .addGap(32, 32, 32))
                 );
                 buscar_Dudas_JPanelLayout.setVerticalGroup(
                     buscar_Dudas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,6 +398,23 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         mostrar_Dudas_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_mostrar_Dudas_JButtonMouseExited
 
+    private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+
+        }
+    }//GEN-LAST:event_actualizar_JButtonMouseClicked
+
+    private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseEntered
+
+    private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseExited
+
      public static int Numero_Dudas(){
         return mostrar_Dudas_Lista.size();
     }
@@ -412,6 +447,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     }
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton buscar_Dudas_JButton;
     private javax.swing.JPanel buscar_Dudas_JPanel;
     private javax.swing.JScrollPane buscar_Dudas_JScrollPane;
@@ -430,7 +466,6 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     @Override
     public void Iniciar_Componentes() {
         layout = (CardLayout)dudas_JLayeredPane.getLayout();
-        
 
         mostrar_Dudas_JScrollPane.getViewport().setOpaque(false);
         mostrar_Dudas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -498,6 +533,8 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
         titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        
+        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
 
         buscar_Dudas_JButton.setBackground(CourseRoom.Segundo_Color());
         crear_Duda_JButton.setBackground(CourseRoom.Segundo_Color());

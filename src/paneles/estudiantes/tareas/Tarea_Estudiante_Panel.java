@@ -23,6 +23,7 @@ import interfaces.Componentes_Interface;
 import interfaces.Envio_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
@@ -85,6 +86,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         archivos_Adjuntos_JButton = new javax.swing.JButton();
         entregar_Tarea_JButton = new javax.swing.JButton();
         regresar_JButton = new javax.swing.JButton();
+        actualizar_JButton = new javax.swing.JButton();
         tarea_JLayeredPane = new javax.swing.JLayeredPane();
         informacion_Tarea_JPanel = new javax.swing.JPanel();
         curso_JLabel = new javax.swing.JLabel();
@@ -180,6 +182,22 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             }
         });
 
+        actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setBorder(null);
+        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
+        actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout titulo_JPanelLayout = new javax.swing.GroupLayout(titulo_JPanel);
         titulo_JPanel.setLayout(titulo_JPanelLayout);
         titulo_JPanelLayout.setHorizontalGroup(
@@ -188,14 +206,16 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(archivos_Adjuntos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(comentarios_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(entregar_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(entregar_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         titulo_JPanelLayout.setVerticalGroup(
             titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +228,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             .addComponent(archivos_Adjuntos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(entregar_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -701,6 +722,23 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         subir_Cambios_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
     }//GEN-LAST:event_subir_Cambios_JButtonMouseExited
 
+    private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+
+        }
+    }//GEN-LAST:event_actualizar_JButtonMouseClicked
+
+    private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseEntered
+
+    private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseExited
+
     private void Subir_Archivos(){
         JFileChooser escogedor_Archivo = new JFileChooser();
         escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -736,6 +774,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton archivos_Adjuntos_JButton;
     private javax.swing.JScrollPane archivos_Adjuntos_JScrollPane;
     private javax.swing.JTable archivos_Adjuntos_JTable;
@@ -935,6 +974,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         subir_Cambios_JButton.setBackground(CourseRoom.Tercer_Color());
         subir_Cambios_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        
+        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
 
         Component[] componentes = mensajes_Comentarios_JPanel.getComponents();
         Component componente;

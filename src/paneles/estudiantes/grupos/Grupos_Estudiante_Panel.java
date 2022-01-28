@@ -72,6 +72,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
         buscar_Grupos_JButton = new javax.swing.JButton();
+        actualizar_JButton = new javax.swing.JButton();
         mostrar_Grupos_JScrollPane = new javax.swing.JScrollPane();
         mostrar_Grupos_JTable = new javax.swing.JTable();
         buscar_Grupos_JPanel = new javax.swing.JPanel();
@@ -114,6 +115,22 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         });
 
+        actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setBorder(null);
+        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
+        actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
         contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
@@ -123,17 +140,17 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buscar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(18, 18, 18)
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
-                        .addComponent(buscar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 32, Short.MAX_VALUE))
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+                    .addComponent(buscar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
         mostrar_Grupos_JScrollPane.setBorder(null);
@@ -186,11 +203,11 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             mostrar_Grupos_JPanelLayout.setHorizontalGroup(
                 mostrar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Grupos_JPanelLayout.createSequentialGroup()
-                    .addGap(64, 64, 64)
+                    .addGap(32, 32, 32)
                     .addGroup(mostrar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
-                        .addComponent(mostrar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
-                    .addGap(64, 64, 64))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                        .addComponent(mostrar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                    .addGap(32, 32, 32))
             );
             mostrar_Grupos_JPanelLayout.setVerticalGroup(
                 mostrar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,14 +299,14 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 buscar_Grupos_JPanelLayout.setHorizontalGroup(
                     buscar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buscar_Grupos_JPanelLayout.createSequentialGroup()
-                        .addGap(64, 64, 64)
+                        .addGap(32, 32, 32)
                         .addGroup(buscar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(buscar_Grupos_JPanelLayout.createSequentialGroup()
                                 .addComponent(mostrar_Grupos_JButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 922, Short.MAX_VALUE))
-                            .addComponent(buscar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
-                        .addGap(64, 64, 64))
+                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE))
+                            .addComponent(buscar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                        .addGap(32, 32, 32))
                 );
                 buscar_Grupos_JPanelLayout.setVerticalGroup(
                     buscar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,11 +364,29 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Grupos_JButton.setBackground(CourseRoom.Primer_Color());
     }//GEN-LAST:event_mostrar_Grupos_JButtonMouseExited
 
+    private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+
+        }
+    }//GEN-LAST:event_actualizar_JButtonMouseClicked
+
+    private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseEntered
+
+    private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseExited
+
     public static int Numero_Grupos() {
         return mostrar_Grupos_Lista.size();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton buscar_Grupos_JButton;
     private javax.swing.JPanel buscar_Grupos_JPanel;
     private javax.swing.JScrollPane buscar_Grupos_JScrollPane;
@@ -487,6 +522,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         mostrar_Grupos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
         mostrar_Grupos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+    
+        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
 
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Grupos_JTable.getModel();

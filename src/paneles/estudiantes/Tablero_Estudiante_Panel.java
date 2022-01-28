@@ -95,7 +95,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         salir_JButton = new javax.swing.JButton();
         dudas_JButton = new javax.swing.JButton();
         barra_Superior_JPanel = new javax.swing.JPanel();
-        nombre_Usuario_JLabel = new javax.swing.JLabel();
         fecha_Hora_Servidor_JLabel = new javax.swing.JLabel();
         menu_JButton = new javax.swing.JButton();
         visualizador_JPanel = new javax.swing.JPanel();
@@ -370,16 +369,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         barra_Superior_JPanel.setOpaque(false);
         barra_Superior_JPanel.setPreferredSize(new java.awt.Dimension(1260, 40));
 
-        nombre_Usuario_JLabel.setBackground(java.awt.Color.black);
-        nombre_Usuario_JLabel.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
-        nombre_Usuario_JLabel.setForeground(java.awt.Color.white);
-        nombre_Usuario_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        nombre_Usuario_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/id-card.png"))); // NOI18N
-        nombre_Usuario_JLabel.setToolTipText("Usuario Con Sesión Iniciada.");
-        nombre_Usuario_JLabel.setMaximumSize(new java.awt.Dimension(237, 40));
-        nombre_Usuario_JLabel.setMinimumSize(new java.awt.Dimension(237, 40));
-        nombre_Usuario_JLabel.setPreferredSize(new java.awt.Dimension(237, 40));
-
         fecha_Hora_Servidor_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         fecha_Hora_Servidor_JLabel.setForeground(java.awt.Color.white);
         fecha_Hora_Servidor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -417,8 +406,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                 .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         barra_Superior_JPanelLayout.setVerticalGroup(
@@ -426,8 +413,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             .addGroup(barra_Superior_JPanelLayout.createSequentialGroup()
                 .addGroup(barra_Superior_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre_Usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -719,10 +705,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         dudas_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
     }//GEN-LAST:event_dudas_JButtonMouseExited
 
-    
-    public static String Nombre_Usuario(){
-        return nombre_Usuario_JLabel.getText();
-    }
    
     public static void Establecer_Colores(){
         try {
@@ -853,10 +835,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         menu_JButton.setBackground(CourseRoom.Primer_Color());
 
         fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        nombre_Usuario_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
 
         fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        nombre_Usuario_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
        
         perfil_Panel.Colorear_Componentes();
         pagina_Avisos_Panel.Colorear_Componentes();
@@ -910,7 +890,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static javax.swing.JLabel imagen_Perfil_JLabel;
     private static javax.swing.JButton menu_JButton;
     private javax.swing.JPanel menu_JPanel;
-    private static javax.swing.JLabel nombre_Usuario_JLabel;
     private static javax.swing.JButton reproductor_Musica_JButton;
     private static javax.swing.JButton salir_JButton;
     private static javax.swing.JButton stats_JButton;
@@ -987,7 +966,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             visualizador_JPanel.add("Cursos", pagina_Cursos_Panel);
             
             layout = (CardLayout) visualizador_JPanel.getLayout();
-            nombre_Usuario_JLabel.setText(CourseRoom.Faker().name().username());
             
             tiempo_Servidor_Hilo = new Tiempo_Servidor();
             tiempo_Servidor_Hilo.start();
