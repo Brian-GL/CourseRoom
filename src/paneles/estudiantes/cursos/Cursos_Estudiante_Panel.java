@@ -31,6 +31,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
+import interfaces.Carta_Visibilidad_Interface;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -45,13 +46,16 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  *
  * @author LENOVO
  */
-public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface{
+public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface{
 
     private Lista<Pagina_Curso_Estudiante_Panel> buscar_Cursos_Lista;
     private Lista<Pagina_Curso_Estudiante_Panel> mostrar_Cursos_Actuales_Lista;
     private Lista<Pagina_Curso_Estudiante_Panel> mostrar_Cursos_Finalizados_Lista;
     private Lista<Pagina_Curso_Estudiante_Panel> mostrar_Cursos_Recomendados_Lista;
     private Lista<Pagina_Curso_Estudiante_Panel> mostrar_Cursos_Nuevos_Lista;
+    
+    private byte carta_Visible;
+    
     
     /**
      * Creates new form Cursos_Estudiante_Panel
@@ -576,11 +580,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)mostrar_Cursos_JLayeredPane.getLayout()).show(mostrar_Cursos_JLayeredPane, "Nuevos");
+            carta_Visible = 3;
             titulo_JLabel.setText("Cursos Nuevos");
-            cursos_Actuales_JButton.setBackground(CourseRoom.Segundo_Color());
-            cursos_Finalizados_JButton.setBackground(CourseRoom.Segundo_Color());
-            cursos_Recomendados_JButton.setBackground(CourseRoom.Segundo_Color());
-            cursos_Nuevos_JButton.setBackground(CourseRoom.Tercer_Color());
+            Carta_Visible();
         }
     }//GEN-LAST:event_cursos_Nuevos_JButtonMouseClicked
 
@@ -588,11 +590,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)mostrar_Cursos_JLayeredPane.getLayout()).show(mostrar_Cursos_JLayeredPane, "Recomendados");
+            carta_Visible = 2;
             titulo_JLabel.setText("Cursos Recomendados");
-            cursos_Actuales_JButton.setBackground(CourseRoom.Segundo_Color());
-            cursos_Finalizados_JButton.setBackground(CourseRoom.Segundo_Color());
-            cursos_Recomendados_JButton.setBackground(CourseRoom.Tercer_Color());
-            cursos_Nuevos_JButton.setBackground(CourseRoom.Segundo_Color());
+            Carta_Visible();
         }
     }//GEN-LAST:event_cursos_Recomendados_JButtonMouseClicked
 
@@ -600,11 +600,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)mostrar_Cursos_JLayeredPane.getLayout()).show(mostrar_Cursos_JLayeredPane, "Finalizados");
+            carta_Visible = 1;
             titulo_JLabel.setText("Cursos Finalizados");
-            cursos_Actuales_JButton.setBackground(CourseRoom.Segundo_Color());
-            cursos_Finalizados_JButton.setBackground(CourseRoom.Tercer_Color());
-            cursos_Recomendados_JButton.setBackground(CourseRoom.Segundo_Color());
-            cursos_Nuevos_JButton.setBackground(CourseRoom.Segundo_Color());
+            Carta_Visible();
         }
     }//GEN-LAST:event_cursos_Finalizados_JButtonMouseClicked
 
@@ -612,11 +610,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)mostrar_Cursos_JLayeredPane.getLayout()).show(mostrar_Cursos_JLayeredPane, "Actuales");
+            carta_Visible = 0;
             titulo_JLabel.setText("Cursos Actuales");
-            cursos_Actuales_JButton.setBackground(CourseRoom.Tercer_Color());
-            cursos_Finalizados_JButton.setBackground(CourseRoom.Segundo_Color());
-            cursos_Recomendados_JButton.setBackground(CourseRoom.Segundo_Color());
-            cursos_Nuevos_JButton.setBackground(CourseRoom.Segundo_Color());
+            Carta_Visible();
         }
     }//GEN-LAST:event_cursos_Actuales_JButtonMouseClicked
 
@@ -666,6 +662,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     @Override
     public void Iniciar_Componentes() {
+        
+        carta_Visible = 0;
         
         //Buscar cursos:
         
@@ -1025,11 +1023,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        
+        Carta_Visible();
 
-        cursos_Actuales_JButton.setBackground(CourseRoom.Tercer_Color());
-        cursos_Finalizados_JButton.setBackground(CourseRoom.Segundo_Color());
-        cursos_Recomendados_JButton.setBackground(CourseRoom.Segundo_Color());
-        cursos_Nuevos_JButton.setBackground(CourseRoom.Segundo_Color());
         buscar_Cursos_JButton.setBackground(CourseRoom.Segundo_Color());
         actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
         
@@ -1157,6 +1153,36 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Recomendados_JTable.removeAll();
         mostrar_Cursos_Nuevos_Lista.clear();
         mostrar_Cursos_Nuevos_JTable.removeAll();
+    }
+
+    @Override
+    public void Carta_Visible() {
+        switch (carta_Visible) {
+            case 0:
+                cursos_Actuales_JButton.setBackground(CourseRoom.Tercer_Color());
+                cursos_Finalizados_JButton.setBackground(CourseRoom.Segundo_Color());
+                cursos_Recomendados_JButton.setBackground(CourseRoom.Segundo_Color());
+                cursos_Nuevos_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 1:
+                cursos_Actuales_JButton.setBackground(CourseRoom.Segundo_Color());
+                cursos_Finalizados_JButton.setBackground(CourseRoom.Tercer_Color());
+                cursos_Recomendados_JButton.setBackground(CourseRoom.Segundo_Color());
+                cursos_Nuevos_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 2:
+                cursos_Actuales_JButton.setBackground(CourseRoom.Segundo_Color());
+                cursos_Finalizados_JButton.setBackground(CourseRoom.Segundo_Color());
+                cursos_Recomendados_JButton.setBackground(CourseRoom.Tercer_Color());
+                cursos_Nuevos_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 3:
+                cursos_Actuales_JButton.setBackground(CourseRoom.Segundo_Color());
+                cursos_Finalizados_JButton.setBackground(CourseRoom.Segundo_Color());
+                cursos_Recomendados_JButton.setBackground(CourseRoom.Segundo_Color());
+                cursos_Nuevos_JButton.setBackground(CourseRoom.Tercer_Color());
+                break;
+        }
     }
 
 }

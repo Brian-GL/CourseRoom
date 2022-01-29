@@ -21,6 +21,7 @@ import clases.Celda_Renderer;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.TimePickerSettings;
 import courseroom.CourseRoom;
+import interfaces.Carta_Visibilidad_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Envio_Interface;
 import interfaces.Limpieza_Interface;
@@ -64,9 +65,10 @@ import paneles.generales.mensajes.Mensaje_Video_Izquierdo_General_Panel;
  *
  * @author LENOVO
  */
-public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Componentes_Interface, Envio_Interface, Limpieza_Interface{
+public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Componentes_Interface, Envio_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private String ID;
+    private byte carta_Visible;
     
     /**
      * Creates new form Group_Estudiante_Panel
@@ -969,12 +971,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)grupo_JLayeredPane.getLayout()).show(grupo_JLayeredPane, "Tareas_Pendientes");
-            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-            chat_JButton.setBackground(CourseRoom.Segundo_Color());
-            archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-            tareas_Pendientes_JButton.setBackground(CourseRoom.Tercer_Color());
-            editar_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = 4;
+            Carta_Visible();
             
         }
     }//GEN-LAST:event_tareas_Pendientes_JButtonMouseClicked
@@ -983,12 +981,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)grupo_JLayeredPane.getLayout()).show(grupo_JLayeredPane, "Archivos_Compartidos");
-            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-            chat_JButton.setBackground(CourseRoom.Segundo_Color());
-            archivos_Compartidos_JButton.setBackground(CourseRoom.Tercer_Color());
-            tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = 3;
+            Carta_Visible();
         }
     }//GEN-LAST:event_archivos_Compartidos_JButtonMouseClicked
 
@@ -996,12 +990,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)grupo_JLayeredPane.getLayout()).show(grupo_JLayeredPane, "Chat");
-            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-            chat_JButton.setBackground(CourseRoom.Tercer_Color());
-            archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-            tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = 2;
+            Carta_Visible();
         }
     }//GEN-LAST:event_chat_JButtonMouseClicked
 
@@ -1009,12 +999,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout) grupo_JLayeredPane.getLayout()).show(grupo_JLayeredPane, "Informacion");
-            informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-            miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-            chat_JButton.setBackground(CourseRoom.Segundo_Color());
-            archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-            tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = 0;
+            Carta_Visible();
         }
     }//GEN-LAST:event_informacion_JButtonMouseClicked
 
@@ -1022,12 +1008,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout) grupo_JLayeredPane.getLayout()).show(grupo_JLayeredPane, "Editar");
-            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-            chat_JButton.setBackground(CourseRoom.Segundo_Color());
-            archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-            tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_JButton.setBackground(CourseRoom.Tercer_Color());
+            carta_Visible = 5;
+            Carta_Visible();
         }
     }//GEN-LAST:event_editar_JButtonMouseClicked
 
@@ -1052,12 +1034,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout) grupo_JLayeredPane.getLayout()).show(grupo_JLayeredPane, "Miembros");
-            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            miembros_JButton.setBackground(CourseRoom.Tercer_Color());
-            chat_JButton.setBackground(CourseRoom.Segundo_Color());
-            archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-            tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = 1;
+            Carta_Visible();
         }
     }//GEN-LAST:event_miembros_JButtonMouseClicked
 
@@ -1407,6 +1385,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     @Override
     public void Iniciar_Componentes() {
         
+        carta_Visible = 0;
         String descripcion = CourseRoom.Faker().lorem().paragraph(5);
         descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(descripcion));
         editar_Descripcion_JTextPane.setText(descripcion);
@@ -1588,12 +1567,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     public void Colorear_Componentes() {
         titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
         
-        informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-        miembros_JButton.setBackground(CourseRoom.Segundo_Color()); 
-        chat_JButton.setBackground(CourseRoom.Segundo_Color());
-        archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-        tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-        editar_JButton.setBackground(CourseRoom.Segundo_Color()); 
+        Carta_Visible();
         
         editar_Descripcion_JButton.setBackground(CourseRoom.Tercer_Color());
         
@@ -1911,5 +1885,59 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         archivos_Compartidos_JTable.removeAll();
         tareas_Pendientes_JTable.removeAll();
         
+    }
+
+    @Override
+    public void Carta_Visible() {
+        switch (carta_Visible) {
+            case 0:
+                informacion_JButton.setBackground(CourseRoom.Tercer_Color());
+                miembros_JButton.setBackground(CourseRoom.Segundo_Color()); 
+                chat_JButton.setBackground(CourseRoom.Segundo_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 1:
+                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Tercer_Color());
+                chat_JButton.setBackground(CourseRoom.Segundo_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 2:
+                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Tercer_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 3:
+                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Segundo_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Tercer_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 4:
+                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Segundo_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Tercer_Color());
+                editar_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 5:
+                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Segundo_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_JButton.setBackground(CourseRoom.Tercer_Color());
+                break;
+        }
     }
 }

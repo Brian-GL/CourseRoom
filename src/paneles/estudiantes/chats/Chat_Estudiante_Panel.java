@@ -19,6 +19,7 @@ package paneles.estudiantes.chats;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
+import interfaces.Carta_Visibilidad_Interface;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -52,9 +53,10 @@ import paneles.generales.mensajes.Mensaje_Audio_Izquierdo_General_Panel;
  *
  * @author LENOVO
  */
-public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Componentes_Interface,  Envio_Interface,Limpieza_Interface{
+public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Componentes_Interface,  Envio_Interface,Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private final String ID;
+    private boolean carta_Visible;
     
     /**
      * Creates new form Chat_Estudiante
@@ -607,8 +609,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)chat_JLayeredPane.getLayout()).show(chat_JLayeredPane,"Informacion");
-            informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-            chat_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = true;
+            Carta_Visible();
         }
     }//GEN-LAST:event_informacion_JButtonMouseClicked
 
@@ -616,8 +618,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)chat_JLayeredPane.getLayout()).show(chat_JLayeredPane,"Chat");
-            chat_JButton.setBackground(CourseRoom.Tercer_Color());
-            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = false;
+            Carta_Visible();
         }
     }//GEN-LAST:event_chat_JButtonMouseClicked
 
@@ -672,6 +674,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
     @Override
     public void Iniciar_Componentes() {
+        carta_Visible = false;
         mensajes_JScrollPane.getViewport().setOpaque(false);
         mensajes_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         nombres_JLabel.setText(nombre_JLabel.getText());
@@ -707,8 +710,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         
         titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
         nombre_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        chat_JButton.setBackground(CourseRoom.Tercer_Color());
-        informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+        
+        Carta_Visible();
+        
         regresar_JButton.setBackground(CourseRoom.Segundo_Color());
         
         nombre_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
@@ -975,5 +979,19 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         mensajes_JPanel.removeAll();
         intereses_Tematicas_JTable.removeAll();
     }
+
+    @Override
+    public void Carta_Visible() {
+        if(!carta_Visible){
+            chat_JButton.setBackground(CourseRoom.Tercer_Color());
+            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+        }else{
+            chat_JButton.setBackground(CourseRoom.Segundo_Color());
+            informacion_JButton.setBackground(CourseRoom.Tercer_Color());
+
+        }
+    }
+    
+    
 
 }

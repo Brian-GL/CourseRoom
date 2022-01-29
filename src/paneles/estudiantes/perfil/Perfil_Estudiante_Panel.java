@@ -22,6 +22,7 @@ import com.github.lgooddatepicker.components.DatePickerSettings;
 import courseroom.CourseRoom;
 import datos.enumeraciones.Tipo_Mensaje_Dialog_Enum;
 import dialogos.generales.Mensaje_Dialog;
+import interfaces.Carta_Visibilidad_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
@@ -46,8 +47,10 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  *
  * @author LENOVO
  */
-public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface{
+public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
 
+    private byte carta_Visible;
+    
     /**
      * Creates new form Profile_Estudiante_Panel
      */
@@ -1031,10 +1034,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Autenticacion");
-            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Autenticacion_JButton.setBackground(CourseRoom.Tercer_Color());
-            editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = 1;
+            Carta_Visible();
         }
     }//GEN-LAST:event_editar_Autenticacion_JButtonMouseClicked
 
@@ -1042,10 +1043,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
             ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion");
-            informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-            editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = 0;
+            Carta_Visible();
            
         }
     }//GEN-LAST:event_informacion_JButtonMouseClicked
@@ -1054,10 +1053,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Datos_Personales");
-            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Datos_Personales_JButton.setBackground(CourseRoom.Tercer_Color());
-            editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = 2;
+            Carta_Visible();
         }
     }//GEN-LAST:event_editar_Datos_Personales_JButtonMouseClicked
 
@@ -1196,10 +1193,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion_Extra");
-            informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
-            editar_Informacion_Extra_JButton.setBackground(CourseRoom.Tercer_Color());
+            carta_Visible = 3;
+            Carta_Visible();
         }
     }//GEN-LAST:event_editar_Informacion_Extra_JButtonMouseClicked
 
@@ -1504,6 +1499,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     @Override
     public void Iniciar_Componentes() {
 
+        carta_Visible = 0;
         nombres_JLabel.setText(CourseRoom.Concatenar(CourseRoom.Faker().name().firstName(), " ", CourseRoom.Faker().name().firstName()));
         apellidos_JLabel.setText(CourseRoom.Concatenar(CourseRoom.Faker().name().lastName(), " ", CourseRoom.Faker().name().lastName()));
         correo_Electronico_JLabel.setText(CourseRoom.Faker().internet().emailAddress());
@@ -1568,10 +1564,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
         titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
         
-        informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-        editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
-        editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
-        editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
+        Carta_Visible();
         
         actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
         
@@ -1708,6 +1701,37 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     @Override
     public void Limpiar() {
         intereses_Tematicas_JTable.removeAll();
+    }
+
+    @Override
+    public void Carta_Visible() {
+        switch (carta_Visible) {
+            case 0:
+                informacion_JButton.setBackground(CourseRoom.Tercer_Color());
+                editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 1:
+                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_Autenticacion_JButton.setBackground(CourseRoom.Tercer_Color());
+                editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 2:
+                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_Datos_Personales_JButton.setBackground(CourseRoom.Tercer_Color());
+                editar_Informacion_Extra_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 3:
+                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_Autenticacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_Datos_Personales_JButton.setBackground(CourseRoom.Segundo_Color());
+                editar_Informacion_Extra_JButton.setBackground(CourseRoom.Tercer_Color());
+                break;
+            
+        }
     }
 
 }

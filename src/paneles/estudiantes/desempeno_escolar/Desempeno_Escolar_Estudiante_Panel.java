@@ -19,17 +19,14 @@ package paneles.estudiantes.desempeno_escolar;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
-import datos.colecciones.Lista;
+import interfaces.Carta_Visibilidad_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -44,15 +41,15 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-import paneles.estudiantes.cursos.Pagina_Curso_Estudiante_Panel;
-import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
  *
  * @author LENOVO
  */
-public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface{
+public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
 
+    private byte carta_Visible;
+    
     /**
      * Creates new form Profile_Estudiante_Panel
      */
@@ -258,9 +255,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)desempeno_Escolar_JLayeredPane.getLayout()).show(desempeno_Escolar_JLayeredPane, "Grafica_Pastel");
-            regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-            grafica_Pastel_JButton.setBackground(CourseRoom.Tercer_Color());
-            estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = 1;
+            Carta_Visible();
         }
     }//GEN-LAST:event_grafica_Pastel_JButtonMouseClicked
 
@@ -268,9 +264,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
             ((CardLayout)desempeno_Escolar_JLayeredPane.getLayout()).show(desempeno_Escolar_JLayeredPane, "Regresion_Lineal");
-            regresion_Lineal_JButton.setBackground(CourseRoom.Tercer_Color());
-            grafica_Pastel_JButton.setBackground(CourseRoom.Segundo_Color());
-            estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+            carta_Visible = 0;
+            Carta_Visible();
            
         }
     }//GEN-LAST:event_regresion_Lineal_JButtonMouseClicked
@@ -279,9 +274,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)desempeno_Escolar_JLayeredPane.getLayout()).show(desempeno_Escolar_JLayeredPane, "Estadisticas");
-            regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-            grafica_Pastel_JButton.setBackground(CourseRoom.Segundo_Color());
-            estadisticas_JButton.setBackground(CourseRoom.Tercer_Color());
+            carta_Visible = 2;
+            Carta_Visible();
         }
     }//GEN-LAST:event_estadisticas_JButtonMouseClicked
 
@@ -362,6 +356,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
     @Override
     public void Iniciar_Componentes() {
+        
+        carta_Visible = 0;
 
         //Tabla estadisticas:
         estadisticas_JScrollPane.getViewport().setOpaque(false);
@@ -468,9 +464,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
         titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
         
-        regresion_Lineal_JButton.setBackground(CourseRoom.Tercer_Color());
-        grafica_Pastel_JButton.setBackground(CourseRoom.Segundo_Color());
-        estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+        Carta_Visible();
         
         actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
         
@@ -491,6 +485,27 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
     @Override
     public void Limpiar() {
         
+    }
+
+    @Override
+    public void Carta_Visible() {
+        switch (carta_Visible) {
+            case 0:
+                regresion_Lineal_JButton.setBackground(CourseRoom.Tercer_Color());
+                grafica_Pastel_JButton.setBackground(CourseRoom.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 1:
+                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
+                grafica_Pastel_JButton.setBackground(CourseRoom.Tercer_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 2:
+                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
+                grafica_Pastel_JButton.setBackground(CourseRoom.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Tercer_Color());
+                break;
+        }
     }
 
 }
