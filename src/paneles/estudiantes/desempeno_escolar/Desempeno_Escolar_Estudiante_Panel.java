@@ -44,7 +44,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-import paneles.estudiantes.Pagina_Curso_Estudiante_Panel;
+import paneles.estudiantes.cursos.Pagina_Curso_Estudiante_Panel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**

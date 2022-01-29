@@ -120,11 +120,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         fecha_Creacion_JLabel = new javax.swing.JLabel();
         descripcion_JScrollPane = new javax.swing.JScrollPane();
         descripcion_JTextPane = new javax.swing.JTextPane();
-        miembros_Grupo_JPanel = new javax.swing.JPanel();
         miembros_JScrollPane = new javax.swing.JScrollPane();
         miembros_JTable = new javax.swing.JTable();
         chat_Grupo_JPanel = new javax.swing.JPanel();
-        chat_JPanel = new javax.swing.JPanel();
         mensajes_Chat_JScrollPane = new javax.swing.JScrollPane();
         mensajes_Chat_JPanel = new javax.swing.JPanel();
         enviar_Mensajes_JPanel = new javax.swing.JPanel();
@@ -384,10 +382,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         grupo_JLayeredPane.add(informacion_Grupo_JPanel, "Informacion");
 
-        miembros_Grupo_JPanel.setToolTipText("");
-        miembros_Grupo_JPanel.setOpaque(false);
-        miembros_Grupo_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
-
         miembros_JScrollPane.setBorder(null);
         miembros_JScrollPane.setOpaque(false);
 
@@ -433,30 +427,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             miembros_JTable.setRowSorter(new TableRowSorter(miembros_JTable.getModel()));
             miembros_JScrollPane.setViewportView(miembros_JTable);
 
-            javax.swing.GroupLayout miembros_Grupo_JPanelLayout = new javax.swing.GroupLayout(miembros_Grupo_JPanel);
-            miembros_Grupo_JPanel.setLayout(miembros_Grupo_JPanelLayout);
-            miembros_Grupo_JPanelLayout.setHorizontalGroup(
-                miembros_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(miembros_Grupo_JPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(miembros_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1034, Short.MAX_VALUE)
-                    .addContainerGap())
-            );
-            miembros_Grupo_JPanelLayout.setVerticalGroup(
-                miembros_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(miembros_Grupo_JPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(miembros_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-                    .addContainerGap())
-            );
+            grupo_JLayeredPane.add(miembros_JScrollPane, "Miembros");
 
-            grupo_JLayeredPane.add(miembros_Grupo_JPanel, "Miembros");
-
-            chat_Grupo_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
-            chat_Grupo_JPanel.setToolTipText("");
             chat_Grupo_JPanel.setOpaque(false);
-
-            chat_JPanel.setOpaque(false);
 
             mensajes_Chat_JScrollPane.setOpaque(false);
 
@@ -539,7 +512,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
+                    .addComponent(mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
                     .addContainerGap())
             );
             enviar_Mensajes_JPanelLayout.setVerticalGroup(
@@ -555,37 +528,20 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     .addContainerGap())
             );
 
-            javax.swing.GroupLayout chat_JPanelLayout = new javax.swing.GroupLayout(chat_JPanel);
-            chat_JPanel.setLayout(chat_JPanelLayout);
-            chat_JPanelLayout.setHorizontalGroup(
-                chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(mensajes_Chat_JScrollPane)
-                .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1034, Short.MAX_VALUE)
-            );
-            chat_JPanelLayout.setVerticalGroup(
-                chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(chat_JPanelLayout.createSequentialGroup()
-                    .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                    .addGap(0, 0, 0)
-                    .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0))
-            );
-
             javax.swing.GroupLayout chat_Grupo_JPanelLayout = new javax.swing.GroupLayout(chat_Grupo_JPanel);
             chat_Grupo_JPanel.setLayout(chat_Grupo_JPanelLayout);
             chat_Grupo_JPanelLayout.setHorizontalGroup(
                 chat_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chat_Grupo_JPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(chat_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap())
+                .addComponent(mensajes_Chat_JScrollPane)
+                .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
             );
             chat_Grupo_JPanelLayout.setVerticalGroup(
                 chat_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(chat_Grupo_JPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(chat_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap())
+                    .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                    .addGap(0, 0, 0)
+                    .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, 0))
             );
 
             grupo_JLayeredPane.add(chat_Grupo_JPanel, "Chat");
@@ -1399,7 +1355,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private javax.swing.JButton cambiar_Imagen_JButton;
     private javax.swing.JPanel chat_Grupo_JPanel;
     private javax.swing.JButton chat_JButton;
-    private javax.swing.JPanel chat_JPanel;
     private javax.swing.JButton compartir_Archivos_JButton;
     private javax.swing.JLabel curso_JLabel;
     private javax.swing.JScrollPane descripcion_JScrollPane;
@@ -1434,7 +1389,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private javax.swing.JScrollPane mensajes_Chat_JScrollPane;
     private javax.swing.JComboBox<String> miembro_A_Cargo_JComboBox;
     private javax.swing.JLabel miembro_A_Cargo_JLabel;
-    private javax.swing.JPanel miembros_Grupo_JPanel;
     private javax.swing.JButton miembros_JButton;
     private javax.swing.JScrollPane miembros_JScrollPane;
     private javax.swing.JTable miembros_JTable;
