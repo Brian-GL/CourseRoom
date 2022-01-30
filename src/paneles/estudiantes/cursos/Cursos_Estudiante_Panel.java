@@ -48,11 +48,11 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  */
 public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface{
 
-    private Lista<Pagina_Curso_Estudiante_Panel> buscar_Cursos_Lista;
-    private Lista<Pagina_Curso_Estudiante_Panel> mostrar_Cursos_Actuales_Lista;
-    private Lista<Pagina_Curso_Estudiante_Panel> mostrar_Cursos_Finalizados_Lista;
-    private Lista<Pagina_Curso_Estudiante_Panel> mostrar_Cursos_Recomendados_Lista;
-    private Lista<Pagina_Curso_Estudiante_Panel> mostrar_Cursos_Nuevos_Lista;
+    private Lista<Curso_Estudiante_Panel> buscar_Cursos_Lista;
+    private Lista<Curso_Estudiante_Panel> mostrar_Cursos_Actuales_Lista;
+    private Lista<Curso_Estudiante_Panel> mostrar_Cursos_Finalizados_Lista;
+    private Lista<Curso_Estudiante_Panel> mostrar_Cursos_Recomendados_Lista;
+    private Lista<Curso_Estudiante_Panel> mostrar_Cursos_Nuevos_Lista;
     
     private byte carta_Visible;
     
@@ -716,7 +716,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         URL url_Imagen;
         Image obtener_Imagen_Curso, obtener_Imagen_Profesor, imagen = null;
         ImageIcon icono = null;
-        Pagina_Curso_Estudiante_Panel curso_Estudiante_Panel;
+        Curso_Estudiante_Panel curso_Estudiante_Panel;
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
             id = CourseRoom.Concatenar("Curso_Actual_", i);
             try {
@@ -744,7 +744,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         String.valueOf(CourseRoom.Faker().number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Faker().number().numberBetween(0, 6))), id);
 
-                curso_Estudiante_Panel = new Pagina_Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                curso_Estudiante_Panel = new Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
                         celdas[1].Label().getText(), obtener_Imagen_Profesor, celdas[2].Label().getText(), celdas[3].Label().getText(), id);
                 mostrar_Cursos_Actuales_Lista.push_back(curso_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
@@ -821,7 +821,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         String.valueOf(CourseRoom.Faker().number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Faker().number().numberBetween(0, 6))), id);
 
-                curso_Estudiante_Panel = new Pagina_Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                curso_Estudiante_Panel = new Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
                         celdas[1].Label().getText(), obtener_Imagen_Profesor, celdas[2].Label().getText(), celdas[3].Label().getText(), id);
                 mostrar_Cursos_Finalizados_Lista.push_back(curso_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
@@ -898,7 +898,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         String.valueOf(CourseRoom.Faker().number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Faker().number().numberBetween(0, 6))), id);
 
-                curso_Estudiante_Panel = new Pagina_Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                curso_Estudiante_Panel = new Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
                         celdas[1].Label().getText(), obtener_Imagen_Profesor, celdas[2].Label().getText(), celdas[3].Label().getText(), id);
                 mostrar_Cursos_Recomendados_Lista.push_back(curso_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
@@ -974,7 +974,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         String.valueOf(CourseRoom.Faker().number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Faker().number().numberBetween(0, 6))), id);
 
-                curso_Estudiante_Panel = new Pagina_Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                curso_Estudiante_Panel = new Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
                         celdas[1].Label().getText(), obtener_Imagen_Profesor, celdas[2].Label().getText(), celdas[3].Label().getText(), id);
                 mostrar_Cursos_Nuevos_Lista.push_back(curso_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
@@ -1055,12 +1055,10 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        Pagina_Curso_Estudiante_Panel curso_Estudiante_Panel;
-        for (Nodo<Pagina_Curso_Estudiante_Panel> nodo = buscar_Cursos_Lista.front(); nodo != null; nodo = nodo.next()) {
+        Curso_Estudiante_Panel curso_Estudiante_Panel;
+        for (Nodo<Curso_Estudiante_Panel> nodo = buscar_Cursos_Lista.front(); nodo != null; nodo = nodo.next()) {
             curso_Estudiante_Panel = nodo.element();
-            curso_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            curso_Estudiante_Panel.Colorear_Componentes();
         }
         
         // Cursos actuales:
@@ -1075,11 +1073,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        for (Nodo<Pagina_Curso_Estudiante_Panel> nodo = mostrar_Cursos_Actuales_Lista.front(); nodo != null; nodo = nodo.next()) {
+        for (Nodo<Curso_Estudiante_Panel> nodo = mostrar_Cursos_Actuales_Lista.front(); nodo != null; nodo = nodo.next()) {
             curso_Estudiante_Panel = nodo.element();
-            curso_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            curso_Estudiante_Panel.Colorear_Componentes();
         }
         
         
@@ -1095,11 +1091,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        for (Nodo<Pagina_Curso_Estudiante_Panel> nodo = mostrar_Cursos_Finalizados_Lista.front(); nodo != null; nodo = nodo.next()) {
+        for (Nodo<Curso_Estudiante_Panel> nodo = mostrar_Cursos_Finalizados_Lista.front(); nodo != null; nodo = nodo.next()) {
             curso_Estudiante_Panel = nodo.element();
-            curso_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            curso_Estudiante_Panel.Colorear_Componentes();
         }
         
         //Cursos Recomendados:
@@ -1114,11 +1108,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        for (Nodo<Pagina_Curso_Estudiante_Panel> nodo = mostrar_Cursos_Recomendados_Lista.front(); nodo != null; nodo = nodo.next()) {
+        for (Nodo<Curso_Estudiante_Panel> nodo = mostrar_Cursos_Recomendados_Lista.front(); nodo != null; nodo = nodo.next()) {
             curso_Estudiante_Panel = nodo.element();
-            curso_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            curso_Estudiante_Panel.Colorear_Componentes();
         }
         
         //Cursos nuevos:
@@ -1133,11 +1125,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        for (Nodo<Pagina_Curso_Estudiante_Panel> nodo = mostrar_Cursos_Nuevos_Lista.front(); nodo != null; nodo = nodo.next()) {
+        for (Nodo<Curso_Estudiante_Panel> nodo = mostrar_Cursos_Nuevos_Lista.front(); nodo != null; nodo = nodo.next()) {
             curso_Estudiante_Panel = nodo.element();
-            curso_Estudiante_Panel.Establecer_Colores(CourseRoom.Primer_Color(), CourseRoom.Primer_Color_Fuente(),
-                    CourseRoom.Segundo_Color(), CourseRoom.Segundo_Color_Fuente(),
-                    CourseRoom.Tercer_Color(), CourseRoom.Tercer_Color_Fuente());
+            curso_Estudiante_Panel.Colorear_Componentes();
         }
     }
 

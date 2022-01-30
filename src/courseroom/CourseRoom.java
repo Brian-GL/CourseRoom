@@ -53,7 +53,7 @@ public class CourseRoom implements Limpieza_Interface{
             mensaje_Dialog.setVisible(true);
             return;
         }
-        
+
         random = new Random(System.currentTimeMillis());
         
         color_Azul_Oscuro = new Color(14, 30, 64);
