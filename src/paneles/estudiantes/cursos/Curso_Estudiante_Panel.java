@@ -39,6 +39,8 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 
@@ -524,7 +526,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     public String ID() {
         return this.ID;
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton compartir_Materiales_JButton;
@@ -550,6 +552,11 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         carta_Visible = 0;
         
         //Informacion curso:
+        
+        
+        //Tablero:
+        DefaultMutableTreeNode nodo_Raiz = new DefaultMutableTreeNode(nombre_JLabel.getText());
+        DefaultTreeModel modelo_Arbol = new DefaultTreeModel(nodo_Raiz);
         
         
         //Miembros:
@@ -661,6 +668,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
 
         Carta_Visible();
+        
+        //Tablero:
         
        //Miembros:
         miembros_JTable.getTableHeader().setBackground(CourseRoom.Tercer_Color());
