@@ -22,7 +22,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
-import java.awt.Color;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 
@@ -415,7 +414,7 @@ public class Dudas_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-     public static int Numero_Dudas(){
+    public static int Numero_Dudas(){
         return mostrar_Dudas_Lista.size();
     }
     
