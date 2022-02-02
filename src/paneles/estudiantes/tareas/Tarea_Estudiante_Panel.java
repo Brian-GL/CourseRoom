@@ -87,6 +87,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         entregar_Tarea_JButton = new javax.swing.JButton();
         regresar_JButton = new javax.swing.JButton();
         actualizar_JButton = new javax.swing.JButton();
+        retroalimentacion_JButton = new javax.swing.JButton();
         tarea_JLayeredPane = new javax.swing.JLayeredPane();
         informacion_Tarea_JPanel = new javax.swing.JPanel();
         curso_JLabel = new javax.swing.JLabel();
@@ -109,6 +110,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         archivos_Subidos_JTable = new javax.swing.JTable();
         subir_Cambios_JButton = new javax.swing.JButton();
         fecha_Actualizacion_JLabel = new javax.swing.JLabel();
+        retroalimentacion_JScrollPane = new javax.swing.JScrollPane();
+        retroalimentacion_JTable = new javax.swing.JTable();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -196,6 +199,16 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             }
         });
 
+        retroalimentacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/feedback.png"))); // NOI18N
+        retroalimentacion_JButton.setBorder(null);
+        retroalimentacion_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)retroalimentacion_JButton.getIcon()).getImage().flush();
+        retroalimentacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                retroalimentacion_JButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout titulo_JPanelLayout = new javax.swing.GroupLayout(titulo_JPanel);
         titulo_JPanel.setLayout(titulo_JPanelLayout);
         titulo_JPanelLayout.setHorizontalGroup(
@@ -203,8 +216,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(archivos_Adjuntos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,6 +225,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 .addComponent(comentarios_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(entregar_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(retroalimentacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -227,7 +242,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(entregar_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(retroalimentacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -235,9 +251,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         tarea_JLayeredPane.setPreferredSize(new java.awt.Dimension(982, 534));
         tarea_JLayeredPane.setLayout(new java.awt.CardLayout());
 
-        informacion_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         informacion_Tarea_JPanel.setToolTipText("");
         informacion_Tarea_JPanel.setOpaque(false);
+        informacion_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
         curso_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -267,15 +283,15 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         descripcion_JScrollPane.setVerifyInputWhenFocusTarget(false);
         descripcion_JScrollPane.setWheelScrollingEnabled(false);
 
+        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
+        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción</h3>\n</html>");
         descripcion_JTextPane.setFocusCycleRoot(false);
         descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setRequestFocusEnabled(false);
-        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción</h3>\n</html>");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         tipo_Tarea_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
@@ -554,27 +570,73 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                 tarea_JLayeredPane.add(entregar_Tarea_JPanel, "Entregar");
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-                this.setLayout(layout);
-                layout.setHorizontalGroup(
-                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                retroalimentacion_JScrollPane.setBorder(null);
+                retroalimentacion_JScrollPane.setOpaque(false);
+
+                retroalimentacion_JTable.setAutoCreateRowSorter(true);
+                retroalimentacion_JTable.setModel(
+
+                    new javax.swing.table.DefaultTableModel(
+                        new Object [][] {
+
+                        },
+                        new String [] {
+                            "Retroalimentacion", "Fecha"
+                        }
+                    ) {
+                        boolean[] canEdit = new boolean [] {
+                            false, false
+                        };
+
+                        public boolean isCellEditable(int rowIndex, int columnIndex) {
+                            return canEdit [columnIndex];
+                        }
+
+                        @Override
+                        public Class getColumnClass(int column)
+                        {
+                            for(int i = 0; i < retroalimentacion_JTable.getRowCount(); i++)
+                            {
+                                //The first valid value of a cell of given column is retrieved.
+                                if(getValueAt(i,column) != null)
+                                {
+                                    return getValueAt(i, column).getClass();
+                                }
+                            }
+                            //if no valid value is found, default renderer is returned.
+                            return super.getColumnClass(column);
+                        }
+                    });
+                    retroalimentacion_JTable.setOpaque(false);
+                    retroalimentacion_JTable.setRowHeight(80);
+                    retroalimentacion_JTable.setRowMargin(15);
+                    retroalimentacion_JTable.setShowGrid(true);
+                    retroalimentacion_JTable.setRowSorter(new TableRowSorter(retroalimentacion_JTable.getModel()));
+                    retroalimentacion_JScrollPane.setViewportView(retroalimentacion_JTable);
+
+                    tarea_JLayeredPane.add(retroalimentacion_JScrollPane, "Retroalimentacion");
+
+                    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+                    this.setLayout(layout);
+                    layout.setHorizontalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(64, 64, 64)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tarea_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(64, 64, 64))
+                    );
+                    layout.setVerticalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(tarea_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(64, 64, 64))
-                );
-                layout.setVerticalGroup(
-                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tarea_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                );
-            }// </editor-fold>//GEN-END:initComponents
+                            .addContainerGap())
+                    );
+                }// </editor-fold>//GEN-END:initComponents
 
     private void comentarios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comentarios_JButtonMouseClicked
         // TODO add your handling code here:
@@ -700,6 +762,15 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
+    private void retroalimentacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_retroalimentacion_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            ((CardLayout) tarea_JLayeredPane.getLayout()).show(tarea_JLayeredPane, "Retroalimentacion");
+            carta_Visible = 4;
+            Carta_Visible();
+        }
+    }//GEN-LAST:event_retroalimentacion_JButtonMouseClicked
+
     private void Subir_Archivos(){
         JFileChooser escogedor_Archivo = new JFileChooser();
         escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -760,6 +831,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private javax.swing.JLabel nombre_JLabel;
     private javax.swing.JLabel nombre_Profesor_JLabel;
     private javax.swing.JButton regresar_JButton;
+    private javax.swing.JButton retroalimentacion_JButton;
+    private javax.swing.JScrollPane retroalimentacion_JScrollPane;
+    private javax.swing.JTable retroalimentacion_JTable;
     private javax.swing.JButton subir_Archivos_JButton;
     private javax.swing.JButton subir_Cambios_JButton;
     private javax.swing.JLayeredPane tarea_JLayeredPane;
@@ -851,6 +925,23 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             }
         });
         
+        retroalimentacion_JScrollPane.getViewport().setOpaque(false);
+        retroalimentacion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        retroalimentacion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+
+        retroalimentacion_JTable.getTableHeader().setFont(gadugi);
+        retroalimentacion_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+
+        celdas = new Celda_Renderer[2];
+        modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
+        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
+
+            celdas[0] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(5), "");
+            celdas[1] = new Celda_Renderer(CourseRoom.Faker().date().birthday(21, 23).toString(), "");
+            modelo.addRow(celdas);
+        }
+
+        
         descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(10)));
         nombre_Profesor_JLabel.setText(CourseRoom.Faker().name().name());
         curso_JLabel.setText(CourseRoom.Faker().educator().course());
@@ -900,6 +991,17 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
         for (int i = 0; i < archivos_Subidos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 2; j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+            }
+        }
+        
+        retroalimentacion_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
+        retroalimentacion_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+
+        modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
+        for (int i = 0; i < retroalimentacion_JTable.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }
@@ -994,7 +1096,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     @Override
     public void Limpiar() {
        
-        archivos_Adjuntos_JTable.removeAll();
+        
         
     }
 
@@ -1006,24 +1108,35 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 archivos_Adjuntos_JButton.setBackground(CourseRoom.Segundo_Color());
                 comentarios_JButton.setBackground(CourseRoom.Segundo_Color());
                 entregar_Tarea_JButton.setBackground(CourseRoom.Segundo_Color());
+                retroalimentacion_JButton.setBackground(CourseRoom.Segundo_Color());
                 break;
             case 1:
                 informacion_JButton.setBackground(CourseRoom.Segundo_Color());
                 archivos_Adjuntos_JButton.setBackground(CourseRoom.Tercer_Color());
                 comentarios_JButton.setBackground(CourseRoom.Segundo_Color());
                 entregar_Tarea_JButton.setBackground(CourseRoom.Segundo_Color());
+                retroalimentacion_JButton.setBackground(CourseRoom.Segundo_Color());
                 break;
             case 2:
                 informacion_JButton.setBackground(CourseRoom.Segundo_Color());
                 archivos_Adjuntos_JButton.setBackground(CourseRoom.Segundo_Color());
                 comentarios_JButton.setBackground(CourseRoom.Tercer_Color());
                 entregar_Tarea_JButton.setBackground(CourseRoom.Segundo_Color());
+                retroalimentacion_JButton.setBackground(CourseRoom.Segundo_Color());
                 break;
             case 3:
                 informacion_JButton.setBackground(CourseRoom.Segundo_Color());
                 archivos_Adjuntos_JButton.setBackground(CourseRoom.Segundo_Color());
                 comentarios_JButton.setBackground(CourseRoom.Segundo_Color());
                 entregar_Tarea_JButton.setBackground(CourseRoom.Tercer_Color());
+                retroalimentacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                break;
+            case 4:
+                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                archivos_Adjuntos_JButton.setBackground(CourseRoom.Segundo_Color());
+                comentarios_JButton.setBackground(CourseRoom.Segundo_Color());
+                entregar_Tarea_JButton.setBackground(CourseRoom.Segundo_Color());
+                retroalimentacion_JButton.setBackground(CourseRoom.Tercer_Color());
                 break;
             
         }
