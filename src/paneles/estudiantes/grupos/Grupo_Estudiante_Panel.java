@@ -314,9 +314,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         grupo_JLayeredPane.setPreferredSize(new java.awt.Dimension(982, 534));
         grupo_JLayeredPane.setLayout(new java.awt.CardLayout());
 
+        informacion_Grupo_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         informacion_Grupo_JPanel.setToolTipText("");
         informacion_Grupo_JPanel.setOpaque(false);
-        informacion_Grupo_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
         imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -395,7 +395,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                 },
                 new String [] {
-                    "Miembro", "Chat", "Remover?"
+                    "Miembro", "Ingreso", "Remover?"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
@@ -1429,21 +1429,19 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         String id;
         URL url_Imagen;
         Image obtener_Imagen = null;
-        ImageIcon icono_Chat = null;
-        ImageIcon icono_chatear = new ImageIcon(getClass().getResource("/recursos/iconos/online-chat.png"));
+        ImageIcon icono_Miembro = null;
         ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
         //Chat_Estudiante_Panel chat_Estudiante_Panel;
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
-            id = CourseRoom.Concatenar("Chat_", i);
             try {
-                System.out.println(id + " -> Getting Image From https://i.pravatar.cc/96");
+                System.out.println(this.ID + " -> Getting Image From https://i.pravatar.cc/96");
                 url_Imagen = new URL("https://i.pravatar.cc/96");
                 obtener_Imagen = ImageIO.read(url_Imagen);
-                icono_Chat = new ImageIcon(obtener_Imagen);
+                icono_Miembro = new ImageIcon(obtener_Imagen);
 
-                celdas[0] = new Celda_Renderer(icono_Chat, CourseRoom.Faker().name().fullName(), id);
-                celdas[1] = new Celda_Renderer(icono_chatear, id);
-                celdas[2] = new Celda_Renderer(icono_Remover, id);
+                celdas[0] = new Celda_Renderer(icono_Miembro, CourseRoom.Faker().name().fullName(), "");
+                celdas[1] = new Celda_Renderer(CourseRoom.Faker().date().birthday(22,23).toString(), "");
+                celdas[2] = new Celda_Renderer(icono_Remover, "");
                 miembro_A_Cargo_JComboBox.addItem(celdas[0].Label().getText());
                 modelo.addRow(celdas);
 
@@ -1455,8 +1453,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
             }
 
-            icono_chatear.getImage().flush();
-            icono_chatear.getImage().flush();
         }
 
         miembros_JTable.addMouseListener(new MouseAdapter() {
@@ -1469,12 +1465,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                     int columna = tabla.getSelectedColumn();
 
-                    if (columna == 1) {
-//                        DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
-//
-//                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-//
-//                        Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+                    if (columna == 2) {
+                        DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
+                        modelo.removeRow(fila);
                     }
 
                 }
@@ -1607,7 +1600,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         modelo = (DefaultTableModel) miembros_JTable.getModel();
         for (int i = 0; i < miembros_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 2; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }
