@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paneles.generales.inicio_sesion;
 
 import courseroom.CourseRoom;
@@ -10,20 +5,19 @@ import interfaces.Componentes_Interface;
 import courseroom.CourseRoom_Frame;
 import java.awt.Font;
 import java.awt.Image;
+import static java.awt.image.ImageObserver.WIDTH;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-/**
- *
- * @author LENOVO
- */
 public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
   
-    
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Inicio_Sesion_General_Panel() {
         initComponents();
@@ -246,6 +240,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     private void iniciar_Sesion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciar_Sesion_JButtonMouseClicked
         // TODO add your handling code here:
         //if(SwingUtilities.isLeftMouseButton(evt)){ } 
+        verificar_Campos();
         
     }//GEN-LAST:event_iniciar_Sesion_JButtonMouseClicked
 
@@ -358,5 +353,32 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         imagen_JLabel.setForeground(CourseRoom.Segundo_Color());
     }
     
-   
+    public boolean validar_Correo(String correo) {
+        Pattern pat = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z]{3})((\\.[A-Za-z]{2}))?$");
+        Matcher mat = pat.matcher(correo);
+        if (mat.find()) {
+            JOptionPane.showMessageDialog(null, "Bienvenido\n'" + correo + "");
+        } else {
+            JOptionPane.showMessageDialog(null, "El Correo\n'" + correo + "'\nNo Es Valido");
+            usuario_JTextField.setText("");
+            usuario_JTextField.requestFocus();
+        }
+        return mat.find();
+    }
+    
+    public void verificar_Campos() {
+
+        String Password = String.valueOf(contrasena_JPasswordField.getPassword());
+
+        // Checa Los Campos Vacíos.
+        if (usuario_JTextField.getText().equals("")
+                || Password.equals("")){
+            // Si Los Campos Estan Vacíos Manda Mensaje De Error.
+            JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
+
+        } else {
+            validar_Correo(usuario_JTextField.getText().trim());
+                //JOptionPane.showMessageDialog(this, "Contraseñas Distintas Revisa!!!", "NO", WIDTH);
+            }
+        }
 }
