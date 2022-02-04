@@ -395,7 +395,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                 },
                 new String [] {
-                    "Miembro", "Ingreso", "Remover?"
+                    "Miembro", "Ingreso", "Remover"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
@@ -421,6 +421,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     return super.getColumnClass(column);
                 }
             });
+            miembros_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             miembros_JTable.setOpaque(false);
             miembros_JTable.setRowHeight(100);
             miembros_JTable.setRowMargin(15);
@@ -606,6 +607,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         return super.getColumnClass(column);
                     }
                 });
+                archivos_Compartidos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 archivos_Compartidos_JTable.setOpaque(false);
                 archivos_Compartidos_JTable.setRowHeight(50);
                 archivos_Compartidos_JTable.setRowMargin(15);
@@ -747,7 +749,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                         },
                         new String [] {
-                            "Tarea", "A Cargo", "Fecha", "Estatus"
+                            "Tarea", "A Cargo", "Fecha Corte", "Estatus"
                         }
                     ) {
                         boolean[] canEdit = new boolean [] {
@@ -773,8 +775,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             return super.getColumnClass(column);
                         }
                     });
+                    tareas_Pendientes_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                     tareas_Pendientes_JTable.setOpaque(false);
-                    tareas_Pendientes_JTable.setRowHeight(175);
+                    tareas_Pendientes_JTable.setRowHeight(100);
                     tareas_Pendientes_JTable.setRowMargin(15);
                     tareas_Pendientes_JTable.setShowGrid(true);
                     tareas_Pendientes_JTable.setShowVerticalLines(false);
@@ -1629,6 +1632,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         abandonar_Grupo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente().brighter());
 
         editar_Nombre_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        editar_Descripcion_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
         
         editar_Nombre_JButton.setBackground(CourseRoom.Tercer_Color());
         editar_Nombre_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());

@@ -211,7 +211,7 @@
               <Font name="Gadugi" size="16" style="3"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="2021 - CourseRoom&#xae;"/>
+            <Property name="text" type="java.lang.String" value="2022 - CourseRoom&#xae;"/>
             <Property name="toolTipText" type="java.lang.String" value="A&#xf1;o De Creaci&#xf3;n - Todos Los Derechos Reservados"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[430, 22]"/>

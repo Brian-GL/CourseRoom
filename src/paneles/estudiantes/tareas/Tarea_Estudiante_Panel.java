@@ -50,7 +50,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private String ID;
     private byte carta_Visible;
     
-    public Tarea_Estudiante_Panel(String tipo_Tarea,
+    public Tarea_Estudiante_Panel(
             String nombre_Tarea, 
             String curso,
             String fecha_Entrega,
@@ -59,7 +59,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         initComponents();
         
         nombre_JLabel.setText(nombre_Tarea);
-        tipo_Tarea_JLabel.setText(tipo_Tarea);
         fecha_Entrega_JLabel.setText(CourseRoom.Concatenar("Se entrega el ", fecha_Entrega));
         
         estatus_Tarea_JLabel.setText(estatus);
@@ -94,7 +93,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         nombre_Profesor_JLabel = new javax.swing.JLabel();
         descripcion_JScrollPane = new javax.swing.JScrollPane();
         descripcion_JTextPane = new javax.swing.JTextPane();
-        tipo_Tarea_JLabel = new javax.swing.JLabel();
         fecha_Entrega_JLabel = new javax.swing.JLabel();
         estatus_Tarea_JLabel = new javax.swing.JLabel();
         archivos_Adjuntos_JScrollPane = new javax.swing.JScrollPane();
@@ -120,8 +118,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
-        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         nombre_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
         nombre_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
         nombre_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
@@ -216,8 +214,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(archivos_Adjuntos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -294,19 +292,14 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         descripcion_JTextPane.setRequestFocusEnabled(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
-        tipo_Tarea_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tipo_Tarea_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_3.png"))); // NOI18N
-        tipo_Tarea_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-        tipo_Tarea_JLabel.setOpaque(true);
-
+        fecha_Entrega_JLabel.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
         fecha_Entrega_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Entrega_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock.png"))); // NOI18N
-        fecha_Entrega_JLabel.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
         fecha_Entrega_JLabel.setOpaque(true);
 
+        estatus_Tarea_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         estatus_Tarea_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         estatus_Tarea_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_1.png"))); // NOI18N
-        estatus_Tarea_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         estatus_Tarea_JLabel.setOpaque(true);
 
         javax.swing.GroupLayout informacion_Tarea_JPanelLayout = new javax.swing.GroupLayout(informacion_Tarea_JPanel);
@@ -314,20 +307,20 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         informacion_Tarea_JPanelLayout.setHorizontalGroup(
             informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_Tarea_JPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
                 .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descripcion_JScrollPane)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Tarea_JPanelLayout.createSequentialGroup()
+                    .addGroup(informacion_Tarea_JPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
-                            .addComponent(fecha_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descripcion_JScrollPane)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Tarea_JPanelLayout.createSequentialGroup()
-                                .addComponent(tipo_Tarea_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(estatus_Tarea_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(informacion_Tarea_JPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(fecha_Entrega_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(estatus_Tarea_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         informacion_Tarea_JPanelLayout.setVerticalGroup(
@@ -337,13 +330,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(curso_JLabel)
                     .addComponent(nombre_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tipo_Tarea_JLabel)
-                    .addComponent(fecha_Entrega_JLabel)
-                    .addComponent(estatus_Tarea_JLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                    .addComponent(fecha_Entrega_JLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(estatus_Tarea_JLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -386,6 +378,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     return super.getColumnClass(column);
                 }
             });
+            archivos_Adjuntos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             archivos_Adjuntos_JTable.setOpaque(false);
             archivos_Adjuntos_JTable.setRowHeight(50);
             archivos_Adjuntos_JTable.setRowMargin(15);
@@ -407,8 +400,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             enviar_Comentarios_JPanel.setPreferredSize(new java.awt.Dimension(1085, 46));
 
             mensaje_Comentarios_JTextField.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-            mensaje_Comentarios_JTextField.setPreferredSize(new java.awt.Dimension(64, 34));
             mensaje_Comentarios_JTextField.setToolTipText("Redactar Menssaje");
+            mensaje_Comentarios_JTextField.setPreferredSize(new java.awt.Dimension(64, 34));
             mensaje_Comentarios_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     mensaje_Comentarios_JTextFieldKeyPressed(evt);
@@ -421,7 +414,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 enviar_Comentarios_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, enviar_Comentarios_JPanelLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(mensaje_Comentarios_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                    .addComponent(mensaje_Comentarios_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
                     .addContainerGap())
             );
             enviar_Comentarios_JPanelLayout.setVerticalGroup(
@@ -454,9 +447,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             entregar_Tarea_JPanel.setOpaque(false);
             entregar_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
+            subir_Archivos_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
             subir_Archivos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
             subir_Archivos_JButton.setText("Subir Archivo(s)");
-            subir_Archivos_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
             subir_Archivos_JButton.setToolTipText("Compartir Y Subir Archivo(s)");
             ((ImageIcon)subir_Archivos_JButton.getIcon()).getImage().flush();
             subir_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -482,7 +475,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                     },
                     new String [] {
-                        "Archivo", "Fecha", "Descargar", "Remover"
+                        "Archivo", "Subido", "Descargar", "Remover"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
@@ -508,6 +501,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         return super.getColumnClass(column);
                     }
                 });
+                archivos_Subidos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 archivos_Subidos_JTable.setOpaque(false);
                 archivos_Subidos_JTable.setRowHeight(50);
                 archivos_Subidos_JTable.setRowMargin(15);
@@ -516,9 +510,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 archivos_Adjuntos_JTable.setRowSorter(new TableRowSorter(archivos_Adjuntos_JTable.getModel()));
                 archivos_Subidos_JScrollPane.setViewportView(archivos_Subidos_JTable);
 
+                subir_Cambios_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
                 subir_Cambios_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/document.png"))); // NOI18N
                 subir_Cambios_JButton.setText("Subir Cambio(s)");
-                subir_Cambios_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
                 subir_Cambios_JButton.setToolTipText("");
                 ((ImageIcon)subir_Cambios_JButton.getIcon()).getImage().flush();
                 subir_Cambios_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -533,9 +527,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     }
                 });
 
+                fecha_Actualizacion_JLabel.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
                 fecha_Actualizacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
                 fecha_Actualizacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
-                fecha_Actualizacion_JLabel.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
 
                 javax.swing.GroupLayout entregar_Tarea_JPanelLayout = new javax.swing.GroupLayout(entregar_Tarea_JPanel);
                 entregar_Tarea_JPanel.setLayout(entregar_Tarea_JPanelLayout);
@@ -544,7 +538,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     .addGroup(entregar_Tarea_JPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(entregar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(archivos_Subidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                            .addComponent(archivos_Subidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
                             .addGroup(entregar_Tarea_JPanelLayout.createSequentialGroup()
                                 .addComponent(subir_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(255, 255, 255)
@@ -561,8 +555,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         .addGroup(entregar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(subir_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fecha_Actualizacion_JLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(archivos_Subidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(archivos_Subidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(subir_Cambios_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
@@ -607,8 +601,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             return super.getColumnClass(column);
                         }
                     });
+                    retroalimentacion_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                     retroalimentacion_JTable.setOpaque(false);
-                    retroalimentacion_JTable.setRowHeight(80);
+                    retroalimentacion_JTable.setRowHeight(90);
                     retroalimentacion_JTable.setRowMargin(15);
                     retroalimentacion_JTable.setShowGrid(true);
                     retroalimentacion_JTable.setRowSorter(new TableRowSorter(retroalimentacion_JTable.getModel()));
@@ -835,7 +830,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private javax.swing.JButton subir_Archivos_JButton;
     private javax.swing.JButton subir_Cambios_JButton;
     private javax.swing.JLayeredPane tarea_JLayeredPane;
-    private javax.swing.JLabel tipo_Tarea_JLabel;
     private javax.swing.JPanel titulo_JPanel;
     // End of variables declaration//GEN-END:variables
 
@@ -933,7 +927,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         }
 
         
-        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(10)));
+        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(20)));
         nombre_Profesor_JLabel.setText(CourseRoom.Faker().name().name());
         curso_JLabel.setText(CourseRoom.Faker().educator().course());
         
@@ -1003,9 +997,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         estatus_Tarea_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         estatus_Tarea_JLabel.setBackground(CourseRoom.Segundo_Color());
-        
-        tipo_Tarea_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        tipo_Tarea_JLabel.setBackground(CourseRoom.Tercer_Color());
         
         nombre_Profesor_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
         nombre_Profesor_JLabel.setBackground(CourseRoom.Segundo_Color());

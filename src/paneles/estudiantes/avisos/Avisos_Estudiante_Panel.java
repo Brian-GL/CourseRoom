@@ -49,8 +49,8 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         avisos_JTable = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
@@ -136,8 +136,9 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                     return super.getColumnClass(column);
                 }
             });
+            avisos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             avisos_JTable.setOpaque(false);
-            avisos_JTable.setRowHeight(100);
+            avisos_JTable.setRowHeight(80);
             avisos_JTable.setRowMargin(15);
             avisos_JTable.setShowGrid(true);
             avisos_JTable.setShowVerticalLines(false);
@@ -152,7 +153,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                     .addGap(32, 32, 32)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
                     .addGap(32, 32, 32))
             );
             layout.setVerticalGroup(

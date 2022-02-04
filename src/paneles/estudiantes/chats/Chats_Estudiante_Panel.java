@@ -74,6 +74,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         titulo_JLabel = new javax.swing.JLabel();
         buscar_Chats_JButton = new javax.swing.JButton();
         actualizar_JButton = new javax.swing.JButton();
+        chatear_JButton = new javax.swing.JButton();
         mostrar_Chats_JScrollPane = new javax.swing.JScrollPane();
         mostrar_Chats_JTable = new javax.swing.JTable();
         buscar_Chats_JPanel = new javax.swing.JPanel();
@@ -131,6 +132,21 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             }
         });
 
+        chatear_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat.png"))); // NOI18N
+        chatear_JButton.setBorder(null);
+        ((ImageIcon)chatear_JButton.getIcon()).getImage().flush();
+        chatear_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chatear_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                chatear_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                chatear_JButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
         contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
@@ -139,17 +155,22 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 .addGap(0, 0, 0)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chatear_JButton)
+                .addGap(18, 18, 18)
                 .addComponent(buscar_Chats_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titulo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buscar_Chats_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chatear_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -164,11 +185,11 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
                 },
                 new String [] {
-                    "Chat", "Ultimo Mensaje", "Fecha", "No Leídos"
+                    "Chat", "Fecha", "No Leídos"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false
+                    false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -190,6 +211,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                     return super.getColumnClass(column);
                 }
             });
+            mostrar_Chats_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             mostrar_Chats_JTable.setOpaque(false);
             mostrar_Chats_JTable.setRowHeight(100);
             mostrar_Chats_JTable.setRowMargin(15);
@@ -260,11 +282,11 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
                     },
                     new String [] {
-                        "Chat", "Ultimo Mensaje", "Fecha", "No Leídos"
+                        "Chat", "Fecha", "No Leídos"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false, false
+                        false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -286,6 +308,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                         return super.getColumnClass(column);
                     }
                 });
+                buscar_Chats_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 buscar_Chats_JTable.setOpaque(false);
                 buscar_Chats_JTable.setRowHeight(100);
                 buscar_Chats_JTable.setRowMargin(15);
@@ -382,6 +405,27 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
+    private void chatear_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseClicked
+        // TODO add your handling code here:
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+//
+//            Crear_Pregunta_Estudiante_Frame crear_Duda_Estudiante_Frame
+//            = new Crear_Pregunta_Estudiante_Frame();
+//
+//            crear_Duda_Estudiante_Frame.setVisible(true);
+        }
+    }//GEN-LAST:event_chatear_JButtonMouseClicked
+
+    private void chatear_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseEntered
+        // TODO add your handling code here:
+        chatear_JButton.setBackground(CourseRoom.Tercer_Color());
+    }//GEN-LAST:event_chatear_JButtonMouseEntered
+
+    private void chatear_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseExited
+        // TODO add your handling code here:
+        chatear_JButton.setBackground(CourseRoom.Segundo_Color());
+    }//GEN-LAST:event_chatear_JButtonMouseExited
+
     public static int Numero_Chats() {
         return mostrar_Chats_Lista.size();
     }
@@ -408,6 +452,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
     private javax.swing.JScrollPane buscar_Chats_JScrollPane;
     private javax.swing.JTable buscar_Chats_JTable;
     private javax.swing.JTextField buscar_JTextField;
+    private javax.swing.JButton chatear_JButton;
     private javax.swing.JPanel contenido_Titulo_JPanel;
     private javax.swing.JButton mostrar_Chats_JButton;
     private javax.swing.JPanel mostrar_Chats_JPanel;
@@ -429,7 +474,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         mostrar_Chats_JTable.getTableHeader().setFont(gadugi);
 
         mostrar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
 
         String id;
@@ -446,9 +491,8 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 icono_Chat = new ImageIcon(obtener_Imagen);
 
                 celdas[0] = new Celda_Renderer(icono_Chat, CourseRoom.Faker().name().fullName(), id);
-                celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().sentence(), id);
-                celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(), id);
-                celdas[3] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)), id);
+                celdas[1] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(), id);
+                celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)), id);
 
                 chat_Estudiante_Panel = new Chat_Estudiante_Panel(celdas[0].Label().getText(), id);
                 mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
@@ -535,7 +579,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < mostrar_Chats_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 3; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }
@@ -564,7 +608,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
         modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
         for (int i = 0; i < buscar_Chats_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 3; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }

@@ -81,8 +81,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
         estadisticas_JTable = new javax.swing.JTable();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
@@ -217,6 +217,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
                     return super.getColumnClass(column);
                 }
             });
+            estadisticas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             estadisticas_JTable.setOpaque(false);
             estadisticas_JTable.setRowHeight(100);
             estadisticas_JTable.setRowMargin(15);
@@ -378,7 +379,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
             
             try {
-                System.out.println("Estadisticas Curso " + i + " -> Getting Image From https://picsum.photos/96/96");
+                System.out.println("Estadisticas_Curso " + i + " -> Getting Image From https://picsum.photos/96/96");
                 url_Imagen = new URL("https://picsum.photos/96/96");
                 icono = new ImageIcon(url_Imagen);
 

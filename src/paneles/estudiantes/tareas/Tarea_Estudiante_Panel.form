@@ -66,8 +66,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="regresar_JButton" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="nombre_JLabel" min="-2" pref="503" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="nombre_JLabel" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="informacion_JButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="archivos_Adjuntos_JButton" min="-2" max="-2" attributes="0"/>
@@ -108,10 +108,10 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="nombre_JLabel">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gadugi" size="26" style="1"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[818, 68]"/>
             </Property>
@@ -293,26 +293,26 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="descripcion_JScrollPane" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="curso_JLabel" pref="581" max="32767" attributes="0"/>
-                                  <Component id="fecha_Entrega_JLabel" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="nombre_Profesor_JLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="descripcion_JScrollPane" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="tipo_Tarea_JLabel" max="32767" attributes="0"/>
+                                      <Component id="curso_JLabel" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="estatus_Tarea_JLabel" min="-2" pref="174" max="-2" attributes="0"/>
+                                      <Component id="nombre_Profesor_JLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="fecha_Entrega_JLabel" min="-2" pref="792" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="estatus_Tarea_JLabel" pref="174" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -324,14 +324,13 @@
                           <Component id="curso_JLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="nombre_Profesor_JLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="descripcion_JScrollPane" pref="422" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="tipo_Tarea_JLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="fecha_Entrega_JLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="estatus_Tarea_JLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="fecha_Entrega_JLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="estatus_Tarea_JLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="descripcion_JScrollPane" pref="434" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -415,18 +414,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="tipo_Tarea_JLabel">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/iconos/homework_3.png"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Gadugi" size="15" style="1"/>
-                </Property>
-                <Property name="opaque" type="boolean" value="true"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="fecha_Entrega_JLabel">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
@@ -476,6 +463,9 @@
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Archivo&quot;, &quot;Fecha&quot;, &quot;Descargar&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; archivos_Adjuntos_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Gadugi" size="14" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="rowHeight" type="int" value="50"/>
@@ -550,7 +540,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="mensaje_Comentarios_JTextField" pref="970" max="32767" attributes="0"/>
+                          <Component id="mensaje_Comentarios_JTextField" pref="972" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -604,7 +594,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="archivos_Subidos_JScrollPane" alignment="0" pref="970" max="32767" attributes="0"/>
+                          <Component id="archivos_Subidos_JScrollPane" alignment="0" pref="972" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="subir_Archivos_JButton" min="-2" pref="219" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
@@ -627,8 +617,8 @@
                           <Component id="subir_Archivos_JButton" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="fecha_Actualizacion_JLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="archivos_Subidos_JScrollPane" pref="400" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="archivos_Subidos_JScrollPane" pref="388" max="32767" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="subir_Cambios_JButton" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -674,7 +664,10 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Archivo&quot;, &quot;Fecha&quot;, &quot;Descargar&quot;, &quot;Remover&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false, false,false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; archivos_Subidos_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
+                      <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Archivo&quot;, &quot;Subido&quot;, &quot;Descargar&quot;, &quot;Remover&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false, false,false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; archivos_Subidos_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Gadugi" size="14" style="0"/>
                     </Property>
                     <Property name="opaque" type="boolean" value="false"/>
                     <Property name="rowHeight" type="int" value="50"/>
@@ -745,8 +738,11 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Retroalimentacion&quot;, &quot;Fecha&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; retroalimentacion_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Gadugi" size="14" style="0"/>
+                </Property>
                 <Property name="opaque" type="boolean" value="false"/>
-                <Property name="rowHeight" type="int" value="80"/>
+                <Property name="rowHeight" type="int" value="90"/>
                 <Property name="rowMargin" type="int" value="15"/>
                 <Property name="showGrid" type="boolean" value="true"/>
               </Properties>

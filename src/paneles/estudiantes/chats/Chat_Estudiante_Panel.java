@@ -108,15 +108,15 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         intereses_Tematicas_JScrollPane = new javax.swing.JScrollPane();
         intereses_Tematicas_JTable = new javax.swing.JTable();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
-        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         nombre_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
         nombre_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
         nombre_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
@@ -142,9 +142,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Chats");
         regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar_JButton.setToolTipText("Regresar A Mis Chats");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -230,10 +230,10 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         });
 
         enviar_Archivos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
-        enviar_Archivos_JButton.setToolTipText("Enviar Archivo");
         enviar_Archivos_JButton.setBorder(null);
         enviar_Archivos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Archivos_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        enviar_Archivos_JButton.setToolTipText("Enviar Archivo");
         ((ImageIcon)enviar_Archivos_JButton.getIcon()).getImage().flush();
         enviar_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -248,10 +248,10 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         });
 
         enviar_Videos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clapperboard.png"))); // NOI18N
-        enviar_Videos_JButton.setToolTipText("Enviar Archivo De Video");
         enviar_Videos_JButton.setBorder(null);
         enviar_Videos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Videos_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        enviar_Videos_JButton.setToolTipText("Enviar Archivo De Video");
         ((ImageIcon)enviar_Videos_JButton.getIcon()).getImage().flush();
         enviar_Videos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -266,10 +266,10 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         });
 
         enviar_Audios_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/microphone.png"))); // NOI18N
-        enviar_Audios_JButton.setToolTipText("Enviar Archivo De Audio");
         enviar_Audios_JButton.setBorder(null);
         enviar_Audios_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Audios_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        enviar_Audios_JButton.setToolTipText("Enviar Archivo De Audio");
         ((ImageIcon)enviar_Audios_JButton.getIcon()).getImage().flush();
         enviar_Audios_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -284,10 +284,10 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         });
 
         enviar_Imagenes_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-video.png"))); // NOI18N
-        enviar_Imagenes_JButton.setToolTipText("Enviar Archivo De Imagen");
         enviar_Imagenes_JButton.setBorder(null);
         enviar_Imagenes_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enviar_Imagenes_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
+        enviar_Imagenes_JButton.setToolTipText("Enviar Archivo De Imagen");
         ((ImageIcon)enviar_Imagenes_JButton.getIcon()).getImage().flush();
         enviar_Imagenes_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -441,9 +441,10 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     return super.getColumnClass(column);
                 }
             });
+            intereses_Tematicas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             intereses_Tematicas_JTable.setOpaque(false);
-            intereses_Tematicas_JTable.setRowHeight(50);
-            intereses_Tematicas_JTable.setRowMargin(15);
+            intereses_Tematicas_JTable.setRowHeight(45);
+            intereses_Tematicas_JTable.setRowMargin(10);
             intereses_Tematicas_JTable.setShowGrid(true);
             intereses_Tematicas_JTable.setShowVerticalLines(false);
             intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));

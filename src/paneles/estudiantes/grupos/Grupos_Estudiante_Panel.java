@@ -164,11 +164,11 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                 },
                 new String [] {
-                    "Grupo", "Ultimo Aviso", "Fecha", "Curso"
+                    "Grupo", "Fecha", "Curso"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false
+                    false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -190,6 +190,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     return super.getColumnClass(column);
                 }
             });
+            mostrar_Grupos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             mostrar_Grupos_JTable.setOpaque(false);
             mostrar_Grupos_JTable.setRowHeight(100);
             mostrar_Grupos_JTable.setRowMargin(15);
@@ -260,11 +261,11 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                     },
                     new String [] {
-                        "Grupo", "Ultimo Aviso", "Fecha", "Curso"
+                        "Grupo", "Fecha", "Curso"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false, false
+                        false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -286,6 +287,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         return super.getColumnClass(column);
                     }
                 });
+                buscar_Grupos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 buscar_Grupos_JTable.setOpaque(false);
                 buscar_Grupos_JTable.setRowHeight(100);
                 buscar_Grupos_JTable.setRowMargin(15);
@@ -414,7 +416,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         mostrar_Grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Grupos_JTable.getModel();
 
         String id;
@@ -430,11 +432,10 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 url_Imagen = new URL("https://picsum.photos/400/400");
                 obtener_Imagen = ImageIO.read(url_Imagen);
 
-                celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().sentence(), id);
                 fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
-                celdas[2] = new Celda_Renderer(fecha, id);
+                celdas[1] = new Celda_Renderer(fecha, id);
                 curso = CourseRoom.Faker().educator().course();
-                celdas[3] = new Celda_Renderer(curso, id);
+                celdas[2] = new Celda_Renderer(curso, id);
 
                 grupo = obtener_Imagen.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
                 icono_Grupo = new ImageIcon(grupo);
@@ -528,7 +529,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Grupos_JTable.getModel();
         for (int i = 0; i < mostrar_Grupos_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 3; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }
@@ -557,7 +558,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         modelo = (DefaultTableModel) buscar_Grupos_JTable.getModel();
         for (int i = 0; i < buscar_Grupos_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 3; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }

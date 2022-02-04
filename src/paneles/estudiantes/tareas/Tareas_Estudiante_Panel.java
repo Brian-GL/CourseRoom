@@ -25,8 +25,15 @@ import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLayeredPane;
 import javax.swing.JTable;
@@ -93,9 +100,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
 
         buscar_Tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
+        buscar_Tareas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         buscar_Tareas_JButton.setBorder(null);
         buscar_Tareas_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-        buscar_Tareas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         ((ImageIcon)buscar_Tareas_JButton.getIcon()).getImage().flush();
         buscar_Tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -161,11 +168,11 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                 },
                 new String [] {
-                    "Tipo", "Tarea", "Curso", "Fecha Entrega", "Estatus"
+                    "Tarea", "Curso", "Fecha Entrega", "Estatus"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -187,6 +194,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     return super.getColumnClass(column);
                 }
             });
+            mostrar_Tareas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             mostrar_Tareas_JTable.setOpaque(false);
             mostrar_Tareas_JTable.setRowHeight(100);
             mostrar_Tareas_JTable.setRowMargin(15);
@@ -222,8 +230,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Tareas_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
             buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-            buscar_JTextField.setBorder(null);
             buscar_JTextField.setToolTipText("<html>\n<h3>Buscar tarea(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
+            buscar_JTextField.setBorder(null);
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     buscar_JTextFieldKeyPressed(evt);
@@ -231,8 +239,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             });
 
             mostrar_Tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_5.png"))); // NOI18N
-            mostrar_Tareas_JButton.setBorder(null);
             mostrar_Tareas_JButton.setToolTipText("<html>\n<h3>Regresar a la página de tareas</h3>\n</html>");
+            mostrar_Tareas_JButton.setBorder(null);
             ((ImageIcon)mostrar_Tareas_JButton.getIcon()).getImage().flush();
             mostrar_Tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -257,11 +265,11 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                     },
                     new String [] {
-                        "Tipo", "Tarea", "Curso", "Fecha Entrega", "Estatus"
+                        "Tarea", "Curso", "Fecha Entrega", "Estatus"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false, false, false
+                        false, false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -283,6 +291,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         return super.getColumnClass(column);
                     }
                 });
+                buscar_Tareas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 buscar_Tareas_JTable.setOpaque(false);
                 buscar_Tareas_JTable.setRowHeight(100);
                 buscar_Tareas_JTable.setRowMargin(15);
@@ -404,55 +413,45 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Tareas_JTable.getTableHeader().setFont(gadugi);
 
         mostrar_Tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
 
         String id;
-        ImageIcon tarea_Examen = new ImageIcon(getClass().getResource("/recursos/iconos/homework_test.png"));
-        ImageIcon tarea_Practica = new ImageIcon(getClass().getResource("/recursos/iconos/homework_make.png"));
-        ImageIcon tarea_Investigacion = new ImageIcon(getClass().getResource("/recursos/iconos/homework_investigation.png"));
-        ImageIcon tarea_Evidencia = new ImageIcon(getClass().getResource("/recursos/iconos/homework_evidence.png"));
-        ImageIcon icono_Tarea = null;
-        String tipo_Tarea = "", nombre = "", curso = "", fecha = "", estatus = "";
+        URL url_Imagen;
+        ImageIcon icono_Curso  = null;
+        Image obtener_Imagen_Curso = null;
+        String  nombre = "", curso = "", fecha = "", estatus = "";
          
         Tarea_Estudiante_Panel tarea_Estudiante_Panel;
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
-            id = CourseRoom.Concatenar("Tarea_",i);
-          
-            switch (CourseRoom.Faker().number().numberBetween(1, 5)) {
-                case 1:
-                    icono_Tarea = tarea_Examen;
-                    tipo_Tarea = "Exámen";
-                    break;
-                case 2:
-                    icono_Tarea = tarea_Practica;
-                    tipo_Tarea = "Práctica";
-                    break;
-                case 3:
-                    icono_Tarea = tarea_Investigacion;
-                    tipo_Tarea = "Investigación";
-                    break;
-                case 4:
-                    icono_Tarea = tarea_Evidencia;
-                    tipo_Tarea = "Evidencia";
-                    break;
+            try {
+                id = CourseRoom.Concatenar("Tarea_",i);
+                
+                System.out.println(id + " -> Getting Image From https://picsum.photos/96/96");
+                url_Imagen = new URL("https://picsum.photos/96/96");
+                obtener_Imagen_Curso = ImageIO.read(url_Imagen);
+                icono_Curso = new ImageIcon(obtener_Imagen_Curso);
+                
+                nombre = CourseRoom.Faker().university().name();
+                curso = CourseRoom.Faker().educator().course();
+                fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                estatus = CourseRoom.Faker().bool().bool() ? "Entregado" : "Pendiente";
+                celdas[0] = new Celda_Renderer(nombre,id);
+                celdas[1] = new Celda_Renderer(icono_Curso,curso,id);
+                celdas[2] = new Celda_Renderer(fecha,id);
+                celdas[3] = new Celda_Renderer(estatus,id);
+                
+                tarea_Estudiante_Panel = new Tarea_Estudiante_Panel(nombre, curso, fecha, estatus, id);
+                mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
+                Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel,id);
+                modelo.addRow(celdas);
+                
+                obtener_Imagen_Curso.flush();
+            } catch (MalformedURLException ex) {
+                
+            } catch (IOException ex) {
+                
             }
-            
-            
-            nombre = CourseRoom.Faker().university().name();
-            curso = CourseRoom.Faker().educator().course();
-            fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
-            estatus = CourseRoom.Faker().bool().bool() ? "Entregado" : "Pendiente";
-            celdas[0] = new Celda_Renderer(icono_Tarea,tipo_Tarea,id);
-            celdas[1] = new Celda_Renderer(nombre,id);
-            celdas[2] = new Celda_Renderer(curso,id);
-            celdas[3] = new Celda_Renderer(fecha,id);
-            celdas[4] = new Celda_Renderer(estatus,id);
-
-            tarea_Estudiante_Panel = new Tarea_Estudiante_Panel(tipo_Tarea, nombre, curso, fecha, estatus, id);
-            mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
-            Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel,id);
-            modelo.addRow(celdas);
         }
 
         mostrar_Tareas_JTable.addMouseListener(new MouseAdapter() {
@@ -522,7 +521,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < mostrar_Tareas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }
@@ -553,7 +552,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         modelo = (DefaultTableModel) buscar_Tareas_JTable.getModel();
         for (int i = 0; i < buscar_Tareas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }

@@ -109,11 +109,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             }
         });
 
-        marca_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        marca_JLabel.setText("2021 - CourseRoom®");
         marca_JLabel.setFont(new java.awt.Font("Gadugi", 3, 16)); // NOI18N
-        marca_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
+        marca_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        marca_JLabel.setText("2022 - CourseRoom®");
         marca_JLabel.setToolTipText("Año De Creación - Todos Los Derechos Reservados");
+        marca_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
         marca_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 marca_JLabelMouseClicked(evt);
@@ -147,11 +147,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             }
         });
 
-        logo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo_JLabel.setBackground(new java.awt.Color(14, 30, 64));
+        logo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo_JLabel.setToolTipText("CourseRoom Logo");
         logo_JLabel.setMinimumSize(new java.awt.Dimension(150, 125));
         logo_JLabel.setPreferredSize(new java.awt.Dimension(400, 125));
-        logo_JLabel.setToolTipText("CourseRoom Logo");
 
         contrasena_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         contrasena_JLabel.setText("<html>\n<p style=\"text-align:center;\">\n Contraseña\n</p>\n</html>");
