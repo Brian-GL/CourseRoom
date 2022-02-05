@@ -357,9 +357,12 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         Pattern pat = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z]{3})((\\.[A-Za-z]{2}))?$");
         Matcher mat = pat.matcher(correo);
         if (mat.find()) {
-            JOptionPane.showMessageDialog(null, "Bienvenido\n'" + correo + "");
+            JOptionPane.showMessageDialog(null, "Bienvenido\n*" + correo + "*");
+            CourseRoom_Frame.Mostrar_Tablero();
+            usuario_JTextField.setText("");
+            contrasena_JPasswordField.setText("");
         } else {
-            JOptionPane.showMessageDialog(null, "El Correo\n'" + correo + "'\nNo Es Valido");
+            JOptionPane.showMessageDialog(null, "El Correo\n*" + correo + "*\nNo Es Valido");
             usuario_JTextField.setText("");
             usuario_JTextField.requestFocus();
         }
@@ -367,18 +370,14 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     }
     
     public void verificar_Campos() {
-
         String Password = String.valueOf(contrasena_JPasswordField.getPassword());
-
         // Checa Los Campos Vacíos.
         if (usuario_JTextField.getText().equals("")
                 || Password.equals("")){
             // Si Los Campos Estan Vacíos Manda Mensaje De Error.
             JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
-
         } else {
             validar_Correo(usuario_JTextField.getText().trim());
-                //JOptionPane.showMessageDialog(this, "Contraseñas Distintas Revisa!!!", "NO", WIDTH);
             }
         }
 }
