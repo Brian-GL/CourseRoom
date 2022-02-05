@@ -41,6 +41,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
+import paneles.estudiantes.tareas.Tareas_Estudiante_Panel;
 
 /**
  *
@@ -49,6 +50,7 @@ import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface{
 
     private byte carta_Visible;
+    private String nombre_Profesor;
     private String ID;
     
    
@@ -61,7 +63,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         initComponents();
         
         nombre_JLabel.setText(_nombre_Curso);
-        
+        nombre_Profesor = _nombre_Profesor;
         ImageIcon icono = new ImageIcon(_imagen_Curso);
         imagen_Curso_JLabel.setIcon(icono);
         icono = new ImageIcon(_imagen_Profesor);
@@ -84,7 +86,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         titulo_JPanel = new javax.swing.JPanel();
         nombre_JLabel = new javax.swing.JLabel();
-        tablero_JButton = new javax.swing.JButton();
+        tareas_JButton = new javax.swing.JButton();
         materiales_JButton = new javax.swing.JButton();
         informacion_JButton = new javax.swing.JButton();
         regresar_JButton = new javax.swing.JButton();
@@ -108,6 +110,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         compartir_Materiales_JButton = new javax.swing.JButton();
         materiales_JScrollPane = new javax.swing.JScrollPane();
         materiales_JTable = new javax.swing.JTable();
+        tareas_JScrollPane = new javax.swing.JScrollPane();
+        tareas_JTable = new javax.swing.JTable();
 
         setOpaque(false);
 
@@ -121,13 +125,13 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         nombre_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
         nombre_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
-        tablero_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework.png"))); // NOI18N
-        tablero_JButton.setBorder(null);
-        tablero_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-        ((ImageIcon)tablero_JButton.getIcon()).getImage().flush();
-        tablero_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework.png"))); // NOI18N
+        tareas_JButton.setBorder(null);
+        tareas_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)tareas_JButton.getIcon()).getImage().flush();
+        tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablero_JButtonMouseClicked(evt);
+                tareas_JButtonMouseClicked(evt);
             }
         });
 
@@ -205,7 +209,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(tablero_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tareas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(miembros_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -220,7 +224,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     .addComponent(regresar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(titulo_JPanelLayout.createSequentialGroup()
                         .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tablero_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tareas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(materiales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -507,37 +511,85 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                     curso_JLayeredPane.add(materiales_Curso_JPanel, "Materiales");
 
-                    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-                    this.setLayout(layout);
-                    layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(36, 36, 36)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                            .addGap(28, 28, 28))
-                    );
-                    layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addContainerGap())
-                    );
-                }// </editor-fold>//GEN-END:initComponents
+                    tareas_JScrollPane.setBorder(null);
+                    tareas_JScrollPane.setOpaque(false);
 
-    private void tablero_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablero_JButtonMouseClicked
+                    tareas_JTable.setAutoCreateRowSorter(true);
+                    tareas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                    tareas_JTable.setModel(
+
+                        new javax.swing.table.DefaultTableModel(
+                            new Object [][] {
+
+                            },
+                            new String [] {
+                                "Tarea", "Descripcion", "Fecha Entrega", "Estatus"
+                            }
+                        ) {
+                            boolean[] canEdit = new boolean [] {
+                                false, false, false, false
+                            };
+
+                            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                                return canEdit [columnIndex];
+                            }
+
+                            @Override
+                            public Class getColumnClass(int column)
+                            {
+                                for(int i = 0; i < tareas_JTable.getRowCount(); i++)
+                                {
+                                    //The first valid value of a cell of given column is retrieved.
+                                    if(getValueAt(i,column) != null)
+                                    {
+                                        return getValueAt(i, column).getClass();
+                                    }
+                                }
+                                //if no valid value is found, default renderer is returned.
+                                return super.getColumnClass(column);
+                            }
+                        });
+                        tareas_JTable.setOpaque(false);
+                        tareas_JTable.setRowHeight(100);
+                        tareas_JTable.setRowMargin(15);
+                        tareas_JTable.setShowGrid(true);
+                        tareas_JTable.setShowVerticalLines(false);
+                        tareas_JTable.setRowSorter(new TableRowSorter(tareas_JTable.getModel()));
+                        tareas_JScrollPane.setViewportView(tareas_JTable);
+
+                        curso_JLayeredPane.add(tareas_JScrollPane, "Tareas");
+
+                        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+                        this.setLayout(layout);
+                        layout.setHorizontalGroup(
+                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                                .addGap(28, 28, 28))
+                        );
+                        layout.setVerticalGroup(
+                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                        );
+                    }// </editor-fold>//GEN-END:initComponents
+
+    private void tareas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)curso_JLayeredPane.getLayout()).show(curso_JLayeredPane, "Tablero");
+            ((CardLayout)curso_JLayeredPane.getLayout()).show(curso_JLayeredPane, "Tareas");
             carta_Visible = 1;
             Carta_Visible();
 
         }
-    }//GEN-LAST:event_tablero_JButtonMouseClicked
+    }//GEN-LAST:event_tareas_JButtonMouseClicked
 
     private void materiales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_materiales_JButtonMouseClicked
         // TODO add your handling code here:
@@ -675,7 +727,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JTable miembros_JTable;
     private javax.swing.JLabel nombre_JLabel;
     private javax.swing.JButton regresar_JButton;
-    private javax.swing.JButton tablero_JButton;
+    private javax.swing.JButton tareas_JButton;
+    private javax.swing.JScrollPane tareas_JScrollPane;
+    private javax.swing.JTable tareas_JTable;
     private javax.swing.JPanel titulo_JPanel;
     // End of variables declaration//GEN-END:variables
 
@@ -715,7 +769,63 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             modelo.addRow(celda);
         }
         
-        //Tablero:
+        //Tareas:
+        
+        tareas_JScrollPane.getViewport().setOpaque(false);
+        tareas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        tareas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+
+
+        tareas_JTable.getTableHeader().setFont(gadugi);
+
+        tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        modelo = (DefaultTableModel) tareas_JTable.getModel();
+
+        String _id;
+        String nombre = "",  fecha = "", estatus = "";
+        
+        Image imagen_Curso = ((ImageIcon)imagen_Curso_JLabel.getIcon()).getImage();
+        imagen_Curso = imagen_Curso.getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
+        ImageIcon icono_Curso = new ImageIcon(imagen_Curso);
+        
+        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
+           
+            _id = String.valueOf(i);
+            _id = CourseRoom.Concatenar(this.ID,"_Tarea_", _id);
+            System.err.println(_id);
+            nombre = CourseRoom.Faker().university().name();
+            fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+            estatus = CourseRoom.Faker().bool().bool() ? "Entregado" : "Pendiente";
+            celdas[0] = new Celda_Renderer(nombre, _id);
+            celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(3), _id);
+            celdas[2] = new Celda_Renderer(fecha, _id);
+            celdas[3] = new Celda_Renderer(estatus, _id);
+            System.err.println("En Curso: "+_id);
+            Tareas_Estudiante_Panel.Agregar_Tarea(nombre, this.nombre_JLabel.getText(), this.nombre_Profesor ,icono_Curso, fecha, estatus, _id);
+            modelo.addRow(celdas);
+        }
+
+        tareas_JTable.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+
+                    JTable tabla = (JTable) e.getComponent();
+                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                    int columna = tabla.getSelectedColumn();
+
+                    DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
+
+                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+                    System.err.println("En Evento: "+celda.ID());
+                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                }
+            }
+        });
+
         
         //Miembros:
         miembros_JScrollPane.getViewport().setOpaque(false);
@@ -726,7 +836,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         miembros_JTable.getTableHeader().setFont(gadugi);
 
         miembros_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[2];
+        celdas = new Celda_Renderer[2];
         modelo = (DefaultTableModel) miembros_JTable.getModel();
 
         URL url_Imagen;
@@ -821,7 +931,18 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
         }
         
-        //Tablero:
+        //Tareas:
+        tareas_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
+        tareas_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+
+        modelo = (DefaultTableModel) tareas_JTable.getModel();
+        for (int i = 0; i < tareas_JTable.getRowCount(); i++) {
+            for (int j = 0; j < 4; j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+            }
+        }
+
         
        //Miembros:
         miembros_JTable.getTableHeader().setBackground(CourseRoom.Tercer_Color());
@@ -865,25 +986,25 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         switch (carta_Visible) {
             case 0:
                 informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-                tablero_JButton.setBackground(CourseRoom.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Segundo_Color());
                 miembros_JButton.setBackground(CourseRoom.Segundo_Color());
                 materiales_JButton.setBackground(CourseRoom.Segundo_Color());
                 break;
             case 1:
                 informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                tablero_JButton.setBackground(CourseRoom.Tercer_Color());
+                tareas_JButton.setBackground(CourseRoom.Tercer_Color());
                 miembros_JButton.setBackground(CourseRoom.Segundo_Color());
                 materiales_JButton.setBackground(CourseRoom.Segundo_Color());
                 break;
             case 2:
                 informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                tablero_JButton.setBackground(CourseRoom.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Segundo_Color());
                 miembros_JButton.setBackground(CourseRoom.Tercer_Color());
                 materiales_JButton.setBackground(CourseRoom.Segundo_Color());
                 break;
             case 3:
                 informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                tablero_JButton.setBackground(CourseRoom.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Segundo_Color());
                 miembros_JButton.setBackground(CourseRoom.Segundo_Color());
                 materiales_JButton.setBackground(CourseRoom.Tercer_Color());
                 break;

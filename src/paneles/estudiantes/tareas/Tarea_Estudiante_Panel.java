@@ -52,13 +52,17 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     
     public Tarea_Estudiante_Panel(
             String nombre_Tarea, 
-            String curso,
+            String nombre_Curso,
+            String nombre_Profesor,
             String fecha_Entrega,
             String estatus,
             String _id){
         initComponents();
         
+        
         nombre_JLabel.setText(nombre_Tarea);
+        curso_JLabel.setText(nombre_Curso);
+        nombre_Profesor_JLabel.setText(nombre_Profesor);
         fecha_Entrega_JLabel.setText(CourseRoom.Concatenar("Se entrega el ", fecha_Entrega));
         
         estatus_Tarea_JLabel.setText(estatus);
@@ -928,8 +932,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         
         descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(20)));
-        nombre_Profesor_JLabel.setText(CourseRoom.Faker().name().name());
-        curso_JLabel.setText(CourseRoom.Faker().educator().course());
         
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
