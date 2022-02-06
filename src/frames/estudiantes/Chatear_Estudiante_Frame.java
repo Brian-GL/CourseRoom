@@ -126,17 +126,19 @@ public class Chatear_Estudiante_Frame extends javax.swing.JDialog implements Com
     private void chatear_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if(!((String)chatear_AutoCompletionComboBox.getSelectedItem()).isBlank() && !((String)chatear_AutoCompletionComboBox.getSelectedItem()).isEmpty()){
-                
-                int cuenta = Chats_Estudiante_Panel.Numero_Chats()+1;
-                String id = CourseRoom.Concatenar("Chat_", cuenta);
+            if(chatear_AutoCompletionComboBox.getSelectedItem() != null){
+                if(!((String)chatear_AutoCompletionComboBox.getSelectedItem()).isBlank() && !((String)chatear_AutoCompletionComboBox.getSelectedItem()).isEmpty()){
 
-                // Chats_Estudiante_Panel.Agregar_Chat();
-                //Tablero_Estudiante_Panel.Mostrar_Vista(id);
+                    int cuenta = Chats_Estudiante_Panel.Numero_Chats()+1;
+                    String id = CourseRoom.Concatenar("Chat_", cuenta);
 
-                this.dispose();
-                
-                
+                    // Chats_Estudiante_Panel.Agregar_Chat();
+                    //Tablero_Estudiante_Panel.Mostrar_Vista(id);
+
+                    this.dispose();
+
+
+                }
             }
         }
     }//GEN-LAST:event_chatear_JButtonMouseClicked

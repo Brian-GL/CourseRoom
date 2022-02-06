@@ -22,6 +22,7 @@ import clases.Celda_Renderer;
 import datos.colecciones.Lista;
 import datos.estructuras.Nodo;
 import courseroom.CourseRoom;
+import frames.estudiantes.Chatear_Estudiante_Frame;
 import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
@@ -408,11 +409,11 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
     private void chatear_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-//
-//            Crear_Pregunta_Estudiante_Frame crear_Duda_Estudiante_Frame
-//            = new Crear_Pregunta_Estudiante_Frame();
-//
-//            crear_Duda_Estudiante_Frame.setVisible(true);
+
+            Chatear_Estudiante_Frame chatear_Estudiante_Frame
+            = new Chatear_Estudiante_Frame();
+
+            chatear_Estudiante_Frame.setVisible(true);
         }
     }//GEN-LAST:event_chatear_JButtonMouseClicked
 

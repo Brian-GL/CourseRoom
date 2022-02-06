@@ -1110,7 +1110,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void compartir_Archivos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Compartir_Archivos();
+            Enviar_Archivos();
         }
     }//GEN-LAST:event_compartir_Archivos_JButtonMouseClicked
 
@@ -1291,34 +1291,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    private void Compartir_Archivos(){
-        JFileChooser escogedor_Archivo = new JFileChooser();
-        escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        escogedor_Archivo.setApproveButtonText("Compartir Archivo(s)");
-        escogedor_Archivo.setMultiSelectionEnabled(true);
-        int resultado = escogedor_Archivo.showOpenDialog(this);
-
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File[] archivos_Abiertos = escogedor_Archivo.getSelectedFiles();
-            
-            if(archivos_Abiertos != null){
-                File archivo_Abierto;
-                Celda_Renderer[] celdas = new Celda_Renderer[5];
-                DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
-                ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
-                ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
-                for(int i = 0; i < archivos_Abiertos.length;i++){
-                    archivo_Abierto = archivos_Abiertos[i];
-                    celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),"");
-                    celdas[1] = new Celda_Renderer(Perfil_Estudiante_Panel.Nombre_Completo(),"");
-                    celdas[2] = new Celda_Renderer(LocalDateTime.now().toString(),"");
-                    celdas[3] = new Celda_Renderer(icono_Descargar,"");
-                    celdas[4] = new Celda_Renderer(icono_Remover,"");
-                    modelo.addRow(celdas);
-                }
-            }
-        }
-    }
     
     public String ID(){
         return this.ID;
@@ -1419,8 +1391,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         miembros_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         miembros_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
-        mensajes_Chat_JScrollPane.getViewport().setOpaque(false);
-        mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
 
         Font gadugi = new Font("Gadugi", Font.BOLD, 16);
         miembros_JTable.getTableHeader().setFont(gadugi);
@@ -1429,12 +1399,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
 
-        String id;
         URL url_Imagen;
         Image obtener_Imagen = null;
         ImageIcon icono_Miembro = null;
         ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
-        //Chat_Estudiante_Panel chat_Estudiante_Panel;
         for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
             try {
                 System.out.println(this.ID + " -> Getting Image From https://i.pravatar.cc/96");
@@ -1499,7 +1467,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                         modelo.removeRow(fila);
                     }
-
                 }
             }
         });
@@ -1616,6 +1583,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
             }
         }
+        
+        // Chat
         
         mensaje_Chat_JTextField.setBackground(CourseRoom.Primer_Color());
         mensaje_Chat_JTextField.setForeground(CourseRoom.Primer_Color_Fuente());
@@ -1871,7 +1840,32 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     @Override
     public void Enviar_Archivos() {
-        //No Soportado
+        JFileChooser escogedor_Archivo = new JFileChooser();
+        escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        escogedor_Archivo.setApproveButtonText("Compartir Archivo(s)");
+        escogedor_Archivo.setMultiSelectionEnabled(true);
+        int resultado = escogedor_Archivo.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File[] archivos_Abiertos = escogedor_Archivo.getSelectedFiles();
+            
+            if(archivos_Abiertos != null){
+                File archivo_Abierto;
+                Celda_Renderer[] celdas = new Celda_Renderer[5];
+                DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
+                ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
+                ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
+                for(int i = 0; i < archivos_Abiertos.length;i++){
+                    archivo_Abierto = archivos_Abiertos[i];
+                    celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),"");
+                    celdas[1] = new Celda_Renderer(Perfil_Estudiante_Panel.Nombre_Completo(),"");
+                    celdas[2] = new Celda_Renderer(LocalDateTime.now().toString(),"");
+                    celdas[3] = new Celda_Renderer(icono_Descargar,"");
+                    celdas[4] = new Celda_Renderer(icono_Remover,"");
+                    modelo.addRow(celdas);
+                }
+            }
+        }
     }
 
 

@@ -77,12 +77,11 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         desempeno_Escolar_JLayeredPane = new javax.swing.JLayeredPane();
         regresion_Lineal_JPanel = new javax.swing.JPanel();
         grafica_Pastel_JPanel = new javax.swing.JPanel();
-        estadisticas_JPanel = new javax.swing.JPanel();
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
         estadisticas_JTable = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
@@ -98,6 +97,9 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
         grafica_Pastel_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/pie-chart.png"))); // NOI18N
         grafica_Pastel_JButton.setBorder(null);
+        grafica_Pastel_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
+        grafica_Pastel_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
+        grafica_Pastel_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)grafica_Pastel_JButton.getIcon()).getImage().flush();
         grafica_Pastel_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,6 +109,9 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
         regresion_Lineal_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/function.png"))); // NOI18N
         regresion_Lineal_JButton.setBorder(null);
+        regresion_Lineal_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
+        regresion_Lineal_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
+        regresion_Lineal_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)regresion_Lineal_JButton.getIcon()).getImage().flush();
         regresion_Lineal_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,6 +121,9 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
         estadisticas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stats.png"))); // NOI18N
         estadisticas_JButton.setBorder(null);
+        estadisticas_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
+        estadisticas_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
+        estadisticas_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)estadisticas_JButton.getIcon()).getImage().flush();
         estadisticas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -145,12 +153,12 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)
-                .addComponent(regresion_Lineal_JButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
+                .addComponent(regresion_Lineal_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(grafica_Pastel_JButton)
+                .addComponent(grafica_Pastel_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(estadisticas_JButton)
+                .addComponent(estadisticas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -176,9 +184,6 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         grafica_Pastel_JPanel.setOpaque(false);
         grafica_Pastel_JPanel.setLayout(new java.awt.BorderLayout());
         desempeno_Escolar_JLayeredPane.add(grafica_Pastel_JPanel, "Grafica_Pastel");
-
-        estadisticas_JPanel.setOpaque(false);
-        estadisticas_JPanel.setLayout(new java.awt.CardLayout());
 
         estadisticas_JScrollPane.setBorder(null);
         estadisticas_JScrollPane.setOpaque(false);
@@ -226,9 +231,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
             estadisticas_JScrollPane.setViewportView(estadisticas_JTable);
 
-            estadisticas_JPanel.add(estadisticas_JScrollPane, "card2");
-
-            desempeno_Escolar_JLayeredPane.add(estadisticas_JPanel, "Estadisticas");
+            desempeno_Escolar_JLayeredPane.add(estadisticas_JScrollPane, "Estadisticas");
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
             this.setLayout(layout);
@@ -302,50 +305,49 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
         //Boys (Age,weight) series  
         XYSeries series1 = new XYSeries("Boys");  
-        series1.add(1, 72.9);  
-        series1.add(2, 81.6);  
-        series1.add(3, 88.9);  
-        series1.add(4, 96);  
-        series1.add(5, 102.1);  
-        series1.add(6, 108.5);  
-        series1.add(7, 113.9);  
-        series1.add(8, 119.3);  
-        series1.add(9, 123.8);  
-        series1.add(10, 124.4);  
+        series1.add(1, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(2, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(3, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(4, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(5, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(6, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(7, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(8, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(9, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(10, CourseRoom.Faker().number().randomDouble(2, 1,100));
 
         dataset.addSeries(series1);  
 
         //Girls (Age,weight) series  
         XYSeries series2 = new XYSeries("Girls");  
-        series2.add(1, 72.5);  
-        series2.add(2, 80.1);  
-        series2.add(3, 87.2);  
-        series2.add(4, 94.5);  
-        series2.add(5, 101.4);  
-        series2.add(6, 107.4);  
-        series2.add(7, 112.8);  
-        series2.add(8, 118.2);  
-        series2.add(9, 122.9);  
-        series2.add(10, 123.4);  
+        series2.add(1, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(2, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(3, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(4, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(5, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(6, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(7, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(8, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(9, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(10, CourseRoom.Faker().number().randomDouble(2, 1, 100));
 
         dataset.addSeries(series2);  
         
         //Boys (Age,weight) series  
         XYSeries series3 = new XYSeries("Regresion Lineal", false);  
-        series3.add(1, 72.9);  
-        series3.add(10, 123.4); 
+        series3.add(1, series1.getX(0));  
+        series3.add(10, series2.getX(9)); 
         
         dataset.addSeries(series3);
 
         return dataset;  
-        }  
+    }  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JPanel contenido_Titulo_JPanel;
     private javax.swing.JLayeredPane desempeno_Escolar_JLayeredPane;
     private javax.swing.JButton estadisticas_JButton;
-    private javax.swing.JPanel estadisticas_JPanel;
     private javax.swing.JScrollPane estadisticas_JScrollPane;
     private static javax.swing.JTable estadisticas_JTable;
     private javax.swing.JButton grafica_Pastel_JButton;

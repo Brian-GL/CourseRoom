@@ -355,10 +355,10 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
 
-            Preguntar_Estudiante_Frame crear_Duda_Estudiante_Frame
+            Preguntar_Estudiante_Frame preguntar_Estudiante_Frame
             = new Preguntar_Estudiante_Frame();
 
-            crear_Duda_Estudiante_Frame.setVisible(true);
+            preguntar_Estudiante_Frame.setVisible(true);
         }
     }//GEN-LAST:event_preguntar_JButtonMouseClicked
 
