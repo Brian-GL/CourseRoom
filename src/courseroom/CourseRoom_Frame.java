@@ -8,6 +8,12 @@ package courseroom;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import org.apache.xmlrpc.XmlRpcClient;
+import org.apache.xmlrpc.XmlRpcException;
 import paneles.generales.inicio_sesion.Inicio_Sesion_General_Panel;
 import paneles.generales.inicio_sesion.Recuperar_Credenciales_General_Panel;
 import paneles.generales.inicio_sesion.Crear_Cuenta_General_Panel;
@@ -24,6 +30,7 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     private static Crear_Cuenta_General_Panel crear_Cuenta;
     private static Tablero_Estudiante_Panel tablero_Estudiante;
     private static CardLayout layout_Tarjeta;
+    private XmlRpcClient xmlRpcClient;
 
 
     /**
@@ -51,6 +58,25 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         visualizador_JPanel.add("crear_Cuenta", crear_Cuenta);
 
         layout_Tarjeta = (CardLayout) visualizador_JPanel.getLayout();
+        
+        try { 
+            xmlRpcClient  = new XmlRpcClient("http://localhost:3030");
+            
+            Vector params = new Vector();
+         
+            params.addElement(CourseRoom.Faker().name().fullName());
+            params.addElement(CourseRoom.Faker().lorem().sentence());
+            
+            Object result = xmlRpcClient.execute("CourseRoom_Server.getSaludo", params);
+            String sum = ((String) result);
+            JOptionPane.showMessageDialog(null, sum, "Mensaje Desde El Servidor", JOptionPane.INFORMATION_MESSAGE);
+            
+        } catch (MalformedURLException ex) {
+            System.err.println("JavaClient: " + ex);
+            
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println("JavaClient: " + ex);
+        }
 
     }
 
