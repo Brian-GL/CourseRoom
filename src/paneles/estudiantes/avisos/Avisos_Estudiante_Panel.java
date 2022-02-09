@@ -176,12 +176,12 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
    
@@ -213,8 +213,8 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         ImageIcon aviso_Grupo = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
         ImageIcon aviso_Chat = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
         
-        for(int i = 0; i < CourseRoom.Faker().number().numberBetween(1,10);i++){
-            switch(CourseRoom.Faker().number().numberBetween(1,5)){
+        for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1,10);i++){
+            switch(CourseRoom.Utilerias.number().numberBetween(1,5)){
                 case 1:
                     celdas[0] = new Celda_Renderer(aviso_Curso,"Curso",id);
                     break;
@@ -229,8 +229,8 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                     break;
             }
             
-            celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(),id);
-            celdas[2] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0,1).toString(),id);
+            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(),id);
+            celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0,1).toString(),id);
             
             modelo.addRow(celdas);
         }
@@ -239,22 +239,22 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     @Override
     public void Colorear_Componentes() {
       
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        avisos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        avisos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
         for(int i = 0; i < avisos_JTable.getRowCount();i++){
             for(int j = 0; j < 3; j++){
                 celda = (Celda_Renderer)modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         

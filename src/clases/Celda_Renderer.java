@@ -17,6 +17,7 @@
  */
 package clases;
 
+import courseroom.CourseRoom;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -24,7 +25,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import courseroom.CourseRoom;
 
 /**
  *
@@ -48,9 +48,9 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         this.ID = _id;
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
-        label.setText(CourseRoom.Formato_HTML_Central(texto));
+        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
         label.setFont(new Font("Gadugi", Font.PLAIN, 14));
-        label.setForeground(CourseRoom.Primer_Color_Fuente());
+        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
     }
     
     public Celda_Renderer(ImageIcon icono, String _id) {
@@ -70,11 +70,11 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         if(icono != null){
             label.setIcon(icono);
         }
-        label.setText(CourseRoom.Formato_HTML_Centro(texto));
+        label.setText(CourseRoom.Utilerias.Formato_HTML_Centro(texto));
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setFont(new Font("Gadugi", Font.PLAIN, 14));
-        label.setForeground(CourseRoom.Primer_Color_Fuente());
+        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
     }
 
     public JLabel Label() {

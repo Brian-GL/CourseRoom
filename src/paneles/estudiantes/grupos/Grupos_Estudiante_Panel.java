@@ -334,12 +334,12 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private void buscar_Grupos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Grupos_JButtonMouseEntered
         // TODO add your handling code here:
-        buscar_Grupos_JButton.setBackground(CourseRoom.Tercer_Color());
+        buscar_Grupos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_buscar_Grupos_JButtonMouseEntered
 
     private void buscar_Grupos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Grupos_JButtonMouseExited
         // TODO add your handling code here:
-        buscar_Grupos_JButton.setBackground(CourseRoom.Segundo_Color());
+        buscar_Grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_buscar_Grupos_JButtonMouseExited
 
     private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
@@ -358,12 +358,12 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private void mostrar_Grupos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Grupos_JButtonMouseEntered
         // TODO add your handling code here:
-        mostrar_Grupos_JButton.setBackground(CourseRoom.Segundo_Color());
+        mostrar_Grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_mostrar_Grupos_JButtonMouseEntered
 
     private void mostrar_Grupos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Grupos_JButtonMouseExited
         // TODO add your handling code here:
-        mostrar_Grupos_JButton.setBackground(CourseRoom.Primer_Color());
+        mostrar_Grupos_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_mostrar_Grupos_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
@@ -375,12 +375,12 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     public static int Numero_Grupos() {
@@ -425,22 +425,22 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         ImageIcon icono_Grupo;
         Grupo_Estudiante_Panel grupo_Estudiante_Panel;
         String nombre, curso, fecha;
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
-            id = CourseRoom.Concatenar("Grupo_", i);
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
+            id = CourseRoom.Utilerias.Concatenar("Grupo_", i);
             try {
                 System.out.println(id + " -> Getting Image From https://picsum.photos/450/450");
                 url_Imagen = new URL("https://picsum.photos/400/400");
                 obtener_Imagen = ImageIO.read(url_Imagen);
 
-                fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                 celdas[1] = new Celda_Renderer(fecha, id);
-                curso = CourseRoom.Faker().educator().course();
+                curso = CourseRoom.Utilerias.educator().course();
                 celdas[2] = new Celda_Renderer(curso, id);
 
                 grupo = obtener_Imagen.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
                 icono_Grupo = new ImageIcon(grupo);
 
-                nombre = CourseRoom.Faker().team().name();
+                nombre = CourseRoom.Utilerias.team().name();
                 celdas[0] = new Celda_Renderer(icono_Grupo, nombre , id);
 
                 grupo_Estudiante_Panel
@@ -514,24 +514,24 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     @Override
     public void Colorear_Componentes() {
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        buscar_Grupos_JButton.setBackground(CourseRoom.Segundo_Color());
+        buscar_Grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        mostrar_Grupos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        mostrar_Grupos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        mostrar_Grupos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        mostrar_Grupos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Grupos_JTable.getModel();
         for (int i = 0; i < mostrar_Grupos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 3; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
 
@@ -545,22 +545,22 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Buscar Grupos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Tercer_Color_Fuente()));
+                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
 
-        buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
-        buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        buscar_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        buscar_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        mostrar_Grupos_JButton.setBackground(CourseRoom.Primer_Color());
+        mostrar_Grupos_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
 
-        buscar_Grupos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        buscar_Grupos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        buscar_Grupos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_Grupos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         modelo = (DefaultTableModel) buscar_Grupos_JTable.getModel();
         for (int i = 0; i < buscar_Grupos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 3; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         

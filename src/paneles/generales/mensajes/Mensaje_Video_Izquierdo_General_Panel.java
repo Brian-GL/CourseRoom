@@ -277,15 +277,15 @@ public class Mensaje_Video_Izquierdo_General_Panel extends javax.swing.JPanel im
 
     @Override
     public void Colorear_Componentes() {
-        fecha_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        emisor_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
-        contenido_JPanel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        fecha_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        emisor_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        contenido_JPanel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
-        duracion_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        progreso_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        titulo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        progreso_JSlider.setForeground(CourseRoom.Segundo_Color_Fuente());
+        duracion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        progreso_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        progreso_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }
 
     @Override
@@ -435,7 +435,7 @@ public class Mensaje_Video_Izquierdo_General_Panel extends javax.swing.JPanel im
                         tiempo = (int) componente_Embebido_Reproductor_Video.mediaPlayer().status().time();
                         conversion_Tiempo = tiempo / 1000;
                         progreso_JSlider.setValue(tiempo);
-                        segundos = CourseRoom.Convertir_Segundos(conversion_Tiempo);
+                        segundos = CourseRoom.Utilerias.Convertir_Segundos(conversion_Tiempo);
                         progreso_JLabel.setText(segundos);
                      }
                 }
@@ -527,7 +527,7 @@ public class Mensaje_Video_Izquierdo_General_Panel extends javax.swing.JPanel im
                 if(longitud < Integer.MAX_VALUE){
                     longitud_Real = (int)longitud;
                     progreso_JSlider.setMaximum(longitud_Real);
-                    duracion_JLabel.setText(CourseRoom.Convertir_Segundos(longitud_Real/1000));
+                    duracion_JLabel.setText(CourseRoom.Utilerias.Convertir_Segundos(longitud_Real/1000));
                     
                 }else{
                     JOptionPane.showMessageDialog(null, "Archivo Demasiado Grande","ERROR",JOptionPane.ERROR_MESSAGE);

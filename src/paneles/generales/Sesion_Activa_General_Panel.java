@@ -120,7 +120,7 @@ public class Sesion_Activa_General_Panel extends javax.swing.JPanel implements C
     @Override
     public void Iniciar_Componentes() {
         String valor  = System.getProperty("os.name");
-        valor =  CourseRoom.Concatenar(valor, " - ",System.getProperty("user.name"));
+        valor =  CourseRoom.Utilerias.Concatenar(valor, " - ",System.getProperty("user.name"));
         dispositivo_JLabel.setText(valor);
         
         SystemInfo informacion_Sistema = new SystemInfo();
@@ -133,10 +133,10 @@ public class Sesion_Activa_General_Panel extends javax.swing.JPanel implements C
 
     @Override
     public void Colorear_Componentes() {
-        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
-        dispositivo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        fecha_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        uuid_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        dispositivo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        fecha_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        uuid_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
     }
 }

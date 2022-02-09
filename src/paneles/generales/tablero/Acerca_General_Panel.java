@@ -7,6 +7,9 @@ package paneles.generales.tablero;
 
 import courseroom.CourseRoom;
 import interfaces.Componentes_Interface;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -111,16 +114,25 @@ public class Acerca_General_Panel extends javax.swing.JPanel implements Componen
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
-        ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
-        logo_JLabel.setIcon(icono);
-        icono.getImage().flush();
+        Image logo_Imagen;
+        try {
+            logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
+            logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
+            ImageIcon icono = new ImageIcon(logo_Imagen);
+            logo_JLabel.setIcon(icono);
+            logo_Imagen.flush();
+            icono.getImage().flush();
+        } catch (IOException ex) {
+            
+        }
+       
     }
 
     @Override
     public void Colorear_Componentes() {
-        titulo_JLabe.setBackground(CourseRoom.Segundo_Color());
-        titulo_JLabe.setForeground(CourseRoom.Segundo_Color_Fuente());
-        descripcion_JTextPane.setForeground(CourseRoom.Primer_Color_Fuente());
-        descripcion_JTextPane.setCaretColor(CourseRoom.Primer_Color_Fuente());
+        titulo_JLabe.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabe.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias.Primer_Color_Fuente());
     }
 }

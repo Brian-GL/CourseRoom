@@ -343,12 +343,12 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
 
     private void buscar_Preguntas_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Preguntas_JButtonMouseEntered
         // TODO add your handling code here:
-        buscar_Preguntas_JButton.setBackground(CourseRoom.Tercer_Color());
+        buscar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_buscar_Preguntas_JButtonMouseEntered
 
     private void buscar_Preguntas_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Preguntas_JButtonMouseExited
         // TODO add your handling code here:
-        buscar_Preguntas_JButton.setBackground(CourseRoom.Segundo_Color());
+        buscar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_buscar_Preguntas_JButtonMouseExited
 
     private void preguntar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseClicked
@@ -364,12 +364,12 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
 
     private void preguntar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseEntered
         // TODO add your handling code here:
-        preguntar_JButton.setBackground(CourseRoom.Tercer_Color());
+        preguntar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_preguntar_JButtonMouseEntered
 
     private void preguntar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseExited
         // TODO add your handling code here:
-        preguntar_JButton.setBackground(CourseRoom.Segundo_Color());
+        preguntar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_preguntar_JButtonMouseExited
 
     private void buscar_Preguntas_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_Preguntas_JTextFieldKeyPressed
@@ -385,12 +385,12 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
 
     private void mostrar_Preguntas_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Preguntas_JButtonMouseEntered
         // TODO add your handling code here:
-        mostrar_Preguntas_JButton.setBackground(CourseRoom.Segundo_Color());
+        mostrar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_mostrar_Preguntas_JButtonMouseEntered
 
     private void mostrar_Preguntas_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Preguntas_JButtonMouseExited
         // TODO add your handling code here:
-        mostrar_Preguntas_JButton.setBackground(CourseRoom.Primer_Color());
+        mostrar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_mostrar_Preguntas_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
@@ -402,12 +402,12 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     public static int Numero_Preguntas(){
@@ -525,24 +525,24 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
 
     @Override
     public void Colorear_Componentes() {
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
-        titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        buscar_Preguntas_JButton.setBackground(CourseRoom.Segundo_Color());
-        preguntar_JButton.setBackground(CourseRoom.Segundo_Color());
+        buscar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        preguntar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        mostrar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        mostrar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        mostrar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        mostrar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < mostrar_Preguntas_JTable.getRowCount(); i++) {
             for (int j = 0; j < 5; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
 
@@ -556,22 +556,22 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         buscar_Preguntas_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Buscar Pregunta(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Tercer_Color_Fuente()));
+                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         
-        buscar_Preguntas_JTextField.setBackground(CourseRoom.Tercer_Color());
-        buscar_Preguntas_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
-        buscar_Preguntas_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        buscar_Preguntas_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        buscar_Preguntas_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        buscar_Preguntas_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        mostrar_Preguntas_JButton.setBackground(CourseRoom.Primer_Color());
+        mostrar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
         
-        buscar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        buscar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        buscar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         modelo = (DefaultTableModel) buscar_Preguntas_JTable.getModel();
         for (int i = 0; i < buscar_Preguntas_JTable.getRowCount(); i++) {
             for (int j = 0; j < 5; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
 

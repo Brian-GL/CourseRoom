@@ -5,16 +5,12 @@
  */
 package frames.estudiantes;
 
+import courseroom.CourseRoom;
 import interfaces.Componentes_Interface;
 import java.awt.Font;
-import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import courseroom.CourseRoom;
-import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
-import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.chats.Chats_Estudiante_Panel;
-import paneles.estudiantes.preguntas.Preguntas_Estudiante_Panel;
 
 /**
  *
@@ -130,7 +126,7 @@ public class Chatear_Estudiante_Frame extends javax.swing.JDialog implements Com
                 if(!((String)chatear_AutoCompletionComboBox.getSelectedItem()).isBlank() && !((String)chatear_AutoCompletionComboBox.getSelectedItem()).isEmpty()){
 
                     int cuenta = Chats_Estudiante_Panel.Numero_Chats()+1;
-                    String id = CourseRoom.Concatenar("Chat_", cuenta);
+                    String id = CourseRoom.Utilerias.Concatenar("Chat_", cuenta);
 
                     // Chats_Estudiante_Panel.Agregar_Chat();
                     //Tablero_Estudiante_Panel.Mostrar_Vista(id);
@@ -145,14 +141,14 @@ public class Chatear_Estudiante_Frame extends javax.swing.JDialog implements Com
 
     private void chatear_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseEntered
         // TODO add your handling code here:
-        chatear_JButton.setBackground(CourseRoom.Segundo_Color());
-        chatear_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        chatear_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        chatear_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }//GEN-LAST:event_chatear_JButtonMouseEntered
 
     private void chatear_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseExited
         // TODO add your handling code here:
-        chatear_JButton.setBackground(CourseRoom.Tercer_Color());
-        chatear_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        chatear_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        chatear_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }//GEN-LAST:event_chatear_JButtonMouseExited
 
     private void cerrar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseClicked
@@ -164,12 +160,12 @@ public class Chatear_Estudiante_Frame extends javax.swing.JDialog implements Com
 
     private void cerrar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseEntered
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Tercer_Color());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_cerrar_JButtonMouseEntered
 
     private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseExited
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Segundo_Color());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_cerrar_JButtonMouseExited
 
 
@@ -189,7 +185,7 @@ public class Chatear_Estudiante_Frame extends javax.swing.JDialog implements Com
         chatear_AutoCompletionComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Chatear Con", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Tercer_Color_Fuente()));
+                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         
        
         Colorear_Componentes();
@@ -198,15 +194,15 @@ public class Chatear_Estudiante_Frame extends javax.swing.JDialog implements Com
     @Override
     public void Colorear_Componentes() {
         
-        chatear_AutoCompletionComboBox.setBackground(CourseRoom.Tercer_Color());
-        chatear_AutoCompletionComboBox.setForeground(CourseRoom.Tercer_Color_Fuente());
+        chatear_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        chatear_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        cerrar_JButton.setBackground(CourseRoom.Segundo_Color());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        chatear_JButton.setBackground(CourseRoom.Tercer_Color());
-        chatear_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        chatear_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        chatear_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
                
     }
 }

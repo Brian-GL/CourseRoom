@@ -63,7 +63,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         nombre_JLabel.setText(nombre_Tarea);
         curso_JLabel.setText(nombre_Curso);
         nombre_Profesor_JLabel.setText(nombre_Profesor);
-        fecha_Entrega_JLabel.setText(CourseRoom.Concatenar("Se entrega el ", fecha_Entrega));
+        fecha_Entrega_JLabel.setText(CourseRoom.Utilerias.Concatenar("Se entrega el ", fecha_Entrega));
         
         estatus_Tarea_JLabel.setText(estatus);
         
@@ -683,12 +683,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void regresar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Tercer_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseEntered
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private void curso_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_curso_JLabelMouseClicked
@@ -714,34 +714,34 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void subir_Archivos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Archivos_JButtonMouseEntered
         // TODO add your handling code here:
-        subir_Archivos_JButton.setBackground(CourseRoom.Tercer_Color());
-        subir_Archivos_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        subir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        subir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }//GEN-LAST:event_subir_Archivos_JButtonMouseEntered
 
     private void subir_Archivos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Archivos_JButtonMouseExited
         // TODO add your handling code here:
-        subir_Archivos_JButton.setBackground(CourseRoom.Segundo_Color());
-        subir_Archivos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        subir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        subir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }//GEN-LAST:event_subir_Archivos_JButtonMouseExited
 
     private void subir_Cambios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Cambios_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            fecha_Actualizacion_JLabel.setText(CourseRoom.Concatenar("Actualizado: ",LocalDateTime.now().toString()));
+            fecha_Actualizacion_JLabel.setText(CourseRoom.Utilerias.Concatenar("Actualizado: ",LocalDateTime.now().toString()));
         }
     }//GEN-LAST:event_subir_Cambios_JButtonMouseClicked
 
     private void subir_Cambios_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Cambios_JButtonMouseEntered
         // TODO add your handling code here:
-        subir_Cambios_JButton.setBackground(CourseRoom.Segundo_Color());
-        subir_Cambios_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        subir_Cambios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        subir_Cambios_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }//GEN-LAST:event_subir_Cambios_JButtonMouseEntered
 
     private void subir_Cambios_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Cambios_JButtonMouseExited
         // TODO add your handling code here:
-        subir_Cambios_JButton.setBackground(CourseRoom.Tercer_Color());
-        subir_Cambios_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        subir_Cambios_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        subir_Cambios_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }//GEN-LAST:event_subir_Cambios_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
@@ -753,12 +753,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void retroalimentacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_retroalimentacion_JButtonMouseClicked
@@ -861,10 +861,10 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
         ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 10); i++) {
            
-            celdas[0] = new Celda_Renderer(CourseRoom.Faker().file().fileName(),"");
-            celdas[1] = new Celda_Renderer(CourseRoom.Faker().date().birthday(21, 23).toString(), "");
+            celdas[0] = new Celda_Renderer(CourseRoom.Utilerias.file().fileName(),"");
+            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(21, 23).toString(), "");
             celdas[2] = new Celda_Renderer(icono_Descargar, "");
             modelo.addRow(celdas);
         }
@@ -923,15 +923,15 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         celdas = new Celda_Renderer[2];
         modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 10); i++) {
 
-            celdas[0] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(5), "");
-            celdas[1] = new Celda_Renderer(CourseRoom.Faker().date().birthday(21, 23).toString(), "");
+            celdas[0] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(5), "");
+            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(21, 23).toString(), "");
             modelo.addRow(celdas);
         }
 
         
-        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(20)));
+        descripcion_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(CourseRoom.Utilerias.lorem().paragraph(20)));
         
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -948,76 +948,76 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     @Override
     public void Colorear_Componentes() {
-        titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
+        titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
         Carta_Visible();
         
-        nombre_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        nombre_JLabel.setBackground(CourseRoom.Segundo_Color());
+        nombre_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        nombre_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        regresar_JButton.setBackground(CourseRoom.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        subir_Archivos_JButton.setBackground(CourseRoom.Segundo_Color());
-        subir_Archivos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        subir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        subir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        archivos_Adjuntos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        archivos_Adjuntos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        archivos_Adjuntos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        archivos_Adjuntos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < archivos_Adjuntos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 2; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
-        archivos_Subidos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        archivos_Subidos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        archivos_Subidos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        archivos_Subidos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
         for (int i = 0; i < archivos_Subidos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 2; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
-        retroalimentacion_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        retroalimentacion_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        retroalimentacion_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        retroalimentacion_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
         for (int i = 0; i < retroalimentacion_JTable.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
-        curso_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        curso_JLabel.setBackground(CourseRoom.Tercer_Color());
+        curso_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        curso_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        estatus_Tarea_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        estatus_Tarea_JLabel.setBackground(CourseRoom.Segundo_Color());
+        estatus_Tarea_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        estatus_Tarea_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        nombre_Profesor_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        nombre_Profesor_JLabel.setBackground(CourseRoom.Segundo_Color());
+        nombre_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        nombre_Profesor_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        fecha_Entrega_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        fecha_Entrega_JLabel.setBackground(CourseRoom.Segundo_Color());
+        fecha_Entrega_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        fecha_Entrega_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        fecha_Actualizacion_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        fecha_Actualizacion_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         
-        descripcion_JTextPane.setForeground(CourseRoom.Primer_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         
-        mensaje_Comentarios_JTextField.setBackground(CourseRoom.Primer_Color());
-        mensaje_Comentarios_JTextField.setForeground(CourseRoom.Primer_Color_Fuente());
-        enviar_Comentarios_JPanel.setBackground(CourseRoom.Segundo_Color());
+        mensaje_Comentarios_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
+        mensaje_Comentarios_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        enviar_Comentarios_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        subir_Cambios_JButton.setBackground(CourseRoom.Tercer_Color());
-        subir_Cambios_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        subir_Cambios_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        subir_Cambios_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         Component[] componentes = mensajes_Comentarios_JPanel.getComponents();
         Component componente;
@@ -1028,8 +1028,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         Font gadugi = new Font("Gadugi", 0, 18);
         
-        descripcion_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Primer_Color_Fuente()), "Descripcion De La Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Primer_Color_Fuente()));
+        descripcion_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion De La Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Primer_Color_Fuente()));
 
     }
 
@@ -1039,9 +1039,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         String mensaje = mensaje_Comentarios_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
-            String emisor = CourseRoom.Faker().dune().character();
-            String fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
-            if (CourseRoom.Random().nextInt(10) < 5) {
+            String emisor = CourseRoom.Utilerias.dune().character();
+            String fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
+            if (CourseRoom.Utilerias.number().numberBetween(1, 10) < 5) {
                 Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel
                         = new Mensaje_Texto_Izquierdo_General_Panel(emisor, fecha, mensaje);
                 mensajes_Comentarios_JPanel.add(mensaje_Texto_General_Panel);
@@ -1088,39 +1088,39 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     public void Carta_Visible() {
         switch (carta_Visible) {
             case 0:
-                informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-                archivos_Adjuntos_JButton.setBackground(CourseRoom.Segundo_Color());
-                comentarios_JButton.setBackground(CourseRoom.Segundo_Color());
-                entregar_Tarea_JButton.setBackground(CourseRoom.Segundo_Color());
-                retroalimentacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                comentarios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                entregar_Tarea_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                retroalimentacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 1:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                archivos_Adjuntos_JButton.setBackground(CourseRoom.Tercer_Color());
-                comentarios_JButton.setBackground(CourseRoom.Segundo_Color());
-                entregar_Tarea_JButton.setBackground(CourseRoom.Segundo_Color());
-                retroalimentacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                comentarios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                entregar_Tarea_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                retroalimentacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 2:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                archivos_Adjuntos_JButton.setBackground(CourseRoom.Segundo_Color());
-                comentarios_JButton.setBackground(CourseRoom.Tercer_Color());
-                entregar_Tarea_JButton.setBackground(CourseRoom.Segundo_Color());
-                retroalimentacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                comentarios_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                entregar_Tarea_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                retroalimentacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 3:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                archivos_Adjuntos_JButton.setBackground(CourseRoom.Segundo_Color());
-                comentarios_JButton.setBackground(CourseRoom.Segundo_Color());
-                entregar_Tarea_JButton.setBackground(CourseRoom.Tercer_Color());
-                retroalimentacion_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                comentarios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                entregar_Tarea_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                retroalimentacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 4:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                archivos_Adjuntos_JButton.setBackground(CourseRoom.Segundo_Color());
-                comentarios_JButton.setBackground(CourseRoom.Segundo_Color());
-                entregar_Tarea_JButton.setBackground(CourseRoom.Segundo_Color());
-                retroalimentacion_JButton.setBackground(CourseRoom.Tercer_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                comentarios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                entregar_Tarea_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                retroalimentacion_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
                 break;
             
         }

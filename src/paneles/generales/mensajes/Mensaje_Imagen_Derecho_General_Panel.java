@@ -153,10 +153,10 @@ public class Mensaje_Imagen_Derecho_General_Panel extends javax.swing.JPanel imp
 
     @Override
     public void Colorear_Componentes() {
-        fecha_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        emisor_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        contenido_JPanel.setBackground(CourseRoom.Tercer_Color());
-        contenido_JPanel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        fecha_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        emisor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }
 
  

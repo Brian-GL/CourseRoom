@@ -1664,7 +1664,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += CourseRoom.Random().nextInt(largo_Imagen+1) + largo_Imagen;
+                    i += CourseRoom.Utilerias.number().numberBetween(1,largo_Imagen+1);
                 }
 
                 segundo_Color = primer_Color;
@@ -1673,12 +1673,12 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 if(lista_Colores.size() > 1){
                     
                     while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
+                        posicion = CourseRoom.Utilerias.number().numberBetween(0,lista_Colores.size()-1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 25){
                              while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Random().nextInt((int)lista_Colores.size()-1);
+                                posicion = CourseRoom.Utilerias.number().numberBetween(0,lista_Colores.size()-1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
@@ -1915,7 +1915,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         tiempo = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().status().time();
                         valor = tiempo / 1000;
                         progreso_JSlider.setValue(tiempo);
-                        segundos = CourseRoom.Convertir_Segundos(valor);
+                        segundos = CourseRoom.Utilerias.Convertir_Segundos(valor);
                         progreso_JLabel.setText(segundos);
                     }
                     
@@ -2009,7 +2009,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 if(longitud < Integer.MAX_VALUE){
                     longitud_Real = (int)longitud;
                     progreso_JSlider.setMaximum(longitud_Real);
-                    duracion_Total_JLabel.setText(CourseRoom.Convertir_Segundos(longitud_Real/1000));
+                    duracion_Total_JLabel.setText(CourseRoom.Utilerias.Convertir_Segundos(longitud_Real/1000));
                     play_Pausa_JLabel.setIcon(icono_Pause);
                     componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setVolume(volumen_JSlider.getValue());
                     
@@ -2039,7 +2039,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 String genero = tag.getFirst(FieldKey.GENRE);
                 String anio = tag.getFirst(FieldKey.YEAR);
                 String informacion_archivo = 
-                CourseRoom.Concatenar(archivo_Audio.getExt().toUpperCase()," Archivo - ",archivo_Audio.getAudioHeader().getBitRate()," kbps");
+                CourseRoom.Utilerias.Concatenar(archivo_Audio.getExt().toUpperCase()," Archivo - ",archivo_Audio.getAudioHeader().getBitRate()," kbps");
                 String letras = tag.getFirst(FieldKey.LYRICS);
                 if(titulo == null){
                     titulo = archivo_Leer.getName();
@@ -2047,9 +2047,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 if(titulo.isEmpty()){
                     titulo = archivo_Leer.getName();
                 }
-                titulo_JLabel.setToolTipText(CourseRoom.Concatenar("<html><h3>Titulo: ",titulo,"</h3></html>"));
-                artista_JLabel.setToolTipText(CourseRoom.Concatenar("<html><h3>Artista: ",artista,"</h3></html>"));
-                album_JLabel.setToolTipText(CourseRoom.Concatenar("<html><h3>Album: ",album,"</h3></html>"));
+                titulo_JLabel.setToolTipText(CourseRoom.Utilerias.Concatenar("<html><h3>Titulo: ",titulo,"</h3></html>"));
+                artista_JLabel.setToolTipText(CourseRoom.Utilerias.Concatenar("<html><h3>Artista: ",artista,"</h3></html>"));
+                album_JLabel.setToolTipText(CourseRoom.Utilerias.Concatenar("<html><h3>Album: ",album,"</h3></html>"));
 
                 titulo_JLabel.setText(titulo);
                 artista_JLabel.setText(artista);

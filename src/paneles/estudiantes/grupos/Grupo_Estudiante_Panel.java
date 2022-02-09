@@ -40,6 +40,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Locale;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -83,10 +84,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         ImageIcon icono_Grupo = new ImageIcon(_imagen_Grupo);
         nombre_JLabel.setText(nombre_Grupo);
         editar_Nombre_JTextField.setText(nombre_Grupo);
-        curso_JLabel.setText(CourseRoom.Concatenar("Del Curso ",_curso));
+        curso_JLabel.setText(CourseRoom.Utilerias.Concatenar("Del Curso ",_curso));
         imagen_JLabel.setIcon(icono_Grupo);
         editar_Imagen_JLabel.setIcon(icono_Grupo);
-        fecha_Creacion_JLabel.setText(CourseRoom.Concatenar("Creado El ",_fecha_Creacion));
+        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias.Concatenar("Creado El ",_fecha_Creacion));
 
         this.ID = _id;
         
@@ -1025,12 +1026,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void regresar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Tercer_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseEntered
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private void miembros_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miembros_JButtonMouseClicked
@@ -1065,12 +1066,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void enviar_Videos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Videos_JButton.setBackground(CourseRoom.Tercer_Color());
+        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_enviar_Videos_JButtonMouseEntered
 
     private void enviar_Videos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_enviar_Videos_JButtonMouseExited
 
     private void enviar_Audios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseClicked
@@ -1082,12 +1083,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void enviar_Audios_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Audios_JButton.setBackground(CourseRoom.Tercer_Color());
+        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_enviar_Audios_JButtonMouseEntered
 
     private void enviar_Audios_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Audios_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_enviar_Audios_JButtonMouseExited
 
     private void enviar_Imagenes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseClicked
@@ -1099,12 +1100,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void enviar_Imagenes_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Tercer_Color());
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseEntered
 
     private void enviar_Imagenes_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseExited
 
     private void compartir_Archivos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivos_JButtonMouseClicked
@@ -1116,14 +1117,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void compartir_Archivos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivos_JButtonMouseEntered
         // TODO add your handling code here:
-        compartir_Archivos_JButton.setBackground(CourseRoom.Segundo_Color());
-        compartir_Archivos_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }//GEN-LAST:event_compartir_Archivos_JButtonMouseEntered
 
     private void compartir_Archivos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivos_JButtonMouseExited
         // TODO add your handling code here:
-        compartir_Archivos_JButton.setBackground(CourseRoom.Tercer_Color());
-        compartir_Archivos_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }//GEN-LAST:event_compartir_Archivos_JButtonMouseExited
 
     private void cambiar_Imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseClicked
@@ -1161,14 +1162,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void cambiar_Imagen_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseEntered
         // TODO add your handling code here:
-        cambiar_Imagen_JButton.setBackground(CourseRoom.Segundo_Color());
-        cambiar_Imagen_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }//GEN-LAST:event_cambiar_Imagen_JButtonMouseEntered
 
     private void cambiar_Imagen_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseExited
         // TODO add your handling code here:
-        cambiar_Imagen_JButton.setBackground(CourseRoom.Tercer_Color());
-        cambiar_Imagen_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }//GEN-LAST:event_cambiar_Imagen_JButtonMouseExited
 
     private void editar_Nombre_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_JButtonMouseClicked
@@ -1184,12 +1185,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void editar_Nombre_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_JButtonMouseEntered
         // TODO add your handling code here:
-        editar_Nombre_JButton.setBackground(CourseRoom.Segundo_Color());
+        editar_Nombre_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_editar_Nombre_JButtonMouseEntered
 
     private void editar_Nombre_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_JButtonMouseExited
         // TODO add your handling code here:
-        editar_Nombre_JButton.setBackground(CourseRoom.Tercer_Color());
+        editar_Nombre_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_editar_Nombre_JButtonMouseExited
 
     private void abandonar_Grupo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abandonar_Grupo_JButtonMouseClicked
@@ -1201,14 +1202,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void abandonar_Grupo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abandonar_Grupo_JButtonMouseEntered
         // TODO add your handling code here:
-        abandonar_Grupo_JButton.setBackground(CourseRoom.Segundo_Color().darker());
-        abandonar_Grupo_JButton.setForeground(CourseRoom.Segundo_Color_Fuente().brighter());
+        abandonar_Grupo_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color().darker());
+        abandonar_Grupo_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente().brighter());
     }//GEN-LAST:event_abandonar_Grupo_JButtonMouseEntered
 
     private void abandonar_Grupo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abandonar_Grupo_JButtonMouseExited
         // TODO add your handling code here:
-        abandonar_Grupo_JButton.setBackground(CourseRoom.Tercer_Color().darker());
-        abandonar_Grupo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente().brighter());
+        abandonar_Grupo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color().darker());
+        abandonar_Grupo_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente().brighter());
     }//GEN-LAST:event_abandonar_Grupo_JButtonMouseExited
 
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
@@ -1220,12 +1221,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void editar_Descripcion_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseEntered
         // TODO add your handling code here:
-        editar_Descripcion_JButton.setBackground(CourseRoom.Segundo_Color());
+        editar_Descripcion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseEntered
 
     private void editar_Descripcion_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseExited
         // TODO add your handling code here:
-        editar_Descripcion_JButton.setBackground(CourseRoom.Tercer_Color());
+        editar_Descripcion_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseExited
 
     private void anadir_Tarea_Pendiente_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anadir_Tarea_Pendiente_JButtonMouseClicked
@@ -1235,7 +1236,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             String tarea_Pendiente_nombre = nombre_Tarea_Pendiente_JTextField.getText();
             String tarea_Pendiente_descricion = descripcion_Tarea_Pendiente_JTextPane.getText();
             String tarea_Pendiente_fecha =
-            CourseRoom.Concatenar(escogedor_Fecha_Hora.getDatePicker().getDateStringOrEmptyString()," - ",escogedor_Fecha_Hora.getTimePicker().getTimeStringOrEmptyString());
+            CourseRoom.Utilerias.Concatenar(escogedor_Fecha_Hora.getDatePicker().getDateStringOrEmptyString()," - ",escogedor_Fecha_Hora.getTimePicker().getTimeStringOrEmptyString());
 
             if(!tarea_Pendiente_nombre.isEmpty() && !tarea_Pendiente_nombre.isBlank() &&
                 !tarea_Pendiente_descricion.isEmpty() && !tarea_Pendiente_descricion.isBlank() &&
@@ -1248,8 +1249,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 
                 Celda_Renderer[] celdas = new Celda_Renderer[4];
                 ImageIcon icono_Pendiente = new ImageIcon(getClass().getResource("/recursos/iconos/clock.png"));
-                tarea_Pendiente_nombre = CourseRoom.Concatenar(tarea_Pendiente_nombre,": <br><br>",tarea_Pendiente_descricion);
-                celdas[0] = new Celda_Renderer(CourseRoom.Formato_HTML_Central(tarea_Pendiente_nombre),"");
+                tarea_Pendiente_nombre = CourseRoom.Utilerias.Concatenar(tarea_Pendiente_nombre,": <br><br>",tarea_Pendiente_descricion);
+                celdas[0] = new Celda_Renderer(CourseRoom.Utilerias.Formato_HTML_Central(tarea_Pendiente_nombre),"");
                 celdas[1] = new Celda_Renderer(icono_Usuario,nombre_JLabel.getText(),"");
                 celdas[2] = new Celda_Renderer(tarea_Pendiente_fecha,"");
                 celdas[3] = new Celda_Renderer(icono_Pendiente,"Pendiente","");
@@ -1264,14 +1265,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void anadir_Tarea_Pendiente_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anadir_Tarea_Pendiente_JButtonMouseEntered
         // TODO add your handling code here:
-        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
-        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Segundo_Color());
+        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_anadir_Tarea_Pendiente_JButtonMouseEntered
 
     private void anadir_Tarea_Pendiente_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anadir_Tarea_Pendiente_JButtonMouseExited
         // TODO add your handling code here:
-        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Tercer_Color());
+        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_anadir_Tarea_Pendiente_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
@@ -1283,12 +1284,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     
@@ -1361,8 +1362,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     public void Iniciar_Componentes() {
         
         carta_Visible = 0;
-        String descripcion = CourseRoom.Faker().lorem().paragraph(5);
-        descripcion_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(descripcion));
+        String descripcion = CourseRoom.Utilerias.lorem().paragraph(5);
+        descripcion_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(descripcion));
         editar_Descripcion_JTextPane.setText(descripcion);
         
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1403,15 +1404,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         Image obtener_Imagen = null;
         ImageIcon icono_Miembro = null;
         ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
             try {
                 System.out.println(this.ID + " -> Getting Image From https://i.pravatar.cc/96");
                 url_Imagen = new URL("https://i.pravatar.cc/96");
                 obtener_Imagen = ImageIO.read(url_Imagen);
                 icono_Miembro = new ImageIcon(obtener_Imagen);
 
-                celdas[0] = new Celda_Renderer(icono_Miembro, CourseRoom.Faker().name().fullName(), "");
-                celdas[1] = new Celda_Renderer(CourseRoom.Faker().date().birthday(22,23).toString(), "");
+                celdas[0] = new Celda_Renderer(icono_Miembro, CourseRoom.Utilerias.name().fullName(), "");
+                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(22,23).toString(), "");
                 celdas[2] = new Celda_Renderer(icono_Remover, "");
                 miembro_A_Cargo_JComboBox.addItem(celdas[0].Label().getText());
                 modelo.addRow(celdas);
@@ -1496,7 +1497,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         gadugi = new Font("Gadugi", Font.PLAIN, 15);
         LocalDate fecha_Minima = LocalDate.now();
-        DatePickerSettings ajustes_Fecha = new DatePickerSettings(CourseRoom.Locale());
+        Locale local = new Locale("es","MX");
+        DatePickerSettings ajustes_Fecha = new DatePickerSettings(local);
         ajustes_Fecha.setFirstDayOfWeek(DayOfWeek.MONDAY);
         ajustes_Fecha.setFontVetoedDate(gadugi);
         ajustes_Fecha.setFontValidDate(gadugi);
@@ -1528,43 +1530,43 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     @Override
     public void Colorear_Componentes() {
-        titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
+        titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
         Carta_Visible();
         
-        editar_Descripcion_JButton.setBackground(CourseRoom.Tercer_Color());
+        editar_Descripcion_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        actualizar_JButton.setBackground((CourseRoom.Segundo_Color()));
+        actualizar_JButton.setBackground((CourseRoom.Utilerias.Segundo_Color()));
         
-        descripcion_JTextPane.setBackground(CourseRoom.Tercer_Color());
-        descripcion_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
-        descripcion_JTextPane.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        editar_Descripcion_JTextPane.setBackground(CourseRoom.Tercer_Color());
-        editar_Descripcion_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
-        editar_Descripcion_JTextPane.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        editar_Descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        editar_Descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        editar_Descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        curso_JLabel.setBackground(CourseRoom.Segundo_Color());
-        curso_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        curso_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        curso_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        nombre_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        regresar_JButton.setBackground(CourseRoom.Segundo_Color());
+        nombre_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        archivos_Compartidos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        archivos_Compartidos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        archivos_Compartidos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        archivos_Compartidos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        miembros_JTable.getTableHeader().setBackground(CourseRoom.Tercer_Color());
-        miembros_JTable.getTableHeader().setForeground(CourseRoom.Tercer_Color_Fuente());
+        miembros_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        miembros_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        tareas_Pendientes_JTable.getTableHeader().setBackground(CourseRoom.Tercer_Color());
-        tareas_Pendientes_JTable.getTableHeader().setForeground(CourseRoom.Tercer_Color_Fuente());
+        tareas_Pendientes_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        tareas_Pendientes_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < archivos_Compartidos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 5; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
@@ -1572,7 +1574,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         for (int i = 0; i < miembros_JTable.getRowCount(); i++) {
             for (int j = 0; j < 2; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
@@ -1580,76 +1582,76 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         for (int i = 0; i < tareas_Pendientes_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
         // Chat
         
-        mensaje_Chat_JTextField.setBackground(CourseRoom.Primer_Color());
-        mensaje_Chat_JTextField.setForeground(CourseRoom.Primer_Color_Fuente());
-        enviar_Mensajes_JPanel.setBackground(CourseRoom.Segundo_Color());
+        mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
+        mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        enviar_Mensajes_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        enviar_Audios_JButton.setBackground(CourseRoom.Segundo_Color());
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
-        enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        cambiar_Imagen_JButton.setBackground(CourseRoom.Tercer_Color());
-        cambiar_Imagen_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        abandonar_Grupo_JButton.setBackground(CourseRoom.Tercer_Color().darker());
-        abandonar_Grupo_JButton.setForeground(CourseRoom.Tercer_Color_Fuente().brighter());
+        abandonar_Grupo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color().darker());
+        abandonar_Grupo_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente().brighter());
 
-        editar_Nombre_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        editar_Descripcion_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        editar_Nombre_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        editar_Descripcion_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         
-        editar_Nombre_JButton.setBackground(CourseRoom.Tercer_Color());
-        editar_Nombre_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-        fecha_Creacion_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        editar_Nombre_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
-        editar_Nombre_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
-        editar_Nombre_JTextField.setBackground(CourseRoom.Tercer_Color());
+        editar_Nombre_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        editar_Nombre_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        fecha_Creacion_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        editar_Nombre_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        editar_Nombre_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        editar_Nombre_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         Font gadugi = new java.awt.Font("Gadugi", 0, 18);
 
         anadir_Tarea_Pendiente_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(
-                javax.swing.BorderFactory.createLineBorder(CourseRoom.Primer_Color_Fuente()),
+                javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()),
                 "Agregar Pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Primer_Color_Fuente()));
+                gadugi, CourseRoom.Utilerias.Primer_Color_Fuente()));
 
-        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Tercer_Color());
+        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
 
-        tarea_Pendiente_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        tarea_Pendiente_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
 
-        descripcion_Tarea_Pendiente_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
-        fecha_Finalizacion_Tarea_Pendiente_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        descripcion_Tarea_Pendiente_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        fecha_Finalizacion_Tarea_Pendiente_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
 
-        nombre_Tarea_Pendiente_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
-        nombre_Tarea_Pendiente_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
-        nombre_Tarea_Pendiente_JTextField.setBackground(CourseRoom.Tercer_Color());
+        nombre_Tarea_Pendiente_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        nombre_Tarea_Pendiente_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        nombre_Tarea_Pendiente_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        miembro_A_Cargo_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        miembro_A_Cargo_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         
-        miembro_A_Cargo_JComboBox.setForeground(CourseRoom.Tercer_Color_Fuente());
-        miembro_A_Cargo_JComboBox.setBackground(CourseRoom.Tercer_Color());
+        miembro_A_Cargo_JComboBox.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        miembro_A_Cargo_JComboBox.setBackground(CourseRoom.Utilerias.Tercer_Color());
 
-        descripcion_Tarea_Pendiente_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
-        descripcion_Tarea_Pendiente_JTextPane.setCaretColor(CourseRoom.Tercer_Color_Fuente());
-        descripcion_Tarea_Pendiente_JTextPane.setBackground(CourseRoom.Tercer_Color());
+        descripcion_Tarea_Pendiente_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_Tarea_Pendiente_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_Tarea_Pendiente_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
 
-        fecha_Finalizacion_Tarea_Pendiente_JPanel.setBackground(CourseRoom.Tercer_Color());
-        fecha_Finalizacion_Tarea_Pendiente_JPanel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        fecha_Finalizacion_Tarea_Pendiente_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        fecha_Finalizacion_Tarea_Pendiente_JPanel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        escogedor_Fecha_Hora.setForeground(CourseRoom.Tercer_Color_Fuente());
-        escogedor_Fecha_Hora.setBackground(CourseRoom.Tercer_Color());
+        escogedor_Fecha_Hora.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        escogedor_Fecha_Hora.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        miembros_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        miembros_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        miembros_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        miembros_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
-        compartir_Archivos_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
-        compartir_Archivos_JButton.setBackground(CourseRoom.Tercer_Color());
+        compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
        
         Component[] componentes = mensajes_Chat_JPanel.getComponents();
         Component componente;
@@ -1659,7 +1661,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         }
 
         
-        escogedor_Fecha_Hora.getTimePicker().getSettings().setColor(TimePickerSettings.TimeArea.TimePickerTextDisabled, CourseRoom.Tercer_Color_Fuente());
+        escogedor_Fecha_Hora.getTimePicker().getSettings().setColor(TimePickerSettings.TimeArea.TimePickerTextDisabled, CourseRoom.Utilerias.Tercer_Color_Fuente());
 
     }
 
@@ -1668,9 +1670,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         String mensaje = mensaje_Chat_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
-            String emisor = CourseRoom.Faker().dune().character();
-            String fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
-            if (CourseRoom.Random().nextInt(10) < 5) {
+            String emisor = CourseRoom.Utilerias.dune().character();
+            String fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
+            if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                 Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel
                         = new Mensaje_Texto_Izquierdo_General_Panel(emisor, fecha, mensaje);
                 mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
@@ -1705,12 +1707,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 String emisor;
                 String fecha;
 
-                if (CourseRoom.Random().nextInt(10) < 5) {
+                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Video_Izquierdo_General_Panel mensaje_Video_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
-                        emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                        emisor = CourseRoom.Utilerias.dune().character();
+                        fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Video_Panel);
@@ -1719,8 +1721,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     Mensaje_Video_Derecho_General_Panel mensaje_Video_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
-                        emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                        emisor = CourseRoom.Utilerias.dune().character();
+                        fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Video_Panel);
@@ -1755,14 +1757,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 String fecha;
                 Image abrir_Imagen;
 
-                if (CourseRoom.Random().nextInt(10) < 5) {
+                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Imagen_Izquierdo_General_Panel mensaje_Imagen_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
                         try {
                             abrir_Imagen = ImageIO.read(archivo_Abierto);
-                            emisor = CourseRoom.Faker().dune().character();
-                            fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                            emisor = CourseRoom.Utilerias.dune().character();
+                            fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                             mensaje_Imagen_Panel
                                     = new Mensaje_Imagen_Izquierdo_General_Panel(emisor, fecha, abrir_Imagen,
                                             archivo_Abierto.getName());
@@ -1776,8 +1778,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         archivo_Abierto = archivos_Abiertos[i];
                         try {
                             abrir_Imagen = ImageIO.read(archivo_Abierto);
-                            emisor = CourseRoom.Faker().dune().character();
-                            fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                            emisor = CourseRoom.Utilerias.dune().character();
+                            fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                             mensaje_Imagen_Panel
                                     = new Mensaje_Imagen_Derecho_General_Panel(emisor, fecha, abrir_Imagen, archivo_Abierto.getName());
                             mensajes_Chat_JPanel.add(mensaje_Imagen_Panel);
@@ -1811,12 +1813,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 File archivo_Abierto;
                 String emisor;
                 String fecha;
-                if (CourseRoom.Random().nextInt(10) < 5) {
+                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Audio_Izquierdo_General_Panel mensaje_Audio_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
-                        emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                        emisor = CourseRoom.Utilerias.dune().character();
+                        fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Audio_Panel);
@@ -1825,8 +1827,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     Mensaje_Audio_Derecho_General_Panel mensaje_Audio_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
-                        emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        emisor = CourseRoom.Utilerias.dune().character();
+                        fecha = CourseRoom.Utilerias.date().birthday(22, 23).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Audio_Panel);
@@ -1882,52 +1884,52 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     public void Carta_Visible() {
         switch (carta_Visible) {
             case 0:
-                informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color()); 
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-                editar_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color()); 
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                editar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 1:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Tercer_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-                editar_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                editar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 2:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Tercer_Color());
-                archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-                editar_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                editar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 3:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                archivos_Compartidos_JButton.setBackground(CourseRoom.Tercer_Color());
-                tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-                editar_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                editar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 4:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_Pendientes_JButton.setBackground(CourseRoom.Tercer_Color());
-                editar_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                editar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 5:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                archivos_Compartidos_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_Pendientes_JButton.setBackground(CourseRoom.Segundo_Color());
-                editar_JButton.setBackground(CourseRoom.Tercer_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                archivos_Compartidos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_Pendientes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                editar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
                 break;
         }
     }

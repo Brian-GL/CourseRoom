@@ -5,15 +5,14 @@
  */
 package courseroom;
 
+import interfaces.Componentes_Interface;
 import interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.awt.Image;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.Vector;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
-import org.apache.xmlrpc.XmlRpcClient;
-import org.apache.xmlrpc.XmlRpcException;
 import paneles.generales.inicio_sesion.Inicio_Sesion_General_Panel;
 import paneles.generales.inicio_sesion.Recuperar_Credenciales_General_Panel;
 import paneles.generales.inicio_sesion.Crear_Cuenta_General_Panel;
@@ -23,15 +22,9 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  *
  * @author LENOVO
  */
-public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Interface {
+public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Interface, Componentes_Interface {
 
-    private static Inicio_Sesion_General_Panel inicio_Sesion;
-    private static Recuperar_Credenciales_General_Panel recuperar_Credenciales;
-    private static Crear_Cuenta_General_Panel crear_Cuenta;
     private static Tablero_Estudiante_Panel tablero_Estudiante;
-    private static CardLayout layout_Tarjeta;
-    private XmlRpcClient xmlRpcClient;
-
 
     /**
      * Creates new form MainFrame
@@ -40,43 +33,11 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     public CourseRoom_Frame() {
 
         initComponents();
-
+        
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
-
-        this.setIconImage(CourseRoom.Logo_Imagen());
-
-        visualizador_JPanel.setBackground(CourseRoom.Primer_Color());
-        inicio_Sesion = new Inicio_Sesion_General_Panel();
-        visualizador_JPanel.add("inicio_Sesion", inicio_Sesion);
-
-        recuperar_Credenciales = new Recuperar_Credenciales_General_Panel();
-        visualizador_JPanel.add("recuperar_Credenciales", recuperar_Credenciales);
-
-        crear_Cuenta = new Crear_Cuenta_General_Panel();
-
-        visualizador_JPanel.add("crear_Cuenta", crear_Cuenta);
-
-        layout_Tarjeta = (CardLayout) visualizador_JPanel.getLayout();
         
-        try { 
-            xmlRpcClient  = new XmlRpcClient("http://localhost:3030");
-            
-            Vector params = new Vector();
-         
-            params.addElement(CourseRoom.Faker().name().fullName());
-            params.addElement(CourseRoom.Faker().lorem().sentence());
-            
-            Object result = xmlRpcClient.execute("CourseRoom_Server.getSaludo", params);
-            String sum = ((String) result);
-            JOptionPane.showMessageDialog(null, sum, "Mensaje Desde El Servidor", JOptionPane.INFORMATION_MESSAGE);
-            
-        } catch (MalformedURLException ex) {
-            System.err.println("JavaClient: " + ex);
-            
-        } catch (XmlRpcException | IOException ex) {
-            System.err.println("JavaClient: " + ex);
-        }
+        Iniciar_Componentes();
 
     }
 
@@ -118,54 +79,77 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
-    public static void Mostrar_Inicio_Sesion() {
-        layout_Tarjeta.show(visualizador_JPanel, "inicio_Sesion");
-    }
-
-    public static void Mostrar_Recuperar_Credenciales() {
-        layout_Tarjeta.show(visualizador_JPanel, "recuperar_Credenciales");
-    }
-
-    public static void Mostrar_Crear_Cuenta() {
-        layout_Tarjeta.show(visualizador_JPanel, "crear_Cuenta");
-    }
-
-    public static void Mostrar_Tablero() {
-        tablero_Estudiante = new Tablero_Estudiante_Panel();
-        visualizador_JPanel.add("Tablero", tablero_Estudiante);
-        Tablero_Estudiante_Panel.Establecer_Colores();
-        layout_Tarjeta.show(visualizador_JPanel, "Tablero");
+    public static void Mostrar_Vista(String llave) {
+        if(llave.equals("Tablero")){
+            tablero_Estudiante = new Tablero_Estudiante_Panel();
+            visualizador_JPanel.add("Tablero", tablero_Estudiante);
+            Tablero_Estudiante_Panel.Establecer_Colores();
+            ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, "Tablero");
+        }else{
+            ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, llave);
+        }
     }
 
     public static void Cerrar_Sesion() {
-        CourseRoom.Primer_Color(CourseRoom.Color_Azul_Oscuro());
-        CourseRoom.Segundo_Color(CourseRoom.Color_Azul_Claro());
-        CourseRoom.Tercer_Color(CourseRoom.Color_Azul_Claro());
-        visualizador_JPanel.setBackground(CourseRoom.Color_Azul_Oscuro());
-        Mostrar_Inicio_Sesion();
+        CourseRoom.Utilerias.Primer_Color(CourseRoom.Utilerias.Color_Azul_Oscuro());
+        CourseRoom.Utilerias.Segundo_Color(CourseRoom.Utilerias.Color_Azul_Claro());
+        CourseRoom.Utilerias.Tercer_Color(CourseRoom.Utilerias.Color_Azul_Claro());
+        visualizador_JPanel.setBackground(CourseRoom.Utilerias.Color_Azul_Oscuro());
+        Mostrar_Vista("Inicio_Sesion");
         System.gc();
     }
     
     public static void Colorear() {
-        //jPanelViewer.repaint();
-        visualizador_JPanel.setBackground(CourseRoom.Primer_Color());
+        visualizador_JPanel.setBackground(CourseRoom.Utilerias.Primer_Color());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JPanel visualizador_JPanel;
     // End of variables declaration//GEN-END:variables
 
-    /*General Static Methods*/
+    @Override
+    public void Iniciar_Componentes() {
+        
+        try {
+            Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
+            logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
+            this.setIconImage(logo_Imagen);
+            logo_Imagen.flush();
+            
+            Inicio_Sesion_General_Panel inicio_Sesion = new Inicio_Sesion_General_Panel();
+            visualizador_JPanel.add("Inicio_Sesion", inicio_Sesion);
 
+            Recuperar_Credenciales_General_Panel recuperar_Credenciales = new Recuperar_Credenciales_General_Panel();
+            visualizador_JPanel.add("Recuperar_Credenciales", recuperar_Credenciales);
+
+            Crear_Cuenta_General_Panel crear_Cuenta = new Crear_Cuenta_General_Panel();
+            visualizador_JPanel.add("Crear_Cuenta", crear_Cuenta);
+            
+            if (!CourseRoom.Utilerias.Comprobar_Conexion_Internet()) {
+
+                JOptionPane.showMessageDialog(null,"Mmmm...\nLo Sentimos Pero Al Parecer No Tienes Conexión A Internet","Error",JOptionPane.ERROR_MESSAGE);
+                this.Limpiar();
+            }
+
+            Colorear_Componentes();
+            
+        } catch (IOException ex) {
+            
+        }
+        
+    }
+
+    @Override
+    public void Colorear_Componentes() {
+        visualizador_JPanel.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }
+    
     @Override
     public void Limpiar() {
         if(tablero_Estudiante != null){
             tablero_Estudiante.Limpiar();
         }
-        if(recuperar_Credenciales != null){
-            recuperar_Credenciales.Limpiar();
-        }
         super.dispose();
     }
-
+    
 }

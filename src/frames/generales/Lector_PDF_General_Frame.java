@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package componentes;
+package frames.generales;
 
 import interfaces.Limpieza_Interface;
 import java.net.MalformedURLException;
@@ -18,14 +18,14 @@ import org.icepdf.ri.common.MyAnnotationCallback;
  *
  * @author LENOVO
  */
-public class Lector_PDF extends javax.swing.JFrame implements Limpieza_Interface{
+public class Lector_PDF_General_Frame extends javax.swing.JFrame implements Limpieza_Interface{
 
     private SwingController controlador_Swing;
     
     /**
      * Creates new form PDFReader
      */
-    public Lector_PDF(String ruta) {
+    public Lector_PDF_General_Frame(String ruta) throws MalformedURLException {
         initComponents();
         
         this.setLocationRelativeTo(null);
@@ -34,21 +34,15 @@ public class Lector_PDF extends javax.swing.JFrame implements Limpieza_Interface
         contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        
-        try {
-            
-            URL url = new URL(ruta);
-            controlador_Swing = new SwingController();
-            SwingViewBuilder constructor_Vista_Swing = new SwingViewBuilder(controlador_Swing);
-            JPanel contenido_JPanel = constructor_Vista_Swing.buildViewerPanel();
-            ComponentKeyBinding.install(controlador_Swing,contenido_JPanel);
-            MyAnnotationCallback mi_Llamada = new MyAnnotationCallback(controlador_Swing.getDocumentViewController());
-            controlador_Swing.getDocumentViewController().setAnnotationCallback(mi_Llamada);
-            controlador_Swing.openDocument(url); 
-            contenido_JScrollPane.setViewportView(contenido_JPanel);
-        } catch (MalformedURLException ex) {
-            
-        }
+        URL url = new URL(ruta);
+        controlador_Swing = new SwingController();
+        SwingViewBuilder constructor_Vista_Swing = new SwingViewBuilder(controlador_Swing);
+        JPanel contenido_JPanel = constructor_Vista_Swing.buildViewerPanel();
+        ComponentKeyBinding.install(controlador_Swing,contenido_JPanel);
+        MyAnnotationCallback mi_Llamada = new MyAnnotationCallback(controlador_Swing.getDocumentViewController());
+        controlador_Swing.getDocumentViewController().setAnnotationCallback(mi_Llamada);
+        controlador_Swing.openDocument(url); 
+        contenido_JScrollPane.setViewportView(contenido_JPanel);
     }
 
     /**
@@ -90,7 +84,6 @@ public class Lector_PDF extends javax.swing.JFrame implements Limpieza_Interface
     public void Limpiar() {
         controlador_Swing.getDocument().dispose();
         controlador_Swing.closeDocument();
-        controlador_Swing = null;
         this.dispose();
     }
 }

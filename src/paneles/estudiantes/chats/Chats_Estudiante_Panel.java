@@ -356,12 +356,12 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
     private void buscar_Chats_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Chats_JButtonMouseEntered
         // TODO add your handling code here:
-        buscar_Chats_JButton.setBackground(CourseRoom.Tercer_Color());
+        buscar_Chats_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_buscar_Chats_JButtonMouseEntered
 
     private void buscar_Chats_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Chats_JButtonMouseExited
         // TODO add your handling code here:
-        buscar_Chats_JButton.setBackground(CourseRoom.Segundo_Color());
+        buscar_Chats_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_buscar_Chats_JButtonMouseExited
 
     private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
@@ -381,12 +381,12 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
     private void mostrar_Chats_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Chats_JButtonMouseEntered
         // TODO add your handling code here:
-        mostrar_Chats_JButton.setBackground(CourseRoom.Segundo_Color());
+        mostrar_Chats_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_mostrar_Chats_JButtonMouseEntered
 
     private void mostrar_Chats_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Chats_JButtonMouseExited
         // TODO add your handling code here:
-        mostrar_Chats_JButton.setBackground(CourseRoom.Primer_Color());
+        mostrar_Chats_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_mostrar_Chats_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
@@ -398,12 +398,12 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void chatear_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseClicked
@@ -419,12 +419,12 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
     private void chatear_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseEntered
         // TODO add your handling code here:
-        chatear_JButton.setBackground(CourseRoom.Tercer_Color());
+        chatear_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_chatear_JButtonMouseEntered
 
     private void chatear_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseExited
         // TODO add your handling code here:
-        chatear_JButton.setBackground(CourseRoom.Segundo_Color());
+        chatear_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_chatear_JButtonMouseExited
 
     public static int Numero_Chats() {
@@ -483,17 +483,17 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         Image obtener_Imagen = null;
         ImageIcon icono_Chat = null;
         Chat_Estudiante_Panel chat_Estudiante_Panel;
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
-            id = CourseRoom.Concatenar("Chat_", i);
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
+            id = CourseRoom.Utilerias.Concatenar("Chat_", i);
             try {
                 System.out.println(id + " -> Getting Image From https://i.pravatar.cc/96");
                 url_Imagen = new URL("https://i.pravatar.cc/96");
                 obtener_Imagen = ImageIO.read(url_Imagen);
                 icono_Chat = new ImageIcon(obtener_Imagen);
 
-                celdas[0] = new Celda_Renderer(icono_Chat, CourseRoom.Faker().name().fullName(), id);
-                celdas[1] = new Celda_Renderer(CourseRoom.Faker().date().birthday(0, 1).toString(), id);
-                celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)), id);
+                celdas[0] = new Celda_Renderer(icono_Chat, CourseRoom.Utilerias.name().fullName(), id);
+                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0, 1).toString(), id);
+                celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10)), id);
 
                 chat_Estudiante_Panel = new Chat_Estudiante_Panel(celdas[0].Label().getText(), id);
                 mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
@@ -565,24 +565,24 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
     @Override
     public void Colorear_Componentes() {
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        buscar_Chats_JButton.setBackground(CourseRoom.Segundo_Color());
+        buscar_Chats_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        mostrar_Chats_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        mostrar_Chats_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        mostrar_Chats_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        mostrar_Chats_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < mostrar_Chats_JTable.getRowCount(); i++) {
             for (int j = 0; j < 3; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
 
@@ -596,22 +596,22 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Buscar Chats", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Tercer_Color_Fuente()));
+                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
 
-        buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
-        buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        buscar_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        buscar_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        mostrar_Chats_JButton.setBackground(CourseRoom.Primer_Color());
+        mostrar_Chats_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
 
-        buscar_Chats_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        buscar_Chats_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        buscar_Chats_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_Chats_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
         for (int i = 0; i < buscar_Chats_JTable.getRowCount(); i++) {
             for (int j = 0; j < 3; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
 

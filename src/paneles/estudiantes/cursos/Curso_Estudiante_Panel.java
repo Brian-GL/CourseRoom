@@ -90,8 +90,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         icono = new ImageIcon(_imagen_Profesor);
         imagen_Profesor_JLabel.setIcon(icono);
         this.ID = _id;
-        fecha_Creacion_JLabel.setText(CourseRoom.Formato_HTML_Central(CourseRoom.Concatenar("Creado El ",_fecha_Creacion)));
-        descripcion_Profesor_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Concatenar("<b>",_nombre_Profesor, ":<b><br> <br>",CourseRoom.Faker().lorem().paragraph(10))));
+        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias.Formato_HTML_Central(CourseRoom.Utilerias.Concatenar("Creado El ",_fecha_Creacion)));
+        descripcion_Profesor_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(CourseRoom.Utilerias.Concatenar("<b>",_nombre_Profesor, ":<b><br> <br>",CourseRoom.Utilerias.lorem().paragraph(10))));
         
         Iniciar_Componentes();
     }
@@ -975,12 +975,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void regresar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Tercer_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseEntered
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private void miembros_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miembros_JButtonMouseClicked
@@ -1001,12 +1001,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void compartir_Materiales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Materiales_JButtonMouseClicked
@@ -1018,14 +1018,14 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void compartir_Materiales_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Materiales_JButtonMouseEntered
         // TODO add your handling code here:
-        compartir_Materiales_JButton.setBackground(CourseRoom.Segundo_Color());
-        compartir_Materiales_JButton.setForeground(CourseRoom.Segundo_Color_Fuente());
+        compartir_Materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        compartir_Materiales_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }//GEN-LAST:event_compartir_Materiales_JButtonMouseEntered
 
     private void compartir_Materiales_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Materiales_JButtonMouseExited
         // TODO add your handling code here:
-        compartir_Materiales_JButton.setBackground(CourseRoom.Tercer_Color());
-        compartir_Materiales_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        compartir_Materiales_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        compartir_Materiales_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }//GEN-LAST:event_compartir_Materiales_JButtonMouseExited
 
     private void chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chat_JButtonMouseClicked
@@ -1053,12 +1053,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void enviar_Videos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Videos_JButton.setBackground(CourseRoom.Tercer_Color());
+        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_enviar_Videos_JButtonMouseEntered
 
     private void enviar_Videos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_enviar_Videos_JButtonMouseExited
 
     private void enviar_Audios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseClicked
@@ -1070,12 +1070,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void enviar_Audios_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Audios_JButton.setBackground(CourseRoom.Tercer_Color());
+        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_enviar_Audios_JButtonMouseEntered
 
     private void enviar_Audios_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Audios_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_enviar_Audios_JButtonMouseExited
 
     private void enviar_Imagenes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseClicked
@@ -1087,12 +1087,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void enviar_Imagenes_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Tercer_Color());
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseEntered
 
     private void enviar_Imagenes_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_enviar_Imagenes_JButtonMouseExited
 
     private void avisos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_avisos_JButtonMouseClicked
@@ -1132,14 +1132,14 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private void abandonar_Curso_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abandonar_Curso_JButtonMouseEntered
         // TODO add your handling code here:
-        abandonar_Curso_JButton.setBackground(CourseRoom.Segundo_Color().darker());
-        abandonar_Curso_JButton.setForeground(CourseRoom.Segundo_Color_Fuente().brighter());
+        abandonar_Curso_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color().darker());
+        abandonar_Curso_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente().brighter());
     }//GEN-LAST:event_abandonar_Curso_JButtonMouseEntered
 
     private void abandonar_Curso_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abandonar_Curso_JButtonMouseExited
         // TODO add your handling code here:
-        abandonar_Curso_JButton.setBackground(CourseRoom.Tercer_Color().darker());
-        abandonar_Curso_JButton.setForeground(CourseRoom.Tercer_Color_Fuente().brighter());
+        abandonar_Curso_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color().darker());
+        abandonar_Curso_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente().brighter());
     }//GEN-LAST:event_abandonar_Curso_JButtonMouseExited
 
     public String ID() {
@@ -1151,31 +1151,31 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         //Boys (Age,weight) series  
         XYSeries series1 = new XYSeries("Boys");  
-        series1.add(1, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(2, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(3, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(4, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(5, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(6, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(7, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(8, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(9, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(10, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(1, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(2, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(3, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(4, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(5, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(6, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(7, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(8, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(9, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(10, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
 
         dataset.addSeries(series1);  
 
         //Girls (Age,weight) series  
         XYSeries series2 = new XYSeries("Girls");  
-        series2.add(1, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(2, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(3, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(4, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(5, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(6, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(7, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(8, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(9, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(10, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(1, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(2, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(3, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(4, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(5, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(6, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(7, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(8, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(9, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(10, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
 
         dataset.addSeries(series2);  
         
@@ -1250,7 +1250,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         informacion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         informacion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        descripcion_Curso_JTextPane.setText(CourseRoom.Formato_HTML_Izquierda(CourseRoom.Faker().lorem().paragraph(10)));
+        descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(CourseRoom.Utilerias.lorem().paragraph(10)));
         descripcion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
@@ -1270,8 +1270,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer[] celda = new Celda_Renderer[1];
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
-            celda[0] = new Celda_Renderer(CourseRoom.Faker().music().genre(), "");
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 10); i++) {
+            celda[0] = new Celda_Renderer(CourseRoom.Utilerias.music().genre(), "");
             modelo.addRow(celda);
         }
         
@@ -1295,19 +1295,17 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         imagen_Curso = imagen_Curso.getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
         ImageIcon icono_Curso = new ImageIcon(imagen_Curso);
         
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
            
             _id = String.valueOf(i);
-            _id = CourseRoom.Concatenar(this.ID,"_Tarea_", _id);
-            System.err.println(_id);
-            nombre = CourseRoom.Faker().university().name();
-            fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
-            estatus = CourseRoom.Faker().bool().bool() ? "Entregado" : "Pendiente";
+            _id = CourseRoom.Utilerias.Concatenar(this.ID,"_Tarea_", _id);
+            nombre = CourseRoom.Utilerias.university().name();
+            fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
+            estatus = CourseRoom.Utilerias.bool().bool() ? "Entregado" : "Pendiente";
             celdas[0] = new Celda_Renderer(nombre, _id);
-            celdas[1] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(3), _id);
+            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(3), _id);
             celdas[2] = new Celda_Renderer(fecha, _id);
             celdas[3] = new Celda_Renderer(estatus, _id);
-            System.err.println("En Curso: "+_id);
             Tareas_Estudiante_Panel.Agregar_Tarea(nombre, this.nombre_JLabel.getText(), this.nombre_Profesor ,icono_Curso, fecha, estatus, _id);
             modelo.addRow(celdas);
         }
@@ -1346,15 +1344,15 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         URL url_Imagen;
         Image obtener_Imagen = null;
         ImageIcon icono_Miembro = null;
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
             try {
                 System.out.println(this.ID + " -> Getting Image From https://i.pravatar.cc/96");
                 url_Imagen = new URL("https://i.pravatar.cc/96");
                 obtener_Imagen = ImageIO.read(url_Imagen);
                 icono_Miembro = new ImageIcon(obtener_Imagen);
 
-                celdas[0] = new Celda_Renderer(icono_Miembro, CourseRoom.Faker().name().fullName(), "");
-                celdas[1] = new Celda_Renderer(CourseRoom.Faker().date().birthday(22, 23).toString(), "");
+                celdas[0] = new Celda_Renderer(icono_Miembro, CourseRoom.Utilerias.name().fullName(), "");
+                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(22, 23).toString(), "");
                 modelo.addRow(celdas);
 
                 obtener_Imagen.flush();
@@ -1373,13 +1371,13 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         
-        mensaje_Chat_JTextField.setBackground(CourseRoom.Primer_Color());
-        mensaje_Chat_JTextField.setForeground(CourseRoom.Primer_Color_Fuente());
-        enviar_Mensajes_JPanel.setBackground(CourseRoom.Segundo_Color());
+        mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
+        mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        enviar_Mensajes_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        enviar_Audios_JButton.setBackground(CourseRoom.Segundo_Color());
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
-        enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         
         // Materiales:
@@ -1418,10 +1416,10 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         celdas = new Celda_Renderer[2];
         modelo = (DefaultTableModel) avisos_JTable.getModel();
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 10); i++) {
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 10); i++) {
 
-            celdas[0] = new Celda_Renderer(CourseRoom.Faker().lorem().paragraph(5), "");
-            celdas[1] = new Celda_Renderer(CourseRoom.Faker().date().birthday(21, 23).toString(), "");
+            celdas[0] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(5), "");
+            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(21, 23).toString(), "");
             modelo.addRow(celdas);
         }
         
@@ -1473,13 +1471,13 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         ImageIcon icono_Reprobado = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
         ImageIcon icono_Aprobado = new ImageIcon(getClass().getResource("/recursos/iconos/check.png"));
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
-            celdas[0] = new Celda_Renderer(CourseRoom.Faker().job().field(), "");
-            celdas[1] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)), "");
-            celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().randomDouble(2, 1, 100)), "");
-            celdas[3] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().randomDouble(2, 1, 100)), "");
-            celdas[4] = new Celda_Renderer(CourseRoom.Faker().date().birthday(22, 23).toString(), "");
-            boolean rumbo = CourseRoom.Faker().bool().bool();
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
+            celdas[0] = new Celda_Renderer(CourseRoom.Utilerias.job().field(), "");
+            celdas[1] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10)), "");
+            celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100)), "");
+            celdas[3] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100)), "");
+            celdas[4] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(22, 23).toString(), "");
+            boolean rumbo = CourseRoom.Utilerias.bool().bool();
 
             celdas[5] = (rumbo) ? new Celda_Renderer(icono_Aprobado, "A Aprobar", "")
                     : new Celda_Renderer(icono_Reprobado, "A Reprobar", "");
@@ -1493,10 +1491,10 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     @Override
     public void Colorear_Componentes() {
         
-        titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
-        nombre_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        regresar_JButton.setBackground(CourseRoom.Tercer_Color());
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        nombre_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         Carta_Visible();
         
@@ -1505,91 +1503,91 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         Font gadugi = new Font("Gadugi", 0, 18);
 
-        descripcion_Curso_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Primer_Color_Fuente()), "Descripcion Del Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Tercer_Color_Fuente()));
+        descripcion_Curso_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         
-        descripcion_Profesor_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Primer_Color_Fuente()), "Descripcion Del Profesor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Segundo_Color_Fuente()));
+        descripcion_Profesor_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Profesor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Segundo_Color_Fuente()));
         
-        intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Tercer_Color());
-        intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Tercer_Color_Fuente());
-        descripcion_Curso_JTextPane.setBackground(CourseRoom.Tercer_Color());
-        descripcion_Curso_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
-        descripcion_Curso_JTextPane.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_Curso_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        descripcion_Curso_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_Curso_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        descripcion_Profesor_JTextPane.setBackground(CourseRoom.Segundo_Color());
-        descripcion_Profesor_JTextPane.setForeground(CourseRoom.Segundo_Color_Fuente());
-        descripcion_Profesor_JTextPane.setCaretColor(CourseRoom.Segundo_Color_Fuente());
+        descripcion_Profesor_JTextPane.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        descripcion_Profesor_JTextPane.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        descripcion_Profesor_JTextPane.setCaretColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        fecha_Creacion_JLabel.setForeground(CourseRoom.Primer_Color_Fuente());
+        fecha_Creacion_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < intereses_Tematicas_JTable.getRowCount(); i++) {
             celda = (Celda_Renderer) modelo.getValueAt(i, 0);
-            celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+            celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
         }
         
         //Tareas:
-        tareas_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        tareas_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         modelo = (DefaultTableModel) tareas_JTable.getModel();
         for (int i = 0; i < tareas_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
 
         
        //Miembros:
-        miembros_JTable.getTableHeader().setBackground(CourseRoom.Tercer_Color());
-        miembros_JTable.getTableHeader().setForeground(CourseRoom.Tercer_Color_Fuente());
+        miembros_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        miembros_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
         modelo = (DefaultTableModel) miembros_JTable.getModel();
         for (int i = 0; i < miembros_JTable.getRowCount(); i++) {
             for (int j = 0; j < 2; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
         // Chat
         
-        mensaje_Chat_JTextField.setBackground(CourseRoom.Primer_Color());
-        mensaje_Chat_JTextField.setForeground(CourseRoom.Primer_Color_Fuente());
-        enviar_Mensajes_JPanel.setBackground(CourseRoom.Segundo_Color());
+        mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
+        mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        enviar_Mensajes_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        enviar_Audios_JButton.setBackground(CourseRoom.Segundo_Color());
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Segundo_Color());
-        enviar_Videos_JButton.setBackground(CourseRoom.Segundo_Color());
+        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
       
        //Materiales:
-        materiales_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        materiales_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        materiales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        materiales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         modelo = (DefaultTableModel) materiales_JTable.getModel();
         for (int i = 0; i < materiales_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
-        compartir_Materiales_JButton.setBackground(CourseRoom.Tercer_Color());
-        compartir_Materiales_JButton.setForeground(CourseRoom.Tercer_Color_Fuente());
+        compartir_Materiales_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        compartir_Materiales_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
         // Avisos:
         
-        avisos_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        avisos_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         modelo = (DefaultTableModel) avisos_JTable.getModel();
         for (int i = 0; i < avisos_JTable.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
@@ -1599,19 +1597,19 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         // Estadisticas
         
-        estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         for (int i = 0; i < estadisticas_JTable.getRowCount(); i++) {
             for (int j = 0; j < 6; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
-        abandonar_Curso_JButton.setBackground(CourseRoom.Tercer_Color().darker());
-        abandonar_Curso_JButton.setForeground(CourseRoom.Tercer_Color_Fuente().brighter());
+        abandonar_Curso_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color().darker());
+        abandonar_Curso_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente().brighter());
         
     }
     
@@ -1620,9 +1618,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         String mensaje = mensaje_Chat_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
-            String emisor = CourseRoom.Faker().dune().character();
-            String fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
-            if (CourseRoom.Random().nextInt(10) < 5) {
+            String emisor = CourseRoom.Utilerias.dune().character();
+            String fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
+            if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                 Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel
                         = new Mensaje_Texto_Izquierdo_General_Panel(emisor, fecha, mensaje);
                 mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
@@ -1657,12 +1655,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 String emisor;
                 String fecha;
 
-                if (CourseRoom.Random().nextInt(10) < 5) {
+                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Video_Izquierdo_General_Panel mensaje_Video_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
-                        emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                        emisor = CourseRoom.Utilerias.dune().character();
+                        fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Video_Panel);
@@ -1671,8 +1669,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     Mensaje_Video_Derecho_General_Panel mensaje_Video_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
-                        emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                        emisor = CourseRoom.Utilerias.dune().character();
+                        fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Video_Panel);
@@ -1707,14 +1705,14 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 String fecha;
                 Image abrir_Imagen;
 
-                if (CourseRoom.Random().nextInt(10) < 5) {
+                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Imagen_Izquierdo_General_Panel mensaje_Imagen_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
                         try {
                             abrir_Imagen = ImageIO.read(archivo_Abierto);
-                            emisor = CourseRoom.Faker().dune().character();
-                            fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                            emisor = CourseRoom.Utilerias.dune().character();
+                            fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                             mensaje_Imagen_Panel
                                     = new Mensaje_Imagen_Izquierdo_General_Panel(emisor, fecha, abrir_Imagen,
                                             archivo_Abierto.getName());
@@ -1728,8 +1726,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         archivo_Abierto = archivos_Abiertos[i];
                         try {
                             abrir_Imagen = ImageIO.read(archivo_Abierto);
-                            emisor = CourseRoom.Faker().dune().character();
-                            fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                            emisor = CourseRoom.Utilerias.dune().character();
+                            fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                             mensaje_Imagen_Panel
                                     = new Mensaje_Imagen_Derecho_General_Panel(emisor, fecha, abrir_Imagen, archivo_Abierto.getName());
                             mensajes_Chat_JPanel.add(mensaje_Imagen_Panel);
@@ -1763,12 +1761,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 File archivo_Abierto;
                 String emisor;
                 String fecha;
-                if (CourseRoom.Random().nextInt(10) < 5) {
+                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Audio_Izquierdo_General_Panel mensaje_Audio_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
-                        emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(0, 1).toString();
+                        emisor = CourseRoom.Utilerias.dune().character();
+                        fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Audio_Panel);
@@ -1777,8 +1775,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     Mensaje_Audio_Derecho_General_Panel mensaje_Audio_Panel;
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
-                        emisor = CourseRoom.Faker().dune().character();
-                        fecha = CourseRoom.Faker().date().birthday(22, 23).toString();
+                        emisor = CourseRoom.Utilerias.dune().character();
+                        fecha = CourseRoom.Utilerias.date().birthday(22, 23).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Audio_Panel);
@@ -1831,84 +1829,84 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     public void Carta_Visible() {
         switch (carta_Visible) {
             case 0:
-                informacion_JButton.setBackground(CourseRoom.Tercer_Color());
-                tareas_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                materiales_JButton.setBackground(CourseRoom.Segundo_Color());
-                avisos_JButton.setBackground(CourseRoom.Segundo_Color());
-                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                avisos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 1:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_JButton.setBackground(CourseRoom.Tercer_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                materiales_JButton.setBackground(CourseRoom.Segundo_Color());
-                avisos_JButton.setBackground(CourseRoom.Segundo_Color());
-                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                avisos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 2:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Tercer_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                materiales_JButton.setBackground(CourseRoom.Segundo_Color());
-                avisos_JButton.setBackground(CourseRoom.Segundo_Color());
-                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                avisos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 3:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Tercer_Color());
-                materiales_JButton.setBackground(CourseRoom.Segundo_Color());
-                avisos_JButton.setBackground(CourseRoom.Segundo_Color());
-                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                avisos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 4:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                materiales_JButton.setBackground(CourseRoom.Tercer_Color());
-                avisos_JButton.setBackground(CourseRoom.Segundo_Color());
-                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                materiales_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                avisos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 5:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                materiales_JButton.setBackground(CourseRoom.Segundo_Color());
-                avisos_JButton.setBackground(CourseRoom.Tercer_Color());
-                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                avisos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 6:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                materiales_JButton.setBackground(CourseRoom.Segundo_Color());
-                avisos_JButton.setBackground(CourseRoom.Segundo_Color());
-                regresion_Lineal_JButton.setBackground(CourseRoom.Tercer_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                avisos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 7:
-                informacion_JButton.setBackground(CourseRoom.Segundo_Color());
-                tareas_JButton.setBackground(CourseRoom.Segundo_Color());
-                miembros_JButton.setBackground(CourseRoom.Segundo_Color());
-                chat_JButton.setBackground(CourseRoom.Segundo_Color());
-                materiales_JButton.setBackground(CourseRoom.Segundo_Color());
-                avisos_JButton.setBackground(CourseRoom.Segundo_Color());
-                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Tercer_Color());
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                avisos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
                 break;
         }
     }

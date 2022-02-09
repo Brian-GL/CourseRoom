@@ -292,12 +292,12 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private XYDataset createDataset() {  
@@ -305,31 +305,31 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
         //Boys (Age,weight) series  
         XYSeries series1 = new XYSeries("Boys");  
-        series1.add(1, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(2, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(3, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(4, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(5, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(6, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(7, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(8, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(9, CourseRoom.Faker().number().randomDouble(2, 1,100));
-        series1.add(10, CourseRoom.Faker().number().randomDouble(2, 1,100));
+        series1.add(1, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(2, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(3, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(4, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(5, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(6, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(7, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(8, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(9, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(10, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
 
         dataset.addSeries(series1);  
 
         //Girls (Age,weight) series  
         XYSeries series2 = new XYSeries("Girls");  
-        series2.add(1, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(2, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(3, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(4, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(5, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(6, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(7, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(8, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(9, CourseRoom.Faker().number().randomDouble(2, 1, 100));
-        series2.add(10, CourseRoom.Faker().number().randomDouble(2, 1, 100));
+        series2.add(1, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(2, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(3, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(4, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(5, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(6, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(7, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(8, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(9, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(10, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
 
         dataset.addSeries(series2);  
         
@@ -378,19 +378,19 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         ImageIcon icono = null;
         ImageIcon icono_Reprobado = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
         ImageIcon icono_Aprobado = new ImageIcon(getClass().getResource("/recursos/iconos/check.png"));
-        for (int i = 0; i < CourseRoom.Faker().number().numberBetween(1, 5); i++) {
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
             
             try {
                 System.out.println("Estadisticas_Curso " + i + " -> Getting Image From https://picsum.photos/96/96");
                 url_Imagen = new URL("https://picsum.photos/96/96");
                 icono = new ImageIcon(url_Imagen);
 
-                celdas[0] = new Celda_Renderer(icono, CourseRoom.Faker().educator().course(), "");
-                celdas[1] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().numberBetween(1, 10)), "");
-                celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().randomDouble(2, 1, 100)), "");
-                celdas[3] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().randomDouble(2, 1, 100)), "");
-                celdas[4] = new Celda_Renderer(String.valueOf(CourseRoom.Faker().number().randomDouble(2, 1, 100)), "");
-                boolean rumbo = CourseRoom.Faker().bool().bool();
+                celdas[0] = new Celda_Renderer(icono, CourseRoom.Utilerias.educator().course(), "");
+                celdas[1] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10)), "");
+                celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100)), "");
+                celdas[3] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100)), "");
+                celdas[4] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100)), "");
+                boolean rumbo = CourseRoom.Utilerias.bool().bool();
                 
                 celdas[5] =  (rumbo) ? new Celda_Renderer(icono_Aprobado,"A Aprobar", ""):
                         new Celda_Renderer(icono_Reprobado,"A Reprobar", "");
@@ -463,23 +463,23 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
     @Override
     public void Colorear_Componentes() {
         
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
-        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         Carta_Visible();
         
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < estadisticas_JTable.getRowCount(); i++) {
             for (int j = 0; j < 6; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
        
@@ -494,19 +494,19 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
     public void Carta_Visible() {
         switch (carta_Visible) {
             case 0:
-                regresion_Lineal_JButton.setBackground(CourseRoom.Tercer_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 1:
-                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Tercer_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 2:
-                regresion_Lineal_JButton.setBackground(CourseRoom.Segundo_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Tercer_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
                 break;
         }
     }

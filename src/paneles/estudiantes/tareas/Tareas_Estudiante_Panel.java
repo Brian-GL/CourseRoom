@@ -332,12 +332,12 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private void buscar_Tareas_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Tareas_JButtonMouseEntered
         // TODO add your handling code here:
-        buscar_Tareas_JButton.setBackground(CourseRoom.Tercer_Color());
+        buscar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_buscar_Tareas_JButtonMouseEntered
 
     private void buscar_Tareas_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Tareas_JButtonMouseExited
         // TODO add your handling code here:
-        buscar_Tareas_JButton.setBackground(CourseRoom.Segundo_Color());
+        buscar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_buscar_Tareas_JButtonMouseExited
 
     private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
@@ -353,12 +353,12 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private void mostrar_Tareas_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Tareas_JButtonMouseEntered
         // TODO add your handling code here:
-        mostrar_Tareas_JButton.setBackground(CourseRoom.Segundo_Color());
+        mostrar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_mostrar_Tareas_JButtonMouseEntered
 
     private void mostrar_Tareas_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Tareas_JButtonMouseExited
         // TODO add your handling code here:
-        mostrar_Tareas_JButton.setBackground(CourseRoom.Primer_Color());
+        mostrar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_mostrar_Tareas_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
@@ -370,12 +370,12 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     public static void Agregar_Tarea(String nombre, String nombre_Curso, String nombre_Profesor, ImageIcon icono_Curso, 
@@ -391,7 +391,6 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 new Tarea_Estudiante_Panel(nombre,nombre_Curso,nombre_Profesor, fecha, estatus, _id);
         mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
         modelo_Estatico.addRow(tarea_Celdas);
-        System.err.println("En Agregar Tarea: "+_id);
         Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, _id);
     }
 
@@ -479,22 +478,22 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     @Override
     public void Colorear_Componentes() {
         
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Segundo_Color());
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        titulo_JLabel.setBackground(CourseRoom.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        buscar_Tareas_JButton.setBackground(CourseRoom.Segundo_Color());
+        buscar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        mostrar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        mostrar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        mostrar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        mostrar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < mostrar_Tareas_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
@@ -510,24 +509,24 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Buscar Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Tercer_Color_Fuente()));
+                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
 
-        buscar_JTextField.setBackground(CourseRoom.Tercer_Color());
-        buscar_JTextField.setForeground(CourseRoom.Tercer_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Tercer_Color_Fuente());
+        buscar_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        buscar_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        actualizar_JButton.setBackground(CourseRoom.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        mostrar_Tareas_JButton.setBackground(CourseRoom.Primer_Color());
+        mostrar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
 
-        buscar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Segundo_Color());
-        buscar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Segundo_Color_Fuente());
+        buscar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         modelo = (DefaultTableModel) buscar_Tareas_JTable.getModel();
         for (int i = 0; i < buscar_Tareas_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         

@@ -248,7 +248,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             this.setVisible(false);
-            CourseRoom_Frame.Mostrar_Recuperar_Credenciales();  
+            CourseRoom_Frame.Mostrar_Vista("Recuperar_Credenciales");  
         }
            
     }//GEN-LAST:event_recuperar_Credenciales_JLabelMouseClicked
@@ -257,7 +257,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             this.setVisible(false);
-            CourseRoom_Frame.Mostrar_Crear_Cuenta();
+            CourseRoom_Frame.Mostrar_Vista("Crear_Cuenta");
         }
     }//GEN-LAST:event_crear_Cuenta_JLabelMouseClicked
 
@@ -270,15 +270,15 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
 
     private void iniciar_Sesion_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciar_Sesion_JButtonMouseEntered
         // TODO add your handling code here:
-        iniciar_Sesion_JButton.setBackground(CourseRoom.Primer_Color());
-        iniciar_Sesion_JButton.setForeground(CourseRoom.Segundo_Color());
+        iniciar_Sesion_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        iniciar_Sesion_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_iniciar_Sesion_JButtonMouseEntered
 
     private void iniciar_Sesion_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciar_Sesion_JButtonMouseExited
         // TODO add your handling code here:
         
-        iniciar_Sesion_JButton.setBackground(CourseRoom.Segundo_Color());
-        iniciar_Sesion_JButton.setForeground(CourseRoom.Primer_Color());
+        iniciar_Sesion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        iniciar_Sesion_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_iniciar_Sesion_JButtonMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -299,8 +299,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     @Override
     public void Iniciar_Componentes() {
         try {
-            ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
+            Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
+            logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
+            ImageIcon icono = new ImageIcon(logo_Imagen);
             logo_JLabel.setIcon(icono);
+            logo_Imagen.flush();
             icono.getImage().flush();
             
             System.out.println("Login -> Getting Image From https://picsum.photos/500/700");
@@ -312,15 +315,17 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             obtener_Imagen.flush();
             obtener_Imagen.getGraphics().dispose();
             
+            Font gadugi_18 = new Font("Gadugi", 3, 16);
+            crear_Cuenta_JLabel.setFont(gadugi_18);
+            recuperar_Credenciales_JLabel.setFont(gadugi_18);
+            
         } catch (MalformedURLException ex) {
             
         } catch (IOException ex) {
             
         }
         
-        Font gadugi_18 = new Font("Gadugi", 3, 16);
-        crear_Cuenta_JLabel.setFont(gadugi_18);
-        recuperar_Credenciales_JLabel.setFont(gadugi_18);
+       
 
         Colorear_Componentes();
         
@@ -328,29 +333,29 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
 
     @Override
     public void Colorear_Componentes() {
-        usuario_JLabel.setForeground(CourseRoom.Segundo_Color());
-        contrasena_JLabel.setForeground(CourseRoom.Segundo_Color());
-        usuario_JTextField.setBackground(CourseRoom.Segundo_Color());
-        usuario_JTextField.setForeground(CourseRoom.Primer_Color());
-        usuario_JTextField.setCaretColor(CourseRoom.Primer_Color());
+        usuario_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        contrasena_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        usuario_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        usuario_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
+        usuario_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
         
-        contrasena_JPasswordField.setBackground(CourseRoom.Segundo_Color());
-        contrasena_JPasswordField.setForeground(CourseRoom.Primer_Color());
-        contrasena_JPasswordField.setCaretColor(CourseRoom.Primer_Color());
+        contrasena_JPasswordField.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        contrasena_JPasswordField.setForeground(CourseRoom.Utilerias.Primer_Color());
+        contrasena_JPasswordField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
         
-        recuperar_Credenciales_JLabel.setBackground(CourseRoom.Segundo_Color());
-        crear_Cuenta_JLabel.setBackground(CourseRoom.Segundo_Color());
+        recuperar_Credenciales_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        crear_Cuenta_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        recuperar_Credenciales_JLabel.setForeground(CourseRoom.Primer_Color());
-        crear_Cuenta_JLabel.setForeground(CourseRoom.Primer_Color());
+        recuperar_Credenciales_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color());
+        crear_Cuenta_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color());
         
-        marca_JLabel.setForeground(CourseRoom.Segundo_Color());
+        marca_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
         
-        iniciar_Sesion_JButton.setBackground(CourseRoom.Segundo_Color());
-        iniciar_Sesion_JButton.setForeground(CourseRoom.Primer_Color());
+        iniciar_Sesion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        iniciar_Sesion_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
         
-        mostrar_Contrasena_JCheckBox.setForeground(CourseRoom.Segundo_Color());
-        imagen_JLabel.setForeground(CourseRoom.Segundo_Color());
+        mostrar_Contrasena_JCheckBox.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        imagen_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
     }
     
     public boolean validar_Correo(String correo) {
@@ -358,7 +363,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         Matcher mat = pat.matcher(correo);
         if (mat.find()) {
             JOptionPane.showMessageDialog(null, "Bienvenido\n*" + correo + "*");
-            CourseRoom_Frame.Mostrar_Tablero();
+            CourseRoom_Frame.Mostrar_Vista("Tablero");
             usuario_JTextField.setText("");
             contrasena_JPasswordField.setText("");
         } else {

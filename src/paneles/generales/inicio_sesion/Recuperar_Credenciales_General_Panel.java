@@ -9,6 +9,7 @@ import interfaces.Componentes_Interface;
 import courseroom.CourseRoom;
 import interfaces.Limpieza_Interface;
 import courseroom.CourseRoom_Frame;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
 import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -202,32 +204,32 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
 
     private void recuperar_Credenciales_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JButtonMouseEntered
         // TODO add your handling code here:
-        recuperar_Credenciales_JButton.setBackground(CourseRoom.Primer_Color());
-        recuperar_Credenciales_JButton.setForeground(CourseRoom.Segundo_Color());
+        recuperar_Credenciales_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_recuperar_Credenciales_JButtonMouseEntered
 
     private void recuperar_Credenciales_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JButtonMouseExited
         // TODO add your handling code here:
         
-        recuperar_Credenciales_JButton.setBackground(CourseRoom.Segundo_Color());
-        recuperar_Credenciales_JButton.setForeground(CourseRoom.Primer_Color());
+        recuperar_Credenciales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_recuperar_Credenciales_JButtonMouseExited
 
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            CourseRoom_Frame.Mostrar_Inicio_Sesion();
+            CourseRoom_Frame.Mostrar_Vista("Inicio_Sesion");
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
 
     private void regresar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_regresar_JButtonMouseEntered
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Primer_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private boolean esCorreoElectronico(String value){
@@ -251,7 +253,7 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
             MimeBodyPart mimeBodyPartMensaje = new MimeBodyPart();
             mimeBodyPartMensaje.setFileName("Informacion De La Cuenta.txt");
             mimeBodyPartMensaje.setText(
-                    CourseRoom.Concatenar("Nombre De Usuario: ",nombre_Usuario,"\nContraseña: ",contrasena));
+                    CourseRoom.Utilerias.Concatenar("Nombre De Usuario: ",nombre_Usuario,"\nContraseña: ",contrasena));
 
             // Agregar la parte del mensaje HTML al multiPart
             multiparte.addBodyPart(mimeBodyPartMensaje);
@@ -360,29 +362,34 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
 
             direccion_Internet = new InternetAddress();
             propiedades.clear();
+            
+            Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
+            logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
+            ImageIcon icono = new ImageIcon(logo_Imagen);
+            logo_JLabel.setIcon(icono);
+            logo_Imagen.flush();
+            icono.getImage().flush();
 
         } catch (IOException | MessagingException ex) {
 
         }
 
-        ImageIcon icono = new ImageIcon(CourseRoom.Logo_Imagen());
-        logo_JLabel.setIcon(icono);
-        icono.getImage().flush();
+        
        
         Colorear_Componentes();
     }
 
     @Override
     public void Colorear_Componentes() {
-        correo_Electronico_JLabel.setForeground(CourseRoom.Segundo_Color());
-        frase_JLabel.setForeground(CourseRoom.Segundo_Color());
-        titulo_JLabel.setForeground(CourseRoom.Segundo_Color());
-        correo_Electronico_JTextField.setBackground(CourseRoom.Segundo_Color());
-        correo_Electronico_JTextField.setForeground(CourseRoom.Primer_Color());
-        correo_Electronico_JTextField.setCaretColor(CourseRoom.Primer_Color());
-        recuperar_Credenciales_JButton.setBackground(CourseRoom.Segundo_Color());
-        regresar_JButton.setBackground(CourseRoom.Primer_Color());
-        recuperar_Credenciales_JButton.setForeground(CourseRoom.Primer_Color());
+        correo_Electronico_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        frase_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        correo_Electronico_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        correo_Electronico_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
+        correo_Electronico_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
+        recuperar_Credenciales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
     }
     
     @Override

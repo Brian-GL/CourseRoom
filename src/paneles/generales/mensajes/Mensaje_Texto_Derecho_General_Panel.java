@@ -23,7 +23,7 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel impl
         
         fecha_JLabel.setText(fecha);
         emisor_JLabel.setText(emisor);
-        mensaje_JTextPane.setText(CourseRoom.Formato_HTML_Central(mensaje));
+        mensaje_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Central(mensaje));
         
         Iniciar_Componentes();
         
@@ -165,14 +165,14 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel impl
 
     @Override
     public void Colorear_Componentes() {
-        contenido_JPanel.setBackground(CourseRoom.Tercer_Color());
-        contenido_JPanel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        fecha_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        emisor_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        mensaje_JTextPane.setForeground(CourseRoom.Tercer_Color_Fuente());
+        fecha_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        emisor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mensaje_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        mensaje_JScrollPane.setForeground(CourseRoom.Tercer_Color_Fuente());
+        mensaje_JScrollPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }
 
 

@@ -147,12 +147,12 @@ public class Mensaje_Archivo_Izquierdo_General_Panel extends javax.swing.JPanel 
 
     @Override
     public void Colorear_Componentes() {
-        contenido_JPanel.setBackground(CourseRoom.Segundo_Color());
-        contenido_JPanel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        contenido_JPanel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
-        fecha_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        emisor_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
-        nombre_Archivo_JLabel.setForeground(CourseRoom.Segundo_Color_Fuente());
+        fecha_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        emisor_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        nombre_Archivo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }
 
 }

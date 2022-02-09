@@ -175,11 +175,11 @@ public class Video_General_Panel extends javax.swing.JPanel implements Reproduct
 
     @Override
     public void Colorear_Componentes() {
-        duracion_Total_JLabel.setForeground(CourseRoom.Primer_Color());
-        progreso_JLabel.setForeground(CourseRoom.Primer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Primer_Color());
-        progreso_JSlider.setBackground(CourseRoom.Primer_Color());
-        progreso_JSlider.setForeground(CourseRoom.Primer_Color_Fuente());
+        duracion_Total_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color());
+        progreso_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color());
+        progreso_JSlider.setBackground(CourseRoom.Utilerias.Primer_Color());
+        progreso_JSlider.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         
     }
     
@@ -308,7 +308,7 @@ public class Video_General_Panel extends javax.swing.JPanel implements Reproduct
                     tiempo = (int) componente_Embebido_Video.mediaPlayer().status().time();
                     conversion_Tiempo = tiempo / 1000;
                     progreso_JSlider.setValue(tiempo);
-                    segundos = CourseRoom.Convertir_Segundos(conversion_Tiempo);
+                    segundos = CourseRoom.Utilerias.Convertir_Segundos(conversion_Tiempo);
                     progreso_JLabel.setText(segundos);
                 }
             }
@@ -399,7 +399,7 @@ public class Video_General_Panel extends javax.swing.JPanel implements Reproduct
                 if(longitud < Integer.MAX_VALUE){
                     longitud_Real = (int)longitud;
                     progreso_JSlider.setMaximum(longitud_Real);
-                    duracion_Total_JLabel.setText(CourseRoom.Convertir_Segundos(longitud_Real/1000));
+                    duracion_Total_JLabel.setText(CourseRoom.Utilerias.Convertir_Segundos(longitud_Real/1000));
                     
                 }else{
                     JOptionPane.showMessageDialog(null, "Archivo Demasiado Grande","ERROR",JOptionPane.ERROR_MESSAGE);

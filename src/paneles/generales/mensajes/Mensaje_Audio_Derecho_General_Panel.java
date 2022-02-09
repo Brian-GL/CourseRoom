@@ -346,16 +346,16 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
     @Override
     public void Colorear_Componentes() {
         
-        fecha_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        emisor_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        contenido_JPanel.setBackground(CourseRoom.Tercer_Color());
-        contenido_JPanel.setForeground(CourseRoom.Tercer_Color_Fuente());
+        fecha_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        emisor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        duracion_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        progreso_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        titulo_JLabel.setForeground(CourseRoom.Tercer_Color_Fuente());
-        progreso_JSlider.setForeground(CourseRoom.Tercer_Color_Fuente());
-        progreso_JSlider.setBackground(CourseRoom.Tercer_Color_Fuente());
+        duracion_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        progreso_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        progreso_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        progreso_JSlider.setBackground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }
 
     @Override
@@ -466,7 +466,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
                         tiempo = (int)componente_Reproductor_Audio.mediaPlayer().status().time();
                         valor = tiempo / 1000;
                         progreso_JSlider.setValue(tiempo);
-                        segundos = CourseRoom.Convertir_Segundos(valor);
+                        segundos = CourseRoom.Utilerias.Convertir_Segundos(valor);
                         progreso_JLabel.setText(segundos);
                     }
                     
@@ -559,7 +559,7 @@ public class Mensaje_Audio_Derecho_General_Panel extends javax.swing.JPanel impl
                 if(longitud < Integer.MAX_VALUE){
                     longitud_Real = (int)longitud;
                     progreso_JSlider.setMaximum(longitud_Real);
-                    segundos = CourseRoom.Convertir_Segundos(longitud_Real/1000);
+                    segundos = CourseRoom.Utilerias.Convertir_Segundos(longitud_Real/1000);
                     duracion_JLabel.setText(segundos);
                     
                 }else{
