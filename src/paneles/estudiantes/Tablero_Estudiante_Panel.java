@@ -953,16 +953,13 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             
             layout = (CardLayout) visualizador_JPanel.getLayout();
             
-            String mensaje = CourseRoom.Solicitudes.Mensaje();
-            mensaje_Inicial_JLabel.setText(mensaje);
-            
-             System.err.println(mensaje);
+           
             
         } catch (MalformedURLException ex) {
             
         } catch (IOException ex) {
             
-        } 
+        }
     }
 
     @Override

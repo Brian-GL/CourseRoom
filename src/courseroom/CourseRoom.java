@@ -98,9 +98,7 @@ import java.util.Random;
 import java.util.Vector;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import org.apache.xmlrpc.AsyncCallback;
 import org.apache.xmlrpc.XmlRpcClient;
-import org.apache.xmlrpc.XmlRpcClientRequest;
 import org.apache.xmlrpc.XmlRpcException;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
@@ -116,6 +114,7 @@ import oshi.hardware.PowerSource;
 import oshi.hardware.Sensors;
 import oshi.hardware.SoundCard;
 import oshi.hardware.UsbDevice;
+import java.sql.SQLException;
 
  // </editor-fold>
 
@@ -125,38 +124,54 @@ import oshi.hardware.UsbDevice;
  */
 public class CourseRoom{
     
-    public static void main(String args[]) throws UnsupportedLookAndFeelException, MalformedURLException {
+    public static void main(String args[]) throws UnsupportedLookAndFeelException, MalformedURLException, XmlRpcException, IOException, SQLException {
         FlatDarkLaf ui = new FlatDarkLaf();
         UIManager.setLookAndFeel(ui);
         Solicitudes.Iniciar_Solicitudes();
         Utilerias.Iniciar_Utilerias();
+        Solicitudes.Sp_ObtenerRespuestas();
         CourseRoom_Frame courseRoom_Frame = new CourseRoom_Frame();
         courseRoom_Frame.setVisible(true);
     }
     
     // <editor-fold defaultstate="collapsed" desc="Solicitudes">
     
-    
     public static class Solicitudes {
 
         private static XmlRpcClient xmlRpcClient;
 
         public static void Iniciar_Solicitudes() throws MalformedURLException {
-            xmlRpcClient = new XmlRpcClient("http://localhost:3030");
+            xmlRpcClient = new XmlRpcClient("http://localhost:3030/RPC2");
         }
 
-        public static String Mensaje() throws XmlRpcException, IOException {
+        public static Vector<Vector<String>> Sp_ObtenerRespuestas() throws XmlRpcException, IOException {
+            
+            Vector<Vector<String>> resultado;
             
             Vector parametros = new Vector();
            
-            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Mensaje_Inicial", parametros);
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.ObtenerRespuestas", parametros);
 
-            if (respuesta != null){
-                return (String) respuesta;
-            } else{
-                return new String();
+            if(respuesta != null){
+                
+                resultado = (Vector<Vector<String>>) respuesta;
+                
+                for (Vector<String> resultado1 : resultado) {
+                    
+                    for (String lista1 : resultado1) {
+                        System.out.println(lista1);
+                    }
+                }
+              
+                
+                return resultado;
+            }
+            else{
+                return new Vector<Vector<String>>();
             }
         }
+        
+       
         
     }
 
