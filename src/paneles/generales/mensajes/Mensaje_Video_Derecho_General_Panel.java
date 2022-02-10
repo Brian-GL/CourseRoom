@@ -101,6 +101,7 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
 
         progreso_JSlider.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         progreso_JSlider.setValue(0);
+        progreso_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         progreso_JSlider.setMaximumSize(new java.awt.Dimension(32767, 16));
         progreso_JSlider.setMinimumSize(new java.awt.Dimension(36, 16));
 

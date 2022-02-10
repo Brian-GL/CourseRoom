@@ -71,6 +71,7 @@ public class Mensaje_Video_Izquierdo_General_Panel extends javax.swing.JPanel im
         emisor_JLabel = new javax.swing.JLabel();
         auxiliar_JPanel = new javax.swing.JPanel();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMaximumSize(new java.awt.Dimension(32767, 525));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);

@@ -5,16 +5,18 @@ import interfaces.Componentes_Interface;
 import courseroom.CourseRoom_Frame;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import static java.awt.image.ImageObserver.WIDTH;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import org.apache.xmlrpc.XmlRpcException;
 
 public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
   
@@ -306,25 +308,41 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             logo_Imagen.flush();
             icono.getImage().flush();
             
-            System.out.println("Login -> Getting Image From https://picsum.photos/500/700");
-            URL url_Imagen = new URL("https://picsum.photos/500/700");
-            Image obtener_Imagen = ImageIO.read(url_Imagen);
-            ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
-            imagen_JLabel.setIcon(icono_Imagen);
-            icono_Imagen.getImage().flush();
-            obtener_Imagen.flush();
-            obtener_Imagen.getGraphics().dispose();
-            
-            Font gadugi_18 = new Font("Gadugi", 3, 16);
-            crear_Cuenta_JLabel.setFont(gadugi_18);
-            recuperar_Credenciales_JLabel.setFont(gadugi_18);
-            
+//            System.out.println("Login -> Getting Image From https://picsum.photos/500/700");
+//            URL url_Imagen = new URL("https://picsum.photos/500/700");
+//            Image obtener_Imagen = ImageIO.read(url_Imagen);
+//            ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
+//            imagen_JLabel.setIcon(icono_Imagen);
+//            icono_Imagen.getImage().flush();
+//            obtener_Imagen.flush();
+//            obtener_Imagen.getGraphics().dispose();
+
         } catch (MalformedURLException ex) {
             
         } catch (IOException ex) {
             
         }
         
+        try {
+            System.out.println("Login -> Getting Image From CourseRoom Server");
+            byte[] respuesta = CourseRoom.Solicitudes.Imagen_Inicio_Sesion();
+            try(ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(respuesta)){
+                BufferedImage obtener_Imagen = ImageIO.read(byteArrayInputStream);
+
+                ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
+                imagen_JLabel.setIcon(icono_Imagen);
+                icono_Imagen.getImage().flush();
+                obtener_Imagen.flush();
+                obtener_Imagen.getGraphics().dispose();
+            } 
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        
+        Font gadugi_18 = new Font("Gadugi", 3, 16);
+        crear_Cuenta_JLabel.setFont(gadugi_18);
+        recuperar_Credenciales_JLabel.setFont(gadugi_18);
        
 
         Colorear_Componentes();

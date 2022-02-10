@@ -135,9 +135,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         informacion_Inicio_JLabel.setPreferredSize(new java.awt.Dimension(670, 104));
 
         continuar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
+        continuar_Autenticacion_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
         continuar_Autenticacion_JButton.setBorder(null);
         continuar_Autenticacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        continuar_Autenticacion_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
         ((ImageIcon)continuar_Autenticacion_JButton.getIcon()).getImage().flush();
         continuar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -152,9 +152,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         });
 
         regresar_Inicio_Sesion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_Inicio_Sesion_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
         regresar_Inicio_Sesion_JButton.setBorder(null);
         regresar_Inicio_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar_Inicio_Sesion_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
         ((ImageIcon)regresar_Inicio_Sesion_JButton.getIcon()).getImage().flush();
         regresar_Inicio_Sesion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -238,9 +238,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         repetir_Contrasenia_JTextField.setToolTipText("");
 
         regresar_Inicio_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_Inicio_JButton.setToolTipText("<html>\n<h3>Regresar a la pestaña de inicio</h3>\n</html>");
         regresar_Inicio_JButton.setBorder(null);
         regresar_Inicio_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar_Inicio_JButton.setToolTipText("<html>\n<h3>Regresar a la pestaña de inicio</h3>\n</html>");
         ((ImageIcon)regresar_Inicio_JButton.getIcon()).getImage().flush();
         regresar_Inicio_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -255,9 +255,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         });
 
         continuar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
+        continuar_Datos_Personales_JButton.setToolTipText("<html>\n<h3>Continuar a la pestaña de datos personales</h3>\n</html>");
         continuar_Datos_Personales_JButton.setBorder(null);
         continuar_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        continuar_Datos_Personales_JButton.setToolTipText("<html>\n<h3>Continuar a la pestaña de datos personales</h3>\n</html>");
         ((ImageIcon)continuar_Datos_Personales_JButton.getIcon()).getImage().flush();
         continuar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -361,9 +361,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
         continuar_Perfil_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
+        continuar_Perfil_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         continuar_Perfil_JButton.setBorder(null);
         continuar_Perfil_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        continuar_Perfil_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         ((ImageIcon)continuar_Perfil_JButton.getIcon()).getImage().flush();
         continuar_Perfil_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -378,9 +378,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         });
 
         regresar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_Autenticacion_JButton.setToolTipText("<html> <h3>Regresar a la pestaña de autenticación</h3> </html>");
         regresar_Autenticacion_JButton.setBorder(null);
         regresar_Autenticacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar_Autenticacion_JButton.setToolTipText("<html> <h3>Regresar a la pestaña de autenticación</h3> </html>");
         ((ImageIcon)regresar_Autenticacion_JButton.getIcon()).getImage().flush();
         regresar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -513,7 +513,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         tipo_Perfil_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         tipo_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
 
-        tipo_Perfil_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Maestro" }));
+        tipo_Perfil_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor" }));
         tipo_Perfil_JComboBox.setBorder(null);
         tipo_Perfil_JComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tipo_Perfil_JComboBox.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
@@ -1004,6 +1004,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void continuar_Informacion_Extra_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Informacion_Extra_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+            if(!tipo_Perfil_JComboBox.getSelectedItem().equals("Estudiante")){
+                promedio_General_JFormattedTextField.setVisible(false);
+                promedio_General_JLabel.setVisible(false);
+            }
+            else{
+                promedio_General_JFormattedTextField.setVisible(true);
+                promedio_General_JLabel.setVisible(true);
+            }
             ((CardLayout)this.getLayout()).show(this,"Informacion_Extra");
         }
     }//GEN-LAST:event_continuar_Informacion_Extra_JButtonMouseClicked

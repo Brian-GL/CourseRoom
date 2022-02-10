@@ -28,9 +28,13 @@ import java.awt.image.PixelGrabber;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import org.apache.xmlrpc.XmlRpcException;
 import paneles.estudiantes.cursos.Cursos_Estudiante_Panel;
 import paneles.estudiantes.desempeno_escolar.Desempeno_Escolar_Estudiante_Panel;
 
@@ -54,6 +58,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Ajustes_Estudiante_Panel ajustes_Panel;
     private static Cursos_Estudiante_Panel cursos_Estudiante_Panel;
     private static Preguntas_Estudiante_Panel dudas_Estudiante_Panel;
+    private static Tiempo_Servidor tiempo_Servidor;
     
     private static CardLayout layout;
     
@@ -93,7 +98,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         preguntas_JButton = new javax.swing.JButton();
         barra_Superior_JPanel = new javax.swing.JPanel();
         menu_JButton = new javax.swing.JButton();
-        mensaje_Inicial_JLabel = new javax.swing.JLabel();
+        mensaje_Bienvenida_JLabel = new javax.swing.JLabel();
+        fecha_Hora_Servidor_JLabel = new javax.swing.JLabel();
         visualizador_JPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
@@ -385,8 +391,11 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             }
         });
 
-        mensaje_Inicial_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        mensaje_Inicial_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        mensaje_Bienvenida_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
+
+        fecha_Hora_Servidor_JLabel.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
+        fecha_Hora_Servidor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        fecha_Hora_Servidor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock_2.png"))); // NOI18N
 
         javax.swing.GroupLayout barra_Superior_JPanelLayout = new javax.swing.GroupLayout(barra_Superior_JPanel);
         barra_Superior_JPanel.setLayout(barra_Superior_JPanelLayout);
@@ -395,17 +404,22 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             .addGroup(barra_Superior_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(mensaje_Inicial_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mensaje_Bienvenida_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         barra_Superior_JPanelLayout.setVerticalGroup(
             barra_Superior_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(barra_Superior_JPanelLayout.createSequentialGroup()
-                .addGroup(barra_Superior_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(mensaje_Inicial_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(menu_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(barra_Superior_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(barra_Superior_JPanelLayout.createSequentialGroup()
+                        .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(mensaje_Bienvenida_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         visualizador_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -824,7 +838,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         menu_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
         
-        mensaje_Inicial_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        mensaje_Bienvenida_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
        
         perfil_Estudiante_Panel.Colorear_Componentes();
         avisos_Estudiante_Panel.Colorear_Componentes();
@@ -844,6 +859,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     
     @Override
     public void Limpiar(){
+        tiempo_Servidor.interrupt();
         tareas_Estudiante_Panel.Limpiar();
         reproductor_Musica_Panel.Limpiar();
         chats_Estudiante_Panel.Limpiar();
@@ -871,10 +887,11 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private javax.swing.JPanel barra_Superior_JPanel;
     private static javax.swing.JButton chats_JButton;
     private static javax.swing.JButton cursos_JButton;
+    private static javax.swing.JLabel fecha_Hora_Servidor_JLabel;
     private static javax.swing.JButton fechas_JButton;
     private static javax.swing.JButton grupos_JButton;
     private static javax.swing.JLabel imagen_Perfil_JLabel;
-    private static javax.swing.JLabel mensaje_Inicial_JLabel;
+    private static javax.swing.JLabel mensaje_Bienvenida_JLabel;
     private static javax.swing.JButton menu_JButton;
     private javax.swing.JPanel menu_JPanel;
     private static javax.swing.JButton preguntas_JButton;
@@ -953,6 +970,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             
             layout = (CardLayout) visualizador_JPanel.getLayout();
             
+            tiempo_Servidor = new Tiempo_Servidor();
+            tiempo_Servidor.start();
            
             
         } catch (MalformedURLException ex) {
@@ -965,5 +984,40 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     @Override
     public void Colorear_Componentes() {
         Colorear();
+    }
+    
+    public class Tiempo_Servidor extends Thread{
+    
+
+        public Tiempo_Servidor(){
+        }
+
+        @Override
+        @SuppressWarnings("SleepWhileInLoop")
+        public void run(){
+            try {
+                 LocalDateTime fecha_Hora_Servidor;
+                Vector<Integer> respuesta = CourseRoom.Solicitudes.Fecha_Hora_Servidor();
+                
+                fecha_Hora_Servidor = (respuesta.capacity() > 0) ? 
+                        LocalDateTime.of(respuesta.elementAt(0),respuesta.elementAt(1),
+                                respuesta.elementAt(2), respuesta.elementAt(3), 
+                                respuesta.elementAt(4), respuesta.elementAt(5)) : null;
+                
+                DateTimeFormatter formato_Fecha = DateTimeFormatter.ofPattern("EEEE dd/MM/yyyy hh:mm:ss a");
+                String tiempo;
+                while(fecha_Hora_Servidor != null){
+                                     
+                    fecha_Hora_Servidor = fecha_Hora_Servidor.plusSeconds(1);
+                    tiempo = fecha_Hora_Servidor.format(formato_Fecha);
+                    fecha_Hora_Servidor_JLabel.setText(tiempo);
+                    Thread.sleep(1000);
+                   
+                }
+            } catch (XmlRpcException | IOException | InterruptedException ex) {
+                
+            }
+        }
+
     }
 }

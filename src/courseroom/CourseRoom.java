@@ -129,7 +129,6 @@ public class CourseRoom{
         UIManager.setLookAndFeel(ui);
         Solicitudes.Iniciar_Solicitudes();
         Utilerias.Iniciar_Utilerias();
-        Solicitudes.Sp_ObtenerRespuestas();
         CourseRoom_Frame courseRoom_Frame = new CourseRoom_Frame();
         courseRoom_Frame.setVisible(true);
     }
@@ -144,33 +143,20 @@ public class CourseRoom{
             xmlRpcClient = new XmlRpcClient("http://localhost:3030/RPC2");
         }
 
-        public static Vector<Vector<String>> Sp_ObtenerRespuestas() throws XmlRpcException, IOException {
+        public static Vector<Integer> Fecha_Hora_Servidor() throws XmlRpcException, IOException {
             
-            Vector<Vector<String>> resultado;
-            
-            Vector parametros = new Vector();
-           
-            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.ObtenerRespuestas", parametros);
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Fecha_Hora_Servidor", new Vector());
 
-            if(respuesta != null){
-                
-                resultado = (Vector<Vector<String>>) respuesta;
-                
-                for (Vector<String> resultado1 : resultado) {
-                    
-                    for (String lista1 : resultado1) {
-                        System.out.println(lista1);
-                    }
-                }
-              
-                
-                return resultado;
-            }
-            else{
-                return new Vector<Vector<String>>();
-            }
+            return (respuesta != null)? (Vector<Integer>) respuesta : new Vector<>();
+          
         }
         
+        
+        public static byte[] Imagen_Inicio_Sesion() throws XmlRpcException, IOException{
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Imagen_Inicio_Sesion", new Vector());
+
+            return (respuesta != null)? (byte[]) respuesta : new byte[]{};
+        }
        
         
     }
