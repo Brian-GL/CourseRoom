@@ -422,7 +422,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         
         
         Celda_Renderer[] celdas = new Celda_Renderer[5];
-        Image imagen_usuario = Tablero_Estudiante_Panel.Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
+        Image imagen_usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
         ImageIcon icono_Usuario = new ImageIcon(imagen_usuario);
         
         

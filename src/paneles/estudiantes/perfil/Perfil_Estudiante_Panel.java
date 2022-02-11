@@ -239,11 +239,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         informacion_JPanel.setOpaque(false);
 
         imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
         imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(2000, 2000));
+        imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(450, 450));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(450, 450));
         imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(450, 450));
+        imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
 
         apellidos_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         apellidos_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1097,12 +1097,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
                         Image obtener_Imagen = ImageIO.read(archivo_Abierto);
                         int largo_Imagen = imagen_Perfil_JLabel.getHeight();
-                        Image imagen_Escalada = Tablero_Estudiante_Panel.Imagen_Usuario().getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH);
+                        Image imagen_Escalada = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH);
                         ImageIcon icono_Imagen = new ImageIcon(imagen_Escalada);
 
                         imagen_Perfil_JLabel.setIcon(icono_Imagen);
 
-                        Tablero_Estudiante_Panel.Imagen_Usuario(obtener_Imagen);
+                        Tablero_Estudiante_Panel.Cambiar_Imagen_Usuario(obtener_Imagen);
 
                         JOptionPane.showMessageDialog(null,"Los Cambios En La Interfaz Se Verán Reflejados \nEn Su Próximo Inicio De Sesión","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
 
@@ -1505,7 +1505,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         fecha_Nacimiento_JLabel.setText(CourseRoom.Utilerias.backToTheFuture().date());
 
         tipo_Perfil_JLabel.setText("Alumno");
-        ImageIcon imagen_Icono = new ImageIcon(Tablero_Estudiante_Panel.Imagen_Usuario());
+        ImageIcon imagen_Icono = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());
         imagen_Perfil_JLabel.setIcon(imagen_Icono);
         editar_Imagen_JLabel.setIcon(imagen_Icono);
         imagen_Icono.getImage().flush();
@@ -1517,7 +1517,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         int largo_Imagen = imagen_Perfil_JLabel.getPreferredSize().height;
-        Image imagen_Escalada = Tablero_Estudiante_Panel.Imagen_Usuario().getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH);
+        Image imagen_Escalada = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH);
         ImageIcon icono_Imagen = new ImageIcon(imagen_Escalada);
         imagen_Perfil_JLabel.setIcon(icono_Imagen);
         imagen_Escalada.flush();

@@ -684,7 +684,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         genero_JLabel.setText(CourseRoom.Utilerias.demographic().sex());
         tipo_Perfil_JLabel.setText(CourseRoom.Utilerias.bool().bool() ? "Estudiante" : "Profesor");
 
-        ImageIcon imagen = new ImageIcon(Tablero_Estudiante_Panel.Imagen_Usuario());
+        ImageIcon imagen = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());
         imagen_Perfil_JLabel.setIcon(imagen);
         imagen.getImage().flush();
 

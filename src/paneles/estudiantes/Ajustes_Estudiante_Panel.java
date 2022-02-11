@@ -5,30 +5,27 @@
  */
 package paneles.estudiantes;
 
+import clases.Celda_Renderer;
 import courseroom.CourseRoom_Frame;
 import courseroom.CourseRoom;
+import interfaces.Carta_Visibilidad_Interface;
 import java.awt.Color;
-import java.io.File;
-import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import interfaces.Componentes_Interface;
-import java.awt.Component;
+import java.awt.CardLayout;
 import java.awt.Font;
-import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
-import paneles.generales.Sesion_Activa_General_Panel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author LENOVO
  */
-public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface{
+public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface{
 
+    private byte carta_Visible;
     private Color primer_Color_Personalizado, segundo_Color_Personalizado, tercer_Color_Personalizado, primer_Color_Fuente_Personalizado, segundo_Color_Fuente_Personalizado, tercer_Color_Fuente_Personalizado;
     
     /**
@@ -50,55 +47,101 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ruta_Descarga_JLabel = new javax.swing.JLabel();
-        ruta_Descarga_JTextField = new javax.swing.JTextField();
-        ruta_Descarga_JButton = new javax.swing.JButton();
-        logo_JLabel = new javax.swing.JLabel();
-        interfaz_Personalizada_JPanel = new javax.swing.JPanel();
+        contenido_Titulo_JPanel = new javax.swing.JPanel();
+        titulo_JLabel = new javax.swing.JLabel();
+        interfaz_JButton = new javax.swing.JButton();
+        cuenta_JButton = new javax.swing.JButton();
+        sesiones_JButton = new javax.swing.JButton();
+        ajustes_JLayeredPane = new javax.swing.JLayeredPane();
+        interfaz_JPanel = new javax.swing.JPanel();
         primer_Color_Personalizado_JLabel = new javax.swing.JLabel();
         segundo_Color_Personalizado_JLabel = new javax.swing.JLabel();
         tercer_Color_Personalizado_JLabel = new javax.swing.JLabel();
         recargar_Colores_JButton = new javax.swing.JButton();
-        titulo_JLabel = new javax.swing.JLabel();
-        sesiones_Activas_JScrollPane = new javax.swing.JScrollPane();
-        sesiones_Activas_JPanel = new javax.swing.JPanel();
+        sesiones_JScrollPane = new javax.swing.JScrollPane();
+        sesiones_JTable = new javax.swing.JTable();
         cuenta_JPanel = new javax.swing.JPanel();
         eliminar_Cuenta_JButton = new javax.swing.JButton();
-        desactivar_Notificaciones_JButton = new javax.swing.JButton();
+        desactivar_Activar_Notificaciones_JButton = new javax.swing.JButton();
+        permitir_No_Permitir_Chats_Conmigo_JButton = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(1085, 630));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
-        ruta_Descarga_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        ruta_Descarga_JLabel.setText("Ruta Descarga");
+        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
+        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
 
-        ruta_Descarga_JTextField.setEditable(false);
-        ruta_Descarga_JTextField.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
-        ruta_Descarga_JTextField.setText("//Ruta//");
+        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setText("Ajustes");
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setOpaque(true);
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
 
-        ruta_Descarga_JButton.setFont(new java.awt.Font("Gadugi", 2, 18)); // NOI18N
-        ruta_Descarga_JButton.setText("Seleccionar Ruta");
-        ruta_Descarga_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        interfaz_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/user-interface.png"))); // NOI18N
+        interfaz_JButton.setBorder(null);
+        interfaz_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)interfaz_JButton.getIcon()).getImage().flush();
+        interfaz_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ruta_Descarga_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ruta_Descarga_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ruta_Descarga_JButtonMouseExited(evt);
+                interfaz_JButtonMouseClicked(evt);
             }
         });
 
-        logo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo_JLabel.setMaximumSize(new java.awt.Dimension(1071, 125));
-        logo_JLabel.setMinimumSize(new java.awt.Dimension(1071, 125));
-        logo_JLabel.setPreferredSize(new java.awt.Dimension(1071, 125));
+        cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/programmer.png"))); // NOI18N
+        cuenta_JButton.setBorder(null);
+        cuenta_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)cuenta_JButton.getIcon()).getImage().flush();
+        cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cuenta_JButtonMouseClicked(evt);
+            }
+        });
 
-        interfaz_Personalizada_JPanel.setOpaque(false);
+        sesiones_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/digital-footprint.png"))); // NOI18N
+        sesiones_JButton.setBorder(null);
+        sesiones_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)sesiones_JButton.getIcon()).getImage().flush();
+        sesiones_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sesiones_JButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
+        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
+        contenido_Titulo_JPanelLayout.setHorizontalGroup(
+            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(sesiones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        contenido_Titulo_JPanelLayout.setVerticalGroup(
+            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sesiones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 32, Short.MAX_VALUE))
+        );
+
+        ajustes_JLayeredPane.setLayout(new java.awt.CardLayout());
+
+        interfaz_JPanel.setOpaque(false);
 
         primer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         primer_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         primer_Color_Personalizado_JLabel.setOpaque(true);
         primer_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
         primer_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,6 +152,7 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
 
         segundo_Color_Personalizado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         segundo_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         segundo_Color_Personalizado_JLabel.setOpaque(true);
         segundo_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
         segundo_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -119,6 +163,7 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
 
         tercer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         tercer_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tercer_Color_Personalizado_JLabel.setOpaque(true);
         tercer_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
         tercer_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -127,7 +172,8 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
             }
         });
 
-        recargar_Colores_JButton.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
+        recargar_Colores_JButton.setFont(new java.awt.Font("Gadugi", 1, 28)); // NOI18N
+        recargar_Colores_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rating.png"))); // NOI18N
         recargar_Colores_JButton.setText("Recargar Colores");
         recargar_Colores_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -141,189 +187,186 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
             }
         });
 
-        javax.swing.GroupLayout interfaz_Personalizada_JPanelLayout = new javax.swing.GroupLayout(interfaz_Personalizada_JPanel);
-        interfaz_Personalizada_JPanel.setLayout(interfaz_Personalizada_JPanelLayout);
-        interfaz_Personalizada_JPanelLayout.setHorizontalGroup(
-            interfaz_Personalizada_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(interfaz_Personalizada_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(interfaz_Personalizada_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(interfaz_Personalizada_JPanelLayout.createSequentialGroup()
-                        .addComponent(primer_Color_Personalizado_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(segundo_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tercer_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, interfaz_Personalizada_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(recargar_Colores_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        interfaz_Personalizada_JPanelLayout.setVerticalGroup(
-            interfaz_Personalizada_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(interfaz_Personalizada_JPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(interfaz_Personalizada_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(primer_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tercer_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(segundo_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(recargar_Colores_JButton)
-                .addContainerGap())
-        );
-
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
-        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setText("Mis Ajustes Generales");
-        titulo_JLabel.setMaximumSize(new java.awt.Dimension(1071, 43));
-        titulo_JLabel.setMinimumSize(new java.awt.Dimension(1071, 43));
-        titulo_JLabel.setOpaque(true);
-        titulo_JLabel.setPreferredSize(new java.awt.Dimension(1071, 43));
-
-        sesiones_Activas_JScrollPane.setOpaque(false);
-
-        sesiones_Activas_JPanel.setOpaque(false);
-        sesiones_Activas_JPanel.setLayout(new java.awt.GridLayout(0, 1));
-        sesiones_Activas_JScrollPane.setViewportView(sesiones_Activas_JPanel);
-
-        cuenta_JPanel.setOpaque(false);
-
-        eliminar_Cuenta_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        eliminar_Cuenta_JButton.setText("¿Eliminar Cuenta?");
-        eliminar_Cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminar_Cuenta_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                eliminar_Cuenta_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                eliminar_Cuenta_JButtonMouseExited(evt);
-            }
-        });
-
-        desactivar_Notificaciones_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        desactivar_Notificaciones_JButton.setText("Desactivar Notificaciones");
-        desactivar_Notificaciones_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                desactivar_Notificaciones_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                desactivar_Notificaciones_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                desactivar_Notificaciones_JButtonMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout cuenta_JPanelLayout = new javax.swing.GroupLayout(cuenta_JPanel);
-        cuenta_JPanel.setLayout(cuenta_JPanelLayout);
-        cuenta_JPanelLayout.setHorizontalGroup(
-            cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cuenta_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(desactivar_Notificaciones_JButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        cuenta_JPanelLayout.setVerticalGroup(
-            cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cuenta_JPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout interfaz_JPanelLayout = new javax.swing.GroupLayout(interfaz_JPanel);
+        interfaz_JPanel.setLayout(interfaz_JPanelLayout);
+        interfaz_JPanelLayout.setHorizontalGroup(
+            interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(interfaz_JPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(desactivar_Notificaciones_JButton)
-                    .addComponent(eliminar_Cuenta_JButton))
+                .addComponent(primer_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(recargar_Colores_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                    .addComponent(segundo_Color_Personalizado_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(tercer_Color_Personalizado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        interfaz_JPanelLayout.setVerticalGroup(
+            interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(interfaz_JPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(interfaz_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tercer_Color_Personalizado_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                    .addComponent(primer_Color_Personalizado_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(segundo_Color_Personalizado_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(recargar_Colores_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ruta_Descarga_JTextField)
-                            .addComponent(ruta_Descarga_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(ruta_Descarga_JButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(interfaz_Personalizada_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cuenta_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sesiones_Activas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(logo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ruta_Descarga_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ruta_Descarga_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ruta_Descarga_JButton))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(interfaz_Personalizada_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(cuenta_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(sesiones_Activas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
-    }// </editor-fold>//GEN-END:initComponents
+        ajustes_JLayeredPane.add(interfaz_JPanel, "Interfaz");
 
-    private void ruta_Descarga_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ruta_Descarga_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            JFileChooser escogedor_Ruta = new JFileChooser();
-            escogedor_Ruta.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            escogedor_Ruta.setApproveButtonText("Seleccionar Carpeta De Descarga");
-            int resultado = escogedor_Ruta.showOpenDialog(this);
+        sesiones_JScrollPane.setBorder(null);
+        sesiones_JScrollPane.setOpaque(false);
 
-            if (resultado == JFileChooser.APPROVE_OPTION) {
-                File carpeta = escogedor_Ruta.getSelectedFile();
-                if(carpeta != null){
-                    ruta_Descarga_JTextField.setText(carpeta.getAbsolutePath());
+        sesiones_JTable.setAutoCreateRowSorter(true);
+        sesiones_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        sesiones_JTable.setModel(
+
+            new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+
+                },
+                new String [] {
+                    "Dispositivo", "Fabricante", "UUID", "Última Actividad", "Activo"
                 }
-                
-            }
-        }
-    }//GEN-LAST:event_ruta_Descarga_JButtonMouseClicked
+            ) {
+                boolean[] canEdit = new boolean [] {
+                    false, false, false, false, false
+                };
 
-    private void ruta_Descarga_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ruta_Descarga_JButtonMouseEntered
-        // TODO add your handling code here:
-        ruta_Descarga_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        ruta_Descarga_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_ruta_Descarga_JButtonMouseEntered
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit [columnIndex];
+                }
 
-    private void ruta_Descarga_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ruta_Descarga_JButtonMouseExited
-        // TODO add your handling code here:
-        ruta_Descarga_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        ruta_Descarga_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_ruta_Descarga_JButtonMouseExited
+                @Override
+                public Class getColumnClass(int column)
+                {
+                    for(int i = 0; i < sesiones_JTable.getRowCount(); i++)
+                    {
+                        //The first valid value of a cell of given column is retrieved.
+                        if(getValueAt(i,column) != null)
+                        {
+                            return getValueAt(i, column).getClass();
+                        }
+                    }
+                    //if no valid value is found, default renderer is returned.
+                    return super.getColumnClass(column);
+                }
+            });
+            sesiones_JTable.setOpaque(false);
+            sesiones_JTable.setRowHeight(80);
+            sesiones_JTable.setRowMargin(15);
+            sesiones_JTable.setShowGrid(true);
+            sesiones_JTable.setShowVerticalLines(false);
+            sesiones_JTable.setRowSorter(new TableRowSorter(sesiones_JTable.getModel()));
+            sesiones_JScrollPane.setViewportView(sesiones_JTable);
+
+            ajustes_JLayeredPane.add(sesiones_JScrollPane, "Sesiones");
+
+            cuenta_JPanel.setOpaque(false);
+
+            eliminar_Cuenta_JButton.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+            eliminar_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
+            eliminar_Cuenta_JButton.setText("¿Eliminar Cuenta?");
+            ((ImageIcon)eliminar_Cuenta_JButton.getIcon()).getImage().flush();
+            eliminar_Cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    eliminar_Cuenta_JButtonMouseClicked(evt);
+                }
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    eliminar_Cuenta_JButtonMouseEntered(evt);
+                }
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    eliminar_Cuenta_JButtonMouseExited(evt);
+                }
+            });
+
+            desactivar_Activar_Notificaciones_JButton.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+            desactivar_Activar_Notificaciones_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/bell_warning.png"))); // NOI18N
+            desactivar_Activar_Notificaciones_JButton.setText("Desactivar Notificaciones");
+            ((ImageIcon)desactivar_Activar_Notificaciones_JButton.getIcon()).getImage().flush();
+            desactivar_Activar_Notificaciones_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    desactivar_Activar_Notificaciones_JButtonMouseClicked(evt);
+                }
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    desactivar_Activar_Notificaciones_JButtonMouseEntered(evt);
+                }
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    desactivar_Activar_Notificaciones_JButtonMouseExited(evt);
+                }
+            });
+
+            permitir_No_Permitir_Chats_Conmigo_JButton.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+            permitir_No_Permitir_Chats_Conmigo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/chat_1.png"))); // NOI18N
+            permitir_No_Permitir_Chats_Conmigo_JButton.setText("Permitir Chats Conmigo");
+            ((ImageIcon)permitir_No_Permitir_Chats_Conmigo_JButton.getIcon()).getImage().flush();
+            permitir_No_Permitir_Chats_Conmigo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked(evt);
+                }
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    permitir_No_Permitir_Chats_Conmigo_JButtonMouseEntered(evt);
+                }
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited(evt);
+                }
+            });
+
+            javax.swing.GroupLayout cuenta_JPanelLayout = new javax.swing.GroupLayout(cuenta_JPanel);
+            cuenta_JPanel.setLayout(cuenta_JPanelLayout);
+            cuenta_JPanelLayout.setHorizontalGroup(
+                cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(cuenta_JPanelLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            cuenta_JPanelLayout.setVerticalGroup(
+                cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cuenta_JPanelLayout.createSequentialGroup()
+                    .addContainerGap(82, Short.MAX_VALUE)
+                    .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                    .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                    .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(99, Short.MAX_VALUE))
+            );
+
+            ajustes_JLayeredPane.add(cuenta_JPanel, "Cuenta");
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+            this.setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(32, 32, 32)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(ajustes_JLayeredPane)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE))
+                    .addGap(32, 32, 32))
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(ajustes_JLayeredPane)
+                    .addContainerGap())
+            );
+        }// </editor-fold>//GEN-END:initComponents
 
     private void recargar_Colores_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recargar_Colores_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
             Tablero_Estudiante_Panel.Establecer_Colores();
-            
         }
     }//GEN-LAST:event_recargar_Colores_JButtonMouseClicked
 
@@ -408,10 +451,37 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         }
     }//GEN-LAST:event_tercer_Color_Personalizado_JLabelMouseClicked
 
+    private void interfaz_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_interfaz_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            carta_Visible = 0;
+            Carta_Visible();
+            ((CardLayout) ajustes_JLayeredPane.getLayout()).show(ajustes_JLayeredPane, "Interfaz");
+        }
+    }//GEN-LAST:event_interfaz_JButtonMouseClicked
+
+    private void cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuenta_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            carta_Visible = 2;
+            Carta_Visible();
+            ((CardLayout) ajustes_JLayeredPane.getLayout()).show(ajustes_JLayeredPane, "Cuenta");
+        }
+    }//GEN-LAST:event_cuenta_JButtonMouseClicked
+
+    private void sesiones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sesiones_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            carta_Visible = 1;
+            Carta_Visible();
+            ((CardLayout) ajustes_JLayeredPane.getLayout()).show(ajustes_JLayeredPane, "Sesiones");
+        }
+    }//GEN-LAST:event_sesiones_JButtonMouseClicked
+
     private void eliminar_Cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+
         }
     }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseClicked
 
@@ -419,7 +489,6 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         // TODO add your handling code here:
         eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        
     }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseEntered
 
     private void eliminar_Cuenta_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseExited
@@ -428,41 +497,62 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseExited
 
-    private void desactivar_Notificaciones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Notificaciones_JButtonMouseClicked
+    private void desactivar_Activar_Notificaciones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+
+        }
+    }//GEN-LAST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
+
+    private void desactivar_Activar_Notificaciones_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseEntered
+        // TODO add your handling code here:
+        desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_desactivar_Activar_Notificaciones_JButtonMouseEntered
+
+    private void desactivar_Activar_Notificaciones_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseExited
+        // TODO add your handling code here:
+        desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_desactivar_Activar_Notificaciones_JButtonMouseExited
+
+    private void permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
         }
-    }//GEN-LAST:event_desactivar_Notificaciones_JButtonMouseClicked
+    }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked
 
-    private void desactivar_Notificaciones_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Notificaciones_JButtonMouseEntered
+    private void permitir_No_Permitir_Chats_Conmigo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseEntered
         // TODO add your handling code here:
-        desactivar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        desactivar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_desactivar_Notificaciones_JButtonMouseEntered
+        permitir_No_Permitir_Chats_Conmigo_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseEntered
 
-    private void desactivar_Notificaciones_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Notificaciones_JButtonMouseExited
+    private void permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
         // TODO add your handling code here:
-        desactivar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        desactivar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_desactivar_Notificaciones_JButtonMouseExited
+        permitir_No_Permitir_Chats_Conmigo_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLayeredPane ajustes_JLayeredPane;
+    private javax.swing.JPanel contenido_Titulo_JPanel;
+    private javax.swing.JButton cuenta_JButton;
     private javax.swing.JPanel cuenta_JPanel;
-    private javax.swing.JButton desactivar_Notificaciones_JButton;
+    private javax.swing.JButton desactivar_Activar_Notificaciones_JButton;
     private javax.swing.JButton eliminar_Cuenta_JButton;
-    private javax.swing.JPanel interfaz_Personalizada_JPanel;
-    private javax.swing.JLabel logo_JLabel;
+    private javax.swing.JButton interfaz_JButton;
+    private javax.swing.JPanel interfaz_JPanel;
+    private javax.swing.JButton permitir_No_Permitir_Chats_Conmigo_JButton;
     private javax.swing.JLabel primer_Color_Personalizado_JLabel;
     private javax.swing.JButton recargar_Colores_JButton;
-    private javax.swing.JButton ruta_Descarga_JButton;
-    private javax.swing.JLabel ruta_Descarga_JLabel;
-    private javax.swing.JTextField ruta_Descarga_JTextField;
     private javax.swing.JLabel segundo_Color_Personalizado_JLabel;
-    private javax.swing.JPanel sesiones_Activas_JPanel;
-    private javax.swing.JScrollPane sesiones_Activas_JScrollPane;
+    private javax.swing.JButton sesiones_JButton;
+    private javax.swing.JScrollPane sesiones_JScrollPane;
+    private javax.swing.JTable sesiones_JTable;
     private javax.swing.JLabel tercer_Color_Personalizado_JLabel;
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
@@ -470,32 +560,44 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
     @Override
     public void Iniciar_Componentes() {
        
-        try {
-            sesiones_Activas_JScrollPane.getViewport().setOpaque(false);
-            sesiones_Activas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-            sesiones_Activas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-            Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
-            logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
-            ImageIcon icono = new ImageIcon(logo_Imagen);
-            logo_JLabel.setIcon(icono);
-            logo_Imagen.flush();
-            icono.getImage().flush();
+        carta_Visible = 0;
+        sesiones_JScrollPane.getViewport().setOpaque(false);
+        sesiones_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
+        sesiones_JScrollPane.getHorizontalScrollBar().setUnitIncrement(20);
+        
+        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        sesiones_JTable.getTableHeader().setFont(gadugi);
+        
+        sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
+       
+        String valor  = System.getProperty("os.name");
+        valor =  CourseRoom.Utilerias.Concatenar(valor, " - ",System.getProperty("user.name"));
+        
+        for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1,10);i++){
             
-            Sesion_Activa_General_Panel sesion_Activa_General_Panel;
-            for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5);i++){
-                sesion_Activa_General_Panel = new Sesion_Activa_General_Panel();
-                sesiones_Activas_JPanel.add(sesion_Activa_General_Panel);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Ajustes_Estudiante_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            celdas[0] = new Celda_Renderer(valor, "");
+            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.getComputerSystem().getManufacturer(),"");
+            celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.getComputerSystem().getHardwareUUID(),"");
+            celdas[3] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0,0).toString(),"");
+            celdas[4] = new Celda_Renderer(CourseRoom.Utilerias.bool().bool() ? "Activo" : "Inactivo","");
+            
+            modelo.addRow(celdas);
         }
     }
     
     @Override
     public void Colorear_Componentes() {
         
-        Font gadugi_18 = new Font("Gadugi", 1, 18);
-        Font gadugi_14 = new Font("Gadugi", 1, 14);
+        Font gadugi = new Font("Gadugi", 1, 24);
+        
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        
+        Carta_Visible();
         
         primer_Color_Personalizado = CourseRoom.Utilerias.Primer_Color();
         segundo_Color_Personalizado = CourseRoom.Utilerias.Segundo_Color();
@@ -504,31 +606,18 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         segundo_Color_Fuente_Personalizado = CourseRoom.Utilerias.Segundo_Color_Fuente();
         tercer_Color_Fuente_Personalizado = CourseRoom.Utilerias.Tercer_Color_Fuente();
         
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        
-        ruta_Descarga_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        
-        ruta_Descarga_JTextField.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        ruta_Descarga_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        ruta_Descarga_JTextField.setCaretColor(CourseRoom.Utilerias.Segundo_Color());
-        
         recargar_Colores_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         recargar_Colores_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        
-        ruta_Descarga_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        ruta_Descarga_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        desactivar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        desactivar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        interfaz_Personalizada_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Interfaz Personalizada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,gadugi_18 ,CourseRoom.Utilerias.Primer_Color_Fuente())); // NOI18N
-        sesiones_Activas_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sesiones Activas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi_18,CourseRoom.Utilerias.Primer_Color_Fuente())); // NOI18N
-        cuenta_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cuenta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi_18,CourseRoom.Utilerias.Primer_Color_Fuente())); // NOI18N
-
+        permitir_No_Permitir_Chats_Conmigo_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        
         primer_Color_Personalizado_JLabel.setBackground(CourseRoom.Utilerias.Primer_Color());
         primer_Color_Personalizado_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
 
@@ -542,15 +631,41 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Segundo_Color()));
         tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Tercer_Color()));
         
-        primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi_14, CourseRoom.Utilerias.Primer_Color_Fuente()));
-        segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi_14, CourseRoom.Utilerias.Segundo_Color_Fuente()));
-        tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi_14, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+        primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Primer_Color_Fuente()));
+        segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Segundo_Color_Fuente()));
+        tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         
-        Component[] componentes = sesiones_Activas_JPanel.getComponents();
-        Component componente;
-        for(int i = 0; i < componentes.length;i++){
-            componente = componentes[i];
-            ((Componentes_Interface)componente).Colorear_Componentes();
+        sesiones_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        sesiones_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
+        Celda_Renderer celda;
+        DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
+        for(int i = 0; i < sesiones_JTable.getRowCount();i++){
+            for(int j = 0; j < 5; j++){
+                celda = (Celda_Renderer)modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+            }
+        }
+    }
+
+    @Override
+    public void Carta_Visible() {
+        switch (carta_Visible) {
+            case 0:
+                interfaz_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                sesiones_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                cuenta_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                break;
+            case 1:
+                interfaz_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                sesiones_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                cuenta_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                break;
+            case 2:
+                interfaz_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                sesiones_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                break;
         }
     }
 

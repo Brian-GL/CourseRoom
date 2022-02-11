@@ -24,6 +24,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import javax.swing.JScrollPane;
 import courseroom.CourseRoom;
+import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 
@@ -66,6 +67,7 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         sabado_JLabel = new javax.swing.JLabel();
         domingo_JLabel = new javax.swing.JLabel();
 
+        setBorder(null);
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -74,6 +76,7 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         contenido_JPanel.setLayout(new javax.swing.BoxLayout(contenido_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 134));
+        titulo_JPanel.setName("titulo_JPanel"); // NOI18N
         titulo_JPanel.setOpaque(false);
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 134));
 
@@ -201,8 +204,8 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dias_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE)
-                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE))
+                    .addComponent(dias_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
                 .addGap(32, 32, 32))
         );
         titulo_JPanelLayout.setVerticalGroup(
@@ -216,6 +219,7 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         );
 
         contenido_JPanel.add(titulo_JPanel);
+        titulo_JPanel.getAccessibleContext().setAccessibleName("titulo_JPanel");
 
         setViewportView(contenido_JPanel);
     }// </editor-fold>//GEN-END:initComponents
@@ -455,15 +459,23 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         domingo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         this.Limpiar();
+        
         Crear_Calendario();
        
     }
     
     @Override
     public void Limpiar() {
-       while(contenido_JPanel.getComponentCount() > 2){
-           contenido_JPanel.remove(1);
-       }
+        
+        boolean bandera = false;
+        for(Component componente: contenido_JPanel.getComponents()){
+            
+            if(bandera){
+                contenido_JPanel.remove(componente);
+            }
+            bandera = true;
+        }
+       
     }
 
 }

@@ -492,7 +492,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 icono_Chat = new ImageIcon(obtener_Imagen);
 
                 celdas[0] = new Celda_Renderer(icono_Chat, CourseRoom.Utilerias.name().fullName(), id);
-                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0, 1).toString(), id);
+                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0, 0).toString(), id);
                 celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10)), id);
 
                 chat_Estudiante_Panel = new Chat_Estudiante_Panel(celdas[0].Label().getText(), id);

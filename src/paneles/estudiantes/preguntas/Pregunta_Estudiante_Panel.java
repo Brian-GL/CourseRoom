@@ -50,7 +50,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         
         this.ID = _id;
         
-        Image imagen_usuario = Tablero_Estudiante_Panel.Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
+        Image imagen_usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
         ImageIcon icono_Usuario = new ImageIcon(imagen_usuario);
         imagen_usuario.flush();
         preguntador_Imagen_JLabel.setIcon(icono_Usuario);

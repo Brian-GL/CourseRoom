@@ -27,3 +27,4 @@
 <div>Icons made by <a href="https://www.flaticon.com/authors/linector" title="Linector">Linector</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 <a href="https://www.flaticon.com/free-icons/qualification" title="qualification icons">Qualification icons created by Smashicons - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/change" title="change icons">Change icons created by SBTS2018 - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/session" title="session icons">Session icons created by xnimrodx - Flaticon</a>

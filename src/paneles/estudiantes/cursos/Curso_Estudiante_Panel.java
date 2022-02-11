@@ -1300,7 +1300,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             _id = String.valueOf(i);
             _id = CourseRoom.Utilerias.Concatenar(this.ID,"_Tarea_", _id);
             nombre = CourseRoom.Utilerias.university().name();
-            fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
+            fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
             estatus = CourseRoom.Utilerias.bool().bool() ? "Entregado" : "Pendiente";
             celdas[0] = new Celda_Renderer(nombre, _id);
             celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(3), _id);
@@ -1352,7 +1352,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 icono_Miembro = new ImageIcon(obtener_Imagen);
 
                 celdas[0] = new Celda_Renderer(icono_Miembro, CourseRoom.Utilerias.name().fullName(), "");
-                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(22, 23).toString(), "");
+                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0, 0).toString(), "");
                 modelo.addRow(celdas);
 
                 obtener_Imagen.flush();
@@ -1419,7 +1419,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 10); i++) {
 
             celdas[0] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(5), "");
-            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(21, 23).toString(), "");
+            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0, 0).toString(), "");
             modelo.addRow(celdas);
         }
         
@@ -1476,7 +1476,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             celdas[1] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10)), "");
             celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100)), "");
             celdas[3] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100)), "");
-            celdas[4] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(22, 23).toString(), "");
+            celdas[4] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0, 0).toString(), "");
             boolean rumbo = CourseRoom.Utilerias.bool().bool();
 
             celdas[5] = (rumbo) ? new Celda_Renderer(icono_Aprobado, "A Aprobar", "")
@@ -1619,7 +1619,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         String mensaje = mensaje_Chat_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
             String emisor = CourseRoom.Utilerias.dune().character();
-            String fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
+            String fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
             if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                 Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel
                         = new Mensaje_Texto_Izquierdo_General_Panel(emisor, fecha, mensaje);
@@ -1660,7 +1660,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
                         emisor = CourseRoom.Utilerias.dune().character();
-                        fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
+                        fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Video_Panel);
@@ -1670,7 +1670,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     for (int i = 0; i < archivos_Abiertos.length; i++) {
                         archivo_Abierto = archivos_Abiertos[i];
                         emisor = CourseRoom.Utilerias.dune().character();
-                        fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
+                        fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
                                 archivo_Abierto.getName());
                         mensajes_Chat_JPanel.add(mensaje_Video_Panel);

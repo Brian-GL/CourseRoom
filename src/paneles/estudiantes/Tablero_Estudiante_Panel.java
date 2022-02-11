@@ -880,6 +880,29 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         layout.show(visualizador_JPanel, llave);
     }
     
+    
+    /**
+    * @return the imagen_Usuario
+    */
+    public static Image Obtener_Imagen_Usuario() {
+        return imagen_Usuario;
+    }
+    
+    public static void Cambiar_Imagen_Usuario(Image _imagen_Usuario) {
+        
+        imagen_Usuario = _imagen_Usuario.getScaledInstance(450, 450, Image.SCALE_AREA_AVERAGING);
+        
+        _imagen_Usuario = _imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_AREA_AVERAGING);
+        
+        ImageIcon imagen_Perfil = new ImageIcon(_imagen_Usuario);
+        imagen_Perfil_JLabel.setIcon(imagen_Perfil);
+        imagen_Perfil = new ImageIcon(imagen_Usuario);
+        Perfil_Estudiante_Panel.Obtener_Imagen_Perfil_JLabel().setIcon(imagen_Perfil);
+        _imagen_Usuario.flush();
+        imagen_Perfil.getImage().flush();
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton acerca_De_JButton;
     private static javax.swing.JButton ajustes_JButton;
@@ -901,24 +924,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static javax.swing.JButton tareas_JButton;
     private static javax.swing.JPanel visualizador_JPanel;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * @return the imagen_Usuario
-     */
-    public static Image Imagen_Usuario() {
-        return imagen_Usuario;
-    }
-    
-    public static void Imagen_Usuario(Image _imagen_Usuario) {
-        imagen_Usuario = _imagen_Usuario;
-        ImageIcon imagen_Perfil = new ImageIcon(imagen_Usuario.getScaledInstance(175,175, Image.SCALE_SMOOTH));
-        imagen_Perfil_JLabel.setIcon(imagen_Perfil);
-        int ancho_Imagen = Perfil_Estudiante_Panel.Obtener_Imagen_Perfil_JLabel().getPreferredSize().width;
-        int largo_Imagen = Perfil_Estudiante_Panel.Obtener_Imagen_Perfil_JLabel().getPreferredSize().height;
-        ImageIcon icono = new ImageIcon(imagen_Perfil.getImage().getScaledInstance(ancho_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
-        Perfil_Estudiante_Panel.Obtener_Imagen_Perfil_JLabel().setIcon(icono);
-        imagen_Perfil.getImage().flush();
-    }
 
     @Override
     public void Iniciar_Componentes() {

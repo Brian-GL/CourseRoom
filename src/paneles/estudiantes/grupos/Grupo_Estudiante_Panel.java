@@ -1149,7 +1149,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                     editar_Imagen_JLabel.setIcon(icono_Grupo);
 
-                    Tablero_Estudiante_Panel.Imagen_Usuario(icono_Grupo.getImage());
+                    Tablero_Estudiante_Panel.Cambiar_Imagen_Usuario(icono_Grupo.getImage());
                     abrir_Imagen.flush();
 
                 } catch (IOException ex) {
@@ -1242,7 +1242,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 !tarea_Pendiente_descricion.isEmpty() && !tarea_Pendiente_descricion.isBlank() &&
                 !tarea_Pendiente_fecha.isEmpty() && !tarea_Pendiente_fecha.isBlank()){
 
-                Image imagen_usuario = Tablero_Estudiante_Panel.Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
+                Image imagen_usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
                 ImageIcon icono_Usuario = new ImageIcon(imagen_usuario);
                 
                 DefaultTableModel modelo = (DefaultTableModel)tareas_Pendientes_JTable.getModel();
