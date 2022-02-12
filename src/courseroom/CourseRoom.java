@@ -145,19 +145,39 @@ public class CourseRoom{
 
         public static Vector<Integer> Fecha_Hora_Servidor() throws XmlRpcException, IOException {
             
-            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Fecha_Hora_Servidor", new Vector());
+            Vector parametros = new Vector();
+            
+            parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Fecha_Hora_Servidor", parametros);
 
             return (respuesta != null)? (Vector<Integer>) respuesta : new Vector<>();
           
         }
         
-        
         public static byte[] Imagen_Inicio_Sesion() throws XmlRpcException, IOException{
-            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Imagen_Inicio_Sesion", new Vector());
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Imagen_Inicio_Sesion", parametros);
 
             return (respuesta != null)? (byte[]) respuesta : new byte[]{};
         }
        
+        public static Boolean Recuperar_Credenciales(String correo_Electronico) throws XmlRpcException, IOException{
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(correo_Electronico);
+            parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Recuperar_Credenciales", parametros);
+            
+
+            return (respuesta != null)? (Boolean) respuesta : false;
+        }
         
     }
 

@@ -7,42 +7,26 @@ package paneles.generales.inicio_sesion;
 
 import interfaces.Componentes_Interface;
 import courseroom.CourseRoom;
-import interfaces.Limpieza_Interface;
 import courseroom.CourseRoom_Frame;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import org.apache.xmlrpc.XmlRpcException;
 
 /**
  *
  * @author LENOVO
  */
-public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
+public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
-    private Session sesion;
-    private StringBuilder mensaje_HTML;
-    private MimeBodyPart parte_Cuerpo_MIME_HTML;
-    private MimeMessage mensaje_MIME;
-    private InternetAddress direccion_Internet;
-    private Multipart multiparte;
+   
     
     /**
      * Creates new form RecuperarCredencialesPanel
@@ -190,14 +174,22 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
     private void correo_Electronico_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correo_Electronico_JTextFieldKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Enviar_Informacion();
+             try {
+                Recuperar_Credenciales();
+            } catch (XmlRpcException | IOException ex) {
+                
+            }
         }
     }//GEN-LAST:event_correo_Electronico_JTextFieldKeyPressed
 
     private void recuperar_Credenciales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Informacion();
+            try {
+                Recuperar_Credenciales();
+            } catch (XmlRpcException | IOException ex) {
+                
+            }
         }
 
     }//GEN-LAST:event_recuperar_Credenciales_JButtonMouseClicked
@@ -232,65 +224,26 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         regresar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
-    private boolean esCorreoElectronico(String value){
+    private boolean Correo_Electronico_Valido(String value){
         return Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE).matcher(value).find();
     }
     
-    public boolean enviarCorreoRecuperacion() {
-        //Buscar el nombre de usuario y la contraseña en la base de datos:
-        String nombre_Usuario = "El Admin";
-        String contrasena = "123456789";
-
-       try {
-
-            // Destinatario
-            direccion_Internet.setAddress(correo_Electronico_JTextField.getText());
-            
-            // Agregar destinatario al mensaje
-            mensaje_MIME.setRecipient(Message.RecipientType.TO,direccion_Internet);
-
-            // Creo la parte del mensaje HTML
-            MimeBodyPart mimeBodyPartMensaje = new MimeBodyPart();
-            mimeBodyPartMensaje.setFileName("Informacion De La Cuenta.txt");
-            mimeBodyPartMensaje.setText(
-                    CourseRoom.Utilerias.Concatenar("Nombre De Usuario: ",nombre_Usuario,"\nContraseña: ",contrasena));
-
-            // Agregar la parte del mensaje HTML al multiPart
-            multiparte.addBodyPart(mimeBodyPartMensaje);
-
-            // Agregar el multiparte al cuerpo del mensaje
-            mensaje_MIME.setContent(multiparte);
-
-           try ( // Enviar el mensaje
-                Transport transporte = sesion.getTransport("smtp")) {
-                transporte.connect("Course_Room@outlook.com","cuceiUDG");
-                transporte.sendMessage(mensaje_MIME, mensaje_MIME.getAllRecipients());
-           }
-           
-           mimeBodyPartMensaje = null;
-
-       } catch (MessagingException ex) {
-           
-           return false;
-       }
-       
-       
-       return true;
-    }
     
-    public void Enviar_Informacion() {
+    public void Recuperar_Credenciales() throws XmlRpcException, IOException {
  
-        if(esCorreoElectronico(correo_Electronico_JTextField.getText())){
+        if(Correo_Electronico_Valido(correo_Electronico_JTextField.getText())){
+            
+            boolean respuesta = CourseRoom.Solicitudes.Recuperar_Credenciales(correo_Electronico_JTextField.getText());
            
-           if(enviarCorreoRecuperacion()){
-                JOptionPane.showMessageDialog(null, """
-                                                    Hemos enviado la informaci\u00f3n de tu cuenta a tal correo electr\u00f3nico que nos pasaste.
-                                                    Si no te ha llegado la informaci\u00f3n dentro de una hora te recomendamos que revises bien la direcci\u00f3n de correo electr\u00f3nico que ingresaste o revisa en la carpeta de SPAM.
-                                                    Recuerda que nosotros te enviamos la informaci\u00f3n siempre y cuando exista una cuenta vinculada con el correo electr\u00f3nico ingresado.""","Información",JOptionPane.INFORMATION_MESSAGE);
-           }
-           else{
-               JOptionPane.showMessageDialog(null,"Mmmm...\nParece que el correo electrónico no existe o estamos experimentando problemas en el envío.\nIntenta de nuevo.","Error",JOptionPane.ERROR_MESSAGE);
-           }
+            if(respuesta){
+                 JOptionPane.showMessageDialog(null, """
+                                                     Hemos enviado la informaci\u00f3n tus credenciales al correo electr\u00f3nico.
+                                                     Si no te han llegado te recomendamos que revises tanto la direcci\u00f3n de correo electr\u00f3nico que ingresaste como en spam o correo no deseado.
+                                                     Recuerda que nosotros te enviamos la informaci\u00f3n siempre y cuando exista una cuenta vinculada con el correo electr\u00f3nico ingresado.""","Información",JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Mmmm...\nParece que el correo electrónico no existe o estamos experimentando problemas en el envío.\nIntenta de nuevo.","Error",JOptionPane.ERROR_MESSAGE);
+            }
            
         }
         else{
@@ -312,71 +265,20 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
 
-  
-
     @Override
     public void Iniciar_Componentes() {
         
         try {
-            //Crear las propiedades para mandar el correo
-            Properties propiedades = new Properties();
-            propiedades.put("mail.smtp.host", "smtp.outlook.com");
-            propiedades.put("mail.smtp.starttls.enable", "true");
-            propiedades.put("mail.smtp.port", "587");
-            propiedades.put("mail.smtp.auth", "true");
-            // Obtener la sesion
-            sesion = Session.getInstance(propiedades, null);
-
-            // Leer la plantilla
-            try (InputStream stream_Entrada = getClass().getResourceAsStream("/recursos/html/mensaje.html")) {
-                try (BufferedReader lector_Buffered = new BufferedReader(new InputStreamReader(stream_Entrada))) {
-                    // Almacenar el contenido de la plantilla en un StringBuffer
-                    String linea = "";
-                    mensaje_HTML = new StringBuilder();
-
-                    while ((linea = lector_Buffered.readLine()) != null) {
-                        mensaje_HTML.append(linea);
-                    }
-
-                }
-            }
-
-            // Crear la parte del mensaje HTML
-            parte_Cuerpo_MIME_HTML = new MimeBodyPart();
-            parte_Cuerpo_MIME_HTML.setContent(mensaje_HTML.toString(), "text/html");
-
-            // Crear el cuerpo del mensaje
-            mensaje_MIME = new MimeMessage(sesion);
-
-            // Agregar el asunto al correo
-            mensaje_MIME.setSubject("Course Room -  Mensaje De Recuperación.");
-
-            // Agregar quien envía el correo
-            mensaje_MIME.setFrom(new InternetAddress("Course_Room@outlook.com", "Course Room Mensaje De Recuperación"));
-
-            // Crear el multiparte para agregar la parte del mensaje anterior
-            multiparte = new MimeMultipart();
-
-            // Agregar la parte del mensaje  de recuperación HTML al multiPart
-            multiparte.addBodyPart(parte_Cuerpo_MIME_HTML);
-
-            direccion_Internet = new InternetAddress();
-            propiedades.clear();
-            
             Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
             logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
             ImageIcon icono = new ImageIcon(logo_Imagen);
             logo_JLabel.setIcon(icono);
             logo_Imagen.flush();
             icono.getImage().flush();
-
-        } catch (IOException | MessagingException ex) {
-
+            Colorear_Componentes();
+        } catch (IOException ex) {
+            
         }
-
-        
-       
-        Colorear_Componentes();
     }
 
     @Override
@@ -392,13 +294,5 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
     }
     
-    @Override
-    public void Limpiar() {
-        sesion = null;
-        mensaje_HTML = null;
-        parte_Cuerpo_MIME_HTML = null;
-        mensaje_MIME = null;
-        direccion_Internet = null;
-        multiparte = null;
-    }
+
 }
