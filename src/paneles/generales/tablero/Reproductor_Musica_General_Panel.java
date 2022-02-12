@@ -30,7 +30,6 @@ import uk.co.caprica.vlcj.media.TrackType;
 import uk.co.caprica.vlcj.player.base.MediaPlayer;
 import uk.co.caprica.vlcj.player.base.MediaPlayerEventListener;
 import uk.co.caprica.vlcj.player.base.State;
-import uk.co.caprica.vlcj.player.component.AudioListPlayerComponent;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
@@ -70,8 +69,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     //Image Icons
     private ImageIcon icono_Play, icono_Pause;
     
-    //Components
-    private static AudioListPlayerComponent componente_Reproducto_Lista_Audio;
     
     //Data Structures
     private Map<String,Equalizer> mapa_presets;
@@ -943,17 +940,17 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     /**Stablish all ecualizador bands from the audio list media player ecualizador*/
     private void Establecer_Amperajes(){
         
-        int amp0 = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(0);
-        int amp1 = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(1);
-        int amp2 = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(2);
-        int amp3 = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(3);
-        int amp4 = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(4);
-        int amp5 = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(5);
-        int amp6 = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(6);
-        int amp7 = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(7);
-        int amp8 = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(8);
-        int amp9 = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(9);
-        int preamp = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().preamp();
+        int amp0 = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(0);
+        int amp1 = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(1);
+        int amp2 = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(2);
+        int amp3 = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(3);
+        int amp4 = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(4);
+        int amp5 = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(5);
+        int amp6 = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(6);
+        int amp7 = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(7);
+        int amp8 = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(8);
+        int amp9 = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(9);
+        int preamp = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().preamp();
 
         banda0_JSlider.setValue(amp0);
         banda1_JSlider.setValue(amp1);
@@ -984,7 +981,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         // TODO add your handling code here:
         int volumen;
         if(SwingUtilities.isLeftMouseButton(evt)){
-            volumen = componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().volume();
+            volumen = CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().volume();
             volumen+=10;
             if(volumen <= 100){
                 volumen_JSlider.setValue(volumen);
@@ -996,7 +993,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         // TODO add your handling code here:
         int volumen;
         if(SwingUtilities.isLeftMouseButton(evt)){
-            volumen = componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().volume();
+            volumen = CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().volume();
             volumen-=10;
             if(volumen >= 0){
                 volumen_JSlider.setValue(volumen);
@@ -1008,7 +1005,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         // TODO add your handling code here:
         float rate;
         if(SwingUtilities.isLeftMouseButton(evt)){
-            rate = componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().status().rate();
+            rate = CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().rate();
             rate += 0.1f;
             if (rate <= 1.5f) {
                 rate = rate * 100;
@@ -1022,7 +1019,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         // TODO add your handling code here:
         float rate;
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            rate = componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().status().rate();
+            rate = CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().rate();
             rate -= 0.1f;
             if (rate >= 0.5f) {
                 rate = rate * 100;
@@ -1094,8 +1091,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandera_Indice_Cero = false;
                         bandera_Siguiente_Pista = false;
                         bandera_Anterior_Pista = true;
-                        componente_Reproducto_Lista_Audio.mediaListPlayer().controls().stop();
-                        componente_Reproducto_Lista_Audio.mediaListPlayer().list().media().clear();
+                        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().stop();
+                        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().clear();
                         lista_Reproduccion_JPanel.removeAll();
                         int idx = 0;
                         
@@ -1104,14 +1101,14 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         String nombre_Archivo;
                         Entrada_Lista_Reproduccion_General_Panel entrada_Lista_Reproduccion_General_Panel;
                         
-                        for(int i = 0; i < archivos_Abiertos.length;i++){
-                            archivos_Abierto = archivos_Abiertos[i];
+                        for (File archivos_Abierto1 : archivos_Abiertos) {
+                            archivos_Abierto = archivos_Abierto1;
                             ruta = archivos_Abierto.getAbsolutePath();
                             nombre_Archivo = archivos_Abierto.getName();
                             entrada_Lista_Reproduccion_General_Panel = new Entrada_Lista_Reproduccion_General_Panel(nombre_Archivo,idx);
                             lista_Reproduccion_JPanel.add(entrada_Lista_Reproduccion_General_Panel);
                             rutas.push_back(ruta);
-                            componente_Reproducto_Lista_Audio.mediaListPlayer().list().media().add(ruta);
+                            CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().add(ruta);
                             idx++;
                         }
                         
@@ -1135,7 +1132,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
                         
-                        componente_Reproducto_Lista_Audio.mediaListPlayer().controls().play();
+                        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
                     }
                 }
             }
@@ -1173,8 +1170,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandera_Siguiente_Pista = false;
                         bandera_Anterior_Pista = true;
                         bandera_Indice_Cero = false;
-                        componente_Reproducto_Lista_Audio.mediaListPlayer().controls().stop();
-                        componente_Reproducto_Lista_Audio.mediaListPlayer().list().media().clear();
+                        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().stop();
+                        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().clear();
                         lista_Reproduccion_JPanel.removeAll();
 
                         File archivos_Abierto;
@@ -1182,14 +1179,14 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         String nombre_Archivo;
                         Entrada_Lista_Reproduccion_General_Panel entrada_Lista_Reproduccion_General_Panel;
 
-                        for (int i = 0; i < archivos_Abiertos.length; i++) {
-                            archivos_Abierto = archivos_Abiertos[i];
+                        for (File archivos_Abierto1 : archivos_Abiertos) {
+                            archivos_Abierto = archivos_Abierto1;
                             ruta = archivos_Abierto.getAbsolutePath();
                             nombre_Archivo = archivos_Abierto.getName();
                             entrada_Lista_Reproduccion_General_Panel = new Entrada_Lista_Reproduccion_General_Panel(nombre_Archivo, indice_auxiliar);
                             lista_Reproduccion_JPanel.add(entrada_Lista_Reproduccion_General_Panel);
                             rutas.push_back(ruta);
-                            componente_Reproducto_Lista_Audio.mediaListPlayer().list().media().add(ruta);
+                            CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().add(ruta);
                             indice_auxiliar++;
                         }
 
@@ -1212,7 +1209,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
-                        componente_Reproducto_Lista_Audio.mediaListPlayer().controls().play();
+                        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
                     }
                     
                 }
@@ -1223,7 +1220,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void banda6_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_banda6_JSliderStateChanged
         // TODO add your handling code here:
         int valor = banda6_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(6, valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(6, valor);
         String valor_string = String.valueOf(valor);
         banda6_JLabel.setText(valor_string);
     }//GEN-LAST:event_banda6_JSliderStateChanged
@@ -1231,7 +1228,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void banda1_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_banda1_JSliderStateChanged
         // TODO add your handling code here:
         int valor = banda1_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(1, valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(1, valor);
         String valor_string = String.valueOf(valor);
         banda1_JLabel.setText(valor_string);
     }//GEN-LAST:event_banda1_JSliderStateChanged
@@ -1239,7 +1236,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void banda2_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_banda2_JSliderStateChanged
         // TODO add your handling code here:
         int valor = banda2_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(2, valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(2, valor);
         String valor_string = String.valueOf(valor);
         banda2_JLabel.setText(valor_string);
     }//GEN-LAST:event_banda2_JSliderStateChanged
@@ -1247,7 +1244,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void banda3_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_banda3_JSliderStateChanged
         // TODO add your handling code here:
         int valor = banda3_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(3, valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(3, valor);
         String valor_string = String.valueOf(valor);
         banda3_JLabel.setText(valor_string);
     }//GEN-LAST:event_banda3_JSliderStateChanged
@@ -1255,7 +1252,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void banda4_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_banda4_JSliderStateChanged
         // TODO add your handling code here:
         int valor = banda4_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(4, valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(4, valor);
         String valor_string = String.valueOf(valor);
         banda4_JLabel.setText(valor_string);
     }//GEN-LAST:event_banda4_JSliderStateChanged
@@ -1263,7 +1260,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void banda5_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_banda5_JSliderStateChanged
         // TODO add your handling code here:
         int valor = banda5_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(5, valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(5, valor);
         String valor_string = String.valueOf(valor);
         banda5_JLabel.setText(valor_string);
     }//GEN-LAST:event_banda5_JSliderStateChanged
@@ -1271,7 +1268,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void banda0_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_banda0_JSliderStateChanged
         // TODO add your handling code here:
         int valor = banda0_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(0, valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(0, valor);
         String valor_string = String.valueOf(valor);
         banda0_JLabel.setText(valor_string);
     }//GEN-LAST:event_banda0_JSliderStateChanged
@@ -1279,7 +1276,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void banda7_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_banda7_JSliderStateChanged
         // TODO add your handling code here:
         int valor = banda7_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(7, valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(7, valor);
         String valor_string = String.valueOf(valor);
         banda7_JLabel.setText(valor_string);
     }//GEN-LAST:event_banda7_JSliderStateChanged
@@ -1287,7 +1284,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void banda8_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_banda8_JSliderStateChanged
         // TODO add your handling code here:
         int valor = banda8_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(8, valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(8, valor);
         String valor_string = String.valueOf(valor);
         banda8_JLabel.setText(valor_string);
     }//GEN-LAST:event_banda8_JSliderStateChanged
@@ -1295,7 +1292,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void banda9_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_banda9_JSliderStateChanged
         // TODO add your handling code here:
         int valor = banda9_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(9, valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setAmp(9, valor);
         String valor_string = String.valueOf(valor);
         banda9_JLabel.setText(valor_string);
     }//GEN-LAST:event_banda9_JSliderStateChanged
@@ -1303,7 +1300,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void preamp_JSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_preamp_JSliderStateChanged
         // TODO add your handling code here:
         int valor = preamp_JSlider.getValue();
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setPreamp(valor);
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setPreamp(valor);
         String valor_string = String.valueOf(valor);
         preamp_JLabel.setText(valor_string);
     }//GEN-LAST:event_preamp_JSliderStateChanged
@@ -1314,19 +1311,19 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         @SuppressWarnings("element-type-mismatch")
         Equalizer ecualizador = mapa_presets.get(presets_JComboBox.getSelectedItem());
         if(ecualizador != null){
-            componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setEqualizer(ecualizador);
+            CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setEqualizer(ecualizador);
 
-            int amp0 = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(0);
-            int amp1 = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(1);
-            int amp2 = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(2);
-            int amp3 = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(3);
-            int amp4 = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(4);
-            int amp5 = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(5);
-            int amp6 = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(6);
-            int amp7 = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(7);
-            int amp8 = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(8);
-            int amp9 = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(9);
-            int preamp = (int) componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().preamp();
+            int amp0 = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(0);
+            int amp1 = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(1);
+            int amp2 = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(2);
+            int amp3 = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(3);
+            int amp4 = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(4);
+            int amp5 = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(5);
+            int amp6 = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(6);
+            int amp7 = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(7);
+            int amp8 = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(8);
+            int amp9 = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(9);
+            int preamp = (int) CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().preamp();
 
             banda0_JSlider.setValue(amp0);
             banda1_JSlider.setValue(amp1);
@@ -1359,13 +1356,13 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     /**Sets Play And Pause Functions*/
     private void Establecer_Reproduccion_Pausa() {
         
-        if (componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && !rutas.is_empty()) {
+        if (CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && !rutas.is_empty()) {
 
-            if (componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING) {
-                componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().controls().setPause(true);
+            if (CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING) {
+                CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().setPause(true);
                 play_Pausa_JLabel.setIcon(icono_Play);
-            } else if (componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PAUSED) {
-                componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().controls().setPause(false);
+            } else if (CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PAUSED) {
+                CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().setPause(false);
                 play_Pausa_JLabel.setIcon(icono_Pause);
             }
         }
@@ -1375,7 +1372,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void Siguiente_Pista(){
         if(nodo_actual != null){
             if(nodo_actual.has_next()){
-                componente_Reproducto_Lista_Audio.mediaListPlayer().controls().playNext();
+                CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().playNext();
             }
         }
     }
@@ -1386,15 +1383,15 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             if(nodo_actual.has_previous()){
                 bandera_Anterior_Pista = true;
                 bandera_Siguiente_Pista = false;
-                componente_Reproducto_Lista_Audio.mediaListPlayer().controls().playPrevious();
+                CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().playPrevious();
             }
         }
     }
 
     /**Sets Stop Function*/
     private void Establecer_Alto() {
-        if (componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && !rutas.is_empty()) {
-            componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().controls().stop();
+        if (CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && !rutas.is_empty()) {
+            CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().stop();
         }
     }
 
@@ -1432,12 +1429,12 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         if(_indice > 0){
             indice = (_indice-1);
             nodo_actual = rutas.node(indice);
-            componente_Reproducto_Lista_Audio.mediaListPlayer().controls().play(_indice);
+            CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play(_indice);
             bandera_Indice_Cero = false;
         } else{
             indice = 0;
             bandera_Indice_Cero = true;
-            componente_Reproducto_Lista_Audio.mediaListPlayer().controls().play(0);
+            CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play(0);
         }
     }  
 
@@ -1511,9 +1508,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         rutas = new Lista<>();
         bandera_Siguiente_Pista = bandera_Anterior_Pista = false;
         MediaPlayerFactory media_player_Factory = new MediaPlayerFactory();
-        componente_Reproducto_Lista_Audio = new AudioListPlayerComponent(media_player_Factory);
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().setMediaPlayer(media_player_Factory.mediaPlayers().newMediaPlayer());
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setEqualizer(media_player_Factory.equalizer().newEqualizer("Flat"));
         mapa_presets = media_player_Factory.equalizer().allPresetEqualizers();
         icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
         icono_Pause = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
@@ -1547,8 +1541,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         Component[] componentes = this.getComponents();
         Component componente;
 
-        for(int i = 0; i < componentes.length;i++){
-            componente = componentes[i];
+        for (Component componente1 : componentes) {
+            componente = componente1;
             componente.setForeground(segundo_Color_Fuente);
         }
 
@@ -1563,22 +1557,22 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         componentes = informacion_Archivo_JPanel.getComponents();
 
-        for(int i = 0; i < componentes.length;i++){
-            componente = componentes[i];
+        for (Component componente1 : componentes) {
+            componente = componente1;
             componente.setForeground(segundo_Color_Fuente);
         }
 
         componentes = ecualizador_JPanel.getComponents();
 
-        for(int i = 0; i < componentes.length;i++){
-            componente = componentes[i];
+        for (Component componente1 : componentes) {
+            componente = componente1;
             componente.setForeground(segundo_Color_Fuente);
         }
 
         componentes = bandas_JPanel.getComponents();
 
-        for(int i = 0; i < componentes.length;i++){
-            componente = componentes[i];
+        for (Component componente1 : componentes) {
+            componente = componente1;
             componente.setBackground(primer_Color);
             componente.setForeground(segundo_Color_Fuente);
         }
@@ -1588,8 +1582,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         componentes = lista_Reproduccion_JPanel.getComponents();
 
         Entrada_Lista_Reproduccion_General_Panel entrada_Lista_Reproduccion_General_Panel;
-        for(int i = 0; i < componentes.length;i++){
-            componente = componentes[i];
+        for (Component componente1 : componentes) {
+            componente = componente1;
             entrada_Lista_Reproduccion_General_Panel = (Entrada_Lista_Reproduccion_General_Panel)componente;
             entrada_Lista_Reproduccion_General_Panel.Colores(segundo_Color_Fuente, segundo_Color);
         }
@@ -1701,8 +1695,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     
     @Override
     public void Limpiar()  {
-        componente_Reproducto_Lista_Audio.mediaListPlayer().controls().stop();
-        componente_Reproducto_Lista_Audio.release();
+        lista_Reproduccion_JPanel.removeAll();
         icono_Play.getImage().flush();
         icono_Pause.getImage().flush();
         rutas.clear();
@@ -1713,7 +1706,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
          rate_JSlider.addChangeListener((ChangeEvent e) -> {
             Object fuente = e.getSource();
             float rate = (float)(((JSlider) fuente).getValue() / 100f);
-            componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().controls().setRate(rate); 
+            CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().setRate(rate); 
         });
         
         rate_JSlider.addMouseListener(new MouseListener() {
@@ -1721,7 +1714,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             public void mouseClicked(MouseEvent e) {
                 if(SwingUtilities.isRightMouseButton(e)){
                     rate_JSlider.setValue(100);
-                    componente_Reproducto_Lista_Audio.mediaPlayer().controls().setRate(1); 
+                    CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaPlayer().controls().setRate(1); 
                 }
             }
 
@@ -1745,7 +1738,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         volumen_JSlider.addChangeListener((ChangeEvent e) -> {
             Object fuente = e.getSource();
             int volumen = ((JSlider) fuente).getValue();
-            componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setVolume(volumen);
+            CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().setVolume(volumen);
         });
 
         volumen_JSlider.addMouseListener(new MouseListener() {
@@ -1753,7 +1746,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             public void mouseClicked(MouseEvent e) {
                 if (SwingUtilities.isRightMouseButton(e)) {
                     volumen_JSlider.setValue(100);
-                    componente_Reproducto_Lista_Audio.mediaPlayer().audio().setVolume(100);
+                    CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaPlayer().audio().setVolume(100);
                 }
             }
 
@@ -1812,11 +1805,11 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         progreso_JSlider.addChangeListener((ChangeEvent e) -> {
             if (!bandera_Mouse_Auxiliar) {
                 Object fuente = e.getSource();
-                componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().controls().setTime(((JSlider) fuente).getValue());
+                CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().setTime(((JSlider) fuente).getValue());
             }
         });
         
-        componente_Reproducto_Lista_Audio.mediaListPlayer().events().addMediaListPlayerEventListener(new MediaListPlayerEventListener() {
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().events().addMediaListPlayerEventListener(new MediaListPlayerEventListener() {
             @Override
             public void mediaListPlayerFinished(MediaListPlayer mlp) {
                 Limpiar_Informacion();
@@ -1834,7 +1827,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             }
         });
        
-        componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().events().addMediaPlayerEventListener(new MediaPlayerEventListener() {
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().events().addMediaPlayerEventListener(new MediaPlayerEventListener() {
             String segundos;
             int tiempo, valor, longitud_Real;
             long longitud;
@@ -1911,8 +1904,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             public void positionChanged(MediaPlayer mp, float f) {
                
                 if(bandera_Mouse_Auxiliar){
-                    if(componente_Reproducto_Lista_Audio != null){
-                        tiempo = (int)componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().status().time();
+                    if(CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio() != null){
+                        tiempo = (int)CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().time();
                         valor = tiempo / 1000;
                         progreso_JSlider.setValue(tiempo);
                         segundos = CourseRoom.Utilerias.Convertir_Segundos(valor);
@@ -2005,13 +1998,13 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             @Override
             public void mediaPlayerReady(MediaPlayer mp) {
                 
-                longitud = componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().status().length();
+                longitud = CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().length();
                 if(longitud < Integer.MAX_VALUE){
                     longitud_Real = (int)longitud;
                     progreso_JSlider.setMaximum(longitud_Real);
                     duracion_Total_JLabel.setText(CourseRoom.Utilerias.Convertir_Segundos(longitud_Real/1000));
                     play_Pausa_JLabel.setIcon(icono_Pause);
-                    componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setVolume(volumen_JSlider.getValue());
+                    CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().setVolume(volumen_JSlider.getValue());
                     
                 }else{
                     JOptionPane.showMessageDialog(null, "Archivo Demasiado Grande","ERROR",JOptionPane.ERROR_MESSAGE);

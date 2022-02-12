@@ -91,12 +91,18 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     }
 
     public static void Cerrar_Sesion() {
-        CourseRoom.Utilerias.Primer_Color(CourseRoom.Utilerias.Color_Azul_Oscuro());
-        CourseRoom.Utilerias.Segundo_Color(CourseRoom.Utilerias.Color_Azul_Claro());
-        CourseRoom.Utilerias.Tercer_Color(CourseRoom.Utilerias.Color_Azul_Claro());
-        visualizador_JPanel.setBackground(CourseRoom.Utilerias.Color_Azul_Oscuro());
-        Mostrar_Vista("Inicio_Sesion");
+        
+        if(tablero_Estudiante != null){
+            tablero_Estudiante.Limpiar();
+        }
+        
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().stop();
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().clear();
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().release();
+        
         System.gc();
+        System.exit(0);
+        
     }
     
     public static void Colorear() {
@@ -149,6 +155,10 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         if(tablero_Estudiante != null){
             tablero_Estudiante.Limpiar();
         }
+        
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().stop();
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().clear();
+        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().release();
         super.dispose();
     }
     

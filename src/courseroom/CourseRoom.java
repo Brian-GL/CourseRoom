@@ -115,6 +115,8 @@ import oshi.hardware.Sensors;
 import oshi.hardware.SoundCard;
 import oshi.hardware.UsbDevice;
 import java.sql.SQLException;
+import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
+import uk.co.caprica.vlcj.player.component.AudioListPlayerComponent;
 
  // </editor-fold>
 
@@ -189,6 +191,7 @@ public class CourseRoom{
     public static class Utilerias {
 
         private static Faker faker;
+        private static AudioListPlayerComponent componente_Reproducto_Lista_Audio;
 
         private static Color primer_Color, primer_Color_Fuente;
         private static Color tercer_Color,tercer_Color_Fuente;
@@ -198,6 +201,12 @@ public class CourseRoom{
         private static HardwareAbstractionLayer hardware;
 
         public static void Iniciar_Utilerias() {
+            
+            MediaPlayerFactory media_player_Factory = new MediaPlayerFactory();
+            componente_Reproducto_Lista_Audio = new AudioListPlayerComponent(media_player_Factory);
+            componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().setMediaPlayer(media_player_Factory.mediaPlayers().newMediaPlayer());
+            componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setEqualizer(media_player_Factory.equalizer().newEqualizer("Flat"));
+            
             color_Azul_Oscuro = new Color(14, 30, 64);
             color_Azul_Claro = new Color(104, 194, 232);
             informacion_Sistema = new SystemInfo();
@@ -210,6 +219,9 @@ public class CourseRoom{
             faker = new Faker(local);
         }
 
+         public static AudioListPlayerComponent Componente_Reproducto_Lista_Audio() {
+            return componente_Reproducto_Lista_Audio;
+        }
 
         public static Color Segundo_Color() {
             return segundo_Color;
