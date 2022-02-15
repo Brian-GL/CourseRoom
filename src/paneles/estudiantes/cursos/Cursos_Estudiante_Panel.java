@@ -51,10 +51,15 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     private Lista<Curso_Estudiante_Panel> buscar_Cursos_Lista;
     private Lista<Curso_Estudiante_Panel> mostrar_Cursos_Actuales_Lista;
     private Lista<Curso_Estudiante_Panel> mostrar_Cursos_Finalizados_Lista;
-    private Lista<Curso_Estudiante_Panel> mostrar_Cursos_Recomendados_Lista;
-    private Lista<Curso_Estudiante_Panel> mostrar_Cursos_Nuevos_Lista;
+    private static Lista<Vista_Previa_Curso_Estudiante_Panel> mostrar_Cursos_Recomendados_Lista;
+    private static Lista<Vista_Previa_Curso_Estudiante_Panel> mostrar_Cursos_Nuevos_Lista;
+    
+    private static DefaultTableModel modelo_Cursos_Actuales;
+    private static DefaultTableModel modelo_Cursos_Recomendados;
+    private static DefaultTableModel modelo_Cursos_Nuevos;
     
     private byte carta_Visible;
+    private static int id_Curso_Actual;
     
     
     /**
@@ -638,6 +643,54 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
+    public static void Remover_Curso_Recomendado(String ID){
+        
+        int fila;
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        
+        for (fila = 0; fila < mostrar_Cursos_Recomendados_JTable.getRowCount(); fila++) {
+            
+            Celda_Renderer celda = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 0);
+            if (celda.ID().equals(ID)){
+                celdas[0] = celda;
+                celdas[1] = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 1);
+                celdas[2] = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 2);
+                celdas[3] = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 3);
+                
+                break;
+            }
+        }
+        
+        mostrar_Cursos_Recomendados_Lista.erase_at(fila);
+        modelo_Cursos_Recomendados.removeRow(fila);
+        
+        modelo_Cursos_Actuales.addRow(celdas);
+    }
+    
+    public static void Remover_Curso_Nuevo(String ID){
+        
+        int fila;
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        
+        for (fila = 0; fila < mostrar_Cursos_Nuevos_JTable.getRowCount(); fila++) {
+            
+            Celda_Renderer celda = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 0);
+            if (celda.ID().equals(ID)){
+                celdas[0] = celda;
+                celdas[1] = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 1);
+                celdas[2] = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 2);
+                celdas[3] = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 3);
+                
+                break;
+            }
+        }
+        
+        mostrar_Cursos_Nuevos_Lista.erase_at(fila);
+        modelo_Cursos_Nuevos.removeRow(fila);
+        
+        modelo_Cursos_Actuales.addRow(celdas);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
@@ -669,6 +722,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     public void Iniciar_Componentes() {
         
         carta_Visible = 0;
+        id_Curso_Actual = 0;
         
         //Buscar cursos:
         
@@ -715,7 +769,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         mostrar_Cursos_Actuales_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         Celda_Renderer[] celdas = new Celda_Renderer[4];
-        DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
+        modelo_Cursos_Actuales = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
 
         String id;
         URL url_Imagen;
@@ -723,8 +777,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         ImageIcon icono = null;
         String fecha_Creacion;
         Curso_Estudiante_Panel curso_Estudiante_Panel;
-        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
-            id = CourseRoom.Utilerias.Concatenar("Curso_Actual_", i);
+        for (id_Curso_Actual = 0; id_Curso_Actual < CourseRoom.Utilerias.number().numberBetween(1, 5); id_Curso_Actual++) {
+            id = CourseRoom.Utilerias.Concatenar("Curso_Actual_", id_Curso_Actual);
             try {
                 System.out.println(id + " -> Getting Image From https://picsum.photos/450/450");
                 url_Imagen = new URL("https://picsum.photos/450/450");
@@ -750,7 +804,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id);
                 mostrar_Cursos_Actuales_Lista.push_back(curso_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
-                modelo.addRow(celdas);
+                modelo_Cursos_Actuales.addRow(celdas);
 
                 obtener_Imagen_Curso.flush();
 
@@ -792,7 +846,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Finalizados_JTable.getTableHeader().setFont(gadugi);
 
         mostrar_Cursos_Finalizados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
         
         for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
             id = CourseRoom.Utilerias.Concatenar("Curso_Finalizado_", i);
@@ -863,10 +917,13 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Recomendados_JTable.getTableHeader().setFont(gadugi);
 
         mostrar_Cursos_Recomendados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        modelo = (DefaultTableModel) mostrar_Cursos_Recomendados_JTable.getModel();
+        modelo_Cursos_Recomendados = (DefaultTableModel) mostrar_Cursos_Recomendados_JTable.getModel();
 
-        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
+        Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel;
+        String id_curso_Enrolar = "";
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++, id_Curso_Actual++) {
             id = CourseRoom.Utilerias.Concatenar("Curso_Recomendado_", i);
+            id_curso_Enrolar = CourseRoom.Utilerias.Concatenar("Curso_Actual_", id_Curso_Actual);
             try {
                 System.out.println(id + " -> Getting Image From https://picsum.photos/450/450");
                 url_Imagen = new URL("https://picsum.photos/450/450");
@@ -888,11 +945,12 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
-                curso_Estudiante_Panel = new Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
-                        CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id);
-                mostrar_Cursos_Recomendados_Lista.push_back(curso_Estudiante_Panel);
-                Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
-                modelo.addRow(celdas);
+                vista_Previa_Curso_Estudiante_Panel = new Vista_Previa_Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                        CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id, false, id_curso_Enrolar);
+                
+                mostrar_Cursos_Recomendados_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
+                Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
+                modelo_Cursos_Recomendados.addRow(celdas);
 
                 obtener_Imagen_Curso.flush();
 
@@ -933,10 +991,11 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Nuevos_JTable.getTableHeader().setFont(gadugi);
 
         mostrar_Cursos_Nuevos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        modelo = (DefaultTableModel) mostrar_Cursos_Nuevos_JTable.getModel();
+        modelo_Cursos_Nuevos = (DefaultTableModel) mostrar_Cursos_Nuevos_JTable.getModel();
 
-        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++, id_Curso_Actual++) {
             id = CourseRoom.Utilerias.Concatenar("Curso_Nuevo_", i);
+            id_curso_Enrolar = CourseRoom.Utilerias.Concatenar("Curso_Actual_", id_Curso_Actual);
             try {
                 System.out.println(id + " -> Getting Image From https://picsum.photos/450/450");
                 url_Imagen = new URL("https://picsum.photos/450/450");
@@ -958,11 +1017,11 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
-                curso_Estudiante_Panel = new Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
-                        CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id);
-                mostrar_Cursos_Nuevos_Lista.push_back(curso_Estudiante_Panel);
-                Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
-                modelo.addRow(celdas);
+                vista_Previa_Curso_Estudiante_Panel = new Vista_Previa_Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                        CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id, true, id_curso_Enrolar);
+                mostrar_Cursos_Nuevos_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
+                Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
+                modelo_Cursos_Nuevos.addRow(celdas);
 
                 obtener_Imagen_Curso.flush();
 
@@ -1047,10 +1106,10 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Actuales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         mostrar_Cursos_Actuales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
-        modelo = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
+        
         for (int i = 0; i < mostrar_Cursos_Actuales_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
-                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda = (Celda_Renderer) modelo_Cursos_Actuales.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
@@ -1082,34 +1141,33 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Recomendados_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         mostrar_Cursos_Recomendados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
-        modelo = (DefaultTableModel) mostrar_Cursos_Recomendados_JTable.getModel();
         for (int i = 0; i < mostrar_Cursos_Recomendados_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
-                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
 
-        for (Nodo<Curso_Estudiante_Panel> nodo = mostrar_Cursos_Recomendados_Lista.front(); nodo != null; nodo = nodo.next()) {
-            curso_Estudiante_Panel = nodo.element();
-            curso_Estudiante_Panel.Colorear_Componentes();
+        Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel;
+        for (Nodo<Vista_Previa_Curso_Estudiante_Panel> nodo = mostrar_Cursos_Recomendados_Lista.front(); nodo != null; nodo = nodo.next()) {
+            vista_Previa_Curso_Estudiante_Panel = nodo.element();
+            vista_Previa_Curso_Estudiante_Panel.Colorear_Componentes();
         }
         
         //Cursos nuevos:
         mostrar_Cursos_Nuevos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         mostrar_Cursos_Nuevos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
-        modelo = (DefaultTableModel) mostrar_Cursos_Nuevos_JTable.getModel();
         for (int i = 0; i < mostrar_Cursos_Nuevos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
-                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
 
-        for (Nodo<Curso_Estudiante_Panel> nodo = mostrar_Cursos_Nuevos_Lista.front(); nodo != null; nodo = nodo.next()) {
-            curso_Estudiante_Panel = nodo.element();
-            curso_Estudiante_Panel.Colorear_Componentes();
+        for (Nodo<Vista_Previa_Curso_Estudiante_Panel> nodo = mostrar_Cursos_Nuevos_Lista.front(); nodo != null; nodo = nodo.next()) {
+            vista_Previa_Curso_Estudiante_Panel = nodo.element();
+            vista_Previa_Curso_Estudiante_Panel.Colorear_Componentes();
         }
     }
 

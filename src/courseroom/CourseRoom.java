@@ -115,6 +115,8 @@ import oshi.hardware.Sensors;
 import oshi.hardware.SoundCard;
 import oshi.hardware.UsbDevice;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
 import uk.co.caprica.vlcj.player.component.AudioListPlayerComponent;
 
@@ -146,6 +148,8 @@ public class CourseRoom{
         }
 
         public static Vector<Integer> Fecha_Hora_Servidor() throws XmlRpcException, IOException {
+            
+            
             
             Vector parametros = new Vector();
             

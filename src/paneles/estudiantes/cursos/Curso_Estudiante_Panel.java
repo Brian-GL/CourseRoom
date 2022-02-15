@@ -152,6 +152,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
         estadisticas_JTable = new javax.swing.JTable();
         abandonar_Curso_JButton = new javax.swing.JButton();
+        finalizar_Curso_JButton = new javax.swing.JButton();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -331,7 +332,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 .addContainerGap())
         );
 
-        curso_JLayeredPane.setMinimumSize(new java.awt.Dimension(0, 0));
         curso_JLayeredPane.setPreferredSize(new java.awt.Dimension(1046, 545));
         curso_JLayeredPane.setLayout(new java.awt.CardLayout());
 
@@ -670,7 +670,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     chat_Curso_JPanelLayout.setHorizontalGroup(
                         chat_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mensajes_Chat_JScrollPane)
-                        .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE)
+                        .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                     );
                     chat_Curso_JPanelLayout.setVerticalGroup(
                         chat_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -877,9 +877,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                 estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
                                 estadisticas_JScrollPane.setViewportView(estadisticas_JTable);
 
+                                abandonar_Curso_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
                                 abandonar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/leave.png"))); // NOI18N
                                 abandonar_Curso_JButton.setText("Abandonar Curso");
-                                abandonar_Curso_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
                                 abandonar_Curso_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
                                 ((ImageIcon)abandonar_Curso_JButton.getIcon()).getImage().flush();
                                 abandonar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -894,23 +894,45 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     }
                                 });
 
+                                finalizar_Curso_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+                                finalizar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
+                                finalizar_Curso_JButton.setText("Finalizar Curso");
+                                finalizar_Curso_JButton.setToolTipText("Finaliza el curso");
+                                ((ImageIcon)finalizar_Curso_JButton.getIcon()).getImage().flush();
+                                finalizar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                        finalizar_Curso_JButtonMouseClicked(evt);
+                                    }
+                                    public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                        finalizar_Curso_JButtonMouseEntered(evt);
+                                    }
+                                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                                        finalizar_Curso_JButtonMouseExited(evt);
+                                    }
+                                });
+
                                 javax.swing.GroupLayout estadisticas_JPanelLayout = new javax.swing.GroupLayout(estadisticas_JPanel);
                                 estadisticas_JPanel.setLayout(estadisticas_JPanelLayout);
                                 estadisticas_JPanelLayout.setHorizontalGroup(
                                     estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
-                                        .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(abandonar_Curso_JButton)
-                                            .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                                        .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
+                                            .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
+                                                .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addContainerGap())
                                 );
                                 estadisticas_JPanelLayout.setVerticalGroup(
                                     estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
                                         .addContainerGap()
-                                        .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                                        .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addContainerGap())
                                 );
 
@@ -923,8 +945,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(32, 32, 32)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE)
-                                            .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE))
+                                            .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
                                         .addGap(32, 32, 32))
                                 );
                                 layout.setVerticalGroup(
@@ -1142,6 +1164,25 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         abandonar_Curso_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente().brighter());
     }//GEN-LAST:event_abandonar_Curso_JButtonMouseExited
 
+    private void finalizar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
+    }//GEN-LAST:event_finalizar_Curso_JButtonMouseClicked
+
+    private void finalizar_Curso_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseEntered
+        // TODO add your handling code here:
+        finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color().darker());
+        finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente().brighter());
+    }//GEN-LAST:event_finalizar_Curso_JButtonMouseEntered
+
+    private void finalizar_Curso_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseExited
+        // TODO add your handling code here:
+        finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color().darker());
+        finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente().brighter());
+    }//GEN-LAST:event_finalizar_Curso_JButtonMouseExited
+
     public String ID() {
         return this.ID;
     }
@@ -1212,6 +1253,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JScrollPane estadisticas_JScrollPane;
     private javax.swing.JTable estadisticas_JTable;
     private javax.swing.JLabel fecha_Creacion_JLabel;
+    private javax.swing.JButton finalizar_Curso_JButton;
     private javax.swing.JLabel imagen_Curso_JLabel;
     private javax.swing.JLabel imagen_Profesor_JLabel;
     private javax.swing.JPanel informacion_Curso_JPanel;
@@ -1610,6 +1652,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         abandonar_Curso_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color().darker());
         abandonar_Curso_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente().brighter());
+        
+        finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color().darker());
+        finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente().brighter());
         
     }
     

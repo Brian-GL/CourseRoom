@@ -880,6 +880,10 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         layout.show(visualizador_JPanel, llave);
     }
     
+    public static void Retirar_Vista(Component componente){
+        layout.removeLayoutComponent(componente);
+    }
+    
     
     /**
     * @return the imagen_Usuario
@@ -1001,7 +1005,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         @SuppressWarnings("SleepWhileInLoop")
         public void run(){
             try {
-                 LocalDateTime fecha_Hora_Servidor;
+                LocalDateTime fecha_Hora_Servidor;
                 Vector<Integer> respuesta = CourseRoom.Solicitudes.Fecha_Hora_Servidor();
                 
                 fecha_Hora_Servidor = (respuesta.capacity() > 0) ? 
