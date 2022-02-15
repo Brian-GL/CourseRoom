@@ -70,6 +70,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         repetir_Contrasenia_JTextField = new javax.swing.JPasswordField();
         regresar_Inicio_JButton = new javax.swing.JButton();
         continuar_Datos_Personales_JButton = new javax.swing.JButton();
+        mostrar_Contrasena_JCheckBox = new javax.swing.JCheckBox();
+        mostrar_Contrasena_JCheckBox2 = new javax.swing.JCheckBox();
         datos_Personales_JPanel = new javax.swing.JPanel();
         logo_Datos_Personales_JLabel = new javax.swing.JLabel();
         titulo_Datos_Personales_JLabel = new javax.swing.JLabel();
@@ -271,6 +273,34 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             }
         });
 
+        mostrar_Contrasena_JCheckBox.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        mostrar_Contrasena_JCheckBox.setText("Mostrar Contraseña");
+        mostrar_Contrasena_JCheckBox.setToolTipText("Muestra La Contraseña");
+        mostrar_Contrasena_JCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mostrar_Contrasena_JCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        mostrar_Contrasena_JCheckBox.setMaximumSize(new java.awt.Dimension(430, 30));
+        mostrar_Contrasena_JCheckBox.setMinimumSize(new java.awt.Dimension(430, 30));
+        mostrar_Contrasena_JCheckBox.setPreferredSize(new java.awt.Dimension(430, 30));
+        mostrar_Contrasena_JCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrar_Contrasena_JCheckBoxMouseClicked(evt);
+            }
+        });
+
+        mostrar_Contrasena_JCheckBox2.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        mostrar_Contrasena_JCheckBox2.setText("Mostrar Contraseña");
+        mostrar_Contrasena_JCheckBox2.setToolTipText("Muestra La Contraseña");
+        mostrar_Contrasena_JCheckBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mostrar_Contrasena_JCheckBox2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        mostrar_Contrasena_JCheckBox2.setMaximumSize(new java.awt.Dimension(430, 30));
+        mostrar_Contrasena_JCheckBox2.setMinimumSize(new java.awt.Dimension(430, 30));
+        mostrar_Contrasena_JCheckBox2.setPreferredSize(new java.awt.Dimension(430, 30));
+        mostrar_Contrasena_JCheckBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrar_Contrasena_JCheckBox2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout autenticacion_JPanelLayout = new javax.swing.GroupLayout(autenticacion_JPanel);
         autenticacion_JPanel.setLayout(autenticacion_JPanelLayout);
         autenticacion_JPanelLayout.setHorizontalGroup(
@@ -283,16 +313,21 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(continuar_Datos_Personales_JButton))
                     .addComponent(logo_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titulo_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)
+                    .addComponent(titulo_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1240, Short.MAX_VALUE)
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(repetir_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
-                            .addComponent(correo_Electronico_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(correo_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(contrasenia_Autenticacion_JPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(repetir_Contrasenia_JTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(mostrar_Contrasena_JCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, autenticacion_JPanelLayout.createSequentialGroup()
+                                    .addComponent(repetir_Contrasena_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(mostrar_Contrasena_JCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(correo_Electronico_Autenticacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(correo_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(contrasenia_Autenticacion_JPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(repetir_Contrasenia_JTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -303,7 +338,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 .addComponent(logo_Autenticacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(titulo_Autenticacion_JLabel)
-                .addGap(18, 52, Short.MAX_VALUE)
+                .addGap(18, 47, Short.MAX_VALUE)
                 .addComponent(correo_Electronico_Autenticacion_JLabel)
                 .addGap(2, 2, 2)
                 .addComponent(correo_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -311,11 +346,18 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 .addComponent(contrasena_Autenticacion_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(contrasenia_Autenticacion_JPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(repetir_Contrasena_Autenticacion_JLabel)
+                .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(repetir_Contrasena_Autenticacion_JLabel))
+                    .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mostrar_Contrasena_JCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(repetir_Contrasenia_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(mostrar_Contrasena_JCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(continuar_Datos_Personales_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(regresar_Inicio_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -339,6 +381,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         nombres_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         nombres_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         nombres_JTextField.setToolTipText("<html>  <h3> Nombre(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
+        nombres_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombres_JTextFieldKeyTyped(evt);
+            }
+        });
 
         apellido_Paterno_JLabel.setText("Apellido Paterno *");
         apellido_Paterno_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -346,6 +393,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         apellido_Paterno_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         apellido_Paterno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         apellido_Paterno_JTextField.setToolTipText("<html>  <h3> Apellido paterno </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
+        apellido_Paterno_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellido_Paterno_JTextFieldKeyTyped(evt);
+            }
+        });
 
         localidad_JLabel.setText("Localidad");
         localidad_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -353,6 +405,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         genero_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         genero_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         genero_JTextField.setToolTipText("<html>  <h3> Identidad de género </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
+        genero_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                genero_JTextFieldKeyTyped(evt);
+            }
+        });
 
         genero_JLabel.setText("Género");
         genero_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -400,6 +457,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         apellido_Materno_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         apellido_Materno_JTextField.setToolTipText("<html>  <h3> Apellido materno </h3> </html>");
+        apellido_Materno_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellido_Materno_JTextFieldKeyTyped(evt);
+            }
+        });
 
         estado_JLabel.setText("Estado");
         estado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -690,6 +752,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         promedio_General_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         promedio_General_JFormattedTextField.setPreferredSize(new java.awt.Dimension(126, 40));
         promedio_General_JFormattedTextField.setToolTipText("<html>\n<h3>Promedio general de tu escuela</h3>\n<ul><li>Esto nos ayudará a generar mayores estadísticas sobre ti<br>\na la hora de tomar tus cursos.</li></ul>\n</html>");
+        promedio_General_JFormattedTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                promedio_General_JFormattedTextFieldKeyTyped(evt);
+            }
+        });
 
         descripcion_JLabel.setText("Descripción");
         descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -699,6 +766,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
         descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
+        descripcion_JTextPane.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                descripcion_JTextPaneKeyTyped(evt);
+            }
+        });
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         interes_Tematica_JLabel.setText("Interes / Temática");
@@ -893,7 +965,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void continuar_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Datos_Personales_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this,"Datos_Personales");
+            verificar_Campos_Autenticacion();
         }
     }//GEN-LAST:event_continuar_Datos_Personales_JButtonMouseClicked
 
@@ -910,7 +982,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void continuar_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Perfil_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this,"Perfil");
+            verificar_Datos_Personales();
         }
     }//GEN-LAST:event_continuar_Perfil_JButtonMouseClicked
 
@@ -1087,12 +1159,123 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         agregar_Interes_Tematica_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseExited
 
-    public boolean validar_Correo(String correo) {
+    private void nombres_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombres_JTextFieldKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingresa Solo Letras");
+        }
+    }//GEN-LAST:event_nombres_JTextFieldKeyTyped
+
+    private void apellido_Paterno_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellido_Paterno_JTextFieldKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingresa Solo Letras");
+        }
+    }//GEN-LAST:event_apellido_Paterno_JTextFieldKeyTyped
+
+    private void apellido_Materno_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellido_Materno_JTextFieldKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingresa Solo Letras");
+        }
+    }//GEN-LAST:event_apellido_Materno_JTextFieldKeyTyped
+
+    private void genero_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_genero_JTextFieldKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingresa Solo Letras");
+        }
+    }//GEN-LAST:event_genero_JTextFieldKeyTyped
+
+    private void descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcion_JTextPaneKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingresa Solo Letras");
+        }
+    }//GEN-LAST:event_descripcion_JTextPaneKeyTyped
+
+    private void mostrar_Contrasena_JCheckBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Contrasena_JCheckBoxMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            if (mostrar_Contrasena_JCheckBox.isSelected()){
+                contrasenia_Autenticacion_JPasswordField.setEchoChar((char)0);
+            }
+            else{
+                contrasenia_Autenticacion_JPasswordField.setEchoChar('\u25CF');
+            }
+        }
+    }//GEN-LAST:event_mostrar_Contrasena_JCheckBoxMouseClicked
+
+    private void mostrar_Contrasena_JCheckBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Contrasena_JCheckBox2MouseClicked
+        // TODO add your handling code here:
+         if(SwingUtilities.isLeftMouseButton(evt)){
+            if (mostrar_Contrasena_JCheckBox2.isSelected()){
+                repetir_Contrasenia_JTextField.setEchoChar((char)0);
+            }
+            else{
+                repetir_Contrasenia_JTextField.setEchoChar('\u25CF');
+            }
+        }
+    }//GEN-LAST:event_mostrar_Contrasena_JCheckBox2MouseClicked
+
+    private void promedio_General_JFormattedTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promedio_General_JFormattedTextFieldKeyTyped
+        char c = evt.getKeyChar();   
+          if(Character.isLetter(c)) { 
+              getToolkit().beep(); 
+              evt.consume(); 
+               JOptionPane.showMessageDialog(null, "Ingresa Solo Números");
+          }
+    }//GEN-LAST:event_promedio_General_JFormattedTextFieldKeyTyped
+
+    public void verificar_Campos_Autenticacion() {
+        String Password = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
+        String Password2 = String.valueOf(repetir_Contrasenia_JTextField.getPassword());
+        // Checa Los Campos Vacíos.
+        if (correo_JTextField.getText().equals("")
+                || Password.equals("") || Password2.equals("")) {
+            // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
+            JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
+        } else {
+            /*if (validar_Password(contrasenia_Autenticacion_JPasswordField.getText().trim())) {
+                if (Password.equals(Password2)) {
+                    validar_Correo(correo_JTextField.getText().trim());
+                }else{
+                     JOptionPane.showMessageDialog(this, "Contraseñas Distintas Revisa!!!", "NO", WIDTH);
+                contrasenia_Autenticacion_JPasswordField.requestFocus();
+                }
+            }*/ 
+            if (Password.equals(Password2)) {
+                // Si Todo Esta Bien Llamamos A La Función "Validar Correo".
+                validar_Correo(correo_JTextField.getText().trim());
+                //validar_Password(contrasenia_Autenticacion_JPasswordField.getText().trim());
+            } else {
+                // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
+                JOptionPane.showMessageDialog(this, "Contraseñas Distintas Revisa!!!", "NO", WIDTH);
+                contrasenia_Autenticacion_JPasswordField.requestFocus();
+            }
+        }
+    }
+    
+        public boolean validar_Correo(String correo) {
         Pattern pat = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z]{3})((\\.[A-Za-z]{2}))?$");
         Matcher mat = pat.matcher(correo);
         if (mat.find()) {
-
-            //checar_Correo();
+            JOptionPane.showMessageDialog(null, "Continuemos!!!");
+            ((CardLayout)this.getLayout()).show(this,"Datos_Personales");
         } else {
             JOptionPane.showMessageDialog(null, "El Correo\n'" + correo + "'\nNo Es Valido");
             correo_JTextField.setText("");
@@ -1100,31 +1283,31 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         }
         return mat.find();
     }
-
-    public void verificar_Campos() {
-
-        String Password = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
-        String Password2 = String.valueOf(repetir_Contrasenia_JTextField.getPassword());
-
-        // Checa Los Campos Vacíos.
-        if (correo_JTextField.getText().equals("")
-                || Password.equals("") || Password2.equals("")) {
+        
+        public void verificar_Datos_Personales(){
+            if (nombres_JTextField.getText().equals("")
+                || apellido_Paterno_JTextField.equals("")) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
             JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
-
         } else {
-            // Checa Si Las Dos Contraseñas Son Iguales.
-            if (Password.equals(Password2)) {
-                // Si Todo Esta Bien Llamamos A La Función "Agregar Usuarios".
-                //agregar_Usuarios();
-            } else {
-
-                // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
-                JOptionPane.showMessageDialog(this, "Contraseñas Distintas Revisa!!!", "NO", WIDTH);
-            }
+            //validar_Password(apellido_Materno_JTextField.getText().trim());
+            JOptionPane.showMessageDialog(null, "Continuemos!!!");
+            ((CardLayout) this.getLayout()).show(this, "Perfil");
         }
     }
-
+        
+        /*public boolean validar_Password(String pass) {
+        Pattern pat = Pattern.compile("\\A(?=\\S*?[0-9])(?=\\S*?[a-z])(?=\\S*?[A-Z])(?=\\S*?[.@#$%^&+=])\\S{8,}\\z");
+        Matcher mat = pat.matcher(pass);
+        if (mat.find()) {
+            JOptionPane.showMessageDialog(null, "Bien!!!");
+        } else {
+            JOptionPane.showMessageDialog(null, "La Contraseña Debe Contener:\n"
+                    + "°Al menos 8 caracteres\n°Una Letra Mayuzcula\n"
+                    + "°Una Letra Minuscula\n°Un Caracter Especial");
+        }
+        return mat.find();
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar_Interes_Tematica_JButton;
@@ -1168,6 +1351,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private javax.swing.JLabel logo_Informacion_Extra_JLabel;
     private javax.swing.JLabel logo_Inicio_JLabel;
     private javax.swing.JLabel logo_Perfil_JLabel;
+    private javax.swing.JCheckBox mostrar_Contrasena_JCheckBox;
+    private javax.swing.JCheckBox mostrar_Contrasena_JCheckBox2;
     private javax.swing.JLabel nombres_JLabel;
     private javax.swing.JTextField nombres_JTextField;
     private javax.swing.JPanel perfil_JPanel;

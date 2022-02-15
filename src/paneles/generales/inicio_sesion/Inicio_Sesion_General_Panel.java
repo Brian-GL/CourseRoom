@@ -381,7 +381,13 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         Matcher mat = pat.matcher(correo);
         if (mat.find()) {
             JOptionPane.showMessageDialog(null, "Bienvenido\n*" + correo + "*");
+
             CourseRoom_Frame.Mostrar_Vista("Tablero");
+
+            //CourseRoom_Frame.Mostrar_Tablero();
+            //CourseRoom_Frame.Mostrar_Crear_Cuenta();
+            CourseRoom_Frame.Mostrar_Vista("Crear_Cuenta");
+
             usuario_JTextField.setText("");
             contrasena_JPasswordField.setText("");
         } else {

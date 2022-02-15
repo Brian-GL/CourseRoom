@@ -176,16 +176,23 @@
                           <Component id="continuar_Datos_Personales_JButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="logo_Autenticacion_JLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="titulo_Autenticacion_JLabel" alignment="0" pref="1248" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Component id="titulo_Autenticacion_JLabel" alignment="0" pref="1240" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="contrasena_Autenticacion_JLabel" alignment="1" max="32767" attributes="0"/>
-                              <Component id="repetir_Contrasena_Autenticacion_JLabel" alignment="0" pref="706" max="32767" attributes="0"/>
-                              <Component id="correo_Electronico_Autenticacion_JLabel" alignment="1" max="32767" attributes="0"/>
-                              <Component id="correo_JTextField" alignment="1" max="32767" attributes="0"/>
-                              <Component id="contrasenia_Autenticacion_JPasswordField" alignment="1" max="32767" attributes="0"/>
-                              <Component id="repetir_Contrasenia_JTextField" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="mostrar_Contrasena_JCheckBox2" min="-2" pref="195" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="contrasena_Autenticacion_JLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="repetir_Contrasena_Autenticacion_JLabel" pref="706" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="mostrar_Contrasena_JCheckBox" min="-2" pref="195" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="correo_Electronico_Autenticacion_JLabel" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="correo_JTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="contrasenia_Autenticacion_JPasswordField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="repetir_Contrasenia_JTextField" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -201,7 +208,7 @@
                   <Component id="logo_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="titulo_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" pref="52" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" pref="47" max="32767" attributes="0"/>
                   <Component id="correo_Electronico_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Component id="correo_JTextField" min="-2" max="-2" attributes="0"/>
@@ -209,11 +216,21 @@
                   <Component id="contrasena_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="contrasenia_Autenticacion_JPasswordField" min="-2" pref="43" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="repetir_Contrasena_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="repetir_Contrasena_Autenticacion_JLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="mostrar_Contrasena_JCheckBox" min="-2" pref="46" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="repetir_Contrasenia_JTextField" min="-2" pref="45" max="-2" attributes="0"/>
-                  <EmptySpace pref="78" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="mostrar_Contrasena_JCheckBox2" min="-2" pref="46" max="-2" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="continuar_Datos_Personales_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="regresar_Inicio_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -356,6 +373,56 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)continuar_Datos_Personales_JButton.getIcon()).getImage().flush();"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="mostrar_Contrasena_JCheckBox">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Gadugi" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Mostrar Contrase&#xf1;a"/>
+            <Property name="toolTipText" type="java.lang.String" value="Muestra La Contrase&#xf1;a"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[430, 30]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[430, 30]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[430, 30]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mostrar_Contrasena_JCheckBoxMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="mostrar_Contrasena_JCheckBox2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Gadugi" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Mostrar Contrase&#xf1;a"/>
+            <Property name="toolTipText" type="java.lang.String" value="Muestra La Contrase&#xf1;a"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[430, 30]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[430, 30]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[430, 30]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mostrar_Contrasena_JCheckBox2MouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -501,6 +568,9 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Nombre(s) &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombres_JTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="apellido_Paterno_JLabel">
           <Properties>
@@ -520,6 +590,9 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Apellido paterno &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="apellido_Paterno_JTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="localidad_JLabel">
           <Properties>
@@ -539,6 +612,9 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Identidad de g&#xe9;nero &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Opcional&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="genero_JTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="genero_JLabel">
           <Properties>
@@ -618,6 +694,9 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Apellido materno &lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="apellido_Materno_JTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="estado_JLabel">
           <Properties>
@@ -1085,6 +1164,9 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Promedio general de tu escuela&lt;/h3&gt;&#xa;&lt;ul&gt;&lt;li&gt;Esto nos ayudar&#xe1; a generar mayores estad&#xed;sticas sobre ti&lt;br&gt;&#xa;a la hora de tomar tus cursos.&lt;/li&gt;&lt;/ul&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="promedio_General_JFormattedTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="descripcion_JLabel">
           <Properties>
@@ -1117,6 +1199,9 @@
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&#xa;&lt;h3&gt;Descripci&#xf3;n Personal&lt;/h3&gt;&#xa;&lt;ul&gt;&#xa;&lt;li&gt;&#xa;Descripci&#xf3;n sobre ti, visible para todos&#xa;&lt;/li&gt;&#xa;&lt;/ul&gt;&#xa;&lt;/html&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="descripcion_JTextPaneKeyTyped"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
