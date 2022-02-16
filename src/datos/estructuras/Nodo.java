@@ -101,13 +101,13 @@ public class Nodo<T> implements Comparable<Nodo<T>>{
        String toString = "";
        
         if(has_previous()){
-            toString = this.previous() + "\n";
+            toString = this.previous().element().toString() + "\n";
         }
         
-        toString = this._element + "\n";
+        toString += this._element + "\n";
         
         if(has_next()){
-            toString = this.next() + "\n";
+            toString += this.next().element().toString() + "\n";
         }
       
         return toString;

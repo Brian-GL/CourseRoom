@@ -1330,8 +1330,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Celda_Renderer[] celdas = new Celda_Renderer[4];
         modelo = (DefaultTableModel) tareas_JTable.getModel();
 
-        String _id;
-        String nombre = "",  fecha = "", estatus = "";
+        String _id, nombre = "",  fecha = "", estatus = "";
         
         Image imagen_Curso = ((ImageIcon)imagen_Curso_JLabel.getIcon()).getImage();
         imagen_Curso = imagen_Curso.getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
@@ -1696,14 +1695,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
             if (archivos_Abiertos != null) {
 
-                File archivo_Abierto;
                 String emisor;
                 String fecha;
 
                 if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Video_Izquierdo_General_Panel mensaje_Video_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         emisor = CourseRoom.Utilerias.dune().character();
                         fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
@@ -1712,8 +1709,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     }
                 } else {
                     Mensaje_Video_Derecho_General_Panel mensaje_Video_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         emisor = CourseRoom.Utilerias.dune().character();
                         fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
@@ -1745,15 +1741,13 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
             if (archivos_Abiertos != null) {
 
-                File archivo_Abierto;
                 String emisor;
                 String fecha;
                 Image abrir_Imagen;
 
                 if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Imagen_Izquierdo_General_Panel mensaje_Imagen_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         try {
                             abrir_Imagen = ImageIO.read(archivo_Abierto);
                             emisor = CourseRoom.Utilerias.dune().character();
@@ -1767,8 +1761,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     }
                 } else {
                     Mensaje_Imagen_Derecho_General_Panel mensaje_Imagen_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         try {
                             abrir_Imagen = ImageIO.read(archivo_Abierto);
                             emisor = CourseRoom.Utilerias.dune().character();
@@ -1803,13 +1796,11 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
             if (archivos_Abiertos != null) {
 
-                File archivo_Abierto;
                 String emisor;
                 String fecha;
                 if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Audio_Izquierdo_General_Panel mensaje_Audio_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         emisor = CourseRoom.Utilerias.dune().character();
                         fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
@@ -1818,8 +1809,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     }
                 } else {
                     Mensaje_Audio_Derecho_General_Panel mensaje_Audio_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         emisor = CourseRoom.Utilerias.dune().character();
                         fecha = CourseRoom.Utilerias.date().birthday(22, 23).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
@@ -1845,12 +1835,11 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             File[] archivos_Abiertos = escogedor_Archivo.getSelectedFiles();
             
             if(archivos_Abiertos != null){
-                File archivo_Abierto;
+                
                 Celda_Renderer[] celdas = new Celda_Renderer[4];
                 DefaultTableModel modelo = (DefaultTableModel) materiales_JTable.getModel();
                 ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
-                for(int i = 0; i < archivos_Abiertos.length;i++){
-                    archivo_Abierto = archivos_Abiertos[i];
+                for (File archivo_Abierto : archivos_Abiertos) {
                     celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),"");
                     celdas[1] = new Celda_Renderer(Perfil_Estudiante_Panel.Nombre_Completo(),"");
                     celdas[2] = new Celda_Renderer(LocalDateTime.now().toString(),"");

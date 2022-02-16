@@ -17,6 +17,7 @@ import paneles.generales.inicio_sesion.Inicio_Sesion_General_Panel;
 import paneles.generales.inicio_sesion.Recuperar_Credenciales_General_Panel;
 import paneles.generales.inicio_sesion.Crear_Cuenta_General_Panel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
+import paneles.profesores.Tablero_Profesor_Panel;
 
 /**
  *
@@ -25,6 +26,7 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
 public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Interface, Componentes_Interface {
 
     private static Tablero_Estudiante_Panel tablero_Estudiante;
+    private static Tablero_Profesor_Panel tablero_Profesor;
 
     /**
      * Creates new form MainFrame
@@ -79,21 +81,32 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
-    public static void Mostrar_Vista(String llave) {
-        if(llave.equals("Tablero")){
+    public static void Mostrar_Tablero(boolean tipo_Tablero) {
+        if(tipo_Tablero){
             tablero_Estudiante = new Tablero_Estudiante_Panel();
             visualizador_JPanel.add("Tablero", tablero_Estudiante);
             Tablero_Estudiante_Panel.Establecer_Colores();
             ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, "Tablero");
         }else{
-            ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, llave);
+            tablero_Profesor = new Tablero_Profesor_Panel();
+            visualizador_JPanel.add("Tablero", tablero_Profesor);
+            Tablero_Profesor_Panel.Establecer_Colores();
+            ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, "Tablero");
         }
+    }
+    
+    public static void Mostrar_Vista(String llave) {
+        ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, llave);
     }
 
     public static void Cerrar_Sesion() {
         
         if(tablero_Estudiante != null){
             tablero_Estudiante.Limpiar();
+        }
+        
+        if(tablero_Profesor != null){
+            tablero_Profesor.Limpiar();
         }
         
         CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().stop();
@@ -154,6 +167,10 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     public void Limpiar() {
         if(tablero_Estudiante != null){
             tablero_Estudiante.Limpiar();
+        }
+        
+        if(tablero_Profesor != null){
+            tablero_Profesor.Limpiar();
         }
         
         CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().stop();

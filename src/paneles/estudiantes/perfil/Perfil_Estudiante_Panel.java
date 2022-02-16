@@ -1504,7 +1504,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         genero_JLabel.setText(CourseRoom.Utilerias.demographic().sex());
         fecha_Nacimiento_JLabel.setText(CourseRoom.Utilerias.backToTheFuture().date());
 
-        tipo_Perfil_JLabel.setText("Alumno");
+        tipo_Perfil_JLabel.setText("Estudiante");
         ImageIcon imagen_Icono = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());
         imagen_Perfil_JLabel.setIcon(imagen_Icono);
         editar_Imagen_JLabel.setIcon(imagen_Icono);

@@ -781,13 +781,11 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             File[] archivos_Abiertos = escogedor_Archivo.getSelectedFiles();
             
             if(archivos_Abiertos != null){
-                File archivo_Abierto;
                 Celda_Renderer[] celdas = new Celda_Renderer[4];
                 DefaultTableModel modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
                 ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
                 ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
-                for(int i = 0; i < archivos_Abiertos.length;i++){
-                    archivo_Abierto = archivos_Abiertos[i];
+                for (File archivo_Abierto : archivos_Abiertos) {
                     celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),"");
                     celdas[1] = new Celda_Renderer(LocalDateTime.now().toString(),"");
                     celdas[2] = new Celda_Renderer(icono_Descargar,"");
@@ -1020,9 +1018,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         Component[] componentes = mensajes_Comentarios_JPanel.getComponents();
-        Component componente;
-        for (int i = 0; i < componentes.length; i++) {
-            componente = componentes[i];
+        for (Component componente : componentes) {
             ((Componentes_Interface) componente).Colorear_Componentes();
         }
         

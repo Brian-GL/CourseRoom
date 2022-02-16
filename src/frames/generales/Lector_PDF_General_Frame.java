@@ -20,6 +20,7 @@ import org.icepdf.ri.common.MyAnnotationCallback;
  */
 public class Lector_PDF_General_Frame extends javax.swing.JFrame implements Limpieza_Interface{
 
+    @SuppressWarnings("FieldMayBeFinal")
     private SwingController controlador_Swing;
     
     /**

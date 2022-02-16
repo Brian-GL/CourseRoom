@@ -128,13 +128,13 @@ public class Nodo_Par<A,B> implements Comparable<Nodo_Par<A,B>>{
        String toString = "";
        
         if(has_previous()){
-            toString = this.previous() + "\n";
+            toString = this.previous().toString() + "\n";
         }
         
-        toString = this.element()+ "\n";
+        toString += this.element().toString() + "\n";
         
         if(has_next()){
-            toString = this.next() + "\n";
+            toString += this.next().toString() + "\n";
         }
       
         return toString;

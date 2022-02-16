@@ -748,10 +748,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         }
 
         Component[] chat_Componentes = mensajes_JPanel.getComponents();
-        Component componente;
-        for (int i = 0; i < chat_Componentes.length; i++) {
-            componente = chat_Componentes[i];
-            ((Componentes_Interface) componente).Colorear_Componentes();
+        for (Component chat_Componente : chat_Componentes) {
+            ((Componentes_Interface) chat_Componente).Colorear_Componentes();
         }
     }
     
@@ -789,14 +787,12 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
             if (archivos_Abiertos != null) {
 
-                File archivo_Abierto;
                 String emisor;
                 String fecha;
 
                 if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Archivo_Izquierdo_General_Panel mensaje_Archivo_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         emisor = CourseRoom.Utilerias.dune().character();
                         fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Archivo_Panel
@@ -805,8 +801,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     }
                 } else {
                     Mensaje_Archivo_Derecho_General_Panel mensaje_Archivo_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         emisor = CourseRoom.Utilerias.dune().character();
                         fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Archivo_Panel
@@ -838,14 +833,12 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
             if (archivos_Abiertos != null) {
 
-                File archivo_Abierto;
                 String emisor;
                 String fecha;
 
                 if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Video_Izquierdo_General_Panel mensaje_Video_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         emisor = CourseRoom.Utilerias.dune().character();
                         fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
@@ -854,8 +847,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     }
                 } else {
                     Mensaje_Video_Derecho_General_Panel mensaje_Video_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         emisor = CourseRoom.Utilerias.dune().character();
                         fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Video_Panel = new Mensaje_Video_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
@@ -887,15 +879,13 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
             if (archivos_Abiertos != null) {
 
-                File archivo_Abierto;
                 String emisor;
                 String fecha;
                 Image abrir_Imagen;
 
                 if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Imagen_Izquierdo_General_Panel mensaje_Imagen_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         try {
                             abrir_Imagen = ImageIO.read(archivo_Abierto);
                             emisor = CourseRoom.Utilerias.dune().character();
@@ -910,8 +900,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     }
                 } else {
                     Mensaje_Imagen_Derecho_General_Panel mensaje_Imagen_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         try {
                             abrir_Imagen = ImageIO.read(archivo_Abierto);
                             emisor = CourseRoom.Utilerias.dune().character();
@@ -946,13 +935,11 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
             if (archivos_Abiertos != null) {
 
-                File archivo_Abierto;
                 String emisor;
                 String fecha;
                 if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                     Mensaje_Audio_Izquierdo_General_Panel mensaje_Audio_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         emisor = CourseRoom.Utilerias.dune().character();
                         fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
@@ -961,8 +948,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     }
                 } else {
                     Mensaje_Audio_Derecho_General_Panel mensaje_Audio_Panel;
-                    for (int i = 0; i < archivos_Abiertos.length; i++) {
-                        archivo_Abierto = archivos_Abiertos[i];
+                    for (File archivo_Abierto : archivos_Abiertos) {
                         emisor = CourseRoom.Utilerias.dune().character();
                         fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
                         mensaje_Audio_Panel = new Mensaje_Audio_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),

@@ -15,6 +15,7 @@ import paneles.generales.tablero.Reproductor_Musica_General_Panel;
  */
 public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel {
 
+    @SuppressWarnings("FieldMayBeFinal")
     private int indice;
     
     public Entrada_Lista_Reproduccion_General_Panel(String titulo, int _indice) {

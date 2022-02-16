@@ -241,8 +241,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
 
     private void iniciar_Sesion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciar_Sesion_JButtonMouseClicked
         // TODO add your handling code here:
-        //if(SwingUtilities.isLeftMouseButton(evt)){ } 
-        verificar_Campos();
+        if(SwingUtilities.isLeftMouseButton(evt)){ 
+            verificar_Campos();
+        }
         
     }//GEN-LAST:event_iniciar_Sesion_JButtonMouseClicked
 
@@ -307,15 +308,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             logo_JLabel.setIcon(icono);
             logo_Imagen.flush();
             icono.getImage().flush();
-            
-//            System.out.println("Login -> Getting Image From https://picsum.photos/500/700");
-//            URL url_Imagen = new URL("https://picsum.photos/500/700");
-//            Image obtener_Imagen = ImageIO.read(url_Imagen);
-//            ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
-//            imagen_JLabel.setIcon(icono_Imagen);
-//            icono_Imagen.getImage().flush();
-//            obtener_Imagen.flush();
-//            obtener_Imagen.getGraphics().dispose();
 
         } catch (MalformedURLException ex) {
             
@@ -382,11 +374,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         if (mat.find()) {
             JOptionPane.showMessageDialog(null, "Bienvenido\n*" + correo + "*");
 
-            CourseRoom_Frame.Mostrar_Vista("Tablero");
-
-            //CourseRoom_Frame.Mostrar_Tablero();
-            //CourseRoom_Frame.Mostrar_Crear_Cuenta();
-            CourseRoom_Frame.Mostrar_Vista("Crear_Cuenta");
+            CourseRoom_Frame.Mostrar_Tablero(false);
 
             usuario_JTextField.setText("");
             contrasena_JPasswordField.setText("");
@@ -407,6 +395,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
         } else {
             validar_Correo(usuario_JTextField.getText().trim());
-            }
         }
+    }
 }
