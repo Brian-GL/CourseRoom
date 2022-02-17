@@ -2,10 +2,10 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
+    <Property name="opaque" type="boolean" value="false"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1110, 630]"/>
     </Property>
-    <Property name="opaque" type="boolean" value="false"/>
   </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -926,7 +926,7 @@
                       <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Material&quot;, &quot;Emisor&quot;, &quot;Fecha&quot;, &quot;Descargar&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false, false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; materiales_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
                     </Property>
                     <Property name="opaque" type="boolean" value="false"/>
-                    <Property name="rowHeight" type="int" value="50"/>
+                    <Property name="rowHeight" type="int" value="75"/>
                     <Property name="rowMargin" type="int" value="15"/>
                     <Property name="showGrid" type="boolean" value="true"/>
                     <Property name="showVerticalLines" type="boolean" value="false"/>

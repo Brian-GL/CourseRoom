@@ -19,6 +19,9 @@ package paneles.estudiantes.tareas;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
+import frames.generales.Lector_Audio_General_Frame;
+import frames.generales.Lector_PDF_General_Frame;
+import frames.generales.Lector_Video_General_Panel;
 import interfaces.Carta_Visibilidad_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Envio_Interface;
@@ -29,14 +32,21 @@ import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.time.LocalDateTime;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.coobird.gui.simpleimageviewer4j.Viewer;
+import org.apache.commons.io.FilenameUtils;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.generales.mensajes.Mensaje_Texto_Derecho_General_Panel;
 import paneles.generales.mensajes.Mensaje_Texto_Izquierdo_General_Panel;
@@ -115,8 +125,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         retroalimentacion_JScrollPane = new javax.swing.JScrollPane();
         retroalimentacion_JTable = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
@@ -169,9 +179,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_JButton.setToolTipText("Regresar A Mis Chats");
         regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar_JButton.setToolTipText("Regresar A Mis Chats");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -257,12 +267,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         informacion_Tarea_JPanel.setOpaque(false);
         informacion_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
+        curso_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         curso_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
-        curso_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        curso_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-        curso_JLabel.setOpaque(true);
         curso_JLabel.setToolTipText("<html>\n<h3>Curso de provenencia</h3>\n</html>");
+        curso_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        curso_JLabel.setOpaque(true);
         curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 curso_JLabelMouseClicked(evt);
@@ -296,14 +306,14 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         descripcion_JTextPane.setRequestFocusEnabled(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
-        fecha_Entrega_JLabel.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
         fecha_Entrega_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Entrega_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock.png"))); // NOI18N
+        fecha_Entrega_JLabel.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
         fecha_Entrega_JLabel.setOpaque(true);
 
-        estatus_Tarea_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         estatus_Tarea_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         estatus_Tarea_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_1.png"))); // NOI18N
+        estatus_Tarea_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         estatus_Tarea_JLabel.setOpaque(true);
 
         javax.swing.GroupLayout informacion_Tarea_JPanelLayout = new javax.swing.GroupLayout(informacion_Tarea_JPanel);
@@ -349,6 +359,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         archivos_Adjuntos_JScrollPane.setOpaque(false);
 
         archivos_Adjuntos_JTable.setAutoCreateRowSorter(true);
+        archivos_Adjuntos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         archivos_Adjuntos_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -382,7 +393,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     return super.getColumnClass(column);
                 }
             });
-            archivos_Adjuntos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             archivos_Adjuntos_JTable.setOpaque(false);
             archivos_Adjuntos_JTable.setRowHeight(50);
             archivos_Adjuntos_JTable.setRowMargin(15);
@@ -404,8 +414,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             enviar_Comentarios_JPanel.setPreferredSize(new java.awt.Dimension(1085, 46));
 
             mensaje_Comentarios_JTextField.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-            mensaje_Comentarios_JTextField.setToolTipText("Redactar Menssaje");
             mensaje_Comentarios_JTextField.setPreferredSize(new java.awt.Dimension(64, 34));
+            mensaje_Comentarios_JTextField.setToolTipText("Redactar Menssaje");
             mensaje_Comentarios_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     mensaje_Comentarios_JTextFieldKeyPressed(evt);
@@ -451,9 +461,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             entregar_Tarea_JPanel.setOpaque(false);
             entregar_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-            subir_Archivos_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
             subir_Archivos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
             subir_Archivos_JButton.setText("Subir Archivo(s)");
+            subir_Archivos_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
             subir_Archivos_JButton.setToolTipText("Compartir Y Subir Archivo(s)");
             ((ImageIcon)subir_Archivos_JButton.getIcon()).getImage().flush();
             subir_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -472,6 +482,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             archivos_Subidos_JScrollPane.setOpaque(false);
 
             archivos_Subidos_JTable.setAutoCreateRowSorter(true);
+            archivos_Subidos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             archivos_Subidos_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -505,18 +516,17 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         return super.getColumnClass(column);
                     }
                 });
-                archivos_Subidos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 archivos_Subidos_JTable.setOpaque(false);
-                archivos_Subidos_JTable.setRowHeight(50);
+                archivos_Subidos_JTable.setRowHeight(75);
                 archivos_Subidos_JTable.setRowMargin(15);
                 archivos_Subidos_JTable.setShowGrid(true);
                 archivos_Subidos_JTable.setShowVerticalLines(false);
                 archivos_Adjuntos_JTable.setRowSorter(new TableRowSorter(archivos_Adjuntos_JTable.getModel()));
                 archivos_Subidos_JScrollPane.setViewportView(archivos_Subidos_JTable);
 
-                subir_Cambios_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
                 subir_Cambios_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/document.png"))); // NOI18N
                 subir_Cambios_JButton.setText("Subir Cambio(s)");
+                subir_Cambios_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
                 subir_Cambios_JButton.setToolTipText("");
                 ((ImageIcon)subir_Cambios_JButton.getIcon()).getImage().flush();
                 subir_Cambios_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -531,9 +541,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     }
                 });
 
-                fecha_Actualizacion_JLabel.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
                 fecha_Actualizacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
                 fecha_Actualizacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
+                fecha_Actualizacion_JLabel.setFont(new java.awt.Font("Gadugi", 2, 15)); // NOI18N
 
                 javax.swing.GroupLayout entregar_Tarea_JPanelLayout = new javax.swing.GroupLayout(entregar_Tarea_JPanel);
                 entregar_Tarea_JPanel.setLayout(entregar_Tarea_JPanelLayout);
@@ -708,7 +718,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void subir_Archivos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Archivos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Subir_Archivos();
+            Enviar_Archivos();
         }
     }//GEN-LAST:event_subir_Archivos_JButtonMouseClicked
 
@@ -770,31 +780,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         }
     }//GEN-LAST:event_retroalimentacion_JButtonMouseClicked
 
-    private void Subir_Archivos(){
-        JFileChooser escogedor_Archivo = new JFileChooser();
-        escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        escogedor_Archivo.setApproveButtonText("Subir Archivo(s)");
-        escogedor_Archivo.setMultiSelectionEnabled(true);
-        int resultado = escogedor_Archivo.showOpenDialog(this);
-
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File[] archivos_Abiertos = escogedor_Archivo.getSelectedFiles();
-            
-            if(archivos_Abiertos != null){
-                Celda_Renderer[] celdas = new Celda_Renderer[4];
-                DefaultTableModel modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
-                ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
-                ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
-                for (File archivo_Abierto : archivos_Abiertos) {
-                    celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),"");
-                    celdas[1] = new Celda_Renderer(LocalDateTime.now().toString(),"");
-                    celdas[2] = new Celda_Renderer(icono_Descargar,"");
-                    celdas[3] = new Celda_Renderer(icono_Remover,"");
-                    modelo.addRow(celdas);
-                }
-            }
-        }
-    }
     
     public String ID(){
         return this.ID;
@@ -892,22 +877,58 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                     JTable tabla = (JTable) e.getComponent();
                     int columna = tabla.getSelectedColumn();
-
+                    
+                    // Abrir
                     switch (columna) {
-                        
-                        //Descargar
-                        case 2:
-                            break;
-                        //Eliminar
-                        case 3:
+                        case 0: {
                             int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                            DefaultTableModel modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
+                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                            Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
+                            String extension = FilenameUtils.getExtension(celda.Texto());
+                            String ruta = celda.ID();
+                            System.out.println("Texto: " + celda.Texto());
+                            System.out.println("Ruta: " + ruta);
+                            System.out.println("Extension: " + extension);
+                            if (extension.equals("pdf")) {
+                                try {
+                                    Lector_PDF_General_Frame lector_PDF_General_Frame
+                                            = new Lector_PDF_General_Frame(ruta);
+                                } catch (MalformedURLException ex) {
+                                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error Encontrado", JOptionPane.ERROR_MESSAGE);
+                                }
+                            } else if(extension.equals("mp4")  || extension.equals("webm") || extension.equals("mkv")){
+                                Lector_Video_General_Panel lector_Video_General_Panel
+                                        = new Lector_Video_General_Panel(ruta, celda.Texto());
+                            } else if (extension.equals("mp3")) {
+                                Lector_Audio_General_Frame lector_Audio_General_Frame
+                                        = new Lector_Audio_General_Frame(ruta, celda.Texto());
+                            } else if (extension.equals("png") || extension.equals("jpeg") || extension.equals("jpg")) {
+                                try {
+                                    //Cargar imagen
+                                    File archivo_Imagen = new File(ruta);
+                                    BufferedImage imagen = ImageIO.read(archivo_Imagen);
+                                    Viewer viewer = new Viewer(imagen);
+                                    viewer.show();
+                                    imagen.flush();
+                                    imagen.getGraphics().dispose();
+                                } catch (IOException ex) {
+                                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error Encontrado", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                            break;
+                        }
+                        case 3:
+                            break;
+                        case 4: {
+                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                             modelo.removeRow(fila);
                             break;
+                        }
                         default:
                             break;
                     }
-
+                    
                 }
             }
         });
@@ -1069,7 +1090,30 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     @Override
     public void Enviar_Archivos() {
-       
+       JFileChooser escogedor_Archivo = new JFileChooser();
+        escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        escogedor_Archivo.setApproveButtonText("Subir Archivo(s)");
+        escogedor_Archivo.setMultiSelectionEnabled(true);
+        int resultado = escogedor_Archivo.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File[] archivos_Abiertos = escogedor_Archivo.getSelectedFiles();
+            
+            if(archivos_Abiertos != null){
+                Celda_Renderer[] celdas = new Celda_Renderer[4];
+                DefaultTableModel modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
+                ImageIcon icono_Abrir = new ImageIcon(getClass().getResource("/recursos/iconos/box.png"));
+                ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
+                ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
+                for (File archivo_Abierto : archivos_Abiertos) {
+                    celdas[0] = new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),archivo_Abierto.getAbsolutePath());
+                    celdas[1] = new Celda_Renderer(LocalDateTime.now().toString(),"");
+                    celdas[2] = new Celda_Renderer(icono_Descargar,"");
+                    celdas[3] = new Celda_Renderer(icono_Remover,"");
+                    modelo.addRow(celdas);
+                }
+            }
+        }
     }
    
 

@@ -115,8 +115,7 @@ import oshi.hardware.Sensors;
 import oshi.hardware.SoundCard;
 import oshi.hardware.UsbDevice;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
 import uk.co.caprica.vlcj.player.component.AudioListPlayerComponent;
 
@@ -206,11 +205,16 @@ public class CourseRoom{
 
         public static void Iniciar_Utilerias() {
             
-            MediaPlayerFactory media_player_Factory = new MediaPlayerFactory();
-            componente_Reproducto_Lista_Audio = new AudioListPlayerComponent(media_player_Factory);
-            componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().setMediaPlayer(media_player_Factory.mediaPlayers().newMediaPlayer());
-            componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setEqualizer(media_player_Factory.equalizer().newEqualizer("Flat"));
-            
+            try{
+                MediaPlayerFactory media_player_Factory = new MediaPlayerFactory();
+                componente_Reproducto_Lista_Audio = new AudioListPlayerComponent(media_player_Factory);
+                componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().setMediaPlayer(media_player_Factory.mediaPlayers().newMediaPlayer());
+                componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setEqualizer(media_player_Factory.equalizer().newEqualizer("Flat"));
+            }
+            catch(Exception exception){
+                JOptionPane.showMessageDialog(null, "Es necesario contar con VLC Media Player instalado en tu dispositivo", "Error Encontrado", JOptionPane.ERROR_MESSAGE);
+                System.exit(0);
+            }
             color_Azul_Oscuro = new Color(14, 30, 64);
             color_Azul_Claro = new Color(104, 194, 232);
             informacion_Sistema = new SystemInfo();

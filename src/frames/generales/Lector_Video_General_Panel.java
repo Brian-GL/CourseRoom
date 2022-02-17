@@ -1,16 +1,32 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2022 LENOVO
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package paneles.generales.mensajes;
+package frames.generales;
+
 
 import interfaces.Componentes_Interface;
 import courseroom.CourseRoom;
 import interfaces.Limpieza_Interface;
 import interfaces.Reproductor_Interface;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
@@ -26,30 +42,28 @@ import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
  *
  * @author LENOVO
  */
-public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Reproductor_Interface{
+public class Lector_Video_General_Panel extends javax.swing.JFrame implements Limpieza_Interface, Componentes_Interface, Reproductor_Interface{
 
+    
     private EmbeddedMediaPlayerComponent componente_Embebido_Reproductor_Video;
     private boolean bandera_Barra_Progreso;
     private boolean bandera_Reproduccion;
     private String mrl;
     
-    public Mensaje_Video_Derecho_General_Panel(
-            String emisor, 
-            String fecha, 
-            String _mrl, 
-            String _titulo
-        ) {
-        
+    /**
+     * Creates new form Lector_Video_General_Panel
+     */
+    public Lector_Video_General_Panel(String _mrl, 
+            String _titulo) {
         initComponents();
         
-        fecha_JLabel.setText(fecha);
-        emisor_JLabel.setText(emisor);
+        this.setLocationRelativeTo(null);;
+        
         titulo_JLabel.setText(_titulo);
         mrl = _mrl;
         
         
         Iniciar_Componentes();
-      
     }
 
     /**
@@ -61,29 +75,29 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contenido_JPanel = new javax.swing.JPanel();
-        fecha_JLabel = new javax.swing.JLabel();
+        fondo_JPanel = new javax.swing.JPanel();
+        vista_Video_JPanel = new javax.swing.JPanel();
         controles_JPanel = new javax.swing.JPanel();
         progreso_JLabel = new javax.swing.JLabel();
         titulo_JLabel = new javax.swing.JLabel();
         progreso_JSlider = new javax.swing.JSlider();
         duracion_JLabel = new javax.swing.JLabel();
-        vista_Video_JPanel = new javax.swing.JPanel();
-        emisor_JLabel = new javax.swing.JLabel();
-        auxiliar_JPanel = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 525));
-        setMinimumSize(new java.awt.Dimension(0, 0));
-        setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1110, 525));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CourseRoom - Lector De Video");
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+        getContentPane().setLayout(new java.awt.CardLayout());
 
-        contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        contenido_JPanel.setMaximumSize(new java.awt.Dimension(713, 513));
-        contenido_JPanel.setPreferredSize(new java.awt.Dimension(713, 513));
+        fondo_JPanel.setBackground(java.awt.Color.black);
 
-        fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-        fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        fecha_JLabel.setToolTipText("<html>\n<h3>Fecha y hora del mensaje recibido</h3>\n</html>");
+        vista_Video_JPanel.setOpaque(false);
+        vista_Video_JPanel.setPreferredSize(new java.awt.Dimension(400, 420));
+        vista_Video_JPanel.setLayout(new java.awt.CardLayout());
 
         controles_JPanel.setOpaque(false);
 
@@ -117,12 +131,12 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
             .addGroup(controles_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(controles_JPanelLayout.createSequentialGroup()
                         .addComponent(progreso_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(duracion_JLabel)))
                 .addContainerGap())
         );
@@ -131,86 +145,45 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
             .addGroup(controles_JPanelLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addComponent(titulo_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(controles_JPanelLayout.createSequentialGroup()
-                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, Short.MAX_VALUE))
-                    .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(duracion_JLabel)
-                        .addComponent(progreso_JLabel)))
-                .addContainerGap())
+                .addGap(3, 3, 3)
+                .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(progreso_JLabel)
+                    .addComponent(duracion_JLabel))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        vista_Video_JPanel.setOpaque(false);
-        vista_Video_JPanel.setPreferredSize(new java.awt.Dimension(400, 420));
-        vista_Video_JPanel.setLayout(new java.awt.CardLayout());
-
-        emisor_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-        emisor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        emisor_JLabel.setToolTipText("<html>\n<h3>Emisor del mensaje</h3>\n</html>");
-
-        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
-        contenido_JPanel.setLayout(contenido_JPanelLayout);
-        contenido_JPanelLayout.setHorizontalGroup(
-            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout fondo_JPanelLayout = new javax.swing.GroupLayout(fondo_JPanel);
+        fondo_JPanel.setLayout(fondo_JPanelLayout);
+        fondo_JPanelLayout.setHorizontalGroup(
+            fondo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondo_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(controles_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(emisor_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(fondo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(controles_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        contenido_JPanelLayout.setVerticalGroup(
-            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_JPanelLayout.createSequentialGroup()
+        fondo_JPanelLayout.setVerticalGroup(
+            fondo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondo_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(controles_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-
-        auxiliar_JPanel.setOpaque(false);
-
-        javax.swing.GroupLayout auxiliar_JPanelLayout = new javax.swing.GroupLayout(auxiliar_JPanel);
-        auxiliar_JPanel.setLayout(auxiliar_JPanelLayout);
-        auxiliar_JPanelLayout.setHorizontalGroup(
-            auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
-        );
-        auxiliar_JPanelLayout.setVerticalGroup(
-            auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+
+        getContentPane().add(fondo_JPanel, "card2");
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.Limpiar();
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
 
     
     
@@ -246,14 +219,10 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
         }
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel auxiliar_JPanel;
-    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JPanel controles_JPanel;
     private javax.swing.JLabel duracion_JLabel;
-    private javax.swing.JLabel emisor_JLabel;
-    private javax.swing.JLabel fecha_JLabel;
+    private javax.swing.JPanel fondo_JPanel;
     private javax.swing.JLabel progreso_JLabel;
     private javax.swing.JSlider progreso_JSlider;
     private javax.swing.JLabel titulo_JLabel;
@@ -272,17 +241,28 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
         Establecer_Eventos_Reproductor();
         componente_Embebido_Reproductor_Video.mediaPlayer().video().setAdjustVideo(true);
         
+        try {
+            Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
+            logo_Imagen = logo_Imagen.getScaledInstance(75, 62, Image.SCALE_SMOOTH);
+            this.setIconImage(logo_Imagen);
+            logo_Imagen.flush();
+            
+        }  catch (IOException ex) {
+          
+        }
+        
         Colorear_Componentes();
+        
+        this.setVisible(true);
+        
+        Establecer_Play_Pausa();
+        
         
     }
 
     @Override
     public void Colorear_Componentes() {
-        fecha_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        emisor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        contenido_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        contenido_JPanel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-
+        fondo_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         duracion_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         progreso_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -549,6 +529,6 @@ public class Mensaje_Video_Derecho_General_Panel extends javax.swing.JPanel impl
         componente_Embebido_Reproductor_Video = null;
         mrl = null;
     }
-   
-   
+
+
 }

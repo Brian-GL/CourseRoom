@@ -35,17 +35,19 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
 //The JLabel that is used to display image
     private final JLabel label = new JLabel();
     private final String ID;
+    private final String texto;
 
     public Celda_Renderer(){
         super();
-        ID = "";
+        texto = ID = "";
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
     }
    
-    public Celda_Renderer(String texto, String _id) {
+    public Celda_Renderer(String _texto, String _id) {
         super();
         this.ID = _id;
+        texto = _texto;
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
@@ -56,6 +58,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
     public Celda_Renderer(ImageIcon icono, String _id) {
         super();
         this.ID = _id;
+        texto = "";
         if(icono != null){
             label.setIcon(icono);
         }
@@ -63,10 +66,10 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         label.setHorizontalAlignment(JLabel.CENTER);
     }
     
-    public Celda_Renderer(ImageIcon icono, String texto, String _id) {
+    public Celda_Renderer(ImageIcon icono, String _texto, String _id) {
         super();
         this.ID = _id;
-        
+        texto = _texto;
         if(icono != null){
             label.setIcon(icono);
         }
@@ -83,6 +86,10 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
     
     public String ID(){
         return this.ID;
+    } 
+    
+    public String Texto(){
+        return this.texto;
     } 
     
     public void Color_Fuente(Color color){

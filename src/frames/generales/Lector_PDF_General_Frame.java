@@ -6,8 +6,12 @@
 package frames.generales;
 
 import interfaces.Limpieza_Interface;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import org.icepdf.ri.common.ComponentKeyBinding;
 import org.icepdf.ri.common.SwingController;
@@ -35,7 +39,8 @@ public class Lector_PDF_General_Frame extends javax.swing.JFrame implements Limp
         contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        URL url = new URL(ruta);
+        File archivo_PDF = new File(ruta);
+        URL url = archivo_PDF.toURI().toURL();
         controlador_Swing = new SwingController();
         SwingViewBuilder constructor_Vista_Swing = new SwingViewBuilder(controlador_Swing);
         JPanel contenido_JPanel = constructor_Vista_Swing.buildViewerPanel();
@@ -44,6 +49,18 @@ public class Lector_PDF_General_Frame extends javax.swing.JFrame implements Limp
         controlador_Swing.getDocumentViewController().setAnnotationCallback(mi_Llamada);
         controlador_Swing.openDocument(url); 
         contenido_JScrollPane.setViewportView(contenido_JPanel);
+        
+        try {
+            Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
+            logo_Imagen = logo_Imagen.getScaledInstance(75, 62, Image.SCALE_SMOOTH);
+            this.setIconImage(logo_Imagen);
+            logo_Imagen.flush();
+            
+        }  catch (IOException ex) {
+          
+        }
+        
+        this.setVisible(true);
     }
 
     /**
@@ -58,7 +75,10 @@ public class Lector_PDF_General_Frame extends javax.swing.JFrame implements Limp
         contenido_JScrollPane = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CourseRoom - Lector PDF");
         setMinimumSize(new java.awt.Dimension(800, 600));
+        setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setType(java.awt.Window.Type.POPUP);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -74,6 +94,7 @@ public class Lector_PDF_General_Frame extends javax.swing.JFrame implements Limp
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
        this.Limpiar();
+       this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
 
@@ -85,6 +106,5 @@ public class Lector_PDF_General_Frame extends javax.swing.JFrame implements Limp
     public void Limpiar() {
         controlador_Swing.getDocument().dispose();
         controlador_Swing.closeDocument();
-        this.dispose();
     }
 }

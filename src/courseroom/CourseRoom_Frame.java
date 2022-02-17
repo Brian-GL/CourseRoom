@@ -131,7 +131,7 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         
         try {
             Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
-            logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
+            logo_Imagen = logo_Imagen.getScaledInstance(75, 62, Image.SCALE_SMOOTH);
             this.setIconImage(logo_Imagen);
             logo_Imagen.flush();
             

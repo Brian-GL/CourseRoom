@@ -374,7 +374,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         if (mat.find()) {
             JOptionPane.showMessageDialog(null, "Bienvenido\n*" + correo + "*");
 
-            CourseRoom_Frame.Mostrar_Tablero(false);
+            CourseRoom_Frame.Mostrar_Tablero(true);
 
             usuario_JTextField.setText("");
             contrasena_JPasswordField.setText("");

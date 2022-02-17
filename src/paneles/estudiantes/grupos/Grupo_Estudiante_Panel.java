@@ -21,6 +21,9 @@ import clases.Celda_Renderer;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.TimePickerSettings;
 import courseroom.CourseRoom;
+import frames.generales.Lector_Audio_General_Frame;
+import frames.generales.Lector_PDF_General_Frame;
+import frames.generales.Lector_Video_General_Panel;
 import interfaces.Carta_Visibilidad_Interface;
 import interfaces.Componentes_Interface;
 import interfaces.Envio_Interface;
@@ -32,6 +35,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -41,6 +45,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -51,6 +57,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.coobird.gui.simpleimageviewer4j.Viewer;
+import org.apache.commons.io.FilenameUtils;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 import paneles.generales.mensajes.Mensaje_Audio_Derecho_General_Panel;
@@ -610,7 +618,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 });
                 archivos_Compartidos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 archivos_Compartidos_JTable.setOpaque(false);
-                archivos_Compartidos_JTable.setRowHeight(50);
+                archivos_Compartidos_JTable.setRowHeight(75);
                 archivos_Compartidos_JTable.setRowMargin(15);
                 archivos_Compartidos_JTable.setShowGrid(true);
                 archivos_Compartidos_JTable.setShowVerticalLines(false);
@@ -1457,16 +1465,57 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     JTable tabla = (JTable) e.getComponent();
                     int columna = tabla.getSelectedColumn();
 
-                    //Descargar
-                    if (columna == 3) {
-
-                    } //Eliminar
-                    else if (columna == 4) {
-                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-
-                        DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
-
-                        modelo.removeRow(fila);
+                    // Abrir
+                    switch (columna) {
+                        case 0:
+                            {
+                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
+                                String extension = FilenameUtils.getExtension(celda.Texto());
+                                String ruta = celda.ID();
+                                System.out.println("Texto: "+celda.Texto());
+                                System.out.println("Ruta: "+ruta);
+                                System.out.println("Extension: "+extension);
+                                if(extension.equals("pdf")){
+                                    try {
+                                        Lector_PDF_General_Frame lector_PDF_General_Frame =
+                                                new Lector_PDF_General_Frame(ruta);
+                                    } catch (MalformedURLException ex) {
+                                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Error Encontrado", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                } else if(extension.equals("mp4")  || extension.equals("webm") || extension.equals("mkv")){
+                                    Lector_Video_General_Panel lector_Video_General_Panel =
+                                            new Lector_Video_General_Panel(ruta, celda.Texto());
+                                }
+                                else if(extension.equals("mp3")){
+                                    Lector_Audio_General_Frame lector_Audio_General_Frame =
+                                            new Lector_Audio_General_Frame(ruta, celda.Texto());
+                                } else if(extension.equals("png") || extension.equals("jpeg") || extension.equals("jpg")){
+                                    try {
+                                        //Cargar imagen
+                                        File archivo_Imagen = new File(ruta);
+                                        BufferedImage imagen = ImageIO.read(archivo_Imagen);
+                                        Viewer viewer = new Viewer(imagen);
+                                        viewer.show();
+                                        imagen.flush();
+                                        imagen.getGraphics().dispose();
+                                    } catch (IOException ex) {
+                                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Error Encontrado", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                }       break;
+                            }
+                        case 3:
+                            break;
+                        case 4:
+                            {
+                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                modelo.removeRow(fila);
+                                break;
+                            }
+                        default:
+                            break;
                     }
                 }
             }
@@ -1846,8 +1895,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
                 ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
                 ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
+                ImageIcon icono_Abrir = new ImageIcon(getClass().getResource("/recursos/iconos/box.png"));
                 for (File archivo_Abierto : archivos_Abiertos) {
-                    celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),"");
+                    
+                    celdas[0] = new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),archivo_Abierto.getAbsolutePath());
                     celdas[1] = new Celda_Renderer(Perfil_Estudiante_Panel.Nombre_Completo(),"");
                     celdas[2] = new Celda_Renderer(LocalDateTime.now().toString(),"");
                     celdas[3] = new Celda_Renderer(icono_Descargar,"");
