@@ -15,22 +15,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package interfaces;
+package datos.interfaces;
 
 /**
  *
  * @author LENOVO
  */
-public interface Envio_Interface {
+public interface Validaciones_Interface {
     
-    public void Enviar_Mensaje();
-
-    public void Enviar_Archivos();
-
-    public void Enviar_Videos();
-
-    public void Enviar_Imagenes();
-
-    public void Enviar_Audios();
+    public void Validar_Campos();
+    
+    
     
 }

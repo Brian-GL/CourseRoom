@@ -18,10 +18,10 @@
 package frames.generales;
 
 
-import interfaces.Componentes_Interface;
+import datos.interfaces.Componentes_Interface;
 import courseroom.CourseRoom;
-import interfaces.Limpieza_Interface;
-import interfaces.Reproductor_Interface;
+import datos.interfaces.Limpieza_Interface;
+import datos.interfaces.Reproductor_Interface;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -86,6 +86,8 @@ public class Lector_Video_General_Panel extends javax.swing.JFrame implements Li
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CourseRoom - Lector De Video");
         setMinimumSize(new java.awt.Dimension(800, 600));
+        setModalExclusionType(java.awt.Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
+        setType(java.awt.Window.Type.POPUP);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

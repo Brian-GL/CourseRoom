@@ -15,14 +15,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package interfaces;
+package datos.interfaces;
 
 /**
  *
  * @author LENOVO
  */
-public interface Carta_Visibilidad_Interface {
+public interface Envio_Interface {
     
-    public void Carta_Visible();
+    public void Enviar_Mensaje();
+
+    public void Enviar_Archivos();
     
 }

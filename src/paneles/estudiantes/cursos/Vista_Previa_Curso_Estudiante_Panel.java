@@ -19,7 +19,7 @@ package paneles.estudiantes.cursos;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
-import interfaces.Componentes_Interface;
+import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;

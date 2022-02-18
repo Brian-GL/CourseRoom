@@ -6,7 +6,7 @@
 package paneles.generales.tablero;
 
 import courseroom.CourseRoom;
-import interfaces.Componentes_Interface;
+import datos.interfaces.Componentes_Interface;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;

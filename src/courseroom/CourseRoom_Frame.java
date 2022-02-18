@@ -5,8 +5,8 @@
  */
 package courseroom;
 
-import interfaces.Componentes_Interface;
-import interfaces.Limpieza_Interface;
+import datos.interfaces.Componentes_Interface;
+import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Image;

@@ -87,7 +87,11 @@ import com.github.javafaker.Witcher;
 import com.github.javafaker.Yoda;
 import com.github.javafaker.Zelda;
 import com.github.javafaker.service.RandomService;
+import frames.generales.Lector_Audio_General_Frame;
+import frames.generales.Lector_PDF_General_Frame;
+import frames.generales.Lector_Video_General_Panel;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -115,7 +119,11 @@ import oshi.hardware.Sensors;
 import oshi.hardware.SoundCard;
 import oshi.hardware.UsbDevice;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import net.coobird.gui.simpleimageviewer4j.Viewer;
 import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
 import uk.co.caprica.vlcj.player.component.AudioListPlayerComponent;
 
@@ -194,8 +202,9 @@ public class CourseRoom{
     public static class Utilerias {
 
         private static Faker faker;
+        
         private static AudioListPlayerComponent componente_Reproducto_Lista_Audio;
-
+        private static DateTimeFormatter formato_Fecha;
         private static Color primer_Color, primer_Color_Fuente;
         private static Color tercer_Color,tercer_Color_Fuente;
         private static Color segundo_Color, segundo_Color_Fuente;
@@ -215,6 +224,8 @@ public class CourseRoom{
                 JOptionPane.showMessageDialog(null, "Es necesario contar con VLC Media Player instalado en tu dispositivo", "Error Encontrado", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
+            
+            formato_Fecha = DateTimeFormatter.ofPattern("EEEE dd/MM/yyyy hh:mm:ss a");
             color_Azul_Oscuro = new Color(14, 30, 64);
             color_Azul_Claro = new Color(104, 194, 232);
             informacion_Sistema = new SystemInfo();
@@ -226,8 +237,19 @@ public class CourseRoom{
             Locale local = new Locale("es", "MX");
             faker = new Faker(local);
         }
+        
+        
+        public static DateTimeFormatter Formato_Fecha(){
+            return formato_Fecha;
+        }
+        
+        public static String Fecha_Hora_Local(){
+            String retorno = LocalDateTime.now().format(formato_Fecha);
+            retorno = retorno.toUpperCase();
+            return retorno;
+        }
 
-         public static AudioListPlayerComponent Componente_Reproducto_Lista_Audio() {
+        public static AudioListPlayerComponent Componente_Reproducto_Lista_Audio() {
             return componente_Reproducto_Lista_Audio;
         }
 
@@ -767,6 +789,61 @@ public class CourseRoom{
             } catch (IOException e) {
                 return false;
             }
+        }
+        
+        
+        public static void Abrir_Archivo(String ruta, String extension, String nombre_Archivo){
+            switch (extension) {
+                case "pdf":
+                    try {
+                        Lector_PDF_General_Frame lector_PDF_General_Frame =
+                                new Lector_PDF_General_Frame(ruta);
+                    } catch (MalformedURLException ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), Concatenar("Error Encontrado Al Abrir El PDF ",nombre_Archivo), JOptionPane.ERROR_MESSAGE);
+                    }   break;
+                case "mp4":
+                case "webm":
+                case "mkv":
+                case "wmv":
+                case "3gp":
+                case "avi":
+                case "ogg":
+                    Lector_Video_General_Panel lector_Video_General_Panel =
+                            new Lector_Video_General_Panel(ruta, nombre_Archivo);
+                    break;
+                case "mp3":
+                case "aac":
+                case "ac3":
+                case "flac":
+                case "opus":
+                case "alac":
+                case "amr":
+                case "wma":
+                case "m4a":
+                case "aiff":
+                    Lector_Audio_General_Frame lector_Audio_General_Frame =
+                            new Lector_Audio_General_Frame(ruta, nombre_Archivo);
+                    break;
+                case "png":
+                case "jpeg":
+                case "jpg":
+                case "bmp":
+                    try {
+                        //Cargar imagen
+                        java.io.File archivo_Imagen = new java.io.File(ruta);
+                        BufferedImage imagen = ImageIO.read(archivo_Imagen);
+                        Viewer viewer = new Viewer(imagen);
+                        viewer.show();
+                        imagen.flush();
+                        imagen.getGraphics().dispose();
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), Concatenar("Error Encontrado Al Abrir La Imagen ",nombre_Archivo), JOptionPane.ERROR_MESSAGE);
+                    }   break;
+                default:
+                    JOptionPane.showMessageDialog(null, Concatenar("Error Al Abrir El Archivo ",nombre_Archivo), "Formato De Archivo No Válido", JOptionPane.WARNING_MESSAGE);
+                    break;
+            }
+            
         }
 
     }

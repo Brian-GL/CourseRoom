@@ -47,10 +47,10 @@ import java.util.Map.Entry;
 import uk.co.caprica.vlcj.player.base.Equalizer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayerEventListener;
-import interfaces.Color_Interface;
-import interfaces.Componentes_Interface;
-import interfaces.Limpieza_Interface;
-import interfaces.Reproductor_Interface;
+import datos.interfaces.Color_Interface;
+import datos.interfaces.Componentes_Interface;
+import datos.interfaces.Limpieza_Interface;
+import datos.interfaces.Reproductor_Interface;
 import java.awt.Font;
 import paneles.generales.Entrada_Lista_Reproduccion_General_Panel;
 

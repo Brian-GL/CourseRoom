@@ -19,9 +19,9 @@ package paneles.profesores.desempeno_profesional;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
-import interfaces.Carta_Visibilidad_Interface;
-import interfaces.Componentes_Interface;
-import interfaces.Limpieza_Interface;
+import datos.interfaces.Carta_Visibilidad_Interface;
+import datos.interfaces.Componentes_Interface;
+import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;

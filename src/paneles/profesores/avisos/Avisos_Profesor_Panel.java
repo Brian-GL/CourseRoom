@@ -7,8 +7,8 @@ package paneles.profesores.avisos;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
-import interfaces.Componentes_Interface;
-import interfaces.Limpieza_Interface;
+import datos.interfaces.Componentes_Interface;
+import datos.interfaces.Limpieza_Interface;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;

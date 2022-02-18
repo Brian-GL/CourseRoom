@@ -17,8 +17,8 @@ import paneles.generales.tablero.Reproductor_Musica_General_Panel;
 import courseroom.CourseRoom;
 import courseroom.CourseRoom_Frame;
 import datos.colecciones.Lista_Pares;
-import interfaces.Componentes_Interface;
-import interfaces.Limpieza_Interface;
+import datos.interfaces.Componentes_Interface;
+import datos.interfaces.Limpieza_Interface;
 import datos.estructuras.Par;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -1013,12 +1013,13 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                                 respuesta.elementAt(2), respuesta.elementAt(3), 
                                 respuesta.elementAt(4), respuesta.elementAt(5)) : null;
                 
-                DateTimeFormatter formato_Fecha = DateTimeFormatter.ofPattern("EEEE dd/MM/yyyy hh:mm:ss a");
+                
                 String tiempo;
                 while(fecha_Hora_Servidor != null){
                                      
                     fecha_Hora_Servidor = fecha_Hora_Servidor.plusSeconds(1);
-                    tiempo = fecha_Hora_Servidor.format(formato_Fecha);
+                    tiempo = fecha_Hora_Servidor.format(CourseRoom.Utilerias.Formato_Fecha());
+                    tiempo = tiempo.toUpperCase();
                     fecha_Hora_Servidor_JLabel.setText(tiempo);
                     Thread.sleep(1000);
                    

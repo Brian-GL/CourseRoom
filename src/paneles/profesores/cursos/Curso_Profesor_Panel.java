@@ -19,12 +19,13 @@ package paneles.profesores.cursos;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
-import interfaces.Carta_Visibilidad_Interface;
-import interfaces.Componentes_Interface;
-import interfaces.Envio_Interface;
-import interfaces.Limpieza_Interface;
+import datos.interfaces.Carta_Visibilidad_Interface;
+import datos.interfaces.Componentes_Interface;
+import datos.interfaces.Envio_Interface;
+import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -34,15 +35,14 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import org.apache.commons.io.FilenameUtils;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -55,14 +55,10 @@ import org.jfree.data.xy.XYSeriesCollection;
 import paneles.profesores.Tablero_Profesor_Panel;
 import paneles.profesores.perfil.Perfil_Profesor_Panel;
 import paneles.profesores.tareas.Tareas_Profesor_Panel;
-import paneles.generales.mensajes.Mensaje_Audio_Derecho_General_Panel;
-import paneles.generales.mensajes.Mensaje_Audio_Izquierdo_General_Panel;
-import paneles.generales.mensajes.Mensaje_Imagen_Derecho_General_Panel;
-import paneles.generales.mensajes.Mensaje_Imagen_Izquierdo_General_Panel;
+import paneles.generales.mensajes.Mensaje_Archivo_Derecho_General_Panel;
+import paneles.generales.mensajes.Mensaje_Archivo_Izquierdo_General_Panel;
 import paneles.generales.mensajes.Mensaje_Texto_Derecho_General_Panel;
 import paneles.generales.mensajes.Mensaje_Texto_Izquierdo_General_Panel;
-import paneles.generales.mensajes.Mensaje_Video_Derecho_General_Panel;
-import paneles.generales.mensajes.Mensaje_Video_Izquierdo_General_Panel;
 
 /**
  *
@@ -137,10 +133,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         mensajes_Chat_JScrollPane = new javax.swing.JScrollPane();
         mensajes_Chat_JPanel = new javax.swing.JPanel();
         enviar_Mensajes_JPanel = new javax.swing.JPanel();
-        mensaje_Chat_JTextField = new javax.swing.JTextField();
-        enviar_Videos_JButton = new javax.swing.JButton();
-        enviar_Audios_JButton = new javax.swing.JButton();
-        enviar_Imagenes_JButton = new javax.swing.JButton();
+        enviar_Archivos_JButton = new javax.swing.JButton();
+        redactar_Mensaje_JTextField = new javax.swing.JTextField();
         materiales_Curso_JPanel = new javax.swing.JPanel();
         compartir_Materiales_JButton = new javax.swing.JButton();
         materiales_JScrollPane = new javax.swing.JScrollPane();
@@ -198,9 +192,9 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Cursos");
         regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar_JButton.setToolTipText("Regresar A Mis Cursos");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -565,8 +559,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
                     curso_JLayeredPane.add(miembros_JScrollPane, "Miembros");
 
-                    chat_Curso_JPanel.setOpaque(false);
                     chat_Curso_JPanel.setPreferredSize(new java.awt.Dimension(1046, 545));
+                    chat_Curso_JPanel.setOpaque(false);
 
                     mensajes_Chat_JScrollPane.setOpaque(false);
 
@@ -574,66 +568,34 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                     mensajes_Chat_JPanel.setLayout(new javax.swing.BoxLayout(mensajes_Chat_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
                     mensajes_Chat_JScrollPane.setViewportView(mensajes_Chat_JPanel);
 
-                    enviar_Mensajes_JPanel.setMaximumSize(new java.awt.Dimension(32767, 46));
-                    enviar_Mensajes_JPanel.setPreferredSize(new java.awt.Dimension(1085, 46));
+                    enviar_Mensajes_JPanel.setMaximumSize(new java.awt.Dimension(32767, 44));
+                    enviar_Mensajes_JPanel.setPreferredSize(new java.awt.Dimension(1046, 44));
 
-                    mensaje_Chat_JTextField.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-                    mensaje_Chat_JTextField.setToolTipText("Redactar Menssaje");
-                    mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(64, 34));
-                    mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    enviar_Archivos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
+                    enviar_Archivos_JButton.setBorder(null);
+                    enviar_Archivos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                    enviar_Archivos_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
+                    enviar_Archivos_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
+                    enviar_Archivos_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+                    enviar_Archivos_JButton.setToolTipText("Enviar Archivo");
+                    ((ImageIcon)enviar_Archivos_JButton.getIcon()).getImage().flush();
+                    enviar_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            enviar_Archivos_JButtonMouseClicked(evt);
+                        }
+                        public void mouseEntered(java.awt.event.MouseEvent evt) {
+                            enviar_Archivos_JButtonMouseEntered(evt);
+                        }
+                        public void mouseExited(java.awt.event.MouseEvent evt) {
+                            enviar_Archivos_JButtonMouseExited(evt);
+                        }
+                    });
+
+                    redactar_Mensaje_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+                    redactar_Mensaje_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
+                    redactar_Mensaje_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                         public void keyPressed(java.awt.event.KeyEvent evt) {
-                            mensaje_Chat_JTextFieldKeyPressed(evt);
-                        }
-                    });
-
-                    enviar_Videos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clapperboard.png"))); // NOI18N
-                    enviar_Videos_JButton.setToolTipText("Enviar Archivo De Video");
-                    enviar_Videos_JButton.setBorder(null);
-                    enviar_Videos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                    enviar_Videos_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
-                    enviar_Videos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            enviar_Videos_JButtonMouseClicked(evt);
-                        }
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                            enviar_Videos_JButtonMouseEntered(evt);
-                        }
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                            enviar_Videos_JButtonMouseExited(evt);
-                        }
-                    });
-
-                    enviar_Audios_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/microphone.png"))); // NOI18N
-                    enviar_Audios_JButton.setToolTipText("Enviar Archivo De Audio");
-                    enviar_Audios_JButton.setBorder(null);
-                    enviar_Audios_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                    enviar_Audios_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
-                    enviar_Audios_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            enviar_Audios_JButtonMouseClicked(evt);
-                        }
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                            enviar_Audios_JButtonMouseEntered(evt);
-                        }
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                            enviar_Audios_JButtonMouseExited(evt);
-                        }
-                    });
-
-                    enviar_Imagenes_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-video.png"))); // NOI18N
-                    enviar_Imagenes_JButton.setToolTipText("Enviar Archivo De Imagen");
-                    enviar_Imagenes_JButton.setBorder(null);
-                    enviar_Imagenes_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                    enviar_Imagenes_JButton.setPreferredSize(new java.awt.Dimension(42, 42));
-                    enviar_Imagenes_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            enviar_Imagenes_JButtonMouseClicked(evt);
-                        }
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                            enviar_Imagenes_JButtonMouseEntered(evt);
-                        }
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                            enviar_Imagenes_JButtonMouseExited(evt);
+                            redactar_Mensaje_JTextFieldKeyPressed(evt);
                         }
                     });
 
@@ -641,28 +603,21 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                     enviar_Mensajes_JPanel.setLayout(enviar_Mensajes_JPanelLayout);
                     enviar_Mensajes_JPanelLayout.setHorizontalGroup(
                         enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, enviar_Mensajes_JPanelLayout.createSequentialGroup()
+                        .addGroup(enviar_Mensajes_JPanelLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(enviar_Videos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(enviar_Audios_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
+                            .addComponent(enviar_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(redactar_Mensaje_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addContainerGap())
                     );
                     enviar_Mensajes_JPanelLayout.setVerticalGroup(
                         enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, enviar_Mensajes_JPanelLayout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(enviar_Mensajes_JPanelLayout.createSequentialGroup()
+                            .addGap(4, 4, 4)
                             .addGroup(enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(enviar_Videos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(enviar_Audios_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(enviar_Imagenes_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(mensaje_Chat_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addContainerGap())
+                                .addComponent(redactar_Mensaje_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(enviar_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     );
 
                     javax.swing.GroupLayout chat_Curso_JPanelLayout = new javax.swing.GroupLayout(chat_Curso_JPanel);
@@ -670,12 +625,12 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                     chat_Curso_JPanelLayout.setHorizontalGroup(
                         chat_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mensajes_Chat_JScrollPane)
-                        .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                        .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     );
                     chat_Curso_JPanelLayout.setVerticalGroup(
                         chat_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(chat_Curso_JPanelLayout.createSequentialGroup()
-                            .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                            .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
                             .addGap(0, 0, 0)
                             .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0))
@@ -743,7 +698,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                             }
                         });
                         materiales_JTable.setOpaque(false);
-                        materiales_JTable.setRowHeight(50);
+                        materiales_JTable.setRowHeight(75);
                         materiales_JTable.setRowMargin(15);
                         materiales_JTable.setShowGrid(true);
                         materiales_JTable.setShowVerticalLines(false);
@@ -769,7 +724,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                 .addContainerGap()
                                 .addComponent(compartir_Materiales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                                .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
                                 .addContainerGap())
                         );
 
@@ -1034,7 +989,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void compartir_Materiales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Materiales_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Archivos();
+            Enviar_Materiales();
         }
     }//GEN-LAST:event_compartir_Materiales_JButtonMouseClicked
 
@@ -1058,64 +1013,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
             Carta_Visible();
         }
     }//GEN-LAST:event_chat_JButtonMouseClicked
-
-    private void mensaje_Chat_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mensaje_Chat_JTextFieldKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Enviar_Mensaje();
-        }
-    }//GEN-LAST:event_mensaje_Chat_JTextFieldKeyPressed
-
-    private void enviar_Videos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Videos();
-        }
-    }//GEN-LAST:event_enviar_Videos_JButtonMouseClicked
-
-    private void enviar_Videos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseEntered
-        // TODO add your handling code here:
-        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_enviar_Videos_JButtonMouseEntered
-
-    private void enviar_Videos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Videos_JButtonMouseExited
-        // TODO add your handling code here:
-        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_enviar_Videos_JButtonMouseExited
-
-    private void enviar_Audios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseClicked
-        // TODO add your handling code here
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Audios();
-        }
-    }//GEN-LAST:event_enviar_Audios_JButtonMouseClicked
-
-    private void enviar_Audios_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseEntered
-        // TODO add your handling code here:
-        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_enviar_Audios_JButtonMouseEntered
-
-    private void enviar_Audios_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Audios_JButtonMouseExited
-        // TODO add your handling code here:
-        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_enviar_Audios_JButtonMouseExited
-
-    private void enviar_Imagenes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Imagenes();
-        }
-    }//GEN-LAST:event_enviar_Imagenes_JButtonMouseClicked
-
-    private void enviar_Imagenes_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseEntered
-        // TODO add your handling code here:
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_enviar_Imagenes_JButtonMouseEntered
-
-    private void enviar_Imagenes_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Imagenes_JButtonMouseExited
-        // TODO add your handling code here:
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_enviar_Imagenes_JButtonMouseExited
 
     private void avisos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_avisos_JButtonMouseClicked
         // TODO add your handling code here:
@@ -1183,6 +1080,30 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente().brighter());
     }//GEN-LAST:event_finalizar_Curso_JButtonMouseExited
 
+    private void enviar_Archivos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivos_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Enviar_Archivos();
+        }
+    }//GEN-LAST:event_enviar_Archivos_JButtonMouseClicked
+
+    private void enviar_Archivos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivos_JButtonMouseEntered
+        // TODO add your handling code here:
+        enviar_Archivos_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_enviar_Archivos_JButtonMouseEntered
+
+    private void enviar_Archivos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivos_JButtonMouseExited
+        // TODO add your handling code here:
+        enviar_Archivos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_enviar_Archivos_JButtonMouseExited
+
+    private void redactar_Mensaje_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_redactar_Mensaje_JTextFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Enviar_Mensaje();
+        }
+    }//GEN-LAST:event_redactar_Mensaje_JTextFieldKeyPressed
+
     public String ID() {
         return this.ID;
     }
@@ -1244,10 +1165,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private javax.swing.JTextPane descripcion_Curso_JTextPane;
     private javax.swing.JScrollPane descripcion_Profesor_JScrollPane;
     private javax.swing.JTextPane descripcion_Profesor_JTextPane;
-    private javax.swing.JButton enviar_Audios_JButton;
-    private javax.swing.JButton enviar_Imagenes_JButton;
+    private javax.swing.JButton enviar_Archivos_JButton;
     private javax.swing.JPanel enviar_Mensajes_JPanel;
-    private javax.swing.JButton enviar_Videos_JButton;
     private javax.swing.JButton estadisticas_JButton;
     private javax.swing.JPanel estadisticas_JPanel;
     private javax.swing.JScrollPane estadisticas_JScrollPane;
@@ -1265,13 +1184,13 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private javax.swing.JButton materiales_JButton;
     private javax.swing.JScrollPane materiales_JScrollPane;
     private javax.swing.JTable materiales_JTable;
-    private javax.swing.JTextField mensaje_Chat_JTextField;
     private javax.swing.JPanel mensajes_Chat_JPanel;
     private javax.swing.JScrollPane mensajes_Chat_JScrollPane;
     private javax.swing.JButton miembros_JButton;
     private javax.swing.JScrollPane miembros_JScrollPane;
     private javax.swing.JTable miembros_JTable;
     private javax.swing.JLabel nombre_JLabel;
+    private javax.swing.JTextField redactar_Mensaje_JTextField;
     private javax.swing.JButton regresar_JButton;
     private javax.swing.JButton regresion_Lineal_JButton;
     private javax.swing.JPanel regresion_Lineal_JPanel;
@@ -1322,6 +1241,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         tareas_JScrollPane.getViewport().setOpaque(false);
         tareas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         tareas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+
 
         tareas_JTable.getTableHeader().setFont(gadugi);
 
@@ -1410,14 +1330,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        
-        mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
-        mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         enviar_Mensajes_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         
         // Materiales:
@@ -1436,10 +1350,24 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                     JTable tabla = (JTable) e.getComponent();
                     int columna = tabla.getSelectedColumn();
 
-                    //Descargar
-                    if (columna == 3) {
-
-                    } 
+                    // Abrir
+                    switch (columna) {
+                        case 0:
+                            {
+                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
+                                String extension = FilenameUtils.getExtension(celda.Texto());
+                                String ruta = celda.ID();
+                                CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
+                            }
+                            break;
+                        case 3:
+                            break;
+                       
+                        default:
+                            break;
+                    }
 
                 }
             }
@@ -1538,7 +1466,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
         Carta_Visible();
         
-        
+        enviar_Archivos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         // Informacion curso:
         
         Font gadugi = new Font("Gadugi", 0, 18);
@@ -1595,14 +1523,15 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         // Chat
         
-        mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
-        mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        redactar_Mensaje_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
+        redactar_Mensaje_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         enviar_Mensajes_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        
+        Component[] chat_Componentes = mensajes_Chat_JPanel.getComponents();
+        for (Component chat_Componente : chat_Componentes) {
+            ((Componentes_Interface) chat_Componente).Colorear_Componentes();
+        }
 
-        enviar_Audios_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        enviar_Imagenes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        enviar_Videos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-      
        //Materiales:
         materiales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         materiales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
@@ -1659,10 +1588,10 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     @Override
     public void Enviar_Mensaje() {
 
-        String mensaje = mensaje_Chat_JTextField.getText();
+        String mensaje = redactar_Mensaje_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
             String emisor = CourseRoom.Utilerias.dune().character();
-            String fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
+            String fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
             if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
                 Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel
                         = new Mensaje_Texto_Izquierdo_General_Panel(emisor, fecha, mensaje);
@@ -1672,158 +1601,14 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                         = new Mensaje_Texto_Derecho_General_Panel(emisor, fecha, mensaje);
                 mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
             }
-            mensaje_Chat_JTextField.setText("");
+            redactar_Mensaje_JTextField.setText("");
+            redactar_Mensaje_JTextField.setCaretPosition(0);
         }
         
     }
 
-    @Override
-    public void Enviar_Videos() {
-        JFileChooser escogedor_Archivos = new JFileChooser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Video", "mp4", "mkv", "wmv", "3gp", "avi");
-        escogedor_Archivos.addChoosableFileFilter(filtro);
-        escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        escogedor_Archivos.setAcceptAllFileFilterUsed(true);
-        escogedor_Archivos.setApproveButtonText("Enviar Video(s)");
-        escogedor_Archivos.setMultiSelectionEnabled(true);
-
-        int resultado = escogedor_Archivos.showOpenDialog(this);
-
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
-
-            if (archivos_Abiertos != null) {
-
-                String emisor;
-                String fecha;
-
-                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
-                    Mensaje_Video_Izquierdo_General_Panel mensaje_Video_Panel;
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        emisor = CourseRoom.Utilerias.dune().character();
-                        fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
-                        mensaje_Video_Panel = new Mensaje_Video_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
-                                archivo_Abierto.getName());
-                        mensajes_Chat_JPanel.add(mensaje_Video_Panel);
-                    }
-                } else {
-                    Mensaje_Video_Derecho_General_Panel mensaje_Video_Panel;
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        emisor = CourseRoom.Utilerias.dune().character();
-                        fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
-                        mensaje_Video_Panel = new Mensaje_Video_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
-                                archivo_Abierto.getName());
-                        mensajes_Chat_JPanel.add(mensaje_Video_Panel);
-                    }
-                }
-
-            }
-
-        }
-
-    }
-
-    @Override
-    public void Enviar_Imagenes() {
-        JFileChooser escogedor_Archivos = new JFileChooser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imágenes", "png", "jpg", "jpeg", "bmp");
-        escogedor_Archivos.addChoosableFileFilter(filtro);
-        escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        escogedor_Archivos.setAcceptAllFileFilterUsed(true);
-        escogedor_Archivos.setApproveButtonText("Enviar Imagen(es)");
-        escogedor_Archivos.setMultiSelectionEnabled(true);
-        int resultado = escogedor_Archivos.showOpenDialog(this);
-
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-
-            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
-
-            if (archivos_Abiertos != null) {
-
-                String emisor;
-                String fecha;
-                Image abrir_Imagen;
-
-                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
-                    Mensaje_Imagen_Izquierdo_General_Panel mensaje_Imagen_Panel;
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        try {
-                            abrir_Imagen = ImageIO.read(archivo_Abierto);
-                            emisor = CourseRoom.Utilerias.dune().character();
-                            fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
-                            mensaje_Imagen_Panel
-                                    = new Mensaje_Imagen_Izquierdo_General_Panel(emisor, fecha, abrir_Imagen,
-                                            archivo_Abierto.getName());
-                            mensajes_Chat_JPanel.add(mensaje_Imagen_Panel);
-                        } catch (IOException ex) {
-                        }
-                    }
-                } else {
-                    Mensaje_Imagen_Derecho_General_Panel mensaje_Imagen_Panel;
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        try {
-                            abrir_Imagen = ImageIO.read(archivo_Abierto);
-                            emisor = CourseRoom.Utilerias.dune().character();
-                            fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
-                            mensaje_Imagen_Panel
-                                    = new Mensaje_Imagen_Derecho_General_Panel(emisor, fecha, abrir_Imagen, archivo_Abierto.getName());
-                            mensajes_Chat_JPanel.add(mensaje_Imagen_Panel);
-                        } catch (IOException ex) {
-                        }
-                    }
-                }
-
-            }
-
-        }
-    }
-
-    @Override
-    public void Enviar_Audios() {
-        JFileChooser escogedor_Archivos = new JFileChooser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Audio", "mp3", "flac", "ogg", "m4a");
-        escogedor_Archivos.addChoosableFileFilter(filtro);
-        escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        escogedor_Archivos.setAcceptAllFileFilterUsed(true);
-        escogedor_Archivos.setApproveButtonText("Enviar Audio(s)");
-        escogedor_Archivos.setMultiSelectionEnabled(true);
-
-        int resultado = escogedor_Archivos.showOpenDialog(this);
-
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
-
-            if (archivos_Abiertos != null) {
-
-                String emisor;
-                String fecha;
-                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
-                    Mensaje_Audio_Izquierdo_General_Panel mensaje_Audio_Panel;
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        emisor = CourseRoom.Utilerias.dune().character();
-                        fecha = CourseRoom.Utilerias.date().birthday(0, 1).toString();
-                        mensaje_Audio_Panel = new Mensaje_Audio_Izquierdo_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
-                                archivo_Abierto.getName());
-                        mensajes_Chat_JPanel.add(mensaje_Audio_Panel);
-                    }
-                } else {
-                    Mensaje_Audio_Derecho_General_Panel mensaje_Audio_Panel;
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        emisor = CourseRoom.Utilerias.dune().character();
-                        fecha = CourseRoom.Utilerias.date().birthday(22, 23).toString();
-                        mensaje_Audio_Panel = new Mensaje_Audio_Derecho_General_Panel(emisor, fecha, archivo_Abierto.getAbsolutePath(),
-                                archivo_Abierto.getName());
-                        mensajes_Chat_JPanel.add(mensaje_Audio_Panel);
-                    }
-                }
-
-            }
-
-        }
-    }
-
-    @Override
-    public void Enviar_Archivos() {
+   
+    public void Enviar_Materiales() {
         JFileChooser escogedor_Archivo = new JFileChooser();
         escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
         escogedor_Archivo.setApproveButtonText("Compartir Archivo(s)");
@@ -1837,16 +1622,68 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                 
                 Celda_Renderer[] celdas = new Celda_Renderer[4];
                 DefaultTableModel modelo = (DefaultTableModel) materiales_JTable.getModel();
+                ImageIcon icono_Abrir = new ImageIcon(getClass().getResource("/recursos/iconos/box.png"));
                 ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
                 for (File archivo_Abierto : archivos_Abiertos) {
-                    celdas[0] = new Celda_Renderer(archivo_Abierto.getName(),"");
+                    celdas[0] = new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),archivo_Abierto.getAbsolutePath());
                     celdas[1] = new Celda_Renderer(Perfil_Profesor_Panel.Nombre_Completo(),"");
-                    celdas[2] = new Celda_Renderer(LocalDateTime.now().toString(),"");
+                    celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.Fecha_Hora_Local(),"");
                     celdas[3] = new Celda_Renderer(icono_Descargar,"");
                     modelo.addRow(celdas);
                 }
             }
         }
+    }
+    
+    @Override
+    public void Enviar_Archivos() {
+        JFileChooser escogedor_Archivos = new JFileChooser();
+        escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        escogedor_Archivos.setApproveButtonText("Enviar Archivo(s)");
+        escogedor_Archivos.setMultiSelectionEnabled(true);
+        int resultado = escogedor_Archivos.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
+
+            if (archivos_Abiertos != null) {
+
+                String emisor;
+                String fecha;
+                String ruta;
+                String extension;
+                String nombre_Archivo;
+
+                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
+                    Mensaje_Archivo_Izquierdo_General_Panel mensaje_Archivo_Panel;
+                    for (File archivo_Abierto : archivos_Abiertos) {
+                        ruta = archivo_Abierto.getAbsolutePath();
+                        nombre_Archivo = archivo_Abierto.getName();
+                        extension = FilenameUtils.getExtension(nombre_Archivo);
+                        emisor = CourseRoom.Utilerias.dune().character();
+                        fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
+                        mensaje_Archivo_Panel
+                                = new Mensaje_Archivo_Izquierdo_General_Panel(emisor, fecha, ruta, extension, nombre_Archivo);
+                        mensajes_Chat_JPanel.add(mensaje_Archivo_Panel);
+                    }
+                } else {
+                    Mensaje_Archivo_Derecho_General_Panel mensaje_Archivo_Panel;
+                    for (File archivo_Abierto : archivos_Abiertos) {
+                        ruta = archivo_Abierto.getAbsolutePath();
+                        nombre_Archivo = archivo_Abierto.getName();
+                        extension = FilenameUtils.getExtension(nombre_Archivo);
+                        emisor = CourseRoom.Utilerias.dune().character();
+                        fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
+                        mensaje_Archivo_Panel
+                                = new Mensaje_Archivo_Derecho_General_Panel(emisor, fecha, ruta, extension, nombre_Archivo);
+                        mensajes_Chat_JPanel.add(mensaje_Archivo_Panel);
+                    }
+                }
+
+            }
+
+        }
+
     }
 
 

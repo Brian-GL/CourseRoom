@@ -6,7 +6,7 @@
 package frames.estudiantes;
 
 import courseroom.CourseRoom;
-import interfaces.Componentes_Interface;
+import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
 import java.time.LocalDateTime;
 import javax.swing.ImageIcon;

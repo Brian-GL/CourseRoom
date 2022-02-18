@@ -6,7 +6,7 @@
 package frames.profesores;
 
 import courseroom.CourseRoom;
-import interfaces.Componentes_Interface;
+import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;

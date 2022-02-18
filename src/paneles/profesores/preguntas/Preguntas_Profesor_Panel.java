@@ -8,8 +8,9 @@ package paneles.profesores.preguntas;
 import clases.Celda_Renderer;
 import datos.colecciones.Lista;
 import datos.estructuras.Nodo;
-import interfaces.Componentes_Interface;
-import interfaces.Limpieza_Interface;
+import frames.profesores.Preguntar_Profesor_Frame;
+import datos.interfaces.Componentes_Interface;
+import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.Image;
@@ -59,6 +60,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
         buscar_Preguntas_JButton = new javax.swing.JButton();
+        preguntar_JButton = new javax.swing.JButton();
         actualizar_JButton = new javax.swing.JButton();
         mostrar_Preguntas_JScrollPane = new javax.swing.JScrollPane();
         mostrar_Preguntas_JTable = new javax.swing.JTable();
@@ -105,6 +107,21 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             }
         });
 
+        preguntar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/wonder.png"))); // NOI18N
+        preguntar_JButton.setBorder(null);
+        ((ImageIcon)preguntar_JButton.getIcon()).getImage().flush();
+        preguntar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                preguntar_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                preguntar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                preguntar_JButtonMouseExited(evt);
+            }
+        });
+
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setBorder(null);
         actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
@@ -128,6 +145,8 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(preguntar_JButton)
+                .addGap(18, 18, 18)
                 .addComponent(buscar_Preguntas_JButton)
                 .addGap(18, 18, 18)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -138,6 +157,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                 .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscar_Preguntas_JButton)
+                    .addComponent(preguntar_JButton)
                     .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -331,6 +351,27 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         buscar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_buscar_Preguntas_JButtonMouseExited
 
+    private void preguntar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseClicked
+        // TODO add your handling code here:
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+
+            Preguntar_Profesor_Frame preguntar_Estudiante_Frame
+            = new Preguntar_Profesor_Frame();
+
+            preguntar_Estudiante_Frame.setVisible(true);
+        }
+    }//GEN-LAST:event_preguntar_JButtonMouseClicked
+
+    private void preguntar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseEntered
+        // TODO add your handling code here:
+        preguntar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_preguntar_JButtonMouseEntered
+
+    private void preguntar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseExited
+        // TODO add your handling code here:
+        preguntar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_preguntar_JButtonMouseExited
+
     private void buscar_Preguntas_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_Preguntas_JTextFieldKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_buscar_Preguntas_JTextFieldKeyPressed
@@ -412,6 +453,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
     private javax.swing.JPanel mostrar_Preguntas_JPanel;
     private javax.swing.JScrollPane mostrar_Preguntas_JScrollPane;
     private javax.swing.JTable mostrar_Preguntas_JTable;
+    private javax.swing.JButton preguntar_JButton;
     private javax.swing.JLayeredPane preguntas_JLayeredPane;
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
@@ -490,6 +532,8 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         buscar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        preguntar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        
         mostrar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         mostrar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 

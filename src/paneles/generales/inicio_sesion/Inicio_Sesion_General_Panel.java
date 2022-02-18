@@ -1,7 +1,7 @@
 package paneles.generales.inicio_sesion;
 
 import courseroom.CourseRoom;
-import interfaces.Componentes_Interface;
+import datos.interfaces.Componentes_Interface;
 import courseroom.CourseRoom_Frame;
 import java.awt.Font;
 import java.awt.Image;

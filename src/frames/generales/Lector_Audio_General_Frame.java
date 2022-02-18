@@ -16,10 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package frames.generales;
-import interfaces.Componentes_Interface;
+import datos.interfaces.Componentes_Interface;
 import courseroom.CourseRoom;
-import interfaces.Limpieza_Interface;
-import interfaces.Reproductor_Interface;
+import datos.interfaces.Limpieza_Interface;
+import datos.interfaces.Reproductor_Interface;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -88,10 +88,10 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CourseRoom - Lector De Audio");
-        setMaximumSize(new java.awt.Dimension(2147483647, 180));
         setMinimumSize(new java.awt.Dimension(800, 180));
-        setPreferredSize(new java.awt.Dimension(800, 180));
+        setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

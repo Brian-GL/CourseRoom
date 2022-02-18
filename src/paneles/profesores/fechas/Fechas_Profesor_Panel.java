@@ -18,8 +18,8 @@
 package paneles.profesores.fechas;
 
 import datos.colecciones.Lista;
-import interfaces.Componentes_Interface;
-import interfaces.Limpieza_Interface;
+import datos.interfaces.Componentes_Interface;
+import datos.interfaces.Limpieza_Interface;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import javax.swing.JScrollPane;

@@ -5,7 +5,7 @@
  */
 package frames.generales;
 
-import interfaces.Limpieza_Interface;
+import datos.interfaces.Limpieza_Interface;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;

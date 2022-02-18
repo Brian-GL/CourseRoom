@@ -5,7 +5,7 @@
  */
 package paneles.estudiantes.fechas;
 
-import interfaces.Limpieza_Interface;
+import datos.interfaces.Limpieza_Interface;
 
 
 

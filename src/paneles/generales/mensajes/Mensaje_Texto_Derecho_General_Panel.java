@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package paneles.generales.mensajes;
-import interfaces.Componentes_Interface;
+import datos.interfaces.Componentes_Interface;
 import courseroom.CourseRoom;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -43,15 +46,14 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel impl
         emisor_JLabel = new javax.swing.JLabel();
         mensaje_JScrollPane = new javax.swing.JScrollPane();
         mensaje_JTextPane = new javax.swing.JTextPane();
-        auxiliar_JPanel = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(32767, 156));
+        setMaximumSize(new java.awt.Dimension(32767, 200));
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(1110, 156));
+        setPreferredSize(new java.awt.Dimension(1110, 200));
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        contenido_JPanel.setMaximumSize(new java.awt.Dimension(713, 144));
-        contenido_JPanel.setPreferredSize(new java.awt.Dimension(713, 144));
+        contenido_JPanel.setMaximumSize(new java.awt.Dimension(713, 188));
+        contenido_JPanel.setPreferredSize(new java.awt.Dimension(713, 188));
 
         fecha_JLabel.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         fecha_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -102,23 +104,10 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel impl
                 .addContainerGap()
                 .addComponent(emisor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mensaje_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fecha_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        auxiliar_JPanel.setOpaque(false);
-
-        javax.swing.GroupLayout auxiliar_JPanelLayout = new javax.swing.GroupLayout(auxiliar_JPanel);
-        auxiliar_JPanel.setLayout(auxiliar_JPanelLayout);
-        auxiliar_JPanelLayout.setHorizontalGroup(
-            auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
-        );
-        auxiliar_JPanelLayout.setVerticalGroup(
-            auxiliar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -128,24 +117,19 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel impl
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(333, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(auxiliar_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(contenido_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel auxiliar_JPanel;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel emisor_JLabel;
     private javax.swing.JLabel fecha_JLabel;
@@ -160,7 +144,15 @@ public class Mensaje_Texto_Derecho_General_Panel extends javax.swing.JPanel impl
         mensaje_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         mensaje_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
+        
+        StyledDocument documento = mensaje_JTextPane.getStyledDocument();
+        SimpleAttributeSet centro = new SimpleAttributeSet();
+        StyleConstants.setAlignment(centro, StyleConstants.ALIGN_CENTER);
+        documento.setParagraphAttributes(0, documento.getLength(), centro, false);
+        
         Colorear_Componentes();
+        
+        
     }
 
     @Override

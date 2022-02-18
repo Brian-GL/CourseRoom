@@ -6,7 +6,7 @@
 package paneles.estudiantes.fechas;
 
 import courseroom.CourseRoom;
-import interfaces.Componentes_Interface;
+import datos.interfaces.Componentes_Interface;
 
 /**
  *

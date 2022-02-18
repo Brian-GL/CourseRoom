@@ -5,7 +5,7 @@
  */
 package paneles.generales.inicio_sesion;
 
-import interfaces.Componentes_Interface;
+import datos.interfaces.Componentes_Interface;
 import courseroom.CourseRoom;
 import courseroom.CourseRoom_Frame;
 import java.awt.Image;

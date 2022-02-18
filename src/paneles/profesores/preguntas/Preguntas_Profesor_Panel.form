@@ -94,6 +94,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="titulo_JLabel" min="-2" pref="253" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="preguntar_JButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="buscar_Preguntas_JButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="actualizar_JButton" min="-2" max="-2" attributes="0"/>
@@ -106,6 +108,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="titulo_JLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="buscar_Preguntas_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="preguntar_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="actualizar_JButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -149,6 +152,24 @@
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)buscar_Preguntas_JButton.getIcon()).getImage().flush();"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="preguntar_JButton">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/recursos/iconos/wonder.png"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="preguntar_JButtonMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="preguntar_JButtonMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="preguntar_JButtonMouseExited"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)preguntar_JButton.getIcon()).getImage().flush();"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="actualizar_JButton">

@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interfaces;
-
-import java.awt.Image;
+package datos.interfaces;
 
 /**
  *
  * @author LENOVO
  */
-public interface Color_Interface {
+public interface Componentes_Interface {
     
-    public void Establecer_Colores(Image imagen);
+    public void Iniciar_Componentes();
+    
+    public void Colorear_Componentes();
+    
+     
 }
