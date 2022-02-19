@@ -92,6 +92,10 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         return this.texto;
     } 
     
+    public boolean Tiene_Icono(){
+        return label.getIcon() != null;
+    }
+    
     public void Color_Fuente(Color color){
         label.setForeground(color);
     }

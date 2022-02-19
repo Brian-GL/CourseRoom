@@ -221,7 +221,9 @@ public class CourseRoom{
                 componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setEqualizer(media_player_Factory.equalizer().newEqualizer("Flat"));
             }
             catch(Exception exception){
-                JOptionPane.showMessageDialog(null, "Es necesario contar con VLC Media Player instalado en tu dispositivo", "Error Encontrado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, 
+                        "Es necesario contar con VLC Media Player instalado en tu dispositivo.\nPuedes obtenerlo desde la siguiente liga:\nhttps://www.videolan.org/vlc/",
+                        "Error Encontrado", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
             

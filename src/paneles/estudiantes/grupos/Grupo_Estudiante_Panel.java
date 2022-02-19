@@ -1356,7 +1356,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     int columna = tabla.getSelectedColumn();
 
                     if (columna == 2) {
-                        DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
+                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                         modelo.removeRow(fila);
                     }
 
@@ -1676,6 +1676,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         mensaje_Archivo_Panel
                                 = new Mensaje_Archivo_Izquierdo_General_Panel(emisor, fecha, ruta, extension, nombre_Archivo);
                         mensajes_Chat_JPanel.add(mensaje_Archivo_Panel);
+                        mensajes_Chat_JScrollPane.repaint();
                     }
                 } else {
                     Mensaje_Archivo_Derecho_General_Panel mensaje_Archivo_Panel;
@@ -1688,6 +1689,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         mensaje_Archivo_Panel
                                 = new Mensaje_Archivo_Derecho_General_Panel(emisor, fecha, ruta, extension, nombre_Archivo);
                         mensajes_Chat_JPanel.add(mensaje_Archivo_Panel);
+                        mensajes_Chat_JScrollPane.repaint();
                     }
                 }
 
