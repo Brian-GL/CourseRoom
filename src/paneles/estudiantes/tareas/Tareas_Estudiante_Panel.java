@@ -485,8 +485,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        mostrar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
         Celda_Renderer celda;
@@ -497,8 +497,6 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
         
-        
-
         Tarea_Estudiante_Panel tarea_Estudiante_Panel;
         for (Nodo<Tarea_Estudiante_Panel> nodo = mostrar_Tareas_Lista.front(); nodo != null; nodo = nodo.next()) {
             tarea_Estudiante_Panel = nodo.element();

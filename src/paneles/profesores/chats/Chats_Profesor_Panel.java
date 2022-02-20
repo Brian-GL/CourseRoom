@@ -573,8 +573,8 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        mostrar_Chats_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Chats_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Chats_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Chats_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
         Celda_Renderer celda;

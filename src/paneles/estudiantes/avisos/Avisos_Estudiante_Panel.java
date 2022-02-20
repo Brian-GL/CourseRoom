@@ -246,8 +246,8 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();

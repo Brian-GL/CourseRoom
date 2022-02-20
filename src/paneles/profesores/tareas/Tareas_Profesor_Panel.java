@@ -485,8 +485,8 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
 
         buscar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        mostrar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
         Celda_Renderer celda;

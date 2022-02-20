@@ -240,6 +240,9 @@ public class CourseRoom{
             faker = new Faker(local);
         }
         
+        public static int Altura_Fila_Tabla(int numero_Letras){
+            return (int)((numero_Letras/60) * 20) + 36;
+        }
         
         public static DateTimeFormatter Formato_Fecha(){
             return formato_Fecha;

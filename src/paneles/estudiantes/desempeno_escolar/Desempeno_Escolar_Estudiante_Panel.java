@@ -471,8 +471,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         Celda_Renderer celda;

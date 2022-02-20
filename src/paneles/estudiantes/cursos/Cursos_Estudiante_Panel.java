@@ -1103,8 +1103,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         }
         
         // Cursos actuales:
-        mostrar_Cursos_Actuales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Cursos_Actuales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Cursos_Actuales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Cursos_Actuales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         
         for (int i = 0; i < mostrar_Cursos_Actuales_JTable.getRowCount(); i++) {
@@ -1121,8 +1121,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         
         //Cursos finalizados:
-        mostrar_Cursos_Finalizados_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Cursos_Finalizados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Cursos_Finalizados_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Cursos_Finalizados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
         for (int i = 0; i < mostrar_Cursos_Finalizados_JTable.getRowCount(); i++) {
@@ -1138,8 +1138,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         }
         
         //Cursos Recomendados:
-        mostrar_Cursos_Recomendados_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Cursos_Recomendados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Cursos_Recomendados_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Cursos_Recomendados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         for (int i = 0; i < mostrar_Cursos_Recomendados_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
@@ -1155,8 +1155,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         }
         
         //Cursos nuevos:
-        mostrar_Cursos_Nuevos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Cursos_Nuevos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Cursos_Nuevos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Cursos_Nuevos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         for (int i = 0; i < mostrar_Cursos_Nuevos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {

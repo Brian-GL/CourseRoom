@@ -26,7 +26,6 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -53,10 +52,6 @@ import javax.swing.table.TableRowSorter;
 import org.apache.commons.io.FilenameUtils;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
-import paneles.generales.mensajes.Mensaje_Archivo_Derecho_General_Panel;
-import paneles.generales.mensajes.Mensaje_Archivo_Izquierdo_General_Panel;
-import paneles.generales.mensajes.Mensaje_Texto_Derecho_General_Panel;
-import paneles.generales.mensajes.Mensaje_Texto_Izquierdo_General_Panel;
 
 /**
  *
@@ -121,12 +116,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         descripcion_JTextPane = new javax.swing.JTextPane();
         miembros_JScrollPane = new javax.swing.JScrollPane();
         miembros_JTable = new javax.swing.JTable();
-        chat_Grupo_JPanel = new javax.swing.JPanel();
+        chat_JPanel = new javax.swing.JPanel();
         mensajes_Chat_JScrollPane = new javax.swing.JScrollPane();
-        mensajes_Chat_JPanel = new javax.swing.JPanel();
-        enviar_Mensajes_JPanel = new javax.swing.JPanel();
-        enviar_Archivos_JButton = new javax.swing.JButton();
-        redactar_Mensaje_JTextField = new javax.swing.JTextField();
+        mensajes_Chat_JTable = new javax.swing.JTable();
+        enviar_Mensaje_Chat_JPanel = new javax.swing.JPanel();
+        enviar_Archivo_Chat_JButton = new javax.swing.JButton();
+        redactar_Mensaje_Chat_JTextField = new javax.swing.JTextField();
         archivos_Compartidos_Grupo_JPanel = new javax.swing.JPanel();
         compartir_Archivos_JButton = new javax.swing.JButton();
         archivos_Compartidos_JScrollPane = new javax.swing.JScrollPane();
@@ -320,11 +315,11 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         imagen_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
         imagen_JLabel.setToolTipText("Imagen Del Grupo");
 
-        curso_JLabel.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         curso_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/teacher.png"))); // NOI18N
-        curso_JLabel.setToolTipText("Curso De Proveniencia Del Grupo");
+        curso_JLabel.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         curso_JLabel.setOpaque(true);
+        curso_JLabel.setToolTipText("Curso De Proveniencia Del Grupo");
         ((ImageIcon)curso_JLabel.getIcon()).getImage().flush();
         curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -427,121 +422,28 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
             grupo_JLayeredPane.add(miembros_JScrollPane, "Miembros");
 
-            chat_Grupo_JPanel.setOpaque(false);
+            chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+            chat_JPanel.setOpaque(false);
+            chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+            chat_JPanel.setLayout(new java.awt.BorderLayout());
 
+            mensajes_Chat_JScrollPane.setBorder(null);
             mensajes_Chat_JScrollPane.setOpaque(false);
 
-            mensajes_Chat_JPanel.setOpaque(false);
-            mensajes_Chat_JPanel.setLayout(new javax.swing.BoxLayout(mensajes_Chat_JPanel, javax.swing.BoxLayout.PAGE_AXIS));
-            mensajes_Chat_JScrollPane.setViewportView(mensajes_Chat_JPanel);
-
-            enviar_Mensajes_JPanel.setMaximumSize(new java.awt.Dimension(32767, 44));
-            enviar_Mensajes_JPanel.setPreferredSize(new java.awt.Dimension(1046, 44));
-
-            enviar_Archivos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
-            enviar_Archivos_JButton.setToolTipText("Enviar Archivo");
-            enviar_Archivos_JButton.setBorder(null);
-            enviar_Archivos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            enviar_Archivos_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
-            enviar_Archivos_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
-            enviar_Archivos_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-            ((ImageIcon)enviar_Archivos_JButton.getIcon()).getImage().flush();
-            enviar_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    enviar_Archivos_JButtonMouseClicked(evt);
-                }
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    enviar_Archivos_JButtonMouseEntered(evt);
-                }
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    enviar_Archivos_JButtonMouseExited(evt);
-                }
-            });
-
-            redactar_Mensaje_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            redactar_Mensaje_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
-            redactar_Mensaje_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-                public void keyPressed(java.awt.event.KeyEvent evt) {
-                    redactar_Mensaje_JTextFieldKeyPressed(evt);
-                }
-            });
-
-            javax.swing.GroupLayout enviar_Mensajes_JPanelLayout = new javax.swing.GroupLayout(enviar_Mensajes_JPanel);
-            enviar_Mensajes_JPanel.setLayout(enviar_Mensajes_JPanelLayout);
-            enviar_Mensajes_JPanelLayout.setHorizontalGroup(
-                enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviar_Mensajes_JPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(enviar_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(redactar_Mensaje_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap())
-            );
-            enviar_Mensajes_JPanelLayout.setVerticalGroup(
-                enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviar_Mensajes_JPanelLayout.createSequentialGroup()
-                    .addGap(4, 4, 4)
-                    .addGroup(enviar_Mensajes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(redactar_Mensaje_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(enviar_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
-
-            javax.swing.GroupLayout chat_Grupo_JPanelLayout = new javax.swing.GroupLayout(chat_Grupo_JPanel);
-            chat_Grupo_JPanel.setLayout(chat_Grupo_JPanelLayout);
-            chat_Grupo_JPanelLayout.setHorizontalGroup(
-                chat_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(mensajes_Chat_JScrollPane)
-                .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            );
-            chat_Grupo_JPanelLayout.setVerticalGroup(
-                chat_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(chat_Grupo_JPanelLayout.createSequentialGroup()
-                    .addComponent(mensajes_Chat_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-                    .addGap(0, 0, 0)
-                    .addComponent(enviar_Mensajes_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0))
-            );
-
-            grupo_JLayeredPane.add(chat_Grupo_JPanel, "Chat");
-
-            archivos_Compartidos_Grupo_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
-            archivos_Compartidos_Grupo_JPanel.setToolTipText("");
-            archivos_Compartidos_Grupo_JPanel.setOpaque(false);
-
-            compartir_Archivos_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
-            compartir_Archivos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
-            compartir_Archivos_JButton.setText("Compartir Archivo(s)");
-            compartir_Archivos_JButton.setToolTipText("Compartir Y Subir Archivo");
-            ((ImageIcon)compartir_Archivos_JButton.getIcon()).getImage().flush();
-            compartir_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    compartir_Archivos_JButtonMouseClicked(evt);
-                }
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    compartir_Archivos_JButtonMouseEntered(evt);
-                }
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    compartir_Archivos_JButtonMouseExited(evt);
-                }
-            });
-
-            archivos_Compartidos_JScrollPane.setBorder(null);
-            archivos_Compartidos_JScrollPane.setOpaque(false);
-
-            archivos_Compartidos_JTable.setAutoCreateRowSorter(true);
-            archivos_Compartidos_JTable.setModel(
+            mensajes_Chat_JTable.setAutoCreateRowSorter(true);
+            mensajes_Chat_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+            mensajes_Chat_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
                     new Object [][] {
 
                     },
                     new String [] {
-                        "Archivo", "Emisor", "Fecha", "Descargar", "Remover"
+                        "Emisor", "Mensaje", "Fecha"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false, false,false
+                        false, true, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -551,7 +453,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     @Override
                     public Class getColumnClass(int column)
                     {
-                        for(int i = 0; i < archivos_Compartidos_JTable.getRowCount(); i++)
+                        for(int i = 0; i < mensajes_Chat_JTable.getRowCount(); i++)
                         {
                             //The first valid value of a cell of given column is retrieved.
                             if(getValueAt(i,column) != null)
@@ -563,153 +465,108 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         return super.getColumnClass(column);
                     }
                 });
-                archivos_Compartidos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-                archivos_Compartidos_JTable.setOpaque(false);
-                archivos_Compartidos_JTable.setRowHeight(75);
-                archivos_Compartidos_JTable.setRowMargin(15);
-                archivos_Compartidos_JTable.setShowGrid(true);
-                archivos_Compartidos_JTable.setShowVerticalLines(false);
-                archivos_Compartidos_JTable.setRowSorter(new TableRowSorter(archivos_Compartidos_JTable.getModel()));
-                archivos_Compartidos_JScrollPane.setViewportView(archivos_Compartidos_JTable);
+                mensajes_Chat_JTable.setOpaque(false);
+                mensajes_Chat_JTable.setRowHeight(80);
+                mensajes_Chat_JTable.setRowMargin(15);
+                mensajes_Chat_JTable.setShowGrid(true);
+                mensajes_Chat_JTable.setRowSorter(new TableRowSorter(mensajes_Chat_JTable.getModel()));
+                mensajes_Chat_JScrollPane.setViewportView(mensajes_Chat_JTable);
 
-                javax.swing.GroupLayout archivos_Compartidos_Grupo_JPanelLayout = new javax.swing.GroupLayout(archivos_Compartidos_Grupo_JPanel);
-                archivos_Compartidos_Grupo_JPanel.setLayout(archivos_Compartidos_Grupo_JPanelLayout);
-                archivos_Compartidos_Grupo_JPanelLayout.setHorizontalGroup(
-                    archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1034, Short.MAX_VALUE)
-                            .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(compartir_Archivos_JButton)))
-                        .addContainerGap())
-                );
-                archivos_Compartidos_Grupo_JPanelLayout.setVerticalGroup(
-                    archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(compartir_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
-                        .addContainerGap())
-                );
+                chat_JPanel.add(mensajes_Chat_JScrollPane, java.awt.BorderLayout.CENTER);
 
-                grupo_JLayeredPane.add(archivos_Compartidos_Grupo_JPanel, "Archivos_Compartidos");
+                enviar_Mensaje_Chat_JPanel.setMaximumSize(new java.awt.Dimension(32767, 44));
+                enviar_Mensaje_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1085, 44));
 
-                tareas_Pendientes_JPanel.setPreferredSize(new java.awt.Dimension(982, 534));
-                tareas_Pendientes_JPanel.setOpaque(false);
-
-                anadir_Tarea_Pendiente_JPanel.setOpaque(false);
-
-                tarea_Pendiente_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-                tarea_Pendiente_JLabel.setText("Nombre Del Pendiente");
-
-                anadir_Tarea_Pendiente_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-                anadir_Tarea_Pendiente_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/to-do-list.png"))); // NOI18N
-                anadir_Tarea_Pendiente_JButton.setText("Agregar Tarea Pendiente");
-                anadir_Tarea_Pendiente_JButton.setToolTipText("Agregar Nueva Tarea Pendiente");
-                anadir_Tarea_Pendiente_JButton.setActionCommand("Agregar Pendiente");
-                anadir_Tarea_Pendiente_JButton.setPreferredSize(new java.awt.Dimension(401, 31));
-                anadir_Tarea_Pendiente_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
+                enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
+                enviar_Archivo_Chat_JButton.setBorder(null);
+                enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                enviar_Archivo_Chat_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
+                enviar_Archivo_Chat_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
+                enviar_Archivo_Chat_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+                ((ImageIcon)enviar_Archivo_Chat_JButton.getIcon()).getImage().flush();
+                enviar_Archivo_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        anadir_Tarea_Pendiente_JButtonMouseClicked(evt);
+                        enviar_Archivo_Chat_JButtonMouseClicked(evt);
                     }
                     public void mouseEntered(java.awt.event.MouseEvent evt) {
-                        anadir_Tarea_Pendiente_JButtonMouseEntered(evt);
+                        enviar_Archivo_Chat_JButtonMouseEntered(evt);
                     }
                     public void mouseExited(java.awt.event.MouseEvent evt) {
-                        anadir_Tarea_Pendiente_JButtonMouseExited(evt);
+                        enviar_Archivo_Chat_JButtonMouseExited(evt);
                     }
                 });
 
-                fecha_Finalizacion_Tarea_Pendiente_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-                fecha_Finalizacion_Tarea_Pendiente_JLabel.setText("Fecha De Finalización");
+                redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+                redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
+                redactar_Mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        redactar_Mensaje_Chat_JTextFieldKeyPressed(evt);
+                    }
+                });
 
-                descripcion_Tarea_Pendiente_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-                descripcion_Tarea_Pendiente_JLabel.setText("Descripción");
-
-                fecha_Finalizacion_Tarea_Pendiente_JPanel.setToolTipText("Fecha Posible De Terminación De La Tarea Pendiente");
-                fecha_Finalizacion_Tarea_Pendiente_JPanel.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
-                fecha_Finalizacion_Tarea_Pendiente_JPanel.setOpaque(false);
-                fecha_Finalizacion_Tarea_Pendiente_JPanel.setPreferredSize(new java.awt.Dimension(401, 0));
-                fecha_Finalizacion_Tarea_Pendiente_JPanel.setLayout(new java.awt.CardLayout());
-
-                escogedor_Fecha_Hora.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-                fecha_Finalizacion_Tarea_Pendiente_JPanel.add(escogedor_Fecha_Hora, "card2");
-
-                nombre_Tarea_Pendiente_JTextField.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-                nombre_Tarea_Pendiente_JTextField.setToolTipText("Nombre De La Tarea Pendiente");
-                nombre_Tarea_Pendiente_JTextField.setPreferredSize(new java.awt.Dimension(401, 30));
-
-                descripcion_Tarea_Pendiente_JScrollPane.setPreferredSize(new java.awt.Dimension(401, 30));
-
-                descripcion_Tarea_Pendiente_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-                descripcion_Tarea_Pendiente_JScrollPane.setViewportView(descripcion_Tarea_Pendiente_JTextPane);
-
-                miembro_A_Cargo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-                miembro_A_Cargo_JLabel.setText("Miembro A Cargo");
-
-                miembro_A_Cargo_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-
-                javax.swing.GroupLayout anadir_Tarea_Pendiente_JPanelLayout = new javax.swing.GroupLayout(anadir_Tarea_Pendiente_JPanel);
-                anadir_Tarea_Pendiente_JPanel.setLayout(anadir_Tarea_Pendiente_JPanelLayout);
-                anadir_Tarea_Pendiente_JPanelLayout.setHorizontalGroup(
-                    anadir_Tarea_Pendiente_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(anadir_Tarea_Pendiente_JPanelLayout.createSequentialGroup()
+                javax.swing.GroupLayout enviar_Mensaje_Chat_JPanelLayout = new javax.swing.GroupLayout(enviar_Mensaje_Chat_JPanel);
+                enviar_Mensaje_Chat_JPanel.setLayout(enviar_Mensaje_Chat_JPanelLayout);
+                enviar_Mensaje_Chat_JPanelLayout.setHorizontalGroup(
+                    enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(enviar_Mensaje_Chat_JPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(anadir_Tarea_Pendiente_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombre_Tarea_Pendiente_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(tarea_Pendiente_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(fecha_Finalizacion_Tarea_Pendiente_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(fecha_Finalizacion_Tarea_Pendiente_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(descripcion_Tarea_Pendiente_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(descripcion_Tarea_Pendiente_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(miembro_A_Cargo_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(miembro_A_Cargo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(anadir_Tarea_Pendiente_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                );
-                anadir_Tarea_Pendiente_JPanelLayout.setVerticalGroup(
-                    anadir_Tarea_Pendiente_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(anadir_Tarea_Pendiente_JPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tarea_Pendiente_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombre_Tarea_Pendiente_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(miembro_A_Cargo_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(miembro_A_Cargo_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(descripcion_Tarea_Pendiente_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(descripcion_Tarea_Pendiente_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fecha_Finalizacion_Tarea_Pendiente_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fecha_Finalizacion_Tarea_Pendiente_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(anadir_Tarea_Pendiente_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
                         .addContainerGap())
                 );
+                enviar_Mensaje_Chat_JPanelLayout.setVerticalGroup(
+                    enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(enviar_Mensaje_Chat_JPanelLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(4, 4, 4))
+                );
 
-                tareas_Pendientes_JScrollPane.setBorder(null);
-                tareas_Pendientes_JScrollPane.setOpaque(false);
+                chat_JPanel.add(enviar_Mensaje_Chat_JPanel, java.awt.BorderLayout.SOUTH);
 
-                tareas_Pendientes_JTable.setAutoCreateRowSorter(true);
-                tareas_Pendientes_JTable.setModel(
+                grupo_JLayeredPane.add(chat_JPanel, "Chat");
+
+                archivos_Compartidos_Grupo_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+                archivos_Compartidos_Grupo_JPanel.setToolTipText("");
+                archivos_Compartidos_Grupo_JPanel.setOpaque(false);
+
+                compartir_Archivos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
+                compartir_Archivos_JButton.setText("Compartir Archivo(s)");
+                compartir_Archivos_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+                compartir_Archivos_JButton.setToolTipText("Compartir Y Subir Archivo");
+                ((ImageIcon)compartir_Archivos_JButton.getIcon()).getImage().flush();
+                compartir_Archivos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        compartir_Archivos_JButtonMouseClicked(evt);
+                    }
+                    public void mouseEntered(java.awt.event.MouseEvent evt) {
+                        compartir_Archivos_JButtonMouseEntered(evt);
+                    }
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        compartir_Archivos_JButtonMouseExited(evt);
+                    }
+                });
+
+                archivos_Compartidos_JScrollPane.setBorder(null);
+                archivos_Compartidos_JScrollPane.setOpaque(false);
+
+                archivos_Compartidos_JTable.setAutoCreateRowSorter(true);
+                archivos_Compartidos_JTable.setModel(
 
                     new javax.swing.table.DefaultTableModel(
                         new Object [][] {
 
                         },
                         new String [] {
-                            "Tarea", "A Cargo", "Fecha Corte", "Estatus"
+                            "Archivo", "Emisor", "Fecha", "Descargar", "Remover"
                         }
                     ) {
                         boolean[] canEdit = new boolean [] {
-                            false, false, false, false
+                            false, false, false, false,false
                         };
 
                         public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -719,7 +576,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         @Override
                         public Class getColumnClass(int column)
                         {
-                            for(int i = 0; i < tareas_Pendientes_JTable.getRowCount(); i++)
+                            for(int i = 0; i < archivos_Compartidos_JTable.getRowCount(); i++)
                             {
                                 //The first valid value of a cell of given column is retrieved.
                                 if(getValueAt(i,column) != null)
@@ -731,200 +588,368 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             return super.getColumnClass(column);
                         }
                     });
-                    tareas_Pendientes_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-                    tareas_Pendientes_JTable.setOpaque(false);
-                    tareas_Pendientes_JTable.setRowHeight(100);
-                    tareas_Pendientes_JTable.setRowMargin(15);
-                    tareas_Pendientes_JTable.setShowGrid(true);
-                    tareas_Pendientes_JTable.setShowVerticalLines(false);
-                    tareas_Pendientes_JTable.setRowSorter(new TableRowSorter(tareas_Pendientes_JTable.getModel()));
-                    tareas_Pendientes_JScrollPane.setViewportView(tareas_Pendientes_JTable);
+                    archivos_Compartidos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                    archivos_Compartidos_JTable.setOpaque(false);
+                    archivos_Compartidos_JTable.setRowHeight(75);
+                    archivos_Compartidos_JTable.setRowMargin(15);
+                    archivos_Compartidos_JTable.setShowGrid(true);
+                    archivos_Compartidos_JTable.setShowVerticalLines(false);
+                    archivos_Compartidos_JTable.setRowSorter(new TableRowSorter(archivos_Compartidos_JTable.getModel()));
+                    archivos_Compartidos_JScrollPane.setViewportView(archivos_Compartidos_JTable);
 
-                    javax.swing.GroupLayout tareas_Pendientes_JPanelLayout = new javax.swing.GroupLayout(tareas_Pendientes_JPanel);
-                    tareas_Pendientes_JPanel.setLayout(tareas_Pendientes_JPanelLayout);
-                    tareas_Pendientes_JPanelLayout.setHorizontalGroup(
-                        tareas_Pendientes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(tareas_Pendientes_JPanelLayout.createSequentialGroup()
+                    javax.swing.GroupLayout archivos_Compartidos_Grupo_JPanelLayout = new javax.swing.GroupLayout(archivos_Compartidos_Grupo_JPanel);
+                    archivos_Compartidos_Grupo_JPanel.setLayout(archivos_Compartidos_Grupo_JPanelLayout);
+                    archivos_Compartidos_Grupo_JPanelLayout.setHorizontalGroup(
+                        archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(anadir_Tarea_Pendiente_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1034, Short.MAX_VALUE)
+                                .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(compartir_Archivos_JButton)))
+                            .addContainerGap())
+                    );
+                    archivos_Compartidos_Grupo_JPanelLayout.setVerticalGroup(
+                        archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(compartir_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(tareas_Pendientes_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
-                            .addContainerGap())
-                    );
-                    tareas_Pendientes_JPanelLayout.setVerticalGroup(
-                        tareas_Pendientes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tareas_Pendientes_JPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(tareas_Pendientes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(anadir_Tarea_Pendiente_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tareas_Pendientes_JScrollPane))
+                            .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                             .addContainerGap())
                     );
 
-                    grupo_JLayeredPane.add(tareas_Pendientes_JPanel, "Tareas_Pendientes");
+                    grupo_JLayeredPane.add(archivos_Compartidos_Grupo_JPanel, "Archivos_Compartidos");
 
-                    editar_JPanel.setOpaque(false);
+                    tareas_Pendientes_JPanel.setPreferredSize(new java.awt.Dimension(982, 534));
+                    tareas_Pendientes_JPanel.setOpaque(false);
 
-                    cambiar_Imagen_JButton.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
-                    cambiar_Imagen_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/replace.png"))); // NOI18N
-                    cambiar_Imagen_JButton.setText("Cambiar Imagen");
-                    cambiar_Imagen_JButton.setToolTipText("Cambiar Imagen Del Grupo");
-                    cambiar_Imagen_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                    cambiar_Imagen_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-                    cambiar_Imagen_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
-                    cambiar_Imagen_JButton.setMinimumSize(new java.awt.Dimension(400, 40));
-                    cambiar_Imagen_JButton.setPreferredSize(new java.awt.Dimension(400, 40));
-                    ((ImageIcon)cambiar_Imagen_JButton.getIcon()).getImage().flush();
-                    cambiar_Imagen_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                    anadir_Tarea_Pendiente_JPanel.setOpaque(false);
+
+                    tarea_Pendiente_JLabel.setText("Nombre Del Pendiente");
+                    tarea_Pendiente_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+
+                    anadir_Tarea_Pendiente_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/to-do-list.png"))); // NOI18N
+                    anadir_Tarea_Pendiente_JButton.setText("Agregar Tarea Pendiente");
+                    anadir_Tarea_Pendiente_JButton.setActionCommand("Agregar Pendiente");
+                    anadir_Tarea_Pendiente_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+                    anadir_Tarea_Pendiente_JButton.setPreferredSize(new java.awt.Dimension(401, 31));
+                    anadir_Tarea_Pendiente_JButton.setToolTipText("Agregar Nueva Tarea Pendiente");
+                    anadir_Tarea_Pendiente_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            cambiar_Imagen_JButtonMouseClicked(evt);
+                            anadir_Tarea_Pendiente_JButtonMouseClicked(evt);
                         }
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
-                            cambiar_Imagen_JButtonMouseEntered(evt);
+                            anadir_Tarea_Pendiente_JButtonMouseEntered(evt);
                         }
                         public void mouseExited(java.awt.event.MouseEvent evt) {
-                            cambiar_Imagen_JButtonMouseExited(evt);
+                            anadir_Tarea_Pendiente_JButtonMouseExited(evt);
                         }
                     });
 
-                    editar_Nombre_JTextField.setEditable(false);
-                    editar_Nombre_JTextField.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+                    fecha_Finalizacion_Tarea_Pendiente_JLabel.setText("Fecha De Finalización");
+                    fecha_Finalizacion_Tarea_Pendiente_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
-                    editar_Nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-                    editar_Nombre_JLabel.setText("Nombre");
+                    descripcion_Tarea_Pendiente_JLabel.setText("Descripción");
+                    descripcion_Tarea_Pendiente_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
-                    editar_Imagen_JLabel.setToolTipText("Imagen Del Grupo A Editar");
-                    editar_Imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                    editar_Imagen_JLabel.setMaximumSize(new java.awt.Dimension(400, 400));
-                    editar_Imagen_JLabel.setMinimumSize(new java.awt.Dimension(400, 400));
-                    editar_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
+                    fecha_Finalizacion_Tarea_Pendiente_JPanel.setFont(new java.awt.Font("Gadugi", 0, 17)); // NOI18N
+                    fecha_Finalizacion_Tarea_Pendiente_JPanel.setPreferredSize(new java.awt.Dimension(401, 0));
+                    fecha_Finalizacion_Tarea_Pendiente_JPanel.setToolTipText("Fecha Posible De Terminación De La Tarea Pendiente");
+                    fecha_Finalizacion_Tarea_Pendiente_JPanel.setOpaque(false);
+                    fecha_Finalizacion_Tarea_Pendiente_JPanel.setLayout(new java.awt.CardLayout());
 
-                    editar_Nombre_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-                    editar_Nombre_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-                    editar_Nombre_JButton.setToolTipText("Editar Nombre Del Grupo");
-                    ((ImageIcon)editar_Nombre_JButton.getIcon()).getImage().flush();
-                    editar_Nombre_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            editar_Nombre_JButtonMouseClicked(evt);
-                        }
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                            editar_Nombre_JButtonMouseEntered(evt);
-                        }
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                            editar_Nombre_JButtonMouseExited(evt);
-                        }
-                    });
+                    escogedor_Fecha_Hora.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+                    fecha_Finalizacion_Tarea_Pendiente_JPanel.add(escogedor_Fecha_Hora, "card2");
 
-                    abandonar_Grupo_JButton.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
-                    abandonar_Grupo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/leave.png"))); // NOI18N
-                    abandonar_Grupo_JButton.setText("Abandonar Grupo");
-                    abandonar_Grupo_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
-                    ((ImageIcon)abandonar_Grupo_JButton.getIcon()).getImage().flush();
-                    abandonar_Grupo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            abandonar_Grupo_JButtonMouseClicked(evt);
-                        }
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                            abandonar_Grupo_JButtonMouseEntered(evt);
-                        }
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                            abandonar_Grupo_JButtonMouseExited(evt);
-                        }
-                    });
+                    nombre_Tarea_Pendiente_JTextField.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+                    nombre_Tarea_Pendiente_JTextField.setPreferredSize(new java.awt.Dimension(401, 30));
+                    nombre_Tarea_Pendiente_JTextField.setToolTipText("Nombre De La Tarea Pendiente");
 
-                    editar_Descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-                    editar_Descripcion_JLabel.setText("Descripción");
+                    descripcion_Tarea_Pendiente_JScrollPane.setPreferredSize(new java.awt.Dimension(401, 30));
 
-                    editar_Descripcion_JTextPane.setEditable(false);
-                    editar_Descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
-                    editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
+                    descripcion_Tarea_Pendiente_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+                    descripcion_Tarea_Pendiente_JScrollPane.setViewportView(descripcion_Tarea_Pendiente_JTextPane);
 
-                    editar_Descripcion_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-                    editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-                    editar_Descripcion_JButton.setToolTipText("Editar Nombre Del Grupo");
-                    ((ImageIcon)editar_Descripcion_JButton.getIcon()).getImage().flush();
-                    editar_Descripcion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            editar_Descripcion_JButtonMouseClicked(evt);
-                        }
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                            editar_Descripcion_JButtonMouseEntered(evt);
-                        }
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                            editar_Descripcion_JButtonMouseExited(evt);
-                        }
-                    });
+                    miembro_A_Cargo_JLabel.setText("Miembro A Cargo");
+                    miembro_A_Cargo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
-                    javax.swing.GroupLayout editar_JPanelLayout = new javax.swing.GroupLayout(editar_JPanel);
-                    editar_JPanel.setLayout(editar_JPanelLayout);
-                    editar_JPanelLayout.setHorizontalGroup(
-                        editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(editar_JPanelLayout.createSequentialGroup()
-                            .addContainerGap(52, Short.MAX_VALUE)
-                            .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(editar_Descripcion_JScrollPane)
-                                .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(editar_JPanelLayout.createSequentialGroup()
-                                    .addComponent(editar_Nombre_JTextField)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(editar_Nombre_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(editar_Nombre_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
-                                .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 63, Short.MAX_VALUE)
-                            .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editar_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap(67, Short.MAX_VALUE))
-                    );
-                    editar_JPanelLayout.setVerticalGroup(
-                        editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(editar_JPanelLayout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(editar_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(editar_JPanelLayout.createSequentialGroup()
-                                    .addComponent(editar_Nombre_JLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(editar_Nombre_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(editar_Nombre_JTextField))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(editar_Descripcion_JLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(18, 18, 18)
-                            .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(25, 25, 25))
-                    );
+                    miembro_A_Cargo_JComboBox.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
 
-                    grupo_JLayeredPane.add(editar_JPanel, "Editar");
-
-                    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-                    this.setLayout(layout);
-                    layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(grupo_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                            .addGap(32, 32, 32))
-                    );
-                    layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+                    javax.swing.GroupLayout anadir_Tarea_Pendiente_JPanelLayout = new javax.swing.GroupLayout(anadir_Tarea_Pendiente_JPanel);
+                    anadir_Tarea_Pendiente_JPanel.setLayout(anadir_Tarea_Pendiente_JPanelLayout);
+                    anadir_Tarea_Pendiente_JPanelLayout.setHorizontalGroup(
+                        anadir_Tarea_Pendiente_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(anadir_Tarea_Pendiente_JPanelLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(anadir_Tarea_Pendiente_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(nombre_Tarea_Pendiente_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(tarea_Pendiente_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                                .addComponent(fecha_Finalizacion_Tarea_Pendiente_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                                .addComponent(fecha_Finalizacion_Tarea_Pendiente_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(descripcion_Tarea_Pendiente_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(descripcion_Tarea_Pendiente_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(miembro_A_Cargo_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(miembro_A_Cargo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(anadir_Tarea_Pendiente_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    );
+                    anadir_Tarea_Pendiente_JPanelLayout.setVerticalGroup(
+                        anadir_Tarea_Pendiente_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(anadir_Tarea_Pendiente_JPanelLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(tarea_Pendiente_JLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(nombre_Tarea_Pendiente_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(miembro_A_Cargo_JLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(miembro_A_Cargo_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(descripcion_Tarea_Pendiente_JLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(descripcion_Tarea_Pendiente_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(fecha_Finalizacion_Tarea_Pendiente_JLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(fecha_Finalizacion_Tarea_Pendiente_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(grupo_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(anadir_Tarea_Pendiente_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
                     );
-                }// </editor-fold>//GEN-END:initComponents
+
+                    tareas_Pendientes_JScrollPane.setBorder(null);
+                    tareas_Pendientes_JScrollPane.setOpaque(false);
+
+                    tareas_Pendientes_JTable.setAutoCreateRowSorter(true);
+                    tareas_Pendientes_JTable.setModel(
+
+                        new javax.swing.table.DefaultTableModel(
+                            new Object [][] {
+
+                            },
+                            new String [] {
+                                "Tarea", "A Cargo", "Fecha Corte", "Estatus"
+                            }
+                        ) {
+                            boolean[] canEdit = new boolean [] {
+                                false, false, false, false
+                            };
+
+                            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                                return canEdit [columnIndex];
+                            }
+
+                            @Override
+                            public Class getColumnClass(int column)
+                            {
+                                for(int i = 0; i < tareas_Pendientes_JTable.getRowCount(); i++)
+                                {
+                                    //The first valid value of a cell of given column is retrieved.
+                                    if(getValueAt(i,column) != null)
+                                    {
+                                        return getValueAt(i, column).getClass();
+                                    }
+                                }
+                                //if no valid value is found, default renderer is returned.
+                                return super.getColumnClass(column);
+                            }
+                        });
+                        tareas_Pendientes_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                        tareas_Pendientes_JTable.setOpaque(false);
+                        tareas_Pendientes_JTable.setRowHeight(100);
+                        tareas_Pendientes_JTable.setRowMargin(15);
+                        tareas_Pendientes_JTable.setShowGrid(true);
+                        tareas_Pendientes_JTable.setShowVerticalLines(false);
+                        tareas_Pendientes_JTable.setRowSorter(new TableRowSorter(tareas_Pendientes_JTable.getModel()));
+                        tareas_Pendientes_JScrollPane.setViewportView(tareas_Pendientes_JTable);
+
+                        javax.swing.GroupLayout tareas_Pendientes_JPanelLayout = new javax.swing.GroupLayout(tareas_Pendientes_JPanel);
+                        tareas_Pendientes_JPanel.setLayout(tareas_Pendientes_JPanelLayout);
+                        tareas_Pendientes_JPanelLayout.setHorizontalGroup(
+                            tareas_Pendientes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tareas_Pendientes_JPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(anadir_Tarea_Pendiente_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tareas_Pendientes_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                                .addContainerGap())
+                        );
+                        tareas_Pendientes_JPanelLayout.setVerticalGroup(
+                            tareas_Pendientes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tareas_Pendientes_JPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(tareas_Pendientes_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(anadir_Tarea_Pendiente_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tareas_Pendientes_JScrollPane))
+                                .addContainerGap())
+                        );
+
+                        grupo_JLayeredPane.add(tareas_Pendientes_JPanel, "Tareas_Pendientes");
+
+                        editar_JPanel.setOpaque(false);
+
+                        cambiar_Imagen_JButton.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
+                        cambiar_Imagen_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/replace.png"))); // NOI18N
+                        cambiar_Imagen_JButton.setText("Cambiar Imagen");
+                        cambiar_Imagen_JButton.setToolTipText("Cambiar Imagen Del Grupo");
+                        cambiar_Imagen_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                        cambiar_Imagen_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+                        cambiar_Imagen_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
+                        cambiar_Imagen_JButton.setMinimumSize(new java.awt.Dimension(400, 40));
+                        cambiar_Imagen_JButton.setPreferredSize(new java.awt.Dimension(400, 40));
+                        ((ImageIcon)cambiar_Imagen_JButton.getIcon()).getImage().flush();
+                        cambiar_Imagen_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                cambiar_Imagen_JButtonMouseClicked(evt);
+                            }
+                            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                cambiar_Imagen_JButtonMouseEntered(evt);
+                            }
+                            public void mouseExited(java.awt.event.MouseEvent evt) {
+                                cambiar_Imagen_JButtonMouseExited(evt);
+                            }
+                        });
+
+                        editar_Nombre_JTextField.setEditable(false);
+                        editar_Nombre_JTextField.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+
+                        editar_Nombre_JLabel.setText("Nombre");
+                        editar_Nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+
+                        editar_Imagen_JLabel.setToolTipText("Imagen Del Grupo A Editar");
+                        editar_Imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                        editar_Imagen_JLabel.setMaximumSize(new java.awt.Dimension(400, 400));
+                        editar_Imagen_JLabel.setMinimumSize(new java.awt.Dimension(400, 400));
+                        editar_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
+
+                        editar_Nombre_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
+                        editar_Nombre_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+                        editar_Nombre_JButton.setToolTipText("Editar Nombre Del Grupo");
+                        ((ImageIcon)editar_Nombre_JButton.getIcon()).getImage().flush();
+                        editar_Nombre_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                editar_Nombre_JButtonMouseClicked(evt);
+                            }
+                            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                editar_Nombre_JButtonMouseEntered(evt);
+                            }
+                            public void mouseExited(java.awt.event.MouseEvent evt) {
+                                editar_Nombre_JButtonMouseExited(evt);
+                            }
+                        });
+
+                        abandonar_Grupo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/leave.png"))); // NOI18N
+                        abandonar_Grupo_JButton.setText("Abandonar Grupo");
+                        abandonar_Grupo_JButton.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
+                        abandonar_Grupo_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
+                        ((ImageIcon)abandonar_Grupo_JButton.getIcon()).getImage().flush();
+                        abandonar_Grupo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                abandonar_Grupo_JButtonMouseClicked(evt);
+                            }
+                            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                abandonar_Grupo_JButtonMouseEntered(evt);
+                            }
+                            public void mouseExited(java.awt.event.MouseEvent evt) {
+                                abandonar_Grupo_JButtonMouseExited(evt);
+                            }
+                        });
+
+                        editar_Descripcion_JLabel.setText("Descripción");
+                        editar_Descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+
+                        editar_Descripcion_JTextPane.setEditable(false);
+                        editar_Descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+                        editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
+
+                        editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
+                        editar_Descripcion_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+                        editar_Descripcion_JButton.setToolTipText("Editar Nombre Del Grupo");
+                        ((ImageIcon)editar_Descripcion_JButton.getIcon()).getImage().flush();
+                        editar_Descripcion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                editar_Descripcion_JButtonMouseClicked(evt);
+                            }
+                            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                editar_Descripcion_JButtonMouseEntered(evt);
+                            }
+                            public void mouseExited(java.awt.event.MouseEvent evt) {
+                                editar_Descripcion_JButtonMouseExited(evt);
+                            }
+                        });
+
+                        javax.swing.GroupLayout editar_JPanelLayout = new javax.swing.GroupLayout(editar_JPanel);
+                        editar_JPanel.setLayout(editar_JPanelLayout);
+                        editar_JPanelLayout.setHorizontalGroup(
+                            editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(editar_JPanelLayout.createSequentialGroup()
+                                .addContainerGap(52, Short.MAX_VALUE)
+                                .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(editar_Descripcion_JScrollPane)
+                                    .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(editar_JPanelLayout.createSequentialGroup()
+                                        .addComponent(editar_Nombre_JTextField)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(editar_Nombre_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(editar_Nombre_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                                    .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 63, Short.MAX_VALUE)
+                                .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(editar_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(67, Short.MAX_VALUE))
+                        );
+                        editar_JPanelLayout.setVerticalGroup(
+                            editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(editar_JPanelLayout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(editar_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(editar_JPanelLayout.createSequentialGroup()
+                                        .addComponent(editar_Nombre_JLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(editar_Nombre_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(editar_Nombre_JTextField))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(editar_Descripcion_JLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25))
+                        );
+
+                        grupo_JLayeredPane.add(editar_JPanel, "Editar");
+
+                        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+                        this.setLayout(layout);
+                        layout.setHorizontalGroup(
+                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(grupo_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                                .addGap(32, 32, 32))
+                        );
+                        layout.setVerticalGroup(
+                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(grupo_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                        );
+                    }// </editor-fold>//GEN-END:initComponents
 
     private void tareas_Pendientes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_Pendientes_JButtonMouseClicked
         // TODO add your handling code here:
@@ -1189,29 +1214,29 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    private void enviar_Archivos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivos_JButtonMouseClicked
+    private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             Enviar_Archivos();
         }
-    }//GEN-LAST:event_enviar_Archivos_JButtonMouseClicked
+    }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseClicked
 
-    private void enviar_Archivos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivos_JButtonMouseEntered
+    private void enviar_Archivo_Chat_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Archivos_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-    }//GEN-LAST:event_enviar_Archivos_JButtonMouseEntered
+        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseEntered
 
-    private void enviar_Archivos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivos_JButtonMouseExited
+    private void enviar_Archivo_Chat_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Archivos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_enviar_Archivos_JButtonMouseExited
+        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseExited
 
-    private void redactar_Mensaje_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_redactar_Mensaje_JTextFieldKeyPressed
+    private void redactar_Mensaje_Chat_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             Enviar_Mensaje();
         }
-    }//GEN-LAST:event_redactar_Mensaje_JTextFieldKeyPressed
+    }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
     
     public String ID(){
@@ -1228,8 +1253,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private javax.swing.JScrollPane archivos_Compartidos_JScrollPane;
     private javax.swing.JTable archivos_Compartidos_JTable;
     private javax.swing.JButton cambiar_Imagen_JButton;
-    private javax.swing.JPanel chat_Grupo_JPanel;
     private javax.swing.JButton chat_JButton;
+    private javax.swing.JPanel chat_JPanel;
     private javax.swing.JButton compartir_Archivos_JButton;
     private javax.swing.JLabel curso_JLabel;
     private javax.swing.JScrollPane descripcion_JScrollPane;
@@ -1247,8 +1272,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private javax.swing.JButton editar_Nombre_JButton;
     private javax.swing.JLabel editar_Nombre_JLabel;
     private javax.swing.JTextField editar_Nombre_JTextField;
-    private javax.swing.JButton enviar_Archivos_JButton;
-    private javax.swing.JPanel enviar_Mensajes_JPanel;
+    private javax.swing.JButton enviar_Archivo_Chat_JButton;
+    private javax.swing.JPanel enviar_Mensaje_Chat_JPanel;
     private com.github.lgooddatepicker.components.DateTimePicker escogedor_Fecha_Hora;
     private javax.swing.JLabel fecha_Creacion_JLabel;
     private javax.swing.JLabel fecha_Finalizacion_Tarea_Pendiente_JLabel;
@@ -1257,8 +1282,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private javax.swing.JLabel imagen_JLabel;
     private javax.swing.JPanel informacion_Grupo_JPanel;
     private javax.swing.JButton informacion_JButton;
-    private javax.swing.JPanel mensajes_Chat_JPanel;
     private javax.swing.JScrollPane mensajes_Chat_JScrollPane;
+    private javax.swing.JTable mensajes_Chat_JTable;
     private javax.swing.JComboBox<String> miembro_A_Cargo_JComboBox;
     private javax.swing.JLabel miembro_A_Cargo_JLabel;
     private javax.swing.JButton miembros_JButton;
@@ -1266,7 +1291,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private javax.swing.JTable miembros_JTable;
     private javax.swing.JLabel nombre_JLabel;
     private javax.swing.JTextField nombre_Tarea_Pendiente_JTextField;
-    private javax.swing.JTextField redactar_Mensaje_JTextField;
+    private javax.swing.JTextField redactar_Mensaje_Chat_JTextField;
     private javax.swing.JButton regresar_JButton;
     private javax.swing.JLabel tarea_Pendiente_JLabel;
     private javax.swing.JButton tareas_Pendientes_JButton;
@@ -1293,9 +1318,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         descripcion_Tarea_Pendiente_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Tarea_Pendiente_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        mensajes_Chat_JScrollPane.getViewport().setOpaque(false);
-        mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         fecha_Finalizacion_Tarea_Pendiente_JPanel.setBorder(nombre_Tarea_Pendiente_JTextField.getBorder());
         
@@ -1459,6 +1481,39 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         ((JTextField) escogedor_Fecha_Hora.getDatePicker().getComponent(0)).setEditable(false);
         
+        mensajes_Chat_JScrollPane.getViewport().setOpaque(false);
+        mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
+        mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(20);
+        
+        mensajes_Chat_JTable.getTableHeader().setFont(gadugi);
+        
+        mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+
+                    JTable tabla = (JTable) e.getComponent();
+                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                    int columna = tabla.getSelectedColumn();
+
+                    // Abrir
+                    if (columna == 1) {
+                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                        Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
+                        
+                        if(celda.Tiene_Icono()){
+                            String extension = FilenameUtils.getExtension(celda.Texto());
+                            String ruta = celda.ID();
+                            CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
+                        }
+                    }
+
+                }
+            }
+        });
+        
         Colorear_Componentes();
     }
 
@@ -1494,6 +1549,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         tareas_Pendientes_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         tareas_Pendientes_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        
+        mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
         Celda_Renderer celda;
@@ -1522,9 +1580,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         // Chat
         
-        redactar_Mensaje_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
-        redactar_Mensaje_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        enviar_Mensajes_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        redactar_Mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
+        redactar_Mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        enviar_Mensaje_Chat_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -1553,7 +1611,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
 
-        enviar_Archivos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         tarea_Pendiente_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
 
         descripcion_Tarea_Pendiente_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
@@ -1578,43 +1636,23 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         escogedor_Fecha_Hora.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         escogedor_Fecha_Hora.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        miembros_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        miembros_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        miembros_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        miembros_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
        
-        Component[] componentes = mensajes_Chat_JPanel.getComponents();
-        for (Component componente : componentes) {
-            ((Componentes_Interface) componente).Colorear_Componentes();
+        modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        for(int i = 0; i < mensajes_Chat_JTable.getRowCount();i++){
+            for(int j = 0; j < 3; j++){
+                celda = (Celda_Renderer)modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+            }
         }
         
         escogedor_Fecha_Hora.getTimePicker().getSettings().setColor(TimePickerSettings.TimeArea.TimePickerTextDisabled, CourseRoom.Utilerias.Tercer_Color_Fuente());
 
     }
-
-    @Override
-    public void Enviar_Mensaje() {
-
-        String mensaje = redactar_Mensaje_JTextField.getText();
-        if (!mensaje.isEmpty() && !mensaje.isBlank()) {
-            String emisor = CourseRoom.Utilerias.dune().character();
-            String fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
-            if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
-                Mensaje_Texto_Izquierdo_General_Panel mensaje_Texto_General_Panel
-                        = new Mensaje_Texto_Izquierdo_General_Panel(emisor, fecha, mensaje);
-                mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
-            } else {
-                Mensaje_Texto_Derecho_General_Panel mensaje_Texto_General_Panel
-                        = new Mensaje_Texto_Derecho_General_Panel(emisor, fecha, mensaje);
-                mensajes_Chat_JPanel.add(mensaje_Texto_General_Panel);
-            }
-            redactar_Mensaje_JTextField.setText("");
-            redactar_Mensaje_JTextField.setCaretPosition(0);
-        }
-        
-    }
-
 
     public void Compartir_Archivos() {
         JFileChooser escogedor_Archivo = new JFileChooser();
@@ -1647,6 +1685,31 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     }
 
     @Override
+    public void Enviar_Mensaje() {
+        
+        String mensaje = redactar_Mensaje_Chat_JTextField.getText();
+        if (!mensaje.isEmpty() && !mensaje.isBlank()) {
+            String emisor = CourseRoom.Utilerias.dune().character();
+            String fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
+            Celda_Renderer[] celdas = new Celda_Renderer[3];
+  
+            Celda_Renderer celda;
+            celda = new Celda_Renderer(emisor,"");
+            celdas[0] = celda;
+            celda = new Celda_Renderer(mensaje,"");
+            celdas[1] = celda;
+            celda = new Celda_Renderer(fecha,"");
+            celdas[2] = celda;
+            DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+            modelo.addRow(celdas);
+            mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(mensaje.length()));
+            
+            redactar_Mensaje_Chat_JTextField.setText("");
+            redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
+        }
+    }
+
+    @Override
     public void Enviar_Archivos() {
         JFileChooser escogedor_Archivos = new JFileChooser();
         escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -1662,36 +1725,27 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 String emisor;
                 String fecha;
                 String ruta;
-                String extension;
                 String nombre_Archivo;
-
-                if (CourseRoom.Utilerias.number().numberBetween(1,10) < 5) {
-                    Mensaje_Archivo_Izquierdo_General_Panel mensaje_Archivo_Panel;
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        ruta = archivo_Abierto.getAbsolutePath();
-                        nombre_Archivo = archivo_Abierto.getName();
-                        extension = FilenameUtils.getExtension(nombre_Archivo);
-                        emisor = CourseRoom.Utilerias.dune().character();
-                        fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
-                        mensaje_Archivo_Panel
-                                = new Mensaje_Archivo_Izquierdo_General_Panel(emisor, fecha, ruta, extension, nombre_Archivo);
-                        mensajes_Chat_JPanel.add(mensaje_Archivo_Panel);
-                        mensajes_Chat_JScrollPane.repaint();
-                    }
-                } else {
-                    Mensaje_Archivo_Derecho_General_Panel mensaje_Archivo_Panel;
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        ruta = archivo_Abierto.getAbsolutePath();
-                        nombre_Archivo = archivo_Abierto.getName();
-                        extension = FilenameUtils.getExtension(nombre_Archivo);
-                        emisor = CourseRoom.Utilerias.dune().character();
-                        fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
-                        mensaje_Archivo_Panel
-                                = new Mensaje_Archivo_Derecho_General_Panel(emisor, fecha, ruta, extension, nombre_Archivo);
-                        mensajes_Chat_JPanel.add(mensaje_Archivo_Panel);
-                        mensajes_Chat_JScrollPane.repaint();
-                    }
+                Celda_Renderer[] celdas = new Celda_Renderer[3];
+                DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+                Celda_Renderer celda;
+                ImageIcon icono_Abrir = new ImageIcon(getClass().getResource("/recursos/iconos/box.png"));
+                for (File archivo_Abierto : archivos_Abiertos) {
+                    ruta = archivo_Abierto.getAbsolutePath();
+                    nombre_Archivo = archivo_Abierto.getName();
+                    emisor = CourseRoom.Utilerias.dune().character();
+                    fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
+                    
+                    celda = new Celda_Renderer(emisor,"");
+                    celdas[0] = celda;
+                    celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
+                    celdas[1] = celda;
+                    celda = new Celda_Renderer(fecha,"");
+                    celdas[2] = celda;
+                    
+                    modelo.addRow(celdas);
                 }
+                
 
             }
 
@@ -1701,7 +1755,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     @Override
     public void Limpiar() {
-        mensajes_Chat_JPanel.removeAll();
+        mensajes_Chat_JTable.removeAll();
         miembros_JTable.removeAll();
         archivos_Compartidos_JTable.removeAll();
         tareas_Pendientes_JTable.removeAll();

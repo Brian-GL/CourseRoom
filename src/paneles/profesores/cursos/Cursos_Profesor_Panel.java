@@ -31,7 +31,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
-import datos.interfaces.Carta_Visibilidad_Interface;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -77,18 +76,12 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
 
         mostrar_Cursos_JPanel = new javax.swing.JPanel();
         contenido_Titulo_JPanel = new javax.swing.JPanel();
-        buscar_Cursos_JButton = new javax.swing.JButton();
         titulo_JLabel = new javax.swing.JLabel();
         cursos_Actuales_JButton = new javax.swing.JButton();
         actualizar_JButton = new javax.swing.JButton();
         mostrar_Cursos_JLayeredPane = new javax.swing.JLayeredPane();
         mostrar_Cursos_Actuales_JScrollPane = new javax.swing.JScrollPane();
         mostrar_Cursos_Actuales_JTable = new javax.swing.JTable();
-        buscar_Cursos_JPanel = new javax.swing.JPanel();
-        buscar_JTextField = new javax.swing.JTextField();
-        mostrar_Cursos_JButton = new javax.swing.JButton();
-        buscar_Cursos_JScrollPane = new javax.swing.JScrollPane();
-        buscar_Cursos_JTable = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(1110, 630));
         setLayout(new java.awt.CardLayout());
@@ -100,22 +93,6 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(822, 68));
-
-        buscar_Cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
-        buscar_Cursos_JButton.setBorder(null);
-        buscar_Cursos_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-        ((ImageIcon)buscar_Cursos_JButton.getIcon()).getImage().flush();
-        buscar_Cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buscar_Cursos_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buscar_Cursos_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buscar_Cursos_JButtonMouseExited(evt);
-            }
-        });
 
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -159,14 +136,11 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
                 .addComponent(cursos_Actuales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(180, 180, 180)
-                .addComponent(buscar_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(234, 234, 234)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(buscar_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(cursos_Actuales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,150 +218,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
             );
 
             add(mostrar_Cursos_JPanel, "Mostrar");
-
-            buscar_Cursos_JPanel.setOpaque(false);
-            buscar_Cursos_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
-
-            buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-            buscar_JTextField.setToolTipText("<html> <h3>Buscar curso(s). Presiona ENTER para realizar la búsqueda</h3> </html>");
-            buscar_JTextField.setBorder(null);
-            buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-                public void keyPressed(java.awt.event.KeyEvent evt) {
-                    buscar_JTextFieldKeyPressed(evt);
-                }
-            });
-
-            mostrar_Cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/webinar.png"))); // NOI18N
-            mostrar_Cursos_JButton.setToolTipText("<html> <h3>Regresar a la página de cursos</h3> </html>");
-            mostrar_Cursos_JButton.setBorder(null);
-            ((ImageIcon)mostrar_Cursos_JButton.getIcon()).getImage().flush();
-            mostrar_Cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    mostrar_Cursos_JButtonMouseClicked(evt);
-                }
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    mostrar_Cursos_JButtonMouseEntered(evt);
-                }
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    mostrar_Cursos_JButtonMouseExited(evt);
-                }
-            });
-
-            buscar_Cursos_JScrollPane.setBorder(null);
-            buscar_Cursos_JScrollPane.setOpaque(false);
-
-            buscar_Cursos_JTable.setAutoCreateRowSorter(true);
-            buscar_Cursos_JTable.setModel(
-
-                new javax.swing.table.DefaultTableModel(
-                    new Object [][] {
-
-                    },
-                    new String [] {
-                        "Curso", "Temáticas", "Fecha" ,"Calificación"
-                    }
-                ) {
-                    boolean[] canEdit = new boolean [] {
-                        false, false, false, false
-                    };
-
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                        return canEdit [columnIndex];
-                    }
-
-                    @Override
-                    public Class getColumnClass(int column)
-                    {
-                        for(int i = 0; i < buscar_Cursos_JTable.getRowCount(); i++)
-                        {
-                            //The first valid value of a cell of given column is retrieved.
-                            if(getValueAt(i,column) != null)
-                            {
-                                return getValueAt(i, column).getClass();
-                            }
-                        }
-                        //if no valid value is found, default renderer is returned.
-                        return super.getColumnClass(column);
-                    }
-                });
-                buscar_Cursos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-                buscar_Cursos_JTable.setOpaque(false);
-                buscar_Cursos_JTable.setRowHeight(100);
-                buscar_Cursos_JTable.setRowMargin(15);
-                buscar_Cursos_JTable.setShowGrid(true);
-                buscar_Cursos_JTable.setShowVerticalLines(false);
-                buscar_Cursos_JTable.setRowSorter(new TableRowSorter(buscar_Cursos_JTable.getModel()));
-                buscar_Cursos_JScrollPane.setViewportView(buscar_Cursos_JTable);
-
-                javax.swing.GroupLayout buscar_Cursos_JPanelLayout = new javax.swing.GroupLayout(buscar_Cursos_JPanel);
-                buscar_Cursos_JPanel.setLayout(buscar_Cursos_JPanelLayout);
-                buscar_Cursos_JPanelLayout.setHorizontalGroup(
-                    buscar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(buscar_Cursos_JPanelLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(buscar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(buscar_Cursos_JPanelLayout.createSequentialGroup()
-                                .addComponent(mostrar_Cursos_JButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscar_JTextField))
-                            .addComponent(buscar_Cursos_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1096, Short.MAX_VALUE))
-                        .addGap(32, 32, 32))
-                );
-                buscar_Cursos_JPanelLayout.setVerticalGroup(
-                    buscar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscar_Cursos_JPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(buscar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buscar_JTextField)
-                            .addComponent(mostrar_Cursos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buscar_Cursos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
-                        .addContainerGap())
-                );
-
-                add(buscar_Cursos_JPanel, "Buscar");
-            }// </editor-fold>//GEN-END:initComponents
-
-    private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
-        // TODO add your handling code here:
-        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            
-        }
-    }//GEN-LAST:event_buscar_JTextFieldKeyPressed
-
-    private void mostrar_Cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Cursos_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this, "Mostrar");
-        }
-    }//GEN-LAST:event_mostrar_Cursos_JButtonMouseClicked
-
-    private void mostrar_Cursos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Cursos_JButtonMouseEntered
-        // TODO add your handling code here:
-        mostrar_Cursos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_mostrar_Cursos_JButtonMouseEntered
-
-    private void mostrar_Cursos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Cursos_JButtonMouseExited
-        // TODO add your handling code here:
-        mostrar_Cursos_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-    }//GEN-LAST:event_mostrar_Cursos_JButtonMouseExited
-
-    private void buscar_Cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Cursos_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this, "Buscar");
-        }
-    }//GEN-LAST:event_buscar_Cursos_JButtonMouseClicked
-
-    private void buscar_Cursos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Cursos_JButtonMouseEntered
-        // TODO add your handling code here:
-        buscar_Cursos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_buscar_Cursos_JButtonMouseEntered
-
-    private void buscar_Cursos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Cursos_JButtonMouseExited
-        // TODO add your handling code here:
-        buscar_Cursos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_buscar_Cursos_JButtonMouseExited
+        }// </editor-fold>//GEN-END:initComponents
 
     private void cursos_Actuales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_Actuales_JButtonMouseClicked
         // TODO add your handling code here:
@@ -419,16 +250,10 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
-    private javax.swing.JButton buscar_Cursos_JButton;
-    private javax.swing.JPanel buscar_Cursos_JPanel;
-    private javax.swing.JScrollPane buscar_Cursos_JScrollPane;
-    private static javax.swing.JTable buscar_Cursos_JTable;
-    private javax.swing.JTextField buscar_JTextField;
     private javax.swing.JPanel contenido_Titulo_JPanel;
     private javax.swing.JButton cursos_Actuales_JButton;
     private javax.swing.JScrollPane mostrar_Cursos_Actuales_JScrollPane;
     private static javax.swing.JTable mostrar_Cursos_Actuales_JTable;
-    private javax.swing.JButton mostrar_Cursos_JButton;
     private javax.swing.JLayeredPane mostrar_Cursos_JLayeredPane;
     private javax.swing.JPanel mostrar_Cursos_JPanel;
     private javax.swing.JLabel titulo_JLabel;
@@ -440,39 +265,12 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         carta_Visible = 0;
         id_Curso_Actual = 0;
         
-        //Buscar cursos:
-        
-        buscar_Cursos_JScrollPane.getViewport().setOpaque(false);
-        buscar_Cursos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        buscar_Cursos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+       
 
         buscar_Cursos_Lista = new Lista<>();
 
         Font gadugi = new Font("Gadugi", Font.BOLD, 16);
-        buscar_Cursos_JTable.getTableHeader().setFont(gadugi);
-
-        buscar_Cursos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
- 
-        buscar_Cursos_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    DefaultTableModel modelo = (DefaultTableModel) buscar_Cursos_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-
-                    Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
-
-                }
-            }
-        });
-        
+       
         
         // Cursos actuales:
         mostrar_Cursos_Actuales_JScrollPane.getViewport().setOpaque(false);
@@ -566,34 +364,9 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         
         cursos_Actuales_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
 
-        buscar_Cursos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        //Buscar cursos:
-        
-        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
-        buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Buscar Cursos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
-        
-        buscar_Cursos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        buscar_Cursos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        
-        buscar_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        buscar_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        
-        mostrar_Cursos_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        
-        DefaultTableModel modelo = (DefaultTableModel) buscar_Cursos_JTable.getModel();
         Celda_Renderer celda;
-        for (int i = 0; i < buscar_Cursos_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
-                celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
-            }
-        }
 
         Curso_Profesor_Panel curso_Profesor_Panel;
         for (Nodo<Curso_Profesor_Panel> nodo = buscar_Cursos_Lista.front(); nodo != null; nodo = nodo.next()) {
@@ -602,8 +375,8 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         }
         
         // Cursos actuales:
-        mostrar_Cursos_Actuales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Cursos_Actuales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Cursos_Actuales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Cursos_Actuales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         
         for (int i = 0; i < mostrar_Cursos_Actuales_JTable.getRowCount(); i++) {
@@ -625,7 +398,6 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
     @Override
     public void Limpiar() {
         buscar_Cursos_Lista.clear();
-        buscar_Cursos_JTable.removeAll();
         mostrar_Cursos_Actuales_Lista.clear();
         mostrar_Cursos_Actuales_JTable.removeAll();
     }

@@ -534,8 +534,8 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         buscar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         preguntar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        mostrar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
         Celda_Renderer celda;

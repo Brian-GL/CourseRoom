@@ -521,8 +521,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        mostrar_Grupos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Grupos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Grupos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Grupos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
