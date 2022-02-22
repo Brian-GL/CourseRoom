@@ -163,11 +163,11 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                 },
                 new String [] {
-                    "Tarea", "Curso", "Entrega", "Estatus"
+                    "Tarea", "Curso", "Creada El", "Entrega", "Estatus"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false
+                    false, false, false, false,false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -260,11 +260,11 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                     },
                     new String [] {
-                        "Tarea", "Curso", "Entrega", "Estatus"
+                        "Tarea", "Curso", "Creada El", "Entrega", "Estatus"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false, false
+                        false, false, false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -381,14 +381,15 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     public static void Agregar_Tarea(String nombre, String nombre_Curso, String nombre_Profesor, ImageIcon icono_Curso, 
             String fecha, String estatus, String _id){
         
-        Celda_Renderer[] tarea_Celdas = new Celda_Renderer[4];
-        
+        Celda_Renderer[] tarea_Celdas = new Celda_Renderer[5];
+        String fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
         tarea_Celdas[0] = new Celda_Renderer(nombre, _id);
         tarea_Celdas[1] = new Celda_Renderer(icono_Curso,nombre_Curso,_id);
-        tarea_Celdas[2] = new Celda_Renderer(fecha, _id);
-        tarea_Celdas[3] = new Celda_Renderer(estatus, _id);
+        tarea_Celdas[2] = new Celda_Renderer(fecha_Creacion, _id);
+        tarea_Celdas[3] = new Celda_Renderer(fecha, _id);
+        tarea_Celdas[4] = new Celda_Renderer(estatus, _id);
         Tarea_Estudiante_Panel tarea_Estudiante_Panel =
-                new Tarea_Estudiante_Panel(nombre,nombre_Curso,nombre_Profesor, fecha, estatus, _id);
+                new Tarea_Estudiante_Panel(nombre,nombre_Curso,nombre_Profesor,fecha_Creacion, fecha, estatus, _id);
         mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
         modelo_Estatico.addRow(tarea_Celdas);
         Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, _id);
@@ -492,7 +493,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < mostrar_Tareas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 5; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -524,7 +525,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         modelo = (DefaultTableModel) buscar_Tareas_JTable.getModel();
         for (int i = 0; i < buscar_Tareas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 5; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }

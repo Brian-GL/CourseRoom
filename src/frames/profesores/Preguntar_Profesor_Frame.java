@@ -8,7 +8,6 @@ package frames.profesores;
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
-import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import paneles.profesores.perfil.Perfil_Profesor_Panel;
@@ -140,11 +139,10 @@ public class Preguntar_Profesor_Frame extends javax.swing.JDialog implements Com
             if(!pregunta_JTextField.getText().isBlank() && !pregunta_JTextField.getText().isEmpty()){
                 if (!descripcion_Pregunta_JTextPane.getText().isBlank() && !descripcion_Pregunta_JTextPane.getText().isEmpty()) {
                     int cuenta = Preguntas_Profesor_Panel.Numero_Preguntas()+1;
-                    LocalDateTime tiempo_Actual = LocalDateTime.now();
                     String id = CourseRoom.Utilerias.Concatenar("Pregunta_", cuenta);
                     
                     Preguntas_Profesor_Panel.Agregar_Pregunta(pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(),
-                    Perfil_Profesor_Panel.Nombre_Completo(),tiempo_Actual.toString(),id);
+                    Perfil_Profesor_Panel.Nombre_Completo(),CourseRoom.Utilerias.Fecha_Hora_Local(),id);
                     Tablero_Profesor_Panel.Mostrar_Vista(id);
                     
                     this.dispose();
