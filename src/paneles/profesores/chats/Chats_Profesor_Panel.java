@@ -575,6 +575,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
         mostrar_Chats_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mostrar_Chats_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mostrar_Chats_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
         Celda_Renderer celda;
@@ -605,6 +606,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
         buscar_Chats_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         buscar_Chats_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        buscar_Chats_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
         for (int i = 0; i < buscar_Chats_JTable.getRowCount(); i++) {

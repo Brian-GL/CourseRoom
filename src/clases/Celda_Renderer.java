@@ -40,7 +40,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
     public Celda_Renderer(){
         super();
         texto = ID = "";
-        label.setVerticalAlignment(JLabel.TOP);
+        label.setVerticalAlignment(JLabel.CENTER);
         label.setHorizontalAlignment(JLabel.CENTER);
     }
    
@@ -48,7 +48,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         super();
         this.ID = _id;
         texto = _texto;
-        label.setVerticalAlignment(JLabel.TOP);
+        label.setVerticalAlignment(JLabel.CENTER);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
         label.setFont(new Font("Gadugi", Font.PLAIN, 14));
@@ -62,7 +62,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         if(icono != null){
             label.setIcon(icono);
         }
-        label.setVerticalAlignment(JLabel.TOP);
+        label.setVerticalAlignment(JLabel.CENTER);
         label.setHorizontalAlignment(JLabel.CENTER);
     }
     
@@ -74,7 +74,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
             label.setIcon(icono);
         }
         label.setText(CourseRoom.Utilerias.Formato_HTML_Centro(texto));
-        label.setVerticalAlignment(JLabel.TOP);
+        label.setVerticalAlignment(JLabel.CENTER);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setFont(new Font("Gadugi", Font.PLAIN, 14));
         label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());

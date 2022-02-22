@@ -161,9 +161,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         });
 
-        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setText("Cursos");
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        titulo_JLabel.setText("Cursos");
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
@@ -231,6 +231,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Actuales_JScrollPane.setOpaque(false);
 
         mostrar_Cursos_Actuales_JTable.setAutoCreateRowSorter(true);
+        mostrar_Cursos_Actuales_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         mostrar_Cursos_Actuales_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -238,11 +239,11 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                 },
                 new String [] {
-                    "Curso", "Temáticas", "Fecha" ,"Calificación"
+                    "Curso", "Profesor", "Temáticas", "Fecha" ,"Puntuación"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false
+                    false, false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -264,7 +265,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     return super.getColumnClass(column);
                 }
             });
-            mostrar_Cursos_Actuales_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             mostrar_Cursos_Actuales_JTable.setOpaque(false);
             mostrar_Cursos_Actuales_JTable.setRowHeight(100);
             mostrar_Cursos_Actuales_JTable.setRowMargin(15);
@@ -279,6 +279,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             mostrar_Cursos_Finalizados_JScrollPane.setOpaque(false);
 
             mostrar_Cursos_Finalizados_JTable.setAutoCreateRowSorter(true);
+            mostrar_Cursos_Finalizados_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             mostrar_Cursos_Finalizados_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -286,11 +287,11 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                     },
                     new String [] {
-                        "Curso", "Temáticas", "Fecha" ,"Calificación"
+                        "Curso", "Profesor", "Temáticas", "Creado" ,"Puntuación"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false, false
+                        false, false, false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -312,7 +313,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         return super.getColumnClass(column);
                     }
                 });
-                mostrar_Cursos_Finalizados_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 mostrar_Cursos_Finalizados_JTable.setOpaque(false);
                 mostrar_Cursos_Finalizados_JTable.setRowHeight(100);
                 mostrar_Cursos_Finalizados_JTable.setRowMargin(15);
@@ -327,6 +327,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 mostrar_Cursos_Recomendados_JScrollPane.setOpaque(false);
 
                 mostrar_Cursos_Recomendados_JTable.setAutoCreateRowSorter(true);
+                mostrar_Cursos_Recomendados_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 mostrar_Cursos_Recomendados_JTable.setModel(
 
                     new javax.swing.table.DefaultTableModel(
@@ -334,11 +335,11 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                         },
                         new String [] {
-                            "Curso", "Temáticas", "Fecha" ,"Calificación"
+                            "Curso", "Profesor", "Temáticas", "Creado" ,"Puntuación"
                         }
                     ) {
                         boolean[] canEdit = new boolean [] {
-                            false, false, false, false
+                            false, false,false, false, false
                         };
 
                         public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -360,7 +361,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                             return super.getColumnClass(column);
                         }
                     });
-                    mostrar_Cursos_Recomendados_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                     mostrar_Cursos_Recomendados_JTable.setOpaque(false);
                     mostrar_Cursos_Recomendados_JTable.setRowHeight(100);
                     mostrar_Cursos_Recomendados_JTable.setRowMargin(15);
@@ -375,6 +375,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     mostrar_Cursos_Nuevos_JScrollPane.setOpaque(false);
 
                     mostrar_Cursos_Nuevos_JTable.setAutoCreateRowSorter(true);
+                    mostrar_Cursos_Nuevos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                     mostrar_Cursos_Nuevos_JTable.setModel(
 
                         new javax.swing.table.DefaultTableModel(
@@ -382,11 +383,11 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                             },
                             new String [] {
-                                "Curso", "Temáticas", "Fecha" ,"Calificación"
+                                "Curso", "Profesor", "Temáticas", "Creado" ,"Puntuación"
                             }
                         ) {
                             boolean[] canEdit = new boolean [] {
-                                false, false, false, false
+                                false, false, false, false, false
                             };
 
                             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -408,7 +409,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                                 return super.getColumnClass(column);
                             }
                         });
-                        mostrar_Cursos_Nuevos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                         mostrar_Cursos_Nuevos_JTable.setOpaque(false);
                         mostrar_Cursos_Nuevos_JTable.setRowHeight(100);
                         mostrar_Cursos_Nuevos_JTable.setRowMargin(15);
@@ -474,6 +474,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         buscar_Cursos_JScrollPane.setOpaque(false);
 
                         buscar_Cursos_JTable.setAutoCreateRowSorter(true);
+                        buscar_Cursos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                         buscar_Cursos_JTable.setModel(
 
                             new javax.swing.table.DefaultTableModel(
@@ -481,11 +482,11 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                                 },
                                 new String [] {
-                                    "Curso", "Temáticas", "Fecha" ,"Calificación"
+                                    "Curso", "Profesor", "Temáticas", "Creado" ,"Puntuación"
                                 }
                             ) {
                                 boolean[] canEdit = new boolean [] {
-                                    false, false, false, false
+                                    false, false, false, false, false
                                 };
 
                                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -507,7 +508,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                                     return super.getColumnClass(column);
                                 }
                             });
-                            buscar_Cursos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                             buscar_Cursos_JTable.setOpaque(false);
                             buscar_Cursos_JTable.setRowHeight(100);
                             buscar_Cursos_JTable.setRowMargin(15);
@@ -646,7 +646,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     public static void Remover_Curso_Recomendado(String ID){
         
         int fila;
-        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
         
         for (fila = 0; fila < mostrar_Cursos_Recomendados_JTable.getRowCount(); fila++) {
             
@@ -656,7 +656,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 celdas[1] = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 1);
                 celdas[2] = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 2);
                 celdas[3] = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 3);
-                
+                celdas[4] = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 4);
                 break;
             }
         }
@@ -680,7 +680,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 celdas[1] = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 1);
                 celdas[2] = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 2);
                 celdas[3] = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 3);
-                
+                celdas[4] = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 4);
                 break;
             }
         }
@@ -768,7 +768,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Actuales_JTable.getTableHeader().setFont(gadugi);
 
         mostrar_Cursos_Actuales_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
         modelo_Cursos_Actuales = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
 
         String id;
@@ -792,11 +792,15 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 System.out.println(id + " Profesor: -> Getting Image From https://i.pravatar.cc/450");
                 url_Imagen = new URL("https://i.pravatar.cc/450");
                 obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
+                
+                imagen = obtener_Imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+                icono = new ImageIcon(imagen);
 
                 fecha_Creacion = CourseRoom.Utilerias.date().birthday(21, 22).toString();
-                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.programmingLanguage().name(), id);
-                celdas[2] = new Celda_Renderer(fecha_Creacion, id);
-                celdas[3] = new Celda_Renderer(CourseRoom.Utilerias.Concatenar(
+                celdas[1] = new Celda_Renderer(icono, CourseRoom.Utilerias.name().fullName(), id);
+                celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.lorem().words(5).toString(), id);
+                celdas[3] = new Celda_Renderer(fecha_Creacion, id);
+                celdas[4] = new Celda_Renderer(CourseRoom.Utilerias.Concatenar(
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
@@ -809,6 +813,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 obtener_Imagen_Curso.flush();
 
                 obtener_Imagen_Profesor.flush();
+                
+                
             } catch (MalformedURLException ex) {
 
             } catch (IOException ex) {
@@ -863,11 +869,15 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 System.out.println(id + " Profesor: -> Getting Image From https://i.pravatar.cc/450");
                 url_Imagen = new URL("https://i.pravatar.cc/450");
                 obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
+                
+                imagen = obtener_Imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+                icono = new ImageIcon(imagen);
 
                 fecha_Creacion = CourseRoom.Utilerias.date().birthday(21, 22).toString();
-                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.programmingLanguage().name(), id);
-                celdas[2] = new Celda_Renderer(fecha_Creacion, id);
-                celdas[3] = new Celda_Renderer(CourseRoom.Utilerias.Concatenar(
+                celdas[1] = new Celda_Renderer(icono, CourseRoom.Utilerias.name().fullName(), id);
+                celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.lorem().words(5).toString(), id);
+                celdas[3] = new Celda_Renderer(fecha_Creacion, id);
+                celdas[4] = new Celda_Renderer(CourseRoom.Utilerias.Concatenar(
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
@@ -937,11 +947,15 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 System.out.println(id + " Profesor: -> Getting Image From https://i.pravatar.cc/450");
                 url_Imagen = new URL("https://i.pravatar.cc/450");
                 obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
+                
+                imagen = obtener_Imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+                icono = new ImageIcon(imagen);
 
                 fecha_Creacion = CourseRoom.Utilerias.date().birthday(21, 22).toString();
-                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.programmingLanguage().name(), id);
-                celdas[2] = new Celda_Renderer(fecha_Creacion, id);
-                celdas[3] = new Celda_Renderer(CourseRoom.Utilerias.Concatenar(
+                celdas[1] = new Celda_Renderer(icono, CourseRoom.Utilerias.name().fullName(), id);
+                celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.lorem().words(5).toString(), id);
+                celdas[3] = new Celda_Renderer(fecha_Creacion, id);
+                celdas[4] = new Celda_Renderer(CourseRoom.Utilerias.Concatenar(
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
@@ -1009,11 +1023,15 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 System.out.println(id + " Profesor: -> Getting Image From https://i.pravatar.cc/450");
                 url_Imagen = new URL("https://i.pravatar.cc/450");
                 obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
+                
+                imagen = obtener_Imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+                icono = new ImageIcon(imagen);
 
-               fecha_Creacion = CourseRoom.Utilerias.date().birthday(21, 22).toString();
-                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.programmingLanguage().name(), id);
-                celdas[2] = new Celda_Renderer(fecha_Creacion, id);
-                celdas[3] = new Celda_Renderer(CourseRoom.Utilerias.Concatenar(
+                fecha_Creacion = CourseRoom.Utilerias.date().birthday(21, 22).toString();
+                celdas[1] = new Celda_Renderer(icono, CourseRoom.Utilerias.name().fullName(), id);
+                celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.lorem().words(5).toString(), id);
+                celdas[3] = new Celda_Renderer(fecha_Creacion, id);
+                celdas[4] = new Celda_Renderer(CourseRoom.Utilerias.Concatenar(
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
@@ -1054,6 +1072,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         });
         
         titulo_JLabel.setText("Cursos Actuales");
+        
     }
 
     @Override
@@ -1080,6 +1099,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         buscar_Cursos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         buscar_Cursos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        buscar_Cursos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         buscar_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
         buscar_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -1105,7 +1125,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         // Cursos actuales:
         mostrar_Cursos_Actuales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mostrar_Cursos_Actuales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-
+        mostrar_Cursos_Actuales_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         for (int i = 0; i < mostrar_Cursos_Actuales_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
@@ -1123,7 +1143,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         //Cursos finalizados:
         mostrar_Cursos_Finalizados_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mostrar_Cursos_Finalizados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-
+        mostrar_Cursos_Finalizados_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
         modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
         for (int i = 0; i < mostrar_Cursos_Finalizados_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
@@ -1140,7 +1161,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         //Cursos Recomendados:
         mostrar_Cursos_Recomendados_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mostrar_Cursos_Recomendados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-
+        mostrar_Cursos_Recomendados_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
         for (int i = 0; i < mostrar_Cursos_Recomendados_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(i, j);
@@ -1157,7 +1179,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         //Cursos nuevos:
         mostrar_Cursos_Nuevos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mostrar_Cursos_Nuevos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-
+        mostrar_Cursos_Nuevos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
         for (int i = 0; i < mostrar_Cursos_Nuevos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(i, j);

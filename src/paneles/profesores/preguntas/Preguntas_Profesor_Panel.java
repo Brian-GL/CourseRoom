@@ -173,11 +173,11 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
 
                 },
                 new String [] {
-                    "Preguntador", "Pregunta", "Descripción", "Fecha", "Estatus"
+                    "Preguntador", "Pregunta", "Preguntado El", "Estatus"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -269,11 +269,11 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
 
                     },
                     new String [] {
-                        "Preguntador", "Pregunta", "Descripción", "Fecha", "Estatus"
+                        "Preguntador", "Pregunta", "Preguntado El", "Estatus"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false, false, false
+                        false, false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -421,16 +421,15 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             String id) {
         
         
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
         Image imagen_usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
         ImageIcon icono_Usuario = new ImageIcon(imagen_usuario);
         
         
         celdas[0] = new Celda_Renderer(icono_Usuario, preguntador_Nombre,id);
         celdas[1] = new Celda_Renderer(nombre_Duda,id);
-        celdas[2] = new Celda_Renderer(descripcion_Duda,id);
-        celdas[3] = new Celda_Renderer(fecha,id);
-        celdas[4] = new Celda_Renderer("Abierta",id);
+        celdas[2] = new Celda_Renderer(fecha,id);
+        celdas[3] = new Celda_Renderer("Abierta",id);
         
         modelo_Estatico.addRow(celdas);
         
@@ -536,11 +535,12 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         
         mostrar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mostrar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mostrar_Preguntas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < mostrar_Preguntas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -566,10 +566,11 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         
         buscar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         buscar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-
+        buscar_Preguntas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
         modelo = (DefaultTableModel) buscar_Preguntas_JTable.getModel();
         for (int i = 0; i < buscar_Preguntas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 4; j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }

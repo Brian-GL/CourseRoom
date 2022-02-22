@@ -377,7 +377,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         // Cursos actuales:
         mostrar_Cursos_Actuales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mostrar_Cursos_Actuales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-
+        mostrar_Cursos_Actuales_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         for (int i = 0; i < mostrar_Cursos_Actuales_JTable.getRowCount(); i++) {
             for (int j = 0; j < 4; j++) {

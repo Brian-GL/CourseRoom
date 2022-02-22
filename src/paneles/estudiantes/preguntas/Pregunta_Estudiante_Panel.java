@@ -500,6 +500,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         
         mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         Celda_Renderer celda;

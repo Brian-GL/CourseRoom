@@ -94,8 +94,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         intereses_Tematicas_JScrollPane = new javax.swing.JScrollPane();
         intereses_Tematicas_JTable = new javax.swing.JTable();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
@@ -128,9 +128,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Chats");
         regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar_JButton.setToolTipText("Regresar A Mis Chats");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -248,12 +248,12 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
             enviar_Mensaje_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1085, 44));
 
             enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
-            enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
             enviar_Archivo_Chat_JButton.setBorder(null);
             enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             enviar_Archivo_Chat_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
             enviar_Archivo_Chat_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
             enviar_Archivo_Chat_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+            enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
             ((ImageIcon)enviar_Archivo_Chat_JButton.getIcon()).getImage().flush();
             enviar_Archivo_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -393,8 +393,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                 });
                 intereses_Tematicas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 intereses_Tematicas_JTable.setOpaque(false);
-                intereses_Tematicas_JTable.setRowHeight(45);
-                intereses_Tematicas_JTable.setRowMargin(10);
+                intereses_Tematicas_JTable.setRowHeight(32);
+                intereses_Tematicas_JTable.setRowMargin(5);
                 intereses_Tematicas_JTable.setShowGrid(true);
                 intereses_Tematicas_JTable.setShowVerticalLines(false);
                 intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
@@ -665,6 +665,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
         intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;
@@ -675,6 +676,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
         mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         for(int i = 0; i < mensajes_Chat_JTable.getRowCount();i++){

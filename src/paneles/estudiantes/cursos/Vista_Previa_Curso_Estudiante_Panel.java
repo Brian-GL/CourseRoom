@@ -259,8 +259,8 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
                 }
             });
             intereses_Tematicas_JTable.setOpaque(false);
-            intereses_Tematicas_JTable.setRowHeight(45);
-            intereses_Tematicas_JTable.setRowMargin(10);
+            intereses_Tematicas_JTable.setRowHeight(32);
+            intereses_Tematicas_JTable.setRowMargin(5);
             intereses_Tematicas_JTable.setShowGrid(true);
             intereses_Tematicas_JTable.setShowVerticalLines(false);
             intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));

@@ -409,8 +409,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                 }
             });
             intereses_Tematicas_JTable.setOpaque(false);
-            intereses_Tematicas_JTable.setRowHeight(45);
-            intereses_Tematicas_JTable.setRowMargin(10);
+            intereses_Tematicas_JTable.setRowHeight(32);
+            intereses_Tematicas_JTable.setRowMargin(5);
             intereses_Tematicas_JTable.setShowGrid(true);
             intereses_Tematicas_JTable.setShowVerticalLines(false);
             intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
@@ -1290,7 +1290,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
             celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(3), _id);
             celdas[2] = new Celda_Renderer(fecha, _id);
             celdas[3] = new Celda_Renderer(estatus, _id);
-            Tareas_Profesor_Panel.Agregar_Tarea(nombre, this.nombre_JLabel.getText(), this.nombre_Profesor ,icono_Curso, fecha, estatus, _id);
+            //Tareas_Profesor_Panel.Agregar_Tarea(nombre, this.nombre_JLabel.getText(), this.nombre_Profesor ,icono_Curso, fecha, estatus, _id);
             modelo.addRow(celdas);
         }
 
@@ -1528,6 +1528,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
         descripcion_Curso_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
         descripcion_Curso_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         descripcion_Curso_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -1548,6 +1550,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         //Tareas:
         tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        tareas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) tareas_JTable.getModel();
         for (int i = 0; i < tareas_JTable.getRowCount(); i++) {
@@ -1561,6 +1564,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
        //Miembros:
         miembros_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         miembros_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        miembros_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         modelo = (DefaultTableModel) miembros_JTable.getModel();
         for (int i = 0; i < miembros_JTable.getRowCount(); i++) {
@@ -1579,6 +1583,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         for(int i = 0; i < mensajes_Chat_JTable.getRowCount();i++){
@@ -1591,6 +1596,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
        //Materiales:
         materiales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         materiales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        materiales_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) materiales_JTable.getModel();
         for (int i = 0; i < materiales_JTable.getRowCount(); i++) {
@@ -1607,6 +1613,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        avisos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) avisos_JTable.getModel();
         for (int i = 0; i < avisos_JTable.getRowCount(); i++) {
@@ -1624,6 +1631,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        estadisticas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         for (int i = 0; i < estadisticas_JTable.getRowCount(); i++) {

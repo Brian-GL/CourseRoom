@@ -409,8 +409,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 }
             });
             intereses_Tematicas_JTable.setOpaque(false);
-            intereses_Tematicas_JTable.setRowHeight(45);
-            intereses_Tematicas_JTable.setRowMargin(10);
+            intereses_Tematicas_JTable.setRowHeight(32);
+            intereses_Tematicas_JTable.setRowMargin(5);
             intereses_Tematicas_JTable.setShowGrid(true);
             intereses_Tematicas_JTable.setShowVerticalLines(false);
             intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
@@ -666,9 +666,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         materiales_Curso_JPanel.setOpaque(false);
                         materiales_Curso_JPanel.setPreferredSize(new java.awt.Dimension(1046, 630));
 
+                        compartir_Materiales_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
                         compartir_Materiales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
                         compartir_Materiales_JButton.setText("Compartir Material(es)");
-                        compartir_Materiales_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
                         compartir_Materiales_JButton.setToolTipText("Compartir Y Subir Archivo");
                         ((ImageIcon)compartir_Materiales_JButton.getIcon()).getImage().flush();
                         compartir_Materiales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -856,9 +856,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
                                     estadisticas_JScrollPane.setViewportView(estadisticas_JTable);
 
+                                    abandonar_Curso_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
                                     abandonar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/leave.png"))); // NOI18N
                                     abandonar_Curso_JButton.setText("Abandonar Curso");
-                                    abandonar_Curso_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
                                     abandonar_Curso_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
                                     ((ImageIcon)abandonar_Curso_JButton.getIcon()).getImage().flush();
                                     abandonar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -873,10 +873,11 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                         }
                                     });
 
+                                    finalizar_Curso_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
                                     finalizar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
                                     finalizar_Curso_JButton.setText("Finalizar Curso");
-                                    finalizar_Curso_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
                                     finalizar_Curso_JButton.setToolTipText("Finaliza el curso");
+                                    finalizar_Curso_JButton.setEnabled(false);
                                     ((ImageIcon)finalizar_Curso_JButton.getIcon()).getImage().flush();
                                     finalizar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1272,7 +1273,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Celda_Renderer[] celdas = new Celda_Renderer[4];
         modelo = (DefaultTableModel) tareas_JTable.getModel();
 
-        String _id, nombre = "",  fecha = "", estatus = "";
+        String _id, nombre,  fecha, estatus;
         
         Image imagen_Curso = ((ImageIcon)imagen_Curso_JLabel.getIcon()).getImage();
         imagen_Curso = imagen_Curso.getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
@@ -1325,8 +1326,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         modelo = (DefaultTableModel) miembros_JTable.getModel();
 
         URL url_Imagen;
-        Image obtener_Imagen = null;
-        ImageIcon icono_Miembro = null;
+        Image obtener_Imagen;
+        ImageIcon icono_Miembro;
         for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
             try {
                 System.out.println(this.ID + " -> Getting Image From https://i.pravatar.cc/96");
@@ -1529,6 +1530,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
         descripcion_Curso_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
         descripcion_Curso_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         descripcion_Curso_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -1549,6 +1552,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         //Tareas:
         tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        tareas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) tareas_JTable.getModel();
         for (int i = 0; i < tareas_JTable.getRowCount(); i++) {
@@ -1562,6 +1566,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
        //Miembros:
         miembros_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         miembros_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        miembros_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         modelo = (DefaultTableModel) miembros_JTable.getModel();
         for (int i = 0; i < miembros_JTable.getRowCount(); i++) {
@@ -1579,6 +1584,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         for (int i = 0; i < mensajes_Chat_JTable.getRowCount(); i++) {
@@ -1591,6 +1597,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
        //Materiales:
         materiales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         materiales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        materiales_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) materiales_JTable.getModel();
         for (int i = 0; i < materiales_JTable.getRowCount(); i++) {
@@ -1607,6 +1614,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        avisos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) avisos_JTable.getModel();
         for (int i = 0; i < avisos_JTable.getRowCount(); i++) {
@@ -1624,6 +1632,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        estadisticas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         for (int i = 0; i < estadisticas_JTable.getRowCount(); i++) {

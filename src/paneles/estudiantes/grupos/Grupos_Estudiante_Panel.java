@@ -523,6 +523,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         mostrar_Grupos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mostrar_Grupos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mostrar_Grupos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
     
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
@@ -555,6 +556,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Grupos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         buscar_Grupos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        buscar_Grupos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) buscar_Grupos_JTable.getModel();
         for (int i = 0; i < buscar_Grupos_JTable.getRowCount(); i++) {

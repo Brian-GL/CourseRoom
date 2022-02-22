@@ -473,6 +473,7 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         
         estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        estadisticas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         Celda_Renderer celda;

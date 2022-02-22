@@ -987,20 +987,20 @@
             </Component>
             <Component class="javax.swing.JButton" name="guardar_Cambios_Datos_Personales_JButton">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Gadugi" size="18" style="1"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/check.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Guardar Cambios"/>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Continuar a la pesta&#xf1;a de perfil&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Gadugi" size="18" style="1"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Continuar a la pesta&#xf1;a de perfil&lt;/h3&gt; &lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="guardar_Cambios_Datos_Personales_JButtonMouseClicked"/>
@@ -1409,8 +1409,8 @@
                       <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Interes / Tem&#xe1;tica&quot;, &quot;Remover?&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; intereses_Tematicas_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
                     </Property>
                     <Property name="opaque" type="boolean" value="false"/>
-                    <Property name="rowHeight" type="int" value="50"/>
-                    <Property name="rowMargin" type="int" value="15"/>
+                    <Property name="rowHeight" type="int" value="32"/>
+                    <Property name="rowMargin" type="int" value="5"/>
                     <Property name="showGrid" type="boolean" value="true"/>
                     <Property name="showVerticalLines" type="boolean" value="false"/>
                   </Properties>

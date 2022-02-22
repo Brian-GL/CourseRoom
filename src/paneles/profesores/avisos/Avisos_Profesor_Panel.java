@@ -248,6 +248,7 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
 
         avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        avisos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();

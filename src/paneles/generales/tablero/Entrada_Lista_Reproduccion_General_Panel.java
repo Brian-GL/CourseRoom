@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paneles.generales;
+package paneles.generales.tablero;
 
 import java.awt.Color;
 import javax.swing.SwingUtilities;
@@ -68,8 +68,8 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
 
         setMaximumSize(new java.awt.Dimension(32767, 83));
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(312, 83));
+        setOpaque(false);
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         contenido_JPanel.setMaximumSize(new java.awt.Dimension(32767, 71));

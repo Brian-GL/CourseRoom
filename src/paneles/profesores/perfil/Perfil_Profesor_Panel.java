@@ -914,8 +914,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                 }
             });
             intereses_Tematicas_JTable.setOpaque(false);
-            intereses_Tematicas_JTable.setRowHeight(50);
-            intereses_Tematicas_JTable.setRowMargin(15);
+            intereses_Tematicas_JTable.setRowHeight(32);
+            intereses_Tematicas_JTable.setRowMargin(5);
             intereses_Tematicas_JTable.setShowGrid(true);
             intereses_Tematicas_JTable.setShowVerticalLines(false);
             intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
@@ -1679,6 +1679,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         
         intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;

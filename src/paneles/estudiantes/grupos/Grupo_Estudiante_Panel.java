@@ -153,8 +153,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         editar_Descripcion_JTextPane = new javax.swing.JTextPane();
         editar_Descripcion_JButton = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
@@ -840,9 +840,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             }
                         });
 
+                        abandonar_Grupo_JButton.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
                         abandonar_Grupo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/leave.png"))); // NOI18N
                         abandonar_Grupo_JButton.setText("Abandonar Grupo");
-                        abandonar_Grupo_JButton.setFont(new java.awt.Font("Gadugi", 1, 30)); // NOI18N
                         abandonar_Grupo_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
                         ((ImageIcon)abandonar_Grupo_JButton.getIcon()).getImage().flush();
                         abandonar_Grupo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -890,12 +890,16 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                     .addComponent(editar_Descripcion_JScrollPane)
                                     .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(editar_JPanelLayout.createSequentialGroup()
-                                        .addComponent(editar_Nombre_JTextField)
+                                        .addComponent(editar_Nombre_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(editar_Nombre_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(editar_Nombre_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
-                                    .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editar_JPanelLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(editar_JPanelLayout.createSequentialGroup()
+                                        .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(18, 63, Short.MAX_VALUE)
                                 .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1318,7 +1322,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         descripcion_Tarea_Pendiente_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Tarea_Pendiente_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        
         fecha_Finalizacion_Tarea_Pendiente_JPanel.setBorder(nombre_Tarea_Pendiente_JTextField.getBorder());
         
         archivos_Compartidos_JScrollPane.getViewport().setOpaque(false);
@@ -1427,6 +1430,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 }
             }
         });
+        mensajes_Chat_JTable.getTableHeader().setFont(gadugi);
         
         tareas_Pendientes_JTable.getTableHeader().setFont(gadugi);
         tareas_Pendientes_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
@@ -1485,7 +1489,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
         mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(20);
         
-        mensajes_Chat_JTable.getTableHeader().setFont(gadugi);
+        
         
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {
@@ -1527,6 +1531,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         actualizar_JButton.setBackground((CourseRoom.Utilerias.Segundo_Color()));
         
+        Font gadugi = new Font("Gadugi", 0, 18);
+        
+        descripcion_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Grupo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -1543,15 +1551,19 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         archivos_Compartidos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         archivos_Compartidos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        archivos_Compartidos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         miembros_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         miembros_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        miembros_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         tareas_Pendientes_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         tareas_Pendientes_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        tareas_Pendientes_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
         Celda_Renderer celda;
@@ -1578,6 +1590,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             }
         }
         
+        modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        for(int i = 0; i < mensajes_Chat_JTable.getRowCount();i++){
+            for(int j = 0; j < 3; j++){
+                celda = (Celda_Renderer)modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+            }
+        }
+        
         // Chat
         
         redactar_Mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
@@ -1600,7 +1620,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         editar_Nombre_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
         editar_Nombre_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        Font gadugi = new java.awt.Font("Gadugi", 0, 18);
 
         anadir_Tarea_Pendiente_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(
                 javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()),
@@ -1642,14 +1661,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
        
-        modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-        for(int i = 0; i < mensajes_Chat_JTable.getRowCount();i++){
-            for(int j = 0; j < 3; j++){
-                celda = (Celda_Renderer)modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
-            }
-        }
-        
         escogedor_Fecha_Hora.getTimePicker().getSettings().setColor(TimePickerSettings.TimeArea.TimePickerTextDisabled, CourseRoom.Utilerias.Tercer_Color_Fuente());
 
     }

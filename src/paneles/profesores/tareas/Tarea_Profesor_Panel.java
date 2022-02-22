@@ -24,7 +24,6 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -972,12 +971,15 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         retroalimentacion_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
         celdas = new Celda_Renderer[2];
+        String retroalimentacion;
         modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
         for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 10); i++) {
 
-            celdas[0] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(5), "");
+            retroalimentacion = CourseRoom.Utilerias.lorem().paragraph(5);
+            celdas[0] = new Celda_Renderer(retroalimentacion, "");
             celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(21, 23).toString(), "");
             modelo.addRow(celdas);
+            retroalimentacion_JTable.setRowHeight(i, CourseRoom.Utilerias.Altura_Fila_Tabla(retroalimentacion.length()));
         }
 
         
@@ -1039,6 +1041,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         
         archivos_Adjuntos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         archivos_Adjuntos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        archivos_Subidos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
         Celda_Renderer celda;
@@ -1051,7 +1054,8 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         
         archivos_Subidos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         archivos_Subidos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-
+        archivos_Subidos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
         modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
         for (int i = 0; i < archivos_Subidos_JTable.getRowCount(); i++) {
             for (int j = 0; j < 2; j++) {
@@ -1062,6 +1066,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         
         retroalimentacion_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         retroalimentacion_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        retroalimentacion_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
         for (int i = 0; i < retroalimentacion_JTable.getRowCount(); i++) {
@@ -1100,6 +1105,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         
         mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         for(int i = 0; i < mensajes_Chat_JTable.getRowCount();i++){

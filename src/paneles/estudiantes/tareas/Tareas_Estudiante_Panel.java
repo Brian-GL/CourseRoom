@@ -94,9 +94,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
 
         buscar_Tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
+        buscar_Tareas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         buscar_Tareas_JButton.setBorder(null);
         buscar_Tareas_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-        buscar_Tareas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         ((ImageIcon)buscar_Tareas_JButton.getIcon()).getImage().flush();
         buscar_Tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -163,7 +163,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                 },
                 new String [] {
-                    "Tarea", "Curso", "Fecha Entrega", "Estatus"
+                    "Tarea", "Curso", "Entrega", "Estatus"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
@@ -224,8 +224,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Tareas_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
             buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-            buscar_JTextField.setBorder(null);
             buscar_JTextField.setToolTipText("<html>\n<h3>Buscar tarea(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
+            buscar_JTextField.setBorder(null);
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     buscar_JTextFieldKeyPressed(evt);
@@ -233,8 +233,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             });
 
             mostrar_Tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_5.png"))); // NOI18N
-            mostrar_Tareas_JButton.setBorder(null);
             mostrar_Tareas_JButton.setToolTipText("<html>\n<h3>Regresar a la página de tareas</h3>\n</html>");
+            mostrar_Tareas_JButton.setBorder(null);
             ((ImageIcon)mostrar_Tareas_JButton.getIcon()).getImage().flush();
             mostrar_Tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -252,6 +252,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Tareas_JScrollPane.setOpaque(false);
 
             buscar_Tareas_JTable.setAutoCreateRowSorter(true);
+            buscar_Tareas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             buscar_Tareas_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -259,7 +260,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                     },
                     new String [] {
-                        "Tarea", "Curso", "Fecha Entrega", "Estatus"
+                        "Tarea", "Curso", "Entrega", "Estatus"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
@@ -285,7 +286,6 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         return super.getColumnClass(column);
                     }
                 });
-                buscar_Tareas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 buscar_Tareas_JTable.setOpaque(false);
                 buscar_Tareas_JTable.setRowHeight(100);
                 buscar_Tareas_JTable.setRowMargin(15);
@@ -487,6 +487,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         mostrar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mostrar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mostrar_Tareas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
         Celda_Renderer celda;
@@ -519,6 +520,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
         buscar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        buscar_Tareas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) buscar_Tareas_JTable.getModel();
         for (int i = 0; i < buscar_Tareas_JTable.getRowCount(); i++) {

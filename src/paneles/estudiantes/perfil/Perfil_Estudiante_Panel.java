@@ -577,12 +577,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
         editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
 
-        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setText("Guardar Cambios");
-        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         guardar_Cambios_Datos_Personales_JButton.setBorder(null);
         guardar_Cambios_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         ((ImageIcon)guardar_Cambios_Datos_Personales_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -914,8 +914,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 }
             });
             intereses_Tematicas_JTable.setOpaque(false);
-            intereses_Tematicas_JTable.setRowHeight(50);
-            intereses_Tematicas_JTable.setRowMargin(15);
+            intereses_Tematicas_JTable.setRowHeight(32);
+            intereses_Tematicas_JTable.setRowMargin(5);
             intereses_Tematicas_JTable.setShowGrid(true);
             intereses_Tematicas_JTable.setShowVerticalLines(false);
             intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
@@ -1679,6 +1679,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         
         intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;

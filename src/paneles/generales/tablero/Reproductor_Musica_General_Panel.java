@@ -52,7 +52,6 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import datos.interfaces.Reproductor_Interface;
 import java.awt.Font;
-import paneles.generales.Entrada_Lista_Reproduccion_General_Panel;
 
 /**
  *
@@ -1528,6 +1527,11 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         Establecer_Presets_Ecualizador();
         
         Establecer_Amperajes();
+        
+        primer_Color = CourseRoom.Utilerias.Primer_Color();
+        segundo_Color = CourseRoom.Utilerias.Segundo_Color();
+        segundo_Color_Fuente = CourseRoom.Utilerias.Segundo_Color_Fuente();
+        Colorear_Componentes();
     }
     
     @Override

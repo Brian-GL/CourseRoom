@@ -984,12 +984,15 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         retroalimentacion_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
         celdas = new Celda_Renderer[2];
+        String retroalimentacion;
         modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
         for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 10); i++) {
 
-            celdas[0] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(5), "");
+            retroalimentacion = CourseRoom.Utilerias.lorem().paragraph(5);
+            celdas[0] = new Celda_Renderer(retroalimentacion, "");
             celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(21, 23).toString(), "");
             modelo.addRow(celdas);
+            retroalimentacion_JTable.setRowHeight(i, CourseRoom.Utilerias.Altura_Fila_Tabla(retroalimentacion.length()));
         }
 
         

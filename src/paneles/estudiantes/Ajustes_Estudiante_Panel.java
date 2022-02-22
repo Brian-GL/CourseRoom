@@ -635,8 +635,9 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Segundo_Color_Fuente()));
         tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         
-        sesiones_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        sesiones_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        sesiones_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        sesiones_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        sesiones_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();

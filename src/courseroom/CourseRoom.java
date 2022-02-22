@@ -156,8 +156,6 @@ public class CourseRoom{
 
         public static Vector<Integer> Fecha_Hora_Servidor() throws XmlRpcException, IOException {
             
-            
-            
             Vector parametros = new Vector();
             
             parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
@@ -220,7 +218,7 @@ public class CourseRoom{
                 componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().setMediaPlayer(media_player_Factory.mediaPlayers().newMediaPlayer());
                 componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setEqualizer(media_player_Factory.equalizer().newEqualizer("Flat"));
             }
-            catch(Exception exception){
+            catch(Exception e){
                 JOptionPane.showMessageDialog(null, 
                         "Es necesario contar con VLC Media Player instalado en tu dispositivo.\nPuedes obtenerlo desde la siguiente liga:\nhttps://www.videolan.org/vlc/",
                         "Error Encontrado", JOptionPane.ERROR_MESSAGE);
@@ -242,6 +240,10 @@ public class CourseRoom{
         
         public static int Altura_Fila_Tabla(int numero_Letras){
             return (int)((numero_Letras/60) * 20) + 36;
+        }
+        
+        public static int Altura_Fila_Tabla_Icono(int numero_Letras){
+            return (int)((numero_Letras/60) * 20) + 96;
         }
         
         public static DateTimeFormatter Formato_Fecha(){
