@@ -3,7 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/tareas/Tareas_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/fechas/Fecha_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/cursos/Curso_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/perfil/Perfil_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/tareas/Tarea_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/avisos/Avisos_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/chats/Chat_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/desempeno_profesional/Desempeno_Profesional_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/cursos/Cursos_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/chats/Chats_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/Ajustes_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/preguntas/Pregunta_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/preguntas/Preguntas_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/fechas/Fechas_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/frames/profesores/Retroalimentar_Profesor_Frame.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/fechas/Tira_Fechas_Profesor_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/profesores/Tablero_Profesor_Panel.java</file>
         </group>
     </open-files>
 </project-private>

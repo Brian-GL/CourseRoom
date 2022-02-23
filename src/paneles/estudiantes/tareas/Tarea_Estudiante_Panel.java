@@ -636,6 +636,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     retroalimentacion_JScrollPane.setOpaque(false);
 
                     retroalimentacion_JTable.setAutoCreateRowSorter(true);
+                    retroalimentacion_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                     retroalimentacion_JTable.setModel(
 
                         new javax.swing.table.DefaultTableModel(
@@ -643,11 +644,11 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                             },
                             new String [] {
-                                "Retroalimentacion", "Fecha"
+                                "Retroalimentación", "Fecha", "Adjunto"
                             }
                         ) {
                             boolean[] canEdit = new boolean [] {
-                                false, false
+                                false, false, false
                             };
 
                             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -669,7 +670,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                 return super.getColumnClass(column);
                             }
                         });
-                        retroalimentacion_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                         retroalimentacion_JTable.setOpaque(false);
                         retroalimentacion_JTable.setRowHeight(90);
                         retroalimentacion_JTable.setRowMargin(15);
@@ -983,18 +983,41 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         retroalimentacion_JTable.getTableHeader().setFont(gadugi);
         retroalimentacion_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        celdas = new Celda_Renderer[2];
+        celdas = new Celda_Renderer[3];
         String retroalimentacion;
         modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
+        ImageIcon icono_Abrir = new ImageIcon(getClass().getResource("/recursos/iconos/box.png"));
         for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 10); i++) {
 
             retroalimentacion = CourseRoom.Utilerias.lorem().paragraph(5);
             celdas[0] = new Celda_Renderer(retroalimentacion, "");
-            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(21, 23).toString(), "");
+            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.Fecha_Hora_Local(), "");
+            celdas[2] = new Celda_Renderer(icono_Abrir,CourseRoom.Utilerias.file().fileName(), CourseRoom.Utilerias.internet().url());
             modelo.addRow(celdas);
             retroalimentacion_JTable.setRowHeight(i, CourseRoom.Utilerias.Altura_Fila_Tabla(retroalimentacion.length()));
         }
 
+        retroalimentacion_JTable.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+
+                    JTable tabla = (JTable) e.getComponent();
+                    int columna = tabla.getSelectedColumn();
+                    
+                    // Abrir
+                   if (columna == 2){
+                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
+                        String extension = FilenameUtils.getExtension(celda.Texto());
+                        String ruta = celda.ID();
+                        CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
+                    }
+                }
+            }
+        });
         
         descripcion_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(
                 CourseRoom.Utilerias.Concatenar(descripcion_JTextPane.getText() +  "\n\n",CourseRoom.Utilerias.lorem().paragraph(20))));

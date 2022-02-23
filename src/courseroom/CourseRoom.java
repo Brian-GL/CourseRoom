@@ -91,6 +91,7 @@ import frames.generales.Lector_Audio_General_Frame;
 import frames.generales.Lector_PDF_General_Frame;
 import frames.generales.Lector_Video_General_Panel;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -120,7 +121,10 @@ import oshi.hardware.SoundCard;
 import oshi.hardware.UsbDevice;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import net.coobird.gui.simpleimageviewer4j.Viewer;
@@ -252,6 +256,18 @@ public class CourseRoom{
         
         public static String Fecha_Hora_Local(){
             String retorno = LocalDateTime.now().format(formato_Fecha);
+            retorno = retorno.toUpperCase();
+            return retorno;
+        }
+        
+        public static String Fecha_Hora(java.util.Date fecha){
+            int year = fecha.getYear();
+            int month = fecha.getMonth()+1;
+            int day = fecha.getDate();
+            int hours = fecha.getHours();
+            int minutes = fecha.getMinutes();
+            int seconds = fecha.getSeconds();
+            String retorno = LocalDateTime.of(year, month, day, hours, minutes, seconds).format(formato_Fecha);
             retorno = retorno.toUpperCase();
             return retorno;
         }
@@ -800,14 +816,13 @@ public class CourseRoom{
         
         
         public static void Abrir_Archivo(String ruta, String extension, String nombre_Archivo){
+            
+            try{
             switch (extension) {
                 case "pdf":
-                    try {
-                        Lector_PDF_General_Frame lector_PDF_General_Frame =
-                                new Lector_PDF_General_Frame(ruta);
-                    } catch (MalformedURLException ex) {
-                        JOptionPane.showMessageDialog(null, ex.getMessage(), Concatenar("Error Encontrado Al Abrir El PDF ",nombre_Archivo), JOptionPane.ERROR_MESSAGE);
-                    }   break;
+                    Lector_PDF_General_Frame lector_PDF_General_Frame =
+                            new Lector_PDF_General_Frame(ruta);
+                    break;
                 case "mp4":
                 case "webm":
                 case "mkv":
@@ -835,7 +850,6 @@ public class CourseRoom{
                 case "jpeg":
                 case "jpg":
                 case "bmp":
-                    try {
                         //Cargar imagen
                         java.io.File archivo_Imagen = new java.io.File(ruta);
                         BufferedImage imagen = ImageIO.read(archivo_Imagen);
@@ -843,12 +857,16 @@ public class CourseRoom{
                         viewer.show();
                         imagen.flush();
                         imagen.getGraphics().dispose();
-                    } catch (IOException ex) {
-                        JOptionPane.showMessageDialog(null, ex.getMessage(), Concatenar("Error Encontrado Al Abrir La Imagen ",nombre_Archivo), JOptionPane.ERROR_MESSAGE);
-                    }   break;
-                default:
-                    JOptionPane.showMessageDialog(null, Concatenar("Error Al Abrir El Archivo ",nombre_Archivo), "Formato De Archivo No Válido", JOptionPane.WARNING_MESSAGE);
                     break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Formato De Archivo No Válido", Concatenar("Error Al Abrir El Archivo ",nombre_Archivo), JOptionPane.WARNING_MESSAGE);
+                    break;
+            }
+            
+            } catch(HeadlessException | MalformedURLException ex){
+                JOptionPane.showMessageDialog(null, ex.getMessage(), Concatenar("Error Encontrado Al Abrir El Archivo ",nombre_Archivo), JOptionPane.ERROR_MESSAGE);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), Concatenar("Error Encontrado Al Abrir El Archivo ",nombre_Archivo), JOptionPane.ERROR_MESSAGE);
             }
             
         }

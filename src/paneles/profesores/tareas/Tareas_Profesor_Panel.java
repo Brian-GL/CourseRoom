@@ -34,7 +34,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLayeredPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -46,14 +45,15 @@ import paneles.profesores.perfil.Perfil_Profesor_Panel;
  *
  * @author LENOVO
  */
-public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface{
+public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface{
 
-    private Lista<Tarea_Entregada_Profesor_Panel> tareas_Por_Calificar_Lista;
+    private Lista<Tarea_Por_Calificar_Profesor_Panel> tareas_Por_Calificar_Lista;
     private static Lista<Tarea_Profesor_Panel> tareas_Creadas_Lista;
+    private static DefaultTableModel modelo_Tareas_Creadas;
     private byte carta_Visible;
     
     /**
-     * Creates new form Tareas_Estudiante
+     * Creates new form Tareas_Profesor_JPanel
      */
     public Tareas_Profesor_Panel() {
         initComponents();
@@ -81,14 +81,16 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         tareas_Creadas_JScrollPane = new javax.swing.JScrollPane();
         tareas_Creadas_JTable = new javax.swing.JTable();
 
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
 
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
-        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        titulo_JLabel.setText("Tareas");
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setToolTipText("");
+        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
@@ -137,8 +139,8 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 407, Short.MAX_VALUE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 403, Short.MAX_VALUE)
                 .addComponent(tareas_Por_Calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tareas_Creadas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,9 +150,9 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGap(0, 0, 0))
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tareas_Por_Calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,7 +175,7 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
 
                 },
                 new String [] {
-                    "Tarea", "Curso", "Estudiante", "Modificado El", "Fecha Entrega"
+                    "Tarea", "Curso", "Estudiante", "Entregado El", "Fecha Entrega"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
@@ -205,6 +207,22 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
             tareas_Por_Calificar_JTable.setShowGrid(true);
             tareas_Por_Calificar_JTable.setShowVerticalLines(false);
             tareas_Por_Calificar_JTable.setRowSorter(new TableRowSorter(tareas_Por_Calificar_JTable.getModel()));
+            tareas_Por_Calificar_JTable.addMouseListener(new MouseAdapter() {
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (e.getClickCount() == 2) {
+
+                        JTable tabla = (JTable)e.getComponent();
+                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                        int columna = tabla.getSelectedColumn();
+                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                        Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila,columna);
+                        Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
+                    }
+                }
+
+            });
             tareas_Por_Calificar_JScrollPane.setViewportView(tareas_Por_Calificar_JTable);
 
             contenido_JLayeredPane.add(tareas_Por_Calificar_JScrollPane, "Calificar");
@@ -253,12 +271,24 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                 tareas_Creadas_JTable.setShowGrid(true);
                 tareas_Creadas_JTable.setShowVerticalLines(false);
                 tareas_Creadas_JTable.setRowSorter(new TableRowSorter(tareas_Creadas_JTable.getModel()));
+                tareas_Creadas_JTable.addMouseListener(new MouseAdapter() {
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        if (e.getClickCount() == 2) {
+                            JTable tabla = (JTable)e.getComponent();
+                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                            int columna = tabla.getSelectedColumn();
+                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                            Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila,columna);
+                            Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
+
+                        }
+                    }
+                });
                 tareas_Creadas_JScrollPane.setViewportView(tareas_Creadas_JTable);
 
                 contenido_JLayeredPane.add(tareas_Creadas_JScrollPane, "Creadas");
-
-                setLayer(contenido_Titulo_JPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-                setLayer(contenido_JLayeredPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
@@ -274,10 +304,10 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                 layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(contenido_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                        .addGap(6, 6, 6)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(contenido_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
                         .addContainerGap())
                 );
             }// </editor-fold>//GEN-END:initComponents
@@ -317,22 +347,61 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         }
     }//GEN-LAST:event_tareas_Creadas_JButtonMouseClicked
 
-    private void Agregar_Tarea(String nombre, String nombre_Curso, String nombre_Profesor, ImageIcon icono_Curso, 
-            String fecha, String estatus, String _id){
+    private static void Agregar_Tarea_Creada(String nombre_Tarea, ImageIcon icono_Curso, String nombre_Curso,
+            String fecha_Entrega, String estatus_Tarea, String _id){
         
-        Celda_Renderer[] tarea_Celdas = new Celda_Renderer[5];
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
         String fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
-        tarea_Celdas[0] = new Celda_Renderer(nombre, _id);
-        tarea_Celdas[1] = new Celda_Renderer(icono_Curso,nombre_Curso,_id);
-        tarea_Celdas[2] = new Celda_Renderer(fecha_Creacion, _id);
-        tarea_Celdas[3] = new Celda_Renderer(fecha, _id);
-        tarea_Celdas[4] = new Celda_Renderer(estatus, _id);
+        Celda_Renderer celda;
+        
+        celda = new Celda_Renderer(nombre_Tarea, _id);
+        celdas[0] = celda;
+        celda = new Celda_Renderer(icono_Curso, nombre_Curso, _id);
+        celdas[1] = celda;
+        celda = new Celda_Renderer(fecha_Creacion, _id);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(fecha_Entrega, _id);
+        celdas[3] = celda;
+        celda = new Celda_Renderer(estatus_Tarea, _id);
+        celdas[4] = celda;
+        
         Tarea_Profesor_Panel tarea_Profesor_Panel =
-                new Tarea_Profesor_Panel(nombre,nombre_Curso,nombre_Profesor,fecha_Creacion, fecha, estatus, _id);
+                new Tarea_Profesor_Panel(nombre_Tarea,nombre_Curso,
+                        Perfil_Profesor_Panel.Nombre_Completo(),fecha_Creacion, fecha_Entrega, estatus_Tarea, _id);
         tareas_Creadas_Lista.push_back(tarea_Profesor_Panel);
-        DefaultTableModel modelo = (DefaultTableModel) tareas_Creadas_JTable.getModel();
-        modelo.addRow(tarea_Celdas);
+        
+        modelo_Tareas_Creadas.addRow(celdas);
         Tablero_Profesor_Panel.Agregar_Vista(tarea_Profesor_Panel, _id);
+    }
+    
+    private void Agregar_Tarea_Por_Calificar(String nombre_Tarea, ImageIcon icono_Curso, String nombre_Curso, ImageIcon icono_Estudiante,
+            String nombre_Estudiante, String fecha_Creacion, String fecha_Entregada, String fecha_Entrega, String _id){
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        
+        celda = new Celda_Renderer(nombre_Tarea,_id);
+        celdas[0] = celda;
+        celda = new Celda_Renderer(icono_Curso, nombre_Curso, _id);
+        celdas[1] = celda;
+        celda = new Celda_Renderer(icono_Estudiante,nombre_Estudiante, _id);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(fecha_Entregada,_id);
+        celdas[3] = celda;
+        celda = new Celda_Renderer(fecha_Entrega, _id);
+        celdas[4] = celda;
+        
+        Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel =
+                new Tarea_Por_Calificar_Profesor_Panel(nombre_Tarea,nombre_Curso,
+                        CourseRoom.Utilerias.Fecha_Hora_Local(), fecha_Entrega, fecha_Entregada, "Por Calificar");
+        
+        tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
+        
+        DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
+        modelo.addRow(celdas);
+        
+        Tablero_Profesor_Panel.Agregar_Vista(tarea_Entregada_Profesor_Panel, _id);
+           
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -352,26 +421,30 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
     public void Iniciar_Componentes() {
         
         carta_Visible = 0;
+        tareas_Creadas_Lista = new Lista<>();
+        tareas_Por_Calificar_Lista = new Lista<>();
+        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        
         tareas_Por_Calificar_JScrollPane.getViewport().setOpaque(false);
         tareas_Por_Calificar_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         tareas_Por_Calificar_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        tareas_Por_Calificar_Lista = new Lista<>();
+        tareas_Creadas_JScrollPane.getViewport().setOpaque(false);
+        tareas_Creadas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        tareas_Creadas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        tareas_Creadas_JTable.getTableHeader().setFont(gadugi);
         tareas_Por_Calificar_JTable.getTableHeader().setFont(gadugi);
-
-        tareas_Por_Calificar_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
         
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-
+        tareas_Creadas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        tareas_Por_Calificar_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
+        
         String _id;
-        ImageIcon icono;
+        ImageIcon icono_Curso, icono_Estudiante;
         URL url_Imagen;
         Image imagen;
-        String nombre,nombre_Curso;
-        Tarea_Entregada_Profesor_Panel tarea_Entregada_Profesor_Panel;
+        String nombre_Tarea,nombre_Curso, nombre_Estudiante, fecha_Creacion, fecha_Entregado, fecha_Entrega, estatus;
         for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5);i++){
             
             try {
@@ -380,84 +453,24 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                 url_Imagen = new URL("https://picsum.photos/96/96");
                 imagen = ImageIO.read(url_Imagen);
 
-                icono = new ImageIcon(imagen);
-                nombre = CourseRoom.Utilerias.job().title();
-                celdas[0] = new Celda_Renderer(nombre,_id);
+                nombre_Tarea = CourseRoom.Utilerias.job().title();
+                icono_Curso = new ImageIcon(imagen);
                 nombre_Curso = CourseRoom.Utilerias.educator().course();
-                celdas[1] = new Celda_Renderer(icono, nombre_Curso, _id);
-
-                System.out.println(_id + " Profesor: -> Getting Image From https://i.pravatar.cc/96");
+                nombre_Estudiante = CourseRoom.Utilerias.name().fullName();
+                fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
+                fecha_Entregado = CourseRoom.Utilerias.Fecha_Hora_Local();
+                fecha_Entrega = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
+                
+                System.out.println(_id + " Estudiante: -> Getting Image From https://i.pravatar.cc/96");
                 url_Imagen = new URL("https://i.pravatar.cc/96");
                 imagen = ImageIO.read(url_Imagen);
+                icono_Estudiante = new ImageIcon(imagen);
                 
-                icono = new ImageIcon(imagen);
-
-                celdas[2] = new Celda_Renderer(icono,CourseRoom.Utilerias.name().fullName(), _id);
-                celdas[3] = new Celda_Renderer(CourseRoom.Utilerias.Fecha_Hora_Local(),_id);
-                celdas[4] = new Celda_Renderer(CourseRoom.Utilerias.Fecha_Hora_Local(), _id);
-                 tarea_Entregada_Profesor_Panel =
-                        new Tarea_Entregada_Profesor_Panel(nombre,nombre_Curso,
-                                Perfil_Profesor_Panel.Nombre_Completo(), CourseRoom.Utilerias.Fecha_Hora_Local(), "Abierta", _id);
-                tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
-                modelo.addRow(celdas);
-                Tablero_Profesor_Panel.Agregar_Vista(tarea_Entregada_Profesor_Panel, _id);
+                Agregar_Tarea_Por_Calificar(nombre_Tarea, icono_Curso, nombre_Curso, icono_Estudiante, nombre_Estudiante, fecha_Creacion, fecha_Entregado, fecha_Entrega, _id);
             }catch(IOException e){
                 
             }
         }
-        
-        
-        tareas_Por_Calificar_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    
-                    JTable tabla = (JTable)e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-                    
-                    DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila,columna);
-
-                    Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
-                    
-                }
-            }
-        });
-        
-        tareas_Creadas_JScrollPane.getViewport().setOpaque(false);
-        tareas_Creadas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        tareas_Creadas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
-        tareas_Creadas_Lista = new Lista<>();
-        
-        tareas_Creadas_JTable.getTableHeader().setFont(gadugi);
-
-        tareas_Creadas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-
-        tareas_Creadas_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    
-                    JTable tabla = (JTable)e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-                    
-                    DefaultTableModel modelo = (DefaultTableModel) tareas_Creadas_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila,columna);
-
-                    Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
-                    
-                }
-            }
-        });
-        
-        String estatus, fecha;
         
         for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
            
@@ -469,22 +482,20 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                 url_Imagen = new URL("https://picsum.photos/96/96");
                 imagen = ImageIO.read(url_Imagen);
                 
-                icono = new ImageIcon(imagen);
-                nombre = CourseRoom.Utilerias.university().name();
+                icono_Curso = new ImageIcon(imagen);
+                nombre_Tarea = CourseRoom.Utilerias.university().name();
                 nombre_Curso = CourseRoom.Utilerias.educator().course();
-                fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
-                estatus = CourseRoom.Utilerias.bool().bool() ? "Abierta" : "Cerrada";
+                fecha_Entrega = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
+                estatus = CourseRoom.Utilerias.bool().bool() ? "Asignada" : "Completada";
                 
-                Agregar_Tarea(nombre, nombre_Curso, Perfil_Profesor_Panel.Nombre_Completo(),icono, fecha, estatus, _id);
-                modelo.addRow(celdas);
+                Agregar_Tarea_Creada(nombre_Tarea,icono_Curso, nombre_Curso, fecha_Entrega, estatus, _id);
+
             } catch (MalformedURLException ex) {
                 
             } catch (IOException ex) {
                 
             } 
         }
-        
-        
     }
 
     @Override
@@ -494,38 +505,37 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
 
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-
-        Carta_Visible();
+        
+        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         tareas_Por_Calificar_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         tareas_Por_Calificar_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         tareas_Por_Calificar_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
-
-        DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
-        Celda_Renderer celda;
-        for (int i = 0; i < tareas_Por_Calificar_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 5; j++) {
-                celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
-            }
-        }
-        
-        Tarea_Entregada_Profesor_Panel tarea_Entregada_Profesor_Panel;
-        for (Nodo<Tarea_Entregada_Profesor_Panel> nodo = tareas_Por_Calificar_Lista.front(); nodo != null; nodo = nodo.next()) {
-            tarea_Entregada_Profesor_Panel = nodo.element();
-            tarea_Entregada_Profesor_Panel.Colorear_Componentes();
-        }
         
         tareas_Creadas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         tareas_Creadas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         tareas_Creadas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
-
-        modelo = (DefaultTableModel) tareas_Creadas_JTable.getModel();
-        for (int i = 0; i < tareas_Creadas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 5; j++) {
+        
+        DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
+        Celda_Renderer celda;
+        for (int i = 0; i < tareas_Por_Calificar_JTable.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
+        }
+        
+        for (int i = 0; i < tareas_Creadas_JTable.getRowCount(); i++) {
+            for (int j = 0; j < modelo_Tareas_Creadas.getColumnCount(); j++) {
+                celda = (Celda_Renderer) modelo_Tareas_Creadas.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+            }
+        }
+        
+        Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel;
+        for (Nodo<Tarea_Por_Calificar_Profesor_Panel> nodo = tareas_Por_Calificar_Lista.front(); nodo != null; nodo = nodo.next()) {
+            tarea_Entregada_Profesor_Panel = nodo.element();
+            tarea_Entregada_Profesor_Panel.Colorear_Componentes();
         }
         
         Tarea_Profesor_Panel tarea_Estudiante_Panel;
@@ -534,15 +544,15 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
             tarea_Estudiante_Panel.Colorear_Componentes();
         }
         
-       
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+         Carta_Visible();
 
     }
     
     @Override
     public void Limpiar() {
-        tareas_Por_Calificar_Lista.clear();
-        tareas_Por_Calificar_JTable.removeAll();
+        modelo_Tareas_Creadas.setRowCount(0);
+        DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
+        modelo.setRowCount(0);
     }
 
     @Override
@@ -552,12 +562,13 @@ public class Tareas_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                 titulo_JLabel.setText("Tareas Por Calificar");
                 tareas_Por_Calificar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
                 tareas_Creadas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+            break;
             case 1:
-                titulo_JLabel.setText("Tareas Creadas");
+                titulo_JLabel.setText("Mis Tareas Creadas");
                 tareas_Por_Calificar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 tareas_Creadas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+            break;
         }
     }
-
 
 }
