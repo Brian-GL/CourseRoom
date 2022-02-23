@@ -50,25 +50,24 @@ public class Fecha_Profesor_Panel extends javax.swing.JPanel implements Componen
         descripcion_JScrollPane.setBorder(null);
         descripcion_JScrollPane.setOpaque(false);
 
-        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setText("");
-        descripcion_JTextPane.setToolTipText("<html> <h3>Descripción corta</h3> </html>");
         descripcion_JTextPane.setOpaque(false);
+        descripcion_JTextPane.setToolTipText("<html> <h3>Descripción corta</h3> </html>");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
-        numero_Dia_JLabel.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         numero_Dia_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        numero_Dia_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         numero_Dia_JLabel.setToolTipText("<html> <h3>Número de día</h3> </html>");
 
-        hora_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         hora_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        hora_JLabel.setToolTipText("<html> <h3>Hora de finalización</h3> </html>");
+        hora_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hora_JLabel.setMaximumSize(new java.awt.Dimension(68, 32));
         hora_JLabel.setMinimumSize(new java.awt.Dimension(68, 32));
         hora_JLabel.setPreferredSize(new java.awt.Dimension(68, 32));
+        hora_JLabel.setToolTipText("<html> <h3>Hora de finalización</h3> </html>");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);

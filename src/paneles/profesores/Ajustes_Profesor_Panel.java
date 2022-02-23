@@ -12,6 +12,7 @@ import datos.interfaces.Carta_Visibilidad_Interface;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
 import datos.interfaces.Componentes_Interface;
+import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
 import javax.swing.ImageIcon;
@@ -23,7 +24,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author LENOVO
  */
-public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface{
+public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface, Limpieza_Interface{
 
     private byte carta_Visible;
     private Color primer_Color_Personalizado, segundo_Color_Personalizado, tercer_Color_Personalizado, primer_Color_Fuente_Personalizado, segundo_Color_Fuente_Personalizado, tercer_Color_Fuente_Personalizado;
@@ -73,9 +74,10 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
 
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Ajustes");
+        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
@@ -116,7 +118,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -139,9 +141,9 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
 
         interfaz_JPanel.setOpaque(false);
 
-        primer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         primer_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        primer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         primer_Color_Personalizado_JLabel.setOpaque(true);
         primer_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
         primer_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,9 +152,9 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
             }
         });
 
-        segundo_Color_Personalizado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         segundo_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        segundo_Color_Personalizado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         segundo_Color_Personalizado_JLabel.setOpaque(true);
         segundo_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
         segundo_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,9 +163,9 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
             }
         });
 
-        tercer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         tercer_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tercer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tercer_Color_Personalizado_JLabel.setOpaque(true);
         tercer_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
         tercer_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -172,9 +174,10 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
             }
         });
 
-        recargar_Colores_JButton.setFont(new java.awt.Font("Gadugi", 1, 28)); // NOI18N
-        recargar_Colores_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rating.png"))); // NOI18N
+        recargar_Colores_JButton.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        recargar_Colores_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-video.png"))); // NOI18N
         recargar_Colores_JButton.setText("Recargar Colores");
+        ((ImageIcon)recargar_Colores_JButton.getIcon()).getImage().flush();
         recargar_Colores_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 recargar_Colores_JButtonMouseClicked(evt);
@@ -221,7 +224,6 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         sesiones_JScrollPane.setOpaque(false);
 
         sesiones_JTable.setAutoCreateRowSorter(true);
-        sesiones_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         sesiones_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -255,6 +257,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
                     return super.getColumnClass(column);
                 }
             });
+            sesiones_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             sesiones_JTable.setOpaque(false);
             sesiones_JTable.setRowHeight(80);
             sesiones_JTable.setRowMargin(15);
@@ -267,7 +270,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
 
             cuenta_JPanel.setOpaque(false);
 
-            desactivar_Cuenta_JButton.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+            desactivar_Cuenta_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
             desactivar_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
             desactivar_Cuenta_JButton.setText("¿Desactivar Cuenta?");
             ((ImageIcon)desactivar_Cuenta_JButton.getIcon()).getImage().flush();
@@ -283,7 +286,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
                 }
             });
 
-            desactivar_Activar_Notificaciones_JButton.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+            desactivar_Activar_Notificaciones_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
             desactivar_Activar_Notificaciones_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/bell_warning.png"))); // NOI18N
             desactivar_Activar_Notificaciones_JButton.setText("Desactivar Notificaciones");
             ((ImageIcon)desactivar_Activar_Notificaciones_JButton.getIcon()).getImage().flush();
@@ -299,7 +302,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
                 }
             });
 
-            permitir_No_Permitir_Chats_Conmigo_JButton.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+            permitir_No_Permitir_Chats_Conmigo_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
             permitir_No_Permitir_Chats_Conmigo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/chat_1.png"))); // NOI18N
             permitir_No_Permitir_Chats_Conmigo_JButton.setText("Permitir Chats Conmigo");
             ((ImageIcon)permitir_No_Permitir_Chats_Conmigo_JButton.getIcon()).getImage().flush();
@@ -575,7 +578,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         String valor  = System.getProperty("os.name");
         valor =  CourseRoom.Utilerias.Concatenar(valor, " - ",System.getProperty("user.name"));
         
-        for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1,10);i++){
+        for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1,5);i++){
             
             celdas[0] = new Celda_Renderer(valor, "");
             celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.getComputerSystem().getManufacturer(),"");
@@ -590,7 +593,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
     @Override
     public void Colorear_Componentes() {
         
-        Font gadugi = new Font("Gadugi", 1, 24);
+        Font gadugi = new Font("Segoe UI", 1, 24);
         
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
@@ -642,7 +645,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
         for(int i = 0; i < sesiones_JTable.getRowCount();i++){
-            for(int j = 0; j < 5; j++){
+            for(int j = 0; j < modelo.getColumnCount(); j++){
                 celda = (Celda_Renderer)modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -668,6 +671,12 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
                 cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
                 break;
         }
+    }
+
+    @Override
+    public void Limpiar() {
+        DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
+        modelo.setRowCount(0);
     }
 
 

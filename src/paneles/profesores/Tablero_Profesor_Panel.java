@@ -101,8 +101,8 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         visualizador_JPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
-        setPreferredSize(new java.awt.Dimension(1260, 670));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1260, 670));
 
         menu_JPanel.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         menu_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -125,13 +125,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(imagen_Perfil_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        stats_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        stats_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         stats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/qualification_1.png"))); // NOI18N
         stats_JButton.setText("Stats");
         stats_JButton.setToolTipText("Mostrar Las Estadisticas & Desempeño Escolar Del Usuario.");
         stats_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         stats_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         stats_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)stats_JButton.getIcon()).getImage().flush();
         stats_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 stats_JButtonMouseClicked(evt);
@@ -145,13 +146,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(stats_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
 
-        cursos_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        cursos_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/teacher_1.png"))); // NOI18N
         cursos_JButton.setText("Cursos");
         cursos_JButton.setToolTipText("Mostrar Cursos.");
         cursos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cursos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cursos_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)cursos_JButton.getIcon()).getImage().flush();
         cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cursos_JButtonMouseClicked(evt);
@@ -165,13 +167,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(cursos_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 185, -1, -1));
 
-        tareas_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        tareas_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_2.png"))); // NOI18N
         tareas_JButton.setText("Tareas");
         tareas_JButton.setToolTipText("Mostrar Mis Tareas.");
         tareas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tareas_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tareas_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)tareas_JButton.getIcon()).getImage().flush();
         tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tareas_JButtonMouseClicked(evt);
@@ -185,13 +188,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(tareas_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, -1));
 
-        fechas_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        fechas_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         fechas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/calendar_1.png"))); // NOI18N
         fechas_JButton.setText("Fechas");
         fechas_JButton.setToolTipText("Mostrar El Calendario De Fechas.");
         fechas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fechas_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         fechas_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)fechas_JButton.getIcon()).getImage().flush();
         fechas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fechas_JButtonMouseClicked(evt);
@@ -205,13 +209,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(fechas_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 255, -1, -1));
 
-        avisos_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        avisos_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         avisos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/bell.png"))); // NOI18N
         avisos_JButton.setText("Avisos");
         avisos_JButton.setToolTipText("Mostrar Mis Avisos.");
         avisos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         avisos_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         avisos_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)avisos_JButton.getIcon()).getImage().flush();
         avisos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 avisos_JButtonMouseClicked(evt);
@@ -225,13 +230,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(avisos_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
 
-        chats_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        chats_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         chats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat_1.png"))); // NOI18N
         chats_JButton.setText("Chats");
         chats_JButton.setToolTipText("Mostrar Mis Chats.");
         chats_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         chats_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         chats_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)chats_JButton.getIcon()).getImage().flush();
         chats_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 chats_JButtonMouseClicked(evt);
@@ -245,13 +251,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(chats_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 325, -1, -1));
 
-        reproductor_Musica_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        reproductor_Musica_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         reproductor_Musica_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/audio_1.png"))); // NOI18N
         reproductor_Musica_JButton.setText("Música");
         reproductor_Musica_JButton.setToolTipText("Reproducir Música.");
         reproductor_Musica_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         reproductor_Musica_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reproductor_Musica_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)reproductor_Musica_JButton.getIcon()).getImage().flush();
         reproductor_Musica_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 reproductor_Musica_JButtonMouseClicked(evt);
@@ -265,13 +272,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(reproductor_Musica_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, -1, -1));
 
-        acerca_De_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        acerca_De_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         acerca_De_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_2.png"))); // NOI18N
         acerca_De_JButton.setText("Acerca");
         acerca_De_JButton.setToolTipText("Acerca De CourseRoom.");
         acerca_De_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         acerca_De_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         acerca_De_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)acerca_De_JButton.getIcon()).getImage().flush();
         acerca_De_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 acerca_De_JButtonMouseClicked(evt);
@@ -285,13 +293,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(acerca_De_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 465, -1, -1));
 
-        ajustes_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        ajustes_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         ajustes_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/settings_1.png"))); // NOI18N
         ajustes_JButton.setText("Ajustes");
         ajustes_JButton.setToolTipText("Configuraciones");
         ajustes_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ajustes_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ajustes_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)ajustes_JButton.getIcon()).getImage().flush();
         ajustes_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ajustes_JButtonMouseClicked(evt);
@@ -305,13 +314,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(ajustes_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, -1, -1));
 
-        salir_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        salir_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         salir_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/exit-door.png"))); // NOI18N
         salir_JButton.setText("Salir");
         salir_JButton.setToolTipText("Cerrar Sesión.");
         salir_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         salir_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salir_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)salir_JButton.getIcon()).getImage().flush();
         salir_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 salir_JButtonMouseClicked(evt);
@@ -325,13 +335,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(salir_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, -1, -1));
 
-        preguntas_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+        preguntas_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         preguntas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/problem.png"))); // NOI18N
         preguntas_JButton.setText("Asks");
         preguntas_JButton.setToolTipText("Configuraciones");
         preguntas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         preguntas_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         preguntas_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
+        ((ImageIcon)preguntas_JButton.getIcon()).getImage().flush();
         preguntas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 preguntas_JButtonMouseClicked(evt);
@@ -347,8 +358,8 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
         barra_Superior_JPanel.setBackground(java.awt.Color.black);
         barra_Superior_JPanel.setMinimumSize(new java.awt.Dimension(1260, 40));
-        barra_Superior_JPanel.setPreferredSize(new java.awt.Dimension(1260, 40));
         barra_Superior_JPanel.setOpaque(false);
+        barra_Superior_JPanel.setPreferredSize(new java.awt.Dimension(1260, 40));
 
         menu_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/menu.png"))); // NOI18N
         menu_JButton.setToolTipText("Mostrar/Ocultar Menú");
@@ -357,6 +368,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         menu_JButton.setMaximumSize(new java.awt.Dimension(40, 40));
         menu_JButton.setMinimumSize(new java.awt.Dimension(40, 40));
         menu_JButton.setPreferredSize(new java.awt.Dimension(40, 40));
+        ((ImageIcon)menu_JButton.getIcon()).getImage().flush();
         menu_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menu_JButtonMouseClicked(evt);
@@ -369,11 +381,15 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
             }
         });
 
-        mensaje_Bienvenida_JLabel.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
+        mensaje_Bienvenida_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        mensaje_Bienvenida_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mensaje_Bienvenida_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/avatar.png"))); // NOI18N
+        ((ImageIcon)mensaje_Bienvenida_JLabel.getIcon()).getImage().flush();
 
+        fecha_Hora_Servidor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         fecha_Hora_Servidor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         fecha_Hora_Servidor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock_2.png"))); // NOI18N
-        fecha_Hora_Servidor_JLabel.setFont(new java.awt.Font("Gadugi", 2, 14)); // NOI18N
+        ((ImageIcon)fecha_Hora_Servidor_JLabel.getIcon()).getImage().flush();
 
         javax.swing.GroupLayout barra_Superior_JPanelLayout = new javax.swing.GroupLayout(barra_Superior_JPanel);
         barra_Superior_JPanel.setLayout(barra_Superior_JPanelLayout);
@@ -382,9 +398,9 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
             .addGroup(barra_Superior_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mensaje_Bienvenida_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mensaje_Bienvenida_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -402,8 +418,8 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
         visualizador_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         visualizador_JPanel.setName(""); // NOI18N
-        visualizador_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         visualizador_JPanel.setOpaque(false);
+        visualizador_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         visualizador_JPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -929,6 +945,8 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
             visualizador_JPanel.add("Cursos", cursos_Panel);
             
             layout = (CardLayout) visualizador_JPanel.getLayout();
+            
+            mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias.Concatenar("Bienvenid@ ", Perfil_Profesor_Panel.Nombre_Completo()));
             
             tiempo_Servidor = new Tiempo_Servidor();
             tiempo_Servidor.start();

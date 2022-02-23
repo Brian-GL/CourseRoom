@@ -124,8 +124,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Apellido_Materno_JButton = new javax.swing.JButton();
         informacion_Extra_JPanel = new javax.swing.JPanel();
         guardar_Cambios_Informacion_Extra_JButton = new javax.swing.JButton();
-        editar_Promedio_General_JLabel = new javax.swing.JLabel();
-        editar_Promedio_General_JFormattedTextField = new javax.swing.JFormattedTextField();
         editar_Descripcion_JLabel = new javax.swing.JLabel();
         editar_Descripcion_JScrollPane = new javax.swing.JScrollPane();
         editar_Descripcion_JTextPane = new javax.swing.JTextPane();
@@ -134,9 +132,9 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         intereses_Tematicas_AutoCompletionComboBox = new com.jidesoft.swing.AutoCompletionComboBox();
         intereses_Tematicas_JScrollPane = new javax.swing.JScrollPane();
         intereses_Tematicas_JTable = new javax.swing.JTable();
-        editar_Promedio_General_JButton = new javax.swing.JButton();
         editar_Descripcion_JButton = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -145,7 +143,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Perfil");
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
+        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setOpaque(true);
@@ -208,7 +207,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(informacion_JButton)
                 .addGap(18, 18, 18)
@@ -247,7 +246,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         apellidos_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         apellidos_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        apellidos_JLabel.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
+        apellidos_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         apellidos_JLabel.setMaximumSize(new java.awt.Dimension(380, 50));
         apellidos_JLabel.setMinimumSize(new java.awt.Dimension(380, 50));
         apellidos_JLabel.setName("label"); // NOI18N
@@ -255,54 +254,54 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         apellidos_JLabel.setPreferredSize(new java.awt.Dimension(380, 50));
         apellidos_JLabel.setToolTipText("Apellido(s)");
 
-        nombres_JLabel.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         nombres_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        nombres_JLabel.setToolTipText("Nombre(s)");
         nombres_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nombres_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         nombres_JLabel.setMaximumSize(new java.awt.Dimension(380, 50));
         nombres_JLabel.setMinimumSize(new java.awt.Dimension(380, 50));
         nombres_JLabel.setName("label"); // NOI18N
         nombres_JLabel.setOpaque(true);
         nombres_JLabel.setPreferredSize(new java.awt.Dimension(380, 50));
+        nombres_JLabel.setToolTipText("Nombre(s)");
 
-        correo_Electronico_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         correo_Electronico_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        correo_Electronico_JLabel.setToolTipText("Correo Electrónico");
+        correo_Electronico_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         correo_Electronico_JLabel.setMaximumSize(new java.awt.Dimension(380, 25));
         correo_Electronico_JLabel.setMinimumSize(new java.awt.Dimension(380, 25));
         correo_Electronico_JLabel.setName("label"); // NOI18N
         correo_Electronico_JLabel.setPreferredSize(new java.awt.Dimension(380, 25));
+        correo_Electronico_JLabel.setToolTipText("Correo Electrónico");
 
-        tipo_Perfil_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         tipo_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tipo_Perfil_JLabel.setToolTipText("Tipo De Perfil");
+        tipo_Perfil_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tipo_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(163, 25));
         tipo_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(163, 25));
         tipo_Perfil_JLabel.setName("label"); // NOI18N
         tipo_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(163, 25));
+        tipo_Perfil_JLabel.setToolTipText("Tipo De Perfil");
 
-        fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         fecha_Nacimiento_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        fecha_Nacimiento_JLabel.setToolTipText("Fecha De Nacimiento");
+        fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         fecha_Nacimiento_JLabel.setMaximumSize(new java.awt.Dimension(163, 25));
         fecha_Nacimiento_JLabel.setMinimumSize(new java.awt.Dimension(163, 25));
         fecha_Nacimiento_JLabel.setName("label"); // NOI18N
         fecha_Nacimiento_JLabel.setPreferredSize(new java.awt.Dimension(163, 25));
+        fecha_Nacimiento_JLabel.setToolTipText("Fecha De Nacimiento");
 
         localidad_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        localidad_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        localidad_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         localidad_JLabel.setMinimumSize(new java.awt.Dimension(380, 60));
         localidad_JLabel.setName("label"); // NOI18N
         localidad_JLabel.setPreferredSize(new java.awt.Dimension(380, 60));
         localidad_JLabel.setToolTipText("Localidad");
 
-        genero_JLabel.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
         genero_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        genero_JLabel.setToolTipText("Género");
+        genero_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         genero_JLabel.setMaximumSize(new java.awt.Dimension(163, 25));
         genero_JLabel.setMinimumSize(new java.awt.Dimension(163, 25));
         genero_JLabel.setName("label"); // NOI18N
         genero_JLabel.setPreferredSize(new java.awt.Dimension(163, 25));
+        genero_JLabel.setToolTipText("Género");
 
         descripcion_JScrollPane.setBorder(null);
         descripcion_JScrollPane.setOpaque(false);
@@ -313,7 +312,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setEditable(false);
-        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
         descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setRequestFocusEnabled(false);
@@ -325,9 +324,9 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         informacion_JPanelLayout.setHorizontalGroup(
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -339,14 +338,14 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                     .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(correo_Electronico_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         informacion_JPanelLayout.setVerticalGroup(
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
                 .addContainerGap(63, Short.MAX_VALUE)
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_JPanelLayout.createSequentialGroup()
+                    .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,10 +358,10 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                         .addGap(5, 5, 5)
                         .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(localidad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(localidad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
@@ -371,58 +370,58 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         autenticacion_JPanel.setMinimumSize(new java.awt.Dimension(800, 600));
         autenticacion_JPanel.setOpaque(false);
 
-        contrasena_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         contrasena_JLabel.setText("Contraseña");
+        contrasena_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         contrasena_JLabel.setMaximumSize(new java.awt.Dimension(320, 29));
         contrasena_JLabel.setMinimumSize(new java.awt.Dimension(320, 29));
         contrasena_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
         contrasena_JPasswordField.setEditable(false);
-        contrasena_JPasswordField.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
         contrasena_JPasswordField.setToolTipText("Ingrese Aquí Su Contraseña (Mínimo 8 Carácteres)");
 
-        editar_Correo_Electronico_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Correo_Electronico_JLabel.setText("Correo Electrónico");
+        editar_Correo_Electronico_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         editar_Correo_Electronico_JLabel.setMaximumSize(new java.awt.Dimension(500, 29));
         editar_Correo_Electronico_JLabel.setMinimumSize(new java.awt.Dimension(500, 29));
         editar_Correo_Electronico_JLabel.setPreferredSize(new java.awt.Dimension(500, 29));
 
         editar_Correo_Electronico_JTextField.setEditable(false);
-        editar_Correo_Electronico_JTextField.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        editar_Correo_Electronico_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         editar_Correo_Electronico_JTextField.setMinimumSize(new java.awt.Dimension(500, 36));
         editar_Correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(500, 36));
         editar_Correo_Electronico_JTextField.setToolTipText("Ingrese Aquí Su Correo Electrónico (Ingrese Uno Que Pueda Utilizar)");
 
-        repetir_Contrasena_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         repetir_Contrasena_JLabel.setText("Repetir Contraseña");
+        repetir_Contrasena_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         repetir_Contrasena_JLabel.setMaximumSize(new java.awt.Dimension(320, 29));
         repetir_Contrasena_JLabel.setMinimumSize(new java.awt.Dimension(320, 29));
         repetir_Contrasena_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
         repetir_Contrasena_JPasswordField.setEditable(false);
-        repetir_Contrasena_JPasswordField.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        repetir_Contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         repetir_Contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         repetir_Contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
         repetir_Contrasena_JPasswordField.setToolTipText("Re-Ingrese Aquí La Contraseña");
 
         editar_Imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        editar_Imagen_JLabel.setToolTipText("Imagen De Perfil Seleccionada.");
         editar_Imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         editar_Imagen_JLabel.setMaximumSize(new java.awt.Dimension(400, 400));
         editar_Imagen_JLabel.setMinimumSize(new java.awt.Dimension(400, 400));
         editar_Imagen_JLabel.setName(""); // NOI18N
         editar_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
+        editar_Imagen_JLabel.setToolTipText("Imagen De Perfil Seleccionada.");
 
-        guardar_Cambios_Autenticacion_JButton.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         guardar_Cambios_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Autenticacion_JButton.setText("Guardar Cambios");
-        guardar_Cambios_Autenticacion_JButton.setToolTipText("Guardar Cambios");
         guardar_Cambios_Autenticacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        guardar_Cambios_Autenticacion_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         guardar_Cambios_Autenticacion_JButton.setMaximumSize(new java.awt.Dimension(280, 40));
         guardar_Cambios_Autenticacion_JButton.setMinimumSize(new java.awt.Dimension(280, 40));
         guardar_Cambios_Autenticacion_JButton.setPreferredSize(new java.awt.Dimension(280, 40));
+        guardar_Cambios_Autenticacion_JButton.setToolTipText("Guardar Cambios");
         ((ImageIcon)guardar_Cambios_Autenticacion_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -436,15 +435,15 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             }
         });
 
-        cambiar_Imagen_JButton.setFont(new java.awt.Font("Gadugi", 1, 26)); // NOI18N
         cambiar_Imagen_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/replace.png"))); // NOI18N
         cambiar_Imagen_JButton.setText("Cambiar Imagen");
-        cambiar_Imagen_JButton.setToolTipText("<html>Click Para Cargar Tu Foto De Perfil Desde Tu Ordenador.<br><b>NOTA: LA IMAGEN DE PERFIL TENDRÁ UNA RESOLUCIÓN DE 250x250 px.</b></html>");
         cambiar_Imagen_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cambiar_Imagen_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         cambiar_Imagen_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         cambiar_Imagen_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
         cambiar_Imagen_JButton.setMinimumSize(new java.awt.Dimension(400, 40));
         cambiar_Imagen_JButton.setPreferredSize(new java.awt.Dimension(400, 40));
+        cambiar_Imagen_JButton.setToolTipText("<html>Click Para Cargar Tu Foto De Perfil Desde Tu Ordenador.<br><b>NOTA: LA IMAGEN DE PERFIL TENDRÁ UNA RESOLUCIÓN DE 250x250 px.</b></html>");
         ((ImageIcon)cambiar_Imagen_JButton.getIcon()).getImage().flush();
         cambiar_Imagen_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -493,14 +492,14 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         autenticacion_JPanelLayout.setHorizontalGroup(
             autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(editar_Correo_Electronico_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(contrasena_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(editar_Correo_Electronico_JTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                            .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
                             .addComponent(repetir_Contrasena_JPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,11 +507,11 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                             .addComponent(editar_Contrasena_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(repetir_Contrasena_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(guardar_Cambios_Autenticacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(editar_Imagen_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         autenticacion_JPanelLayout.setVerticalGroup(
             autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,34 +547,34 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         datos_Personales_JPanel.setOpaque(false);
 
         editar_Nombres_JLabel.setText("Nombre(s) *");
-        editar_Nombres_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        editar_Nombres_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         editar_Nombres_JTextField.setEditable(false);
-        editar_Nombres_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        editar_Nombres_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Nombres_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         editar_Nombres_JTextField.setToolTipText("<html>  <h3> Nombre(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
 
         editar_Apellido_Paterno_JLabel.setText("Apellido Paterno *");
-        editar_Apellido_Paterno_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        editar_Apellido_Paterno_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         editar_Apellido_Paterno_JTextField.setEditable(false);
-        editar_Apellido_Paterno_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        editar_Apellido_Paterno_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Apellido_Paterno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         editar_Apellido_Paterno_JTextField.setToolTipText("<html>  <h3> Apellido paterno </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
 
         editar_Localidad_JLabel.setText("Localidad");
-        editar_Localidad_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        editar_Localidad_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         editar_Genero_JTextField.setEditable(false);
-        editar_Genero_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        editar_Genero_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Genero_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         editar_Genero_JTextField.setToolTipText("<html>  <h3> Identidad de género </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
 
         editar_Genero_JLabel.setText("Género");
-        editar_Genero_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        editar_Genero_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         editar_Fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
-        editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
@@ -597,18 +596,18 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         });
 
         editar_Apellido_Materno_JLabel.setText("Apellido Materno");
-        editar_Apellido_Materno_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        editar_Apellido_Materno_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         editar_Apellido_Materno_JTextField.setEditable(false);
-        editar_Apellido_Materno_JTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        editar_Apellido_Materno_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         editar_Apellido_Materno_JTextField.setToolTipText("<html>  <h3> Apellido materno </h3> </html>");
 
         editar_Estado_JLabel.setText("Estado");
-        editar_Estado_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        editar_Estado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         editar_Estado_AutoCompletionComboBox.setEditable(false);
-        editar_Estado_AutoCompletionComboBox.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        editar_Estado_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         editar_Estado_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Estado de proveniencia</h3>\n</html>");
 
         editar_Localidad_AutoCompletionComboBox.setEditable(false);
@@ -817,7 +816,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         guardar_Cambios_Informacion_Extra_JButton.setText("Guardar Cambios");
         guardar_Cambios_Informacion_Extra_JButton.setBorder(null);
         guardar_Cambios_Informacion_Extra_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        guardar_Cambios_Informacion_Extra_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        guardar_Cambios_Informacion_Extra_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         guardar_Cambios_Informacion_Extra_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
         ((ImageIcon)guardar_Cambios_Informacion_Extra_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -832,33 +831,22 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             }
         });
 
-        editar_Promedio_General_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        editar_Promedio_General_JLabel.setText("Promedio General");
-        editar_Promedio_General_JLabel.setMaximumSize(new java.awt.Dimension(409, 25));
-        editar_Promedio_General_JLabel.setMinimumSize(new java.awt.Dimension(409, 25));
-        editar_Promedio_General_JLabel.setPreferredSize(new java.awt.Dimension(409, 25));
-
-        editar_Promedio_General_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##.00"))));
-        editar_Promedio_General_JFormattedTextField.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
-        editar_Promedio_General_JFormattedTextField.setPreferredSize(new java.awt.Dimension(126, 40));
-        editar_Promedio_General_JFormattedTextField.setToolTipText("<html>\n<h3>Promedio general de tu escuela</h3>\n<ul><li>Esto nos ayudará a generar mayores estadísticas sobre ti<br>\na la hora de tomar tus cursos.</li></ul>\n</html>");
-
-        editar_Descripcion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         editar_Descripcion_JLabel.setText("Descripción");
+        editar_Descripcion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         editar_Descripcion_JLabel.setMaximumSize(new java.awt.Dimension(409, 25));
         editar_Descripcion_JLabel.setMinimumSize(new java.awt.Dimension(409, 25));
         editar_Descripcion_JLabel.setPreferredSize(new java.awt.Dimension(409, 25));
 
-        editar_Descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 19)); // NOI18N
+        editar_Descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
         editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
         interes_Tematica_JLabel.setText("Interes / Temática");
-        interes_Tematica_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        interes_Tematica_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         interes_Tematica_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
 
         agregar_Interes_Tematica_JButton.setText("Agregar Interes / Temática");
-        agregar_Interes_Tematica_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        agregar_Interes_Tematica_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         agregar_Interes_Tematica_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 agregar_Interes_Tematica_JButtonMouseClicked(evt);
@@ -873,7 +861,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         intereses_Tematicas_AutoCompletionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isaiah Leblanc", "Fitzgerald Dean", "Emma Doyle", "Galvin Gillespie", "Hunter Ross", "Kellie Valencia", "Miranda Holder", "Drake Mendoza", "Uma Parks", "Julian Hill" }));
         intereses_Tematicas_AutoCompletionComboBox.setSelectedIndex(-1);
-        intereses_Tematicas_AutoCompletionComboBox.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        intereses_Tematicas_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         intereses_Tematicas_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
 
         intereses_Tematicas_JScrollPane.setBorder(null);
@@ -913,27 +901,32 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                     return super.getColumnClass(column);
                 }
             });
+            intereses_Tematicas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             intereses_Tematicas_JTable.setOpaque(false);
             intereses_Tematicas_JTable.setRowHeight(32);
             intereses_Tematicas_JTable.setRowMargin(5);
             intereses_Tematicas_JTable.setShowGrid(true);
             intereses_Tematicas_JTable.setShowVerticalLines(false);
             intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
-            intereses_Tematicas_JScrollPane.setViewportView(intereses_Tematicas_JTable);
+            intereses_Tematicas_JTable.addMouseListener(new MouseAdapter() {
 
-            editar_Promedio_General_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-            ((ImageIcon)editar_Promedio_General_JButton.getIcon()).getImage().flush();
-            editar_Promedio_General_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    editar_Promedio_General_JButtonMouseClicked(evt);
-                }
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    editar_Promedio_General_JButtonMouseEntered(evt);
-                }
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    editar_Promedio_General_JButtonMouseExited(evt);
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (e.getClickCount() == 2) {
+
+                        JTable tabla = (JTable) e.getComponent();
+                        int columna = tabla.getSelectedColumn();
+
+                        if (columna == 1) {
+                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                            modelo.removeRow(fila);
+                        }
+
+                    }
                 }
             });
+            intereses_Tematicas_JScrollPane.setViewportView(intereses_Tematicas_JTable);
 
             editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
             ((ImageIcon)editar_Descripcion_JButton.getIcon()).getImage().flush();
@@ -954,19 +947,15 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             informacion_Extra_JPanelLayout.setHorizontalGroup(
                 informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(30, Short.MAX_VALUE)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(editar_Promedio_General_JFormattedTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editar_Promedio_General_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 329, Short.MAX_VALUE))
                         .addComponent(guardar_Cambios_Informacion_Extra_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(editar_Promedio_General_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
                             .addComponent(intereses_Tematicas_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -974,35 +963,32 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                             .addComponent(agregar_Interes_Tematica_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(interes_Tematica_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(31, Short.MAX_VALUE))
             );
             informacion_Extra_JPanelLayout.setVerticalGroup(
                 informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(94, Short.MAX_VALUE)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(editar_Promedio_General_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(interes_Tematica_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(interes_Tematica_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(editar_Promedio_General_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
-                            .addGap(1, 1, 1)
-                            .addComponent(intereses_Tematicas_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(agregar_Interes_Tematica_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editar_Promedio_General_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(18, 18, 18)
-                    .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
+                                    .addGap(1, 1, 1)
+                                    .addComponent(intereses_Tematicas_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(agregar_Interes_Tematica_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
-                            .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(editar_Descripcion_JButton))
                             .addGap(18, 18, 18)
-                            .addComponent(guardar_Cambios_Informacion_Extra_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(guardar_Cambios_Informacion_Extra_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(94, Short.MAX_VALUE))
             );
 
             perfil_JLayeredPane.add(informacion_Extra_JPanel, "Informacion_Extra");
@@ -1015,7 +1001,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                     .addGap(32, 32, 32)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(perfil_JLayeredPane)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1149, Short.MAX_VALUE))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
                     .addGap(32, 32, 32))
             );
             layout.setVerticalGroup(
@@ -1362,23 +1348,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Fecha_Nacimiento_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_editar_Fecha_Nacimiento_JButtonMouseExited
 
-    private void editar_Promedio_General_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Promedio_General_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Promedio_General_JFormattedTextField.setEditable(true);
-        }
-    }//GEN-LAST:event_editar_Promedio_General_JButtonMouseClicked
-
-    private void editar_Promedio_General_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Promedio_General_JButtonMouseEntered
-        // TODO add your handling code here:
-        editar_Promedio_General_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_editar_Promedio_General_JButtonMouseEntered
-
-    private void editar_Promedio_General_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Promedio_General_JButtonMouseExited
-        // TODO add your handling code here:
-        editar_Promedio_General_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_editar_Promedio_General_JButtonMouseExited
-
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -1467,9 +1436,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private javax.swing.JButton editar_Nombres_JButton;
     private javax.swing.JLabel editar_Nombres_JLabel;
     private javax.swing.JTextField editar_Nombres_JTextField;
-    private javax.swing.JButton editar_Promedio_General_JButton;
-    private javax.swing.JFormattedTextField editar_Promedio_General_JFormattedTextField;
-    private javax.swing.JLabel editar_Promedio_General_JLabel;
     private javax.swing.JLabel fecha_Nacimiento_JLabel;
     private javax.swing.JLabel genero_JLabel;
     private javax.swing.JButton guardar_Cambios_Autenticacion_JButton;
@@ -1527,29 +1493,9 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         intereses_Tematicas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         intereses_Tematicas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        intereses_Tematicas_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    if (columna == 1) {
-                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                        modelo.removeRow(fila);
-                    }
-
-                }
-            }
-        });
-        
         
     }
 
@@ -1602,17 +1548,12 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         
         editar_Descripcion_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
 
-        editar_Promedio_General_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
 
         editar_Descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Segundo_Color());
         editar_Descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         editar_Descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias.Segundo_Color());
         editar_Descripcion_JScrollPane.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-
-        editar_Promedio_General_JFormattedTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        editar_Promedio_General_JFormattedTextField.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        editar_Promedio_General_JFormattedTextField.setCaretColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
-     
+        
         editar_Apellido_Paterno_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
         editar_Apellido_Paterno_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
         editar_Apellido_Paterno_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
@@ -1661,7 +1602,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Fecha_Nacimiento_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         editar_Correo_Electronico_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         editar_Contrasena_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        editar_Promedio_General_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         editar_Descripcion_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         guardar_Cambios_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
@@ -1684,7 +1624,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < intereses_Tematicas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < modelo.getRowCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1697,7 +1637,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     @Override
     public void Limpiar() {
-        intereses_Tematicas_JTable.removeAll();
+        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+        modelo.setRowCount(0);
     }
 
     @Override

@@ -51,7 +51,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         label.setVerticalAlignment(JLabel.CENTER);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
-        label.setFont(new Font("Gadugi", Font.PLAIN, 14));
+        label.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
     }
     
@@ -76,7 +76,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         label.setText(CourseRoom.Utilerias.Formato_HTML_Centro(texto));
         label.setVerticalAlignment(JLabel.CENTER);
         label.setHorizontalAlignment(JLabel.CENTER);
-        label.setFont(new Font("Gadugi", Font.PLAIN, 14));
+        label.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
     }
 
