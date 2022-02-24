@@ -60,7 +60,6 @@ public class Lector_PDF_General_Frame extends javax.swing.JFrame implements Limp
           
         }
         
-        this.setVisible(true);
     }
 
     /**

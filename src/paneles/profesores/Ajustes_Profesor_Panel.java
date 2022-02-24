@@ -397,7 +397,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
                primer_Color_Personalizado_JLabel.setBackground(primer_Color_Personalizado);
                primer_Color_Personalizado_JLabel.setForeground(primer_Color_Fuente_Personalizado);
                primer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(primer_Color_Personalizado));
-               primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), primer_Color_Fuente_Personalizado));
+               primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), primer_Color_Fuente_Personalizado));
                
                CourseRoom.Utilerias.Primer_Color(primer_Color_Personalizado);
                CourseRoom.Utilerias.Primer_Color_Fuente(primer_Color_Fuente_Personalizado);
@@ -420,7 +420,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
                 segundo_Color_Personalizado_JLabel.setBackground(segundo_Color_Personalizado);
                 segundo_Color_Personalizado_JLabel.setForeground(segundo_Color_Fuente_Personalizado);
                 segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(segundo_Color_Personalizado));
-                segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), segundo_Color_Fuente_Personalizado));
+                segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), segundo_Color_Fuente_Personalizado));
                 
                 CourseRoom.Utilerias.Segundo_Color(segundo_Color_Personalizado);
                 CourseRoom.Utilerias.Segundo_Color_Fuente(segundo_Color_Fuente_Personalizado);
@@ -443,7 +443,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
                 tercer_Color_Personalizado_JLabel.setBackground(tercer_Color_Personalizado);
                 tercer_Color_Personalizado_JLabel.setForeground(tercer_Color_Fuente_Personalizado);
                 tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(tercer_Color_Personalizado));
-                tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gadugi", 1, 14), tercer_Color_Fuente_Personalizado));
+                tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), tercer_Color_Fuente_Personalizado));
                 
                 CourseRoom.Utilerias.Tercer_Color(tercer_Color_Personalizado);
                 CourseRoom.Utilerias.Tercer_Color_Fuente(tercer_Color_Fuente_Personalizado);
@@ -538,8 +538,6 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
-   
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane ajustes_JLayeredPane;
     private javax.swing.JPanel contenido_Titulo_JPanel;
@@ -565,10 +563,10 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
        
         carta_Visible = 0;
         sesiones_JScrollPane.getViewport().setOpaque(false);
-        sesiones_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
-        sesiones_JScrollPane.getHorizontalScrollBar().setUnitIncrement(20);
+        sesiones_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        sesiones_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         sesiones_JTable.getTableHeader().setFont(gadugi);
         
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
@@ -644,7 +642,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
-        for(int i = 0; i < sesiones_JTable.getRowCount();i++){
+        for(int i = 0; i < modelo.getRowCount();i++){
             for(int j = 0; j < modelo.getColumnCount(); j++){
                 celda = (Celda_Renderer)modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());

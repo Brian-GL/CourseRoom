@@ -198,8 +198,8 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
     public void Iniciar_Componentes() {
         
         avisos_JScrollPane.getViewport().setOpaque(false);
-        avisos_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
-        avisos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(20);
+        avisos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        avisos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         avisos_JTable.getTableHeader().setFont(gadugi);
@@ -214,7 +214,7 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         ImageIcon aviso_Grupo = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
         ImageIcon aviso_Chat = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
         
-        for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1,10);i++){
+        for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1,5);i++){
             switch(CourseRoom.Utilerias.number().numberBetween(1,5)){
                 case 1:
                     celdas[0] = new Celda_Renderer(aviso_Curso,"Curso",id);
@@ -235,6 +235,7 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             
             modelo.addRow(celdas);
         }
+        
     }
 
     @Override
@@ -253,7 +254,7 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
-        for(int i = 0; i < avisos_JTable.getRowCount();i++){
+        for(int i = 0; i < modelo.getRowCount();i++){
             for(int j = 0; j < modelo.getColumnCount(); j++){
                 celda = (Celda_Renderer)modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());

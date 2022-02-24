@@ -576,7 +576,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
         editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setText("Guardar Cambios");
         guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
@@ -841,7 +841,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
         editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
-        interes_Tematica_JLabel.setText("Interes / Temática");
+        interes_Tematica_JLabel.setText("Ínteres / Temática");
         interes_Tematica_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         interes_Tematica_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
 
@@ -901,7 +901,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                     return super.getColumnClass(column);
                 }
             });
-            intereses_Tematicas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+            intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             intereses_Tematicas_JTable.setOpaque(false);
             intereses_Tematicas_JTable.setRowHeight(32);
             intereses_Tematicas_JTable.setRowMargin(5);
@@ -1623,7 +1623,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;
-        for (int i = 0; i < intereses_Tematicas_JTable.getRowCount(); i++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
             for (int j = 0; j < modelo.getRowCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());

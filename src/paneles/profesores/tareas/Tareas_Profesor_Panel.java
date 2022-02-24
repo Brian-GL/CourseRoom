@@ -81,25 +81,25 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         tareas_Creadas_JScrollPane = new javax.swing.JScrollPane();
         tareas_Creadas_JTable = new javax.swing.JTable();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
 
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setToolTipText("");
         titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setToolTipText("");
 
         tareas_Por_Calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_4.png"))); // NOI18N
-        tareas_Por_Calificar_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         tareas_Por_Calificar_JButton.setBorder(null);
         tareas_Por_Calificar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        tareas_Por_Calificar_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         ((ImageIcon)tareas_Por_Calificar_JButton.getIcon()).getImage().flush();
         tareas_Por_Calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,9 +124,9 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         });
 
         tareas_Creadas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_6.png"))); // NOI18N
-        tareas_Creadas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         tareas_Creadas_JButton.setBorder(null);
         tareas_Creadas_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        tareas_Creadas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         ((ImageIcon)tareas_Creadas_JButton.getIcon()).getImage().flush();
         tareas_Creadas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -149,10 +149,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         );
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(titulo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tareas_Por_Calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +164,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         tareas_Por_Calificar_JScrollPane.setOpaque(false);
 
         tareas_Por_Calificar_JTable.setAutoCreateRowSorter(true);
-        tareas_Por_Calificar_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         tareas_Por_Calificar_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -201,6 +197,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                     return super.getColumnClass(column);
                 }
             });
+            tareas_Por_Calificar_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             tareas_Por_Calificar_JTable.setOpaque(false);
             tareas_Por_Calificar_JTable.setRowHeight(100);
             tareas_Por_Calificar_JTable.setRowMargin(15);
@@ -423,7 +420,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         carta_Visible = 0;
         tareas_Creadas_Lista = new Lista<>();
         tareas_Por_Calificar_Lista = new Lista<>();
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         
         tareas_Por_Calificar_JScrollPane.getViewport().setOpaque(false);
         tareas_Por_Calificar_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -518,14 +515,14 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
         Celda_Renderer celda;
-        for (int i = 0; i < tareas_Por_Calificar_JTable.getRowCount(); i++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
-        for (int i = 0; i < tareas_Creadas_JTable.getRowCount(); i++) {
+        for (int i = 0; i < modelo_Tareas_Creadas.getRowCount(); i++) {
             for (int j = 0; j < modelo_Tareas_Creadas.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo_Tareas_Creadas.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());

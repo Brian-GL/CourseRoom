@@ -18,6 +18,7 @@
 package paneles.profesores.chats;
 
 import clases.Celda_Renderer;
+import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import java.io.File;
@@ -596,10 +597,10 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         carta_Visible = false;
         
         mensajes_Chat_JScrollPane.getViewport().setOpaque(false);
-        mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
-        mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(20);
+        mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         mensajes_Chat_JTable.getTableHeader().setFont(gadugi);
         
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
@@ -634,6 +635,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
     @Override
     public void Colorear_Componentes() {
         
+        Carta_Visible();
         titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -666,13 +668,13 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;
-        for (int i = 0; i < intereses_Tematicas_JTable.getRowCount(); i++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
             celda = (Celda_Renderer) modelo.getValueAt(i, 0);
             celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
         }
 
         modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-        for(int i = 0; i < mensajes_Chat_JTable.getRowCount();i++){
+        for(int i = 0; i < modelo.getRowCount();i++){
             for(int j = 0; j < modelo.getColumnCount(); j++){
                 celda = (Celda_Renderer)modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
@@ -709,10 +711,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
     @Override
     public void Enviar_Archivos() {
-        JFileChooser escogedor_Archivos = new JFileChooser();
-        escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        escogedor_Archivos.setApproveButtonText("Enviar Archivo(s)");
-        escogedor_Archivos.setMultiSelectionEnabled(true);
+        Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
 
         if (resultado == JFileChooser.APPROVE_OPTION) {

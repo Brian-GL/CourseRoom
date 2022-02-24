@@ -255,7 +255,7 @@ public class Lector_Video_General_Panel extends javax.swing.JFrame implements Li
         
         Colorear_Componentes();
         
-        this.setVisible(true);
+        
         
         Establecer_Play_Pausa();
         

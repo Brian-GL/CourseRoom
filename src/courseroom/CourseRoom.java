@@ -245,9 +245,13 @@ public class CourseRoom{
         public static int Altura_Fila_Tabla(int numero_Letras){
             return (int)((numero_Letras/60) * 20) + 36;
         }
+//        
+//        public static int Altura_Fila_Tabla_Icono(int numero_Letras){
+//            return (int)((numero_Letras/60) * 20) + 96;
+//        }
         
-        public static int Altura_Fila_Tabla_Icono(int numero_Letras){
-            return (int)((numero_Letras/60) * 20) + 96;
+        public static int Altura_Fila_Tabla_Archivo(int numero_Letras){
+            return (int)((numero_Letras/60) * 20) + 42;
         }
         
         public static DateTimeFormatter Formato_Fecha(){
@@ -255,9 +259,7 @@ public class CourseRoom{
         }
         
         public static String Fecha_Hora_Local(){
-            String retorno = LocalDateTime.now().format(formato_Fecha);
-            retorno = retorno.toUpperCase();
-            return retorno;
+            return LocalDateTime.now().format(formato_Fecha);
         }
         
         public static String Fecha_Hora(java.util.Date fecha){
@@ -267,9 +269,7 @@ public class CourseRoom{
             int hours = fecha.getHours();
             int minutes = fecha.getMinutes();
             int seconds = fecha.getSeconds();
-            String retorno = LocalDateTime.of(year, month, day, hours, minutes, seconds).format(formato_Fecha);
-            retorno = retorno.toUpperCase();
-            return retorno;
+            return LocalDateTime.of(year, month, day, hours, minutes, seconds).format(formato_Fecha);
         }
 
         public static AudioListPlayerComponent Componente_Reproducto_Lista_Audio() {
@@ -822,6 +822,7 @@ public class CourseRoom{
                 case "pdf":
                     Lector_PDF_General_Frame lector_PDF_General_Frame =
                             new Lector_PDF_General_Frame(ruta);
+                    lector_PDF_General_Frame.setVisible(true);
                     break;
                 case "mp4":
                 case "webm":
@@ -832,6 +833,7 @@ public class CourseRoom{
                 case "ogg":
                     Lector_Video_General_Panel lector_Video_General_Panel =
                             new Lector_Video_General_Panel(ruta, nombre_Archivo);
+                    lector_Video_General_Panel.setVisible(true);
                     break;
                 case "mp3":
                 case "aac":
@@ -845,6 +847,7 @@ public class CourseRoom{
                 case "aiff":
                     Lector_Audio_General_Frame lector_Audio_General_Frame =
                             new Lector_Audio_General_Frame(ruta, nombre_Archivo);
+                    lector_Audio_General_Frame.setVisible(true);
                     break;
                 case "png":
                 case "jpeg":

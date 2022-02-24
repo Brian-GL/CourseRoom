@@ -304,8 +304,6 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
         Colorear_Componentes();
         Establecer_Eventos_Reproductor();
         
-        this.setVisible(true);
-        
         Establecer_Play_Pausa();
     }
 
