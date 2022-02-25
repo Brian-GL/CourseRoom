@@ -76,13 +76,13 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(300, 71));
         contenido_JPanel.setLayout(new java.awt.GridLayout(3, 1, 0, 2));
 
-        titulo_JLabel.setBackground(java.awt.Color.black);
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setToolTipText("<html> <h3>Título</h3> </html>");
+        titulo_JLabel.setBackground(java.awt.Color.black);
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
+        titulo_JLabel.setToolTipText("<html> <h3>Título</h3> </html>");
         titulo_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 titulo_JLabelMouseClicked(evt);
@@ -90,13 +90,13 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         });
         contenido_JPanel.add(titulo_JLabel);
 
-        artista_JLabel.setBackground(java.awt.Color.black);
-        artista_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         artista_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        artista_JLabel.setToolTipText("<html> <h3>Artista</h3> </html>");
+        artista_JLabel.setBackground(java.awt.Color.black);
+        artista_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         artista_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         artista_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
         artista_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
+        artista_JLabel.setToolTipText("<html> <h3>Artista</h3> </html>");
         artista_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 artista_JLabelMouseClicked(evt);
@@ -104,13 +104,13 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
         });
         contenido_JPanel.add(artista_JLabel);
 
-        album_JLabel.setBackground(java.awt.Color.black);
-        album_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         album_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        album_JLabel.setToolTipText("<html> <h3>Álbum</h3> </html>");
+        album_JLabel.setBackground(java.awt.Color.black);
+        album_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         album_JLabel.setMaximumSize(new java.awt.Dimension(220, 17));
         album_JLabel.setMinimumSize(new java.awt.Dimension(220, 17));
         album_JLabel.setPreferredSize(new java.awt.Dimension(220, 17));
+        album_JLabel.setToolTipText("<html> <h3>Álbum</h3> </html>");
         album_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 album_JLabelMouseClicked(evt);

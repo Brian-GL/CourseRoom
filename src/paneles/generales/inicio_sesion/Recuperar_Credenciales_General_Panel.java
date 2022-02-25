@@ -54,8 +54,8 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         regresar_JButton = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1260, 670));
+        setOpaque(false);
 
         logo_JLabel.setBackground(new java.awt.Color(14, 30, 64));
         logo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -64,39 +64,39 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         logo_JLabel.setMinimumSize(new java.awt.Dimension(567, 125));
         logo_JLabel.setPreferredSize(new java.awt.Dimension(567, 125));
 
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 28)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("¿Has Olvidado Tu Contraseña?");
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(500, 38));
 
-        frase_JLabel.setFont(new java.awt.Font("Gadugi", 0, 21)); // NOI18N
         frase_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         frase_JLabel.setText("<html><p style=\"text-align:center;\">No te preocupes. Solamente te pediremos que ingreses<br>el correo electrónico que registraste en tu cuenta.<br>Te mandaremos tu contraseña de inmediato.</p></html>");
+        frase_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 21)); // NOI18N
         frase_JLabel.setPreferredSize(new java.awt.Dimension(500, 116));
 
-        correo_Electronico_JLabel.setFont(new java.awt.Font("Gadugi", 1, 21)); // NOI18N
         correo_Electronico_JLabel.setText("Correo Electrónico");
+        correo_Electronico_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 21)); // NOI18N
         correo_Electronico_JLabel.setMaximumSize(new java.awt.Dimension(500, 30));
         correo_Electronico_JLabel.setMinimumSize(new java.awt.Dimension(500, 30));
         correo_Electronico_JLabel.setPreferredSize(new java.awt.Dimension(500, 30));
 
-        correo_Electronico_JTextField.setFont(new java.awt.Font("Gadugi", 0, 24)); // NOI18N
-        correo_Electronico_JTextField.setToolTipText("");
+        correo_Electronico_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         correo_Electronico_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(500, 43));
+        correo_Electronico_JTextField.setToolTipText("");
         correo_Electronico_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 correo_Electronico_JTextFieldKeyPressed(evt);
             }
         });
 
-        recuperar_Credenciales_JButton.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         recuperar_Credenciales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/id-card_1.png"))); // NOI18N
         recuperar_Credenciales_JButton.setText(" Recuperar Credenciales ");
-        recuperar_Credenciales_JButton.setToolTipText("");
         recuperar_Credenciales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         recuperar_Credenciales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        recuperar_Credenciales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         recuperar_Credenciales_JButton.setPreferredSize(new java.awt.Dimension(500, 54));
+        recuperar_Credenciales_JButton.setToolTipText("");
         ((ImageIcon)recuperar_Credenciales_JButton.getIcon()).getImage().flush();
         recuperar_Credenciales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -111,9 +111,9 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("<html>\n<h3>Regresar a la página de inicio de sesión</h3>\n</html>");
         regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar_JButton.setToolTipText("<html>\n<h3>Regresar a la página de inicio de sesión</h3>\n</html>");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

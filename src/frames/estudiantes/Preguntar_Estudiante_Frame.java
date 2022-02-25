@@ -59,9 +59,9 @@ public class Preguntar_Estudiante_Frame extends javax.swing.JDialog implements C
         contenido_JPanel.setMinimumSize(new java.awt.Dimension(800, 227));
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(800, 227));
 
-        preguntar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         preguntar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/doubt.png"))); // NOI18N
         preguntar_JButton.setText("Preguntar");
+        preguntar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         ((ImageIcon)preguntar_JButton.getIcon()).getImage().flush();
         preguntar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -78,15 +78,16 @@ public class Preguntar_Estudiante_Frame extends javax.swing.JDialog implements C
         descripcion_Pregunta_JScrollPane.setBorder(null);
 
         descripcion_Pregunta_JTextPane.setBorder(null);
-        descripcion_Pregunta_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        descripcion_Pregunta_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         descripcion_Pregunta_JScrollPane.setViewportView(descripcion_Pregunta_JTextPane);
 
-        pregunta_JTextField.setFont(new java.awt.Font("Gadugi", 1, 17)); // NOI18N
+        pregunta_JTextField.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         pregunta_JTextField.setBorder(null);
         pregunta_JTextField.setOpaque(true);
 
         cerrar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
-        cerrar_JButton.setBorder(null);
+        cerrar_JButton.setText("Cancelar");
+        cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         ((ImageIcon)cerrar_JButton.getIcon()).getImage().flush();
         cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,7 +109,7 @@ public class Preguntar_Estudiante_Frame extends javax.swing.JDialog implements C
                 .addContainerGap()
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(preguntar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(descripcion_Pregunta_JScrollPane)
@@ -143,7 +144,7 @@ public class Preguntar_Estudiante_Frame extends javax.swing.JDialog implements C
                     String id = CourseRoom.Utilerias.Concatenar("Pregunta_", cuenta);
                     
                     Preguntas_Estudiante_Panel.Agregar_Pregunta(pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(),
-                    Perfil_Estudiante_Panel.Nombre_Completo(),CourseRoom.Utilerias.Fecha_Hora_Local().toString(),id);
+                    Perfil_Estudiante_Panel.Nombre_Completo(),CourseRoom.Utilerias.Fecha_Hora_Local(),id);
                     Tablero_Estudiante_Panel.Mostrar_Vista(id);
                     
                     this.dispose();
@@ -161,8 +162,8 @@ public class Preguntar_Estudiante_Frame extends javax.swing.JDialog implements C
 
     private void preguntar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseExited
         // TODO add your handling code here:
-        preguntar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        preguntar_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        preguntar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        preguntar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
     }//GEN-LAST:event_preguntar_JButtonMouseExited
 
     private void cerrar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseClicked
@@ -174,12 +175,14 @@ public class Preguntar_Estudiante_Frame extends javax.swing.JDialog implements C
 
     private void cerrar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseEntered
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        cerrar_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }//GEN-LAST:event_cerrar_JButtonMouseEntered
 
     private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseExited
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        cerrar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
     }//GEN-LAST:event_cerrar_JButtonMouseExited
 
 
@@ -196,7 +199,7 @@ public class Preguntar_Estudiante_Frame extends javax.swing.JDialog implements C
     public void Iniciar_Componentes() {
         this.setLocationRelativeTo(null);
         this.setAlwaysOnTop(true);
-        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
+        Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
         
         pregunta_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Pregunta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
@@ -230,10 +233,11 @@ public class Preguntar_Estudiante_Frame extends javax.swing.JDialog implements C
         
         contenido_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        cerrar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        cerrar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         
-        preguntar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        preguntar_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        preguntar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        preguntar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
                
     }
 }

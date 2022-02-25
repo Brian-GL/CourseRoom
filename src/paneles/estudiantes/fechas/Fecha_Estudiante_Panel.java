@@ -42,47 +42,46 @@ public class Fecha_Estudiante_Panel extends javax.swing.JPanel implements Compon
         setMaximumSize(new java.awt.Dimension(32767, 250));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setName("CalendarDay"); // NOI18N
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(150, 250));
+        setOpaque(false);
 
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         descripcion_JScrollPane.setBorder(null);
         descripcion_JScrollPane.setOpaque(false);
 
-        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setText("");
-        descripcion_JTextPane.setToolTipText("<html> <h3>Descripción corta</h3> </html>");
         descripcion_JTextPane.setOpaque(false);
+        descripcion_JTextPane.setToolTipText("<html> <h3>Descripción corta</h3> </html>");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
-        numero_Dia_JLabel.setFont(new java.awt.Font("Gadugi", 1, 20)); // NOI18N
         numero_Dia_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        numero_Dia_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         numero_Dia_JLabel.setToolTipText("<html> <h3>Número de día</h3> </html>");
 
-        hora_JLabel.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         hora_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        hora_JLabel.setToolTipText("<html> <h3>Hora de finalización</h3> </html>");
+        hora_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hora_JLabel.setMaximumSize(new java.awt.Dimension(68, 32));
         hora_JLabel.setMinimumSize(new java.awt.Dimension(68, 32));
         hora_JLabel.setPreferredSize(new java.awt.Dimension(68, 32));
+        hora_JLabel.setToolTipText("<html> <h3>Hora de finalización</h3> </html>");
 
         javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
         contenido_JPanel.setLayout(contenido_JPanelLayout);
         contenido_JPanelLayout.setHorizontalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_JPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(numero_Dia_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(hora_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         contenido_JPanelLayout.setVerticalGroup(
             contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +92,7 @@ public class Fecha_Estudiante_Panel extends javax.swing.JPanel implements Compon
                 .addComponent(hora_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

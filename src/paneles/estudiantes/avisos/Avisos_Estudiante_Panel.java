@@ -56,9 +56,10 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
 
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Avisos");
+        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
@@ -86,7 +87,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -136,7 +137,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                     return super.getColumnClass(column);
                 }
             });
-            avisos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+            avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             avisos_JTable.setOpaque(false);
             avisos_JTable.setRowHeight(80);
             avisos_JTable.setRowMargin(15);
@@ -152,7 +153,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                 .addGroup(layout.createSequentialGroup()
                     .addGap(32, 32, 32)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+                        .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
                     .addGap(32, 32, 32))
             );
@@ -197,10 +198,10 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     public void Iniciar_Componentes() {
         
         avisos_JScrollPane.getViewport().setOpaque(false);
-        avisos_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
-        avisos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(20);
+        avisos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        avisos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         avisos_JTable.getTableHeader().setFont(gadugi);
         
         avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
@@ -230,7 +231,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
             }
             
             celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(),id);
-            celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0,1).toString(),id);
+            celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23)),id);
             
             modelo.addRow(celdas);
         }
@@ -252,8 +253,8 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
-        for(int i = 0; i < avisos_JTable.getRowCount();i++){
-            for(int j = 0; j < 3; j++){
+        for(int i = 0; i < modelo.getRowCount();i++){
+            for(int j = 0; j < modelo.getColumnCount(); j++){
                 celda = (Celda_Renderer)modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -263,7 +264,8 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     
     @Override
     public void Limpiar() {
-        avisos_JTable.removeAll();
+        DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
+        modelo.setRowCount(0);
     }
     
     

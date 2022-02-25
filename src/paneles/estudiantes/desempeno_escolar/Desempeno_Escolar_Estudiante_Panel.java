@@ -80,16 +80,17 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
         estadisticas_JTable = new javax.swing.JTable();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
 
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Desempeño Escolar");
+        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setOpaque(true);
@@ -152,8 +153,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
                 .addComponent(regresion_Lineal_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(grafica_Pastel_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,7 +223,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
                     return super.getColumnClass(column);
                 }
             });
-            estadisticas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+            estadisticas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             estadisticas_JTable.setOpaque(false);
             estadisticas_JTable.setRowHeight(100);
             estadisticas_JTable.setRowMargin(15);
@@ -367,7 +368,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         estadisticas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         estadisticas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         estadisticas_JTable.getTableHeader().setFont(gadugi);
 
         estadisticas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
@@ -375,7 +376,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         
         URL url_Imagen;
-        ImageIcon icono = null;
+        ImageIcon icono;
         ImageIcon icono_Reprobado = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
         ImageIcon icono_Aprobado = new ImageIcon(getClass().getResource("/recursos/iconos/check.png"));
         for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
@@ -419,7 +420,6 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             false // urls
             );  
 
-
         //Changes background color  
         XYPlot plot = (XYPlot)chart.getPlot();  
         plot.setBackgroundPaint(new Color(255,228,196));  
@@ -431,6 +431,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
         // Create Panel  
         ChartPanel chartPanel = new ChartPanel((JFreeChart) chart);
+        chartPanel.setFont(gadugi);
         chartPanel.setMouseWheelEnabled(true);
         chartPanel.setMaximumDrawHeight(regresion_Lineal_JPanel.getMaximumSize().height);
         chartPanel.setMaximumDrawWidth(regresion_Lineal_JPanel.getMaximumSize().width);
@@ -452,6 +453,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
                 false);
         
         chartPanel = new ChartPanel((JFreeChart) chart);
+        chartPanel.setFont(gadugi);
         chartPanel.setMouseWheelEnabled(true);
         chartPanel.setMaximumDrawHeight(grafica_Pastel_JPanel.getMaximumSize().height);
         chartPanel.setMaximumDrawWidth(grafica_Pastel_JPanel.getMaximumSize().width);
@@ -477,8 +479,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         Celda_Renderer celda;
-        for (int i = 0; i < estadisticas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 6; j++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -488,7 +490,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
     @Override
     public void Limpiar() {
-        
+        DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
+        modelo.setRowCount(0);
     }
 
     @Override

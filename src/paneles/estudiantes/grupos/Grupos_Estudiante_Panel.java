@@ -91,9 +91,10 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
 
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Grupos");
+        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
@@ -137,7 +138,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buscar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -190,13 +191,32 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     return super.getColumnClass(column);
                 }
             });
-            mostrar_Grupos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+            mostrar_Grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             mostrar_Grupos_JTable.setOpaque(false);
             mostrar_Grupos_JTable.setRowHeight(100);
             mostrar_Grupos_JTable.setRowMargin(15);
             mostrar_Grupos_JTable.setShowGrid(true);
             mostrar_Grupos_JTable.setShowVerticalLines(false);
             mostrar_Grupos_JTable.setRowSorter(new TableRowSorter(mostrar_Grupos_JTable.getModel()));
+            mostrar_Grupos_JTable.addMouseListener(new MouseAdapter() {
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (e.getClickCount() == 2) {
+
+                        JTable tabla = (JTable) e.getComponent();
+                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                        int columna = tabla.getSelectedColumn();
+
+                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                        Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                    }
+                }
+            });
             mostrar_Grupos_JScrollPane.setViewportView(mostrar_Grupos_JTable);
 
             javax.swing.GroupLayout mostrar_Grupos_JPanelLayout = new javax.swing.GroupLayout(mostrar_Grupos_JPanel);
@@ -225,9 +245,9 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Grupos_JPanel.setOpaque(false);
             buscar_Grupos_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
-            buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-            buscar_JTextField.setToolTipText("<html>\n<h3>Buscar grupo(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
+            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
             buscar_JTextField.setBorder(null);
+            buscar_JTextField.setToolTipText("<html>\n<h3>Buscar grupo(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     buscar_JTextFieldKeyPressed(evt);
@@ -235,8 +255,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             });
 
             mostrar_Grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/vegan.png"))); // NOI18N
-            mostrar_Grupos_JButton.setToolTipText("<html> <h3>Regresar a mis grupos</h3> </html>");
             mostrar_Grupos_JButton.setBorder(null);
+            mostrar_Grupos_JButton.setToolTipText("<html> <h3>Regresar a mis grupos</h3> </html>");
             ((ImageIcon)mostrar_Grupos_JButton.getIcon()).getImage().flush();
             mostrar_Grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -287,13 +307,32 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         return super.getColumnClass(column);
                     }
                 });
-                buscar_Grupos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                buscar_Grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 buscar_Grupos_JTable.setOpaque(false);
                 buscar_Grupos_JTable.setRowHeight(100);
                 buscar_Grupos_JTable.setRowMargin(15);
                 buscar_Grupos_JTable.setShowGrid(true);
                 buscar_Grupos_JTable.setShowVerticalLines(false);
                 buscar_Grupos_JTable.setRowSorter(new TableRowSorter(buscar_Grupos_JTable.getModel()));
+                buscar_Grupos_JTable.addMouseListener(new MouseAdapter() {
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        if (e.getClickCount() == 2) {
+
+                            JTable tabla = (JTable) e.getComponent();
+                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                            int columna = tabla.getSelectedColumn();
+
+                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+                            Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                            Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                        }
+                    }
+                });
                 buscar_Grupos_JScrollPane.setViewportView(buscar_Grupos_JTable);
 
                 javax.swing.GroupLayout buscar_Grupos_JPanelLayout = new javax.swing.GroupLayout(buscar_Grupos_JPanel);
@@ -411,7 +450,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         mostrar_Grupos_Lista = new Lista<>();
 
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         mostrar_Grupos_JTable.getTableHeader().setFont(gadugi);
 
         mostrar_Grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
@@ -445,7 +484,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                 grupo_Estudiante_Panel
                         = new Grupo_Estudiante_Panel(obtener_Imagen, nombre,
-                                curso, fecha, id);
+                                curso, fecha);
 
                 mostrar_Grupos_Lista.push_back(grupo_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id);
@@ -460,26 +499,6 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        mostrar_Grupos_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    DefaultTableModel modelo = (DefaultTableModel) mostrar_Grupos_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-
-                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
-
-                }
-            }
-        });
-        
         buscar_Grupos_JScrollPane.getViewport().setOpaque(false);
         buscar_Grupos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         buscar_Grupos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -490,25 +509,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        buscar_Grupos_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    DefaultTableModel modelo = (DefaultTableModel) buscar_Grupos_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-
-                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
-
-                }
-            }
-        });
+        
 
     }
 
@@ -529,8 +530,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Grupos_JTable.getModel();
-        for (int i = 0; i < mostrar_Grupos_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -542,7 +543,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             grupo_Estudiante_Panel.Colorear_Componentes();
         }
         
-        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
+        Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
         buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Buscar Grupos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
@@ -559,8 +560,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_Grupos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) buscar_Grupos_JTable.getModel();
-        for (int i = 0; i < buscar_Grupos_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -575,9 +576,11 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     @Override
     public void Limpiar() {
         mostrar_Grupos_Lista.clear();
-        mostrar_Grupos_JTable.removeAll();
         buscar_Grupos_Lista.clear();
-        buscar_Grupos_JTable.removeAll();
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Grupos_JTable.getModel();
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) buscar_Grupos_JTable.getModel();
+        modelo.setRowCount(0);
     }
 
 

@@ -44,17 +44,13 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  */
 public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Componentes_Interface,  Envio_Interface,Limpieza_Interface, Carta_Visibilidad_Interface{
 
-    private final String ID;
     private boolean carta_Visible;
     
     /**
      * Creates new form Chat_Estudiante
      */
-    public Chat_Estudiante_Panel(String receptor_Nombre,
-            String _id) {
+    public Chat_Estudiante_Panel(String receptor_Nombre) {
         initComponents();
-        
-        this.ID = _id;
         
         nombre_JLabel.setText(receptor_Nombre);
         
@@ -539,10 +535,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
             Enviar_Mensaje();
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
-
-    public String ID() {
-        return this.ID;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
