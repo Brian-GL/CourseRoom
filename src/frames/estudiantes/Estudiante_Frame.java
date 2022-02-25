@@ -8,21 +8,17 @@ package frames.estudiantes;
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
-import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
-import paneles.estudiantes.Tablero_Estudiante_Panel;
-import paneles.estudiantes.preguntas.Preguntas_Estudiante_Panel;
 
 /**
  *
  * @author LENOVO
  */
-public class Preguntar_Estudiante_Frame extends javax.swing.JDialog implements Componentes_Interface{
+public class Estudiante_Frame extends javax.swing.JDialog implements Componentes_Interface{
 
     
-    public Preguntar_Estudiante_Frame() {
+    public Estudiante_Frame() {
         
         initComponents();
         
@@ -138,19 +134,7 @@ public class Preguntar_Estudiante_Frame extends javax.swing.JDialog implements C
     private void preguntar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if(!pregunta_JTextField.getText().isBlank() && !pregunta_JTextField.getText().isEmpty()){
-                if (!descripcion_Pregunta_JTextPane.getText().isBlank() && !descripcion_Pregunta_JTextPane.getText().isEmpty()) {
-                    int cuenta = Preguntas_Estudiante_Panel.Numero_Preguntas()+1;
-                    String id = CourseRoom.Utilerias.Concatenar("Pregunta_", cuenta);
-                    
-                    Preguntas_Estudiante_Panel.Agregar_Pregunta(pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(),
-                    Perfil_Estudiante_Panel.Nombre_Completo(),CourseRoom.Utilerias.Fecha_Hora_Local(),id);
-                    Tablero_Estudiante_Panel.Mostrar_Vista(id);
-                    
-                    this.dispose();
-                }
-                
-            }
+            
         }
     }//GEN-LAST:event_preguntar_JButtonMouseClicked
 

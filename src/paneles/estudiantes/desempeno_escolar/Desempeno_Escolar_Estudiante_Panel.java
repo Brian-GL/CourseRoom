@@ -250,7 +250,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(desempeno_Escolar_JLayeredPane)
                     .addContainerGap())
             );

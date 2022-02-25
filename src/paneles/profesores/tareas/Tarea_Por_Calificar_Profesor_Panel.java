@@ -119,16 +119,16 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         intereses_Tematicas_JScrollPane = new javax.swing.JScrollPane();
         intereses_Tematicas_JTable = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setOpaque(true);
@@ -266,6 +266,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         curso_JLabel.setToolTipText("<html>\n<h3>Curso de provenencia</h3>\n</html>");
         curso_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         curso_JLabel.setOpaque(true);
+        ((ImageIcon)curso_JLabel.getIcon()).getImage().flush();
         curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 curso_JLabelMouseClicked(evt);
@@ -279,31 +280,34 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         descripcion_JScrollPane.setVerifyInputWhenFocusTarget(false);
         descripcion_JScrollPane.setWheelScrollingEnabled(false);
 
+        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
+        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción</h3>\n</html>");
         descripcion_JTextPane.setFocusCycleRoot(false);
         descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setRequestFocusEnabled(false);
-        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción</h3>\n</html>");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
+        fecha_Entrega_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         fecha_Entrega_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Entrega_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock.png"))); // NOI18N
-        fecha_Entrega_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         fecha_Entrega_JLabel.setOpaque(true);
+        ((ImageIcon)fecha_Entrega_JLabel.getIcon()).getImage().flush();
 
+        estatus_Tarea_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         estatus_Tarea_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         estatus_Tarea_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_1.png"))); // NOI18N
-        estatus_Tarea_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         estatus_Tarea_JLabel.setOpaque(true);
+        ((ImageIcon)estatus_Tarea_JLabel.getIcon()).getImage().flush();
 
+        fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Creacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_1.png"))); // NOI18N
-        fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         fecha_Creacion_JLabel.setOpaque(true);
+        ((ImageIcon)fecha_Creacion_JLabel.getIcon()).getImage().flush();
 
         javax.swing.GroupLayout informacion_Tarea_JPanelLayout = new javax.swing.GroupLayout(informacion_Tarea_JPanel);
         informacion_Tarea_JPanel.setLayout(informacion_Tarea_JPanelLayout);
@@ -341,8 +345,8 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         tarea_JLayeredPane.add(informacion_Tarea_JPanel, "Informacion");
 
         chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         chat_JPanel.setOpaque(false);
+        chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         chat_JPanel.setLayout(new java.awt.BorderLayout());
 
         mensajes_Chat_JScrollPane.setBorder(null);
@@ -472,9 +476,9 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
 
             tarea_JLayeredPane.add(chat_JPanel, "Chat");
 
-            archivos_Entregados_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
             archivos_Entregados_JPanel.setToolTipText("");
             archivos_Entregados_JPanel.setOpaque(false);
+            archivos_Entregados_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
             archivos_Entregados_JScrollPane.setBorder(null);
             archivos_Entregados_JScrollPane.setOpaque(false);
@@ -543,9 +547,9 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                 });
                 archivos_Entregados_JScrollPane.setViewportView(archivos_Entregados_JTable);
 
+                calificar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rating.png"))); // NOI18N
                 calificar_JButton.setText("Calificar");
-                calificar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 calificar_JButton.setToolTipText("");
                 ((ImageIcon)calificar_JButton.getIcon()).getImage().flush();
                 calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -560,15 +564,16 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                     }
                 });
 
+                fecha_Entregado_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
                 fecha_Entregado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 fecha_Entregado_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
-                fecha_Entregado_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
                 fecha_Entregado_JLabel.setOpaque(true);
+                ((ImageIcon)fecha_Entregado_JLabel.getIcon()).getImage().flush();
 
+                es_Tarea_Grupal_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
                 es_Tarea_Grupal_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 es_Tarea_Grupal_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_2.png"))); // NOI18N
                 es_Tarea_Grupal_JLabel.setText("Esta Tarea Se Envió De Manera Grupal");
-                es_Tarea_Grupal_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
                 es_Tarea_Grupal_JLabel.setOpaque(true);
                 ((ImageIcon)es_Tarea_Grupal_JLabel.getIcon()).getImage().flush();
 
@@ -679,9 +684,9 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                     });
                     retroalimentacion_JScrollPane.setViewportView(retroalimentacion_JTable);
 
+                    retroalimentar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                     retroalimentar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-registration.png"))); // NOI18N
                     retroalimentar_JButton.setText("Retroalimentar");
-                    retroalimentar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                     retroalimentar_JButton.setToolTipText("");
                     ((ImageIcon)retroalimentar_JButton.getIcon()).getImage().flush();
                     retroalimentar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -740,15 +745,15 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                     apellidos_JLabel.setPreferredSize(new java.awt.Dimension(560, 50));
                     apellidos_JLabel.setToolTipText("Apellido(s)");
 
-                    nombres_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                    nombres_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                     nombres_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+                    nombres_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                    nombres_JLabel.setToolTipText("Nombre(s)");
+                    nombres_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                     nombres_JLabel.setMaximumSize(new java.awt.Dimension(560, 50));
                     nombres_JLabel.setMinimumSize(new java.awt.Dimension(560, 50));
                     nombres_JLabel.setName("label"); // NOI18N
                     nombres_JLabel.setOpaque(true);
                     nombres_JLabel.setPreferredSize(new java.awt.Dimension(560, 50));
-                    nombres_JLabel.setToolTipText("Nombre(s)");
 
                     correo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                     correo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N

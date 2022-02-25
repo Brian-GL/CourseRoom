@@ -18,6 +18,7 @@
 package paneles.estudiantes.cursos;
 
 import clases.Celda_Renderer;
+import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
@@ -469,11 +470,11 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                     },
                     new String [] {
-                        "Tarea", "Descripcion", "Fecha Entrega", "Estatus"
+                        "Tarea", "Fecha Entrega", "Estatus"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false, false
+                        false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -501,6 +502,24 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 tareas_JTable.setShowGrid(true);
                 tareas_JTable.setShowVerticalLines(false);
                 tareas_JTable.setRowSorter(new TableRowSorter(tareas_JTable.getModel()));
+                tareas_JTable.addMouseListener(new MouseAdapter() {
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        if (e.getClickCount() == 2) {
+
+                            JTable tabla = (JTable) e.getComponent();
+                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                            int columna = tabla.getSelectedColumn();
+
+                            DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
+
+                            Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+                            Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                        }
+                    }
+                });
                 tareas_JScrollPane.setViewportView(tareas_JTable);
 
                 curso_JLayeredPane.add(tareas_JScrollPane, "Tareas");
@@ -602,6 +621,31 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         mensajes_Chat_JTable.setRowMargin(15);
                         mensajes_Chat_JTable.setShowGrid(true);
                         mensajes_Chat_JTable.setRowSorter(new TableRowSorter(mensajes_Chat_JTable.getModel()));
+                        mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {
+
+                            @Override
+                            public void mousePressed(MouseEvent e) {
+                                if (e.getClickCount() == 2) {
+
+                                    JTable tabla = (JTable) e.getComponent();
+                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                    int columna = tabla.getSelectedColumn();
+
+                                    // Abrir
+                                    if (columna == 1) {
+                                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                        Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
+
+                                        if(celda.Tiene_Icono()){
+                                            String extension = FilenameUtils.getExtension(celda.Texto());
+                                            String ruta = celda.ID();
+                                            CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
+                                        }
+                                    }
+
+                                }
+                            }
+                        });
                         mensajes_Chat_JScrollPane.setViewportView(mensajes_Chat_JTable);
 
                         chat_JPanel.add(mensajes_Chat_JScrollPane, java.awt.BorderLayout.CENTER);
@@ -695,7 +739,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                                 },
                                 new String [] {
-                                    "Material", "Emisor", "Fecha", "Descargar"
+                                    "Material", "Emisor", "Fecha", "Remover"
                                 }
                             ) {
                                 boolean[] canEdit = new boolean [] {
@@ -1250,7 +1294,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         intereses_Tematicas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         intereses_Tematicas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
@@ -1270,7 +1314,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         tareas_JTable.getTableHeader().setFont(gadugi);
 
         tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
         modelo = (DefaultTableModel) tareas_JTable.getModel();
 
         String _id, nombre,  fecha, estatus;
@@ -1287,33 +1331,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
             estatus = CourseRoom.Utilerias.bool().bool() ? "Entregado" : "Pendiente";
             celdas[0] = new Celda_Renderer(nombre, _id);
-            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(3), _id);
-            celdas[2] = new Celda_Renderer(fecha, _id);
-            celdas[3] = new Celda_Renderer(estatus, _id);
+            celdas[1] = new Celda_Renderer(fecha, _id);
+            celdas[2] = new Celda_Renderer(estatus, _id);
             Tareas_Estudiante_Panel.Agregar_Tarea(nombre, this.nombre_JLabel.getText(), this.nombre_Profesor ,icono_Curso, fecha, estatus, _id);
             modelo.addRow(celdas);
         }
 
-        tareas_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
-
-                }
-            }
-        });
-
-        
         //Miembros:
         miembros_JScrollPane.getViewport().setOpaque(false);
         miembros_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1351,40 +1374,14 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         // Chat 
         
         mensajes_Chat_JScrollPane.getViewport().setOpaque(false);
-        mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
-        mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(20);
+        mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         mensajes_Chat_JTable.getTableHeader().setFont(gadugi);
         
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         
-        mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    // Abrir
-                    if (columna == 1) {
-                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                        Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
-                        
-                        if(celda.Tiene_Icono()){
-                            String extension = FilenameUtils.getExtension(celda.Texto());
-                            String ruta = celda.ID();
-                            CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
-                        }
-                    }
-
-                }
-            }
-        });
-
         // Materiales:
         materiales_JScrollPane.getViewport().setOpaque(false);
         materiales_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1413,6 +1410,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                 CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
                             }
                             break;
+                        //Remover
                         case 3:
                             break;
                        
@@ -1435,7 +1433,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         celdas = new Celda_Renderer[2];
         modelo = (DefaultTableModel) avisos_JTable.getModel();
-        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 10); i++) {
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
 
             celdas[0] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(5), "");
             celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0, 0).toString(), "");
@@ -1520,7 +1518,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         // Informacion curso:
         
-        Font gadugi = new Font("Gadugi", 0, 18);
+        Font gadugi = new Font("Segoe UI", 0, 18);
 
         descripcion_Curso_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
@@ -1544,7 +1542,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;
-        for (int i = 0; i < intereses_Tematicas_JTable.getRowCount(); i++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
             celda = (Celda_Renderer) modelo.getValueAt(i, 0);
             celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
         }
@@ -1555,8 +1553,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         tareas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) tareas_JTable.getModel();
-        for (int i = 0; i < tareas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1569,8 +1567,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         miembros_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         modelo = (DefaultTableModel) miembros_JTable.getModel();
-        for (int i = 0; i < miembros_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 2; j++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1587,8 +1585,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-        for (int i = 0; i < mensajes_Chat_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1600,8 +1598,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         materiales_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) materiales_JTable.getModel();
-        for (int i = 0; i < materiales_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1617,7 +1615,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         avisos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) avisos_JTable.getModel();
-        for (int i = 0; i < avisos_JTable.getRowCount(); i++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
@@ -1635,8 +1633,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         estadisticas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
 
         modelo = (DefaultTableModel) estadisticas_JTable.getModel();
-        for (int i = 0; i < estadisticas_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 6; j++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1652,26 +1650,29 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     
     
     public void Enviar_Materiales() {
-        JFileChooser escogedor_Archivo = new JFileChooser();
-        escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        escogedor_Archivo.setApproveButtonText("Compartir Archivo(s)");
-        escogedor_Archivo.setMultiSelectionEnabled(true);
-        int resultado = escogedor_Archivo.showOpenDialog(this);
+        Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
+        int resultado = escogedor_Archivos.showOpenDialog(this);
 
         if (resultado == JFileChooser.APPROVE_OPTION) {
-            File[] archivos_Abiertos = escogedor_Archivo.getSelectedFiles();
+            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
             
             if(archivos_Abiertos != null){
                 
                 Celda_Renderer[] celdas = new Celda_Renderer[4];
                 DefaultTableModel modelo = (DefaultTableModel) materiales_JTable.getModel();
                 ImageIcon icono_Abrir = new ImageIcon(getClass().getResource("/recursos/iconos/box.png"));
-                ImageIcon icono_Descargar = new ImageIcon(getClass().getResource("/recursos/iconos/download.png"));
+                ImageIcon icono_Remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
+                Celda_Renderer celda;
                 for (File archivo_Abierto : archivos_Abiertos) {
-                    celdas[0] = new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),archivo_Abierto.getAbsolutePath());
-                    celdas[1] = new Celda_Renderer(Perfil_Estudiante_Panel.Nombre_Completo(),"");
-                    celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.Fecha_Hora_Local(),"");
-                    celdas[3] = new Celda_Renderer(icono_Descargar,"");
+                    
+                    celda = new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),archivo_Abierto.getAbsolutePath());
+                    celdas[0] = celda;
+                    celda = new Celda_Renderer(Perfil_Estudiante_Panel.Nombre_Completo(),"");
+                    celdas[1] = celda;
+                    celda = new Celda_Renderer(CourseRoom.Utilerias.Fecha_Hora_Local(),"");
+                    celdas[2] = celda;
+                    celda = new Celda_Renderer(icono_Remover,"");
+                    celdas[3] = celda;
                     modelo.addRow(celdas);
                 }
             }
@@ -1706,10 +1707,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     @Override
     public void Enviar_Archivos() {
-        JFileChooser escogedor_Archivos = new JFileChooser();
-        escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        escogedor_Archivos.setApproveButtonText("Enviar Archivo(s)");
-        escogedor_Archivos.setMultiSelectionEnabled(true);
+        Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
 
         if (resultado == JFileChooser.APPROVE_OPTION) {
@@ -1750,9 +1748,20 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     
     @Override
     public void Limpiar() {
-        mensajes_Chat_JTable.removeAll();
-        miembros_JTable.removeAll();
-        materiales_JTable.removeAll();
+        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) tareas_JTable.getModel();
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) miembros_JTable.getModel();
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) materiales_JTable.getModel();
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) avisos_JTable.getModel();
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) estadisticas_JTable.getModel();
+        modelo.setRowCount(0);
         
     }
 

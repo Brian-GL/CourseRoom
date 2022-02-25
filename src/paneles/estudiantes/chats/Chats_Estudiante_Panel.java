@@ -179,6 +179,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         mostrar_Chats_JScrollPane.setOpaque(false);
 
         mostrar_Chats_JTable.setAutoCreateRowSorter(true);
+        mostrar_Chats_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mostrar_Chats_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -212,7 +213,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                     return super.getColumnClass(column);
                 }
             });
-            mostrar_Chats_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             mostrar_Chats_JTable.setOpaque(false);
             mostrar_Chats_JTable.setRowHeight(100);
             mostrar_Chats_JTable.setRowMargin(15);
@@ -266,9 +266,9 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             buscar_Chats_JPanel.setOpaque(false);
             buscar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-            buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-            buscar_JTextField.setBorder(null);
+            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
             buscar_JTextField.setToolTipText("<html> <h3>Buscar chats. Presiona ENTER para realizar la búsqueda</h3> </html>");
+            buscar_JTextField.setBorder(null);
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     buscar_JTextFieldKeyPressed(evt);
@@ -276,8 +276,8 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             });
 
             mostrar_Chats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/video-chat.png"))); // NOI18N
-            mostrar_Chats_JButton.setBorder(null);
             mostrar_Chats_JButton.setToolTipText("<html>\n<h3>Regresar a mis chats personales</h3>\n</html>");
+            mostrar_Chats_JButton.setBorder(null);
             ((ImageIcon)mostrar_Chats_JButton.getIcon()).getImage().flush();
             mostrar_Chats_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -656,7 +656,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
             setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
             setAlwaysOnTop(true);
-            setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+            setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
             setMaximumSize(new java.awt.Dimension(800, 140));
             setMinimumSize(new java.awt.Dimension(800, 140));
             setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);

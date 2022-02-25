@@ -333,13 +333,13 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
             cuenta_JPanelLayout.setVerticalGroup(
                 cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cuenta_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(82, Short.MAX_VALUE)
+                    .addContainerGap(85, Short.MAX_VALUE)
                     .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                     .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                     .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(99, Short.MAX_VALUE))
+                    .addContainerGap(100, Short.MAX_VALUE))
             );
 
             ajustes_JLayeredPane.add(cuenta_JPanel, "Cuenta");
@@ -360,7 +360,7 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(ajustes_JLayeredPane)
                     .addContainerGap())
             );

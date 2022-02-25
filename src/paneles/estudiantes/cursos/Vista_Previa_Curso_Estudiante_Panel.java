@@ -20,6 +20,7 @@ package paneles.estudiantes.cursos;
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
+import datos.interfaces.Limpieza_Interface;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -32,7 +33,7 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  *
  * @author LENOVO
  */
-public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface{
+public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface{
 
     private String ID;
     private String nombre_Curso;
@@ -53,7 +54,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         String _nuevo_Curso_ID) {
         initComponents();
         
-        nombre_JLabel.setText(_nombre_Curso);
+        titulo_JLabel.setText(_nombre_Curso);
         ImageIcon icono = new ImageIcon(_imagen_Curso);
         imagen_Curso_JLabel.setIcon(icono);
         icono = new ImageIcon(_imagen_Profesor);
@@ -83,7 +84,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
     private void initComponents() {
 
         titulo_JPanel = new javax.swing.JPanel();
-        nombre_JLabel = new javax.swing.JLabel();
+        titulo_JLabel = new javax.swing.JLabel();
         enrolarme_JButton = new javax.swing.JButton();
         regresar_JButton = new javax.swing.JButton();
         curso_JLayeredPane = new javax.swing.JLayeredPane();
@@ -106,16 +107,16 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
-        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
-        nombre_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
-        nombre_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
-        enrolarme_JButton.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        enrolarme_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         enrolarme_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/working.png"))); // NOI18N
         enrolarme_JButton.setText("Enrolarme");
-        enrolarme_JButton.setBorder(null);
         enrolarme_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)enrolarme_JButton.getIcon()).getImage().flush();
         enrolarme_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -153,10 +154,10 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
             titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(enrolarme_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(enrolarme_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         titulo_JPanelLayout.setVerticalGroup(
             titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +166,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
                     .addComponent(regresar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(titulo_JPanelLayout.createSequentialGroup()
                         .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(enrolarme_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -193,14 +194,14 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         descripcion_Curso_JTextPane.setEditable(false);
         descripcion_Curso_JTextPane.setBorder(null);
         descripcion_Curso_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_Curso_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        descripcion_Curso_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         descripcion_Curso_JTextPane.setText("");
         descripcion_Curso_JScrollPane.setViewportView(descripcion_Curso_JTextPane);
 
         descripcion_Profesor_JTextPane.setEditable(false);
         descripcion_Profesor_JTextPane.setBorder(null);
         descripcion_Profesor_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_Profesor_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        descripcion_Profesor_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         descripcion_Profesor_JTextPane.setText("");
         descripcion_Profesor_JScrollPane.setViewportView(descripcion_Profesor_JTextPane);
 
@@ -211,7 +212,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         imagen_Profesor_JLabel.setMinimumSize(new java.awt.Dimension(400, 400));
         imagen_Profesor_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
 
-        fecha_Creacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Creacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/calendar_1.png"))); // NOI18N
         fecha_Creacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
@@ -224,7 +225,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         intereses_Tematicas_JScrollPane.setOpaque(false);
 
         intereses_Tematicas_JTable.setAutoCreateRowSorter(true);
-        intereses_Tematicas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         intereses_Tematicas_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -345,6 +346,9 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
                 Cursos_Estudiante_Panel.Remover_Curso_Recomendado(ID);
             }
            
+            
+            Tablero_Estudiante_Panel.Retirar_Vista(this);
+            this.Limpiar();
             Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
         }
     }//GEN-LAST:event_enrolarme_JButtonMouseClicked
@@ -396,8 +400,8 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
     private javax.swing.JScrollPane informacion_Curso_JScrollPane;
     private javax.swing.JScrollPane intereses_Tematicas_JScrollPane;
     private javax.swing.JTable intereses_Tematicas_JTable;
-    private javax.swing.JLabel nombre_JLabel;
     private javax.swing.JButton regresar_JButton;
+    private javax.swing.JLabel titulo_JLabel;
     private javax.swing.JPanel titulo_JPanel;
     // End of variables declaration//GEN-END:variables
 
@@ -425,7 +429,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         intereses_Tematicas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         intereses_Tematicas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
@@ -444,14 +448,14 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
     public void Colorear_Componentes() {
         
         titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        nombre_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         regresar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         enrolarme_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         enrolarme_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
       
         // Informacion curso:
         
-        Font gadugi = new Font("Gadugi", 0, 18);
+        Font gadugi = new Font("Segoe UI", 0, 18);
 
         descripcion_Curso_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
@@ -473,11 +477,17 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;
-        for (int i = 0; i < intereses_Tematicas_JTable.getRowCount(); i++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
             celda = (Celda_Renderer) modelo.getValueAt(i, 0);
             celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
         }
         
+    }
+
+    @Override
+    public void Limpiar() {
+        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+        modelo.setRowCount(0);
     }
     
 

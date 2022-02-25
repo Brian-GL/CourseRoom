@@ -466,11 +466,13 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     private void menu_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_JButtonMouseEntered
         // TODO add your handling code here:
         menu_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        menu_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }//GEN-LAST:event_menu_JButtonMouseEntered
 
     private void menu_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_JButtonMouseExited
         // TODO add your handling code here:
-        menu_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        menu_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        menu_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }//GEN-LAST:event_menu_JButtonMouseExited
 
     private void stats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stats_JButtonMouseClicked
@@ -809,8 +811,8 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         salir_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        menu_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        menu_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        menu_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        menu_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
         mensaje_Bienvenida_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
