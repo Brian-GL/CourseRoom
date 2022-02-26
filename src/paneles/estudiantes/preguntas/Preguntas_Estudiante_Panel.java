@@ -253,7 +253,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
             buscar_Preguntas_JPanel.setOpaque(false);
             buscar_Preguntas_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-            buscar_Preguntas_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            buscar_Preguntas_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
             buscar_Preguntas_JTextField.setToolTipText("<html>\n<h3>Buscar duda(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
             buscar_Preguntas_JTextField.setBorder(null);
             buscar_Preguntas_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {

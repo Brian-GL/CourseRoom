@@ -161,9 +161,10 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         });
 
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
-        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Cursos");
+        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
@@ -231,7 +232,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Actuales_JScrollPane.setOpaque(false);
 
         mostrar_Cursos_Actuales_JTable.setAutoCreateRowSorter(true);
-        mostrar_Cursos_Actuales_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        mostrar_Cursos_Actuales_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mostrar_Cursos_Actuales_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -239,7 +240,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                 },
                 new String [] {
-                    "Curso", "Profesor", "Temáticas", "Fecha" ,"Puntuación"
+                    "Curso", "Profesor", "Temáticas", "Creado" ,"Puntuación"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
@@ -271,6 +272,25 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             mostrar_Cursos_Actuales_JTable.setShowGrid(true);
             mostrar_Cursos_Actuales_JTable.setShowVerticalLines(false);
             mostrar_Cursos_Actuales_JTable.setRowSorter(new TableRowSorter(mostrar_Cursos_Actuales_JTable.getModel()));
+            mostrar_Cursos_Actuales_JTable.addMouseListener(new MouseAdapter() {
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (e.getClickCount() == 2) {
+
+                        JTable tabla = (JTable) e.getComponent();
+                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                        int columna = tabla.getSelectedColumn();
+
+                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                        Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                    }
+                }
+            });
             mostrar_Cursos_Actuales_JScrollPane.setViewportView(mostrar_Cursos_Actuales_JTable);
 
             mostrar_Cursos_JLayeredPane.add(mostrar_Cursos_Actuales_JScrollPane, "Actuales");
@@ -279,7 +299,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             mostrar_Cursos_Finalizados_JScrollPane.setOpaque(false);
 
             mostrar_Cursos_Finalizados_JTable.setAutoCreateRowSorter(true);
-            mostrar_Cursos_Finalizados_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+            mostrar_Cursos_Finalizados_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             mostrar_Cursos_Finalizados_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -319,6 +339,25 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 mostrar_Cursos_Finalizados_JTable.setShowGrid(true);
                 mostrar_Cursos_Finalizados_JTable.setShowVerticalLines(false);
                 mostrar_Cursos_Finalizados_JTable.setRowSorter(new TableRowSorter(mostrar_Cursos_Finalizados_JTable.getModel()));
+                mostrar_Cursos_Finalizados_JTable.addMouseListener(new MouseAdapter() {
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        if (e.getClickCount() == 2) {
+
+                            JTable tabla = (JTable) e.getComponent();
+                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                            int columna = tabla.getSelectedColumn();
+
+                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+                            Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                            Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                        }
+                    }
+                });
                 mostrar_Cursos_Finalizados_JScrollPane.setViewportView(mostrar_Cursos_Finalizados_JTable);
 
                 mostrar_Cursos_JLayeredPane.add(mostrar_Cursos_Finalizados_JScrollPane, "Finalizados");
@@ -327,7 +366,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 mostrar_Cursos_Recomendados_JScrollPane.setOpaque(false);
 
                 mostrar_Cursos_Recomendados_JTable.setAutoCreateRowSorter(true);
-                mostrar_Cursos_Recomendados_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                mostrar_Cursos_Recomendados_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 mostrar_Cursos_Recomendados_JTable.setModel(
 
                     new javax.swing.table.DefaultTableModel(
@@ -367,6 +406,25 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     mostrar_Cursos_Recomendados_JTable.setShowGrid(true);
                     mostrar_Cursos_Recomendados_JTable.setShowVerticalLines(false);
                     mostrar_Cursos_Recomendados_JTable.setRowSorter(new TableRowSorter(mostrar_Cursos_Recomendados_JTable.getModel()));
+                    mostrar_Cursos_Recomendados_JTable.addMouseListener(new MouseAdapter() {
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+                            if (e.getClickCount() == 2) {
+
+                                JTable tabla = (JTable) e.getComponent();
+                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                int columna = tabla.getSelectedColumn();
+
+                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+                                Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                                Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                            }
+                        }
+                    });
                     mostrar_Cursos_Recomendados_JScrollPane.setViewportView(mostrar_Cursos_Recomendados_JTable);
 
                     mostrar_Cursos_JLayeredPane.add(mostrar_Cursos_Recomendados_JScrollPane, "Recomendados");
@@ -375,7 +433,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     mostrar_Cursos_Nuevos_JScrollPane.setOpaque(false);
 
                     mostrar_Cursos_Nuevos_JTable.setAutoCreateRowSorter(true);
-                    mostrar_Cursos_Nuevos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                    mostrar_Cursos_Nuevos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                     mostrar_Cursos_Nuevos_JTable.setModel(
 
                         new javax.swing.table.DefaultTableModel(
@@ -415,6 +473,25 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         mostrar_Cursos_Nuevos_JTable.setShowGrid(true);
                         mostrar_Cursos_Nuevos_JTable.setShowVerticalLines(false);
                         mostrar_Cursos_Nuevos_JTable.setRowSorter(new TableRowSorter(mostrar_Cursos_Nuevos_JTable.getModel()));
+                        mostrar_Cursos_Nuevos_JTable.addMouseListener(new MouseAdapter() {
+
+                            @Override
+                            public void mousePressed(MouseEvent e) {
+                                if (e.getClickCount() == 2) {
+
+                                    JTable tabla = (JTable) e.getComponent();
+                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                    int columna = tabla.getSelectedColumn();
+
+                                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+                                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                                }
+                            }
+                        });
                         mostrar_Cursos_Nuevos_JScrollPane.setViewportView(mostrar_Cursos_Nuevos_JTable);
 
                         mostrar_Cursos_JLayeredPane.add(mostrar_Cursos_Nuevos_JScrollPane, "Nuevos");
@@ -435,7 +512,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                             .addGroup(mostrar_Cursos_JPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(mostrar_Cursos_JLayeredPane)
                                 .addContainerGap())
                         );
@@ -445,7 +522,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         buscar_Cursos_JPanel.setOpaque(false);
                         buscar_Cursos_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-                        buscar_JTextField.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+                        buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
                         buscar_JTextField.setToolTipText("<html> <h3>Buscar curso(s). Presiona ENTER para realizar la búsqueda</h3> </html>");
                         buscar_JTextField.setBorder(null);
                         buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -514,6 +591,25 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                             buscar_Cursos_JTable.setShowGrid(true);
                             buscar_Cursos_JTable.setShowVerticalLines(false);
                             buscar_Cursos_JTable.setRowSorter(new TableRowSorter(buscar_Cursos_JTable.getModel()));
+                            buscar_Cursos_JTable.addMouseListener(new MouseAdapter() {
+
+                                @Override
+                                public void mousePressed(MouseEvent e) {
+                                    if (e.getClickCount() == 2) {
+
+                                        JTable tabla = (JTable) e.getComponent();
+                                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                        int columna = tabla.getSelectedColumn();
+
+                                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+                                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                                        Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                                    }
+                                }
+                            });
                             buscar_Cursos_JScrollPane.setViewportView(buscar_Cursos_JTable);
 
                             javax.swing.GroupLayout buscar_Cursos_JPanelLayout = new javax.swing.GroupLayout(buscar_Cursos_JPanel);
@@ -537,8 +633,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                                     .addGroup(buscar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(buscar_JTextField)
                                         .addComponent(mostrar_Cursos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(buscar_Cursos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(buscar_Cursos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                                     .addContainerGap())
                             );
 
@@ -647,10 +743,10 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         int fila;
         Celda_Renderer[] celdas = new Celda_Renderer[5];
-        
+        Celda_Renderer celda;
         for (fila = 0; fila < mostrar_Cursos_Recomendados_JTable.getRowCount(); fila++) {
             
-            Celda_Renderer celda = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 0);
+            celda = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 0);
             if (celda.ID().equals(ID)){
                 celdas[0] = celda;
                 celdas[1] = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(fila, 1);
@@ -670,11 +766,12 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     public static void Remover_Curso_Nuevo(String ID){
         
         int fila;
-        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
         
         for (fila = 0; fila < mostrar_Cursos_Nuevos_JTable.getRowCount(); fila++) {
             
-            Celda_Renderer celda = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 0);
+            celda = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 0);
             if (celda.ID().equals(ID)){
                 celdas[0] = celda;
                 celdas[1] = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(fila, 1);
@@ -732,32 +829,11 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Cursos_Lista = new Lista<>();
 
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         buscar_Cursos_JTable.getTableHeader().setFont(gadugi);
 
         buscar_Cursos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
  
-        buscar_Cursos_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    DefaultTableModel modelo = (DefaultTableModel) buscar_Cursos_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-
-                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
-
-                }
-            }
-        });
-        
-        
         // Cursos actuales:
         mostrar_Cursos_Actuales_JScrollPane.getViewport().setOpaque(false);
         mostrar_Cursos_Actuales_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -773,8 +849,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         String id;
         URL url_Imagen;
-        Image obtener_Imagen_Curso, obtener_Imagen_Profesor, imagen = null;
-        ImageIcon icono = null;
+        Image obtener_Imagen_Curso, obtener_Imagen_Profesor, imagen;
+        ImageIcon icono;
         String fecha_Creacion;
         Curso_Estudiante_Panel curso_Estudiante_Panel;
         for (id_Curso_Actual = 0; id_Curso_Actual < CourseRoom.Utilerias.number().numberBetween(1, 5); id_Curso_Actual++) {
@@ -822,26 +898,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        mostrar_Cursos_Actuales_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-
-                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
-
-                }
-            }
-        });
-        
         //Cursos finalizados:
         mostrar_Cursos_Finalizados_JScrollPane.getViewport().setOpaque(false);
         mostrar_Cursos_Finalizados_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -897,25 +953,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        mostrar_Cursos_Finalizados_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-
-                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
-
-                }
-            }
-        });
+        
         
         //Cursos Recomendados:
         mostrar_Cursos_Recomendados_JScrollPane.getViewport().setOpaque(false);
@@ -976,26 +1014,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        mostrar_Cursos_Recomendados_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Recomendados_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-
-                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
-
-                }
-            }
-        });
-        
         //Cursos nuevos:
         mostrar_Cursos_Nuevos_JScrollPane.getViewport().setOpaque(false);
         mostrar_Cursos_Nuevos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1051,26 +1069,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
 
-        mostrar_Cursos_Nuevos_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Nuevos_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-
-                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
-
-                }
-            }
-        });
-        
         titulo_JLabel.setText("Cursos Actuales");
         
     }
@@ -1091,7 +1089,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         //Buscar cursos:
         
-        Font gadugi = new java.awt.Font("Gadugi", 1, 16);
+        Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
         buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Buscar Cursos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
@@ -1109,8 +1107,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         DefaultTableModel modelo = (DefaultTableModel) buscar_Cursos_JTable.getModel();
         Celda_Renderer celda;
-        for (int i = 0; i < buscar_Cursos_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1127,8 +1125,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Actuales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         mostrar_Cursos_Actuales_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
-        for (int i = 0; i < mostrar_Cursos_Actuales_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < modelo_Cursos_Actuales.getRowCount(); i++) {
+            for (int j = 0; j < modelo_Cursos_Actuales.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo_Cursos_Actuales.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1146,8 +1144,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Finalizados_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
         modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
-        for (int i = 0; i < mostrar_Cursos_Finalizados_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1163,8 +1161,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Recomendados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         mostrar_Cursos_Recomendados_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
-        for (int i = 0; i < mostrar_Cursos_Recomendados_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < modelo_Cursos_Recomendados.getRowCount(); i++) {
+            for (int j = 0; j < modelo_Cursos_Recomendados.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo_Cursos_Recomendados.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1181,8 +1179,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Nuevos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         mostrar_Cursos_Nuevos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
-        for (int i = 0; i < mostrar_Cursos_Nuevos_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < modelo_Cursos_Nuevos.getRowCount(); i++) {
+            for (int j = 0; j < modelo_Cursos_Nuevos.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo_Cursos_Nuevos.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
@@ -1197,15 +1195,24 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     @Override
     public void Limpiar() {
         buscar_Cursos_Lista.clear();
-        buscar_Cursos_JTable.removeAll();
+        
         mostrar_Cursos_Actuales_Lista.clear();
-        mostrar_Cursos_Actuales_JTable.removeAll();
+        
         mostrar_Cursos_Finalizados_Lista.clear();
-        mostrar_Cursos_Finalizados_JTable.removeAll();
+        
         mostrar_Cursos_Recomendados_Lista.clear();
-        mostrar_Cursos_Recomendados_JTable.removeAll();
+        
         mostrar_Cursos_Nuevos_Lista.clear();
-        mostrar_Cursos_Nuevos_JTable.removeAll();
+        
+        modelo_Cursos_Actuales.setRowCount(0);
+        modelo_Cursos_Recomendados.setRowCount(0);
+        modelo_Cursos_Nuevos.setRowCount(0);
+        
+        DefaultTableModel modelo = (DefaultTableModel) buscar_Cursos_JTable.getModel();
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
+        modelo.setRowCount(0);
+        
     }
 
     @Override

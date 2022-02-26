@@ -2,6 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/courseroom/CourseRoom.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/chats/Chat_Estudiante_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/frames/generales/Lector_Video_General_Panel.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -22,6 +22,7 @@ import datos.interfaces.Componentes_Interface;
 import courseroom.CourseRoom;
 import datos.interfaces.Limpieza_Interface;
 import datos.interfaces.Reproductor_Interface;
+import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -96,10 +97,12 @@ public class Lector_Video_General_Panel extends javax.swing.JFrame implements Li
         getContentPane().setLayout(new java.awt.CardLayout());
 
         fondo_JPanel.setBackground(java.awt.Color.black);
+        fondo_JPanel.setLayout(new java.awt.BorderLayout());
 
         vista_Video_JPanel.setOpaque(false);
         vista_Video_JPanel.setPreferredSize(new java.awt.Dimension(400, 420));
-        vista_Video_JPanel.setLayout(new java.awt.CardLayout());
+        vista_Video_JPanel.setLayout(new java.awt.BorderLayout());
+        fondo_JPanel.add(vista_Video_JPanel, java.awt.BorderLayout.CENTER);
 
         controles_JPanel.setOpaque(false);
 
@@ -155,26 +158,7 @@ public class Lector_Video_General_Panel extends javax.swing.JFrame implements Li
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout fondo_JPanelLayout = new javax.swing.GroupLayout(fondo_JPanel);
-        fondo_JPanel.setLayout(fondo_JPanelLayout);
-        fondo_JPanelLayout.setHorizontalGroup(
-            fondo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondo_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(fondo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(controles_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        fondo_JPanelLayout.setVerticalGroup(
-            fondo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondo_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(vista_Video_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(controles_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        fondo_JPanel.add(controles_JPanel, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(fondo_JPanel, "card2");
 
@@ -238,7 +222,6 @@ public class Lector_Video_General_Panel extends javax.swing.JFrame implements Li
         bandera_Barra_Progreso = true;
         
         componente_Embebido_Reproductor_Video = new EmbeddedMediaPlayerComponent();
-        vista_Video_JPanel.add("Vista_Video",componente_Embebido_Reproductor_Video.videoSurfaceComponent());
         progreso_JSlider.setEnabled(false);
         Establecer_Eventos_Reproductor();
         componente_Embebido_Reproductor_Video.mediaPlayer().video().setAdjustVideo(true);
@@ -255,11 +238,9 @@ public class Lector_Video_General_Panel extends javax.swing.JFrame implements Li
         
         Colorear_Componentes();
         
-        
+        vista_Video_JPanel.add(componente_Embebido_Reproductor_Video.videoSurfaceComponent(), BorderLayout.CENTER);
         
         Establecer_Play_Pausa();
-        
-        
     }
 
     @Override

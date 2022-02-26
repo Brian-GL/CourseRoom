@@ -701,7 +701,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         informacion_Extra_JPanel.setOpaque(false);
 
-        crear_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
+        crear_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check_1.png"))); // NOI18N
         crear_Cuenta_JButton.setBorder(null);
         crear_Cuenta_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         crear_Cuenta_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");

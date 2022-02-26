@@ -266,7 +266,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             buscar_Chats_JPanel.setOpaque(false);
             buscar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
             buscar_JTextField.setToolTipText("<html> <h3>Buscar chats. Presiona ENTER para realizar la búsqueda</h3> </html>");
             buscar_JTextField.setBorder(null);
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {

@@ -243,7 +243,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Tareas_JPanel.setOpaque(false);
             buscar_Tareas_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
-            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
             buscar_JTextField.setToolTipText("<html>\n<h3>Buscar tarea(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
             buscar_JTextField.setBorder(null);
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -417,14 +417,14 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    public static void Agregar_Tarea(String nombre, String nombre_Curso, String nombre_Profesor, ImageIcon icono_Curso, 
+    public static void Agregar_Tarea(String nombre_Tarea, String nombre_Curso, String nombre_Profesor, ImageIcon icono_Curso, 
             String fecha, String estatus, String _id){
         
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         String fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
         Celda_Renderer celda;
         
-        celda = new Celda_Renderer(nombre, _id);
+        celda = new Celda_Renderer(nombre_Tarea, _id);
         celdas[0] = celda;
         celda = new Celda_Renderer(icono_Curso,nombre_Curso,_id);
         celdas[1] = celda;
@@ -436,7 +436,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         celdas[4] = celda;
         
         Tarea_Estudiante_Panel tarea_Estudiante_Panel =
-                new Tarea_Estudiante_Panel(nombre,nombre_Curso,fecha_Creacion, fecha, estatus);
+                new Tarea_Estudiante_Panel(nombre_Tarea,nombre_Curso,fecha_Creacion, fecha, estatus);
         mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
         modelo_Estatico.addRow(celdas);
         Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, _id);

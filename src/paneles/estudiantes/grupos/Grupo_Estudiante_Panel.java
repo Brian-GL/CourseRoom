@@ -162,6 +162,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
+        titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         tareas_Pendientes_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/daily-tasks.png"))); // NOI18N
@@ -1538,7 +1539,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         curso_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         curso_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
         archivos_Compartidos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());

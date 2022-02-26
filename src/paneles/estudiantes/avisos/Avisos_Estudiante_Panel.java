@@ -10,6 +10,9 @@ import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.Font;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -49,8 +52,8 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         avisos_JTable = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
@@ -104,6 +107,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         avisos_JScrollPane.setOpaque(false);
 
         avisos_JTable.setAutoCreateRowSorter(true);
+        avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         avisos_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -137,10 +141,9 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                     return super.getColumnClass(column);
                 }
             });
-            avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             avisos_JTable.setOpaque(false);
-            avisos_JTable.setRowHeight(80);
-            avisos_JTable.setRowMargin(15);
+            avisos_JTable.setRowHeight(32);
+            avisos_JTable.setRowMargin(5);
             avisos_JTable.setShowGrid(true);
             avisos_JTable.setShowVerticalLines(false);
             avisos_JTable.setRowSorter(new TableRowSorter(avisos_JTable.getModel()));
@@ -185,6 +188,67 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
+    private void Agregar_Aviso(String tipo, String aviso, String fecha){
+        try {
+            Celda_Renderer[] celdas = new Celda_Renderer[3];
+            Celda_Renderer celda;
+            DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
+            
+            Image curso = ImageIO.read(getClass().getResource("/recursos/iconos/course_notification.png"));
+            Image tarea = ImageIO.read(getClass().getResource("/recursos/iconos/homework_notification.png"));
+            Image grupo = ImageIO.read(getClass().getResource("/recursos/iconos/group_notification.png"));
+            Image chat = ImageIO.read(getClass().getResource("/recursos/iconos/chat_notification.png"));
+            Image pregunta = ImageIO.read(getClass().getResource("/recursos/iconos/homework_make.png"));
+            
+            ImageIcon aviso_Curso = new ImageIcon(curso);
+            ImageIcon aviso_Tarea = new ImageIcon(tarea);
+            ImageIcon aviso_Grupo = new ImageIcon(grupo);
+            ImageIcon aviso_Chat = new ImageIcon(chat);
+            ImageIcon aviso_Pregunta = new ImageIcon(pregunta);
+            
+            switch(tipo){
+                case "Curso":
+                    celda = new Celda_Renderer(aviso_Curso,tipo,"");
+                    celdas[0] = celda;
+                    break;
+                case "Tarea":
+                    celda = new Celda_Renderer(aviso_Tarea,tipo,"");
+                    celdas[0] = celda;
+                    break;
+                case "Grupo":
+                    celda = new Celda_Renderer(aviso_Grupo,tipo,"");
+                    celdas[0] = celda;
+                    break;
+                case "Chat":
+                    celda = new Celda_Renderer(aviso_Chat,tipo,"");
+                    celdas[0] = celda;
+                    break;
+                case "Pregunta":
+                    celda = new Celda_Renderer(aviso_Pregunta,tipo,"");
+                    celdas[0] = celda;
+                    break;
+            }
+            
+            celda = new Celda_Renderer(aviso,"");
+            celdas[1] = celda;
+            celda = new Celda_Renderer(fecha,"");
+            celdas[2] = celda;
+            
+            modelo.addRow(celdas);
+            
+            avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla_Archivo(aviso.length()));
+            
+            curso.flush();
+            tarea.flush();
+            grupo.flush();
+            chat.flush();
+            pregunta.flush();
+            
+        } catch (IOException ex) {
+            
+        }
+        
+    }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
@@ -205,35 +269,14 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         avisos_JTable.getTableHeader().setFont(gadugi);
         
         avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
-        DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
-        
-        String id = "";
-        ImageIcon aviso_Curso = new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png"));
-        ImageIcon aviso_Notificacion = new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png"));
-        ImageIcon aviso_Grupo = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
-        ImageIcon aviso_Chat = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
-        
+        String tipo, aviso, fecha;
+        String[] opciones = {"Curso","Tarea","Grupo","Chat","Pregunta"};
         for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1,10);i++){
-            switch(CourseRoom.Utilerias.number().numberBetween(1,5)){
-                case 1:
-                    celdas[0] = new Celda_Renderer(aviso_Curso,"Curso",id);
-                    break;
-                case 2:
-                    celdas[0] = new Celda_Renderer(aviso_Notificacion,"Notificación",id);
-                    break;
-                case 3:
-                    celdas[0] = new Celda_Renderer(aviso_Grupo,"Grupo",id);
-                    break;
-                case 4:
-                    celdas[0] = new Celda_Renderer(aviso_Chat,"Chat",id);
-                    break;
-            }
+            tipo = CourseRoom.Utilerias.options().nextElement(opciones);
+            aviso = CourseRoom.Utilerias.lorem().paragraph();
+            fecha = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
             
-            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(),id);
-            celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23)),id);
-            
-            modelo.addRow(celdas);
+            Agregar_Aviso(tipo, aviso, fecha);
         }
     }
 

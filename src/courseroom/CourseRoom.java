@@ -245,10 +245,10 @@ public class CourseRoom{
         public static int Altura_Fila_Tabla(int numero_Letras){
             return (int)((numero_Letras/60) * 20) + 36;
         }
-//        
-//        public static int Altura_Fila_Tabla_Icono(int numero_Letras){
-//            return (int)((numero_Letras/60) * 20) + 96;
-//        }
+       
+        public static int Altura_Fila_Tabla_Icono(int numero_Letras){
+            return (int)((numero_Letras/60) * 20) + 100;
+        }
         
         public static int Altura_Fila_Tabla_Archivo(int numero_Letras){
             return (int)((numero_Letras/60) * 20) + 42;

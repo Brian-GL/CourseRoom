@@ -109,18 +109,19 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         retroalimentacion_JScrollPane = new javax.swing.JScrollPane();
         retroalimentacion_JTable = new javax.swing.JTable();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
+        titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
@@ -308,16 +309,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_Tarea_JPanelLayout.createSequentialGroup()
                 .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descripcion_JScrollPane)
                     .addGroup(informacion_Tarea_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(descripcion_JScrollPane)
-                            .addGroup(informacion_Tarea_JPanelLayout.createSequentialGroup()
-                                .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(estatus_Tarea_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(estatus_Tarea_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(informacion_Tarea_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(fecha_Creacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(fecha_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)))
@@ -1116,7 +1113,11 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         fecha_Entrega_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         fecha_Entrega_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        fecha_Actualizacion_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        es_Tarea_Grupal_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        es_Tarea_Grupal_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        
+        fecha_Actualizacion_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        fecha_Actualizacion_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         

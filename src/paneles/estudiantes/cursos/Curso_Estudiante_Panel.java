@@ -75,7 +75,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         String _id) {
         initComponents();
         
-        nombre_JLabel.setText(_nombre_Curso);
+        titulo_JLabel.setText(_nombre_Curso);
         nombre_Profesor = _nombre_Profesor;
         ImageIcon icono = new ImageIcon(_imagen_Curso);
         imagen_Curso_JLabel.setIcon(icono);
@@ -98,7 +98,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void initComponents() {
 
         titulo_JPanel = new javax.swing.JPanel();
-        nombre_JLabel = new javax.swing.JLabel();
+        titulo_JLabel = new javax.swing.JLabel();
         tareas_JButton = new javax.swing.JButton();
         materiales_JButton = new javax.swing.JButton();
         informacion_JButton = new javax.swing.JButton();
@@ -151,11 +151,13 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
-        nombre_JLabel.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        nombre_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
-        nombre_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
-        nombre_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
+        titulo_JLabel.setOpaque(true);
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework.png"))); // NOI18N
         tareas_JButton.setBorder(null);
@@ -280,9 +282,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tareas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -311,7 +313,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             .addComponent(tareas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(materiales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(miembros_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -344,14 +346,14 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         descripcion_Curso_JTextPane.setEditable(false);
         descripcion_Curso_JTextPane.setBorder(null);
         descripcion_Curso_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_Curso_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        descripcion_Curso_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         descripcion_Curso_JTextPane.setText("");
         descripcion_Curso_JScrollPane.setViewportView(descripcion_Curso_JTextPane);
 
         descripcion_Profesor_JTextPane.setEditable(false);
         descripcion_Profesor_JTextPane.setBorder(null);
         descripcion_Profesor_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_Profesor_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        descripcion_Profesor_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         descripcion_Profesor_JTextPane.setText("");
         descripcion_Profesor_JScrollPane.setViewportView(descripcion_Profesor_JTextPane);
 
@@ -362,7 +364,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         imagen_Profesor_JLabel.setMinimumSize(new java.awt.Dimension(400, 400));
         imagen_Profesor_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
 
-        fecha_Creacion_JLabel.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Creacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/calendar_1.png"))); // NOI18N
         fecha_Creacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
@@ -375,7 +377,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         intereses_Tematicas_JScrollPane.setOpaque(false);
 
         intereses_Tematicas_JTable.setAutoCreateRowSorter(true);
-        intereses_Tematicas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+        intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         intereses_Tematicas_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -422,10 +424,10 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             informacion_Curso_JPanelLayout.setHorizontalGroup(
                 informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(informacion_Curso_JPanelLayout.createSequentialGroup()
-                    .addGap(14, 14, 14)
+                    .addGap(0, 0, 0)
                     .addGroup(informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(descripcion_Curso_JScrollPane)
-                        .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                        .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                         .addComponent(descripcion_Profesor_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addGap(18, 18, 18)
                     .addGroup(informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,12 +435,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             .addComponent(imagen_Profesor_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(fecha_Creacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(35, 35, 35))
+                    .addGap(0, 0, 0))
             );
             informacion_Curso_JPanelLayout.setVerticalGroup(
                 informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(informacion_Curso_JPanelLayout.createSequentialGroup()
-                    .addContainerGap()
+                    .addGap(0, 0, 0)
                     .addGroup(informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(imagen_Curso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(descripcion_Curso_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -462,7 +464,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             tareas_JScrollPane.setPreferredSize(new java.awt.Dimension(1046, 540));
 
             tareas_JTable.setAutoCreateRowSorter(true);
-            tareas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+            tareas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             tareas_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -470,11 +472,11 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                     },
                     new String [] {
-                        "Tarea", "Fecha Entrega", "Estatus"
+                        "Tarea","Creada El", "Entrega", "Estatus"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false
+                        false, false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -512,7 +514,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                             int columna = tabla.getSelectedColumn();
 
-                            DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
+                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
 
                             Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
                             Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
@@ -529,7 +531,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 miembros_JScrollPane.setPreferredSize(new java.awt.Dimension(1046, 540));
 
                 miembros_JTable.setAutoCreateRowSorter(true);
-                miembros_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                miembros_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 miembros_JTable.setModel(
 
                     new javax.swing.table.DefaultTableModel(
@@ -582,7 +584,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     mensajes_Chat_JScrollPane.setOpaque(false);
 
                     mensajes_Chat_JTable.setAutoCreateRowSorter(true);
-                    mensajes_Chat_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                    mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                     mensajes_Chat_JTable.setModel(
 
                         new javax.swing.table.DefaultTableModel(
@@ -673,7 +675,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             }
                         });
 
-                        redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+                        redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
                         redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
                         redactar_Mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -710,7 +712,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         materiales_Curso_JPanel.setOpaque(false);
                         materiales_Curso_JPanel.setPreferredSize(new java.awt.Dimension(1046, 630));
 
-                        compartir_Materiales_JButton.setFont(new java.awt.Font("Gadugi", 1, 16)); // NOI18N
+                        compartir_Materiales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
                         compartir_Materiales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
                         compartir_Materiales_JButton.setText("Compartir Material(es)");
                         compartir_Materiales_JButton.setToolTipText("Compartir Y Subir Archivo");
@@ -731,7 +733,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         materiales_JScrollPane.setOpaque(false);
 
                         materiales_JTable.setAutoCreateRowSorter(true);
-                        materiales_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                        materiales_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                         materiales_JTable.setModel(
 
                             new javax.swing.table.DefaultTableModel(
@@ -739,7 +741,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                                 },
                                 new String [] {
-                                    "Material", "Emisor", "Fecha", "Remover"
+                                    "Material", "Emisor", "Subido", "Remover"
                                 }
                             ) {
                                 boolean[] canEdit = new boolean [] {
@@ -778,22 +780,22 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             materiales_Curso_JPanelLayout.setHorizontalGroup(
                                 materiales_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(materiales_Curso_JPanelLayout.createSequentialGroup()
-                                    .addContainerGap()
+                                    .addGap(0, 0, 0)
                                     .addGroup(materiales_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
                                         .addGroup(materiales_Curso_JPanelLayout.createSequentialGroup()
                                             .addGap(0, 0, Short.MAX_VALUE)
                                             .addComponent(compartir_Materiales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addContainerGap())
+                                    .addGap(0, 0, 0))
                             );
                             materiales_Curso_JPanelLayout.setVerticalGroup(
                                 materiales_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(materiales_Curso_JPanelLayout.createSequentialGroup()
-                                    .addContainerGap()
+                                    .addGap(0, 0, 0)
                                     .addComponent(compartir_Materiales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
-                                    .addContainerGap())
+                                    .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                                    .addGap(0, 0, 0))
                             );
 
                             curso_JLayeredPane.add(materiales_Curso_JPanel, "Materiales");
@@ -803,7 +805,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             avisos_JScrollPane.setPreferredSize(new java.awt.Dimension(1046, 540));
 
                             avisos_JTable.setAutoCreateRowSorter(true);
-                            avisos_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                            avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                             avisos_JTable.setModel(
 
                                 new javax.swing.table.DefaultTableModel(
@@ -858,7 +860,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                 estadisticas_JScrollPane.setOpaque(false);
 
                                 estadisticas_JTable.setAutoCreateRowSorter(true);
-                                estadisticas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
+                                estadisticas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                                 estadisticas_JTable.setModel(
 
                                     new javax.swing.table.DefaultTableModel(
@@ -900,7 +902,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
                                     estadisticas_JScrollPane.setViewportView(estadisticas_JTable);
 
-                                    abandonar_Curso_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+                                    abandonar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
                                     abandonar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/leave.png"))); // NOI18N
                                     abandonar_Curso_JButton.setText("Abandonar Curso");
                                     abandonar_Curso_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
@@ -917,7 +919,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                         }
                                     });
 
-                                    finalizar_Curso_JButton.setFont(new java.awt.Font("Gadugi", 1, 22)); // NOI18N
+                                    finalizar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
                                     finalizar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
                                     finalizar_Curso_JButton.setText("Finalizar Curso");
                                     finalizar_Curso_JButton.setToolTipText("Finaliza el curso");
@@ -946,12 +948,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                                     .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addContainerGap())
+                                            .addGap(0, 0, 0))
                                     );
                                     estadisticas_JPanelLayout.setVerticalGroup(
                                         estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
-                                            .addContainerGap()
+                                            .addGap(0, 0, 0)
                                             .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                                             .addGap(18, 18, 18)
                                             .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1258,7 +1260,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JButton miembros_JButton;
     private javax.swing.JScrollPane miembros_JScrollPane;
     private javax.swing.JTable miembros_JTable;
-    private javax.swing.JLabel nombre_JLabel;
     private javax.swing.JTextField redactar_Mensaje_Chat_JTextField;
     private javax.swing.JButton regresar_JButton;
     private javax.swing.JButton regresion_Lineal_JButton;
@@ -1266,6 +1267,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JButton tareas_JButton;
     private javax.swing.JScrollPane tareas_JScrollPane;
     private javax.swing.JTable tareas_JTable;
+    private javax.swing.JLabel titulo_JLabel;
     private javax.swing.JPanel titulo_JPanel;
     // End of variables declaration//GEN-END:variables
 
@@ -1299,10 +1301,10 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-        Celda_Renderer[] celda = new Celda_Renderer[1];
-        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 10); i++) {
-            celda[0] = new Celda_Renderer(CourseRoom.Utilerias.music().genre(), "");
-            modelo.addRow(celda);
+        Celda_Renderer[] celdas = new Celda_Renderer[1];
+        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
+            celdas[0] = new Celda_Renderer(CourseRoom.Utilerias.music().genre(), "");
+            modelo.addRow(celdas);
         }
         
         //Tareas:
@@ -1312,9 +1314,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         tareas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
         tareas_JTable.getTableHeader().setFont(gadugi);
-
         tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
+        celdas = new Celda_Renderer[4];
+        
         modelo = (DefaultTableModel) tareas_JTable.getModel();
 
         String _id, nombre,  fecha, estatus;
@@ -1331,9 +1333,10 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             fecha = CourseRoom.Utilerias.date().birthday(0, 0).toString();
             estatus = CourseRoom.Utilerias.bool().bool() ? "Entregado" : "Pendiente";
             celdas[0] = new Celda_Renderer(nombre, _id);
-            celdas[1] = new Celda_Renderer(fecha, _id);
-            celdas[2] = new Celda_Renderer(estatus, _id);
-            Tareas_Estudiante_Panel.Agregar_Tarea(nombre, this.nombre_JLabel.getText(), this.nombre_Profesor ,icono_Curso, fecha, estatus, _id);
+            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.Fecha_Hora_Local(), _id);
+            celdas[2] = new Celda_Renderer(fecha, _id);
+            celdas[3] = new Celda_Renderer(estatus, _id);
+            Tareas_Estudiante_Panel.Agregar_Tarea(nombre, this.titulo_JLabel.getText(), this.nombre_Profesor ,icono_Curso, fecha, estatus, _id);
             modelo.addRow(celdas);
         }
 
@@ -1509,8 +1512,11 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     public void Colorear_Componentes() {
         
         titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        nombre_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        regresar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        
+        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         Carta_Visible();
@@ -1561,7 +1567,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         }
 
         
-       //Miembros:
+         //Miembros:
         miembros_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         miembros_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         miembros_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());

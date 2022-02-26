@@ -1074,7 +1074,7 @@
         <Component class="javax.swing.JButton" name="crear_Cuenta_JButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/recursos/iconos/check.png"/>
+              <Image iconType="3" name="/recursos/iconos/check_1.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>

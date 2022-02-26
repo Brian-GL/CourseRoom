@@ -35,22 +35,23 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
 //The JLabel that is used to display image
     private final JLabel label = new JLabel();
     private final String ID;
-    private final String texto;
+    private final String _texto;
 
     public Celda_Renderer(){
         super();
-        texto = ID = "";
-        label.setVerticalAlignment(JLabel.CENTER);
+        ID = "";
+        _texto = "";
+        label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
     }
    
-    public Celda_Renderer(String _texto, String _id) {
+    public Celda_Renderer(String texto, String _id) {
         super();
         this.ID = _id;
-        texto = _texto;
-        label.setVerticalAlignment(JLabel.CENTER);
+        _texto = texto;
+        label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
-        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
+        label.setText(CourseRoom.Utilerias.Formato_HTML_Centro(texto));
         label.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
     }
@@ -58,23 +59,23 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
     public Celda_Renderer(ImageIcon icono, String _id) {
         super();
         this.ID = _id;
-        texto = "";
         if(icono != null){
             label.setIcon(icono);
         }
-        label.setVerticalAlignment(JLabel.CENTER);
+        _texto = "";
+        label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
     }
     
-    public Celda_Renderer(ImageIcon icono, String _texto, String _id) {
+    public Celda_Renderer(ImageIcon icono, String texto, String _id) {
         super();
         this.ID = _id;
-        texto = _texto;
         if(icono != null){
             label.setIcon(icono);
         }
+        _texto = texto;
         label.setText(CourseRoom.Utilerias.Formato_HTML_Centro(texto));
-        label.setVerticalAlignment(JLabel.CENTER);
+        label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
@@ -89,7 +90,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
     } 
     
     public String Texto(){
-        return this.texto;
+        return this._texto;
     } 
     
     public boolean Tiene_Icono(){
@@ -128,6 +129,8 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         Celda_Renderer celda = (Celda_Renderer) value;
         return (Component) celda.Label();
     }
+    
+    
 
     @Override
     public int compareTo(Object o) {

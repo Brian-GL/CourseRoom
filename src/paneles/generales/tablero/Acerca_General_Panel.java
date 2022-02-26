@@ -141,7 +141,7 @@ public class Acerca_General_Panel extends javax.swing.JPanel implements Componen
         } catch (IOException ex) {
             
         }
-       
+        
     }
 
     @Override
