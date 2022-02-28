@@ -190,11 +190,11 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
                 },
                 new String [] {
-                    "Chat", "Fecha", "No Leídos"
+                    "Chat", "Fecha", "No Leídos", "Último Mensaje"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false
+                    false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -264,8 +264,8 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
             add(mostrar_Chats_JPanel, "Mostrar");
 
-            buscar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
             buscar_Chats_JPanel.setOpaque(false);
+            buscar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
             buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             buscar_JTextField.setToolTipText("<html> <h3>Buscar chats. Presiona ENTER para realizar la búsqueda</h3> </html>");
@@ -310,11 +310,11 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
                     },
                     new String [] {
-                        "Chat", "Fecha", "No Leídos"
+                        "Chat", "Fecha", "No Leídos", "Último Mensaje"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false
+                        false, false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -470,13 +470,14 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         chatear_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_chatear_JButtonMouseExited
 
-    public void Agregar_Chat(Image imagen_Chat, String nombre_Completo, String fecha, String numero_Mensajes_No_Leidos, String id) {
+    public void Agregar_Chat(
+            Image imagen_Chat, String nombre_Completo,
+            String fecha, String numero_Mensajes_No_Leidos, String ultimo_Mensaje, String id) {
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
-        ImageIcon icono_Chat;
-        icono_Chat = new ImageIcon(imagen_Chat);
+        ImageIcon icono_Chat = new ImageIcon(imagen_Chat);
         
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
         Celda_Renderer celda;
         
         celda =  new Celda_Renderer(icono_Chat,nombre_Completo, id);
@@ -485,6 +486,8 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         celdas[1] = celda;
         celda =  new Celda_Renderer(numero_Mensajes_No_Leidos, id);
         celdas[2] = celda;
+        celda = new Celda_Renderer(ultimo_Mensaje, id);
+        celdas[3] = celda;
         
         modelo.addRow(celdas);
         
@@ -540,7 +543,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         buscar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
 
-        String id, nombre_Completo, numero_Mensajes_No_Leidos;
+        String id, nombre_Completo, numero_Mensajes_No_Leidos, ultimo_Mensaje;
         URL url_Imagen;
         Image obtener_Imagen;
         
@@ -551,8 +554,9 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
             nombre_Completo = CourseRoom.Utilerias.name().fullName();
             numero_Mensajes_No_Leidos = String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 10));
-
-            Agregar_Chat(obtener_Imagen, nombre_Completo, CourseRoom.Utilerias.Fecha_Hora_Local(), numero_Mensajes_No_Leidos, id);
+            ultimo_Mensaje = CourseRoom.Utilerias.lorem().sentence();
+                    
+            Agregar_Chat(obtener_Imagen, nombre_Completo, CourseRoom.Utilerias.Fecha_Hora_Local(), numero_Mensajes_No_Leidos, ultimo_Mensaje, id);
 
             obtener_Imagen.flush();
             obtener_Imagen.getGraphics().dispose();

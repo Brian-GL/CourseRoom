@@ -18,6 +18,7 @@
 package paneles.estudiantes.perfil;
 
 import clases.Celda_Renderer;
+import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import courseroom.CourseRoom;
 import datos.interfaces.Carta_Visibilidad_Interface;
@@ -1114,16 +1115,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
 
-            JFileChooser escogedor_Archivo = new JFileChooser();
+            Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "png", "jpg", "jpeg", "bmp");
-            escogedor_Archivo.addChoosableFileFilter(filtro);
-            escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            escogedor_Archivo.setAcceptAllFileFilterUsed(true);
-            escogedor_Archivo.setApproveButtonText("Cargar Imagen");
-            int result = escogedor_Archivo.showOpenDialog(this);
+            escogedor_Archivos.addChoosableFileFilter(filtro);
+            escogedor_Archivos.setAcceptAllFileFilterUsed(true);
+            int result = escogedor_Archivos.showOpenDialog(this);
 
             if (result == JFileChooser.APPROVE_OPTION) {
-                File archivo_Abierto = escogedor_Archivo.getSelectedFile();
+                File archivo_Abierto = escogedor_Archivos.getSelectedFile();
 
                 if(archivo_Abierto != null){
                     try {

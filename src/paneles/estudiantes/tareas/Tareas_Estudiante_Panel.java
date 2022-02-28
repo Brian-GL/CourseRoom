@@ -43,7 +43,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private static Lista<Tarea_Estudiante_Panel> mostrar_Tareas_Lista;
     private Lista<Tarea_Estudiante_Panel> buscar_Tareas_Lista;
-    private static DefaultTableModel modelo_Estatico;
+    private static DefaultTableModel modelo_Mostrar_Tareas;
     
     /**
      * Creates new form Tareas_Estudiante
@@ -66,8 +66,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Tareas_JPanel = new javax.swing.JPanel();
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
-        buscar_Tareas_JButton = new javax.swing.JButton();
+        acciones_JPanel = new javax.swing.JPanel();
         actualizar_JButton = new javax.swing.JButton();
+        buscar_Tareas_JButton = new javax.swing.JButton();
         mostrar_Tareas_JScrollPane = new javax.swing.JScrollPane();
         mostrar_Tareas_JTable = new javax.swing.JTable();
         buscar_Tareas_JPanel = new javax.swing.JPanel();
@@ -84,15 +85,35 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Tareas");
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
+
+        acciones_JPanel.setOpaque(false);
+
+        actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setBorder(null);
+        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
+        actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseExited(evt);
+            }
+        });
 
         buscar_Tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
         buscar_Tareas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
@@ -111,46 +132,28 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         });
 
-        actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-        ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
-        actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                actualizar_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                actualizar_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                actualizar_JButtonMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buscar_Tareas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buscar_Tareas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
         );
+
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
         mostrar_Tareas_JScrollPane.setBorder(null);
         mostrar_Tareas_JScrollPane.setOpaque(false);
@@ -190,11 +193,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     return super.getColumnClass(column);
                 }
             });
-            mostrar_Tareas_JTable.setOpaque(false);
-            mostrar_Tareas_JTable.setRowHeight(100);
-            mostrar_Tareas_JTable.setRowMargin(15);
+            mostrar_Tareas_JTable.setRowHeight(110);
             mostrar_Tareas_JTable.setShowGrid(true);
-            mostrar_Tareas_JTable.setShowVerticalLines(false);
+            mostrar_Tareas_JTable.setSurrendersFocusOnKeystroke(true);
             mostrar_Tareas_JTable.setRowSorter(new TableRowSorter(mostrar_Tareas_JTable.getModel()));
             mostrar_Tareas_JTable.addMouseListener(new MouseAdapter() {
 
@@ -222,20 +223,20 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             mostrar_Tareas_JPanelLayout.setHorizontalGroup(
                 mostrar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Tareas_JPanelLayout.createSequentialGroup()
-                    .addGap(32, 32, 32)
+                    .addGap(0, 0, 0)
                     .addGroup(mostrar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mostrar_Tareas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                    .addGap(32, 32, 32))
+                        .addComponent(mostrar_Tareas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGap(0, 0, 0))
             );
             mostrar_Tareas_JPanelLayout.setVerticalGroup(
                 mostrar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Tareas_JPanelLayout.createSequentialGroup()
-                    .addContainerGap()
+                    .addGap(0, 0, 0)
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(mostrar_Tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
-                    .addContainerGap())
+                    .addGap(0, 0, 0))
             );
 
             add(mostrar_Tareas_JPanel, "Mostrar");
@@ -243,7 +244,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Tareas_JPanel.setOpaque(false);
             buscar_Tareas_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
-            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             buscar_JTextField.setToolTipText("<html>\n<h3>Buscar tarea(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
             buscar_JTextField.setBorder(null);
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -255,6 +256,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             mostrar_Tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_5.png"))); // NOI18N
             mostrar_Tareas_JButton.setToolTipText("<html>\n<h3>Regresar a la página de tareas</h3>\n</html>");
             mostrar_Tareas_JButton.setBorder(null);
+            mostrar_Tareas_JButton.setMaximumSize(new java.awt.Dimension(50, 50));
+            mostrar_Tareas_JButton.setMinimumSize(new java.awt.Dimension(50, 50));
+            mostrar_Tareas_JButton.setPreferredSize(new java.awt.Dimension(50, 50));
             ((ImageIcon)mostrar_Tareas_JButton.getIcon()).getImage().flush();
             mostrar_Tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -306,11 +310,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         return super.getColumnClass(column);
                     }
                 });
-                buscar_Tareas_JTable.setOpaque(false);
-                buscar_Tareas_JTable.setRowHeight(100);
-                buscar_Tareas_JTable.setRowMargin(15);
+                buscar_Tareas_JTable.setRowHeight(110);
                 buscar_Tareas_JTable.setShowGrid(true);
-                buscar_Tareas_JTable.setShowVerticalLines(false);
+                buscar_Tareas_JTable.setSurrendersFocusOnKeystroke(true);
                 buscar_Tareas_JTable.setRowSorter(new TableRowSorter(buscar_Tareas_JTable.getModel()));
                 buscar_Tareas_JTable.addMouseListener(new MouseAdapter() {
 
@@ -338,14 +340,14 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 buscar_Tareas_JPanelLayout.setHorizontalGroup(
                     buscar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buscar_Tareas_JPanelLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(0, 0, 0)
                         .addGroup(buscar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(buscar_Tareas_JPanelLayout.createSequentialGroup()
-                                .addComponent(mostrar_Tareas_JButton)
+                                .addComponent(mostrar_Tareas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE))
-                            .addComponent(buscar_Tareas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                        .addGap(32, 32, 32))
+                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE))
+                            .addComponent(buscar_Tareas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
+                        .addGap(0, 0, 0))
                 );
                 buscar_Tareas_JPanelLayout.setVerticalGroup(
                     buscar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,9 +356,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         .addGroup(buscar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(mostrar_Tareas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buscar_JTextField))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscar_Tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buscar_Tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
+                        .addGap(0, 0, 0))
                 );
 
                 add(buscar_Tareas_JPanel, "Buscar");
@@ -435,14 +437,20 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         celda = new Celda_Renderer(estatus, _id);
         celdas[4] = celda;
         
+        
+        modelo_Mostrar_Tareas.addRow(celdas);
+        
+        
+        
         Tarea_Estudiante_Panel tarea_Estudiante_Panel =
                 new Tarea_Estudiante_Panel(nombre_Tarea,nombre_Curso,fecha_Creacion, fecha, estatus);
         mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
-        modelo_Estatico.addRow(celdas);
+        
         Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, _id);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JTextField buscar_JTextField;
     private javax.swing.JButton buscar_Tareas_JButton;
@@ -470,7 +478,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Tareas_JTable.getTableHeader().setFont(gadugi);
 
         mostrar_Tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        modelo_Estatico = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
+        modelo_Mostrar_Tareas = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
 
         buscar_Tareas_JScrollPane.getViewport().setOpaque(false);
         buscar_Tareas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -494,9 +502,23 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
+        mostrar_Tareas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        mostrar_Tareas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         mostrar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mostrar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         mostrar_Tareas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        mostrar_Tareas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        mostrar_Tareas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
+        buscar_Tareas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        buscar_Tareas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        buscar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        buscar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        buscar_Tareas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        buscar_Tareas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_Tareas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
         Celda_Renderer celda;
@@ -527,10 +549,6 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         mostrar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
 
-        buscar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        buscar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        buscar_Tareas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
-
         modelo = (DefaultTableModel) buscar_Tareas_JTable.getModel();
         for (int i = 0; i < modelo.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
@@ -554,6 +572,4 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         modelo = (DefaultTableModel) buscar_Tareas_JTable.getModel();
         modelo.setRowCount(0);
     }
-
-
 }
