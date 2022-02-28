@@ -478,7 +478,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         celdas[3] = new Celda_Renderer("", id);
         modelo_Estatico.addRow(celdas);
         Chat_Profesor_Panel chat_Profesor_Panel
-                = new Chat_Profesor_Panel(nombre_Completo.Label().getText());
+                = new Chat_Profesor_Panel(nombre_Completo.Texto());
         mostrar_Chats_Lista.push_back(chat_Profesor_Panel);
         Tablero_Profesor_Panel.Agregar_Vista(chat_Profesor_Panel, id);
     }
@@ -532,7 +532,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
                 celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0, 0).toString(), id);
                 celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10)), id);
 
-                chat_Profesor_Panel = new Chat_Profesor_Panel(celdas[0].Label().getText());
+                chat_Profesor_Panel = new Chat_Profesor_Panel(celdas[0].Texto());
                 mostrar_Chats_Lista.push_back(chat_Profesor_Panel);
                 Tablero_Profesor_Panel.Agregar_Vista(chat_Profesor_Panel, id);
                 modelo.addRow(celdas);

@@ -1282,7 +1282,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         
         modelo.addRow(celdas);
 
-        retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1,CourseRoom.Utilerias.Altura_Fila_Tabla_Archivo(retroalimentacion.length()));
+        retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1,CourseRoom.Utilerias.Altura_Fila_Tabla(retroalimentacion.length()));
         
     }
     

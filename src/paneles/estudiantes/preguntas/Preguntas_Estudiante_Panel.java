@@ -70,8 +70,8 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         buscar_Preguntas_JTable = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
         setLayout(new java.awt.CardLayout());
 
         preguntas_JLayeredPane.setLayout(new java.awt.CardLayout());
@@ -166,7 +166,6 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         mostrar_Preguntas_JScrollPane.setOpaque(false);
 
         mostrar_Preguntas_JTable.setAutoCreateRowSorter(true);
-        mostrar_Preguntas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mostrar_Preguntas_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -200,6 +199,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                     return super.getColumnClass(column);
                 }
             });
+            mostrar_Preguntas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             mostrar_Preguntas_JTable.setOpaque(false);
             mostrar_Preguntas_JTable.setRowHeight(100);
             mostrar_Preguntas_JTable.setRowMargin(15);
@@ -232,20 +232,20 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
             mostrar_Preguntas_JPanelLayout.setHorizontalGroup(
                 mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrar_Preguntas_JPanelLayout.createSequentialGroup()
-                    .addGap(32, 32, 32)
+                    .addGap(0, 0, 0)
                     .addGroup(mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mostrar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                    .addGap(32, 32, 32))
+                    .addGap(0, 0, 0))
             );
             mostrar_Preguntas_JPanelLayout.setVerticalGroup(
                 mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Preguntas_JPanelLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(mostrar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
-                    .addContainerGap())
+                    .addGap(0, 0, 0))
             );
 
             preguntas_JLayeredPane.add(mostrar_Preguntas_JPanel, "Mostrar");

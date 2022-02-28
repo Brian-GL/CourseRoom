@@ -70,11 +70,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
-        editar_Autenticacion_JButton = new javax.swing.JButton();
-        informacion_JButton = new javax.swing.JButton();
+        acciones_JPanel = new javax.swing.JPanel();
         editar_Datos_Personales_JButton = new javax.swing.JButton();
-        editar_Informacion_Extra_JButton = new javax.swing.JButton();
         actualizar_JButton = new javax.swing.JButton();
+        editar_Informacion_Extra_JButton = new javax.swing.JButton();
+        informacion_JButton = new javax.swing.JButton();
+        editar_Autenticacion_JButton = new javax.swing.JButton();
         perfil_JLayeredPane = new javax.swing.JLayeredPane();
         informacion_JPanel = new javax.swing.JPanel();
         imagen_Perfil_JLabel = new javax.swing.JLabel();
@@ -142,33 +143,19 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Perfil");
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 68));
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
 
-        editar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png"))); // NOI18N
-        editar_Autenticacion_JButton.setBorder(null);
-        ((ImageIcon)editar_Autenticacion_JButton.getIcon()).getImage().flush();
-        editar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editar_Autenticacion_JButtonMouseClicked(evt);
-            }
-        });
-
-        informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
-        informacion_JButton.setBorder(null);
-        ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
-        informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                informacion_JButtonMouseClicked(evt);
-            }
-        });
+        acciones_JPanel.setOpaque(false);
 
         editar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/id-card_1.png"))); // NOI18N
         editar_Datos_Personales_JButton.setBorder(null);
@@ -176,15 +163,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editar_Datos_Personales_JButtonMouseClicked(evt);
-            }
-        });
-
-        editar_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-learning.png"))); // NOI18N
-        editar_Informacion_Extra_JButton.setBorder(null);
-        ((ImageIcon)editar_Informacion_Extra_JButton.getIcon()).getImage().flush();
-        editar_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editar_Informacion_Extra_JButtonMouseClicked(evt);
             }
         });
 
@@ -204,13 +182,39 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        editar_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-learning.png"))); // NOI18N
+        editar_Informacion_Extra_JButton.setBorder(null);
+        ((ImageIcon)editar_Informacion_Extra_JButton.getIcon()).getImage().flush();
+        editar_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editar_Informacion_Extra_JButtonMouseClicked(evt);
+            }
+        });
+
+        informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
+        informacion_JButton.setBorder(null);
+        ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
+        informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                informacion_JButtonMouseClicked(evt);
+            }
+        });
+
+        editar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png"))); // NOI18N
+        editar_Autenticacion_JButton.setBorder(null);
+        ((ImageIcon)editar_Autenticacion_JButton.getIcon()).getImage().flush();
+        editar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editar_Autenticacion_JButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(informacion_JButton)
                 .addGap(18, 18, 18)
                 .addComponent(editar_Autenticacion_JButton)
@@ -219,21 +223,24 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 .addGap(18, 18, 18)
                 .addComponent(editar_Informacion_Extra_JButton)
                 .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(editar_Autenticacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(informacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(editar_Datos_Personales_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editar_Informacion_Extra_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(editar_Informacion_Extra_JButton))
                     .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
         perfil_JLayeredPane.setLayout(new java.awt.CardLayout());
 
@@ -331,9 +338,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         informacion_JPanelLayout.setHorizontalGroup(
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,7 +352,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                     .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(correo_Electronico_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         informacion_JPanelLayout.setVerticalGroup(
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,14 +506,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         autenticacion_JPanelLayout.setHorizontalGroup(
             autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(editar_Correo_Electronico_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(contrasena_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(editar_Correo_Electronico_JTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                            .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
                             .addComponent(repetir_Contrasena_JPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,11 +521,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                             .addComponent(editar_Contrasena_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(repetir_Contrasena_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(guardar_Cambios_Autenticacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(editar_Imagen_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         autenticacion_JPanelLayout.setVerticalGroup(
             autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -583,12 +590,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
         editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
+        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setText("Guardar Cambios");
+        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         guardar_Cambios_Datos_Personales_JButton.setBorder(null);
         guardar_Cambios_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         ((ImageIcon)guardar_Cambios_Datos_Personales_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -922,12 +929,29 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 }
             });
             intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            intereses_Tematicas_JTable.setOpaque(false);
             intereses_Tematicas_JTable.setRowHeight(32);
-            intereses_Tematicas_JTable.setRowMargin(5);
             intereses_Tematicas_JTable.setShowGrid(true);
-            intereses_Tematicas_JTable.setShowVerticalLines(false);
+            intereses_Tematicas_JTable.setSurrendersFocusOnKeystroke(true);
             intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
+            intereses_Tematicas_JTable.addMouseListener(new MouseAdapter() {
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (e.getClickCount() == 2) {
+
+                        JTable tabla = (JTable) e.getComponent();
+
+                        int columna = tabla.getSelectedColumn();
+
+                        if (columna == 1) {
+                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                            modelo.removeRow(fila);
+                        }
+
+                    }
+                }
+            });
             intereses_Tematicas_JScrollPane.setViewportView(intereses_Tematicas_JTable);
 
             editar_Promedio_General_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
@@ -1021,20 +1045,20 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(32, 32, 32)
+                    .addGap(0, 0, 0)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(perfil_JLayeredPane)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1149, Short.MAX_VALUE))
-                    .addGap(32, 32, 32))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(0, 0, 0))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
+                    .addGap(0, 0, 0)
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(perfil_JLayeredPane)
-                    .addContainerGap())
+                    .addGap(0, 0, 0))
             );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -1225,13 +1249,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void agregar_Interes_Tematica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_Tematica_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-
-            Celda_Renderer[] celdas = new Celda_Renderer[2];
-            celdas[0] = new Celda_Renderer(intereses_Tematicas_AutoCompletionComboBox.getSelectedItem().toString(), "");
-            ImageIcon remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
-            celdas[1] = new Celda_Renderer(remover,"");
-            modelo.addRow(celdas);
+            
+            String interes_Tematica = intereses_Tematicas_AutoCompletionComboBox.getSelectedItem().toString();
+            
+            Agregar_Interes_Tematica(interes_Tematica);
+            
         }
     }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseClicked
 
@@ -1422,6 +1444,22 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
+    private void Agregar_Interes_Tematica(String interes_Tematica){
+            DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+
+            Celda_Renderer[] celdas = new Celda_Renderer[2];
+            Celda_Renderer celda;
+            
+            celda = new Celda_Renderer(interes_Tematica);
+            celdas[0] = celda;
+            ImageIcon remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
+            celda = new Celda_Renderer(remover);
+            celdas[1] = celda;
+            modelo.addRow(celdas);
+            
+            intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(interes_Tematica.length()));
+    }
+    
     public static String Nombre_Completo(){
         return CourseRoom.Utilerias.Concatenar(nombres_JLabel.getText(), " " ,apellidos_JLabel.getText());
     }
@@ -1431,6 +1469,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton agregar_Interes_Tematica_JButton;
     private static javax.swing.JLabel apellidos_JLabel;
@@ -1539,25 +1578,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        intereses_Tematicas_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    if (columna == 1) {
-                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                        modelo.removeRow(fila);
-                    }
-
-                }
-            }
-        });
         
         
     }
@@ -1686,9 +1706,15 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         intereses_Tematicas_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias.Segundo_Color());
         intereses_Tematicas_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
+        intereses_Tematicas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        intereses_Tematicas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        intereses_Tematicas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        intereses_Tematicas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;

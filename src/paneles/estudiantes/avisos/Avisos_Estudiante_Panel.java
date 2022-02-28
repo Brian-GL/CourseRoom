@@ -47,6 +47,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
 
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
+        acciones_JPanel = new javax.swing.JPanel();
         actualizar_JButton = new javax.swing.JButton();
         avisos_JScrollPane = new javax.swing.JScrollPane();
         avisos_JTable = new javax.swing.JTable();
@@ -58,15 +59,19 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Avisos");
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
+
+        acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setBorder(null);
@@ -84,24 +89,24 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
             }
         });
 
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
         avisos_JScrollPane.setBorder(null);
         avisos_JScrollPane.setOpaque(false);
@@ -141,11 +146,10 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                     return super.getColumnClass(column);
                 }
             });
-            avisos_JTable.setOpaque(false);
-            avisos_JTable.setRowHeight(32);
-            avisos_JTable.setRowMargin(5);
+            avisos_JTable.setRowHeight(100);
             avisos_JTable.setShowGrid(true);
-            avisos_JTable.setShowVerticalLines(false);
+            avisos_JTable.setSurrendersFocusOnKeystroke(true);
+            avisos_JTable.setVerifyInputWhenFocusTarget(false);
             avisos_JTable.setRowSorter(new TableRowSorter(avisos_JTable.getModel()));
             avisos_JScrollPane.setViewportView(avisos_JTable);
 
@@ -153,21 +157,15 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
             this.setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(32, 32, 32)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                    .addGap(32, 32, 32))
+                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+                .addComponent(avisos_JScrollPane)
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
-                    .addContainerGap())
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE))
             );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -189,10 +187,12 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void Agregar_Aviso(String tipo, String aviso, String fecha){
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+        Celda_Renderer celda;
+        DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
+            
         try {
-            Celda_Renderer[] celdas = new Celda_Renderer[3];
-            Celda_Renderer celda;
-            DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
             
             Image curso = ImageIO.read(getClass().getResource("/recursos/iconos/course_notification.png"));
             Image tarea = ImageIO.read(getClass().getResource("/recursos/iconos/homework_notification.png"));
@@ -235,8 +235,8 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
             celdas[2] = celda;
             
             modelo.addRow(celdas);
-            
-            avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla_Archivo(aviso.length()));
+            System.out.println(CourseRoom.Utilerias.Altura_Fila_Tabla(aviso.length()));
+            avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(aviso.length()));
             
             curso.flush();
             tarea.flush();
@@ -251,6 +251,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
     }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JScrollPane avisos_JScrollPane;
     private javax.swing.JTable avisos_JTable;
@@ -271,13 +272,12 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         String tipo, aviso, fecha;
         String[] opciones = {"Curso","Tarea","Grupo","Chat","Pregunta"};
-        for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1,10);i++){
-            tipo = CourseRoom.Utilerias.options().nextElement(opciones);
-            aviso = CourseRoom.Utilerias.lorem().paragraph();
-            fecha = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
-            
-            Agregar_Aviso(tipo, aviso, fecha);
-        }
+        tipo = CourseRoom.Utilerias.options().nextElement(opciones);
+        aviso = CourseRoom.Utilerias.lorem().sentence();
+        fecha = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
+
+        Agregar_Aviso(tipo, aviso, fecha);
+        
     }
 
     @Override
@@ -290,9 +290,15 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
+        avisos_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        avisos_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         avisos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        avisos_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        avisos_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();

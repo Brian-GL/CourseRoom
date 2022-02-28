@@ -20,6 +20,7 @@ package clases;
 import courseroom.CourseRoom;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -33,64 +34,127 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class Celda_Renderer extends DefaultTableCellRenderer implements Comparable<Object>{
     
 //The JLabel that is used to display image
-    private final JLabel label = new JLabel();
-    private final String ID;
-    private final String _texto;
+    private JLabel label;
+    private final String id;
+    private final String texto;
 
     public Celda_Renderer(){
         super();
-        ID = "";
-        _texto = "";
-        label.setVerticalAlignment(JLabel.TOP);
-        label.setHorizontalAlignment(JLabel.CENTER);
+        id = "";
+        texto = "";
+        Inicializar_Label(); 
+    }
+    
+    public Celda_Renderer(String _texto) {
+        super();
+        this.id = new String();
+        texto = _texto;
+        Inicializar_Label();
+        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
+    }
+    
+    public Celda_Renderer(String _texto, int _altura) {
+        super();
+        this.id = new String();
+        texto = _texto;
+        Inicializar_Label();
+        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
+        Altura(_altura);
     }
    
-    public Celda_Renderer(String texto, String _id) {
+    public Celda_Renderer(String _texto, String _id) {
         super();
-        this.ID = _id;
-        _texto = texto;
-        label.setVerticalAlignment(JLabel.TOP);
-        label.setHorizontalAlignment(JLabel.CENTER);
-        label.setText(CourseRoom.Utilerias.Formato_HTML_Centro(texto));
-        label.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        id = _id;
+        texto = _texto;
+        Inicializar_Label();
+        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
     }
+    
+    public Celda_Renderer(String _texto, String _id, int _altura) {
+        super();
+        id = _id;
+        texto = _texto;
+        Inicializar_Label();
+        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
+        Altura(_altura);
+    }
+    
     
     public Celda_Renderer(ImageIcon icono, String _id) {
         super();
-        this.ID = _id;
+        id = _id;
+        texto = new String();
+        Inicializar_Label();
         if(icono != null){
             label.setIcon(icono);
         }
-        _texto = "";
-        label.setVerticalAlignment(JLabel.TOP);
-        label.setHorizontalAlignment(JLabel.CENTER);
     }
     
-    public Celda_Renderer(ImageIcon icono, String texto, String _id) {
+    public Celda_Renderer(ImageIcon icono, String _id, int _altura) {
         super();
-        this.ID = _id;
+        id = _id;
+        texto = new String();
+        Inicializar_Label();
         if(icono != null){
             label.setIcon(icono);
         }
-        _texto = texto;
-        label.setText(CourseRoom.Utilerias.Formato_HTML_Centro(texto));
-        label.setVerticalAlignment(JLabel.TOP);
-        label.setHorizontalAlignment(JLabel.CENTER);
-        label.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        Altura(_altura);
+    }
+    
+    public Celda_Renderer(ImageIcon icono, int _altura) {
+        super();
+        id = new String();
+        texto = new String();
+        Inicializar_Label();
+        if(icono != null){
+            label.setIcon(icono);
+        }
+        Altura(_altura);
+    }
+    
+    public Celda_Renderer(ImageIcon icono) {
+        super();
+        id = new String();
+        texto = new String();
+        Inicializar_Label();
+        if(icono != null){
+            label.setIcon(icono);
+        }
+    }
+    
+    public Celda_Renderer(ImageIcon icono, String _texto, String _id) {
+        super();
+        id = _id;
+        texto = _texto;
+        Inicializar_Label();
+        if(icono != null){
+            label.setIcon(icono);
+        }
+        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
+    }
+    
+    public Celda_Renderer(ImageIcon icono, String _texto, String _id, int _altura) {
+        super();
+        id = _id;
+        texto = _texto;
+        Inicializar_Label();
+        if(icono != null){
+            label.setIcon(icono);
+        }
+        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
+        Altura(_altura);
     }
 
-    public JLabel Label() {
+    public JLabel Componente() {
         return label;
     }
     
     public String ID(){
-        return this.ID;
+        return this.id;
     } 
     
     public String Texto(){
-        return this._texto;
+        return this.texto;
     } 
     
     public boolean Tiene_Icono(){
@@ -100,6 +164,23 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
     public void Color_Fuente(Color color){
         label.setForeground(color);
     }
+    
+    public void Altura(int altura){
+        Dimension dimension = new Dimension();
+        dimension.width = label.getPreferredSize().width;
+        dimension.height = altura;
+        label.setPreferredSize(dimension);
+    }
+    
+    private void Inicializar_Label(){
+        label = new JLabel();
+        Font segoe = new Font("Segoe UI", Font.PLAIN, 14);
+        label.setVerticalAlignment(JLabel.CENTER);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setFont(segoe);
+        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+    }
+    
     
    
     /**
@@ -127,29 +208,27 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
             int row,
             int column) {
         Celda_Renderer celda = (Celda_Renderer) value;
-        return (Component) celda.Label();
+        return (Component) celda.Componente();
     }
     
-    
-
     @Override
     public int compareTo(Object o) {
         if(o != null){
             
             if(o instanceof Celda_Renderer celda){
                 
-                if(celda.Label().getText() != null &&
-                        this.Label().getText() != null){
+                if(celda.Texto() != null &&
+                        this.Texto() != null){
                     
-                    return this.Label().getText().compareTo(celda.Label().getText());
+                    return this.Texto().compareTo(celda.Texto());
                 }
-                else if (celda.Label().getText() != null &&
-                        this.Label().getText() == null){
+                else if (celda.Texto() != null &&
+                        this.Texto() == null){
                     
                     return -1;
                 }
-                else if (celda.Label().getText() == null &&
-                        this.Label().getText() != null){
+                else if (celda.Texto() == null &&
+                        this.Texto() != null){
                     return 1;
                 }
                 

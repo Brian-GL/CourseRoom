@@ -57,6 +57,7 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
         mes_JLabel = new javax.swing.JLabel();
+        acciones_JPanel = new javax.swing.JPanel();
         actualizar_JButton = new javax.swing.JButton();
         dias_JPanel = new javax.swing.JPanel();
         lunes_JLabel = new javax.swing.JLabel();
@@ -83,25 +84,29 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(436, 68));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Fechas");
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(176, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(176, 68));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(176, 68));
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
 
-        mes_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         mes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mes_JLabel.setText("Diciembre");
-        mes_JLabel.setToolTipText("Mes Actual");
-        mes_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        mes_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        mes_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         mes_JLabel.setMaximumSize(new java.awt.Dimension(327573, 32));
         mes_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
-        mes_JLabel.setOpaque(true);
         mes_JLabel.setPreferredSize(new java.awt.Dimension(1080, 32));
+        mes_JLabel.setToolTipText("Mes Actual");
+        contenido_Titulo_JPanel.add(mes_JLabel, java.awt.BorderLayout.CENTER);
+
+        acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setBorder(null);
@@ -119,28 +124,24 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
             }
         });
 
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(223, 223, 223)
-                .addComponent(mes_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(mes_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
         dias_JPanel.setMaximumSize(new java.awt.Dimension(32767, 32));
         dias_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -403,6 +404,7 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JPanel contenido_Titulo_JPanel;
@@ -435,8 +437,7 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        mes_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        mes_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mes_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         lunes_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         martes_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());

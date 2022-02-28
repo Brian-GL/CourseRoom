@@ -314,7 +314,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
-                curso_Profesor_Panel = new Curso_Profesor_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                curso_Profesor_Panel = new Curso_Profesor_Panel(celdas[0].Texto(), obtener_Imagen_Curso,
                         CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id);
                 mostrar_Cursos_Actuales_Lista.push_back(curso_Profesor_Panel);
                 Tablero_Profesor_Panel.Agregar_Vista(curso_Profesor_Panel, id);

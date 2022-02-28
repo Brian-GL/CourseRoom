@@ -47,8 +47,6 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
     private boolean bandera_Mouse;
     private boolean bandera_Reproduciendo;
     private String mrl;
-    //Image Icons
-    private ImageIcon icono_Play, icono_Pausa;
     
     
     /**
@@ -79,12 +77,14 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
     private void initComponents() {
 
         contenido_JPanel = new javax.swing.JPanel();
-        play_Pausa_JLabel = new javax.swing.JLabel();
-        progreso_JLabel = new javax.swing.JLabel();
         titulo_JLabel = new javax.swing.JLabel();
+        progreso_JPanel = new javax.swing.JPanel();
         progreso_JSlider = new javax.swing.JSlider();
         duracion_JLabel = new javax.swing.JLabel();
+        progreso_JLabel = new javax.swing.JLabel();
+        botones_JPanel = new javax.swing.JPanel();
         alto_JLabel = new javax.swing.JLabel();
+        play_Pausa_JLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CourseRoom - Lector De Audio");
@@ -102,29 +102,18 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
         contenido_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_JPanel.setMaximumSize(new java.awt.Dimension(713, 163));
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(713, 163));
-
-        play_Pausa_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        play_Pausa_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"))); // NOI18N
-        play_Pausa_JLabel.setToolTipText("<html> <h3>Pausar/Reproducir</h3> </html>");
-        ((ImageIcon)play_Pausa_JLabel.getIcon()).getImage().flush();
-        play_Pausa_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                play_Pausa_JLabelMouseClicked(evt);
-            }
-        });
-
-        progreso_JLabel.setBackground(java.awt.Color.black);
-        progreso_JLabel.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        progreso_JLabel.setForeground(java.awt.Color.white);
-        progreso_JLabel.setText("00:00:00");
-        progreso_JLabel.setMaximumSize(new java.awt.Dimension(48, 20));
-        progreso_JLabel.setMinimumSize(new java.awt.Dimension(48, 20));
-        progreso_JLabel.setPreferredSize(new java.awt.Dimension(48, 20));
+        contenido_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Titulo");
         titulo_JLabel.setToolTipText("<html> <h3>Titulo del archivo de audio</h3> </html>");
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(38, 32));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(38, 32));
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(38, 32));
+        contenido_JPanel.add(titulo_JLabel, java.awt.BorderLayout.NORTH);
+
+        progreso_JPanel.setOpaque(false);
 
         progreso_JSlider.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         progreso_JSlider.setValue(0);
@@ -140,6 +129,43 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
         duracion_JLabel.setMinimumSize(new java.awt.Dimension(48, 20));
         duracion_JLabel.setPreferredSize(new java.awt.Dimension(48, 20));
 
+        progreso_JLabel.setBackground(java.awt.Color.black);
+        progreso_JLabel.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        progreso_JLabel.setForeground(java.awt.Color.white);
+        progreso_JLabel.setText("00:00:00");
+        progreso_JLabel.setMaximumSize(new java.awt.Dimension(48, 20));
+        progreso_JLabel.setMinimumSize(new java.awt.Dimension(48, 20));
+        progreso_JLabel.setPreferredSize(new java.awt.Dimension(48, 20));
+
+        javax.swing.GroupLayout progreso_JPanelLayout = new javax.swing.GroupLayout(progreso_JPanel);
+        progreso_JPanel.setLayout(progreso_JPanelLayout);
+        progreso_JPanelLayout.setHorizontalGroup(
+            progreso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(progreso_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(progreso_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(duracion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        progreso_JPanelLayout.setVerticalGroup(
+            progreso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(progreso_JPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(progreso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(progreso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(duracion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        contenido_JPanel.add(progreso_JPanel, java.awt.BorderLayout.CENTER);
+
+        botones_JPanel.setOpaque(false);
+
         alto_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         alto_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stop.png"))); // NOI18N
         alto_JLabel.setToolTipText("<html> <h3>Parar</h3> </html>");
@@ -150,43 +176,38 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
             }
         });
 
-        javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
-        contenido_JPanel.setLayout(contenido_JPanelLayout);
-        contenido_JPanelLayout.setHorizontalGroup(
-            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(duracion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                        .addComponent(alto_JLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(play_Pausa_JLabel))
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(12, 12, 12))
+        play_Pausa_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        play_Pausa_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"))); // NOI18N
+        play_Pausa_JLabel.setToolTipText("<html> <h3>Pausar/Reproducir</h3> </html>");
+        ((ImageIcon)play_Pausa_JLabel.getIcon()).getImage().flush();
+        play_Pausa_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                play_Pausa_JLabelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout botones_JPanelLayout = new javax.swing.GroupLayout(botones_JPanel);
+        botones_JPanel.setLayout(botones_JPanelLayout);
+        botones_JPanelLayout.setHorizontalGroup(
+            botones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botones_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(alto_JLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 633, Short.MAX_VALUE)
+                .addComponent(play_Pausa_JLabel)
+                .addContainerGap())
         );
-        contenido_JPanelLayout.setVerticalGroup(
-            contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(titulo_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(duracion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        botones_JPanelLayout.setVerticalGroup(
+            botones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(botones_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(botones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(alto_JLabel)
                     .addComponent(play_Pausa_JLabel))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        contenido_JPanel.add(botones_JPanel, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(contenido_JPanel, "card2");
 
@@ -220,7 +241,9 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
         progreso_JSlider.setValue(0);
         progreso_JLabel.setText("00:00:00");
         duracion_JLabel.setText("00:00:00");
+        ImageIcon icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
         play_Pausa_JLabel.setIcon(icono_Play);
+        icono_Play.getImage().flush();
         System.gc();
     }
 
@@ -230,7 +253,9 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
         
         if(!bandera_Reproduciendo){
             componente_Reproductor_Audio.mediaPlayer().media().play(mrl);
+            ImageIcon icono_Pausa = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
             play_Pausa_JLabel.setIcon(icono_Pausa);
+            icono_Pausa.getImage().flush();
             progreso_JSlider.setEnabled(true);
             bandera_Reproduciendo = true;
         }
@@ -239,10 +264,14 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
 
             if (componente_Reproductor_Audio.mediaPlayer().status().state() == State.PLAYING) {
                 componente_Reproductor_Audio.mediaPlayer().controls().setPause(true);
+                ImageIcon icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
                 play_Pausa_JLabel.setIcon(icono_Play);
+                icono_Play.getImage().flush();
             } else if (componente_Reproductor_Audio.mediaPlayer().status().state() == State.PAUSED) {
                 componente_Reproductor_Audio.mediaPlayer().controls().setPause(false);
+                ImageIcon icono_Pausa = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
                 play_Pausa_JLabel.setIcon(icono_Pausa);
+                icono_Pausa.getImage().flush();
             }
         }
     }
@@ -262,10 +291,12 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alto_JLabel;
+    private javax.swing.JPanel botones_JPanel;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel duracion_JLabel;
     public javax.swing.JLabel play_Pausa_JLabel;
     private javax.swing.JLabel progreso_JLabel;
+    private javax.swing.JPanel progreso_JPanel;
     private javax.swing.JSlider progreso_JSlider;
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
@@ -273,20 +304,11 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
     @Override
     public void Limpiar()  {
         componente_Reproductor_Audio.release();
-        componente_Reproductor_Audio = null;
-        mrl = null;
-        icono_Play.getImage().flush();
-        icono_Pausa.getImage().flush();
-        icono_Play = null;
-        icono_Pausa = null;
     }
 
     @Override
     public void Iniciar_Componentes() {
-        icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
-        icono_Pausa = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
-        icono_Pausa.getImage().flush();
-        icono_Play.getImage().flush();
+        
         bandera_Mouse = true;
         componente_Reproductor_Audio = new AudioPlayerComponent();
         progreso_JSlider.setEnabled(false);
@@ -310,7 +332,6 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
     @Override
     public void Colorear_Componentes() {
         
-       
         contenido_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         contenido_JPanel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 

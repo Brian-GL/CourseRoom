@@ -58,7 +58,7 @@ public class Lector_Video_General_Panel extends javax.swing.JFrame implements Li
             String _titulo) {
         initComponents();
         
-        this.setLocationRelativeTo(null);;
+        this.setLocationRelativeTo(null);
         
         titulo_JLabel.setText(_titulo);
         mrl = _mrl;

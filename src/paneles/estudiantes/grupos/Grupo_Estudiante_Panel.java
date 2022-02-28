@@ -1376,7 +1376,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 celdas[0] = new Celda_Renderer(icono_Miembro, CourseRoom.Utilerias.name().fullName(), "");
                 celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(22,23).toString(), "");
                 celdas[2] = new Celda_Renderer(icono_Remover, "");
-                miembro_A_Cargo_JComboBox.addItem(celdas[0].Label().getText());
+                miembro_A_Cargo_JComboBox.addItem(celdas[0].Texto());
                 modelo.addRow(celdas);
 
                 obtener_Imagen.flush();

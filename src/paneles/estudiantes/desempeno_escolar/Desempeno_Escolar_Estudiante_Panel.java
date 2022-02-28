@@ -25,8 +25,11 @@ import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -70,41 +73,50 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
-        grafica_Pastel_JButton = new javax.swing.JButton();
+        acciones_JPanel = new javax.swing.JPanel();
+        actualizar_JButton = new javax.swing.JButton();
         regresion_Lineal_JButton = new javax.swing.JButton();
         estadisticas_JButton = new javax.swing.JButton();
-        actualizar_JButton = new javax.swing.JButton();
+        grafica_Pastel_JButton = new javax.swing.JButton();
         desempeno_Escolar_JLayeredPane = new javax.swing.JLayeredPane();
         regresion_Lineal_JPanel = new javax.swing.JPanel();
         grafica_Pastel_JPanel = new javax.swing.JPanel();
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
         estadisticas_JTable = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Desempeño Escolar");
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 68));
-        titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 68));
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(500, 68));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(500, 68));
         titulo_JLabel.setOpaque(true);
-        titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 68));
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(500, 68));
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
 
-        grafica_Pastel_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/pie-chart.png"))); // NOI18N
-        grafica_Pastel_JButton.setBorder(null);
-        grafica_Pastel_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
-        grafica_Pastel_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
-        grafica_Pastel_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-        ((ImageIcon)grafica_Pastel_JButton.getIcon()).getImage().flush();
-        grafica_Pastel_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        acciones_JPanel.setOpaque(false);
+
+        actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setBorder(null);
+        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
+        actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                grafica_Pastel_JButtonMouseClicked(evt);
+                actualizar_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                actualizar_JButtonMouseExited(evt);
             }
         });
 
@@ -132,49 +144,47 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             }
         });
 
-        actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-        ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
-        actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        grafica_Pastel_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/pie-chart.png"))); // NOI18N
+        grafica_Pastel_JButton.setBorder(null);
+        grafica_Pastel_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
+        grafica_Pastel_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
+        grafica_Pastel_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        ((ImageIcon)grafica_Pastel_JButton.getIcon()).getImage().flush();
+        grafica_Pastel_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                actualizar_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                actualizar_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                actualizar_JButtonMouseExited(evt);
+                grafica_Pastel_JButtonMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(regresion_Lineal_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(grafica_Pastel_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(estadisticas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(grafica_Pastel_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(regresion_Lineal_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(estadisticas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(grafica_Pastel_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(regresion_Lineal_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(estadisticas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
         desempeno_Escolar_JLayeredPane.setLayout(new java.awt.CardLayout());
 
@@ -190,6 +200,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         estadisticas_JScrollPane.setOpaque(false);
 
         estadisticas_JTable.setAutoCreateRowSorter(true);
+        estadisticas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         estadisticas_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -223,12 +234,9 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
                     return super.getColumnClass(column);
                 }
             });
-            estadisticas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            estadisticas_JTable.setOpaque(false);
             estadisticas_JTable.setRowHeight(100);
-            estadisticas_JTable.setRowMargin(15);
             estadisticas_JTable.setShowGrid(true);
-            estadisticas_JTable.setShowVerticalLines(false);
+            estadisticas_JTable.setSurrendersFocusOnKeystroke(true);
             estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
             estadisticas_JScrollPane.setViewportView(estadisticas_JTable);
 
@@ -239,20 +247,20 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(32, 32, 32)
+                    .addGap(0, 0, 0)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(desempeno_Escolar_JLayeredPane)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                    .addGap(32, 32, 32))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
+                    .addGap(0, 0, 0))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
+                    .addGap(0, 0, 0)
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(desempeno_Escolar_JLayeredPane)
-                    .addContainerGap())
+                    .addGap(0, 0, 0))
             );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -344,7 +352,50 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         return dataset;  
     }  
 
+    
+    private void Agregar_Estadistica(Image imagen_Curso, String nombre_Curso, String numero_Tareas_Calificadas,
+            String promedio_Curso, String promedio_General, String prediccion, boolean rumbo){
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[6];
+        Celda_Renderer celda;
+        String id = new String();
+        DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
+        
+        ImageIcon icono_Curso;
+        
+        try {
+            
+            ImageIcon icono_Reprobado = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
+            ImageIcon icono_Aprobado = new ImageIcon(getClass().getResource("/recursos/iconos/check.png"));
+            
+            icono_Curso = new ImageIcon(imagen_Curso);
+
+            celda = new Celda_Renderer(icono_Curso, nombre_Curso,id);
+            celdas[0] = celda;
+            celda = new Celda_Renderer(numero_Tareas_Calificadas,id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(promedio_Curso, id);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(promedio_General, id);
+            celdas[3] = celda;
+            celda = new Celda_Renderer(prediccion, id);
+            celdas[4] = celda;
+            celda = rumbo ? new Celda_Renderer(icono_Aprobado,"Aprobar", ""):
+                    new Celda_Renderer(icono_Reprobado,"Reprobar", "");
+            celdas[5] = celda;
+
+            modelo.addRow(celdas);
+            
+            estadisticas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla_Icono(0));
+
+        } catch (Exception ex) {
+
+        } 
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JPanel contenido_Titulo_JPanel;
     private javax.swing.JLayeredPane desempeno_Escolar_JLayeredPane;
@@ -372,35 +423,31 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         estadisticas_JTable.getTableHeader().setFont(gadugi);
 
         estadisticas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[6];
-        DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         
         URL url_Imagen;
-        ImageIcon icono;
-        ImageIcon icono_Reprobado = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
-        ImageIcon icono_Aprobado = new ImageIcon(getClass().getResource("/recursos/iconos/check.png"));
-        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
+        Image obtener_Imagen;
+        String nombre_Curso, numero_Tareas_Calificadas,promedio_Curso,promedio_General,prediccion;
+        boolean rumbo;
+        try {
+
+            url_Imagen = new URL("https://picsum.photos/96/96");
+            obtener_Imagen = ImageIO.read(url_Imagen);
+            nombre_Curso = CourseRoom.Utilerias.educator().course();
+            numero_Tareas_Calificadas = String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10));
+            promedio_Curso = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+            promedio_General = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+            prediccion = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+            rumbo = CourseRoom.Utilerias.bool().bool();
+
+            Agregar_Estadistica(obtener_Imagen, nombre_Curso, numero_Tareas_Calificadas, promedio_Curso, promedio_General, prediccion, rumbo);
             
-            try {
-                System.out.println("Estadisticas_Curso " + i + " -> Getting Image From https://picsum.photos/96/96");
-                url_Imagen = new URL("https://picsum.photos/96/96");
-                icono = new ImageIcon(url_Imagen);
+            obtener_Imagen.flush();
+            obtener_Imagen.getGraphics().dispose();
 
-                celdas[0] = new Celda_Renderer(icono, CourseRoom.Utilerias.educator().course(), "");
-                celdas[1] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10)), "");
-                celdas[2] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100)), "");
-                celdas[3] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100)), "");
-                celdas[4] = new Celda_Renderer(String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100)), "");
-                boolean rumbo = CourseRoom.Utilerias.bool().bool();
-                
-                celdas[5] =  (rumbo) ? new Celda_Renderer(icono_Aprobado,"A Aprobar", ""):
-                        new Celda_Renderer(icono_Reprobado,"A Reprobar", "");
+        } catch (MalformedURLException ex) {
 
-                modelo.addRow(celdas);
-
-            } catch (MalformedURLException ex) {
-
-            } 
+        } catch (IOException ex) { 
+            
         }
         
         
@@ -473,9 +520,15 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
+        estadisticas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        estadisticas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         estadisticas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        estadisticas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        estadisticas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         Celda_Renderer celda;

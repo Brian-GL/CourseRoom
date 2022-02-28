@@ -67,8 +67,8 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         permitir_No_Permitir_Chats_Conmigo_JButton = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
@@ -118,7 +118,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         contenido_Titulo_JPanelLayout.setHorizontalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -128,22 +128,19 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         );
         contenido_Titulo_JPanelLayout.setVerticalGroup(
             contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sesiones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 32, Short.MAX_VALUE))
+            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(sesiones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         ajustes_JLayeredPane.setLayout(new java.awt.CardLayout());
 
         interfaz_JPanel.setOpaque(false);
 
+        primer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         primer_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        primer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         primer_Color_Personalizado_JLabel.setOpaque(true);
         primer_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
         primer_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,9 +149,9 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
             }
         });
 
+        segundo_Color_Personalizado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         segundo_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        segundo_Color_Personalizado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         segundo_Color_Personalizado_JLabel.setOpaque(true);
         segundo_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
         segundo_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -163,9 +160,9 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
             }
         });
 
+        tercer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tercer_Color_Personalizado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tercer_Color_Personalizado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tercer_Color_Personalizado_JLabel.setOpaque(true);
         tercer_Color_Personalizado_JLabel.setPreferredSize(new java.awt.Dimension(168, 48));
         tercer_Color_Personalizado_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {

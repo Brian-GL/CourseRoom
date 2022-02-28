@@ -880,7 +880,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
-                curso_Estudiante_Panel = new Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                curso_Estudiante_Panel = new Curso_Estudiante_Panel(celdas[0].Texto(), obtener_Imagen_Curso,
                         CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id);
                 mostrar_Cursos_Actuales_Lista.push_back(curso_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
@@ -937,7 +937,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
-                curso_Estudiante_Panel = new Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                curso_Estudiante_Panel = new Curso_Estudiante_Panel(celdas[0].Texto(), obtener_Imagen_Curso,
                         CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id);
                 mostrar_Cursos_Finalizados_Lista.push_back(curso_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
@@ -997,7 +997,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
-                vista_Previa_Curso_Estudiante_Panel = new Vista_Previa_Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                vista_Previa_Curso_Estudiante_Panel = new Vista_Previa_Curso_Estudiante_Panel(celdas[0].Texto(), obtener_Imagen_Curso,
                         CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id, false, id_curso_Enrolar);
                 
                 mostrar_Cursos_Recomendados_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
@@ -1053,7 +1053,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
                         String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
 
-                vista_Previa_Curso_Estudiante_Panel = new Vista_Previa_Curso_Estudiante_Panel(celdas[0].Label().getText(), obtener_Imagen_Curso,
+                vista_Previa_Curso_Estudiante_Panel = new Vista_Previa_Curso_Estudiante_Panel(celdas[0].Texto(), obtener_Imagen_Curso,
                         CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id, true, id_curso_Enrolar);
                 mostrar_Cursos_Nuevos_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
                 Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);

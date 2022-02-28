@@ -65,10 +65,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private boolean bandera_Mouse_Auxiliar, bandera_Siguiente_Pista, bandera_Anterior_Pista;
     private static boolean bandera_Indice_Cero;
     
-    //Image Icons
-    private ImageIcon icono_Play, icono_Pause;
-    
-    
     //Data Structures
     private Map<String,Equalizer> mapa_presets;
     private static Lista<String> rutas;
@@ -1349,10 +1345,14 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
             if (CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING) {
                 CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().setPause(true);
+                ImageIcon icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
                 play_Pausa_JLabel.setIcon(icono_Play);
+                icono_Play.getImage().flush();
             } else if (CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PAUSED) {
                 CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().setPause(false);
+                ImageIcon icono_Pause = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
                 play_Pausa_JLabel.setIcon(icono_Pause);
+                icono_Pause.getImage().flush();
             }
         }
     }
@@ -1394,7 +1394,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         progreso_JLabel.setText("00:00:00");
         duracion_Total_JLabel.setText("00:00:00");
         progreso_JSlider.setEnabled(false);
+        ImageIcon icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
         play_Pausa_JLabel.setIcon(icono_Play);
+        icono_Play.getImage().flush();
         volumen_JSlider.setEnabled(false);
         volumen_JSlider.setValue(100);
         rate_JSlider.setEnabled(false);
@@ -1498,13 +1500,10 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         bandera_Siguiente_Pista = bandera_Anterior_Pista = false;
         MediaPlayerFactory media_player_Factory = new MediaPlayerFactory();
         mapa_presets = media_player_Factory.equalizer().allPresetEqualizers();
-        icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
-        icono_Pause = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
-        this.play_Pausa_JLabel.setIcon(icono_Play);
-        
+        ImageIcon icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
+        play_Pausa_JLabel.setIcon(icono_Play);
         icono_Play.getImage().flush();
-        icono_Pause.getImage().flush();
-        
+       
         letras_JScrollPane.getViewport().setOpaque(false);
         lista_Reproduccion_JScrollPane.getViewport().setOpaque(false);
         letras_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -1690,8 +1689,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     @Override
     public void Limpiar()  {
         lista_Reproduccion_JPanel.removeAll();
-        icono_Play.getImage().flush();
-        icono_Pause.getImage().flush();
         rutas.clear();
     }
 
@@ -1997,7 +1994,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     longitud_Real = (int)longitud;
                     progreso_JSlider.setMaximum(longitud_Real);
                     duracion_Total_JLabel.setText(CourseRoom.Utilerias.Convertir_Segundos(longitud_Real/1000));
+                    ImageIcon icono_Pause = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
                     play_Pausa_JLabel.setIcon(icono_Pause);
+                    icono_Pause.getImage().flush();
                     CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().setVolume(volumen_JSlider.getValue());
                     
                 }else{

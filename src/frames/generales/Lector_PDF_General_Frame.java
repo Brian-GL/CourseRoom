@@ -34,7 +34,6 @@ public class Lector_PDF_General_Frame extends javax.swing.JFrame implements Limp
         initComponents();
         
         this.setLocationRelativeTo(null);
-        this.setState(MAXIMIZED_BOTH);
         
         contenido_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         contenido_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
