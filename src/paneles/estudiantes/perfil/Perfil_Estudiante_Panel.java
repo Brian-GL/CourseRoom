@@ -31,6 +31,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -1249,9 +1251,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            String interes_Tematica = intereses_Tematicas_AutoCompletionComboBox.getSelectedItem().toString();
+            String interes_Tematica = intereses_Tematicas_AutoCompletionComboBox.getSelectedItem() != null
+                    ? intereses_Tematicas_AutoCompletionComboBox.getSelectedItem().toString() : "";
             
-            Agregar_Interes_Tematica(interes_Tematica);
+            if(!interes_Tematica.isEmpty() && !interes_Tematica.isBlank()){
+                Agregar_Interes_Tematica(interes_Tematica);
+            }
             
         }
     }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseClicked
@@ -1444,19 +1449,28 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void Agregar_Interes_Tematica(String interes_Tematica){
+        try {
             DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-
+            
             Celda_Renderer[] celdas = new Celda_Renderer[2];
             Celda_Renderer celda;
             
+            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            ImageIcon remover = new ImageIcon(icono);
+            
             celda = new Celda_Renderer(interes_Tematica);
             celdas[0] = celda;
-            ImageIcon remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
+            
             celda = new Celda_Renderer(remover);
             celdas[1] = celda;
             modelo.addRow(celdas);
             
             intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(interes_Tematica.length()));
+            
+            icono.flush();
+        } catch (IOException ex) {
+            
+        }
     }
     
     public static String Nombre_Completo(){

@@ -4,11 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/cursos/Curso_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/cursos/Cursos_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/tareas/Tarea_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/preguntas/Pregunta_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/cursos/Vista_Previa_Curso_Estudiante_Panel.java</file>
-            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/chats/Chat_Estudiante_Panel.java</file>
+            <file>file:/D:/Java%20Projects/CourseRoom/src/paneles/estudiantes/grupos/Grupo_Estudiante_Panel.java</file>
         </group>
     </open-files>
 </project-private>

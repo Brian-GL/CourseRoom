@@ -420,10 +420,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     public static void Agregar_Tarea(String nombre_Tarea, String nombre_Curso, String nombre_Profesor, ImageIcon icono_Curso, 
-            String fecha, String estatus, String _id){
+            String fecha_Creacion, String fecha_Entrega, String estatus, String _id){
         
         Celda_Renderer[] celdas = new Celda_Renderer[5];
-        String fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
         Celda_Renderer celda;
         
         celda = new Celda_Renderer(nombre_Tarea, _id);
@@ -432,18 +431,15 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         celdas[1] = celda;
         celda = new Celda_Renderer(fecha_Creacion, _id);
         celdas[2] = celda;
-        celda = new Celda_Renderer(fecha, _id);
+        celda = new Celda_Renderer(fecha_Entrega, _id);
         celdas[3] = celda;
         celda = new Celda_Renderer(estatus, _id);
         celdas[4] = celda;
         
-        
         modelo_Mostrar_Tareas.addRow(celdas);
         
-        
-        
         Tarea_Estudiante_Panel tarea_Estudiante_Panel =
-                new Tarea_Estudiante_Panel(nombre_Tarea,nombre_Curso,fecha_Creacion, fecha, estatus);
+                new Tarea_Estudiante_Panel(nombre_Tarea,nombre_Curso,fecha_Creacion, fecha_Entrega, estatus);
         mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
         
         Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, _id);

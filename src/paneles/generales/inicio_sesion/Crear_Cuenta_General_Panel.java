@@ -1159,15 +1159,13 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void agregar_Interes_Tematica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_Tematica_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-
-            Celda_Renderer[] celdas = new Celda_Renderer[2];
-            celdas[0] = new Celda_Renderer(intereses_Tematicas_AutoCompletionComboBox.getSelectedItem().toString(), "");
-            celdas[0].Color_Fuente(CourseRoom.Utilerias.Color_Azul_Claro());
-            ImageIcon remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
-            celdas[1] = new Celda_Renderer(remover,"");
-            celdas[1].Color_Fuente(CourseRoom.Utilerias.Color_Azul_Claro());
-            modelo.addRow(celdas);
+            
+            String interes_Tematica = intereses_Tematicas_AutoCompletionComboBox.getSelectedItem() != null
+                    ? intereses_Tematicas_AutoCompletionComboBox.getSelectedItem().toString() : "";
+            
+            if(!interes_Tematica.isEmpty() && !interes_Tematica.isBlank()){
+                Agregar_Interes_Tematica(interes_Tematica);
+            }
         }
     }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseClicked
 
@@ -1333,6 +1331,31 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         return mat.find();
     }*/
 
+    private void Agregar_Interes_Tematica(String interes_Tematica){
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+            
+            Celda_Renderer[] celdas = new Celda_Renderer[2];
+            Celda_Renderer celda;
+            
+            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            ImageIcon remover = new ImageIcon(icono);
+            
+            celda = new Celda_Renderer(interes_Tematica);
+            celdas[0] = celda;
+            
+            celda = new Celda_Renderer(remover);
+            celdas[1] = celda;
+            modelo.addRow(celdas);
+            
+            intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(interes_Tematica.length()));
+            
+            icono.flush();
+        } catch (IOException ex) {
+            
+        }
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar_Interes_Tematica_JButton;
     private javax.swing.JLabel apellido_Materno_JLabel;

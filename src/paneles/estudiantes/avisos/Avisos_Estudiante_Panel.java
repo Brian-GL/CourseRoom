@@ -235,7 +235,6 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
             celdas[2] = celda;
             
             modelo.addRow(celdas);
-            System.out.println(CourseRoom.Utilerias.Altura_Fila_Tabla(aviso.length()));
             avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(aviso.length()));
             
             curso.flush();

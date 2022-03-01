@@ -361,16 +361,16 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         String id = new String();
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         
-        ImageIcon icono_Curso;
+        Image imagen;
+        ImageIcon icono;
         
         try {
             
-            ImageIcon icono_Reprobado = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
-            ImageIcon icono_Aprobado = new ImageIcon(getClass().getResource("/recursos/iconos/check.png"));
             
-            icono_Curso = new ImageIcon(imagen_Curso);
+            
+            icono = new ImageIcon(imagen_Curso);
 
-            celda = new Celda_Renderer(icono_Curso, nombre_Curso,id);
+            celda = new Celda_Renderer(icono, nombre_Curso,id);
             celdas[0] = celda;
             celda = new Celda_Renderer(numero_Tareas_Calificadas,id);
             celdas[1] = celda;
@@ -380,13 +380,24 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             celdas[3] = celda;
             celda = new Celda_Renderer(prediccion, id);
             celdas[4] = celda;
-            celda = rumbo ? new Celda_Renderer(icono_Aprobado,"Aprobar", ""):
-                    new Celda_Renderer(icono_Reprobado,"Reprobar", "");
-            celdas[5] = celda;
+            if(rumbo){
+                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
+                icono = new ImageIcon(imagen);
+                celda = new Celda_Renderer(icono,"Aprobar");
+                celdas[5] = celda;
+            }else{
+                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+                icono = new ImageIcon(imagen);
+                celda = new Celda_Renderer(icono,"Reprobar");
+                celdas[5] = celda;
+            }
+            
 
             modelo.addRow(celdas);
             
             estadisticas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla_Icono(0));
+            
+            imagen.flush();
 
         } catch (Exception ex) {
 
