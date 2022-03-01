@@ -1116,6 +1116,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "png", "jpg", "jpeg", "bmp");
             escogedor_Archivos.addChoosableFileFilter(filtro);
+            escogedor_Archivos.setMultiSelectionEnabled(false);
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
             int resultado = escogedor_Archivos.showOpenDialog(this);
 

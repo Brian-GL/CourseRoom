@@ -20,6 +20,7 @@ package paneles.estudiantes.chats;
 import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
+import datos.colecciones.Lista;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -51,13 +52,24 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
     private boolean carta_Visible;
     
-    /**
-     * Creates new form Chat_Estudiante
-     */
-    public Chat_Estudiante_Panel(String receptor_Nombre) {
+    
+    public Chat_Estudiante_Panel(Image imagen_Chat,String nombres_Chat, String apellidos_Chat, String correo_Chat,
+            String genero_Chat, String tipo_Perfil, Lista<String> intereses_Tematicas) {
         initComponents();
         
-        titulo_JLabel.setText(receptor_Nombre);
+        titulo_JLabel.setText(CourseRoom.Utilerias.Concatenar(nombres_Chat, " ",apellidos_Chat));
+        genero_JLabel.setText(genero_Chat);
+        tipo_Perfil_JLabel.setText(tipo_Perfil);
+        apellidos_JLabel.setText(apellidos_Chat);
+        nombres_JLabel.setText(nombres_Chat);
+        correo_JLabel.setText(correo_Chat);
+        
+        while(!intereses_Tematicas.is_empty()){
+            Agregar_Interes_Tematica(intereses_Tematicas.delist());
+        }
+        
+        ImageIcon icono = new ImageIcon(imagen_Chat);
+        imagen_Perfil_JLabel.setIcon(icono);
         
         Iniciar_Componentes();
         
@@ -617,16 +629,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        nombres_JLabel.setText(titulo_JLabel.getText());
-        apellidos_JLabel.setText(CourseRoom.Utilerias.Concatenar(CourseRoom.Utilerias.name().lastName(), " ", CourseRoom.Utilerias.name().lastName()));
-        correo_JLabel.setText(CourseRoom.Utilerias.internet().emailAddress());
-        genero_JLabel.setText(CourseRoom.Utilerias.demographic().sex());
-        tipo_Perfil_JLabel.setText(CourseRoom.Utilerias.bool().bool() ? "Estudiante" : "Profesor");
-
-        ImageIcon imagen = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());
-        imagen_Perfil_JLabel.setIcon(imagen);
-        imagen.getImage().flush();
-
         intereses_Tematicas_JScrollPane.getViewport().setOpaque(false);
         intereses_Tematicas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         intereses_Tematicas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);

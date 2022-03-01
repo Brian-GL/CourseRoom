@@ -33,6 +33,8 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
@@ -470,35 +472,49 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         chatear_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_chatear_JButtonMouseExited
 
-    public void Agregar_Chat(
-            Image imagen_Chat, String nombre_Completo,
-            String fecha, String numero_Mensajes_No_Leidos, String ultimo_Mensaje, String id) {
+    public void Agregar_Chat(String ruta_Imagen, String nombres_Chat, String apellidos_Chat, String correo_Chat,
+            String genero_Chat, String tipo_Perfil, Lista<String> intereses_Tematicas,
+            String fecha_Chat, String numero_Mensajes_No_Leidos, String ultimo_Mensaje, String id) {
 
-        DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
-        ImageIcon icono_Chat = new ImageIcon(imagen_Chat);
-        
-        Celda_Renderer[] celdas = new Celda_Renderer[4];
-        Celda_Renderer celda;
-        
-        celda =  new Celda_Renderer(icono_Chat,nombre_Completo, id);
-        celdas[0] = celda;
-        celda =  new Celda_Renderer(fecha, id);
-        celdas[1] = celda;
-        celda =  new Celda_Renderer(numero_Mensajes_No_Leidos, id);
-        celdas[2] = celda;
-        celda = new Celda_Renderer(ultimo_Mensaje, id);
-        celdas[3] = celda;
-        
-        modelo.addRow(celdas);
-        
-        mostrar_Chats_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla_Icono(0));
-        
-        Chat_Estudiante_Panel chat_Estudiante_Panel
-                = new Chat_Estudiante_Panel(nombre_Completo);
-        
-        mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
-        
-        Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id);
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
+            
+            URL url_Imagen = new URL(ruta_Imagen);
+            Image imagen_Chat = ImageIO.read(url_Imagen);
+            
+            Image imagen = imagen_Chat.getScaledInstance(96, 96,Image.SCALE_SMOOTH);
+            ImageIcon icono = new ImageIcon(imagen);
+            
+            Celda_Renderer[] celdas = new Celda_Renderer[4];
+            Celda_Renderer celda;
+            
+            celda =  new Celda_Renderer(icono,CourseRoom.Utilerias.Concatenar(nombres_Chat, " ",apellidos_Chat), id);
+            celdas[0] = celda;
+            celda =  new Celda_Renderer(fecha_Chat, id);
+            celdas[1] = celda;
+            celda =  new Celda_Renderer(numero_Mensajes_No_Leidos, id);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(ultimo_Mensaje, id);
+            celdas[3] = celda;
+            
+            modelo.addRow(celdas);
+            
+            mostrar_Chats_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla_Icono(0));
+            
+            Chat_Estudiante_Panel chat_Estudiante_Panel
+                    = new Chat_Estudiante_Panel(
+                            imagen_Chat, nombres_Chat, apellidos_Chat, 
+                            correo_Chat, genero_Chat, tipo_Perfil, intereses_Tematicas);
+            
+            mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
+            
+            Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id);
+            
+        } catch (MalformedURLException ex) {
+            
+        } catch (IOException ex) {
+            
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -543,28 +559,25 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         buscar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
 
-        String id, nombre_Completo, numero_Mensajes_No_Leidos, ultimo_Mensaje;
-        URL url_Imagen;
-        Image obtener_Imagen;
+        String ruta_Imagen, nombres_Chat, apellidos_Chat, correo_Chat,
+            genero_Chat, tipo_Perfil, 
+            fecha_Chat, numero_Mensajes_No_Leidos, ultimo_Mensaje, id;
+        
+        Lista<String> intereses_Tematicas = new Lista<>(CourseRoom.Utilerias.lorem().words(5));
         
         id = "Chat_1";
-        try {
-            url_Imagen = new URL("https://i.pravatar.cc/96");
-            obtener_Imagen = ImageIO.read(url_Imagen);
+        ruta_Imagen = "https://i.pravatar.cc/450";
 
-            nombre_Completo = CourseRoom.Utilerias.name().fullName();
-            numero_Mensajes_No_Leidos = String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 10));
-            ultimo_Mensaje = CourseRoom.Utilerias.lorem().sentence();
-                    
-            Agregar_Chat(obtener_Imagen, nombre_Completo, CourseRoom.Utilerias.Fecha_Hora_Local(), numero_Mensajes_No_Leidos, ultimo_Mensaje, id);
-
-            obtener_Imagen.flush();
-            obtener_Imagen.getGraphics().dispose();
-        } catch (MalformedURLException ex) {
-
-        } catch (IOException ex) {
-
-        }
+        nombres_Chat = CourseRoom.Utilerias.Concatenar(CourseRoom.Utilerias.name().firstName()," ",CourseRoom.Utilerias.name().firstName());
+        apellidos_Chat = CourseRoom.Utilerias.Concatenar(CourseRoom.Utilerias.name().lastName()," ",CourseRoom.Utilerias.name().lastName());
+        numero_Mensajes_No_Leidos = String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 10));
+        ultimo_Mensaje = CourseRoom.Utilerias.lorem().sentence();
+        tipo_Perfil = CourseRoom.Utilerias.bool().bool() ? "Estudiante" : "Profesor";
+        fecha_Chat = CourseRoom.Utilerias.Fecha_Hora_Local();
+        genero_Chat = CourseRoom.Utilerias.demographic().sex();
+        correo_Chat = CourseRoom.Utilerias.internet().emailAddress();
+            
+        Agregar_Chat(ruta_Imagen, nombres_Chat, apellidos_Chat, correo_Chat, genero_Chat, tipo_Perfil, intereses_Tematicas, fecha_Chat, numero_Mensajes_No_Leidos, ultimo_Mensaje, id);
 
     }
 

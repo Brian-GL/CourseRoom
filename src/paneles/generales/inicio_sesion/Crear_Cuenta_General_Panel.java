@@ -2,6 +2,7 @@ package paneles.generales.inicio_sesion;
 
 import javax.swing.JLayeredPane;
 import clases.Celda_Renderer;
+import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
@@ -1040,13 +1041,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void cargar_Imagen_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Imagen_Perfil_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            JFileChooser escogedor_Archivos = new JFileChooser();
+            Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagenes", "png", "jpg", "jpeg", "bmp");
             escogedor_Archivos.addChoosableFileFilter(filtro);
-            escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
             escogedor_Archivos.setMultiSelectionEnabled(false);
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
-            escogedor_Archivos.setApproveButtonText("Cargar Imagen De Perfil");
             int resultado = escogedor_Archivos.showOpenDialog(this);
 
             if (resultado == JFileChooser.APPROVE_OPTION) {

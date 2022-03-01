@@ -194,37 +194,38 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
             
         try {
             
-            Image curso = ImageIO.read(getClass().getResource("/recursos/iconos/course_notification.png"));
-            Image tarea = ImageIO.read(getClass().getResource("/recursos/iconos/homework_notification.png"));
-            Image grupo = ImageIO.read(getClass().getResource("/recursos/iconos/group_notification.png"));
-            Image chat = ImageIO.read(getClass().getResource("/recursos/iconos/chat_notification.png"));
-            Image pregunta = ImageIO.read(getClass().getResource("/recursos/iconos/homework_make.png"));
-            
-            ImageIcon aviso_Curso = new ImageIcon(curso);
-            ImageIcon aviso_Tarea = new ImageIcon(tarea);
-            ImageIcon aviso_Grupo = new ImageIcon(grupo);
-            ImageIcon aviso_Chat = new ImageIcon(chat);
-            ImageIcon aviso_Pregunta = new ImageIcon(pregunta);
+            Image imagen = null;
+            ImageIcon icono;
             
             switch(tipo){
                 case "Curso":
-                    celda = new Celda_Renderer(aviso_Curso,tipo,"");
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/course_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
                     celdas[0] = celda;
                     break;
                 case "Tarea":
-                    celda = new Celda_Renderer(aviso_Tarea,tipo,"");
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/homework_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
                     celdas[0] = celda;
                     break;
                 case "Grupo":
-                    celda = new Celda_Renderer(aviso_Grupo,tipo,"");
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/group_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
                     celdas[0] = celda;
                     break;
                 case "Chat":
-                    celda = new Celda_Renderer(aviso_Chat,tipo,"");
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/chat_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
                     celdas[0] = celda;
                     break;
                 case "Pregunta":
-                    celda = new Celda_Renderer(aviso_Pregunta,tipo,"");
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/homework_make.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
                     celdas[0] = celda;
                     break;
             }
@@ -237,11 +238,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
             modelo.addRow(celdas);
             avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(aviso.length()));
             
-            curso.flush();
-            tarea.flush();
-            grupo.flush();
-            chat.flush();
-            pregunta.flush();
+            imagen.flush();
             
         } catch (IOException ex) {
             

@@ -486,10 +486,11 @@
             </Component>
             <Component class="javax.swing.JLabel" name="correo_JLabel">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="toolTipText" type="java.lang.String" value="Correo Electr&#xf3;nico"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[560, 25]"/>
                 </Property>
@@ -500,15 +501,15 @@
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[560, 25]"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Correo Electr&#xf3;nico"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="tipo_Perfil_JLabel">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="toolTipText" type="java.lang.String" value="Tipo De Perfil"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[345, 25]"/>
                 </Property>
@@ -519,15 +520,15 @@
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[345, 25]"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Tipo De Perfil"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="genero_JLabel">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="toolTipText" type="java.lang.String" value="G&#xe9;nero"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[212, 25]"/>
                 </Property>
@@ -538,7 +539,6 @@
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[212, 25]"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="G&#xe9;nero"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="intereses_Tematicas_JScrollPane">

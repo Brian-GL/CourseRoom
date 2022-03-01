@@ -20,6 +20,12 @@ public class Lista<T>{
         _size = 0;
     }
 
+    public Lista(java.util.List lista) {
+       _size = 0;
+        for(Object value:lista){
+            this.push_back((T)value);
+        }
+    }
     
     public Lista(T... elements) {
        _size = 0;
