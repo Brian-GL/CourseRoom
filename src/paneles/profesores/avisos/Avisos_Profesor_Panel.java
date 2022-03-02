@@ -10,7 +10,11 @@ import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.Font;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -44,26 +48,31 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
 
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
+        acciones_JPanel = new javax.swing.JPanel();
         actualizar_JButton = new javax.swing.JButton();
         avisos_JScrollPane = new javax.swing.JScrollPane();
         avisos_JTable = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Avisos");
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
+
+        acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setBorder(null);
@@ -81,29 +90,30 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             }
         });
 
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
         avisos_JScrollPane.setBorder(null);
         avisos_JScrollPane.setOpaque(false);
 
         avisos_JTable.setAutoCreateRowSorter(true);
+        avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         avisos_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -137,12 +147,10 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                     return super.getColumnClass(column);
                 }
             });
-            avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            avisos_JTable.setOpaque(false);
-            avisos_JTable.setRowHeight(80);
-            avisos_JTable.setRowMargin(15);
+            avisos_JTable.setRowHeight(100);
             avisos_JTable.setShowGrid(true);
-            avisos_JTable.setShowVerticalLines(false);
+            avisos_JTable.setSurrendersFocusOnKeystroke(true);
+            avisos_JTable.setVerifyInputWhenFocusTarget(false);
             avisos_JTable.setRowSorter(new TableRowSorter(avisos_JTable.getModel()));
             avisos_JScrollPane.setViewportView(avisos_JTable);
 
@@ -150,21 +158,15 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             this.setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(32, 32, 32)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                    .addGap(32, 32, 32))
+                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+                .addComponent(avisos_JScrollPane)
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
-                    .addContainerGap())
+                    .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE))
             );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -185,8 +187,75 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
+    private void Agregar_Aviso(String tipo, String aviso, String fecha){
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+        Celda_Renderer celda;
+        DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
+        String id = new String();
+            
+        try {
+            
+            Image imagen = null;
+            ImageIcon icono;
+            
+            switch(tipo){
+                case "Curso":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/course_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
+                    celdas[0] = celda;
+                    break;
+                case "Tarea":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/homework_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
+                    celdas[0] = celda;
+                    break;
+                case "Grupo":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/group_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
+                    celdas[0] = celda;
+                    break;
+                case "Chat":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/chat_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
+                    celdas[0] = celda;
+                    break;
+                case "Pregunta":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/homework_make.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
+                    celdas[0] = celda;
+                    break;
+                default:
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/bell_warning.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,"General","");
+                    celdas[0] = celda;
+                    break;
+            }
+            
+            celda = new Celda_Renderer(aviso,id,JLabel.TOP);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(fecha,id);
+            celdas[2] = celda;
+            
+            modelo.addRow(celdas);
+            avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(aviso.length()));
+            
+            imagen.flush();
+            
+        } catch (IOException ex) {
+            
+        }
+        
+    }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JScrollPane avisos_JScrollPane;
     private javax.swing.JTable avisos_JTable;
@@ -205,36 +274,13 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         avisos_JTable.getTableHeader().setFont(gadugi);
         
         avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
-        DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
-        
-        String id = "";
-        ImageIcon aviso_Curso = new ImageIcon(getClass().getResource("/recursos/iconos/course_notification.png"));
-        ImageIcon aviso_Notificacion = new ImageIcon(getClass().getResource("/recursos/iconos/homework_notification.png"));
-        ImageIcon aviso_Grupo = new ImageIcon(getClass().getResource("/recursos/iconos/group_notification.png"));
-        ImageIcon aviso_Chat = new ImageIcon(getClass().getResource("/recursos/iconos/chat_notification.png"));
-        
-        for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1,5);i++){
-            switch(CourseRoom.Utilerias.number().numberBetween(1,5)){
-                case 1:
-                    celdas[0] = new Celda_Renderer(aviso_Curso,"Curso",id);
-                    break;
-                case 2:
-                    celdas[0] = new Celda_Renderer(aviso_Notificacion,"Notificación",id);
-                    break;
-                case 3:
-                    celdas[0] = new Celda_Renderer(aviso_Grupo,"Grupo",id);
-                    break;
-                case 4:
-                    celdas[0] = new Celda_Renderer(aviso_Chat,"Chat",id);
-                    break;
-            }
-            
-            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.lorem().paragraph(),id);
-            celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0,1).toString(),id);
-            
-            modelo.addRow(celdas);
-        }
+        String tipo, aviso, fecha;
+        String[] opciones = {"Curso","Tarea","Grupo","Chat","Pregunta","General"};
+        tipo = CourseRoom.Utilerias.options().nextElement(opciones);
+        aviso = CourseRoom.Utilerias.lorem().sentence();
+        fecha = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
+
+        Agregar_Aviso(tipo, aviso, fecha);
         
     }
 
@@ -248,9 +294,15 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
+        avisos_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        avisos_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         avisos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        avisos_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        avisos_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();

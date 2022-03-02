@@ -31,10 +31,8 @@ import paneles.profesores.perfil.Perfil_Profesor_Panel;
  */
 public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
-    private static Lista<Pregunta_Profesor_Panel> mostrar_Preguntas_Lista;
+    private Lista<Pregunta_Profesor_Panel> mostrar_Preguntas_Lista;
     private Lista<Pregunta_Profesor_Panel> buscar_Preguntas_Lista;
-    private static CardLayout layout;
-    private static DefaultTableModel modelo_Estatico;
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Preguntas_Profesor_Panel(){
@@ -55,10 +53,10 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        preguntas_JLayeredPane = new javax.swing.JLayeredPane();
         mostrar_Preguntas_JPanel = new javax.swing.JPanel();
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
+        acciones_JPanel = new javax.swing.JPanel();
         buscar_Preguntas_JButton = new javax.swing.JButton();
         preguntar_JButton = new javax.swing.JButton();
         actualizar_JButton = new javax.swing.JButton();
@@ -71,11 +69,9 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         buscar_Preguntas_JTable = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
         setLayout(new java.awt.CardLayout());
-
-        preguntas_JLayeredPane.setLayout(new java.awt.CardLayout());
 
         mostrar_Preguntas_JPanel.setOpaque(false);
         mostrar_Preguntas_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -83,15 +79,19 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Preguntas");
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 68));
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
+
+        acciones_JPanel.setOpaque(false);
 
         buscar_Preguntas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
         buscar_Preguntas_JButton.setBorder(null);
@@ -139,34 +139,37 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             }
         });
 
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(preguntar_JButton)
                 .addGap(18, 18, 18)
                 .addComponent(buscar_Preguntas_JButton)
                 .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buscar_Preguntas_JButton)
                     .addComponent(preguntar_JButton)
                     .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
         mostrar_Preguntas_JScrollPane.setBorder(null);
         mostrar_Preguntas_JScrollPane.setOpaque(false);
 
         mostrar_Preguntas_JTable.setAutoCreateRowSorter(true);
+        mostrar_Preguntas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mostrar_Preguntas_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -200,12 +203,9 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                     return super.getColumnClass(column);
                 }
             });
-            mostrar_Preguntas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            mostrar_Preguntas_JTable.setOpaque(false);
             mostrar_Preguntas_JTable.setRowHeight(100);
-            mostrar_Preguntas_JTable.setRowMargin(15);
             mostrar_Preguntas_JTable.setShowGrid(true);
-            mostrar_Preguntas_JTable.setShowVerticalLines(false);
+            mostrar_Preguntas_JTable.setSurrendersFocusOnKeystroke(true);
             mostrar_Preguntas_JTable.setRowSorter(new TableRowSorter(mostrar_Preguntas_JTable.getModel()));
             mostrar_Preguntas_JTable.addMouseListener(new MouseAdapter() {
 
@@ -233,30 +233,30 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             mostrar_Preguntas_JPanelLayout.setHorizontalGroup(
                 mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrar_Preguntas_JPanelLayout.createSequentialGroup()
-                    .addGap(32, 32, 32)
+                    .addGap(0, 0, 0)
                     .addGroup(mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(mostrar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                    .addGap(32, 32, 32))
+                        .addComponent(mostrar_Preguntas_JScrollPane)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1122, Short.MAX_VALUE))
+                    .addGap(0, 0, 0))
             );
             mostrar_Preguntas_JPanelLayout.setVerticalGroup(
                 mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Preguntas_JPanelLayout.createSequentialGroup()
-                    .addContainerGap()
+                    .addGap(0, 0, 0)
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(mostrar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
-                    .addContainerGap())
+                    .addComponent(mostrar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                    .addGap(0, 0, 0))
             );
 
-            preguntas_JLayeredPane.add(mostrar_Preguntas_JPanel, "Mostrar");
+            add(mostrar_Preguntas_JPanel, "Mostrar");
 
             buscar_Preguntas_JPanel.setOpaque(false);
             buscar_Preguntas_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-            buscar_Preguntas_JTextField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-            buscar_Preguntas_JTextField.setBorder(null);
+            buscar_Preguntas_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             buscar_Preguntas_JTextField.setToolTipText("<html>\n<h3>Buscar duda(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
+            buscar_Preguntas_JTextField.setBorder(null);
             buscar_Preguntas_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     buscar_Preguntas_JTextFieldKeyPressed(evt);
@@ -264,8 +264,11 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             });
 
             mostrar_Preguntas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/shrug.png"))); // NOI18N
-            mostrar_Preguntas_JButton.setBorder(null);
             mostrar_Preguntas_JButton.setToolTipText("<html>\n<h3>Regresar a la página de dudas</h3>\n</html>");
+            mostrar_Preguntas_JButton.setBorder(null);
+            mostrar_Preguntas_JButton.setMaximumSize(new java.awt.Dimension(50, 50));
+            mostrar_Preguntas_JButton.setMinimumSize(new java.awt.Dimension(50, 50));
+            mostrar_Preguntas_JButton.setPreferredSize(new java.awt.Dimension(50, 50));
             ((ImageIcon)mostrar_Preguntas_JButton.getIcon()).getImage().flush();
             mostrar_Preguntas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -283,6 +286,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             buscar_Preguntas_JScrollPane.setOpaque(false);
 
             buscar_Preguntas_JTable.setAutoCreateRowSorter(true);
+            buscar_Preguntas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             buscar_Preguntas_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -316,12 +320,9 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                         return super.getColumnClass(column);
                     }
                 });
-                buscar_Preguntas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-                buscar_Preguntas_JTable.setOpaque(false);
                 buscar_Preguntas_JTable.setRowHeight(100);
-                buscar_Preguntas_JTable.setRowMargin(15);
                 buscar_Preguntas_JTable.setShowGrid(true);
-                buscar_Preguntas_JTable.setShowVerticalLines(false);
+                buscar_Preguntas_JTable.setSurrendersFocusOnKeystroke(true);
                 buscar_Preguntas_JTable.setRowSorter(new TableRowSorter(buscar_Preguntas_JTable.getModel()));
                 buscar_Preguntas_JTable.addMouseListener(new MouseAdapter() {
 
@@ -349,14 +350,14 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                 buscar_Preguntas_JPanelLayout.setHorizontalGroup(
                     buscar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buscar_Preguntas_JPanelLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(0, 0, 0)
                         .addGroup(buscar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(buscar_Preguntas_JPanelLayout.createSequentialGroup()
-                                .addComponent(mostrar_Preguntas_JButton)
+                                .addComponent(mostrar_Preguntas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(buscar_Preguntas_JTextField))
-                            .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                        .addGap(32, 32, 32))
+                            .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
+                        .addGap(0, 0, 0))
                 );
                 buscar_Preguntas_JPanelLayout.setVerticalGroup(
                     buscar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,21 +365,19 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                         .addContainerGap()
                         .addGroup(buscar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(buscar_Preguntas_JTextField)
-                            .addComponent(mostrar_Preguntas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(mostrar_Preguntas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                        .addGap(0, 0, 0))
                 );
 
-                preguntas_JLayeredPane.add(buscar_Preguntas_JPanel, "Buscar");
-
-                add(preguntas_JLayeredPane, "card2");
+                add(buscar_Preguntas_JPanel, "Buscar");
             }// </editor-fold>//GEN-END:initComponents
 
     private void buscar_Preguntas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Preguntas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            layout.show(preguntas_JLayeredPane, "Buscar");
+            ((CardLayout)this.getLayout()).show(this, "Buscar");
         }
     }//GEN-LAST:event_buscar_Preguntas_JButtonMouseClicked
 
@@ -396,10 +395,10 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
 
-            Preguntar_Profesor_Frame preguntar_Estudiante_Frame
+            Preguntar_Profesor_Frame preguntar_Profesor_Frame
             = new Preguntar_Profesor_Frame();
 
-            preguntar_Estudiante_Frame.setVisible(true);
+            preguntar_Profesor_Frame.setVisible(true);
         }
     }//GEN-LAST:event_preguntar_JButtonMouseClicked
 
@@ -420,7 +419,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
     private void mostrar_Preguntas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Preguntas_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            layout.show(preguntas_JLayeredPane, "Mostrar");
+            ((CardLayout)this.getLayout()).show(this, "Mostrar");
         }
     }//GEN-LAST:event_mostrar_Preguntas_JButtonMouseClicked
 
@@ -451,41 +450,51 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    public static int Numero_Preguntas(){
+    public int Numero_Preguntas(){
         return mostrar_Preguntas_Lista.size();
     }
     
-    public void Agregar_Pregunta(String nombre_Duda, 
-            String descripcion_Duda,
+    public void Agregar_Pregunta_Local(
             String preguntador_Nombre,
-            String fecha,
+            String pregunta, 
+            String descripcion_Pregunta,
+            String fecha_Pregunta,
             String id) {
         
         
-        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        String estatus = "Abierta";
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        Image imagen_usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
-        ImageIcon icono_Usuario = new ImageIcon(imagen_usuario);
+        Image imagen_Usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
+        ImageIcon icono_Usuario = new ImageIcon(imagen_Usuario);
         
         celda = new Celda_Renderer(icono_Usuario, preguntador_Nombre,id);
         celdas[0] = celda;
-        celda = new Celda_Renderer(nombre_Duda,id);
+        celda = new Celda_Renderer(pregunta,id);
         celdas[1] = celda;
-        celda = new Celda_Renderer(fecha, id);
+        celda = new Celda_Renderer(fecha_Pregunta,id);
         celdas[2] = celda;
-        celda = new Celda_Renderer("Abierta",id);
+        celda = new Celda_Renderer(estatus,id);
         celdas[3] = celda;
         
-        modelo_Estatico.addRow(celdas);
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
         
-        Pregunta_Profesor_Panel pregunta_Estudiante_Panel = 
-                new Pregunta_Profesor_Panel(nombre_Duda, descripcion_Duda, preguntador_Nombre, fecha);
-        mostrar_Preguntas_Lista.push_back(pregunta_Estudiante_Panel);
-        Tablero_Profesor_Panel.Agregar_Vista(pregunta_Estudiante_Panel, id);
+        modelo.addRow(celdas);
+        
+        mostrar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla_Icono(pregunta.length()));
+        
+        imagen_Usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
+        
+        Pregunta_Profesor_Panel pregunta_Profesor_Panel = 
+                new Pregunta_Profesor_Panel(imagen_Usuario,pregunta, preguntador_Nombre, descripcion_Pregunta, fecha_Pregunta, estatus);
+        mostrar_Preguntas_Lista.push_back(pregunta_Profesor_Panel);
+        
+        Tablero_Profesor_Panel.Agregar_Vista(pregunta_Profesor_Panel, id);
         
     }
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton buscar_Preguntas_JButton;
     private javax.swing.JPanel buscar_Preguntas_JPanel;
@@ -498,14 +507,12 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
     private javax.swing.JScrollPane mostrar_Preguntas_JScrollPane;
     private javax.swing.JTable mostrar_Preguntas_JTable;
     private javax.swing.JButton preguntar_JButton;
-    private javax.swing.JLayeredPane preguntas_JLayeredPane;
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
-        layout = (CardLayout)preguntas_JLayeredPane.getLayout();
-
+        
         mostrar_Preguntas_JScrollPane.getViewport().setOpaque(false);
         mostrar_Preguntas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         mostrar_Preguntas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -523,16 +530,11 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         buscar_Preguntas_JTable.getTableHeader().setFont(gadugi);
         buscar_Preguntas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        
-        
-        
-        
-        modelo_Estatico = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
-        
     }
 
     @Override
     public void Colorear_Componentes() {
+        
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -541,25 +543,6 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
 
         buscar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         preguntar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        
-        mostrar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        mostrar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        mostrar_Preguntas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
-
-        DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
-        Celda_Renderer celda;
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            for (int j = 0; j < modelo.getColumnCount(); j++) {
-                celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
-            }
-        }
-
-        Pregunta_Profesor_Panel pregunta_Estudiante_Panel;
-        for (Nodo<Pregunta_Profesor_Panel> nodo = mostrar_Preguntas_Lista.front(); nodo != null; nodo = nodo.next()) {
-            pregunta_Estudiante_Panel = nodo.element();
-            pregunta_Estudiante_Panel.Colorear_Componentes();
-        }
         
         Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
         buscar_Preguntas_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
@@ -573,9 +556,39 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         
         mostrar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
         
-        buscar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        buscar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mostrar_Preguntas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        mostrar_Preguntas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
+        mostrar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mostrar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mostrar_Preguntas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        mostrar_Preguntas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        mostrar_Preguntas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
+        buscar_Preguntas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        buscar_Preguntas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        buscar_Preguntas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        buscar_Preguntas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         buscar_Preguntas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        buscar_Preguntas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_Preguntas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
+        Celda_Renderer celda;
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+            }
+        }
+
+        Pregunta_Profesor_Panel pregunta_Profesor_Panel;
+        for (Nodo<Pregunta_Profesor_Panel> nodo = mostrar_Preguntas_Lista.front(); nodo != null; nodo = nodo.next()) {
+            pregunta_Profesor_Panel = nodo.element();
+            pregunta_Profesor_Panel.Colorear_Componentes();
+        }
+        
         
         modelo = (DefaultTableModel) buscar_Preguntas_JTable.getModel();
         for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -586,21 +599,20 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         }
 
         for (Nodo<Pregunta_Profesor_Panel> nodo = buscar_Preguntas_Lista.front(); nodo != null; nodo = nodo.next()) {
-            pregunta_Estudiante_Panel = nodo.element();
-            pregunta_Estudiante_Panel.Colorear_Componentes();
+            pregunta_Profesor_Panel = nodo.element();
+            pregunta_Profesor_Panel.Colorear_Componentes();
         }
     }
     
     @Override
     public void Limpiar() {
         mostrar_Preguntas_Lista.clear();
-        buscar_Preguntas_Lista.clear();
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
         modelo.setRowCount(0);
+        buscar_Preguntas_Lista.clear();
         modelo = (DefaultTableModel) buscar_Preguntas_JTable.getModel();
         modelo.setRowCount(0);
     }
-    
     
     public class Preguntar_Profesor_Frame extends javax.swing.JDialog implements Componentes_Interface{
 
@@ -630,7 +642,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
 
             setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
             setAlwaysOnTop(true);
-            setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+            setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
             setMinimumSize(new java.awt.Dimension(1000, 300));
             setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
             setUndecorated(true);
@@ -642,9 +654,9 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             contenido_JPanel.setMinimumSize(new java.awt.Dimension(800, 227));
             contenido_JPanel.setPreferredSize(new java.awt.Dimension(800, 227));
 
-            preguntar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
             preguntar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/doubt.png"))); // NOI18N
             preguntar_JButton.setText("Preguntar");
+            preguntar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
             ((ImageIcon)preguntar_JButton.getIcon()).getImage().flush();
             preguntar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -668,10 +680,9 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             pregunta_JTextField.setBorder(null);
             pregunta_JTextField.setOpaque(true);
 
-            cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
             cerrar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
             cerrar_JButton.setText("Cancelar");
-            cerrar_JButton.setBorder(null);
+            cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
             ((ImageIcon)cerrar_JButton.getIcon()).getImage().flush();
             cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -693,7 +704,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                     .addContainerGap()
                     .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                            .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(preguntar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(descripcion_Pregunta_JScrollPane)
@@ -724,11 +735,13 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             if(SwingUtilities.isLeftMouseButton(evt)){
                 if(!pregunta_JTextField.getText().isBlank() && !pregunta_JTextField.getText().isEmpty()){
                     if (!descripcion_Pregunta_JTextPane.getText().isBlank() && !descripcion_Pregunta_JTextPane.getText().isEmpty()) {
-                        int cuenta = Preguntas_Profesor_Panel.Numero_Preguntas()+1;
+                        int cuenta = Numero_Preguntas()+1;
                         String id = CourseRoom.Utilerias.Concatenar("Pregunta_", cuenta);
 
-                        Agregar_Pregunta(pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(),
-                        Perfil_Profesor_Panel.Nombre_Completo(),CourseRoom.Utilerias.Fecha_Hora_Local(),id);
+                        Agregar_Pregunta_Local(Perfil_Profesor_Panel.Nombre_Completo(),
+                                pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(),
+                        CourseRoom.Utilerias.Fecha_Hora_Local(), id);
+                        
                         Tablero_Profesor_Panel.Mostrar_Vista(id);
 
                         this.dispose();
@@ -763,7 +776,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             cerrar_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         }                                           
 
-        private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {
+        private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {                                           
             // TODO add your handling code here:
             cerrar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
             cerrar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
@@ -782,7 +795,6 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         @Override
         public void Iniciar_Componentes() {
             this.setLocationRelativeTo(null);
-            this.setAlwaysOnTop(true);
             Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
 
             pregunta_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
@@ -793,7 +805,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             descripcion_Pregunta_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                     "Descripcion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                     javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                    gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+                    gadugi, CourseRoom.Utilerias.Segundo_Color_Fuente()));
 
             descripcion_Pregunta_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
             descripcion_Pregunta_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -825,6 +837,4 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
 
         }
     }
-
-    
 }

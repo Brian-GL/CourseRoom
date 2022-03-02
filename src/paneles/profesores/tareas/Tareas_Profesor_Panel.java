@@ -72,9 +72,10 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
 
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
-        tareas_Por_Calificar_JButton = new javax.swing.JButton();
+        acciones_JPanel = new javax.swing.JPanel();
         actualizar_JButton = new javax.swing.JButton();
         tareas_Creadas_JButton = new javax.swing.JButton();
+        tareas_Por_Calificar_JButton = new javax.swing.JButton();
         contenido_JLayeredPane = new javax.swing.JLayeredPane();
         tareas_Por_Calificar_JScrollPane = new javax.swing.JScrollPane();
         tareas_Por_Calificar_JTable = new javax.swing.JTable();
@@ -86,26 +87,19 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
-        titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setMaximumSize(new java.awt.Dimension(450, 84));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(450, 84));
         titulo_JLabel.setOpaque(true);
-        titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(450, 84));
         titulo_JLabel.setToolTipText("");
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
 
-        tareas_Por_Calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_4.png"))); // NOI18N
-        tareas_Por_Calificar_JButton.setBorder(null);
-        tareas_Por_Calificar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-        tareas_Por_Calificar_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
-        ((ImageIcon)tareas_Por_Calificar_JButton.getIcon()).getImage().flush();
-        tareas_Por_Calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tareas_Por_Calificar_JButtonMouseClicked(evt);
-            }
-        });
+        acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setBorder(null);
@@ -134,29 +128,42 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             }
         });
 
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 403, Short.MAX_VALUE)
+        tareas_Por_Calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_4.png"))); // NOI18N
+        tareas_Por_Calificar_JButton.setBorder(null);
+        tareas_Por_Calificar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        tareas_Por_Calificar_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
+        ((ImageIcon)tareas_Por_Calificar_JButton.getIcon()).getImage().flush();
+        tareas_Por_Calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tareas_Por_Calificar_JButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(tareas_Por_Calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tareas_Creadas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titulo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tareas_Por_Calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tareas_Creadas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
         contenido_JLayeredPane.setLayout(new java.awt.CardLayout());
 
@@ -198,11 +205,9 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                 }
             });
             tareas_Por_Calificar_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            tareas_Por_Calificar_JTable.setOpaque(false);
-            tareas_Por_Calificar_JTable.setRowHeight(100);
-            tareas_Por_Calificar_JTable.setRowMargin(15);
+            tareas_Por_Calificar_JTable.setRowHeight(110);
             tareas_Por_Calificar_JTable.setShowGrid(true);
-            tareas_Por_Calificar_JTable.setShowVerticalLines(false);
+            tareas_Por_Calificar_JTable.setSurrendersFocusOnKeystroke(true);
             tareas_Por_Calificar_JTable.setRowSorter(new TableRowSorter(tareas_Por_Calificar_JTable.getModel()));
             tareas_Por_Calificar_JTable.addMouseListener(new MouseAdapter() {
 
@@ -228,7 +233,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             tareas_Creadas_JScrollPane.setOpaque(false);
 
             tareas_Creadas_JTable.setAutoCreateRowSorter(true);
-            tareas_Creadas_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             tareas_Creadas_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -262,11 +266,10 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                         return super.getColumnClass(column);
                     }
                 });
-                tareas_Creadas_JTable.setOpaque(false);
-                tareas_Creadas_JTable.setRowHeight(100);
-                tareas_Creadas_JTable.setRowMargin(15);
+                tareas_Creadas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                tareas_Creadas_JTable.setRowHeight(110);
                 tareas_Creadas_JTable.setShowGrid(true);
-                tareas_Creadas_JTable.setShowVerticalLines(false);
+                tareas_Creadas_JTable.setSurrendersFocusOnKeystroke(true);
                 tareas_Creadas_JTable.setRowSorter(new TableRowSorter(tareas_Creadas_JTable.getModel()));
                 tareas_Creadas_JTable.addMouseListener(new MouseAdapter() {
 
@@ -292,20 +295,20 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                 layout.setHorizontalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(contenido_JLayeredPane)
                             .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(32, 32, 32))
+                        .addGap(0, 0, 0))
                 );
                 layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(0, 0, 0)
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(contenido_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(contenido_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                        .addGap(0, 0, 0))
                 );
             }// </editor-fold>//GEN-END:initComponents
 
@@ -344,64 +347,103 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         }
     }//GEN-LAST:event_tareas_Creadas_JButtonMouseClicked
 
-    private static void Agregar_Tarea_Creada(String nombre_Tarea, ImageIcon icono_Curso, String nombre_Curso,
+    private static void Agregar_Tarea_Creada(String nombre_Tarea, String ruta_Imagen_Curso, String nombre_Curso,
             String fecha_Entrega, String estatus_Tarea, String _id){
         
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-        String fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
-        Celda_Renderer celda;
-        
-        celda = new Celda_Renderer(nombre_Tarea, _id);
-        celdas[0] = celda;
-        celda = new Celda_Renderer(icono_Curso, nombre_Curso, _id);
-        celdas[1] = celda;
-        celda = new Celda_Renderer(fecha_Creacion, _id);
-        celdas[2] = celda;
-        celda = new Celda_Renderer(fecha_Entrega, _id);
-        celdas[3] = celda;
-        celda = new Celda_Renderer(estatus_Tarea, _id);
-        celdas[4] = celda;
-        
-        Tarea_Profesor_Panel tarea_Profesor_Panel =
-                new Tarea_Profesor_Panel(nombre_Tarea,nombre_Curso,
-                        Perfil_Profesor_Panel.Nombre_Completo(),fecha_Creacion, fecha_Entrega, estatus_Tarea, _id);
-        tareas_Creadas_Lista.push_back(tarea_Profesor_Panel);
-        
-        modelo_Tareas_Creadas.addRow(celdas);
-        Tablero_Profesor_Panel.Agregar_Vista(tarea_Profesor_Panel, _id);
+        try {
+            Celda_Renderer[] celdas = new Celda_Renderer[5];
+            String fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
+            Celda_Renderer celda;
+            URL url_Imagen;
+            Image imagen;
+            ImageIcon icono;
+            
+            celda = new Celda_Renderer(nombre_Tarea, _id);
+            celdas[0] = celda;
+            url_Imagen = new URL(ruta_Imagen_Curso);
+            imagen = ImageIO.read(url_Imagen);
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono, nombre_Curso, _id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(fecha_Creacion, _id);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(fecha_Entrega, _id);
+            celdas[3] = celda;
+            celda = new Celda_Renderer(estatus_Tarea, _id);
+            celdas[4] = celda;
+            
+            Tarea_Profesor_Panel tarea_Profesor_Panel =
+                    new Tarea_Profesor_Panel(nombre_Tarea,nombre_Curso,
+                            Perfil_Profesor_Panel.Nombre_Completo(),fecha_Creacion, fecha_Entrega, estatus_Tarea, _id);
+            tareas_Creadas_Lista.push_back(tarea_Profesor_Panel);
+            
+            modelo_Tareas_Creadas.addRow(celdas);
+            
+            Tablero_Profesor_Panel.Agregar_Vista(tarea_Profesor_Panel, _id);
+            
+            imagen.flush();
+            
+        } catch (MalformedURLException ex) {
+            
+        } catch (IOException ex) {
+            
+        }
     }
     
-    private void Agregar_Tarea_Por_Calificar(String nombre_Tarea, ImageIcon icono_Curso, String nombre_Curso, ImageIcon icono_Estudiante,
+    private void Agregar_Tarea_Por_Calificar(String nombre_Tarea, String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Estudiante,
             String nombre_Estudiante, String fecha_Creacion, String fecha_Entregada, String fecha_Entrega, String _id){
         
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
+        URL url_Imagen;
+        Image imagen;
+        ImageIcon icono;
         
-        celda = new Celda_Renderer(nombre_Tarea,_id);
-        celdas[0] = celda;
-        celda = new Celda_Renderer(icono_Curso, nombre_Curso, _id);
-        celdas[1] = celda;
-        celda = new Celda_Renderer(icono_Estudiante,nombre_Estudiante, _id);
-        celdas[2] = celda;
-        celda = new Celda_Renderer(fecha_Entregada,_id);
-        celdas[3] = celda;
-        celda = new Celda_Renderer(fecha_Entrega, _id);
-        celdas[4] = celda;
-        
-        Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel =
-                new Tarea_Por_Calificar_Profesor_Panel(nombre_Tarea,nombre_Curso,
-                        CourseRoom.Utilerias.Fecha_Hora_Local(), fecha_Entrega, fecha_Entregada, "Por Calificar");
-        
-        tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
-        
-        DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
-        modelo.addRow(celdas);
-        
-        Tablero_Profesor_Panel.Agregar_Vista(tarea_Entregada_Profesor_Panel, _id);
+        try {
+           
+            url_Imagen = new URL(ruta_Imagen_Curso);
+            imagen = ImageIO.read(url_Imagen);
+            icono = new ImageIcon(imagen);
+            
+            celda = new Celda_Renderer(nombre_Tarea,_id);
+            celdas[0] = celda;
+            celda = new Celda_Renderer(icono, nombre_Curso, _id);
+            celdas[1] = celda;
+            
+            url_Imagen = new URL(ruta_Imagen_Estudiante);
+            imagen = ImageIO.read(url_Imagen);
+            
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono,nombre_Estudiante, _id);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(fecha_Entregada,_id);
+            celdas[3] = celda;
+            celda = new Celda_Renderer(fecha_Entrega, _id);
+            celdas[4] = celda;
+            
+            Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel =
+                    new Tarea_Por_Calificar_Profesor_Panel(nombre_Tarea,nombre_Curso,
+                            fecha_Creacion, fecha_Entrega, fecha_Entregada, "Por Calificar");
+            
+            tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
+            
+            DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
+            modelo.addRow(celdas);
+            
+            Tablero_Profesor_Panel.Agregar_Vista(tarea_Entregada_Profesor_Panel, _id);
+            
+            imagen.flush();
+            
+        } catch (MalformedURLException ex) {
+            
+        } catch (IOException ex) {
+            
+        }
            
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JLayeredPane contenido_JLayeredPane;
     private javax.swing.JPanel contenido_Titulo_JPanel;
@@ -437,62 +479,30 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         tareas_Por_Calificar_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
         
-        String _id;
-        ImageIcon icono_Curso, icono_Estudiante;
-        URL url_Imagen;
-        Image imagen;
+        String _id, ruta_Imagen_Curso, ruta_Imagen_Estudiante;
         String nombre_Tarea,nombre_Curso, nombre_Estudiante, fecha_Creacion, fecha_Entregado, fecha_Entrega, estatus;
-        for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5);i++){
-            
-            try {
-                _id = CourseRoom.Utilerias.Concatenar("Tarea_Calificar_", i);
-                System.out.println(_id + " -> Getting Image From https://picsum.photos/96/96");
-                url_Imagen = new URL("https://picsum.photos/96/96");
-                imagen = ImageIO.read(url_Imagen);
-
-                nombre_Tarea = CourseRoom.Utilerias.job().title();
-                icono_Curso = new ImageIcon(imagen);
-                nombre_Curso = CourseRoom.Utilerias.educator().course();
-                nombre_Estudiante = CourseRoom.Utilerias.name().fullName();
-                fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
-                fecha_Entregado = CourseRoom.Utilerias.Fecha_Hora_Local();
-                fecha_Entrega = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
-                
-                System.out.println(_id + " Estudiante: -> Getting Image From https://i.pravatar.cc/96");
-                url_Imagen = new URL("https://i.pravatar.cc/96");
-                imagen = ImageIO.read(url_Imagen);
-                icono_Estudiante = new ImageIcon(imagen);
-                
-                Agregar_Tarea_Por_Calificar(nombre_Tarea, icono_Curso, nombre_Curso, icono_Estudiante, nombre_Estudiante, fecha_Creacion, fecha_Entregado, fecha_Entrega, _id);
-            }catch(IOException e){
-                
-            }
-        }
         
-        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
-           
-            try {
-                _id = String.valueOf(i);
-                _id = CourseRoom.Utilerias.Concatenar("Tarea_Creada_", _id);
-                
-                System.out.println(_id + " -> Getting Image From https://picsum.photos/96/96");
-                url_Imagen = new URL("https://picsum.photos/96/96");
-                imagen = ImageIO.read(url_Imagen);
-                
-                icono_Curso = new ImageIcon(imagen);
-                nombre_Tarea = CourseRoom.Utilerias.university().name();
-                nombre_Curso = CourseRoom.Utilerias.educator().course();
-                fecha_Entrega = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
-                estatus = CourseRoom.Utilerias.bool().bool() ? "Asignada" : "Completada";
-                
-                Agregar_Tarea_Creada(nombre_Tarea,icono_Curso, nombre_Curso, fecha_Entrega, estatus, _id);
+        _id = "Tarea_Por_Calificar_0";
+        ruta_Imagen_Curso = "https://picsum.photos/96/96";
+        ruta_Imagen_Estudiante = "https://i.pravatar.cc/96";
+        nombre_Tarea = CourseRoom.Utilerias.job().title();
+        nombre_Curso = CourseRoom.Utilerias.educator().course();
+        nombre_Estudiante = CourseRoom.Utilerias.name().fullName();
+        fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
+        fecha_Entregado = CourseRoom.Utilerias.Fecha_Hora_Local();
+        fecha_Entrega = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
+        Agregar_Tarea_Por_Calificar(nombre_Tarea, ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Estudiante,
+                nombre_Estudiante, fecha_Creacion, fecha_Entregado, fecha_Entrega, _id);
 
-            } catch (MalformedURLException ex) {
-                
-            } catch (IOException ex) {
-                
-            } 
-        }
+        _id = "Tarea_Creada_0";
+
+        nombre_Tarea = CourseRoom.Utilerias.university().name();
+        nombre_Curso = CourseRoom.Utilerias.educator().course();
+        fecha_Entrega = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
+        estatus = CourseRoom.Utilerias.bool().bool() ? "Asignada" : "Completada";
+
+        Agregar_Tarea_Creada(nombre_Tarea,ruta_Imagen_Curso, nombre_Curso, fecha_Entrega, estatus, _id);
+            
     }
 
     @Override
@@ -505,13 +515,25 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
+        tareas_Por_Calificar_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        tareas_Por_Calificar_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         tareas_Por_Calificar_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         tareas_Por_Calificar_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         tareas_Por_Calificar_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
+        tareas_Por_Calificar_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        tareas_Por_Calificar_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
+        tareas_Creadas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        tareas_Creadas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         tareas_Creadas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         tareas_Creadas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         tareas_Creadas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        tareas_Creadas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        tareas_Creadas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
         Celda_Renderer celda;

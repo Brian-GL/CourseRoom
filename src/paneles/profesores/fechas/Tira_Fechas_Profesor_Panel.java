@@ -7,6 +7,8 @@ package paneles.profesores.fechas;
 
 import datos.interfaces.Limpieza_Interface;
 
+
+
 /**
  *
  * @author LENOVO
@@ -14,7 +16,7 @@ import datos.interfaces.Limpieza_Interface;
 public class Tira_Fechas_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface{
 
     /**
-     * Creates new form Tira_Fechas_Estudiante_Panel
+     * Creates new form Tira_Fechas_Profesor_Panel
      */
     public Tira_Fechas_Profesor_Panel() {
         initComponents();
@@ -57,8 +59,8 @@ public class Tira_Fechas_Profesor_Panel extends javax.swing.JPanel implements Li
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void Agregar_Fecha(Fecha_Profesor_Panel caja_Fecha_Estudiante_Panel){
-        contenido_JPanel.add(caja_Fecha_Estudiante_Panel);
+    public void Agregar_Fecha(Fecha_Profesor_Panel caja_Fecha_Profesor_Panel){
+        contenido_JPanel.add(caja_Fecha_Profesor_Panel);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

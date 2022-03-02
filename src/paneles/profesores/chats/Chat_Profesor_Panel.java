@@ -20,6 +20,7 @@ package paneles.profesores.chats;
 import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
+import datos.colecciones.Lista;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -29,15 +30,19 @@ import datos.interfaces.Envio_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.apache.commons.io.FilenameUtils;
 import paneles.profesores.Tablero_Profesor_Panel;
+import paneles.profesores.perfil.Perfil_Profesor_Panel;
 
 /**
  *
@@ -47,13 +52,24 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
     private boolean carta_Visible;
     
-    /**
-     * Creates new form Chat_Profesor
-     */
-    public Chat_Profesor_Panel(String receptor_Nombre) {
+    
+    public Chat_Profesor_Panel(Image imagen_Chat,String nombres_Chat, String apellidos_Chat, String correo_Chat,
+            String genero_Chat, String tipo_Perfil, Lista<String> intereses_Tematicas) {
         initComponents();
         
-        titulo_JLabel.setText(receptor_Nombre);
+        titulo_JLabel.setText(CourseRoom.Utilerias.Concatenar(nombres_Chat, " ",apellidos_Chat));
+        genero_JLabel.setText(genero_Chat);
+        tipo_Perfil_JLabel.setText(tipo_Perfil);
+        apellidos_JLabel.setText(apellidos_Chat);
+        nombres_JLabel.setText(nombres_Chat);
+        correo_JLabel.setText(correo_Chat);
+        
+        while(!intereses_Tematicas.is_empty()){
+            Agregar_Interes_Tematica(intereses_Tematicas.delist());
+        }
+        
+        ImageIcon icono = new ImageIcon(imagen_Chat);
+        imagen_Perfil_JLabel.setIcon(icono);
         
         Iniciar_Componentes();
         
@@ -91,17 +107,16 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         intereses_Tematicas_JScrollPane = new javax.swing.JScrollPane();
         intereses_Tematicas_JTable = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
-        titulo_JLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setOpaque(true);
@@ -128,9 +143,9 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_JButton.setToolTipText("Regresar A Mis Chats");
         regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar_JButton.setToolTipText("Regresar A Mis Chats");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -180,27 +195,25 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(regresar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(titulo_JPanelLayout.createSequentialGroup()
-                        .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)))
+                    .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         chat_JLayeredPane.setLayout(new java.awt.CardLayout());
 
         chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         chat_JPanel.setOpaque(false);
+        chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         chat_JPanel.setLayout(new java.awt.BorderLayout());
 
         mensajes_Chat_JScrollPane.setBorder(null);
         mensajes_Chat_JScrollPane.setOpaque(false);
 
         mensajes_Chat_JTable.setAutoCreateRowSorter(true);
+        mensajes_Chat_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         mensajes_Chat_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -212,7 +225,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, true, false
+                    false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -234,11 +247,9 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                     return super.getColumnClass(column);
                 }
             });
-            mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            mensajes_Chat_JTable.setOpaque(false);
             mensajes_Chat_JTable.setRowHeight(80);
-            mensajes_Chat_JTable.setRowMargin(15);
             mensajes_Chat_JTable.setShowGrid(true);
+            mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
             mensajes_Chat_JTable.setRowSorter(new TableRowSorter(mensajes_Chat_JTable.getModel()));
             mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {
 
@@ -274,12 +285,12 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             enviar_Mensaje_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1085, 44));
 
             enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
+            enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
             enviar_Archivo_Chat_JButton.setBorder(null);
             enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             enviar_Archivo_Chat_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
             enviar_Archivo_Chat_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
             enviar_Archivo_Chat_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-            enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
             ((ImageIcon)enviar_Archivo_Chat_JButton.getIcon()).getImage().flush();
             enviar_Archivo_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -293,7 +304,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                 }
             });
 
-            redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
             redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
             redactar_Mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -309,7 +320,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                     .addContainerGap()
                     .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 990, Short.MAX_VALUE)
+                    .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
                     .addContainerGap())
             );
             enviar_Mensaje_Chat_JPanelLayout.setVerticalGroup(
@@ -326,8 +337,8 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
             chat_JLayeredPane.add(chat_JPanel, "Chat");
 
-            informacion_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
             informacion_Chat_JPanel.setOpaque(false);
+            informacion_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
             imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
@@ -356,34 +367,35 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             nombres_JLabel.setPreferredSize(new java.awt.Dimension(560, 50));
             nombres_JLabel.setToolTipText("Nombre(s)");
 
-            correo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
             correo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+            correo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+            correo_JLabel.setToolTipText("Correo Electrónico");
             correo_JLabel.setMaximumSize(new java.awt.Dimension(560, 25));
             correo_JLabel.setMinimumSize(new java.awt.Dimension(560, 25));
             correo_JLabel.setName("label"); // NOI18N
             correo_JLabel.setPreferredSize(new java.awt.Dimension(560, 25));
-            correo_JLabel.setToolTipText("Correo Electrónico");
 
-            tipo_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
             tipo_Perfil_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+            tipo_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+            tipo_Perfil_JLabel.setToolTipText("Tipo De Perfil");
             tipo_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(345, 25));
             tipo_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(345, 25));
             tipo_Perfil_JLabel.setName("label"); // NOI18N
             tipo_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(345, 25));
-            tipo_Perfil_JLabel.setToolTipText("Tipo De Perfil");
 
-            genero_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
             genero_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+            genero_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+            genero_JLabel.setToolTipText("Género");
             genero_JLabel.setMaximumSize(new java.awt.Dimension(212, 25));
             genero_JLabel.setMinimumSize(new java.awt.Dimension(212, 25));
             genero_JLabel.setName("label"); // NOI18N
             genero_JLabel.setPreferredSize(new java.awt.Dimension(212, 25));
-            genero_JLabel.setToolTipText("Género");
 
             intereses_Tematicas_JScrollPane.setBorder(null);
             intereses_Tematicas_JScrollPane.setOpaque(false);
 
             intereses_Tematicas_JTable.setAutoCreateRowSorter(true);
+            intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             intereses_Tematicas_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -417,12 +429,11 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                         return super.getColumnClass(column);
                     }
                 });
-                intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-                intereses_Tematicas_JTable.setOpaque(false);
                 intereses_Tematicas_JTable.setRowHeight(32);
                 intereses_Tematicas_JTable.setRowMargin(5);
                 intereses_Tematicas_JTable.setShowGrid(true);
                 intereses_Tematicas_JTable.setShowVerticalLines(false);
+                intereses_Tematicas_JTable.setSurrendersFocusOnKeystroke(true);
                 intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
                 intereses_Tematicas_JScrollPane.setViewportView(intereses_Tematicas_JTable);
 
@@ -448,7 +459,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                 informacion_Chat_JPanelLayout.setVerticalGroup(
                     informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Chat_JPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(48, Short.MAX_VALUE)
                         .addGroup(informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(informacion_Chat_JPanelLayout.createSequentialGroup()
@@ -461,9 +472,9 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                                 .addGroup(informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(48, Short.MAX_VALUE))
                 );
 
                 chat_JLayeredPane.add(informacion_Chat_JPanel, "Informacion");
@@ -473,20 +484,20 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                 layout.setHorizontalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(chat_JLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE))
-                        .addGap(32, 32, 32))
+                            .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
+                        .addGap(0, 0, 0))
                 );
                 layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(0, 0, 0)
                         .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chat_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(chat_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+                        .addGap(0, 0, 0))
                 );
             }// </editor-fold>//GEN-END:initComponents
 
@@ -506,6 +517,23 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         // TODO add your handling code here:
         regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
+
+    private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Enviar_Archivos();
+        }
+    }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseClicked
+
+    private void enviar_Archivo_Chat_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseEntered
+        // TODO add your handling code here:
+        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseEntered
+
+    private void enviar_Archivo_Chat_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseExited
+        // TODO add your handling code here:
+        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseExited
 
     private void informacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacion_JButtonMouseClicked
         // TODO add your handling code here:
@@ -542,23 +570,6 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Archivos();
-        }
-    }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseClicked
-
-    private void enviar_Archivo_Chat_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseEntered
-        // TODO add your handling code here:
-        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-    }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseEntered
-
-    private void enviar_Archivo_Chat_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseExited
-        // TODO add your handling code here:
-        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseExited
-
     private void redactar_Mensaje_Chat_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
@@ -566,7 +577,20 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
-
+    private void Agregar_Interes_Tematica(String interes_Tematica){
+        
+        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+        Celda_Renderer[] celdas = new Celda_Renderer[1];
+        Celda_Renderer celda;
+        
+        celda = new Celda_Renderer(interes_Tematica);
+        celdas[0] = celda;
+        modelo.addRow(celdas);
+        
+        intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(interes_Tematica.length()));
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JLabel apellidos_JLabel;
@@ -605,29 +629,14 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        nombres_JLabel.setText(titulo_JLabel.getText());
-        apellidos_JLabel.setText(CourseRoom.Utilerias.Concatenar(CourseRoom.Utilerias.name().lastName(), " ", CourseRoom.Utilerias.name().lastName()));
-        correo_JLabel.setText(CourseRoom.Utilerias.internet().emailAddress());
-        genero_JLabel.setText(CourseRoom.Utilerias.demographic().sex());
-        tipo_Perfil_JLabel.setText(CourseRoom.Utilerias.bool().bool() ? "Estudiante" : "Profesor");
-
-        ImageIcon imagen = new ImageIcon(Tablero_Profesor_Panel.Obtener_Imagen_Usuario());
-        imagen_Perfil_JLabel.setIcon(imagen);
-        imagen.getImage().flush();
-
         intereses_Tematicas_JScrollPane.getViewport().setOpaque(false);
         intereses_Tematicas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         intereses_Tematicas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-        Celda_Renderer[] celda = new Celda_Renderer[1];
-        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
-            celda[0] = new Celda_Renderer(CourseRoom.Utilerias.music().genre(), "");
-            modelo.addRow(celda);
-        }
+
+        Agregar_Interes_Tematica(CourseRoom.Utilerias.music().genre());
         
         Colorear_Componentes();
     }
@@ -635,18 +644,21 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
     @Override
     public void Colorear_Componentes() {
         
-        Carta_Visible();
         titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        
+        Carta_Visible();
         
         regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         redactar_Mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
         redactar_Mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         enviar_Mensaje_Chat_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-
         enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         nombres_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
@@ -658,13 +670,15 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         genero_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         tipo_Perfil_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
 
+        intereses_Tematicas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        intereses_Tematicas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
         
-        mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        intereses_Tematicas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        intereses_Tematicas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;
@@ -673,6 +687,16 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
         }
 
+        mensajes_Chat_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        mensajes_Chat_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
+        mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        mensajes_Chat_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        mensajes_Chat_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
         modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         for(int i = 0; i < modelo.getRowCount();i++){
             for(int j = 0; j < modelo.getColumnCount(); j++){
@@ -683,26 +707,26 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         
     }
     
-    
     @Override
     public void Enviar_Mensaje() {
         
         String mensaje = redactar_Mensaje_Chat_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
-            String emisor = CourseRoom.Utilerias.dune().character();
+            String emisor = Perfil_Profesor_Panel.Nombre_Completo();
             String fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
             Celda_Renderer[] celdas = new Celda_Renderer[3];
   
             Celda_Renderer celda;
-            celda = new Celda_Renderer(emisor,"");
+            celda = new Celda_Renderer(emisor);
             celdas[0] = celda;
-            celda = new Celda_Renderer(mensaje,"");
+            celda = new Celda_Renderer(mensaje);
             celdas[1] = celda;
-            celda = new Celda_Renderer(fecha,"");
+            celda = new Celda_Renderer(fecha);
             celdas[2] = celda;
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
-            mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(mensaje.length()));
+            mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
+                    CourseRoom.Utilerias.Altura_Fila_Tabla(mensaje.length()));
             
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
@@ -719,33 +743,43 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
             if (archivos_Abiertos != null) {
 
-                String emisor;
-                String fecha;
-                String ruta;
-                String nombre_Archivo;
-                Celda_Renderer[] celdas = new Celda_Renderer[3];
-                DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-                Celda_Renderer celda;
-                ImageIcon icono_Abrir = new ImageIcon(getClass().getResource("/recursos/iconos/box.png"));
-                for (File archivo_Abierto : archivos_Abiertos) {
-                    ruta = archivo_Abierto.getAbsolutePath();
-                    nombre_Archivo = archivo_Abierto.getName();
-                    emisor = CourseRoom.Utilerias.dune().character();
-                    fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
+                try {
+                    String emisor;
+                    String fecha;
+                    String ruta;
+                    String nombre_Archivo;
+                    Celda_Renderer[] celdas = new Celda_Renderer[3];
+                    DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+                    Celda_Renderer celda;
+                    Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                    ImageIcon icono_Abrir = new ImageIcon(icono);
+                    for (File archivo_Abierto : archivos_Abiertos) {
+                        ruta = archivo_Abierto.getAbsolutePath();
+                        nombre_Archivo = archivo_Abierto.getName();
+                        emisor = Perfil_Profesor_Panel.Nombre_Completo();
+                        fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
+                        
+                        celda = new Celda_Renderer(emisor);
+                        celdas[0] = celda;
+                        celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
+                        celdas[1] = celda;
+                        celda = new Celda_Renderer(fecha);
+                        celdas[2] = celda;
+                        
+                        modelo.addRow(celdas);
+                        
+                        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(nombre_Archivo.length()));
+                    }
                     
-                    celda = new Celda_Renderer(emisor,"");
-                    celdas[0] = celda;
-                    celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
-                    celdas[1] = celda;
-                    celda = new Celda_Renderer(fecha,"");
-                    celdas[2] = celda;
-                    
-                    modelo.addRow(celdas);
+                    icono.flush();
+                } catch (IOException ex) {
                 }
+
             }
+
         }
+
     }
-    
   
     @Override
     public void Limpiar() {

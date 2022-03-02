@@ -373,9 +373,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             CourseRoom.Utilerias.Esconder_Frame();
             
             //Estudiante:
-            CourseRoom_Frame.Mostrar_Tablero(true);
+            //CourseRoom_Frame.Mostrar_Tablero(true);
             //Profesor:
-            //CourseRoom_Frame.Mostrar_Tablero(false);
+            CourseRoom_Frame.Mostrar_Tablero(false);
 
             usuario_JTextField.setText("");
             contrasena_JPasswordField.setText("");

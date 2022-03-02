@@ -19,12 +19,15 @@ import datos.interfaces.Limpieza_Interface;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.apache.commons.io.FilenameUtils;
 import paneles.profesores.Tablero_Profesor_Panel;
+import paneles.profesores.perfil.Perfil_Profesor_Panel;
 
 /**
  *
@@ -33,26 +36,29 @@ import paneles.profesores.Tablero_Profesor_Panel;
 public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Componentes_Interface, Envio_Interface, Limpieza_Interface{
 
     public Pregunta_Profesor_Panel(
-            String pregunta, 
-            String descripcion_Pregunta,
-            String preguntador_Nombre,
-            String fecha_Pregunta) {
+            Image imagen_Preguntador,
+            String _pregunta, 
+            String _preguntador_Nombre,
+            String _descripcion_Pregunta,
+            String _fecha,
+            String estatus) {
         
         initComponents();
         
-        Image imagen_usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
-        ImageIcon icono_Usuario = new ImageIcon(imagen_usuario);
-        imagen_usuario.flush();
+        ImageIcon icono_Usuario = new ImageIcon(imagen_Preguntador);
         preguntador_Imagen_JLabel.setIcon(icono_Usuario);
-        icono_Usuario.getImage().flush();
-        preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Utilerias.Concatenar("Pregunta Por ", preguntador_Nombre));
+        preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Utilerias.Concatenar("Pregunta Por ", _preguntador_Nombre));
         
-        String valor = CourseRoom.Utilerias.Concatenar(pregunta, " - Abierta");
+        String valor = CourseRoom.Utilerias.Concatenar(_pregunta, " - ",estatus);
         pregunta_JLabel.setText(valor);
         
-        valor = CourseRoom.Utilerias.Concatenar(descripcion_Pregunta,"<br><br>",fecha_Pregunta);
+        valor = CourseRoom.Utilerias.Concatenar(_descripcion_Pregunta, "<br><br>Por ",_preguntador_Nombre," A ",_fecha);
+        
         
         descripcion_Pregunta_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(valor));
+        
+        imagen_Preguntador.flush();
+        icono_Usuario.getImage().flush();
         
         Iniciar_Componentes();
     }
@@ -66,7 +72,6 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contenido_JPanel = new javax.swing.JPanel();
         informacion_JPanel = new javax.swing.JPanel();
         regresar_JButton = new javax.swing.JButton();
         preguntador_Imagen_JLabel = new javax.swing.JLabel();
@@ -87,17 +92,15 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
-        contenido_JPanel.setOpaque(false);
-        contenido_JPanel.setLayout(new java.awt.BorderLayout());
-
-        informacion_JPanel.setMaximumSize(new java.awt.Dimension(32767, 50));
+        informacion_JPanel.setMaximumSize(new java.awt.Dimension(32767, 150));
         informacion_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
-        informacion_JPanel.setPreferredSize(new java.awt.Dimension(982, 110));
+        informacion_JPanel.setPreferredSize(new java.awt.Dimension(982, 150));
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mis Chats");
         regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 regresar_JButtonMouseClicked(evt);
@@ -116,7 +119,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         preguntador_Imagen_JLabel.setMinimumSize(new java.awt.Dimension(48, 48));
         preguntador_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(48, 48));
 
-        pregunta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pregunta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         pregunta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         descripcion_Pregunta_JScrollPane.setBorder(null);
@@ -125,7 +128,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         descripcion_Pregunta_JTextPane.setEditable(false);
         descripcion_Pregunta_JTextPane.setBorder(null);
         descripcion_Pregunta_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_Pregunta_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        descripcion_Pregunta_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         descripcion_Pregunta_JTextPane.setText("");
         descripcion_Pregunta_JTextPane.setOpaque(false);
         descripcion_Pregunta_JScrollPane.setViewportView(descripcion_Pregunta_JTextPane);
@@ -174,7 +177,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pregunta_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(descripcion_Pregunta_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE))
+                    .addComponent(descripcion_Pregunta_JScrollPane))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(marcar_Solucionada_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,24 +188,21 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(preguntador_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(regresar_JButton))
-                    .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                            .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(marcar_Solucionada_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                            .addComponent(pregunta_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
-                            .addComponent(descripcion_Pregunta_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_JPanelLayout.createSequentialGroup()
+                        .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(marcar_Solucionada_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_JPanelLayout.createSequentialGroup()
+                        .addComponent(pregunta_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(descripcion_Pregunta_JScrollPane)))
                 .addContainerGap())
         );
-
-        contenido_JPanel.add(informacion_JPanel, java.awt.BorderLayout.NORTH);
 
         chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         chat_JPanel.setOpaque(false);
@@ -225,7 +225,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, true, false
+                    false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -249,8 +249,8 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
             });
             mensajes_Chat_JTable.setOpaque(false);
             mensajes_Chat_JTable.setRowHeight(80);
-            mensajes_Chat_JTable.setRowMargin(15);
             mensajes_Chat_JTable.setShowGrid(true);
+            mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
             mensajes_Chat_JTable.setRowSorter(new TableRowSorter(mensajes_Chat_JTable.getModel()));
             mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {
 
@@ -304,7 +304,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                 }
             });
 
-            redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
             redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
             redactar_Mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -320,7 +320,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                     .addContainerGap()
                     .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                    .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
                     .addContainerGap())
             );
             enviar_Mensaje_Chat_JPanelLayout.setVerticalGroup(
@@ -335,26 +335,29 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
 
             chat_JPanel.add(enviar_Mensaje_Chat_JPanel, java.awt.BorderLayout.SOUTH);
 
-            contenido_JPanel.add(chat_JPanel, java.awt.BorderLayout.CENTER);
-
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
             this.setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(32, 32, 32)
-                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(32, 32, 32))
+                    .addGap(0, 0, 0)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(informacion_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+                        .addComponent(chat_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(0, 0, 0))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(contenido_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap())
+                    .addGap(0, 0, 0)
+                    .addComponent(informacion_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(chat_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                    .addGap(0, 0, 0))
             );
         }// </editor-fold>//GEN-END:initComponents
 
+    
     
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
@@ -434,7 +437,6 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JPanel chat_JPanel;
-    private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JScrollPane descripcion_Pregunta_JScrollPane;
     private javax.swing.JTextPane descripcion_Pregunta_JTextPane;
     private javax.swing.JButton enviar_Archivo_Chat_JButton;
@@ -449,11 +451,12 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     private javax.swing.JButton regresar_JButton;
     // End of variables declaration//GEN-END:variables
 
+    
     @Override
     public void Iniciar_Componentes() {
         
-        descripcion_Pregunta_JTextPane.setCaretPosition(0);
         
+        descripcion_Pregunta_JTextPane.setCaretPosition(0);
         descripcion_Pregunta_JScrollPane.getViewport().setOpaque(false);
         descripcion_Pregunta_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Pregunta_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -462,11 +465,13 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Font fuente = new Font("Segoe UI", Font.BOLD, 16);
-        mensajes_Chat_JTable.getTableHeader().setFont(fuente);
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
+        mensajes_Chat_JTable.getTableHeader().setFont(gadugi);
+        
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         Colorear_Componentes();
+        
     }
     
     @Override
@@ -477,6 +482,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         descripcion_Pregunta_JTextPane.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
        
         informacion_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        
         redactar_Mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
         redactar_Mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         enviar_Mensaje_Chat_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
@@ -484,9 +490,15 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         marcar_Solucionada_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
+        mensajes_Chat_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        mensajes_Chat_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        mensajes_Chat_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        mensajes_Chat_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         Celda_Renderer celda;
@@ -496,24 +508,23 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
-        
     }
     
-    @Override
+        @Override
     public void Enviar_Mensaje() {
         
         String mensaje = redactar_Mensaje_Chat_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
-            String emisor = CourseRoom.Utilerias.dune().character();
+            String emisor = Perfil_Profesor_Panel.Nombre_Completo();
             String fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
             Celda_Renderer[] celdas = new Celda_Renderer[3];
   
             Celda_Renderer celda;
-            celda = new Celda_Renderer(emisor,"");
+            celda = new Celda_Renderer(emisor);
             celdas[0] = celda;
-            celda = new Celda_Renderer(mensaje,"");
+            celda = new Celda_Renderer(mensaje);
             celdas[1] = celda;
-            celda = new Celda_Renderer(fecha,"");
+            celda = new Celda_Renderer(fecha);
             celdas[2] = celda;
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
@@ -534,38 +545,47 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
 
             if (archivos_Abiertos != null) {
 
-                String emisor;
-                String fecha;
-                String ruta;
-                String nombre_Archivo;
-                Celda_Renderer[] celdas = new Celda_Renderer[3];
-                DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-                Celda_Renderer celda;
-                ImageIcon icono_Abrir = new ImageIcon(getClass().getResource("/recursos/iconos/box.png"));
-                for (File archivo_Abierto : archivos_Abiertos) {
-                    ruta = archivo_Abierto.getAbsolutePath();
-                    nombre_Archivo = archivo_Abierto.getName();
-                    emisor = CourseRoom.Utilerias.dune().character();
-                    fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
+                try {
+                    String emisor;
+                    String fecha;
+                    String ruta;
+                    String nombre_Archivo;
+                    Celda_Renderer[] celdas = new Celda_Renderer[3];
+                    DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+                    Celda_Renderer celda;
+                    Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                    ImageIcon icono_Abrir = new ImageIcon(icono);
+                    for (File archivo_Abierto : archivos_Abiertos) {
+                        ruta = archivo_Abierto.getAbsolutePath();
+                        nombre_Archivo = archivo_Abierto.getName();
+                        emisor = Perfil_Profesor_Panel.Nombre_Completo();
+                        fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
+                        
+                        celda = new Celda_Renderer(emisor);
+                        celdas[0] = celda;
+                        celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
+                        celdas[1] = celda;
+                        celda = new Celda_Renderer(fecha);
+                        celdas[2] = celda;
+                        
+                        modelo.addRow(celdas);
+                        
+                        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(nombre_Archivo.length()));
+                    }
                     
-                    celda = new Celda_Renderer(emisor,"");
-                    celdas[0] = celda;
-                    celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
-                    celdas[1] = celda;
-                    celda = new Celda_Renderer(fecha,"");
-                    celdas[2] = celda;
-                    
-                    modelo.addRow(celdas);
+                    icono.flush();
+                } catch (IOException ex) {
                 }
+
             }
+
         }
+
     }
-    
+
     @Override
     public void Limpiar() {
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
     }
-
-    
 }

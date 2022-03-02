@@ -50,6 +50,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
 
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
+        acciones_JPanel = new javax.swing.JPanel();
         interfaz_JButton = new javax.swing.JButton();
         cuenta_JButton = new javax.swing.JButton();
         sesiones_JButton = new javax.swing.JButton();
@@ -62,26 +63,30 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         sesiones_JScrollPane = new javax.swing.JScrollPane();
         sesiones_JTable = new javax.swing.JTable();
         cuenta_JPanel = new javax.swing.JPanel();
-        desactivar_Cuenta_JButton = new javax.swing.JButton();
+        eliminar_Cuenta_JButton = new javax.swing.JButton();
         desactivar_Activar_Notificaciones_JButton = new javax.swing.JButton();
         permitir_No_Permitir_Chats_Conmigo_JButton = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Ajustes");
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
+
+        acciones_JPanel.setOpaque(false);
 
         interfaz_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/user-interface.png"))); // NOI18N
         interfaz_JButton.setBorder(null);
@@ -113,26 +118,31 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
             }
         });
 
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(sesiones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(sesiones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sesiones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
         ajustes_JLayeredPane.setLayout(new java.awt.CardLayout());
 
@@ -171,7 +181,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
             }
         });
 
-        recargar_Colores_JButton.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        recargar_Colores_JButton.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         recargar_Colores_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-video.png"))); // NOI18N
         recargar_Colores_JButton.setText("Recargar Colores");
         ((ImageIcon)recargar_Colores_JButton.getIcon()).getImage().flush();
@@ -255,11 +265,8 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
                 }
             });
             sesiones_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            sesiones_JTable.setOpaque(false);
-            sesiones_JTable.setRowHeight(80);
-            sesiones_JTable.setRowMargin(15);
+            sesiones_JTable.setRowHeight(100);
             sesiones_JTable.setShowGrid(true);
-            sesiones_JTable.setShowVerticalLines(false);
             sesiones_JTable.setRowSorter(new TableRowSorter(sesiones_JTable.getModel()));
             sesiones_JScrollPane.setViewportView(sesiones_JTable);
 
@@ -267,19 +274,19 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
 
             cuenta_JPanel.setOpaque(false);
 
-            desactivar_Cuenta_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-            desactivar_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
-            desactivar_Cuenta_JButton.setText("¿Desactivar Cuenta?");
-            ((ImageIcon)desactivar_Cuenta_JButton.getIcon()).getImage().flush();
-            desactivar_Cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            eliminar_Cuenta_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+            eliminar_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
+            eliminar_Cuenta_JButton.setText("¿Eliminar Cuenta?");
+            ((ImageIcon)eliminar_Cuenta_JButton.getIcon()).getImage().flush();
+            eliminar_Cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    desactivar_Cuenta_JButtonMouseClicked(evt);
+                    eliminar_Cuenta_JButtonMouseClicked(evt);
                 }
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    desactivar_Cuenta_JButtonMouseEntered(evt);
+                    eliminar_Cuenta_JButtonMouseEntered(evt);
                 }
                 public void mouseExited(java.awt.event.MouseEvent evt) {
-                    desactivar_Cuenta_JButtonMouseExited(evt);
+                    eliminar_Cuenta_JButtonMouseExited(evt);
                 }
             });
 
@@ -323,20 +330,20 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(desactivar_Cuenta_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             cuenta_JPanelLayout.setVerticalGroup(
                 cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cuenta_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(82, Short.MAX_VALUE)
+                    .addContainerGap(88, Short.MAX_VALUE)
                     .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                     .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                    .addComponent(desactivar_Cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(99, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                    .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(101, Short.MAX_VALUE))
             );
 
             ajustes_JLayeredPane.add(cuenta_JPanel, "Cuenta");
@@ -345,21 +352,15 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
             this.setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(32, 32, 32)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(ajustes_JLayeredPane)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE))
-                    .addGap(32, 32, 32))
+                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+                .addComponent(ajustes_JLayeredPane)
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(ajustes_JLayeredPane)
-                    .addContainerGap())
+                    .addComponent(ajustes_JLayeredPane))
             );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -478,24 +479,24 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         }
     }//GEN-LAST:event_sesiones_JButtonMouseClicked
 
-    private void desactivar_Cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Cuenta_JButtonMouseClicked
+    private void eliminar_Cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
 
         }
-    }//GEN-LAST:event_desactivar_Cuenta_JButtonMouseClicked
+    }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseClicked
 
-    private void desactivar_Cuenta_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Cuenta_JButtonMouseEntered
+    private void eliminar_Cuenta_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseEntered
         // TODO add your handling code here:
-        desactivar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        desactivar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_desactivar_Cuenta_JButtonMouseEntered
+        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseEntered
 
-    private void desactivar_Cuenta_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Cuenta_JButtonMouseExited
+    private void eliminar_Cuenta_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseExited
         // TODO add your handling code here:
-        desactivar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        desactivar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_desactivar_Cuenta_JButtonMouseExited
+        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseExited
 
     private void desactivar_Activar_Notificaciones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
         // TODO add your handling code here:
@@ -535,13 +536,40 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
+    private void Agregar_Sesion(String dispositivo, String fabricante, String uuid, 
+            String ultima_Fecha_Acceso, String estatus){
+        
+        int altura = CourseRoom.Utilerias.Altura_Fila_Tabla(uuid.length());
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
+       
+        celda = new Celda_Renderer(dispositivo);
+        celdas[0] = celda;
+        celda = new Celda_Renderer(fabricante);
+        celdas[1] = celda;
+        celda = new Celda_Renderer(uuid);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(ultima_Fecha_Acceso);
+        celdas[3] = celda;
+        celda = new Celda_Renderer(estatus);
+        celdas[4] = celda;
+
+        modelo.addRow(celdas);
+
+        sesiones_JTable.setRowHeight(modelo.getRowCount()-1, altura);
+        
+    }
+   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JLayeredPane ajustes_JLayeredPane;
     private javax.swing.JPanel contenido_Titulo_JPanel;
     private javax.swing.JButton cuenta_JButton;
     private javax.swing.JPanel cuenta_JPanel;
     private javax.swing.JButton desactivar_Activar_Notificaciones_JButton;
-    private javax.swing.JButton desactivar_Cuenta_JButton;
+    private javax.swing.JButton eliminar_Cuenta_JButton;
     private javax.swing.JButton interfaz_JButton;
     private javax.swing.JPanel interfaz_JPanel;
     private javax.swing.JButton permitir_No_Permitir_Chats_Conmigo_JButton;
@@ -567,22 +595,13 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         sesiones_JTable.getTableHeader().setFont(gadugi);
         
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-        DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
-       
-        String valor  = System.getProperty("os.name");
-        valor =  CourseRoom.Utilerias.Concatenar(valor, " - ",System.getProperty("user.name"));
         
-        for(int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1,5);i++){
-            
-            celdas[0] = new Celda_Renderer(valor, "");
-            celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.getComputerSystem().getManufacturer(),"");
-            celdas[2] = new Celda_Renderer(CourseRoom.Utilerias.getComputerSystem().getHardwareUUID(),"");
-            celdas[3] = new Celda_Renderer(CourseRoom.Utilerias.date().birthday(0,0).toString(),"");
-            celdas[4] = new Celda_Renderer(CourseRoom.Utilerias.bool().bool() ? "Activo" : "Inactivo","");
-            
-            modelo.addRow(celdas);
-        }
+        String dispositivo = CourseRoom.Utilerias.Concatenar(System.getProperty("os.name"), " - ",System.getProperty("user.name"));
+        String fabricante = CourseRoom.Utilerias.getComputerSystem().getManufacturer();
+        String uuid = CourseRoom.Utilerias.getComputerSystem().getHardwareUUID();
+        String estatus = CourseRoom.Utilerias.bool().bool() ? "Activo" : "Inactivo";
+        
+        Agregar_Sesion(dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), estatus);
     }
     
     @Override
@@ -591,7 +610,6 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         Font gadugi = new Font("Segoe UI", 1, 24);
         
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
@@ -607,8 +625,8 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         recargar_Colores_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         recargar_Colores_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        desactivar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        desactivar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
@@ -633,9 +651,16 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Segundo_Color_Fuente()));
         tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         
+        sesiones_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        sesiones_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         sesiones_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         sesiones_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         sesiones_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        sesiones_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        sesiones_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
@@ -645,6 +670,7 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
+       
     }
 
     @Override

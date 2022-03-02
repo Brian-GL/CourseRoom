@@ -18,6 +18,7 @@
 package paneles.profesores.perfil;
 
 import clases.Celda_Renderer;
+import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import courseroom.CourseRoom;
 import datos.interfaces.Carta_Visibilidad_Interface;
@@ -51,7 +52,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private byte carta_Visible;
     
     /**
-     * Creates new form Profile_Estudiante_Panel
+     * Creates new form Profile_Profesor_Panel
      */
     public Perfil_Profesor_Panel() {
         initComponents();
@@ -70,11 +71,12 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
-        editar_Autenticacion_JButton = new javax.swing.JButton();
-        informacion_JButton = new javax.swing.JButton();
+        acciones_JPanel = new javax.swing.JPanel();
         editar_Datos_Personales_JButton = new javax.swing.JButton();
-        editar_Informacion_Extra_JButton = new javax.swing.JButton();
         actualizar_JButton = new javax.swing.JButton();
+        editar_Informacion_Extra_JButton = new javax.swing.JButton();
+        informacion_JButton = new javax.swing.JButton();
+        editar_Autenticacion_JButton = new javax.swing.JButton();
         perfil_JLayeredPane = new javax.swing.JLayeredPane();
         informacion_JPanel = new javax.swing.JPanel();
         imagen_Perfil_JLabel = new javax.swing.JLabel();
@@ -134,39 +136,24 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         intereses_Tematicas_JTable = new javax.swing.JTable();
         editar_Descripcion_JButton = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
 
         contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Perfil");
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 68));
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
 
-        editar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png"))); // NOI18N
-        editar_Autenticacion_JButton.setBorder(null);
-        ((ImageIcon)editar_Autenticacion_JButton.getIcon()).getImage().flush();
-        editar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editar_Autenticacion_JButtonMouseClicked(evt);
-            }
-        });
-
-        informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
-        informacion_JButton.setBorder(null);
-        ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
-        informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                informacion_JButtonMouseClicked(evt);
-            }
-        });
+        acciones_JPanel.setOpaque(false);
 
         editar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/id-card_1.png"))); // NOI18N
         editar_Datos_Personales_JButton.setBorder(null);
@@ -174,15 +161,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editar_Datos_Personales_JButtonMouseClicked(evt);
-            }
-        });
-
-        editar_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-learning.png"))); // NOI18N
-        editar_Informacion_Extra_JButton.setBorder(null);
-        ((ImageIcon)editar_Informacion_Extra_JButton.getIcon()).getImage().flush();
-        editar_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editar_Informacion_Extra_JButtonMouseClicked(evt);
             }
         });
 
@@ -202,13 +180,39 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             }
         });
 
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        editar_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-learning.png"))); // NOI18N
+        editar_Informacion_Extra_JButton.setBorder(null);
+        ((ImageIcon)editar_Informacion_Extra_JButton.getIcon()).getImage().flush();
+        editar_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editar_Informacion_Extra_JButtonMouseClicked(evt);
+            }
+        });
+
+        informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
+        informacion_JButton.setBorder(null);
+        ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
+        informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                informacion_JButtonMouseClicked(evt);
+            }
+        });
+
+        editar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png"))); // NOI18N
+        editar_Autenticacion_JButton.setBorder(null);
+        ((ImageIcon)editar_Autenticacion_JButton.getIcon()).getImage().flush();
+        editar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editar_Autenticacion_JButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(informacion_JButton)
                 .addGap(18, 18, 18)
                 .addComponent(editar_Autenticacion_JButton)
@@ -217,21 +221,24 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                 .addGap(18, 18, 18)
                 .addComponent(editar_Informacion_Extra_JButton)
                 .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(editar_Autenticacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(informacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(editar_Datos_Personales_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editar_Informacion_Extra_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(editar_Informacion_Extra_JButton))
                     .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
         perfil_JLayeredPane.setLayout(new java.awt.CardLayout());
 
@@ -265,6 +272,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         nombres_JLabel.setToolTipText("Nombre(s)");
 
         correo_Electronico_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        correo_Electronico_JLabel.setFocusable(false);
         correo_Electronico_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         correo_Electronico_JLabel.setMaximumSize(new java.awt.Dimension(380, 25));
         correo_Electronico_JLabel.setMinimumSize(new java.awt.Dimension(380, 25));
@@ -273,6 +281,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         correo_Electronico_JLabel.setToolTipText("Correo Electrónico");
 
         tipo_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tipo_Perfil_JLabel.setFocusable(false);
         tipo_Perfil_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tipo_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(163, 25));
         tipo_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(163, 25));
@@ -281,6 +290,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         tipo_Perfil_JLabel.setToolTipText("Tipo De Perfil");
 
         fecha_Nacimiento_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        fecha_Nacimiento_JLabel.setFocusable(false);
         fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         fecha_Nacimiento_JLabel.setMaximumSize(new java.awt.Dimension(163, 25));
         fecha_Nacimiento_JLabel.setMinimumSize(new java.awt.Dimension(163, 25));
@@ -289,6 +299,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         fecha_Nacimiento_JLabel.setToolTipText("Fecha De Nacimiento");
 
         localidad_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        localidad_JLabel.setFocusable(false);
         localidad_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         localidad_JLabel.setMinimumSize(new java.awt.Dimension(380, 60));
         localidad_JLabel.setName("label"); // NOI18N
@@ -296,6 +307,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         localidad_JLabel.setToolTipText("Localidad");
 
         genero_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        genero_JLabel.setFocusable(false);
         genero_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         genero_JLabel.setMaximumSize(new java.awt.Dimension(163, 25));
         genero_JLabel.setMinimumSize(new java.awt.Dimension(163, 25));
@@ -312,7 +324,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setEditable(false);
-        descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         descripcion_JTextPane.setText("");
         descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setRequestFocusEnabled(false);
@@ -324,9 +336,9 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         informacion_JPanelLayout.setHorizontalGroup(
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,18 +350,18 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                     .addComponent(apellidos_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(correo_Electronico_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         informacion_JPanelLayout.setVerticalGroup(
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+                .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(informacion_JPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(correo_Electronico_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)
                         .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,11 +370,11 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                         .addGap(5, 5, 5)
                         .addComponent(fecha_Nacimiento_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(localidad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addComponent(localidad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         perfil_JLayeredPane.add(informacion_JPanel, "Informacion");
@@ -377,7 +389,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         contrasena_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
         contrasena_JPasswordField.setEditable(false);
-        contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
         contrasena_JPasswordField.setToolTipText("Ingrese Aquí Su Contraseña (Mínimo 8 Carácteres)");
@@ -389,7 +401,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Correo_Electronico_JLabel.setPreferredSize(new java.awt.Dimension(500, 29));
 
         editar_Correo_Electronico_JTextField.setEditable(false);
-        editar_Correo_Electronico_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        editar_Correo_Electronico_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         editar_Correo_Electronico_JTextField.setMinimumSize(new java.awt.Dimension(500, 36));
         editar_Correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(500, 36));
         editar_Correo_Electronico_JTextField.setToolTipText("Ingrese Aquí Su Correo Electrónico (Ingrese Uno Que Pueda Utilizar)");
@@ -401,18 +413,18 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         repetir_Contrasena_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
         repetir_Contrasena_JPasswordField.setEditable(false);
-        repetir_Contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        repetir_Contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         repetir_Contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         repetir_Contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
         repetir_Contrasena_JPasswordField.setToolTipText("Re-Ingrese Aquí La Contraseña");
 
         editar_Imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        editar_Imagen_JLabel.setToolTipText("Imagen De Perfil Seleccionada.");
         editar_Imagen_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         editar_Imagen_JLabel.setMaximumSize(new java.awt.Dimension(400, 400));
         editar_Imagen_JLabel.setMinimumSize(new java.awt.Dimension(400, 400));
         editar_Imagen_JLabel.setName(""); // NOI18N
         editar_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
-        editar_Imagen_JLabel.setToolTipText("Imagen De Perfil Seleccionada.");
 
         guardar_Cambios_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Autenticacion_JButton.setText("Guardar Cambios");
@@ -492,14 +504,14 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         autenticacion_JPanelLayout.setHorizontalGroup(
             autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(editar_Correo_Electronico_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(contrasena_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(autenticacion_JPanelLayout.createSequentialGroup()
                         .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(editar_Correo_Electronico_JTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                            .addComponent(contrasena_JPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
                             .addComponent(repetir_Contrasena_JPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,11 +519,11 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                             .addComponent(editar_Contrasena_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(repetir_Contrasena_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(guardar_Cambios_Autenticacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(editar_Imagen_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         autenticacion_JPanelLayout.setVerticalGroup(
             autenticacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -576,12 +588,12 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
         editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setText("Guardar Cambios");
-        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         guardar_Cambios_Datos_Personales_JButton.setBorder(null);
         guardar_Cambios_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         ((ImageIcon)guardar_Cambios_Datos_Personales_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -607,14 +619,16 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Estado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         editar_Estado_AutoCompletionComboBox.setEditable(false);
-        editar_Estado_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        editar_Estado_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         editar_Estado_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Estado de proveniencia</h3>\n</html>");
 
         editar_Localidad_AutoCompletionComboBox.setEditable(false);
+        editar_Localidad_AutoCompletionComboBox.setFocusable(false);
+        editar_Localidad_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         editar_Localidad_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Localidad de provenencia</h3>\n</html>");
 
         editar_Fecha_Nacimiento_DatePicker.setEnabled(false);
-        editar_Fecha_Nacimiento_DatePicker.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        editar_Fecha_Nacimiento_DatePicker.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         editar_Fecha_Nacimiento_DatePicker.setToolTipText("");
 
         editar_Estado_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
@@ -757,7 +771,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         datos_Personales_JPanelLayout.setVerticalGroup(
             datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
-                .addContainerGap(129, Short.MAX_VALUE)
+                .addContainerGap(133, Short.MAX_VALUE)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                         .addComponent(editar_Estado_JLabel)
@@ -805,7 +819,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                         .addComponent(editar_Fecha_Nacimiento_DatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(guardar_Cambios_Datos_Personales_JButton))
                     .addComponent(editar_Fecha_Nacimiento_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         perfil_JLayeredPane.add(datos_Personales_JPanel, "Datos_Personales");
@@ -816,7 +830,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         guardar_Cambios_Informacion_Extra_JButton.setText("Guardar Cambios");
         guardar_Cambios_Informacion_Extra_JButton.setBorder(null);
         guardar_Cambios_Informacion_Extra_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        guardar_Cambios_Informacion_Extra_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        guardar_Cambios_Informacion_Extra_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         guardar_Cambios_Informacion_Extra_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
         ((ImageIcon)guardar_Cambios_Informacion_Extra_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -841,7 +855,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
         editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
-        interes_Tematica_JLabel.setText("Ínteres / Temática");
+        interes_Tematica_JLabel.setText("Interes / Temática");
         interes_Tematica_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         interes_Tematica_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
 
@@ -902,11 +916,9 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                 }
             });
             intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            intereses_Tematicas_JTable.setOpaque(false);
             intereses_Tematicas_JTable.setRowHeight(32);
-            intereses_Tematicas_JTable.setRowMargin(5);
             intereses_Tematicas_JTable.setShowGrid(true);
-            intereses_Tematicas_JTable.setShowVerticalLines(false);
+            intereses_Tematicas_JTable.setSurrendersFocusOnKeystroke(true);
             intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
             intereses_Tematicas_JTable.addMouseListener(new MouseAdapter() {
 
@@ -915,6 +927,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                     if (e.getClickCount() == 2) {
 
                         JTable tabla = (JTable) e.getComponent();
+
                         int columna = tabla.getSelectedColumn();
 
                         if (columna == 1) {
@@ -947,7 +960,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             informacion_Extra_JPanelLayout.setHorizontalGroup(
                 informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(30, Short.MAX_VALUE)
+                    .addContainerGap(68, Short.MAX_VALUE)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
@@ -955,7 +968,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                         .addComponent(guardar_Cambios_Informacion_Extra_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
                             .addComponent(intereses_Tematicas_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -963,12 +976,12 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                             .addComponent(agregar_Interes_Tematica_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(interes_Tematica_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addContainerGap(31, Short.MAX_VALUE))
+                    .addContainerGap(70, Short.MAX_VALUE))
             );
             informacion_Extra_JPanelLayout.setVerticalGroup(
                 informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(94, Short.MAX_VALUE)
+                    .addContainerGap(98, Short.MAX_VALUE)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(interes_Tematica_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -988,7 +1001,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                                 .addComponent(editar_Descripcion_JButton))
                             .addGap(18, 18, 18)
                             .addComponent(guardar_Cambios_Informacion_Extra_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(94, Short.MAX_VALUE))
+                    .addContainerGap(98, Short.MAX_VALUE))
             );
 
             perfil_JLayeredPane.add(informacion_Extra_JPanel, "Informacion_Extra");
@@ -998,20 +1011,20 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(32, 32, 32)
+                    .addGap(0, 0, 0)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(perfil_JLayeredPane)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                    .addGap(32, 32, 32))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(0, 0, 0))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
+                    .addGap(0, 0, 0)
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(perfil_JLayeredPane)
-                    .addContainerGap())
+                    .addGap(0, 0, 0))
             );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -1067,16 +1080,15 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
 
-            JFileChooser escogedor_Archivo = new JFileChooser();
+            Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "png", "jpg", "jpeg", "bmp");
-            escogedor_Archivo.addChoosableFileFilter(filtro);
-            escogedor_Archivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            escogedor_Archivo.setAcceptAllFileFilterUsed(true);
-            escogedor_Archivo.setApproveButtonText("Cargar Imagen");
-            int result = escogedor_Archivo.showOpenDialog(this);
+            escogedor_Archivos.addChoosableFileFilter(filtro);
+            escogedor_Archivos.setMultiSelectionEnabled(false);
+            escogedor_Archivos.setAcceptAllFileFilterUsed(true);
+            int result = escogedor_Archivos.showOpenDialog(this);
 
             if (result == JFileChooser.APPROVE_OPTION) {
-                File archivo_Abierto = escogedor_Archivo.getSelectedFile();
+                File archivo_Abierto = escogedor_Archivos.getSelectedFile();
 
                 if(archivo_Abierto != null){
                     try {
@@ -1202,13 +1214,14 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void agregar_Interes_Tematica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_Tematica_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-
-            Celda_Renderer[] celdas = new Celda_Renderer[2];
-            celdas[0] = new Celda_Renderer(intereses_Tematicas_AutoCompletionComboBox.getSelectedItem().toString(), "");
-            ImageIcon remover = new ImageIcon(getClass().getResource("/recursos/iconos/close.png"));
-            celdas[1] = new Celda_Renderer(remover,"");
-            modelo.addRow(celdas);
+            
+            String interes_Tematica = intereses_Tematicas_AutoCompletionComboBox.getSelectedItem() != null
+                    ? intereses_Tematicas_AutoCompletionComboBox.getSelectedItem().toString() : "";
+            
+            if(!interes_Tematica.isEmpty() && !interes_Tematica.isBlank()){
+                Agregar_Interes_Tematica(interes_Tematica);
+            }
+            
         }
     }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseClicked
 
@@ -1382,6 +1395,31 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
+    private void Agregar_Interes_Tematica(String interes_Tematica){
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+            
+            Celda_Renderer[] celdas = new Celda_Renderer[2];
+            Celda_Renderer celda;
+            
+            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            ImageIcon remover = new ImageIcon(icono);
+            
+            celda = new Celda_Renderer(interes_Tematica);
+            celdas[0] = celda;
+            
+            celda = new Celda_Renderer(remover);
+            celdas[1] = celda;
+            modelo.addRow(celdas);
+            
+            intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(interes_Tematica.length()));
+            
+            icono.flush();
+        } catch (IOException ex) {
+            
+        }
+    }
+    
     public static String Nombre_Completo(){
         return CourseRoom.Utilerias.Concatenar(nombres_JLabel.getText(), " " ,apellidos_JLabel.getText());
     }
@@ -1391,6 +1429,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton agregar_Interes_Tematica_JButton;
     private static javax.swing.JLabel apellidos_JLabel;
@@ -1497,6 +1536,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
+        
     }
 
     @Override
@@ -1548,12 +1588,11 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         
         editar_Descripcion_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
 
-
         editar_Descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Segundo_Color());
         editar_Descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         editar_Descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias.Segundo_Color());
         editar_Descripcion_JScrollPane.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        
+
         editar_Apellido_Paterno_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
         editar_Apellido_Paterno_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
         editar_Apellido_Paterno_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
@@ -1617,21 +1656,26 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         intereses_Tematicas_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias.Segundo_Color());
         intereses_Tematicas_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
+        intereses_Tematicas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        intereses_Tematicas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
         intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        intereses_Tematicas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        intereses_Tematicas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < modelo.getRowCount(); i++) {
-            for (int j = 0; j < modelo.getRowCount(); j++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
         
         interes_Tematica_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        
         
     }
 
