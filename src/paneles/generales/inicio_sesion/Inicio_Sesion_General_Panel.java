@@ -371,7 +371,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         if(CourseRoom.Utilerias.Regex_Correo_Electronico_Valido(correo)) {
 
             CourseRoom.Utilerias.Esconder_Frame();
-            
             //Estudiante:
             //CourseRoom_Frame.Mostrar_Tablero(true);
             //Profesor:
