@@ -11,7 +11,6 @@ import courseroom.CourseRoom_Frame;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -24,7 +23,6 @@ import org.apache.xmlrpc.XmlRpcException;
  */
 public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
-   
     
     /**
      * Creates new form RecuperarCredencialesPanel
@@ -222,14 +220,11 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         regresar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
-    private boolean Correo_Electronico_Valido(String value){
-        return Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE).matcher(value).find();
-    }
-    
+   
     
     public void Recuperar_Credenciales() throws XmlRpcException, IOException {
  
-        if(Correo_Electronico_Valido(correo_Electronico_JTextField.getText())){
+        if(CourseRoom.Utilerias.Regex_Correo_Electronico_Valido(correo_Electronico_JTextField.getText())){
             
             boolean respuesta = CourseRoom.Solicitudes.Recuperar_Credenciales(correo_Electronico_JTextField.getText());
            

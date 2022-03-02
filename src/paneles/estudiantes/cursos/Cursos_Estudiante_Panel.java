@@ -791,163 +791,182 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     }
     
     
-    private void Agregar_Curso_Actual(Image imagen_Curso, String nombre_Curso, Image imagen_Profesor, String nombre_Profesor,
+    private void Agregar_Curso_Actual(String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Profesor, String nombre_Profesor,
             String intereses_Tematicas, String fecha_Creacion, String puntuacion, String id){
         
-        
+        URL url_Imagen;
+        Image obtener_Imagen_Curso, obtener_Imagen_Profesor;
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        
         ImageIcon icono;
         Image imagen;
-
-        imagen = imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
-        icono = new ImageIcon(imagen);
-
-        celda = new Celda_Renderer(icono, nombre_Curso, id);
-        celdas[0] = celda;
-
-        imagen = imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
-        icono = new ImageIcon(imagen);
-
-        celda = new Celda_Renderer(icono,nombre_Profesor, id);
-        celdas[1] = celda;
-        celda = new Celda_Renderer(intereses_Tematicas, id);
-        celdas[2] = celda;
-        celda = new Celda_Renderer(fecha_Creacion, id);
-        celdas[3] = celda;
-        celda = new Celda_Renderer(puntuacion, id);
-        celdas[4] = celda;
-                
-
-        Curso_Estudiante_Panel curso_Estudiante_Panel 
-                = new Curso_Estudiante_Panel(nombre_Curso, imagen_Curso,
-                nombre_Profesor, imagen_Profesor, fecha_Creacion,  id);
         
-        mostrar_Cursos_Actuales_Lista.push_back(curso_Estudiante_Panel);
-        Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
-        modelo_Cursos_Actuales.addRow(celdas);
-        
-        id_Curso_Actual++;
+        try {
+            
+            url_Imagen = new URL(ruta_Imagen_Curso);
+            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
+            url_Imagen = new URL(ruta_Imagen_Profesor);
+            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
+            imagen = obtener_Imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono, nombre_Curso, id);
+            celdas[0] = celda;
+            imagen = obtener_Imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono,nombre_Profesor, id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(intereses_Tematicas, id);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(fecha_Creacion, id);
+            celdas[3] = celda;
+            celda = new Celda_Renderer(puntuacion, id);
+            celdas[4] = celda;
+            Curso_Estudiante_Panel curso_Estudiante_Panel
+                    = new Curso_Estudiante_Panel(nombre_Curso, obtener_Imagen_Curso,
+                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id);
+            mostrar_Cursos_Actuales_Lista.push_back(curso_Estudiante_Panel);
+            Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
+            modelo_Cursos_Actuales.addRow(celdas);
+            id_Curso_Actual++;
+        } catch (MalformedURLException ex) {
+            
+        } catch (IOException ex) {
+            
+        }
     }
     
-    private void Agregar_Curso_Finalizado(Image imagen_Curso, String nombre_Curso, Image imagen_Profesor, String nombre_Profesor,
+    private void Agregar_Curso_Finalizado(String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Profesor, String nombre_Profesor,
             String intereses_Tematicas, String fecha_Creacion, String puntuacion, String id){
         
-        
+        URL url_Imagen;
+        Image obtener_Imagen_Curso, obtener_Imagen_Profesor;
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        
         ImageIcon icono;
         Image imagen;
-
-        imagen = imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
-        icono = new ImageIcon(imagen);
-
-        celda = new Celda_Renderer(icono, nombre_Curso, id);
-        celdas[0] = celda;
-
-        imagen = imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
-        icono = new ImageIcon(imagen);
-
-        celda = new Celda_Renderer(icono,nombre_Profesor, id);
-        celdas[1] = celda;
-        celda = new Celda_Renderer(intereses_Tematicas, id);
-        celdas[2] = celda;
-        celda = new Celda_Renderer(fecha_Creacion, id);
-        celdas[3] = celda;
-        celda = new Celda_Renderer(puntuacion, id);
-        celdas[4] = celda;
-                
-
-        Curso_Estudiante_Panel curso_Estudiante_Panel 
-                = new Curso_Estudiante_Panel(nombre_Curso, imagen_Curso,
-                nombre_Profesor, imagen_Profesor, fecha_Creacion,  id);
         
-        mostrar_Cursos_Finalizados_Lista.push_back(curso_Estudiante_Panel);
-        Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
-        DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
-        modelo.addRow(celdas);
+        try {
+            
+            url_Imagen = new URL(ruta_Imagen_Curso);
+            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
+            url_Imagen = new URL(ruta_Imagen_Profesor);
+            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
+            imagen = obtener_Imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono, nombre_Curso, id);
+            celdas[0] = celda;
+            imagen = obtener_Imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono,nombre_Profesor, id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(intereses_Tematicas, id);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(fecha_Creacion, id);
+            celdas[3] = celda;
+            celda = new Celda_Renderer(puntuacion, id);
+            celdas[4] = celda;
+            Curso_Estudiante_Panel curso_Estudiante_Panel
+                    = new Curso_Estudiante_Panel(nombre_Curso, obtener_Imagen_Curso,
+                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id);
+            mostrar_Cursos_Finalizados_Lista.push_back(curso_Estudiante_Panel);
+            Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
+            DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
+            modelo.addRow(celdas);
+            id_Curso_Actual++;
+        } catch (MalformedURLException ex) {
+            
+        } catch (IOException ex) {
+            
+        }
     }
     
-    private void Agregar_Curso_Recomendado(Image imagen_Curso, String nombre_Curso, Image imagen_Profesor, String nombre_Profesor,
-            String intereses_Tematicas, String fecha_Creacion, String puntuacion, String id, String id_Curso_Actual){
+    private void Agregar_Curso_Recomendado(String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Profesor, String nombre_Profesor,
+            String intereses_Tematicas, String fecha_Creacion, String puntuacion, String id, String _id_Curso_Actual){
         
-        
+        URL url_Imagen;
+        Image obtener_Imagen_Curso, obtener_Imagen_Profesor;
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        
         ImageIcon icono;
         Image imagen;
-
-        imagen = imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
-        icono = new ImageIcon(imagen);
-
-        celda = new Celda_Renderer(icono, nombre_Curso, id);
-        celdas[0] = celda;
-
-        imagen = imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
-        icono = new ImageIcon(imagen);
-
-        celda = new Celda_Renderer(icono,nombre_Profesor, id);
-        celdas[1] = celda;
-        celda = new Celda_Renderer(intereses_Tematicas, id);
-        celdas[2] = celda;
-        celda = new Celda_Renderer(fecha_Creacion, id);
-        celdas[3] = celda;
-        celda = new Celda_Renderer(puntuacion, id);
-        celdas[4] = celda;
-                
-
-        Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel 
-                = new Vista_Previa_Curso_Estudiante_Panel(nombre_Curso, imagen_Curso, 
-                        nombre_Profesor, imagen_Profesor, fecha_Creacion, id, false, id_Curso_Actual);
         
-        mostrar_Cursos_Recomendados_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
-        Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
-        modelo_Cursos_Recomendados.addRow(celdas);
-        
-        this.id_Curso_Actual++;
+        try {
+            
+            url_Imagen = new URL(ruta_Imagen_Curso);
+            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
+            url_Imagen = new URL(ruta_Imagen_Profesor);
+            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
+            imagen = obtener_Imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono, nombre_Curso, id);
+            celdas[0] = celda;
+            imagen = obtener_Imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono,nombre_Profesor, id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(intereses_Tematicas, id);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(fecha_Creacion, id);
+            celdas[3] = celda;
+            celda = new Celda_Renderer(puntuacion, id);
+            celdas[4] = celda;
+            Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel
+                    = new Vista_Previa_Curso_Estudiante_Panel(nombre_Curso, obtener_Imagen_Curso,
+                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id, false, _id_Curso_Actual);
+            mostrar_Cursos_Recomendados_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
+            Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
+            modelo_Cursos_Recomendados.addRow(celdas);
+            id_Curso_Actual++;
+        } catch (MalformedURLException ex) {
+            
+        } catch (IOException ex) {
+            
+        }
     }
     
-    private void Agregar_Curso_Nuevo(Image imagen_Curso, String nombre_Curso, Image imagen_Profesor, String nombre_Profesor,
-            String intereses_Tematicas, String fecha_Creacion, String puntuacion, String id, String id_Curso_Actual){
+       private void Agregar_Curso_Nuevo(String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Profesor, String nombre_Profesor,
+            String intereses_Tematicas, String fecha_Creacion, String puntuacion, String id, String _id_Curso_Actual){
         
-        
+        URL url_Imagen;
+        Image obtener_Imagen_Curso, obtener_Imagen_Profesor;
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        
         ImageIcon icono;
         Image imagen;
-
-        imagen = imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
-        icono = new ImageIcon(imagen);
-
-        celda = new Celda_Renderer(icono, nombre_Curso, id);
-        celdas[0] = celda;
-
-        imagen = imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
-        icono = new ImageIcon(imagen);
-
-        celda = new Celda_Renderer(icono,nombre_Profesor, id);
-        celdas[1] = celda;
-        celda = new Celda_Renderer(intereses_Tematicas, id);
-        celdas[2] = celda;
-        celda = new Celda_Renderer(fecha_Creacion, id);
-        celdas[3] = celda;
-        celda = new Celda_Renderer(puntuacion, id);
-        celdas[4] = celda;
-                
-
-        Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel 
-                = new Vista_Previa_Curso_Estudiante_Panel(nombre_Curso, imagen_Curso, 
-                        nombre_Profesor, imagen_Profesor, fecha_Creacion, id, true, id_Curso_Actual);
         
-        mostrar_Cursos_Nuevos_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
-        Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
-        modelo_Cursos_Nuevos.addRow(celdas);
-        
-        this.id_Curso_Actual++;
+        try {
+            
+            url_Imagen = new URL(ruta_Imagen_Curso);
+            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
+            url_Imagen = new URL(ruta_Imagen_Profesor);
+            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
+            imagen = obtener_Imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono, nombre_Curso, id);
+            celdas[0] = celda;
+            imagen = obtener_Imagen_Profesor.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono,nombre_Profesor, id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(intereses_Tematicas, id);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(fecha_Creacion, id);
+            celdas[3] = celda;
+            celda = new Celda_Renderer(puntuacion, id);
+            celdas[4] = celda;
+            Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel
+                    = new Vista_Previa_Curso_Estudiante_Panel(nombre_Curso, obtener_Imagen_Curso,
+                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id, true, _id_Curso_Actual);
+            mostrar_Cursos_Nuevos_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
+            Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
+            modelo_Cursos_Nuevos.addRow(celdas);
+            id_Curso_Actual++;
+        } catch (MalformedURLException ex) {
+            
+        } catch (IOException ex) {
+            
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1008,38 +1027,24 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Actuales_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         modelo_Cursos_Actuales = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
 
-        String id, nombre_Curso, nombre_Profesor, puntuacion, fecha_Creacion, intereses_Tematicas;
-        URL url_Imagen;
-        Image obtener_Imagen_Curso, obtener_Imagen_Profesor;
+        String id, nombre_Curso, nombre_Profesor, puntuacion, fecha_Creacion, intereses_Tematicas, ruta_Imagen_Curso, ruta_Imagen_Profesor;
+        
         id = CourseRoom.Utilerias.Concatenar("Curso_Actual_", id_Curso_Actual);
-        try {
-            
-            url_Imagen = new URL("https://picsum.photos/450/450");
-            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
-            nombre_Curso =  CourseRoom.Utilerias.educator().course();
+        
+        ruta_Imagen_Curso = "https://picsum.photos/450/450";
+        nombre_Curso =  CourseRoom.Utilerias.educator().course();
 
-            url_Imagen = new URL("https://i.pravatar.cc/450");
-            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
-            fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
-            nombre_Profesor = CourseRoom.Utilerias.name().fullName();
-            intereses_Tematicas = CourseRoom.Utilerias.lorem().words(5).toString();
+        ruta_Imagen_Profesor = "https://i.pravatar.cc/450";
+        fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
+        nombre_Profesor = CourseRoom.Utilerias.name().fullName();
+        intereses_Tematicas = CourseRoom.Utilerias.lorem().words(5).toString();
 
-            puntuacion = CourseRoom.Utilerias.Concatenar(
-                    String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
-                    String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)));
-                
-            Agregar_Curso_Actual(obtener_Imagen_Curso, nombre_Curso, obtener_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id);
+        puntuacion = CourseRoom.Utilerias.Concatenar(
+                String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
+                String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)));
 
-            obtener_Imagen_Curso.flush();
+        Agregar_Curso_Actual(ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id);
 
-            obtener_Imagen_Profesor.flush();
-
-
-        } catch (MalformedURLException ex) {
-
-        } catch (IOException ex) {
-
-        }
         
         //Cursos finalizados:
         mostrar_Cursos_Finalizados_JScrollPane.getViewport().setOpaque(false);
@@ -1053,36 +1058,20 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Finalizados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         id = "Curso_Finalizado_0";
-        try {
-            
-            url_Imagen = new URL("https://picsum.photos/450/450");
-            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
-            nombre_Curso =  CourseRoom.Utilerias.educator().course();
+       
+        nombre_Curso =  CourseRoom.Utilerias.educator().course();
 
-            url_Imagen = new URL("https://i.pravatar.cc/450");
-            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
-            fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
-            nombre_Profesor = CourseRoom.Utilerias.name().fullName();
-            intereses_Tematicas = CourseRoom.Utilerias.lorem().words(5).toString();
+        fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
+        nombre_Profesor = CourseRoom.Utilerias.name().fullName();
+        intereses_Tematicas = CourseRoom.Utilerias.lorem().words(5).toString();
 
-            puntuacion = CourseRoom.Utilerias.Concatenar(
-                    String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
-                    String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)));
-                
-            Agregar_Curso_Finalizado(obtener_Imagen_Curso, nombre_Curso, obtener_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id);
+        puntuacion = CourseRoom.Utilerias.Concatenar(
+                String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
+                String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)));
 
-            obtener_Imagen_Curso.flush();
+        Agregar_Curso_Finalizado(ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id);
 
-            obtener_Imagen_Profesor.flush();
-
-
-        } catch (MalformedURLException ex) {
-
-        } catch (IOException ex) {
-
-        }
-
-        
+          
         //Cursos Recomendados:
         mostrar_Cursos_Recomendados_JScrollPane.getViewport().setOpaque(false);
         mostrar_Cursos_Recomendados_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1097,36 +1086,19 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         String id_curso_Actual_Enrolar = CourseRoom.Utilerias.Concatenar("Curso_Actual_", id_Curso_Actual);
         id = "Curso_Recomendado_0";
-        try {
-            
-            url_Imagen = new URL("https://picsum.photos/450/450");
-            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
-            nombre_Curso =  CourseRoom.Utilerias.educator().course();
-
-            url_Imagen = new URL("https://i.pravatar.cc/450");
-            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
-            fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
-            nombre_Profesor = CourseRoom.Utilerias.name().fullName();
-            intereses_Tematicas = CourseRoom.Utilerias.lorem().words(5).toString();
-
-            puntuacion = CourseRoom.Utilerias.Concatenar(
-                    String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
-                    String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)));
-                
-            Agregar_Curso_Recomendado(obtener_Imagen_Curso, nombre_Curso, obtener_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id, id_curso_Actual_Enrolar);
-
-            obtener_Imagen_Curso.flush();
-
-            obtener_Imagen_Profesor.flush();
-
-
-        } catch (MalformedURLException ex) {
-
-        } catch (IOException ex) {
-
-        }
         
-        
+        nombre_Curso =  CourseRoom.Utilerias.educator().course();
+
+        fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
+        nombre_Profesor = CourseRoom.Utilerias.name().fullName();
+        intereses_Tematicas = CourseRoom.Utilerias.lorem().words(5).toString();
+
+        puntuacion = CourseRoom.Utilerias.Concatenar(
+                String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
+                String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)));
+
+        Agregar_Curso_Recomendado(ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id, id_curso_Actual_Enrolar);
+
         //Cursos nuevos:
         mostrar_Cursos_Nuevos_JScrollPane.getViewport().setOpaque(false);
         mostrar_Cursos_Nuevos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1140,34 +1112,19 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         id_curso_Actual_Enrolar = CourseRoom.Utilerias.Concatenar("Curso_Actual_", id_Curso_Actual);
         id = "Curso_Nuevo_0";
-        try {
-            
-            url_Imagen = new URL("https://picsum.photos/450/450");
-            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
-            nombre_Curso =  CourseRoom.Utilerias.educator().course();
+        nombre_Curso =  CourseRoom.Utilerias.educator().course();
 
-            url_Imagen = new URL("https://i.pravatar.cc/450");
-            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
-            fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
-            nombre_Profesor = CourseRoom.Utilerias.name().fullName();
-            intereses_Tematicas = CourseRoom.Utilerias.lorem().words(5).toString();
+        fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
+        nombre_Profesor = CourseRoom.Utilerias.name().fullName();
+        intereses_Tematicas = CourseRoom.Utilerias.lorem().words(5).toString();
 
-            puntuacion = CourseRoom.Utilerias.Concatenar(
-                    String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
-                    String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)));
-                
-            Agregar_Curso_Nuevo(obtener_Imagen_Curso, nombre_Curso, obtener_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id, id_curso_Actual_Enrolar);
+        puntuacion = CourseRoom.Utilerias.Concatenar(
+                String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
+                String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)));
 
-            obtener_Imagen_Curso.flush();
-
-            obtener_Imagen_Profesor.flush();
+        Agregar_Curso_Nuevo(ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id, id_curso_Actual_Enrolar);
 
 
-        } catch (MalformedURLException ex) {
-
-        } catch (IOException ex) {
-
-        }
 
         titulo_JLabel.setText("Cursos Actuales");
         

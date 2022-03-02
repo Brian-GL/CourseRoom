@@ -544,15 +544,15 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
        
-        celda = new Celda_Renderer(dispositivo,altura);
+        celda = new Celda_Renderer(dispositivo);
         celdas[0] = celda;
-        celda = new Celda_Renderer(fabricante,altura);
+        celda = new Celda_Renderer(fabricante);
         celdas[1] = celda;
-        celda = new Celda_Renderer(uuid,altura);
+        celda = new Celda_Renderer(uuid);
         celdas[2] = celda;
-        celda = new Celda_Renderer(ultima_Fecha_Acceso,altura);
+        celda = new Celda_Renderer(ultima_Fecha_Acceso);
         celdas[3] = celda;
-        celda = new Celda_Renderer(estatus,altura);
+        celda = new Celda_Renderer(estatus);
         celdas[4] = celda;
 
         modelo.addRow(celdas);

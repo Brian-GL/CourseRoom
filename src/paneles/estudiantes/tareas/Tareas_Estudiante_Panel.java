@@ -419,7 +419,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    public static void Agregar_Tarea(String nombre_Tarea, String nombre_Curso, String nombre_Profesor, ImageIcon icono_Curso, 
+    public static void Agregar_Tarea_Desde_Curso(String nombre_Tarea, String nombre_Curso, String nombre_Profesor, ImageIcon icono_Curso, 
             String fecha_Creacion, String fecha_Entrega, String estatus, String _id){
         
         Celda_Renderer[] celdas = new Celda_Renderer[5];

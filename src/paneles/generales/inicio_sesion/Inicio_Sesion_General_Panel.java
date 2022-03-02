@@ -10,8 +10,6 @@ import static java.awt.image.ImageObserver.WIDTH;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -252,7 +250,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     private void recuperar_Credenciales_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            this.setVisible(false);
             CourseRoom_Frame.Mostrar_Vista("Recuperar_Credenciales");  
         }
            
@@ -261,7 +258,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     private void crear_Cuenta_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            this.setVisible(false);
             CourseRoom_Frame.Mostrar_Vista("Crear_Cuenta");
         }
     }//GEN-LAST:event_crear_Cuenta_JLabelMouseClicked
@@ -334,7 +330,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         }
         
         
-        Font gadugi_18 = new Font("Gadugi", 3, 16);
+        Font gadugi_18 = new Font("Segoe UI", 3, 16);
         crear_Cuenta_JLabel.setFont(gadugi_18);
         recuperar_Credenciales_JLabel.setFont(gadugi_18);
        
@@ -370,12 +366,12 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         imagen_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
     }
     
-    public boolean validar_Correo(String correo) {
-        Pattern pat = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z]{3})((\\.[A-Za-z]{2}))?$");
-        Matcher mat = pat.matcher(correo);
-        if (mat.find()) {
-            JOptionPane.showMessageDialog(null, "Bienvenido\n*" + correo + "*");
+    public void validar_Correo(String correo) {
+        
+        if(CourseRoom.Utilerias.Regex_Correo_Electronico_Valido(correo)) {
 
+            CourseRoom.Utilerias.Esconder_Frame();
+            
             //Estudiante:
             CourseRoom_Frame.Mostrar_Tablero(true);
             //Profesor:
@@ -383,19 +379,24 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
 
             usuario_JTextField.setText("");
             contrasena_JPasswordField.setText("");
+            
+            CourseRoom.Utilerias.Mostrar_Frame();
         } else {
+            getToolkit().beep();
             JOptionPane.showMessageDialog(null, "El Correo\n*" + correo + "*\nNo Es Valido");
             usuario_JTextField.setText("");
+            contrasena_JPasswordField.setText("");
             usuario_JTextField.requestFocus();
+            
         }
-        return mat.find();
     }
     
     public void verificar_Campos() {
-        String Password = String.valueOf(contrasena_JPasswordField.getPassword());
+        String password = String.valueOf(contrasena_JPasswordField.getPassword());
         // Checa Los Campos Vacíos.
-        if (usuario_JTextField.getText().equals("")
-                || Password.equals("")){
+        if (password.isEmpty()
+                || password.isBlank()){
+            getToolkit().beep();
             // Si Los Campos Estan Vacíos Manda Mensaje De Error.
             JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
         } else {

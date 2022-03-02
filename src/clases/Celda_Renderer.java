@@ -53,14 +53,15 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
     }
     
-    public Celda_Renderer(String _texto, int _altura) {
+    public Celda_Renderer(String _texto, int verticalidad) {
         super();
         this.id = new String();
         texto = _texto;
         Inicializar_Label();
-        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
-        Altura(_altura);
+        label.setVerticalTextPosition(verticalidad);
+        label.setText(CourseRoom.Utilerias.Formato_HTML_Central_Inicio(texto));
     }
+
    
     public Celda_Renderer(String _texto, String _id) {
         super();
@@ -70,15 +71,14 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
     }
     
-    public Celda_Renderer(String _texto, String _id, int _altura) {
+    public Celda_Renderer(String _texto, String _id, int verticalidad) {
         super();
         id = _id;
         texto = _texto;
         Inicializar_Label();
+        label.setVerticalTextPosition(verticalidad);
         label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
-        Altura(_altura);
     }
-    
     
     public Celda_Renderer(ImageIcon icono, String _id) {
         super();
@@ -90,28 +90,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         }
     }
     
-    public Celda_Renderer(ImageIcon icono, String _id, int _altura) {
-        super();
-        id = _id;
-        texto = new String();
-        Inicializar_Label();
-        if(icono != null){
-            label.setIcon(icono);
-        }
-        Altura(_altura);
-    }
-    
-    public Celda_Renderer(ImageIcon icono, int _altura) {
-        super();
-        id = new String();
-        texto = new String();
-        Inicializar_Label();
-        if(icono != null){
-            label.setIcon(icono);
-        }
-        Altura(_altura);
-    }
-    
+   
     public Celda_Renderer(ImageIcon icono) {
         super();
         id = new String();
@@ -133,17 +112,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
     }
     
-    public Celda_Renderer(ImageIcon icono, String _texto, String _id, int _altura) {
-        super();
-        id = _id;
-        texto = _texto;
-        Inicializar_Label();
-        if(icono != null){
-            label.setIcon(icono);
-        }
-        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
-        Altura(_altura);
-    }
+   
 
     public JLabel Componente() {
         return label;
@@ -170,6 +139,10 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         dimension.width = label.getPreferredSize().width;
         dimension.height = altura;
         label.setPreferredSize(dimension);
+    }
+    
+    public void Verticalidad(int valor){
+        label.setVerticalTextPosition(valor);
     }
     
     private void Inicializar_Label(){

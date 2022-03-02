@@ -25,6 +25,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import org.apache.commons.io.FilenameUtils;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
@@ -36,26 +39,29 @@ import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Componentes_Interface, Envio_Interface, Limpieza_Interface{
 
     public Pregunta_Estudiante_Panel(
+            Image imagen_Preguntador,
             String _pregunta, 
-            String _descripcion_Pregunta,
             String _preguntador_Nombre,
-            String _fecha) {
+            String _descripcion_Pregunta,
+            String _fecha,
+            String estatus) {
         
         initComponents();
         
-        Image imagen_usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
-        ImageIcon icono_Usuario = new ImageIcon(imagen_usuario);
-        imagen_usuario.flush();
+        ImageIcon icono_Usuario = new ImageIcon(imagen_Preguntador);
         preguntador_Imagen_JLabel.setIcon(icono_Usuario);
-        icono_Usuario.getImage().flush();
         preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Utilerias.Concatenar("Pregunta Por ", _preguntador_Nombre));
         
-        String valor = CourseRoom.Utilerias.Concatenar(_pregunta, " - Abierta");
+        String valor = CourseRoom.Utilerias.Concatenar(_pregunta, " - ",estatus);
         pregunta_JLabel.setText(valor);
         
         valor = CourseRoom.Utilerias.Concatenar(_descripcion_Pregunta, "<br><br>Por ",_preguntador_Nombre," A ",_fecha);
         
+        
         descripcion_Pregunta_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(valor));
+        
+        imagen_Preguntador.flush();
+        icono_Usuario.getImage().flush();
         
         Iniciar_Componentes();
     }
@@ -89,9 +95,9 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
-        informacion_JPanel.setMaximumSize(new java.awt.Dimension(32767, 50));
+        informacion_JPanel.setMaximumSize(new java.awt.Dimension(32767, 150));
         informacion_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
-        informacion_JPanel.setPreferredSize(new java.awt.Dimension(982, 110));
+        informacion_JPanel.setPreferredSize(new java.awt.Dimension(982, 150));
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mis Chats");
@@ -116,7 +122,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         preguntador_Imagen_JLabel.setMinimumSize(new java.awt.Dimension(48, 48));
         preguntador_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(48, 48));
 
-        pregunta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pregunta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         pregunta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         descripcion_Pregunta_JScrollPane.setBorder(null);
@@ -125,7 +131,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         descripcion_Pregunta_JTextPane.setEditable(false);
         descripcion_Pregunta_JTextPane.setBorder(null);
         descripcion_Pregunta_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_Pregunta_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        descripcion_Pregunta_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         descripcion_Pregunta_JTextPane.setText("");
         descripcion_Pregunta_JTextPane.setOpaque(false);
         descripcion_Pregunta_JScrollPane.setViewportView(descripcion_Pregunta_JTextPane);
@@ -185,20 +191,19 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(preguntador_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(regresar_JButton))
-                    .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                            .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(marcar_Solucionada_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                            .addComponent(pregunta_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
-                            .addComponent(descripcion_Pregunta_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_JPanelLayout.createSequentialGroup()
+                        .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(marcar_Solucionada_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_JPanelLayout.createSequentialGroup()
+                        .addComponent(pregunta_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(descripcion_Pregunta_JScrollPane)))
                 .addContainerGap())
         );
 
@@ -350,7 +355,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                     .addGap(0, 0, 0)
                     .addComponent(informacion_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(chat_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                    .addComponent(chat_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
                     .addGap(0, 0, 0))
             );
         }// </editor-fold>//GEN-END:initComponents
@@ -452,6 +457,8 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
     
     @Override
     public void Iniciar_Componentes() {
+        
+        
         descripcion_Pregunta_JTextPane.setCaretPosition(0);
         descripcion_Pregunta_JScrollPane.getViewport().setOpaque(false);
         descripcion_Pregunta_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);

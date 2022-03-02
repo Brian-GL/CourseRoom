@@ -14,6 +14,7 @@ import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -191,6 +192,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
+        String id = new String();
             
         try {
             
@@ -228,11 +230,17 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
                     celda = new Celda_Renderer(icono,tipo,"");
                     celdas[0] = celda;
                     break;
+                default:
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/bell_warning.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,"General","");
+                    celdas[0] = celda;
+                    break;
             }
             
-            celda = new Celda_Renderer(aviso,"");
+            celda = new Celda_Renderer(aviso,id,JLabel.TOP);
             celdas[1] = celda;
-            celda = new Celda_Renderer(fecha,"");
+            celda = new Celda_Renderer(fecha,id);
             celdas[2] = celda;
             
             modelo.addRow(celdas);
@@ -267,7 +275,7 @@ public class Avisos_Estudiante_Panel extends javax.swing.JPanel implements Limpi
         
         avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         String tipo, aviso, fecha;
-        String[] opciones = {"Curso","Tarea","Grupo","Chat","Pregunta"};
+        String[] opciones = {"Curso","Tarea","Grupo","Chat","Pregunta","General"};
         tipo = CourseRoom.Utilerias.options().nextElement(opciones);
         aviso = CourseRoom.Utilerias.lorem().sentence();
         fecha = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));

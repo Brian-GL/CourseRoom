@@ -33,8 +33,6 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
@@ -688,31 +686,33 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
             setAlwaysOnTop(true);
             setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            setMaximumSize(new java.awt.Dimension(800, 140));
-            setMinimumSize(new java.awt.Dimension(800, 140));
+            setMaximumSize(new java.awt.Dimension(800, 150));
+            setMinimumSize(new java.awt.Dimension(800, 150));
             setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
             setUndecorated(true);
             setResizable(false);
             setType(java.awt.Window.Type.POPUP);
             getContentPane().setLayout(new java.awt.CardLayout());
 
-            contenido_JPanel.setMaximumSize(new java.awt.Dimension(800, 140));
-            contenido_JPanel.setMinimumSize(new java.awt.Dimension(800, 140));
-            contenido_JPanel.setPreferredSize(new java.awt.Dimension(800, 140));
+            contenido_JPanel.setMaximumSize(new java.awt.Dimension(800, 150));
+            contenido_JPanel.setMinimumSize(new java.awt.Dimension(800, 150));
+            contenido_JPanel.setPreferredSize(new java.awt.Dimension(800, 150));
 
             chatear_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat_1.png"))); // NOI18N
             chatear_JButton.setText("Chatear");
             chatear_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
             ((ImageIcon) chatear_JButton.getIcon()).getImage().flush();
             chatear_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     chatear_JButtonMouseClicked(evt);
                 }
-
+                @Override
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
                     chatear_JButtonMouseEntered(evt);
                 }
 
+                @Override
                 public void mouseExited(java.awt.event.MouseEvent evt) {
                     chatear_JButtonMouseExited(evt);
                 }
@@ -723,20 +723,23 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
             ((ImageIcon) cerrar_JButton.getIcon()).getImage().flush();
             cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     cerrar_JButtonMouseClicked(evt);
                 }
 
+                @Override
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
                     cerrar_JButtonMouseEntered(evt);
                 }
 
+                @Override
                 public void mouseExited(java.awt.event.MouseEvent evt) {
                     cerrar_JButtonMouseExited(evt);
                 }
             });
 
-            chatear_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+            chatear_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
 
             javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
             contenido_JPanel.setLayout(contenido_JPanelLayout);
@@ -825,7 +828,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         @Override
         public void Iniciar_Componentes() {
             this.setLocationRelativeTo(null);
-            this.setAlwaysOnTop(true);
             Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
 
             chatear_AutoCompletionComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),

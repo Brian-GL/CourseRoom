@@ -31,8 +31,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -1740,7 +1738,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         }
         
         interes_Tematica_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        
         
     }
 

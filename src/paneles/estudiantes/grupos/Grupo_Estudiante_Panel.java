@@ -62,9 +62,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private byte carta_Visible;
     private int id_Tarea_Pendiente;
     
-    /**
-     * Creates new form Group_Estudiante_Panel
-     */
+    
     public Grupo_Estudiante_Panel(Image _imagen_Grupo, 
             String nombre_Grupo, 
             String _curso,
@@ -80,7 +78,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         fecha_Creacion_JLabel.setText(CourseRoom.Utilerias.Concatenar("Creado El ",_fecha_Creacion));
 
         icono_Grupo.getImage().flush();
-        _imagen_Grupo.flush();
         
         Iniciar_Componentes();
     }
@@ -819,6 +816,25 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         tareas_Pendientes_JTable.setShowVerticalLines(false);
                         tareas_Pendientes_JTable.setSurrendersFocusOnKeystroke(true);
                         tareas_Pendientes_JTable.setRowSorter(new TableRowSorter(tareas_Pendientes_JTable.getModel()));
+                        tareas_Pendientes_JTable.addMouseListener(new MouseAdapter() {
+
+                            @Override
+                            public void mousePressed(MouseEvent e) {
+                                if (e.getClickCount() == 2) {
+
+                                    JTable tabla = (JTable) e.getComponent();
+                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                    int columna = tabla.getSelectedColumn();
+
+                                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+                                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+
+                                    Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+
+                                }
+                            }
+                        });
                         tareas_Pendientes_JScrollPane.setViewportView(tareas_Pendientes_JTable);
 
                         javax.swing.GroupLayout tareas_Pendientes_JPanelLayout = new javax.swing.GroupLayout(tareas_Pendientes_JPanel);
@@ -1223,7 +1239,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 !descripcion.isEmpty() && !descripcion.isBlank() &&
                 !fecha_Finalizacion.isEmpty() && !fecha_Finalizacion.isBlank()){
 
-                Agregar_Tarea_Pendiente(nombre_Tarea_Pendiente,descripcion,miembro_A_Cargo,CourseRoom.Utilerias.Fecha_Hora_Local(),
+                Agregar_Tarea_Pendiente_Local(nombre_Tarea_Pendiente,descripcion,miembro_A_Cargo,CourseRoom.Utilerias.Fecha_Hora_Local(),
                         fecha_Finalizacion,(byte) 0, CourseRoom.Utilerias.Concatenar("Tarea_Pendiente_", id_Tarea_Pendiente));
                         
                 nombre_Tarea_Pendiente_JTextField.setText("");
@@ -1285,7 +1301,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
-    private void Agregar_Tarea_Pendiente(String nombre_Tarea_Pendiente, String descripcion, String miembro_A_Cargo,
+    private void Agregar_Tarea_Pendiente_Local(String nombre_Tarea_Pendiente, String descripcion, String miembro_A_Cargo,
             String fecha_Creacion, String fecha_Finalizacion, byte estatus, String id){
         
         //Estatus -> 0 : Pendiente.
@@ -1295,13 +1311,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel)tareas_Pendientes_JTable.getModel();
+        Image imagen;
+        ImageIcon icono;
             
         try {
             
-            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-            ImageIcon icono = new ImageIcon(imagen);
-            
-            celda = new Celda_Renderer(icono,nombre_Tarea_Pendiente, id);
+            celda = new Celda_Renderer(nombre_Tarea_Pendiente, id);
             celdas[0] = celda;
             imagen = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
             icono = new ImageIcon(imagen);
@@ -1351,7 +1366,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             imagen = ImageIO.read(url_Imagen);
             icono = new ImageIcon(imagen);
             
-            celda = new Celda_Renderer(icono, nombre_Miembro);
+            celda = new Celda_Renderer(icono, nombre_Miembro,"");
             celdas[0] = celda;
             
             imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
@@ -1502,23 +1517,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         tareas_Pendientes_JTable.getTableHeader().setFont(gadugi);
         tareas_Pendientes_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        tareas_Pendientes_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int columna = tabla.getSelectedColumn();
-
-                    if (columna == 0) {
-                         int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                         
-                     }
-
-                }
-            }
-        });
         
         gadugi = new Font("Segoe UI", Font.PLAIN, 15);
         LocalDate fecha_Minima = LocalDate.now();

@@ -59,7 +59,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Preguntas_Estudiante_Panel preguntas_Panel;
     private static Tiempo_Servidor tiempo_Servidor;
     
-    private static CardLayout layout;
     
     /**
      * Creates new form DashboardPanel
@@ -456,7 +455,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void imagen_Perfil_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Perfil_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            layout.show(visualizador_JPanel, "Perfil");
+            Mostrar_Vista("Perfil");
         }
     }//GEN-LAST:event_imagen_Perfil_JLabelMouseClicked
 
@@ -878,11 +877,11 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     }
     
     public static void Mostrar_Vista(String llave){
-        layout.show(visualizador_JPanel, llave);
+        ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, llave);
     }
     
     public static void Retirar_Vista(Component componente){
-        layout.removeLayoutComponent(componente);
+        ((CardLayout)visualizador_JPanel.getLayout()).removeLayoutComponent(componente);
     }
     
     
@@ -980,8 +979,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             cursos_Panel = new Cursos_Estudiante_Panel();
             visualizador_JPanel.add("Cursos", cursos_Panel);
             
-            layout = (CardLayout) visualizador_JPanel.getLayout();
-            
             mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias.Concatenar("Bienvenid@ ", Perfil_Estudiante_Panel.Nombre_Completo()));
             
             tiempo_Servidor = new Tiempo_Servidor();
@@ -1016,7 +1013,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                 fecha_Hora_Servidor = (respuesta.capacity() > 0) ? 
                         LocalDateTime.of(respuesta.elementAt(0),respuesta.elementAt(1),
                                 respuesta.elementAt(2), respuesta.elementAt(3), 
-                                respuesta.elementAt(4), respuesta.elementAt(5)) : null;
+                                respuesta.elementAt(4), respuesta.elementAt(5)) : LocalDateTime.now();
                 
                 
                 String tiempo;

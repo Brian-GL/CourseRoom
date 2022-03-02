@@ -125,6 +125,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import net.coobird.gui.simpleimageviewer4j.Viewer;
@@ -139,12 +140,14 @@ import uk.co.caprica.vlcj.player.component.AudioListPlayerComponent;
  */
 public class CourseRoom{
     
+    private static CourseRoom_Frame courseRoom_Frame;
+    
     public static void main(String args[]) throws UnsupportedLookAndFeelException, MalformedURLException, XmlRpcException, IOException, SQLException {
         FlatDarkLaf ui = new FlatDarkLaf();
         UIManager.setLookAndFeel(ui);
         Solicitudes.Iniciar_Solicitudes();
         Utilerias.Iniciar_Utilerias();
-        CourseRoom_Frame courseRoom_Frame = new CourseRoom_Frame();
+        courseRoom_Frame = new CourseRoom_Frame();
         courseRoom_Frame.setVisible(true);
     }
     
@@ -747,6 +750,14 @@ public class CourseRoom{
         public static List<GraphicsCard> getGraphicsCards() {
             return hardware.getGraphicsCards();
         }
+        
+        public static void Esconder_Frame(){
+            courseRoom_Frame.setVisible(false);
+        }
+        
+        public static void Mostrar_Frame(){
+            courseRoom_Frame.setVisible(true);
+        }
 
         public static String Concatenar(String cadena, String... args) {
             StringBuilder constructor_Cadena = new StringBuilder(cadena);
@@ -778,6 +789,11 @@ public class CourseRoom{
                     text, "</p></div></html>");
         }
 
+        public static String Formato_HTML_Central_Inicio(String text) {
+            return Concatenar("<html><div style='text-align:center; align-items: start; justify-content: flex-start;'><p>",
+                    text, "</p></div></html>");
+        }
+        
         public static String RGB_Cadena(Color color) {
             return Concatenar("RGB: (",
                     String.valueOf(color.getRed()), ",",
@@ -810,6 +826,9 @@ public class CourseRoom{
             }
         }
         
+        public static boolean Regex_Correo_Electronico_Valido(String value){
+            return Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE).matcher(value).find();
+        }
         
         public static void Abrir_Archivo(String ruta, String extension, String nombre_Archivo){
             

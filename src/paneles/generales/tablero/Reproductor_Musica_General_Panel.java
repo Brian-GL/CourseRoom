@@ -314,19 +314,19 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             }
         });
 
+        rate_JSlider.setBackground(new java.awt.Color(14, 30, 64));
         rate_JSlider.setMajorTickSpacing(10);
         rate_JSlider.setMaximum(150);
         rate_JSlider.setMinimum(50);
         rate_JSlider.setPaintTicks(true);
+        rate_JSlider.setToolTipText("Rate");
         rate_JSlider.setValue(100);
-        rate_JSlider.setBackground(new java.awt.Color(14, 30, 64));
         rate_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rate_JSlider.setEnabled(false);
         rate_JSlider.setFocusable(false);
         rate_JSlider.setMaximumSize(new java.awt.Dimension(32767, 32));
         rate_JSlider.setMinimumSize(new java.awt.Dimension(137, 32));
         rate_JSlider.setPreferredSize(new java.awt.Dimension(137, 32));
-        rate_JSlider.setToolTipText("Rate");
 
         subir_Rate_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rabbit.png"))); // NOI18N
         subir_Rate_JLabel.setEnabled(false);
@@ -348,17 +348,17 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             }
         });
 
+        volumen_JSlider.setBackground(new java.awt.Color(14, 30, 64));
         volumen_JSlider.setMajorTickSpacing(10);
         volumen_JSlider.setPaintTicks(true);
+        volumen_JSlider.setToolTipText("Volume");
         volumen_JSlider.setValue(100);
-        volumen_JSlider.setBackground(new java.awt.Color(14, 30, 64));
         volumen_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         volumen_JSlider.setEnabled(false);
         volumen_JSlider.setFocusable(false);
         volumen_JSlider.setMaximumSize(new java.awt.Dimension(32767, 32));
         volumen_JSlider.setMinimumSize(new java.awt.Dimension(137, 32));
         volumen_JSlider.setPreferredSize(new java.awt.Dimension(137, 32));
-        volumen_JSlider.setToolTipText("Volume");
 
         subir_Volumen_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/volume-up.png"))); // NOI18N
         subir_Volumen_JLabel.setEnabled(false);
@@ -736,9 +736,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         letras_JScrollPane.setBorder(null);
         letras_JScrollPane.setOpaque(false);
 
-        letras_JTextPane.setBorder(null);
-        letras_JTextPane.setContentType("text/html"); // NOI18N
         letras_JTextPane.setEditable(false);
+        letras_JTextPane.setBorder(null);
         letras_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         letras_JTextPane.setText("");
         letras_JTextPane.setOpaque(false);
@@ -778,17 +777,17 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         controles_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/archivo-de-musica.png")), informacion_Archivo_JPanel); // NOI18N
 
+        titulo_JLabel.setBackground(new java.awt.Color(0, 0, 0));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        titulo_JLabel.setForeground(java.awt.Color.white);
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/cd.png"))); // NOI18N
         titulo_JLabel.setText("Título");
-        titulo_JLabel.setBackground(new java.awt.Color(0, 0, 0));
+        titulo_JLabel.setToolTipText("");
         titulo_JLabel.setFocusable(false);
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        titulo_JLabel.setForeground(java.awt.Color.white);
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(359, 35));
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(359, 35));
-        titulo_JLabel.setToolTipText("");
         ((ImageIcon)titulo_JLabel.getIcon()).getImage().flush();
 
         duracion_Total_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -835,14 +834,14 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         progreso_JLabel.setMaximumSize(new java.awt.Dimension(56, 35));
         progreso_JLabel.setMinimumSize(new java.awt.Dimension(56, 35));
 
+        progreso_JSlider.setBackground(new java.awt.Color(14, 30, 64));
+        progreso_JSlider.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        progreso_JSlider.setForeground(new java.awt.Color(104, 194, 232));
         progreso_JSlider.setMaximum(2147483647);
         progreso_JSlider.setValue(0);
-        progreso_JSlider.setBackground(new java.awt.Color(14, 30, 64));
         progreso_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         progreso_JSlider.setEnabled(false);
         progreso_JSlider.setFocusable(false);
-        progreso_JSlider.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        progreso_JSlider.setForeground(new java.awt.Color(104, 194, 232));
         progreso_JSlider.setMaximumSize(new java.awt.Dimension(32767, 17));
         progreso_JSlider.setMinimumSize(new java.awt.Dimension(664, 17));
         progreso_JSlider.setPreferredSize(new java.awt.Dimension(674, 17));

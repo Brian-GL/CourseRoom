@@ -35,6 +35,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -660,7 +661,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     });
 
                     fecha_Actualizacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-                    fecha_Actualizacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                    fecha_Actualizacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
                     fecha_Actualizacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
                     fecha_Actualizacion_JLabel.setOpaque(true);
                     ((ImageIcon)fecha_Actualizacion_JLabel.getIcon()).getImage().flush();
@@ -683,7 +684,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                 .addGroup(entregar_Tarea_JPanelLayout.createSequentialGroup()
                                     .addComponent(es_Tarea_Grupal_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(fecha_Actualizacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(fecha_Actualizacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, entregar_Tarea_JPanelLayout.createSequentialGroup()
                                     .addComponent(subir_Cambios_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -879,7 +880,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void subir_Cambios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Cambios_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            fecha_Actualizacion_JLabel.setText(CourseRoom.Utilerias.Concatenar("Actualizado El: ",CourseRoom.Utilerias.Fecha_Hora_Local()));
+            fecha_Actualizacion_JLabel.setText(CourseRoom.Utilerias.Concatenar("Actualizado ",CourseRoom.Utilerias.Fecha_Hora_Local()));
         }
     }//GEN-LAST:event_subir_Cambios_JButtonMouseClicked
 
@@ -945,7 +946,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
-    private void Agregar_Retroalimentacion(String retroalimentacion, String fecha_Retroalimentacion, String archivo_Adjunto, String ruta_Archivo_Adjunto){
+    private void Agregar_Retroalimentacion(String retroalimentacion, 
+            String fecha_Retroalimentacion, String archivo_Adjunto, String ruta_Archivo_Adjunto){
         
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
@@ -953,19 +955,19 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         try {
             
-            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-            ImageIcon icono_Abrir = new ImageIcon();
+            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+            ImageIcon icono = new ImageIcon(imagen);
             
-            celda = new Celda_Renderer(retroalimentacion);
+            celda = new Celda_Renderer(retroalimentacion, JLabel.TOP);
             celdas[0] = celda;
             celda = new Celda_Renderer(fecha_Retroalimentacion);
             celdas[1] = celda;
-            celda = new Celda_Renderer(icono_Abrir,archivo_Adjunto, ruta_Archivo_Adjunto);
+            celda = new Celda_Renderer(icono,archivo_Adjunto, ruta_Archivo_Adjunto);
             celdas[2] = celda;
             modelo.addRow(celdas);
             retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(retroalimentacion.length()));
             
-            icono.flush();
+            imagen.flush();
         } catch (IOException ex) {
             
         }
@@ -979,10 +981,10 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         try {
             
-            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-            ImageIcon icono_Abrir = new ImageIcon();
+            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+            ImageIcon icono = new ImageIcon(imagen);
             
-            celda = new Celda_Renderer(icono_Abrir,archivo_Adjunto, ruta_Archivo_Adjunto);
+            celda = new Celda_Renderer(icono,archivo_Adjunto, ruta_Archivo_Adjunto);
             celdas[0] = celda;
             celda = new Celda_Renderer(fecha_Adjunto);
             celdas[1] = celda;
@@ -990,7 +992,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             modelo.addRow(celdas);
             archivos_Adjuntos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(archivo_Adjunto.length()));
             
-            icono.flush();
+            imagen.flush();
         } catch (IOException ex) {
             
         }
@@ -1061,7 +1063,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         retroalimentacion_JTable.getTableHeader().setFont(gadugi);
         retroalimentacion_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        String retroalimentacion, fecha_Creacion, String, nombre_Archivo, ruta;
+        String retroalimentacion, fecha_Creacion, nombre_Archivo, ruta;
         
         retroalimentacion = CourseRoom.Utilerias.lorem().paragraph(5);
         fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();

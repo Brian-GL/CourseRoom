@@ -38,6 +38,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -84,6 +85,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         this.ID = _id;
         fecha_Creacion_JLabel.setText(CourseRoom.Utilerias.Formato_HTML_Central(CourseRoom.Utilerias.Concatenar("Creado El ",_fecha_Creacion)));
         descripcion_Profesor_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(CourseRoom.Utilerias.Concatenar("<b>",_nombre_Profesor, ":<b><br> <br>",CourseRoom.Utilerias.lorem().paragraph(10))));
+        
+        _imagen_Curso.flush();
+        _imagen_Profesor.flush();
         
         Iniciar_Componentes();
     }
@@ -1239,7 +1243,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         imagen_Curso = imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
         ImageIcon icono_Curso = new ImageIcon(imagen_Curso);
         
-        
         celda = new Celda_Renderer(nombre_Tarea, _id);
         celdas[0] = celda;
         celda = new Celda_Renderer(fecha_Creacion, _id);
@@ -1249,12 +1252,11 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         celda = new Celda_Renderer(estatus, _id);
         celdas[3] = celda;
         
-        Tareas_Estudiante_Panel.Agregar_Tarea(nombre_Tarea, this.titulo_JLabel.getText(), this.nombre_Profesor ,icono_Curso, fecha_Creacion, fecha_Entrega, estatus, _id);
+        Tareas_Estudiante_Panel.Agregar_Tarea_Desde_Curso(nombre_Tarea, this.titulo_JLabel.getText(), this.nombre_Profesor ,icono_Curso, fecha_Creacion, fecha_Entrega, estatus, _id);
         
         modelo.addRow(celdas);
         
         tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(nombre_Tarea.length()));
-        
         
     }
     
@@ -1275,15 +1277,13 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             obtener_Imagen = ImageIO.read(url_Imagen);
             icono_Miembro = new ImageIcon(obtener_Imagen);
 
-            celda = new Celda_Renderer(icono_Miembro,nombre_Miembro);
+            celda = new Celda_Renderer(icono_Miembro,nombre_Miembro,"");
             celdas[0] = celda;
             celda = new Celda_Renderer(fecha_Ingreso);
             celdas[1] = celda;
             
             modelo.addRow(celdas);
             
-            miembros_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(nombre_Miembro.length()));
-
             obtener_Imagen.flush();
             obtener_Imagen.getGraphics().dispose();
         } catch (MalformedURLException ex) {
@@ -1294,13 +1294,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
     }
     
-    
     private void Agregar_Aviso(String aviso, String fecha_Aviso){
         Celda_Renderer[] celdas = new Celda_Renderer[2];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
         
-        celda = new Celda_Renderer(aviso);
+        celda = new Celda_Renderer(aviso,JLabel.TOP);
         celdas[0] = celda;
         celda = new Celda_Renderer(fecha_Aviso);
         celdas[1] = celda;

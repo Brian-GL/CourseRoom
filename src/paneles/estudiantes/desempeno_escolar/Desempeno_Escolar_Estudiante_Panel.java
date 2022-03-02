@@ -27,7 +27,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -234,7 +233,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
                     return super.getColumnClass(column);
                 }
             });
-            estadisticas_JTable.setRowHeight(100);
+            estadisticas_JTable.setRowHeight(110);
             estadisticas_JTable.setShowGrid(true);
             estadisticas_JTable.setSurrendersFocusOnKeystroke(true);
             estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
@@ -353,7 +352,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
     }  
 
     
-    private void Agregar_Estadistica(Image imagen_Curso, String nombre_Curso, String numero_Tareas_Calificadas,
+    private void Agregar_Estadistica(String ruta_Imagen_Curso, String nombre_Curso, String numero_Tareas_Calificadas,
             String promedio_Curso, String promedio_General, String prediccion, boolean rumbo){
         
         Celda_Renderer[] celdas = new Celda_Renderer[6];
@@ -361,14 +360,16 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         String id = new String();
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         
+        URL url_Imagen;
         Image imagen;
         ImageIcon icono;
         
         try {
             
+            url_Imagen = new URL(ruta_Imagen_Curso);
+            imagen = ImageIO.read(url_Imagen);
             
-            
-            icono = new ImageIcon(imagen_Curso);
+            icono = new ImageIcon(imagen);
 
             celda = new Celda_Renderer(icono, nombre_Curso,id);
             celdas[0] = celda;
@@ -383,23 +384,20 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             if(rumbo){
                 imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
                 icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono,"Aprobar");
+                celda = new Celda_Renderer(icono,"Aprobar",id);
                 celdas[5] = celda;
             }else{
                 imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
                 icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono,"Reprobar");
+                celda = new Celda_Renderer(icono,"Reprobar",id);
                 celdas[5] = celda;
             }
             
-
             modelo.addRow(celdas);
-            
-            estadisticas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla_Icono(0));
             
             imagen.flush();
 
-        } catch (Exception ex) {
+        } catch (IOException ex) {
 
         } 
         
@@ -435,32 +433,19 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
 
         estadisticas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        URL url_Imagen;
-        Image obtener_Imagen;
-        String nombre_Curso, numero_Tareas_Calificadas,promedio_Curso,promedio_General,prediccion;
+        String ruta_Imagen_Curso, nombre_Curso, numero_Tareas_Calificadas,promedio_Curso,promedio_General,prediccion;
         boolean rumbo;
-        try {
+       
+        ruta_Imagen_Curso = "https://picsum.photos/96/96";
+        nombre_Curso = CourseRoom.Utilerias.educator().course();
+        numero_Tareas_Calificadas = String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10));
+        promedio_Curso = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        promedio_General = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        prediccion = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        rumbo = CourseRoom.Utilerias.bool().bool();
 
-            url_Imagen = new URL("https://picsum.photos/96/96");
-            obtener_Imagen = ImageIO.read(url_Imagen);
-            nombre_Curso = CourseRoom.Utilerias.educator().course();
-            numero_Tareas_Calificadas = String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10));
-            promedio_Curso = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-            promedio_General = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-            prediccion = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-            rumbo = CourseRoom.Utilerias.bool().bool();
+        Agregar_Estadistica(ruta_Imagen_Curso, nombre_Curso, numero_Tareas_Calificadas, promedio_Curso, promedio_General, prediccion, rumbo);
 
-            Agregar_Estadistica(obtener_Imagen, nombre_Curso, numero_Tareas_Calificadas, promedio_Curso, promedio_General, prediccion, rumbo);
-            
-            obtener_Imagen.flush();
-            obtener_Imagen.getGraphics().dispose();
-
-        } catch (MalformedURLException ex) {
-
-        } catch (IOException ex) { 
-            
-        }
-        
         
         //Regresion Lineal:
         // Create dataset  

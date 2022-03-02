@@ -7,7 +7,6 @@ package paneles.generales.tablero;
 
 import java.awt.Color;
 import javax.swing.SwingUtilities;
-import paneles.generales.tablero.Reproductor_Musica_General_Panel;
 
 /**
  *
@@ -164,7 +163,5 @@ public class Entrada_Lista_Reproduccion_General_Panel extends javax.swing.JPanel
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
-
-
 
 }

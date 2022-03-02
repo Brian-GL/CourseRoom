@@ -121,6 +121,7 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     public static void Colorear() {
         visualizador_JPanel.setBackground(CourseRoom.Utilerias.Primer_Color());
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JPanel visualizador_JPanel;

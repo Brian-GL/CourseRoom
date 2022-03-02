@@ -454,7 +454,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         return mostrar_Preguntas_Lista.size();
     }
     
-    public void Agregar_Pregunta(
+    public void Agregar_Pregunta_Local(
             String preguntador_Nombre,
             String pregunta, 
             String descripcion_Pregunta,
@@ -462,10 +462,11 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
             String id) {
         
         
+        String estatus = "Abierta";
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        Image imagen_usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
-        ImageIcon icono_Usuario = new ImageIcon(imagen_usuario);
+        Image imagen_Usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
+        ImageIcon icono_Usuario = new ImageIcon(imagen_Usuario);
         
         celda = new Celda_Renderer(icono_Usuario, preguntador_Nombre,id);
         celdas[0] = celda;
@@ -473,7 +474,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         celdas[1] = celda;
         celda = new Celda_Renderer(fecha_Pregunta,id);
         celdas[2] = celda;
-        celda = new Celda_Renderer("Abierta",id);
+        celda = new Celda_Renderer(estatus,id);
         celdas[3] = celda;
         
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
@@ -482,9 +483,12 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         
         mostrar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla_Icono(pregunta.length()));
         
+        imagen_Usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
+        
         Pregunta_Estudiante_Panel pregunta_Estudiante_Panel = 
-                new Pregunta_Estudiante_Panel(pregunta, descripcion_Pregunta, preguntador_Nombre, fecha_Pregunta);
+                new Pregunta_Estudiante_Panel(imagen_Usuario,pregunta, preguntador_Nombre, descripcion_Pregunta, fecha_Pregunta, estatus);
         mostrar_Preguntas_Lista.push_back(pregunta_Estudiante_Panel);
+        
         Tablero_Estudiante_Panel.Agregar_Vista(pregunta_Estudiante_Panel, id);
         
     }
@@ -734,8 +738,10 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                         int cuenta = Numero_Preguntas()+1;
                         String id = CourseRoom.Utilerias.Concatenar("Pregunta_", cuenta);
 
-                        Agregar_Pregunta(pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(),
-                        Perfil_Estudiante_Panel.Nombre_Completo(),CourseRoom.Utilerias.Fecha_Hora_Local(),id);
+                        Agregar_Pregunta_Local(Perfil_Estudiante_Panel.Nombre_Completo(),
+                                pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(),
+                        CourseRoom.Utilerias.Fecha_Hora_Local(), id);
+                        
                         Tablero_Estudiante_Panel.Mostrar_Vista(id);
 
                         this.dispose();
@@ -789,7 +795,6 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         @Override
         public void Iniciar_Componentes() {
             this.setLocationRelativeTo(null);
-            this.setAlwaysOnTop(true);
             Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
 
             pregunta_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
@@ -800,7 +805,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
             descripcion_Pregunta_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                     "Descripcion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                     javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                    gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+                    gadugi, CourseRoom.Utilerias.Segundo_Color_Fuente()));
 
             descripcion_Pregunta_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
             descripcion_Pregunta_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);

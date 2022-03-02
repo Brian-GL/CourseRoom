@@ -1603,7 +1603,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     @Override
     public void Validar_Campos() {
         int tipo_Perfil = tipo_Perfil_JComboBox.getSelectedIndex();
+        
+        CourseRoom.Utilerias.Esconder_Frame();
+        
         CourseRoom_Frame.Mostrar_Tablero(tipo_Perfil == 0);
+        
+        CourseRoom.Utilerias.Mostrar_Frame();
     }
 
 }
