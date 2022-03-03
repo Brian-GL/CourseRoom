@@ -18,8 +18,6 @@ import java.io.IOException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -1208,6 +1206,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             getToolkit().beep();
             evt.consume();
         }
+        
+        int longitud = genero_JTextField.getText().length();
+        if(longitud > 30){
+            genero_JTextField.setText(genero_JTextField.getText().substring(0,longitud-1));
+        }
     }//GEN-LAST:event_genero_JTextFieldKeyTyped
 
     private void descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcion_JTextPaneKeyTyped
@@ -1250,22 +1253,20 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         String Password = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
         String Password2 = String.valueOf(repetir_Contrasenia_JTextField.getPassword());
         // Checa Los Campos Vacíos.
-        if (correo_JTextField.getText().equals("")
-                || Password.equals("") || Password2.equals("")) {
+        if (correo_JTextField.getText().isEmpty() || correo_JTextField.getText().isBlank()
+                || Password.isBlank() || Password2.isBlank() || Password.isEmpty() || Password2.isEmpty() ) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
             JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
         } else {
-            /*if (validar_Password(contrasenia_Autenticacion_JPasswordField.getText().trim())) {
-                if (Password.equals(Password2)) {
-                    validar_Correo(correo_JTextField.getText().trim());
-                }else{
-                     JOptionPane.showMessageDialog(this, "Contraseñas Distintas Revisa!!!", "NO", WIDTH);
-                contrasenia_Autenticacion_JPasswordField.requestFocus();
-                }
-            }*/ 
+            
             if (Password.equals(Password2)) {
                 // Si Todo Esta Bien Llamamos A La Función "Validar Correo".
-                validar_Correo(correo_JTextField.getText().trim());
+                var valor = CourseRoom.Utilerias.Regex_Correo_Electronico_Valido(correo_JTextField.getText().trim());
+                if(!valor){
+                    JOptionPane.showMessageDialog(this, "Correo No Valido", "NO", WIDTH);
+                }else{
+                    ((CardLayout)this.getLayout()).show(this,"Datos_Personales");
+                }
                 //validar_Password(contrasenia_Autenticacion_JPasswordField.getText().trim());
             } else {
                 // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
@@ -1275,19 +1276,6 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         }
     }
     
-        public boolean validar_Correo(String correo) {
-        Pattern pat = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z]{3})((\\.[A-Za-z]{2}))?$");
-        Matcher mat = pat.matcher(correo);
-        if (mat.find()) {
-            JOptionPane.showMessageDialog(null, "Continuemos!!!");
-            ((CardLayout)this.getLayout()).show(this,"Datos_Personales");
-        } else {
-            JOptionPane.showMessageDialog(null, "El Correo\n'" + correo + "'\nNo Es Valido");
-            correo_JTextField.setText("");
-            correo_JTextField.requestFocus();
-        }
-        return mat.find();
-    }
         
         public void verificar_Datos_Personales(){
             if (nombres_JTextField.getText().equals("")
@@ -1453,6 +1441,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
             descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
+            
             
         } catch (IOException ex) {
             

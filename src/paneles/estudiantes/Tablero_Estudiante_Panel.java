@@ -1026,6 +1026,9 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                     Thread.sleep(1000);
                    
                 }
+                
+                fecha_Hora_Servidor_JLabel.setText("No Disponible");
+                
             } catch (XmlRpcException | IOException | InterruptedException ex) {
                 
             }
