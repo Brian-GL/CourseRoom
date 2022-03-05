@@ -22,6 +22,8 @@ import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.TimePickerSettings;
 import courseroom.CourseRoom;
+import datos.colecciones.Lista;
+import datos.estructuras.Nodo;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
@@ -61,12 +63,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private byte carta_Visible;
     private int id_Tarea_Pendiente;
+    private String ID;
+    private Lista<Tarea_Pendiente_Estudiante_Panel> tareas_Pendientes_Estudiante_Lista;
     
     
     public Grupo_Estudiante_Panel(Image _imagen_Grupo, 
             String nombre_Grupo, 
             String _curso,
-            String _fecha_Creacion) {
+            String _fecha_Creacion,
+            String _id) {
         initComponents();
         
         ImageIcon icono_Grupo = new ImageIcon(_imagen_Grupo);
@@ -77,6 +82,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         editar_Imagen_JLabel.setIcon(icono_Grupo);
         fecha_Creacion_JLabel.setText(CourseRoom.Utilerias.Concatenar("Creado El ",_fecha_Creacion));
 
+        this.ID = _id;
         icono_Grupo.getImage().flush();
         
         Iniciar_Componentes();
@@ -317,11 +323,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         curso_JLabel.setOpaque(true);
         curso_JLabel.setToolTipText("Curso De Proveniencia Del Grupo");
         ((ImageIcon)curso_JLabel.getIcon()).getImage().flush();
-        curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                curso_JLabelMouseClicked(evt);
-            }
-        });
 
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Creacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/calendar_1.png"))); // NOI18N
@@ -1099,13 +1100,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         }
     }//GEN-LAST:event_miembros_JButtonMouseClicked
 
-    private void curso_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_curso_JLabelMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-
-        }
-    }//GEN-LAST:event_curso_JLabelMouseClicked
-
     private void compartir_Archivos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -1239,8 +1233,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 !descripcion.isEmpty() && !descripcion.isBlank() &&
                 !fecha_Finalizacion.isEmpty() && !fecha_Finalizacion.isBlank()){
 
+                String id_Tarea = CourseRoom.Utilerias.Concatenar(this.ID, "_Tarea_Pendiente_",String.valueOf(id_Tarea_Pendiente));
                 Agregar_Tarea_Pendiente_Local(nombre_Tarea_Pendiente,descripcion,miembro_A_Cargo,CourseRoom.Utilerias.Fecha_Hora_Local(),
-                        fecha_Finalizacion,(byte) 0, CourseRoom.Utilerias.Concatenar("Tarea_Pendiente_", id_Tarea_Pendiente));
+                        fecha_Finalizacion,(byte) 0, id_Tarea);
                         
                 nombre_Tarea_Pendiente_JTextField.setText("");
                 descripcion_Tarea_Pendiente_JTextPane.setText("");
@@ -1308,11 +1303,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         //Estatus -> 1 : Realizando.
         //Estatus -> 2 : Finalizado.
         
+   
+        
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel)tareas_Pendientes_JTable.getModel();
         Image imagen;
         ImageIcon icono;
+        String estatus_Tarea;
             
         try {
             
@@ -1324,19 +1322,22 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             celdas[1] = celda;
             switch(estatus){
                 case 1:
+                    estatus_Tarea = "Realizando";
                     imagen = ImageIO.read(getClass().getResource("/recursos/iconos/computer.png"));
                     icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono,"Realizando",id);
+                    celda = new Celda_Renderer(icono,estatus_Tarea,id);
                     break;
                 case 2:
+                    estatus_Tarea = "Finalizado";
                     imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
                     icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono, "Finalizado", id);
+                    celda = new Celda_Renderer(icono,estatus_Tarea , id);
                     break;
                 default:
+                    estatus_Tarea = "Pendiente";
                     imagen = ImageIO.read(getClass().getResource("/recursos/iconos/clock.png"));
                     icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono,"Pendiente",id);
+                    celda = new Celda_Renderer(icono,estatus_Tarea,id);
                     break;
             }
             celdas[2] = celda;
@@ -1344,6 +1345,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             modelo.addRow(celdas);
             
             imagen.flush();
+            
+            
+            Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel =
+                    new Tarea_Pendiente_Estudiante_Panel(nombre_Tarea_Pendiente,
+                            Tablero_Estudiante_Panel.Obtener_Imagen_Usuario(), miembro_A_Cargo, descripcion, 
+                            fecha_Creacion, fecha_Finalizacion, estatus_Tarea, this.ID);
+            
+            Tablero_Estudiante_Panel.Agregar_Vista(tarea_Pendiente_Estudiante_Panel, id);
+            tareas_Pendientes_Estudiante_Lista.push_back(tarea_Pendiente_Estudiante_Panel);
             id_Tarea_Pendiente++;
         } catch (IOException ex) {
             
@@ -1454,6 +1464,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         carta_Visible = 0;
         id_Tarea_Pendiente = 0;
+        tareas_Pendientes_Estudiante_Lista = new Lista<>();
         String descripcion = CourseRoom.Utilerias.lorem().paragraph(5);
         descripcion_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(descripcion));
         editar_Descripcion_JTextPane.setText(descripcion);
@@ -1723,6 +1734,13 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
        
         escogedor_Fecha_Hora.getTimePicker().getSettings().setColor(TimePickerSettings.TimeArea.TimePickerTextDisabled, CourseRoom.Utilerias.Tercer_Color_Fuente());
 
+        Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel;
+        for(Nodo<Tarea_Pendiente_Estudiante_Panel> nodo = tareas_Pendientes_Estudiante_Lista.front();
+                nodo != null; nodo = nodo.next()){
+            tarea_Pendiente_Estudiante_Panel = nodo.element();
+            tarea_Pendiente_Estudiante_Panel.Colorear_Componentes();
+        }
+        
     }
 
     public void Compartir_Archivos() {
@@ -1846,6 +1864,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         modelo.setRowCount(0);
         modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
+        tareas_Pendientes_Estudiante_Lista.clear();
         
     }
 

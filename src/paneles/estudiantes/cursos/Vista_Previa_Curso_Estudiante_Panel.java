@@ -409,11 +409,13 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
       
         //Informacion curso:
         
+        descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(CourseRoom.Utilerias.lorem().paragraph(10)));
+        
         informacion_Curso_JScrollPane.getViewport().setOpaque(false);
         informacion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         informacion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(CourseRoom.Utilerias.lorem().paragraph(10)));
+        
         descripcion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         

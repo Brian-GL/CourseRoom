@@ -385,9 +385,6 @@
                 <Property name="opaque" type="boolean" value="true"/>
                 <Property name="toolTipText" type="java.lang.String" value="Curso De Proveniencia Del Grupo"/>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="curso_JLabelMouseClicked"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)curso_JLabel.getIcon()).getImage().flush();"/>
               </AuxValues>

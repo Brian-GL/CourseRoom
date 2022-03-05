@@ -442,7 +442,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             imagen = ImageIO.read(url_Imagen);
             Grupo_Estudiante_Panel grupo_Estudiante_Panel
                     = new Grupo_Estudiante_Panel(imagen, nombre_Grupo,
-                            nombre_Curso, fecha_Creacion);
+                            nombre_Curso, fecha_Creacion,id);
             
             
             imagen = imagen.getScaledInstance(96, 96, Image.SCALE_SMOOTH);

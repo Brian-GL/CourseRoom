@@ -33,7 +33,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class Celda_Renderer extends DefaultTableCellRenderer implements Comparable<Object>{
     
-//The JLabel that is used to display image
+    //The JLabel that is used to display image
     private JLabel label;
     private final String id;
     private final String texto;
