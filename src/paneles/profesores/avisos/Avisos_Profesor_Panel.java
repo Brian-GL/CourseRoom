@@ -187,53 +187,46 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    private void Agregar_Aviso(String tipo, String aviso, String fecha){
+    private void Agregar_Aviso(String id, String tipo, String aviso, String fecha){
         
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
-        String id = new String();
             
         try {
             
-            Image imagen = null;
+            Image imagen;
             ImageIcon icono;
             
             switch(tipo){
                 case "Curso":
                     imagen = ImageIO.read(getClass().getResource("/recursos/iconos/course_notification.png"));
                     icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono,tipo,"");
+                    celda = new Celda_Renderer(icono,tipo,id);
                     celdas[0] = celda;
                     break;
                 case "Tarea":
                     imagen = ImageIO.read(getClass().getResource("/recursos/iconos/homework_notification.png"));
                     icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono,tipo,"");
-                    celdas[0] = celda;
-                    break;
-                case "Grupo":
-                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/group_notification.png"));
-                    icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono,tipo,"");
+                    celda = new Celda_Renderer(icono,tipo,id);
                     celdas[0] = celda;
                     break;
                 case "Chat":
                     imagen = ImageIO.read(getClass().getResource("/recursos/iconos/chat_notification.png"));
                     icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono,tipo,"");
+                    celda = new Celda_Renderer(icono,tipo,id);
                     celdas[0] = celda;
                     break;
                 case "Pregunta":
                     imagen = ImageIO.read(getClass().getResource("/recursos/iconos/homework_make.png"));
                     icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono,tipo,"");
+                    celda = new Celda_Renderer(icono,tipo,id);
                     celdas[0] = celda;
                     break;
                 default:
                     imagen = ImageIO.read(getClass().getResource("/recursos/iconos/bell_warning.png"));
                     icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono,"General","");
+                    celda = new Celda_Renderer(icono,"General",id);
                     celdas[0] = celda;
                     break;
             }
@@ -270,17 +263,17 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         avisos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         avisos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
-        avisos_JTable.getTableHeader().setFont(gadugi);
+        Font fuente = new Font("Segoe UI", Font.BOLD, 16);
+        avisos_JTable.getTableHeader().setFont(fuente);
         
         avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         String tipo, aviso, fecha;
-        String[] opciones = {"Curso","Tarea","Grupo","Chat","Pregunta","General"};
+        String[] opciones = {"Curso","Tarea","Chat","Pregunta","General"};
         tipo = CourseRoom.Utilerias.options().nextElement(opciones);
         aviso = CourseRoom.Utilerias.lorem().sentence();
         fecha = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
 
-        Agregar_Aviso(tipo, aviso, fecha);
+        Agregar_Aviso("0",tipo, aviso, fecha);
         
     }
 

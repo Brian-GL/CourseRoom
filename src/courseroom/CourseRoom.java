@@ -237,8 +237,8 @@ public class CourseRoom{
             color_Azul_Claro = new Color(104, 194, 232);
             informacion_Sistema = new SystemInfo();
             hardware = informacion_Sistema.getHardware();
-            primer_Color = color_Azul_Oscuro;
-            segundo_Color = tercer_Color = color_Azul_Claro;
+            primer_Color = tercer_Color = color_Azul_Oscuro;
+            segundo_Color = color_Azul_Claro;
             primer_Color_Fuente = segundo_Color_Fuente = tercer_Color_Fuente = Color.BLACK;
 
             Locale local = new Locale("es", "MX");

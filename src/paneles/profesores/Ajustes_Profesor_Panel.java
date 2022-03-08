@@ -15,8 +15,10 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -24,7 +26,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author LENOVO
  */
-public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface, Limpieza_Interface{
+public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface, Limpieza_Interface{
 
     private byte carta_Visible;
     private Color primer_Color_Personalizado, segundo_Color_Personalizado, tercer_Color_Personalizado, primer_Color_Fuente_Personalizado, segundo_Color_Fuente_Personalizado, tercer_Color_Fuente_Personalizado;
@@ -536,23 +538,23 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
-    private void Agregar_Sesion(String dispositivo, String fabricante, String uuid, 
-            String ultima_Fecha_Acceso, String estatus){
+    private void Agregar_Sesion(String id, String dispositivo, String fabricante, String uuid, 
+            String ultima_Fecha_Acceso, Boolean estatus){
         
         int altura = CourseRoom.Utilerias.Altura_Fila_Tabla(uuid.length());
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
        
-        celda = new Celda_Renderer(dispositivo);
+        celda = new Celda_Renderer(dispositivo,id);
         celdas[0] = celda;
-        celda = new Celda_Renderer(fabricante);
+        celda = new Celda_Renderer(fabricante,id);
         celdas[1] = celda;
-        celda = new Celda_Renderer(uuid);
+        celda = new Celda_Renderer(uuid,id);
         celdas[2] = celda;
-        celda = new Celda_Renderer(ultima_Fecha_Acceso);
+        celda = new Celda_Renderer(ultima_Fecha_Acceso,id);
         celdas[3] = celda;
-        celda = new Celda_Renderer(estatus);
+        celda = new Celda_Renderer(estatus ? "Activo" : "Inactivo",id);
         celdas[4] = celda;
 
         modelo.addRow(celdas);
@@ -591,23 +593,23 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         sesiones_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         sesiones_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
-        sesiones_JTable.getTableHeader().setFont(gadugi);
+        Font fuente = new Font("Segoe UI", Font.BOLD, 16);
+        sesiones_JTable.getTableHeader().setFont(fuente);
         
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         String dispositivo = CourseRoom.Utilerias.Concatenar(System.getProperty("os.name"), " - ",System.getProperty("user.name"));
         String fabricante = CourseRoom.Utilerias.getComputerSystem().getManufacturer();
         String uuid = CourseRoom.Utilerias.getComputerSystem().getHardwareUUID();
-        String estatus = CourseRoom.Utilerias.bool().bool() ? "Activo" : "Inactivo";
+        Boolean estatus = CourseRoom.Utilerias.bool().bool();
         
-        Agregar_Sesion(dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), estatus);
+        Agregar_Sesion("0",dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), estatus);
     }
     
     @Override
     public void Colorear_Componentes() {
         
-        Font gadugi = new Font("Segoe UI", 1, 24);
+        Font fuente = new Font("Segoe UI", 1, 24);
         
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
@@ -647,10 +649,14 @@ public class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Compon
         segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Segundo_Color()));
         tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Tercer_Color()));
         
-        primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Primer_Color_Fuente()));
-        segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Segundo_Color_Fuente()));
-        tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+         primer_Color_Personalizado_JLabel.setBorder(BorderFactory.createTitledBorder
+        (null, "Primer Color", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, fuente, CourseRoom.Utilerias.Primer_Color_Fuente()));
+        segundo_Color_Personalizado_JLabel.setBorder(BorderFactory.createTitledBorder
+        (null, "Segundo Color", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, fuente, CourseRoom.Utilerias.Segundo_Color_Fuente()));
+        tercer_Color_Personalizado_JLabel.setBorder(BorderFactory.createTitledBorder
+        (null, "Tercer Color", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, fuente, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         
+       
         sesiones_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
         sesiones_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         

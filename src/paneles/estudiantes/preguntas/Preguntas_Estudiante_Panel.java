@@ -76,8 +76,8 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         mostrar_Preguntas_JPanel.setOpaque(false);
         mostrar_Preguntas_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
@@ -125,7 +125,6 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -149,7 +148,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                 .addGap(18, 18, 18)
                 .addComponent(buscar_Preguntas_JButton)
                 .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizar_JButton)
                 .addGap(0, 0, 0))
         );
         acciones_JPanelLayout.setVerticalGroup(
@@ -159,7 +158,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buscar_Preguntas_JButton)
                     .addComponent(preguntar_JButton)
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actualizar_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -233,20 +232,20 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
             mostrar_Preguntas_JPanelLayout.setHorizontalGroup(
                 mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrar_Preguntas_JPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addGap(32, 32, 32)
                     .addGroup(mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mostrar_Preguntas_JScrollPane)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1122, Short.MAX_VALUE))
-                    .addGap(0, 0, 0))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                    .addGap(32, 32, 32))
             );
             mostrar_Preguntas_JPanelLayout.setVerticalGroup(
                 mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Preguntas_JPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(mostrar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-                    .addGap(0, 0, 0))
+                    .addComponent(mostrar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                    .addContainerGap())
             );
 
             add(mostrar_Preguntas_JPanel, "Mostrar");
@@ -350,14 +349,14 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                 buscar_Preguntas_JPanelLayout.setHorizontalGroup(
                     buscar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buscar_Preguntas_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
+                        .addGap(32, 32, 32)
                         .addGroup(buscar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(buscar_Preguntas_JPanelLayout.createSequentialGroup()
                                 .addComponent(mostrar_Preguntas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(buscar_Preguntas_JTextField))
-                            .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
-                        .addGap(0, 0, 0))
+                            .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                        .addGap(32, 32, 32))
                 );
                 buscar_Preguntas_JPanelLayout.setVerticalGroup(
                     buscar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,7 +367,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                             .addComponent(mostrar_Preguntas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
+                        .addContainerGap())
                 );
 
                 add(buscar_Preguntas_JPanel, "Buscar");

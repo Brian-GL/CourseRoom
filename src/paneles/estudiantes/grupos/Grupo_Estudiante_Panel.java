@@ -156,9 +156,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
 
-        titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
+        titulo_JPanel.setOpaque(false);
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -351,7 +351,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     .addGroup(informacion_Grupo_JPanelLayout.createSequentialGroup()
                         .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE))
+                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
                     .addComponent(fecha_Creacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -411,7 +411,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             miembros_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             miembros_JTable.setRowHeight(110);
             miembros_JTable.setShowGrid(true);
-            miembros_JTable.setShowVerticalLines(false);
             miembros_JTable.setSurrendersFocusOnKeystroke(true);
             miembros_JTable.setRowSorter(new TableRowSorter(miembros_JTable.getModel()));
             miembros_JScrollPane.setViewportView(miembros_JTable);
@@ -496,6 +495,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                 enviar_Mensaje_Chat_JPanel.setMaximumSize(new java.awt.Dimension(32767, 44));
                 enviar_Mensaje_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1085, 44));
+                enviar_Mensaje_Chat_JPanel.setLayout(new java.awt.BorderLayout());
 
                 enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
                 enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
@@ -516,6 +516,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         enviar_Archivo_Chat_JButtonMouseExited(evt);
                     }
                 });
+                enviar_Mensaje_Chat_JPanel.add(enviar_Archivo_Chat_JButton, java.awt.BorderLayout.WEST);
 
                 redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
                 redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
@@ -524,27 +525,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         redactar_Mensaje_Chat_JTextFieldKeyPressed(evt);
                     }
                 });
-
-                javax.swing.GroupLayout enviar_Mensaje_Chat_JPanelLayout = new javax.swing.GroupLayout(enviar_Mensaje_Chat_JPanel);
-                enviar_Mensaje_Chat_JPanel.setLayout(enviar_Mensaje_Chat_JPanelLayout);
-                enviar_Mensaje_Chat_JPanelLayout.setHorizontalGroup(
-                    enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(enviar_Mensaje_Chat_JPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
-                        .addContainerGap())
-                );
-                enviar_Mensaje_Chat_JPanelLayout.setVerticalGroup(
-                    enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(enviar_Mensaje_Chat_JPanelLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(4, 4, 4))
-                );
+                enviar_Mensaje_Chat_JPanel.add(redactar_Mensaje_Chat_JTextField, java.awt.BorderLayout.CENTER);
 
                 chat_JPanel.add(enviar_Mensaje_Chat_JPanel, java.awt.BorderLayout.SOUTH);
 
@@ -611,7 +592,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     archivos_Compartidos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                     archivos_Compartidos_JTable.setRowHeight(75);
                     archivos_Compartidos_JTable.setShowGrid(true);
-                    archivos_Compartidos_JTable.setShowVerticalLines(false);
                     archivos_Compartidos_JTable.setSurrendersFocusOnKeystroke(true);
                     archivos_Compartidos_JTable.setRowSorter(new TableRowSorter(archivos_Compartidos_JTable.getModel()));
                     archivos_Compartidos_JTable.addMouseListener(new MouseAdapter() {
@@ -658,7 +638,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
                             .addGap(0, 0, 0)
                             .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+                                .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                                 .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
                                     .addComponent(compartir_Archivos_JButton)
                                     .addGap(0, 0, Short.MAX_VALUE)))
@@ -668,7 +648,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
                             .addGap(0, 0, 0)
-                            .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                            .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(compartir_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0))
@@ -814,7 +794,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         tareas_Pendientes_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                         tareas_Pendientes_JTable.setRowHeight(110);
                         tareas_Pendientes_JTable.setShowGrid(true);
-                        tareas_Pendientes_JTable.setShowVerticalLines(false);
                         tareas_Pendientes_JTable.setSurrendersFocusOnKeystroke(true);
                         tareas_Pendientes_JTable.setRowSorter(new TableRowSorter(tareas_Pendientes_JTable.getModel()));
                         tareas_Pendientes_JTable.addMouseListener(new MouseAdapter() {
@@ -846,7 +825,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                 .addGap(0, 0, 0)
                                 .addComponent(anadir_Tarea_Pendiente_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tareas_Pendientes_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+                                .addComponent(tareas_Pendientes_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
                                 .addGap(0, 0, 0))
                         );
                         tareas_Pendientes_JPanelLayout.setVerticalGroup(
@@ -958,12 +937,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         editar_JPanelLayout.setHorizontalGroup(
                             editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(editar_JPanelLayout.createSequentialGroup()
-                                .addContainerGap(68, Short.MAX_VALUE)
+                                .addContainerGap(52, Short.MAX_VALUE)
                                 .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(editar_Descripcion_JScrollPane)
                                     .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(editar_JPanelLayout.createSequentialGroup()
-                                        .addComponent(editar_Nombre_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                                        .addComponent(editar_Nombre_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(editar_Nombre_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(editar_Nombre_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -973,11 +952,11 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                     .addGroup(editar_JPanelLayout.createSequentialGroup()
                                         .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(18, 79, Short.MAX_VALUE)
+                                .addGap(18, 63, Short.MAX_VALUE)
                                 .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(editar_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(83, Short.MAX_VALUE))
+                                .addContainerGap(67, Short.MAX_VALUE))
                         );
                         editar_JPanelLayout.setVerticalGroup(
                             editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -994,7 +973,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                         .addGap(18, 18, 18)
                                         .addComponent(editar_Descripcion_JLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                                        .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
@@ -1011,20 +990,20 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         layout.setHorizontalGroup(
                             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
+                                .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(grupo_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
-                                    .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
-                                .addGap(0, 0, 0))
+                                    .addComponent(grupo_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                                    .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                                .addGap(32, 32, 32))
                         );
                         layout.setVerticalGroup(
                             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
+                                .addContainerGap()
                                 .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(grupo_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(0, 0, 0))
+                                .addContainerGap())
                         );
                     }// </editor-fold>//GEN-END:initComponents
 
@@ -1109,14 +1088,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void compartir_Archivos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivos_JButtonMouseEntered
         // TODO add your handling code here:
-        compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }//GEN-LAST:event_compartir_Archivos_JButtonMouseEntered
 
     private void compartir_Archivos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Archivos_JButtonMouseExited
         // TODO add your handling code here:
-        compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }//GEN-LAST:event_compartir_Archivos_JButtonMouseExited
 
     private void cambiar_Imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseClicked
@@ -1153,14 +1132,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void cambiar_Imagen_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseEntered
         // TODO add your handling code here:
-        cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }//GEN-LAST:event_cambiar_Imagen_JButtonMouseEntered
 
     private void cambiar_Imagen_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseExited
         // TODO add your handling code here:
-        cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
     }//GEN-LAST:event_cambiar_Imagen_JButtonMouseExited
 
     private void editar_Nombre_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_JButtonMouseClicked
@@ -1245,14 +1224,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     private void anadir_Tarea_Pendiente_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anadir_Tarea_Pendiente_JButtonMouseEntered
         // TODO add your handling code here:
-        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        
     }//GEN-LAST:event_anadir_Tarea_Pendiente_JButtonMouseEntered
 
     private void anadir_Tarea_Pendiente_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anadir_Tarea_Pendiente_JButtonMouseExited
         // TODO add your handling code here:
-        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_anadir_Tarea_Pendiente_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
@@ -1303,7 +1283,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         //Estatus -> 1 : Realizando.
         //Estatus -> 2 : Finalizado.
         
-   
         
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
@@ -1580,7 +1559,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         Font gadugi = new Font("Segoe UI", 0, 18);
         
-        descripcion_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Grupo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+        descripcion_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(
+                javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), 
+                "Descripción", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -1676,8 +1657,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         redactar_Mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         enviar_Mensaje_Chat_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         abandonar_Grupo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color().darker());
         abandonar_Grupo_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente().brighter());
@@ -1698,8 +1679,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
                 gadugi, CourseRoom.Utilerias.Primer_Color_Fuente()));
 
-        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        anadir_Tarea_Pendiente_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        anadir_Tarea_Pendiente_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         tarea_Pendiente_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
@@ -1729,8 +1710,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         miembros_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
         miembros_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        compartir_Archivos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        compartir_Archivos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
        
         escogedor_Fecha_Hora.getTimePicker().getSettings().setColor(TimePickerSettings.TimeArea.TimePickerTextDisabled, CourseRoom.Utilerias.Tercer_Color_Fuente());
 

@@ -19,10 +19,9 @@ import javax.swing.text.StyledDocument;
  *
  * @author LENOVO
  */
-public class Acerca_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
+public final class Acerca_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
     
-    @SuppressWarnings("OverridableMethodCallInConstructor")
     public Acerca_General_Panel() {
         initComponents();
         
@@ -38,7 +37,6 @@ public class Acerca_General_Panel extends javax.swing.JPanel implements Componen
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
         descripcion_JScrollPane = new javax.swing.JScrollPane();
         descripcion_JTextPane = new javax.swing.JTextPane();
@@ -46,24 +44,15 @@ public class Acerca_General_Panel extends javax.swing.JPanel implements Componen
         setMinimumSize(new java.awt.Dimension(0, 0));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
-        setLayout(new java.awt.BorderLayout());
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
-        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
-        contenido_Titulo_JPanel.setLayout(new javax.swing.BoxLayout(contenido_Titulo_JPanel, javax.swing.BoxLayout.LINE_AXIS));
-
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Acerca De");
         titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
-        contenido_Titulo_JPanel.add(titulo_JLabel);
-
-        add(contenido_Titulo_JPanel, java.awt.BorderLayout.NORTH);
 
         descripcion_JScrollPane.setBorder(null);
         descripcion_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -81,11 +70,32 @@ public class Acerca_General_Panel extends javax.swing.JPanel implements Componen
         descripcion_JTextPane.setPreferredSize(new java.awt.Dimension(1071, 400));
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
-        add(descripcion_JScrollPane, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1046, Short.MAX_VALUE)
+                        .addGap(32, 32, 32))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel contenido_Titulo_JPanel;
     private javax.swing.JScrollPane descripcion_JScrollPane;
     private javax.swing.JTextPane descripcion_JTextPane;
     private javax.swing.JLabel titulo_JLabel;
@@ -103,17 +113,18 @@ public class Acerca_General_Panel extends javax.swing.JPanel implements Componen
         StyleConstants.setAlignment(centro, StyleConstants.ALIGN_CENTER);
         documento.setParagraphAttributes(0, documento.getLength(), centro, false);
         
-        String texto = "CourseRoom consists mainly of a set of applications developed in the language Java \n" +
-        "programming and based on the client-server software design model. \n" +
-        "Has as main objective to organize the processes of an educational course and provide statistics respective of this to users in general. \n" +
-        "The general operation, broadly speaking, consists of three main modules: an application for the end user (be it student or teacher) who raises the\n" +
-        " general behavior of a course (student-teacher interaction, as well as the management of student learning within the course), \n" +
-        "in addition to other functionalities that allow the user to view multimedia content, view information and statistics on their courses,\n" +
-        " learn about common courses, work in groups, chat, among others stuff; a server program that controls client requests and generates responses such as \n" +
-        "uploading, editing, deleting and viewing files, establishing communication through\n" +
-        " chats and perform specific functions and / or processes, among others; and finally, a set of programs\n" +
-        " tasked with doing various specific tasks, such as generating random computers, send notifications to users, generate and obtain statistics and \n" +
-        "relevant information about students and teachers within the courses, among others.<br><br>CourseRoom - All Rights Reserved<br><br>";
+        String texto = """
+                       CourseRoom consists mainly of a set of applications developed in the language Java 
+                       programming and based on the client-server software design model. 
+                       Has as main objective to organize the processes of an educational course and provide statistics respective of this to users in general. 
+                       The general operation, broadly speaking, consists of three main modules: an application for the end user (be it student or teacher) who raises the
+                        general behavior of a course (student-teacher interaction, as well as the management of student learning within the course), 
+                       in addition to other functionalities that allow the user to view multimedia content, view information and statistics on their courses,
+                        learn about common courses, work in groups, chat, among others stuff; a server program that controls client requests and generates responses such as 
+                       uploading, editing, deleting and viewing files, establishing communication through
+                        chats and perform specific functions and / or processes, among others; and finally, a set of programs
+                        tasked with doing various specific tasks, such as generating random computers, send notifications to users, generate and obtain statistics and 
+                       relevant information about students and teachers within the courses, among others.<br><br>CourseRoom - All Rights Reserved<br><br>""";
         
         descripcion_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
         
@@ -132,10 +143,11 @@ public class Acerca_General_Panel extends javax.swing.JPanel implements Componen
 
     @Override
     public void Colorear_Componentes() {
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        
+        //descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Segundo_Color());
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias.Primer_Color_Fuente());
     }
 }

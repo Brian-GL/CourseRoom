@@ -89,8 +89,8 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         mostrar_Chats_JPanel.setOpaque(false);
         mostrar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -246,20 +246,20 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             mostrar_Chats_JPanelLayout.setHorizontalGroup(
                 mostrar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Chats_JPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addGap(32, 32, 32)
                     .addGroup(mostrar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1112, Short.MAX_VALUE)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1048, Short.MAX_VALUE)
                         .addComponent(mostrar_Chats_JScrollPane))
-                    .addGap(0, 0, 0))
+                    .addGap(32, 32, 32))
             );
             mostrar_Chats_JPanelLayout.setVerticalGroup(
                 mostrar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Chats_JPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(mostrar_Chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
-                    .addGap(0, 0, 0))
+                    .addComponent(mostrar_Chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+                    .addContainerGap())
             );
 
             add(mostrar_Chats_JPanel, "Mostrar");
@@ -366,14 +366,14 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 buscar_Chats_JPanelLayout.setHorizontalGroup(
                     buscar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buscar_Chats_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
+                        .addGap(32, 32, 32)
                         .addGroup(buscar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(buscar_Chats_JPanelLayout.createSequentialGroup()
                                 .addComponent(mostrar_Chats_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE))
-                            .addComponent(buscar_Chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1112, Short.MAX_VALUE))
-                        .addGap(0, 0, 0))
+                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE))
+                            .addComponent(buscar_Chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1048, Short.MAX_VALUE))
+                        .addGap(32, 32, 32))
                 );
                 buscar_Chats_JPanelLayout.setVerticalGroup(
                     buscar_Chats_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,8 +383,8 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                             .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(mostrar_Chats_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buscar_Chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
+                        .addComponent(buscar_Chats_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                        .addContainerGap())
                 );
 
                 add(buscar_Chats_JPanel, "Buscar");

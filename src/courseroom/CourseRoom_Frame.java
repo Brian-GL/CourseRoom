@@ -8,11 +8,16 @@ package courseroom;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
+import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import paneles.generales.inicio_sesion.Inicio_Sesion_General_Panel;
 import paneles.generales.inicio_sesion.Recuperar_Credenciales_General_Panel;
 import paneles.generales.inicio_sesion.Crear_Cuenta_General_Panel;
@@ -53,7 +58,34 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        visualizador_JPanel = new javax.swing.JPanel();
+        visualizador_JPanel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g){
+                if(CourseRoom.Utilerias.Primer_Color() != null && CourseRoom.Utilerias.Segundo_Color() != null
+                    && CourseRoom.Utilerias.Tercer_Color() != null){
+                    super.paintComponent(g);
+                    Graphics2D g2d = (Graphics2D)g;
+                    int w = getWidth();
+                    int h = getHeight();
+
+                    Color transparente = new Color(0,0,0,0);
+                    // Vertical
+                    GradientPaint gp = new GradientPaint(
+                        0, 0, transparente,
+                        0, h, CourseRoom.Utilerias.Tercer_Color());
+
+                    // Horizontal
+                    GradientPaint gp2 = new GradientPaint(
+                        0, 0, CourseRoom.Utilerias.Primer_Color(),
+                        w, 0, CourseRoom.Utilerias.Segundo_Color());
+
+                    g2d.setPaint(gp2);
+                    g2d.fillRect(0, 0, w, h);
+                    g2d.setPaint(gp);
+                    g2d.fillRect(0, 0, w, h);
+                }
+            }
+        };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CourseRoom - Tu Espacio Personal Para Estudiar");
@@ -119,8 +151,10 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     }
     
     public static void Colorear() {
-        visualizador_JPanel.setBackground(CourseRoom.Utilerias.Primer_Color());
+        //visualizador_JPanel.setBackground(CourseRoom.Utilerias.Primer_Color());
+        visualizador_JPanel.repaint();
     }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

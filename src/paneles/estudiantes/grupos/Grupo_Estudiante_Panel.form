@@ -23,23 +23,23 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="grupo_JLayeredPane" pref="1110" max="32767" attributes="0"/>
-                  <Component id="titulo_JPanel" pref="1110" max="32767" attributes="0"/>
+                  <Component id="grupo_JLayeredPane" pref="1046" max="32767" attributes="0"/>
+                  <Component id="titulo_JPanel" pref="1046" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="titulo_JPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="grupo_JLayeredPane" max="32767" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,17 +47,13 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="titulo_JPanel">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-            <BevelBorder/>
-          </Border>
-        </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[32767, 72]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[982, 72]"/>
         </Property>
+        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
 
       <Layout>
@@ -327,7 +323,7 @@
                           <Group type="102" attributes="0">
                               <Component id="imagen_JLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="descripcion_JScrollPane" pref="680" max="32767" attributes="0"/>
+                              <Component id="descripcion_JScrollPane" pref="616" max="32767" attributes="0"/>
                           </Group>
                           <Component id="fecha_Creacion_JLabel" max="32767" attributes="0"/>
                       </Group>
@@ -466,7 +462,6 @@
                 </Property>
                 <Property name="rowHeight" type="int" value="110"/>
                 <Property name="showGrid" type="boolean" value="true"/>
-                <Property name="showVerticalLines" type="boolean" value="false"/>
                 <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
               </Properties>
               <AuxValues>
@@ -546,31 +541,7 @@
                 </Constraint>
               </Constraints>
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="enviar_Archivo_Chat_JButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="redactar_Mensaje_Chat_JTextField" pref="1050" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="enviar_Archivo_Chat_JButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="redactar_Mensaje_Chat_JTextField" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
               <SubComponents>
                 <Component class="javax.swing.JButton" name="enviar_Archivo_Chat_JButton">
                   <Properties>
@@ -602,6 +573,11 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)enviar_Archivo_Chat_JButton.getIcon()).getImage().flush();"/>
                   </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                      <BorderConstraints direction="West"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="redactar_Mensaje_Chat_JTextField">
                   <Properties>
@@ -615,6 +591,11 @@
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="redactar_Mensaje_Chat_JTextFieldKeyPressed"/>
                   </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                      <BorderConstraints direction="Center"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
               </SubComponents>
             </Container>
@@ -640,7 +621,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="archivos_Compartidos_JScrollPane" alignment="0" pref="1110" max="32767" attributes="0"/>
+                          <Component id="archivos_Compartidos_JScrollPane" alignment="0" pref="1046" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="compartir_Archivos_JButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -654,7 +635,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="archivos_Compartidos_JScrollPane" pref="491" max="32767" attributes="0"/>
+                      <Component id="archivos_Compartidos_JScrollPane" pref="479" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="compartir_Archivos_JButton" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -707,7 +688,6 @@
                     </Property>
                     <Property name="rowHeight" type="int" value="75"/>
                     <Property name="showGrid" type="boolean" value="true"/>
-                    <Property name="showVerticalLines" type="boolean" value="false"/>
                     <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
                   </Properties>
                   <AuxValues>
@@ -738,7 +718,7 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="anadir_Tarea_Pendiente_JPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tareas_Pendientes_JScrollPane" pref="792" max="32767" attributes="0"/>
+                      <Component id="tareas_Pendientes_JScrollPane" pref="728" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -964,7 +944,6 @@
                     </Property>
                     <Property name="rowHeight" type="int" value="110"/>
                     <Property name="showGrid" type="boolean" value="true"/>
-                    <Property name="showVerticalLines" type="boolean" value="false"/>
                     <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
                   </Properties>
                   <AuxValues>
@@ -990,12 +969,12 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="68" max="32767" attributes="0"/>
+                      <EmptySpace pref="52" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="editar_Descripcion_JScrollPane" alignment="0" max="32767" attributes="0"/>
                           <Component id="editar_Descripcion_JLabel" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="editar_Nombre_JTextField" pref="428" max="32767" attributes="0"/>
+                              <Component id="editar_Nombre_JTextField" pref="412" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="editar_Nombre_JButton" min="-2" pref="46" max="-2" attributes="0"/>
                           </Group>
@@ -1009,12 +988,12 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" pref="79" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" pref="63" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="cambiar_Imagen_JButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="editar_Imagen_JLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="83" max="32767" attributes="0"/>
+                      <EmptySpace pref="67" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1034,7 +1013,7 @@
                               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                               <Component id="editar_Descripcion_JLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="editar_Descripcion_JScrollPane" pref="267" max="32767" attributes="0"/>
+                              <Component id="editar_Descripcion_JScrollPane" pref="255" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="editar_Descripcion_JButton" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>

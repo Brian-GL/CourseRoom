@@ -83,8 +83,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Tareas_JPanel.setOpaque(false);
         mostrar_Tareas_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -223,20 +223,20 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             mostrar_Tareas_JPanelLayout.setHorizontalGroup(
                 mostrar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Tareas_JPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addGap(32, 32, 32)
                     .addGroup(mostrar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(mostrar_Tareas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addGap(0, 0, 0))
+                    .addGap(32, 32, 32))
             );
             mostrar_Tareas_JPanelLayout.setVerticalGroup(
                 mostrar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Tareas_JPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(mostrar_Tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
-                    .addGap(0, 0, 0))
+                    .addComponent(mostrar_Tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+                    .addContainerGap())
             );
 
             add(mostrar_Tareas_JPanel, "Mostrar");
@@ -340,14 +340,14 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 buscar_Tareas_JPanelLayout.setHorizontalGroup(
                     buscar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buscar_Tareas_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
+                        .addGap(32, 32, 32)
                         .addGroup(buscar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(buscar_Tareas_JPanelLayout.createSequentialGroup()
                                 .addComponent(mostrar_Tareas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE))
-                            .addComponent(buscar_Tareas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
-                        .addGap(0, 0, 0))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE))
+                            .addComponent(buscar_Tareas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                        .addGap(32, 32, 32))
                 );
                 buscar_Tareas_JPanelLayout.setVerticalGroup(
                     buscar_Tareas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,8 +357,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                             .addComponent(mostrar_Tareas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buscar_JTextField))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buscar_Tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
+                        .addComponent(buscar_Tareas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                        .addContainerGap())
                 );
 
                 add(buscar_Tareas_JPanel, "Buscar");

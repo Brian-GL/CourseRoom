@@ -88,9 +88,9 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Grupos_JPanel.setOpaque(false);
         mostrar_Grupos_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -164,7 +164,6 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Grupos_JScrollPane.setOpaque(false);
 
         mostrar_Grupos_JTable.setAutoCreateRowSorter(true);
-        mostrar_Grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mostrar_Grupos_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -198,6 +197,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     return super.getColumnClass(column);
                 }
             });
+            mostrar_Grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             mostrar_Grupos_JTable.setRowHeight(110);
             mostrar_Grupos_JTable.setShowGrid(true);
             mostrar_Grupos_JTable.setSurrendersFocusOnKeystroke(true);
@@ -228,20 +228,20 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             mostrar_Grupos_JPanelLayout.setHorizontalGroup(
                 mostrar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Grupos_JPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addGap(32, 32, 32)
                     .addGroup(mostrar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
-                        .addComponent(mostrar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
-                    .addGap(0, 0, 0))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                        .addComponent(mostrar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                    .addGap(32, 32, 32))
             );
             mostrar_Grupos_JPanelLayout.setVerticalGroup(
                 mostrar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Grupos_JPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(mostrar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
-                    .addGap(0, 0, 0))
+                    .addComponent(mostrar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+                    .addContainerGap())
             );
 
             add(mostrar_Grupos_JPanel, "Mostrar");
@@ -345,14 +345,14 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 buscar_Grupos_JPanelLayout.setHorizontalGroup(
                     buscar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buscar_Grupos_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
+                        .addGap(32, 32, 32)
                         .addGroup(buscar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(buscar_Grupos_JPanelLayout.createSequentialGroup()
                                 .addComponent(mostrar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE))
-                            .addComponent(buscar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
-                        .addGap(0, 0, 0))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE))
+                            .addComponent(buscar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                        .addGap(32, 32, 32))
                 );
                 buscar_Grupos_JPanelLayout.setVerticalGroup(
                     buscar_Grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,7 +363,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                             .addComponent(mostrar_Grupos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buscar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
+                        .addContainerGap())
                 );
 
                 add(buscar_Grupos_JPanel, "Buscar");

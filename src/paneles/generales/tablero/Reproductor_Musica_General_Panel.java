@@ -5,6 +5,7 @@
  */
 package paneles.generales.tablero;
 
+import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
 import datos.colecciones.Lista;
 import datos.colecciones.Lista_Pares;
@@ -18,7 +19,6 @@ import java.awt.image.PixelGrabber;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
@@ -52,6 +52,13 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import datos.interfaces.Reproductor_Interface;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GradientPaint;
+import javax.swing.JFileChooser;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -72,7 +79,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
      
     //Others
     private static int indice;
-    private Color primer_Color, segundo_Color, segundo_Color_Fuente;
+    private Color primer_Color, segundo_Color, segundo_Color_Fuente, tercer_Color;
 
     
     public Reproductor_Musica_General_Panel() {
@@ -83,6 +90,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         Iniciar_Componentes();
         
     }
+    
     
 
     /**
@@ -107,6 +115,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         anterior_JLabel = new javax.swing.JLabel();
         play_Pausa_JLabel = new javax.swing.JLabel();
         siguiente_JLabel = new javax.swing.JLabel();
+        letras_JScrollPane = new javax.swing.JScrollPane();
+        letras_JTextPane = new javax.swing.JTextPane();
         controles_Audio_JPanel = new javax.swing.JPanel();
         bajar_Rate_JLabel = new javax.swing.JLabel();
         rate_JSlider = new javax.swing.JSlider();
@@ -141,12 +151,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         preamp_JLabel = new javax.swing.JLabel();
         preset_JLabel = new javax.swing.JLabel();
         presets_JComboBox = new javax.swing.JComboBox<>();
-        informacion_Archivo_JPanel = new javax.swing.JPanel();
-        genero_JLabel = new javax.swing.JLabel();
-        informacion_Archivo_JLabel = new javax.swing.JLabel();
-        anio_JLabel = new javax.swing.JLabel();
-        letras_JScrollPane = new javax.swing.JScrollPane();
-        letras_JTextPane = new javax.swing.JTextPane();
         titulo_JLabel = new javax.swing.JLabel();
         duracion_Total_JLabel = new javax.swing.JLabel();
         artista_JLabel = new javax.swing.JLabel();
@@ -164,8 +168,13 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         imagen_Arte_JLabel.setPreferredSize(new java.awt.Dimension(550, 550));
 
         controles_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        controles_JPanel.setMaximumSize(new java.awt.Dimension(455, 550));
+        controles_JPanel.setPreferredSize(new java.awt.Dimension(455, 550));
 
         controles_JTabbedPane.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
+        controles_JTabbedPane.setMaximumSize(new java.awt.Dimension(450, 417));
+        controles_JTabbedPane.setMinimumSize(new java.awt.Dimension(0, 0));
+        controles_JTabbedPane.setPreferredSize(new java.awt.Dimension(450, 417));
 
         abrir_Archivos_JPanel.setOpaque(false);
 
@@ -231,8 +240,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         alto_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         alto_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stop.png"))); // NOI18N
-        alto_JLabel.setEnabled(false);
         alto_JLabel.setToolTipText("<html>\n<h3>Parar</h3>\n</html>\n");
+        alto_JLabel.setEnabled(false);
         ((ImageIcon)alto_JLabel.getIcon()).getImage().flush();
         alto_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -242,8 +251,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         anterior_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         anterior_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/previous.png"))); // NOI18N
-        anterior_JLabel.setEnabled(false);
         anterior_JLabel.setToolTipText("<html>\n<h3>Anterior</h3>\n</html>");
+        anterior_JLabel.setEnabled(false);
         ((ImageIcon)anterior_JLabel.getIcon()).getImage().flush();
         anterior_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -253,8 +262,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         play_Pausa_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         play_Pausa_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"))); // NOI18N
-        play_Pausa_JLabel.setEnabled(false);
         play_Pausa_JLabel.setToolTipText("<html>\n<h3>Reproducir/Pausar</h3>\n</html>");
+        play_Pausa_JLabel.setEnabled(false);
         ((ImageIcon)play_Pausa_JLabel.getIcon()).getImage().flush();
         play_Pausa_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -264,8 +273,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
         siguiente_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         siguiente_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/next-button.png"))); // NOI18N
-        siguiente_JLabel.setEnabled(false);
         siguiente_JLabel.setToolTipText("<html>\n<h3>Siguiente</h3>\n</html>");
+        siguiente_JLabel.setEnabled(false);
         ((ImageIcon)siguiente_JLabel.getIcon()).getImage().flush();
         siguiente_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -273,12 +282,21 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             }
         });
 
+        letras_JScrollPane.setBorder(null);
+        letras_JScrollPane.setOpaque(false);
+
+        letras_JTextPane.setEditable(false);
+        letras_JTextPane.setBorder(null);
+        letras_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        letras_JTextPane.setOpaque(false);
+        letras_JScrollPane.setViewportView(letras_JTextPane);
+
         javax.swing.GroupLayout controles_Reproduccion_JPanelLayout = new javax.swing.GroupLayout(controles_Reproduccion_JPanel);
         controles_Reproduccion_JPanel.setLayout(controles_Reproduccion_JPanelLayout);
         controles_Reproduccion_JPanelLayout.setHorizontalGroup(
             controles_Reproduccion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controles_Reproduccion_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(controles_Reproduccion_JPanelLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
                 .addComponent(alto_JLabel)
                 .addGap(50, 50, 50)
                 .addComponent(anterior_JLabel)
@@ -287,17 +305,19 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 .addGap(50, 50, 50)
                 .addComponent(siguiente_JLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(letras_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         controles_Reproduccion_JPanelLayout.setVerticalGroup(
             controles_Reproduccion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controles_Reproduccion_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(controles_Reproduccion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(anterior_JLabel)
                     .addComponent(alto_JLabel)
+                    .addComponent(anterior_JLabel)
                     .addComponent(play_Pausa_JLabel)
                     .addComponent(siguiente_JLabel))
-                .addContainerGap(367, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(letras_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         controles_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/play.png")), controles_Reproduccion_JPanel); // NOI18N
@@ -305,8 +325,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         controles_Audio_JPanel.setOpaque(false);
 
         bajar_Rate_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/snail.png"))); // NOI18N
-        bajar_Rate_JLabel.setEnabled(false);
         bajar_Rate_JLabel.setToolTipText("<html> <h3>Bajar velocidad</h3> </html>");
+        bajar_Rate_JLabel.setEnabled(false);
         ((ImageIcon)bajar_Rate_JLabel.getIcon()).getImage().flush();
         bajar_Rate_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -329,8 +349,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         rate_JSlider.setPreferredSize(new java.awt.Dimension(137, 32));
 
         subir_Rate_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rabbit.png"))); // NOI18N
-        subir_Rate_JLabel.setEnabled(false);
         subir_Rate_JLabel.setToolTipText("<html> <h3>Subir velocidad</h3> </html>");
+        subir_Rate_JLabel.setEnabled(false);
         ((ImageIcon)subir_Rate_JLabel.getIcon()).getImage().flush();
         subir_Rate_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -339,8 +359,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         });
 
         bajar_Volumen_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/volume-down.png"))); // NOI18N
-        bajar_Volumen_JLabel.setEnabled(false);
         bajar_Volumen_JLabel.setToolTipText("<html> <h3>Bajar volumen</h3> </html>");
+        bajar_Volumen_JLabel.setEnabled(false);
         ((ImageIcon)bajar_Volumen_JLabel.getIcon()).getImage().flush();
         bajar_Volumen_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -361,8 +381,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         volumen_JSlider.setPreferredSize(new java.awt.Dimension(137, 32));
 
         subir_Volumen_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/volume-up.png"))); // NOI18N
-        subir_Volumen_JLabel.setEnabled(false);
         subir_Volumen_JLabel.setToolTipText("<html> <h3>Subir volumen</h3> </html>");
+        subir_Volumen_JLabel.setEnabled(false);
         ((ImageIcon)subir_Volumen_JLabel.getIcon()).getImage().flush();
         subir_Volumen_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -406,7 +426,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     .addComponent(bajar_Volumen_JLabel)
                     .addComponent(volumen_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(subir_Volumen_JLabel))
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
 
         controles_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/loud.png")), controles_Audio_JPanel); // NOI18N
@@ -414,8 +434,8 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         ecualizador_JPanel.setOpaque(false);
 
         bandas_JPanel.setMinimumSize(new java.awt.Dimension(470, 350));
-        bandas_JPanel.setPreferredSize(new java.awt.Dimension(287, 256));
         bandas_JPanel.setOpaque(false);
+        bandas_JPanel.setPreferredSize(new java.awt.Dimension(287, 256));
         bandas_JPanel.setLayout(new java.awt.GridLayout(2, 2, 0, -250));
 
         banda0_JSlider.setMajorTickSpacing(1);
@@ -661,9 +681,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         preset_JLabel.setPreferredSize(new java.awt.Dimension(50, 32));
 
         presets_JComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        presets_JComboBox.setToolTipText("<html> <h3>Seleccionar preset</h3> </html>");
         presets_JComboBox.setMinimumSize(new java.awt.Dimension(250, 32));
         presets_JComboBox.setPreferredSize(new java.awt.Dimension(250, 32));
-        presets_JComboBox.setToolTipText("<html> <h3>Seleccionar preset</h3> </html>");
         presets_JComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 presets_JComboBoxItemStateChanged(evt);
@@ -708,77 +728,13 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 .addGroup(ecualizador_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(presets_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(preset_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         controles_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/control.png")), ecualizador_JPanel); // NOI18N
 
-        informacion_Archivo_JPanel.setOpaque(false);
-
-        genero_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        genero_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        genero_JLabel.setMaximumSize(new java.awt.Dimension(51, 45));
-        genero_JLabel.setMinimumSize(new java.awt.Dimension(51, 45));
-        genero_JLabel.setPreferredSize(new java.awt.Dimension(51, 55));
-
-        informacion_Archivo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        informacion_Archivo_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        informacion_Archivo_JLabel.setMaximumSize(new java.awt.Dimension(51, 45));
-        informacion_Archivo_JLabel.setMinimumSize(new java.awt.Dimension(51, 45));
-        informacion_Archivo_JLabel.setPreferredSize(new java.awt.Dimension(51, 55));
-
-        anio_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        anio_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        anio_JLabel.setMaximumSize(new java.awt.Dimension(51, 45));
-        anio_JLabel.setMinimumSize(new java.awt.Dimension(51, 45));
-        anio_JLabel.setPreferredSize(new java.awt.Dimension(51, 55));
-
-        letras_JScrollPane.setBorder(null);
-        letras_JScrollPane.setOpaque(false);
-
-        letras_JTextPane.setEditable(false);
-        letras_JTextPane.setBorder(null);
-        letras_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        letras_JTextPane.setText("");
-        letras_JTextPane.setOpaque(false);
-        letras_JScrollPane.setViewportView(letras_JTextPane);
-
-        javax.swing.GroupLayout informacion_Archivo_JPanelLayout = new javax.swing.GroupLayout(informacion_Archivo_JPanel);
-        informacion_Archivo_JPanel.setLayout(informacion_Archivo_JPanelLayout);
-        informacion_Archivo_JPanelLayout.setHorizontalGroup(
-            informacion_Archivo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Archivo_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(informacion_Archivo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(letras_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(informacion_Archivo_JPanelLayout.createSequentialGroup()
-                        .addComponent(anio_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(informacion_Archivo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(informacion_Archivo_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        informacion_Archivo_JPanelLayout.setVerticalGroup(
-            informacion_Archivo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(informacion_Archivo_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(informacion_Archivo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(informacion_Archivo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(anio_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(letras_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        controles_JTabbedPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/archivo-de-musica.png")), informacion_Archivo_JPanel); // NOI18N
-
         titulo_JLabel.setBackground(new java.awt.Color(0, 0, 0));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titulo_JLabel.setForeground(java.awt.Color.white);
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/cd.png"))); // NOI18N
@@ -786,51 +742,51 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         titulo_JLabel.setToolTipText("");
         titulo_JLabel.setFocusable(false);
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        titulo_JLabel.setMinimumSize(new java.awt.Dimension(359, 35));
-        titulo_JLabel.setPreferredSize(new java.awt.Dimension(359, 35));
+        titulo_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
+        titulo_JLabel.setPreferredSize(new java.awt.Dimension(455, 35));
         ((ImageIcon)titulo_JLabel.getIcon()).getImage().flush();
 
+        duracion_Total_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        duracion_Total_JLabel.setForeground(new java.awt.Color(104, 194, 232));
         duracion_Total_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         duracion_Total_JLabel.setText("00:00:00");
         duracion_Total_JLabel.setFocusable(false);
-        duracion_Total_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        duracion_Total_JLabel.setForeground(new java.awt.Color(104, 194, 232));
         duracion_Total_JLabel.setMaximumSize(new java.awt.Dimension(56, 35));
         duracion_Total_JLabel.setMinimumSize(new java.awt.Dimension(56, 35));
 
+        artista_JLabel.setBackground(new java.awt.Color(0, 0, 0));
+        artista_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        artista_JLabel.setForeground(java.awt.Color.white);
         artista_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         artista_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/broadcaster.png"))); // NOI18N
         artista_JLabel.setText("Artista");
-        artista_JLabel.setBackground(new java.awt.Color(0, 0, 0));
-        artista_JLabel.setFocusable(false);
-        artista_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        artista_JLabel.setForeground(java.awt.Color.white);
-        artista_JLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        artista_JLabel.setMinimumSize(new java.awt.Dimension(359, 35));
-        artista_JLabel.setName(""); // NOI18N
-        artista_JLabel.setPreferredSize(new java.awt.Dimension(359, 35));
         artista_JLabel.setToolTipText("");
+        artista_JLabel.setFocusable(false);
+        artista_JLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        artista_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
+        artista_JLabel.setName(""); // NOI18N
+        artista_JLabel.setPreferredSize(new java.awt.Dimension(455, 35));
         ((ImageIcon)artista_JLabel.getIcon()).getImage().flush();
 
+        album_JLabel.setBackground(new java.awt.Color(0, 0, 0));
+        album_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        album_JLabel.setForeground(java.awt.Color.white);
         album_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         album_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/music-album.png"))); // NOI18N
         album_JLabel.setText("Álbum");
-        album_JLabel.setBackground(new java.awt.Color(0, 0, 0));
-        album_JLabel.setFocusable(false);
-        album_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        album_JLabel.setForeground(java.awt.Color.white);
-        album_JLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        album_JLabel.setMinimumSize(new java.awt.Dimension(359, 35));
-        album_JLabel.setName(""); // NOI18N
-        album_JLabel.setPreferredSize(new java.awt.Dimension(359, 35));
         album_JLabel.setToolTipText("");
+        album_JLabel.setFocusable(false);
+        album_JLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        album_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
+        album_JLabel.setName(""); // NOI18N
+        album_JLabel.setPreferredSize(new java.awt.Dimension(455, 35));
         ((ImageIcon)album_JLabel.getIcon()).getImage().flush();
 
+        progreso_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        progreso_JLabel.setForeground(new java.awt.Color(104, 194, 232));
         progreso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         progreso_JLabel.setText("00:00:00");
         progreso_JLabel.setFocusable(false);
-        progreso_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        progreso_JLabel.setForeground(new java.awt.Color(104, 194, 232));
         progreso_JLabel.setMaximumSize(new java.awt.Dimension(56, 35));
         progreso_JLabel.setMinimumSize(new java.awt.Dimension(56, 35));
 
@@ -852,19 +808,21 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         controles_JPanelLayout.setHorizontalGroup(
             controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controles_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(artista_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(album_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addGroup(controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                    .addComponent(artista_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                    .addComponent(album_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, controles_JPanelLayout.createSequentialGroup()
-                        .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(duracion_Total_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(controles_JTabbedPane, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(duracion_Total_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, controles_JPanelLayout.createSequentialGroup()
+                        .addComponent(controles_JTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 0, 0))
         );
         controles_JPanelLayout.setVerticalGroup(
             controles_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -880,7 +838,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     .addComponent(progreso_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(duracion_Total_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(progreso_JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(controles_JTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -891,11 +849,11 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(controles_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -903,7 +861,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(imagen_Arte_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(controles_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(controles_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1043,14 +1001,14 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
     private void abrir_Carpeta_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrir_Carpeta_JLabelMouseClicked
         // TODO add your handling code here:
-        JFileChooser escogedor_Archivos;
+        Escogedor_Archivos escogedor_Archivos;
         int resultado;
         File folder;
         FileFilter filtro;
         File[] archivos_Abiertos;
         if(SwingUtilities.isLeftMouseButton(evt)){
 
-            escogedor_Archivos = new JFileChooser();
+            escogedor_Archivos = new Escogedor_Archivos();
             escogedor_Archivos.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             escogedor_Archivos.setApproveButtonText("Abrir Carpeta");
             resultado = escogedor_Archivos.showOpenDialog(this);
@@ -1129,13 +1087,13 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void abrir_Archivos_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrir_Archivos_JLabelMouseClicked
 
         // TODO add your handling code here:
-        JFileChooser escogedor_Archivos;
+        Escogedor_Archivos escogedor_Archivos;
         FileNameExtensionFilter filtro;
         int resultado;
         File[] archivos_Abiertos;
         if(SwingUtilities.isLeftMouseButton(evt)){
 
-            escogedor_Archivos = new JFileChooser();
+            escogedor_Archivos = new Escogedor_Archivos();
             filtro = new FileNameExtensionFilter("Archivos De Música", "mp3", "flac", "aac", "wav","ogg");
             escogedor_Archivos.addChoosableFileFilter(filtro);
             escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -1434,7 +1392,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private javax.swing.JLabel abrir_Carpeta_JLabel;
     private static javax.swing.JLabel album_JLabel;
     private javax.swing.JLabel alto_JLabel;
-    public javax.swing.JLabel anio_JLabel;
     private javax.swing.JLabel anterior_JLabel;
     private static javax.swing.JLabel artista_JLabel;
     private javax.swing.JLabel bajar_Rate_JLabel;
@@ -1466,10 +1423,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private javax.swing.JPanel controles_Reproduccion_JPanel;
     private javax.swing.JLabel duracion_Total_JLabel;
     private javax.swing.JPanel ecualizador_JPanel;
-    public javax.swing.JLabel genero_JLabel;
     private static javax.swing.JLabel imagen_Arte_JLabel;
-    public javax.swing.JLabel informacion_Archivo_JLabel;
-    private javax.swing.JPanel informacion_Archivo_JPanel;
     private javax.swing.JScrollPane letras_JScrollPane;
     public javax.swing.JTextPane letras_JTextPane;
     private javax.swing.JPanel lista_Reproduccion_JPanel;
@@ -1519,13 +1473,19 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         primer_Color = CourseRoom.Utilerias.Primer_Color();
         segundo_Color = CourseRoom.Utilerias.Segundo_Color();
         segundo_Color_Fuente = CourseRoom.Utilerias.Segundo_Color_Fuente();
+        
+        StyledDocument documento = letras_JTextPane.getStyledDocument();
+        SimpleAttributeSet centro = new SimpleAttributeSet();
+        StyleConstants.setAlignment(centro, StyleConstants.ALIGN_CENTER);
+        documento.setParagraphAttributes(0, documento.getLength(), centro, false);
+        
         Colorear_Componentes();
     }
     
     @Override
     public void Colorear_Componentes() {
         
-        this.setBackground(primer_Color);
+        //this.setBackground(primer_Color);
         controles_JPanel.setBackground(segundo_Color);
         
         Color transparente = new Color(0,0,0,0);
@@ -1546,13 +1506,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         progreso_JLabel.setForeground(segundo_Color_Fuente);
         duracion_Total_JLabel.setForeground(segundo_Color_Fuente);
         progreso_JSlider.setForeground(segundo_Color_Fuente);
-
-        componentes = informacion_Archivo_JPanel.getComponents();
-
-        for (Component componente1 : componentes) {
-            componente = componente1;
-            componente.setForeground(segundo_Color_Fuente);
-        }
 
         componentes = ecualizador_JPanel.getComponents();
 
@@ -1580,44 +1533,28 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             entrada_Lista_Reproduccion_General_Panel.Colores(segundo_Color_Fuente, segundo_Color);
         }
         
-        Font gadugi = new Font("Gadugi", 1, 16);
-
-        genero_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder
-        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Género", 
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                gadugi,segundo_Color_Fuente)); // NOI18N
-        
-        bandas_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder
-        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Bandas", 
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                gadugi,segundo_Color_Fuente));
-        
-        informacion_Archivo_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder
-        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Media", 
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                gadugi,segundo_Color_Fuente));
-        
-        anio_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder
-        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Año", 
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                gadugi,segundo_Color_Fuente));
-        
-        letras_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder
-        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Letras", 
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-                gadugi,segundo_Color_Fuente));
+//        Font gadugi = new Font("Gadugi", 1, 16);
+//
+//        
+//        bandas_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder
+//        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Bandas", 
+//                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+//                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+//                gadugi,segundo_Color_Fuente));
+//        
+//        letras_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder
+//        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Letras", 
+//                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+//                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
+//                gadugi,segundo_Color_Fuente));
         
         presets_JComboBox.setForeground(segundo_Color_Fuente);
         presets_JComboBox.setBackground(segundo_Color);
         letras_JTextPane.setForeground(segundo_Color_Fuente);
+        
+        this.repaint();
     }
-    
-    
+      
     @Override
     public void Establecer_Colores(Image image) {
        try {
@@ -1672,6 +1609,24 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     }
                 }
                
+                tercer_Color = segundo_Color;
+                if(lista_Colores.size() > 2){
+                    iteraciones = 0;
+                    
+                    while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
+                        posicion = CourseRoom.Utilerias.number().numberBetween(0,lista_Colores.size()-1);
+                        tercer_Color = lista_Colores.get(posicion).second();
+                        iteraciones++;
+                        if(iteraciones > 50){
+                            while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
+                                posicion = CourseRoom.Utilerias.number().numberBetween(0,lista_Colores.size()-1);
+                                tercer_Color = lista_Colores.get(posicion).second();
+                            }
+                            break;
+                        }
+                    }
+                }
+                
                 rojo = segundo_Color.getRed();
                 segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 lista_Colores.clear();
@@ -2021,10 +1976,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 String titulo = tag.getFirst(FieldKey.TITLE);
                 String artista = tag.getFirst(FieldKey.ARTIST);
                 String album = tag.getFirst(FieldKey.ALBUM);
-                String genero = tag.getFirst(FieldKey.GENRE);
-                String anio = tag.getFirst(FieldKey.YEAR);
-                String informacion_archivo = 
-                CourseRoom.Utilerias.Concatenar(archivo_Audio.getExt().toUpperCase()," - ",archivo_Audio.getAudioHeader().getBitRate()," kbps");
+
                 String letras = tag.getFirst(FieldKey.LYRICS);
                 if(titulo == null){
                     titulo = archivo_Leer.getName();
@@ -2040,10 +1992,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 artista_JLabel.setText(artista);
                 album_JLabel.setText(album);
                 
-                genero_JLabel.setText(genero);
-                anio_JLabel.setText(anio);
-                informacion_Archivo_JLabel.setText(informacion_archivo);
-                letras_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Central(letras));
+                letras_JTextPane.setText(letras);
                 letras_JTextPane.setCaretPosition(0);
 
                 Artwork arte = tag.getFirstArtwork();
@@ -2053,7 +2002,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     
                     Image imagen_Real = ((Image)arte.getImage());
                     if(imagen_Real != null){
-                        imagen_Real = imagen_Real.getScaledInstance(500, 500, Image.SCALE_AREA_AVERAGING);
+                        imagen_Real = imagen_Real.getScaledInstance(550, 550, Image.SCALE_SMOOTH);
                         Establecer_Colores(imagen_Real);
                         ImageIcon cover = new ImageIcon(imagen_Real);
                         imagen_Arte_JLabel.setIcon(cover);
@@ -2087,4 +2036,30 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         
     }
     
+    @Override
+    protected void paintComponent(Graphics g){
+        if(primer_Color != null && segundo_Color != null
+                && tercer_Color != null){
+            super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D)g;
+            int w = getWidth();
+            int h = getHeight();
+            
+            Color transparente = new Color(0,0,0,0);
+            // Vertical
+            GradientPaint gp = new GradientPaint(
+                    0, 0, transparente,
+                    0, h, tercer_Color);
+
+            // Horizontal
+            GradientPaint gp2 = new GradientPaint(
+                    0, 0, primer_Color,
+                    w, 0, segundo_Color);
+
+            g2d.setPaint(gp2);
+            g2d.fillRect(0, 0, w, h);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, w, h);
+        }
+    }
 }

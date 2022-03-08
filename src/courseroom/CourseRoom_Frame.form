@@ -41,6 +41,7 @@
         </Property>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){&#xa;    @Override&#xa;    protected void paintComponent(Graphics g){&#xa;        if(CourseRoom.Utilerias.Primer_Color() != null &amp;&amp; CourseRoom.Utilerias.Segundo_Color() != null&#xa;                &amp;&amp; CourseRoom.Utilerias.Tercer_Color() != null){&#xa;            super.paintComponent(g);&#xa;            Graphics2D g2d = (Graphics2D)g;&#xa;            int w = getWidth();&#xa;            int h = getHeight();&#xa;            &#xa;            Color transparente = new Color(0,0,0,0);&#xa;            // Vertical&#xa;            GradientPaint gp = new GradientPaint(&#xa;                    0, 0, transparente,&#xa;                    0, h, CourseRoom.Utilerias.Tercer_Color());&#xa;&#xa;            // Horizontal&#xa;            GradientPaint gp2 = new GradientPaint(&#xa;                    0, 0, CourseRoom.Utilerias.Primer_Color(),&#xa;                    w, 0, CourseRoom.Utilerias.Segundo_Color());&#xa;&#xa;            g2d.setPaint(gp2);&#xa;            g2d.fillRect(0, 0, w, h);&#xa;            g2d.setPaint(gp);&#xa;            g2d.fillRect(0, 0, w, h);&#xa;        }&#xa;    }&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
       </AuxValues>
 

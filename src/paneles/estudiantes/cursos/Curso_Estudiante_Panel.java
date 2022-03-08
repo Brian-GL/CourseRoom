@@ -151,8 +151,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
-        titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
+        titulo_JPanel.setOpaque(false);
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -429,7 +429,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     .addGap(0, 0, 0)
                     .addGroup(informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(descripcion_Curso_JScrollPane)
-                        .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+                        .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                         .addComponent(descripcion_Profesor_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addGap(18, 18, 18)
                     .addGroup(informacion_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -502,7 +502,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 });
                 tareas_JTable.setRowHeight(100);
                 tareas_JTable.setShowGrid(true);
-                tareas_JTable.setShowVerticalLines(false);
                 tareas_JTable.setSurrendersFocusOnKeystroke(true);
                 tareas_JTable.setRowSorter(new TableRowSorter(tareas_JTable.getModel()));
                 tareas_JTable.addMouseListener(new MouseAdapter() {
@@ -606,6 +605,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                     enviar_Mensaje_Chat_JPanel.setMaximumSize(new java.awt.Dimension(32767, 44));
                     enviar_Mensaje_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1085, 44));
+                    enviar_Mensaje_Chat_JPanel.setLayout(new java.awt.BorderLayout());
 
                     enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
                     enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
@@ -626,6 +626,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             enviar_Archivo_Chat_JButtonMouseExited(evt);
                         }
                     });
+                    enviar_Mensaje_Chat_JPanel.add(enviar_Archivo_Chat_JButton, java.awt.BorderLayout.WEST);
 
                     redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
                     redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
@@ -634,27 +635,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             redactar_Mensaje_Chat_JTextFieldKeyPressed(evt);
                         }
                     });
-
-                    javax.swing.GroupLayout enviar_Mensaje_Chat_JPanelLayout = new javax.swing.GroupLayout(enviar_Mensaje_Chat_JPanel);
-                    enviar_Mensaje_Chat_JPanel.setLayout(enviar_Mensaje_Chat_JPanelLayout);
-                    enviar_Mensaje_Chat_JPanelLayout.setHorizontalGroup(
-                        enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(enviar_Mensaje_Chat_JPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
-                            .addContainerGap())
-                    );
-                    enviar_Mensaje_Chat_JPanelLayout.setVerticalGroup(
-                        enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(enviar_Mensaje_Chat_JPanelLayout.createSequentialGroup()
-                            .addGap(4, 4, 4)
-                            .addGroup(enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(4, 4, 4))
-                    );
+                    enviar_Mensaje_Chat_JPanel.add(redactar_Mensaje_Chat_JTextField, java.awt.BorderLayout.CENTER);
 
                     chat_JPanel.add(enviar_Mensaje_Chat_JPanel, java.awt.BorderLayout.SOUTH);
 
@@ -721,7 +702,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         });
                         materiales_JTable.setRowHeight(75);
                         materiales_JTable.setShowGrid(true);
-                        materiales_JTable.setShowVerticalLines(false);
                         materiales_JTable.setSurrendersFocusOnKeystroke(true);
                         materiales_JTable.setRowSorter(new TableRowSorter(materiales_JTable.getModel()));
                         materiales_JScrollPane.setViewportView(materiales_JTable);
@@ -733,7 +713,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             .addGroup(materiales_Curso_JPanelLayout.createSequentialGroup()
                                 .addGap(0, 0, 0)
                                 .addGroup(materiales_Curso_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+                                    .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                                     .addGroup(materiales_Curso_JPanelLayout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(compartir_Materiales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -745,7 +725,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                 .addGap(0, 0, 0)
                                 .addComponent(compartir_Materiales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                                .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
                                 .addGap(0, 0, 0))
                         );
 
@@ -846,7 +826,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                 });
                                 estadisticas_JTable.setRowHeight(100);
                                 estadisticas_JTable.setShowGrid(true);
-                                estadisticas_JTable.setShowVerticalLines(false);
                                 estadisticas_JTable.setSurrendersFocusOnKeystroke(true);
                                 estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
                                 estadisticas_JScrollPane.setViewportView(estadisticas_JTable);
@@ -892,7 +871,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
                                         .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+                                            .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                                             .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
                                                 .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -903,7 +882,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
                                         .addGap(0, 0, 0)
-                                        .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+                                        .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
                                         .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -954,7 +933,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     });
                                     miembros_JTable.setRowHeight(110);
                                     miembros_JTable.setShowGrid(true);
-                                    miembros_JTable.setShowVerticalLines(false);
                                     miembros_JTable.setSurrendersFocusOnKeystroke(true);
                                     miembros_JTable.setRowSorter(new TableRowSorter(miembros_JTable.getModel()));
                                     miembros_JScrollPane.setViewportView(miembros_JTable);
@@ -966,20 +944,20 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     layout.setHorizontalGroup(
                                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addGap(0, 0, 0)
+                                            .addGap(32, 32, 32)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                 .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
-                                            .addGap(0, 0, 0))
+                                                .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                                            .addGap(32, 32, 32))
                                     );
                                     layout.setVerticalGroup(
                                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGap(0, 0, 0)
+                                            .addContainerGap()
                                             .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGap(0, 0, 0))
+                                            .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                                            .addContainerGap())
                                     );
                                 }// </editor-fold>//GEN-END:initComponents
 
@@ -1613,10 +1591,10 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         Font gadugi = new Font("Segoe UI", 0, 18);
 
-        descripcion_Curso_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+        descripcion_Curso_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         
-        descripcion_Profesor_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Profesor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+        descripcion_Profesor_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Profesor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Segundo_Color_Fuente()));
         
         intereses_Tematicas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());

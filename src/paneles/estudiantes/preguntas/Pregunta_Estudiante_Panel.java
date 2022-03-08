@@ -92,6 +92,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
+        informacion_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         informacion_JPanel.setMaximumSize(new java.awt.Dimension(32767, 150));
         informacion_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         informacion_JPanel.setPreferredSize(new java.awt.Dimension(982, 150));
@@ -247,7 +248,6 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                     return super.getColumnClass(column);
                 }
             });
-            mensajes_Chat_JTable.setOpaque(false);
             mensajes_Chat_JTable.setRowHeight(80);
             mensajes_Chat_JTable.setShowGrid(true);
             mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
@@ -283,6 +283,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
 
             enviar_Mensaje_Chat_JPanel.setMaximumSize(new java.awt.Dimension(32767, 44));
             enviar_Mensaje_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1085, 44));
+            enviar_Mensaje_Chat_JPanel.setLayout(new java.awt.BorderLayout());
 
             enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
             enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
@@ -303,6 +304,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                     enviar_Archivo_Chat_JButtonMouseExited(evt);
                 }
             });
+            enviar_Mensaje_Chat_JPanel.add(enviar_Archivo_Chat_JButton, java.awt.BorderLayout.WEST);
 
             redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
             redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
@@ -311,27 +313,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                     redactar_Mensaje_Chat_JTextFieldKeyPressed(evt);
                 }
             });
-
-            javax.swing.GroupLayout enviar_Mensaje_Chat_JPanelLayout = new javax.swing.GroupLayout(enviar_Mensaje_Chat_JPanel);
-            enviar_Mensaje_Chat_JPanel.setLayout(enviar_Mensaje_Chat_JPanelLayout);
-            enviar_Mensaje_Chat_JPanelLayout.setHorizontalGroup(
-                enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviar_Mensaje_Chat_JPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
-                    .addContainerGap())
-            );
-            enviar_Mensaje_Chat_JPanelLayout.setVerticalGroup(
-                enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviar_Mensaje_Chat_JPanelLayout.createSequentialGroup()
-                    .addGap(4, 4, 4)
-                    .addGroup(enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(4, 4, 4))
-            );
+            enviar_Mensaje_Chat_JPanel.add(redactar_Mensaje_Chat_JTextField, java.awt.BorderLayout.CENTER);
 
             chat_JPanel.add(enviar_Mensaje_Chat_JPanel, java.awt.BorderLayout.SOUTH);
 
@@ -340,20 +322,20 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addGap(32, 32, 32)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(informacion_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
-                        .addComponent(chat_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(0, 0, 0))
+                        .addComponent(informacion_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                        .addComponent(chat_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                    .addGap(32, 32, 32))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addContainerGap()
                     .addComponent(informacion_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(chat_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
-                    .addGap(0, 0, 0))
+                    .addComponent(chat_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                    .addContainerGap())
             );
         }// </editor-fold>//GEN-END:initComponents
 

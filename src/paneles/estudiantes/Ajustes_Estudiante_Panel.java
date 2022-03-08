@@ -15,8 +15,10 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -24,7 +26,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author LENOVO
  */
-public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface, Limpieza_Interface{
+public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface, Limpieza_Interface{
 
     private byte carta_Visible;
     private Color primer_Color_Personalizado, segundo_Color_Personalizado, tercer_Color_Personalizado, primer_Color_Fuente_Personalizado, segundo_Color_Fuente_Personalizado, tercer_Color_Fuente_Personalizado;
@@ -71,15 +73,15 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Ajustes");
         titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
@@ -337,13 +339,13 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
             cuenta_JPanelLayout.setVerticalGroup(
                 cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cuenta_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(88, Short.MAX_VALUE)
+                    .addContainerGap(86, Short.MAX_VALUE)
                     .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                     .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                     .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(101, Short.MAX_VALUE))
+                    .addContainerGap(95, Short.MAX_VALUE))
             );
 
             ajustes_JLayeredPane.add(cuenta_JPanel, "Cuenta");
@@ -352,15 +354,21 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
             this.setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
-                .addComponent(ajustes_JLayeredPane)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(32, 32, 32)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ajustes_JLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, Short.MAX_VALUE)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGap(32, 32, 32))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(ajustes_JLayeredPane))
+                    .addComponent(ajustes_JLayeredPane)
+                    .addContainerGap())
             );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -536,23 +544,23 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
-    private void Agregar_Sesion(String dispositivo, String fabricante, String uuid, 
-            String ultima_Fecha_Acceso, String estatus){
+    private void Agregar_Sesion(String id, String dispositivo, String fabricante, String uuid, 
+            String ultima_Fecha_Acceso, Boolean estatus){
         
         int altura = CourseRoom.Utilerias.Altura_Fila_Tabla(uuid.length());
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
        
-        celda = new Celda_Renderer(dispositivo);
+        celda = new Celda_Renderer(dispositivo,id);
         celdas[0] = celda;
-        celda = new Celda_Renderer(fabricante);
+        celda = new Celda_Renderer(fabricante,id);
         celdas[1] = celda;
-        celda = new Celda_Renderer(uuid);
+        celda = new Celda_Renderer(uuid,id);
         celdas[2] = celda;
-        celda = new Celda_Renderer(ultima_Fecha_Acceso);
+        celda = new Celda_Renderer(ultima_Fecha_Acceso,id);
         celdas[3] = celda;
-        celda = new Celda_Renderer(estatus);
+        celda = new Celda_Renderer(estatus ? "Activo" : "Inactivo",id);
         celdas[4] = celda;
 
         modelo.addRow(celdas);
@@ -591,23 +599,23 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         sesiones_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         sesiones_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
-        sesiones_JTable.getTableHeader().setFont(gadugi);
+        Font fuente = new Font("Segoe UI", Font.BOLD, 16);
+        sesiones_JTable.getTableHeader().setFont(fuente);
         
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         String dispositivo = CourseRoom.Utilerias.Concatenar(System.getProperty("os.name"), " - ",System.getProperty("user.name"));
         String fabricante = CourseRoom.Utilerias.getComputerSystem().getManufacturer();
         String uuid = CourseRoom.Utilerias.getComputerSystem().getHardwareUUID();
-        String estatus = CourseRoom.Utilerias.bool().bool() ? "Activo" : "Inactivo";
+        Boolean estatus = CourseRoom.Utilerias.bool().bool();
         
-        Agregar_Sesion(dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), estatus);
+        Agregar_Sesion("1",dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), estatus);
     }
     
     @Override
     public void Colorear_Componentes() {
         
-        Font gadugi = new Font("Segoe UI", 1, 24);
+        Font fuente = new Font("Segoe UI", 1, 24);
         
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
@@ -647,9 +655,12 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Segundo_Color()));
         tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Tercer_Color()));
         
-        primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Primer_Color_Fuente()));
-        segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Segundo_Color_Fuente()));
-        tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+        primer_Color_Personalizado_JLabel.setBorder(BorderFactory.createTitledBorder
+        (null, "Primer Color", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, fuente, CourseRoom.Utilerias.Primer_Color_Fuente()));
+        segundo_Color_Personalizado_JLabel.setBorder(BorderFactory.createTitledBorder
+        (null, "Segundo Color", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, fuente, CourseRoom.Utilerias.Segundo_Color_Fuente()));
+        tercer_Color_Personalizado_JLabel.setBorder(BorderFactory.createTitledBorder
+        (null, "Tercer Color", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, fuente, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         
         sesiones_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
         sesiones_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
@@ -660,7 +671,6 @@ public class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Comp
         
         sesiones_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
         sesiones_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();

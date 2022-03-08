@@ -81,8 +81,8 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         titulo_JPanel.setOpaque(false);
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 134));
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(436, 68));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
@@ -96,14 +96,14 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(176, 68));
         contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
 
+        mes_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         mes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mes_JLabel.setText("Diciembre");
+        mes_JLabel.setToolTipText("Mes Actual");
         mes_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        mes_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         mes_JLabel.setMaximumSize(new java.awt.Dimension(327573, 32));
         mes_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
         mes_JLabel.setPreferredSize(new java.awt.Dimension(1080, 32));
-        mes_JLabel.setToolTipText("Mes Actual");
         contenido_Titulo_JPanel.add(mes_JLabel, java.awt.BorderLayout.CENTER);
 
         acciones_JPanel.setOpaque(false);

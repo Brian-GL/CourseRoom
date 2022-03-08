@@ -112,8 +112,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_JPanel.setOpaque(false);
         mostrar_Cursos_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(822, 68));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
@@ -502,20 +502,20 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         mostrar_Cursos_JPanelLayout.setHorizontalGroup(
                             mostrar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrar_Cursos_JPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, 0)
+                                .addGap(32, 32, 32)
                                 .addGroup(mostrar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(mostrar_Cursos_JLayeredPane)
-                                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
-                                .addGap(0, 0, 0))
+                                    .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                                .addGap(32, 32, 32))
                         );
                         mostrar_Cursos_JPanelLayout.setVerticalGroup(
                             mostrar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(mostrar_Cursos_JPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, 0)
+                                .addContainerGap()
                                 .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(mostrar_Cursos_JLayeredPane)
-                                .addGap(0, 0, 0))
+                                .addContainerGap())
                         );
 
                         add(mostrar_Cursos_JPanel, "Mostrar");
@@ -619,14 +619,14 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                             buscar_Cursos_JPanelLayout.setHorizontalGroup(
                                 buscar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(buscar_Cursos_JPanelLayout.createSequentialGroup()
-                                    .addGap(0, 0, 0)
+                                    .addGap(32, 32, 32)
                                     .addGroup(buscar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(buscar_Cursos_JPanelLayout.createSequentialGroup()
                                             .addComponent(mostrar_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(buscar_JTextField))
-                                        .addComponent(buscar_Cursos_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
-                                    .addGap(0, 0, 0))
+                                        .addComponent(buscar_Cursos_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                                    .addGap(32, 32, 32))
                             );
                             buscar_Cursos_JPanelLayout.setVerticalGroup(
                                 buscar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

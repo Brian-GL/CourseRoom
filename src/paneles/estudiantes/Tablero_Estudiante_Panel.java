@@ -59,7 +59,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Preguntas_Estudiante_Panel preguntas_Panel;
     private static Tiempo_Servidor tiempo_Servidor;
     
-    
     /**
      * Creates new form DashboardPanel
      */

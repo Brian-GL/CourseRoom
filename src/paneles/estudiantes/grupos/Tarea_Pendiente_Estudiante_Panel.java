@@ -88,12 +88,12 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         fecha_Finalizacion_JLabel = new javax.swing.JLabel();
         estatus_Tarea_JComboBox = new javax.swing.JComboBox<>();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
-        titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
+        titulo_JPanel.setOpaque(false);
 
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -143,7 +143,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -158,70 +158,73 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         );
 
         miembro_A_Cargo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        miembro_A_Cargo_JLabel.setToolTipText("Imagen Del Grupo");
         miembro_A_Cargo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         miembro_A_Cargo_JLabel.setMaximumSize(new java.awt.Dimension(400, 400));
         miembro_A_Cargo_JLabel.setMinimumSize(new java.awt.Dimension(400, 400));
         miembro_A_Cargo_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
+        miembro_A_Cargo_JLabel.setToolTipText("Imagen Del Grupo");
 
-        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
+        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
-        nombre_Miembro_A_Cargo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         nombre_Miembro_A_Cargo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombre_Miembro_A_Cargo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/computer.png"))); // NOI18N
-        nombre_Miembro_A_Cargo_JLabel.setToolTipText("Curso De Proveniencia Del Grupo");
+        nombre_Miembro_A_Cargo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         nombre_Miembro_A_Cargo_JLabel.setOpaque(true);
+        nombre_Miembro_A_Cargo_JLabel.setToolTipText("Curso De Proveniencia Del Grupo");
         ((ImageIcon)nombre_Miembro_A_Cargo_JLabel.getIcon()).getImage().flush();
 
-        fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Creacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/calendar_1.png"))); // NOI18N
-        fecha_Creacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
+        fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         fecha_Creacion_JLabel.setMaximumSize(new java.awt.Dimension(354, 20));
         fecha_Creacion_JLabel.setMinimumSize(new java.awt.Dimension(354, 20));
         fecha_Creacion_JLabel.setPreferredSize(new java.awt.Dimension(354, 20));
+        fecha_Creacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
         ((ImageIcon)fecha_Creacion_JLabel.getIcon()).getImage().flush();
 
-        fecha_Finalizacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         fecha_Finalizacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Finalizacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
-        fecha_Finalizacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
+        fecha_Finalizacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         fecha_Finalizacion_JLabel.setMaximumSize(new java.awt.Dimension(354, 20));
         fecha_Finalizacion_JLabel.setMinimumSize(new java.awt.Dimension(354, 20));
         fecha_Finalizacion_JLabel.setPreferredSize(new java.awt.Dimension(354, 20));
+        fecha_Finalizacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
         ((ImageIcon)fecha_Finalizacion_JLabel.getIcon()).getImage().flush();
 
-        estatus_Tarea_JComboBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         estatus_Tarea_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Realizando", "Finalizada" }));
+        estatus_Tarea_JComboBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descripcion_JScrollPane)
-                    .addComponent(fecha_Creacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fecha_Finalizacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(estatus_Tarea_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
-                    .addComponent(nombre_Miembro_A_Cargo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(miembro_A_Cargo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(titulo_JPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fecha_Creacion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fecha_Finalizacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(estatus_Tarea_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nombre_Miembro_A_Cargo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(miembro_A_Cargo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(miembro_A_Cargo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,7 +236,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(estatus_Tarea_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fecha_Finalizacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -308,7 +311,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         
         Font gadugi = new Font("Segoe UI", 0, 18);
 
-        descripcion_JTextPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripción", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+        descripcion_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripción", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
         
         
