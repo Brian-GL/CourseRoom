@@ -20,7 +20,6 @@ package clases;
 import courseroom.CourseRoom;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -35,66 +34,44 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
     
     //The JLabel that is used to display image
     private JLabel label;
-    private final String id;
-    private final String texto;
+    private final String id, texto;
 
     public Celda_Renderer(){
         super();
-        id = "";
-        texto = "";
+        id = texto = new String();
         Inicializar_Label(); 
     }
     
     public Celda_Renderer(String _texto) {
         super();
         this.id = new String();
-        texto = _texto;
         Inicializar_Label();
+        texto = _texto;
         label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
     }
-    
-    public Celda_Renderer(String _texto, int verticalidad) {
-        super();
-        this.id = new String();
-        texto = _texto;
-        Inicializar_Label();
-        label.setVerticalTextPosition(verticalidad);
-        label.setText(CourseRoom.Utilerias.Formato_HTML_Central_Inicio(texto));
-    }
-
    
     public Celda_Renderer(String _texto, String _id) {
         super();
         id = _id;
-        texto = _texto;
         Inicializar_Label();
+        texto = _texto;
         label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
     }
-    
-    public Celda_Renderer(String _texto, String _id, int verticalidad) {
-        super();
-        id = _id;
-        texto = _texto;
-        Inicializar_Label();
-        label.setVerticalTextPosition(verticalidad);
-        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
-    }
-    
+  
     public Celda_Renderer(ImageIcon icono, String _id) {
         super();
         id = _id;
-        texto = new String();
         Inicializar_Label();
         if(icono != null){
             label.setIcon(icono);
         }
+        texto = new String();
     }
     
    
     public Celda_Renderer(ImageIcon icono) {
         super();
-        id = new String();
-        texto = new String();
+        id = texto = new String();
         Inicializar_Label();
         if(icono != null){
             label.setIcon(icono);
@@ -104,11 +81,11 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
     public Celda_Renderer(ImageIcon icono, String _texto, String _id) {
         super();
         id = _id;
-        texto = _texto;
         Inicializar_Label();
         if(icono != null){
             label.setIcon(icono);
         }
+        texto = _texto;
         label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
     }
     
@@ -134,28 +111,15 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         label.setForeground(color);
     }
     
-    public void Altura(int altura){
-        Dimension dimension = new Dimension();
-        dimension.width = label.getPreferredSize().width;
-        dimension.height = altura;
-        label.setPreferredSize(dimension);
-    }
-    
-    public void Verticalidad(int valor){
-        label.setVerticalTextPosition(valor);
-    }
-    
     private void Inicializar_Label(){
         label = new JLabel();
-        Font segoe = new Font("Segoe UI", Font.PLAIN, 14);
-        label.setVerticalAlignment(JLabel.CENTER);
+        Font segoe = new Font("Segoe UI", Font.PLAIN, 13);
+        label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setFont(segoe);
         label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
     }
     
-    
-   
     /**
      *
      * @param table the JTable that is asking the renderer to draw; can be null

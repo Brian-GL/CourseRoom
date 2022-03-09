@@ -83,12 +83,12 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
         estadisticas_JTable = new javax.swing.JTable();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
-        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -104,8 +104,6 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,10 +118,6 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         });
 
         regresion_Lineal_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/function.png"))); // NOI18N
-        regresion_Lineal_JButton.setBorder(null);
-        regresion_Lineal_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
-        regresion_Lineal_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
-        regresion_Lineal_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)regresion_Lineal_JButton.getIcon()).getImage().flush();
         regresion_Lineal_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,10 +126,6 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         });
 
         estadisticas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stats.png"))); // NOI18N
-        estadisticas_JButton.setBorder(null);
-        estadisticas_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
-        estadisticas_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
-        estadisticas_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)estadisticas_JButton.getIcon()).getImage().flush();
         estadisticas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -144,10 +134,6 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         });
 
         grafica_Pastel_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/pie-chart.png"))); // NOI18N
-        grafica_Pastel_JButton.setBorder(null);
-        grafica_Pastel_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
-        grafica_Pastel_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
-        grafica_Pastel_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)grafica_Pastel_JButton.getIcon()).getImage().flush();
         grafica_Pastel_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -161,13 +147,13 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(regresion_Lineal_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(grafica_Pastel_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(estadisticas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(regresion_Lineal_JButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(grafica_Pastel_JButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(estadisticas_JButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actualizar_JButton)
                 .addGap(0, 0, 0))
         );
         acciones_JPanelLayout.setVerticalGroup(
@@ -176,10 +162,10 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
                 .addGap(0, 0, 0)
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(grafica_Pastel_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(regresion_Lineal_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(estadisticas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(grafica_Pastel_JButton)
+                        .addComponent(regresion_Lineal_JButton)
+                        .addComponent(estadisticas_JButton))
+                    .addComponent(actualizar_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -259,7 +245,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(desempeno_Escolar_JLayeredPane)
-                    .addGap(0, 0, 0))
+                    .addContainerGap())
             );
         }// </editor-fold>//GEN-END:initComponents
 

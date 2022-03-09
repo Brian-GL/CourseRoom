@@ -63,9 +63,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         apellidos_JLabel.setText(apellidos_Chat);
         nombres_JLabel.setText(nombres_Chat);
         correo_JLabel.setText(correo_Chat);
-        
+        String id = new String();
         while(!intereses_Tematicas.is_empty()){
-            Agregar_Interes_Tematica(intereses_Tematicas.delist());
+            Agregar_Interes_Tematica(id,intereses_Tematicas.delist());
         }
         
         ImageIcon icono = new ImageIcon(imagen_Chat);
@@ -107,24 +107,25 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         intereses_Tematicas_JScrollPane = new javax.swing.JScrollPane();
         intereses_Tematicas_JTable = new javax.swing.JTable();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
-        titulo_JPanel.setOpaque(false);
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
+        titulo_JPanel.setOpaque(false);
 
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/verified-user.png"))); // NOI18N
-        informacion_JButton.setBorder(null);
-        informacion_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        informacion_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        informacion_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        informacion_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,8 +134,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         });
 
         chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/influencer.png"))); // NOI18N
-        chat_JButton.setBorder(null);
-        chat_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        chat_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        chat_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        chat_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)chat_JButton.getIcon()).getImage().flush();
         chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -144,7 +146,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mis Chats");
-        regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -160,8 +161,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        actualizar_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        actualizar_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        actualizar_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -185,9 +187,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         titulo_JPanelLayout.setVerticalGroup(
@@ -205,15 +207,14 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         chat_JLayeredPane.setLayout(new java.awt.CardLayout());
 
         chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        chat_JPanel.setOpaque(false);
         chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+        chat_JPanel.setOpaque(false);
         chat_JPanel.setLayout(new java.awt.BorderLayout());
 
         mensajes_Chat_JScrollPane.setBorder(null);
         mensajes_Chat_JScrollPane.setOpaque(false);
 
         mensajes_Chat_JTable.setAutoCreateRowSorter(true);
-        mensajes_Chat_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         mensajes_Chat_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -247,6 +248,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     return super.getColumnClass(column);
                 }
             });
+            mensajes_Chat_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             mensajes_Chat_JTable.setRowHeight(80);
             mensajes_Chat_JTable.setShowGrid(true);
             mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
@@ -287,7 +289,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
             enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
             enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
-            enviar_Archivo_Chat_JButton.setBorder(null);
             enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             enviar_Archivo_Chat_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
             enviar_Archivo_Chat_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
@@ -306,7 +307,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
             });
             enviar_Mensaje_Chat_JPanel.add(enviar_Archivo_Chat_JButton, java.awt.BorderLayout.WEST);
 
-            redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+            redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
             redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
             redactar_Mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -319,8 +320,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
             chat_JLayeredPane.add(chat_JPanel, "Chat");
 
-            informacion_Chat_JPanel.setOpaque(false);
             informacion_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+            informacion_Chat_JPanel.setOpaque(false);
 
             imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
@@ -559,13 +560,13 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
-    private void Agregar_Interes_Tematica(String interes_Tematica){
+    private void Agregar_Interes_Tematica(String id, String interes_Tematica){
         
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer[] celdas = new Celda_Renderer[1];
         Celda_Renderer celda;
         
-        celda = new Celda_Renderer(interes_Tematica);
+        celda = new Celda_Renderer(interes_Tematica,id);
         celdas[0] = celda;
         modelo.addRow(celdas);
         
@@ -618,8 +619,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        Agregar_Interes_Tematica(CourseRoom.Utilerias.music().genre());
-        
         Colorear_Componentes();
     }
 

@@ -21,6 +21,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 
@@ -69,8 +71,8 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         buscar_Preguntas_JTable = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
         setLayout(new java.awt.CardLayout());
 
         mostrar_Preguntas_JPanel.setOpaque(false);
@@ -94,7 +96,9 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         acciones_JPanel.setOpaque(false);
 
         buscar_Preguntas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
-        buscar_Preguntas_JButton.setBorder(null);
+        buscar_Preguntas_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        buscar_Preguntas_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        buscar_Preguntas_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)buscar_Preguntas_JButton.getIcon()).getImage().flush();
         buscar_Preguntas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -109,7 +113,9 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         });
 
         preguntar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/wonder.png"))); // NOI18N
-        preguntar_JButton.setBorder(null);
+        preguntar_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        preguntar_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        preguntar_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)preguntar_JButton.getIcon()).getImage().flush();
         preguntar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,7 +130,9 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
+        actualizar_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        actualizar_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        actualizar_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -144,11 +152,11 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(preguntar_JButton)
-                .addGap(18, 18, 18)
-                .addComponent(buscar_Preguntas_JButton)
-                .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton)
+                .addComponent(preguntar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buscar_Preguntas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         acciones_JPanelLayout.setVerticalGroup(
@@ -156,9 +164,9 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buscar_Preguntas_JButton)
-                    .addComponent(preguntar_JButton)
-                    .addComponent(actualizar_JButton))
+                    .addComponent(buscar_Preguntas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(preguntar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -168,7 +176,6 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         mostrar_Preguntas_JScrollPane.setOpaque(false);
 
         mostrar_Preguntas_JTable.setAutoCreateRowSorter(true);
-        mostrar_Preguntas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mostrar_Preguntas_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -202,6 +209,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                     return super.getColumnClass(column);
                 }
             });
+            mostrar_Preguntas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             mostrar_Preguntas_JTable.setRowHeight(100);
             mostrar_Preguntas_JTable.setShowGrid(true);
             mostrar_Preguntas_JTable.setSurrendersFocusOnKeystroke(true);
@@ -264,7 +272,6 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
 
             mostrar_Preguntas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/shrug.png"))); // NOI18N
             mostrar_Preguntas_JButton.setToolTipText("<html>\n<h3>Regresar a la página de dudas</h3>\n</html>");
-            mostrar_Preguntas_JButton.setBorder(null);
             mostrar_Preguntas_JButton.setMaximumSize(new java.awt.Dimension(50, 50));
             mostrar_Preguntas_JButton.setMinimumSize(new java.awt.Dimension(50, 50));
             mostrar_Preguntas_JButton.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -543,11 +550,12 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         buscar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         preguntar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
-        buscar_Preguntas_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Buscar Pregunta(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+        Font fuente = new java.awt.Font("Segoe UI", 1, 15);
+        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
+        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Pregunta(s)", TitledBorder.CENTER,
+                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+        
+        buscar_Preguntas_JTextField.setBorder(borde_Titulo);
         
         buscar_Preguntas_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
         buscar_Preguntas_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());

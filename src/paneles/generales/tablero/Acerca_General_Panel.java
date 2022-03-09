@@ -146,8 +146,6 @@ public final class Acerca_General_Panel extends javax.swing.JPanel implements Co
         
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        
-        //descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Segundo_Color());
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
     }
 }

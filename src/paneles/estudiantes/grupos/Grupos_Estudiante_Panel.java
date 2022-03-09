@@ -38,6 +38,8 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import java.awt.event.KeyEvent;
 
@@ -106,8 +108,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        actualizar_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        actualizar_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -122,8 +124,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         });
 
         buscar_Grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
-        buscar_Grupos_JButton.setBorder(null);
-        buscar_Grupos_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        buscar_Grupos_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        buscar_Grupos_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)buscar_Grupos_JButton.getIcon()).getImage().flush();
         buscar_Grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -144,7 +146,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(buscar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -250,8 +252,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Grupos_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
             buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            buscar_JTextField.setToolTipText("<html>\n<h3>Buscar grupo(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
             buscar_JTextField.setBorder(null);
+            buscar_JTextField.setToolTipText("<html>\n<h3>Buscar grupo(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     buscar_JTextFieldKeyPressed(evt);
@@ -259,11 +261,10 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             });
 
             mostrar_Grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/vegan.png"))); // NOI18N
-            mostrar_Grupos_JButton.setToolTipText("<html> <h3>Regresar a mis grupos</h3> </html>");
-            mostrar_Grupos_JButton.setBorder(null);
             mostrar_Grupos_JButton.setMaximumSize(new java.awt.Dimension(50, 50));
             mostrar_Grupos_JButton.setMinimumSize(new java.awt.Dimension(50, 50));
             mostrar_Grupos_JButton.setPreferredSize(new java.awt.Dimension(50, 50));
+            mostrar_Grupos_JButton.setToolTipText("<html> <h3>Regresar a mis grupos</h3> </html>");
             ((ImageIcon)mostrar_Grupos_JButton.getIcon()).getImage().flush();
             mostrar_Grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -281,7 +282,6 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Grupos_JScrollPane.setOpaque(false);
 
             buscar_Grupos_JTable.setAutoCreateRowSorter(true);
-            buscar_Grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             buscar_Grupos_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -315,6 +315,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         return super.getColumnClass(column);
                     }
                 });
+                buscar_Grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 buscar_Grupos_JTable.setRowHeight(110);
                 buscar_Grupos_JTable.setShowGrid(true);
                 buscar_Grupos_JTable.setSurrendersFocusOnKeystroke(true);
@@ -462,7 +463,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             modelo.addRow(celdas);
             mostrar_Grupos_Lista.push_back(grupo_Estudiante_Panel);
             Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id);
-            
+            mostrar_Grupos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla_Icono(0));
             imagen.flush();
             
         } catch (MalformedURLException ex) {
@@ -561,11 +562,12 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_Grupos_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
         buscar_Grupos_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
-        Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
-        buscar_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Buscar Grupos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+        Font fuente = new java.awt.Font("Segoe UI", 1, 15);
+        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
+        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Grupo(s)", TitledBorder.CENTER,
+                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+        
+        buscar_JTextField.setBorder(borde_Titulo);
 
         buscar_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
         buscar_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());

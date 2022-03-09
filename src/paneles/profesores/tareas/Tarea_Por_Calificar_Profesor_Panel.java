@@ -1299,7 +1299,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             
             Celda_Renderer celda;
             
-            celda = new Celda_Renderer(retroalimentacion,JLabel.TOP);
+            celda = new Celda_Renderer(retroalimentacion);
             celdas[0] = celda;
             celda  = new Celda_Renderer(CourseRoom.Utilerias.Fecha_Hora_Local(), "");
             celdas[1] = celda;

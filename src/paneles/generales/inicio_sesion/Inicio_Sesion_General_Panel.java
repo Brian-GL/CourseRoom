@@ -69,9 +69,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         });
 
         contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
-        contrasena_JPasswordField.setToolTipText("");
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(430, 45));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(430, 45));
+        contrasena_JPasswordField.setToolTipText("");
 
         usuario_JLabel.setText("Correo Electrónico");
         usuario_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -87,7 +87,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
 
         iniciar_Sesion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/house.png"))); // NOI18N
         iniciar_Sesion_JButton.setText(" Iniciar Sesión ");
-        iniciar_Sesion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         iniciar_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         iniciar_Sesion_JButton.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         iniciar_Sesion_JButton.setPreferredSize(new java.awt.Dimension(430, 54));
@@ -105,11 +104,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             }
         });
 
-        marca_JLabel.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         marca_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         marca_JLabel.setText("2022 - CourseRoom®");
-        marca_JLabel.setToolTipText("Año De Creación - Todos Los Derechos Reservados");
+        marca_JLabel.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         marca_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
+        marca_JLabel.setToolTipText("Año De Creación - Todos Los Derechos Reservados");
         marca_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 marca_JLabelMouseClicked(evt);
@@ -143,11 +142,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             }
         });
 
-        logo_JLabel.setBackground(new java.awt.Color(14, 30, 64));
         logo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo_JLabel.setToolTipText("CourseRoom Logo");
+        logo_JLabel.setBackground(new java.awt.Color(14, 30, 64));
         logo_JLabel.setMinimumSize(new java.awt.Dimension(150, 125));
         logo_JLabel.setPreferredSize(new java.awt.Dimension(400, 125));
+        logo_JLabel.setToolTipText("CourseRoom Logo");
 
         contrasena_JLabel.setText("<html>\n<p style=\"text-align:center;\">\n Contraseña\n</p>\n</html>");
         contrasena_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N

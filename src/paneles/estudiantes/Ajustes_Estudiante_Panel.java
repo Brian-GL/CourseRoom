@@ -15,9 +15,9 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -91,8 +91,9 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         acciones_JPanel.setOpaque(false);
 
         interfaz_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/user-interface.png"))); // NOI18N
-        interfaz_JButton.setBorder(null);
-        interfaz_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        interfaz_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        interfaz_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        interfaz_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)interfaz_JButton.getIcon()).getImage().flush();
         interfaz_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -101,8 +102,9 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/programmer.png"))); // NOI18N
-        cuenta_JButton.setBorder(null);
-        cuenta_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        cuenta_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        cuenta_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        cuenta_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)cuenta_JButton.getIcon()).getImage().flush();
         cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -111,8 +113,9 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         sesiones_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/digital-footprint.png"))); // NOI18N
-        sesiones_JButton.setBorder(null);
-        sesiones_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        sesiones_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        sesiones_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        sesiones_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)sesiones_JButton.getIcon()).getImage().flush();
         sesiones_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -127,9 +130,9 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sesiones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -267,9 +270,14 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
                     return super.getColumnClass(column);
                 }
             });
+            sesiones_JTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
             sesiones_JTable.setRowHeight(100);
-            sesiones_JTable.setShowGrid(true);
+            sesiones_JTable.setRowSelectionAllowed(false);
             sesiones_JTable.setRowSorter(new TableRowSorter(sesiones_JTable.getModel()));
+            sesiones_JTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+            sesiones_JTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+            sesiones_JTable.setShowGrid(true);
+            sesiones_JTable.setVerifyInputWhenFocusTarget(false);
             sesiones_JScrollPane.setViewportView(sesiones_JTable);
 
             ajustes_JLayeredPane.add(sesiones_JScrollPane, "Sesiones");
@@ -547,7 +555,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
     private void Agregar_Sesion(String id, String dispositivo, String fabricante, String uuid, 
             String ultima_Fecha_Acceso, Boolean estatus){
         
-        int altura = CourseRoom.Utilerias.Altura_Fila_Tabla(uuid.length());
+        
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
@@ -565,6 +573,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
         modelo.addRow(celdas);
 
+        int altura = CourseRoom.Utilerias.Altura_Fila_Tabla(uuid.length());
         sesiones_JTable.setRowHeight(modelo.getRowCount()-1, altura);
         
     }
@@ -610,6 +619,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         Boolean estatus = CourseRoom.Utilerias.bool().bool();
         
         Agregar_Sesion("1",dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), estatus);
+        
     }
     
     @Override
@@ -655,12 +665,23 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Segundo_Color()));
         tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Tercer_Color()));
         
-        primer_Color_Personalizado_JLabel.setBorder(BorderFactory.createTitledBorder
-        (null, "Primer Color", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, fuente, CourseRoom.Utilerias.Primer_Color_Fuente()));
-        segundo_Color_Personalizado_JLabel.setBorder(BorderFactory.createTitledBorder
-        (null, "Segundo Color", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, fuente, CourseRoom.Utilerias.Segundo_Color_Fuente()));
-        tercer_Color_Personalizado_JLabel.setBorder(BorderFactory.createTitledBorder
-        (null, "Tercer Color", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, fuente, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+        
+        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Primer_Color());
+        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Primer Color", TitledBorder.CENTER,
+                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
+        
+        primer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
+        
+        borde_Linea = new LineBorder(CourseRoom.Utilerias.Segundo_Color());
+        borde_Titulo = new TitledBorder(borde_Linea, "Segundo Color", TitledBorder.CENTER,
+                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
+        segundo_Color_Personalizado_JLabel.setBorder(borde_Titulo);
+        
+        borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
+        borde_Titulo = new TitledBorder(borde_Linea, "Tercer Color", TitledBorder.CENTER,
+                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+        tercer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
         sesiones_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
         sesiones_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());

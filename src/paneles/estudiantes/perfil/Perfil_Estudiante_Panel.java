@@ -159,7 +159,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         acciones_JPanel.setOpaque(false);
 
         editar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/id-card_1.png"))); // NOI18N
-        editar_Datos_Personales_JButton.setBorder(null);
+        editar_Datos_Personales_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        editar_Datos_Personales_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)editar_Datos_Personales_JButton.getIcon()).getImage().flush();
         editar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,8 +169,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        actualizar_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        actualizar_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -184,7 +185,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         });
 
         editar_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-learning.png"))); // NOI18N
-        editar_Informacion_Extra_JButton.setBorder(null);
+        editar_Informacion_Extra_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        editar_Informacion_Extra_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)editar_Informacion_Extra_JButton.getIcon()).getImage().flush();
         editar_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -193,7 +195,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         });
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
-        informacion_JButton.setBorder(null);
+        informacion_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        informacion_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -202,7 +205,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         });
 
         editar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png"))); // NOI18N
-        editar_Autenticacion_JButton.setBorder(null);
+        editar_Autenticacion_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        editar_Autenticacion_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)editar_Autenticacion_JButton.getIcon()).getImage().flush();
         editar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -216,14 +220,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(informacion_JButton)
-                .addGap(18, 18, 18)
-                .addComponent(editar_Autenticacion_JButton)
-                .addGap(18, 18, 18)
-                .addComponent(editar_Datos_Personales_JButton)
-                .addGap(18, 18, 18)
-                .addComponent(editar_Informacion_Extra_JButton)
-                .addGap(18, 18, 18)
+                .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editar_Autenticacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editar_Datos_Personales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editar_Informacion_Extra_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -236,7 +240,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                         .addComponent(editar_Autenticacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(informacion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(editar_Datos_Personales_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editar_Informacion_Extra_JButton))
+                        .addComponent(editar_Informacion_Extra_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -431,7 +435,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         guardar_Cambios_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Autenticacion_JButton.setText("Guardar Cambios");
-        guardar_Cambios_Autenticacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         guardar_Cambios_Autenticacion_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         guardar_Cambios_Autenticacion_JButton.setMaximumSize(new java.awt.Dimension(280, 40));
         guardar_Cambios_Autenticacion_JButton.setMinimumSize(new java.awt.Dimension(280, 40));
@@ -452,7 +455,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         cambiar_Imagen_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/replace.png"))); // NOI18N
         cambiar_Imagen_JButton.setText("Cambiar Imagen");
-        cambiar_Imagen_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cambiar_Imagen_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         cambiar_Imagen_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         cambiar_Imagen_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
@@ -591,12 +593,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
         editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setText("Guardar Cambios");
-        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
-        guardar_Cambios_Datos_Personales_JButton.setBorder(null);
         guardar_Cambios_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         ((ImageIcon)guardar_Cambios_Datos_Personales_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -752,7 +753,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                             .addComponent(editar_Nombres_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editar_Apellido_Paterno_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editar_Apellido_Materno_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(guardar_Cambios_Datos_Personales_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(guardar_Cambios_Datos_Personales_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(editar_Fecha_Nacimiento_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -831,7 +832,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         guardar_Cambios_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Informacion_Extra_JButton.setText("Guardar Cambios");
-        guardar_Cambios_Informacion_Extra_JButton.setBorder(null);
         guardar_Cambios_Informacion_Extra_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         guardar_Cambios_Informacion_Extra_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         guardar_Cambios_Informacion_Extra_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
@@ -1250,11 +1250,13 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
+            String id = new String();
+            
             String interes_Tematica = intereses_Tematicas_AutoCompletionComboBox.getSelectedItem() != null
                     ? intereses_Tematicas_AutoCompletionComboBox.getSelectedItem().toString() : "";
             
             if(!interes_Tematica.isEmpty() && !interes_Tematica.isBlank()){
-                Agregar_Interes_Tematica(interes_Tematica);
+                Agregar_Interes_Tematica(id,interes_Tematica);
             }
             
         }
@@ -1447,7 +1449,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    private void Agregar_Interes_Tematica(String interes_Tematica){
+    private void Agregar_Interes_Tematica(String id, String interes_Tematica){
         try {
             DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
             
@@ -1457,7 +1459,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
             ImageIcon remover = new ImageIcon(icono);
             
-            celda = new Celda_Renderer(interes_Tematica);
+            celda = new Celda_Renderer(interes_Tematica,id);
             celdas[0] = celda;
             
             celda = new Celda_Renderer(remover);

@@ -89,8 +89,8 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
 
         setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         informacion_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         informacion_JPanel.setMaximumSize(new java.awt.Dimension(32767, 150));
@@ -99,7 +99,6 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mis Chats");
-        regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,23 +119,23 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         preguntador_Imagen_JLabel.setMinimumSize(new java.awt.Dimension(48, 48));
         preguntador_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(48, 48));
 
-        pregunta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         pregunta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pregunta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
 
         descripcion_Pregunta_JScrollPane.setBorder(null);
         descripcion_Pregunta_JScrollPane.setOpaque(false);
 
-        descripcion_Pregunta_JTextPane.setEditable(false);
         descripcion_Pregunta_JTextPane.setBorder(null);
         descripcion_Pregunta_JTextPane.setContentType("text/html"); // NOI18N
+        descripcion_Pregunta_JTextPane.setEditable(false);
         descripcion_Pregunta_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         descripcion_Pregunta_JTextPane.setText("");
         descripcion_Pregunta_JTextPane.setOpaque(false);
         descripcion_Pregunta_JScrollPane.setViewportView(descripcion_Pregunta_JTextPane);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        actualizar_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        actualizar_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -151,8 +150,8 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         });
 
         marcar_Solucionada_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/problem-solving.png"))); // NOI18N
-        marcar_Solucionada_JButton.setBorder(null);
-        marcar_Solucionada_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        marcar_Solucionada_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
+        marcar_Solucionada_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)marcar_Solucionada_JButton.getIcon()).getImage().flush();
         marcar_Solucionada_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -189,25 +188,25 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(informacion_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(preguntador_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(regresar_JButton))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_JPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(marcar_Solucionada_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_JPanelLayout.createSequentialGroup()
+                    .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(pregunta_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(descripcion_Pregunta_JScrollPane)))
+                        .addComponent(descripcion_Pregunta_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
         chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        chat_JPanel.setOpaque(false);
         chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+        chat_JPanel.setOpaque(false);
         chat_JPanel.setLayout(new java.awt.BorderLayout());
 
         mensajes_Chat_JScrollPane.setBorder(null);
@@ -287,7 +286,6 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
 
             enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
             enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
-            enviar_Archivo_Chat_JButton.setBorder(null);
             enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             enviar_Archivo_Chat_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
             enviar_Archivo_Chat_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
@@ -306,7 +304,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
             });
             enviar_Mensaje_Chat_JPanel.add(enviar_Archivo_Chat_JButton, java.awt.BorderLayout.WEST);
 
-            redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+            redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
             redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
             redactar_Mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {

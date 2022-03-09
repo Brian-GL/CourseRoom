@@ -246,11 +246,11 @@ public class CourseRoom{
         }
         
         public static int Altura_Fila_Tabla(int numero_Letras){
-            return (int)((numero_Letras/60) * 20) + 78;
+            return (int)((numero_Letras/60) * 20) + 44;
         }
        
         public static int Altura_Fila_Tabla_Icono(int numero_Letras){
-            return (int)((numero_Letras/60) * 20) + 110;
+            return (int)((numero_Letras/60) * 20) + 96;
         }
         
         public static DateTimeFormatter Formato_Fecha(){

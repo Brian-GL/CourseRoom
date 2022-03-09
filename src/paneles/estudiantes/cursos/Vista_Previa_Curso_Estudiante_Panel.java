@@ -25,6 +25,8 @@ import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
@@ -117,7 +119,9 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         enrolarme_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         enrolarme_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/working.png"))); // NOI18N
         enrolarme_JButton.setText("Enrolarme");
-        enrolarme_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        enrolarme_JButton.setMaximumSize(new java.awt.Dimension(171, 32));
+        enrolarme_JButton.setMinimumSize(new java.awt.Dimension(171, 32));
+        enrolarme_JButton.setPreferredSize(new java.awt.Dimension(171, 32));
         ((ImageIcon)enrolarme_JButton.getIcon()).getImage().flush();
         enrolarme_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,7 +137,6 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mis Cursos");
-        regresar_JButton.setBorder(null);
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -157,7 +160,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
                 .addGap(18, 18, 18)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(enrolarme_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(enrolarme_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         titulo_JPanelLayout.setVerticalGroup(
             titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +170,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
                     .addGroup(titulo_JPanelLayout.createSequentialGroup()
                         .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(enrolarme_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(enrolarme_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -188,18 +191,24 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         imagen_Curso_JLabel.setMinimumSize(new java.awt.Dimension(400, 400));
         imagen_Curso_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
 
+        descripcion_Curso_JScrollPane.setBorder(null);
+
         descripcion_Curso_JTextPane.setEditable(false);
         descripcion_Curso_JTextPane.setBorder(null);
         descripcion_Curso_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_Curso_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         descripcion_Curso_JTextPane.setText("");
+        descripcion_Curso_JTextPane.setOpaque(false);
         descripcion_Curso_JScrollPane.setViewportView(descripcion_Curso_JTextPane);
+
+        descripcion_Profesor_JScrollPane.setBorder(null);
 
         descripcion_Profesor_JTextPane.setEditable(false);
         descripcion_Profesor_JTextPane.setBorder(null);
         descripcion_Profesor_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_Profesor_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         descripcion_Profesor_JTextPane.setText("");
+        descripcion_Profesor_JTextPane.setOpaque(false);
         descripcion_Profesor_JScrollPane.setViewportView(descripcion_Profesor_JTextPane);
 
         imagen_Profesor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -375,13 +384,13 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         enrolarme_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }//GEN-LAST:event_enrolarme_JButtonMouseExited
 
-    private void Agregar_Interes_Tematica(String interes_Tematica){
+    private void Agregar_Interes_Tematica(String id, String interes_Tematica){
         
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer[] celdas = new Celda_Renderer[1];
         Celda_Renderer celda;
         
-        celda = new Celda_Renderer(interes_Tematica);
+        celda = new Celda_Renderer(interes_Tematica,id);
         celdas[0] = celda;
         modelo.addRow(celdas);
         
@@ -420,14 +429,13 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         informacion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         
+        descripcion_Curso_JScrollPane.getViewport().setOpaque(false);
         descripcion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
+        descripcion_Profesor_JScrollPane.getViewport().setOpaque(false);
         descripcion_Profesor_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Profesor_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
-        descripcion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        descripcion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         intereses_Tematicas_JScrollPane.getViewport().setOpaque(false);
         intereses_Tematicas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -437,36 +445,41 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        Agregar_Interes_Tematica(CourseRoom.Utilerias.music().genre());
-         
-        Colorear_Componentes();
+        Agregar_Interes_Tematica(new String(),CourseRoom.Utilerias.music().genre());
+        
     }
 
     @Override
     public void Colorear_Componentes() {
         
-        titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
         regresar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         enrolarme_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         enrolarme_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
       
-        // Informacion curso:
-        
-        Font gadugi = new Font("Segoe UI", 0, 18);
+        // Informacion curso:        
+        Font fuente = new Font("Segoe UI", 0, 18);
+        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
+        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Sobre El Curso", TitledBorder.CENTER,
+                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        descripcion_Curso_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Curso", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+        descripcion_Curso_JScrollPane.setBorder(borde_Titulo);
         
-        descripcion_Profesor_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion Del Profesor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Segundo_Color_Fuente()));
+        borde_Linea = new LineBorder(CourseRoom.Utilerias.Segundo_Color());
+        borde_Titulo = new TitledBorder(borde_Linea, "Sobre El Profesor", TitledBorder.CENTER,
+                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
         
+        descripcion_Profesor_JScrollPane.setBorder(borde_Titulo);
         
-        descripcion_Curso_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        descripcion_Curso_JScrollPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        descripcion_Curso_JScrollPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_Profesor_JScrollPane.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        descripcion_Profesor_JScrollPane.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
         descripcion_Curso_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         descripcion_Curso_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        descripcion_Profesor_JTextPane.setBackground(CourseRoom.Utilerias.Segundo_Color());
         descripcion_Profesor_JTextPane.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         descripcion_Profesor_JTextPane.setCaretColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
         

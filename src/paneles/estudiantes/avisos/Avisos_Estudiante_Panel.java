@@ -52,8 +52,8 @@ public final class Avisos_Estudiante_Panel extends javax.swing.JPanel implements
         avisos_JTable = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
         contenido_Titulo_JPanel.setOpaque(false);
@@ -73,7 +73,6 @@ public final class Avisos_Estudiante_Panel extends javax.swing.JPanel implements
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
         actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -240,7 +239,7 @@ public final class Avisos_Estudiante_Panel extends javax.swing.JPanel implements
                     break;
             }
             
-            celda = new Celda_Renderer(aviso,id,JLabel.TOP);
+            celda = new Celda_Renderer(aviso,id);
             celdas[1] = celda;
             celda = new Celda_Renderer(fecha,id);
             celdas[2] = celda;

@@ -231,7 +231,7 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                     break;
             }
             
-            celda = new Celda_Renderer(aviso,id,JLabel.TOP);
+            celda = new Celda_Renderer(aviso,id);
             celdas[1] = celda;
             celda = new Celda_Renderer(fecha,id);
             celdas[2] = celda;
