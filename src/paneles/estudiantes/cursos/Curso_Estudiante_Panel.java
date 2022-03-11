@@ -151,8 +151,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
-        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
         titulo_JPanel.setOpaque(false);
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -163,6 +163,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework.png"))); // NOI18N
+        tareas_JButton.setToolTipText("<html>\n<h3>Tareas</h3></html>");
         tareas_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
         tareas_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)tareas_JButton.getIcon()).getImage().flush();
@@ -173,6 +174,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         materiales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/book.png"))); // NOI18N
+        materiales_JButton.setToolTipText("<html>\n<h3>Materiales</h3></html>");
         materiales_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
         materiales_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)materiales_JButton.getIcon()).getImage().flush();
@@ -183,6 +185,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/teacher_1.png"))); // NOI18N
+        informacion_JButton.setToolTipText("<html>\n<h3>Información Del Curso\n</h3></html>");
         informacion_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
         informacion_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
@@ -209,6 +212,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         miembros_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/team.png"))); // NOI18N
+        miembros_JButton.setToolTipText("<html>\n<h3>Miembros Del Curso</h3></html>");
         miembros_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
         miembros_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)miembros_JButton.getIcon()).getImage().flush();
@@ -219,6 +223,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html>\n<h4>Actualizar<br>Página\n</h4></html>");
         actualizar_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
         actualizar_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
@@ -235,6 +240,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/meeting.png"))); // NOI18N
+        chat_JButton.setToolTipText("<html>\n<h3>Chat Del Curso</h3></html>");
         chat_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
         chat_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)chat_JButton.getIcon()).getImage().flush();
@@ -245,6 +251,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         avisos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/bell_warning.png"))); // NOI18N
+        avisos_JButton.setToolTipText("<html>\n<h3>Avisos\n</h3></html>");
         avisos_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
         avisos_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
         ((ImageIcon)avisos_JButton.getIcon()).getImage().flush();
@@ -255,6 +262,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         regresion_Lineal_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/function.png"))); // NOI18N
+        regresion_Lineal_JButton.setToolTipText("<html>\n<h3Grafica De<br>Avance</h3></html>");
         ((ImageIcon)regresion_Lineal_JButton.getIcon()).getImage().flush();
         regresion_Lineal_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -263,6 +271,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         estadisticas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stats.png"))); // NOI18N
+        estadisticas_JButton.setToolTipText("<html>\n<h3>Estadísticas</h3></html>");
         ((ImageIcon)estadisticas_JButton.getIcon()).getImage().flush();
         estadisticas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -638,9 +647,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     materiales_Curso_JPanel.setOpaque(false);
                     materiales_Curso_JPanel.setPreferredSize(new java.awt.Dimension(1046, 630));
 
+                    compartir_Materiales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
                     compartir_Materiales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
                     compartir_Materiales_JButton.setText("Compartir Material(es)");
-                    compartir_Materiales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
                     compartir_Materiales_JButton.setToolTipText("Compartir Y Subir Archivo");
                     ((ImageIcon)compartir_Materiales_JButton.getIcon()).getImage().flush();
                     compartir_Materiales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -823,9 +832,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                 estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
                                 estadisticas_JScrollPane.setViewportView(estadisticas_JTable);
 
+                                abandonar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
                                 abandonar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/leave.png"))); // NOI18N
                                 abandonar_Curso_JButton.setText("Abandonar Curso");
-                                abandonar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
                                 abandonar_Curso_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
                                 ((ImageIcon)abandonar_Curso_JButton.getIcon()).getImage().flush();
                                 abandonar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -840,11 +849,11 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     }
                                 });
 
+                                finalizar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
                                 finalizar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
                                 finalizar_Curso_JButton.setText("Finalizar Curso");
-                                finalizar_Curso_JButton.setEnabled(false);
-                                finalizar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
                                 finalizar_Curso_JButton.setToolTipText("Finaliza el curso");
+                                finalizar_Curso_JButton.setEnabled(false);
                                 ((ImageIcon)finalizar_Curso_JButton.getIcon()).getImage().flush();
                                 finalizar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                                     public void mouseClicked(java.awt.event.MouseEvent evt) {
