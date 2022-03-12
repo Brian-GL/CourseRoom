@@ -94,8 +94,8 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
-        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
         titulo_JPanel.setOpaque(false);
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -164,18 +164,22 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         miembro_A_Cargo_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
         miembro_A_Cargo_JLabel.setToolTipText("Imagen Del Grupo");
 
+        descripcion_JScrollPane.setBorder(null);
+        descripcion_JScrollPane.setOpaque(false);
+
         descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_JTextPane.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
+        descripcion_JTextPane.setOpaque(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
+        nombre_Miembro_A_Cargo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         nombre_Miembro_A_Cargo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombre_Miembro_A_Cargo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/computer.png"))); // NOI18N
-        nombre_Miembro_A_Cargo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        nombre_Miembro_A_Cargo_JLabel.setOpaque(true);
         nombre_Miembro_A_Cargo_JLabel.setToolTipText("Curso De Proveniencia Del Grupo");
+        nombre_Miembro_A_Cargo_JLabel.setOpaque(true);
         ((ImageIcon)nombre_Miembro_A_Cargo_JLabel.getIcon()).getImage().flush();
 
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -196,8 +200,8 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         fecha_Finalizacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
         ((ImageIcon)fecha_Finalizacion_JLabel.getIcon()).getImage().flush();
 
-        estatus_Tarea_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Realizando", "Finalizada" }));
         estatus_Tarea_JComboBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        estatus_Tarea_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Realizando", "Finalizada" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -310,17 +314,14 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        Font fuente = new Font("Segoe UI", 0, 18);
-        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
+        Font fuente = new Font("Segoe UI", 1, 18);
+        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color(),3);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Descripción", TitledBorder.CENTER,
-                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
 
         descripcion_JScrollPane.setBorder(borde_Titulo);
-        descripcion_JScrollPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         
         nombre_Miembro_A_Cargo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         nombre_Miembro_A_Cargo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());

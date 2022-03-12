@@ -497,8 +497,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         buscar_Tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
@@ -542,9 +542,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         buscar_JTextField.setBorder(borde_Titulo);
 
-        buscar_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        buscar_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        buscar_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_JTextField.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 

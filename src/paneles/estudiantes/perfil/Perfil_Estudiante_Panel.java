@@ -1600,8 +1600,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     public void Colorear_Componentes() {
         
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         Carta_Visible();
         

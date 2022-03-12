@@ -628,8 +628,8 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         Font fuente = new Font("Segoe UI", 1, 24);
         
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         Carta_Visible();
         
@@ -666,21 +666,21 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Tercer_Color()));
         
         
-        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Primer_Color());
+        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Segundo_Color(),5);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Primer Color", TitledBorder.CENTER,
-                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
         
         primer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
-        borde_Linea = new LineBorder(CourseRoom.Utilerias.Segundo_Color());
+        borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color(),5);
         borde_Titulo = new TitledBorder(borde_Linea, "Segundo Color", TitledBorder.CENTER,
-                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         segundo_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
-        borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
+        borde_Linea = new LineBorder(CourseRoom.Utilerias.Primer_Color(),5);
         borde_Titulo = new TitledBorder(borde_Linea, "Tercer Color", TitledBorder.CENTER,
-                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
         tercer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
         sesiones_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());

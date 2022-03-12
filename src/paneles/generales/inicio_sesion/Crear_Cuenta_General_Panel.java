@@ -1268,19 +1268,6 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         }
     }
         
-        /*public boolean validar_Password(String pass) {
-        Pattern pat = Pattern.compile("\\A(?=\\S*?[0-9])(?=\\S*?[a-z])(?=\\S*?[A-Z])(?=\\S*?[.@#$%^&+=])\\S{8,}\\z");
-        Matcher mat = pat.matcher(pass);
-        if (mat.find()) {
-            JOptionPane.showMessageDialog(null, "Bien!!!");
-        } else {
-            JOptionPane.showMessageDialog(null, "La Contraseña Debe Contener:\n"
-                    + "°Al menos 8 caracteres\n°Una Letra Mayuzcula\n"
-                    + "°Una Letra Minuscula\n°Un Caracter Especial");
-        }
-        return mat.find();
-    }*/
-
     private void Agregar_Interes_Tematica(String interes_Tematica){
         try {
             DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();

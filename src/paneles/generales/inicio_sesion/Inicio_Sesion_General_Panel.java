@@ -38,7 +38,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         contenido_JPanel = new javax.swing.JPanel();
         crear_Cuenta_JLabel = new javax.swing.JLabel();
         contrasena_JPasswordField = new javax.swing.JPasswordField();
-        usuario_JLabel = new javax.swing.JLabel();
+        correo_Electronico_JLabel = new javax.swing.JLabel();
         correo_Electronico_JTextField = new javax.swing.JTextField();
         iniciar_Sesion_JButton = new javax.swing.JButton();
         marca_JLabel = new javax.swing.JLabel();
@@ -48,20 +48,20 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         contrasena_JLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
-        setPreferredSize(new java.awt.Dimension(1260, 670));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1260, 670));
 
         imagen_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         contenido_JPanel.setOpaque(false);
 
+        crear_Cuenta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         crear_Cuenta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         crear_Cuenta_JLabel.setText("¿No Tienes Cuenta? Crea Tu Cuenta Aquí");
+        crear_Cuenta_JLabel.setToolTipText("<html>\n<h3>Crear cuenta</h3>\n</html>");
         crear_Cuenta_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        crear_Cuenta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         crear_Cuenta_JLabel.setOpaque(true);
         crear_Cuenta_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
-        crear_Cuenta_JLabel.setToolTipText("<html>\n<h3>Crear cuenta</h3>\n</html>");
         crear_Cuenta_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 crear_Cuenta_JLabelMouseClicked(evt);
@@ -73,24 +73,24 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(430, 45));
         contrasena_JPasswordField.setToolTipText("");
 
-        usuario_JLabel.setText("Correo Electrónico");
-        usuario_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        usuario_JLabel.setMaximumSize(new java.awt.Dimension(430, 30));
-        usuario_JLabel.setMinimumSize(new java.awt.Dimension(430, 30));
-        usuario_JLabel.setPreferredSize(new java.awt.Dimension(430, 30));
-        usuario_JLabel.setToolTipText("");
+        correo_Electronico_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        correo_Electronico_JLabel.setText("Correo Electrónico");
+        correo_Electronico_JLabel.setToolTipText("");
+        correo_Electronico_JLabel.setMaximumSize(new java.awt.Dimension(430, 30));
+        correo_Electronico_JLabel.setMinimumSize(new java.awt.Dimension(430, 30));
+        correo_Electronico_JLabel.setPreferredSize(new java.awt.Dimension(430, 30));
 
         correo_Electronico_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
         correo_Electronico_JTextField.setMinimumSize(new java.awt.Dimension(430, 45));
         correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(430, 45));
         correo_Electronico_JTextField.setToolTipText("<html>\n<h3>Ingresa tu nombre de usuario o correo electrónico<br>\ncon el que te registraste</h3></html>");
 
+        iniciar_Sesion_JButton.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         iniciar_Sesion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/house.png"))); // NOI18N
         iniciar_Sesion_JButton.setText(" Iniciar Sesión ");
-        iniciar_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        iniciar_Sesion_JButton.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        iniciar_Sesion_JButton.setPreferredSize(new java.awt.Dimension(430, 54));
         iniciar_Sesion_JButton.setToolTipText("<html>\n<h3>Inicia sesión con tus credenciales</h3>\n</html>");
+        iniciar_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iniciar_Sesion_JButton.setPreferredSize(new java.awt.Dimension(430, 54));
         ((ImageIcon)iniciar_Sesion_JButton.getIcon()).getImage().flush();
         iniciar_Sesion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -115,27 +115,27 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             }
         });
 
+        recuperar_Credenciales_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         recuperar_Credenciales_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         recuperar_Credenciales_JLabel.setText("¿Olvidaste Tus Credenciales? Recupera Aquí");
+        recuperar_Credenciales_JLabel.setToolTipText("<html>\n<h3>Recupera tu nombre de usuario y/o contraseña</h3>\n</html>");
         recuperar_Credenciales_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        recuperar_Credenciales_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         recuperar_Credenciales_JLabel.setOpaque(true);
         recuperar_Credenciales_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
-        recuperar_Credenciales_JLabel.setToolTipText("<html>\n<h3>Recupera tu nombre de usuario y/o contraseña</h3>\n</html>");
         recuperar_Credenciales_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 recuperar_Credenciales_JLabelMouseClicked(evt);
             }
         });
 
-        mostrar_Contrasena_JCheckBox.setText("Mostrar Contraseña");
-        mostrar_Contrasena_JCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mostrar_Contrasena_JCheckBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        mostrar_Contrasena_JCheckBox.setText("Mostrar Contraseña");
+        mostrar_Contrasena_JCheckBox.setToolTipText("Muestra La Contraseña");
+        mostrar_Contrasena_JCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mostrar_Contrasena_JCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         mostrar_Contrasena_JCheckBox.setMaximumSize(new java.awt.Dimension(430, 30));
         mostrar_Contrasena_JCheckBox.setMinimumSize(new java.awt.Dimension(430, 30));
         mostrar_Contrasena_JCheckBox.setPreferredSize(new java.awt.Dimension(430, 30));
-        mostrar_Contrasena_JCheckBox.setToolTipText("Muestra La Contraseña");
         mostrar_Contrasena_JCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mostrar_Contrasena_JCheckBoxMouseClicked(evt);
@@ -148,8 +148,8 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         logo_JLabel.setPreferredSize(new java.awt.Dimension(400, 125));
         logo_JLabel.setToolTipText("CourseRoom Logo");
 
-        contrasena_JLabel.setText("<html>\n<p style=\"text-align:center;\">\n Contraseña\n</p>\n</html>");
         contrasena_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        contrasena_JLabel.setText("<html>\n<p style=\"text-align:center;\">\n Contraseña\n</p>\n</html>");
         contrasena_JLabel.setMaximumSize(new java.awt.Dimension(430, 30));
         contrasena_JLabel.setMinimumSize(new java.awt.Dimension(430, 30));
         contrasena_JLabel.setPreferredSize(new java.awt.Dimension(430, 30));
@@ -174,7 +174,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
                     .addComponent(logo_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(contrasena_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(correo_Electronico_JTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(usuario_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(correo_Electronico_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contenido_JPanelLayout.setVerticalGroup(
@@ -183,7 +183,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usuario_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(correo_Electronico_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(correo_Electronico_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -285,6 +285,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel contrasena_JLabel;
     private javax.swing.JPasswordField contrasena_JPasswordField;
+    private javax.swing.JLabel correo_Electronico_JLabel;
     private javax.swing.JTextField correo_Electronico_JTextField;
     private javax.swing.JLabel crear_Cuenta_JLabel;
     private javax.swing.JLabel imagen_JLabel;
@@ -293,7 +294,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     private javax.swing.JLabel marca_JLabel;
     private javax.swing.JCheckBox mostrar_Contrasena_JCheckBox;
     private javax.swing.JLabel recuperar_Credenciales_JLabel;
-    private javax.swing.JLabel usuario_JLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -341,7 +341,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
 
     @Override
     public void Colorear_Componentes() {
-        usuario_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        correo_Electronico_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
         contrasena_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
         correo_Electronico_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
         correo_Electronico_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());

@@ -318,12 +318,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         ((ImageIcon)fecha_Creacion_JLabel.getIcon()).getImage().flush();
 
         descripcion_JScrollPane.setBorder(null);
+        descripcion_JScrollPane.setOpaque(false);
 
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
+        descripcion_JTextPane.setOpaque(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         javax.swing.GroupLayout informacion_Grupo_JPanelLayout = new javax.swing.GroupLayout(informacion_Grupo_JPanel);
@@ -1433,6 +1435,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         descripcion_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(descripcion));
         editar_Descripcion_JTextPane.setText(descripcion);
         
+        descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         editar_Descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1542,18 +1545,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         actualizar_JButton.setBackground((CourseRoom.Utilerias.Segundo_Color()));
         
-        Font fuente = new Font("Segoe UI", 0, 18);
+        Font fuente = new Font("Segoe UI", 1, 18);
         
-        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
-        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Descripción", TitledBorder.CENTER,
-                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Segundo_Color(),3);
+        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Descripción Del Grupo", TitledBorder.CENTER,
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
         
         descripcion_JScrollPane.setBorder(borde_Titulo);
-        descripcion_JScrollPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        
-        descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         
         editar_Descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
         editar_Descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -1661,9 +1660,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         editar_Nombre_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
         editar_Nombre_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
+        borde_Linea = new LineBorder(CourseRoom.Utilerias.Segundo_Color(),2);
         borde_Titulo = new TitledBorder(borde_Linea, "Agregar Pendiente", TitledBorder.CENTER,
-                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
         
         anadir_Tarea_Pendiente_JPanel.setBorder(borde_Titulo);
         

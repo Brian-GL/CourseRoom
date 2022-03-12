@@ -251,9 +251,9 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Grupos_JPanel.setOpaque(false);
             buscar_Grupos_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
-            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            buscar_JTextField.setBorder(null);
+            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
             buscar_JTextField.setToolTipText("<html>\n<h3>Buscar grupo(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
+            buscar_JTextField.setBorder(null);
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     buscar_JTextFieldKeyPressed(evt);
@@ -535,8 +535,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     public void Colorear_Componentes() {
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         buscar_Grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
@@ -562,16 +562,16 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_Grupos_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
         buscar_Grupos_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
-        Font fuente = new java.awt.Font("Segoe UI", 1, 15);
-        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
+        Font fuente = new java.awt.Font("Segoe UI", 1, 14);
+        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color(),2);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Grupo(s)", TitledBorder.CENTER,
-                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         buscar_JTextField.setBorder(borde_Titulo);
 
-        buscar_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        buscar_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        buscar_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_JTextField.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         mostrar_Grupos_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
         

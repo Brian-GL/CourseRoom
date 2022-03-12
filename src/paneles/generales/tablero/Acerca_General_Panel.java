@@ -66,7 +66,6 @@ public final class Acerca_General_Panel extends javax.swing.JPanel implements Co
         descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         descripcion_JTextPane.setText("");
         descripcion_JTextPane.setMinimumSize(new java.awt.Dimension(1071, 400));
-        descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setPreferredSize(new java.awt.Dimension(1071, 400));
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
@@ -144,8 +143,9 @@ public final class Acerca_General_Panel extends javax.swing.JPanel implements Co
     @Override
     public void Colorear_Componentes() {
         
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }
 }

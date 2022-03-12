@@ -72,11 +72,11 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
                     // Vertical
                     GradientPaint gp = new GradientPaint(
                         0, 0, transparente,
-                        0, h, CourseRoom.Utilerias.Tercer_Color());
+                        0, h, CourseRoom.Utilerias.Primer_Color());
 
                     // Horizontal
                     GradientPaint gp2 = new GradientPaint(
-                        0, 0, CourseRoom.Utilerias.Primer_Color(),
+                        0, 0, CourseRoom.Utilerias.Tercer_Color(),
                         w, 0, CourseRoom.Utilerias.Segundo_Color());
 
                     g2d.setPaint(gp2);
@@ -151,7 +151,6 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     }
     
     public static void Colorear() {
-        //visualizador_JPanel.setBackground(CourseRoom.Utilerias.Primer_Color());
         visualizador_JPanel.repaint();
     }
     

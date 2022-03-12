@@ -270,15 +270,15 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
             add(mostrar_Chats_JPanel, "Mostrar");
 
-            buscar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
             buscar_Chats_JPanel.setOpaque(false);
+            buscar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+            buscar_JTextField.setToolTipText("<html> <h3>Buscar chats. Presiona ENTER para realizar la búsqueda</h3> </html>");
             buscar_JTextField.setBorder(null);
             buscar_JTextField.setMaximumSize(new java.awt.Dimension(2147483647, 50));
             buscar_JTextField.setMinimumSize(new java.awt.Dimension(64, 50));
             buscar_JTextField.setPreferredSize(new java.awt.Dimension(64, 50));
-            buscar_JTextField.setToolTipText("<html> <h3>Buscar chats. Presiona ENTER para realizar la búsqueda</h3> </html>");
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     buscar_JTextFieldKeyPressed(evt);
@@ -588,22 +588,22 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
     public void Colorear_Componentes() {
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         buscar_Chats_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        Font fuente = new java.awt.Font("Segoe UI", 1, 15);
-        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
+        Font fuente = new java.awt.Font("Segoe UI", 1, 14);
+        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color(),2);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Chat(s)", TitledBorder.CENTER,
-                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         buscar_JTextField.setBorder(borde_Titulo);
 
-        buscar_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        buscar_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        buscar_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_JTextField.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         mostrar_Chats_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
         

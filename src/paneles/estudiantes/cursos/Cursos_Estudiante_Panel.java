@@ -530,6 +530,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                         buscar_JTextField.setToolTipText("<html> <h3>Buscar curso(s). Presiona ENTER para realizar la búsqueda</h3> </html>");
                         buscar_JTextField.setBorder(null);
+                        buscar_JTextField.setOpaque(true);
                         buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                             public void keyPressed(java.awt.event.KeyEvent evt) {
                                 buscar_JTextFieldKeyPressed(evt);
@@ -1139,8 +1140,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         //Titulo cursos:
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         Carta_Visible();
 
@@ -1152,7 +1153,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         Font fuente = new java.awt.Font("Segoe UI", 1, 15);
         LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Curso(s)", TitledBorder.CENTER,
-                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+                TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         buscar_JTextField.setBorder(borde_Titulo);
         
@@ -1166,9 +1167,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_Cursos_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
         buscar_Cursos_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        buscar_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        buscar_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        buscar_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_JTextField.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        buscar_JTextField.setCaretColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         mostrar_Cursos_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
         
