@@ -121,10 +121,7 @@ import oshi.hardware.SoundCard;
 import oshi.hardware.UsbDevice;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
@@ -162,15 +159,14 @@ public class CourseRoom{
         }
 
         public static Vector<Integer> Fecha_Hora_Servidor() throws XmlRpcException, IOException {
-            
+           
             Vector parametros = new Vector();
             
             parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
             
             Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Fecha_Hora_Servidor", parametros);
-
+            
             return (respuesta != null)? (Vector<Integer>) respuesta : new Vector<>();
-          
         }
         
         public static byte[] Imagen_Inicio_Sesion() throws XmlRpcException, IOException{

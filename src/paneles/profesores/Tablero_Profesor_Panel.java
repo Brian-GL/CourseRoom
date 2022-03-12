@@ -886,8 +886,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     public void Iniciar_Componentes() {
          try {
              
-            
-            
             System.out.println("Dashboard -> Getting Image From https://i.pravatar.cc/450");
             URL url_Imagen = new URL("https://i.pravatar.cc/450");
             imagen_Usuario = ImageIO.read(url_Imagen);
