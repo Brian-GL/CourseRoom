@@ -83,18 +83,18 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
         estadisticas_JTable = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
-        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
         contenido_Titulo_JPanel.setOpaque(false);
+        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Desempeño Escolar");
-        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(500, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(500, 68));
         titulo_JLabel.setOpaque(true);
@@ -104,6 +104,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,6 +119,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         });
 
         regresion_Lineal_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/function.png"))); // NOI18N
+        regresion_Lineal_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)regresion_Lineal_JButton.getIcon()).getImage().flush();
         regresion_Lineal_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,6 +128,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         });
 
         estadisticas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stats.png"))); // NOI18N
+        estadisticas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)estadisticas_JButton.getIcon()).getImage().flush();
         estadisticas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,6 +137,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         });
 
         grafica_Pastel_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/pie-chart.png"))); // NOI18N
+        grafica_Pastel_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)grafica_Pastel_JButton.getIcon()).getImage().flush();
         grafica_Pastel_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -161,10 +165,9 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(grafica_Pastel_JButton)
-                        .addComponent(regresion_Lineal_JButton)
-                        .addComponent(estadisticas_JButton))
+                    .addComponent(grafica_Pastel_JButton)
+                    .addComponent(regresion_Lineal_JButton)
+                    .addComponent(estadisticas_JButton)
                     .addComponent(actualizar_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -219,7 +222,7 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
                     return super.getColumnClass(column);
                 }
             });
-            estadisticas_JTable.setRowHeight(110);
+            estadisticas_JTable.setRowHeight(96);
             estadisticas_JTable.setShowGrid(true);
             estadisticas_JTable.setSurrendersFocusOnKeystroke(true);
             estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));

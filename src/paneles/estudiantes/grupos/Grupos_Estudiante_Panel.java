@@ -38,7 +38,7 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.border.LineBorder;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import java.awt.event.KeyEvent;
@@ -91,14 +91,14 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Grupos_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
-        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
         contenido_Titulo_JPanel.setOpaque(false);
+        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Grupos");
-        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
@@ -108,8 +108,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
-        actualizar_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,8 +123,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         });
 
         buscar_Grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
-        buscar_Grupos_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
-        buscar_Grupos_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
+        buscar_Grupos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)buscar_Grupos_JButton.getIcon()).getImage().flush();
         buscar_Grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -145,9 +143,9 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(buscar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscar_Grupos_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizar_JButton)
                 .addGap(0, 0, 0))
         );
         acciones_JPanelLayout.setVerticalGroup(
@@ -155,8 +153,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buscar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buscar_Grupos_JButton)
+                    .addComponent(actualizar_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -166,6 +164,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Grupos_JScrollPane.setOpaque(false);
 
         mostrar_Grupos_JTable.setAutoCreateRowSorter(true);
+        mostrar_Grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mostrar_Grupos_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -199,7 +198,6 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     return super.getColumnClass(column);
                 }
             });
-            mostrar_Grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             mostrar_Grupos_JTable.setRowHeight(110);
             mostrar_Grupos_JTable.setShowGrid(true);
             mostrar_Grupos_JTable.setSurrendersFocusOnKeystroke(true);
@@ -251,7 +249,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Grupos_JPanel.setOpaque(false);
             buscar_Grupos_JPanel.setPreferredSize(new java.awt.Dimension(1080, 630));
 
-            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+            buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
             buscar_JTextField.setToolTipText("<html>\n<h3>Buscar grupo(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
             buscar_JTextField.setBorder(null);
             buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -261,10 +259,11 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             });
 
             mostrar_Grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/vegan.png"))); // NOI18N
-            mostrar_Grupos_JButton.setMaximumSize(new java.awt.Dimension(50, 50));
-            mostrar_Grupos_JButton.setMinimumSize(new java.awt.Dimension(50, 50));
-            mostrar_Grupos_JButton.setPreferredSize(new java.awt.Dimension(50, 50));
             mostrar_Grupos_JButton.setToolTipText("<html> <h3>Regresar a mis grupos</h3> </html>");
+            mostrar_Grupos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            mostrar_Grupos_JButton.setMaximumSize(new java.awt.Dimension(64, 64));
+            mostrar_Grupos_JButton.setMinimumSize(new java.awt.Dimension(64, 64));
+            mostrar_Grupos_JButton.setPreferredSize(new java.awt.Dimension(64, 64));
             ((ImageIcon)mostrar_Grupos_JButton.getIcon()).getImage().flush();
             mostrar_Grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -351,7 +350,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                             .addGroup(buscar_Grupos_JPanelLayout.createSequentialGroup()
                                 .addComponent(mostrar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE))
+                                .addComponent(buscar_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE))
                             .addComponent(buscar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
                         .addGap(32, 32, 32))
                 );
@@ -363,7 +362,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                             .addComponent(buscar_JTextField)
                             .addComponent(mostrar_Grupos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buscar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                        .addComponent(buscar_Grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                         .addContainerGap())
                 );
 
@@ -563,8 +562,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_Grupos_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
 
         Font fuente = new java.awt.Font("Segoe UI", 1, 14);
-        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color(),2);
-        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Grupo(s)", TitledBorder.CENTER,
+        BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
+        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Grupo(s)", TitledBorder.DEFAULT_JUSTIFICATION,
                 TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         buscar_JTextField.setBorder(borde_Titulo);

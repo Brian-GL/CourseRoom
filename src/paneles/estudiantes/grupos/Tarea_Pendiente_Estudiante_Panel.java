@@ -24,7 +24,7 @@ import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.border.LineBorder;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 
 /**
@@ -97,9 +97,9 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         titulo_JPanel.setOpaque(false);
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
-        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setOpaque(true);
@@ -107,6 +107,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mis Chats");
+        regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,7 +123,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -143,9 +144,9 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(actualizar_JButton))
         );
         titulo_JPanelLayout.setVerticalGroup(
             titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,16 +154,16 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
                 .addGroup(titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actualizar_JButton))
                 .addContainerGap())
         );
 
         miembro_A_Cargo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        miembro_A_Cargo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        miembro_A_Cargo_JLabel.setToolTipText("Imagen Del Grupo");
+        miembro_A_Cargo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         miembro_A_Cargo_JLabel.setMaximumSize(new java.awt.Dimension(400, 400));
         miembro_A_Cargo_JLabel.setMinimumSize(new java.awt.Dimension(400, 400));
         miembro_A_Cargo_JLabel.setPreferredSize(new java.awt.Dimension(400, 400));
-        miembro_A_Cargo_JLabel.setToolTipText("Imagen Del Grupo");
 
         descripcion_JScrollPane.setBorder(null);
         descripcion_JScrollPane.setOpaque(false);
@@ -179,25 +180,26 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         nombre_Miembro_A_Cargo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombre_Miembro_A_Cargo_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/computer.png"))); // NOI18N
         nombre_Miembro_A_Cargo_JLabel.setToolTipText("Curso De Proveniencia Del Grupo");
+        nombre_Miembro_A_Cargo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         nombre_Miembro_A_Cargo_JLabel.setOpaque(true);
         ((ImageIcon)nombre_Miembro_A_Cargo_JLabel.getIcon()).getImage().flush();
 
+        fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Creacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/calendar_1.png"))); // NOI18N
-        fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        fecha_Creacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
         fecha_Creacion_JLabel.setMaximumSize(new java.awt.Dimension(354, 20));
         fecha_Creacion_JLabel.setMinimumSize(new java.awt.Dimension(354, 20));
         fecha_Creacion_JLabel.setPreferredSize(new java.awt.Dimension(354, 20));
-        fecha_Creacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
         ((ImageIcon)fecha_Creacion_JLabel.getIcon()).getImage().flush();
 
+        fecha_Finalizacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         fecha_Finalizacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Finalizacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
-        fecha_Finalizacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        fecha_Finalizacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
         fecha_Finalizacion_JLabel.setMaximumSize(new java.awt.Dimension(354, 20));
         fecha_Finalizacion_JLabel.setMinimumSize(new java.awt.Dimension(354, 20));
         fecha_Finalizacion_JLabel.setPreferredSize(new java.awt.Dimension(354, 20));
-        fecha_Finalizacion_JLabel.setToolTipText("Fecha De Creación Del Grupo");
         ((ImageIcon)fecha_Finalizacion_JLabel.getIcon()).getImage().flush();
 
         estatus_Tarea_JComboBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -315,7 +317,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
         Font fuente = new Font("Segoe UI", 1, 18);
-        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color(),3);
+        BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Descripción", TitledBorder.CENTER,
                 TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
 

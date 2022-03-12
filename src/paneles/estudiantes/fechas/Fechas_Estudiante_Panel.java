@@ -82,14 +82,14 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 134));
 
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
-        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(436, 68));
         contenido_Titulo_JPanel.setOpaque(false);
+        contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(436, 68));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Fechas");
-        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(176, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(176, 68));
         titulo_JLabel.setOpaque(true);
@@ -109,6 +109,7 @@ public class Fechas_Estudiante_Panel extends JScrollPane implements Limpieza_Int
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

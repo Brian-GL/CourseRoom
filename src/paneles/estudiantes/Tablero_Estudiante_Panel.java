@@ -109,13 +109,13 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         menu_JPanel.setPreferredSize(new java.awt.Dimension(150, 630));
         menu_JPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        imagen_Perfil_JLabel.setToolTipText("Mostrar Perfil Del Usuario.");
         imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setOpaque(true);
         imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setRequestFocusEnabled(false);
+        imagen_Perfil_JLabel.setToolTipText("Mostrar Perfil Del Usuario.");
         imagen_Perfil_JLabel.setVerifyInputWhenFocusTarget(false);
         imagen_Perfil_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -370,6 +370,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         barra_Superior_JPanel.setOpaque(false);
 
         menu_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/menu.png"))); // NOI18N
+        menu_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         menu_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menu_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         menu_JButton.setMaximumSize(new java.awt.Dimension(40, 40));
@@ -851,8 +852,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         menu_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         menu_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        mensaje_Bienvenida_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        mensaje_Bienvenida_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
        
         perfil_Panel.Colorear_Componentes();
         avisos_Panel.Colorear_Componentes();
@@ -907,17 +908,19 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     
     public static void Cambiar_Imagen_Usuario(Image _imagen_Usuario) {
         
-        imagen_Usuario = _imagen_Usuario.getScaledInstance(450, 450, Image.SCALE_AREA_AVERAGING);
+        imagen_Usuario = _imagen_Usuario;
         
         _imagen_Usuario = _imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_AREA_AVERAGING);
         
         ImageIcon imagen_Perfil = new ImageIcon(_imagen_Usuario);
         imagen_Perfil_JLabel.setIcon(imagen_Perfil);
         imagen_Perfil = new ImageIcon(imagen_Usuario);
-        Perfil_Estudiante_Panel.Obtener_Imagen_Perfil_JLabel().setIcon(imagen_Perfil);
+
         _imagen_Usuario.flush();
         imagen_Perfil.getImage().flush();
         
+        
+        Establecer_Colores();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

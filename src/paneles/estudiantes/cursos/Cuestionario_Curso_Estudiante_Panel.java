@@ -20,10 +20,13 @@ package paneles.estudiantes.cursos;
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
 import java.awt.CardLayout;
+import java.awt.Font;
 import java.awt.Image;
 import java.io.IOException;
+import java.util.Hashtable;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
@@ -35,6 +38,7 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
 public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements Componentes_Interface{
 
     private String Id_Curso;
+    private JLabel[] labeles;
     
     public Cuestionario_Curso_Estudiante_Panel(String id_Cuestionario, String id_Curso, String nombre_Curso) {
         initComponents();
@@ -68,23 +72,18 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Relevancia_JPanel = new javax.swing.JPanel();
         titulo_Pregunta_Relevancia_JLabel = new javax.swing.JLabel();
         titulo_Respuesta_Relevancia_JPanel = new javax.swing.JPanel();
-        titulo_Valor1_Respuesta_JLabel = new javax.swing.JLabel();
-        titulo_Valor2_Respuesta_JLabel = new javax.swing.JLabel();
-        titulo_Valor3_Respuesta_JLabel = new javax.swing.JLabel();
-        titulo_Valor4_Respuesta_JLabel = new javax.swing.JLabel();
-        titulo_Valor5_Respuesta_JLabel = new javax.swing.JLabel();
         pregunta1_Relevancia_JLabel = new javax.swing.JLabel();
         respuesta1_Relevancia_JPanel = new javax.swing.JPanel();
-        respuesta1_JSlider = new javax.swing.JSlider();
+        respuesta1_Relevancia_JSlider = new javax.swing.JSlider();
         pregunta2_Relevancia_JLabel = new javax.swing.JLabel();
         respuesta2_Relevancia_JPanel = new javax.swing.JPanel();
-        respuesta2_JSlider = new javax.swing.JSlider();
+        respuesta2_Relevancia_JSlider = new javax.swing.JSlider();
         pregunta3_Relevancia_JLabel = new javax.swing.JLabel();
         respuesta3_Relevancia_JPanel = new javax.swing.JPanel();
-        respuesta3_JSlider = new javax.swing.JSlider();
+        respuesta3_Relevancia_JSlider = new javax.swing.JSlider();
         pregunta4_Relevancia_JLabel = new javax.swing.JLabel();
         respuesta4_Relevancia_JPanel = new javax.swing.JPanel();
-        respuesta4_JSlider = new javax.swing.JSlider();
+        respuesta4_Relevancia_JSlider = new javax.swing.JSlider();
 
         setLayout(new java.awt.CardLayout());
 
@@ -107,6 +106,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
         continuar_Relevancia_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
         continuar_Relevancia_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
+        continuar_Relevancia_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         continuar_Relevancia_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)continuar_Relevancia_JButton.getIcon()).getImage().flush();
         continuar_Relevancia_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,6 +123,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
         regresar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_Curso_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
+        regresar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_Curso_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_Curso_JButton.getIcon()).getImage().flush();
         regresar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,7 +163,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
                 .addComponent(titulo_Inicio_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(informacion_Inicio_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addGroup(inicio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(continuar_Relevancia_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(regresar_Curso_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -176,11 +177,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         relevancia_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         relevancia_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         relevancia_JLabel.setText("Relevancia");
-        relevancia_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        relevancia_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         relevancia_JLabel.setOpaque(true);
 
         continuar_Pensamiento_Reflexivo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
         continuar_Pensamiento_Reflexivo_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
+        continuar_Pensamiento_Reflexivo_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         continuar_Pensamiento_Reflexivo_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)continuar_Pensamiento_Reflexivo_JButton.getIcon()).getImage().flush();
         continuar_Pensamiento_Reflexivo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,6 +199,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
         regresar_Inicio_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_Inicio_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
+        regresar_Inicio_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_Inicio_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_Inicio_JButton.getIcon()).getImage().flush();
         regresar_Inicio_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -211,7 +214,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
             }
         });
 
-        cuestionario_Relevancia_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cuestionario_Relevancia_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         cuestionario_Relevancia_JPanel.setLayout(new java.awt.GridLayout(5, 2, 5, 5));
 
         titulo_Pregunta_Relevancia_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -219,48 +222,8 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         titulo_Pregunta_Relevancia_JLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         cuestionario_Relevancia_JPanel.add(titulo_Pregunta_Relevancia_JLabel);
 
+        titulo_Respuesta_Relevancia_JPanel.setOpaque(false);
         titulo_Respuesta_Relevancia_JPanel.setLayout(new java.awt.GridLayout(1, 5));
-
-        titulo_Valor1_Respuesta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        titulo_Valor1_Respuesta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        titulo_Valor1_Respuesta_JLabel.setText("Casi Nunca");
-        titulo_Valor1_Respuesta_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        titulo_Valor1_Respuesta_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        titulo_Valor1_Respuesta_JLabel.setOpaque(true);
-        titulo_Respuesta_Relevancia_JPanel.add(titulo_Valor1_Respuesta_JLabel);
-
-        titulo_Valor2_Respuesta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        titulo_Valor2_Respuesta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        titulo_Valor2_Respuesta_JLabel.setText("Rara Vez");
-        titulo_Valor2_Respuesta_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        titulo_Valor2_Respuesta_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        titulo_Valor2_Respuesta_JLabel.setOpaque(true);
-        titulo_Respuesta_Relevancia_JPanel.add(titulo_Valor2_Respuesta_JLabel);
-
-        titulo_Valor3_Respuesta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        titulo_Valor3_Respuesta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        titulo_Valor3_Respuesta_JLabel.setText("Alguna Vez");
-        titulo_Valor3_Respuesta_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        titulo_Valor3_Respuesta_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        titulo_Valor3_Respuesta_JLabel.setOpaque(true);
-        titulo_Respuesta_Relevancia_JPanel.add(titulo_Valor3_Respuesta_JLabel);
-
-        titulo_Valor4_Respuesta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        titulo_Valor4_Respuesta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        titulo_Valor4_Respuesta_JLabel.setText("A Menudo");
-        titulo_Valor4_Respuesta_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        titulo_Valor4_Respuesta_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        titulo_Valor4_Respuesta_JLabel.setOpaque(true);
-        titulo_Respuesta_Relevancia_JPanel.add(titulo_Valor4_Respuesta_JLabel);
-
-        titulo_Valor5_Respuesta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        titulo_Valor5_Respuesta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        titulo_Valor5_Respuesta_JLabel.setText("Casi Siempre");
-        titulo_Valor5_Respuesta_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        titulo_Valor5_Respuesta_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        titulo_Valor5_Respuesta_JLabel.setOpaque(true);
-        titulo_Respuesta_Relevancia_JPanel.add(titulo_Valor5_Respuesta_JLabel);
-
         cuestionario_Relevancia_JPanel.add(titulo_Respuesta_Relevancia_JPanel);
 
         pregunta1_Relevancia_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -270,13 +233,14 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         respuesta1_Relevancia_JPanel.setOpaque(false);
         respuesta1_Relevancia_JPanel.setLayout(new java.awt.BorderLayout());
 
-        respuesta1_JSlider.setMajorTickSpacing(1);
-        respuesta1_JSlider.setMaximum(5);
-        respuesta1_JSlider.setPaintTicks(true);
-        respuesta1_JSlider.setSnapToTicks(true);
-        respuesta1_JSlider.setValue(0);
-        respuesta1_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        respuesta1_Relevancia_JPanel.add(respuesta1_JSlider, java.awt.BorderLayout.CENTER);
+        respuesta1_Relevancia_JSlider.setMajorTickSpacing(1);
+        respuesta1_Relevancia_JSlider.setMaximum(4);
+        respuesta1_Relevancia_JSlider.setPaintLabels(true);
+        respuesta1_Relevancia_JSlider.setPaintTicks(true);
+        respuesta1_Relevancia_JSlider.setSnapToTicks(true);
+        respuesta1_Relevancia_JSlider.setValue(0);
+        respuesta1_Relevancia_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta1_Relevancia_JPanel.add(respuesta1_Relevancia_JSlider, java.awt.BorderLayout.CENTER);
 
         cuestionario_Relevancia_JPanel.add(respuesta1_Relevancia_JPanel);
 
@@ -287,13 +251,14 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         respuesta2_Relevancia_JPanel.setOpaque(false);
         respuesta2_Relevancia_JPanel.setLayout(new java.awt.GridLayout(1, 5));
 
-        respuesta2_JSlider.setMajorTickSpacing(1);
-        respuesta2_JSlider.setMaximum(5);
-        respuesta2_JSlider.setPaintTicks(true);
-        respuesta2_JSlider.setSnapToTicks(true);
-        respuesta2_JSlider.setValue(0);
-        respuesta2_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        respuesta2_Relevancia_JPanel.add(respuesta2_JSlider);
+        respuesta2_Relevancia_JSlider.setMajorTickSpacing(1);
+        respuesta2_Relevancia_JSlider.setMaximum(4);
+        respuesta2_Relevancia_JSlider.setPaintLabels(true);
+        respuesta2_Relevancia_JSlider.setPaintTicks(true);
+        respuesta2_Relevancia_JSlider.setSnapToTicks(true);
+        respuesta2_Relevancia_JSlider.setValue(0);
+        respuesta2_Relevancia_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta2_Relevancia_JPanel.add(respuesta2_Relevancia_JSlider);
 
         cuestionario_Relevancia_JPanel.add(respuesta2_Relevancia_JPanel);
 
@@ -304,13 +269,14 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         respuesta3_Relevancia_JPanel.setOpaque(false);
         respuesta3_Relevancia_JPanel.setLayout(new java.awt.GridLayout(1, 5));
 
-        respuesta3_JSlider.setMajorTickSpacing(1);
-        respuesta3_JSlider.setMaximum(5);
-        respuesta3_JSlider.setPaintTicks(true);
-        respuesta3_JSlider.setSnapToTicks(true);
-        respuesta3_JSlider.setValue(0);
-        respuesta3_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        respuesta3_Relevancia_JPanel.add(respuesta3_JSlider);
+        respuesta3_Relevancia_JSlider.setMajorTickSpacing(1);
+        respuesta3_Relevancia_JSlider.setMaximum(4);
+        respuesta3_Relevancia_JSlider.setPaintLabels(true);
+        respuesta3_Relevancia_JSlider.setPaintTicks(true);
+        respuesta3_Relevancia_JSlider.setSnapToTicks(true);
+        respuesta3_Relevancia_JSlider.setValue(0);
+        respuesta3_Relevancia_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta3_Relevancia_JPanel.add(respuesta3_Relevancia_JSlider);
 
         cuestionario_Relevancia_JPanel.add(respuesta3_Relevancia_JPanel);
 
@@ -319,15 +285,16 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Relevancia_JPanel.add(pregunta4_Relevancia_JLabel);
 
         respuesta4_Relevancia_JPanel.setOpaque(false);
-        respuesta4_Relevancia_JPanel.setLayout(new java.awt.GridLayout());
+        respuesta4_Relevancia_JPanel.setLayout(new java.awt.GridLayout(1, 0));
 
-        respuesta4_JSlider.setMajorTickSpacing(1);
-        respuesta4_JSlider.setMaximum(5);
-        respuesta4_JSlider.setPaintTicks(true);
-        respuesta4_JSlider.setSnapToTicks(true);
-        respuesta4_JSlider.setValue(0);
-        respuesta4_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        respuesta4_Relevancia_JPanel.add(respuesta4_JSlider);
+        respuesta4_Relevancia_JSlider.setMajorTickSpacing(1);
+        respuesta4_Relevancia_JSlider.setMaximum(4);
+        respuesta4_Relevancia_JSlider.setPaintLabels(true);
+        respuesta4_Relevancia_JSlider.setPaintTicks(true);
+        respuesta4_Relevancia_JSlider.setSnapToTicks(true);
+        respuesta4_Relevancia_JSlider.setValue(0);
+        respuesta4_Relevancia_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta4_Relevancia_JPanel.add(respuesta4_Relevancia_JSlider);
 
         cuestionario_Relevancia_JPanel.add(respuesta4_Relevancia_JPanel);
 
@@ -354,7 +321,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
                 .addContainerGap()
                 .addComponent(relevancia_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cuestionario_Relevancia_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addComponent(cuestionario_Relevancia_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(relevancia_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(continuar_Pensamiento_Reflexivo_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -456,22 +423,17 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private javax.swing.JButton regresar_Inicio_JButton;
     private javax.swing.JLabel relevancia_JLabel;
     private javax.swing.JPanel relevancia_JPanel;
-    private javax.swing.JSlider respuesta1_JSlider;
     private javax.swing.JPanel respuesta1_Relevancia_JPanel;
-    private javax.swing.JSlider respuesta2_JSlider;
+    private javax.swing.JSlider respuesta1_Relevancia_JSlider;
     private javax.swing.JPanel respuesta2_Relevancia_JPanel;
-    private javax.swing.JSlider respuesta3_JSlider;
+    private javax.swing.JSlider respuesta2_Relevancia_JSlider;
     private javax.swing.JPanel respuesta3_Relevancia_JPanel;
-    private javax.swing.JSlider respuesta4_JSlider;
+    private javax.swing.JSlider respuesta3_Relevancia_JSlider;
     private javax.swing.JPanel respuesta4_Relevancia_JPanel;
+    private javax.swing.JSlider respuesta4_Relevancia_JSlider;
     private javax.swing.JLabel titulo_Inicio_JLabel;
     private javax.swing.JLabel titulo_Pregunta_Relevancia_JLabel;
     private javax.swing.JPanel titulo_Respuesta_Relevancia_JPanel;
-    private javax.swing.JLabel titulo_Valor1_Respuesta_JLabel;
-    private javax.swing.JLabel titulo_Valor2_Respuesta_JLabel;
-    private javax.swing.JLabel titulo_Valor3_Respuesta_JLabel;
-    private javax.swing.JLabel titulo_Valor4_Respuesta_JLabel;
-    private javax.swing.JLabel titulo_Valor5_Respuesta_JLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -490,6 +452,45 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         catch(IOException ex){
             
         }
+        
+        JLabel label;
+        labeles = new JLabel[5];
+        
+        Font segoe = new Font("Segoe UI", Font.PLAIN, 13);
+        
+        label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Casi Nunca"));
+        label.setFont(segoe);
+        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        labeles[0] = label;
+        label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Rara Vez"));
+        label.setFont(segoe);
+        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        labeles[1] = label;
+        label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Alguna Vez"));
+        label.setFont(segoe);
+        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        labeles[2] = label;
+        label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("A Menudo"));
+        label.setFont(segoe);
+        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        labeles[3] = label;
+        label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Casi Siempre"));
+        label.setFont(segoe);
+        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        labeles[4] = label;
+        
+        Hashtable<Integer, JLabel> labels = new Hashtable<>();
+        labels.put(0, labeles[0]);
+        labels.put(1, labeles[1]);
+        labels.put(2, labeles[2]);
+        labels.put(3, labeles[3]);
+        labels.put(4, labeles[4]);
+        
+        respuesta1_Relevancia_JSlider.setLabelTable(labels);
+        respuesta2_Relevancia_JSlider.setLabelTable(labels);
+        respuesta3_Relevancia_JSlider.setLabelTable(labels);
+        respuesta4_Relevancia_JSlider.setLabelTable(labels);
+        
         
     }
 
@@ -516,23 +517,14 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         pregunta3_Relevancia_JLabel .setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         pregunta4_Relevancia_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        titulo_Valor1_Respuesta_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_Valor2_Respuesta_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_Valor3_Respuesta_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_Valor4_Respuesta_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_Valor5_Respuesta_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        respuesta1_Relevancia_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta2_Relevancia_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta3_Relevancia_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta4_Relevancia_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        titulo_Valor1_Respuesta_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        titulo_Valor2_Respuesta_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        titulo_Valor3_Respuesta_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        titulo_Valor4_Respuesta_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        titulo_Valor5_Respuesta_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        
-        
-        respuesta1_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta2_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta3_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta4_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        for(JLabel label : labeles){
+            label.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        }
         
     }
 

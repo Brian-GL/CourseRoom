@@ -17,7 +17,7 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
-import javax.swing.border.LineBorder;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -81,7 +81,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Ajustes");
-        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
@@ -91,9 +91,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         acciones_JPanel.setOpaque(false);
 
         interfaz_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/user-interface.png"))); // NOI18N
-        interfaz_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
-        interfaz_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
-        interfaz_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        interfaz_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)interfaz_JButton.getIcon()).getImage().flush();
         interfaz_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -102,9 +100,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/programmer.png"))); // NOI18N
-        cuenta_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
-        cuenta_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
-        cuenta_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        cuenta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)cuenta_JButton.getIcon()).getImage().flush();
         cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -113,9 +109,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         sesiones_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/digital-footprint.png"))); // NOI18N
-        sesiones_JButton.setMaximumSize(new java.awt.Dimension(32, 32));
-        sesiones_JButton.setMinimumSize(new java.awt.Dimension(32, 32));
-        sesiones_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        sesiones_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)sesiones_JButton.getIcon()).getImage().flush();
         sesiones_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -129,11 +123,11 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(interfaz_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sesiones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sesiones_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cuenta_JButton)
                 .addGap(0, 0, 0))
         );
         acciones_JPanelLayout.setVerticalGroup(
@@ -141,9 +135,9 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(interfaz_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sesiones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(interfaz_JButton)
+                    .addComponent(sesiones_JButton)
+                    .addComponent(cuenta_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -189,6 +183,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         recargar_Colores_JButton.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         recargar_Colores_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-video.png"))); // NOI18N
         recargar_Colores_JButton.setText("Recargar Colores");
+        recargar_Colores_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)recargar_Colores_JButton.getIcon()).getImage().flush();
         recargar_Colores_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -287,6 +282,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             eliminar_Cuenta_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
             eliminar_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
             eliminar_Cuenta_JButton.setText("¿Eliminar Cuenta?");
+            eliminar_Cuenta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             ((ImageIcon)eliminar_Cuenta_JButton.getIcon()).getImage().flush();
             eliminar_Cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -303,6 +299,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             desactivar_Activar_Notificaciones_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
             desactivar_Activar_Notificaciones_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/bell_warning.png"))); // NOI18N
             desactivar_Activar_Notificaciones_JButton.setText("Desactivar Notificaciones");
+            desactivar_Activar_Notificaciones_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             ((ImageIcon)desactivar_Activar_Notificaciones_JButton.getIcon()).getImage().flush();
             desactivar_Activar_Notificaciones_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -319,6 +316,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             permitir_No_Permitir_Chats_Conmigo_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
             permitir_No_Permitir_Chats_Conmigo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/chat_1.png"))); // NOI18N
             permitir_No_Permitir_Chats_Conmigo_JButton.setText("Permitir Chats Conmigo");
+            permitir_No_Permitir_Chats_Conmigo_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             ((ImageIcon)permitir_No_Permitir_Chats_Conmigo_JButton.getIcon()).getImage().flush();
             permitir_No_Permitir_Chats_Conmigo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -339,9 +337,9 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
                 .addGroup(cuenta_JPanelLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                        .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             cuenta_JPanelLayout.setVerticalGroup(
@@ -666,19 +664,19 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Tercer_Color()));
         
         
-        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Segundo_Color(),5);
+        BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Primer Color", TitledBorder.CENTER,
                 TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
         
         primer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
-        borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color(),5);
+        //borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color(),5);
         borde_Titulo = new TitledBorder(borde_Linea, "Segundo Color", TitledBorder.CENTER,
                 TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         segundo_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
-        borde_Linea = new LineBorder(CourseRoom.Utilerias.Primer_Color(),5);
+        //borde_Linea = new LineBorder(CourseRoom.Utilerias.Primer_Color(),5);
         borde_Titulo = new TitledBorder(borde_Linea, "Tercer Color", TitledBorder.CENTER,
                 TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
         tercer_Color_Personalizado_JLabel.setBorder(borde_Titulo);

@@ -40,7 +40,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.border.LineBorder;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
@@ -119,9 +119,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(822, 68));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
-        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(550, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(550, 84));
         titulo_JLabel.setOpaque(true);
@@ -132,7 +132,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
         buscar_Cursos_JButton.setToolTipText("<html>\n<h3>\nBuscar<br>Cursos\n</h3>\n</html>");
-        buscar_Cursos_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        buscar_Cursos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)buscar_Cursos_JButton.getIcon()).getImage().flush();
         buscar_Cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -148,7 +148,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         cursos_Actuales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
         cursos_Actuales_JButton.setToolTipText("<html> <h3>Cursos Actuales</h3></html>");
-        cursos_Actuales_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        cursos_Actuales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)cursos_Actuales_JButton.getIcon()).getImage().flush();
         cursos_Actuales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -158,7 +158,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         cursos_Nuevos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/new.png"))); // NOI18N
         cursos_Nuevos_JButton.setToolTipText("<html>\n<h3>Cursos Nuevos</h3></html>");
-        cursos_Nuevos_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        cursos_Nuevos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)cursos_Nuevos_JButton.getIcon()).getImage().flush();
         cursos_Nuevos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,9 +168,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setToolTipText("<html>\n<h4>\nActualizar<br>Página\n</h4>\n</html>\n\n");
-        actualizar_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
-        actualizar_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -186,7 +184,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         cursos_Recomendados_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/quality.png"))); // NOI18N
         cursos_Recomendados_JButton.setToolTipText("<html>\n<h3>Cursos Recomendados</h3></html>");
-        cursos_Recomendados_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        cursos_Recomendados_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)cursos_Recomendados_JButton.getIcon()).getImage().flush();
         cursos_Recomendados_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -196,7 +194,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         cursos_Finalizados_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/qualification_1.png"))); // NOI18N
         cursos_Finalizados_JButton.setToolTipText("<html>\n<h3>Cursos Finallizados</h3></html>");
-        cursos_Finalizados_JButton.setPreferredSize(new java.awt.Dimension(32, 32));
+        cursos_Finalizados_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)cursos_Finalizados_JButton.getIcon()).getImage().flush();
         cursos_Finalizados_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -210,17 +208,17 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(cursos_Actuales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cursos_Actuales_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cursos_Finalizados_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cursos_Finalizados_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cursos_Recomendados_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cursos_Recomendados_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cursos_Nuevos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cursos_Nuevos_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buscar_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscar_Cursos_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizar_JButton)
                 .addGap(0, 0, 0))
         );
         acciones_JPanelLayout.setVerticalGroup(
@@ -228,12 +226,12 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buscar_Cursos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cursos_Nuevos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cursos_Recomendados_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cursos_Finalizados_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cursos_Actuales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buscar_Cursos_JButton)
+                    .addComponent(cursos_Nuevos_JButton)
+                    .addComponent(cursos_Recomendados_JButton)
+                    .addComponent(cursos_Finalizados_JButton)
+                    .addComponent(cursos_Actuales_JButton)
+                    .addComponent(actualizar_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -346,7 +344,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 });
                 mostrar_Cursos_Finalizados_JTable.setRowHeight(96);
                 mostrar_Cursos_Finalizados_JTable.setShowGrid(true);
-                mostrar_Cursos_Finalizados_JTable.setShowVerticalLines(false);
                 mostrar_Cursos_Finalizados_JTable.setRowSorter(new TableRowSorter(mostrar_Cursos_Finalizados_JTable.getModel()));
                 mostrar_Cursos_Finalizados_JTable.addMouseListener(new MouseAdapter() {
 
@@ -411,7 +408,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     });
                     mostrar_Cursos_Recomendados_JTable.setRowHeight(96);
                     mostrar_Cursos_Recomendados_JTable.setShowGrid(true);
-                    mostrar_Cursos_Recomendados_JTable.setShowVerticalLines(false);
                     mostrar_Cursos_Recomendados_JTable.setRowSorter(new TableRowSorter(mostrar_Cursos_Recomendados_JTable.getModel()));
                     mostrar_Cursos_Recomendados_JTable.addMouseListener(new MouseAdapter() {
 
@@ -476,7 +472,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         });
                         mostrar_Cursos_Nuevos_JTable.setRowHeight(96);
                         mostrar_Cursos_Nuevos_JTable.setShowGrid(true);
-                        mostrar_Cursos_Nuevos_JTable.setShowVerticalLines(false);
                         mostrar_Cursos_Nuevos_JTable.setRowSorter(new TableRowSorter(mostrar_Cursos_Nuevos_JTable.getModel()));
                         mostrar_Cursos_Nuevos_JTable.addMouseListener(new MouseAdapter() {
 
@@ -527,7 +522,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         buscar_Cursos_JPanel.setOpaque(false);
                         buscar_Cursos_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-                        buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                        buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
                         buscar_JTextField.setToolTipText("<html> <h3>Buscar curso(s). Presiona ENTER para realizar la búsqueda</h3> </html>");
                         buscar_JTextField.setBorder(null);
                         buscar_JTextField.setOpaque(true);
@@ -539,9 +534,10 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                         mostrar_Cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/webinar.png"))); // NOI18N
                         mostrar_Cursos_JButton.setToolTipText("<html> <h3>Regresar a la página de cursos</h3> </html>");
-                        mostrar_Cursos_JButton.setMaximumSize(new java.awt.Dimension(50, 50));
-                        mostrar_Cursos_JButton.setMinimumSize(new java.awt.Dimension(50, 50));
-                        mostrar_Cursos_JButton.setPreferredSize(new java.awt.Dimension(50, 50));
+                        mostrar_Cursos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                        mostrar_Cursos_JButton.setMaximumSize(new java.awt.Dimension(64, 64));
+                        mostrar_Cursos_JButton.setMinimumSize(new java.awt.Dimension(64, 64));
+                        mostrar_Cursos_JButton.setPreferredSize(new java.awt.Dimension(64, 64));
                         ((ImageIcon)mostrar_Cursos_JButton.getIcon()).getImage().flush();
                         mostrar_Cursos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -640,7 +636,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                                         .addComponent(buscar_JTextField)
                                         .addComponent(mostrar_Cursos_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(buscar_Cursos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                                    .addComponent(buscar_Cursos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                                     .addContainerGap())
                             );
 
@@ -1151,8 +1147,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         //Buscar cursos:
         
         Font fuente = new java.awt.Font("Segoe UI", 1, 15);
-        LineBorder borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color());
-        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Curso(s)", TitledBorder.CENTER,
+        BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
+        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Curso(s)", TitledBorder.DEFAULT_JUSTIFICATION,
                 TitledBorder.BELOW_TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         buscar_JTextField.setBorder(borde_Titulo);

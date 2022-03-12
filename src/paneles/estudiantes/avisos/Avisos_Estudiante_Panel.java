@@ -56,13 +56,13 @@ public final class Avisos_Estudiante_Panel extends javax.swing.JPanel implements
         setOpaque(false);
 
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
-        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Avisos");
-        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
@@ -73,6 +73,7 @@ public final class Avisos_Estudiante_Panel extends javax.swing.JPanel implements
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,7 +111,6 @@ public final class Avisos_Estudiante_Panel extends javax.swing.JPanel implements
         avisos_JScrollPane.setOpaque(false);
 
         avisos_JTable.setAutoCreateRowSorter(true);
-        avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         avisos_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -144,6 +144,7 @@ public final class Avisos_Estudiante_Panel extends javax.swing.JPanel implements
                     return super.getColumnClass(column);
                 }
             });
+            avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             avisos_JTable.setRowHeight(100);
             avisos_JTable.setShowGrid(true);
             avisos_JTable.setSurrendersFocusOnKeystroke(true);

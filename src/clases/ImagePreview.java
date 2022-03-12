@@ -43,8 +43,9 @@ import javax.swing.JFileChooser;
 
 /* ImagePreview.java by FileChooserDemo2.java. */
 public class ImagePreview extends JComponent implements PropertyChangeListener {
-    private ImageIcon thumbnail = null;
-    private File file = null;
+    
+    private ImageIcon thumbnail;
+    private File file;
 
     public ImagePreview(JFileChooser fc) {
         setPreferredSize(new Dimension(300, 300));
@@ -52,6 +53,7 @@ public class ImagePreview extends JComponent implements PropertyChangeListener {
     }
 
     public void loadImage() {
+        
         if (file == null) {
             thumbnail = null;
             return;
@@ -61,19 +63,21 @@ public class ImagePreview extends JComponent implements PropertyChangeListener {
         //because the image we're trying to load is probably not one
         //of this program's own resources.
         ImageIcon tmpIcon = new ImageIcon(file.getPath());
-        if (tmpIcon != null) {
-            if (tmpIcon.getIconWidth() > 300) {
-                thumbnail = new ImageIcon(tmpIcon.getImage().
-                                          getScaledInstance(300, -1,
-                                                      Image.SCALE_DEFAULT));
-            } else if (tmpIcon.getIconHeight() > 300) {
-                thumbnail = new ImageIcon(tmpIcon.getImage().
-                                          getScaledInstance(-1, 300,
-                                                      Image.SCALE_DEFAULT));
-            } else { //no need to miniaturize
-                thumbnail = tmpIcon;
-            }
+        
+        if (tmpIcon.getIconWidth() > 300) {
+            thumbnail = new ImageIcon(tmpIcon.getImage().
+                                      getScaledInstance(300, -1,
+                                                  Image.SCALE_DEFAULT));
+        } else if (tmpIcon.getIconHeight() > 300) {
+            thumbnail = new ImageIcon(tmpIcon.getImage().
+                                      getScaledInstance(-1, 300,
+                                                  Image.SCALE_DEFAULT));
+        } else { //no need to miniaturize
+            thumbnail = tmpIcon;
         }
+        
+        tmpIcon.getImage().flush();
+        
     }
 
     @Override

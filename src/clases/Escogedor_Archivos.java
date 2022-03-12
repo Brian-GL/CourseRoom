@@ -34,7 +34,7 @@ public class Escogedor_Archivos extends JFileChooser{
         
         Font fuente = new Font("Segoe UI", Font.BOLD, 16);
         this.setFont(fuente);
-        this.setDialogTitle("Seleccionar Archivo(s) A Enviar");
+        this.setDialogTitle("Seleccionar Archivo(s) A Subir");
         this.setFileSystemView(FileSystemView.getFileSystemView());
         
         ImagePreview previsualizacion = new ImagePreview(this);
@@ -48,7 +48,7 @@ public class Escogedor_Archivos extends JFileChooser{
         this.setup(FileSystemView.getFileSystemView());
         
         this.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        this.setApproveButtonText("Enviar Archivo(s)");
+        this.setApproveButtonText("Subir Archivo(s)");
         this.setMultiSelectionEnabled(true);
         
     }
