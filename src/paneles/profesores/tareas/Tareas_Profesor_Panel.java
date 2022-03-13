@@ -39,7 +39,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import paneles.profesores.Tablero_Profesor_Panel;
-import paneles.profesores.perfil.Perfil_Profesor_Panel;
 
 /**
  *
@@ -85,12 +84,12 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(450, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(450, 84));
@@ -102,7 +101,9 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        actualizar_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
+        actualizar_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
         actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,7 +119,9 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         });
 
         tareas_Creadas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_6.png"))); // NOI18N
-        tareas_Creadas_JButton.setBorder(null);
+        tareas_Creadas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tareas_Creadas_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
+        tareas_Creadas_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
         tareas_Creadas_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         tareas_Creadas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         ((ImageIcon)tareas_Creadas_JButton.getIcon()).getImage().flush();
@@ -129,7 +132,9 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         });
 
         tareas_Por_Calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_4.png"))); // NOI18N
-        tareas_Por_Calificar_JButton.setBorder(null);
+        tareas_Por_Calificar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tareas_Por_Calificar_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
+        tareas_Por_Calificar_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
         tareas_Por_Calificar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         tareas_Por_Calificar_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
         ((ImageIcon)tareas_Por_Calificar_JButton.getIcon()).getImage().flush();
@@ -146,9 +151,9 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(tareas_Por_Calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tareas_Creadas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -205,7 +210,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                 }
             });
             tareas_Por_Calificar_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            tareas_Por_Calificar_JTable.setRowHeight(110);
+            tareas_Por_Calificar_JTable.setRowHeight(96);
             tareas_Por_Calificar_JTable.setShowGrid(true);
             tareas_Por_Calificar_JTable.setSurrendersFocusOnKeystroke(true);
             tareas_Por_Calificar_JTable.setRowSorter(new TableRowSorter(tareas_Por_Calificar_JTable.getModel()));
@@ -267,7 +272,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                     }
                 });
                 tareas_Creadas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-                tareas_Creadas_JTable.setRowHeight(110);
+                tareas_Creadas_JTable.setRowHeight(96);
                 tareas_Creadas_JTable.setShowGrid(true);
                 tareas_Creadas_JTable.setSurrendersFocusOnKeystroke(true);
                 tareas_Creadas_JTable.setRowSorter(new TableRowSorter(tareas_Creadas_JTable.getModel()));
@@ -295,20 +300,20 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                 layout.setHorizontalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(contenido_JLayeredPane)
                             .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, 0))
+                        .addGap(32, 32, 32))
                 );
                 layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
+                        .addContainerGap()
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(contenido_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
+                        .addComponent(contenido_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+                        .addContainerGap())
                 );
             }// </editor-fold>//GEN-END:initComponents
 
@@ -507,8 +512,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
 
     @Override
     public void Colorear_Componentes() {
-        
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
@@ -583,7 +586,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                 tareas_Creadas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
             break;
             case 1:
-                titulo_JLabel.setText("Mis Tareas Creadas");
+                titulo_JLabel.setText("Tareas Creadas");
                 tareas_Por_Calificar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 tareas_Creadas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
             break;

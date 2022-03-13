@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paneles.profesores.avisos;
+package paneles.generales.tablero;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
@@ -14,7 +14,6 @@ import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -24,16 +23,14 @@ import javax.swing.table.TableRowSorter;
  *
  * @author LENOVO
  */
-public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
+public final class Avisos_General_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
     
-    @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Avisos_Profesor_Panel(){
+    public Avisos_General_Panel(){
         
        initComponents();
         
        Iniciar_Componentes();
-        
     }
     
 
@@ -57,14 +54,14 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(1068, 72));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Avisos");
-        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
@@ -75,8 +72,7 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,14 +92,14 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizar_JButton)
                 .addGap(0, 0, 0))
         );
         acciones_JPanelLayout.setVerticalGroup(
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizar_JButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -113,7 +109,6 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         avisos_JScrollPane.setOpaque(false);
 
         avisos_JTable.setAutoCreateRowSorter(true);
-        avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         avisos_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -147,6 +142,7 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                     return super.getColumnClass(column);
                 }
             });
+            avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             avisos_JTable.setRowHeight(100);
             avisos_JTable.setShowGrid(true);
             avisos_JTable.setSurrendersFocusOnKeystroke(true);
@@ -158,15 +154,20 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             this.setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
-                .addComponent(avisos_JScrollPane)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(32, 32, 32)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 936, Short.MAX_VALUE)
+                        .addComponent(avisos_JScrollPane))
+                    .addGap(32, 32, 32))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE))
+                    .addComponent(avisos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+                    .addContainerGap())
             );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -211,6 +212,12 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                     celda = new Celda_Renderer(icono,tipo,id);
                     celdas[0] = celda;
                     break;
+                case "Grupo":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/group_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,id);
+                    celdas[0] = celda;
+                    break;
                 case "Chat":
                     imagen = ImageIO.read(getClass().getResource("/recursos/iconos/chat_notification.png"));
                     icono = new ImageIcon(imagen);
@@ -220,7 +227,7 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                 case "Pregunta":
                     imagen = ImageIO.read(getClass().getResource("/recursos/iconos/homework_make.png"));
                     icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono,tipo,id);
+                    celda = new Celda_Renderer(icono,tipo,"");
                     celdas[0] = celda;
                     break;
                 default:
@@ -268,7 +275,7 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         String tipo, aviso, fecha;
-        String[] opciones = {"Curso","Tarea","Chat","Pregunta","General"};
+        String[] opciones = {"Curso","Tarea","Grupo","Chat","Pregunta","General"};
         tipo = CourseRoom.Utilerias.options().nextElement(opciones);
         aviso = CourseRoom.Utilerias.lorem().sentence();
         fecha = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
@@ -305,7 +312,6 @@ public class Avisos_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
-        
     }
     
     @Override

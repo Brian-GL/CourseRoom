@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paneles.profesores.fechas;
+package paneles.generales.tablero;
 
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
@@ -12,10 +12,10 @@ import datos.interfaces.Componentes_Interface;
  *
  * @author brian
  */
-public class Fecha_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface{
+public class Fecha_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
     
-    public Fecha_Profesor_Panel(int day) {
+    public Fecha_General_Panel(int day) {
         initComponents();
         
         numero_Dia_JLabel.setText(String.valueOf(day));
@@ -58,8 +58,8 @@ public class Fecha_Profesor_Panel extends javax.swing.JPanel implements Componen
         descripcion_JTextPane.setToolTipText("<html> <h3>Descripción corta</h3> </html>");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
-        numero_Dia_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         numero_Dia_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        numero_Dia_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         numero_Dia_JLabel.setToolTipText("<html> <h3>Número de día</h3> </html>");
 
         hora_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

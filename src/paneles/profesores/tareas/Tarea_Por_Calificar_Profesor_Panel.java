@@ -38,6 +38,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.apache.commons.io.FilenameUtils;
@@ -97,6 +99,15 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         fecha_Entrega_JLabel = new javax.swing.JLabel();
         estatus_Tarea_JLabel = new javax.swing.JLabel();
         fecha_Creacion_JLabel = new javax.swing.JLabel();
+        informacion_Estudiante_JPanel = new javax.swing.JPanel();
+        imagen_Perfil_JLabel = new javax.swing.JLabel();
+        apellidos_JLabel = new javax.swing.JLabel();
+        nombres_JLabel = new javax.swing.JLabel();
+        correo_JLabel = new javax.swing.JLabel();
+        tipo_Perfil_JLabel = new javax.swing.JLabel();
+        genero_JLabel = new javax.swing.JLabel();
+        intereses_Tematicas_JScrollPane = new javax.swing.JScrollPane();
+        intereses_Tematicas_JTable = new javax.swing.JTable();
         chat_JPanel = new javax.swing.JPanel();
         mensajes_Chat_JScrollPane = new javax.swing.JScrollPane();
         mensajes_Chat_JTable = new javax.swing.JTable();
@@ -113,25 +124,16 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         retroalimentacion_JScrollPane = new javax.swing.JScrollPane();
         retroalimentacion_JTable = new javax.swing.JTable();
         retroalimentar_JButton = new javax.swing.JButton();
-        informacion_Estudiante_JPanel = new javax.swing.JPanel();
-        imagen_Perfil_JLabel = new javax.swing.JLabel();
-        apellidos_JLabel = new javax.swing.JLabel();
-        nombres_JLabel = new javax.swing.JLabel();
-        correo_JLabel = new javax.swing.JLabel();
-        tipo_Perfil_JLabel = new javax.swing.JLabel();
-        genero_JLabel = new javax.swing.JLabel();
-        intereses_Tematicas_JScrollPane = new javax.swing.JScrollPane();
-        intereses_Tematicas_JTable = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
 
-        titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
+        titulo_JPanel.setOpaque(false);
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_JLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
@@ -139,7 +141,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
-        informacion_JButton.setBorder(null);
+        informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         informacion_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,7 +151,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         });
 
         chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat_1.png"))); // NOI18N
-        chat_JButton.setBorder(null);
+        chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         chat_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)chat_JButton.getIcon()).getImage().flush();
         chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -159,7 +161,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         });
 
         archivos_Entregados_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
-        archivos_Entregados_JButton.setBorder(null);
+        archivos_Entregados_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         archivos_Entregados_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)archivos_Entregados_JButton.getIcon()).getImage().flush();
         archivos_Entregados_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -170,7 +172,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_JButton.setToolTipText("Regresar A Mis Chats");
-        regresar_JButton.setBorder(null);
+        regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,7 +188,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,7 +204,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         });
 
         retroalimentacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/feedback.png"))); // NOI18N
-        retroalimentacion_JButton.setBorder(null);
+        retroalimentacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         retroalimentacion_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)retroalimentacion_JButton.getIcon()).getImage().flush();
         retroalimentacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -212,7 +214,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         });
 
         informacion_Estudiante_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/verified-user.png"))); // NOI18N
-        informacion_Estudiante_JButton.setBorder(null);
+        informacion_Estudiante_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         informacion_Estudiante_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_Estudiante_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -231,15 +233,15 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(informacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(informacion_Estudiante_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(archivos_Entregados_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(retroalimentacion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         titulo_JPanelLayout.setVerticalGroup(
@@ -268,6 +270,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         curso_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
         curso_JLabel.setToolTipText("<html>\n<h3>Curso de provenencia</h3>\n</html>");
+        curso_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         curso_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         curso_JLabel.setOpaque(true);
         ((ImageIcon)curso_JLabel.getIcon()).getImage().flush();
@@ -284,25 +287,25 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         descripcion_JScrollPane.setVerifyInputWhenFocusTarget(false);
         descripcion_JScrollPane.setWheelScrollingEnabled(false);
 
-        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
+        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
-        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción</h3>\n</html>");
         descripcion_JTextPane.setFocusCycleRoot(false);
         descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setRequestFocusEnabled(false);
+        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción</h3>\n</html>");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         fecha_Entrega_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Entrega_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock.png"))); // NOI18N
         fecha_Entrega_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        fecha_Entrega_JLabel.setOpaque(true);
         ((ImageIcon)fecha_Entrega_JLabel.getIcon()).getImage().flush();
 
         estatus_Tarea_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         estatus_Tarea_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_1.png"))); // NOI18N
+        estatus_Tarea_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         estatus_Tarea_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         estatus_Tarea_JLabel.setOpaque(true);
         ((ImageIcon)estatus_Tarea_JLabel.getIcon()).getImage().flush();
@@ -310,7 +313,6 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Creacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_1.png"))); // NOI18N
         fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        fecha_Creacion_JLabel.setOpaque(true);
         ((ImageIcon)fecha_Creacion_JLabel.getIcon()).getImage().flush();
 
         javax.swing.GroupLayout informacion_Tarea_JPanelLayout = new javax.swing.GroupLayout(informacion_Tarea_JPanel);
@@ -321,7 +323,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                 .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, informacion_Tarea_JPanelLayout.createSequentialGroup()
-                        .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 856, Short.MAX_VALUE)
+                        .addComponent(curso_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(estatus_Tarea_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(informacion_Tarea_JPanelLayout.createSequentialGroup()
@@ -338,7 +340,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                     .addComponent(curso_JLabel)
                     .addComponent(estatus_Tarea_JLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fecha_Entrega_JLabel)
@@ -348,27 +350,76 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
 
         tarea_JLayeredPane.add(informacion_Tarea_JPanel, "Informacion");
 
-        chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
-        chat_JPanel.setOpaque(false);
-        chat_JPanel.setLayout(new java.awt.BorderLayout());
+        informacion_Estudiante_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+        informacion_Estudiante_JPanel.setOpaque(false);
 
-        mensajes_Chat_JScrollPane.setBorder(null);
-        mensajes_Chat_JScrollPane.setOpaque(false);
+        imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(2000, 2000));
+        imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(450, 450));
+        imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(450, 450));
+        imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
 
-        mensajes_Chat_JTable.setAutoCreateRowSorter(true);
-        mensajes_Chat_JTable.setModel(
+        apellidos_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        apellidos_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        apellidos_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        apellidos_JLabel.setMaximumSize(new java.awt.Dimension(560, 50));
+        apellidos_JLabel.setMinimumSize(new java.awt.Dimension(560, 50));
+        apellidos_JLabel.setName("label"); // NOI18N
+        apellidos_JLabel.setOpaque(true);
+        apellidos_JLabel.setPreferredSize(new java.awt.Dimension(560, 50));
+        apellidos_JLabel.setToolTipText("Apellido(s)");
+
+        nombres_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        nombres_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nombres_JLabel.setToolTipText("Nombre(s)");
+        nombres_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nombres_JLabel.setMaximumSize(new java.awt.Dimension(560, 50));
+        nombres_JLabel.setMinimumSize(new java.awt.Dimension(560, 50));
+        nombres_JLabel.setName("label"); // NOI18N
+        nombres_JLabel.setOpaque(true);
+        nombres_JLabel.setPreferredSize(new java.awt.Dimension(560, 50));
+
+        correo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        correo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        correo_JLabel.setMaximumSize(new java.awt.Dimension(560, 25));
+        correo_JLabel.setMinimumSize(new java.awt.Dimension(560, 25));
+        correo_JLabel.setName("label"); // NOI18N
+        correo_JLabel.setPreferredSize(new java.awt.Dimension(560, 25));
+        correo_JLabel.setToolTipText("Correo Electrónico");
+
+        tipo_Perfil_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tipo_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tipo_Perfil_JLabel.setToolTipText("Tipo De Perfil");
+        tipo_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(345, 25));
+        tipo_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(345, 25));
+        tipo_Perfil_JLabel.setName("label"); // NOI18N
+        tipo_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(345, 25));
+
+        genero_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        genero_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        genero_JLabel.setToolTipText("Género");
+        genero_JLabel.setMaximumSize(new java.awt.Dimension(212, 25));
+        genero_JLabel.setMinimumSize(new java.awt.Dimension(212, 25));
+        genero_JLabel.setName("label"); // NOI18N
+        genero_JLabel.setPreferredSize(new java.awt.Dimension(212, 25));
+
+        intereses_Tematicas_JScrollPane.setBorder(null);
+        intereses_Tematicas_JScrollPane.setOpaque(false);
+
+        intereses_Tematicas_JTable.setAutoCreateRowSorter(true);
+        intereses_Tematicas_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
                 new Object [][] {
 
                 },
                 new String [] {
-                    "Emisor", "Mensaje", "Fecha"
+                    "Interes / Temática"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false
+                    false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -378,7 +429,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                 @Override
                 public Class getColumnClass(int column)
                 {
-                    for(int i = 0; i < mensajes_Chat_JTable.getRowCount(); i++)
+                    for(int i = 0; i < intereses_Tematicas_JTable.getRowCount(); i++)
                     {
                         //The first valid value of a cell of given column is retrieved.
                         if(getValueAt(i,column) != null)
@@ -390,115 +441,77 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                     return super.getColumnClass(column);
                 }
             });
-            mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            mensajes_Chat_JTable.setRowHeight(80);
-            mensajes_Chat_JTable.setShowGrid(true);
-            mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
-            mensajes_Chat_JTable.setRowSorter(new TableRowSorter(mensajes_Chat_JTable.getModel()));
-            mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {
+            intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            intereses_Tematicas_JTable.setRowHeight(32);
+            intereses_Tematicas_JTable.setShowGrid(true);
+            intereses_Tematicas_JTable.setShowVerticalLines(false);
+            intereses_Tematicas_JTable.setSurrendersFocusOnKeystroke(true);
+            intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
+            intereses_Tematicas_JScrollPane.setViewportView(intereses_Tematicas_JTable);
 
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    if (e.getClickCount() == 2) {
-
-                        JTable tabla = (JTable) e.getComponent();
-                        int columna = tabla.getSelectedColumn();
-
-                        // Abrir
-                        if (columna == 1) {
-                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                            Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
-
-                            if(celda.Tiene_Icono()){
-                                String extension = FilenameUtils.getExtension(celda.Texto());
-                                String ruta = celda.ID();
-                                CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
-                            }
-                        }
-                    }
-                }
-            });
-            mensajes_Chat_JScrollPane.setViewportView(mensajes_Chat_JTable);
-
-            chat_JPanel.add(mensajes_Chat_JScrollPane, java.awt.BorderLayout.CENTER);
-
-            enviar_Mensaje_Chat_JPanel.setMaximumSize(new java.awt.Dimension(32767, 44));
-            enviar_Mensaje_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1085, 44));
-
-            enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
-            enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
-            enviar_Archivo_Chat_JButton.setBorder(null);
-            enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            enviar_Archivo_Chat_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
-            enviar_Archivo_Chat_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
-            enviar_Archivo_Chat_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-            ((ImageIcon)enviar_Archivo_Chat_JButton.getIcon()).getImage().flush();
-            enviar_Archivo_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    enviar_Archivo_Chat_JButtonMouseClicked(evt);
-                }
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    enviar_Archivo_Chat_JButtonMouseEntered(evt);
-                }
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    enviar_Archivo_Chat_JButtonMouseExited(evt);
-                }
-            });
-
-            redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-            redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
-            redactar_Mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-                public void keyPressed(java.awt.event.KeyEvent evt) {
-                    redactar_Mensaje_Chat_JTextFieldKeyPressed(evt);
-                }
-            });
-
-            javax.swing.GroupLayout enviar_Mensaje_Chat_JPanelLayout = new javax.swing.GroupLayout(enviar_Mensaje_Chat_JPanel);
-            enviar_Mensaje_Chat_JPanel.setLayout(enviar_Mensaje_Chat_JPanelLayout);
-            enviar_Mensaje_Chat_JPanelLayout.setHorizontalGroup(
-                enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviar_Mensaje_Chat_JPanelLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
-                    .addContainerGap())
+            javax.swing.GroupLayout informacion_Estudiante_JPanelLayout = new javax.swing.GroupLayout(informacion_Estudiante_JPanel);
+            informacion_Estudiante_JPanel.setLayout(informacion_Estudiante_JPanelLayout);
+            informacion_Estudiante_JPanelLayout.setHorizontalGroup(
+                informacion_Estudiante_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(informacion_Estudiante_JPanelLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(informacion_Estudiante_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(correo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(informacion_Estudiante_JPanelLayout.createSequentialGroup()
+                            .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(intereses_Tematicas_JScrollPane))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
-            enviar_Mensaje_Chat_JPanelLayout.setVerticalGroup(
-                enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(enviar_Mensaje_Chat_JPanelLayout.createSequentialGroup()
-                    .addGap(4, 4, 4)
-                    .addGroup(enviar_Mensaje_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(enviar_Archivo_Chat_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(redactar_Mensaje_Chat_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(4, 4, 4))
+            informacion_Estudiante_JPanelLayout.setVerticalGroup(
+                informacion_Estudiante_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Estudiante_JPanelLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(informacion_Estudiante_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(informacion_Estudiante_JPanelLayout.createSequentialGroup()
+                            .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(correo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(15, 15, 15)
+                            .addGroup(informacion_Estudiante_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
-            chat_JPanel.add(enviar_Mensaje_Chat_JPanel, java.awt.BorderLayout.SOUTH);
+            tarea_JLayeredPane.add(informacion_Estudiante_JPanel, "Estudiante");
 
-            tarea_JLayeredPane.add(chat_JPanel, "Chat");
+            chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+            chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+            chat_JPanel.setOpaque(false);
+            chat_JPanel.setLayout(new java.awt.BorderLayout());
 
-            archivos_Entregados_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
-            archivos_Entregados_JPanel.setToolTipText("");
-            archivos_Entregados_JPanel.setOpaque(false);
+            mensajes_Chat_JScrollPane.setBorder(null);
+            mensajes_Chat_JScrollPane.setOpaque(false);
 
-            archivos_Entregados_JScrollPane.setBorder(null);
-            archivos_Entregados_JScrollPane.setOpaque(false);
-
-            archivos_Entregados_JTable.setAutoCreateRowSorter(true);
-            archivos_Entregados_JTable.setModel(
+            mensajes_Chat_JTable.setAutoCreateRowSorter(true);
+            mensajes_Chat_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
                     new Object [][] {
 
                     },
                     new String [] {
-                        "Archivo", "Subido"
+                        "Emisor", "Mensaje", "Fecha"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false
+                        false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -508,7 +521,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                     @Override
                     public Class getColumnClass(int column)
                     {
-                        for(int i = 0; i < archivos_Entregados_JTable.getRowCount(); i++)
+                        for(int i = 0; i < mensajes_Chat_JTable.getRowCount(); i++)
                         {
                             //The first valid value of a cell of given column is retrieved.
                             if(getValueAt(i,column) != null)
@@ -520,13 +533,12 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                         return super.getColumnClass(column);
                     }
                 });
-                archivos_Entregados_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-                archivos_Entregados_JTable.setRowHeight(75);
-                archivos_Entregados_JTable.setShowGrid(true);
-                archivos_Entregados_JTable.setShowVerticalLines(false);
-                archivos_Entregados_JTable.setSurrendersFocusOnKeystroke(true);
-                archivos_Entregados_JTable.setRowSorter(new TableRowSorter(archivos_Entregados_JTable.getModel()));
-                archivos_Entregados_JTable.addMouseListener(new MouseAdapter() {
+                mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                mensajes_Chat_JTable.setRowHeight(80);
+                mensajes_Chat_JTable.setShowGrid(true);
+                mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
+                mensajes_Chat_JTable.setRowSorter(new TableRowSorter(mensajes_Chat_JTable.getModel()));
+                mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {
 
                     @Override
                     public void mousePressed(MouseEvent e) {
@@ -536,100 +548,82 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                             int columna = tabla.getSelectedColumn();
 
                             // Abrir
-                            if (columna == 0){
+                            if (columna == 1) {
                                 int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                                 DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                String extension = FilenameUtils.getExtension(celda.Texto());
-                                String ruta = celda.ID();
-                                CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
+                                Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
+
+                                if(celda.Tiene_Icono()){
+                                    String extension = FilenameUtils.getExtension(celda.Texto());
+                                    String ruta = celda.ID();
+                                    CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
+                                }
                             }
                         }
                     }
                 });
-                archivos_Entregados_JScrollPane.setViewportView(archivos_Entregados_JTable);
+                mensajes_Chat_JScrollPane.setViewportView(mensajes_Chat_JTable);
 
-                calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rating.png"))); // NOI18N
-                calificar_JButton.setText("Calificar");
-                calificar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                calificar_JButton.setToolTipText("");
-                ((ImageIcon)calificar_JButton.getIcon()).getImage().flush();
-                calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                chat_JPanel.add(mensajes_Chat_JScrollPane, java.awt.BorderLayout.CENTER);
+
+                enviar_Mensaje_Chat_JPanel.setMaximumSize(new java.awt.Dimension(32767, 44));
+                enviar_Mensaje_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1085, 44));
+                enviar_Mensaje_Chat_JPanel.setLayout(new java.awt.BorderLayout());
+
+                enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
+                enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
+                enviar_Archivo_Chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                enviar_Archivo_Chat_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
+                enviar_Archivo_Chat_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
+                enviar_Archivo_Chat_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+                ((ImageIcon)enviar_Archivo_Chat_JButton.getIcon()).getImage().flush();
+                enviar_Archivo_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        calificar_JButtonMouseClicked(evt);
+                        enviar_Archivo_Chat_JButtonMouseClicked(evt);
                     }
                     public void mouseEntered(java.awt.event.MouseEvent evt) {
-                        calificar_JButtonMouseEntered(evt);
+                        enviar_Archivo_Chat_JButtonMouseEntered(evt);
                     }
                     public void mouseExited(java.awt.event.MouseEvent evt) {
-                        calificar_JButtonMouseExited(evt);
+                        enviar_Archivo_Chat_JButtonMouseExited(evt);
                     }
                 });
+                enviar_Mensaje_Chat_JPanel.add(enviar_Archivo_Chat_JButton, java.awt.BorderLayout.WEST);
 
-                fecha_Entregado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                fecha_Entregado_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
-                fecha_Entregado_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-                fecha_Entregado_JLabel.setOpaque(true);
-                ((ImageIcon)fecha_Entregado_JLabel.getIcon()).getImage().flush();
+                redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+                redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
+                redactar_Mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        redactar_Mensaje_Chat_JTextFieldKeyPressed(evt);
+                    }
+                });
+                enviar_Mensaje_Chat_JPanel.add(redactar_Mensaje_Chat_JTextField, java.awt.BorderLayout.CENTER);
 
-                es_Tarea_Grupal_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                es_Tarea_Grupal_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_2.png"))); // NOI18N
-                es_Tarea_Grupal_JLabel.setText("Esta Tarea Se Envió De Manera Grupal");
-                es_Tarea_Grupal_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-                es_Tarea_Grupal_JLabel.setOpaque(true);
-                ((ImageIcon)es_Tarea_Grupal_JLabel.getIcon()).getImage().flush();
+                chat_JPanel.add(enviar_Mensaje_Chat_JPanel, java.awt.BorderLayout.SOUTH);
 
-                javax.swing.GroupLayout archivos_Entregados_JPanelLayout = new javax.swing.GroupLayout(archivos_Entregados_JPanel);
-                archivos_Entregados_JPanel.setLayout(archivos_Entregados_JPanelLayout);
-                archivos_Entregados_JPanelLayout.setHorizontalGroup(
-                    archivos_Entregados_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(archivos_Entregados_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addGroup(archivos_Entregados_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(archivos_Entregados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
-                            .addGroup(archivos_Entregados_JPanelLayout.createSequentialGroup()
-                                .addComponent(calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(archivos_Entregados_JPanelLayout.createSequentialGroup()
-                                .addComponent(es_Tarea_Grupal_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(fecha_Entregado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, 0))
-                );
-                archivos_Entregados_JPanelLayout.setVerticalGroup(
-                    archivos_Entregados_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(archivos_Entregados_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addGroup(archivos_Entregados_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fecha_Entregado_JLabel)
-                            .addComponent(es_Tarea_Grupal_JLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(archivos_Entregados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0))
-                );
+                tarea_JLayeredPane.add(chat_JPanel, "Chat");
 
-                tarea_JLayeredPane.add(archivos_Entregados_JPanel, "Archivos_Entregados");
+                archivos_Entregados_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+                archivos_Entregados_JPanel.setToolTipText("");
+                archivos_Entregados_JPanel.setOpaque(false);
 
-                retroalimentacion_JPanel.setOpaque(false);
+                archivos_Entregados_JScrollPane.setBorder(null);
+                archivos_Entregados_JScrollPane.setOpaque(false);
 
-                retroalimentacion_JScrollPane.setBorder(null);
-                retroalimentacion_JScrollPane.setOpaque(false);
-
-                retroalimentacion_JTable.setAutoCreateRowSorter(true);
-                retroalimentacion_JTable.setModel(
+                archivos_Entregados_JTable.setAutoCreateRowSorter(true);
+                archivos_Entregados_JTable.setModel(
 
                     new javax.swing.table.DefaultTableModel(
                         new Object [][] {
 
                         },
                         new String [] {
-                            "Retroalimentación", "Fecha", "Adjunto"
+                            "Archivo", "Subido"
                         }
                     ) {
                         boolean[] canEdit = new boolean [] {
-                            false, false, false
+                            false, false
                         };
 
                         public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -639,7 +633,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                         @Override
                         public Class getColumnClass(int column)
                         {
-                            for(int i = 0; i < retroalimentacion_JTable.getRowCount(); i++)
+                            for(int i = 0; i < archivos_Entregados_JTable.getRowCount(); i++)
                             {
                                 //The first valid value of a cell of given column is retrieved.
                                 if(getValueAt(i,column) != null)
@@ -651,12 +645,13 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                             return super.getColumnClass(column);
                         }
                     });
-                    retroalimentacion_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-                    retroalimentacion_JTable.setRowHeight(90);
-                    retroalimentacion_JTable.setShowGrid(true);
-                    retroalimentacion_JTable.setSurrendersFocusOnKeystroke(true);
-                    retroalimentacion_JTable.setRowSorter(new TableRowSorter(retroalimentacion_JTable.getModel()));
-                    retroalimentacion_JTable.addMouseListener(new MouseAdapter() {
+                    archivos_Entregados_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                    archivos_Entregados_JTable.setRowHeight(75);
+                    archivos_Entregados_JTable.setShowGrid(true);
+                    archivos_Entregados_JTable.setShowVerticalLines(false);
+                    archivos_Entregados_JTable.setSurrendersFocusOnKeystroke(true);
+                    archivos_Entregados_JTable.setRowSorter(new TableRowSorter(archivos_Entregados_JTable.getModel()));
+                    archivos_Entregados_JTable.addMouseListener(new MouseAdapter() {
 
                         @Override
                         public void mousePressed(MouseEvent e) {
@@ -666,136 +661,101 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                                 int columna = tabla.getSelectedColumn();
 
                                 // Abrir
-                                if (columna == 2) {
+                                if (columna == 0){
                                     int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                                     DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                    Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
-
-                                    if(celda.Tiene_Icono()){
-                                        String extension = FilenameUtils.getExtension(celda.Texto());
-                                        String ruta = celda.ID();
-                                        CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
-                                    }
-                                } // Descargar
-                                else if (columna == 3) {
-
+                                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
+                                    String extension = FilenameUtils.getExtension(celda.Texto());
+                                    String ruta = celda.ID();
+                                    CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
                                 }
                             }
                         }
                     });
-                    retroalimentacion_JScrollPane.setViewportView(retroalimentacion_JTable);
+                    archivos_Entregados_JScrollPane.setViewportView(archivos_Entregados_JTable);
 
-                    retroalimentar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-registration.png"))); // NOI18N
-                    retroalimentar_JButton.setText("Retroalimentar");
-                    retroalimentar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                    retroalimentar_JButton.setToolTipText("");
-                    ((ImageIcon)retroalimentar_JButton.getIcon()).getImage().flush();
-                    retroalimentar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                    calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rating.png"))); // NOI18N
+                    calificar_JButton.setText("Calificar");
+                    calificar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                    calificar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                    calificar_JButton.setToolTipText("");
+                    ((ImageIcon)calificar_JButton.getIcon()).getImage().flush();
+                    calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            retroalimentar_JButtonMouseClicked(evt);
+                            calificar_JButtonMouseClicked(evt);
                         }
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
-                            retroalimentar_JButtonMouseEntered(evt);
+                            calificar_JButtonMouseEntered(evt);
                         }
                         public void mouseExited(java.awt.event.MouseEvent evt) {
-                            retroalimentar_JButtonMouseExited(evt);
+                            calificar_JButtonMouseExited(evt);
                         }
                     });
 
-                    javax.swing.GroupLayout retroalimentacion_JPanelLayout = new javax.swing.GroupLayout(retroalimentacion_JPanel);
-                    retroalimentacion_JPanel.setLayout(retroalimentacion_JPanelLayout);
-                    retroalimentacion_JPanelLayout.setHorizontalGroup(
-                        retroalimentacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(retroalimentacion_JPanelLayout.createSequentialGroup()
+                    fecha_Entregado_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+                    fecha_Entregado_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
+                    fecha_Entregado_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+                    ((ImageIcon)fecha_Entregado_JLabel.getIcon()).getImage().flush();
+
+                    es_Tarea_Grupal_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                    es_Tarea_Grupal_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_2.png"))); // NOI18N
+                    es_Tarea_Grupal_JLabel.setText("Esta Tarea Se Envió De Manera Grupal");
+                    es_Tarea_Grupal_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+                    es_Tarea_Grupal_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+                    es_Tarea_Grupal_JLabel.setOpaque(true);
+                    ((ImageIcon)es_Tarea_Grupal_JLabel.getIcon()).getImage().flush();
+
+                    javax.swing.GroupLayout archivos_Entregados_JPanelLayout = new javax.swing.GroupLayout(archivos_Entregados_JPanel);
+                    archivos_Entregados_JPanel.setLayout(archivos_Entregados_JPanelLayout);
+                    archivos_Entregados_JPanelLayout.setHorizontalGroup(
+                        archivos_Entregados_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(archivos_Entregados_JPanelLayout.createSequentialGroup()
                             .addGap(0, 0, 0)
-                            .addGroup(retroalimentacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(retroalimentacion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
-                                .addGroup(retroalimentacion_JPanelLayout.createSequentialGroup()
-                                    .addComponent(retroalimentar_JButton)
-                                    .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(archivos_Entregados_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(archivos_Entregados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                                .addGroup(archivos_Entregados_JPanelLayout.createSequentialGroup()
+                                    .addComponent(calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(archivos_Entregados_JPanelLayout.createSequentialGroup()
+                                    .addComponent(es_Tarea_Grupal_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(fecha_Entregado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(0, 0, 0))
                     );
-                    retroalimentacion_JPanelLayout.setVerticalGroup(
-                        retroalimentacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(retroalimentacion_JPanelLayout.createSequentialGroup()
+                    archivos_Entregados_JPanelLayout.setVerticalGroup(
+                        archivos_Entregados_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(archivos_Entregados_JPanelLayout.createSequentialGroup()
                             .addGap(0, 0, 0)
-                            .addComponent(retroalimentacion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                            .addGroup(archivos_Entregados_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(fecha_Entregado_JLabel)
+                                .addComponent(es_Tarea_Grupal_JLabel))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(retroalimentar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(archivos_Entregados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0))
                     );
 
-                    tarea_JLayeredPane.add(retroalimentacion_JPanel, "Retroalimentacion");
+                    tarea_JLayeredPane.add(archivos_Entregados_JPanel, "Archivos_Entregados");
 
-                    informacion_Estudiante_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
-                    informacion_Estudiante_JPanel.setOpaque(false);
+                    retroalimentacion_JPanel.setOpaque(false);
 
-                    imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                    imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
-                    imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                    imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(2000, 2000));
-                    imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(450, 450));
-                    imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(450, 450));
+                    retroalimentacion_JScrollPane.setBorder(null);
+                    retroalimentacion_JScrollPane.setOpaque(false);
 
-                    apellidos_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                    apellidos_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                    apellidos_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-                    apellidos_JLabel.setMaximumSize(new java.awt.Dimension(560, 50));
-                    apellidos_JLabel.setMinimumSize(new java.awt.Dimension(560, 50));
-                    apellidos_JLabel.setName("label"); // NOI18N
-                    apellidos_JLabel.setOpaque(true);
-                    apellidos_JLabel.setPreferredSize(new java.awt.Dimension(560, 50));
-                    apellidos_JLabel.setToolTipText("Apellido(s)");
-
-                    nombres_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-                    nombres_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                    nombres_JLabel.setToolTipText("Nombre(s)");
-                    nombres_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                    nombres_JLabel.setMaximumSize(new java.awt.Dimension(560, 50));
-                    nombres_JLabel.setMinimumSize(new java.awt.Dimension(560, 50));
-                    nombres_JLabel.setName("label"); // NOI18N
-                    nombres_JLabel.setOpaque(true);
-                    nombres_JLabel.setPreferredSize(new java.awt.Dimension(560, 50));
-
-                    correo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                    correo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                    correo_JLabel.setMaximumSize(new java.awt.Dimension(560, 25));
-                    correo_JLabel.setMinimumSize(new java.awt.Dimension(560, 25));
-                    correo_JLabel.setName("label"); // NOI18N
-                    correo_JLabel.setPreferredSize(new java.awt.Dimension(560, 25));
-                    correo_JLabel.setToolTipText("Correo Electrónico");
-
-                    tipo_Perfil_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                    tipo_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                    tipo_Perfil_JLabel.setToolTipText("Tipo De Perfil");
-                    tipo_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(345, 25));
-                    tipo_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(345, 25));
-                    tipo_Perfil_JLabel.setName("label"); // NOI18N
-                    tipo_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(345, 25));
-
-                    genero_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-                    genero_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                    genero_JLabel.setToolTipText("Género");
-                    genero_JLabel.setMaximumSize(new java.awt.Dimension(212, 25));
-                    genero_JLabel.setMinimumSize(new java.awt.Dimension(212, 25));
-                    genero_JLabel.setName("label"); // NOI18N
-                    genero_JLabel.setPreferredSize(new java.awt.Dimension(212, 25));
-
-                    intereses_Tematicas_JScrollPane.setBorder(null);
-                    intereses_Tematicas_JScrollPane.setOpaque(false);
-
-                    intereses_Tematicas_JTable.setAutoCreateRowSorter(true);
-                    intereses_Tematicas_JTable.setModel(
+                    retroalimentacion_JTable.setAutoCreateRowSorter(true);
+                    retroalimentacion_JTable.setModel(
 
                         new javax.swing.table.DefaultTableModel(
                             new Object [][] {
 
                             },
                             new String [] {
-                                "Interes / Temática"
+                                "Retroalimentación", "Fecha", "Adjunto"
                             }
                         ) {
                             boolean[] canEdit = new boolean [] {
-                                false
+                                false, false, false
                             };
 
                             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -805,7 +765,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                             @Override
                             public Class getColumnClass(int column)
                             {
-                                for(int i = 0; i < intereses_Tematicas_JTable.getRowCount(); i++)
+                                for(int i = 0; i < retroalimentacion_JTable.getRowCount(); i++)
                                 {
                                     //The first valid value of a cell of given column is retrieved.
                                     if(getValueAt(i,column) != null)
@@ -817,75 +777,101 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                                 return super.getColumnClass(column);
                             }
                         });
-                        intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-                        intereses_Tematicas_JTable.setRowHeight(32);
-                        intereses_Tematicas_JTable.setShowGrid(true);
-                        intereses_Tematicas_JTable.setShowVerticalLines(false);
-                        intereses_Tematicas_JTable.setSurrendersFocusOnKeystroke(true);
-                        intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
-                        intereses_Tematicas_JScrollPane.setViewportView(intereses_Tematicas_JTable);
+                        retroalimentacion_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                        retroalimentacion_JTable.setRowHeight(90);
+                        retroalimentacion_JTable.setShowGrid(true);
+                        retroalimentacion_JTable.setSurrendersFocusOnKeystroke(true);
+                        retroalimentacion_JTable.setRowSorter(new TableRowSorter(retroalimentacion_JTable.getModel()));
+                        retroalimentacion_JTable.addMouseListener(new MouseAdapter() {
 
-                        javax.swing.GroupLayout informacion_Estudiante_JPanelLayout = new javax.swing.GroupLayout(informacion_Estudiante_JPanel);
-                        informacion_Estudiante_JPanel.setLayout(informacion_Estudiante_JPanelLayout);
-                        informacion_Estudiante_JPanelLayout.setHorizontalGroup(
-                            informacion_Estudiante_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(informacion_Estudiante_JPanelLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(informacion_Estudiante_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(correo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(informacion_Estudiante_JPanelLayout.createSequentialGroup()
-                                        .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                    .addComponent(intereses_Tematicas_JScrollPane))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            @Override
+                            public void mousePressed(MouseEvent e) {
+                                if (e.getClickCount() == 2) {
+
+                                    JTable tabla = (JTable) e.getComponent();
+                                    int columna = tabla.getSelectedColumn();
+
+                                    // Abrir
+                                    if (columna == 2) {
+                                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                        Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
+
+                                        if(celda.Tiene_Icono()){
+                                            String extension = FilenameUtils.getExtension(celda.Texto());
+                                            String ruta = celda.ID();
+                                            CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
+                                        }
+                                    } // Descargar
+                                    else if (columna == 3) {
+
+                                    }
+                                }
+                            }
+                        });
+                        retroalimentacion_JScrollPane.setViewportView(retroalimentacion_JTable);
+
+                        retroalimentar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-registration.png"))); // NOI18N
+                        retroalimentar_JButton.setText("Retroalimentar");
+                        retroalimentar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                        retroalimentar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                        retroalimentar_JButton.setToolTipText("");
+                        ((ImageIcon)retroalimentar_JButton.getIcon()).getImage().flush();
+                        retroalimentar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                retroalimentar_JButtonMouseClicked(evt);
+                            }
+                            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                retroalimentar_JButtonMouseEntered(evt);
+                            }
+                            public void mouseExited(java.awt.event.MouseEvent evt) {
+                                retroalimentar_JButtonMouseExited(evt);
+                            }
+                        });
+
+                        javax.swing.GroupLayout retroalimentacion_JPanelLayout = new javax.swing.GroupLayout(retroalimentacion_JPanel);
+                        retroalimentacion_JPanel.setLayout(retroalimentacion_JPanelLayout);
+                        retroalimentacion_JPanelLayout.setHorizontalGroup(
+                            retroalimentacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(retroalimentacion_JPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addGroup(retroalimentacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(retroalimentacion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                                    .addGroup(retroalimentacion_JPanelLayout.createSequentialGroup()
+                                        .addComponent(retroalimentar_JButton)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 0, 0))
                         );
-                        informacion_Estudiante_JPanelLayout.setVerticalGroup(
-                            informacion_Estudiante_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Estudiante_JPanelLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(informacion_Estudiante_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(informacion_Estudiante_JPanelLayout.createSequentialGroup()
-                                        .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, 0)
-                                        .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(correo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(15, 15, 15)
-                                        .addGroup(informacion_Estudiante_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        retroalimentacion_JPanelLayout.setVerticalGroup(
+                            retroalimentacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(retroalimentacion_JPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(retroalimentacion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(retroalimentar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         );
 
-                        tarea_JLayeredPane.add(informacion_Estudiante_JPanel, "Estudiante");
+                        tarea_JLayeredPane.add(retroalimentacion_JPanel, "Retroalimentacion");
 
                         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                         this.setLayout(layout);
                         layout.setHorizontalGroup(
                             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
+                                .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tarea_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
-                                    .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
-                                .addGap(0, 0, 0))
+                                    .addComponent(tarea_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                                    .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                                .addGap(32, 32, 32))
                         );
                         layout.setVerticalGroup(
                             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
+                                .addContainerGap()
                                 .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tarea_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(0, 0, 0))
+                                .addContainerGap())
                         );
                     }// </editor-fold>//GEN-END:initComponents
 
@@ -1174,13 +1160,9 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         estatus_Tarea_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         estatus_Tarea_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
-        fecha_Entrega_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        fecha_Entrega_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        fecha_Entrega_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        fecha_Creacion_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
         
-        fecha_Creacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        fecha_Creacion_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        
-        fecha_Entregado_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         fecha_Entregado_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
@@ -1278,10 +1260,14 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         }
         
         
-        Font gadugi = new Font("Segoe UI", 0, 18);
+        Font fuente = new Font("Segoe UI", 1, 18);
         
-        descripcion_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(CourseRoom.Utilerias.Primer_Color_Fuente()), "Descripcion De La Tarea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, gadugi, CourseRoom.Utilerias.Primer_Color_Fuente()));
+        BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
+        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Descripción De La Tarea", TitledBorder.CENTER,
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
+        
+        descripcion_JScrollPane.setBorder(borde_Titulo);
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
     }
 

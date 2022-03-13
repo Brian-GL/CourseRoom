@@ -1196,8 +1196,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
         
         descripcion_JScrollPane.setBorder(borde_Titulo);
-        
-        descripcion_JScrollPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
     }

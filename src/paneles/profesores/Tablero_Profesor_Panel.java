@@ -9,8 +9,8 @@ import paneles.profesores.perfil.Perfil_Profesor_Panel;
 import paneles.profesores.tareas.Tareas_Profesor_Panel;
 import paneles.profesores.chats.Chats_Profesor_Panel;
 import paneles.profesores.preguntas.Preguntas_Profesor_Panel;
-import paneles.profesores.avisos.Avisos_Profesor_Panel;
-import paneles.profesores.fechas.Fechas_Profesor_Panel;
+import paneles.generales.tablero.Avisos_General_Panel;
+import paneles.generales.tablero.Fechas_General_Panel;
 import paneles.generales.tablero.Acerca_General_Panel;
 import paneles.generales.tablero.Reproductor_Musica_General_Panel;
 import courseroom.CourseRoom;
@@ -47,16 +47,15 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     private static Chats_Profesor_Panel chats_Panel;
     private static Acerca_General_Panel acerca_De_Panel;
     private static Perfil_Profesor_Panel perfil_Panel;
-    private static Desempeno_Profesional_Profesor_Panel desempeno_Escolar_Panel;
+    private static Desempeno_Profesional_Profesor_Panel desempeno_Profesional_Panel;
     private static Reproductor_Musica_General_Panel reproductor_Musica_Panel;
-    private static Avisos_Profesor_Panel avisos_Panel;
-    private static Fechas_Profesor_Panel fechas_Panel;
+    private static Avisos_General_Panel avisos_Panel;
+    private static Fechas_General_Panel fechas_Panel;
     private static Tareas_Profesor_Panel tareas_Panel;
     private static Ajustes_Profesor_Panel ajustes_Panel;
     private static Cursos_Profesor_Panel cursos_Panel;
     private static Preguntas_Profesor_Panel preguntas_Panel;
     private static Tiempo_Servidor tiempo_Servidor;
-    
     
     /**
      * Creates new form DashboardPanel
@@ -107,13 +106,13 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         menu_JPanel.setPreferredSize(new java.awt.Dimension(150, 630));
         menu_JPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        imagen_Perfil_JLabel.setToolTipText("Mostrar Perfil Del Usuario.");
         imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setOpaque(true);
         imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setRequestFocusEnabled(false);
+        imagen_Perfil_JLabel.setToolTipText("Mostrar Perfil Del Usuario.");
         imagen_Perfil_JLabel.setVerifyInputWhenFocusTarget(false);
         imagen_Perfil_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -346,7 +345,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         barra_Superior_JPanel.setMinimumSize(new java.awt.Dimension(1260, 40));
         barra_Superior_JPanel.setOpaque(false);
         barra_Superior_JPanel.setPreferredSize(new java.awt.Dimension(1260, 40));
-        barra_Superior_JPanel.setLayout(new java.awt.BorderLayout());
 
         menu_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         menu_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/menu.png"))); // NOI18N
@@ -367,16 +365,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 menu_JButtonMouseExited(evt);
             }
         });
-        barra_Superior_JPanel.add(menu_JButton, java.awt.BorderLayout.WEST);
 
         mensaje_Bienvenida_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         mensaje_Bienvenida_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mensaje_Bienvenida_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/avatar.png"))); // NOI18N
-        barra_Superior_JPanel.add(mensaje_Bienvenida_JLabel, java.awt.BorderLayout.CENTER);
 
-        fecha_Hora_Servidor_JLabel.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         fecha_Hora_Servidor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         fecha_Hora_Servidor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock_2.png"))); // NOI18N
+        fecha_Hora_Servidor_JLabel.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         fecha_Hora_Servidor_JLabel.setMaximumSize(new java.awt.Dimension(400, 32));
         fecha_Hora_Servidor_JLabel.setMinimumSize(new java.awt.Dimension(400, 32));
         fecha_Hora_Servidor_JLabel.setPreferredSize(new java.awt.Dimension(400, 32));
@@ -394,7 +390,25 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         ((ImageIcon)menu_JButton.getIcon()).getImage().flush();
         ((ImageIcon)fecha_Hora_Servidor_JLabel.getIcon()).getImage().flush();
         ((ImageIcon)mensaje_Bienvenida_JLabel.getIcon()).getImage().flush();
-        barra_Superior_JPanel.add(fecha_Hora_Servidor_JLabel, java.awt.BorderLayout.EAST);
+
+        javax.swing.GroupLayout barra_Superior_JPanelLayout = new javax.swing.GroupLayout(barra_Superior_JPanel);
+        barra_Superior_JPanel.setLayout(barra_Superior_JPanelLayout);
+        barra_Superior_JPanelLayout.setHorizontalGroup(
+            barra_Superior_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(barra_Superior_JPanelLayout.createSequentialGroup()
+                .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109)
+                .addComponent(mensaje_Bienvenida_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6))
+        );
+        barra_Superior_JPanelLayout.setVerticalGroup(
+            barra_Superior_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menu_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mensaje_Bienvenida_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(fecha_Hora_Servidor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         visualizador_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         visualizador_JPanel.setName(""); // NOI18N
@@ -794,8 +808,8 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         menu_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         menu_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        mensaje_Bienvenida_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        mensaje_Bienvenida_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
        
         perfil_Panel.Colorear_Componentes();
         avisos_Panel.Colorear_Componentes();
@@ -808,7 +822,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         ajustes_Panel.Colorear_Componentes();
         preguntas_Panel.Colorear_Componentes();
         cursos_Panel.Colorear_Componentes();
-        desempeno_Escolar_Panel.Colorear_Componentes();
+        desempeno_Profesional_Panel.Colorear_Componentes();
     }
     
     
@@ -822,7 +836,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         fechas_Panel.Limpiar();
         cursos_Panel.Limpiar();
         perfil_Panel.Limpiar();
-        desempeno_Escolar_Panel.Limpiar();
+        desempeno_Profesional_Panel.Limpiar();
         
     }
     
@@ -848,17 +862,19 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     
     public static void Cambiar_Imagen_Usuario(Image _imagen_Usuario) {
         
-        imagen_Usuario = _imagen_Usuario.getScaledInstance(450, 450, Image.SCALE_AREA_AVERAGING);
+        imagen_Usuario = _imagen_Usuario;
         
         _imagen_Usuario = _imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_AREA_AVERAGING);
         
         ImageIcon imagen_Perfil = new ImageIcon(_imagen_Usuario);
         imagen_Perfil_JLabel.setIcon(imagen_Perfil);
         imagen_Perfil = new ImageIcon(imagen_Usuario);
-        Perfil_Profesor_Panel.Obtener_Imagen_Perfil_JLabel().setIcon(imagen_Perfil);
+
         _imagen_Usuario.flush();
         imagen_Perfil.getImage().flush();
         
+        
+        Establecer_Colores();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -886,6 +902,8 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     public void Iniciar_Componentes() {
          try {
              
+            
+            
             System.out.println("Dashboard -> Getting Image From https://i.pravatar.cc/450");
             URL url_Imagen = new URL("https://i.pravatar.cc/450");
             imagen_Usuario = ImageIO.read(url_Imagen);
@@ -897,19 +915,19 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
             perfil_Panel = new Perfil_Profesor_Panel();
             visualizador_JPanel.add("Perfil",perfil_Panel);
             
-            desempeno_Escolar_Panel = new Desempeno_Profesional_Profesor_Panel();
-            visualizador_JPanel.add("Desempeno_Escolar",desempeno_Escolar_Panel);
+            desempeno_Profesional_Panel = new Desempeno_Profesional_Profesor_Panel();
+            visualizador_JPanel.add("Desempeno_Profesional",desempeno_Profesional_Panel);
             
             chats_Panel = new Chats_Profesor_Panel();
             visualizador_JPanel.add("Chats", chats_Panel);
-
+            
             tareas_Panel = new Tareas_Profesor_Panel();
             visualizador_JPanel.add("Tareas",tareas_Panel);
             
-            fechas_Panel = new Fechas_Profesor_Panel();
+            fechas_Panel = new Fechas_General_Panel();
             visualizador_JPanel.add("Fechas",fechas_Panel);
             
-            avisos_Panel = new Avisos_Profesor_Panel();
+            avisos_Panel = new Avisos_General_Panel();
             visualizador_JPanel.add("Avisos",avisos_Panel);
             
             acerca_De_Panel = new Acerca_General_Panel();
@@ -974,6 +992,9 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                     Thread.sleep(1000);
                    
                 }
+                
+                fecha_Hora_Servidor_JLabel.setText("No Disponible");
+                
             } catch (XmlRpcException | IOException | InterruptedException ex) {
                 
             }

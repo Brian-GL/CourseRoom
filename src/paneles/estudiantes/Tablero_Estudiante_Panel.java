@@ -10,8 +10,8 @@ import paneles.estudiantes.tareas.Tareas_Estudiante_Panel;
 import paneles.estudiantes.grupos.Grupos_Estudiante_Panel;
 import paneles.estudiantes.chats.Chats_Estudiante_Panel;
 import paneles.estudiantes.preguntas.Preguntas_Estudiante_Panel;
-import paneles.estudiantes.avisos.Avisos_Estudiante_Panel;
-import paneles.estudiantes.fechas.Fechas_Estudiante_Panel;
+import paneles.generales.tablero.Avisos_General_Panel;
+import paneles.generales.tablero.Fechas_General_Panel;
 import paneles.generales.tablero.Acerca_General_Panel;
 import paneles.generales.tablero.Reproductor_Musica_General_Panel;
 import courseroom.CourseRoom;
@@ -50,9 +50,9 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Perfil_Estudiante_Panel perfil_Panel;
     private static Desempeno_Escolar_Estudiante_Panel desempeno_Escolar_Panel;
     private static Reproductor_Musica_General_Panel reproductor_Musica_Panel;
-    private static Avisos_Estudiante_Panel avisos_Panel;
+    private static Avisos_General_Panel avisos_Panel;
     private static Grupos_Estudiante_Panel grupos_Panel;
-    private static Fechas_Estudiante_Panel fechas_Panel;
+    private static Fechas_General_Panel fechas_Panel;
     private static Tareas_Estudiante_Panel tareas_Panel;
     private static Ajustes_Estudiante_Panel ajustes_Panel;
     private static Cursos_Estudiante_Panel cursos_Panel;
@@ -974,10 +974,10 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             tareas_Panel = new Tareas_Estudiante_Panel();
             visualizador_JPanel.add("Tareas",tareas_Panel);
             
-            fechas_Panel = new Fechas_Estudiante_Panel();
+            fechas_Panel = new Fechas_General_Panel();
             visualizador_JPanel.add("Fechas",fechas_Panel);
             
-            avisos_Panel = new Avisos_Estudiante_Panel();
+            avisos_Panel = new Avisos_General_Panel();
             visualizador_JPanel.add("Avisos",avisos_Panel);
             
             acerca_De_Panel = new Acerca_General_Panel();

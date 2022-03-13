@@ -15,8 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package paneles.profesores.fechas;
+package paneles.generales.tablero;
 
+import paneles.generales.tablero.Tira_Fechas_General_Panel;
+import paneles.generales.tablero.Fecha_General_Panel;
 import datos.colecciones.Lista;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
@@ -32,12 +34,12 @@ import javax.swing.SwingUtilities;
  *
  * @author LENOVO
  */
-public class Fechas_Profesor_Panel extends JScrollPane implements Limpieza_Interface, Componentes_Interface{
+public class Fechas_General_Panel extends JScrollPane implements Limpieza_Interface, Componentes_Interface{
 
     /**
-     * Creates new form Pagina_Fechas_Profesor
+     * Creates new form Pagina_Fechas_Estudiante
      */
-    public Fechas_Profesor_Panel() {
+    public Fechas_General_Panel() {
         initComponents();
         
         Iniciar_Componentes();
@@ -81,36 +83,35 @@ public class Fechas_Profesor_Panel extends JScrollPane implements Limpieza_Inter
         titulo_JPanel.setOpaque(false);
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(1080, 134));
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(436, 68));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Fechas");
-        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(176, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(176, 68));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(176, 68));
         contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
 
+        mes_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         mes_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mes_JLabel.setText("Diciembre");
+        mes_JLabel.setToolTipText("Mes Actual");
         mes_JLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        mes_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         mes_JLabel.setMaximumSize(new java.awt.Dimension(327573, 32));
         mes_JLabel.setMinimumSize(new java.awt.Dimension(0, 0));
         mes_JLabel.setPreferredSize(new java.awt.Dimension(1080, 32));
-        mes_JLabel.setToolTipText("Mes Actual");
         contenido_Titulo_JPanel.add(mes_JLabel, java.awt.BorderLayout.CENTER);
 
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -130,14 +131,14 @@ public class Fechas_Profesor_Panel extends JScrollPane implements Limpieza_Inter
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizar_JButton)
                 .addGap(0, 0, 0))
         );
         acciones_JPanelLayout.setVerticalGroup(
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizar_JButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -354,18 +355,18 @@ public class Fechas_Profesor_Panel extends JScrollPane implements Limpieza_Inter
         DayOfWeek dia_De_La_Semana = fecha_Primera_Mes.getDayOfWeek();
         int hasta_Valor = dia_De_La_Semana.getValue() - 1;
 
-        Lista<Fecha_Profesor_Panel> lista_Cajas = new Lista<>();
+        Lista<Fecha_General_Panel> lista_Cajas = new Lista<>();
         
-        Fecha_Profesor_Panel dia_Calendario_Panel;
+        Fecha_General_Panel dia_Calendario_Panel;
         for (int i = hasta_Valor; i > 0; i--) {
-            dia_Calendario_Panel = new Fecha_Profesor_Panel(dias_del_mes_anterior - i);
+            dia_Calendario_Panel = new Fecha_General_Panel(dias_del_mes_anterior - i);
             dia_Calendario_Panel.Establecer_Tercer_Color();
             lista_Cajas.push_back(dia_Calendario_Panel);
             cuenta++;
         }
 
         for (int i = 1; i < dias_del_mes; i++) {
-            dia_Calendario_Panel = new Fecha_Profesor_Panel(i);
+            dia_Calendario_Panel = new Fecha_General_Panel(i);
             if (tiempo_Actual.getDayOfMonth() == i) {
                 dia_Calendario_Panel.Establecer_Primer_Color();
             } else {
@@ -377,27 +378,27 @@ public class Fechas_Profesor_Panel extends JScrollPane implements Limpieza_Inter
 
         int i = 1;
         while (cuenta < 42) {
-            dia_Calendario_Panel = new Fecha_Profesor_Panel(i);
+            dia_Calendario_Panel = new Fecha_General_Panel(i);
             dia_Calendario_Panel.Establecer_Tercer_Color();
             lista_Cajas.push_back(dia_Calendario_Panel);
             i++;
             cuenta++;
         }
         
-        Tira_Fechas_Profesor_Panel tira_Fechas_Profesor_Panel = null;
-        Fecha_Profesor_Panel caja_Fecha_Profesor_Panel;
+        Tira_Fechas_General_Panel tira_Fechas_Estudiante_Panel = null;
+        Fecha_General_Panel caja_Fecha_Estudiante_Panel;
         cuenta = 0;
         while(!lista_Cajas.is_empty()){
             
             if(cuenta < 7){
-                caja_Fecha_Profesor_Panel = lista_Cajas.delist();
+                caja_Fecha_Estudiante_Panel = lista_Cajas.delist();
                 if(cuenta == 0){
-                    tira_Fechas_Profesor_Panel = new Tira_Fechas_Profesor_Panel();
+                    tira_Fechas_Estudiante_Panel = new Tira_Fechas_General_Panel();
                 }
-                tira_Fechas_Profesor_Panel.Agregar_Fecha(caja_Fecha_Profesor_Panel);
+                tira_Fechas_Estudiante_Panel.Agregar_Fecha(caja_Fecha_Estudiante_Panel);
                 cuenta++;
             }else{
-                contenido_JPanel.add(tira_Fechas_Profesor_Panel);
+                contenido_JPanel.add(tira_Fechas_Estudiante_Panel);
                 cuenta = 0;
             }
         }

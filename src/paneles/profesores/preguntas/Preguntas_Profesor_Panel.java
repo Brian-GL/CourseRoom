@@ -21,6 +21,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.TitledBorder;
 import paneles.profesores.Tablero_Profesor_Panel;
 import paneles.profesores.perfil.Perfil_Profesor_Panel;
 
@@ -76,15 +78,15 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         mostrar_Preguntas_JPanel.setOpaque(false);
         mostrar_Preguntas_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
         contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Preguntas");
-        titulo_JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 68));
         titulo_JLabel.setOpaque(true);
@@ -94,7 +96,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         acciones_JPanel.setOpaque(false);
 
         buscar_Preguntas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
-        buscar_Preguntas_JButton.setBorder(null);
+        buscar_Preguntas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)buscar_Preguntas_JButton.getIcon()).getImage().flush();
         buscar_Preguntas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -109,7 +111,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         });
 
         preguntar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/wonder.png"))); // NOI18N
-        preguntar_JButton.setBorder(null);
+        preguntar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)preguntar_JButton.getIcon()).getImage().flush();
         preguntar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,8 +126,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,10 +147,10 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(preguntar_JButton)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buscar_Preguntas_JButton)
-                .addGap(18, 18, 18)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actualizar_JButton)
                 .addGap(0, 0, 0))
         );
         acciones_JPanelLayout.setVerticalGroup(
@@ -159,7 +160,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buscar_Preguntas_JButton)
                     .addComponent(preguntar_JButton)
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actualizar_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -233,20 +234,20 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             mostrar_Preguntas_JPanelLayout.setHorizontalGroup(
                 mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrar_Preguntas_JPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addGap(32, 32, 32)
                     .addGroup(mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(mostrar_Preguntas_JScrollPane)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1122, Short.MAX_VALUE))
-                    .addGap(0, 0, 0))
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                    .addGap(32, 32, 32))
             );
             mostrar_Preguntas_JPanelLayout.setVerticalGroup(
                 mostrar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mostrar_Preguntas_JPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
+                    .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(mostrar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-                    .addGap(0, 0, 0))
+                    .addComponent(mostrar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                    .addContainerGap())
             );
 
             add(mostrar_Preguntas_JPanel, "Mostrar");
@@ -254,7 +255,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             buscar_Preguntas_JPanel.setOpaque(false);
             buscar_Preguntas_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-            buscar_Preguntas_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            buscar_Preguntas_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
             buscar_Preguntas_JTextField.setToolTipText("<html>\n<h3>Buscar duda(s). Presiona ENTER para realizar la búsqueda</h3>\n</html>");
             buscar_Preguntas_JTextField.setBorder(null);
             buscar_Preguntas_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -265,10 +266,10 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
 
             mostrar_Preguntas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/shrug.png"))); // NOI18N
             mostrar_Preguntas_JButton.setToolTipText("<html>\n<h3>Regresar a la página de dudas</h3>\n</html>");
-            mostrar_Preguntas_JButton.setBorder(null);
-            mostrar_Preguntas_JButton.setMaximumSize(new java.awt.Dimension(50, 50));
-            mostrar_Preguntas_JButton.setMinimumSize(new java.awt.Dimension(50, 50));
-            mostrar_Preguntas_JButton.setPreferredSize(new java.awt.Dimension(50, 50));
+            mostrar_Preguntas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            mostrar_Preguntas_JButton.setMaximumSize(new java.awt.Dimension(64, 64));
+            mostrar_Preguntas_JButton.setMinimumSize(new java.awt.Dimension(64, 64));
+            mostrar_Preguntas_JButton.setPreferredSize(new java.awt.Dimension(64, 64));
             ((ImageIcon)mostrar_Preguntas_JButton.getIcon()).getImage().flush();
             mostrar_Preguntas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -350,14 +351,14 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                 buscar_Preguntas_JPanelLayout.setHorizontalGroup(
                     buscar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(buscar_Preguntas_JPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
+                        .addGap(32, 32, 32)
                         .addGroup(buscar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(buscar_Preguntas_JPanelLayout.createSequentialGroup()
                                 .addComponent(mostrar_Preguntas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(buscar_Preguntas_JTextField))
-                            .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
-                        .addGap(0, 0, 0))
+                            .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                        .addGap(32, 32, 32))
                 );
                 buscar_Preguntas_JPanelLayout.setVerticalGroup(
                     buscar_Preguntas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,8 +368,8 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                             .addComponent(buscar_Preguntas_JTextField)
                             .addComponent(mostrar_Preguntas_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
+                        .addComponent(buscar_Preguntas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                        .addContainerGap())
                 );
 
                 add(buscar_Preguntas_JPanel, "Buscar");
@@ -536,23 +537,24 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
     public void Colorear_Componentes() {
         
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         buscar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         preguntar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
-        buscar_Preguntas_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                "Buscar Pregunta(s)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+        Font fuente = new java.awt.Font("Segoe UI", 1, 15);
+        BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
+        TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Pregunta(s)", TitledBorder.DEFAULT_JUSTIFICATION,
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        buscar_Preguntas_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        buscar_Preguntas_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        buscar_Preguntas_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        buscar_Preguntas_JTextField.setBorder(borde_Titulo);
+        
+        buscar_Preguntas_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        buscar_Preguntas_JTextField.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        buscar_Preguntas_JTextField.setCaretColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
         mostrar_Preguntas_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
         

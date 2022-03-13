@@ -73,7 +73,6 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="imagen_Perfil_JLabel">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Mostrar Perfil Del Usuario."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
@@ -90,6 +89,7 @@
               <Dimension value="[150, 150]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
+            <Property name="toolTipText" type="java.lang.String" value="Mostrar Perfil Del Usuario."/>
             <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -516,7 +516,27 @@
         </Property>
       </Properties>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Component id="menu_JButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                  <Component id="mensaje_Bienvenida_JLabel" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="fecha_Hora_Servidor_JLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="menu_JButton" min="-2" max="-2" attributes="0"/>
+              <Component id="mensaje_Bienvenida_JLabel" min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="fecha_Hora_Servidor_JLabel" min="-2" pref="40" max="-2" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
       <SubComponents>
         <Component class="javax.swing.JButton" name="menu_JButton">
           <Properties>
@@ -553,11 +573,6 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="West"/>
-            </Constraint>
-          </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="mensaje_Bienvenida_JLabel">
           <Properties>
@@ -572,20 +587,15 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="Center"/>
-            </Constraint>
-          </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="fecha_Hora_Servidor_JLabel">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="2"/>
-            </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/clock_2.png"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="2"/>
             </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[400, 32]"/>
@@ -601,11 +611,6 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)stats_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)cursos_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)tareas_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)fechas_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)avisos_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)chats_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)reproductor_Musica_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)acerca_De_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)ajustes_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)salir_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)preguntas_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)menu_JButton.getIcon()).getImage().flush();&#xa;((ImageIcon)fecha_Hora_Servidor_JLabel.getIcon()).getImage().flush();&#xa;((ImageIcon)mensaje_Bienvenida_JLabel.getIcon()).getImage().flush();"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="East"/>
-            </Constraint>
-          </Constraints>
         </Component>
       </SubComponents>
     </Container>
