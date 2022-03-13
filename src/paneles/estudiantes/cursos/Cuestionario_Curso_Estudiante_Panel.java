@@ -28,8 +28,10 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
+import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 
 /**
  *
@@ -37,8 +39,9 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  */
 public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements Componentes_Interface{
 
-    private String Id_Curso;
-    private JLabel[] labeles;
+    private final String Id_Curso;
+    private JLabel[] labeles_Pares;
+    private JLabel[] labeles_Impares;
     
     public Cuestionario_Curso_Estudiante_Panel(String id_Cuestionario, String id_Curso, String nombre_Curso) {
         initComponents();
@@ -84,6 +87,82 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         pregunta4_Relevancia_JLabel = new javax.swing.JLabel();
         respuesta4_Relevancia_JPanel = new javax.swing.JPanel();
         respuesta4_Relevancia_JSlider = new javax.swing.JSlider();
+        pensamiento_Reflexivo_JPanel = new javax.swing.JPanel();
+        pensamiento_Reflexivo_JLabel = new javax.swing.JLabel();
+        continuar_Interactividad_JButton = new javax.swing.JButton();
+        regresar_Relevancia_JButton = new javax.swing.JButton();
+        cuestionario_Pensamiento_Reflexivo_JPanel = new javax.swing.JPanel();
+        titulo_Pregunta_Pensamiento_Reflexivo_JLabel = new javax.swing.JLabel();
+        titulo_Respuesta_Pensamiento_Reflexivo_JPanel = new javax.swing.JPanel();
+        pregunta1_Pensamiento_Reflexivo_JLabel = new javax.swing.JLabel();
+        respuesta1_Pensamiento_Reflexivo_JPanel = new javax.swing.JPanel();
+        respuesta1_Pensamiento_Reflexivo_JSlider = new javax.swing.JSlider();
+        pregunta2_Pensamiento_Reflexivo_JLabel = new javax.swing.JLabel();
+        respuesta2_Pensamiento_Reflexivo_JPanel = new javax.swing.JPanel();
+        respuesta2_Pensamiento_Reflexivo_JSlider = new javax.swing.JSlider();
+        pregunta3_Pensamiento_Reflexivo_JLabel = new javax.swing.JLabel();
+        respuesta3_Pensamiento_Reflexivo_JPanel = new javax.swing.JPanel();
+        respuesta3_Pensamiento_Reflexivo_JSlider = new javax.swing.JSlider();
+        pregunta4_Pensamiento_Reflexivo_JLabel = new javax.swing.JLabel();
+        respuesta4_Pensamiento_Reflexivo_JPanel = new javax.swing.JPanel();
+        respuesta4_Pensamiento_Reflexivo_JSlider = new javax.swing.JSlider();
+        interactividad_JPanel = new javax.swing.JPanel();
+        interactividad_JLabel = new javax.swing.JLabel();
+        continuar_Apoyo_Tutor_JButton = new javax.swing.JButton();
+        regresar_Pensamiento_Reflexivo_JButton = new javax.swing.JButton();
+        cuestionario_Interactividad_JPanel = new javax.swing.JPanel();
+        titulo_Pregunta_Interactividad_JLabel = new javax.swing.JLabel();
+        titulo_Respuesta_Interactividad_JPanel = new javax.swing.JPanel();
+        pregunta1_Interactividad_JLabel = new javax.swing.JLabel();
+        respuesta1_Interactividad_JPanel = new javax.swing.JPanel();
+        respuesta1_Interactividad_JSlider = new javax.swing.JSlider();
+        pregunta2_Interactividad_JLabel = new javax.swing.JLabel();
+        respuesta2_Interactividad_JPanel = new javax.swing.JPanel();
+        respuesta2_Interactividad_JSlider = new javax.swing.JSlider();
+        pregunta3_Interactividad_JLabel = new javax.swing.JLabel();
+        respuesta3_Interactividad_JPanel = new javax.swing.JPanel();
+        respuesta3_Interactividad_JSlider = new javax.swing.JSlider();
+        pregunta4_Interactividad_JLabel = new javax.swing.JLabel();
+        respuesta4_Interactividad_JPanel = new javax.swing.JPanel();
+        respuesta4_Interactividad_JSlider = new javax.swing.JSlider();
+        apoyo_Tutor_JPanel = new javax.swing.JPanel();
+        apoyo_Tutor_JLabel = new javax.swing.JLabel();
+        continuar_Interpretacion_JButton = new javax.swing.JButton();
+        regresar_Interactividad_JButton = new javax.swing.JButton();
+        cuestionario_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
+        titulo_Pregunta_Apoyo_Tutor_JLabel = new javax.swing.JLabel();
+        titulo_Respuesta_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
+        pregunta1_Apoyo_Tutor_JLabel = new javax.swing.JLabel();
+        respuesta1_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
+        respuesta1_Apoyo_Tutor_JSlider = new javax.swing.JSlider();
+        pregunta2_Apoyo_Tutor_JLabel = new javax.swing.JLabel();
+        respuesta2_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
+        respuesta2_Apoyo_Tutor_JSlider = new javax.swing.JSlider();
+        pregunta3_Apoyo_Tutor_JLabel = new javax.swing.JLabel();
+        respuesta3_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
+        respuesta3_Apoyo_Tutor_JSlider = new javax.swing.JSlider();
+        pregunta4_Apoyo_Tutor_JLabel = new javax.swing.JLabel();
+        respuesta4_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
+        respuesta4_Apoyo_Tutor_JSlider = new javax.swing.JSlider();
+        interpretacion_JPanel = new javax.swing.JPanel();
+        interpretacion_JLabel = new javax.swing.JLabel();
+        terminar_Cuestionario_JButton = new javax.swing.JButton();
+        regresar_Apoyo_Tutor_JButton = new javax.swing.JButton();
+        cuestionario_Interpretacion_JPanel = new javax.swing.JPanel();
+        titulo_Pregunta_Interpretacion_JLabel = new javax.swing.JLabel();
+        titulo_RespuestaInterpretacion_JPanel = new javax.swing.JPanel();
+        pregunta1_Interpretacion_JLabel = new javax.swing.JLabel();
+        respuesta1_Interpretacion_JPanel = new javax.swing.JPanel();
+        respuesta1_Interpretacion_JSlider = new javax.swing.JSlider();
+        pregunta2_Interpretacion_JLabel = new javax.swing.JLabel();
+        respuesta2_Interpretacion_JPanel = new javax.swing.JPanel();
+        respuesta2_Interpretacion_JSlider = new javax.swing.JSlider();
+        pregunta3_Interpretacion_JLabel = new javax.swing.JLabel();
+        respuesta3_Interpretacion_JPanel = new javax.swing.JPanel();
+        respuesta3_Interpretacion_JSlider = new javax.swing.JSlider();
+        pregunta4_Interpretacion_JLabel = new javax.swing.JLabel();
+        respuesta4_Interpretacion_JPanel = new javax.swing.JPanel();
+        respuesta4_Interpretacion_JSlider = new javax.swing.JSlider();
 
         setLayout(new java.awt.CardLayout());
 
@@ -312,7 +391,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
                     .addGroup(relevancia_JPanelLayout.createSequentialGroup()
                         .addComponent(relevancia_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cuestionario_Relevancia_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cuestionario_Relevancia_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE))
                 .addContainerGap())
         );
         relevancia_JPanelLayout.setVerticalGroup(
@@ -330,6 +409,643 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         );
 
         add(relevancia_JPanel, "Relevancia");
+
+        pensamiento_Reflexivo_JPanel.setOpaque(false);
+
+        pensamiento_Reflexivo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pensamiento_Reflexivo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pensamiento_Reflexivo_JLabel.setText("Pensamiento Reflexivo");
+        pensamiento_Reflexivo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        pensamiento_Reflexivo_JLabel.setOpaque(true);
+
+        continuar_Interactividad_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
+        continuar_Interactividad_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
+        continuar_Interactividad_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        continuar_Interactividad_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)continuar_Interactividad_JButton.getIcon()).getImage().flush();
+        continuar_Interactividad_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                continuar_Interactividad_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                continuar_Interactividad_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                continuar_Interactividad_JButtonMouseExited(evt);
+            }
+        });
+
+        regresar_Relevancia_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_Relevancia_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
+        regresar_Relevancia_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        regresar_Relevancia_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)regresar_Relevancia_JButton.getIcon()).getImage().flush();
+        regresar_Relevancia_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar_Relevancia_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                regresar_Relevancia_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                regresar_Relevancia_JButtonMouseExited(evt);
+            }
+        });
+
+        cuestionario_Pensamiento_Reflexivo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        cuestionario_Pensamiento_Reflexivo_JPanel.setLayout(new java.awt.GridLayout(5, 2, 5, 5));
+
+        titulo_Pregunta_Pensamiento_Reflexivo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_Pregunta_Pensamiento_Reflexivo_JLabel.setText(" En esta unidad en línea...");
+        titulo_Pregunta_Pensamiento_Reflexivo_JLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        cuestionario_Pensamiento_Reflexivo_JPanel.add(titulo_Pregunta_Pensamiento_Reflexivo_JLabel);
+
+        titulo_Respuesta_Pensamiento_Reflexivo_JPanel.setOpaque(false);
+        titulo_Respuesta_Pensamiento_Reflexivo_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+        cuestionario_Pensamiento_Reflexivo_JPanel.add(titulo_Respuesta_Pensamiento_Reflexivo_JPanel);
+
+        pregunta1_Pensamiento_Reflexivo_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta1_Pensamiento_Reflexivo_JLabel.setText(" 1. Pienso críticamente sobre cómo aprendo");
+        cuestionario_Pensamiento_Reflexivo_JPanel.add(pregunta1_Pensamiento_Reflexivo_JLabel);
+
+        respuesta1_Pensamiento_Reflexivo_JPanel.setOpaque(false);
+        respuesta1_Pensamiento_Reflexivo_JPanel.setLayout(new java.awt.BorderLayout());
+
+        respuesta1_Pensamiento_Reflexivo_JSlider.setMajorTickSpacing(1);
+        respuesta1_Pensamiento_Reflexivo_JSlider.setMaximum(4);
+        respuesta1_Pensamiento_Reflexivo_JSlider.setPaintLabels(true);
+        respuesta1_Pensamiento_Reflexivo_JSlider.setPaintTicks(true);
+        respuesta1_Pensamiento_Reflexivo_JSlider.setSnapToTicks(true);
+        respuesta1_Pensamiento_Reflexivo_JSlider.setValue(0);
+        respuesta1_Pensamiento_Reflexivo_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta1_Pensamiento_Reflexivo_JPanel.add(respuesta1_Pensamiento_Reflexivo_JSlider, java.awt.BorderLayout.CENTER);
+
+        cuestionario_Pensamiento_Reflexivo_JPanel.add(respuesta1_Pensamiento_Reflexivo_JPanel);
+
+        pregunta2_Pensamiento_Reflexivo_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta2_Pensamiento_Reflexivo_JLabel.setText(" 2. Pienso críticamente sobre mis propias ideas");
+        cuestionario_Pensamiento_Reflexivo_JPanel.add(pregunta2_Pensamiento_Reflexivo_JLabel);
+
+        respuesta2_Pensamiento_Reflexivo_JPanel.setOpaque(false);
+        respuesta2_Pensamiento_Reflexivo_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+
+        respuesta2_Pensamiento_Reflexivo_JSlider.setMajorTickSpacing(1);
+        respuesta2_Pensamiento_Reflexivo_JSlider.setMaximum(4);
+        respuesta2_Pensamiento_Reflexivo_JSlider.setPaintLabels(true);
+        respuesta2_Pensamiento_Reflexivo_JSlider.setPaintTicks(true);
+        respuesta2_Pensamiento_Reflexivo_JSlider.setSnapToTicks(true);
+        respuesta2_Pensamiento_Reflexivo_JSlider.setValue(0);
+        respuesta2_Pensamiento_Reflexivo_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta2_Pensamiento_Reflexivo_JPanel.add(respuesta2_Pensamiento_Reflexivo_JSlider);
+
+        cuestionario_Pensamiento_Reflexivo_JPanel.add(respuesta2_Pensamiento_Reflexivo_JPanel);
+
+        pregunta3_Pensamiento_Reflexivo_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta3_Pensamiento_Reflexivo_JLabel.setText(" 3. Pienso críticamente sobre las ideas de otros estudiantes");
+        cuestionario_Pensamiento_Reflexivo_JPanel.add(pregunta3_Pensamiento_Reflexivo_JLabel);
+
+        respuesta3_Pensamiento_Reflexivo_JPanel.setOpaque(false);
+        respuesta3_Pensamiento_Reflexivo_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+
+        respuesta3_Pensamiento_Reflexivo_JSlider.setMajorTickSpacing(1);
+        respuesta3_Pensamiento_Reflexivo_JSlider.setMaximum(4);
+        respuesta3_Pensamiento_Reflexivo_JSlider.setPaintLabels(true);
+        respuesta3_Pensamiento_Reflexivo_JSlider.setPaintTicks(true);
+        respuesta3_Pensamiento_Reflexivo_JSlider.setSnapToTicks(true);
+        respuesta3_Pensamiento_Reflexivo_JSlider.setValue(0);
+        respuesta3_Pensamiento_Reflexivo_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta3_Pensamiento_Reflexivo_JPanel.add(respuesta3_Pensamiento_Reflexivo_JSlider);
+
+        cuestionario_Pensamiento_Reflexivo_JPanel.add(respuesta3_Pensamiento_Reflexivo_JPanel);
+
+        pregunta4_Pensamiento_Reflexivo_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta4_Pensamiento_Reflexivo_JLabel.setText(" 4. Pienso críticamente sobre las ideas que leo");
+        cuestionario_Pensamiento_Reflexivo_JPanel.add(pregunta4_Pensamiento_Reflexivo_JLabel);
+
+        respuesta4_Pensamiento_Reflexivo_JPanel.setOpaque(false);
+        respuesta4_Pensamiento_Reflexivo_JPanel.setLayout(new java.awt.GridLayout());
+
+        respuesta4_Pensamiento_Reflexivo_JSlider.setMajorTickSpacing(1);
+        respuesta4_Pensamiento_Reflexivo_JSlider.setMaximum(4);
+        respuesta4_Pensamiento_Reflexivo_JSlider.setPaintLabels(true);
+        respuesta4_Pensamiento_Reflexivo_JSlider.setPaintTicks(true);
+        respuesta4_Pensamiento_Reflexivo_JSlider.setSnapToTicks(true);
+        respuesta4_Pensamiento_Reflexivo_JSlider.setValue(0);
+        respuesta4_Pensamiento_Reflexivo_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta4_Pensamiento_Reflexivo_JPanel.add(respuesta4_Pensamiento_Reflexivo_JSlider);
+
+        cuestionario_Pensamiento_Reflexivo_JPanel.add(respuesta4_Pensamiento_Reflexivo_JPanel);
+
+        javax.swing.GroupLayout pensamiento_Reflexivo_JPanelLayout = new javax.swing.GroupLayout(pensamiento_Reflexivo_JPanel);
+        pensamiento_Reflexivo_JPanel.setLayout(pensamiento_Reflexivo_JPanelLayout);
+        pensamiento_Reflexivo_JPanelLayout.setHorizontalGroup(
+            pensamiento_Reflexivo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pensamiento_Reflexivo_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pensamiento_Reflexivo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pensamiento_Reflexivo_JPanelLayout.createSequentialGroup()
+                        .addComponent(regresar_Relevancia_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(continuar_Interactividad_JButton))
+                    .addGroup(pensamiento_Reflexivo_JPanelLayout.createSequentialGroup()
+                        .addComponent(pensamiento_Reflexivo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(cuestionario_Pensamiento_Reflexivo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pensamiento_Reflexivo_JPanelLayout.setVerticalGroup(
+            pensamiento_Reflexivo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pensamiento_Reflexivo_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pensamiento_Reflexivo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cuestionario_Pensamiento_Reflexivo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pensamiento_Reflexivo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(continuar_Interactividad_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(regresar_Relevancia_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+
+        add(pensamiento_Reflexivo_JPanel, "Pensamiento_Reflexivo");
+
+        interactividad_JPanel.setOpaque(false);
+
+        interactividad_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        interactividad_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        interactividad_JLabel.setText("Interactividad");
+        interactividad_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        interactividad_JLabel.setOpaque(true);
+
+        continuar_Apoyo_Tutor_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
+        continuar_Apoyo_Tutor_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
+        continuar_Apoyo_Tutor_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        continuar_Apoyo_Tutor_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)continuar_Apoyo_Tutor_JButton.getIcon()).getImage().flush();
+        continuar_Apoyo_Tutor_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                continuar_Apoyo_Tutor_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                continuar_Apoyo_Tutor_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                continuar_Apoyo_Tutor_JButtonMouseExited(evt);
+            }
+        });
+
+        regresar_Pensamiento_Reflexivo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_Pensamiento_Reflexivo_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
+        regresar_Pensamiento_Reflexivo_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        regresar_Pensamiento_Reflexivo_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)regresar_Pensamiento_Reflexivo_JButton.getIcon()).getImage().flush();
+        regresar_Pensamiento_Reflexivo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar_Pensamiento_Reflexivo_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                regresar_Pensamiento_Reflexivo_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                regresar_Pensamiento_Reflexivo_JButtonMouseExited(evt);
+            }
+        });
+
+        cuestionario_Interactividad_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        cuestionario_Interactividad_JPanel.setLayout(new java.awt.GridLayout(5, 2, 5, 5));
+
+        titulo_Pregunta_Interactividad_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_Pregunta_Interactividad_JLabel.setText(" En esta unidad en línea...");
+        titulo_Pregunta_Interactividad_JLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        cuestionario_Interactividad_JPanel.add(titulo_Pregunta_Interactividad_JLabel);
+
+        titulo_Respuesta_Interactividad_JPanel.setOpaque(false);
+        titulo_Respuesta_Interactividad_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+        cuestionario_Interactividad_JPanel.add(titulo_Respuesta_Interactividad_JPanel);
+
+        pregunta1_Interactividad_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta1_Interactividad_JLabel.setText(" 1.  Explico mis ideas a otros estudiantes");
+        cuestionario_Interactividad_JPanel.add(pregunta1_Interactividad_JLabel);
+
+        respuesta1_Interactividad_JPanel.setOpaque(false);
+        respuesta1_Interactividad_JPanel.setLayout(new java.awt.BorderLayout());
+
+        respuesta1_Interactividad_JSlider.setMajorTickSpacing(1);
+        respuesta1_Interactividad_JSlider.setMaximum(4);
+        respuesta1_Interactividad_JSlider.setPaintLabels(true);
+        respuesta1_Interactividad_JSlider.setPaintTicks(true);
+        respuesta1_Interactividad_JSlider.setSnapToTicks(true);
+        respuesta1_Interactividad_JSlider.setValue(0);
+        respuesta1_Interactividad_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta1_Interactividad_JPanel.add(respuesta1_Interactividad_JSlider, java.awt.BorderLayout.CENTER);
+
+        cuestionario_Interactividad_JPanel.add(respuesta1_Interactividad_JPanel);
+
+        pregunta2_Interactividad_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta2_Interactividad_JLabel.setText(" 2. Pido a otros estudiantes que me expliquen sus ideas");
+        cuestionario_Interactividad_JPanel.add(pregunta2_Interactividad_JLabel);
+
+        respuesta2_Interactividad_JPanel.setOpaque(false);
+        respuesta2_Interactividad_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+
+        respuesta2_Interactividad_JSlider.setMajorTickSpacing(1);
+        respuesta2_Interactividad_JSlider.setMaximum(4);
+        respuesta2_Interactividad_JSlider.setPaintLabels(true);
+        respuesta2_Interactividad_JSlider.setPaintTicks(true);
+        respuesta2_Interactividad_JSlider.setSnapToTicks(true);
+        respuesta2_Interactividad_JSlider.setValue(0);
+        respuesta2_Interactividad_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta2_Interactividad_JPanel.add(respuesta2_Interactividad_JSlider);
+
+        cuestionario_Interactividad_JPanel.add(respuesta2_Interactividad_JPanel);
+
+        pregunta3_Interactividad_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta3_Interactividad_JLabel.setText(" 3. Otros estudiantes me piden que explique mis ideas");
+        pregunta3_Interactividad_JLabel.setToolTipText("");
+        cuestionario_Interactividad_JPanel.add(pregunta3_Interactividad_JLabel);
+
+        respuesta3_Interactividad_JPanel.setOpaque(false);
+        respuesta3_Interactividad_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+
+        respuesta3_Interactividad_JSlider.setMajorTickSpacing(1);
+        respuesta3_Interactividad_JSlider.setMaximum(4);
+        respuesta3_Interactividad_JSlider.setPaintLabels(true);
+        respuesta3_Interactividad_JSlider.setPaintTicks(true);
+        respuesta3_Interactividad_JSlider.setSnapToTicks(true);
+        respuesta3_Interactividad_JSlider.setValue(0);
+        respuesta3_Interactividad_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta3_Interactividad_JPanel.add(respuesta3_Interactividad_JSlider);
+
+        cuestionario_Interactividad_JPanel.add(respuesta3_Interactividad_JPanel);
+
+        pregunta4_Interactividad_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta4_Interactividad_JLabel.setText(" 4. Otros estudiantes responden a mis ideas");
+        cuestionario_Interactividad_JPanel.add(pregunta4_Interactividad_JLabel);
+
+        respuesta4_Interactividad_JPanel.setOpaque(false);
+        respuesta4_Interactividad_JPanel.setLayout(new java.awt.GridLayout());
+
+        respuesta4_Interactividad_JSlider.setMajorTickSpacing(1);
+        respuesta4_Interactividad_JSlider.setMaximum(4);
+        respuesta4_Interactividad_JSlider.setPaintLabels(true);
+        respuesta4_Interactividad_JSlider.setPaintTicks(true);
+        respuesta4_Interactividad_JSlider.setSnapToTicks(true);
+        respuesta4_Interactividad_JSlider.setValue(0);
+        respuesta4_Interactividad_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta4_Interactividad_JPanel.add(respuesta4_Interactividad_JSlider);
+
+        cuestionario_Interactividad_JPanel.add(respuesta4_Interactividad_JPanel);
+
+        javax.swing.GroupLayout interactividad_JPanelLayout = new javax.swing.GroupLayout(interactividad_JPanel);
+        interactividad_JPanel.setLayout(interactividad_JPanelLayout);
+        interactividad_JPanelLayout.setHorizontalGroup(
+            interactividad_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(interactividad_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(interactividad_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, interactividad_JPanelLayout.createSequentialGroup()
+                        .addComponent(regresar_Pensamiento_Reflexivo_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(continuar_Apoyo_Tutor_JButton))
+                    .addGroup(interactividad_JPanelLayout.createSequentialGroup()
+                        .addComponent(interactividad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(cuestionario_Interactividad_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        interactividad_JPanelLayout.setVerticalGroup(
+            interactividad_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(interactividad_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(interactividad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cuestionario_Interactividad_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(interactividad_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(continuar_Apoyo_Tutor_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(regresar_Pensamiento_Reflexivo_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+
+        add(interactividad_JPanel, "Interactividad");
+
+        apoyo_Tutor_JPanel.setOpaque(false);
+
+        apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        apoyo_Tutor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        apoyo_Tutor_JLabel.setText("Apoyo Del Tutor");
+        apoyo_Tutor_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        apoyo_Tutor_JLabel.setOpaque(true);
+
+        continuar_Interpretacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
+        continuar_Interpretacion_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
+        continuar_Interpretacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        continuar_Interpretacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)continuar_Interpretacion_JButton.getIcon()).getImage().flush();
+        continuar_Interpretacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                continuar_Interpretacion_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                continuar_Interpretacion_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                continuar_Interpretacion_JButtonMouseExited(evt);
+            }
+        });
+
+        regresar_Interactividad_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_Interactividad_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
+        regresar_Interactividad_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        regresar_Interactividad_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)regresar_Interactividad_JButton.getIcon()).getImage().flush();
+        regresar_Interactividad_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar_Interactividad_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                regresar_Interactividad_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                regresar_Interactividad_JButtonMouseExited(evt);
+            }
+        });
+
+        cuestionario_Apoyo_Tutor_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        cuestionario_Apoyo_Tutor_JPanel.setLayout(new java.awt.GridLayout(5, 2, 5, 5));
+
+        titulo_Pregunta_Apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_Pregunta_Apoyo_Tutor_JLabel.setText(" En esta unidad en línea...");
+        titulo_Pregunta_Apoyo_Tutor_JLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        cuestionario_Apoyo_Tutor_JPanel.add(titulo_Pregunta_Apoyo_Tutor_JLabel);
+
+        titulo_Respuesta_Apoyo_Tutor_JPanel.setOpaque(false);
+        titulo_Respuesta_Apoyo_Tutor_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+        cuestionario_Apoyo_Tutor_JPanel.add(titulo_Respuesta_Apoyo_Tutor_JPanel);
+
+        pregunta1_Apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta1_Apoyo_Tutor_JLabel.setText(" 1. El tutor me estimula a reflexionar");
+        cuestionario_Apoyo_Tutor_JPanel.add(pregunta1_Apoyo_Tutor_JLabel);
+
+        respuesta1_Apoyo_Tutor_JPanel.setOpaque(false);
+        respuesta1_Apoyo_Tutor_JPanel.setLayout(new java.awt.BorderLayout());
+
+        respuesta1_Apoyo_Tutor_JSlider.setMajorTickSpacing(1);
+        respuesta1_Apoyo_Tutor_JSlider.setMaximum(4);
+        respuesta1_Apoyo_Tutor_JSlider.setPaintLabels(true);
+        respuesta1_Apoyo_Tutor_JSlider.setPaintTicks(true);
+        respuesta1_Apoyo_Tutor_JSlider.setSnapToTicks(true);
+        respuesta1_Apoyo_Tutor_JSlider.setValue(0);
+        respuesta1_Apoyo_Tutor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta1_Apoyo_Tutor_JPanel.add(respuesta1_Apoyo_Tutor_JSlider, java.awt.BorderLayout.CENTER);
+
+        cuestionario_Apoyo_Tutor_JPanel.add(respuesta1_Apoyo_Tutor_JPanel);
+
+        pregunta2_Apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta2_Apoyo_Tutor_JLabel.setText(" 2. El tutor me anima a participar");
+        cuestionario_Apoyo_Tutor_JPanel.add(pregunta2_Apoyo_Tutor_JLabel);
+
+        respuesta2_Apoyo_Tutor_JPanel.setOpaque(false);
+        respuesta2_Apoyo_Tutor_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+
+        respuesta2_Apoyo_Tutor_JSlider.setMajorTickSpacing(1);
+        respuesta2_Apoyo_Tutor_JSlider.setMaximum(4);
+        respuesta2_Apoyo_Tutor_JSlider.setPaintLabels(true);
+        respuesta2_Apoyo_Tutor_JSlider.setPaintTicks(true);
+        respuesta2_Apoyo_Tutor_JSlider.setSnapToTicks(true);
+        respuesta2_Apoyo_Tutor_JSlider.setValue(0);
+        respuesta2_Apoyo_Tutor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta2_Apoyo_Tutor_JPanel.add(respuesta2_Apoyo_Tutor_JSlider);
+
+        cuestionario_Apoyo_Tutor_JPanel.add(respuesta2_Apoyo_Tutor_JPanel);
+
+        pregunta3_Apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta3_Apoyo_Tutor_JLabel.setText(" 3. El tutor ejemplifica las buenas disertaciones");
+        cuestionario_Apoyo_Tutor_JPanel.add(pregunta3_Apoyo_Tutor_JLabel);
+
+        respuesta3_Apoyo_Tutor_JPanel.setOpaque(false);
+        respuesta3_Apoyo_Tutor_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+
+        respuesta3_Apoyo_Tutor_JSlider.setMajorTickSpacing(1);
+        respuesta3_Apoyo_Tutor_JSlider.setMaximum(4);
+        respuesta3_Apoyo_Tutor_JSlider.setPaintLabels(true);
+        respuesta3_Apoyo_Tutor_JSlider.setPaintTicks(true);
+        respuesta3_Apoyo_Tutor_JSlider.setSnapToTicks(true);
+        respuesta3_Apoyo_Tutor_JSlider.setValue(0);
+        respuesta3_Apoyo_Tutor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta3_Apoyo_Tutor_JPanel.add(respuesta3_Apoyo_Tutor_JSlider);
+
+        cuestionario_Apoyo_Tutor_JPanel.add(respuesta3_Apoyo_Tutor_JPanel);
+
+        pregunta4_Apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta4_Apoyo_Tutor_JLabel.setText(" 4. El tutor ejemplifica la auto reflexión crítica");
+        cuestionario_Apoyo_Tutor_JPanel.add(pregunta4_Apoyo_Tutor_JLabel);
+
+        respuesta4_Apoyo_Tutor_JPanel.setOpaque(false);
+        respuesta4_Apoyo_Tutor_JPanel.setLayout(new java.awt.GridLayout());
+
+        respuesta4_Apoyo_Tutor_JSlider.setMajorTickSpacing(1);
+        respuesta4_Apoyo_Tutor_JSlider.setMaximum(4);
+        respuesta4_Apoyo_Tutor_JSlider.setPaintLabels(true);
+        respuesta4_Apoyo_Tutor_JSlider.setPaintTicks(true);
+        respuesta4_Apoyo_Tutor_JSlider.setSnapToTicks(true);
+        respuesta4_Apoyo_Tutor_JSlider.setValue(0);
+        respuesta4_Apoyo_Tutor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta4_Apoyo_Tutor_JPanel.add(respuesta4_Apoyo_Tutor_JSlider);
+
+        cuestionario_Apoyo_Tutor_JPanel.add(respuesta4_Apoyo_Tutor_JPanel);
+
+        javax.swing.GroupLayout apoyo_Tutor_JPanelLayout = new javax.swing.GroupLayout(apoyo_Tutor_JPanel);
+        apoyo_Tutor_JPanel.setLayout(apoyo_Tutor_JPanelLayout);
+        apoyo_Tutor_JPanelLayout.setHorizontalGroup(
+            apoyo_Tutor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(apoyo_Tutor_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(apoyo_Tutor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, apoyo_Tutor_JPanelLayout.createSequentialGroup()
+                        .addComponent(regresar_Interactividad_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(continuar_Interpretacion_JButton))
+                    .addGroup(apoyo_Tutor_JPanelLayout.createSequentialGroup()
+                        .addComponent(apoyo_Tutor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(cuestionario_Apoyo_Tutor_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        apoyo_Tutor_JPanelLayout.setVerticalGroup(
+            apoyo_Tutor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(apoyo_Tutor_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(apoyo_Tutor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cuestionario_Apoyo_Tutor_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(apoyo_Tutor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(continuar_Interpretacion_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(regresar_Interactividad_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+
+        add(apoyo_Tutor_JPanel, "Apoyo_Tutor");
+
+        interpretacion_JPanel.setOpaque(false);
+
+        interpretacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        interpretacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        interpretacion_JLabel.setText("Interpretación");
+        interpretacion_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        interpretacion_JLabel.setOpaque(true);
+
+        terminar_Cuestionario_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check_1.png"))); // NOI18N
+        terminar_Cuestionario_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
+        terminar_Cuestionario_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        terminar_Cuestionario_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)terminar_Cuestionario_JButton.getIcon()).getImage().flush();
+        terminar_Cuestionario_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                terminar_Cuestionario_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                terminar_Cuestionario_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                terminar_Cuestionario_JButtonMouseExited(evt);
+            }
+        });
+
+        regresar_Apoyo_Tutor_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_Apoyo_Tutor_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
+        regresar_Apoyo_Tutor_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        regresar_Apoyo_Tutor_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)regresar_Apoyo_Tutor_JButton.getIcon()).getImage().flush();
+        regresar_Apoyo_Tutor_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresar_Apoyo_Tutor_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                regresar_Apoyo_Tutor_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                regresar_Apoyo_Tutor_JButtonMouseExited(evt);
+            }
+        });
+
+        cuestionario_Interpretacion_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        cuestionario_Interpretacion_JPanel.setLayout(new java.awt.GridLayout(5, 2, 5, 5));
+
+        titulo_Pregunta_Interpretacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_Pregunta_Interpretacion_JLabel.setText(" En esta unidad en línea...");
+        titulo_Pregunta_Interpretacion_JLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        cuestionario_Interpretacion_JPanel.add(titulo_Pregunta_Interpretacion_JLabel);
+
+        titulo_RespuestaInterpretacion_JPanel.setOpaque(false);
+        titulo_RespuestaInterpretacion_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+        cuestionario_Interpretacion_JPanel.add(titulo_RespuestaInterpretacion_JPanel);
+
+        pregunta1_Interpretacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta1_Interpretacion_JLabel.setText(" 1. Recomendaria este curso a algún otro estudiante");
+        cuestionario_Interpretacion_JPanel.add(pregunta1_Interpretacion_JLabel);
+
+        respuesta1_Interpretacion_JPanel.setOpaque(false);
+        respuesta1_Interpretacion_JPanel.setLayout(new java.awt.BorderLayout());
+
+        respuesta1_Interpretacion_JSlider.setMajorTickSpacing(1);
+        respuesta1_Interpretacion_JSlider.setMaximum(4);
+        respuesta1_Interpretacion_JSlider.setPaintLabels(true);
+        respuesta1_Interpretacion_JSlider.setPaintTicks(true);
+        respuesta1_Interpretacion_JSlider.setSnapToTicks(true);
+        respuesta1_Interpretacion_JSlider.setValue(0);
+        respuesta1_Interpretacion_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta1_Interpretacion_JPanel.add(respuesta1_Interpretacion_JSlider, java.awt.BorderLayout.CENTER);
+
+        cuestionario_Interpretacion_JPanel.add(respuesta1_Interpretacion_JPanel);
+
+        pregunta2_Interpretacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta2_Interpretacion_JLabel.setText(" 2. Volveria a tomar otro curso con el mismo profesor");
+        cuestionario_Interpretacion_JPanel.add(pregunta2_Interpretacion_JLabel);
+
+        respuesta2_Interpretacion_JPanel.setOpaque(false);
+        respuesta2_Interpretacion_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+
+        respuesta2_Interpretacion_JSlider.setMajorTickSpacing(1);
+        respuesta2_Interpretacion_JSlider.setMaximum(4);
+        respuesta2_Interpretacion_JSlider.setPaintLabels(true);
+        respuesta2_Interpretacion_JSlider.setPaintTicks(true);
+        respuesta2_Interpretacion_JSlider.setSnapToTicks(true);
+        respuesta2_Interpretacion_JSlider.setValue(0);
+        respuesta2_Interpretacion_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta2_Interpretacion_JPanel.add(respuesta2_Interpretacion_JSlider);
+
+        cuestionario_Interpretacion_JPanel.add(respuesta2_Interpretacion_JPanel);
+
+        pregunta3_Interpretacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta3_Interpretacion_JLabel.setText(" 3.  El profesor se dirigio con respecto hacia los estudiantes");
+        cuestionario_Interpretacion_JPanel.add(pregunta3_Interpretacion_JLabel);
+
+        respuesta3_Interpretacion_JPanel.setOpaque(false);
+        respuesta3_Interpretacion_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+
+        respuesta3_Interpretacion_JSlider.setMajorTickSpacing(1);
+        respuesta3_Interpretacion_JSlider.setMaximum(4);
+        respuesta3_Interpretacion_JSlider.setPaintLabels(true);
+        respuesta3_Interpretacion_JSlider.setPaintTicks(true);
+        respuesta3_Interpretacion_JSlider.setSnapToTicks(true);
+        respuesta3_Interpretacion_JSlider.setValue(0);
+        respuesta3_Interpretacion_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta3_Interpretacion_JPanel.add(respuesta3_Interpretacion_JSlider);
+
+        cuestionario_Interpretacion_JPanel.add(respuesta3_Interpretacion_JPanel);
+
+        pregunta4_Interpretacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta4_Interpretacion_JLabel.setText(" 4. Lo aprendido en el curso encajaba con las temáticas del mismo");
+        cuestionario_Interpretacion_JPanel.add(pregunta4_Interpretacion_JLabel);
+
+        respuesta4_Interpretacion_JPanel.setOpaque(false);
+        respuesta4_Interpretacion_JPanel.setLayout(new java.awt.GridLayout());
+
+        respuesta4_Interpretacion_JSlider.setMajorTickSpacing(1);
+        respuesta4_Interpretacion_JSlider.setMaximum(4);
+        respuesta4_Interpretacion_JSlider.setPaintLabels(true);
+        respuesta4_Interpretacion_JSlider.setPaintTicks(true);
+        respuesta4_Interpretacion_JSlider.setSnapToTicks(true);
+        respuesta4_Interpretacion_JSlider.setValue(0);
+        respuesta4_Interpretacion_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta4_Interpretacion_JPanel.add(respuesta4_Interpretacion_JSlider);
+
+        cuestionario_Interpretacion_JPanel.add(respuesta4_Interpretacion_JPanel);
+
+        javax.swing.GroupLayout interpretacion_JPanelLayout = new javax.swing.GroupLayout(interpretacion_JPanel);
+        interpretacion_JPanel.setLayout(interpretacion_JPanelLayout);
+        interpretacion_JPanelLayout.setHorizontalGroup(
+            interpretacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(interpretacion_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(interpretacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, interpretacion_JPanelLayout.createSequentialGroup()
+                        .addComponent(regresar_Apoyo_Tutor_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(terminar_Cuestionario_JButton))
+                    .addGroup(interpretacion_JPanelLayout.createSequentialGroup()
+                        .addComponent(interpretacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(cuestionario_Interpretacion_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        interpretacion_JPanelLayout.setVerticalGroup(
+            interpretacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(interpretacion_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(interpretacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cuestionario_Interpretacion_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(interpretacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(terminar_Cuestionario_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(regresar_Apoyo_Tutor_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+
+        add(interpretacion_JPanel, "Interpretacion");
     }// </editor-fold>//GEN-END:initComponents
 
     private void continuar_Relevancia_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Relevancia_JButtonMouseClicked
@@ -400,6 +1116,148 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
     }//GEN-LAST:event_regresar_Inicio_JButtonMouseExited
 
+    private void continuar_Interactividad_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interactividad_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            ((CardLayout)this.getLayout()).show(this,"Interactividad");
+        }
+    }//GEN-LAST:event_continuar_Interactividad_JButtonMouseClicked
+
+    private void continuar_Interactividad_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interactividad_JButtonMouseEntered
+        // TODO add your handling code here:
+        continuar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_continuar_Interactividad_JButtonMouseEntered
+
+    private void continuar_Interactividad_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interactividad_JButtonMouseExited
+        // TODO add your handling code here:
+        continuar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_continuar_Interactividad_JButtonMouseExited
+
+    private void regresar_Relevancia_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Relevancia_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            ((CardLayout)this.getLayout()).show(this,"Relevancia");
+        }
+    }//GEN-LAST:event_regresar_Relevancia_JButtonMouseClicked
+
+    private void regresar_Relevancia_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Relevancia_JButtonMouseEntered
+        // TODO add your handling code here:
+        regresar_Relevancia_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_regresar_Relevancia_JButtonMouseEntered
+
+    private void regresar_Relevancia_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Relevancia_JButtonMouseExited
+        // TODO add your handling code here:
+        regresar_Relevancia_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_regresar_Relevancia_JButtonMouseExited
+
+    private void continuar_Apoyo_Tutor_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Tutor_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            ((CardLayout)this.getLayout()).show(this,"Apoyo_Tutor");
+        }
+    }//GEN-LAST:event_continuar_Apoyo_Tutor_JButtonMouseClicked
+
+    private void continuar_Apoyo_Tutor_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Tutor_JButtonMouseEntered
+        // TODO add your handling code here:
+        continuar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_continuar_Apoyo_Tutor_JButtonMouseEntered
+
+    private void continuar_Apoyo_Tutor_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Tutor_JButtonMouseExited
+        // TODO add your handling code here:
+        continuar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_continuar_Apoyo_Tutor_JButtonMouseExited
+
+    private void regresar_Pensamiento_Reflexivo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Pensamiento_Reflexivo_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            ((CardLayout)this.getLayout()).show(this,"Pensamiento_Reflexivo");
+        }
+    }//GEN-LAST:event_regresar_Pensamiento_Reflexivo_JButtonMouseClicked
+
+    private void regresar_Pensamiento_Reflexivo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Pensamiento_Reflexivo_JButtonMouseEntered
+        // TODO add your handling code here:
+        regresar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_regresar_Pensamiento_Reflexivo_JButtonMouseEntered
+
+    private void regresar_Pensamiento_Reflexivo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Pensamiento_Reflexivo_JButtonMouseExited
+        // TODO add your handling code here:
+        regresar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_regresar_Pensamiento_Reflexivo_JButtonMouseExited
+
+    private void continuar_Interpretacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interpretacion_JButtonMouseClicked
+        // TODO add your handling code here:
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) this.getLayout()).show(this, "Interpretacion");
+        }
+    }//GEN-LAST:event_continuar_Interpretacion_JButtonMouseClicked
+
+    private void continuar_Interpretacion_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interpretacion_JButtonMouseEntered
+        // TODO add your handling code here:
+        continuar_Interpretacion_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_continuar_Interpretacion_JButtonMouseEntered
+
+    private void continuar_Interpretacion_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interpretacion_JButtonMouseExited
+        // TODO add your handling code here:
+        continuar_Interpretacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_continuar_Interpretacion_JButtonMouseExited
+
+    private void regresar_Interactividad_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Interactividad_JButtonMouseClicked
+        // TODO add your handling code here:
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) this.getLayout()).show(this, "Interactividad");
+        }
+    }//GEN-LAST:event_regresar_Interactividad_JButtonMouseClicked
+
+    private void regresar_Interactividad_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Interactividad_JButtonMouseEntered
+        // TODO add your handling code here:
+        regresar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_regresar_Interactividad_JButtonMouseEntered
+
+    private void regresar_Interactividad_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Interactividad_JButtonMouseExited
+        // TODO add your handling code here:
+        regresar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_regresar_Interactividad_JButtonMouseExited
+
+    private void terminar_Cuestionario_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terminar_Cuestionario_JButtonMouseClicked
+        // TODO add your handling code here:
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            JOptionPane.showMessageDialog(this, CourseRoom.Utilerias.Concatenar("Gracias por contestar el cuestionario\n", Perfil_Estudiante_Panel.Nombre_Completo()),
+                    "Cuestionario Completado", JOptionPane.INFORMATION_MESSAGE);
+
+            Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
+        }
+        
+    }//GEN-LAST:event_terminar_Cuestionario_JButtonMouseClicked
+
+    private void terminar_Cuestionario_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terminar_Cuestionario_JButtonMouseEntered
+        // TODO add your handling code here:
+        terminar_Cuestionario_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_terminar_Cuestionario_JButtonMouseEntered
+
+    private void terminar_Cuestionario_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terminar_Cuestionario_JButtonMouseExited
+        // TODO add your handling code here:
+        terminar_Cuestionario_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        
+    }//GEN-LAST:event_terminar_Cuestionario_JButtonMouseExited
+
+    private void regresar_Apoyo_Tutor_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Tutor_JButtonMouseClicked
+        // TODO add your handling code here:
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) this.getLayout()).show(this, "Apoyo_Tutor");
+        }
+    }//GEN-LAST:event_regresar_Apoyo_Tutor_JButtonMouseClicked
+
+    private void regresar_Apoyo_Tutor_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Tutor_JButtonMouseEntered
+        // TODO add your handling code here:
+        regresar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+
+    }//GEN-LAST:event_regresar_Apoyo_Tutor_JButtonMouseEntered
+
+    private void regresar_Apoyo_Tutor_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Tutor_JButtonMouseExited
+        // TODO add your handling code here:
+        regresar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_regresar_Apoyo_Tutor_JButtonMouseExited
+
     private String Descripcion_Cuestionario(String nombre_Curso){
         
         return CourseRoom.Utilerias.Formato_HTML_Central(
@@ -409,30 +1267,106 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apoyo_Tutor_JLabel;
+    private javax.swing.JPanel apoyo_Tutor_JPanel;
+    private javax.swing.JButton continuar_Apoyo_Tutor_JButton;
+    private javax.swing.JButton continuar_Interactividad_JButton;
+    private javax.swing.JButton continuar_Interpretacion_JButton;
     private javax.swing.JButton continuar_Pensamiento_Reflexivo_JButton;
     private javax.swing.JButton continuar_Relevancia_JButton;
+    private javax.swing.JPanel cuestionario_Apoyo_Tutor_JPanel;
+    private javax.swing.JPanel cuestionario_Interactividad_JPanel;
+    private javax.swing.JPanel cuestionario_Interpretacion_JPanel;
+    private javax.swing.JPanel cuestionario_Pensamiento_Reflexivo_JPanel;
     private javax.swing.JPanel cuestionario_Relevancia_JPanel;
     private javax.swing.JLabel informacion_Inicio_JLabel;
     private javax.swing.JPanel inicio_JPanel;
+    private javax.swing.JLabel interactividad_JLabel;
+    private javax.swing.JPanel interactividad_JPanel;
+    private javax.swing.JLabel interpretacion_JLabel;
+    private javax.swing.JPanel interpretacion_JPanel;
     private javax.swing.JLabel logo_Inicio_JLabel;
+    private javax.swing.JLabel pensamiento_Reflexivo_JLabel;
+    private javax.swing.JPanel pensamiento_Reflexivo_JPanel;
+    private javax.swing.JLabel pregunta1_Apoyo_Tutor_JLabel;
+    private javax.swing.JLabel pregunta1_Interactividad_JLabel;
+    private javax.swing.JLabel pregunta1_Interpretacion_JLabel;
+    private javax.swing.JLabel pregunta1_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel pregunta1_Relevancia_JLabel;
+    private javax.swing.JLabel pregunta2_Apoyo_Tutor_JLabel;
+    private javax.swing.JLabel pregunta2_Interactividad_JLabel;
+    private javax.swing.JLabel pregunta2_Interpretacion_JLabel;
+    private javax.swing.JLabel pregunta2_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel pregunta2_Relevancia_JLabel;
+    private javax.swing.JLabel pregunta3_Apoyo_Tutor_JLabel;
+    private javax.swing.JLabel pregunta3_Interactividad_JLabel;
+    private javax.swing.JLabel pregunta3_Interpretacion_JLabel;
+    private javax.swing.JLabel pregunta3_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel pregunta3_Relevancia_JLabel;
+    private javax.swing.JLabel pregunta4_Apoyo_Tutor_JLabel;
+    private javax.swing.JLabel pregunta4_Interactividad_JLabel;
+    private javax.swing.JLabel pregunta4_Interpretacion_JLabel;
+    private javax.swing.JLabel pregunta4_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel pregunta4_Relevancia_JLabel;
+    private javax.swing.JButton regresar_Apoyo_Tutor_JButton;
     private javax.swing.JButton regresar_Curso_JButton;
     private javax.swing.JButton regresar_Inicio_JButton;
+    private javax.swing.JButton regresar_Interactividad_JButton;
+    private javax.swing.JButton regresar_Pensamiento_Reflexivo_JButton;
+    private javax.swing.JButton regresar_Relevancia_JButton;
     private javax.swing.JLabel relevancia_JLabel;
     private javax.swing.JPanel relevancia_JPanel;
+    private javax.swing.JPanel respuesta1_Apoyo_Tutor_JPanel;
+    private javax.swing.JSlider respuesta1_Apoyo_Tutor_JSlider;
+    private javax.swing.JPanel respuesta1_Interactividad_JPanel;
+    private javax.swing.JSlider respuesta1_Interactividad_JSlider;
+    private javax.swing.JPanel respuesta1_Interpretacion_JPanel;
+    private javax.swing.JSlider respuesta1_Interpretacion_JSlider;
+    private javax.swing.JPanel respuesta1_Pensamiento_Reflexivo_JPanel;
+    private javax.swing.JSlider respuesta1_Pensamiento_Reflexivo_JSlider;
     private javax.swing.JPanel respuesta1_Relevancia_JPanel;
     private javax.swing.JSlider respuesta1_Relevancia_JSlider;
+    private javax.swing.JPanel respuesta2_Apoyo_Tutor_JPanel;
+    private javax.swing.JSlider respuesta2_Apoyo_Tutor_JSlider;
+    private javax.swing.JPanel respuesta2_Interactividad_JPanel;
+    private javax.swing.JSlider respuesta2_Interactividad_JSlider;
+    private javax.swing.JPanel respuesta2_Interpretacion_JPanel;
+    private javax.swing.JSlider respuesta2_Interpretacion_JSlider;
+    private javax.swing.JPanel respuesta2_Pensamiento_Reflexivo_JPanel;
+    private javax.swing.JSlider respuesta2_Pensamiento_Reflexivo_JSlider;
     private javax.swing.JPanel respuesta2_Relevancia_JPanel;
     private javax.swing.JSlider respuesta2_Relevancia_JSlider;
+    private javax.swing.JPanel respuesta3_Apoyo_Tutor_JPanel;
+    private javax.swing.JSlider respuesta3_Apoyo_Tutor_JSlider;
+    private javax.swing.JPanel respuesta3_Interactividad_JPanel;
+    private javax.swing.JSlider respuesta3_Interactividad_JSlider;
+    private javax.swing.JPanel respuesta3_Interpretacion_JPanel;
+    private javax.swing.JSlider respuesta3_Interpretacion_JSlider;
+    private javax.swing.JPanel respuesta3_Pensamiento_Reflexivo_JPanel;
+    private javax.swing.JSlider respuesta3_Pensamiento_Reflexivo_JSlider;
     private javax.swing.JPanel respuesta3_Relevancia_JPanel;
     private javax.swing.JSlider respuesta3_Relevancia_JSlider;
+    private javax.swing.JPanel respuesta4_Apoyo_Tutor_JPanel;
+    private javax.swing.JSlider respuesta4_Apoyo_Tutor_JSlider;
+    private javax.swing.JPanel respuesta4_Interactividad_JPanel;
+    private javax.swing.JSlider respuesta4_Interactividad_JSlider;
+    private javax.swing.JPanel respuesta4_Interpretacion_JPanel;
+    private javax.swing.JSlider respuesta4_Interpretacion_JSlider;
+    private javax.swing.JPanel respuesta4_Pensamiento_Reflexivo_JPanel;
+    private javax.swing.JSlider respuesta4_Pensamiento_Reflexivo_JSlider;
     private javax.swing.JPanel respuesta4_Relevancia_JPanel;
     private javax.swing.JSlider respuesta4_Relevancia_JSlider;
+    private javax.swing.JButton terminar_Cuestionario_JButton;
     private javax.swing.JLabel titulo_Inicio_JLabel;
+    private javax.swing.JLabel titulo_Pregunta_Apoyo_Tutor_JLabel;
+    private javax.swing.JLabel titulo_Pregunta_Interactividad_JLabel;
+    private javax.swing.JLabel titulo_Pregunta_Interpretacion_JLabel;
+    private javax.swing.JLabel titulo_Pregunta_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel titulo_Pregunta_Relevancia_JLabel;
+    private javax.swing.JPanel titulo_RespuestaInterpretacion_JPanel;
+    private javax.swing.JPanel titulo_Respuesta_Apoyo_Tutor_JPanel;
+    private javax.swing.JPanel titulo_Respuesta_Interactividad_JPanel;
+    private javax.swing.JPanel titulo_Respuesta_Pensamiento_Reflexivo_JPanel;
     private javax.swing.JPanel titulo_Respuesta_Relevancia_JPanel;
     // End of variables declaration//GEN-END:variables
 
@@ -454,43 +1388,68 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         }
         
         JLabel label;
-        labeles = new JLabel[5];
+        labeles_Pares = new JLabel[5];
+        labeles_Impares = new JLabel[5];
         
         Font segoe = new Font("Segoe UI", Font.PLAIN, 13);
         
         label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Casi Nunca"));
         label.setFont(segoe);
-        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        labeles[0] = label;
+        labeles_Impares[0] = labeles_Pares[0] = label;
         label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Rara Vez"));
         label.setFont(segoe);
-        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        labeles[1] = label;
+        labeles_Impares[1] = labeles_Pares[1] = label;
         label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Alguna Vez"));
         label.setFont(segoe);
-        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        labeles[2] = label;
+        labeles_Impares[2] = labeles_Pares[2] = label;
         label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("A Menudo"));
         label.setFont(segoe);
-        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        labeles[3] = label;
+        labeles_Impares[3] = labeles_Pares[3] = label;
         label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Casi Siempre"));
         label.setFont(segoe);
-        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        labeles[4] = label;
+        labeles_Impares[4] = labeles_Pares[4] = label;
+
         
         Hashtable<Integer, JLabel> labels = new Hashtable<>();
-        labels.put(0, labeles[0]);
-        labels.put(1, labeles[1]);
-        labels.put(2, labeles[2]);
-        labels.put(3, labeles[3]);
-        labels.put(4, labeles[4]);
+        labels.put(0, labeles_Pares[0]);
+        labels.put(1, labeles_Pares[1]);
+        labels.put(2, labeles_Pares[2]);
+        labels.put(3, labeles_Pares[3]);
+        labels.put(4, labeles_Pares[4]);
+        
+        
         
         respuesta1_Relevancia_JSlider.setLabelTable(labels);
         respuesta2_Relevancia_JSlider.setLabelTable(labels);
         respuesta3_Relevancia_JSlider.setLabelTable(labels);
         respuesta4_Relevancia_JSlider.setLabelTable(labels);
         
+        respuesta1_Interactividad_JSlider.setLabelTable(labels);
+        respuesta2_Interactividad_JSlider.setLabelTable(labels);
+        respuesta3_Interactividad_JSlider.setLabelTable(labels);
+        respuesta4_Interactividad_JSlider.setLabelTable(labels);
+        
+        respuesta1_Interpretacion_JSlider.setLabelTable(labels);
+        respuesta2_Interpretacion_JSlider.setLabelTable(labels);
+        respuesta3_Interpretacion_JSlider.setLabelTable(labels);
+        respuesta4_Interpretacion_JSlider.setLabelTable(labels);
+        
+        labels = new Hashtable<>();
+        labels.put(0, labeles_Impares[0]);
+        labels.put(1, labeles_Impares[1]);
+        labels.put(2, labeles_Impares[2]);
+        labels.put(3, labeles_Impares[3]);
+        labels.put(4, labeles_Impares[4]);
+        
+        respuesta1_Pensamiento_Reflexivo_JSlider.setLabelTable(labels);
+        respuesta2_Pensamiento_Reflexivo_JSlider.setLabelTable(labels);
+        respuesta3_Pensamiento_Reflexivo_JSlider.setLabelTable(labels);
+        respuesta4_Pensamiento_Reflexivo_JSlider.setLabelTable(labels);
+        
+        respuesta1_Apoyo_Tutor_JSlider.setLabelTable(labels);
+        respuesta2_Apoyo_Tutor_JSlider.setLabelTable(labels);
+        respuesta3_Apoyo_Tutor_JSlider.setLabelTable(labels);
+        respuesta4_Apoyo_Tutor_JSlider.setLabelTable(labels);
         
     }
 
@@ -522,8 +1481,89 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         respuesta3_Relevancia_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         respuesta4_Relevancia_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        for(JLabel label : labeles){
+        //Pensamiento reflexivo:
+        continuar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_Relevancia_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        
+        pensamiento_Reflexivo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        cuestionario_Pensamiento_Reflexivo_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+
+        titulo_Pregunta_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta1_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta2_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta3_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta4_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+
+        respuesta1_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta2_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta3_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta4_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        
+        //Interactividad:
+        continuar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        regresar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        
+        interactividad_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        interactividad_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        cuestionario_Interactividad_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+
+        titulo_Pregunta_Interactividad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        pregunta1_Interactividad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        pregunta2_Interactividad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        pregunta3_Interactividad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        pregunta4_Interactividad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+
+        respuesta1_Interactividad_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta2_Interactividad_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta3_Interactividad_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta4_Interactividad_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
+        //Apoyo Tutor:
+        continuar_Interpretacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        
+        apoyo_Tutor_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        cuestionario_Apoyo_Tutor_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+
+        titulo_Pregunta_Apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta1_Apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta2_Apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta3_Apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta4_Apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+
+        respuesta1_Apoyo_Tutor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta2_Apoyo_Tutor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta3_Apoyo_Tutor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta4_Apoyo_Tutor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        
+        //Interpretacion:
+        terminar_Cuestionario_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        regresar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        
+        interpretacion_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        cuestionario_Interpretacion_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+
+        titulo_Pregunta_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        pregunta1_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        pregunta2_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        pregunta3_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        pregunta4_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+
+        respuesta1_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta2_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta3_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta4_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
+        
+        for (JLabel label : labeles_Pares) {
             label.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        }
+        
+        for (JLabel label : labeles_Impares) {
+            label.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         }
         
     }
