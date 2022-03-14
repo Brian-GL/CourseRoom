@@ -1028,6 +1028,19 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         }
     }//GEN-LAST:event_informacion_Estudiante_JButtonMouseClicked
 
+    private void Agregar_Interes_Tematica(String id, String interes_Tematica){
+        
+        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+        Celda_Renderer[] celdas = new Celda_Renderer[1];
+        Celda_Renderer celda;
+        
+        celda = new Celda_Renderer(interes_Tematica,id);
+        celdas[0] = celda;
+        modelo.addRow(celdas);
+        
+        intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(interes_Tematica.length()));
+        
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
@@ -1124,12 +1137,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-        Celda_Renderer[] celda = new Celda_Renderer[1];
-        for (int i = 0; i < CourseRoom.Utilerias.number().numberBetween(1, 5); i++) {
-            celda[0] = new Celda_Renderer(CourseRoom.Utilerias.music().genre(), "");
-            modelo.addRow(celda);
-        }
+        Agregar_Interes_Tematica("1", CourseRoom.Utilerias.music().genre());
         
         Colorear_Componentes();
     }
@@ -1259,7 +1267,6 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
         }
         
-        
         Font fuente = new Font("Segoe UI", 1, 18);
         
         BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
@@ -1295,6 +1302,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             
             modelo.addRow(celdas);
             
+            icono.flush();
             retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1,CourseRoom.Utilerias.Altura_Fila_Tabla(retroalimentacion.length()));
         } catch (IOException ex) {
         }
@@ -1383,6 +1391,8 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
         modelo.setRowCount(0);
         modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         modelo.setRowCount(0);
         
     }

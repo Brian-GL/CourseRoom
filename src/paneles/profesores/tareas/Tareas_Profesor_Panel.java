@@ -575,6 +575,8 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         modelo_Tareas_Creadas.setRowCount(0);
         DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
         modelo.setRowCount(0);
+        tareas_Por_Calificar_Lista.clear();
+        tareas_Creadas_Lista.clear();
     }
 
     @Override
