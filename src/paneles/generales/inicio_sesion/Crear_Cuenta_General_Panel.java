@@ -131,8 +131,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         informacion_Inicio_JLabel.setPreferredSize(new java.awt.Dimension(670, 104));
 
         continuar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Autenticacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         continuar_Autenticacion_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
+        continuar_Autenticacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)continuar_Autenticacion_JButton.getIcon()).getImage().flush();
         continuar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -147,8 +147,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         });
 
         regresar_Inicio_Sesion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Inicio_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_Inicio_Sesion_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
+        regresar_Inicio_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_Inicio_Sesion_JButton.getIcon()).getImage().flush();
         regresar_Inicio_Sesion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -221,7 +221,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         correo_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         correo_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         correo_JTextField.setPreferredSize(new java.awt.Dimension(350, 43));
-        correo_JTextField.setToolTipText("");
+        correo_JTextField.setToolTipText("<html> <h3Ingresa Tu Correo Electronico</h3> </html>");
 
         repetir_Contrasena_Autenticacion_JLabel.setText("Repetir Contraseña*");
         repetir_Contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -229,11 +229,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         repetir_Contrasenia_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         repetir_Contrasenia_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         repetir_Contrasenia_JTextField.setPreferredSize(new java.awt.Dimension(350, 43));
-        repetir_Contrasenia_JTextField.setToolTipText("");
+        repetir_Contrasenia_JTextField.setToolTipText("<html> <h3>Vuelve A Ingresar La Contraseña</h3> </html>");
 
         regresar_Inicio_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Inicio_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_Inicio_JButton.setToolTipText("<html>\n<h3>Regresar a la pestaña de inicio</h3>\n</html>");
+        regresar_Inicio_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_Inicio_JButton.getIcon()).getImage().flush();
         regresar_Inicio_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -248,8 +248,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         });
 
         continuar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         continuar_Datos_Personales_JButton.setToolTipText("<html>\n<h3>Continuar a la pestaña de datos personales</h3>\n</html>");
+        continuar_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)continuar_Datos_Personales_JButton.getIcon()).getImage().flush();
         continuar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -263,28 +263,28 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             }
         });
 
-        mostrar_Contrasena_JCheckBox.setText("Mostrar Contraseña");
-        mostrar_Contrasena_JCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mostrar_Contrasena_JCheckBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        mostrar_Contrasena_JCheckBox.setText("Mostrar Contraseña");
+        mostrar_Contrasena_JCheckBox.setToolTipText("Muestra La Contraseña");
+        mostrar_Contrasena_JCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mostrar_Contrasena_JCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         mostrar_Contrasena_JCheckBox.setMaximumSize(new java.awt.Dimension(430, 30));
         mostrar_Contrasena_JCheckBox.setMinimumSize(new java.awt.Dimension(430, 30));
         mostrar_Contrasena_JCheckBox.setPreferredSize(new java.awt.Dimension(430, 30));
-        mostrar_Contrasena_JCheckBox.setToolTipText("Muestra La Contraseña");
         mostrar_Contrasena_JCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mostrar_Contrasena_JCheckBoxMouseClicked(evt);
             }
         });
 
-        mostrar_Repetir_Contrasena_JCheckBox.setText("Mostrar Contraseña");
-        mostrar_Repetir_Contrasena_JCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mostrar_Repetir_Contrasena_JCheckBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        mostrar_Repetir_Contrasena_JCheckBox.setText("Mostrar Contraseña");
+        mostrar_Repetir_Contrasena_JCheckBox.setToolTipText("Muestra La Contraseña");
+        mostrar_Repetir_Contrasena_JCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mostrar_Repetir_Contrasena_JCheckBox.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         mostrar_Repetir_Contrasena_JCheckBox.setMaximumSize(new java.awt.Dimension(430, 30));
         mostrar_Repetir_Contrasena_JCheckBox.setMinimumSize(new java.awt.Dimension(430, 30));
         mostrar_Repetir_Contrasena_JCheckBox.setPreferredSize(new java.awt.Dimension(430, 30));
-        mostrar_Repetir_Contrasena_JCheckBox.setToolTipText("Muestra La Contraseña");
         mostrar_Repetir_Contrasena_JCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mostrar_Repetir_Contrasena_JCheckBoxMouseClicked(evt);
@@ -408,8 +408,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         continuar_Perfil_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Perfil_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         continuar_Perfil_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
+        continuar_Perfil_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)continuar_Perfil_JButton.getIcon()).getImage().flush();
         continuar_Perfil_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -424,8 +424,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         });
 
         regresar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Autenticacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_Autenticacion_JButton.setToolTipText("<html> <h3>Regresar a la pestaña de autenticación</h3> </html>");
+        regresar_Autenticacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_Autenticacion_JButton.getIcon()).getImage().flush();
         regresar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -461,7 +461,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         localidad_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Localidad de provenencia</h3>\n</html>");
 
         fecha_Nacimiento_DatePicker.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        fecha_Nacimiento_DatePicker.setToolTipText("");
+        fecha_Nacimiento_DatePicker.setToolTipText("<html> <h3>Fecha De Nacimiento</h3> </html>");
 
         javax.swing.GroupLayout datos_Personales_JPanelLayout = new javax.swing.GroupLayout(datos_Personales_JPanel);
         datos_Personales_JPanel.setLayout(datos_Personales_JPanelLayout);
@@ -543,6 +543,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                     .addComponent(regresar_Autenticacion_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
+
+        apellido_Materno_JTextField.getAccessibleContext().setAccessibleDescription("<html> <h3Apellido Materno</h3> <ul><li>Opcional</li> </ul> </html>");
+        fecha_Nacimiento_DatePicker.getAccessibleContext().setAccessibleDescription("<html> <h3>Fecha De Nacimiento</h3> <ul><li>Obligatorio</li> </ul> </html>");
 
         add(datos_Personales_JPanel, "Datos_Personales");
 
