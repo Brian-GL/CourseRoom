@@ -119,6 +119,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         enrolarme_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         enrolarme_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/working.png"))); // NOI18N
         enrolarme_JButton.setText("Enrolarme");
+        enrolarme_JButton.setToolTipText("<html> <h4>Registrarme En<br> Este Curso</h4> </html>");
         enrolarme_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         enrolarme_JButton.setMaximumSize(new java.awt.Dimension(171, 32));
         enrolarme_JButton.setMinimumSize(new java.awt.Dimension(171, 32));

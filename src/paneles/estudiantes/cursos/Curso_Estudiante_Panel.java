@@ -162,7 +162,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework.png"))); // NOI18N
-        tareas_JButton.setToolTipText("<html>\n<h3>Tareas</h3></html>");
+        tareas_JButton.setToolTipText("<html> <h3>Tareas</h3> </html>");
         tareas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)tareas_JButton.getIcon()).getImage().flush();
         tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -245,7 +245,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         regresion_Lineal_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/function.png"))); // NOI18N
-        regresion_Lineal_JButton.setToolTipText("<html>\n<h3Grafica De<br>Avance</h3></html>");
+        regresion_Lineal_JButton.setToolTipText("<html>\n<h3>Grafica De<br>Avance</h3></html>");
         regresion_Lineal_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)regresion_Lineal_JButton.getIcon()).getImage().flush();
         regresion_Lineal_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
