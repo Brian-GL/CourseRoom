@@ -148,12 +148,12 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/homework_6.png"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Buscar tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Buscar tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tareas_Creadas_JButtonMouseClicked"/>
@@ -167,12 +167,12 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/homework_4.png"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Buscar tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Buscar tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tareas_Por_Calificar_JButtonMouseClicked"/>
@@ -210,18 +210,18 @@
             <Component class="javax.swing.JTable" name="tareas_Por_Calificar_JTable">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Tarea&quot;, &quot;Curso&quot;, &quot;Estudiante&quot;, &quot;Entregado El&quot;, &quot;Fecha Entrega&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;         false, false, false, false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; tareas_Por_Calificar_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Tarea&quot;, &quot;Curso&quot;, &quot;Estudiante&quot;, &quot;Entregado El&quot;, &quot;Fecha Entrega&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;         false, false, false, false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; tareas_Por_Calificar_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
                 </Property>
                 <Property name="rowHeight" type="int" value="96"/>
                 <Property name="showGrid" type="boolean" value="true"/>
                 <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tareas_Por_Calificar_JTable.setRowSorter(new TableRowSorter(tareas_Por_Calificar_JTable.getModel()));&#xd;&#xa;tareas_Por_Calificar_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable)e.getComponent();&#xd;&#xa;            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;            Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila,columna);&#xd;&#xa;            Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;});"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tareas_Por_Calificar_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());&#xd;&#xa;tareas_Por_Calificar_JTable.setRowSorter(new TableRowSorter(tareas_Por_Calificar_JTable.getModel()));&#xd;&#xa;tareas_Por_Calificar_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable)e.getComponent();&#xd;&#xa;            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;            Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila,columna);&#xd;&#xa;            Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;});"/>
                 <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Chats_Estudiante_Panel_chats_JTable"/>
               </AuxValues>
             </Component>
@@ -248,18 +248,18 @@
             <Component class="javax.swing.JTable" name="tareas_Creadas_JTable">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Tarea&quot;, &quot;Curso&quot;, &quot;Creada El&quot;, &quot;Entrega&quot;, &quot;Estatus&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;         false, false, false, false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; tareas_Creadas_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Tarea&quot;, &quot;Curso&quot;, &quot;Creada El&quot;, &quot;Entrega&quot;, &quot;Estatus&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;         false, false, false, false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; tareas_Creadas_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
                 </Property>
                 <Property name="rowHeight" type="int" value="96"/>
                 <Property name="showGrid" type="boolean" value="true"/>
                 <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tareas_Creadas_JTable.setRowSorter(new TableRowSorter(tareas_Creadas_JTable.getModel()));&#xd;&#xa;tareas_Creadas_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;            JTable tabla = (JTable)e.getComponent();&#xd;&#xa;            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;            Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila,columna);&#xd;&#xa;            Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());&#xd;&#xa;&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tareas_Creadas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());&#xd;&#xa;tareas_Creadas_JTable.setRowSorter(new TableRowSorter(tareas_Creadas_JTable.getModel()));&#xd;&#xa;tareas_Creadas_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;            JTable tabla = (JTable)e.getComponent();&#xd;&#xa;            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;            Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila,columna);&#xd;&#xa;            Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());&#xd;&#xa;&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
                 <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Chats_Estudiante_Panel_chats_JTable"/>
               </AuxValues>
             </Component>

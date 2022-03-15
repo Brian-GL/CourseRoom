@@ -81,8 +81,8 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         tareas_Creadas_JScrollPane = new javax.swing.JScrollPane();
         tareas_Creadas_JTable = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
         contenido_Titulo_JPanel.setOpaque(false);
@@ -102,9 +102,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        actualizar_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
-        actualizar_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,11 +116,8 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         });
 
         tareas_Creadas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_6.png"))); // NOI18N
-        tareas_Creadas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tareas_Creadas_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
-        tareas_Creadas_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
-        tareas_Creadas_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         tareas_Creadas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
+        tareas_Creadas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)tareas_Creadas_JButton.getIcon()).getImage().flush();
         tareas_Creadas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,11 +126,8 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         });
 
         tareas_Por_Calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_4.png"))); // NOI18N
-        tareas_Por_Calificar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tareas_Por_Calificar_JButton.setMaximumSize(new java.awt.Dimension(36, 36));
-        tareas_Por_Calificar_JButton.setMinimumSize(new java.awt.Dimension(36, 36));
-        tareas_Por_Calificar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
         tareas_Por_Calificar_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
+        tareas_Por_Calificar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)tareas_Por_Calificar_JButton.getIcon()).getImage().flush();
         tareas_Por_Calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,11 +141,11 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(tareas_Por_Calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tareas_Por_Calificar_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tareas_Creadas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tareas_Creadas_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizar_JButton)
                 .addGap(0, 0, 0))
         );
         acciones_JPanelLayout.setVerticalGroup(
@@ -162,9 +153,9 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tareas_Por_Calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tareas_Creadas_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tareas_Por_Calificar_JButton)
+                    .addComponent(actualizar_JButton)
+                    .addComponent(tareas_Creadas_JButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -176,6 +167,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         tareas_Por_Calificar_JScrollPane.setOpaque(false);
 
         tareas_Por_Calificar_JTable.setAutoCreateRowSorter(true);
+        tareas_Por_Calificar_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tareas_Por_Calificar_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -209,10 +201,10 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                     return super.getColumnClass(column);
                 }
             });
-            tareas_Por_Calificar_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             tareas_Por_Calificar_JTable.setRowHeight(96);
             tareas_Por_Calificar_JTable.setShowGrid(true);
             tareas_Por_Calificar_JTable.setSurrendersFocusOnKeystroke(true);
+            tareas_Por_Calificar_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
             tareas_Por_Calificar_JTable.setRowSorter(new TableRowSorter(tareas_Por_Calificar_JTable.getModel()));
             tareas_Por_Calificar_JTable.addMouseListener(new MouseAdapter() {
 
@@ -238,6 +230,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             tareas_Creadas_JScrollPane.setOpaque(false);
 
             tareas_Creadas_JTable.setAutoCreateRowSorter(true);
+            tareas_Creadas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             tareas_Creadas_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -271,10 +264,10 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                         return super.getColumnClass(column);
                     }
                 });
-                tareas_Creadas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 tareas_Creadas_JTable.setRowHeight(96);
                 tareas_Creadas_JTable.setShowGrid(true);
                 tareas_Creadas_JTable.setSurrendersFocusOnKeystroke(true);
+                tareas_Creadas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
                 tareas_Creadas_JTable.setRowSorter(new TableRowSorter(tareas_Creadas_JTable.getModel()));
                 tareas_Creadas_JTable.addMouseListener(new MouseAdapter() {
 
@@ -480,8 +473,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         tareas_Creadas_JTable.getTableHeader().setFont(gadugi);
         tareas_Por_Calificar_JTable.getTableHeader().setFont(gadugi);
         
-        tareas_Creadas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        tareas_Por_Calificar_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
         
         String _id, ruta_Imagen_Curso, ruta_Imagen_Estudiante;

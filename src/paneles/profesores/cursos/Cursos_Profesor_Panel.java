@@ -31,15 +31,18 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
-import java.awt.CardLayout;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import paneles.profesores.Tablero_Profesor_Panel;
+import paneles.profesores.perfil.Perfil_Profesor_Panel;
 
 /**
  *
@@ -47,17 +50,10 @@ import paneles.profesores.Tablero_Profesor_Panel;
  */
 public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface{
 
-    private Lista<Curso_Profesor_Panel> buscar_Cursos_Lista;
-    private Lista<Curso_Profesor_Panel> mostrar_Cursos_Actuales_Lista;
-    
-    private static DefaultTableModel modelo_Cursos_Actuales;
-    
-    private byte carta_Visible;
-    private static int id_Curso_Actual;
-    
+    private Lista<Curso_Profesor_Panel> cursos_Creados_Lista;
     
     /**
-     * Creates new form Cursos_Estudiante_Panel
+     * Creates new form Cursos_Profesor_Panel
      */
     public Cursos_Profesor_Panel() {
         initComponents();
@@ -74,47 +70,50 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mostrar_Cursos_JPanel = new javax.swing.JPanel();
         contenido_Titulo_JPanel = new javax.swing.JPanel();
         titulo_JLabel = new javax.swing.JLabel();
-        cursos_Actuales_JButton = new javax.swing.JButton();
+        acciones_JPanel = new javax.swing.JPanel();
+        crear_Curso_JButton = new javax.swing.JButton();
         actualizar_JButton = new javax.swing.JButton();
-        mostrar_Cursos_JLayeredPane = new javax.swing.JLayeredPane();
-        mostrar_Cursos_Actuales_JScrollPane = new javax.swing.JScrollPane();
-        mostrar_Cursos_Actuales_JTable = new javax.swing.JTable();
+        cursos_Creados_JScrollPane = new javax.swing.JScrollPane();
+        cursos_Creados_JTable = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(1110, 630));
-        setLayout(new java.awt.CardLayout());
 
-        mostrar_Cursos_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
-        mostrar_Cursos_JPanel.setOpaque(false);
-        mostrar_Cursos_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
-
-        contenido_Titulo_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
+        contenido_Titulo_JPanel.setOpaque(false);
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(822, 68));
+        contenido_Titulo_JPanel.setLayout(new java.awt.BorderLayout());
 
-        titulo_JLabel.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
-        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setText("Cursos Creados");
+        titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(416, 84));
         titulo_JLabel.setOpaque(true);
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(416, 84));
+        contenido_Titulo_JPanel.add(titulo_JLabel, java.awt.BorderLayout.WEST);
 
-        cursos_Actuales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
-        cursos_Actuales_JButton.setBorder(null);
-        cursos_Actuales_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
-        ((ImageIcon)cursos_Actuales_JButton.getIcon()).getImage().flush();
-        cursos_Actuales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        acciones_JPanel.setOpaque(false);
+
+        crear_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
+        crear_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ((ImageIcon)crear_Curso_JButton.getIcon()).getImage().flush();
+        crear_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cursos_Actuales_JButtonMouseClicked(evt);
+                crear_Curso_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crear_Curso_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crear_Curso_JButtonMouseExited(evt);
             }
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(null);
-        actualizar_JButton.setPreferredSize(new java.awt.Dimension(36, 36));
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -128,43 +127,46 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
             }
         });
 
-        javax.swing.GroupLayout contenido_Titulo_JPanelLayout = new javax.swing.GroupLayout(contenido_Titulo_JPanel);
-        contenido_Titulo_JPanel.setLayout(contenido_Titulo_JPanelLayout);
-        contenido_Titulo_JPanelLayout.setHorizontalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenido_Titulo_JPanelLayout.createSequentialGroup()
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 386, Short.MAX_VALUE)
-                .addComponent(cursos_Actuales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(234, 234, 234)
-                .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
+        acciones_JPanel.setLayout(acciones_JPanelLayout);
+        acciones_JPanelLayout.setHorizontalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(crear_Curso_JButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actualizar_JButton)
+                .addGap(0, 0, 0))
         );
-        contenido_Titulo_JPanelLayout.setVerticalGroup(
-            contenido_Titulo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(cursos_Actuales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(actualizar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        acciones_JPanelLayout.setVerticalGroup(
+            acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(acciones_JPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(crear_Curso_JButton)
+                    .addComponent(actualizar_JButton))
+                .addContainerGap())
         );
 
-        mostrar_Cursos_JLayeredPane.setLayout(new java.awt.CardLayout());
+        contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
 
-        mostrar_Cursos_Actuales_JScrollPane.setBorder(null);
-        mostrar_Cursos_Actuales_JScrollPane.setOpaque(false);
+        cursos_Creados_JScrollPane.setBorder(null);
+        cursos_Creados_JScrollPane.setOpaque(false);
 
-        mostrar_Cursos_Actuales_JTable.setAutoCreateRowSorter(true);
-        mostrar_Cursos_Actuales_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        mostrar_Cursos_Actuales_JTable.setModel(
+        cursos_Creados_JTable.setAutoCreateRowSorter(true);
+        cursos_Creados_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cursos_Creados_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
                 new Object [][] {
 
                 },
                 new String [] {
-                    "Curso", "Temáticas", "Fecha" ,"Calificación"
+                    "Curso", "Temáticas", "Creado", "Inscripciones", "Remover?"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false
+                    false, false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -174,7 +176,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                 @Override
                 public Class getColumnClass(int column)
                 {
-                    for(int i = 0; i < mostrar_Cursos_Actuales_JTable.getRowCount(); i++)
+                    for(int i = 0; i < cursos_Creados_JTable.getRowCount(); i++)
                     {
                         //The first valid value of a cell of given column is retrieved.
                         if(getValueAt(i,column) != null)
@@ -186,48 +188,44 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                     return super.getColumnClass(column);
                 }
             });
-            mostrar_Cursos_Actuales_JTable.setOpaque(false);
-            mostrar_Cursos_Actuales_JTable.setRowHeight(100);
-            mostrar_Cursos_Actuales_JTable.setRowMargin(15);
-            mostrar_Cursos_Actuales_JTable.setShowGrid(true);
-            mostrar_Cursos_Actuales_JTable.setShowVerticalLines(false);
-            mostrar_Cursos_Actuales_JTable.setRowSorter(new TableRowSorter(mostrar_Cursos_Actuales_JTable.getModel()));
-            mostrar_Cursos_Actuales_JScrollPane.setViewportView(mostrar_Cursos_Actuales_JTable);
+            cursos_Creados_JTable.setRowHeight(96);
+            cursos_Creados_JTable.setRowMargin(5);
+            cursos_Creados_JTable.setShowGrid(true);
+            cursos_Creados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+            cursos_Creados_JTable.setRowSorter(new TableRowSorter(cursos_Creados_JTable.getModel()));
+            cursos_Creados_JScrollPane.setViewportView(cursos_Creados_JTable);
 
-            mostrar_Cursos_JLayeredPane.add(mostrar_Cursos_Actuales_JScrollPane, "Actuales");
+            setLayer(contenido_Titulo_JPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+            setLayer(cursos_Creados_JScrollPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-            javax.swing.GroupLayout mostrar_Cursos_JPanelLayout = new javax.swing.GroupLayout(mostrar_Cursos_JPanel);
-            mostrar_Cursos_JPanel.setLayout(mostrar_Cursos_JPanelLayout);
-            mostrar_Cursos_JPanelLayout.setHorizontalGroup(
-                mostrar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mostrar_Cursos_JPanelLayout.createSequentialGroup()
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+            this.setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                     .addGap(32, 32, 32)
-                    .addGroup(mostrar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(mostrar_Cursos_JLayeredPane)
-                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                    .addGap(32, 32, 32))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cursos_Creados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
+                        .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(40, 40, 40))
             );
-            mostrar_Cursos_JPanelLayout.setVerticalGroup(
-                mostrar_Cursos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(mostrar_Cursos_JPanelLayout.createSequentialGroup()
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(mostrar_Cursos_JLayeredPane)
+                    .addComponent(cursos_Creados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                     .addContainerGap())
             );
-
-            add(mostrar_Cursos_JPanel, "Mostrar");
         }// </editor-fold>//GEN-END:initComponents
 
-    private void cursos_Actuales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_Actuales_JButtonMouseClicked
+    private void crear_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Curso_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)mostrar_Cursos_JLayeredPane.getLayout()).show(mostrar_Cursos_JLayeredPane, "Actuales");
-            carta_Visible = 0;
-            cursos_Actuales_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+            
         }
-    }//GEN-LAST:event_cursos_Actuales_JButtonMouseClicked
+    }//GEN-LAST:event_crear_Curso_JButtonMouseClicked
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
@@ -246,91 +244,92 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    
+    private void crear_Curso_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Curso_JButtonMouseEntered
+        // TODO add your handling code here:
+        crear_Curso_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_crear_Curso_JButtonMouseEntered
+
+    private void crear_Curso_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Curso_JButtonMouseExited
+        // TODO add your handling code here:
+        crear_Curso_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_crear_Curso_JButtonMouseExited
+
+    private void Agregar_Curso_Actual(String id, byte[] imagen_Curso, String nombre_Curso,
+            String intereses_Tematicas, String fecha_Creacion, String numero_Inscripciones){
+        
+        Image imagen;
+        BufferedImage obtener_Imagen_Curso;
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        ImageIcon icono;
+        String vacio = new String();
+        
+        try {
+            
+            try(ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imagen_Curso)){
+                obtener_Imagen_Curso = ImageIO.read(byteArrayInputStream);
+                imagen = obtener_Imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+                icono = new ImageIcon(imagen);
+                celda = new Celda_Renderer(icono, nombre_Curso, id);
+                celdas[0] = celda;
+                //icono.getImage().flush();
+            } 
+            
+            celda = new Celda_Renderer(intereses_Tematicas, id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(fecha_Creacion, id);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(numero_Inscripciones, id);
+            celdas[3] = celda;
+            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            icono  = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono,vacio);
+            celdas[4] = celda;
+            
+            DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
+            
+            Curso_Profesor_Panel curso_Profesor_Panel
+                    = new Curso_Profesor_Panel(nombre_Curso, obtener_Imagen_Curso,
+                            Perfil_Profesor_Panel.Nombre_Completo(), Tablero_Profesor_Panel.Obtener_Imagen_Usuario(), fecha_Creacion,  id);
+            
+            cursos_Creados_Lista.push_back(curso_Profesor_Panel);
+            Tablero_Profesor_Panel.Agregar_Vista(curso_Profesor_Panel, id);
+            modelo.addRow(celdas);
+            imagen.flush();
+            obtener_Imagen_Curso.flush();
+            obtener_Imagen_Curso.getGraphics().dispose();
+        } catch (MalformedURLException ex) {
+            
+        } catch (IOException ex) {
+            
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JPanel contenido_Titulo_JPanel;
-    private javax.swing.JButton cursos_Actuales_JButton;
-    private javax.swing.JScrollPane mostrar_Cursos_Actuales_JScrollPane;
-    private static javax.swing.JTable mostrar_Cursos_Actuales_JTable;
-    private javax.swing.JLayeredPane mostrar_Cursos_JLayeredPane;
-    private javax.swing.JPanel mostrar_Cursos_JPanel;
+    private javax.swing.JButton crear_Curso_JButton;
+    private javax.swing.JScrollPane cursos_Creados_JScrollPane;
+    private static javax.swing.JTable cursos_Creados_JTable;
     private javax.swing.JLabel titulo_JLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void Iniciar_Componentes() {
         
-        carta_Visible = 0;
-        id_Curso_Actual = 0;
-        
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
        
-
-        buscar_Cursos_Lista = new Lista<>();
-
-        Font gadugi = new Font("Gadugi", Font.BOLD, 16);
-       
-        
         // Cursos actuales:
-        mostrar_Cursos_Actuales_JScrollPane.getViewport().setOpaque(false);
-        mostrar_Cursos_Actuales_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        mostrar_Cursos_Actuales_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        cursos_Creados_JScrollPane.getViewport().setOpaque(false);
+        cursos_Creados_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        cursos_Creados_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
-        mostrar_Cursos_Actuales_Lista = new Lista<>();
+        cursos_Creados_Lista = new Lista<>();
 
-        mostrar_Cursos_Actuales_JTable.getTableHeader().setFont(gadugi);
+        cursos_Creados_JTable.getTableHeader().setFont(gadugi);
 
-        mostrar_Cursos_Actuales_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Celda_Renderer[] celdas = new Celda_Renderer[4];
-        modelo_Cursos_Actuales = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
-
-        String id;
-        URL url_Imagen;
-        Image obtener_Imagen_Curso, obtener_Imagen_Profesor, imagen = null;
-        ImageIcon icono = null;
-        String fecha_Creacion;
-        Curso_Profesor_Panel curso_Profesor_Panel;
-        for (id_Curso_Actual = 0; id_Curso_Actual < CourseRoom.Utilerias.number().numberBetween(1, 5); id_Curso_Actual++) {
-            id = CourseRoom.Utilerias.Concatenar("Curso_Actual_", id_Curso_Actual);
-            try {
-                System.out.println(id + " -> Getting Image From https://picsum.photos/450/450");
-                url_Imagen = new URL("https://picsum.photos/450/450");
-                obtener_Imagen_Curso = ImageIO.read(url_Imagen);
-
-                imagen = obtener_Imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
-                icono = new ImageIcon(imagen);
-
-                celdas[0] = new Celda_Renderer(icono, CourseRoom.Utilerias.educator().course(), id);
-
-                System.out.println(id + " Profesor: -> Getting Image From https://i.pravatar.cc/450");
-                url_Imagen = new URL("https://i.pravatar.cc/450");
-                obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
-
-                fecha_Creacion = CourseRoom.Utilerias.date().birthday(21, 22).toString();
-                celdas[1] = new Celda_Renderer(CourseRoom.Utilerias.programmingLanguage().name(), id);
-                celdas[2] = new Celda_Renderer(fecha_Creacion, id);
-                celdas[3] = new Celda_Renderer(CourseRoom.Utilerias.Concatenar(
-                        String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6)), "/",
-                        String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 6))), id);
-
-                curso_Profesor_Panel = new Curso_Profesor_Panel(celdas[0].Texto(), obtener_Imagen_Curso,
-                        CourseRoom.Utilerias.name().fullName(), obtener_Imagen_Profesor, fecha_Creacion,  id);
-                mostrar_Cursos_Actuales_Lista.push_back(curso_Profesor_Panel);
-                Tablero_Profesor_Panel.Agregar_Vista(curso_Profesor_Panel, id);
-                modelo_Cursos_Actuales.addRow(celdas);
-
-                obtener_Imagen_Curso.flush();
-
-                obtener_Imagen_Profesor.flush();
-            } catch (MalformedURLException ex) {
-
-            } catch (IOException ex) {
-
-            }
-        }
-
-        mostrar_Cursos_Actuales_JTable.addMouseListener(new MouseAdapter() {
+        cursos_Creados_JTable.addMouseListener(new MouseAdapter() {
 
             @Override
             public void mousePressed(MouseEvent e) {
@@ -340,16 +339,54 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                     int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                     int columna = tabla.getSelectedColumn();
 
-                    DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
-
-                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-
-                    Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
-
+                    if(columna < 4){
+                         DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
+                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+                        Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
+                    }else{
+                        //Remover
+                    }
                 }
             }
         });
         
+        byte[] response = null;
+        
+        try{
+            URL url_Imagen = new URL("https://picsum.photos/500/700");
+
+
+            try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()){
+                byte[] chunk = new byte[1024];
+                int bytesRead;
+                try(InputStream stream = url_Imagen.openStream()){
+
+                    while ((bytesRead = stream.read(chunk)) > 0) {
+                        outputStream.write(chunk, 0, bytesRead);
+                    }
+
+                    response =  outputStream.toByteArray();
+                }
+
+            } catch (IOException e) {
+
+            }
+        
+        } catch (MalformedURLException ex) {
+            
+        }
+        
+        String id, nombre_Curso,  inscripciones, fecha_Creacion, intereses_Tematicas;
+        
+        id = "Curso_Creado_1";
+        
+        nombre_Curso =  CourseRoom.Utilerias.educator().course();
+        fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
+        intereses_Tematicas = CourseRoom.Utilerias.lorem().words(5).toString();
+        inscripciones = String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 100));
+        
+        Agregar_Curso_Actual(id, response, nombre_Curso, intereses_Tematicas, fecha_Creacion, inscripciones);
+
        
     }
 
@@ -357,49 +394,46 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
     public void Colorear_Componentes() {
         
         //Titulo cursos:
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
 
         titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
-        cursos_Actuales_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-
+        crear_Curso_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
+        cursos_Creados_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        cursos_Creados_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
+        cursos_Creados_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        cursos_Creados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        cursos_Creados_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        cursos_Creados_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        cursos_Creados_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
+        DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
         Celda_Renderer celda;
-
-        Curso_Profesor_Panel curso_Profesor_Panel;
-        for (Nodo<Curso_Profesor_Panel> nodo = buscar_Cursos_Lista.front(); nodo != null; nodo = nodo.next()) {
-            curso_Profesor_Panel = nodo.element();
-            curso_Profesor_Panel.Colorear_Componentes();
-        }
-        
-        // Cursos actuales:
-        mostrar_Cursos_Actuales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        mostrar_Cursos_Actuales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        mostrar_Cursos_Actuales_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
-        
-        for (int i = 0; i < mostrar_Cursos_Actuales_JTable.getRowCount(); i++) {
-            for (int j = 0; j < 4; j++) {
-                celda = (Celda_Renderer) modelo_Cursos_Actuales.getValueAt(i, j);
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
             }
         }
-
-        for (Nodo<Curso_Profesor_Panel> nodo = mostrar_Cursos_Actuales_Lista.front(); nodo != null; nodo = nodo.next()) {
+        
+        Curso_Profesor_Panel curso_Profesor_Panel;
+        for (Nodo<Curso_Profesor_Panel> nodo = cursos_Creados_Lista.front(); nodo != null; nodo = nodo.next()) {
             curso_Profesor_Panel = nodo.element();
             curso_Profesor_Panel.Colorear_Componentes();
         }
         
-        
-       
     }
 
     @Override
     public void Limpiar() {
-        buscar_Cursos_Lista.clear();
-        mostrar_Cursos_Actuales_Lista.clear();
-        mostrar_Cursos_Actuales_JTable.removeAll();
+        DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
+        modelo.setRowCount(0);
+        cursos_Creados_Lista.clear();
+        
     }
 
     

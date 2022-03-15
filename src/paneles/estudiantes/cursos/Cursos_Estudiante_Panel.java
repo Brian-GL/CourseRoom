@@ -63,7 +63,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     private byte carta_Visible;
     private static int id_Curso_Actual;
     
-    
     /**
      * Creates new form Cursos_Estudiante_Panel
      */

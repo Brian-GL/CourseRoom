@@ -1273,7 +1273,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         //Estatus -> 1 : Realizando.
         //Estatus -> 2 : Finalizado.
         
-        
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel)tareas_Pendientes_JTable.getModel();
