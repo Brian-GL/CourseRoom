@@ -272,7 +272,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(60, 60, 60)
+                .addGap(18, 18, 18)
                 .addComponent(informacion_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tareas_JButton)
@@ -448,7 +448,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
             informacion_Curso_JScrollPane.setViewportView(informacion_Curso_JPanel);
 
-            curso_JLayeredPane.add(informacion_Curso_JScrollPane, "card4");
+            curso_JLayeredPane.add(informacion_Curso_JScrollPane, "Informacion");
 
             tareas_JScrollPane.setBorder(null);
             tareas_JScrollPane.setOpaque(false);
@@ -1173,7 +1173,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     
     private void Agregar_Miembro(String ruta_Imagen_Miembro, String nombre_Miembro, String fecha_Ingreso){
         
-        Celda_Renderer[] celdas = new Celda_Renderer[4];
+        Celda_Renderer[] celdas = new Celda_Renderer[2];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
         
