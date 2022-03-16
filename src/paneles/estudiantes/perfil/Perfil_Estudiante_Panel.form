@@ -1255,7 +1255,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
                               <Component id="editar_Descripcion_JScrollPane" alignment="0" max="32767" attributes="0"/>
@@ -1270,37 +1270,36 @@
                           <Component id="editar_Promedio_General_JButton" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="editar_Descripcion_JButton" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="intereses_Tematicas_AutoCompletionComboBox" min="-2" pref="283" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="agregar_Interes_Tematica_JButton" min="-2" pref="283" max="-2" attributes="0"/>
+                              <Component id="intereses_AutoCompletionComboBox" min="-2" pref="419" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="agregar_Interes_JButton" min="-2" pref="153" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="interes_Tematica_JLabel" alignment="1" max="32767" attributes="0"/>
-                          <Component id="intereses_Tematicas_JScrollPane" alignment="1" max="32767" attributes="0"/>
+                          <Component id="intereses_JLabel" alignment="1" max="32767" attributes="0"/>
+                          <Component id="intereses_JScrollPane" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="98" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="editar_Promedio_General_JLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="interes_Tematica_JLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="intereses_JLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="editar_Promedio_General_JFormattedTextField" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                              <Component id="intereses_Tematicas_AutoCompletionComboBox" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="editar_Promedio_General_JFormattedTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="agregar_Interes_JButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="editar_Promedio_General_JButton" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="agregar_Interes_Tematica_JButton" alignment="0" max="32767" attributes="0"/>
-                          <Component id="editar_Promedio_General_JButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="intereses_AutoCompletionComboBox" alignment="1" min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1314,9 +1313,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="guardar_Cambios_Informacion_Extra_JButton" min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="intereses_Tematicas_JScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="intereses_JScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="98" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1415,9 +1414,9 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="interes_Tematica_JLabel">
+            <Component class="javax.swing.JLabel" name="intereses_JLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Interes / Tem&#xe1;tica"/>
+                <Property name="text" type="java.lang.String" value="Intereses"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
@@ -1426,9 +1425,9 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="agregar_Interes_Tematica_JButton">
+            <Component class="javax.swing.JButton" name="agregar_Interes_JButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar Interes / Tem&#xe1;tica"/>
+                <Property name="text" type="java.lang.String" value="Agregar Interes"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
@@ -1439,12 +1438,12 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregar_Interes_Tematica_JButtonMouseClicked"/>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregar_Interes_Tematica_JButtonMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregar_Interes_Tematica_JButtonMouseExited"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregar_Interes_JButtonMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregar_Interes_JButtonMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregar_Interes_JButtonMouseExited"/>
               </Events>
             </Component>
-            <Component class="com.jidesoft.swing.AutoCompletionComboBox" name="intereses_Tematicas_AutoCompletionComboBox">
+            <Component class="com.jidesoft.swing.AutoCompletionComboBox" name="intereses_AutoCompletionComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="10">
@@ -1467,7 +1466,7 @@
                 <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Interes / Tem&#xe1;tica&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="intereses_Tematicas_JScrollPane">
+            <Container class="javax.swing.JScrollPane" name="intereses_JScrollPane">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -1480,11 +1479,11 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="intereses_Tematicas_JTable">
+                <Component class="javax.swing.JTable" name="intereses_JTable">
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Interes / Tem&#xe1;tica&quot;, &quot;Remover?&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; intereses_Tematicas_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
+                      <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Interes / Tem&#xe1;tica&quot;, &quot;Remover?&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; intereses_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
@@ -1494,7 +1493,7 @@
                     <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));&#xd;&#xa;intereses_Tematicas_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable) e.getComponent();&#xd;&#xa;&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;&#xd;&#xa;            if (columna == 1) {&#xd;&#xa;                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                modelo.removeRow(fila);&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="intereses_JTable.setRowSorter(new TableRowSorter(intereses_JTable.getModel()));&#xd;&#xa;intereses_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable) e.getComponent();&#xd;&#xa;&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;&#xd;&#xa;            if (columna == 1) {&#xd;&#xa;                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                modelo.removeRow(fila);&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
                     <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Chats_Estudiante_Panel_chats_JTable"/>
                   </AuxValues>
                 </Component>

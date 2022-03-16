@@ -980,7 +980,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                 .addContainerGap(57, Short.MAX_VALUE))
                         );
 
-                        grupo_JLayeredPane.add(editar_JPanel, "Editar");
+                        grupo_JLayeredPane.add(editar_JPanel, "Edicion");
 
                         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                         this.setLayout(layout);
@@ -1044,7 +1044,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void editar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout) grupo_JLayeredPane.getLayout()).show(grupo_JLayeredPane, "Editar");
+            ((CardLayout) grupo_JLayeredPane.getLayout()).show(grupo_JLayeredPane, "Edicion");
             carta_Visible = 5;
             Carta_Visible();
         }
