@@ -192,7 +192,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Cursos");
+        regresar_JButton.setToolTipText("<html><h3>Regresar A Mis Cursos</h3></html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
@@ -245,7 +245,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         regresion_Lineal_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/function.png"))); // NOI18N
-        regresion_Lineal_JButton.setToolTipText("<html>\n<h3>Grafica De<br>Avance</h3></html>");
+        regresion_Lineal_JButton.setToolTipText("<html><h3>Grafica De<br>Avance</h3></html>");
         regresion_Lineal_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)regresion_Lineal_JButton.getIcon()).getImage().flush();
         regresion_Lineal_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -255,7 +255,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         });
 
         estadisticas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stats.png"))); // NOI18N
-        estadisticas_JButton.setToolTipText("<html>\n<h3>Estadísticas</h3></html>");
+        estadisticas_JButton.setToolTipText("<html><h3>Estadísticas</h3></html>");
         estadisticas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)estadisticas_JButton.getIcon()).getImage().flush();
         estadisticas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {

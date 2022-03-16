@@ -102,6 +102,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html> <h4>Actulizar<br>Página</h4> </html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -117,7 +118,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         });
 
         buscar_Tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
-        buscar_Tareas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
+        buscar_Tareas_JButton.setToolTipText("<html> <h3>Buscar<br>tarea(s)</h3> </html>");
         buscar_Tareas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)buscar_Tareas_JButton.getIcon()).getImage().flush();
         buscar_Tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {

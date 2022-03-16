@@ -1167,6 +1167,10 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             getToolkit().beep();
             evt.consume();
         }
+        int longitud = nombres_JTextField.getText().length();
+        if(longitud > 30){
+            nombres_JTextField.setText(nombres_JTextField.getText().substring(0,longitud-1));
+        }
     }//GEN-LAST:event_nombres_JTextFieldKeyTyped
 
     private void apellido_Paterno_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellido_Paterno_JTextFieldKeyTyped
@@ -1174,6 +1178,10 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         if (Character.isDigit(c)) {
             getToolkit().beep();
             evt.consume();
+        }
+        int longitud = apellido_Paterno_JTextField.getText().length();
+        if(longitud > 30){
+            apellido_Paterno_JTextField.setText(apellido_Paterno_JTextField.getText().substring(0,longitud-1));
         }
     }//GEN-LAST:event_apellido_Paterno_JTextFieldKeyTyped
 
@@ -1184,6 +1192,10 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             getToolkit().beep();
             evt.consume();
         }
+        int longitud = apellido_Materno_JTextField.getText().length();
+        if(longitud > 30){
+            apellido_Materno_JTextField.setText(apellido_Materno_JTextField.getText().substring(0,longitud-1));
+        }
     }//GEN-LAST:event_apellido_Materno_JTextFieldKeyTyped
 
     private void genero_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_genero_JTextFieldKeyTyped
@@ -1193,7 +1205,6 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             getToolkit().beep();
             evt.consume();
         }
-        
         int longitud = genero_JTextField.getText().length();
         if(longitud > 30){
             genero_JTextField.setText(genero_JTextField.getText().substring(0,longitud-1));
@@ -1230,6 +1241,10 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
               getToolkit().beep(); 
               evt.consume();
           }
+          int longitud = genero_JTextField.getText().length();
+        if(longitud > 4){
+            genero_JTextField.setText(genero_JTextField.getText().substring(0,longitud-1));
+        }
     }//GEN-LAST:event_promedio_General_JFormattedTextFieldKeyTyped
 
     public void verificar_Campos_Autenticacion() {
@@ -1260,7 +1275,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     }
     
         
-        public void verificar_Datos_Personales(){
+    public void verificar_Datos_Personales(){
             if (nombres_JTextField.getText().equals("")
                 || apellido_Paterno_JTextField.getText().equals("")) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.

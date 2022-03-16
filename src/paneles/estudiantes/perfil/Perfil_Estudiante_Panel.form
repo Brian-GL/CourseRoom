@@ -141,6 +141,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Ajuste De&lt;br&gt;Datos Personales&lt;/h3&gt;&lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Datos_Personales_JButtonMouseClicked"/>
@@ -159,6 +160,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h4&gt;Actualizar&lt;br&gt;P&#xe1;gina&lt;/h4&gt;&lt;/html&gt; "/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="actualizar_JButtonMouseClicked"/>
@@ -179,6 +181,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Ajustes De&lt;br&gt;Informaci&#xf3;n&lt;br&gt;Extra&lt;/h3&gt;&lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Informacion_Extra_JButtonMouseClicked"/>
@@ -197,6 +200,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Descripci&#xf3;nn&lt;br&gt;Del Usuario&lt;/h3&gt;&lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="informacion_JButtonMouseClicked"/>
@@ -215,6 +219,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Ajustes&lt;br&gt;De Seguridad&lt;/h3&gt;&lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Autenticacion_JButtonMouseClicked"/>
@@ -763,6 +768,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="14" style="1"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Correo Electronico"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Correo_Electronico_JButtonMouseClicked"/>
@@ -786,6 +792,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="14" style="1"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Contrase&#xf1;a"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Contrasena_JButtonMouseClicked"/>
@@ -1095,6 +1102,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Estado"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Estado_JButtonMouseClicked"/>
@@ -1115,6 +1123,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Localidad"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Localidad_JButtonMouseClicked"/>
@@ -1135,6 +1144,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Fecha De Nacimiento"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Fecha_Nacimiento_JButtonMouseClicked"/>
@@ -1155,6 +1165,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar G&#xe9;nero"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Genero_JButtonMouseClicked"/>
@@ -1175,6 +1186,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Nombre(s)"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Nombres_JButtonMouseClicked"/>
@@ -1195,6 +1207,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Apellido Paterno"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Apellido_Paterno_JButtonMouseClicked"/>
@@ -1215,6 +1228,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Apellido Materno"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Apellido_Materno_JButtonMouseClicked"/>
@@ -1496,6 +1510,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Promedio General"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Promedio_General_JButtonMouseClicked"/>
@@ -1516,6 +1531,7 @@
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Descripci&#xf3;n"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Descripcion_JButtonMouseClicked"/>

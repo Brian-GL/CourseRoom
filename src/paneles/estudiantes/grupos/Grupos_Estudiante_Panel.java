@@ -108,6 +108,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html><h4>Actualizar<br>Página</h4></html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,6 +124,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         });
 
         buscar_Grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
+        buscar_Grupos_JButton.setToolTipText("<html><h3>Buscar<br>Grupo</h3></html>");
         buscar_Grupos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)buscar_Grupos_JButton.getIcon()).getImage().flush();
         buscar_Grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,7 +261,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             });
 
             mostrar_Grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/vegan.png"))); // NOI18N
-            mostrar_Grupos_JButton.setToolTipText("<html> <h3>Regresar a mis grupos</h3> </html>");
+            mostrar_Grupos_JButton.setToolTipText("<html> <h3>Regresar A Mis Grupos</h3> </html>");
             mostrar_Grupos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             mostrar_Grupos_JButton.setMaximumSize(new java.awt.Dimension(64, 64));
             mostrar_Grupos_JButton.setMinimumSize(new java.awt.Dimension(64, 64));
