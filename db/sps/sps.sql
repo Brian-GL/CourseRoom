@@ -12,8 +12,8 @@ BEGIN
 
 END;
 
--- Sp para obtener los intereses y tematicas de un usuario
-CREATE PROCEDURE \`sp_Usuario_ObtenerInteresesTematicas`(
+-- Sp para obtener los intereses de un usuario
+CREATE PROCEDURE \`sp_Usuario_ObtenerIntereses`(
     IN _IdUsuario INT
 )
 BEGIN
@@ -21,7 +21,7 @@ BEGIN
    SELECT Tematicas.Tematica FROM tb_tematicas Tematicas 
    INNER JOIN  tb_tematicasusuarios TematicasUsuarios ON Tematicas.IdTematica = TematicasUsuarios.IdTematica
    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = TematicasUsuarios._IdUsuario
-   WHERE Usuarios.IdUsuario = _IdUsuario AND Usuarios.Activo = 1;
+   WHERE Usuarios.IdUsuario = _IdUsuario AND Usuarios.Activo = 1 AND Usuarios.TipoUsuario = 'Estudiante';
    
 END;
 
@@ -84,25 +84,25 @@ BEGIN
 END;
 
 
-CREATE PROCEDURE \`sp_Usuario_AgregarInteresTematica`(
+CREATE PROCEDURE \`sp_Usuario_AgregarInteres`(
     IN _IdUsuario INT,
     IN _Tematica VARCHAR(45)
 )
 BEGIN
 
-    DECLARE @IdTematica INT = NULL;
+    DECLARE _IdTematica INT = NULL;
 
     -- Validar que exista el usuario:
-    IF EXISTS (SELECT IdUsuario FROM tb_usuarios WHERE IdUsuario = _IdUsuario AND Activo = 1) THEN
+    IF EXISTS (SELECT IdUsuario FROM tb_usuarios WHERE IdUsuario = _IdUsuario AND Activo = 1 AND TipoUsuario = 'Estudiante') THEN
         
         -- Validar que exista la tematica:
-        SELECT @IdTematica = IdTematica FROM tb_tematicas WHERE Tematica = _Tematica;
-        IF @IdTematica IS NOT NULL AND @IdTematica > -1 THEN
+        SELECT _IdTematica = IdTematica FROM tb_tematicas WHERE Tematica = _Tematica;
+        IF _IdTematica IS NOT NULL AND _IdTematica > -1 THEN
             
             -- Validar que no exista la relacion:
-            IF NOT EXISTS (SELECT IdTematica FROM tb_tematicasusuarios WHERE IdTematica = @IdTematica and IdUsuario = _IdUsuario) THEN
+            IF NOT EXISTS (SELECT IdTematica FROM tb_tematicasusuarios WHERE IdTematica = _IdTematica and IdUsuario = _IdUsuario) THEN
 
-                INSERT INTO tb_tematicasusuarios VALUES (@IdTematica, _IdUsuario);
+                INSERT INTO tb_tematicasusuarios VALUES (_IdTematica, _IdUsuario);
                 SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
 
             ELSE 
@@ -124,19 +124,19 @@ CREATE PROCEDURE \`sp_Usuario_RemoverInteresTematica`(
 )
 BEGIN
 
-    DECLARE @IdTematica INT = NULL;
+    DECLARE _IdTematica INT = NULL;
 
     -- Validar que exista el usuario:
     IF EXISTS (SELECT IdUsuario FROM tb_usuarios WHERE IdUsuario = _IdUsuario AND Activo = 1) THEN
         
         -- Validar que exista la tematica:
-        SELECT @IdTematica = IdTematica FROM tb_tematicas WHERE Tematica = _Tematica;
-        IF @IdTematica IS NOT NULL AND @IdTematica > -1 THEN
+        SELECT _IdTematica = IdTematica FROM tb_tematicas WHERE Tematica = _Tematica;
+        IF _IdTematica IS NOT NULL AND _IdTematica > -1 THEN
             
             -- Validar que exista la relacion:
-            IF EXISTS (SELECT IdTematica FROM tb_tematicasusuarios WHERE IdTematica = @IdTematica and IdUsuario = _IdUsuario) THEN
+            IF EXISTS (SELECT IdTematica FROM tb_tematicasusuarios WHERE IdTematica = _IdTematica and IdUsuario = _IdUsuario) THEN
 
-                DELETE FROM  tb_tematicasusuarios WHERE IdTematica =  @IdTematica AND IdUsuario = _IdUsuario;
+                DELETE FROM  tb_tematicasusuarios WHERE IdTematica =  _IdTematica AND IdUsuario = _IdUsuario;
                 SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
 
             ELSE 
@@ -187,17 +187,17 @@ CREATE PROCEDURE \`sp_Usuario_ActualizarLocalidad`(
     IN _Localidad VARCHAR(200)
 )
 BEGIN
-    DECLARE @IdLocalidad INT = NULL;
+    DECLARE _IdLocalidad INT = NULL;
     
     -- Validar que exista la localidad:
-    SELECT @IdLocalidad = IdLocalidad FROM tb_localidades WHERE Localidad = _Localidad AND Estado = _Estado;
+    SELECT _IdLocalidad = IdLocalidad FROM tb_localidades WHERE Localidad = _Localidad AND Estado = _Estado;
     
-    IF @IdLocalidad IS NOT NULL AND @IdLocalidad > -1 THEN
+    IF _IdLocalidad IS NOT NULL AND _IdLocalidad > -1 THEN
     
         -- Validar que exista el usuario:
         IF EXISTS (SELECT IdUsuario FROM tb_usuarios WHERE IdUsuario = _IdUsuario AND Activo = 1) THEN
         
-            UPDATE tb_usuarios SET IdLocalidad = @IdLocalidad WHERE IdUsuario = _IdUsuario;
+            UPDATE tb_usuarios SET IdLocalidad = _IdLocalidad WHERE IdUsuario = _IdUsuario;
             SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
         ELSE
             SELECT 0 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
@@ -229,11 +229,11 @@ BEGIN
 		OR _Contrasenia IS NULL OR LENGTH(_Contrasenia) = 0 THEN
         SELECT 0 AS "Codigo", 'Alguno De Los Campos Esta Vacios' AS "Mensaje";
     ELSE
-        DECLARE @IdUsuario INT = NULL;
-        SELECT @IdUsuario = IdUsuario FROM tb_usuarios WHERE CorreoElectronico = _CorreoElectronico AND Contrasenia = _Contrasenia AND Activo = 1;
+        DECLARE _IdUsuario INT = NULL;
+        SELECT _IdUsuario = IdUsuario FROM tb_usuarios WHERE CorreoElectronico = _CorreoElectronico AND Contrasenia = _Contrasenia AND Activo = 1;
 
-        IF @IdUsuario IS NOT NULL AND @IdUsuario > -1 THEN
-            SELECT @IdUsuario AS "Codigo", 'OK' AS "Mensaje";
+        IF _IdUsuario IS NOT NULL AND _IdUsuario > -1 THEN
+            SELECT _IdUsuario AS "Codigo", 'OK' AS "Mensaje";
         ELSE
             SELECT 0 AS "Codigo", 'El Usuario Si Se Encuentra Registrado' AS "Mensaje";
         END IF;
@@ -257,7 +257,7 @@ CREATE PROCEDURE \`sp_AgregarUsuario`(
 )
 BEGIN
 
-    DECLARE @IdUsuario INT = NULL;
+    DECLARE _IdUsuario INT = NULL;
     IF _CorreoElectronico IS NULL OR LENGTH(_CorreoElectronico) = 0 
 		OR _Contrasenia IS NULL OR LENGTH(_Contrasenia) = 0  
         OR _Nombre IS NULL OR LENGTH(_Nombre) = 0 
@@ -276,9 +276,9 @@ BEGIN
                     VALUES (_CorreoElectronico, _Contrasenia, _Nombre, _Paterno, _Materno, _Genero, _FechaNacimiento,
                     _PromedioGeneral, _TipoUsuario, _Descripcion, _Imagen);
 
-                    SELECT @IdUsuario = IdUsuario FROM tb_usuarios WHERE CorreoElectronico = _CorreoElectronico;
+                    SELECT _IdUsuario = IdUsuario FROM tb_usuarios WHERE CorreoElectronico = _CorreoElectronico;
             
-                    SELECT @IdUsuario AS "Codigo", 'OK' AS "Mensaje";
+                    SELECT _IdUsuario AS "Codigo", 'OK' AS "Mensaje";
 
                 ELSE
                     SELECT 0 AS "Codigo", 'El promedio General No Es Aceptado Para Este Tipo De Usuario' AS "Mensaje";  
