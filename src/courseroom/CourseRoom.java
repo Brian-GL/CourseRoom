@@ -193,6 +193,29 @@ public class CourseRoom{
             return (respuesta != null)? (Boolean) respuesta : false;
         }
         
+        public static Vector<String> Obtener_Estados() throws XmlRpcException, IOException {
+           
+            Vector parametros = new Vector();
+            
+            parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Estados", parametros);
+            
+            return (respuesta != null)? (Vector<String>) respuesta : new Vector<>();
+        }
+        
+        public static Vector<String> Obtener_Localidades_Por_Estado(String estado) throws XmlRpcException, IOException {
+           
+            Vector parametros = new Vector();
+            
+            parametros.add(estado);
+            parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Localidades_Por_Estado", parametros);
+            
+            return (respuesta != null)? (Vector<String>) respuesta : new Vector<>();
+        }
+        
     }
 
     

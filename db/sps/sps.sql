@@ -1,5 +1,5 @@
 -- Sp para obtener los datos de perfil de un usuario
-CREATE PROCEDURE \`sp_Usuario_ObtenerDatosPerfil`(
+CREATE PROCEDURE `sp_Usuario_ObtenerDatosPerfil`(
     IN _IdUsuario INT
 )
 BEGIN
@@ -13,7 +13,7 @@ BEGIN
 END;
 
 -- Sp para obtener los intereses de un usuario
-CREATE PROCEDURE \`sp_Usuario_ObtenerIntereses`(
+CREATE PROCEDURE `sp_Usuario_ObtenerIntereses`(
     IN _IdUsuario INT
 )
 BEGIN
@@ -25,7 +25,7 @@ BEGIN
    
 END;
 
-CREATE PROCEDURE \`sp_Usuario_ActualizarDatosAutenticacion`(
+CREATE PROCEDURE `sp_Usuario_ActualizarDatosAutenticacion`(
     IN _IdUsuario INT,
     IN _CorreoElectronico VARCHAR(150),
     IN _Contrasenia VARCHAR(256)
@@ -62,7 +62,7 @@ BEGIN
 
 END;
 
-CREATE PROCEDURE \`sp_Usuario_ActualizarInformacionExtra`(
+CREATE PROCEDURE `sp_Usuario_ActualizarInformacionExtra`(
     IN _IdUsuario INT,
     IN _PromedioGeneral FLOAT,
     IN _Descripcion TEXT
@@ -84,7 +84,7 @@ BEGIN
 END;
 
 
-CREATE PROCEDURE \`sp_Usuario_AgregarInteres`(
+CREATE PROCEDURE `sp_Usuario_AgregarInteres`(
     IN _IdUsuario INT,
     IN _Tematica VARCHAR(45)
 )
@@ -118,7 +118,7 @@ BEGIN
     END IF;
 END;
 
-CREATE PROCEDURE \`sp_Usuario_RemoverInteresTematica`(
+CREATE PROCEDURE `sp_Usuario_RemoverInteresTematica`(
     IN _IdUsuario INT,
     IN _Tematica VARCHAR(45)
 )
@@ -153,7 +153,7 @@ BEGIN
 
 END;
 
-CREATE PROCEDURE \`sp_Usuario_ActualizarDatosPersonales`(
+CREATE PROCEDURE `sp_Usuario_ActualizarDatosPersonales`(
     IN _IdUsuario INT,
     IN _Nombre VARCHAR(50),
     IN _Paterno VARCHAR(30),
@@ -181,7 +181,7 @@ BEGIN
 
 END;
 
-CREATE PROCEDURE \`sp_Usuario_ActualizarLocalidad`(
+CREATE PROCEDURE `sp_Usuario_ActualizarLocalidad`(
     IN _IdUsuario INT,
     IN _Estado VARCHAR(100),
     IN _Localidad VARCHAR(200)
@@ -208,19 +208,19 @@ BEGIN
     
 END;
 
-CREATE PROCEDURE \`sp_ObtenerEstados`()
+CREATE PROCEDURE `sp_ObtenerEstados`()
 BEGIN
-    SELECT Estado FROM tb_localidades;
+    SELECT DISTINCT Estado FROM tb_localidades;
 END;
 
-CREATE PROCEDURE \`sp_ObtenerLocalidadesPorEstado`(
+CREATE PROCEDURE `sp_ObtenerLocalidadesPorEstado`(
     IN _Estado VARCHAR(100)
 )
 BEGIN
     SELECT Localidad FROM tb_localidades WHERE Estado = _Estado;
 END;
 
-CREATE PROCEDURE \`sp_ExisteUsuario`(
+CREATE PROCEDURE `sp_ExisteUsuario`(
     IN _CorreoElectronico VARCHAR(150)
     IN _Contrasenia VARCHAR(256)
 )
@@ -241,7 +241,7 @@ BEGIN
 END;
 
 
-CREATE PROCEDURE \`sp_AgregarUsuario`(
+CREATE PROCEDURE `sp_AgregarUsuario`(
     IN _CorreoElectronico VARCHAR(150)
     IN _Contrasenia VARCHAR(256)
     IN _Nombre VARCHAR(50),

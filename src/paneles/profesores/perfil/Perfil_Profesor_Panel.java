@@ -29,12 +29,14 @@ import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import org.apache.xmlrpc.XmlRpcException;
 import paneles.profesores.Tablero_Profesor_Panel;
 
 /**
@@ -597,10 +599,17 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Estado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         editar_Estado_AutoCompletionComboBox.setEditable(false);
+        editar_Estado_AutoCompletionComboBox.setEnabled(false);
         editar_Estado_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         editar_Estado_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Estado de proveniencia</h3>\n</html>");
+        editar_Estado_AutoCompletionComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                editar_Estado_AutoCompletionComboBoxItemStateChanged(evt);
+            }
+        });
 
         editar_Localidad_AutoCompletionComboBox.setEditable(false);
+        editar_Localidad_AutoCompletionComboBox.setEnabled(false);
         editar_Localidad_AutoCompletionComboBox.setFocusable(false);
         editar_Localidad_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         editar_Localidad_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Localidad de provenencia</h3>\n</html>");
@@ -1143,7 +1152,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void editar_Estado_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Estado_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Estado_AutoCompletionComboBox.setEditable(true);
+            editar_Estado_AutoCompletionComboBox.setEnabled(true);
         }
         
     }//GEN-LAST:event_editar_Estado_JButtonMouseClicked
@@ -1161,7 +1170,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void editar_Localidad_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Localidad_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            editar_Localidad_AutoCompletionComboBox.setEditable(true);
+            editar_Localidad_AutoCompletionComboBox.setEnabled(true);
         }
         
     }//GEN-LAST:event_editar_Localidad_JButtonMouseClicked
@@ -1245,8 +1254,31 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
+    private void editar_Estado_AutoCompletionComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_editar_Estado_AutoCompletionComboBoxItemStateChanged
+        // TODO add your handling code here:
+        Obtener_Localidades_Estado();
+    }//GEN-LAST:event_editar_Estado_AutoCompletionComboBoxItemStateChanged
+
     public static String Nombre_Completo(){
         return CourseRoom.Utilerias.Concatenar(nombres_JLabel.getText(), " " ,apellidos_JLabel.getText());
+    }
+    
+    private void Obtener_Localidades_Estado(){
+        String estado = (String)editar_Estado_AutoCompletionComboBox.getSelectedItem();
+        editar_Localidad_AutoCompletionComboBox.removeAllItems();
+        try {
+            //Obtener localidades:
+            Vector<String> localidades = CourseRoom.Solicitudes.Obtener_Localidades_Por_Estado(estado);
+            
+            for(String localidad : localidades){
+                editar_Localidad_AutoCompletionComboBox.addItem(localidad);
+            }
+            
+            localidades.removeAllElements();
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1341,6 +1373,21 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         imagen_Perfil_JLabel.setIcon(icono_Imagen);
         imagen_Escalada.flush();
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        
+        try {
+            //Obtener estados:
+            Vector<String> estados = CourseRoom.Solicitudes.Obtener_Estados();
+            
+            for(String estado : estados){
+                editar_Estado_AutoCompletionComboBox.addItem(estado);
+            }
+            
+            estados.removeAllElements();
+            editar_Estado_AutoCompletionComboBox.setSelectedIndex(0);
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
         
     }
 
