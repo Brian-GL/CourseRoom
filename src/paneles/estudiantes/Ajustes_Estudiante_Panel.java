@@ -91,6 +91,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         acciones_JPanel.setOpaque(false);
 
         interfaz_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/user-interface.png"))); // NOI18N
+        interfaz_JButton.setToolTipText("<html> <h3>Ajustes De<br>Colores</h3> </html>");
         interfaz_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)interfaz_JButton.getIcon()).getImage().flush();
         interfaz_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,6 +101,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/programmer.png"))); // NOI18N
+        cuenta_JButton.setToolTipText("<html> <h3>Ajustes<br>Avanzados</h3> </html>");
         cuenta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)cuenta_JButton.getIcon()).getImage().flush();
         cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,6 +111,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         });
 
         sesiones_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/digital-footprint.png"))); // NOI18N
+        sesiones_JButton.setToolTipText("<html> <h3>Información<br>Del Dispositivo</h3> </html>");
         sesiones_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)sesiones_JButton.getIcon()).getImage().flush();
         sesiones_JButton.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -170,6 +170,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         tareas_Pendientes_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/daily-tasks.png"))); // NOI18N
         tareas_Pendientes_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tareas_Pendientes_JButton.setToolTipText("<html><h3>Pendientes<br>Grupales</h3></html>");
         ((ImageIcon)tareas_Pendientes_JButton.getIcon()).getImage().flush();
         tareas_Pendientes_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -179,6 +180,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         archivos_Compartidos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/context.png"))); // NOI18N
         archivos_Compartidos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        archivos_Compartidos_JButton.setToolTipText("<html><h3>Archivos<br<Adjuntos</h3></html>");
         ((ImageIcon)archivos_Compartidos_JButton.getIcon()).getImage().flush();
         archivos_Compartidos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -188,6 +190,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/meeting.png"))); // NOI18N
         chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        chat_JButton.setToolTipText("<html><h3>Chat<br>Grupal</h3></html>\n");
         ((ImageIcon)chat_JButton.getIcon()).getImage().flush();
         chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -197,6 +200,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
         informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        informacion_JButton.setToolTipText("<html><h3>Descripción<br>Del Grupo</h3></html>");
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -206,6 +210,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         editar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-tool.png"))); // NOI18N
         editar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_JButton.setToolTipText("<html><h4>Configuración<br>Del Grupo</h4></html>");
         ((ImageIcon)editar_JButton.getIcon()).getImage().flush();
         editar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -214,7 +219,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Chats");
+        regresar_JButton.setToolTipText("<html><h3>Regresar A Mis Grupos</h3></html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
@@ -232,6 +237,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         miembros_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/team.png"))); // NOI18N
         miembros_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        miembros_JButton.setToolTipText("<html><h3>Integrantes<br>Del Grupo</h3></html>");
         ((ImageIcon)miembros_JButton.getIcon()).getImage().flush();
         miembros_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -241,6 +247,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        actualizar_JButton.setToolTipText("<html><h4>Actualizar<br>Página</h4></html>");
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -912,7 +919,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
                         editar_Descripcion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                         editar_Descripcion_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-                        editar_Descripcion_JButton.setToolTipText("Editar Nombre Del Grupo");
+                        editar_Descripcion_JButton.setToolTipText("Editar Descripción Del Grupo");
                         ((ImageIcon)editar_Descripcion_JButton.getIcon()).getImage().flush();
                         editar_Descripcion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                             public void mouseClicked(java.awt.event.MouseEvent evt) {

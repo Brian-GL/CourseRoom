@@ -133,6 +133,7 @@
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Pendientes&lt;br&gt;Grupales&lt;/h3&gt;&lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tareas_Pendientes_JButtonMouseClicked"/>
@@ -151,6 +152,7 @@
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Archivos&lt;br&lt;Adjuntos&lt;/h3&gt;&lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="archivos_Compartidos_JButtonMouseClicked"/>
@@ -169,6 +171,7 @@
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Chat&lt;br&gt;Grupal&lt;/h3&gt;&lt;/html&gt;&#xa;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chat_JButtonMouseClicked"/>
@@ -187,6 +190,7 @@
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Descripci&#xf3;n&lt;br&gt;Del Grupo&lt;/h3&gt;&lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="informacion_JButtonMouseClicked"/>
@@ -205,6 +209,7 @@
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h4&gt;Configuraci&#xf3;n&lt;br&gt;Del Grupo&lt;/h4&gt;&lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_JButtonMouseClicked"/>
@@ -218,7 +223,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/reply.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Regresar A Mis Chats"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Regresar A Mis Grupos&lt;/h3&gt;&lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
@@ -247,6 +252,7 @@
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Integrantes&lt;br&gt;Del Grupo&lt;/h3&gt;&lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="miembros_JButtonMouseClicked"/>
@@ -265,6 +271,7 @@
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h4&gt;Actualizar&lt;br&gt;P&#xe1;gina&lt;/h4&gt;&lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="actualizar_JButtonMouseClicked"/>
@@ -1181,7 +1188,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gadugi" size="15" style="1"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Editar Nombre Del Grupo"/>
+                <Property name="toolTipText" type="java.lang.String" value="Editar Descripci&#xf3;n Del Grupo"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Descripcion_JButtonMouseClicked"/>

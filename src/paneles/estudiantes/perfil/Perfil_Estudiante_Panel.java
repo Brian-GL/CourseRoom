@@ -157,6 +157,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/id-card_1.png"))); // NOI18N
         editar_Datos_Personales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Datos_Personales_JButton.setToolTipText("<html><h3>Ajuste De<br>Datos Personales</h3></html>");
         ((ImageIcon)editar_Datos_Personales_JButton.getIcon()).getImage().flush();
         editar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -166,6 +167,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        actualizar_JButton.setToolTipText("<html><h4>Actualizar<br>Página</h4></html> ");
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,6 +183,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-learning.png"))); // NOI18N
         editar_Informacion_Extra_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Informacion_Extra_JButton.setToolTipText("<html><h3>Ajustes De<br>Información<br>Extra</h3></html>");
         ((ImageIcon)editar_Informacion_Extra_JButton.getIcon()).getImage().flush();
         editar_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -190,6 +193,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
         informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        informacion_JButton.setToolTipText("<html><h3>Descripciónn<br>Del Usuario</h3></html>");
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -199,6 +203,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png"))); // NOI18N
         editar_Autenticacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Autenticacion_JButton.setToolTipText("<html><h3>Ajustes<br>De Seguridad</h3></html>");
         ((ImageIcon)editar_Autenticacion_JButton.getIcon()).getImage().flush();
         editar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -463,6 +468,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Correo_Electronico_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Correo_Electronico_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         editar_Correo_Electronico_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        editar_Correo_Electronico_JButton.setToolTipText("Editar Correo Electronico");
         ((ImageIcon)editar_Correo_Electronico_JButton.getIcon()).getImage().flush();
         editar_Correo_Electronico_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -479,6 +485,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Contrasena_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Contrasena_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         editar_Contrasena_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        editar_Contrasena_JButton.setToolTipText("Editar Contraseña");
         ((ImageIcon)editar_Contrasena_JButton.getIcon()).getImage().flush();
         editar_Contrasena_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -622,6 +629,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Estado_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Estado_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Estado_JButton.setToolTipText("Editar Estado");
         ((ImageIcon)editar_Estado_JButton.getIcon()).getImage().flush();
         editar_Estado_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -637,6 +645,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Localidad_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Localidad_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Localidad_JButton.setToolTipText("Editar Localidad");
         ((ImageIcon)editar_Localidad_JButton.getIcon()).getImage().flush();
         editar_Localidad_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -652,6 +661,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Fecha_Nacimiento_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Fecha_Nacimiento_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Fecha_Nacimiento_JButton.setToolTipText("Editar Fecha De Nacimiento");
         ((ImageIcon)editar_Fecha_Nacimiento_JButton.getIcon()).getImage().flush();
         editar_Fecha_Nacimiento_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -667,6 +677,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Genero_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Genero_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Genero_JButton.setToolTipText("Editar Género");
         ((ImageIcon)editar_Genero_JButton.getIcon()).getImage().flush();
         editar_Genero_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -682,6 +693,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Nombres_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Nombres_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Nombres_JButton.setToolTipText("Editar Nombre(s)");
         ((ImageIcon)editar_Nombres_JButton.getIcon()).getImage().flush();
         editar_Nombres_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -697,6 +709,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Apellido_Paterno_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Apellido_Paterno_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Apellido_Paterno_JButton.setToolTipText("Editar Apellido Paterno");
         ((ImageIcon)editar_Apellido_Paterno_JButton.getIcon()).getImage().flush();
         editar_Apellido_Paterno_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -712,6 +725,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         editar_Apellido_Materno_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Apellido_Materno_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Apellido_Materno_JButton.setToolTipText("Editar Apellido Materno");
         ((ImageIcon)editar_Apellido_Materno_JButton.getIcon()).getImage().flush();
         editar_Apellido_Materno_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -951,6 +965,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
             editar_Promedio_General_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
             editar_Promedio_General_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            editar_Promedio_General_JButton.setToolTipText("Editar Promedio General");
             ((ImageIcon)editar_Promedio_General_JButton.getIcon()).getImage().flush();
             editar_Promedio_General_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -966,6 +981,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
             editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
             editar_Descripcion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            editar_Descripcion_JButton.setToolTipText("Editar Descripción");
             ((ImageIcon)editar_Descripcion_JButton.getIcon()).getImage().flush();
             editar_Descripcion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {

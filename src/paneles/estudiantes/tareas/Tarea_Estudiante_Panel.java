@@ -132,6 +132,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
+        informacion_JButton.setToolTipText("<html> <h3>Descripción De<br>Tarea(s)</h3> </html>");
         informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,6 +142,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat_1.png"))); // NOI18N
+        chat_JButton.setToolTipText("<html> <h3>Chat</h3> </html>");
         chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)chat_JButton.getIcon()).getImage().flush();
         chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,6 +152,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         archivos_Adjuntos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/context.png"))); // NOI18N
+        archivos_Adjuntos_JButton.setToolTipText("<html> <h3>Archivos<br>Adjuntos</h3> </html>");
         archivos_Adjuntos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)archivos_Adjuntos_JButton.getIcon()).getImage().flush();
         archivos_Adjuntos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -159,6 +162,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         entregar_Tarea_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
+        entregar_Tarea_JButton.setToolTipText("<html> <h3>Entrega De<br>Tarea(s)</h3> </html>");
         entregar_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)entregar_Tarea_JButton.getIcon()).getImage().flush();
         entregar_Tarea_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,7 +172,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Chats");
+        regresar_JButton.setToolTipText("<html> <h3>Regresar A Mis Tareas</h3> </html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
@@ -185,6 +189,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html> <h4>Actulizar<br>Página</h4> </html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -200,6 +205,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         retroalimentacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/feedback.png"))); // NOI18N
+        retroalimentacion_JButton.setToolTipText("<html> <h3>Retroalimentación<br>De Tarea(s)</h3> </html>");
         retroalimentacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)retroalimentacion_JButton.getIcon()).getImage().flush();
         retroalimentacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
