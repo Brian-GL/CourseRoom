@@ -31,6 +31,8 @@ import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
 import courseroom.CourseRoom_Frame;
 import java.util.Locale;
+import java.util.Vector;
+import org.apache.xmlrpc.XmlRpcException;
 
 public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componentes_Interface, Limpieza_Interface, Validaciones_Interface{
 
@@ -443,8 +445,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         apellido_Materno_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         apellido_Materno_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
-        apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         apellido_Materno_JTextField.setToolTipText("<html>  <h3> Apellido materno </h3> </html>");
+        apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         apellido_Materno_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 apellido_Materno_JTextFieldKeyTyped(evt);
@@ -454,9 +456,16 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         estado_JLabel.setText("Estado");
         estado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
+        estado_AutoCompletionComboBox.setEditable(false);
         estado_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         estado_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Estado de proveniencia</h3>\n</html>");
+        estado_AutoCompletionComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                estado_AutoCompletionComboBoxItemStateChanged(evt);
+            }
+        });
 
+        localidad_AutoCompletionComboBox.setEditable(false);
         localidad_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         localidad_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Localidad de provenencia</h3>\n</html>");
 
@@ -1247,6 +1256,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         }
     }//GEN-LAST:event_promedio_General_JFormattedTextFieldKeyTyped
 
+    private void estado_AutoCompletionComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_estado_AutoCompletionComboBoxItemStateChanged
+        // TODO add your handling code here:
+        Obtener_Localidades_Estado();
+    }//GEN-LAST:event_estado_AutoCompletionComboBoxItemStateChanged
+
     public void verificar_Campos_Autenticacion() {
         String Password = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
         String Password2 = String.valueOf(repetir_Contrasenia_JTextField.getPassword());
@@ -1307,6 +1321,24 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             
             icono.flush();
         } catch (IOException ex) {
+            
+        }
+    }
+    
+    private void Obtener_Localidades_Estado(){
+        String estado = (String)estado_AutoCompletionComboBox.getSelectedItem();
+        localidad_AutoCompletionComboBox.removeAllItems();
+        try {
+            //Obtener localidades:
+            Vector<String> localidades = CourseRoom.Solicitudes.Obtener_Localidades_Por_Estado(estado);
+            
+            for(String localidad : localidades){
+                localidad_AutoCompletionComboBox.addItem(localidad);
+            }
+            
+            localidades.removeAllElements();
+            
+        } catch (XmlRpcException | IOException ex) {
             
         }
     }
@@ -1426,9 +1458,18 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
             descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
+            //Obtener estados:
+            Vector<String> estados = CourseRoom.Solicitudes.Obtener_Estados();
+
+            for(String estado : estados){
+                estado_AutoCompletionComboBox.addItem(estado);
+            }
+
+            estados.removeAllElements();
+            estado_AutoCompletionComboBox.setSelectedIndex(0);
             
-            
-        } catch (IOException ex) {
+       
+        } catch (IOException | XmlRpcException ex) {
             
         }
         

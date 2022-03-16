@@ -693,14 +693,19 @@
         </Component>
         <Component class="com.jidesoft.swing.AutoCompletionComboBox" name="estado_AutoCompletionComboBox">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Estado de proveniencia&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="estado_AutoCompletionComboBoxItemStateChanged"/>
+          </Events>
         </Component>
         <Component class="com.jidesoft.swing.AutoCompletionComboBox" name="localidad_AutoCompletionComboBox">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>

@@ -208,18 +208,6 @@ BEGIN
     
 END;
 
-CREATE PROCEDURE `sp_ObtenerEstados`()
-BEGIN
-    SELECT DISTINCT Estado FROM tb_localidades;
-END;
-
-CREATE PROCEDURE `sp_ObtenerLocalidadesPorEstado`(
-    IN _Estado VARCHAR(100)
-)
-BEGIN
-    SELECT Localidad FROM tb_localidades WHERE Estado = _Estado;
-END;
-
 CREATE PROCEDURE `sp_ExisteUsuario`(
     IN _CorreoElectronico VARCHAR(150)
     IN _Contrasenia VARCHAR(256)
