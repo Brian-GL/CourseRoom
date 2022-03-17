@@ -1183,28 +1183,15 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         archivos_Adjuntos_JTable.getTableHeader().setFont(gadugi);
         archivos_Adjuntos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        archivos_Adjuntos_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int columna = tabla.getSelectedColumn();
-
-                     //Remover
-                    if (columna == 2) {
-                    }
-
-                }
-            }
-        });
-        
-        
         descripcion_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(CourseRoom.Utilerias.lorem().paragraph(20)));
         
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        editar_Descripcion_JScrollPane.getViewport().setOpaque(false);
+        editar_Descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        editar_Descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         mensajes_Chat_JScrollPane.getViewport().setOpaque(false);
         mensajes_Chat_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);

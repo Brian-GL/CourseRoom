@@ -1242,7 +1242,10 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void crear_Tarea_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Tarea_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            String id = CourseRoom.Utilerias.Concatenar("Tarea_Temporal_", this.ID);
+            Crear_Tarea_Profesor_Panel crear_Tarea_Profesor_Panel = new Crear_Tarea_Profesor_Panel(this.ID, id);
+            Tablero_Profesor_Panel.Agregar_Vista(crear_Tarea_Profesor_Panel,id);
+            Tablero_Profesor_Panel.Mostrar_Vista(id);
         }
     }//GEN-LAST:event_crear_Tarea_JButtonMouseClicked
 
