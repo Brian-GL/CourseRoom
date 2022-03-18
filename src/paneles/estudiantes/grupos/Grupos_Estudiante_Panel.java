@@ -174,11 +174,11 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                 },
                 new String [] {
-                    "Grupo", "Curso","Creado", "Última Actualización"
+                    "Grupo", "Curso","Creado"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false
+                    false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -283,6 +283,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_Grupos_JScrollPane.setOpaque(false);
 
             buscar_Grupos_JTable.setAutoCreateRowSorter(true);
+            buscar_Grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             buscar_Grupos_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -290,11 +291,11 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
                     },
                     new String [] {
-                        "Grupo", "Curso","Creado", "Última Actualización"
+                        "Grupo", "Curso","Creado"
                     }
                 ) {
                     boolean[] canEdit = new boolean [] {
-                        false, false, false, false
+                        false, false, false
                     };
 
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -316,7 +317,6 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         return super.getColumnClass(column);
                     }
                 });
-                buscar_Grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 buscar_Grupos_JTable.setRowHeight(110);
                 buscar_Grupos_JTable.setShowGrid(true);
                 buscar_Grupos_JTable.setSurrendersFocusOnKeystroke(true);
