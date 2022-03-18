@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `courseroom`.`tb_archivosadjuntosretroalimentacionest
   `Activo` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`IdArchivoAdjunto`),
   INDEX `fk_IdRetroalimentacionArchivoAdjunto_INDEX` (`IdRetroalimentacion` ASC) VISIBLE,
-  CONSTRAINT `fk_IdRetroalimentacionArchivoAdjunto`
+    CONSTRAINT `fk_IdRetroalimentacionArchivoAdjunto`
     FOREIGN KEY (`IdRetroalimentacion`)
     REFERENCES `courseroom`.`tb_retroalimentacion` (`IdRetroalimentacion`)
     ON DELETE NO ACTION
