@@ -1,5 +1,9 @@
 /dist/
 hs_err_pid1272
-/nbproject/private/
+/nbproject/
 /build/
 /temp/
+/test/
+*.project
+*.build
+*.manifest.mf

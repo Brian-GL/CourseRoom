@@ -209,7 +209,7 @@ BEGIN
 END;
 
 CREATE PROCEDURE `sp_ExisteUsuario`(
-    IN _CorreoElectronico VARCHAR(150)
+    IN _CorreoElectronico VARCHAR(150),
     IN _Contrasenia VARCHAR(256)
 )
 BEGIN
@@ -230,8 +230,8 @@ END;
 
 
 CREATE PROCEDURE `sp_AgregarUsuario`(
-    IN _CorreoElectronico VARCHAR(150)
-    IN _Contrasenia VARCHAR(256)
+    IN _CorreoElectronico VARCHAR(150),
+    IN _Contrasenia VARCHAR(256),
     IN _Nombre VARCHAR(50),
     IN _Paterno VARCHAR(30),
     IN _Materno VARCHAR(30),
@@ -241,7 +241,6 @@ CREATE PROCEDURE `sp_AgregarUsuario`(
     IN _TipoUsuario VARCHAR(30),
     IN _Descripcion TEXT,
     IN _Imagen MEDIUMBLOB
-
 )
 BEGIN
 
@@ -279,4 +278,39 @@ BEGIN
         END IF;  
        
     END IF;
+END;
+
+CREATE PROCEDURE `sp_ObtenerDatosSesion`(
+    IN _IdUsuario INT
+)
+BEGIN
+
+    IF EXISTS (SELECT IdUsuario FROM tb_usuarios WHERE IdUsuario = _IdUsuario AND Activo = 1) THEN
+
+        SELECT IdSesion, CONCAT(Dispositivo,' - ',Fabricante) As Dispositivo, Uuid, UltimaConexion, Activo FROM tb_sesiones 
+        WHERE IdUsuario = _IdUsuario ORDER BY IdSesion DESC LIMIT 10;
+
+    ELSE
+        SELECT 0 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+    END IF; 
+
+END;
+
+
+CREATE PROCEDURE `sp_ObtenerAvisos`(
+    IN _IdUsuario INT
+)
+BEGIN 
+
+    IF EXISTS (SELECT IdUsuario FROM tb_usuarios WHERE IdUsuario = _IdUsuario AND Activo = 1) THEN
+        
+        SELECT IdAviso, TipoAviso, Aviso, FechaEnvio FROM tb_avisos WHERE IdUsuario = _IdUsuario 
+        ORDER BY IdAviso DESC LIMIT 100;
+        
+    ELSE 
+
+        SELECT 0 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+
+    END IF;
+
 END;
