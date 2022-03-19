@@ -106,11 +106,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         descripcion_JLabel = new javax.swing.JLabel();
         descripcion_JScrollPane = new javax.swing.JScrollPane();
         descripcion_JTextPane = new javax.swing.JTextPane();
-        interes_Tematica_JLabel = new javax.swing.JLabel();
-        agregar_Interes_Tematica_JButton = new javax.swing.JButton();
-        intereses_Tematicas_AutoCompletionComboBox = new com.jidesoft.swing.AutoCompletionComboBox();
-        intereses_Tematicas_JScrollPane = new javax.swing.JScrollPane();
-        intereses_Tematicas_JTable = new javax.swing.JTable();
+        intereses_JLabel = new javax.swing.JLabel();
+        agregar_Interes_JButton = new javax.swing.JButton();
+        intereses_AutoCompletionComboBox = new com.jidesoft.swing.AutoCompletionComboBox();
+        intereses_JScrollPane = new javax.swing.JScrollPane();
+        intereses_JTable = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(1260, 670));
         setLayout(new java.awt.CardLayout());
@@ -768,34 +768,34 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
-        interes_Tematica_JLabel.setText("Interes / Temática");
-        interes_Tematica_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        interes_Tematica_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
+        intereses_JLabel.setText("Intereses");
+        intereses_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        intereses_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
 
-        agregar_Interes_Tematica_JButton.setText("Agregar Interes / Temática");
-        agregar_Interes_Tematica_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        agregar_Interes_Tematica_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        agregar_Interes_JButton.setText("Agregar");
+        agregar_Interes_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        agregar_Interes_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                agregar_Interes_Tematica_JButtonMouseClicked(evt);
+                agregar_Interes_JButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                agregar_Interes_Tematica_JButtonMouseEntered(evt);
+                agregar_Interes_JButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                agregar_Interes_Tematica_JButtonMouseExited(evt);
+                agregar_Interes_JButtonMouseExited(evt);
             }
         });
 
-        intereses_Tematicas_AutoCompletionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isaiah Leblanc", "Fitzgerald Dean", "Emma Doyle", "Galvin Gillespie", "Hunter Ross", "Kellie Valencia", "Miranda Holder", "Drake Mendoza", "Uma Parks", "Julian Hill" }));
-        intereses_Tematicas_AutoCompletionComboBox.setSelectedIndex(-1);
-        intereses_Tematicas_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        intereses_Tematicas_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
+        intereses_AutoCompletionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isaiah Leblanc", "Fitzgerald Dean", "Emma Doyle", "Galvin Gillespie", "Hunter Ross", "Kellie Valencia", "Miranda Holder", "Drake Mendoza", "Uma Parks", "Julian Hill" }));
+        intereses_AutoCompletionComboBox.setSelectedIndex(-1);
+        intereses_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        intereses_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
 
-        intereses_Tematicas_JScrollPane.setBorder(null);
-        intereses_Tematicas_JScrollPane.setOpaque(false);
+        intereses_JScrollPane.setBorder(null);
+        intereses_JScrollPane.setOpaque(false);
 
-        intereses_Tematicas_JTable.setAutoCreateRowSorter(true);
-        intereses_Tematicas_JTable.setModel(
+        intereses_JTable.setAutoCreateRowSorter(true);
+        intereses_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -816,7 +816,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 @Override
                 public Class getColumnClass(int column)
                 {
-                    for(int i = 0; i < intereses_Tematicas_JTable.getRowCount(); i++)
+                    for(int i = 0; i < intereses_JTable.getRowCount(); i++)
                     {
                         //The first valid value of a cell of given column is retrieved.
                         if(getValueAt(i,column) != null)
@@ -828,14 +828,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                     return super.getColumnClass(column);
                 }
             });
-            intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-            intereses_Tematicas_JTable.setOpaque(false);
-            intereses_Tematicas_JTable.setRowHeight(36);
-            intereses_Tematicas_JTable.setRowMargin(5);
-            intereses_Tematicas_JTable.setShowGrid(true);
-            intereses_Tematicas_JTable.setShowVerticalLines(false);
-            intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
-            intereses_Tematicas_JTable.addMouseListener(new MouseAdapter() {
+            intereses_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            intereses_JTable.setOpaque(false);
+            intereses_JTable.setRowHeight(36);
+            intereses_JTable.setRowMargin(5);
+            intereses_JTable.setShowGrid(true);
+            intereses_JTable.setShowVerticalLines(false);
+            intereses_JTable.setRowSorter(new TableRowSorter(intereses_JTable.getModel()));
+            intereses_JTable.addMouseListener(new MouseAdapter() {
 
                 @Override
                 public void mousePressed(MouseEvent e) {
@@ -854,7 +854,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                     }
                 }
             });
-            intereses_Tematicas_JScrollPane.setViewportView(intereses_Tematicas_JTable);
+            intereses_JScrollPane.setViewportView(intereses_JTable);
 
             javax.swing.GroupLayout informacion_Extra_JPanelLayout = new javax.swing.GroupLayout(informacion_Extra_JPanel);
             informacion_Extra_JPanel.setLayout(informacion_Extra_JPanelLayout);
@@ -874,20 +874,20 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                             .addContainerGap())
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createSequentialGroup()
                             .addGap(0, 0, Short.MAX_VALUE)
-                            .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(descripcion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(promedio_General_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(promedio_General_JFormattedTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(descripcion_JScrollPane))
-                            .addGap(35, 35, 35)
-                            .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
-                                        .addComponent(intereses_Tematicas_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(agregar_Interes_Tematica_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(interes_Tematica_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(descripcion_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(promedio_General_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(promedio_General_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(intereses_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createSequentialGroup()
+                                    .addComponent(intereses_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(agregar_Interes_JButton))
+                                .addComponent(intereses_JScrollPane))
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             );
             informacion_Extra_JPanelLayout.setVerticalGroup(
@@ -900,21 +900,19 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                     .addGap(18, 18, 18)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(promedio_General_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(interes_Tematica_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(intereses_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(promedio_General_JFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
-                            .addGap(1, 1, 1)
-                            .addComponent(intereses_Tematicas_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(agregar_Interes_Tematica_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(agregar_Interes_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(intereses_AutoCompletionComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
                             .addComponent(descripcion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(descripcion_JScrollPane))
-                        .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
+                        .addComponent(intereses_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
                     .addGap(41, 41, 41)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(crear_Cuenta_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1088,13 +1086,24 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void continuar_Informacion_Extra_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Informacion_Extra_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            if(!tipo_Perfil_JComboBox.getSelectedItem().equals("Estudiante")){
+            if(tipo_Perfil_JComboBox.getSelectedItem().equals("Profesor")){
                 promedio_General_JFormattedTextField.setVisible(false);
                 promedio_General_JLabel.setVisible(false);
+                agregar_Interes_JButton.setVisible(false);
+                intereses_AutoCompletionComboBox.setVisible(false);
+                intereses_JLabel.setVisible(false);
+                intereses_JScrollPane.setVisible(false);
+                intereses_JTable.setVisible(false);
             }
             else{
                 promedio_General_JFormattedTextField.setVisible(true);
                 promedio_General_JLabel.setVisible(true);
+                agregar_Interes_JButton.setVisible(true);
+                intereses_AutoCompletionComboBox.setVisible(true);
+                intereses_JLabel.setVisible(true);
+                intereses_JScrollPane.setVisible(true);
+                intereses_JTable.setVisible(true);
+                
             }
             ((CardLayout)this.getLayout()).show(this,"Informacion_Extra");
         }
@@ -1144,30 +1153,30 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         regresar_Perfil_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_regresar_Perfil_JButtonMouseExited
 
-    private void agregar_Interes_Tematica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_Tematica_JButtonMouseClicked
+    private void agregar_Interes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            String interes_Tematica = intereses_Tematicas_AutoCompletionComboBox.getSelectedItem() != null
-                    ? intereses_Tematicas_AutoCompletionComboBox.getSelectedItem().toString() : "";
+            String interes_Tematica = intereses_AutoCompletionComboBox.getSelectedItem() != null
+                    ? intereses_AutoCompletionComboBox.getSelectedItem().toString() : "";
             
             if(!interes_Tematica.isEmpty() && !interes_Tematica.isBlank()){
                 Agregar_Interes_Tematica(interes_Tematica);
             }
         }
-    }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseClicked
+    }//GEN-LAST:event_agregar_Interes_JButtonMouseClicked
 
-    private void agregar_Interes_Tematica_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_Tematica_JButtonMouseEntered
+    private void agregar_Interes_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_JButtonMouseEntered
         // TODO add your handling code here:
-        agregar_Interes_Tematica_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        agregar_Interes_Tematica_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseEntered
+        agregar_Interes_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        agregar_Interes_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color());
+    }//GEN-LAST:event_agregar_Interes_JButtonMouseEntered
 
-    private void agregar_Interes_Tematica_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_Tematica_JButtonMouseExited
+    private void agregar_Interes_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_JButtonMouseExited
         // TODO add your handling code here:
-        agregar_Interes_Tematica_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        agregar_Interes_Tematica_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
-    }//GEN-LAST:event_agregar_Interes_Tematica_JButtonMouseExited
+        agregar_Interes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        agregar_Interes_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_agregar_Interes_JButtonMouseExited
 
     private void nombres_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombres_JTextFieldKeyTyped
         // TODO add your handling code here:
@@ -1302,7 +1311,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         
     private void Agregar_Interes_Tematica(String interes_Tematica){
         try {
-            DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+            DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
             
             Celda_Renderer[] celdas = new Celda_Renderer[2];
             Celda_Renderer celda;
@@ -1317,7 +1326,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             celdas[1] = celda;
             modelo.addRow(celdas);
             
-            intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(interes_Tematica.length()));
+            intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(interes_Tematica.length()));
             
             icono.flush();
         } catch (IOException ex) {
@@ -1344,7 +1353,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     }
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton agregar_Interes_Tematica_JButton;
+    private javax.swing.JButton agregar_Interes_JButton;
     private javax.swing.JLabel apellido_Materno_JLabel;
     private javax.swing.JTextField apellido_Materno_JTextField;
     private javax.swing.JLabel apellido_Paterno_JLabel;
@@ -1374,10 +1383,10 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private javax.swing.JPanel informacion_Extra_JPanel;
     private javax.swing.JLabel informacion_Inicio_JLabel;
     private javax.swing.JPanel inicio_JPanel;
-    private javax.swing.JLabel interes_Tematica_JLabel;
-    private com.jidesoft.swing.AutoCompletionComboBox intereses_Tematicas_AutoCompletionComboBox;
-    private javax.swing.JScrollPane intereses_Tematicas_JScrollPane;
-    private javax.swing.JTable intereses_Tematicas_JTable;
+    private com.jidesoft.swing.AutoCompletionComboBox intereses_AutoCompletionComboBox;
+    private javax.swing.JLabel intereses_JLabel;
+    private javax.swing.JScrollPane intereses_JScrollPane;
+    private javax.swing.JTable intereses_JTable;
     private com.jidesoft.swing.AutoCompletionComboBox localidad_AutoCompletionComboBox;
     private javax.swing.JLabel localidad_JLabel;
     private javax.swing.JLabel logo_Autenticacion_JLabel;
@@ -1424,13 +1433,13 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             logo_Imagen.flush();
             icono.getImage().flush();
 
-            intereses_Tematicas_JScrollPane.getViewport().setOpaque(false);
-            intereses_Tematicas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-            intereses_Tematicas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+            intereses_JScrollPane.getViewport().setOpaque(false);
+            intereses_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+            intereses_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
             Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
-            intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
-            intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+            intereses_JTable.getTableHeader().setFont(gadugi);
+            intereses_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
             LocalDate fecha_Minima = LocalDate.of(1900, Month.JANUARY, 1);
             LocalDate fecha_Maxima = LocalDate.of(2010, Month.JANUARY, 1);
@@ -1563,22 +1572,22 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         promedio_General_JFormattedTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
         promedio_General_JFormattedTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
         promedio_General_JFormattedTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        intereses_Tematicas_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        intereses_Tematicas_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias.Primer_Color());
-        agregar_Interes_Tematica_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        agregar_Interes_Tematica_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
+        intereses_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        intereses_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias.Primer_Color());
+        agregar_Interes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        agregar_Interes_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
         descripcion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
         promedio_General_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
         titulo_Informacion_Extra_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        interes_Tematica_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        intereses_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
         crear_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
         regresar_Perfil_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
         
-        intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        intereses_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
+        intereses_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        intereses_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < modelo.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
@@ -1594,7 +1603,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     
     @Override
     public void Limpiar(){
-       DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+       DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
        modelo.setRowCount(0);
     }
 

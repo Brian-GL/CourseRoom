@@ -969,7 +969,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                         @Override
                                         public Class getColumnClass(int column)
                                         {
-                                            for(int i = 0; i < tematicas_JTable.getRowCount(); i++)
+                                            for(int i = 0; i < editar_Tematicas_JTable.getRowCount(); i++)
                                             {
                                                 //The first valid value of a cell of given column is retrieved.
                                                 if(getValueAt(i,column) != null)
@@ -2210,6 +2210,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         modelo = (DefaultTableModel) materiales_JTable.getModel();
         modelo.setRowCount(0);
         modelo = (DefaultTableModel) estadisticas_JTable.getModel();
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) editar_Tematicas_JTable.getModel();
         modelo.setRowCount(0);
         
     }

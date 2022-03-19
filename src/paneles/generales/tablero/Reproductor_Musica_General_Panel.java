@@ -91,7 +91,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         
     }
     
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1069,12 +1068,14 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         anterior_JLabel.setEnabled(true);
                         alto_JLabel.setEnabled(true);
                         play_Pausa_JLabel.setEnabled(true);
-                        progreso_JSlider.setEnabled(true);
+                        
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
                         
                         CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
+                        progreso_JSlider.setEnabled(true);
+                        
                     }
                 }
             }
@@ -1131,7 +1132,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                             CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().add(ruta);
                             indice_auxiliar++;
                         }
-
                         nodo_actual = rutas.front();
                         indice = 0;
                         Cargar_Metadatos();
@@ -1140,7 +1140,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         rate_JSlider.setEnabled(true);
                         volumen_JSlider.setValue(100);
                         subir_Volumen_JLabel.setEnabled(true);
-                        progreso_JSlider.setEnabled(true);
                         bajar_Volumen_JLabel.setEnabled(true);
                         subir_Rate_JLabel.setEnabled(true);
                         bajar_Rate_JLabel.setEnabled(true);
@@ -1151,7 +1150,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
+                        
                         CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
+                        progreso_JSlider.setEnabled(true);
                     }
                     
                 }
@@ -1532,21 +1533,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             entrada_Lista_Reproduccion_General_Panel = (Entrada_Lista_Reproduccion_General_Panel)componente;
             entrada_Lista_Reproduccion_General_Panel.Colores(segundo_Color_Fuente, segundo_Color);
         }
-        
-//        Font gadugi = new Font("Gadugi", 1, 16);
-//
-//        
-//        bandas_JPanel.setBorder(javax.swing.BorderFactory.createTitledBorder
-//        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Bandas", 
-//                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-//                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-//                gadugi,segundo_Color_Fuente));
-//        
-//        letras_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder
-//        (javax.swing.BorderFactory.createLineBorder(segundo_Color_Fuente), "Letras", 
-//                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-//                javax.swing.border.TitledBorder.DEFAULT_POSITION, 
-//                gadugi,segundo_Color_Fuente));
+
         
         presets_JComboBox.setForeground(segundo_Color_Fuente);
         presets_JComboBox.setBackground(segundo_Color);
@@ -1724,16 +1711,20 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             @Override
             public void mousePressed(MouseEvent e) {
                 if(SwingUtilities.isLeftMouseButton(e)){
-                    bandera_Mouse_Auxiliar = false;
+                    if(CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING && progreso_JSlider.isEnabled()){
+                        bandera_Mouse_Auxiliar = false;
+                    }
+                    
                 }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if(!bandera_Mouse_Auxiliar){
-                  bandera_Mouse_Auxiliar = true;
+                if(CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING && progreso_JSlider.isEnabled()){
+                    if(!bandera_Mouse_Auxiliar){
+                      bandera_Mouse_Auxiliar = true;
+                    }
                 }
-                
             }
 
             @Override
@@ -1779,6 +1770,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             
             @Override
             public void mediaChanged(MediaPlayer mp, MediaRef mr) {
+                progreso_JSlider.setEnabled(false);
                 if (bandera_Siguiente_Pista) {
                     if (nodo_actual.has_next()) {
                         if (!bandera_Indice_Cero) {
@@ -1788,6 +1780,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                             nodo_actual = rutas.front();
                             bandera_Indice_Cero = false;
                         }
+                        
                         Cargar_Metadatos();
                         
                         bandera_Siguiente_Pista = true;
@@ -1797,9 +1790,11 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     if (nodo_actual.has_previous()) {
                         indice--;
                         nodo_actual = nodo_actual.previous();
+                        
                         Cargar_Metadatos();
                     }
                 }
+                progreso_JSlider.setEnabled(true);
             }
 
             @Override

@@ -85,10 +85,12 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="marcar_Solucionada_JButton" min="-2" max="-2" attributes="0"/>
-                      <Component id="actualizar_JButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="marcar_Solucionada_JButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="actualizar_JButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="eliminar_Pregunta_JButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -109,7 +111,9 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="actualizar_JButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <Component id="eliminar_Pregunta_JButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="32767" attributes="0"/>
                           <Component id="marcar_Solucionada_JButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -245,6 +249,26 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)marcar_Solucionada_JButton.getIcon()).getImage().flush();"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="eliminar_Pregunta_JButton">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/recursos/iconos/close.png"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminar_Pregunta_JButtonMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminar_Pregunta_JButtonMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminar_Pregunta_JButtonMouseExited"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)eliminar_Pregunta_JButton.getIcon()).getImage().flush();"/>
           </AuxValues>
         </Component>
       </SubComponents>

@@ -108,7 +108,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         respuesta4_Pensamiento_Reflexivo_JSlider = new javax.swing.JSlider();
         interactividad_JPanel = new javax.swing.JPanel();
         interactividad_JLabel = new javax.swing.JLabel();
-        continuar_Apoyo_Tutor_JButton = new javax.swing.JButton();
+        continuar_Apoyo_Profesor_JButton = new javax.swing.JButton();
         regresar_Pensamiento_Reflexivo_JButton = new javax.swing.JButton();
         cuestionario_Interactividad_JPanel = new javax.swing.JPanel();
         titulo_Pregunta_Interactividad_JLabel = new javax.swing.JLabel();
@@ -125,29 +125,29 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         pregunta4_Interactividad_JLabel = new javax.swing.JLabel();
         respuesta4_Interactividad_JPanel = new javax.swing.JPanel();
         respuesta4_Interactividad_JSlider = new javax.swing.JSlider();
-        apoyo_Tutor_JPanel = new javax.swing.JPanel();
-        apoyo_Tutor_JLabel = new javax.swing.JLabel();
+        apoyo_Profesor_JPanel = new javax.swing.JPanel();
+        apoyo_Profesor_JLabel = new javax.swing.JLabel();
         continuar_Interpretacion_JButton = new javax.swing.JButton();
         regresar_Interactividad_JButton = new javax.swing.JButton();
-        cuestionario_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
-        titulo_Pregunta_Apoyo_Tutor_JLabel = new javax.swing.JLabel();
-        titulo_Respuesta_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
-        pregunta1_Apoyo_Tutor_JLabel = new javax.swing.JLabel();
-        respuesta1_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
-        respuesta1_Apoyo_Tutor_JSlider = new javax.swing.JSlider();
-        pregunta2_Apoyo_Tutor_JLabel = new javax.swing.JLabel();
-        respuesta2_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
-        respuesta2_Apoyo_Tutor_JSlider = new javax.swing.JSlider();
-        pregunta3_Apoyo_Tutor_JLabel = new javax.swing.JLabel();
-        respuesta3_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
-        respuesta3_Apoyo_Tutor_JSlider = new javax.swing.JSlider();
-        pregunta4_Apoyo_Tutor_JLabel = new javax.swing.JLabel();
-        respuesta4_Apoyo_Tutor_JPanel = new javax.swing.JPanel();
-        respuesta4_Apoyo_Tutor_JSlider = new javax.swing.JSlider();
+        cuestionario_Apoyo_Profesor_JPanel = new javax.swing.JPanel();
+        titulo_Pregunta_Apoyo_Profesor_JLabel = new javax.swing.JLabel();
+        titulo_Respuesta_Apoyo_Profesor_JPanel = new javax.swing.JPanel();
+        pregunta1_Apoyo_Profesor_JLabel = new javax.swing.JLabel();
+        respuesta1_Apoyo_Profesor_JPanel = new javax.swing.JPanel();
+        respuesta1_Apoyo_Profesor_JSlider = new javax.swing.JSlider();
+        pregunta2_Apoyo_Profesor_JLabel = new javax.swing.JLabel();
+        respuesta2_Apoyo_Profesor_JPanel = new javax.swing.JPanel();
+        respuesta2_Apoyo_Profesor_JSlider = new javax.swing.JSlider();
+        pregunta3_Apoyo_Profesor_JLabel = new javax.swing.JLabel();
+        respuesta3_Apoyo_Profesor_JPanel = new javax.swing.JPanel();
+        respuesta3_Apoyo_Profesor_JSlider = new javax.swing.JSlider();
+        pregunta4_Apoyo_Profesor_JLabel = new javax.swing.JLabel();
+        respuesta4_Apoyo_Profesor_JPanel = new javax.swing.JPanel();
+        respuesta4_Apoyo_Profesor_JSlider = new javax.swing.JSlider();
         interpretacion_JPanel = new javax.swing.JPanel();
         interpretacion_JLabel = new javax.swing.JLabel();
         terminar_Cuestionario_JButton = new javax.swing.JButton();
-        regresar_Apoyo_Tutor_JButton = new javax.swing.JButton();
+        regresar_Apoyo_Profesor_JButton = new javax.swing.JButton();
         cuestionario_Interpretacion_JPanel = new javax.swing.JPanel();
         titulo_Pregunta_Interpretacion_JLabel = new javax.swing.JLabel();
         titulo_RespuestaInterpretacion_JPanel = new javax.swing.JPanel();
@@ -306,7 +306,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Relevancia_JPanel.add(titulo_Respuesta_Relevancia_JPanel);
 
         pregunta1_Relevancia_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta1_Relevancia_JLabel.setText(" 1.  Mi aprendizaje se centra en asuntos que me interesan");
+        pregunta1_Relevancia_JLabel.setText(" 1. Mi aprendizaje se centra en asuntos que me interesan");
         cuestionario_Relevancia_JPanel.add(pregunta1_Relevancia_JLabel);
 
         respuesta1_Relevancia_JPanel.setOpaque(false);
@@ -342,7 +342,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Relevancia_JPanel.add(respuesta2_Relevancia_JPanel);
 
         pregunta3_Relevancia_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta3_Relevancia_JLabel.setText(" 3.  Aprendo cómo mejorar mi práctica profesional");
+        pregunta3_Relevancia_JLabel.setText(" 3. Aprendo cómo mejorar mi práctica profesional");
         cuestionario_Relevancia_JPanel.add(pregunta3_Relevancia_JLabel);
 
         respuesta3_Relevancia_JPanel.setOpaque(false);
@@ -577,20 +577,20 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         interactividad_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         interactividad_JLabel.setOpaque(true);
 
-        continuar_Apoyo_Tutor_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Apoyo_Tutor_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
-        continuar_Apoyo_Tutor_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        continuar_Apoyo_Tutor_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ((ImageIcon)continuar_Apoyo_Tutor_JButton.getIcon()).getImage().flush();
-        continuar_Apoyo_Tutor_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        continuar_Apoyo_Profesor_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
+        continuar_Apoyo_Profesor_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
+        continuar_Apoyo_Profesor_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        continuar_Apoyo_Profesor_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)continuar_Apoyo_Profesor_JButton.getIcon()).getImage().flush();
+        continuar_Apoyo_Profesor_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                continuar_Apoyo_Tutor_JButtonMouseClicked(evt);
+                continuar_Apoyo_Profesor_JButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                continuar_Apoyo_Tutor_JButtonMouseEntered(evt);
+                continuar_Apoyo_Profesor_JButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                continuar_Apoyo_Tutor_JButtonMouseExited(evt);
+                continuar_Apoyo_Profesor_JButtonMouseExited(evt);
             }
         });
 
@@ -624,7 +624,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Interactividad_JPanel.add(titulo_Respuesta_Interactividad_JPanel);
 
         pregunta1_Interactividad_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta1_Interactividad_JLabel.setText(" 1.  Explico mis ideas a otros estudiantes");
+        pregunta1_Interactividad_JLabel.setText(" 1. Explico mis ideas a otros estudiantes");
         cuestionario_Interactividad_JPanel.add(pregunta1_Interactividad_JLabel);
 
         respuesta1_Interactividad_JPanel.setOpaque(false);
@@ -706,7 +706,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, interactividad_JPanelLayout.createSequentialGroup()
                         .addComponent(regresar_Pensamiento_Reflexivo_JButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(continuar_Apoyo_Tutor_JButton))
+                        .addComponent(continuar_Apoyo_Profesor_JButton))
                     .addGroup(interactividad_JPanelLayout.createSequentialGroup()
                         .addComponent(interactividad_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -722,20 +722,20 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
                 .addComponent(cuestionario_Interactividad_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(interactividad_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(continuar_Apoyo_Tutor_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(continuar_Apoyo_Profesor_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(regresar_Pensamiento_Reflexivo_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
         add(interactividad_JPanel, "Interactividad");
 
-        apoyo_Tutor_JPanel.setOpaque(false);
+        apoyo_Profesor_JPanel.setOpaque(false);
 
-        apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        apoyo_Tutor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        apoyo_Tutor_JLabel.setText("Apoyo Del Tutor");
-        apoyo_Tutor_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        apoyo_Tutor_JLabel.setOpaque(true);
+        apoyo_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        apoyo_Profesor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        apoyo_Profesor_JLabel.setText("Apoyo Del Profesor");
+        apoyo_Profesor_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        apoyo_Profesor_JLabel.setOpaque(true);
 
         continuar_Interpretacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
         continuar_Interpretacion_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
@@ -771,122 +771,122 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
             }
         });
 
-        cuestionario_Apoyo_Tutor_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        cuestionario_Apoyo_Tutor_JPanel.setLayout(new java.awt.GridLayout(5, 2, 5, 5));
+        cuestionario_Apoyo_Profesor_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        cuestionario_Apoyo_Profesor_JPanel.setLayout(new java.awt.GridLayout(5, 2, 5, 5));
 
-        titulo_Pregunta_Apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        titulo_Pregunta_Apoyo_Tutor_JLabel.setText(" En esta unidad en línea...");
-        titulo_Pregunta_Apoyo_Tutor_JLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        cuestionario_Apoyo_Tutor_JPanel.add(titulo_Pregunta_Apoyo_Tutor_JLabel);
+        titulo_Pregunta_Apoyo_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_Pregunta_Apoyo_Profesor_JLabel.setText(" En esta unidad en línea...");
+        titulo_Pregunta_Apoyo_Profesor_JLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        cuestionario_Apoyo_Profesor_JPanel.add(titulo_Pregunta_Apoyo_Profesor_JLabel);
 
-        titulo_Respuesta_Apoyo_Tutor_JPanel.setOpaque(false);
-        titulo_Respuesta_Apoyo_Tutor_JPanel.setLayout(new java.awt.GridLayout(1, 5));
-        cuestionario_Apoyo_Tutor_JPanel.add(titulo_Respuesta_Apoyo_Tutor_JPanel);
+        titulo_Respuesta_Apoyo_Profesor_JPanel.setOpaque(false);
+        titulo_Respuesta_Apoyo_Profesor_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+        cuestionario_Apoyo_Profesor_JPanel.add(titulo_Respuesta_Apoyo_Profesor_JPanel);
 
-        pregunta1_Apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta1_Apoyo_Tutor_JLabel.setText(" 1. El tutor me estimula a reflexionar");
-        cuestionario_Apoyo_Tutor_JPanel.add(pregunta1_Apoyo_Tutor_JLabel);
+        pregunta1_Apoyo_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta1_Apoyo_Profesor_JLabel.setText(" 1. El profesor incita a la reflexión");
+        cuestionario_Apoyo_Profesor_JPanel.add(pregunta1_Apoyo_Profesor_JLabel);
 
-        respuesta1_Apoyo_Tutor_JPanel.setOpaque(false);
-        respuesta1_Apoyo_Tutor_JPanel.setLayout(new java.awt.BorderLayout());
+        respuesta1_Apoyo_Profesor_JPanel.setOpaque(false);
+        respuesta1_Apoyo_Profesor_JPanel.setLayout(new java.awt.BorderLayout());
 
-        respuesta1_Apoyo_Tutor_JSlider.setMajorTickSpacing(1);
-        respuesta1_Apoyo_Tutor_JSlider.setMaximum(4);
-        respuesta1_Apoyo_Tutor_JSlider.setPaintLabels(true);
-        respuesta1_Apoyo_Tutor_JSlider.setPaintTicks(true);
-        respuesta1_Apoyo_Tutor_JSlider.setSnapToTicks(true);
-        respuesta1_Apoyo_Tutor_JSlider.setValue(0);
-        respuesta1_Apoyo_Tutor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        respuesta1_Apoyo_Tutor_JPanel.add(respuesta1_Apoyo_Tutor_JSlider, java.awt.BorderLayout.CENTER);
+        respuesta1_Apoyo_Profesor_JSlider.setMajorTickSpacing(1);
+        respuesta1_Apoyo_Profesor_JSlider.setMaximum(4);
+        respuesta1_Apoyo_Profesor_JSlider.setPaintLabels(true);
+        respuesta1_Apoyo_Profesor_JSlider.setPaintTicks(true);
+        respuesta1_Apoyo_Profesor_JSlider.setSnapToTicks(true);
+        respuesta1_Apoyo_Profesor_JSlider.setValue(0);
+        respuesta1_Apoyo_Profesor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta1_Apoyo_Profesor_JPanel.add(respuesta1_Apoyo_Profesor_JSlider, java.awt.BorderLayout.CENTER);
 
-        cuestionario_Apoyo_Tutor_JPanel.add(respuesta1_Apoyo_Tutor_JPanel);
+        cuestionario_Apoyo_Profesor_JPanel.add(respuesta1_Apoyo_Profesor_JPanel);
 
-        pregunta2_Apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta2_Apoyo_Tutor_JLabel.setText(" 2. El tutor me anima a participar");
-        cuestionario_Apoyo_Tutor_JPanel.add(pregunta2_Apoyo_Tutor_JLabel);
+        pregunta2_Apoyo_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta2_Apoyo_Profesor_JLabel.setText(" 2. El profesor anima a la participación");
+        cuestionario_Apoyo_Profesor_JPanel.add(pregunta2_Apoyo_Profesor_JLabel);
 
-        respuesta2_Apoyo_Tutor_JPanel.setOpaque(false);
-        respuesta2_Apoyo_Tutor_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+        respuesta2_Apoyo_Profesor_JPanel.setOpaque(false);
+        respuesta2_Apoyo_Profesor_JPanel.setLayout(new java.awt.GridLayout(1, 5));
 
-        respuesta2_Apoyo_Tutor_JSlider.setMajorTickSpacing(1);
-        respuesta2_Apoyo_Tutor_JSlider.setMaximum(4);
-        respuesta2_Apoyo_Tutor_JSlider.setPaintLabels(true);
-        respuesta2_Apoyo_Tutor_JSlider.setPaintTicks(true);
-        respuesta2_Apoyo_Tutor_JSlider.setSnapToTicks(true);
-        respuesta2_Apoyo_Tutor_JSlider.setValue(0);
-        respuesta2_Apoyo_Tutor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        respuesta2_Apoyo_Tutor_JPanel.add(respuesta2_Apoyo_Tutor_JSlider);
+        respuesta2_Apoyo_Profesor_JSlider.setMajorTickSpacing(1);
+        respuesta2_Apoyo_Profesor_JSlider.setMaximum(4);
+        respuesta2_Apoyo_Profesor_JSlider.setPaintLabels(true);
+        respuesta2_Apoyo_Profesor_JSlider.setPaintTicks(true);
+        respuesta2_Apoyo_Profesor_JSlider.setSnapToTicks(true);
+        respuesta2_Apoyo_Profesor_JSlider.setValue(0);
+        respuesta2_Apoyo_Profesor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta2_Apoyo_Profesor_JPanel.add(respuesta2_Apoyo_Profesor_JSlider);
 
-        cuestionario_Apoyo_Tutor_JPanel.add(respuesta2_Apoyo_Tutor_JPanel);
+        cuestionario_Apoyo_Profesor_JPanel.add(respuesta2_Apoyo_Profesor_JPanel);
 
-        pregunta3_Apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta3_Apoyo_Tutor_JLabel.setText(" 3. El tutor ejemplifica las buenas disertaciones");
-        cuestionario_Apoyo_Tutor_JPanel.add(pregunta3_Apoyo_Tutor_JLabel);
+        pregunta3_Apoyo_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta3_Apoyo_Profesor_JLabel.setText(" 3. El profesor ejemplifica las buenas disertaciones");
+        cuestionario_Apoyo_Profesor_JPanel.add(pregunta3_Apoyo_Profesor_JLabel);
 
-        respuesta3_Apoyo_Tutor_JPanel.setOpaque(false);
-        respuesta3_Apoyo_Tutor_JPanel.setLayout(new java.awt.GridLayout(1, 5));
+        respuesta3_Apoyo_Profesor_JPanel.setOpaque(false);
+        respuesta3_Apoyo_Profesor_JPanel.setLayout(new java.awt.GridLayout(1, 5));
 
-        respuesta3_Apoyo_Tutor_JSlider.setMajorTickSpacing(1);
-        respuesta3_Apoyo_Tutor_JSlider.setMaximum(4);
-        respuesta3_Apoyo_Tutor_JSlider.setPaintLabels(true);
-        respuesta3_Apoyo_Tutor_JSlider.setPaintTicks(true);
-        respuesta3_Apoyo_Tutor_JSlider.setSnapToTicks(true);
-        respuesta3_Apoyo_Tutor_JSlider.setValue(0);
-        respuesta3_Apoyo_Tutor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        respuesta3_Apoyo_Tutor_JPanel.add(respuesta3_Apoyo_Tutor_JSlider);
+        respuesta3_Apoyo_Profesor_JSlider.setMajorTickSpacing(1);
+        respuesta3_Apoyo_Profesor_JSlider.setMaximum(4);
+        respuesta3_Apoyo_Profesor_JSlider.setPaintLabels(true);
+        respuesta3_Apoyo_Profesor_JSlider.setPaintTicks(true);
+        respuesta3_Apoyo_Profesor_JSlider.setSnapToTicks(true);
+        respuesta3_Apoyo_Profesor_JSlider.setValue(0);
+        respuesta3_Apoyo_Profesor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta3_Apoyo_Profesor_JPanel.add(respuesta3_Apoyo_Profesor_JSlider);
 
-        cuestionario_Apoyo_Tutor_JPanel.add(respuesta3_Apoyo_Tutor_JPanel);
+        cuestionario_Apoyo_Profesor_JPanel.add(respuesta3_Apoyo_Profesor_JPanel);
 
-        pregunta4_Apoyo_Tutor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta4_Apoyo_Tutor_JLabel.setText(" 4. El tutor ejemplifica la auto reflexión crítica");
-        cuestionario_Apoyo_Tutor_JPanel.add(pregunta4_Apoyo_Tutor_JLabel);
+        pregunta4_Apoyo_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pregunta4_Apoyo_Profesor_JLabel.setText(" 4. El profesor ejemplifica la auto reflexión crítica");
+        cuestionario_Apoyo_Profesor_JPanel.add(pregunta4_Apoyo_Profesor_JLabel);
 
-        respuesta4_Apoyo_Tutor_JPanel.setOpaque(false);
-        respuesta4_Apoyo_Tutor_JPanel.setLayout(new java.awt.GridLayout());
+        respuesta4_Apoyo_Profesor_JPanel.setOpaque(false);
+        respuesta4_Apoyo_Profesor_JPanel.setLayout(new java.awt.GridLayout());
 
-        respuesta4_Apoyo_Tutor_JSlider.setMajorTickSpacing(1);
-        respuesta4_Apoyo_Tutor_JSlider.setMaximum(4);
-        respuesta4_Apoyo_Tutor_JSlider.setPaintLabels(true);
-        respuesta4_Apoyo_Tutor_JSlider.setPaintTicks(true);
-        respuesta4_Apoyo_Tutor_JSlider.setSnapToTicks(true);
-        respuesta4_Apoyo_Tutor_JSlider.setValue(0);
-        respuesta4_Apoyo_Tutor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        respuesta4_Apoyo_Tutor_JPanel.add(respuesta4_Apoyo_Tutor_JSlider);
+        respuesta4_Apoyo_Profesor_JSlider.setMajorTickSpacing(1);
+        respuesta4_Apoyo_Profesor_JSlider.setMaximum(4);
+        respuesta4_Apoyo_Profesor_JSlider.setPaintLabels(true);
+        respuesta4_Apoyo_Profesor_JSlider.setPaintTicks(true);
+        respuesta4_Apoyo_Profesor_JSlider.setSnapToTicks(true);
+        respuesta4_Apoyo_Profesor_JSlider.setValue(0);
+        respuesta4_Apoyo_Profesor_JSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respuesta4_Apoyo_Profesor_JPanel.add(respuesta4_Apoyo_Profesor_JSlider);
 
-        cuestionario_Apoyo_Tutor_JPanel.add(respuesta4_Apoyo_Tutor_JPanel);
+        cuestionario_Apoyo_Profesor_JPanel.add(respuesta4_Apoyo_Profesor_JPanel);
 
-        javax.swing.GroupLayout apoyo_Tutor_JPanelLayout = new javax.swing.GroupLayout(apoyo_Tutor_JPanel);
-        apoyo_Tutor_JPanel.setLayout(apoyo_Tutor_JPanelLayout);
-        apoyo_Tutor_JPanelLayout.setHorizontalGroup(
-            apoyo_Tutor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(apoyo_Tutor_JPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout apoyo_Profesor_JPanelLayout = new javax.swing.GroupLayout(apoyo_Profesor_JPanel);
+        apoyo_Profesor_JPanel.setLayout(apoyo_Profesor_JPanelLayout);
+        apoyo_Profesor_JPanelLayout.setHorizontalGroup(
+            apoyo_Profesor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(apoyo_Profesor_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(apoyo_Tutor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, apoyo_Tutor_JPanelLayout.createSequentialGroup()
+                .addGroup(apoyo_Profesor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, apoyo_Profesor_JPanelLayout.createSequentialGroup()
                         .addComponent(regresar_Interactividad_JButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(continuar_Interpretacion_JButton))
-                    .addGroup(apoyo_Tutor_JPanelLayout.createSequentialGroup()
-                        .addComponent(apoyo_Tutor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(apoyo_Profesor_JPanelLayout.createSequentialGroup()
+                        .addComponent(apoyo_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cuestionario_Apoyo_Tutor_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE))
+                    .addComponent(cuestionario_Apoyo_Profesor_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        apoyo_Tutor_JPanelLayout.setVerticalGroup(
-            apoyo_Tutor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(apoyo_Tutor_JPanelLayout.createSequentialGroup()
+        apoyo_Profesor_JPanelLayout.setVerticalGroup(
+            apoyo_Profesor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(apoyo_Profesor_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(apoyo_Tutor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(apoyo_Profesor_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cuestionario_Apoyo_Tutor_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addComponent(cuestionario_Apoyo_Profesor_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(apoyo_Tutor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(apoyo_Profesor_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(continuar_Interpretacion_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(regresar_Interactividad_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
-        add(apoyo_Tutor_JPanel, "Apoyo_Tutor");
+        add(apoyo_Profesor_JPanel, "Apoyo_Profesor");
 
         interpretacion_JPanel.setOpaque(false);
 
@@ -913,20 +913,20 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
             }
         });
 
-        regresar_Apoyo_Tutor_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Apoyo_Tutor_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
-        regresar_Apoyo_Tutor_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        regresar_Apoyo_Tutor_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ((ImageIcon)regresar_Apoyo_Tutor_JButton.getIcon()).getImage().flush();
-        regresar_Apoyo_Tutor_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        regresar_Apoyo_Profesor_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_Apoyo_Profesor_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
+        regresar_Apoyo_Profesor_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        regresar_Apoyo_Profesor_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)regresar_Apoyo_Profesor_JButton.getIcon()).getImage().flush();
+        regresar_Apoyo_Profesor_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresar_Apoyo_Tutor_JButtonMouseClicked(evt);
+                regresar_Apoyo_Profesor_JButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                regresar_Apoyo_Tutor_JButtonMouseEntered(evt);
+                regresar_Apoyo_Profesor_JButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                regresar_Apoyo_Tutor_JButtonMouseExited(evt);
+                regresar_Apoyo_Profesor_JButtonMouseExited(evt);
             }
         });
 
@@ -979,7 +979,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Interpretacion_JPanel.add(respuesta2_Interpretacion_JPanel);
 
         pregunta3_Interpretacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta3_Interpretacion_JLabel.setText(" 3.  El profesor se dirigio con respecto hacia los estudiantes");
+        pregunta3_Interpretacion_JLabel.setText(" 3. El profesor se dirigio con respeto hacia los estudiantes");
         cuestionario_Interpretacion_JPanel.add(pregunta3_Interpretacion_JLabel);
 
         respuesta3_Interpretacion_JPanel.setOpaque(false);
@@ -1022,7 +1022,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
                 .addContainerGap()
                 .addGroup(interpretacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, interpretacion_JPanelLayout.createSequentialGroup()
-                        .addComponent(regresar_Apoyo_Tutor_JButton)
+                        .addComponent(regresar_Apoyo_Profesor_JButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(terminar_Cuestionario_JButton))
                     .addGroup(interpretacion_JPanelLayout.createSequentialGroup()
@@ -1041,7 +1041,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(interpretacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(terminar_Cuestionario_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(regresar_Apoyo_Tutor_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(regresar_Apoyo_Profesor_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -1150,22 +1150,22 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         regresar_Relevancia_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
     }//GEN-LAST:event_regresar_Relevancia_JButtonMouseExited
 
-    private void continuar_Apoyo_Tutor_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Tutor_JButtonMouseClicked
+    private void continuar_Apoyo_Profesor_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Profesor_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this,"Apoyo_Tutor");
+            ((CardLayout)this.getLayout()).show(this,"Apoyo_Profesor");
         }
-    }//GEN-LAST:event_continuar_Apoyo_Tutor_JButtonMouseClicked
+    }//GEN-LAST:event_continuar_Apoyo_Profesor_JButtonMouseClicked
 
-    private void continuar_Apoyo_Tutor_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Tutor_JButtonMouseEntered
+    private void continuar_Apoyo_Profesor_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Profesor_JButtonMouseEntered
         // TODO add your handling code here:
-        continuar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-    }//GEN-LAST:event_continuar_Apoyo_Tutor_JButtonMouseEntered
+        continuar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_continuar_Apoyo_Profesor_JButtonMouseEntered
 
-    private void continuar_Apoyo_Tutor_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Tutor_JButtonMouseExited
+    private void continuar_Apoyo_Profesor_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Profesor_JButtonMouseExited
         // TODO add your handling code here:
-        continuar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_continuar_Apoyo_Tutor_JButtonMouseExited
+        continuar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_continuar_Apoyo_Profesor_JButtonMouseExited
 
     private void regresar_Pensamiento_Reflexivo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Pensamiento_Reflexivo_JButtonMouseClicked
         // TODO add your handling code here:
@@ -1240,23 +1240,23 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         
     }//GEN-LAST:event_terminar_Cuestionario_JButtonMouseExited
 
-    private void regresar_Apoyo_Tutor_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Tutor_JButtonMouseClicked
+    private void regresar_Apoyo_Profesor_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Profesor_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            ((CardLayout) this.getLayout()).show(this, "Apoyo_Tutor");
+            ((CardLayout) this.getLayout()).show(this, "Apoyo_Profesor");
         }
-    }//GEN-LAST:event_regresar_Apoyo_Tutor_JButtonMouseClicked
+    }//GEN-LAST:event_regresar_Apoyo_Profesor_JButtonMouseClicked
 
-    private void regresar_Apoyo_Tutor_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Tutor_JButtonMouseEntered
+    private void regresar_Apoyo_Profesor_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Profesor_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
 
-    }//GEN-LAST:event_regresar_Apoyo_Tutor_JButtonMouseEntered
+    }//GEN-LAST:event_regresar_Apoyo_Profesor_JButtonMouseEntered
 
-    private void regresar_Apoyo_Tutor_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Tutor_JButtonMouseExited
+    private void regresar_Apoyo_Profesor_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Profesor_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_regresar_Apoyo_Tutor_JButtonMouseExited
+        regresar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_regresar_Apoyo_Profesor_JButtonMouseExited
 
     private String Descripcion_Cuestionario(String nombre_Curso){
         
@@ -1267,14 +1267,14 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel apoyo_Tutor_JLabel;
-    private javax.swing.JPanel apoyo_Tutor_JPanel;
-    private javax.swing.JButton continuar_Apoyo_Tutor_JButton;
+    private javax.swing.JLabel apoyo_Profesor_JLabel;
+    private javax.swing.JPanel apoyo_Profesor_JPanel;
+    private javax.swing.JButton continuar_Apoyo_Profesor_JButton;
     private javax.swing.JButton continuar_Interactividad_JButton;
     private javax.swing.JButton continuar_Interpretacion_JButton;
     private javax.swing.JButton continuar_Pensamiento_Reflexivo_JButton;
     private javax.swing.JButton continuar_Relevancia_JButton;
-    private javax.swing.JPanel cuestionario_Apoyo_Tutor_JPanel;
+    private javax.swing.JPanel cuestionario_Apoyo_Profesor_JPanel;
     private javax.swing.JPanel cuestionario_Interactividad_JPanel;
     private javax.swing.JPanel cuestionario_Interpretacion_JPanel;
     private javax.swing.JPanel cuestionario_Pensamiento_Reflexivo_JPanel;
@@ -1288,27 +1288,27 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private javax.swing.JLabel logo_Inicio_JLabel;
     private javax.swing.JLabel pensamiento_Reflexivo_JLabel;
     private javax.swing.JPanel pensamiento_Reflexivo_JPanel;
-    private javax.swing.JLabel pregunta1_Apoyo_Tutor_JLabel;
+    private javax.swing.JLabel pregunta1_Apoyo_Profesor_JLabel;
     private javax.swing.JLabel pregunta1_Interactividad_JLabel;
     private javax.swing.JLabel pregunta1_Interpretacion_JLabel;
     private javax.swing.JLabel pregunta1_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel pregunta1_Relevancia_JLabel;
-    private javax.swing.JLabel pregunta2_Apoyo_Tutor_JLabel;
+    private javax.swing.JLabel pregunta2_Apoyo_Profesor_JLabel;
     private javax.swing.JLabel pregunta2_Interactividad_JLabel;
     private javax.swing.JLabel pregunta2_Interpretacion_JLabel;
     private javax.swing.JLabel pregunta2_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel pregunta2_Relevancia_JLabel;
-    private javax.swing.JLabel pregunta3_Apoyo_Tutor_JLabel;
+    private javax.swing.JLabel pregunta3_Apoyo_Profesor_JLabel;
     private javax.swing.JLabel pregunta3_Interactividad_JLabel;
     private javax.swing.JLabel pregunta3_Interpretacion_JLabel;
     private javax.swing.JLabel pregunta3_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel pregunta3_Relevancia_JLabel;
-    private javax.swing.JLabel pregunta4_Apoyo_Tutor_JLabel;
+    private javax.swing.JLabel pregunta4_Apoyo_Profesor_JLabel;
     private javax.swing.JLabel pregunta4_Interactividad_JLabel;
     private javax.swing.JLabel pregunta4_Interpretacion_JLabel;
     private javax.swing.JLabel pregunta4_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel pregunta4_Relevancia_JLabel;
-    private javax.swing.JButton regresar_Apoyo_Tutor_JButton;
+    private javax.swing.JButton regresar_Apoyo_Profesor_JButton;
     private javax.swing.JButton regresar_Curso_JButton;
     private javax.swing.JButton regresar_Inicio_JButton;
     private javax.swing.JButton regresar_Interactividad_JButton;
@@ -1316,8 +1316,8 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private javax.swing.JButton regresar_Relevancia_JButton;
     private javax.swing.JLabel relevancia_JLabel;
     private javax.swing.JPanel relevancia_JPanel;
-    private javax.swing.JPanel respuesta1_Apoyo_Tutor_JPanel;
-    private javax.swing.JSlider respuesta1_Apoyo_Tutor_JSlider;
+    private javax.swing.JPanel respuesta1_Apoyo_Profesor_JPanel;
+    private javax.swing.JSlider respuesta1_Apoyo_Profesor_JSlider;
     private javax.swing.JPanel respuesta1_Interactividad_JPanel;
     private javax.swing.JSlider respuesta1_Interactividad_JSlider;
     private javax.swing.JPanel respuesta1_Interpretacion_JPanel;
@@ -1326,8 +1326,8 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private javax.swing.JSlider respuesta1_Pensamiento_Reflexivo_JSlider;
     private javax.swing.JPanel respuesta1_Relevancia_JPanel;
     private javax.swing.JSlider respuesta1_Relevancia_JSlider;
-    private javax.swing.JPanel respuesta2_Apoyo_Tutor_JPanel;
-    private javax.swing.JSlider respuesta2_Apoyo_Tutor_JSlider;
+    private javax.swing.JPanel respuesta2_Apoyo_Profesor_JPanel;
+    private javax.swing.JSlider respuesta2_Apoyo_Profesor_JSlider;
     private javax.swing.JPanel respuesta2_Interactividad_JPanel;
     private javax.swing.JSlider respuesta2_Interactividad_JSlider;
     private javax.swing.JPanel respuesta2_Interpretacion_JPanel;
@@ -1336,8 +1336,8 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private javax.swing.JSlider respuesta2_Pensamiento_Reflexivo_JSlider;
     private javax.swing.JPanel respuesta2_Relevancia_JPanel;
     private javax.swing.JSlider respuesta2_Relevancia_JSlider;
-    private javax.swing.JPanel respuesta3_Apoyo_Tutor_JPanel;
-    private javax.swing.JSlider respuesta3_Apoyo_Tutor_JSlider;
+    private javax.swing.JPanel respuesta3_Apoyo_Profesor_JPanel;
+    private javax.swing.JSlider respuesta3_Apoyo_Profesor_JSlider;
     private javax.swing.JPanel respuesta3_Interactividad_JPanel;
     private javax.swing.JSlider respuesta3_Interactividad_JSlider;
     private javax.swing.JPanel respuesta3_Interpretacion_JPanel;
@@ -1346,8 +1346,8 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private javax.swing.JSlider respuesta3_Pensamiento_Reflexivo_JSlider;
     private javax.swing.JPanel respuesta3_Relevancia_JPanel;
     private javax.swing.JSlider respuesta3_Relevancia_JSlider;
-    private javax.swing.JPanel respuesta4_Apoyo_Tutor_JPanel;
-    private javax.swing.JSlider respuesta4_Apoyo_Tutor_JSlider;
+    private javax.swing.JPanel respuesta4_Apoyo_Profesor_JPanel;
+    private javax.swing.JSlider respuesta4_Apoyo_Profesor_JSlider;
     private javax.swing.JPanel respuesta4_Interactividad_JPanel;
     private javax.swing.JSlider respuesta4_Interactividad_JSlider;
     private javax.swing.JPanel respuesta4_Interpretacion_JPanel;
@@ -1358,13 +1358,13 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private javax.swing.JSlider respuesta4_Relevancia_JSlider;
     private javax.swing.JButton terminar_Cuestionario_JButton;
     private javax.swing.JLabel titulo_Inicio_JLabel;
-    private javax.swing.JLabel titulo_Pregunta_Apoyo_Tutor_JLabel;
+    private javax.swing.JLabel titulo_Pregunta_Apoyo_Profesor_JLabel;
     private javax.swing.JLabel titulo_Pregunta_Interactividad_JLabel;
     private javax.swing.JLabel titulo_Pregunta_Interpretacion_JLabel;
     private javax.swing.JLabel titulo_Pregunta_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel titulo_Pregunta_Relevancia_JLabel;
     private javax.swing.JPanel titulo_RespuestaInterpretacion_JPanel;
-    private javax.swing.JPanel titulo_Respuesta_Apoyo_Tutor_JPanel;
+    private javax.swing.JPanel titulo_Respuesta_Apoyo_Profesor_JPanel;
     private javax.swing.JPanel titulo_Respuesta_Interactividad_JPanel;
     private javax.swing.JPanel titulo_Respuesta_Pensamiento_Reflexivo_JPanel;
     private javax.swing.JPanel titulo_Respuesta_Relevancia_JPanel;
@@ -1409,15 +1409,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         label.setFont(segoe);
         labeles_Impares[4] = labeles_Pares[4] = label;
 
-        
         Hashtable<Integer, JLabel> labels = new Hashtable<>();
         labels.put(0, labeles_Pares[0]);
         labels.put(1, labeles_Pares[1]);
         labels.put(2, labeles_Pares[2]);
         labels.put(3, labeles_Pares[3]);
         labels.put(4, labeles_Pares[4]);
-        
-        
         
         respuesta1_Relevancia_JSlider.setLabelTable(labels);
         respuesta2_Relevancia_JSlider.setLabelTable(labels);
@@ -1446,10 +1443,10 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         respuesta3_Pensamiento_Reflexivo_JSlider.setLabelTable(labels);
         respuesta4_Pensamiento_Reflexivo_JSlider.setLabelTable(labels);
         
-        respuesta1_Apoyo_Tutor_JSlider.setLabelTable(labels);
-        respuesta2_Apoyo_Tutor_JSlider.setLabelTable(labels);
-        respuesta3_Apoyo_Tutor_JSlider.setLabelTable(labels);
-        respuesta4_Apoyo_Tutor_JSlider.setLabelTable(labels);
+        respuesta1_Apoyo_Profesor_JSlider.setLabelTable(labels);
+        respuesta2_Apoyo_Profesor_JSlider.setLabelTable(labels);
+        respuesta3_Apoyo_Profesor_JSlider.setLabelTable(labels);
+        respuesta4_Apoyo_Profesor_JSlider.setLabelTable(labels);
         
     }
 
@@ -1501,7 +1498,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         respuesta4_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
         //Interactividad:
-        continuar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        continuar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         regresar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         interactividad_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
@@ -1519,28 +1516,28 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         respuesta3_Interactividad_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         respuesta4_Interactividad_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         
-        //Apoyo Tutor:
+        //Apoyo Profesor:
         continuar_Interpretacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         regresar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
         
-        apoyo_Tutor_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        cuestionario_Apoyo_Tutor_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        apoyo_Profesor_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        cuestionario_Apoyo_Profesor_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
 
-        titulo_Pregunta_Apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta1_Apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta2_Apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta3_Apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta4_Apoyo_Tutor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_Pregunta_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta1_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta2_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta3_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta4_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
 
-        respuesta1_Apoyo_Tutor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        respuesta2_Apoyo_Tutor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        respuesta3_Apoyo_Tutor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        respuesta4_Apoyo_Tutor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta1_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta2_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta3_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta4_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         
         //Interpretacion:
         terminar_Cuestionario_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        regresar_Apoyo_Tutor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        regresar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         interpretacion_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
         interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());

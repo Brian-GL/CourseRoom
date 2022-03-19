@@ -742,7 +742,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="regresar_Pensamiento_Reflexivo_JButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="continuar_Apoyo_Tutor_JButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="continuar_Apoyo_Profesor_JButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="interactividad_JLabel" min="-2" pref="406" max="-2" attributes="0"/>
@@ -763,7 +763,7 @@
                   <Component id="cuestionario_Interactividad_JPanel" pref="490" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="continuar_Apoyo_Tutor_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="continuar_Apoyo_Profesor_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="regresar_Pensamiento_Reflexivo_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -787,7 +787,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="continuar_Apoyo_Tutor_JButton">
+        <Component class="javax.swing.JButton" name="continuar_Apoyo_Profesor_JButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/inreply.png"/>
@@ -803,12 +803,12 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="continuar_Apoyo_Tutor_JButtonMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="continuar_Apoyo_Tutor_JButtonMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="continuar_Apoyo_Tutor_JButtonMouseExited"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="continuar_Apoyo_Profesor_JButtonMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="continuar_Apoyo_Profesor_JButtonMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="continuar_Apoyo_Profesor_JButtonMouseExited"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)continuar_Apoyo_Tutor_JButton.getIcon()).getImage().flush();"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)continuar_Apoyo_Profesor_JButton.getIcon()).getImage().flush();"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="regresar_Pensamiento_Reflexivo_JButton">
@@ -1009,13 +1009,13 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="apoyo_Tutor_JPanel">
+    <Container class="javax.swing.JPanel" name="apoyo_Profesor_JPanel">
       <Properties>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-          <CardConstraints cardName="Apoyo_Tutor"/>
+          <CardConstraints cardName="Apoyo_Profesor"/>
         </Constraint>
       </Constraints>
 
@@ -1031,10 +1031,10 @@
                           <Component id="continuar_Interpretacion_JButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="apoyo_Tutor_JLabel" min="-2" pref="406" max="-2" attributes="0"/>
+                          <Component id="apoyo_Profesor_JLabel" min="-2" pref="406" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="cuestionario_Apoyo_Tutor_JPanel" alignment="0" pref="1098" max="32767" attributes="0"/>
+                      <Component id="cuestionario_Apoyo_Profesor_JPanel" alignment="0" pref="1098" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -1044,9 +1044,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="apoyo_Tutor_JLabel" min="-2" pref="52" max="-2" attributes="0"/>
+                  <Component id="apoyo_Profesor_JLabel" min="-2" pref="52" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="cuestionario_Apoyo_Tutor_JPanel" pref="490" max="32767" attributes="0"/>
+                  <Component id="cuestionario_Apoyo_Profesor_JPanel" pref="490" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="continuar_Interpretacion_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -1058,13 +1058,13 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="apoyo_Tutor_JLabel">
+        <Component class="javax.swing.JLabel" name="apoyo_Profesor_JLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="36" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Apoyo Del Tutor"/>
+            <Property name="text" type="java.lang.String" value="Apoyo Del Profesor"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder bevelType="1"/>
@@ -1121,7 +1121,7 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)regresar_Interactividad_JButton.getIcon()).getImage().flush();"/>
           </AuxValues>
         </Component>
-        <Container class="javax.swing.JPanel" name="cuestionario_Apoyo_Tutor_JPanel">
+        <Container class="javax.swing.JPanel" name="cuestionario_Apoyo_Profesor_JPanel">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -1137,7 +1137,7 @@
             <Property name="verticalGap" type="int" value="5"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="titulo_Pregunta_Apoyo_Tutor_JLabel">
+            <Component class="javax.swing.JLabel" name="titulo_Pregunta_Apoyo_Profesor_JLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="1"/>
@@ -1146,7 +1146,7 @@
                 <Property name="verticalAlignment" type="int" value="1"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="titulo_Respuesta_Apoyo_Tutor_JPanel">
+            <Container class="javax.swing.JPanel" name="titulo_Respuesta_Apoyo_Profesor_JPanel">
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
@@ -1156,7 +1156,7 @@
                 <Property name="rows" type="int" value="1"/>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="pregunta1_Apoyo_Tutor_JLabel">
+            <Component class="javax.swing.JLabel" name="pregunta1_Apoyo_Profesor_JLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -1164,14 +1164,14 @@
                 <Property name="text" type="java.lang.String" value=" 1. El tutor me estimula a reflexionar"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="respuesta1_Apoyo_Tutor_JPanel">
+            <Container class="javax.swing.JPanel" name="respuesta1_Apoyo_Profesor_JPanel">
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JSlider" name="respuesta1_Apoyo_Tutor_JSlider">
+                <Component class="javax.swing.JSlider" name="respuesta1_Apoyo_Profesor_JSlider">
                   <Properties>
                     <Property name="majorTickSpacing" type="int" value="1"/>
                     <Property name="maximum" type="int" value="4"/>
@@ -1191,7 +1191,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="pregunta2_Apoyo_Tutor_JLabel">
+            <Component class="javax.swing.JLabel" name="pregunta2_Apoyo_Profesor_JLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -1199,7 +1199,7 @@
                 <Property name="text" type="java.lang.String" value=" 2. El tutor me anima a participar"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="respuesta2_Apoyo_Tutor_JPanel">
+            <Container class="javax.swing.JPanel" name="respuesta2_Apoyo_Profesor_JPanel">
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
@@ -1209,7 +1209,7 @@
                 <Property name="rows" type="int" value="1"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JSlider" name="respuesta2_Apoyo_Tutor_JSlider">
+                <Component class="javax.swing.JSlider" name="respuesta2_Apoyo_Profesor_JSlider">
                   <Properties>
                     <Property name="majorTickSpacing" type="int" value="1"/>
                     <Property name="maximum" type="int" value="4"/>
@@ -1224,7 +1224,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="pregunta3_Apoyo_Tutor_JLabel">
+            <Component class="javax.swing.JLabel" name="pregunta3_Apoyo_Profesor_JLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -1232,7 +1232,7 @@
                 <Property name="text" type="java.lang.String" value=" 3. El tutor ejemplifica las buenas disertaciones"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="respuesta3_Apoyo_Tutor_JPanel">
+            <Container class="javax.swing.JPanel" name="respuesta3_Apoyo_Profesor_JPanel">
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
@@ -1242,7 +1242,7 @@
                 <Property name="rows" type="int" value="1"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JSlider" name="respuesta3_Apoyo_Tutor_JSlider">
+                <Component class="javax.swing.JSlider" name="respuesta3_Apoyo_Profesor_JSlider">
                   <Properties>
                     <Property name="majorTickSpacing" type="int" value="1"/>
                     <Property name="maximum" type="int" value="4"/>
@@ -1257,7 +1257,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="pregunta4_Apoyo_Tutor_JLabel">
+            <Component class="javax.swing.JLabel" name="pregunta4_Apoyo_Profesor_JLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -1265,7 +1265,7 @@
                 <Property name="text" type="java.lang.String" value=" 4. El tutor ejemplifica la auto reflexi&#xf3;n cr&#xed;tica"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="respuesta4_Apoyo_Tutor_JPanel">
+            <Container class="javax.swing.JPanel" name="respuesta4_Apoyo_Profesor_JPanel">
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
@@ -1275,7 +1275,7 @@
                 <Property name="rows" type="int" value="1"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JSlider" name="respuesta4_Apoyo_Tutor_JSlider">
+                <Component class="javax.swing.JSlider" name="respuesta4_Apoyo_Profesor_JSlider">
                   <Properties>
                     <Property name="majorTickSpacing" type="int" value="1"/>
                     <Property name="maximum" type="int" value="4"/>
@@ -1311,7 +1311,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="regresar_Apoyo_Tutor_JButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="regresar_Apoyo_Profesor_JButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="terminar_Cuestionario_JButton" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -1335,7 +1335,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="terminar_Cuestionario_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="regresar_Apoyo_Tutor_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="regresar_Apoyo_Profesor_JButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -1382,7 +1382,7 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)terminar_Cuestionario_JButton.getIcon()).getImage().flush();"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="regresar_Apoyo_Tutor_JButton">
+        <Component class="javax.swing.JButton" name="regresar_Apoyo_Profesor_JButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/reply.png"/>
@@ -1398,12 +1398,12 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="regresar_Apoyo_Tutor_JButtonMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="regresar_Apoyo_Tutor_JButtonMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="regresar_Apoyo_Tutor_JButtonMouseExited"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="regresar_Apoyo_Profesor_JButtonMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="regresar_Apoyo_Profesor_JButtonMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="regresar_Apoyo_Profesor_JButtonMouseExited"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)regresar_Apoyo_Tutor_JButton.getIcon()).getImage().flush();"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)regresar_Apoyo_Profesor_JButton.getIcon()).getImage().flush();"/>
           </AuxValues>
         </Component>
         <Container class="javax.swing.JPanel" name="cuestionario_Interpretacion_JPanel">

@@ -80,6 +80,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         descripcion_Pregunta_JTextPane = new javax.swing.JTextPane();
         actualizar_JButton = new javax.swing.JButton();
         marcar_Solucionada_JButton = new javax.swing.JButton();
+        eliminar_Pregunta_JButton = new javax.swing.JButton();
         chat_JPanel = new javax.swing.JPanel();
         mensajes_Chat_JScrollPane = new javax.swing.JScrollPane();
         mensajes_Chat_JTable = new javax.swing.JTable();
@@ -167,6 +168,21 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
             }
         });
 
+        eliminar_Pregunta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
+        eliminar_Pregunta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ((ImageIcon)eliminar_Pregunta_JButton.getIcon()).getImage().flush();
+        eliminar_Pregunta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminar_Pregunta_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                eliminar_Pregunta_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                eliminar_Pregunta_JButtonMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout informacion_JPanelLayout = new javax.swing.GroupLayout(informacion_JPanel);
         informacion_JPanel.setLayout(informacion_JPanelLayout);
         informacion_JPanelLayout.setHorizontalGroup(
@@ -182,9 +198,10 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                     .addComponent(descripcion_Pregunta_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(marcar_Solucionada_JButton)
-                    .addComponent(actualizar_JButton))
-                .addGap(0, 0, 0))
+                    .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(marcar_Solucionada_JButton)
+                        .addComponent(actualizar_JButton))
+                    .addComponent(eliminar_Pregunta_JButton)))
         );
         informacion_JPanelLayout.setVerticalGroup(
             informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +218,9 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                         .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(actualizar_JButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(eliminar_Pregunta_JButton)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(marcar_Solucionada_JButton))))
         );
 
@@ -413,11 +432,29 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
+    private void eliminar_Pregunta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Pregunta_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
+    }//GEN-LAST:event_eliminar_Pregunta_JButtonMouseClicked
+
+    private void eliminar_Pregunta_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Pregunta_JButtonMouseEntered
+        // TODO add your handling code here:
+        eliminar_Pregunta_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+    }//GEN-LAST:event_eliminar_Pregunta_JButtonMouseEntered
+
+    private void eliminar_Pregunta_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Pregunta_JButtonMouseExited
+        // TODO add your handling code here:
+        eliminar_Pregunta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+    }//GEN-LAST:event_eliminar_Pregunta_JButtonMouseExited
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JPanel chat_JPanel;
     private javax.swing.JScrollPane descripcion_Pregunta_JScrollPane;
     private javax.swing.JTextPane descripcion_Pregunta_JTextPane;
+    private javax.swing.JButton eliminar_Pregunta_JButton;
     private javax.swing.JButton enviar_Archivo_Chat_JButton;
     private javax.swing.JPanel enviar_Mensaje_Chat_JPanel;
     private javax.swing.JPanel informacion_JPanel;
@@ -455,6 +492,9 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     
     @Override
     public void Colorear_Componentes(){
+        
+        eliminar_Pregunta_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        eliminar_Pregunta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         regresar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
         pregunta_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
