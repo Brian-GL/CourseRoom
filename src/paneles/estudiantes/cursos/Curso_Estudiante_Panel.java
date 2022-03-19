@@ -1679,6 +1679,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         celda = new Celda_Renderer(icono_Remover,"");
                         celdas[3] = celda;
                         modelo.addRow(celdas);
+                        materiales_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(archivo_Abierto.getName().length()));
                     }
                     
                     icono.flush();

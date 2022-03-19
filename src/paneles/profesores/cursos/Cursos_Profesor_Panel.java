@@ -42,7 +42,6 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import paneles.profesores.Tablero_Profesor_Panel;
-import paneles.profesores.perfil.Perfil_Profesor_Panel;
 
 /**
  *
@@ -223,7 +222,10 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
     private void crear_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Curso_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            String id = "Curso_Temporal";
+            Crear_Curso_Profesor_Panel crear_Curso_Profesor_Panel = new Crear_Curso_Profesor_Panel(id);
+            Tablero_Profesor_Panel.Agregar_Vista(crear_Curso_Profesor_Panel,id);
+            Tablero_Profesor_Panel.Mostrar_Vista(id);
         }
     }//GEN-LAST:event_crear_Curso_JButtonMouseClicked
 

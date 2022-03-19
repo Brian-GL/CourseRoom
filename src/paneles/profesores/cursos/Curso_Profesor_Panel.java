@@ -35,8 +35,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -2114,6 +2112,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                         celda = new Celda_Renderer(icono_Remover,"");
                         celdas[3] = celda;
                         modelo.addRow(celdas);
+                        materiales_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(archivo_Abierto.getName().length()));
                     }
                     
                     icono.flush();

@@ -26,7 +26,7 @@
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="titulo_JPanel" alignment="1" pref="1036" max="32767" attributes="0"/>
-                  <Component id="tarea_JLayeredPane" pref="1046" max="32767" attributes="0"/>
+                  <Component id="tarea_JLayeredPane" pref="1036" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
@@ -67,19 +67,23 @@
                   <Component id="informacion_JButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="archivos_Adjuntos_JButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="crear_Tarea_JButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="regresar_JButton" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="archivos_Adjuntos_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="informacion_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="titulo_JLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="crear_Tarea_JButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -174,6 +178,30 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)regresar_JButton.getIcon()).getImage().flush();"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JButton" name="crear_Tarea_JButton">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/recursos/iconos/check.png"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="1"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Compartir Y Subir Archivo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear_Tarea_JButtonMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear_Tarea_JButtonMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear_Tarea_JButtonMouseExited"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)crear_Tarea_JButton.getIcon()).getImage().flush();"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JLayeredPane" name="tarea_JLayeredPane">
@@ -190,11 +218,11 @@
       <SubComponents>
         <Container class="javax.swing.JPanel" name="informacion_Tarea_JPanel">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[1110, 630]"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -337,11 +365,11 @@
         </Container>
         <Container class="javax.swing.JPanel" name="archivos_Adjuntos_JPanel">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[1110, 630]"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -355,11 +383,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="archivos_Adjuntos_JScrollPane" pref="1046" max="32767" attributes="0"/>
+                          <Component id="archivos_Adjuntos_JScrollPane" pref="1036" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="subir_Archivos_Adjuntos_JButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="crear_Tarea_JButton" min="-2" pref="157" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -369,13 +396,10 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="archivos_Adjuntos_JScrollPane" pref="473" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="subir_Archivos_Adjuntos_JButton" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                          <Component id="crear_Tarea_JButton" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="subir_Archivos_Adjuntos_JButton" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -423,11 +447,11 @@
                 <Component class="javax.swing.JTable" name="archivos_Adjuntos_JTable">
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Archivo&quot;, &quot;Adjuntado&quot;, &quot;Remover&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; archivos_Adjuntos_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                     <Property name="rowHeight" type="int" value="75"/>
                     <Property name="showGrid" type="boolean" value="true"/>
@@ -440,31 +464,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="crear_Tarea_JButton">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/iconos/homework_6.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Crear Tarea"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                    <BevelBorder/>
-                  </Border>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="1"/>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Compartir Y Subir Archivo"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear_Tarea_JButtonMouseClicked"/>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear_Tarea_JButtonMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear_Tarea_JButtonMouseExited"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)crear_Tarea_JButton.getIcon()).getImage().flush();"/>
-              </AuxValues>
-            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
