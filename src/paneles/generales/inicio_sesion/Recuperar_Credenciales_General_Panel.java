@@ -23,7 +23,6 @@ import org.apache.xmlrpc.XmlRpcException;
  */
 public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
 
-    
     /**
      * Creates new form RecuperarCredencialesPanel
      */
@@ -182,7 +181,7 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
             try {
                 Recuperar_Credenciales();
             } catch (XmlRpcException | IOException ex) {
-                
+                JOptionPane.showMessageDialog(null,"Mmmm...\nParece que el correo electrónico no existe o estamos experimentando problemas en el envío","Error",JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -218,27 +217,25 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         regresar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
-   
-    
     public void Recuperar_Credenciales() throws XmlRpcException, IOException {
  
         if(CourseRoom.Utilerias.Regex_Correo_Electronico_Valido(correo_Electronico_JTextField.getText())){
             
-            boolean respuesta = CourseRoom.Solicitudes.Recuperar_Credenciales(correo_Electronico_JTextField.getText());
-           
+            Boolean respuesta = CourseRoom.Solicitudes.Recuperar_Credenciales(correo_Electronico_JTextField.getText());
+            
             if(respuesta){
                  JOptionPane.showMessageDialog(null, """
-                                                     Hemos enviado la informaci\u00f3n tus credenciales al correo electr\u00f3nico.
-                                                     Si no te han llegado te recomendamos que revises tanto la direcci\u00f3n de correo electr\u00f3nico que ingresaste como en spam o correo no deseado.
-                                                     Recuerda que nosotros te enviamos la informaci\u00f3n siempre y cuando exista una cuenta vinculada con el correo electr\u00f3nico ingresado.""","Información",JOptionPane.INFORMATION_MESSAGE);
+                                                     Hemos enviado las credenciales al correo electr\u00f3nico.
+                                                     Te recomendamos que revises tanto la direcci\u00f3n de correo electr\u00f3nico que ingresaste como en spam o correo no deseado.
+                                                     La informaci\u00f3n llegará siempre y cuando exista una cuenta vinculada con el correo electr\u00f3nico.""","Información",JOptionPane.INFORMATION_MESSAGE);
             }
             else{
-                JOptionPane.showMessageDialog(null,"Mmmm...\nParece que el correo electrónico no existe o estamos experimentando problemas en el envío.\nIntenta de nuevo.","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Mmmm...\nParece que el correo electrónico no existe o estamos experimentando problemas en el envío","Error",JOptionPane.ERROR_MESSAGE);
             }
            
         }
         else{
-            JOptionPane.showMessageDialog(null,"Mmmm...\nParece que el formato de texto que ingresaste no es el adecuado.\nIntenta de nuevo.","Error",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Mmmm...\nParece que el formato de texto que ingresaste no es el adecuado","Error",JOptionPane.INFORMATION_MESSAGE);
         }
         
         correo_Electronico_JTextField.setText("");

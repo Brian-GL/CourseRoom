@@ -74,6 +74,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="materiales_JButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="grupos_JButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="regresion_Lineal_JButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="estadisticas_JButton" min="-2" max="-2" attributes="0"/>
@@ -98,6 +100,7 @@
                               <Component id="chat_JButton" min="-2" max="-2" attributes="0"/>
                               <Component id="regresion_Lineal_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="estadisticas_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="grupos_JButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -307,6 +310,25 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)estadisticas_JButton.getIcon()).getImage().flush();"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="grupos_JButton">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/recursos/iconos/group_2.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Archivos&lt;br&lt;Adjuntos&lt;/h3&gt;&lt;/html&gt;"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="grupos_JButtonMouseClicked"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)grupos_JButton.getIcon()).getImage().flush();"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -864,6 +886,43 @@
                 </Component>
               </SubComponents>
             </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="grupos_JScrollPane">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="Grupos"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="grupos_JTable">
+              <Properties>
+                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Grupo&quot;, &quot;# Integrantes&quot;, &quot;Creado&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; grupos_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
+                </Property>
+                <Property name="rowHeight" type="int" value="75"/>
+                <Property name="showGrid" type="boolean" value="true"/>
+                <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="grupos_JTable.setRowSorter(new TableRowSorter(grupos_JTable.getModel()));&#xd;&#xa;grupos_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable) e.getComponent();&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;            switch (columna) {&#xd;&#xa;                // Abrir&#xd;&#xa;                case 0:&#xd;&#xa;                    {&#xd;&#xa;                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);&#xd;&#xa;                        String extension = FilenameUtils.getExtension(celda.Texto());&#xd;&#xa;                        String ruta = celda.ID();&#xd;&#xa;                        CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());&#xd;&#xa;                    }&#xd;&#xa;                    break;&#xd;&#xa;                    // Remover&#xd;&#xa;                case 3:&#xd;&#xa;                    {&#xd;&#xa;                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                        modelo.removeRow(fila);&#xd;&#xa;                        break;&#xd;&#xa;                    }&#xd;&#xa;                default:&#xd;&#xa;                    break;&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="regresion_Lineal_JPanel">

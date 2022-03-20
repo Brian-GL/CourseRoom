@@ -113,6 +113,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         chat_JButton = new javax.swing.JButton();
         regresion_Lineal_JButton = new javax.swing.JButton();
         estadisticas_JButton = new javax.swing.JButton();
+        grupos_JButton = new javax.swing.JButton();
         curso_JLayeredPane = new javax.swing.JLayeredPane();
         informacion_Curso_JScrollPane = new javax.swing.JScrollPane();
         informacion_Curso_JPanel = new javax.swing.JPanel();
@@ -139,6 +140,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         compartir_Materiales_JButton = new javax.swing.JButton();
         materiales_JScrollPane = new javax.swing.JScrollPane();
         materiales_JTable = new javax.swing.JTable();
+        grupos_JScrollPane = new javax.swing.JScrollPane();
+        grupos_JTable = new javax.swing.JTable();
         regresion_Lineal_JPanel = new javax.swing.JPanel();
         estadisticas_JPanel = new javax.swing.JPanel();
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
@@ -264,6 +267,16 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             }
         });
 
+        grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_2.png"))); // NOI18N
+        grupos_JButton.setToolTipText("<html><h3>Archivos<br<Adjuntos</h3></html>");
+        grupos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ((ImageIcon)grupos_JButton.getIcon()).getImage().flush();
+        grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grupos_JButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout titulo_JPanelLayout = new javax.swing.GroupLayout(titulo_JPanel);
         titulo_JPanel.setLayout(titulo_JPanelLayout);
         titulo_JPanelLayout.setHorizontalGroup(
@@ -282,6 +295,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 .addComponent(chat_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(materiales_JButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(grupos_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(regresion_Lineal_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -304,7 +319,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             .addComponent(actualizar_JButton)
                             .addComponent(chat_JButton)
                             .addComponent(regresion_Lineal_JButton)
-                            .addComponent(estadisticas_JButton))
+                            .addComponent(estadisticas_JButton)
+                            .addComponent(grupos_JButton))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -765,31 +781,23 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                             curso_JLayeredPane.add(materiales_Curso_JPanel, "Materiales");
 
-                            regresion_Lineal_JPanel.setOpaque(false);
-                            regresion_Lineal_JPanel.setPreferredSize(new java.awt.Dimension(1046, 540));
-                            regresion_Lineal_JPanel.setLayout(new java.awt.BorderLayout());
-                            curso_JLayeredPane.add(regresion_Lineal_JPanel, "Regresion_Lineal");
+                            grupos_JScrollPane.setBorder(null);
+                            grupos_JScrollPane.setOpaque(false);
 
-                            estadisticas_JPanel.setOpaque(false);
-                            estadisticas_JPanel.setPreferredSize(new java.awt.Dimension(1046, 540));
-
-                            estadisticas_JScrollPane.setBorder(null);
-                            estadisticas_JScrollPane.setOpaque(false);
-
-                            estadisticas_JTable.setAutoCreateRowSorter(true);
-                            estadisticas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-                            estadisticas_JTable.setModel(
+                            grupos_JTable.setAutoCreateRowSorter(true);
+                            grupos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                            grupos_JTable.setModel(
 
                                 new javax.swing.table.DefaultTableModel(
                                     new Object [][] {
 
                                     },
                                     new String [] {
-                                        "Tarea Calificada", "Calificación","Promedio Curso","Predicción","Rumbo", "Fecha"
+                                        "Grupo", "# Integrantes", "Creado"
                                     }
                                 ) {
                                     boolean[] canEdit = new boolean [] {
-                                        false, false, false, false, false, false
+                                        false, false, false
                                     };
 
                                     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -799,7 +807,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     @Override
                                     public Class getColumnClass(int column)
                                     {
-                                        for(int i = 0; i < estadisticas_JTable.getRowCount(); i++)
+                                        for(int i = 0; i < grupos_JTable.getRowCount(); i++)
                                         {
                                             //The first valid value of a cell of given column is retrieved.
                                             if(getValueAt(i,column) != null)
@@ -811,96 +819,185 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                         return super.getColumnClass(column);
                                     }
                                 });
-                                estadisticas_JTable.setRowHeight(100);
-                                estadisticas_JTable.setShowGrid(true);
-                                estadisticas_JTable.setSurrendersFocusOnKeystroke(true);
-                                estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
-                                estadisticas_JScrollPane.setViewportView(estadisticas_JTable);
+                                grupos_JTable.setRowHeight(75);
+                                grupos_JTable.setShowGrid(true);
+                                grupos_JTable.setSurrendersFocusOnKeystroke(true);
+                                grupos_JTable.setRowSorter(new TableRowSorter(grupos_JTable.getModel()));
+                                grupos_JTable.addMouseListener(new MouseAdapter() {
 
-                                abandonar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-                                abandonar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/leave.png"))); // NOI18N
-                                abandonar_Curso_JButton.setText("Abandonar Curso");
-                                abandonar_Curso_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
-                                abandonar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                                ((ImageIcon)abandonar_Curso_JButton.getIcon()).getImage().flush();
-                                abandonar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                        abandonar_Curso_JButtonMouseClicked(evt);
-                                    }
-                                    public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                        abandonar_Curso_JButtonMouseEntered(evt);
-                                    }
-                                    public void mouseExited(java.awt.event.MouseEvent evt) {
-                                        abandonar_Curso_JButtonMouseExited(evt);
+                                    @Override
+                                    public void mousePressed(MouseEvent e) {
+                                        if (e.getClickCount() == 2) {
+
+                                            JTable tabla = (JTable) e.getComponent();
+                                            int columna = tabla.getSelectedColumn();
+
+                                            switch (columna) {
+                                                // Abrir
+                                                case 0:
+                                                {
+                                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
+                                                    String extension = FilenameUtils.getExtension(celda.Texto());
+                                                    String ruta = celda.ID();
+                                                    CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
+                                                }
+                                                break;
+                                                // Remover
+                                                case 3:
+                                                {
+                                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                                    modelo.removeRow(fila);
+                                                    break;
+                                                }
+                                                default:
+                                                break;
+                                            }
+                                        }
                                     }
                                 });
+                                grupos_JScrollPane.setViewportView(grupos_JTable);
 
-                                finalizar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-                                finalizar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
-                                finalizar_Curso_JButton.setText("Finalizar Curso");
-                                finalizar_Curso_JButton.setToolTipText("Finaliza el curso");
-                                finalizar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                                ((ImageIcon)finalizar_Curso_JButton.getIcon()).getImage().flush();
-                                finalizar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                        finalizar_Curso_JButtonMouseClicked(evt);
-                                    }
-                                    public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                        finalizar_Curso_JButtonMouseEntered(evt);
-                                    }
-                                    public void mouseExited(java.awt.event.MouseEvent evt) {
-                                        finalizar_Curso_JButtonMouseExited(evt);
-                                    }
-                                });
+                                curso_JLayeredPane.add(grupos_JScrollPane, "Grupos");
 
-                                javax.swing.GroupLayout estadisticas_JPanelLayout = new javax.swing.GroupLayout(estadisticas_JPanel);
-                                estadisticas_JPanel.setLayout(estadisticas_JPanelLayout);
-                                estadisticas_JPanelLayout.setHorizontalGroup(
-                                    estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
-                                        .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
-                                            .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
-                                                .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, 0))
-                                );
-                                estadisticas_JPanelLayout.setVerticalGroup(
-                                    estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
-                                        .addGap(0, 0, 0)
-                                        .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addContainerGap())
-                                );
+                                regresion_Lineal_JPanel.setOpaque(false);
+                                regresion_Lineal_JPanel.setPreferredSize(new java.awt.Dimension(1046, 540));
+                                regresion_Lineal_JPanel.setLayout(new java.awt.BorderLayout());
+                                curso_JLayeredPane.add(regresion_Lineal_JPanel, "Regresion_Lineal");
 
-                                curso_JLayeredPane.add(estadisticas_JPanel, "Estadisticas");
+                                estadisticas_JPanel.setOpaque(false);
+                                estadisticas_JPanel.setPreferredSize(new java.awt.Dimension(1046, 540));
 
-                                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-                                this.setLayout(layout);
-                                layout.setHorizontalGroup(
-                                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(32, 32, 32)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
-                                        .addGap(32, 32, 32))
-                                );
-                                layout.setVerticalGroup(
-                                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
-                                        .addContainerGap())
-                                );
-                            }// </editor-fold>//GEN-END:initComponents
+                                estadisticas_JScrollPane.setBorder(null);
+                                estadisticas_JScrollPane.setOpaque(false);
+
+                                estadisticas_JTable.setAutoCreateRowSorter(true);
+                                estadisticas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                                estadisticas_JTable.setModel(
+
+                                    new javax.swing.table.DefaultTableModel(
+                                        new Object [][] {
+
+                                        },
+                                        new String [] {
+                                            "Tarea Calificada", "Calificación","Promedio Curso","Predicción","Rumbo", "Fecha"
+                                        }
+                                    ) {
+                                        boolean[] canEdit = new boolean [] {
+                                            false, false, false, false, false, false
+                                        };
+
+                                        public boolean isCellEditable(int rowIndex, int columnIndex) {
+                                            return canEdit [columnIndex];
+                                        }
+
+                                        @Override
+                                        public Class getColumnClass(int column)
+                                        {
+                                            for(int i = 0; i < estadisticas_JTable.getRowCount(); i++)
+                                            {
+                                                //The first valid value of a cell of given column is retrieved.
+                                                if(getValueAt(i,column) != null)
+                                                {
+                                                    return getValueAt(i, column).getClass();
+                                                }
+                                            }
+                                            //if no valid value is found, default renderer is returned.
+                                            return super.getColumnClass(column);
+                                        }
+                                    });
+                                    estadisticas_JTable.setRowHeight(100);
+                                    estadisticas_JTable.setShowGrid(true);
+                                    estadisticas_JTable.setSurrendersFocusOnKeystroke(true);
+                                    estadisticas_JTable.setRowSorter(new TableRowSorter(estadisticas_JTable.getModel()));
+                                    estadisticas_JScrollPane.setViewportView(estadisticas_JTable);
+
+                                    abandonar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+                                    abandonar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/leave.png"))); // NOI18N
+                                    abandonar_Curso_JButton.setText("Abandonar Curso");
+                                    abandonar_Curso_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
+                                    abandonar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                                    ((ImageIcon)abandonar_Curso_JButton.getIcon()).getImage().flush();
+                                    abandonar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                            abandonar_Curso_JButtonMouseClicked(evt);
+                                        }
+                                        public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                            abandonar_Curso_JButtonMouseEntered(evt);
+                                        }
+                                        public void mouseExited(java.awt.event.MouseEvent evt) {
+                                            abandonar_Curso_JButtonMouseExited(evt);
+                                        }
+                                    });
+
+                                    finalizar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+                                    finalizar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
+                                    finalizar_Curso_JButton.setText("Finalizar Curso");
+                                    finalizar_Curso_JButton.setToolTipText("Finaliza el curso");
+                                    finalizar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                                    ((ImageIcon)finalizar_Curso_JButton.getIcon()).getImage().flush();
+                                    finalizar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                            finalizar_Curso_JButtonMouseClicked(evt);
+                                        }
+                                        public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                            finalizar_Curso_JButtonMouseEntered(evt);
+                                        }
+                                        public void mouseExited(java.awt.event.MouseEvent evt) {
+                                            finalizar_Curso_JButtonMouseExited(evt);
+                                        }
+                                    });
+
+                                    javax.swing.GroupLayout estadisticas_JPanelLayout = new javax.swing.GroupLayout(estadisticas_JPanel);
+                                    estadisticas_JPanel.setLayout(estadisticas_JPanelLayout);
+                                    estadisticas_JPanelLayout.setHorizontalGroup(
+                                        estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
+                                            .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                                                .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
+                                                    .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(0, 0, 0))
+                                    );
+                                    estadisticas_JPanelLayout.setVerticalGroup(
+                                        estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
+                                            .addGap(0, 0, 0)
+                                            .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+                                            .addGap(18, 18, 18)
+                                            .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addContainerGap())
+                                    );
+
+                                    curso_JLayeredPane.add(estadisticas_JPanel, "Estadisticas");
+
+                                    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+                                    this.setLayout(layout);
+                                    layout.setHorizontalGroup(
+                                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGap(32, 32, 32)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(titulo_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE))
+                                            .addGap(32, 32, 32))
+                                    );
+                                    layout.setVerticalGroup(
+                                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addContainerGap()
+                                            .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                                            .addContainerGap())
+                                    );
+                                }// </editor-fold>//GEN-END:initComponents
 
     private void tareas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_JButtonMouseClicked
         // TODO add your handling code here:
@@ -1005,7 +1102,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
             ((CardLayout)curso_JLayeredPane.getLayout()).show(curso_JLayeredPane, "Regresion_Lineal");
-            carta_Visible = 5;
+            carta_Visible = 6;
             Carta_Visible();
 
         }
@@ -1015,7 +1112,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)curso_JLayeredPane.getLayout()).show(curso_JLayeredPane, "Estadisticas");
-            carta_Visible = 6;
+            carta_Visible = 7;
             Carta_Visible();
         }
     }//GEN-LAST:event_estadisticas_JButtonMouseClicked
@@ -1081,6 +1178,15 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             Enviar_Mensaje();
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
+
+    private void grupos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grupos_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            ((CardLayout)curso_JLayeredPane.getLayout()).show(curso_JLayeredPane, "Grupos");
+            carta_Visible = 5;
+            Carta_Visible();
+        }
+    }//GEN-LAST:event_grupos_JButtonMouseClicked
 
     public String ID() {
         return this.ID;
@@ -1270,6 +1376,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JTable estadisticas_JTable;
     private javax.swing.JLabel fecha_Creacion_JLabel;
     private javax.swing.JButton finalizar_Curso_JButton;
+    private javax.swing.JButton grupos_JButton;
+    private javax.swing.JScrollPane grupos_JScrollPane;
+    private javax.swing.JTable grupos_JTable;
     private javax.swing.JLabel imagen_Curso_JLabel;
     private javax.swing.JLabel imagen_Profesor_JLabel;
     private javax.swing.JPanel informacion_Curso_JPanel;
@@ -1409,6 +1518,30 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             break;
                     }
 
+                }
+            }
+        });
+        
+        // Grupos:
+        grupos_JScrollPane.getViewport().setOpaque(false);
+        grupos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        grupos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        
+        grupos_JTable.getTableHeader().setFont(gadugi);
+        grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        
+        grupos_JTable.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+
+                    JTable tabla = (JTable) e.getComponent();
+                    //int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                    int columna = tabla.getSelectedColumn();
+                    if(columna == 3){
+                        //Remover
+                    }
                 }
             }
         });
@@ -1618,6 +1751,26 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         compartir_Materiales_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         compartir_Materiales_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        
+        // Grupos:
+        
+        grupos_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
+        grupos_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        
+        grupos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
+        grupos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        grupos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        
+        grupos_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
+        grupos_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        
+        modelo = (DefaultTableModel) grupos_JTable.getModel();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
+                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+            }
+        }
        
         // Regresion lineal:
         
@@ -1777,6 +1930,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         modelo.setRowCount(0);
         modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         modelo.setRowCount(0);
+        modelo = (DefaultTableModel) grupos_JTable.getModel();
+        modelo.setRowCount(0);
         
     }
 
@@ -1789,6 +1944,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
@@ -1798,6 +1954,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
@@ -1807,6 +1964,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 miembros_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
                 chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
@@ -1816,6 +1974,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 chat_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
                 materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
@@ -1825,6 +1984,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 materiales_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
@@ -1834,7 +1994,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                grupos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 break;
             case 6:
@@ -1843,6 +2004,17 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                break;
+            case 7:
+                informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                miembros_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                materiales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
                 break;
