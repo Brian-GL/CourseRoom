@@ -122,6 +122,7 @@ import oshi.hardware.UsbDevice;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
@@ -162,7 +163,7 @@ public class CourseRoom{
            
             Vector parametros = new Vector();
             
-            parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
+            parametros.add(Utilerias.Codificacion(Utilerias.getComputerSystem().getHardwareUUID()));
             
             Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Fecha_Hora_Servidor", parametros);
             
@@ -173,7 +174,7 @@ public class CourseRoom{
             
             Vector parametros = new Vector();
             
-            parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
+            parametros.add(Utilerias.Codificacion(Utilerias.getComputerSystem().getHardwareUUID()));
             
             Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Imagen_Inicio_Sesion", parametros);
 
@@ -184,12 +185,11 @@ public class CourseRoom{
             
             Vector parametros = new Vector();
             
-            parametros.add(correo_Electronico);
-            parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
+            parametros.add(Utilerias.Codificacion(correo_Electronico));
+            parametros.add(Utilerias.Codificacion(Utilerias.getComputerSystem().getHardwareUUID()));
             
             Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Recuperar_Credenciales", parametros);
             
-
             return (respuesta != null)? (Boolean) respuesta : false;
         }
         
@@ -197,28 +197,52 @@ public class CourseRoom{
            
             Vector parametros = new Vector();
             
-            parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
+            parametros.add(Utilerias.Codificacion(Utilerias.getComputerSystem().getHardwareUUID()));
             
             Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Estados", parametros);
             
-            return (respuesta != null)? (Vector<String>) respuesta : new Vector<>();
+            if(respuesta != null){
+                
+                Vector<String> response = new Vector<>();
+                
+                while(!((Vector<String>)respuesta).isEmpty()){
+                    response.add(Utilerias.Decodificacion(((Vector<String>)respuesta).remove(0)));
+                }
+                
+                return response;
+            
+            }else{
+                return new Vector<>();
+            }
+            
         }
         
         public static Vector<String> Obtener_Localidades_Por_Estado(String estado) throws XmlRpcException, IOException {
            
             Vector parametros = new Vector();
             
-            parametros.add(estado);
-            parametros.add(Utilerias.getComputerSystem().getHardwareUUID());
+            parametros.add(Utilerias.Codificacion(estado));
+            parametros.add(Utilerias.Codificacion(Utilerias.getComputerSystem().getHardwareUUID()));
             
             Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Localidades_Por_Estado", parametros);
             
-            return (respuesta != null)? (Vector<String>) respuesta : new Vector<>();
+            if(respuesta != null){
+                
+                Vector<String> response = new Vector<>();
+                
+                while(!((Vector<String>)respuesta).isEmpty()){
+                    response.add(Utilerias.Decodificacion(((Vector<String>)respuesta).remove(0)));
+                }
+                
+                return response;
+            
+            }else{
+                return new Vector<>();
+            }
         }
         
     }
 
-    
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="Utilerias">
@@ -847,6 +871,20 @@ public class CourseRoom{
         
         public static boolean Regex_Correo_Electronico_Valido(String value){
             return Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE).matcher(value).find();
+        }
+        
+        public static String Decodificacion(String codificacion){
+        
+            byte[] decoded = Base64.getDecoder().decode(codificacion);
+
+            return new String(decoded);
+        }
+        
+        public static String Codificacion(String decodificacion){
+        
+            byte[] bytes = decodificacion.getBytes();
+            bytes = Base64.getEncoder().encode(bytes);
+            return new String(bytes);
         }
         
         public static void Abrir_Archivo(String ruta, String extension, String nombre_Archivo){

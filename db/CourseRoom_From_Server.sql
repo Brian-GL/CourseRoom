@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `courseroom` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `courseroom`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: localhost    Database: courseroom
@@ -730,6 +728,7 @@ CREATE TABLE `tb_tareascursousuarios` (
   `IdUsuario` int NOT NULL,
   `Estatus` enum('PENDIENTE','ENTREGADA','ENTREGADA CON RETRASO','SIN ENTREGA','CALIFICADA','ABIERTA','CERRADA') NOT NULL,
   `Calificacion` float DEFAULT NULL,
+  `FechaCalificacion` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`IdTarea`,`IdUsuario`),
   KEY `IdTareaUsuario_INDEX` (`IdUsuario`) /*!80000 INVISIBLE */,
   KEY `IdUsuarioTarea_INDEX` (`IdTarea`),
@@ -1684,4 +1683,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-19 12:28:18
+-- Dump completed on 2022-03-19 17:03:26
