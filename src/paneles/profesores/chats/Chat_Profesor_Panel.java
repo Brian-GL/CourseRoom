@@ -106,6 +106,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         genero_JLabel = new javax.swing.JLabel();
         intereses_Tematicas_JScrollPane = new javax.swing.JScrollPane();
         intereses_Tematicas_JTable = new javax.swing.JTable();
+        eliminar_Chat_JButton = new javax.swing.JButton();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -123,6 +124,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/verified-user.png"))); // NOI18N
+        informacion_JButton.setToolTipText("<html> <h3>Datos<br>Del Usuario</h3> </html>");
         informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,7 +143,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Chats");
+        regresar_JButton.setToolTipText("<html> <h3>Regresar A Mis Chats</h3> </html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
@@ -158,6 +160,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html> <h4>Actualizar<br>Página</h4> </html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -313,8 +316,8 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
             chat_JLayeredPane.add(chat_JPanel, "Chat");
 
-            informacion_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
             informacion_Chat_JPanel.setOpaque(false);
+            informacion_Chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
             imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
@@ -413,14 +416,33 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                 intereses_Tematicas_JTable.setRowSorter(new TableRowSorter(intereses_Tematicas_JTable.getModel()));
                 intereses_Tematicas_JScrollPane.setViewportView(intereses_Tematicas_JTable);
 
+                eliminar_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
+                eliminar_Chat_JButton.setText("Eliminar Chat");
+                eliminar_Chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                eliminar_Chat_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+                eliminar_Chat_JButton.setPreferredSize(new java.awt.Dimension(400, 50));
+                eliminar_Chat_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
+                ((ImageIcon)eliminar_Chat_JButton.getIcon()).getImage().flush();
+                eliminar_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        eliminar_Chat_JButtonMouseClicked(evt);
+                    }
+                    public void mouseEntered(java.awt.event.MouseEvent evt) {
+                        eliminar_Chat_JButtonMouseEntered(evt);
+                    }
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        eliminar_Chat_JButtonMouseExited(evt);
+                    }
+                });
+
                 javax.swing.GroupLayout informacion_Chat_JPanelLayout = new javax.swing.GroupLayout(informacion_Chat_JPanel);
                 informacion_Chat_JPanel.setLayout(informacion_Chat_JPanelLayout);
                 informacion_Chat_JPanelLayout.setHorizontalGroup(
                     informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(informacion_Chat_JPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(35, Short.MAX_VALUE)
                         .addComponent(imagen_Perfil_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addGroup(informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(correo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -429,8 +451,9 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                                 .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(intereses_Tematicas_JScrollPane))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(intereses_Tematicas_JScrollPane)
+                            .addComponent(eliminar_Chat_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(36, Short.MAX_VALUE))
                 );
                 informacion_Chat_JPanelLayout.setVerticalGroup(
                     informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,14 +465,16 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                                 .addComponent(nombres_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(apellidos_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(correo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(informacion_Chat_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(genero_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tipo_Perfil_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(intereses_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(eliminar_Chat_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(42, Short.MAX_VALUE))
                 );
 
@@ -553,6 +578,25 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
+    private void eliminar_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Chat_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+
+        }
+    }//GEN-LAST:event_eliminar_Chat_JButtonMouseClicked
+
+    private void eliminar_Chat_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Chat_JButtonMouseEntered
+        // TODO add your handling code here:
+        eliminar_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+    }//GEN-LAST:event_eliminar_Chat_JButtonMouseEntered
+
+    private void eliminar_Chat_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Chat_JButtonMouseExited
+        // TODO add your handling code here:
+        eliminar_Chat_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+    }//GEN-LAST:event_eliminar_Chat_JButtonMouseExited
+
     private void Agregar_Interes_Tematica(String id, String interes_Tematica){
         
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
@@ -574,6 +618,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
     private javax.swing.JLayeredPane chat_JLayeredPane;
     private javax.swing.JPanel chat_JPanel;
     private javax.swing.JLabel correo_JLabel;
+    private javax.swing.JButton eliminar_Chat_JButton;
     private javax.swing.JButton enviar_Archivo_Chat_JButton;
     private javax.swing.JPanel enviar_Mensaje_Chat_JPanel;
     private javax.swing.JLabel genero_JLabel;
@@ -680,6 +725,8 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             }
         }
         
+        eliminar_Chat_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
     }
     
     @Override

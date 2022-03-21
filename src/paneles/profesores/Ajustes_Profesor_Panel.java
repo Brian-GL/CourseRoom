@@ -15,6 +15,7 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.border.BevelBorder;
@@ -65,7 +66,6 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         sesiones_JScrollPane = new javax.swing.JScrollPane();
         sesiones_JTable = new javax.swing.JTable();
         cuenta_JPanel = new javax.swing.JPanel();
-        eliminar_Cuenta_JButton = new javax.swing.JButton();
         desactivar_Activar_Notificaciones_JButton = new javax.swing.JButton();
         permitir_No_Permitir_Chats_Conmigo_JButton = new javax.swing.JButton();
 
@@ -91,6 +91,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         acciones_JPanel.setOpaque(false);
 
         interfaz_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/user-interface.png"))); // NOI18N
+        interfaz_JButton.setToolTipText("<html> <h3>Ajustes De<br>Colores</h3> </html>");
         interfaz_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)interfaz_JButton.getIcon()).getImage().flush();
         interfaz_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,6 +101,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         });
 
         cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/programmer.png"))); // NOI18N
+        cuenta_JButton.setToolTipText("<html> <h3>Ajustes<br>Avanzados</h3> </html>");
         cuenta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)cuenta_JButton.getIcon()).getImage().flush();
         cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,6 +111,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         });
 
         sesiones_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/digital-footprint.png"))); // NOI18N
+        sesiones_JButton.setToolTipText("<html> <h3>Información<br>Del Dispositivo</h3> </html>");
         sesiones_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)sesiones_JButton.getIcon()).getImage().flush();
         sesiones_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -239,11 +242,11 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
                 },
                 new String [] {
-                    "Dispositivo", "Fabricante", "UUID", "Última Actividad", "Activo"
+                    "Dispositivo", "Fabricante", "UUID", "Última Conexión","IP","Activo"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -278,23 +281,6 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
             ajustes_JLayeredPane.add(sesiones_JScrollPane, "Sesiones");
 
             cuenta_JPanel.setOpaque(false);
-
-            eliminar_Cuenta_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-            eliminar_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
-            eliminar_Cuenta_JButton.setText("¿Eliminar Cuenta?");
-            eliminar_Cuenta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-            ((ImageIcon)eliminar_Cuenta_JButton.getIcon()).getImage().flush();
-            eliminar_Cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    eliminar_Cuenta_JButtonMouseClicked(evt);
-                }
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    eliminar_Cuenta_JButtonMouseEntered(evt);
-                }
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    eliminar_Cuenta_JButtonMouseExited(evt);
-                }
-            });
 
             desactivar_Activar_Notificaciones_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
             desactivar_Activar_Notificaciones_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/bell_warning.png"))); // NOI18N
@@ -335,12 +321,11 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
             cuenta_JPanelLayout.setHorizontalGroup(
                 cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(cuenta_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(338, Short.MAX_VALUE)
                     .addGroup(cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                        .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(339, Short.MAX_VALUE))
             );
             cuenta_JPanelLayout.setVerticalGroup(
                 cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,9 +334,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                     .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                     .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                    .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(95, Short.MAX_VALUE))
+                    .addContainerGap(244, Short.MAX_VALUE))
             );
 
             ajustes_JLayeredPane.add(cuenta_JPanel, "Cuenta");
@@ -363,7 +346,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                 .addGroup(layout.createSequentialGroup()
                     .addGap(32, 32, 32)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ajustes_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE)
+                        .addComponent(ajustes_JLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, Short.MAX_VALUE)
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGap(32, 32, 32))
             );
@@ -493,25 +476,6 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         }
     }//GEN-LAST:event_sesiones_JButtonMouseClicked
 
-    private void eliminar_Cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-
-        }
-    }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseClicked
-
-    private void eliminar_Cuenta_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseEntered
-        // TODO add your handling code here:
-        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-    }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseEntered
-
-    private void eliminar_Cuenta_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseExited
-        // TODO add your handling code here:
-        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-    }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseExited
-
     private void desactivar_Activar_Notificaciones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -551,10 +515,10 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
     private void Agregar_Sesion(String id, String dispositivo, String fabricante, String uuid, 
-            String ultima_Fecha_Acceso, Boolean estatus){
+            String ultima_Fecha_Acceso, String ip, Boolean estatus){
         
         
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer[] celdas = new Celda_Renderer[6];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
        
@@ -566,8 +530,10 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         celdas[2] = celda;
         celda = new Celda_Renderer(ultima_Fecha_Acceso,id);
         celdas[3] = celda;
-        celda = new Celda_Renderer(estatus ? "Activo" : "Inactivo",id);
+        celda = new Celda_Renderer(ip,id);
         celdas[4] = celda;
+        celda = new Celda_Renderer(estatus ? "Activo" : "Inactivo",id);
+        celdas[5] = celda;
 
         modelo.addRow(celdas);
 
@@ -584,7 +550,6 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
     private javax.swing.JButton cuenta_JButton;
     private javax.swing.JPanel cuenta_JPanel;
     private javax.swing.JButton desactivar_Activar_Notificaciones_JButton;
-    private javax.swing.JButton eliminar_Cuenta_JButton;
     private javax.swing.JButton interfaz_JButton;
     private javax.swing.JPanel interfaz_JPanel;
     private javax.swing.JButton permitir_No_Permitir_Chats_Conmigo_JButton;
@@ -600,23 +565,30 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
     @Override
     public void Iniciar_Componentes() {
-       
+        
         carta_Visible = 0;
         sesiones_JScrollPane.getViewport().setOpaque(false);
         sesiones_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         sesiones_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
+
         Font fuente = new Font("Segoe UI", Font.BOLD, 16);
         sesiones_JTable.getTableHeader().setFont(fuente);
-        
+
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        String dispositivo = CourseRoom.Utilerias.Concatenar(System.getProperty("os.name"), " - ",System.getProperty("user.name"));
-        String fabricante = CourseRoom.Utilerias.getComputerSystem().getManufacturer();
-        String uuid = CourseRoom.Utilerias.getComputerSystem().getHardwareUUID();
-        Boolean estatus = CourseRoom.Utilerias.bool().bool();
-        
-        Agregar_Sesion("1",dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), estatus);
+       
+        try {
+            
+            
+            String dispositivo = System.getProperty("os.name");
+            String fabricante = CourseRoom.Utilerias.getComputerSystem().getManufacturer();
+            String uuid = CourseRoom.Utilerias.getComputerSystem().getHardwareUUID();
+            String ip = CourseRoom.Utilerias.DireccionIP();
+            Boolean estatus = CourseRoom.Utilerias.bool().bool();
+            
+            Agregar_Sesion("1",dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), ip, estatus);
+        } catch (IOException ex) {
+            
+        }
         
     }
     
@@ -640,9 +612,6 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         
         recargar_Colores_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
         recargar_Colores_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        
-        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
         
         desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
         desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());

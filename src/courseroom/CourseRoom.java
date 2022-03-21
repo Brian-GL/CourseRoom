@@ -93,7 +93,9 @@ import frames.generales.Lector_Video_General_Panel;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -286,6 +288,21 @@ public class CourseRoom{
 
             Locale local = new Locale("es", "MX");
             faker = new Faker(local);
+        }
+        
+        public static String DireccionIP() throws MalformedURLException, IOException{
+            String ip = new String();
+            URL whatismyip = new URL("http://checkip.amazonaws.com");
+            
+            try(InputStreamReader input_Stream = new InputStreamReader(whatismyip.openStream())){
+                
+                try(BufferedReader in = new BufferedReader(input_Stream)){
+                    ip = in.readLine();
+                }
+            
+            }
+            
+            return ip;
         }
         
         public static int Altura_Fila_Tabla(int numero_Letras){

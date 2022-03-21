@@ -15,6 +15,7 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.border.BevelBorder;
@@ -242,11 +243,11 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
                 },
                 new String [] {
-                    "Dispositivo", "Fabricante", "UUID", "Última Actividad", "Activo"
+                    "Dispositivo", "Fabricante", "UUID", "Última Conexión","IP","Activo"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -554,10 +555,10 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
     private void Agregar_Sesion(String id, String dispositivo, String fabricante, String uuid, 
-            String ultima_Fecha_Acceso, Boolean estatus){
+            String ultima_Fecha_Acceso, String ip, Boolean estatus){
         
         
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer[] celdas = new Celda_Renderer[6];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
        
@@ -569,8 +570,10 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         celdas[2] = celda;
         celda = new Celda_Renderer(ultima_Fecha_Acceso,id);
         celdas[3] = celda;
-        celda = new Celda_Renderer(estatus ? "Activo" : "Inactivo",id);
+        celda = new Celda_Renderer(ip,id);
         celdas[4] = celda;
+        celda = new Celda_Renderer(estatus ? "Activo" : "Inactivo",id);
+        celdas[5] = celda;
 
         modelo.addRow(celdas);
 
@@ -603,23 +606,30 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
     @Override
     public void Iniciar_Componentes() {
-       
+        
         carta_Visible = 0;
         sesiones_JScrollPane.getViewport().setOpaque(false);
         sesiones_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         sesiones_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
+
         Font fuente = new Font("Segoe UI", Font.BOLD, 16);
         sesiones_JTable.getTableHeader().setFont(fuente);
-        
+
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        String dispositivo = CourseRoom.Utilerias.Concatenar(System.getProperty("os.name"), " - ",System.getProperty("user.name"));
-        String fabricante = CourseRoom.Utilerias.getComputerSystem().getManufacturer();
-        String uuid = CourseRoom.Utilerias.getComputerSystem().getHardwareUUID();
-        Boolean estatus = CourseRoom.Utilerias.bool().bool();
-        
-        Agregar_Sesion("1",dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), estatus);
+       
+        try {
+            
+            
+            String dispositivo = System.getProperty("os.name");
+            String fabricante = CourseRoom.Utilerias.getComputerSystem().getManufacturer();
+            String uuid = CourseRoom.Utilerias.getComputerSystem().getHardwareUUID();
+            String ip = CourseRoom.Utilerias.DireccionIP();
+            Boolean estatus = CourseRoom.Utilerias.bool().bool();
+            
+            Agregar_Sesion("1",dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), ip, estatus);
+        } catch (IOException ex) {
+            
+        }
         
     }
     
