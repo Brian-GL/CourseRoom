@@ -122,7 +122,9 @@ import oshi.hardware.Sensors;
 import oshi.hardware.SoundCard;
 import oshi.hardware.UsbDevice;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.regex.Pattern;
@@ -243,6 +245,40 @@ public class CourseRoom{
             }
         }
         
+        public static Vector<Object> Agregar_Usuario(String CorreoElectronico,String Contrasenia ,String Nombre,
+            String Paterno,String Materno,String Genero,String FechaNacimiento,Float PromedioGeneral,String TipoUsuario,
+            String Descripcion, byte[] Imagen) throws XmlRpcException, IOException{
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(Utilerias.Codificacion(CorreoElectronico));
+            parametros.add(Utilerias.Codificacion(Contrasenia));
+            parametros.add(Utilerias.Codificacion(Nombre));
+            parametros.add(Utilerias.Codificacion(Paterno));
+            parametros.add(Utilerias.Codificacion(Materno));
+            parametros.add(Utilerias.Codificacion(Genero));
+            parametros.add(PromedioGeneral);
+            parametros.add(Utilerias.Codificacion(TipoUsuario));
+            parametros.add(Utilerias.Codificacion(Descripcion));
+            parametros.add(Imagen);
+            parametros.add(Utilerias.Codificacion(Utilerias.getComputerSystem().getHardwareUUID()));
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Agregar_Usuario", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> response = new Vector<>();
+                
+                response.add(((Vector<String>)respuesta).remove(0));
+                response.add(Utilerias.Decodificacion(((Vector<String>)respuesta).remove(0)));
+                
+                return response;
+            
+            }else{
+                return new Vector<>();
+            }
+        }
+        
     }
 
     // </editor-fold>
@@ -329,6 +365,13 @@ public class CourseRoom{
             int minutes = fecha.getMinutes();
             int seconds = fecha.getSeconds();
             return LocalDateTime.of(year, month, day, hours, minutes, seconds).format(formato_Fecha);
+        }
+        
+        public static String Fecha(LocalDate fecha){
+            int year = fecha.getYear();
+            int month = fecha.getMonthValue();
+            int day = fecha.getDayOfMonth();
+            return LocalDateTime.of(year, month,day,0,0,0).format(formato_Fecha);
         }
 
         public static AudioListPlayerComponent Componente_Reproducto_Lista_Audio() {

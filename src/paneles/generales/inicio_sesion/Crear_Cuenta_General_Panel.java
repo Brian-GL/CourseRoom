@@ -36,6 +36,7 @@ import org.apache.xmlrpc.XmlRpcException;
 
 public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componentes_Interface, Limpieza_Interface, Validaciones_Interface{
 
+    private byte[] imagen;
     /**
      * Creates new form Crear_Cuenta_Panel
      */
@@ -1610,6 +1611,18 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     @Override
     public void Validar_Campos() {
         int tipo_Perfil = tipo_Perfil_JComboBox.getSelectedIndex();
+        
+        String materno = apellido_Materno_JTextField.getText();
+        String paterno = apellido_Paterno_JTextField.getText();
+        String contrasena = CourseRoom.Utilerias.Codificacion(contrasenia_Autenticacion_JPasswordField.toString());
+        String correo = correo_JTextField.getText();
+        String descripcion = descripcion_JTextPane.getText();
+        String fecha_Nacimiento = CourseRoom.Utilerias.Fecha(fecha_Nacimiento_DatePicker.getDate());
+        String genero = genero_JTextField.getText();
+        
+        String nombre = nombres_JTextField.getText();
+        Float promedio_General = (Float)promedio_General_JFormattedTextField.getValue();
+        String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
         
         CourseRoom.Utilerias.Esconder_Frame();
         
