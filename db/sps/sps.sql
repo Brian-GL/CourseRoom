@@ -192,10 +192,10 @@ CREATE PROCEDURE `sp_ObtenerMaterialesSubidosCurso`(
     IN _IdCurso INT
 )
 BEGIN
-    SELECT MaterialesSubidos.NombreArchivo, MaterialesSubidos.Archivo,
+    SELECT MaterialesSubidos.IdArchivoSubido ,MaterialesSubidos.NombreArchivo, MaterialesSubidos.Archivo,
     MaterialesSubidos.Extension, MaterialesSubidos.FechaEnviado FROM tb_materialessubidoscurso MaterialesSubidos
-    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Grupos.IdCurso
-    WHERE Grupos.IdGrupo = _IdGrupo AND Grupos.Activo = 1;
+    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MaterialesSubidos.IdUsuario
+    WHERE MaterialesSubidos.IdCurso = _IdCurso AND Usuarios.Activo = 1 ORDER BY MaterialesSubidos.IdArchivoSubido DESC LIMIT 250;
 END
 
 CREATE PROCEDURE `sp_ObtenerArchivosCompartidosGrupo`(
