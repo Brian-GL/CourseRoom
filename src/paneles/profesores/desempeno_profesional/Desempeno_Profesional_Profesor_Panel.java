@@ -104,6 +104,7 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html><h3>Actualizar<br>Página</h3></html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -119,6 +120,7 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         });
 
         regresion_Lineal_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/function.png"))); // NOI18N
+        regresion_Lineal_JButton.setToolTipText("<html><h3>Grafica De<br>Avance</h3></html>");
         regresion_Lineal_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)regresion_Lineal_JButton.getIcon()).getImage().flush();
         regresion_Lineal_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,6 +130,7 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         });
 
         estadisticas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stats.png"))); // NOI18N
+        estadisticas_JButton.setToolTipText("<html><h3>Estadísticas</h3></html>");
         estadisticas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)estadisticas_JButton.getIcon()).getImage().flush();
         estadisticas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,6 +140,7 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         });
 
         grafica_Pastel_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/pie-chart.png"))); // NOI18N
+        grafica_Pastel_JButton.setToolTipText("<html><h3>Grafica De<br>Desempeño</h3></html>");
         grafica_Pastel_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)grafica_Pastel_JButton.getIcon()).getImage().flush();
         grafica_Pastel_JButton.addMouseListener(new java.awt.event.MouseAdapter() {

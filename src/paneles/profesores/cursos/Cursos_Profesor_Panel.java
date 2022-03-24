@@ -97,6 +97,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         acciones_JPanel.setOpaque(false);
 
         crear_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
+        crear_Curso_JButton.setToolTipText("<html><h3>Crear Un<br>Nuevo Curso</h3></html>");
         crear_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)crear_Curso_JButton.getIcon()).getImage().flush();
         crear_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,6 +113,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html><h3>Actualizar<br>Página</h3></html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {

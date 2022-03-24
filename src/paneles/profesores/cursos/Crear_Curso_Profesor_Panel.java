@@ -133,7 +133,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Cursos");
+        regresar_JButton.setToolTipText("<html><h3>Regresar A Mis Cursos</h3></html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
@@ -150,6 +150,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         });
 
         imagen_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-video.png"))); // NOI18N
+        imagen_JButton.setToolTipText("<html><h3>Imagen<br>Del Curso</h3></html>");
         imagen_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)imagen_JButton.getIcon()).getImage().flush();
         imagen_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -160,7 +161,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
         crear_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         crear_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
-        crear_Curso_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
+        crear_Curso_JButton.setToolTipText("<html><h3>Crear<br>Curso</h3></html>");
         crear_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)crear_Curso_JButton.getIcon()).getImage().flush();
         crear_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -351,7 +352,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
             informacion_JPanelLayout.setVerticalGroup(
                 informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(informacion_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(9, Short.MAX_VALUE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(tematicas_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -538,7 +539,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                         .addContainerGap()
                         .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                        .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 534, Short.MAX_VALUE)
                         .addContainerGap())
                 );
             }// </editor-fold>//GEN-END:initComponents

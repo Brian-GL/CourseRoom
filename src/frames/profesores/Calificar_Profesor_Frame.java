@@ -55,9 +55,9 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
         contenido_JPanel.setMinimumSize(new java.awt.Dimension(800, 140));
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(800, 140));
 
-        calificar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/quality.png"))); // NOI18N
         calificar_JButton.setText("Calificar");
+        calificar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         ((ImageIcon)calificar_JButton.getIcon()).getImage().flush();
         calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -71,9 +71,9 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
             }
         });
 
-        cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         cerrar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
         cerrar_JButton.setText("Cerrar");
+        cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         ((ImageIcon)cerrar_JButton.getIcon()).getImage().flush();
         cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

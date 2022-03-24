@@ -200,7 +200,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Cursos");
+        regresar_JButton.setToolTipText("<html><h3>Regresar A Mis Cursos</h3></html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
@@ -273,6 +273,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         editar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-tool.png"))); // NOI18N
+        editar_Curso_JButton.setToolTipText("<html><h3>Ajustes Del<br>Curso</h3></html>");
         editar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)editar_Curso_JButton.getIcon()).getImage().flush();
         editar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -282,8 +283,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_2.png"))); // NOI18N
+        grupos_JButton.setToolTipText("<html><h3>Crear<br<Grupos</h3></html>");
         grupos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        grupos_JButton.setToolTipText("<html><h3>Archivos<br<Adjuntos</h3></html>");
         ((ImageIcon)grupos_JButton.getIcon()).getImage().flush();
         grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1186,7 +1187,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                         editar_JPanelLayout.setVerticalGroup(
                                             editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(editar_JPanelLayout.createSequentialGroup()
-                                                .addContainerGap(9, Short.MAX_VALUE)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addComponent(editar_Tematicas_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(editar_Nombre_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -1210,9 +1211,9 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                                         .addGap(18, 18, 18)
                                                         .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(editar_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(eliminar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addContainerGap(10, Short.MAX_VALUE))
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         );
 
                                         curso_JLayeredPane.add(editar_JPanel, "Edicion");
