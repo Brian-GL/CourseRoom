@@ -134,6 +134,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         });
 
         chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/influencer.png"))); // NOI18N
+        chat_JButton.setToolTipText("<html> <h3>Mensajes<br>Enviados</h3> </html>");
         chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)chat_JButton.getIcon()).getImage().flush();
         chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {

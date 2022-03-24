@@ -72,6 +72,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html> <h3>Actualizar<br>Página</h3> </html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,6 +110,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         avisos_JScrollPane.setOpaque(false);
 
         avisos_JTable.setAutoCreateRowSorter(true);
+        avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         avisos_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -142,7 +144,6 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
                     return super.getColumnClass(column);
                 }
             });
-            avisos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             avisos_JTable.setRowHeight(100);
             avisos_JTable.setShowGrid(true);
             avisos_JTable.setSurrendersFocusOnKeystroke(true);

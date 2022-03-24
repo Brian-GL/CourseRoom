@@ -96,6 +96,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         acciones_JPanel.setOpaque(false);
 
         buscar_Preguntas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
+        buscar_Preguntas_JButton.setToolTipText("<html> <h3>Buscar<br>Pregunta</h3> </html>");
         buscar_Preguntas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)buscar_Preguntas_JButton.getIcon()).getImage().flush();
         buscar_Preguntas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,6 +112,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         });
 
         preguntar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/wonder.png"))); // NOI18N
+        preguntar_JButton.setToolTipText("<html> <h3>Nueva<br>Pregunta</h3> </html>");
         preguntar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)preguntar_JButton.getIcon()).getImage().flush();
         preguntar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,6 +128,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html> <h3>Actualizar<br>Página</h3> </html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
