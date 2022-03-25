@@ -92,13 +92,17 @@ import frames.generales.Lector_PDF_General_Frame;
 import frames.generales.Lector_Video_General_Panel;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.image.PixelGrabber;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -127,6 +131,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
@@ -339,6 +345,33 @@ public class CourseRoom{
             }
             
             return ip;
+        }
+        
+        public static byte[] Bytes_Imagen(Image imagen){
+            
+            if(imagen != null){
+                try {
+                    PixelGrabber obtener_Pixeles = new PixelGrabber(imagen, 0, 0, -1, -1, false);
+                    if (obtener_Pixeles.grabPixels()) {
+                        int[] pixeles = (int[]) obtener_Pixeles.getPixels();
+                        ByteBuffer out = ByteBuffer.allocate(pixeles.length * 4);
+                        out.order(ByteOrder.nativeOrder());
+                        for (int i = 0; i < pixeles.length; i++) {
+                            out.putInt(pixeles[i]);
+                        }
+                        out.flip();
+                        return out.array();
+                    }
+                } catch (InterruptedException ex) {
+                    return new byte[]{};
+                }
+                
+                return new byte[]{};
+            }
+            else {
+                return new byte[]{};
+            }
+            
         }
         
         public static int Altura_Fila_Tabla(int numero_Letras){

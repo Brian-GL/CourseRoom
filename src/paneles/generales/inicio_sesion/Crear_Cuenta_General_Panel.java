@@ -36,7 +36,6 @@ import org.apache.xmlrpc.XmlRpcException;
 
 public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componentes_Interface, Limpieza_Interface, Validaciones_Interface{
 
-    private byte[] imagen;
     /**
      * Creates new form Crear_Cuenta_Panel
      */
@@ -224,7 +223,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         correo_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         correo_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         correo_JTextField.setPreferredSize(new java.awt.Dimension(350, 43));
-        correo_JTextField.setToolTipText("<html> <h3Ingresa Tu Correo Electronico</h3> </html>");
+        correo_JTextField.setToolTipText("<html> <h3>Ingresa Tu Correo Electrónico</h3> </html>");
 
         repetir_Contrasena_Autenticacion_JLabel.setText("Repetir Contraseña*");
         repetir_Contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -1610,25 +1609,48 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     @Override
     public void Validar_Campos() {
-        int tipo_Perfil = tipo_Perfil_JComboBox.getSelectedIndex();
         
-        String materno = apellido_Materno_JTextField.getText();
-        String paterno = apellido_Paterno_JTextField.getText();
+        String correoElectronico = correo_JTextField.getText();
         String contrasena = CourseRoom.Utilerias.Codificacion(contrasenia_Autenticacion_JPasswordField.toString());
-        String correo = correo_JTextField.getText();
-        String descripcion = descripcion_JTextPane.getText();
-        String fecha_Nacimiento = CourseRoom.Utilerias.Fecha(fecha_Nacimiento_DatePicker.getDate());
-        String genero = genero_JTextField.getText();
-        
         String nombre = nombres_JTextField.getText();
-        Float promedio_General = (Float)promedio_General_JFormattedTextField.getValue();
+        String paterno = apellido_Paterno_JTextField.getText();
+        String materno = apellido_Materno_JTextField.getText();
+        String genero = genero_JTextField.getText();
+        String fecha_Nacimiento = CourseRoom.Utilerias.Fecha(fecha_Nacimiento_DatePicker.getDate());
+        String descripcion = descripcion_JTextPane.getText();
+        @SuppressWarnings("null")
+        Float promedio_General = promedio_General_JFormattedTextField.getValue() == null ? 0.0f : ((Double)promedio_General_JFormattedTextField.getValue()).floatValue();
         String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
+        String estado = (String)estado_AutoCompletionComboBox.getSelectedItem();
+        String localidad = (String) localidad_AutoCompletionComboBox.getSelectedItem();
         
-        CourseRoom.Utilerias.Esconder_Frame();
-        
-        CourseRoom_Frame.Mostrar_Tablero(tipo_Perfil == 0);
-        
-        CourseRoom.Utilerias.Mostrar_Frame();
+        try {
+            byte[] imagenBytes = CourseRoom.Utilerias.Bytes_Imagen(((ImageIcon)imagen_Perfil_JLabel.getIcon()).getImage());
+            
+            Vector<Object> response = CourseRoom.Solicitudes.Agregar_Usuario(correoElectronico, contrasena, nombre, paterno, materno, genero, fecha_Nacimiento, promedio_General, tipo_Usuario, descripcion, imagenBytes);
+            
+            if(response.capacity() == 2){
+            
+                Integer codigo = (Integer)response.remove(0);
+                String mensaje = (String)response.remove(1);
+                
+                if(codigo > 0){
+
+                    CourseRoom.Utilerias.Esconder_Frame();
+
+                    CourseRoom_Frame.Mostrar_Tablero(tipo_Usuario.equals("Estudiante"));
+
+                    CourseRoom.Utilerias.Mostrar_Frame();
+                }else{
+                    JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "Error al realizar la petición", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (XmlRpcException | IOException ex) {
+            JOptionPane.showMessageDialog(this, "No se pudo conectar al servidor", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
 }

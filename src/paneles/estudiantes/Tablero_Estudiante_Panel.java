@@ -814,6 +814,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
                 CourseRoom_Frame.Colorear(); 
                 Colorear();
+                
             }
             
         } catch (InterruptedException ex) {
