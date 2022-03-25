@@ -135,6 +135,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/influencer.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Mensajes&lt;br&gt;Enviados&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
@@ -557,22 +558,22 @@
             </Container>
             <Component class="javax.swing.JButton" name="eliminar_Chat_JButton">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="26" style="1"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/close.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar Chat"/>
+                <Property name="toolTipText" type="java.lang.String" value="Abandona Y Elimina El Grupo De Los Tuyos"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
                 </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="26" style="1"/>
-                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[400, 50]"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Abandona Y Elimina El Grupo De Los Tuyos"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminar_Chat_JButtonMouseClicked"/>

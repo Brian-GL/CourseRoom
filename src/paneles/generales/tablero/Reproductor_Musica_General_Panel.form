@@ -130,6 +130,7 @@
         <Container class="javax.swing.JTabbedPane" name="controles_JTabbedPane">
           <Properties>
             <Property name="tabPlacement" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[450, 417]"/>
             </Property>
@@ -148,6 +149,7 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="abrir_Archivos_JPanel">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Constraints>
@@ -201,7 +203,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/carpeta.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Abrir carpeta&lt;/h3&gt; &lt;/html&gt; "/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Abrir Carpeta&lt;/h3&gt; &lt;/html&gt; "/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="abrir_Carpeta_JLabelMouseClicked"/>
@@ -253,15 +255,17 @@
             </Container>
             <Container class="javax.swing.JPanel" name="controles_Reproduccion_JPanel">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="">
+                  <JTabbedPaneConstraints tabName="" toolTip="">
                     <Property name="tabTitle" type="java.lang.String" value=""/>
                     <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/play.png"/>
                     </Property>
+                    <Property name="tabToolTip" type="java.lang.String" value=""/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -270,17 +274,21 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="57" pref="57" max="-2" attributes="0"/>
-                          <Component id="alto_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="anterior_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
-                          <Component id="play_Pausa_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="siguiente_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="56" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="57" pref="57" max="-2" attributes="0"/>
+                                  <Component id="alto_JLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
+                                  <Component id="anterior_JLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
+                                  <Component id="play_Pausa_JLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
+                                  <Component id="siguiente_JLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="letras_JScrollPane" alignment="0" min="-2" pref="389" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Component id="letras_JScrollPane" alignment="0" min="-2" pref="389" max="-2" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -399,6 +407,7 @@
             </Container>
             <Container class="javax.swing.JPanel" name="controles_Audio_JPanel">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Constraints>
@@ -467,7 +476,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/snail.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Bajar velocidad&lt;/h3&gt; &lt;/html&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Bajar Velocidad De Voz&lt;/h3&gt; &lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -486,7 +495,7 @@
                     <Property name="maximum" type="int" value="150"/>
                     <Property name="minimum" type="int" value="50"/>
                     <Property name="paintTicks" type="boolean" value="true"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Rate"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="value" type="int" value="100"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
@@ -512,7 +521,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/rabbit.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Subir velocidad&lt;/h3&gt; &lt;/html&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Subir Velocidad De Voz&lt;/h3&gt; &lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -527,7 +536,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/volume-down.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Bajar volumen&lt;/h3&gt; &lt;/html&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Bajar Volumen&lt;/h3&gt; &lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -544,7 +553,7 @@
                     </Property>
                     <Property name="majorTickSpacing" type="int" value="10"/>
                     <Property name="paintTicks" type="boolean" value="true"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Volume"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="value" type="int" value="100"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
@@ -570,7 +579,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/volume-up.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Subir volumen&lt;/h3&gt; &lt;/html&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Subir Volumen&lt;/h3&gt; &lt;/html&gt;"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -584,6 +593,7 @@
             </Container>
             <Container class="javax.swing.JPanel" name="ecualizador_JPanel">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Constraints>

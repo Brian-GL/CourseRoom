@@ -133,7 +133,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         informacion_Inicio_JLabel.setPreferredSize(new java.awt.Dimension(670, 104));
 
         continuar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Autenticacion_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de autenticación</h3> </html>");
+        continuar_Autenticacion_JButton.setToolTipText("<html> <h3>Continuar a<br>La pestaña<br>De autenticación</h3> </html>");
         continuar_Autenticacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)continuar_Autenticacion_JButton.getIcon()).getImage().flush();
         continuar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,7 +149,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         });
 
         regresar_Inicio_Sesion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Inicio_Sesion_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
+        regresar_Inicio_Sesion_JButton.setToolTipText("<html> <h3>Regresar a<br>La página de<br>Inicio de sesión</h3> </html>");
         regresar_Inicio_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_Inicio_Sesion_JButton.getIcon()).getImage().flush();
         regresar_Inicio_Sesion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -223,7 +223,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         correo_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         correo_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         correo_JTextField.setPreferredSize(new java.awt.Dimension(350, 43));
-        correo_JTextField.setToolTipText("<html> <h3>Ingresa Tu Correo Electrónico</h3> </html>");
+        correo_JTextField.setToolTipText("<html> <h3>Ingresa Tu Correo Electronico</h3> </html>");
 
         repetir_Contrasena_Autenticacion_JLabel.setText("Repetir Contraseña*");
         repetir_Contrasena_Autenticacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -234,7 +234,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         repetir_Contrasenia_JTextField.setToolTipText("<html> <h3>Vuelve A Ingresar La Contraseña</h3> </html>");
 
         regresar_Inicio_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Inicio_JButton.setToolTipText("<html>\n<h3>Regresar a la pestaña de inicio</h3>\n</html>");
+        regresar_Inicio_JButton.setToolTipText("<html>\n<h3>Regresar a<br>La pestaña<br>De inicio</h3>\n</html>");
         regresar_Inicio_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_Inicio_JButton.getIcon()).getImage().flush();
         regresar_Inicio_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -250,7 +250,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         });
 
         continuar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Datos_Personales_JButton.setToolTipText("<html>\n<h3>Continuar a la pestaña de datos personales</h3>\n</html>");
+        continuar_Datos_Personales_JButton.setToolTipText("<html>\n<h3>Continuar a<br>La pestaña de<br>Datos personales</h3>\n</html>");
         continuar_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)continuar_Datos_Personales_JButton.getIcon()).getImage().flush();
         continuar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -372,7 +372,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         nombres_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         nombres_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
-        nombres_JTextField.setToolTipText("<html>  <h3> Nombre(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
+        nombres_JTextField.setToolTipText("<html>  <h3>Ingresa Tu(s) Nombre(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
         nombres_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 nombres_JTextFieldKeyTyped(evt);
@@ -384,7 +384,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         apellido_Paterno_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         apellido_Paterno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
-        apellido_Paterno_JTextField.setToolTipText("<html>  <h3> Apellido paterno </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
+        apellido_Paterno_JTextField.setToolTipText("<html>  <h3> Ingresa Tu Apellido Paterno </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
         apellido_Paterno_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 apellido_Paterno_JTextFieldKeyTyped(evt);
@@ -396,7 +396,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         genero_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         genero_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
-        genero_JTextField.setToolTipText("<html>  <h3> Identidad de género </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
+        genero_JTextField.setToolTipText("<html>  <h3>Ingresa Tu Identidad De Género </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
         genero_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 genero_JTextFieldKeyTyped(evt);
@@ -410,7 +410,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         continuar_Perfil_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
-        continuar_Perfil_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
+        continuar_Perfil_JButton.setToolTipText("<html> <h3>Continuar a<br>La pestaña<br>De perfil</h3> </html>");
         continuar_Perfil_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)continuar_Perfil_JButton.getIcon()).getImage().flush();
         continuar_Perfil_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -426,7 +426,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         });
 
         regresar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Autenticacion_JButton.setToolTipText("<html> <h3>Regresar a la pestaña de autenticación</h3> </html>");
+        regresar_Autenticacion_JButton.setToolTipText("<html> <h3>Regresar a<br>La pestaña<br>De autenticación</h3> </html>");
         regresar_Autenticacion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_Autenticacion_JButton.getIcon()).getImage().flush();
         regresar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -445,7 +445,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         apellido_Materno_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         apellido_Materno_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
-        apellido_Materno_JTextField.setToolTipText("<html>  <h3> Apellido materno </h3> </html>");
+        apellido_Materno_JTextField.setToolTipText("<html>  <h3>Ingresa Tu Apellido Materno </h3> </html>");
         apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         apellido_Materno_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -470,7 +470,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         localidad_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Localidad de provenencia</h3>\n</html>");
 
         fecha_Nacimiento_DatePicker.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        fecha_Nacimiento_DatePicker.setToolTipText("<html> <h3>Fecha De Nacimiento</h3> </html>");
+        fecha_Nacimiento_DatePicker.setToolTipText("<html> <h3>Selecciona Tu Fecha De Nacimiento</h3> </html>");
 
         javax.swing.GroupLayout datos_Personales_JPanelLayout = new javax.swing.GroupLayout(datos_Personales_JPanel);
         datos_Personales_JPanel.setLayout(datos_Personales_JPanelLayout);
@@ -613,7 +613,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         regresar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar_Datos_Personales_JButton.setToolTipText("<html> <h3>Regresar a la pestaña de datos personales</h3> </html>");
+        regresar_Datos_Personales_JButton.setToolTipText("<html> <h3>Regresar a<br>La pestaña de<br>Datos personales</h3> </html>");
         ((ImageIcon)regresar_Datos_Personales_JButton.getIcon()).getImage().flush();
         regresar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -629,7 +629,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         continuar_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
         continuar_Informacion_Extra_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        continuar_Informacion_Extra_JButton.setToolTipText("<html> <h3>Continuar a la pestaña<br>de información extra</h3> </html>");
+        continuar_Informacion_Extra_JButton.setToolTipText("<html> <h3>Continuar a<br>La pestaña<br>De información extra</h3> </html>");
         ((ImageIcon)continuar_Informacion_Extra_JButton.getIcon()).getImage().flush();
         continuar_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -700,7 +700,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         crear_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check_1.png"))); // NOI18N
         crear_Cuenta_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        crear_Cuenta_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
+        crear_Cuenta_JButton.setToolTipText("<html> <h3>Crear<br>Nueva<br>Cuenta</h3> </html>");
         ((ImageIcon)crear_Cuenta_JButton.getIcon()).getImage().flush();
         crear_Cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -728,7 +728,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         regresar_Perfil_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
         regresar_Perfil_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar_Perfil_JButton.setToolTipText("<html> <h3>Regresar a la pestaña de perfil</h3> </html>");
+        regresar_Perfil_JButton.setToolTipText("<html> <h3>Regresar a<br>La pestaña<br>De perfil</h3> </html>");
         ((ImageIcon)regresar_Perfil_JButton.getIcon()).getImage().flush();
         regresar_Perfil_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -751,7 +751,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         promedio_General_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##.00"))));
         promedio_General_JFormattedTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         promedio_General_JFormattedTextField.setPreferredSize(new java.awt.Dimension(126, 40));
-        promedio_General_JFormattedTextField.setToolTipText("<html>\n<h3>Promedio general de tu escuela</h3>\n<ul><li>Esto nos ayudará a generar mayores estadísticas sobre ti<br>\na la hora de tomar tus cursos.</li></ul>\n</html>");
+        promedio_General_JFormattedTextField.setToolTipText("<html>\n<h3>Ingresa Tu Promedio General De Tu Escuela</h3>\n<ul><li>Esto nos ayudará a generar mayores estadísticas sobre ti<br>\na la hora de tomar tus cursos.</li></ul>\n</html>");
         promedio_General_JFormattedTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 promedio_General_JFormattedTextFieldKeyTyped(evt);
@@ -765,7 +765,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         descripcion_JLabel.setPreferredSize(new java.awt.Dimension(409, 25));
 
         descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
-        descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
+        descripcion_JTextPane.setToolTipText("<html>\n<h3>Ingresa Tu Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         intereses_JLabel.setText("Intereses");
@@ -789,7 +789,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         intereses_AutoCompletionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isaiah Leblanc", "Fitzgerald Dean", "Emma Doyle", "Galvin Gillespie", "Hunter Ross", "Kellie Valencia", "Miranda Holder", "Drake Mendoza", "Uma Parks", "Julian Hill" }));
         intereses_AutoCompletionComboBox.setSelectedIndex(-1);
         intereses_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        intereses_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
+        intereses_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Agrega Tu(s) Interes(es) / Temática(s)</h3>\n</html>");
 
         intereses_JScrollPane.setBorder(null);
         intereses_JScrollPane.setOpaque(false);

@@ -148,6 +148,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         editar_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/id-card_1.png"))); // NOI18N
         editar_Datos_Personales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Datos_Personales_JButton.setToolTipText("<html><h3>Ajuste De<br>Datos Personales</h3></html>");
         ((ImageIcon)editar_Datos_Personales_JButton.getIcon()).getImage().flush();
         editar_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -157,6 +158,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        actualizar_JButton.setToolTipText("<html><h4>Actualizar<br>Página</h4></html> ");
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -172,6 +174,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         editar_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-learning.png"))); // NOI18N
         editar_Informacion_Extra_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Informacion_Extra_JButton.setToolTipText("<html><h3>Ajustes De<br>Información<br>Extra</h3></html>");
         ((ImageIcon)editar_Informacion_Extra_JButton.getIcon()).getImage().flush();
         editar_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,6 +184,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
         informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        informacion_JButton.setToolTipText("<html><h3>Descripciónn<br>Del Usuario</h3></html>");
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -190,6 +194,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         editar_Autenticacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/authentication.png"))); // NOI18N
         editar_Autenticacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editar_Autenticacion_JButton.setToolTipText("<html><h3>Ajustes<br>De Seguridad</h3></html>");
         ((ImageIcon)editar_Autenticacion_JButton.getIcon()).getImage().flush();
         editar_Autenticacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

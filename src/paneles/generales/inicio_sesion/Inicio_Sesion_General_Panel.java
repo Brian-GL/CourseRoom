@@ -58,7 +58,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         crear_Cuenta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         crear_Cuenta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         crear_Cuenta_JLabel.setText("¿No Tienes Cuenta? Crea Tu Cuenta Aquí");
-        crear_Cuenta_JLabel.setToolTipText("<html>\n<h3>Crear cuenta</h3>\n</html>");
+        crear_Cuenta_JLabel.setToolTipText("");
         crear_Cuenta_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         crear_Cuenta_JLabel.setOpaque(true);
         crear_Cuenta_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
@@ -69,9 +69,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         });
 
         contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
+        contrasena_JPasswordField.setToolTipText("<html> <h3>Ingresa Tu Contraseña</h3> </html>");
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(430, 45));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(430, 45));
-        contrasena_JPasswordField.setToolTipText("");
 
         correo_Electronico_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         correo_Electronico_JLabel.setText("Correo Electrónico");
@@ -81,14 +81,14 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         correo_Electronico_JLabel.setPreferredSize(new java.awt.Dimension(430, 30));
 
         correo_Electronico_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
+        correo_Electronico_JTextField.setToolTipText("<html>\n<h3>Ingresa tu nombre de usuario o correo electrónico<br>\nCon el que te registraste</h3></html>");
         correo_Electronico_JTextField.setMinimumSize(new java.awt.Dimension(430, 45));
         correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(430, 45));
-        correo_Electronico_JTextField.setToolTipText("<html>\n<h3>Ingresa tu nombre de usuario o correo electrónico<br>\ncon el que te registraste</h3></html>");
 
         iniciar_Sesion_JButton.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         iniciar_Sesion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/house.png"))); // NOI18N
         iniciar_Sesion_JButton.setText(" Iniciar Sesión ");
-        iniciar_Sesion_JButton.setToolTipText("<html>\n<h3>Inicia sesión con tus credenciales</h3>\n</html>");
+        iniciar_Sesion_JButton.setToolTipText("");
         iniciar_Sesion_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         iniciar_Sesion_JButton.setPreferredSize(new java.awt.Dimension(430, 54));
         ((ImageIcon)iniciar_Sesion_JButton.getIcon()).getImage().flush();
@@ -104,11 +104,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             }
         });
 
+        marca_JLabel.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         marca_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         marca_JLabel.setText("2022 - CourseRoom®");
-        marca_JLabel.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
-        marca_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
         marca_JLabel.setToolTipText("Año De Creación - Todos Los Derechos Reservados");
+        marca_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
         marca_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 marca_JLabelMouseClicked(evt);
@@ -118,7 +118,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         recuperar_Credenciales_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         recuperar_Credenciales_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         recuperar_Credenciales_JLabel.setText("¿Olvidaste Tus Credenciales? Recupera Aquí");
-        recuperar_Credenciales_JLabel.setToolTipText("<html>\n<h3>Recupera tu nombre de usuario y/o contraseña</h3>\n</html>");
+        recuperar_Credenciales_JLabel.setToolTipText("");
         recuperar_Credenciales_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         recuperar_Credenciales_JLabel.setOpaque(true);
         recuperar_Credenciales_JLabel.setPreferredSize(new java.awt.Dimension(430, 22));
@@ -142,11 +142,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             }
         });
 
-        logo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo_JLabel.setBackground(new java.awt.Color(14, 30, 64));
+        logo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo_JLabel.setToolTipText("CourseRoom Logo");
         logo_JLabel.setMinimumSize(new java.awt.Dimension(150, 125));
         logo_JLabel.setPreferredSize(new java.awt.Dimension(400, 125));
-        logo_JLabel.setToolTipText("CourseRoom Logo");
 
         contrasena_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         contrasena_JLabel.setText("<html>\n<p style=\"text-align:center;\">\n Contraseña\n</p>\n</html>");
@@ -370,9 +370,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
 
             CourseRoom.Utilerias.Esconder_Frame();
             //Estudiante:
-            CourseRoom_Frame.Mostrar_Tablero(true);
+            //CourseRoom_Frame.Mostrar_Tablero(true);
             //Profesor:
-            //CourseRoom_Frame.Mostrar_Tablero(false);
+            CourseRoom_Frame.Mostrar_Tablero(false);
 
             correo_Electronico_JTextField.setText("");
             contrasena_JPasswordField.setText("");

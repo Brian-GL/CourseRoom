@@ -85,10 +85,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="marcar_Solucionada_JButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="actualizar_JButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="marcar_Solucionada_JButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="actualizar_JButton" min="-2" max="-2" attributes="0"/>
                       <Component id="eliminar_Pregunta_JButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -106,7 +104,7 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="preguntador_Imagen_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="34" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="regresar_JButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -127,7 +125,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/reply.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Regresar A Mis Chats"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Regresar A Mis Preguntas&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
@@ -216,6 +214,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/updated.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Actualizar&lt;br&gt;P&#xe1;gina&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>

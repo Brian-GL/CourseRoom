@@ -138,7 +138,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Cursos");
+        regresar_JButton.setToolTipText("<html> <h3>Regresar A Mis Cursos</h3> </html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();

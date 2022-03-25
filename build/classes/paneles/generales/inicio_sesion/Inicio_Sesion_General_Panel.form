@@ -121,7 +121,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#xbf;No Tienes Cuenta? Crea Tu Cuenta Aqu&#xed;"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Crear cuenta&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -139,7 +139,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="25" style="0"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Ingresa Tu Contrase&#xf1;a&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[430, 45]"/>
             </Property>
@@ -171,7 +171,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="25" style="0"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Ingresa tu nombre de usuario o correo electr&#xf3;nico&lt;br&gt;&#xa;con el que te registraste&lt;/h3&gt;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Ingresa tu nombre de usuario o correo electr&#xf3;nico&lt;br&gt;&#xa;Con el que te registraste&lt;/h3&gt;&lt;/html&gt;"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[430, 45]"/>
             </Property>
@@ -189,7 +189,7 @@
               <Image iconType="3" name="/recursos/iconos/house.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value=" Iniciar Sesi&#xf3;n "/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Inicia sesi&#xf3;n con tus credenciales&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -229,7 +229,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#xbf;Olvidaste Tus Credenciales? Recupera Aqu&#xed;"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Recupera tu nombre de usuario y/o contrase&#xf1;a&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>

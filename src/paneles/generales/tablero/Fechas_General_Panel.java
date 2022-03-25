@@ -111,6 +111,7 @@ public class Fechas_General_Panel extends JScrollPane implements Limpieza_Interf
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html> <h3>Actualizar<br>Página</h3> </html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
