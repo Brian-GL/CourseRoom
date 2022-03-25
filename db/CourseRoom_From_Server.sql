@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `courseroom` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `courseroom`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: localhost    Database: courseroom
@@ -907,6 +905,26 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'courseroom'
 --
+/*!50003 DROP FUNCTION IF EXISTS `fn_CampoTextoValido` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_CampoTextoValido`(_Campo TEXT) RETURNS bit(1)
+    DETERMINISTIC
+BEGIN
+	RETURN _Campo IS NOT NULL AND LENGTH(_Campo) > 0;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP FUNCTION IF EXISTS `fn_CampoValido` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -987,6 +1005,66 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `fn_NombreCompleto`(_Nombre VARCHAR(5
     DETERMINISTIC
 BEGIN
 	RETURN CONCAT(_Nombre,' ',_Paterno,' ',_Materno);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_ObtenerDia` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_ObtenerDia`(_Fecha VARCHAR(100)) RETURNS int
+    DETERMINISTIC
+BEGIN
+	RETURN CONVERT((SUBSTRING(_Fecha, -25, 2)),UNSIGNED INTEGER);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_ObtenerHorario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_ObtenerHorario`(_Fecha VARCHAR(100)) RETURNS varchar(30) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+	RETURN (SUBSTRING(_Fecha, -14, 14));
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_ObtenerMes` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_ObtenerMes`(_Fecha VARCHAR(100)) RETURNS int
+    DETERMINISTIC
+BEGIN
+	RETURN CONVERT((SUBSTRING(_Fecha, -22, 2)),UNSIGNED INTEGER);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1371,6 +1449,46 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_AgregarPregunta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AgregarPregunta`(
+    IN _IdUsuario INT,
+    IN _Pregunta VARCHAR(200),
+    IN _Descripcion TEXT,
+    IN _FechaCreacion VARCHAR(100)
+)
+BEGIN
+    IF courseroom.fn_CampoValido(_FechaCreacion) = 1 AND courseroom.fn_CampoValido(_Descripcion) = 1
+    AND courseroom.fn_CampoValido(_Pregunta) = 1 THEN
+
+        IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
+        
+            INSERT INTO tb_preguntas (Pregunta, Descripcion, FechaCreacion, Estatus ,IdUsuario, Activo)
+            VALUES (_Pregunta, _Descripcion, _FechaCreacion, 'Abierta', _IdUsuario, 1);
+
+            SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+
+        ELSE
+            SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+    ELSE 
+        SELECT -1 AS "Codigo", 'Algun Campo No Tiene El Formato Valido' AS "Mensaje";
+    END IF;
+        
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_AgregarSesion` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1538,6 +1656,50 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_BuscarChatsPersonales` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_BuscarChatsPersonales`(
+	IN _Busqueda VARCHAR(250),
+    IN _IdUsuario INT
+)
+BEGIN
+
+    IF courseroom.fn_CampoValido(_Busqueda) = 1 THEN
+
+        IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
+
+            SELECT Chats.IdChat, Usuarios.Imagen, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+            Chats.FechaCreacion, courseroom.fn_UltimoMensajeChat(Chats.IdChat) AS UltimoMensaje
+            FROM tb_chatspersonales Chats
+            INNER JOIN tb_usuarios Usuarios ON Chats.IdUsuarioEmisor = Usuarios.IdUsuario
+            WHERE Chats.IdUsuarioEmisor = _IdUsuario OR Chats.IdUsuarioReceptor = _IdUsuario 
+            AND (
+                Usuarios.Nombre LIKE CONCAT('%',_Busqueda,'%') OR
+                Usuarios.Paterno LIKE CONCAT('%',_Busqueda,'%') OR
+                Usuarios.Materno LIKE CONCAT('%',_Busqueda,'%')
+            )
+            AND Chats.Activo = 1 ORDER BY Chats.IdChat DESC LIMIT 100;
+
+        ELSE
+            SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+    ELSE
+        SELECT -1 AS "Codigo", 'El Valor De La Busqueda No Tiene El formato Adecuado' AS "Mensaje";
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_BuscarGrupos` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1591,6 +1753,326 @@ BEGIN
 	WHERE Preguntas.Pregunta LIKE CONCAT('%',_Busqueda,'%')
 	OR Usuarios.Nombre LIKE CONCAT('%',_Busqueda,'%') AND Preguntas.Activo = 1 LIMIT 100;
   
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_CerrarSesion` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_CerrarSesion`(
+    IN _IdUsuario INT,
+    IN _IdSesion INT,
+    IN _UltimaConexion VARCHAR(100)
+)
+BEGIN
+
+    IF courseroom.fn_CampoValido(_UltimaConexion) = 1 THEN
+    
+        IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN 
+
+            UPDATE tb_sesiones SET Activo = 0, UltimaConexion = _UltimaConexion
+            WHERE IdSesion = _IdSesion AND IdUsuario = _IdUsuario;
+
+        ELSE
+            SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+    ELSE
+        SELECT -1 AS "Codigo", 'El Campo Ultima Conexion No tiene El Formato Adecuado' AS "Mensaje";
+    END IF;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_EnviarMensajeChat` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_EnviarMensajeChat`(
+    IN _Mensaje TEXT,
+    IN _FechaEnvio VARCHAR(100),
+    IN _NombreArchivo VARCHAR(100),
+    IN _Archivo LONGBLOB,
+    IN _Extension VARCHAR(32),
+    IN _IdUsuarioEmisor INT,
+    IN _IdChat INT
+)
+BEGIN
+
+    IF courseroom.fn_CampoTextoValido(_Mensaje) = 1 THEN
+        
+        IF EXISTS(SELECT IdChat FROM tb_chatspersonales WHERE IdChat = _IdChat AND Activo = 1) THEN
+
+            IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
+
+                INSERT INTO tb_mensajeschat (Mensaje, FechaEnvio, NombreArchivo, Archivo, Extension, IdChat, IdUsuarioEmisor)
+                VALUES (_Mensaje, _FechaEnvio, _NombreArchivo, _Archivo, _Extension, _IdChat, _IdUsuarioEmisor);
+
+                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+
+            ELSE
+                SELECT -1 AS "Codigo", 'El Usuario Emisor No Se Encuentra Registrado' AS "Mensaje";
+            END IF;
+
+        ELSE
+            SELECT -1 AS "Codigo", 'El Chat No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+
+    ELSE
+        SELECT -1 AS "Codigo", 'El Mensaje No Tiene El Formato Correcto' AS "Mensaje";
+    END IF;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_EnviarMensajeCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_EnviarMensajeCurso`(
+    IN _Mensaje TEXT,
+    IN _FechaEnvio VARCHAR(100),
+    IN _NombreArchivo VARCHAR(100),
+    IN _Archivo LONGBLOB,
+    IN _Extension VARCHAR(32),
+    IN _IdUsuarioEmisor INT,
+    IN _IdCurso INT
+)
+BEGIN
+
+    IF courseroom.fn_CampoTextoValido(_Mensaje) = 1 THEN
+        
+        IF EXISTS(SELECT IdCurso FROM tb_cursos WHERE IdCurso = _IdCurso AND Activo = 1) THEN
+
+            IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
+
+                INSERT INTO tb_mensajescurso (Mensaje, FechaEnvio, NombreArchivo, Archivo, Extension, IdCurso, IdUsuarioEmisor)
+                VALUES (_Mensaje, _FechaEnvio, _NombreArchivo, _Archivo, _Extension, _IdCurso, _IdUsuarioEmisor);
+
+                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+
+            ELSE
+                SELECT -1 AS "Codigo", 'El Curso Emisor No Se Encuentra Registrado' AS "Mensaje";
+            END IF;
+
+        ELSE
+            SELECT -1 AS "Codigo", 'La Pregunta No Se Encuentra Registrada' AS "Mensaje";
+        END IF;
+
+    ELSE
+        SELECT -1 AS "Codigo", 'El Mensaje No Tiene El Formato Correcto' AS "Mensaje";
+    END IF;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_EnviarMensajeGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_EnviarMensajeGrupo`(
+    IN _Mensaje TEXT,
+    IN _FechaEnvio VARCHAR(100),
+    IN _NombreArchivo VARCHAR(100),
+    IN _Archivo LONGBLOB,
+    IN _Extension VARCHAR(32),
+    IN _IdUsuarioEmisor INT,
+    IN _IdGrupo INT
+)
+BEGIN
+
+    IF courseroom.fn_CampoTextoValido(_Mensaje) = 1 THEN
+        
+        IF EXISTS(SELECT IdGrupo FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1) THEN
+
+            IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
+
+                INSERT INTO tb_mensajesgrupos (Mensaje, FechaEnvio, NombreArchivo, Archivo, Extension, IdGrupo, IdUsuarioEmisor)
+                VALUES (_Mensaje, _FechaEnvio, _NombreArchivo, _Archivo, _Extension, _IdGrupo, _IdUsuarioEmisor);
+
+                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+
+            ELSE
+                SELECT -1 AS "Codigo", 'El Usuario Emisor No Se Encuentra Registrado' AS "Mensaje";
+            END IF;
+
+        ELSE
+            SELECT -1 AS "Codigo", 'El Grupo No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+
+    ELSE
+        SELECT -1 AS "Codigo", 'El Mensaje No Tiene El Formato Correcto' AS "Mensaje";
+    END IF;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_EnviarMensajePregunta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_EnviarMensajePregunta`(
+    IN _Mensaje TEXT,
+    IN _FechaEnvio VARCHAR(100),
+    IN _NombreArchivo VARCHAR(100),
+    IN _Archivo LONGBLOB,
+    IN _Extension VARCHAR(32),
+    IN _IdUsuarioEmisor INT,
+    IN _IdPregunta INT
+)
+BEGIN
+
+    IF courseroom.fn_CampoTextoValido(_Mensaje) = 1 THEN
+        
+        IF EXISTS(SELECT IdPregunta FROM tb_preguntas WHERE IdPregunta = _IdPregunta AND Activo = 1) THEN
+
+            IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
+
+                INSERT INTO tb_mensajespreguntas (Mensaje, FechaEnvio, NombreArchivo, Archivo, Extension, IdPregunta, IdUsuarioEmisor)
+                VALUES (_Mensaje, _FechaEnvio, _NombreArchivo, _Archivo, _Extension, _IdPregunta, _IdUsuarioEmisor);
+
+                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+
+            ELSE
+                SELECT -1 AS "Codigo", 'El Usuario Emisor No Se Encuentra Registrado' AS "Mensaje";
+            END IF;
+
+        ELSE
+            SELECT -1 AS "Codigo", 'La Pregunta No Se Encuentra Registrada' AS "Mensaje";
+        END IF;
+
+    ELSE
+        SELECT -1 AS "Codigo", 'El Mensaje No Tiene El Formato Correcto' AS "Mensaje";
+    END IF;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_EnviarMensajeTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_EnviarMensajeTarea`(
+    IN _Mensaje TEXT,
+    IN _FechaEnvio VARCHAR(100),
+    IN _NombreArchivo VARCHAR(100),
+    IN _Archivo LONGBLOB,
+    IN _Extension VARCHAR(32),
+    IN _IdUsuarioEmisor INT,
+    IN _IdTarea INT
+)
+BEGIN
+
+    IF courseroom.fn_CampoTextoValido(_Mensaje) = 1 THEN
+        
+        IF EXISTS(SELECT IdTarea FROM tb_tareas WHERE IdTarea = _IdTarea AND Activo = 1) THEN
+
+            IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
+
+                INSERT INTO tb_mensajestareas (Mensaje, FechaEnvio, NombreArchivo, Archivo, Extension, IdTarea, IdUsuarioEmisor)
+                VALUES (_Mensaje, _FechaEnvio, _NombreArchivo, _Archivo, _Extension, _IdTarea, _IdUsuarioEmisor);
+
+                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+
+            ELSE
+                SELECT -1 AS "Codigo", 'El Usuario Emisor No Se Encuentra Registrado' AS "Mensaje";
+            END IF;
+
+        ELSE
+            SELECT -1 AS "Codigo", 'La Tarea No Se Encuentra Registrada' AS "Mensaje";
+        END IF;
+
+    ELSE
+        SELECT -1 AS "Codigo", 'El Mensaje No Tiene El Formato Correcto' AS "Mensaje";
+    END IF;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_MarcarPreguntaSolucionada` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_MarcarPreguntaSolucionada`(
+    IN _IdUsuario INT,
+    IN _IdPregunta INT
+)
+BEGIN
+
+    IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
+        IF EXISTS(SELECT IdPregunta FROM tb_preguntas WHERE IdPregunta = _IdPregunta AND Activo = 1 AND IdUsuario = _IdUsuario) THEN
+            UPDATE tb_preguntas SET Estatus = 'Solucionada' WHERE IdPregunta = _IdPregunta;
+            SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+        ELSE
+            SELECT -1 AS "Codigo", 'La Pregunta No Se Encuentra Registrada' AS "Mensaje";
+        END IF;
+            
+    ELSE
+        SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+    END IF;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1765,6 +2247,40 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosChatPersonal` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ObtenerDatosChatPersonal`(
+    IN _IdChat INT,
+    IN _IdUsuario INT
+)
+BEGIN
+
+    IF EXISTS(SELECT IdChat FROM tb_chatspersonales WHERE IdChat = _IdChat And Activo = 1 AND IdUsuarioEmisor = _IdUsuario) THEN
+
+        SELECT Chats.IdUsuarioEmisor, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto
+        FROM tb_chatspersonales Chats
+        INNER JOIN tb_usuarios Usuarios ON Chats.IdUsuarioEmisor = Usuarios.IdUsuario
+        WHERE Chats.IdChat = _IdChat AND Chats.Activo = 1;
+    ELSE
+        SELECT Chats.IdUsuarioReceptor, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto
+        FROM tb_chatspersonales Chats
+        INNER JOIN tb_usuarios Usuarios ON Chats.IdUsuarioReceptor = Usuarios.IdUsuario
+        WHERE Chats.IdChat = _IdChat AND Chats.Activo = 1;
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosPerfil` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1787,6 +2303,55 @@ BEGIN
    INNER JOIN tb_localidades Localidades ON Usuarios.IdLocalidad = Localidades.IdLocalidad
    WHERE Usuarios.IdUsuario = _IdUsuario AND Usuarios.Activo = 1;
    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosPerfilUsuarioChatPersonal` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ObtenerDatosPerfilUsuarioChatPersonal`(
+    IN _IdUsuario INT
+)
+BEGIN
+
+   SELECT Imagen, Nombre, Paterno, Materno, CorreoElectronico, 
+   Genero, TipoUsuario FROM tb_usuarios 
+   WHERE IdUsuario = _IdUsuario AND Activo = 1;
+   
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosPregunta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ObtenerDatosPregunta`(
+    IN _IdPregunta INT
+)
+BEGIN
+    SELECT Usuarios.Imagen, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+    Preguntas.Pregunta, Preguntas.Descripcion, Preguntas.FechaCreacion, Preguntas.Estatus FROM tb_preguntas Preguntas
+    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Preguntas.IdUsuario
+    WHERE Preguntas.IdPregunta = _IdPregunta AND Preguntas.Activo = 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2295,6 +2860,35 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerTareasMes` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ObtenerTareasMes`(
+    IN _IdUsuario INT,
+    IN _Mes INT
+)
+BEGIN
+    
+    SELECT courseroom.fn_ObtenerDia(Tareas.FechaEntrega) AS "Dia", 
+    courseroom.fn_ObtenerHorario(Tareas.FechaEntrega) AS "Horario", Tareas.Descripcion
+    FROM tb_tareas Tareas
+    INNER JOIN tb_tareascursousuarios TareasUsuarios ON Tareas.IdTarea = TareasUsuarios.IdTarea
+    WHERE TareasUsuarios.IdUsuario = _IdUsuario AND Tareas.Activo = 1 
+    AND courseroom.fn_ObtenerMes(Tareas.FechaEntrega) = _Mes;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2323,6 +2917,63 @@ BEGIN
         ELSE
             SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
         END IF;
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerUsuarioChatear` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ObtenerUsuarioChatear`(
+    IN _Busqueda VARCHAR(250)
+)
+BEGIN
+    SELECT IdUsuario, courseroom.fn_NombreCompleto(Nombre, Paterno, Materno) AS NombreCompleto
+    FROM tb_usuarios WHERE Activo = 1 
+    AND CONCAT(Nombre, ' ', Paterno, ' ',Materno) LIKE CONCAT('%',_Busqueda,'%') LIMIT 10;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverChat` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_RemoverChat`(
+    IN _IdUsuario INT,
+    IN _IdChat INT
+)
+BEGIN
+
+    IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
+        IF EXISTS(SELECT IdChat FROM tb_chatspersonales WHERE IdChat = _IdChat AND Activo = 1
+        AND (IdUsuarioEmisor = _IdUsuario OR IdUsuarioReceptor = _IdUsuario)) THEN
+            UPDATE tb_chatspersonales SET Activo = 0 WHERE IdChat = _IdChat;
+            SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+        ELSE
+            SELECT -1 AS "Codigo", 'La Pregunta No Se Encuentra Registrada' AS "Mensaje";
+        END IF;
+            
+    ELSE
+        SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
     END IF;
 END ;;
 DELIMITER ;
@@ -2379,6 +3030,39 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverPregunta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_RemoverPregunta`(
+    IN _IdUsuario INT,
+    IN _IdPregunta INT
+)
+BEGIN
+
+    IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
+        IF EXISTS(SELECT IdPregunta FROM tb_preguntas WHERE IdPregunta = _IdPregunta AND Activo = 1 AND IdUsuario = _IdUsuario) THEN
+            UPDATE tb_preguntas SET Activo = 0 WHERE IdPregunta = _IdPregunta;
+            SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+        ELSE
+            SELECT -1 AS "Codigo", 'La Pregunta No Se Encuentra Registrada' AS "Mensaje";
+        END IF;
+            
+    ELSE
+        SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -2389,4 +3073,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-24 18:42:01
+-- Dump completed on 2022-03-24 21:11:32

@@ -1627,7 +1627,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         try {
             byte[] imagenBytes = CourseRoom.Utilerias.Bytes_Imagen(((ImageIcon)imagen_Perfil_JLabel.getIcon()).getImage());
             
-            Vector<Object> response = CourseRoom.Solicitudes.Agregar_Usuario(correoElectronico, contrasena, nombre, paterno, materno, genero, fecha_Nacimiento, promedio_General, tipo_Usuario, descripcion, imagenBytes);
+            Vector<Object> response = CourseRoom.Solicitudes.Agregar_Usuario(correoElectronico, contrasena, nombre, paterno, materno, genero, estado, localidad, fecha_Nacimiento, promedio_General, tipo_Usuario, descripcion, imagenBytes);
             
             if(response.capacity() == 2){
             
@@ -1649,7 +1649,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 JOptionPane.showMessageDialog(this, "Error al realizar la petición", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (XmlRpcException | IOException ex) {
-            JOptionPane.showMessageDialog(this, "No se pudo conectar al servidor", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

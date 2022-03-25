@@ -252,17 +252,19 @@ public class CourseRoom{
         }
         
         public static Vector<Object> Agregar_Usuario(String CorreoElectronico,String Contrasenia ,String Nombre,
-            String Paterno,String Materno,String Genero,String FechaNacimiento,Float PromedioGeneral,String TipoUsuario,
-            String Descripcion, byte[] Imagen) throws XmlRpcException, IOException{
+            String Paterno,String Materno,String Genero, String Estado, String Localidad, String FechaNacimiento,
+            Float PromedioGeneral,String TipoUsuario,String Descripcion, byte[] Imagen) throws XmlRpcException, IOException{
             
             Vector parametros = new Vector();
             
             parametros.add(Utilerias.Codificacion(CorreoElectronico));
             parametros.add(Utilerias.Codificacion(Contrasenia));
             parametros.add(Utilerias.Codificacion(Nombre));
-            parametros.add(Utilerias.Codificacion(Paterno));
+            parametros.add(Utilerias.Codificacion(Paterno)); 
             parametros.add(Utilerias.Codificacion(Materno));
             parametros.add(Utilerias.Codificacion(Genero));
+            parametros.add(Utilerias.Codificacion(Estado));
+            parametros.add(Utilerias.Codificacion(Localidad));
             parametros.add(PromedioGeneral);
             parametros.add(Utilerias.Codificacion(TipoUsuario));
             parametros.add(Utilerias.Codificacion(Descripcion));
