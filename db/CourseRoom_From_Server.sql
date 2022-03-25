@@ -1431,6 +1431,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AgregarUsuario`(
     IN _Paterno VARCHAR(30),
     IN _Materno VARCHAR(30),
     IN _Genero VARCHAR(25),
+    IN _Estado VARCHAR(100),
+    IN _Localidad VARCHAR(200),
     IN _FechaNacimiento VARCHAR(100),
     IN _PromedioGeneral FLOAT,
     IN _TipoUsuario VARCHAR(30),
@@ -1439,6 +1441,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_AgregarUsuario`(
 )
 BEGIN
 
+	DECLARE _IdLocalidad INT;
     
     IF courseroom.fn_CampoValido(_CorreoElectronico) = 0 
 		OR courseroom.fn_CampoValido(_Contrasenia) = 0  
@@ -1449,44 +1452,59 @@ BEGIN
             SELECT -1 AS "Codigo", 'Alguno De Los Datos Esta Vacio' AS "Mensaje"; 
     ELSE
 
-        IF NOT EXISTS (SELECT CorreoElectronico FROM tb_usuarios WHERE CorreoElectronico = _CorreoElectronico AND Activo = 1) THEN
+		-- Validar que exista la localidad:
+		SELECT _IdLocalidad = IdLocalidad FROM tb_localidades WHERE Localidad = _Localidad AND Estado = _Estado;
+		
+		-- Si existe la localidad
+		IF _IdLocalidad IS NOT NULL AND _IdLocalidad > -1 THEN
+			
+            -- Validar que no exista el correo:
+			IF NOT EXISTS (SELECT CorreoElectronico FROM tb_usuarios WHERE CorreoElectronico = _CorreoElectronico AND Activo = 1) THEN
             
-			IF _TipoUsuario = 'Estudiante' THEN
-                
-				IF _PromedioGeneral IS NOT NULL THEN
-					IF _PromedioGeneral < 0 OR _PromedioGeneral > 100 THEN
+				IF _TipoUsuario = 'Estudiante' THEN
+					
+					IF _PromedioGeneral IS NOT NULL THEN
+						IF _PromedioGeneral < 0 OR _PromedioGeneral > 100 THEN
+							INSERT INTO tb_usuarios (CorreoElectronico, Contrasenia, Nombre, Paterno, Materno, Genero, FechaNacimiento, 
+							PromedioGeneral, Descripcion, Imagen, IdLocalidad)
+							VALUES (_CorreoElectronico, _Contrasenia, _Nombre, _Paterno, _Materno, _Genero, _FechaNacimiento,
+							_PromedioGeneral, _TipoUsuario, _Descripcion, _Imagen, _IdLocalidad);
+
+							CALL courseroom.sp_ActualizarLocaliidad();
+
+
+							SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+						ELSE
+							SELECT -1 AS "Codigo", 'El Promedio General No Tiene El Formato Adecuado' AS "Mensaje";
+						END IF;
+					ELSE
+					
 						INSERT INTO tb_usuarios (CorreoElectronico, Contrasenia, Nombre, Paterno, Materno, Genero, FechaNacimiento, 
-						PromedioGeneral, Descripcion, Imagen)
+						PromedioGeneral, Descripcion, Imagen, IdLocalidad)
 						VALUES (_CorreoElectronico, _Contrasenia, _Nombre, _Paterno, _Materno, _Genero, _FechaNacimiento,
-						_PromedioGeneral, _TipoUsuario, _Descripcion, _Imagen);
+						NULL, _TipoUsuario, _Descripcion, _Imagen, _IdLocalidad);
 
 						SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
-					ELSE
-						SELECT -1 AS "Codigo", 'El Promedio General No Tiene El Formato Adecuado' AS "Mensaje";
 					END IF;
+					
 				ELSE
-				
 					INSERT INTO tb_usuarios (CorreoElectronico, Contrasenia, Nombre, Paterno, Materno, Genero, FechaNacimiento, 
-					PromedioGeneral, Descripcion, Imagen)
+					PromedioGeneral, Descripcion, Imagen, IdLocalidad)
 					VALUES (_CorreoElectronico, _Contrasenia, _Nombre, _Paterno, _Materno, _Genero, _FechaNacimiento,
-					NULL, _TipoUsuario, _Descripcion, _Imagen);
+					NULL, _TipoUsuario, _Descripcion, _Imagen, IdLocalidad);
 
 					SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+                    
 				END IF;
-				
+
 			ELSE
-				INSERT INTO tb_usuarios (CorreoElectronico, Contrasenia, Nombre, Paterno, Materno, Genero, FechaNacimiento, 
-				PromedioGeneral, Descripcion, Imagen)
-				VALUES (_CorreoElectronico, _Contrasenia, _Nombre, _Paterno, _Materno, _Genero, _FechaNacimiento,
-				NULL, _TipoUsuario, _Descripcion, _Imagen);
-
-				SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
-			END IF;
-
+				SELECT -1 AS "Codigo", 'El Correo Electronico Ya Se Encuentra Registrado' AS "Mensaje";
+			END IF;  
+        
 		ELSE
-			SELECT -1 AS "Codigo", 'El Correo Electronico Ya Se Encuentra Registrado' AS "Mensaje";
-		END IF;  
-       
+			SELECT -1 AS "Codigo", 'La Localidad No Se Encuentra Registrada' AS "Mensaje";
+		END IF;
+
     END IF;
     
 END ;;
@@ -2371,4 +2389,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-23 17:55:56
+-- Dump completed on 2022-03-24 18:42:01

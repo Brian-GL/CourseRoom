@@ -1619,7 +1619,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         String fecha_Nacimiento = CourseRoom.Utilerias.Fecha(fecha_Nacimiento_DatePicker.getDate());
         String descripcion = descripcion_JTextPane.getText();
         @SuppressWarnings("null")
-        Float promedio_General = promedio_General_JFormattedTextField.getValue() == null ? 0.0f : ((Double)promedio_General_JFormattedTextField.getValue()).floatValue();
+        Float promedio_General = promedio_General_JFormattedTextField.getValue() == null ? null : ((Double)promedio_General_JFormattedTextField.getValue()).floatValue();
         String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
         String estado = (String)estado_AutoCompletionComboBox.getSelectedItem();
         String localidad = (String) localidad_AutoCompletionComboBox.getSelectedItem();
