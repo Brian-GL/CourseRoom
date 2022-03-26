@@ -245,11 +245,11 @@ public class Lector_Video_General_Panel extends javax.swing.JFrame implements Li
 
     @Override
     public void Colorear_Componentes() {
-        fondo_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        duracion_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        progreso_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        progreso_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        fondo_JPanel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        duracion_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        progreso_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        progreso_JSlider.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }
 
     @Override
@@ -399,7 +399,7 @@ public class Lector_Video_General_Panel extends javax.swing.JFrame implements Li
                         tiempo = (int) componente_Embebido_Reproductor_Video.mediaPlayer().status().time();
                         conversion_Tiempo = tiempo / 1000;
                         progreso_JSlider.setValue(tiempo);
-                        segundos = CourseRoom.Utilerias.Convertir_Segundos(conversion_Tiempo);
+                        segundos = CourseRoom.Utilerias().Convertir_Segundos(conversion_Tiempo);
                         progreso_JLabel.setText(segundos);
                      }
                 }
@@ -491,7 +491,7 @@ public class Lector_Video_General_Panel extends javax.swing.JFrame implements Li
                 if(longitud < Integer.MAX_VALUE){
                     longitud_Real = (int)longitud;
                     progreso_JSlider.setMaximum(longitud_Real);
-                    duracion_JLabel.setText(CourseRoom.Utilerias.Convertir_Segundos(longitud_Real/1000));
+                    duracion_JLabel.setText(CourseRoom.Utilerias().Convertir_Segundos(longitud_Real/1000));
                     
                 }else{
                     JOptionPane.showMessageDialog(null, "Archivo Demasiado Grande","ERROR",JOptionPane.ERROR_MESSAGE);

@@ -1057,12 +1057,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void continuar_Relevancia_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Relevancia_JButtonMouseEntered
         // TODO add your handling code here:
-        continuar_Relevancia_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        continuar_Relevancia_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_continuar_Relevancia_JButtonMouseEntered
 
     private void continuar_Relevancia_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Relevancia_JButtonMouseExited
         // TODO add your handling code here:
-        continuar_Relevancia_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        continuar_Relevancia_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_continuar_Relevancia_JButtonMouseExited
 
     private void regresar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Curso_JButtonMouseClicked
@@ -1074,12 +1074,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void regresar_Curso_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Curso_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Curso_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Curso_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_Curso_JButtonMouseEntered
 
     private void regresar_Curso_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Curso_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Curso_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        regresar_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_regresar_Curso_JButtonMouseExited
 
     private void continuar_Pensamiento_Reflexivo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Pensamiento_Reflexivo_JButtonMouseClicked
@@ -1091,12 +1091,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void continuar_Pensamiento_Reflexivo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Pensamiento_Reflexivo_JButtonMouseEntered
         // TODO add your handling code here:
-        continuar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        continuar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_continuar_Pensamiento_Reflexivo_JButtonMouseEntered
 
     private void continuar_Pensamiento_Reflexivo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Pensamiento_Reflexivo_JButtonMouseExited
         // TODO add your handling code here:
-        continuar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        continuar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_continuar_Pensamiento_Reflexivo_JButtonMouseExited
 
     private void regresar_Inicio_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_JButtonMouseClicked
@@ -1108,12 +1108,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void regresar_Inicio_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_Inicio_JButtonMouseEntered
 
     private void regresar_Inicio_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_regresar_Inicio_JButtonMouseExited
 
     private void continuar_Interactividad_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interactividad_JButtonMouseClicked
@@ -1125,12 +1125,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void continuar_Interactividad_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interactividad_JButtonMouseEntered
         // TODO add your handling code here:
-        continuar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        continuar_Interactividad_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_continuar_Interactividad_JButtonMouseEntered
 
     private void continuar_Interactividad_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interactividad_JButtonMouseExited
         // TODO add your handling code here:
-        continuar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        continuar_Interactividad_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_continuar_Interactividad_JButtonMouseExited
 
     private void regresar_Relevancia_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Relevancia_JButtonMouseClicked
@@ -1142,12 +1142,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void regresar_Relevancia_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Relevancia_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Relevancia_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Relevancia_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_Relevancia_JButtonMouseEntered
 
     private void regresar_Relevancia_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Relevancia_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Relevancia_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_Relevancia_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_regresar_Relevancia_JButtonMouseExited
 
     private void continuar_Apoyo_Profesor_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Profesor_JButtonMouseClicked
@@ -1159,12 +1159,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void continuar_Apoyo_Profesor_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Profesor_JButtonMouseEntered
         // TODO add your handling code here:
-        continuar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        continuar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_continuar_Apoyo_Profesor_JButtonMouseEntered
 
     private void continuar_Apoyo_Profesor_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Apoyo_Profesor_JButtonMouseExited
         // TODO add your handling code here:
-        continuar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        continuar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_continuar_Apoyo_Profesor_JButtonMouseExited
 
     private void regresar_Pensamiento_Reflexivo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Pensamiento_Reflexivo_JButtonMouseClicked
@@ -1176,12 +1176,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void regresar_Pensamiento_Reflexivo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Pensamiento_Reflexivo_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_Pensamiento_Reflexivo_JButtonMouseEntered
 
     private void regresar_Pensamiento_Reflexivo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Pensamiento_Reflexivo_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        regresar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_regresar_Pensamiento_Reflexivo_JButtonMouseExited
 
     private void continuar_Interpretacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interpretacion_JButtonMouseClicked
@@ -1193,12 +1193,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void continuar_Interpretacion_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interpretacion_JButtonMouseEntered
         // TODO add your handling code here:
-        continuar_Interpretacion_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        continuar_Interpretacion_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_continuar_Interpretacion_JButtonMouseEntered
 
     private void continuar_Interpretacion_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Interpretacion_JButtonMouseExited
         // TODO add your handling code here:
-        continuar_Interpretacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        continuar_Interpretacion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_continuar_Interpretacion_JButtonMouseExited
 
     private void regresar_Interactividad_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Interactividad_JButtonMouseClicked
@@ -1210,18 +1210,18 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void regresar_Interactividad_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Interactividad_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Interactividad_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_Interactividad_JButtonMouseEntered
 
     private void regresar_Interactividad_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Interactividad_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_Interactividad_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_regresar_Interactividad_JButtonMouseExited
 
     private void terminar_Cuestionario_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terminar_Cuestionario_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            JOptionPane.showMessageDialog(this, CourseRoom.Utilerias.Concatenar("Gracias por contestar el cuestionario\n", Perfil_Estudiante_Panel.Nombre_Completo()),
+            JOptionPane.showMessageDialog(this, CourseRoom.Utilerias().Concatenar("Gracias por contestar el cuestionario\n", Perfil_Estudiante_Panel.Nombre_Completo()),
                     "Cuestionario Completado", JOptionPane.INFORMATION_MESSAGE);
 
             Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
@@ -1231,12 +1231,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void terminar_Cuestionario_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terminar_Cuestionario_JButtonMouseEntered
         // TODO add your handling code here:
-        terminar_Cuestionario_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        terminar_Cuestionario_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_terminar_Cuestionario_JButtonMouseEntered
 
     private void terminar_Cuestionario_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terminar_Cuestionario_JButtonMouseExited
         // TODO add your handling code here:
-        terminar_Cuestionario_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        terminar_Cuestionario_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
     }//GEN-LAST:event_terminar_Cuestionario_JButtonMouseExited
 
@@ -1249,19 +1249,19 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
     private void regresar_Apoyo_Profesor_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Profesor_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
 
     }//GEN-LAST:event_regresar_Apoyo_Profesor_JButtonMouseEntered
 
     private void regresar_Apoyo_Profesor_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Apoyo_Profesor_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        regresar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_regresar_Apoyo_Profesor_JButtonMouseExited
 
     private String Descripcion_Cuestionario(String nombre_Curso){
         
-        return CourseRoom.Utilerias.Formato_HTML_Central(
-                CourseRoom.Utilerias.Concatenar("A continuación te pediremos que nos ayudes a contestar este cuestionario final del curso '",
+        return CourseRoom.Utilerias().Formato_HTML_Central(
+                CourseRoom.Utilerias().Concatenar("A continuación te pediremos que nos ayudes a contestar este cuestionario final del curso '",
                         nombre_Curso,"'Esto debido a que requerimos datos para brindarle a todos nuestros usuarios mejores estadísticas e información relevante al tomar un curso o dentro de este.Esperamos no molestarte, te aseguramos no te tomará más de 5 minutos en contestar.De antemano muchas gracias por tu tiempo y por hacer de CourseRoom® un mejor lugar cada día."));
         
     }
@@ -1393,19 +1393,19 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         
         Font segoe = new Font("Segoe UI", Font.PLAIN, 13);
         
-        label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Casi Nunca"));
+        label = new JLabel(CourseRoom.Utilerias().Formato_HTML_Central_Inicio("Casi Nunca"));
         label.setFont(segoe);
         labeles_Impares[0] = labeles_Pares[0] = label;
-        label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Rara Vez"));
+        label = new JLabel(CourseRoom.Utilerias().Formato_HTML_Central_Inicio("Rara Vez"));
         label.setFont(segoe);
         labeles_Impares[1] = labeles_Pares[1] = label;
-        label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Alguna Vez"));
+        label = new JLabel(CourseRoom.Utilerias().Formato_HTML_Central_Inicio("Alguna Vez"));
         label.setFont(segoe);
         labeles_Impares[2] = labeles_Pares[2] = label;
-        label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("A Menudo"));
+        label = new JLabel(CourseRoom.Utilerias().Formato_HTML_Central_Inicio("A Menudo"));
         label.setFont(segoe);
         labeles_Impares[3] = labeles_Pares[3] = label;
-        label = new JLabel(CourseRoom.Utilerias.Formato_HTML_Central_Inicio("Casi Siempre"));
+        label = new JLabel(CourseRoom.Utilerias().Formato_HTML_Central_Inicio("Casi Siempre"));
         label.setFont(segoe);
         labeles_Impares[4] = labeles_Pares[4] = label;
 
@@ -1454,113 +1454,113 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     public void Colorear_Componentes() {
         
         //Inicio
-        logo_Inicio_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        titulo_Inicio_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        informacion_Inicio_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        continuar_Relevancia_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        regresar_Curso_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        logo_Inicio_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
+        titulo_Inicio_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        informacion_Inicio_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
+        continuar_Relevancia_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        regresar_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
         // Relevancia:
-        relevancia_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        relevancia_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        continuar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        cuestionario_Relevancia_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        relevancia_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        relevancia_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        continuar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        cuestionario_Relevancia_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        titulo_Pregunta_Relevancia_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta1_Relevancia_JLabel .setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta2_Relevancia_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta3_Relevancia_JLabel .setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta4_Relevancia_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        titulo_Pregunta_Relevancia_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta1_Relevancia_JLabel .setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta2_Relevancia_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta3_Relevancia_JLabel .setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta4_Relevancia_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
-        respuesta1_Relevancia_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta2_Relevancia_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta3_Relevancia_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta4_Relevancia_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta1_Relevancia_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        respuesta2_Relevancia_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        respuesta3_Relevancia_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        respuesta4_Relevancia_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         //Pensamiento reflexivo:
-        continuar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        regresar_Relevancia_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        continuar_Interactividad_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        regresar_Relevancia_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        pensamiento_Reflexivo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        cuestionario_Pensamiento_Reflexivo_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        pensamiento_Reflexivo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        cuestionario_Pensamiento_Reflexivo_JPanel.setBackground(CourseRoom.Utilerias().Tercer_Color());
 
-        titulo_Pregunta_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta1_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta2_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta3_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta4_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_Pregunta_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        pregunta1_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        pregunta2_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        pregunta3_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        pregunta4_Pensamiento_Reflexivo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 
-        respuesta1_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        respuesta2_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        respuesta3_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        respuesta4_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta1_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        respuesta2_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        respuesta3_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        respuesta4_Pensamiento_Reflexivo_JSlider.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
         //Interactividad:
-        continuar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        regresar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        continuar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        regresar_Pensamiento_Reflexivo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
-        interactividad_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        interactividad_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        cuestionario_Interactividad_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        interactividad_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        interactividad_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        cuestionario_Interactividad_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
-        titulo_Pregunta_Interactividad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta1_Interactividad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta2_Interactividad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta3_Interactividad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta4_Interactividad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        titulo_Pregunta_Interactividad_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta1_Interactividad_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta2_Interactividad_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta3_Interactividad_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta4_Interactividad_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
-        respuesta1_Interactividad_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta2_Interactividad_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta3_Interactividad_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta4_Interactividad_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta1_Interactividad_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        respuesta2_Interactividad_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        respuesta3_Interactividad_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        respuesta4_Interactividad_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         //Apoyo Profesor:
-        continuar_Interpretacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        regresar_Interactividad_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        continuar_Interpretacion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        regresar_Interactividad_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        apoyo_Profesor_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        cuestionario_Apoyo_Profesor_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        apoyo_Profesor_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        cuestionario_Apoyo_Profesor_JPanel.setBackground(CourseRoom.Utilerias().Tercer_Color());
 
-        titulo_Pregunta_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta1_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta2_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta3_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta4_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_Pregunta_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        pregunta1_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        pregunta2_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        pregunta3_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        pregunta4_Apoyo_Profesor_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 
-        respuesta1_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        respuesta2_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        respuesta3_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        respuesta4_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        respuesta1_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        respuesta2_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        respuesta3_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        respuesta4_Apoyo_Profesor_JSlider.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
         //Interpretacion:
-        terminar_Cuestionario_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        regresar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        terminar_Cuestionario_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        regresar_Apoyo_Profesor_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
-        interpretacion_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        cuestionario_Interpretacion_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        interpretacion_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        interpretacion_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        cuestionario_Interpretacion_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
-        titulo_Pregunta_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta1_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta2_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta3_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        pregunta4_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        titulo_Pregunta_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta1_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta2_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta3_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        pregunta4_Interpretacion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
-        respuesta1_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta2_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta3_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        respuesta4_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        respuesta1_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        respuesta2_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        respuesta3_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        respuesta4_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         
         for (JLabel label : labeles_Pares) {
-            label.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+            label.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         }
         
         for (JLabel label : labeles_Impares) {
-            label.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+            label.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         }
         
     }

@@ -391,14 +391,14 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
     private void recargar_Colores_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recargar_Colores_JButtonMouseEntered
         // TODO add your handling code here:
-        recargar_Colores_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        recargar_Colores_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        recargar_Colores_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        recargar_Colores_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_recargar_Colores_JButtonMouseEntered
 
     private void recargar_Colores_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recargar_Colores_JButtonMouseExited
         // TODO add your handling code here:
-        recargar_Colores_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        recargar_Colores_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        recargar_Colores_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        recargar_Colores_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_recargar_Colores_JButtonMouseExited
 
     private void primer_Color_Personalizado_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primer_Color_Personalizado_JLabelMouseClicked
@@ -412,11 +412,11 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
                primer_Color_Fuente_Personalizado = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                primer_Color_Personalizado_JLabel.setBackground(primer_Color_Personalizado);
                primer_Color_Personalizado_JLabel.setForeground(primer_Color_Fuente_Personalizado);
-               primer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(primer_Color_Personalizado));
+               primer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(primer_Color_Personalizado));
                primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), primer_Color_Fuente_Personalizado));
                
-               CourseRoom.Utilerias.Primer_Color(primer_Color_Personalizado);
-               CourseRoom.Utilerias.Primer_Color_Fuente(primer_Color_Fuente_Personalizado);
+               CourseRoom.Utilerias().Primer_Color(primer_Color_Personalizado);
+               CourseRoom.Utilerias().Primer_Color_Fuente(primer_Color_Fuente_Personalizado);
 
                CourseRoom_Frame.Colorear();
                Tablero_Estudiante_Panel.Colorear();
@@ -435,11 +435,11 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
                 segundo_Color_Fuente_Personalizado = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 segundo_Color_Personalizado_JLabel.setBackground(segundo_Color_Personalizado);
                 segundo_Color_Personalizado_JLabel.setForeground(segundo_Color_Fuente_Personalizado);
-                segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(segundo_Color_Personalizado));
+                segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(segundo_Color_Personalizado));
                 segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), segundo_Color_Fuente_Personalizado));
                 
-                CourseRoom.Utilerias.Segundo_Color(segundo_Color_Personalizado);
-                CourseRoom.Utilerias.Segundo_Color_Fuente(segundo_Color_Fuente_Personalizado);
+                CourseRoom.Utilerias().Segundo_Color(segundo_Color_Personalizado);
+                CourseRoom.Utilerias().Segundo_Color_Fuente(segundo_Color_Fuente_Personalizado);
 
                 CourseRoom_Frame.Colorear();
                 Tablero_Estudiante_Panel.Colorear();
@@ -458,11 +458,11 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
                 tercer_Color_Fuente_Personalizado = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 tercer_Color_Personalizado_JLabel.setBackground(tercer_Color_Personalizado);
                 tercer_Color_Personalizado_JLabel.setForeground(tercer_Color_Fuente_Personalizado);
-                tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(tercer_Color_Personalizado));
+                tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(tercer_Color_Personalizado));
                 tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), tercer_Color_Fuente_Personalizado));
                 
-                CourseRoom.Utilerias.Tercer_Color(tercer_Color_Personalizado);
-                CourseRoom.Utilerias.Tercer_Color_Fuente(tercer_Color_Fuente_Personalizado);
+                CourseRoom.Utilerias().Tercer_Color(tercer_Color_Personalizado);
+                CourseRoom.Utilerias().Tercer_Color_Fuente(tercer_Color_Fuente_Personalizado);
                 
                 CourseRoom_Frame.Colorear();
                 Tablero_Estudiante_Panel.Colorear();
@@ -506,14 +506,14 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
     private void eliminar_Cuenta_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseEntered
         // TODO add your handling code here:
-        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseEntered
 
     private void eliminar_Cuenta_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseExited
         // TODO add your handling code here:
-        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseExited
 
     private void desactivar_Activar_Notificaciones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
@@ -525,14 +525,14 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
     private void desactivar_Activar_Notificaciones_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseEntered
         // TODO add your handling code here:
-        desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_desactivar_Activar_Notificaciones_JButtonMouseEntered
 
     private void desactivar_Activar_Notificaciones_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseExited
         // TODO add your handling code here:
-        desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_desactivar_Activar_Notificaciones_JButtonMouseExited
 
     private void permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked
@@ -544,14 +544,14 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
     private void permitir_No_Permitir_Chats_Conmigo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseEntered
         // TODO add your handling code here:
-        permitir_No_Permitir_Chats_Conmigo_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        permitir_No_Permitir_Chats_Conmigo_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseEntered
 
     private void permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
         // TODO add your handling code here:
-        permitir_No_Permitir_Chats_Conmigo_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        permitir_No_Permitir_Chats_Conmigo_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
     private void Agregar_Sesion(String id, String dispositivo, String fabricante, String uuid, 
@@ -577,7 +577,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
         modelo.addRow(celdas);
 
-        int altura = CourseRoom.Utilerias.Altura_Fila_Tabla(uuid.length());
+        int altura = CourseRoom.Utilerias().Altura_Fila_Tabla(uuid.length());
         sesiones_JTable.setRowHeight(modelo.getRowCount()-1, altura);
         
     }
@@ -621,12 +621,12 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             
             
             String dispositivo = System.getProperty("os.name");
-            String fabricante = CourseRoom.Utilerias.getComputerSystem().getManufacturer();
-            String uuid = CourseRoom.Utilerias.getComputerSystem().getHardwareUUID();
-            String ip = CourseRoom.Utilerias.DireccionIP();
-            Boolean estatus = CourseRoom.Utilerias.bool().bool();
+            String fabricante = CourseRoom.Utilerias().getComputerSystem().getManufacturer();
+            String uuid = CourseRoom.Utilerias().getComputerSystem().getHardwareUUID();
+            String ip = CourseRoom.Utilerias().DireccionIP();
+            Boolean estatus = CourseRoom.Utilerias().bool().bool();
             
-            Agregar_Sesion("1",dispositivo, fabricante, uuid, CourseRoom.Utilerias.Fecha_Hora_Local(), ip, estatus);
+            Agregar_Sesion("1",dispositivo, fabricante, uuid, CourseRoom.Utilerias().Fecha_Hora_Local(), ip, estatus);
         } catch (IOException ex) {
             
         }
@@ -638,78 +638,78 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         
         Font fuente = new Font("Segoe UI", 1, 24);
         
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         Carta_Visible();
         
-        primer_Color_Personalizado = CourseRoom.Utilerias.Primer_Color();
-        segundo_Color_Personalizado = CourseRoom.Utilerias.Segundo_Color();
-        tercer_Color_Personalizado = CourseRoom.Utilerias.Tercer_Color();
-        primer_Color_Fuente_Personalizado = CourseRoom.Utilerias.Primer_Color_Fuente();
-        segundo_Color_Fuente_Personalizado = CourseRoom.Utilerias.Segundo_Color_Fuente();
-        tercer_Color_Fuente_Personalizado = CourseRoom.Utilerias.Tercer_Color_Fuente();
+        primer_Color_Personalizado = CourseRoom.Utilerias().Primer_Color();
+        segundo_Color_Personalizado = CourseRoom.Utilerias().Segundo_Color();
+        tercer_Color_Personalizado = CourseRoom.Utilerias().Tercer_Color();
+        primer_Color_Fuente_Personalizado = CourseRoom.Utilerias().Primer_Color_Fuente();
+        segundo_Color_Fuente_Personalizado = CourseRoom.Utilerias().Segundo_Color_Fuente();
+        tercer_Color_Fuente_Personalizado = CourseRoom.Utilerias().Tercer_Color_Fuente();
         
-        recargar_Colores_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        recargar_Colores_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        recargar_Colores_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        recargar_Colores_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
-        desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
-        permitir_No_Permitir_Chats_Conmigo_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        permitir_No_Permitir_Chats_Conmigo_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
-        primer_Color_Personalizado_JLabel.setBackground(CourseRoom.Utilerias.Primer_Color());
-        primer_Color_Personalizado_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        primer_Color_Personalizado_JLabel.setBackground(CourseRoom.Utilerias().Primer_Color());
+        primer_Color_Personalizado_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
 
-        segundo_Color_Personalizado_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        segundo_Color_Personalizado_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        segundo_Color_Personalizado_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        segundo_Color_Personalizado_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
-        tercer_Color_Personalizado_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        tercer_Color_Personalizado_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        tercer_Color_Personalizado_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        tercer_Color_Personalizado_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 
-        primer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Primer_Color()));
-        segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Segundo_Color()));
-        tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias.RGB_Cadena(CourseRoom.Utilerias.Tercer_Color()));
+        primer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Primer_Color()));
+        segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Segundo_Color()));
+        tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Tercer_Color()));
         
         
         BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Primer Color", TitledBorder.CENTER,
-                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Primer_Color_Fuente());
         
         primer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
-        //borde_Linea = new LineBorder(CourseRoom.Utilerias.Tercer_Color(),5);
+        //borde_Linea = new LineBorder(CourseRoom.Utilerias().Tercer_Color(),5);
         borde_Titulo = new TitledBorder(borde_Linea, "Segundo Color", TitledBorder.CENTER,
-                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Segundo_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         segundo_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
-        //borde_Linea = new LineBorder(CourseRoom.Utilerias.Primer_Color(),5);
+        //borde_Linea = new LineBorder(CourseRoom.Utilerias().Primer_Color(),5);
         borde_Titulo = new TitledBorder(borde_Linea, "Tercer Color", TitledBorder.CENTER,
-                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Tercer_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Tercer_Color_Fuente());
         tercer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
-        sesiones_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
-        sesiones_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        sesiones_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
+        sesiones_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        sesiones_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        sesiones_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        sesiones_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        sesiones_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
+        sesiones_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        sesiones_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
         
-        sesiones_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
-        sesiones_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        sesiones_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
+        sesiones_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
         for(int i = 0; i < modelo.getRowCount();i++){
             for(int j = 0; j < modelo.getColumnCount(); j++){
                 celda = (Celda_Renderer)modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
        
@@ -719,19 +719,19 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
     public void Carta_Visible() {
         switch (carta_Visible) {
             case 0:
-                interfaz_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-                sesiones_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-                cuenta_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                interfaz_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+                sesiones_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+                cuenta_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 break;
             case 1:
-                interfaz_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-                sesiones_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-                cuenta_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                interfaz_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+                sesiones_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+                cuenta_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 break;
             case 2:
-                interfaz_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-                sesiones_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-                cuenta_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                interfaz_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+                sesiones_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+                cuenta_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
                 break;
         }
     }

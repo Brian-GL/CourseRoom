@@ -181,12 +181,12 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void Agregar_Aviso(String id, String tipo, String aviso, String fecha){
@@ -245,7 +245,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
             celdas[2] = celda;
             
             modelo.addRow(celdas);
-            avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(aviso.length()));
+            avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(aviso.length()));
             
             imagen.flush();
             
@@ -277,9 +277,9 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         String tipo, aviso, fecha;
         String[] opciones = {"Curso","Tarea","Grupo","Chat","Pregunta","General"};
-        tipo = CourseRoom.Utilerias.options().nextElement(opciones);
-        aviso = CourseRoom.Utilerias.lorem().sentence();
-        fecha = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
+        tipo = CourseRoom.Utilerias().options().nextElement(opciones);
+        aviso = CourseRoom.Utilerias().lorem().sentence();
+        fecha = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
 
         Agregar_Aviso("0",tipo, aviso, fecha);
         
@@ -288,29 +288,29 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
     @Override
     public void Colorear_Componentes() {
       
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
-        avisos_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
-        avisos_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        avisos_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
+        avisos_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        avisos_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        avisos_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
+        avisos_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        avisos_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
         
-        avisos_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
-        avisos_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        avisos_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
+        avisos_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
         for(int i = 0; i < modelo.getRowCount();i++){
             for(int j = 0; j < modelo.getColumnCount(); j++){
                 celda = (Celda_Renderer)modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
     }

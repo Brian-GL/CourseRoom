@@ -332,14 +332,14 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
     @Override
     public void Colorear_Componentes() {
         
-        contenido_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        contenido_JPanel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 
-        duracion_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        progreso_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        progreso_JSlider.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        progreso_JSlider.setBackground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        duracion_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        progreso_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        progreso_JSlider.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        progreso_JSlider.setBackground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }
 
     @Override
@@ -450,7 +450,7 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
                         tiempo = (int)componente_Reproductor_Audio.mediaPlayer().status().time();
                         valor = tiempo / 1000;
                         progreso_JSlider.setValue(tiempo);
-                        segundos = CourseRoom.Utilerias.Convertir_Segundos(valor);
+                        segundos = CourseRoom.Utilerias().Convertir_Segundos(valor);
                         progreso_JLabel.setText(segundos);
                     }
                     
@@ -543,7 +543,7 @@ public class Lector_Audio_General_Frame extends javax.swing.JFrame implements Li
                 if(longitud < Integer.MAX_VALUE){
                     longitud_Real = (int)longitud;
                     progreso_JSlider.setMaximum(longitud_Real);
-                    segundos = CourseRoom.Utilerias.Convertir_Segundos(longitud_Real/1000);
+                    segundos = CourseRoom.Utilerias().Convertir_Segundos(longitud_Real/1000);
                     duracion_JLabel.setText(segundos);
                     
                 }else{

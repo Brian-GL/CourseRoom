@@ -471,7 +471,7 @@ public class Grafo<T>{
             Edge auxiliar = this.front();
 
             while(auxiliar != null){
-                newString =  CourseRoom.Utilerias.Concatenar("[",auxiliar.toString(),"] ");
+                newString =  CourseRoom.Utilerias().Concatenar("[",auxiliar.toString(),"] ");
                     auxiliar = auxiliar.next();
             }
             return newString;

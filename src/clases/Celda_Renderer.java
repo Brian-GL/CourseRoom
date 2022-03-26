@@ -47,7 +47,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         this.id = new String();
         Inicializar_Label();
         texto = _texto;
-        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
+        label.setText(CourseRoom.Utilerias().Formato_HTML_Central(texto));
     }
    
     public Celda_Renderer(String _texto, String _id) {
@@ -55,7 +55,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         id = _id;
         Inicializar_Label();
         texto = _texto;
-        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
+        label.setText(CourseRoom.Utilerias().Formato_HTML_Central(texto));
     }
   
     public Celda_Renderer(ImageIcon icono, String _id) {
@@ -86,7 +86,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
             label.setIcon(icono);
         }
         texto = _texto;
-        label.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
+        label.setText(CourseRoom.Utilerias().Formato_HTML_Central(texto));
     }
     
    
@@ -117,7 +117,7 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setFont(segoe);
-        label.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        label.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
     }
     
     /**

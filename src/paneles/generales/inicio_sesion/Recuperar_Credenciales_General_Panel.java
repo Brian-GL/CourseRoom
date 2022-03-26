@@ -189,39 +189,39 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
 
     private void recuperar_Credenciales_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JButtonMouseEntered
         // TODO add your handling code here:
-        recuperar_Credenciales_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        recuperar_Credenciales_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_recuperar_Credenciales_JButtonMouseEntered
 
     private void recuperar_Credenciales_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JButtonMouseExited
         // TODO add your handling code here:
         
-        recuperar_Credenciales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
+        recuperar_Credenciales_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_recuperar_Credenciales_JButtonMouseExited
 
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            CourseRoom_Frame.Mostrar_Vista("Inicio_Sesion");
+            CourseRoom.Frame().Mostrar_Vista("Inicio_Sesion");
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
 
     private void regresar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_regresar_JButtonMouseEntered
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     public void Recuperar_Credenciales() throws XmlRpcException, IOException {
  
-        if(CourseRoom.Utilerias.Regex_Correo_Electronico_Valido(correo_Electronico_JTextField.getText())){
+        if(CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo_Electronico_JTextField.getText())){
             
-            Boolean respuesta = CourseRoom.Solicitudes.Recuperar_Credenciales(correo_Electronico_JTextField.getText());
+            Boolean respuesta = CourseRoom.Solicitudes().Recuperar_Credenciales(correo_Electronico_JTextField.getText());
             
             if(respuesta){
                  JOptionPane.showMessageDialog(null, """
@@ -271,15 +271,15 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
 
     @Override
     public void Colorear_Componentes() {
-        correo_Electronico_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        frase_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        correo_Electronico_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        correo_Electronico_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        correo_Electronico_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        recuperar_Credenciales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        regresar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
+        correo_Electronico_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        frase_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        correo_Electronico_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        correo_Electronico_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        correo_Electronico_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
+        recuperar_Credenciales_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
     }
     
 

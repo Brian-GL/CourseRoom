@@ -249,7 +249,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     private void recuperar_Credenciales_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            CourseRoom_Frame.Mostrar_Vista("Recuperar_Credenciales");  
+            CourseRoom.Frame().Mostrar_Vista("Recuperar_Credenciales");  
         }
            
     }//GEN-LAST:event_recuperar_Credenciales_JLabelMouseClicked
@@ -257,7 +257,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     private void crear_Cuenta_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JLabelMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            CourseRoom_Frame.Mostrar_Vista("Crear_Cuenta");
+            CourseRoom.Frame().Mostrar_Vista("Crear_Cuenta");
         }
     }//GEN-LAST:event_crear_Cuenta_JLabelMouseClicked
 
@@ -270,15 +270,15 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
 
     private void iniciar_Sesion_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciar_Sesion_JButtonMouseEntered
         // TODO add your handling code here:
-        iniciar_Sesion_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        iniciar_Sesion_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        iniciar_Sesion_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        iniciar_Sesion_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_iniciar_Sesion_JButtonMouseEntered
 
     private void iniciar_Sesion_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciar_Sesion_JButtonMouseExited
         // TODO add your handling code here:
         
-        iniciar_Sesion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        iniciar_Sesion_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
+        iniciar_Sesion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        iniciar_Sesion_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_iniciar_Sesion_JButtonMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -314,7 +314,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         
         try {
             System.out.println("Login -> Getting Image From CourseRoom Server");
-            byte[] respuesta = CourseRoom.Solicitudes.Imagen_Inicio_Sesion();
+            byte[] respuesta = CourseRoom.Solicitudes().Imagen_Inicio_Sesion();
             try(ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(respuesta)){
                 BufferedImage obtener_Imagen = ImageIO.read(byteArrayInputStream);
 
@@ -339,45 +339,45 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
 
     @Override
     public void Colorear_Componentes() {
-        correo_Electronico_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        contrasena_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        correo_Electronico_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        correo_Electronico_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        correo_Electronico_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
+        correo_Electronico_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        contrasena_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        correo_Electronico_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        correo_Electronico_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        correo_Electronico_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
         
-        contrasena_JPasswordField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        contrasena_JPasswordField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        contrasena_JPasswordField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
+        contrasena_JPasswordField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        contrasena_JPasswordField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        contrasena_JPasswordField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
         
-        recuperar_Credenciales_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        crear_Cuenta_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        recuperar_Credenciales_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        crear_Cuenta_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        recuperar_Credenciales_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color());
-        crear_Cuenta_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color());
+        recuperar_Credenciales_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color());
+        crear_Cuenta_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color());
         
-        marca_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        marca_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
         
-        iniciar_Sesion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        iniciar_Sesion_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
+        iniciar_Sesion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        iniciar_Sesion_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
         
-        mostrar_Contrasena_JCheckBox.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        imagen_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        mostrar_Contrasena_JCheckBox.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        imagen_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
     }
     
     public void validar_Correo(String correo) {
         
-        if(CourseRoom.Utilerias.Regex_Correo_Electronico_Valido(correo)) {
+        if(CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo)) {
 
-            CourseRoom.Utilerias.Esconder_Frame();
+            CourseRoom.Esconder_Frame();
             //Estudiante:
-            CourseRoom_Frame.Mostrar_Tablero(true);
+            CourseRoom.Frame().Mostrar_Tablero(true);
             //Profesor:
-            //CourseRoom_Frame.Mostrar_Tablero(false);
+            //CourseRoom.Frame().Mostrar_Tablero(false);
 
             correo_Electronico_JTextField.setText("");
             contrasena_JPasswordField.setText("");
             
-            CourseRoom.Utilerias.Mostrar_Frame();
+            CourseRoom.Mostrar_Frame();
         } else {
             getToolkit().beep();
             JOptionPane.showMessageDialog(this, "El Correo Electrónico \n*" + correo + "*\nNo Es Valido");
@@ -390,8 +390,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     public void verificar_Campos() {
         String password = String.valueOf(contrasena_JPasswordField.getPassword());
         // Checa Los Campos Vacíos.
-        if (password.isEmpty()
-                || password.isBlank()){
+        if (password.isEmpty() || password.isBlank()){
             getToolkit().beep();
             // Si Los Campos Estan Vacíos Manda Mensaje De Error.
             JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios", "Error de Contenido", WIDTH);

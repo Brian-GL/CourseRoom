@@ -236,12 +236,12 @@ public class Fechas_General_Panel extends JScrollPane implements Limpieza_Interf
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     public void Crear_Calendario() {
@@ -434,28 +434,28 @@ public class Fechas_General_Panel extends JScrollPane implements Limpieza_Interf
 
     @Override
     public void Colorear_Componentes() {
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 
-        mes_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mes_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
-        lunes_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        martes_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        miercoles_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        jueves_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        viernes_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        sabado_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        domingo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        lunes_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        martes_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        miercoles_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        jueves_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        viernes_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        sabado_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        domingo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 
-        lunes_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        martes_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        miercoles_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        jueves_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        viernes_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        sabado_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        domingo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        lunes_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        martes_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        miercoles_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        jueves_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        viernes_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        sabado_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        domingo_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
         this.Limpiar();
         

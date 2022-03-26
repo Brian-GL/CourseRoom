@@ -114,19 +114,19 @@ public class Fecha_General_Panel extends javax.swing.JPanel implements Component
     }// </editor-fold>//GEN-END:initComponents
 
     public void Establecer_Primer_Color(){
-        numero_Dia_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        hora_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        contenido_JPanel.setBackground(CourseRoom.Utilerias.Primer_Color());
-        contenido_JPanel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        numero_Dia_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
+        hora_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias().Primer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
     }
     
     public void Establecer_Segundo_Color(){
-        numero_Dia_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        hora_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        contenido_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        contenido_JPanel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        numero_Dia_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        hora_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        contenido_JPanel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }
     
     public void Establecer_Tercer_Color(){
@@ -145,12 +145,12 @@ public class Fecha_General_Panel extends javax.swing.JPanel implements Component
     public void Iniciar_Componentes() {
         
         String concatenacion = 
-        CourseRoom.Utilerias.Concatenar(String.valueOf(CourseRoom.Utilerias.number().randomNumber(1, true)),
-                ":",String.valueOf(CourseRoom.Utilerias.number().randomNumber(2, false))," P.M");
+        CourseRoom.Utilerias().Concatenar(String.valueOf(CourseRoom.Utilerias().number().randomNumber(1, true)),
+                ":",String.valueOf(CourseRoom.Utilerias().number().randomNumber(2, false))," P.M");
         hora_JLabel.setText(concatenacion);
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        descripcion_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Centro(CourseRoom.Utilerias.lorem().paragraph(2)));
+        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Centro(CourseRoom.Utilerias().lorem().paragraph(2)));
         descripcion_JTextPane.setCaretPosition(0);
         
         Colorear_Componentes();
@@ -159,11 +159,11 @@ public class Fecha_General_Panel extends javax.swing.JPanel implements Component
 
     @Override
     public void Colorear_Componentes() {
-        numero_Dia_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        hora_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        contenido_JPanel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        contenido_JPanel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        numero_Dia_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        hora_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        contenido_JPanel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }
 
     

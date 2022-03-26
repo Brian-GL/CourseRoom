@@ -328,12 +328,12 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void tareas_Creadas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_Creadas_JButtonMouseClicked
@@ -350,7 +350,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         try {
             Celda_Renderer[] celdas = new Celda_Renderer[5];
-            String fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
+            String fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
             Celda_Renderer celda;
             URL url_Imagen;
             Image imagen;
@@ -481,21 +481,21 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         _id = "Tarea_Por_Calificar_0";
         ruta_Imagen_Curso = "https://picsum.photos/96/96";
         ruta_Imagen_Estudiante = "https://i.pravatar.cc/96";
-        nombre_Tarea = CourseRoom.Utilerias.job().title();
-        nombre_Curso = CourseRoom.Utilerias.educator().course();
-        nombre_Estudiante = CourseRoom.Utilerias.name().fullName();
-        fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
-        fecha_Entregado = CourseRoom.Utilerias.Fecha_Hora_Local();
-        fecha_Entrega = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
+        nombre_Tarea = CourseRoom.Utilerias().job().title();
+        nombre_Curso = CourseRoom.Utilerias().educator().course();
+        nombre_Estudiante = CourseRoom.Utilerias().name().fullName();
+        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
+        fecha_Entregado = CourseRoom.Utilerias().Fecha_Hora_Local();
+        fecha_Entrega = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
         Agregar_Tarea_Por_Calificar(nombre_Tarea, ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Estudiante,
                 nombre_Estudiante, fecha_Creacion, fecha_Entregado, fecha_Entrega, _id);
 
         _id = "Tarea_Creada_0";
 
-        nombre_Tarea = CourseRoom.Utilerias.university().name();
-        nombre_Curso = CourseRoom.Utilerias.educator().course();
-        fecha_Entrega = CourseRoom.Utilerias.Fecha_Hora(CourseRoom.Utilerias.date().birthday(22, 23));
-        estatus = CourseRoom.Utilerias.bool().bool() ? "Asignada" : "Completada";
+        nombre_Tarea = CourseRoom.Utilerias().university().name();
+        nombre_Curso = CourseRoom.Utilerias().educator().course();
+        fecha_Entrega = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
+        estatus = CourseRoom.Utilerias().bool().bool() ? "Asignada" : "Completada";
 
         Agregar_Tarea_Creada(nombre_Tarea,ruta_Imagen_Curso, nombre_Curso, fecha_Entrega, estatus, _id);
             
@@ -504,44 +504,44 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
     @Override
     public void Colorear_Componentes() {
 
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
-        tareas_Por_Calificar_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
-        tareas_Por_Calificar_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        tareas_Por_Calificar_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
+        tareas_Por_Calificar_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        tareas_Por_Calificar_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        tareas_Por_Calificar_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        tareas_Por_Calificar_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        tareas_Por_Calificar_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
+        tareas_Por_Calificar_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        tareas_Por_Calificar_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
         
-        tareas_Por_Calificar_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
-        tareas_Por_Calificar_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        tareas_Por_Calificar_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
+        tareas_Por_Calificar_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
-        tareas_Creadas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
-        tareas_Creadas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        tareas_Creadas_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
+        tareas_Creadas_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        tareas_Creadas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        tareas_Creadas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        tareas_Creadas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        tareas_Creadas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
+        tareas_Creadas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        tareas_Creadas_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
         
-        tareas_Creadas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
-        tareas_Creadas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        tareas_Creadas_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
+        tareas_Creadas_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < modelo.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
         
         for (int i = 0; i < modelo_Tareas_Creadas.getRowCount(); i++) {
             for (int j = 0; j < modelo_Tareas_Creadas.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo_Tareas_Creadas.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
         
@@ -575,13 +575,13 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         switch(carta_Visible){
             case 0:
                 titulo_JLabel.setText("Tareas Por Calificar");
-                tareas_Por_Calificar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-                tareas_Creadas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                tareas_Por_Calificar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+                tareas_Creadas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
             break;
             case 1:
                 titulo_JLabel.setText("Tareas Creadas");
-                tareas_Por_Calificar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-                tareas_Creadas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                tareas_Por_Calificar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+                tareas_Creadas_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
             break;
         }
     }

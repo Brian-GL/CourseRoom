@@ -57,7 +57,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             String genero_Chat, String tipo_Perfil, Lista<String> intereses_Tematicas) {
         initComponents();
         
-        titulo_JLabel.setText(CourseRoom.Utilerias.Concatenar(nombres_Chat, " ",apellidos_Chat));
+        titulo_JLabel.setText(CourseRoom.Utilerias().Concatenar(nombres_Chat, " ",apellidos_Chat));
         genero_JLabel.setText(genero_Chat);
         tipo_Perfil_JLabel.setText(tipo_Perfil);
         apellidos_JLabel.setText(apellidos_Chat);
@@ -270,7 +270,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                             if(celda.Tiene_Icono()){
                                 String extension = FilenameUtils.getExtension(celda.Texto());
                                 String ruta = celda.ID();
-                                CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());
+                                CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
                             }
                         }
 
@@ -511,12 +511,12 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
     private void regresar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseEntered
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
@@ -528,12 +528,12 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
     private void enviar_Archivo_Chat_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseEntered
         // TODO add your handling code here:
-        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseEntered
 
     private void enviar_Archivo_Chat_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseExited
         // TODO add your handling code here:
-        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseExited
 
     private void informacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacion_JButtonMouseClicked
@@ -563,12 +563,12 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void redactar_Mensaje_Chat_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
@@ -587,14 +587,14 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
     private void eliminar_Chat_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Chat_JButtonMouseEntered
         // TODO add your handling code here:
-        eliminar_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        eliminar_Chat_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_eliminar_Chat_JButtonMouseEntered
 
     private void eliminar_Chat_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Chat_JButtonMouseExited
         // TODO add your handling code here:
-        eliminar_Chat_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        eliminar_Chat_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_eliminar_Chat_JButtonMouseExited
 
     private void Agregar_Interes_Tematica(String id, String interes_Tematica){
@@ -607,7 +607,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         celdas[0] = celda;
         modelo.addRow(celdas);
         
-        intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(interes_Tematica.length()));
+        intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
         
     }
     
@@ -663,70 +663,70 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
     @Override
     public void Colorear_Componentes() {
         
-        titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
        
         
         Carta_Visible();
         
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
-        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
         
-        redactar_Mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias.Primer_Color());
-        redactar_Mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        enviar_Mensaje_Chat_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        redactar_Mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias().Primer_Color());
+        redactar_Mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
+        enviar_Mensaje_Chat_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
-        nombres_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        nombres_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        imagen_Perfil_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        apellidos_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        apellidos_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        correo_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        genero_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        tipo_Perfil_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        nombres_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        nombres_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        imagen_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
+        apellidos_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        apellidos_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        correo_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
+        genero_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
+        tipo_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
 
-        intereses_Tematicas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
-        intereses_Tematicas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        intereses_Tematicas_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
+        intereses_Tematicas_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        intereses_Tematicas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
+        intereses_Tematicas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        intereses_Tematicas_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
         
-        intereses_Tematicas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
-        intereses_Tematicas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        intereses_Tematicas_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
+        intereses_Tematicas_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < modelo.getRowCount(); i++) {
             celda = (Celda_Renderer) modelo.getValueAt(i, 0);
-            celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+            celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
         }
 
-        mensajes_Chat_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
-        mensajes_Chat_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        mensajes_Chat_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
+        mensajes_Chat_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        mensajes_Chat_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
+        mensajes_Chat_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        mensajes_Chat_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
         
-        mensajes_Chat_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
-        mensajes_Chat_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mensajes_Chat_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
+        mensajes_Chat_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         for(int i = 0; i < modelo.getRowCount();i++){
             for(int j = 0; j < modelo.getColumnCount(); j++){
                 celda = (Celda_Renderer)modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
         
-        eliminar_Chat_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        eliminar_Chat_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }
     
     @Override
@@ -735,7 +735,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         String mensaje = redactar_Mensaje_Chat_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
             String emisor = Perfil_Profesor_Panel.Nombre_Completo();
-            String fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
+            String fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
             Celda_Renderer[] celdas = new Celda_Renderer[3];
   
             Celda_Renderer celda;
@@ -748,7 +748,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
-                    CourseRoom.Utilerias.Altura_Fila_Tabla(mensaje.length()));
+                    CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
             
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
@@ -779,7 +779,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                         ruta = archivo_Abierto.getAbsolutePath();
                         nombre_Archivo = archivo_Abierto.getName();
                         emisor = Perfil_Profesor_Panel.Nombre_Completo();
-                        fecha = CourseRoom.Utilerias.Fecha_Hora_Local();
+                        fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
                         
                         celda = new Celda_Renderer(emisor);
                         celdas[0] = celda;
@@ -790,7 +790,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                         
                         modelo.addRow(celdas);
                         
-                        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(nombre_Archivo.length()));
+                        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
                     }
                     
                     icono.flush();
@@ -815,11 +815,11 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
     @Override
     public void Carta_Visible() {
         if(!carta_Visible){
-            chat_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-            informacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+            chat_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+            informacion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         }else{
-            chat_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-            informacion_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+            chat_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+            informacion_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         }
     }
     

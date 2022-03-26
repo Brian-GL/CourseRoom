@@ -7,29 +7,36 @@ package datos.estructuras;
 
 import java.util.Objects;
 
-public class Par<A,B> implements Comparable<Par<A,B>>{
+public class Tripleta<A,B,C> implements Comparable<Tripleta<A,B,C>>{
     
     private A _first_element;
     private B _second_element;
+    private C _third_element;
     private Comparing<A> _first_comparing;
     private Comparing<B> _second_comparing;
+    private Comparing<C> _third_comparing;
     
-    public Par(A first, B second){
+    public Tripleta(A first, B second, C third){
         this._first_element = first;
         this._second_element = second;
+        this._third_element = third;
         _first_comparing = new Comparing<>();
         _second_comparing = new Comparing<>();
+        _third_comparing = new Comparing<>();
     }
     
-    public Par(Par<A,B> doublet){
+    public Tripleta(Tripleta<A,B,C> triplet){
         
-        if(doublet != null){
-            this._first_element = doublet.first();
-            this._second_element = doublet.second();
+        if(triplet != null){
+            this._first_element = triplet.first();
+            this._second_element = triplet.second();
+            this._third_element = triplet.third();
         }
         
         _first_comparing = new Comparing<>();
         _second_comparing = new Comparing<>();
+        _third_comparing = new Comparing<>();
+        
     }
 
     /**
@@ -59,6 +66,20 @@ public class Par<A,B> implements Comparable<Par<A,B>>{
     public void second(B second) {
         this._second_element = second;
     }
+    
+    /**
+     * @return the third
+     */
+    public C third() throws NullPointerException{
+        return  _third_element;
+    }
+
+    /**
+     * @param third the third to set
+     */
+    public void third(C third) {
+        this._third_element = third;
+    }
 
     @Override
     public String toString() throws NullPointerException{
@@ -81,10 +102,10 @@ public class Par<A,B> implements Comparable<Par<A,B>>{
         if (this == obj) 
             return true;
 
-        if (!(obj instanceof Par<?,?>)) 
+        if (!(obj instanceof Tripleta<?,?,?>)) 
             return false; 
         
-        Par<A, B> other = (Par<A, B>) obj;
+        Tripleta<A, B,C> other = (Tripleta<A, B,C>) obj;
         
         return this._first_element.equals(other.first()) && this._second_element.equals(other.second());
             
@@ -95,12 +116,16 @@ public class Par<A,B> implements Comparable<Par<A,B>>{
             
     }
 
-    public int compare_first(Par<A,B> doublet){
-        return (doublet != null) ?  _first_comparing.compare(this._first_element, doublet.first()) : 1;
+    public int compare_first(Tripleta<A,B,C> triplet){
+        return (triplet != null) ?  _first_comparing.compare(this._first_element, triplet.first()) : 1;
     }
     
-    public int conpare_second(Par<A,B> doublet){
-        return (doublet != null) ?  _second_comparing.compare(this._second_element, doublet.second()) : 1;
+    public int conpare_second(Tripleta<A,B,C> triplet){
+        return (triplet != null) ?  _second_comparing.compare(this._second_element, triplet.second()) : 1;
+    }
+    
+    public int conpare_third(Tripleta<A,B,C> triplet){
+        return (triplet != null) ?  _third_comparing.compare(this._third_element, triplet.third()) : 1;
     }
     
     public int compare_first(A value){
@@ -110,17 +135,23 @@ public class Par<A,B> implements Comparable<Par<A,B>>{
     public int compare_second(B value){
         return  _second_comparing.compare(this._second_element, value);
     }
+    
+    public int compare_third(C value){
+        return  _third_comparing.compare(this._third_element, value);
+    }
 
     @Override
-    public int compareTo(Par<A, B> o) {
-        return  compare_first(o.first()) + compare_second(o.second());
+    public int compareTo(Tripleta<A, B,C> o) {
+        return  compare_first(o.first()) + compare_second(o.second()) + compare_third(o.third());
     }
     
     public void dispose(){
         this._first_comparing = null;
         this._second_comparing = null;
+        this._third_comparing = null;
         this._first_element = null;
         this._second_element = null;
+        this._third_element = null;
     
     }
 

@@ -125,7 +125,7 @@ public final class Acerca_General_Panel extends javax.swing.JPanel implements Co
                         tasked with doing various specific tasks, such as generating random computers, send notifications to users, generate and obtain statistics and 
                        relevant information about students and teachers within the courses, among others.<br><br>CourseRoom - All Rights Reserved<br><br>""";
         
-        descripcion_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Central(texto));
+        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Central(texto));
         
         Image logo_Imagen;
         try {
@@ -143,9 +143,9 @@ public final class Acerca_General_Panel extends javax.swing.JPanel implements Co
     @Override
     public void Colorear_Componentes() {
         
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        descripcion_JTextPane.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }
 }

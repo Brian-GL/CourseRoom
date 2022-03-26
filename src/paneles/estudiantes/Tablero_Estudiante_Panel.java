@@ -482,14 +482,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void menu_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_JButtonMouseEntered
         // TODO add your handling code here:
-        menu_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        menu_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        menu_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        menu_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_menu_JButtonMouseEntered
 
     private void menu_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_JButtonMouseExited
         // TODO add your handling code here:
-        menu_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        menu_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        menu_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        menu_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_menu_JButtonMouseExited
 
     private void stats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stats_JButtonMouseClicked
@@ -501,14 +501,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void stats_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stats_JButtonMouseEntered
         // TODO add your handling code here:
-        stats_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        stats_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        stats_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        stats_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_stats_JButtonMouseEntered
 
     private void stats_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stats_JButtonMouseExited
         // TODO add your handling code here:
-        stats_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        stats_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        stats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        stats_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_stats_JButtonMouseExited
 
     private void cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_JButtonMouseClicked
@@ -520,14 +520,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void cursos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_JButtonMouseEntered
         // TODO add your handling code here:
-        cursos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        cursos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        cursos_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        cursos_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_cursos_JButtonMouseEntered
 
     private void cursos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_JButtonMouseExited
         // TODO add your handling code here:
-        cursos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        cursos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        cursos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        cursos_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_cursos_JButtonMouseExited
 
     private void tareas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_JButtonMouseClicked
@@ -540,14 +540,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void tareas_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_JButtonMouseEntered
         // TODO add your handling code here:
-        tareas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        tareas_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        tareas_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        tareas_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_tareas_JButtonMouseEntered
 
     private void tareas_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_JButtonMouseExited
         // TODO add your handling code here:
-        tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        tareas_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        tareas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        tareas_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_tareas_JButtonMouseExited
 
     private void fechas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechas_JButtonMouseClicked
@@ -559,14 +559,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void fechas_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechas_JButtonMouseEntered
         // TODO add your handling code here:
-        fechas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        fechas_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        fechas_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        fechas_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_fechas_JButtonMouseEntered
 
     private void fechas_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechas_JButtonMouseExited
         // TODO add your handling code here:
-        fechas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        fechas_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        fechas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        fechas_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_fechas_JButtonMouseExited
 
     private void avisos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_avisos_JButtonMouseClicked
@@ -578,14 +578,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void avisos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_avisos_JButtonMouseEntered
         // TODO add your handling code here:
-        avisos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        avisos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        avisos_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        avisos_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_avisos_JButtonMouseEntered
 
     private void avisos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_avisos_JButtonMouseExited
         // TODO add your handling code here:
-        avisos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        avisos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        avisos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        avisos_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_avisos_JButtonMouseExited
 
     private void grupos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grupos_JButtonMouseClicked
@@ -597,14 +597,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void grupos_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grupos_JButtonMouseEntered
         // TODO add your handling code here:
-        grupos_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        grupos_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        grupos_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        grupos_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_grupos_JButtonMouseEntered
 
     private void grupos_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grupos_JButtonMouseExited
         // TODO add your handling code here:
-        grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        grupos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        grupos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        grupos_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_grupos_JButtonMouseExited
 
     private void chats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chats_JButtonMouseClicked
@@ -616,14 +616,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void chats_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chats_JButtonMouseEntered
         // TODO add your handling code here:
-        chats_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        chats_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        chats_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        chats_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_chats_JButtonMouseEntered
 
     private void chats_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chats_JButtonMouseExited
         // TODO add your handling code here:
-        chats_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        chats_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        chats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        chats_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_chats_JButtonMouseExited
 
     private void reproductor_Musica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reproductor_Musica_JButtonMouseClicked
@@ -635,14 +635,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void reproductor_Musica_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reproductor_Musica_JButtonMouseEntered
         // TODO add your handling code here:
-        reproductor_Musica_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        reproductor_Musica_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        reproductor_Musica_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        reproductor_Musica_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_reproductor_Musica_JButtonMouseEntered
 
     private void reproductor_Musica_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reproductor_Musica_JButtonMouseExited
         // TODO add your handling code here:
-        reproductor_Musica_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        reproductor_Musica_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        reproductor_Musica_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        reproductor_Musica_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_reproductor_Musica_JButtonMouseExited
 
     private void acerca_De_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acerca_De_JButtonMouseClicked
@@ -654,14 +654,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void acerca_De_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acerca_De_JButtonMouseEntered
         // TODO add your handling code here:
-        acerca_De_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        acerca_De_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        acerca_De_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        acerca_De_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_acerca_De_JButtonMouseEntered
 
     private void acerca_De_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acerca_De_JButtonMouseExited
         // TODO add your handling code here:
-        acerca_De_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        acerca_De_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        acerca_De_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        acerca_De_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_acerca_De_JButtonMouseExited
 
     private void ajustes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustes_JButtonMouseClicked
@@ -673,35 +673,35 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void ajustes_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustes_JButtonMouseEntered
         // TODO add your handling code here:
-        ajustes_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        ajustes_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        ajustes_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        ajustes_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_ajustes_JButtonMouseEntered
 
     private void ajustes_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustes_JButtonMouseExited
         // TODO add your handling code here:
-        ajustes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        ajustes_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        ajustes_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        ajustes_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_ajustes_JButtonMouseExited
 
     private void salir_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salir_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            CourseRoom_Frame.Cerrar_Sesion();
+            CourseRoom.Frame().Cerrar_Sesion();
             this.Limpiar();
         }
     }//GEN-LAST:event_salir_JButtonMouseClicked
 
     private void salir_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salir_JButtonMouseEntered
         // TODO add your handling code here:
-        salir_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        salir_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        salir_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        salir_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_salir_JButtonMouseEntered
 
     private void salir_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salir_JButtonMouseExited
         // TODO add your handling code here:
-        salir_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        salir_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        salir_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        salir_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_salir_JButtonMouseExited
 
     private void preguntas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntas_JButtonMouseClicked
@@ -713,14 +713,14 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     private void preguntas_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntas_JButtonMouseEntered
         // TODO add your handling code here:
-        preguntas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        preguntas_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        preguntas_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        preguntas_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_preguntas_JButtonMouseEntered
 
     private void preguntas_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntas_JButtonMouseExited
         // TODO add your handling code here:
-        preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        preguntas_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        preguntas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        preguntas_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_preguntas_JButtonMouseExited
 
    
@@ -757,7 +757,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += CourseRoom.Utilerias.number().numberBetween(1,largo_Imagen);
+                    i += CourseRoom.Utilerias().number().numberBetween(1,largo_Imagen);
                 }
 
                 segundo_Color = primer_Color;
@@ -766,12 +766,12 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                 if(lista_Colores.size() > 1){
                     
                     while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Utilerias.number().numberBetween(0,lista_Colores.size()-1);
+                        posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 25){
                              while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Utilerias.number().numberBetween(0,lista_Colores.size()-1);
+                                posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
@@ -784,12 +784,12 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                     iteraciones = 0;
                     
                     while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Utilerias.number().numberBetween(0,lista_Colores.size()-1);
+                        posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
                         tercer_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 50){
                             while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Utilerias.number().numberBetween(0,lista_Colores.size()-1);
+                                posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
                                 tercer_Color = lista_Colores.get(posicion).second();
                             }
                             break;
@@ -805,12 +805,12 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                 tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 lista_Colores.clear();
                 
-                CourseRoom.Utilerias.Primer_Color(primer_Color);
-                CourseRoom.Utilerias.Segundo_Color(segundo_Color);
-                CourseRoom.Utilerias.Tercer_Color(tercer_Color);
-                CourseRoom.Utilerias.Primer_Color_Fuente(primer_Color_Fuente);
-                CourseRoom.Utilerias.Segundo_Color_Fuente(segundo_Color_Fuente);
-                CourseRoom.Utilerias.Tercer_Color_Fuente(tercer_Color_Fuente);
+                CourseRoom.Utilerias().Primer_Color(primer_Color);
+                CourseRoom.Utilerias().Segundo_Color(segundo_Color);
+                CourseRoom.Utilerias().Tercer_Color(tercer_Color);
+                CourseRoom.Utilerias().Primer_Color_Fuente(primer_Color_Fuente);
+                CourseRoom.Utilerias().Segundo_Color_Fuente(segundo_Color_Fuente);
+                CourseRoom.Utilerias().Tercer_Color_Fuente(tercer_Color_Fuente);
 
                 CourseRoom_Frame.Colorear(); 
                 Colorear();
@@ -825,36 +825,36 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     
     public static void Colorear(){
          
-        acerca_De_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        ajustes_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        avisos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        chats_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        cursos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        fechas_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        grupos_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        stats_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        reproductor_Musica_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        salir_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        tareas_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        imagen_Perfil_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        preguntas_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        acerca_De_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        ajustes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        avisos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        chats_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        cursos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        fechas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        grupos_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        stats_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        reproductor_Musica_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        salir_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        tareas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        preguntas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        menu_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        menu_JButton.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        acerca_De_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        ajustes_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        avisos_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        chats_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        cursos_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        fechas_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        grupos_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        stats_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        reproductor_Musica_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        salir_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        tareas_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        imagen_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        preguntas_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        acerca_De_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        ajustes_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        avisos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        chats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        cursos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        fechas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        grupos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        stats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        reproductor_Musica_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        salir_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        tareas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        preguntas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        menu_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        menu_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
-        mensaje_Bienvenida_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        mensaje_Bienvenida_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
        
         perfil_Panel.Colorear_Componentes();
         avisos_Panel.Colorear_Componentes();
@@ -996,7 +996,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             cursos_Panel = new Cursos_Estudiante_Panel();
             visualizador_JPanel.add("Cursos", cursos_Panel);
             
-            mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias.Concatenar("Bienvenid@ ", Perfil_Estudiante_Panel.Nombre_Completo()));
+            mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias().Concatenar("Bienvenid@ ", Perfil_Estudiante_Panel.Nombre_Completo()));
             
             tiempo_Servidor = new Tiempo_Servidor();
             tiempo_Servidor.start();
@@ -1025,7 +1025,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         public void run(){
             try {
                 LocalDateTime fecha_Hora_Servidor;
-                Vector<Integer> respuesta = CourseRoom.Solicitudes.Fecha_Hora_Servidor();
+                Vector<Integer> respuesta = CourseRoom.Solicitudes().Fecha_Hora_Servidor();
                 
                 fecha_Hora_Servidor = (respuesta.capacity() > 0) ? 
                         LocalDateTime.of(respuesta.elementAt(0),respuesta.elementAt(1),
@@ -1037,7 +1037,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                 while(fecha_Hora_Servidor != null){
                                      
                     fecha_Hora_Servidor = fecha_Hora_Servidor.plusSeconds(1);
-                    tiempo = fecha_Hora_Servidor.format(CourseRoom.Utilerias.Formato_Fecha());
+                    tiempo = fecha_Hora_Servidor.format(CourseRoom.Utilerias().Formato_Fecha());
                     tiempo = tiempo.toUpperCase();
                     fecha_Hora_Servidor_JLabel.setText(tiempo);
                     Thread.sleep(1000);

@@ -36,9 +36,7 @@ import org.apache.xmlrpc.XmlRpcException;
 
 public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componentes_Interface, Limpieza_Interface, Validaciones_Interface{
 
-    /**
-     * Creates new form Crear_Cuenta_Panel
-     */
+  
     public Crear_Cuenta_General_Panel() {
         initComponents();
         
@@ -932,29 +930,29 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void continuar_Autenticacion_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Autenticacion_JButtonMouseEntered
         // TODO add your handling code here:
-        continuar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        continuar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_continuar_Autenticacion_JButtonMouseEntered
 
     private void continuar_Autenticacion_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Autenticacion_JButtonMouseExited
         // TODO add your handling code here:
-        continuar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        continuar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_continuar_Autenticacion_JButtonMouseExited
 
     private void regresar_Inicio_Sesion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_Sesion_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            CourseRoom_Frame.Mostrar_Vista("Inicio_Sesion");
+            CourseRoom.Frame().Mostrar_Vista("Inicio_Sesion");
         }
     }//GEN-LAST:event_regresar_Inicio_Sesion_JButtonMouseClicked
 
     private void regresar_Inicio_Sesion_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_Sesion_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Inicio_Sesion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_Inicio_Sesion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_regresar_Inicio_Sesion_JButtonMouseEntered
 
     private void regresar_Inicio_Sesion_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_Sesion_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Inicio_Sesion_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Inicio_Sesion_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_Inicio_Sesion_JButtonMouseExited
 
     private void regresar_Inicio_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_JButtonMouseClicked
@@ -966,12 +964,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void regresar_Inicio_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_regresar_Inicio_JButtonMouseEntered
 
     private void regresar_Inicio_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_Inicio_JButtonMouseExited
 
     private void continuar_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Datos_Personales_JButtonMouseClicked
@@ -983,12 +981,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void continuar_Datos_Personales_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Datos_Personales_JButtonMouseEntered
         // TODO add your handling code here:
-        continuar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        continuar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_continuar_Datos_Personales_JButtonMouseEntered
 
     private void continuar_Datos_Personales_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Datos_Personales_JButtonMouseExited
         // TODO add your handling code here:
-        continuar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        continuar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_continuar_Datos_Personales_JButtonMouseExited
 
     private void continuar_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Perfil_JButtonMouseClicked
@@ -1000,12 +998,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void continuar_Perfil_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Perfil_JButtonMouseEntered
         // TODO add your handling code here:
-        continuar_Perfil_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        continuar_Perfil_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_continuar_Perfil_JButtonMouseEntered
 
     private void continuar_Perfil_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Perfil_JButtonMouseExited
         // TODO add your handling code here:
-        continuar_Perfil_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        continuar_Perfil_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_continuar_Perfil_JButtonMouseExited
 
     private void regresar_Autenticacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Autenticacion_JButtonMouseClicked
@@ -1017,12 +1015,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void regresar_Autenticacion_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Autenticacion_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_regresar_Autenticacion_JButtonMouseEntered
 
     private void regresar_Autenticacion_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Autenticacion_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_Autenticacion_JButtonMouseExited
 
     private void cargar_Imagen_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Imagen_Perfil_JButtonMouseClicked
@@ -1056,14 +1054,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void cargar_Imagen_Perfil_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Imagen_Perfil_JButtonMouseEntered
         // TODO add your handling code here:
-        cargar_Imagen_Perfil_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        cargar_Imagen_Perfil_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        cargar_Imagen_Perfil_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        cargar_Imagen_Perfil_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_cargar_Imagen_Perfil_JButtonMouseEntered
 
     private void cargar_Imagen_Perfil_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Imagen_Perfil_JButtonMouseExited
         // TODO add your handling code here:
-        cargar_Imagen_Perfil_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        cargar_Imagen_Perfil_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
+        cargar_Imagen_Perfil_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        cargar_Imagen_Perfil_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_cargar_Imagen_Perfil_JButtonMouseExited
 
     private void regresar_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Datos_Personales_JButtonMouseClicked
@@ -1075,12 +1073,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void regresar_Datos_Personales_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Datos_Personales_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_regresar_Datos_Personales_JButtonMouseEntered
 
     private void regresar_Datos_Personales_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Datos_Personales_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_Datos_Personales_JButtonMouseExited
 
     private void continuar_Informacion_Extra_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Informacion_Extra_JButtonMouseClicked
@@ -1111,12 +1109,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void continuar_Informacion_Extra_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Informacion_Extra_JButtonMouseEntered
         // TODO add your handling code here:
-        continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_continuar_Informacion_Extra_JButtonMouseEntered
 
     private void continuar_Informacion_Extra_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Informacion_Extra_JButtonMouseExited
         // TODO add your handling code here:
-        continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_continuar_Informacion_Extra_JButtonMouseExited
 
     private void crear_Cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JButtonMouseClicked
@@ -1128,12 +1126,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void crear_Cuenta_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JButtonMouseEntered
         // TODO add your handling code here:
-        crear_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        crear_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_crear_Cuenta_JButtonMouseEntered
 
     private void crear_Cuenta_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JButtonMouseExited
         // TODO add your handling code here:
-        crear_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        crear_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_crear_Cuenta_JButtonMouseExited
 
     private void regresar_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Perfil_JButtonMouseClicked
@@ -1145,12 +1143,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void regresar_Perfil_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Perfil_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_Perfil_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_Perfil_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_regresar_Perfil_JButtonMouseEntered
 
     private void regresar_Perfil_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Perfil_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_Perfil_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        regresar_Perfil_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_regresar_Perfil_JButtonMouseExited
 
     private void agregar_Interes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_JButtonMouseClicked
@@ -1168,14 +1166,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void agregar_Interes_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_JButtonMouseEntered
         // TODO add your handling code here:
-        agregar_Interes_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        agregar_Interes_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        agregar_Interes_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        agregar_Interes_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_agregar_Interes_JButtonMouseEntered
 
     private void agregar_Interes_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_JButtonMouseExited
         // TODO add your handling code here:
-        agregar_Interes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        agregar_Interes_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
+        agregar_Interes_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        agregar_Interes_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_agregar_Interes_JButtonMouseExited
 
     private void nombres_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombres_JTextFieldKeyTyped
@@ -1282,7 +1280,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             
             if (Password.equals(Password2)) {
                 // Si Todo Esta Bien Llamamos A La Función "Validar Correo".
-                var valor = CourseRoom.Utilerias.Regex_Correo_Electronico_Valido(correo_JTextField.getText().trim());
+                var valor = CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo_JTextField.getText().trim());
                 if(!valor){
                     JOptionPane.showMessageDialog(this, "Correo No Valido", "NO", WIDTH);
                 }else{
@@ -1326,7 +1324,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             celdas[1] = celda;
             modelo.addRow(celdas);
             
-            intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias.Altura_Fila_Tabla(interes_Tematica.length()));
+            intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
             
             icono.flush();
         } catch (IOException ex) {
@@ -1339,7 +1337,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         localidad_AutoCompletionComboBox.removeAllItems();
         try {
             //Obtener localidades:
-            Vector<String> localidades = CourseRoom.Solicitudes.Obtener_Localidades_Por_Estado(estado);
+            Vector<String> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
             
             for(String localidad : localidades){
                 localidad_AutoCompletionComboBox.addItem(localidad);
@@ -1468,7 +1466,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
             //Obtener estados:
-            Vector<String> estados = CourseRoom.Solicitudes.Obtener_Estados();
+            Vector<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
 
             for(String estado : estados){
                 estado_AutoCompletionComboBox.addItem(estado);
@@ -1488,116 +1486,116 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     @Override
     public void Colorear_Componentes() {
-        informacion_Inicio_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        logo_Inicio_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_Inicio_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        continuar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        regresar_Inicio_Sesion_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        correo_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        correo_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        correo_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        contrasenia_Autenticacion_JPasswordField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        contrasenia_Autenticacion_JPasswordField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        contrasenia_Autenticacion_JPasswordField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        repetir_Contrasenia_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        repetir_Contrasenia_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        repetir_Contrasenia_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        correo_Electronico_Autenticacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        logo_Autenticacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        contrasena_Autenticacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        repetir_Contrasena_Autenticacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_Autenticacion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        continuar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        apellido_Paterno_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        apellido_Paterno_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        apellido_Paterno_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        apellido_Materno_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        apellido_Materno_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        apellido_Materno_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        genero_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        genero_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        genero_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        localidad_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        localidad_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias.Primer_Color());
-        estado_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        estado_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias.Primer_Color());
-        nombres_JTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        nombres_JTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        nombres_JTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        apellido_Paterno_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        apellido_Materno_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        fecha_Nacimiento_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        genero_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        localidad_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        estado_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        logo_Datos_Personales_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        nombres_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_Datos_Personales_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        continuar_Perfil_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        regresar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        informacion_Inicio_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        logo_Inicio_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_Inicio_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        continuar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        regresar_Inicio_Sesion_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        correo_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        correo_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        correo_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
+        contrasenia_Autenticacion_JPasswordField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        contrasenia_Autenticacion_JPasswordField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        contrasenia_Autenticacion_JPasswordField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
+        repetir_Contrasenia_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        repetir_Contrasenia_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        repetir_Contrasenia_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
+        correo_Electronico_Autenticacion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        logo_Autenticacion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        contrasena_Autenticacion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        repetir_Contrasena_Autenticacion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_Autenticacion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        continuar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        regresar_Inicio_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        apellido_Paterno_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        apellido_Paterno_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        apellido_Paterno_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
+        apellido_Materno_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        apellido_Materno_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        apellido_Materno_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
+        genero_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        genero_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        genero_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
+        localidad_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        localidad_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias().Primer_Color());
+        estado_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        estado_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias().Primer_Color());
+        nombres_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        nombres_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        nombres_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
+        apellido_Paterno_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        apellido_Materno_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        fecha_Nacimiento_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        genero_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        localidad_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        estado_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        logo_Datos_Personales_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        nombres_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_Datos_Personales_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        continuar_Perfil_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        regresar_Autenticacion_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
 
         fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.CalendarBackgroundNormalDates,
-                CourseRoom.Utilerias.Segundo_Color());
+                CourseRoom.Utilerias().Segundo_Color());
         fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.CalendarTextNormalDates,
-                CourseRoom.Utilerias.Primer_Color());
+                CourseRoom.Utilerias().Primer_Color());
         fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextMonthAndYearMenuLabels,
-                CourseRoom.Utilerias.Primer_Color());
+                CourseRoom.Utilerias().Primer_Color());
         fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextMonthAndYearMenuLabels,
-                CourseRoom.Utilerias.Primer_Color());
+                CourseRoom.Utilerias().Primer_Color());
         fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.BackgroundCalendarPanelLabelsOnHover,
-                CourseRoom.Utilerias.Segundo_Color());
+                CourseRoom.Utilerias().Segundo_Color());
         fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.BackgroundMonthAndYearNavigationButtons,
-                CourseRoom.Utilerias.Primer_Color());
+                CourseRoom.Utilerias().Primer_Color());
         fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextMonthAndYearNavigationButtons,
-                CourseRoom.Utilerias.Segundo_Color());
+                CourseRoom.Utilerias().Segundo_Color());
         fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextCalendarPanelLabelsOnHover,
-                CourseRoom.Utilerias.Primer_Color());
+                CourseRoom.Utilerias().Primer_Color());
         
-        cargar_Imagen_Perfil_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        cargar_Imagen_Perfil_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
-        tipo_Perfil_JComboBox.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        tipo_Perfil_JComboBox.setForeground(CourseRoom.Utilerias.Primer_Color());
-        imagen_Perfil_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        logo_Perfil_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        tipo_Perfil_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_Perfil_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        regresar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        cargar_Imagen_Perfil_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        cargar_Imagen_Perfil_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
+        tipo_Perfil_JComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        tipo_Perfil_JComboBox.setForeground(CourseRoom.Utilerias().Primer_Color());
+        imagen_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        logo_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        tipo_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        regresar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
         
-        descripcion_JTextPane.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color());
-        descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        descripcion_JScrollPane.setForeground(CourseRoom.Utilerias.Primer_Color());
-        promedio_General_JFormattedTextField.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        promedio_General_JFormattedTextField.setForeground(CourseRoom.Utilerias.Primer_Color());
-        promedio_General_JFormattedTextField.setCaretColor(CourseRoom.Utilerias.Primer_Color());
-        intereses_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        intereses_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias.Primer_Color());
-        agregar_Interes_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        agregar_Interes_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
-        descripcion_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        promedio_General_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_Informacion_Extra_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        intereses_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        crear_Cuenta_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        regresar_Perfil_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
+        descripcion_JTextPane.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Primer_Color());
+        descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias().Primer_Color());
+        descripcion_JScrollPane.setForeground(CourseRoom.Utilerias().Primer_Color());
+        promedio_General_JFormattedTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        promedio_General_JFormattedTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
+        promedio_General_JFormattedTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
+        intereses_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        intereses_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias().Primer_Color());
+        agregar_Interes_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        agregar_Interes_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
+        descripcion_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        promedio_General_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_Informacion_Extra_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        intereses_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        crear_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        regresar_Perfil_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
         
-        intereses_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Segundo_Color());
-        intereses_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        intereses_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        intereses_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Segundo_Color());
+        intereses_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        intereses_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < modelo.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Color_Azul_Claro());
+                celda.Color_Fuente(CourseRoom.Utilerias().Color_Azul_Claro());
             }
         }
         
-        mostrar_Contrasena_JCheckBox.setForeground(CourseRoom.Utilerias.Segundo_Color());
-        mostrar_Repetir_Contrasena_JCheckBox.setForeground(CourseRoom.Utilerias.Segundo_Color());
+        mostrar_Contrasena_JCheckBox.setForeground(CourseRoom.Utilerias().Segundo_Color());
+        mostrar_Repetir_Contrasena_JCheckBox.setForeground(CourseRoom.Utilerias().Segundo_Color());
         
     }
     
@@ -1611,12 +1609,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     public void Validar_Campos() {
         
         String correoElectronico = correo_JTextField.getText();
-        String contrasena = CourseRoom.Utilerias.Codificacion(contrasenia_Autenticacion_JPasswordField.toString());
+        String contrasena = CourseRoom.Utilerias().Codificacion(contrasenia_Autenticacion_JPasswordField.toString());
         String nombre = nombres_JTextField.getText();
         String paterno = apellido_Paterno_JTextField.getText();
         String materno = apellido_Materno_JTextField.getText();
         String genero = genero_JTextField.getText();
-        String fecha_Nacimiento = CourseRoom.Utilerias.Fecha(fecha_Nacimiento_DatePicker.getDate());
+        String fecha_Nacimiento = CourseRoom.Utilerias().Fecha(fecha_Nacimiento_DatePicker.getDate());
         String descripcion = descripcion_JTextPane.getText();
         @SuppressWarnings("null")
         Float promedio_General = promedio_General_JFormattedTextField.getValue() == null ? null : ((Double)promedio_General_JFormattedTextField.getValue()).floatValue();
@@ -1625,9 +1623,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         String localidad = (String) localidad_AutoCompletionComboBox.getSelectedItem();
         
         try {
-            byte[] imagenBytes = CourseRoom.Utilerias.Bytes_Imagen(((ImageIcon)imagen_Perfil_JLabel.getIcon()).getImage());
+            byte[] imagenBytes = CourseRoom.Utilerias().Bytes_Imagen(((ImageIcon)imagen_Perfil_JLabel.getIcon()).getImage());
             
-            Vector<Object> response = CourseRoom.Solicitudes.Agregar_Usuario(correoElectronico, contrasena, nombre, paterno, materno, genero, estado, localidad, fecha_Nacimiento, promedio_General, tipo_Usuario, descripcion, imagenBytes);
+            Vector<Object> response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena, nombre, paterno, materno, genero, estado, localidad, fecha_Nacimiento, promedio_General, tipo_Usuario, descripcion, imagenBytes);
             
             if(response.capacity() == 2){
             
@@ -1636,11 +1634,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 
                 if(codigo > 0){
 
-                    CourseRoom.Utilerias.Esconder_Frame();
+                    CourseRoom.Esconder_Frame();
 
-                    CourseRoom_Frame.Mostrar_Tablero(tipo_Usuario.equals("Estudiante"));
+                    CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"));
 
-                    CourseRoom.Utilerias.Mostrar_Frame();
+                    CourseRoom.Mostrar_Frame();
                 }else{
                     JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
                 }

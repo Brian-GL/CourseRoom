@@ -240,22 +240,22 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void crear_Curso_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Curso_JButtonMouseEntered
         // TODO add your handling code here:
-        crear_Curso_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        crear_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_crear_Curso_JButtonMouseEntered
 
     private void crear_Curso_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Curso_JButtonMouseExited
         // TODO add your handling code here:
-        crear_Curso_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        crear_Curso_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_crear_Curso_JButtonMouseExited
 
     private void Agregar_Curso_Actual(String id, byte[] imagen_Curso, String nombre_Curso,
@@ -383,10 +383,10 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         
         id = "Curso_Creado_1";
         
-        nombre_Curso =  CourseRoom.Utilerias.educator().course();
-        fecha_Creacion = CourseRoom.Utilerias.Fecha_Hora_Local();
-        intereses_Tematicas = CourseRoom.Utilerias.lorem().words(5).toString();
-        inscripciones = String.valueOf(CourseRoom.Utilerias.number().numberBetween(0, 100));
+        nombre_Curso =  CourseRoom.Utilerias().educator().course();
+        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
+        intereses_Tematicas = CourseRoom.Utilerias().lorem().words(5).toString();
+        inscripciones = String.valueOf(CourseRoom.Utilerias().number().numberBetween(0, 100));
         
         Agregar_Curso_Actual(id, response, nombre_Curso, intereses_Tematicas, fecha_Creacion, inscripciones);
 
@@ -397,28 +397,28 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
     public void Colorear_Componentes() {
         
         //Titulo cursos:
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
-        crear_Curso_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        crear_Curso_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        cursos_Creados_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
-        cursos_Creados_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        cursos_Creados_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
+        cursos_Creados_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        cursos_Creados_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        cursos_Creados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        cursos_Creados_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        cursos_Creados_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
+        cursos_Creados_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        cursos_Creados_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
         
-        cursos_Creados_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
-        cursos_Creados_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        cursos_Creados_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
+        cursos_Creados_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < modelo.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
         

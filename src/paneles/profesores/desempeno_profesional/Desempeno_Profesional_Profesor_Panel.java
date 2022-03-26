@@ -293,12 +293,12 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private XYDataset createDataset() {  
@@ -306,31 +306,31 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
 
         //Boys (Age,weight) series  
         XYSeries series1 = new XYSeries("Boys");  
-        series1.add(1, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
-        series1.add(2, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
-        series1.add(3, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
-        series1.add(4, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
-        series1.add(5, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
-        series1.add(6, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
-        series1.add(7, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
-        series1.add(8, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
-        series1.add(9, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
-        series1.add(10, CourseRoom.Utilerias.number().randomDouble(2, 1,100));
+        series1.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+        series1.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+        series1.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+        series1.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+        series1.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+        series1.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+        series1.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+        series1.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+        series1.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+        series1.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
 
         dataset.addSeries(series1);  
 
         //Girls (Age,weight) series  
         XYSeries series2 = new XYSeries("Girls");  
-        series2.add(1, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        series2.add(2, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        series2.add(3, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        series2.add(4, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        series2.add(5, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        series2.add(6, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        series2.add(7, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        series2.add(8, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        series2.add(9, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        series2.add(10, CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
+        series2.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        series2.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        series2.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        series2.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        series2.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        series2.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        series2.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        series2.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        series2.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        series2.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
 
         dataset.addSeries(series2);  
         
@@ -430,12 +430,12 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         boolean rumbo;
        
         ruta_Imagen_Curso = "https://picsum.photos/96/96";
-        nombre_Curso = CourseRoom.Utilerias.educator().course();
-        numero_Tareas_Calificadas = String.valueOf(CourseRoom.Utilerias.number().numberBetween(1, 10));
-        promedio_Curso = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        promedio_General = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        prediccion = String.valueOf(CourseRoom.Utilerias.number().randomDouble(2, 1, 100));
-        rumbo = CourseRoom.Utilerias.bool().bool();
+        nombre_Curso = CourseRoom.Utilerias().educator().course();
+        numero_Tareas_Calificadas = String.valueOf(CourseRoom.Utilerias().number().numberBetween(1, 10));
+        promedio_Curso = String.valueOf(CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        promedio_General = String.valueOf(CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        prediccion = String.valueOf(CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+        rumbo = CourseRoom.Utilerias().bool().bool();
 
         Agregar_Estadistica(ruta_Imagen_Curso, nombre_Curso, numero_Tareas_Calificadas, promedio_Curso, promedio_General, prediccion, rumbo);
 
@@ -501,30 +501,30 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
     @Override
     public void Colorear_Componentes() {
         
-        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         Carta_Visible();
         
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        estadisticas_JTable.setBackground(CourseRoom.Utilerias.Primer_Color());
-        estadisticas_JTable.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        estadisticas_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
+        estadisticas_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias.Tercer_Color());
-        estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        estadisticas_JTable.setGridColor(CourseRoom.Utilerias.Segundo_Color());
+        estadisticas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
+        estadisticas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        estadisticas_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
         
-        estadisticas_JTable.setSelectionBackground(CourseRoom.Utilerias.Segundo_Color());
-        estadisticas_JTable.setSelectionForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        estadisticas_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
+        estadisticas_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < modelo.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
-                celda.Color_Fuente(CourseRoom.Utilerias.Primer_Color_Fuente());
+                celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
        
@@ -540,19 +540,19 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
     public void Carta_Visible() {
         switch (carta_Visible) {
             case 0:
-                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 break;
             case 1:
-                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 break;
             case 2:
-                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+                estadisticas_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
                 break;
         }
     }

@@ -139,14 +139,14 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
 
     private void calificar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calificar_JButtonMouseEntered
         // TODO add your handling code here:
-        calificar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        calificar_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        calificar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        calificar_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_calificar_JButtonMouseEntered
 
     private void calificar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calificar_JButtonMouseExited
         // TODO add your handling code here:
-        calificar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        calificar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        calificar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        calificar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
     }//GEN-LAST:event_calificar_JButtonMouseExited
 
     private void cerrar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseClicked
@@ -158,14 +158,14 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
 
     private void cerrar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseEntered
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        cerrar_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        cerrar_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_cerrar_JButtonMouseEntered
 
     private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseExited
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        cerrar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        cerrar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
     }//GEN-LAST:event_cerrar_JButtonMouseExited
 
 
@@ -185,7 +185,7 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
         calificacion_JFormattedTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Calificación (0 - 100)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+                gadugi, CourseRoom.Utilerias().Tercer_Color_Fuente()));
         
        
         Colorear_Componentes();
@@ -194,16 +194,16 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
     @Override
     public void Colorear_Componentes() {
         
-        calificacion_JFormattedTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        calificacion_JFormattedTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        calificacion_JFormattedTextField.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        calificacion_JFormattedTextField.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
-        contenido_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        cerrar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        cerrar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        cerrar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        calificar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        calificar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        calificar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        calificar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
                
     }
 }

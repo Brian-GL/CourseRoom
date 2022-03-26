@@ -140,14 +140,14 @@ public class Estudiante_Frame extends javax.swing.JDialog implements Componentes
 
     private void preguntar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseEntered
         // TODO add your handling code here:
-        preguntar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        preguntar_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        preguntar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        preguntar_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_preguntar_JButtonMouseEntered
 
     private void preguntar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseExited
         // TODO add your handling code here:
-        preguntar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        preguntar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        preguntar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        preguntar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
     }//GEN-LAST:event_preguntar_JButtonMouseExited
 
     private void cerrar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseClicked
@@ -159,14 +159,14 @@ public class Estudiante_Frame extends javax.swing.JDialog implements Componentes
 
     private void cerrar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseEntered
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        cerrar_JButton.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        cerrar_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_cerrar_JButtonMouseEntered
 
     private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_JButtonMouseExited
         // TODO add your handling code here:
-        cerrar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        cerrar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        cerrar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
     }//GEN-LAST:event_cerrar_JButtonMouseExited
 
 
@@ -188,12 +188,12 @@ public class Estudiante_Frame extends javax.swing.JDialog implements Componentes
         pregunta_JTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Pregunta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+                gadugi, CourseRoom.Utilerias().Tercer_Color_Fuente()));
         
         descripcion_Pregunta_JScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
                 "Descripcion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                gadugi, CourseRoom.Utilerias.Tercer_Color_Fuente()));
+                gadugi, CourseRoom.Utilerias().Tercer_Color_Fuente()));
         
         descripcion_Pregunta_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         descripcion_Pregunta_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -204,24 +204,24 @@ public class Estudiante_Frame extends javax.swing.JDialog implements Componentes
     @Override
     public void Colorear_Componentes() {
         
-        descripcion_Pregunta_JScrollPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        descripcion_Pregunta_JScrollPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_Pregunta_JScrollPane.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        descripcion_Pregunta_JScrollPane.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
-        descripcion_Pregunta_JTextPane.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        descripcion_Pregunta_JTextPane.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        descripcion_Pregunta_JTextPane.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        descripcion_Pregunta_JTextPane.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        descripcion_Pregunta_JTextPane.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        descripcion_Pregunta_JTextPane.setCaretColor(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
-        pregunta_JTextField.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        pregunta_JTextField.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        pregunta_JTextField.setCaretColor(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        pregunta_JTextField.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        pregunta_JTextField.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        pregunta_JTextField.setCaretColor(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
-        contenido_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        contenido_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        cerrar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        cerrar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        cerrar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        preguntar_JButton.setBackground(CourseRoom.Utilerias.Primer_Color());
-        preguntar_JButton.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        preguntar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        preguntar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
                
     }
 }

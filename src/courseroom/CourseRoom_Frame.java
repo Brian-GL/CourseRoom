@@ -33,18 +33,22 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     private static Tablero_Estudiante_Panel tablero_Estudiante;
     private static Tablero_Profesor_Panel tablero_Profesor;
 
-    /**
-     * Creates new form MainFrame
-     */
+    public static CourseRoom_Frame getInstance() {
+        return CourseRoom_FrameHolder.INSTANCE;
+    }
+
+    private static class CourseRoom_FrameHolder {
+        private static final CourseRoom_Frame INSTANCE = new CourseRoom_Frame();
+    }
+    
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public CourseRoom_Frame() {
+    private CourseRoom_Frame() {
 
         initComponents();
-        
-        this.setLocationRelativeTo(null);
-        this.setExtendedState(MAXIMIZED_BOTH);
-        
+        setLocationRelativeTo(null);
+        setExtendedState(MAXIMIZED_BOTH);
         Iniciar_Componentes();
+        setVisible(true);
 
     }
 
@@ -61,8 +65,8 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         visualizador_JPanel = new JPanel(){
             @Override
             protected void paintComponent(Graphics g){
-                if(CourseRoom.Utilerias.Primer_Color() != null && CourseRoom.Utilerias.Segundo_Color() != null
-                    && CourseRoom.Utilerias.Tercer_Color() != null){
+                if(CourseRoom.Utilerias().Primer_Color() != null && CourseRoom.Utilerias().Segundo_Color() != null
+                    && CourseRoom.Utilerias().Tercer_Color() != null){
                     super.paintComponent(g);
                     Graphics2D g2d = (Graphics2D)g;
                     int w = getWidth();
@@ -72,12 +76,12 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
                     // Vertical
                     GradientPaint gp = new GradientPaint(
                         0, 0, transparente,
-                        0, h, CourseRoom.Utilerias.Primer_Color());
+                        0, h, CourseRoom.Utilerias().Primer_Color());
 
                     // Horizontal
                     GradientPaint gp2 = new GradientPaint(
-                        0, 0, CourseRoom.Utilerias.Tercer_Color(),
-                        w, 0, CourseRoom.Utilerias.Segundo_Color());
+                        0, 0, CourseRoom.Utilerias().Tercer_Color(),
+                        w, 0, CourseRoom.Utilerias().Segundo_Color());
 
                     g2d.setPaint(gp2);
                     g2d.fillRect(0, 0, w, h);
@@ -113,7 +117,7 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
-    public static void Mostrar_Tablero(boolean tipo_Tablero) {
+    public void Mostrar_Tablero(boolean tipo_Tablero) {
         if(tipo_Tablero){
             tablero_Estudiante = new Tablero_Estudiante_Panel();
             visualizador_JPanel.add("Tablero", tablero_Estudiante);
@@ -127,23 +131,13 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         }
     }
     
-    public static void Mostrar_Vista(String llave) {
+    public void Mostrar_Vista(String llave) {
         ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, llave);
     }
 
-    public static void Cerrar_Sesion() {
+    public void Cerrar_Sesion() {
         
-        if(tablero_Estudiante != null){
-            tablero_Estudiante.Limpiar();
-        }
-        
-        if(tablero_Profesor != null){
-            tablero_Profesor.Limpiar();
-        }
-        
-        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().stop();
-        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().clear();
-        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().release();
+        this.Limpiar();
         
         System.gc();
         System.exit(0);
@@ -154,8 +148,6 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         visualizador_JPanel.repaint();
     }
     
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JPanel visualizador_JPanel;
     // End of variables declaration//GEN-END:variables
@@ -178,7 +170,7 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
             Crear_Cuenta_General_Panel crear_Cuenta = new Crear_Cuenta_General_Panel();
             visualizador_JPanel.add("Crear_Cuenta", crear_Cuenta);
             
-            if (!CourseRoom.Utilerias.Comprobar_Conexion_Internet()) {
+            if (!CourseRoom.Utilerias().Comprobar_Conexion_Internet()) {
 
                 JOptionPane.showMessageDialog(null,"Mmmm...\nLo Sentimos Pero Al Parecer No Tienes Conexión A Internet","Error",JOptionPane.ERROR_MESSAGE);
                 this.Limpiar();
@@ -194,7 +186,7 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
 
     @Override
     public void Colorear_Componentes() {
-        visualizador_JPanel.setBackground(CourseRoom.Utilerias.Primer_Color());
+        visualizador_JPanel.setBackground(CourseRoom.Utilerias().Primer_Color());
     }
     
     @Override
@@ -207,9 +199,9 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
             tablero_Profesor.Limpiar();
         }
         
-        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().stop();
-        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().clear();
-        CourseRoom.Utilerias.Componente_Reproducto_Lista_Audio().release();
+        CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().stop();
+        CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().clear();
+        CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().release();
         super.dispose();
     }
     

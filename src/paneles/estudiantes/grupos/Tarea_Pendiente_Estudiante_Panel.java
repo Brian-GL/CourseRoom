@@ -47,9 +47,9 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         ImageIcon icono = new ImageIcon(miembro_A_Cargo);
         miembro_A_Cargo_JLabel.setIcon(icono);
         nombre_Miembro_A_Cargo_JLabel.setText(nombre_Miembro_A_Cargo);
-        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias.Formato_HTML_Central(CourseRoom.Utilerias.Concatenar("Creada El ",fecha_Creacion)));
-        fecha_Finalizacion_JLabel.setText(CourseRoom.Utilerias.Formato_HTML_Central(CourseRoom.Utilerias.Concatenar("Fecha A Finalizar: ",fecha_Finalizacion)));
-        descripcion_JTextPane.setText(CourseRoom.Utilerias.Formato_HTML_Izquierda(descripcion));
+        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creada El ",fecha_Creacion)));
+        fecha_Finalizacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Fecha A Finalizar: ",fecha_Finalizacion)));
+        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(descripcion));
         
         estatus_Tarea_JComboBox.setSelectedItem(estatus);
         
@@ -256,12 +256,12 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
     private void regresar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseEntered
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_regresar_JButtonMouseEntered
 
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
-        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
@@ -273,12 +273,12 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
     private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseEntered
 
     private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
         // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
 
@@ -309,31 +309,31 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
     @Override
     public void Colorear_Componentes() {
         
-        titulo_JPanel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        titulo_JLabel.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
-        titulo_JLabel.setBackground(CourseRoom.Utilerias.Tercer_Color());
+        titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        titulo_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
-        regresar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
-        actualizar_JButton.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        regresar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
         Font fuente = new Font("Segoe UI", 1, 18);
         BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Descripción", TitledBorder.CENTER,
-                TitledBorder.TOP,  fuente, CourseRoom.Utilerias.Primer_Color_Fuente());
+                TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Primer_Color_Fuente());
 
         descripcion_JScrollPane.setBorder(borde_Titulo);
         
-        descripcion_JTextPane.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        nombre_Miembro_A_Cargo_JLabel.setForeground(CourseRoom.Utilerias.Segundo_Color_Fuente());
-        nombre_Miembro_A_Cargo_JLabel.setBackground(CourseRoom.Utilerias.Segundo_Color());
+        nombre_Miembro_A_Cargo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        nombre_Miembro_A_Cargo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        estatus_Tarea_JComboBox.setBackground(CourseRoom.Utilerias.Tercer_Color());
-        estatus_Tarea_JComboBox.setForeground(CourseRoom.Utilerias.Tercer_Color_Fuente());
+        estatus_Tarea_JComboBox.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        estatus_Tarea_JComboBox.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
-        fecha_Creacion_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
-        fecha_Finalizacion_JLabel.setForeground(CourseRoom.Utilerias.Primer_Color_Fuente());
+        fecha_Creacion_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
+        fecha_Finalizacion_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
     }
 }
