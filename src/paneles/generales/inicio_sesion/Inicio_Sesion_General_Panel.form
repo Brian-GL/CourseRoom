@@ -147,6 +147,9 @@
               <Dimension value="[430, 45]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="contrasena_JPasswordFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="correo_Electronico_JLabel">
           <Properties>
@@ -179,6 +182,9 @@
               <Dimension value="[430, 45]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="correo_Electronico_JTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="iniciar_Sesion_JButton">
           <Properties>

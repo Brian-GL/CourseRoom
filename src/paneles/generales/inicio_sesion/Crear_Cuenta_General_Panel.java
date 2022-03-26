@@ -764,6 +764,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         descripcion_JTextPane.setToolTipText("<html>\n<h3>Ingresa Tu Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
+        descripcion_JTextPane.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                descripcion_JTextPaneKeyTyped(evt);
+            }
+        });
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         intereses_JLabel.setText("Intereses");
@@ -1179,25 +1184,29 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void nombres_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombres_JTextFieldKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if (Character.isDigit(c)) {
-            getToolkit().beep();
-            evt.consume();
+            if (Character.isDigit(c)) {
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
         }
         int longitud = nombres_JTextField.getText().length();
-        if(longitud > 30){
+            if(longitud > 29){
             nombres_JTextField.setText(nombres_JTextField.getText().substring(0,longitud-1));
+            getToolkit().beep(); 
+            evt.consume();
         }
     }//GEN-LAST:event_nombres_JTextFieldKeyTyped
 
     private void apellido_Paterno_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellido_Paterno_JTextFieldKeyTyped
         char c = evt.getKeyChar();
         if (Character.isDigit(c)) {
-            getToolkit().beep();
-            evt.consume();
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
         }
         int longitud = apellido_Paterno_JTextField.getText().length();
-        if(longitud > 30){
+        if(longitud > 29){
             apellido_Paterno_JTextField.setText(apellido_Paterno_JTextField.getText().substring(0,longitud-1));
+            getToolkit().beep();
+            evt.consume();
         }
     }//GEN-LAST:event_apellido_Paterno_JTextFieldKeyTyped
 
@@ -1205,12 +1214,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         if (Character.isDigit(c)) {
-            getToolkit().beep();
-            evt.consume();
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
         }
         int longitud = apellido_Materno_JTextField.getText().length();
-        if(longitud > 30){
+        if(longitud > 29){
             apellido_Materno_JTextField.setText(apellido_Materno_JTextField.getText().substring(0,longitud-1));
+            getToolkit().beep();
+            evt.consume();
         }
     }//GEN-LAST:event_apellido_Materno_JTextFieldKeyTyped
 
@@ -1218,12 +1229,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         // TODO add your handling code here:
         char c = evt.getKeyChar();
         if (Character.isDigit(c)) {
-            getToolkit().beep();
-            evt.consume();
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
         }
         int longitud = genero_JTextField.getText().length();
-        if(longitud > 30){
+        if(longitud > 29){
             genero_JTextField.setText(genero_JTextField.getText().substring(0,longitud-1));
+            getToolkit().beep(); 
+            evt.consume();
         }
     }//GEN-LAST:event_genero_JTextFieldKeyTyped
 
@@ -1254,19 +1267,30 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void promedio_General_JFormattedTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promedio_General_JFormattedTextFieldKeyTyped
         char c = evt.getKeyChar();   
           if(Character.isLetter(c)) { 
-              getToolkit().beep(); 
-              evt.consume();
+              getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
           }
           int longitud = genero_JTextField.getText().length();
-        if(longitud > 4){
-            genero_JTextField.setText(genero_JTextField.getText().substring(0,longitud-1));
-        }
+            if (longitud > 4) {
+            genero_JTextField.setText(genero_JTextField.getText().substring(0, longitud - 1));
+            getToolkit().beep(); 
+            evt.consume();
+          }
     }//GEN-LAST:event_promedio_General_JFormattedTextFieldKeyTyped
 
     private void estado_AutoCompletionComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_estado_AutoCompletionComboBoxItemStateChanged
         // TODO add your handling code here:
         Obtener_Localidades_Estado();
     }//GEN-LAST:event_estado_AutoCompletionComboBoxItemStateChanged
+
+    private void descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcion_JTextPaneKeyTyped
+       int longitud = descripcion_JTextPane.getText().length();
+            if (longitud > 499) {
+            descripcion_JTextPane.setText(descripcion_JTextPane.getText().substring(0, longitud - 1));
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
+          }
+    }//GEN-LAST:event_descripcion_JTextPaneKeyTyped
 
     public void verificar_Campos_Autenticacion() {
         String Password = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
