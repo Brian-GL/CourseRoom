@@ -72,6 +72,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         contrasena_JPasswordField.setToolTipText("<html> <h3>Ingresa Tu Contraseña</h3> </html>");
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(430, 45));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(430, 45));
+        contrasena_JPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                contrasena_JPasswordFieldKeyTyped(evt);
+            }
+        });
 
         correo_Electronico_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         correo_Electronico_JLabel.setText("Correo Electrónico");
@@ -84,6 +89,11 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         correo_Electronico_JTextField.setToolTipText("<html>\n<h3>Ingresa tu nombre de usuario o correo electrónico<br>\nCon el que te registraste</h3></html>");
         correo_Electronico_JTextField.setMinimumSize(new java.awt.Dimension(430, 45));
         correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(430, 45));
+        correo_Electronico_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                correo_Electronico_JTextFieldKeyTyped(evt);
+            }
+        });
 
         iniciar_Sesion_JButton.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         iniciar_Sesion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/house.png"))); // NOI18N
@@ -281,6 +291,20 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         iniciar_Sesion_JButton.setForeground(CourseRoom.Utilerias.Primer_Color());
     }//GEN-LAST:event_iniciar_Sesion_JButtonMouseExited
 
+    private void correo_Electronico_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correo_Electronico_JTextFieldKeyTyped
+        int longitud = correo_Electronico_JTextField.getText().length();
+        if(longitud > 149){
+            correo_Electronico_JTextField.setText(correo_Electronico_JTextField.getText().substring(0,longitud-1));
+        }
+    }//GEN-LAST:event_correo_Electronico_JTextFieldKeyTyped
+
+    private void contrasena_JPasswordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contrasena_JPasswordFieldKeyTyped
+        int longitud = contrasena_JPasswordField.getText().length();
+        if (longitud > 29) {
+            contrasena_JPasswordField.setText(contrasena_JPasswordField.getText().substring(0, longitud - 1));
+        }
+    }//GEN-LAST:event_contrasena_JPasswordFieldKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel contrasena_JLabel;
@@ -373,7 +397,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             CourseRoom_Frame.Mostrar_Tablero(true);
             //Profesor:
             //CourseRoom_Frame.Mostrar_Tablero(false);
-
             correo_Electronico_JTextField.setText("");
             contrasena_JPasswordField.setText("");
             
