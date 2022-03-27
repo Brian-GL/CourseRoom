@@ -341,7 +341,6 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             byte[] respuesta = CourseRoom.Solicitudes().Imagen_Inicio_Sesion();
             try(ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(respuesta)){
                 BufferedImage obtener_Imagen = ImageIO.read(byteArrayInputStream);
-
                 ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
                 imagen_JLabel.setIcon(icono_Imagen);
                 icono_Imagen.getImage().flush();
@@ -349,7 +348,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
                 obtener_Imagen.getGraphics().dispose();
             } 
         } catch (XmlRpcException | IOException ex) {
-            
+            JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), ex.getMessage(), "Error Al Conectarse Al Servidor De CourseRoom", JOptionPane.ERROR_MESSAGE);
         }
         
         Font fuente = new Font("Segoe UI", 3, 16);

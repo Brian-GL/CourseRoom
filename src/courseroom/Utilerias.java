@@ -122,7 +122,6 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 import java.util.regex.Pattern;
-import java.util.stream.IntStream;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import net.coobird.gui.simpleimageviewer4j.Viewer;
@@ -186,7 +185,6 @@ public class Utilerias {
         Locale local = new Locale("es", "MX");
         faker = new Faker(local);
         
-        
     }
     
     public static Utilerias getInstance() {
@@ -198,8 +196,8 @@ public class Utilerias {
     }
     
     public String DireccionIP() throws MalformedURLException, IOException{
-        String ip;
-        URL whatismyip = new URL("http://checkip.amazonaws.com");
+        String ip = new String();
+        URL whatismyip = new URL("https://checkip.amazonaws.com");
 
         try(InputStreamReader input_Stream = new InputStreamReader(whatismyip.openStream())){
 
@@ -218,10 +216,10 @@ public class Utilerias {
             try {
                 PixelGrabber obtener_Pixeles = new PixelGrabber(imagen, 0, 0, -1, -1, false);
                 if (obtener_Pixeles.grabPixels()) {
-                    Integer[] pixeles = (Integer[]) obtener_Pixeles.getPixels();
+                    int[] pixeles = (int[]) obtener_Pixeles.getPixels();
                     ByteBuffer out = ByteBuffer.allocate(pixeles.length * 4);
                     out.order(ByteOrder.nativeOrder());
-                    for (Integer i = 0; i < pixeles.length; i++) {
+                    for (int i = 0; i < pixeles.length; i++) {
                         out.putInt(pixeles[i]);
                     }
                     out.flip();
@@ -986,6 +984,18 @@ public class Utilerias {
         } else if (anio % 400 == 0) {
             return true;
         } else return anio % 100 != 0;
+    }
+    
+    public String MiUidd(){
+        return Codificacion(getComputerSystem().getHardwareUUID());
+    }
+    
+    public String MiIP(){
+        try {
+            return Codificacion(DireccionIP());
+        } catch (IOException ex) {
+            return new String();
+        }
     }
     
     public Float Puntualidad(String fecha_Creacion, String fecha_Entregada, String fecha_Entrega ){

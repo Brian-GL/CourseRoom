@@ -2,6 +2,7 @@ package paneles.generales.inicio_sesion;
 
 import javax.swing.JLayeredPane;
 import clases.Celda_Renderer;
+import clases.ComboOption;
 import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import datos.interfaces.Componentes_Interface;
@@ -29,13 +30,16 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
-import courseroom.CourseRoom_Frame;
+import datos.colecciones.Lista;
+import java.nio.charset.Charset;
 import java.util.Locale;
 import java.util.Vector;
+import org.apache.commons.io.FileUtils;
 import org.apache.xmlrpc.XmlRpcException;
 
 public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componentes_Interface, Limpieza_Interface, Validaciones_Interface{
 
+    private byte[] imagen;
   
     public Crear_Cuenta_General_Panel() {
         initComponents();
@@ -1043,6 +1047,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
                 try {
                     Image abrir_Imagen = ImageIO.read(archivo_Abierto);
+                    imagen = FileUtils.readFileToByteArray(archivo_Abierto);
                     abrir_Imagen = abrir_Imagen.getScaledInstance(450,450,Image.SCALE_AREA_AVERAGING);
                     ImageIcon icono = new ImageIcon(abrir_Imagen);
                     imagen_Perfil_JLabel.setIcon(icono);
@@ -1360,14 +1365,13 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         String estado = (String)estado_AutoCompletionComboBox.getSelectedItem();
         localidad_AutoCompletionComboBox.removeAllItems();
         try {
+            
             //Obtener localidades:
-            Vector<String> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+            Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
             
-            for(String localidad : localidades){
-                localidad_AutoCompletionComboBox.addItem(localidad);
+            while(!localidades.is_empty()){
+                localidad_AutoCompletionComboBox.addItem(localidades.delist());
             }
-            
-            localidades.removeAllElements();
             
         } catch (XmlRpcException | IOException ex) {
             
@@ -1490,13 +1494,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
             //Obtener estados:
-            Vector<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+            Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
 
-            for(String estado : estados){
-                estado_AutoCompletionComboBox.addItem(estado);
+            while(!estados.is_empty()){
+                estado_AutoCompletionComboBox.addItem(estados.delist());
             }
 
-            estados.removeAllElements();
             estado_AutoCompletionComboBox.setSelectedIndex(0);
             
        
@@ -1633,23 +1636,25 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     public void Validar_Campos() {
         
         String correoElectronico = correo_JTextField.getText();
-        String contrasena = CourseRoom.Utilerias().Codificacion(contrasenia_Autenticacion_JPasswordField.toString());
+        String contrasena = CourseRoom.Utilerias().Codificacion(String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword()));
         String nombre = nombres_JTextField.getText();
         String paterno = apellido_Paterno_JTextField.getText();
         String materno = apellido_Materno_JTextField.getText();
         String genero = genero_JTextField.getText();
         String fecha_Nacimiento = CourseRoom.Utilerias().Fecha(fecha_Nacimiento_DatePicker.getDate());
         String descripcion = descripcion_JTextPane.getText();
-        @SuppressWarnings("null")
-        Float promedio_General = promedio_General_JFormattedTextField.getValue() == null ? null : ((Double)promedio_General_JFormattedTextField.getValue()).floatValue();
+        Double promedio_General = promedio_General_JFormattedTextField.getValue() == null ? Double.valueOf(-1) : Double.valueOf(promedio_General_JFormattedTextField.getText());
         String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
-        String estado = (String)estado_AutoCompletionComboBox.getSelectedItem();
-        String localidad = (String) localidad_AutoCompletionComboBox.getSelectedItem();
+        Integer idLocalidad = ((ComboOption) localidad_AutoCompletionComboBox.getSelectedItem()).Id();
         
         try {
-            byte[] imagenBytes = CourseRoom.Utilerias().Bytes_Imagen(((ImageIcon)imagen_Perfil_JLabel.getIcon()).getImage());
             
-            Vector<Object> response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena, nombre, paterno, materno, genero, estado, localidad, fecha_Nacimiento, promedio_General, tipo_Usuario, descripcion, imagenBytes);
+            if(imagen == null){
+                imagen = new byte[]{};
+            }
+            
+            Vector<Object> response = CourseRoom.Solicitudes().Agregar_Nuevo_Usuario(correoElectronico, contrasena, 
+                    nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
             
             if(response.capacity() == 2){
             
@@ -1664,14 +1669,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
                     CourseRoom.Mostrar_Frame();
                 }else{
-                    JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, mensaje, "Error Al Agregar Usuario", JOptionPane.ERROR_MESSAGE);
                 }
             
             }else{
                 JOptionPane.showMessageDialog(this, "Error al realizar la petición", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (XmlRpcException | IOException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error Al Conectarse Al Servidor De CourseRoom", JOptionPane.ERROR_MESSAGE);
         }
     }
 

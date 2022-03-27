@@ -18,9 +18,11 @@
 package paneles.profesores.perfil;
 
 import clases.Celda_Renderer;
+import clases.ComboOption;
 import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import courseroom.CourseRoom;
+import datos.colecciones.Lista;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
@@ -1273,13 +1275,11 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Localidad_AutoCompletionComboBox.removeAllItems();
         try {
             //Obtener localidades:
-            Vector<String> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+            Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
             
-            for(String localidad : localidades){
-                editar_Localidad_AutoCompletionComboBox.addItem(localidad);
+            while(!localidades.is_empty()){
+                editar_Localidad_AutoCompletionComboBox.addItem(localidades.delist());
             }
-            
-            localidades.removeAllElements();
             
         } catch (XmlRpcException | IOException ex) {
             
@@ -1381,13 +1381,11 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         
         try {
             //Obtener estados:
-            Vector<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
-            
-            for(String estado : estados){
-                editar_Estado_AutoCompletionComboBox.addItem(estado);
+            Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+
+            while(!estados.is_empty()){
+                editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
             }
-            
-            estados.removeAllElements();
             editar_Estado_AutoCompletionComboBox.setSelectedIndex(0);
             
         } catch (XmlRpcException | IOException ex) {

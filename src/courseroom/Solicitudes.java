@@ -17,9 +17,13 @@
  */
 package courseroom;
 
+import clases.ComboOption;
+import datos.colecciones.Lista;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.charset.Charset;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import org.apache.xmlrpc.XmlRpcClient;
 import org.apache.xmlrpc.XmlRpcException;
 
@@ -33,9 +37,9 @@ public class Solicitudes {
     
     private Solicitudes() {
         try{
-            xmlRpcClient = new XmlRpcClient("http://localhost:3030/RPC2");
+            xmlRpcClient = new XmlRpcClient("http://localhost:6060/RPC2");
         } catch(MalformedURLException ex){
-            
+            JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), ex.getMessage(), "Error Al Conectarse Al Servidor De CourseRoom", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -52,7 +56,8 @@ public class Solicitudes {
 
         Vector parametros = new Vector();
 
-        parametros.add(CourseRoom.Utilerias().Codificacion(CourseRoom.Utilerias().getComputerSystem().getHardwareUUID()));
+        parametros.add(CourseRoom.Utilerias().MiUidd());
+        parametros.add(CourseRoom.Utilerias().MiIP());
 
         Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Fecha_Hora_Servidor", parametros);
 
@@ -63,7 +68,8 @@ public class Solicitudes {
 
         Vector parametros = new Vector();
 
-        parametros.add(CourseRoom.Utilerias().Codificacion(CourseRoom.Utilerias().getComputerSystem().getHardwareUUID()));
+        parametros.add(CourseRoom.Utilerias().MiUidd());
+        parametros.add(CourseRoom.Utilerias().MiIP());
 
         Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Imagen_Inicio_Sesion", parametros);
 
@@ -75,82 +81,95 @@ public class Solicitudes {
         Vector parametros = new Vector();
 
         parametros.add(CourseRoom.Utilerias().Codificacion(correo_Electronico));
-        parametros.add(CourseRoom.Utilerias().Codificacion(CourseRoom.Utilerias().getComputerSystem().getHardwareUUID()));
+        parametros.add(CourseRoom.Utilerias().MiUidd());
+        parametros.add(CourseRoom.Utilerias().MiIP());
 
         Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Recuperar_Credenciales", parametros);
 
         return (respuesta != null)? (Boolean) respuesta : false;
     }
 
-    public Vector<String> Obtener_Estados() throws XmlRpcException, IOException {
+    public Lista<String> Obtener_Estados() throws XmlRpcException, IOException {
 
+        Lista<String> response = new Lista<>();
         Vector parametros = new Vector();
 
-        parametros.add(CourseRoom.Utilerias().Codificacion(CourseRoom.Utilerias().getComputerSystem().getHardwareUUID()));
+        parametros.add(CourseRoom.Utilerias().MiUidd());
+        parametros.add(CourseRoom.Utilerias().MiIP());
 
         Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Estados", parametros);
 
         if(respuesta != null){
 
-            Vector<String> response = new Vector<>();
-
-            while(!((Vector<String>)respuesta).isEmpty()){
-                response.add(CourseRoom.Utilerias().Decodificacion(((Vector<String>)respuesta).remove(0)));
+            Vector<String> resultado = (Vector<String>) respuesta;
+            
+            String estado;
+            while(!resultado.isEmpty()){
+                estado = resultado.remove(0);
+                estado = CourseRoom.Utilerias().Decodificacion(estado);
+                response.push_back(estado);
             }
-
-            return response;
-
-        }else{
-            return new Vector<>();
         }
+        
+        return response;
 
     }
 
-    public Vector<String> Obtener_Localidades_Por_Estado(String estado) throws XmlRpcException, IOException {
+    public Lista<ComboOption> Obtener_Localidades_Por_Estado(String estado) throws XmlRpcException, IOException {
 
+        Lista<ComboOption> response = new Lista<>();
         Vector parametros = new Vector();
 
         parametros.add(CourseRoom.Utilerias().Codificacion(estado));
-        parametros.add(CourseRoom.Utilerias().Codificacion(CourseRoom.Utilerias().getComputerSystem().getHardwareUUID()));
+        parametros.add(CourseRoom.Utilerias().MiUidd());
+        parametros.add(CourseRoom.Utilerias().MiIP());
 
         Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Localidades_Por_Estado", parametros);
 
         if(respuesta != null){
 
-            Vector<String> response = new Vector<>();
-
-            while(!((Vector<String>)respuesta).isEmpty()){
-                response.add(CourseRoom.Utilerias().Decodificacion(((Vector<String>)respuesta).remove(0)));
+            Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+            
+            Vector<Object> fila;
+            ComboOption comboOption;
+            Integer id_Localidad;
+            String localidad;
+            while(!resultado.isEmpty()){
+                fila = resultado.remove(0);
+                id_Localidad = (Integer)fila.remove(0);
+                localidad = (String)fila.remove(0);
+                localidad = CourseRoom.Utilerias().Decodificacion(localidad);
+                comboOption = new ComboOption(id_Localidad,localidad);
+                response.push_back(comboOption);
             }
 
-            return response;
-
-        }else{
-            return new Vector<>();
         }
+        
+        return response;
     }
 
-    public Vector<Object> Agregar_Usuario(String CorreoElectronico,String Contrasenia ,String Nombre,
-        String Paterno,String Materno,String Genero, String Estado, String Localidad, String FechaNacimiento,
-        Float PromedioGeneral,String TipoUsuario,String Descripcion, byte[] Imagen) throws XmlRpcException, IOException{
+    public Vector<Object> Agregar_Nuevo_Usuario(String correo_Electronico, String contrasenia ,String nombre,
+        String paterno, String materno, int id_Localidad, String genero, String fecha_Nacimiento, String tipo_Usuario,
+        byte[] imagen_Codificada, double promedio_General,String descripcion) throws XmlRpcException, IOException{
 
         Vector parametros = new Vector();
 
-        parametros.add(CourseRoom.Utilerias().Codificacion(CorreoElectronico));
-        parametros.add(CourseRoom.Utilerias().Codificacion(Contrasenia));
-        parametros.add(CourseRoom.Utilerias().Codificacion(Nombre));
-        parametros.add(CourseRoom.Utilerias().Codificacion(Paterno)); 
-        parametros.add(CourseRoom.Utilerias().Codificacion(Materno));
-        parametros.add(CourseRoom.Utilerias().Codificacion(Genero));
-        parametros.add(CourseRoom.Utilerias().Codificacion(Estado));
-        parametros.add(CourseRoom.Utilerias().Codificacion(Localidad));
-        parametros.add(PromedioGeneral);
-        parametros.add(CourseRoom.Utilerias().Codificacion(TipoUsuario));
-        parametros.add(CourseRoom.Utilerias().Codificacion(Descripcion));
-        parametros.add(Imagen);
-        parametros.add(CourseRoom.Utilerias().Codificacion(CourseRoom.Utilerias().getComputerSystem().getHardwareUUID()));
+        parametros.add(CourseRoom.Utilerias().Codificacion(correo_Electronico));
+        parametros.add(CourseRoom.Utilerias().Codificacion(contrasenia));
+        parametros.add(CourseRoom.Utilerias().Codificacion(nombre));
+        parametros.add(CourseRoom.Utilerias().Codificacion(paterno)); 
+        parametros.add(CourseRoom.Utilerias().Codificacion(materno));
+        parametros.add(id_Localidad);
+        parametros.add(CourseRoom.Utilerias().Codificacion(genero));
+        parametros.add(CourseRoom.Utilerias().Codificacion(fecha_Nacimiento));
+        parametros.add(CourseRoom.Utilerias().Codificacion(tipo_Usuario));
+        parametros.add(imagen_Codificada);
+        parametros.add(promedio_General);
+        parametros.add(CourseRoom.Utilerias().Codificacion(descripcion));
+        parametros.add(CourseRoom.Utilerias().MiUidd());
+        parametros.add(CourseRoom.Utilerias().MiIP());
 
-        Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Agregar_Usuario", parametros);
+        Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Agregar_Nuevo_Usuario", parametros);
 
         if(respuesta != null){
 
