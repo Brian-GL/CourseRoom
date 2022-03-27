@@ -51,5 +51,12 @@ public class ComboOption {
     public String toString() {
         return valor;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj != null) ? obj.toString().equals(this.toString()) : false;
+    }
+    
+    
     
 }

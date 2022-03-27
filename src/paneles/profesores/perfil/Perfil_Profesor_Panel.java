@@ -1273,16 +1273,12 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void Obtener_Localidades_Estado(){
         String estado = (String)editar_Estado_AutoCompletionComboBox.getSelectedItem();
         editar_Localidad_AutoCompletionComboBox.removeAllItems();
-        try {
-            //Obtener localidades:
-            Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
-            
-            while(!localidades.is_empty()){
-                editar_Localidad_AutoCompletionComboBox.addItem(localidades.delist());
-            }
-            
-        } catch (XmlRpcException | IOException ex) {
-            
+       
+        //Obtener localidades:
+        Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+
+        while(!localidades.is_empty()){
+            editar_Localidad_AutoCompletionComboBox.addItem(localidades.delist());
         }
     }
 
@@ -1379,18 +1375,14 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         imagen_Escalada.flush();
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
-        try {
-            //Obtener estados:
-            Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+      
+        //Obtener estados:
+        Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
 
-            while(!estados.is_empty()){
-                editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
-            }
-            editar_Estado_AutoCompletionComboBox.setSelectedIndex(0);
-            
-        } catch (XmlRpcException | IOException ex) {
-            
+        while(!estados.is_empty()){
+            editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
         }
+        editar_Estado_AutoCompletionComboBox.setSelectedIndex(0);
         
     }
 

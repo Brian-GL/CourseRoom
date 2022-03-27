@@ -33,7 +33,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -42,7 +41,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import org.apache.xmlrpc.XmlRpcException;
+import modelos.DatosPerfilModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
@@ -52,13 +51,12 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
 public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private byte carta_Visible;
+    private DatosPerfilModel datosPerfilModel;
     
-    /**
-     * Creates new form Profile_Estudiante_Panel
-     */
-    public Perfil_Estudiante_Panel() {
+ 
+    public Perfil_Estudiante_Panel(DatosPerfilModel _datosPerfilModel) {
         initComponents();
-        
+        datosPerfilModel = _datosPerfilModel;
         Iniciar_Componentes();
     }
 
@@ -1504,17 +1502,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void Obtener_Localidades_Estado(){
         String estado = (String)editar_Estado_AutoCompletionComboBox.getSelectedItem();
         editar_Localidad_AutoCompletionComboBox.removeAllItems();
-        try {
-            
-            //Obtener localidades:
-            Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
-            
-            while(!localidades.is_empty()){
-                editar_Localidad_AutoCompletionComboBox.addItem(localidades.delist());
-            }
-            
-        } catch (XmlRpcException | IOException ex) {
-            
+       
+        //Obtener localidades:
+        Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+
+        while(!localidades.is_empty()){
+            editar_Localidad_AutoCompletionComboBox.addItem(localidades.delist());
         }
     }
 
@@ -1593,16 +1586,21 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     public void Iniciar_Componentes() {
 
         carta_Visible = 0;
-        nombres_JLabel.setText(CourseRoom.Utilerias().Concatenar(CourseRoom.Utilerias().name().firstName(), " ", CourseRoom.Utilerias().name().firstName()));
-        apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(CourseRoom.Utilerias().name().lastName(), " ", CourseRoom.Utilerias().name().lastName()));
-        correo_Electronico_JLabel.setText(CourseRoom.Utilerias().internet().emailAddress());
-        localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().address().fullAddress()));
-        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().lorem().paragraph()));
-        genero_JLabel.setText(CourseRoom.Utilerias().demographic().sex());
-        fecha_Nacimiento_JLabel.setText(CourseRoom.Utilerias().backToTheFuture().date());
+        
+        nombres_JLabel.setText(datosPerfilModel.getNombre());
+        apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.getPaterno()," ",datosPerfilModel.getMaterno()));
+        correo_Electronico_JLabel.setText(datosPerfilModel.getCorreo_Electronico());
+        localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar(datosPerfilModel.getLocalidad(), " - ", datosPerfilModel.getEstado())));
+        descripcion_JTextPane.setText(
+                CourseRoom.Utilerias().Formato_HTML_Izquierda(
+                        CourseRoom.Utilerias().Concatenar(datosPerfilModel.getDescripcion(), " <br><br><br>Registrado El ",datosPerfilModel.getFecha_Creacion())));
+        genero_JLabel.setText(datosPerfilModel.getGenero());
+        fecha_Nacimiento_JLabel.setText(datosPerfilModel.getFecha_Nacimiento());
 
-        tipo_Perfil_JLabel.setText("Estudiante");
+        tipo_Perfil_JLabel.setText(datosPerfilModel.getTipo_Usuario());
+        
         ImageIcon imagen_Icono = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());
+        
         imagen_Perfil_JLabel.setIcon(imagen_Icono);
         imagen_Icono.getImage().flush();
         nombres_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
@@ -1627,21 +1625,15 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         intereses_JTable.getTableHeader().setFont(gadugi);
         intereses_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        try {
-            
-            //Obtener estados:
-            Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+        //Obtener estados:
+        Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
 
-            while(!estados.is_empty()){
-                editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
-            }
-            
-            editar_Estado_AutoCompletionComboBox.setSelectedIndex(0);
-            
-        } catch (XmlRpcException | IOException ex) {
-            
+        while(!estados.is_empty()){
+            editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
         }
-        
+
+        editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getEstado());
+        editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getLocalidad());
         
     }
 

@@ -25,15 +25,11 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.image.PixelGrabber;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Vector;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import org.apache.xmlrpc.XmlRpcException;
+import modelos.DatosPerfilModel;
 import paneles.estudiantes.cursos.Cursos_Estudiante_Panel;
 import paneles.estudiantes.desempeno_escolar.Desempeno_Escolar_Estudiante_Panel;
 
@@ -44,7 +40,8 @@ import paneles.estudiantes.desempeno_escolar.Desempeno_Escolar_Estudiante_Panel;
 public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
 
     private static Image imagen_Usuario;
-    
+    private static Integer IdUsuario;
+
     private static Chats_Estudiante_Panel chats_Panel;
     private static Acerca_General_Panel acerca_De_Panel;
     private static Perfil_Estudiante_Panel perfil_Panel;
@@ -58,14 +55,11 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static Cursos_Estudiante_Panel cursos_Panel;
     private static Preguntas_Estudiante_Panel preguntas_Panel;
     private static Tiempo_Servidor tiempo_Servidor;
+  
     
-    /**
-     * Creates new form DashboardPanel
-     */
-    @SuppressWarnings({"CallToThreadStartDuringObjectConstruction", "OverridableMethodCallInConstructor"})
-    public Tablero_Estudiante_Panel() {
+    public Tablero_Estudiante_Panel(Integer id_Usuario) {
         initComponents();
-       
+        IdUsuario = id_Usuario;
         Iniciar_Componentes();
         
     }
@@ -872,6 +866,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     }
     
     
+    
     @Override
     public void Limpiar(){
         tiempo_Servidor.interrupt();
@@ -924,6 +919,10 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         Establecer_Colores();
     }
     
+    public static Integer Id_Usuario() {
+        return IdUsuario;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton acerca_De_JButton;
     private static javax.swing.JButton ajustes_JButton;
@@ -948,65 +947,69 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
     @Override
     public void Iniciar_Componentes() {
-         try {
-             
-            
-            
-            System.out.println("Dashboard -> Getting Image From https://i.pravatar.cc/450");
-            URL url_Imagen = new URL("https://i.pravatar.cc/450");
-            imagen_Usuario = ImageIO.read(url_Imagen);
+        
+        byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(IdUsuario);
+        imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+        
+        if(imagen_Usuario != null){
             Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
             ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
             imagen_Perfil_JLabel.setIcon(icono_Imagen);
             icono_Imagen.getImage().flush();
             imagen_Redimensionada.flush();
-            perfil_Panel = new Perfil_Estudiante_Panel();
-            visualizador_JPanel.add("Perfil",perfil_Panel);
-            
-            desempeno_Escolar_Panel = new Desempeno_Escolar_Estudiante_Panel();
-            visualizador_JPanel.add("Desempeno_Escolar",desempeno_Escolar_Panel);
-            
-            chats_Panel = new Chats_Estudiante_Panel();
-            visualizador_JPanel.add("Chats", chats_Panel);
-            
-            grupos_Panel = new Grupos_Estudiante_Panel();
-            visualizador_JPanel.add("Grupos", grupos_Panel);
-
-            tareas_Panel = new Tareas_Estudiante_Panel();
-            visualizador_JPanel.add("Tareas",tareas_Panel);
-            
-            fechas_Panel = new Fechas_General_Panel();
-            visualizador_JPanel.add("Fechas",fechas_Panel);
-            
-            avisos_Panel = new Avisos_General_Panel();
-            visualizador_JPanel.add("Avisos",avisos_Panel);
-            
-            acerca_De_Panel = new Acerca_General_Panel();
-            visualizador_JPanel.add("Acerca_De",acerca_De_Panel);
-            
-            reproductor_Musica_Panel = new Reproductor_Musica_General_Panel();
-            visualizador_JPanel.add("Musica",reproductor_Musica_Panel);
-            
-            ajustes_Panel = new Ajustes_Estudiante_Panel();
-            visualizador_JPanel.add("Ajustes",ajustes_Panel);
-            
-            preguntas_Panel = new Preguntas_Estudiante_Panel();
-            visualizador_JPanel.add("Preguntas", preguntas_Panel);
-            
-            cursos_Panel = new Cursos_Estudiante_Panel();
-            visualizador_JPanel.add("Cursos", cursos_Panel);
-            
-            mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias().Concatenar("Bienvenid@ ", Perfil_Estudiante_Panel.Nombre_Completo()));
-            
-            tiempo_Servidor = new Tiempo_Servidor();
-            tiempo_Servidor.start();
-           
-            
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
         }
+        
+        DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(IdUsuario);
+        
+        perfil_Panel = new Perfil_Estudiante_Panel(datosPerfilModel);
+            visualizador_JPanel.add("Perfil",perfil_Panel);
+
+            
+            
+        desempeno_Escolar_Panel = new Desempeno_Escolar_Estudiante_Panel();
+        visualizador_JPanel.add("Desempeno_Escolar",desempeno_Escolar_Panel);
+
+        chats_Panel = new Chats_Estudiante_Panel();
+        visualizador_JPanel.add("Chats", chats_Panel);
+
+        grupos_Panel = new Grupos_Estudiante_Panel();
+        visualizador_JPanel.add("Grupos", grupos_Panel);
+
+        tareas_Panel = new Tareas_Estudiante_Panel();
+        visualizador_JPanel.add("Tareas",tareas_Panel);
+
+        fechas_Panel = new Fechas_General_Panel();
+        visualizador_JPanel.add("Fechas",fechas_Panel);
+
+        avisos_Panel = new Avisos_General_Panel();
+        visualizador_JPanel.add("Avisos",avisos_Panel);
+
+        acerca_De_Panel = new Acerca_General_Panel();
+        visualizador_JPanel.add("Acerca_De",acerca_De_Panel);
+
+        reproductor_Musica_Panel = new Reproductor_Musica_General_Panel();
+        visualizador_JPanel.add("Musica",reproductor_Musica_Panel);
+
+        ajustes_Panel = new Ajustes_Estudiante_Panel();
+        visualizador_JPanel.add("Ajustes",ajustes_Panel);
+
+        preguntas_Panel = new Preguntas_Estudiante_Panel();
+        visualizador_JPanel.add("Preguntas", preguntas_Panel);
+
+        cursos_Panel = new Cursos_Estudiante_Panel();
+        visualizador_JPanel.add("Cursos", cursos_Panel);
+
+        Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
+
+        if(response.first() < 0){
+            System.err.println(response.second());
+        }
+        
+        mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias().Concatenar("Bienvenid@ ", Perfil_Estudiante_Panel.Nombre_Completo()));
+
+        tiempo_Servidor = new Tiempo_Servidor();
+        tiempo_Servidor.start();
+
     }
 
     @Override
@@ -1016,38 +1019,38 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     
     public class Tiempo_Servidor extends Thread{
     
-
         public Tiempo_Servidor(){
         }
 
         @Override
         @SuppressWarnings("SleepWhileInLoop")
         public void run(){
-            try {
-                LocalDateTime fecha_Hora_Servidor;
-                Vector<Integer> respuesta = CourseRoom.Solicitudes().Fecha_Hora_Servidor();
-                
-                fecha_Hora_Servidor = (respuesta.capacity() > 0) ? 
+                        LocalDateTime fecha_Hora_Servidor;
+            Vector<Integer> respuesta = CourseRoom.Solicitudes().Fecha_Hora_Servidor();
+
+            if(respuesta.capacity() > 0){
+
+                fecha_Hora_Servidor = 
                         LocalDateTime.of(respuesta.elementAt(0),respuesta.elementAt(1),
                                 respuesta.elementAt(2), respuesta.elementAt(3), 
-                                respuesta.elementAt(4), respuesta.elementAt(5)) : LocalDateTime.now();
-                
-                
+                                respuesta.elementAt(4), respuesta.elementAt(5));
+
                 String tiempo;
                 while(fecha_Hora_Servidor != null){
-                                     
-                    fecha_Hora_Servidor = fecha_Hora_Servidor.plusSeconds(1);
-                    tiempo = fecha_Hora_Servidor.format(CourseRoom.Utilerias().Formato_Fecha());
-                    tiempo = tiempo.toUpperCase();
-                    fecha_Hora_Servidor_JLabel.setText(tiempo);
-                    Thread.sleep(1000);
-                   
+
+                    try {
+                        fecha_Hora_Servidor = fecha_Hora_Servidor.plusSeconds(1);
+                        tiempo = fecha_Hora_Servidor.format(CourseRoom.Utilerias().Formato_Fecha());
+                        tiempo = tiempo.toUpperCase();
+                        fecha_Hora_Servidor_JLabel.setText(tiempo);
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        
+                    }
+
                 }
-                
+            }else{
                 fecha_Hora_Servidor_JLabel.setText("No Disponible");
-                
-            } catch (XmlRpcException | IOException | InterruptedException ex) {
-                
             }
         }
 

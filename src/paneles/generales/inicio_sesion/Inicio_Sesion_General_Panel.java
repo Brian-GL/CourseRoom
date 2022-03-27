@@ -2,19 +2,17 @@ package paneles.generales.inicio_sesion;
 
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
-import courseroom.CourseRoom_Frame;
+import datos.estructuras.Par;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import static java.awt.image.ImageObserver.WIDTH;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import org.apache.xmlrpc.XmlRpcException;
 
 public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
   
@@ -336,21 +334,17 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             
         }
         
-        try {
-            System.out.println("Login -> Getting Image From CourseRoom Server");
-            byte[] respuesta = CourseRoom.Solicitudes().Imagen_Inicio_Sesion();
-            try(ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(respuesta)){
-                BufferedImage obtener_Imagen = ImageIO.read(byteArrayInputStream);
-                ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
-                imagen_JLabel.setIcon(icono_Imagen);
-                icono_Imagen.getImage().flush();
-                obtener_Imagen.flush();
-                obtener_Imagen.getGraphics().dispose();
-            } 
-        } catch (XmlRpcException | IOException ex) {
-            JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), ex.getMessage(), "Error Al Conectarse Al Servidor De CourseRoom", JOptionPane.ERROR_MESSAGE);
+        System.out.println("Obteniendo Imagen Inicio De Sesion...");
+        byte[] respuesta = CourseRoom.Solicitudes().Imagen_Inicio_Sesion();
+        BufferedImage obtener_Imagen = CourseRoom.Utilerias().Obtener_Imagen(respuesta);
+        if(obtener_Imagen != null){
+            ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
+            imagen_JLabel.setIcon(icono_Imagen);
+            icono_Imagen.getImage().flush();
+            obtener_Imagen.flush();
+            obtener_Imagen.getGraphics().dispose();
         }
-        
+        System.out.println("Imagen Inicio De Sesion Obtenida...");
         Font fuente = new Font("Segoe UI", 3, 16);
         crear_Cuenta_JLabel.setFont(fuente);
         recuperar_Credenciales_JLabel.setFont(fuente);
@@ -390,13 +384,19 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
     public void validar_Correo(String correo) {
         
         if(CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo)) {
+            String password = String.valueOf(contrasena_JPasswordField.getPassword());
+            Par<Integer, String> response = CourseRoom.Solicitudes().Obtener_Usuario(correo, password);
 
-            CourseRoom.Esconder_Frame();
-            //Estudiante:
-            CourseRoom.Frame().Mostrar_Tablero(true);
-            //Profesor:
-            //CourseRoom.Frame().Mostrar_Tablero(false);
-
+            if(response.first() > 0){
+                CourseRoom.Esconder_Frame();
+                CourseRoom.Frame().Mostrar_Tablero(response.second().equals("Estudiante"),response.first());
+            }else{
+                getToolkit().beep();
+                JOptionPane.showMessageDialog(this, response.second(),"Advertencia Al Iniciar Sesión", JOptionPane.INFORMATION_MESSAGE);
+                correo_Electronico_JTextField.setText("");
+                contrasena_JPasswordField.setText("");
+                correo_Electronico_JTextField.requestFocus();   
+            }
             correo_Electronico_JTextField.setText("");
             contrasena_JPasswordField.setText("");
             

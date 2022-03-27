@@ -117,14 +117,14 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
-    public void Mostrar_Tablero(boolean tipo_Tablero) {
+    public void Mostrar_Tablero(boolean tipo_Tablero, Integer id_Usuario) {
         if(tipo_Tablero){
-            tablero_Estudiante = new Tablero_Estudiante_Panel();
+            tablero_Estudiante = new Tablero_Estudiante_Panel(id_Usuario);
             visualizador_JPanel.add("Tablero", tablero_Estudiante);
             Tablero_Estudiante_Panel.Establecer_Colores();
             ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, "Tablero");
         }else{
-            tablero_Profesor = new Tablero_Profesor_Panel();
+            tablero_Profesor = new Tablero_Profesor_Panel(id_Usuario);
             visualizador_JPanel.add("Tablero", tablero_Profesor);
             Tablero_Profesor_Panel.Establecer_Colores();
             ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, "Tablero");
@@ -171,7 +171,6 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
             visualizador_JPanel.add("Crear_Cuenta", crear_Cuenta);
             
             if (!CourseRoom.Utilerias().Comprobar_Conexion_Internet()) {
-
                 JOptionPane.showMessageDialog(null,"Mmmm...\nLo Sentimos Pero Al Parecer No Tienes Conexión A Internet","Error",JOptionPane.ERROR_MESSAGE);
                 this.Limpiar();
             }

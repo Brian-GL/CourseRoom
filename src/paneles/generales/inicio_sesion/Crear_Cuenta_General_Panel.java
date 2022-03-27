@@ -31,11 +31,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
 import datos.colecciones.Lista;
-import java.nio.charset.Charset;
+import datos.estructuras.Par;
 import java.util.Locale;
-import java.util.Vector;
 import org.apache.commons.io.FileUtils;
-import org.apache.xmlrpc.XmlRpcException;
 
 public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componentes_Interface, Limpieza_Interface, Validaciones_Interface{
 
@@ -1364,17 +1362,12 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void Obtener_Localidades_Estado(){
         String estado = (String)estado_AutoCompletionComboBox.getSelectedItem();
         localidad_AutoCompletionComboBox.removeAllItems();
-        try {
-            
-            //Obtener localidades:
-            Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
-            
-            while(!localidades.is_empty()){
-                localidad_AutoCompletionComboBox.addItem(localidades.delist());
-            }
-            
-        } catch (XmlRpcException | IOException ex) {
-            
+       
+        //Obtener localidades:
+        Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+
+        while(!localidades.is_empty()){
+            localidad_AutoCompletionComboBox.addItem(localidades.delist());
         }
     }
         
@@ -1458,55 +1451,57 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             logo_Informacion_Extra_JLabel.setIcon(icono);
             logo_Imagen.flush();
             icono.getImage().flush();
+        } catch (IOException ex) {
+            
+        }
 
-            intereses_JScrollPane.getViewport().setOpaque(false);
-            intereses_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-            intereses_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        intereses_JScrollPane.getViewport().setOpaque(false);
+        intereses_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        intereses_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
-            Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
-            intereses_JTable.getTableHeader().setFont(gadugi);
-            intereses_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
+        intereses_JTable.getTableHeader().setFont(gadugi);
+        intereses_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-            LocalDate fecha_Minima = LocalDate.of(1900, Month.JANUARY, 1);
-            LocalDate fecha_Maxima = LocalDate.of(2010, Month.JANUARY, 1);
-            Locale local = new Locale("es", "MX");
-            DatePickerSettings ajustes_Fecha_Nacimiento = new DatePickerSettings(local);
-            ajustes_Fecha_Nacimiento.setFirstDayOfWeek(DayOfWeek.MONDAY);
-            ajustes_Fecha_Nacimiento.setFontVetoedDate(nombres_JLabel.getFont());
-            ajustes_Fecha_Nacimiento.setFontValidDate(nombres_JLabel.getFont());
-            ajustes_Fecha_Nacimiento.setFontCalendarDateLabels(nombres_JLabel.getFont());
-            ajustes_Fecha_Nacimiento.setFontCalendarWeekNumberLabels(nombres_JLabel.getFont());
-            ajustes_Fecha_Nacimiento.setFontCalendarWeekdayLabels(nombres_JLabel.getFont());
-            ajustes_Fecha_Nacimiento.setFontTodayLabel(nombres_JLabel.getFont());
-            ajustes_Fecha_Nacimiento.setFontMonthAndYearMenuLabels(nombres_JLabel.getFont());
-            ajustes_Fecha_Nacimiento.setFontTodayLabel(nombres_JLabel.getFont());
-            ajustes_Fecha_Nacimiento.setVisibleClearButton(false);
-            ajustes_Fecha_Nacimiento.setVisibleTodayButton(false);
-            fecha_Nacimiento_DatePicker.setSettings(ajustes_Fecha_Nacimiento);
-            fecha_Nacimiento_DatePicker.getComponent(0).setFont(nombres_JLabel.getFont());
-            fecha_Nacimiento_DatePicker.getSettings().setDateRangeLimits(fecha_Minima, fecha_Maxima);
-            fecha_Nacimiento_DatePicker.setDate(LocalDate.of(1998, Month.JANUARY, 1));
-            fecha_Nacimiento_DatePicker.setOpaque(false);
-            fecha_Nacimiento_DatePicker.setVisible(true);
-            ((JTextField) fecha_Nacimiento_DatePicker.getComponent(0)).setEditable(false);
+        LocalDate fecha_Minima = LocalDate.of(1900, Month.JANUARY, 1);
+        LocalDate fecha_Maxima = LocalDate.of(2010, Month.JANUARY, 1);
+        Locale local = new Locale("es", "MX");
+        DatePickerSettings ajustes_Fecha_Nacimiento = new DatePickerSettings(local);
+        ajustes_Fecha_Nacimiento.setFirstDayOfWeek(DayOfWeek.MONDAY);
+        ajustes_Fecha_Nacimiento.setFontVetoedDate(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontValidDate(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontCalendarDateLabels(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontCalendarWeekNumberLabels(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontCalendarWeekdayLabels(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontTodayLabel(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontMonthAndYearMenuLabels(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setFontTodayLabel(nombres_JLabel.getFont());
+        ajustes_Fecha_Nacimiento.setVisibleClearButton(false);
+        ajustes_Fecha_Nacimiento.setVisibleTodayButton(false);
+        fecha_Nacimiento_DatePicker.setSettings(ajustes_Fecha_Nacimiento);
+        fecha_Nacimiento_DatePicker.getComponent(0).setFont(nombres_JLabel.getFont());
+        fecha_Nacimiento_DatePicker.getSettings().setDateRangeLimits(fecha_Minima, fecha_Maxima);
+        fecha_Nacimiento_DatePicker.setDate(LocalDate.of(1998, Month.JANUARY, 1));
+        fecha_Nacimiento_DatePicker.setOpaque(false);
+        fecha_Nacimiento_DatePicker.setVisible(true);
+        ((JTextField) fecha_Nacimiento_DatePicker.getComponent(0)).setEditable(false);
 
-            descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-            descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
-            //Obtener estados:
-            Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+        //Obtener estados:
+        Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
 
+        if(!estados.is_empty()){
             while(!estados.is_empty()){
                 estado_AutoCompletionComboBox.addItem(estados.delist());
             }
 
             estado_AutoCompletionComboBox.setSelectedIndex(0);
-            
-       
-        } catch (IOException | XmlRpcException ex) {
-            
+        }else{
+            estado_AutoCompletionComboBox.setEnabled(false);
         }
-        
+
         Colorear_Componentes();
        
     }
@@ -1636,7 +1631,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     public void Validar_Campos() {
         
         String correoElectronico = correo_JTextField.getText();
-        String contrasena = CourseRoom.Utilerias().Codificacion(String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword()));
+        String contrasena = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
         String nombre = nombres_JTextField.getText();
         String paterno = apellido_Paterno_JTextField.getText();
         String materno = apellido_Materno_JTextField.getText();
@@ -1647,37 +1642,30 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
         Integer idLocalidad = ((ComboOption) localidad_AutoCompletionComboBox.getSelectedItem()).Id();
         
-        try {
-            
-            if(imagen == null){
-                imagen = new byte[]{};
-            }
-            
-            Vector<Object> response = CourseRoom.Solicitudes().Agregar_Nuevo_Usuario(correoElectronico, contrasena, 
-                    nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
-            
-            if(response.capacity() == 2){
-            
-                Integer codigo = (Integer)response.remove(0);
-                String mensaje = (String)response.remove(1);
-                
-                if(codigo > 0){
-
-                    CourseRoom.Esconder_Frame();
-
-                    CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"));
-
-                    CourseRoom.Mostrar_Frame();
-                }else{
-                    JOptionPane.showMessageDialog(this, mensaje, "Error Al Agregar Usuario", JOptionPane.ERROR_MESSAGE);
-                }
-            
-            }else{
-                JOptionPane.showMessageDialog(this, "Error al realizar la petición", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (XmlRpcException | IOException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error Al Conectarse Al Servidor De CourseRoom", JOptionPane.ERROR_MESSAGE);
+        
+        if(imagen == null){
+            imagen = new byte[]{};
         }
+        
+
+        Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Nuevo_Usuario(correoElectronico, contrasena, 
+                nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
+
+        Integer codigo = response.first();
+        String mensaje = response.second();
+
+        if(codigo > 0){
+
+            CourseRoom.Esconder_Frame();
+
+            CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"),codigo);
+
+            CourseRoom.Mostrar_Frame();
+        }else{
+            JOptionPane.showMessageDialog(this, mensaje, "Error Al Agregar Usuario", JOptionPane.ERROR_MESSAGE);
+        }
+
+        
     }
 
 }

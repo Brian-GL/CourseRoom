@@ -32,7 +32,6 @@ import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import org.apache.xmlrpc.XmlRpcException;
 import paneles.profesores.cursos.Cursos_Profesor_Panel;
 import paneles.profesores.desempeno_profesional.Desempeno_Profesional_Profesor_Panel;
 
@@ -43,6 +42,8 @@ import paneles.profesores.desempeno_profesional.Desempeno_Profesional_Profesor_P
 public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
 
     private static Image imagen_Usuario;
+
+    private static Integer IdUsuario;
     
     private static Chats_Profesor_Panel chats_Panel;
     private static Acerca_General_Panel acerca_De_Panel;
@@ -57,13 +58,10 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     private static Preguntas_Profesor_Panel preguntas_Panel;
     private static Tiempo_Servidor tiempo_Servidor;
     
-    /**
-     * Creates new form DashboardPanel
-     */
-    @SuppressWarnings({"CallToThreadStartDuringObjectConstruction", "OverridableMethodCallInConstructor"})
-    public Tablero_Profesor_Panel() {
+   
+    public Tablero_Profesor_Panel(Integer _id_Usuario) {
         initComponents();
-       
+        IdUsuario = _id_Usuario;
         Iniciar_Componentes();
         
     }
@@ -877,6 +875,10 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         Establecer_Colores();
     }
     
+    public static Integer IdUsuario() {
+        return IdUsuario;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton acerca_De_JButton;
     private static javax.swing.JButton ajustes_JButton;
@@ -902,8 +904,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     public void Iniciar_Componentes() {
          try {
              
-            
-            
             System.out.println("Dashboard -> Getting Image From https://i.pravatar.cc/450");
             URL url_Imagen = new URL("https://i.pravatar.cc/450");
             imagen_Usuario = ImageIO.read(url_Imagen);
@@ -912,6 +912,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
             imagen_Perfil_JLabel.setIcon(icono_Imagen);
             icono_Imagen.getImage().flush();
             imagen_Redimensionada.flush();
+            
             perfil_Panel = new Perfil_Profesor_Panel();
             visualizador_JPanel.add("Perfil",perfil_Panel);
             
@@ -972,30 +973,32 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         @Override
         @SuppressWarnings("SleepWhileInLoop")
         public void run(){
-            try {
-                LocalDateTime fecha_Hora_Servidor;
-                Vector<Integer> respuesta = CourseRoom.Solicitudes().Fecha_Hora_Servidor();
-                
-                fecha_Hora_Servidor = (respuesta.capacity() > 0) ? 
+           
+            LocalDateTime fecha_Hora_Servidor;
+            Vector<Integer> respuesta = CourseRoom.Solicitudes().Fecha_Hora_Servidor();
+
+            if(respuesta.capacity() > 0){
+
+                fecha_Hora_Servidor = 
                         LocalDateTime.of(respuesta.elementAt(0),respuesta.elementAt(1),
                                 respuesta.elementAt(2), respuesta.elementAt(3), 
-                                respuesta.elementAt(4), respuesta.elementAt(5)) : LocalDateTime.now();
-                
-                
+                                respuesta.elementAt(4), respuesta.elementAt(5));
+
                 String tiempo;
                 while(fecha_Hora_Servidor != null){
-                                     
-                    fecha_Hora_Servidor = fecha_Hora_Servidor.plusSeconds(1);
-                    tiempo = fecha_Hora_Servidor.format(CourseRoom.Utilerias().Formato_Fecha());
-                    tiempo = tiempo.toUpperCase();
-                    fecha_Hora_Servidor_JLabel.setText(tiempo);
-                    Thread.sleep(1000);
-                   
+
+                    try {
+                        fecha_Hora_Servidor = fecha_Hora_Servidor.plusSeconds(1);
+                        tiempo = fecha_Hora_Servidor.format(CourseRoom.Utilerias().Formato_Fecha());
+                        tiempo = tiempo.toUpperCase();
+                        fecha_Hora_Servidor_JLabel.setText(tiempo);
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        
+                    }
+
                 }
-                
-                fecha_Hora_Servidor_JLabel.setText("No Disponible");
-                
-            } catch (XmlRpcException | IOException | InterruptedException ex) {
+            }else{
                 fecha_Hora_Servidor_JLabel.setText("No Disponible");
             }
         }

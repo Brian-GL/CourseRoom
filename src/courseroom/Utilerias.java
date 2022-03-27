@@ -106,6 +106,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
@@ -121,8 +122,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import net.coobird.gui.simpleimageviewer4j.Viewer;
 import oshi.SystemInfo;
@@ -996,6 +1000,22 @@ public class Utilerias {
         } catch (IOException ex) {
             return new String();
         }
+    }
+    
+    public BufferedImage Obtener_Imagen(byte[] respuesta){
+        BufferedImage obtener_Imagen;
+        
+        if(respuesta != null){
+            try(ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(respuesta)){
+                obtener_Imagen = ImageIO.read(byteArrayInputStream);
+            } catch (IOException ex) { 
+                obtener_Imagen = null;
+            } 
+        }else{
+            obtener_Imagen = null;
+        }
+        
+        return obtener_Imagen;
     }
     
     public Float Puntualidad(String fecha_Creacion, String fecha_Entregada, String fecha_Entrega ){
