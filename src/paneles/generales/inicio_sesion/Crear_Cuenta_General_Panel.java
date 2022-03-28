@@ -1269,9 +1269,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void promedio_General_JFormattedTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promedio_General_JFormattedTextFieldKeyTyped
         char c = evt.getKeyChar();   
-          if(Character.isLetter(c)) { 
-              getToolkit().beep();//sonido de no aceptar más caracteres. 
-            evt.consume();//hace que esa pulsación de tecla se rechace.
+          if(Character.isLetter(c)) {
+              getToolkit().beep();//sonido de no aceptar más caracteres.
+              evt.consume();//hace que esa pulsación de tecla se rechace.
           }
           int longitud = genero_JTextField.getText().length();
             if (longitud > 4) {
@@ -1299,8 +1299,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         String Password = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
         String Password2 = String.valueOf(repetir_Contrasenia_JTextField.getPassword());
         // Checa Los Campos Vacíos.
-        if (correo_JTextField.getText().isEmpty() || correo_JTextField.getText().isBlank()
-                || Password.isBlank() || Password2.isBlank() || Password.isEmpty() || Password2.isEmpty() ) {
+        if (correo_JTextField.getText().isBlank() || Password.isBlank() || Password2.isBlank()) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
             JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
         } else {

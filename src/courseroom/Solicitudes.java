@@ -38,7 +38,7 @@ public class Solicitudes {
     
     private Solicitudes() {
         try{
-            xmlRpcClient = new XmlRpcClient("http://localhost:6060/RPC2");
+            xmlRpcClient = new XmlRpcClient("http://localhost:9000/RPC2");
         } catch(MalformedURLException ex){
             JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), ex.getMessage(), "Error Al Conectarse Al Servidor De CourseRoom", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
