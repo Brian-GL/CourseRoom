@@ -1066,7 +1066,6 @@
             </Component>
             <Component class="com.jidesoft.swing.AutoCompletionComboBox" name="editar_Estado_AutoCompletionComboBox">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
@@ -1079,7 +1078,6 @@
             </Component>
             <Component class="com.jidesoft.swing.AutoCompletionComboBox" name="editar_Localidad_AutoCompletionComboBox">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

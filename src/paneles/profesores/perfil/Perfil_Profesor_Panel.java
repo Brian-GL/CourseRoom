@@ -17,7 +17,6 @@
  */
 package paneles.profesores.perfil;
 
-import clases.Celda_Renderer;
 import clases.ComboOption;
 import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
@@ -27,18 +26,16 @@ import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
-import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableModel;
-import org.apache.xmlrpc.XmlRpcException;
+import modelos.DatosPerfilModel;
+import org.apache.commons.io.FileUtils;
 import paneles.profesores.Tablero_Profesor_Panel;
 
 /**
@@ -48,13 +45,14 @@ import paneles.profesores.Tablero_Profesor_Panel;
 public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private byte carta_Visible;
+    private DatosPerfilModel datosPerfilModel;
     
     /**
      * Creates new form Profile_Profesor_Panel
      */
-    public Perfil_Profesor_Panel() {
+    public Perfil_Profesor_Panel(DatosPerfilModel _datosPerfilModel) {
         initComponents();
-        
+        datosPerfilModel = _datosPerfilModel;
         Iniciar_Componentes();
     }
 
@@ -605,7 +603,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Estado_JLabel.setText("Estado");
         editar_Estado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        editar_Estado_AutoCompletionComboBox.setEditable(false);
         editar_Estado_AutoCompletionComboBox.setEnabled(false);
         editar_Estado_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         editar_Estado_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Estado de proveniencia</h3>\n</html>");
@@ -615,7 +612,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             }
         });
 
-        editar_Localidad_AutoCompletionComboBox.setEditable(false);
         editar_Localidad_AutoCompletionComboBox.setEnabled(false);
         editar_Localidad_AutoCompletionComboBox.setFocusable(false);
         editar_Localidad_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -995,7 +991,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
                         imagen_Perfil_JLabel.setIcon(icono_Imagen);
 
-                        Tablero_Profesor_Panel.Cambiar_Imagen_Usuario(obtener_Imagen);
+                        Tablero_Profesor_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
 
                         obtener_Imagen.flush();
 
@@ -1349,40 +1345,53 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     public void Iniciar_Componentes() {
 
         carta_Visible = 0;
-        nombres_JLabel.setText(CourseRoom.Utilerias().Concatenar(CourseRoom.Utilerias().name().firstName(), " ", CourseRoom.Utilerias().name().firstName()));
-        apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(CourseRoom.Utilerias().name().lastName(), " ", CourseRoom.Utilerias().name().lastName()));
-        correo_Electronico_JLabel.setText(CourseRoom.Utilerias().internet().emailAddress());
-        localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().address().fullAddress()));
-        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().lorem().paragraph()));
-        genero_JLabel.setText(CourseRoom.Utilerias().demographic().sex());
-        fecha_Nacimiento_JLabel.setText(CourseRoom.Utilerias().backToTheFuture().date());
+        
+        nombres_JLabel.setText(datosPerfilModel.getNombre());
+        apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.getPaterno()," ",datosPerfilModel.getMaterno()));
+        correo_Electronico_JLabel.setText(datosPerfilModel.getCorreo_Electronico());
+        localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar(datosPerfilModel.getLocalidad(), " - ", datosPerfilModel.getEstado())));
+        descripcion_JTextPane.setText(
+                CourseRoom.Utilerias().Formato_HTML_Izquierda(
+                        CourseRoom.Utilerias().Concatenar(datosPerfilModel.getDescripcion(), " <br><br><br>Registrado El ",datosPerfilModel.getFecha_Creacion())));
+        genero_JLabel.setText(datosPerfilModel.getGenero());
+        fecha_Nacimiento_JLabel.setText(datosPerfilModel.getFecha_Nacimiento());
 
-        tipo_Perfil_JLabel.setText("Profesor");
-        ImageIcon imagen_Icono = new ImageIcon(Tablero_Profesor_Panel.Obtener_Imagen_Usuario());
-        imagen_Perfil_JLabel.setIcon(imagen_Icono);
-        imagen_Icono.getImage().flush();
+        tipo_Perfil_JLabel.setText(datosPerfilModel.getTipo_Usuario());
+        
+        if(Tablero_Profesor_Panel.Obtener_Imagen_Usuario() != null){
+            ImageIcon imagen_Icono = new ImageIcon(Tablero_Profesor_Panel.Obtener_Imagen_Usuario());
+
+            imagen_Perfil_JLabel.setIcon(imagen_Icono);
+            imagen_Icono.getImage().flush();
+        }
+        
         nombres_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         apellidos_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
-        int largo_Imagen = imagen_Perfil_JLabel.getPreferredSize().height;
-        Image imagen_Escalada = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH);
-        ImageIcon icono_Imagen = new ImageIcon(imagen_Escalada);
-        imagen_Perfil_JLabel.setIcon(icono_Imagen);
-        imagen_Escalada.flush();
+
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
-      
         //Obtener estados:
         Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
 
-        while(!estados.is_empty()){
-            editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
+        if(!estados.is_empty()){
+            while(!estados.is_empty()){
+                editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
+            }
+
+            editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getEstado());
+            editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getLocalidad());
+        }else{
+            
+            editar_Estado_AutoCompletionComboBox.setEnabled(false);
+            editar_Estado_AutoCompletionComboBox.setEnabled(false);
+            editar_Estado_JButton.setEnabled(false);
+            editar_Localidad_JButton.setEnabled(false);
+            
         }
-        editar_Estado_AutoCompletionComboBox.setSelectedIndex(0);
         
     }
 

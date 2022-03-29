@@ -1116,7 +1116,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                     imagen_JLabel.setIcon(icono_Grupo);
 
-                    Tablero_Estudiante_Panel.Cambiar_Imagen_Usuario(icono_Grupo.getImage());
                     abrir_Imagen.flush();
 
                 } catch (IOException ex) {

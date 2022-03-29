@@ -42,6 +42,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.DatosPerfilModel;
+import org.apache.commons.io.FileUtils;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
@@ -586,12 +587,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
         editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setText("Guardar Cambios");
-        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         guardar_Cambios_Datos_Personales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         guardar_Cambios_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         ((ImageIcon)guardar_Cambios_Datos_Personales_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -616,7 +617,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Estado_JLabel.setText("Estado");
         editar_Estado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        editar_Estado_AutoCompletionComboBox.setEditable(false);
         editar_Estado_AutoCompletionComboBox.setEnabled(false);
         editar_Estado_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         editar_Estado_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Estado de proveniencia</h3>\n</html>");
@@ -626,7 +626,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
-        editar_Localidad_AutoCompletionComboBox.setEditable(false);
         editar_Localidad_AutoCompletionComboBox.setEnabled(false);
         editar_Localidad_AutoCompletionComboBox.setFocusable(false);
         editar_Localidad_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1154,10 +1153,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
                         imagen_Perfil_JLabel.setIcon(icono_Imagen);
 
-                        Tablero_Estudiante_Panel.Cambiar_Imagen_Usuario(obtener_Imagen);
+                        Tablero_Estudiante_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
 
                         obtener_Imagen.flush();
-
                     } catch (IOException ex) {
 
                     }
@@ -1599,22 +1597,20 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         tipo_Perfil_JLabel.setText(datosPerfilModel.getTipo_Usuario());
         
-        ImageIcon imagen_Icono = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());
+        if(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario() != null){
+            ImageIcon imagen_Icono = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());
+
+            imagen_Perfil_JLabel.setIcon(imagen_Icono);
+            imagen_Icono.getImage().flush();
+        }
         
-        imagen_Perfil_JLabel.setIcon(imagen_Icono);
-        imagen_Icono.getImage().flush();
         nombres_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         apellidos_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
-        int largo_Imagen = imagen_Perfil_JLabel.getPreferredSize().height;
-        Image imagen_Escalada = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH);
-        ImageIcon icono_Imagen = new ImageIcon(imagen_Escalada);
-        imagen_Perfil_JLabel.setIcon(icono_Imagen);
-        imagen_Escalada.flush();
+
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
         intereses_JScrollPane.getViewport().setOpaque(false);
@@ -1628,13 +1624,21 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         //Obtener estados:
         Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
 
-        while(!estados.is_empty()){
-            editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
-        }
+        if(!estados.is_empty()){
+            while(!estados.is_empty()){
+                editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
+            }
 
-        editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getEstado());
-        editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getLocalidad());
-        
+            editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getEstado());
+            editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getLocalidad());
+        }else{
+            
+            editar_Estado_AutoCompletionComboBox.setEnabled(false);
+            editar_Estado_AutoCompletionComboBox.setEnabled(false);
+            editar_Estado_JButton.setEnabled(false);
+            editar_Localidad_JButton.setEnabled(false);
+            
+        }
     }
 
     @Override

@@ -24,14 +24,12 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.image.PixelGrabber;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Vector;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import modelos.DatosPerfilModel;
 import paneles.profesores.cursos.Cursos_Profesor_Panel;
 import paneles.profesores.desempeno_profesional.Desempeno_Profesional_Profesor_Panel;
 
@@ -95,8 +93,8 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         visualizador_JPanel = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1260, 670));
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1260, 670));
+        setOpaque(false);
 
         menu_JPanel.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         menu_JPanel.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -107,7 +105,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(150, 150));
-        imagen_Perfil_JLabel.setOpaque(true);
         imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setRequestFocusEnabled(false);
         imagen_Perfil_JLabel.setToolTipText("Mostrar Perfil Del Usuario.");
@@ -681,99 +678,115 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
    
     public static void Establecer_Colores(){
-        try {
-            Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
-            int maximo_auxiliar = 0;
-            primer_Color = Color.BLACK;
-            Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
-            PixelGrabber obtener_Pixeles = new PixelGrabber(imagen_Usuario, 0, 0, -1, -1, false);
-            int largo_Imagen = imagen_Usuario.getWidth(null);
-            int[] pixeles;
-            int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
-            Color color;
-            Par<Integer, Color> par;
-            if (obtener_Pixeles.grabPixels()) {
-                pixeles = (int[]) obtener_Pixeles.getPixels();
-                for(int i = 0; i < pixeles.length; i++){
-                    pixel = pixeles[i];
-                    rojo = (pixel  & 0x00ff0000) >> 16;
-                    verde = (pixel & 0x0000ff00) >> 8;
-                    azul = pixel & 0x000000ff;
-                    color = new Color(rojo,verde,azul);
-                    par = lista_Colores.get_from_second(color);
-            
-                    if (par != null) { //existe
-                        numero_Auxiliar = par.first()+ 1;
-                        par.first(numero_Auxiliar);
-                        if (numero_Auxiliar > maximo_auxiliar) {
-                            primer_Color = color;
-                            maximo_auxiliar = numero_Auxiliar;
-                        }
-                    } else {
-                        lista_Colores.push_back(1, color);
-                    }
+            if(imagen_Usuario != null){
+            try {
 
-                    i += CourseRoom.Utilerias().number().numberBetween(1,largo_Imagen);
-                }
+                Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
+                int maximo_auxiliar = 0;
+                primer_Color = Color.BLACK;
+                Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
+                PixelGrabber obtener_Pixeles = new PixelGrabber(imagen_Usuario, 0, 0, -1, -1, false);
+                int largo_Imagen = imagen_Usuario.getWidth(null);
+                int[] pixeles;
+                int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
+                Color color;
+                Par<Integer, Color> par;
+                if (obtener_Pixeles.grabPixels()) {
+                    pixeles = (int[]) obtener_Pixeles.getPixels();
+                    for(int i = 0; i < pixeles.length; i++){
+                        pixel = pixeles[i];
+                        rojo = (pixel  & 0x00ff0000) >> 16;
+                        verde = (pixel & 0x0000ff00) >> 8;
+                        azul = pixel & 0x000000ff;
+                        color = new Color(rojo,verde,azul);
+                        par = lista_Colores.get_from_second(color);
 
-                segundo_Color = primer_Color;
-            
-                int iteraciones = 0;
-                if(lista_Colores.size() > 1){
-                    
-                    while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
-                        segundo_Color = lista_Colores.get(posicion).second();
-                        iteraciones++;
-                        if(iteraciones > 25){
-                             while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
-                                segundo_Color = lista_Colores.get(posicion).second();
+                        if (par != null) { //existe
+                            numero_Auxiliar = par.first()+ 1;
+                            par.first(numero_Auxiliar);
+                            if (numero_Auxiliar > maximo_auxiliar) {
+                                primer_Color = color;
+                                maximo_auxiliar = numero_Auxiliar;
                             }
-                             break;
+                        } else {
+                            lista_Colores.push_back(1, color);
                         }
-                    }
-                }
-               
-                tercer_Color = segundo_Color;
-                if(lista_Colores.size() > 2){
-                    iteraciones = 0;
-                    
-                    while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
-                        tercer_Color = lista_Colores.get(posicion).second();
-                        iteraciones++;
-                        if(iteraciones > 50){
-                            while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
-                                tercer_Color = lista_Colores.get(posicion).second();
-                            }
-                            break;
-                        }
-                    }
-                }
-                
-                rojo = primer_Color.getRed();
-                primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                rojo = segundo_Color.getRed();
-                segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                rojo = tercer_Color.getRed();
-                tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-                lista_Colores.clear();
-                
-                CourseRoom.Utilerias().Primer_Color(primer_Color);
-                CourseRoom.Utilerias().Segundo_Color(segundo_Color);
-                CourseRoom.Utilerias().Tercer_Color(tercer_Color);
-                CourseRoom.Utilerias().Primer_Color_Fuente(primer_Color_Fuente);
-                CourseRoom.Utilerias().Segundo_Color_Fuente(segundo_Color_Fuente);
-                CourseRoom.Utilerias().Tercer_Color_Fuente(tercer_Color_Fuente);
 
-                CourseRoom_Frame.Colorear(); 
-                Colorear();
+                        i += CourseRoom.Utilerias().number().numberBetween(1,largo_Imagen);
+                    }
+
+                    segundo_Color = primer_Color;
+
+                    int iteraciones = 0;
+                    if(lista_Colores.size() > 1){
+
+                        while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
+                            posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                            segundo_Color = lista_Colores.get(posicion).second();
+                            iteraciones++;
+                            if(iteraciones > 25){
+                                 while(primer_Color.getRGB() == segundo_Color.getRGB()){
+                                    posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                                    segundo_Color = lista_Colores.get(posicion).second();
+                                }
+                                 break;
+                            }
+                        }
+                    }
+
+                    tercer_Color = segundo_Color;
+
+                    if(lista_Colores.size() > 2){
+                        iteraciones = 0;
+
+                        while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
+                            posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                            tercer_Color = lista_Colores.get(posicion).second();
+                            iteraciones++;
+                            if(iteraciones > 50){
+                                while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
+                                    posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                                    tercer_Color = lista_Colores.get(posicion).second();
+                                }
+                                break;
+                            }
+                        }
+                    }
+
+                    rojo = primer_Color.getRed();
+                    primer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                    rojo = segundo_Color.getRed();
+                    segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                    rojo = tercer_Color.getRed();
+                    tercer_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                    lista_Colores.clear();
+
+                    CourseRoom.Utilerias().Primer_Color(primer_Color);
+                    CourseRoom.Utilerias().Segundo_Color(segundo_Color);
+                    CourseRoom.Utilerias().Tercer_Color(tercer_Color);
+                    CourseRoom.Utilerias().Primer_Color_Fuente(primer_Color_Fuente);
+                    CourseRoom.Utilerias().Segundo_Color_Fuente(segundo_Color_Fuente);
+                    CourseRoom.Utilerias().Tercer_Color_Fuente(tercer_Color_Fuente);
+
+                    CourseRoom_Frame.Colorear(); 
+                    Colorear();
+
+                }
+
+            } catch (InterruptedException ex) {
+                JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), ex.getMessage(), "Error Al Establecer Colores", JOptionPane.ERROR_MESSAGE);
             }
-            
-        } catch (InterruptedException ex) {
-            
+
+        }else{
+            CourseRoom.Utilerias().Primer_Color(CourseRoom.Utilerias().Color_Azul_Oscuro());
+            CourseRoom.Utilerias().Segundo_Color(CourseRoom.Utilerias().Color_Azul_Claro());
+            CourseRoom.Utilerias().Tercer_Color(CourseRoom.Utilerias().Color_Azul_Oscuro());
+            CourseRoom.Utilerias().Primer_Color_Fuente(CourseRoom.Utilerias().Color_Azul_Claro());
+            CourseRoom.Utilerias().Segundo_Color_Fuente(CourseRoom.Utilerias().Color_Azul_Oscuro());
+            CourseRoom.Utilerias().Tercer_Color_Fuente(CourseRoom.Utilerias().Color_Azul_Claro());
+
+            CourseRoom_Frame.Colorear(); 
+            Colorear();
         }
             
     }
@@ -858,21 +871,31 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         return imagen_Usuario;
     }
     
-    public static void Cambiar_Imagen_Usuario(Image _imagen_Usuario) {
+    public static void Cambiar_Imagen_Usuario(byte[] bytes_Imagen_Perfil, Image imagen) {
         
-        imagen_Usuario = _imagen_Usuario;
-        
-        _imagen_Usuario = _imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_AREA_AVERAGING);
-        
-        ImageIcon imagen_Perfil = new ImageIcon(_imagen_Usuario);
-        imagen_Perfil_JLabel.setIcon(imagen_Perfil);
-        imagen_Perfil = new ImageIcon(imagen_Usuario);
+        if(bytes_Imagen_Perfil.length > 0){
+            
+            Par<Integer, String> response = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(IdUsuario, bytes_Imagen_Perfil);
+            
+            if(response.first() == 1){
+            
+                imagen_Usuario = imagen;
 
-        _imagen_Usuario.flush();
-        imagen_Perfil.getImage().flush();
-        
-        
-        Establecer_Colores();
+                if(imagen_Usuario != null){
+
+                    Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                    ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
+                    imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                    icono_Imagen.getImage().flush();
+                    imagen_Redimensionada.flush();
+
+                    Establecer_Colores();
+                }
+            
+            }else{
+                JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), response.second(), "Error Al Actualizar La Imagen De Perfil", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
     
     public static Integer IdUsuario() {
@@ -902,61 +925,62 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     @Override
     public void Iniciar_Componentes() {
-         try {
-             
-            System.out.println("Dashboard -> Getting Image From https://i.pravatar.cc/450");
-            URL url_Imagen = new URL("https://i.pravatar.cc/450");
-            imagen_Usuario = ImageIO.read(url_Imagen);
-            Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-            ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
-            imagen_Perfil_JLabel.setIcon(icono_Imagen);
-            icono_Imagen.getImage().flush();
-            imagen_Redimensionada.flush();
-            
-            perfil_Panel = new Perfil_Profesor_Panel();
-            visualizador_JPanel.add("Perfil",perfil_Panel);
-            
-            desempeno_Profesional_Panel = new Desempeno_Profesional_Profesor_Panel();
-            visualizador_JPanel.add("Desempeno_Profesional",desempeno_Profesional_Panel);
-            
-            chats_Panel = new Chats_Profesor_Panel();
-            visualizador_JPanel.add("Chats", chats_Panel);
-            
-            tareas_Panel = new Tareas_Profesor_Panel();
-            visualizador_JPanel.add("Tareas",tareas_Panel);
-            
-            fechas_Panel = new Fechas_General_Panel();
-            visualizador_JPanel.add("Fechas",fechas_Panel);
-            
-            avisos_Panel = new Avisos_General_Panel();
-            visualizador_JPanel.add("Avisos",avisos_Panel);
-            
-            acerca_De_Panel = new Acerca_General_Panel();
-            visualizador_JPanel.add("Acerca_De",acerca_De_Panel);
-            
-            reproductor_Musica_Panel = new Reproductor_Musica_General_Panel();
-            visualizador_JPanel.add("Musica",reproductor_Musica_Panel);
-            
-            ajustes_Panel = new Ajustes_Profesor_Panel();
-            visualizador_JPanel.add("Ajustes",ajustes_Panel);
-            
-            preguntas_Panel = new Preguntas_Profesor_Panel();
-            visualizador_JPanel.add("Preguntas", preguntas_Panel);
-            
-            cursos_Panel = new Cursos_Profesor_Panel();
-            visualizador_JPanel.add("Cursos", cursos_Panel);
-            
-            mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias().Concatenar("Bienvenid@ ", Perfil_Profesor_Panel.Nombre_Completo()));
-            
-            tiempo_Servidor = new Tiempo_Servidor();
-            tiempo_Servidor.start();
-           
-            
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
+        
+        
+        byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(IdUsuario);
+        
+        if(bytes_Imagen_Perfil.length > 0){
+            imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+
+            if(imagen_Usuario != null){
+                Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
+                imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                icono_Imagen.getImage().flush();
+                imagen_Redimensionada.flush();
+            }
         }
+        
+        DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(IdUsuario);
+        
+        perfil_Panel = new Perfil_Profesor_Panel(datosPerfilModel);
+        visualizador_JPanel.add("Perfil",perfil_Panel);
+
+        desempeno_Profesional_Panel = new Desempeno_Profesional_Profesor_Panel();
+        visualizador_JPanel.add("Desempeno_Profesional",desempeno_Profesional_Panel);
+
+        chats_Panel = new Chats_Profesor_Panel();
+        visualizador_JPanel.add("Chats", chats_Panel);
+
+        tareas_Panel = new Tareas_Profesor_Panel();
+        visualizador_JPanel.add("Tareas",tareas_Panel);
+
+        fechas_Panel = new Fechas_General_Panel();
+        visualizador_JPanel.add("Fechas",fechas_Panel);
+
+        avisos_Panel = new Avisos_General_Panel();
+        visualizador_JPanel.add("Avisos",avisos_Panel);
+
+        acerca_De_Panel = new Acerca_General_Panel();
+        visualizador_JPanel.add("Acerca_De",acerca_De_Panel);
+
+        reproductor_Musica_Panel = new Reproductor_Musica_General_Panel();
+        visualizador_JPanel.add("Musica",reproductor_Musica_Panel);
+
+        ajustes_Panel = new Ajustes_Profesor_Panel();
+        visualizador_JPanel.add("Ajustes",ajustes_Panel);
+
+        preguntas_Panel = new Preguntas_Profesor_Panel();
+        visualizador_JPanel.add("Preguntas", preguntas_Panel);
+
+        cursos_Panel = new Cursos_Profesor_Panel();
+        visualizador_JPanel.add("Cursos", cursos_Panel);
+
+        mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias().Concatenar("Bienvenid@ ", Perfil_Profesor_Panel.Nombre_Completo()));
+
+        tiempo_Servidor = new Tiempo_Servidor();
+        tiempo_Servidor.start();
+        
     }
 
     @Override
@@ -977,7 +1001,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
             LocalDateTime fecha_Hora_Servidor;
             Vector<Integer> respuesta = CourseRoom.Solicitudes().Fecha_Hora_Servidor();
 
-            if(respuesta.capacity() > 0){
+            if(!respuesta.isEmpty()){
 
                 fecha_Hora_Servidor = 
                         LocalDateTime.of(respuesta.elementAt(0),respuesta.elementAt(1),

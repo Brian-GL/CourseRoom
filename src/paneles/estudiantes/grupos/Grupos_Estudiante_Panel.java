@@ -528,7 +528,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         curso = CourseRoom.Utilerias().educator().course();
         nombre = CourseRoom.Utilerias().team().name();
 
-        Agregar_Grupo(ruta_Imagen_Grupo, nombre, ruta_Imagen_Curso, curso, CourseRoom.Utilerias().Fecha_Hora_Local(), fecha, id);
+        Agregar_Grupo(ruta_Imagen_Grupo, nombre, ruta_Imagen_Curso, curso, CourseRoom.Utilerias().Fecha_Hora_Local(), "", id);
         
     }
 

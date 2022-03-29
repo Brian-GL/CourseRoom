@@ -456,7 +456,6 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         estado_JLabel.setText("Estado");
         estado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        estado_AutoCompletionComboBox.setEditable(false);
         estado_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         estado_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Estado de proveniencia</h3>\n</html>");
         estado_AutoCompletionComboBox.addItemListener(new java.awt.event.ItemListener() {
@@ -465,7 +464,6 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             }
         });
 
-        localidad_AutoCompletionComboBox.setEditable(false);
         localidad_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         localidad_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Localidad de provenencia</h3>\n</html>");
 
@@ -1499,6 +1497,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             estado_AutoCompletionComboBox.setSelectedIndex(0);
         }else{
             estado_AutoCompletionComboBox.setEnabled(false);
+            localidad_AutoCompletionComboBox.setEnabled(false);
         }
 
         Colorear_Componentes();
@@ -1629,41 +1628,46 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     @Override
     public void Validar_Campos() {
         
-        String correoElectronico = correo_JTextField.getText();
-        String contrasena = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
-        String nombre = nombres_JTextField.getText();
-        String paterno = apellido_Paterno_JTextField.getText();
-        String materno = apellido_Materno_JTextField.getText();
-        String genero = genero_JTextField.getText();
-        String fecha_Nacimiento = CourseRoom.Utilerias().Fecha(fecha_Nacimiento_DatePicker.getDate());
-        String descripcion = descripcion_JTextPane.getText();
-        Double promedio_General = promedio_General_JFormattedTextField.getValue() == null ? Double.valueOf(-1) : Double.valueOf(promedio_General_JFormattedTextField.getText());
-        String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
-        Integer idLocalidad = ((ComboOption) localidad_AutoCompletionComboBox.getSelectedItem()).Id();
+        if(localidad_AutoCompletionComboBox.getItemCount() > 0){
         
-        
-        if(imagen == null){
-            imagen = new byte[]{};
-        }
-        
+            String correoElectronico = correo_JTextField.getText();
+            String contrasena = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
+            String nombre = nombres_JTextField.getText();
+            String paterno = apellido_Paterno_JTextField.getText();
+            String materno = apellido_Materno_JTextField.getText();
+            String genero = genero_JTextField.getText();
+            String fecha_Nacimiento = CourseRoom.Utilerias().Fecha(fecha_Nacimiento_DatePicker.getDate());
+            String descripcion = descripcion_JTextPane.getText();
+            Double promedio_General = promedio_General_JFormattedTextField.getText().isBlank() || promedio_General_JFormattedTextField.getText().isEmpty()? Double.valueOf(-1) : Double.valueOf(promedio_General_JFormattedTextField.getText());
+            String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
+            Integer idLocalidad = ((ComboOption) localidad_AutoCompletionComboBox.getSelectedItem()).Id();
 
-        Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Nuevo_Usuario(correoElectronico, contrasena, 
-                nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
 
-        Integer codigo = response.first();
-        String mensaje = response.second();
+            if(imagen == null){
+                imagen = new byte[]{};
+            }
 
-        if(codigo > 0){
 
-            CourseRoom.Esconder_Frame();
+            Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Nuevo_Usuario(correoElectronico, contrasena, 
+                    nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
 
-            CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"),codigo);
+            Integer codigo = response.first();
+            String mensaje = response.second();
 
-            CourseRoom.Mostrar_Frame();
+            if(codigo > 0){
+
+                CourseRoom.Esconder_Frame();
+
+                CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"),codigo);
+
+                CourseRoom.Mostrar_Frame();
+            }else{
+                JOptionPane.showMessageDialog(this, mensaje, "Error Al Agregar Usuario", JOptionPane.ERROR_MESSAGE);
+            }
+
         }else{
-            JOptionPane.showMessageDialog(this, mensaje, "Error Al Agregar Usuario", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No Se Ha Seleccionado Una Localidad", "Error Al Agregar Usuario", JOptionPane.ERROR_MESSAGE);
         }
-
         
     }
 
