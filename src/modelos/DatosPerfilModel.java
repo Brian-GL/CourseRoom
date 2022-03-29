@@ -21,10 +21,12 @@ package modelos;
 public class DatosPerfilModel {
     
     private String nombre, paterno, materno, correo_Electronico, genero, tipo_Usuario, fecha_Nacimiento, descripcion, 
-    localidad, estado,fecha_Creacion;
+    localidad, estado,fecha_Creacion, contrasenia;
+
+   
     private double promedio_General;
 
-    public DatosPerfilModel(String nombre, String paterno, String materno, String correo_Electronico, String genero, String tipo_Usuario, String fecha_Nacimiento, String descripcion, String localidad, String estado, String fecha_Creacion, double promedio_General) {
+    public DatosPerfilModel(String nombre, String paterno, String materno, String correo_Electronico, String genero, String tipo_Usuario, String fecha_Nacimiento, String descripcion, String localidad, String estado, String fecha_Creacion, double promedio_General, String contrasenia) {
         this.nombre = nombre;
         this.paterno = paterno;
         this.materno = materno;
@@ -37,6 +39,7 @@ public class DatosPerfilModel {
         this.estado = estado;
         this.fecha_Creacion = fecha_Creacion;
         this.promedio_General = promedio_General;
+        this.contrasenia = contrasenia;
     }
 
     public DatosPerfilModel() {
@@ -49,7 +52,7 @@ public class DatosPerfilModel {
         this.fecha_Nacimiento = 
         this.descripcion = 
         this.localidad = 
-        this.estado = 
+        this.estado = this.contrasenia = 
         this.fecha_Creacion = new String();
         this.promedio_General = -1;
     }
@@ -151,7 +154,13 @@ public class DatosPerfilModel {
     }
 
     
-    
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
    
    
    

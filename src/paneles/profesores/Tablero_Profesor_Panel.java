@@ -41,7 +41,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private static Image imagen_Usuario;
 
-    private static Integer IdUsuario;
+    private static Integer IdUsuario, IdSesion;
     
     private static Chats_Profesor_Panel chats_Panel;
     private static Acerca_General_Panel acerca_De_Panel;
@@ -863,6 +863,9 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         ((CardLayout)visualizador_JPanel.getLayout()).removeLayoutComponent(componente);
     }
     
+    public static Integer Id_Usuario() {
+        return IdUsuario;
+    }
     
     /**
     * @return the imagen_Usuario
@@ -896,6 +899,10 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), response.second(), "Error Al Actualizar La Imagen De Perfil", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+    
+    public static Integer Id_Sesion() {
+        return IdSesion;
     }
     
     public static Integer IdUsuario() {
@@ -946,6 +953,15 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         perfil_Panel = new Perfil_Profesor_Panel(datosPerfilModel);
         visualizador_JPanel.add("Perfil",perfil_Panel);
 
+        Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
+
+        if(response.first() < 0){
+            IdSesion = -1;
+            System.err.println(response.second());
+        }else{
+            IdSesion = response.first();
+        }
+        
         desempeno_Profesional_Panel = new Desempeno_Profesional_Profesor_Panel();
         visualizador_JPanel.add("Desempeno_Profesional",desempeno_Profesional_Panel);
 
@@ -975,6 +991,8 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
         cursos_Panel = new Cursos_Profesor_Panel();
         visualizador_JPanel.add("Cursos", cursos_Panel);
+        
+        
 
         mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias().Concatenar("Bienvenid@ ", Perfil_Profesor_Panel.Nombre_Completo()));
 

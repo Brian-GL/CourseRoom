@@ -23,6 +23,7 @@ import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import courseroom.CourseRoom;
 import datos.colecciones.Lista;
+import datos.estructuras.Tripleta;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
@@ -33,6 +34,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Month;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -1594,8 +1597,23 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                         CourseRoom.Utilerias().Concatenar(datosPerfilModel.getDescripcion(), " <br><br><br>Registrado El ",datosPerfilModel.getFecha_Creacion())));
         genero_JLabel.setText(datosPerfilModel.getGenero());
         fecha_Nacimiento_JLabel.setText(datosPerfilModel.getFecha_Nacimiento());
-
         tipo_Perfil_JLabel.setText(datosPerfilModel.getTipo_Usuario());
+        
+        String contrasenia = CourseRoom.Utilerias().Decodificacion(datosPerfilModel.getContrasenia());
+        contrasena_JPasswordField.setText(contrasenia);
+        editar_Correo_Electronico_JTextField.setText(datosPerfilModel.getCorreo_Electronico());
+        editar_Nombres_JTextField.setText(datosPerfilModel.getNombre());
+        
+        editar_Apellido_Materno_JTextField.setText(datosPerfilModel.getMaterno());
+        editar_Apellido_Paterno_JTextField.setText(datosPerfilModel.getPaterno());
+        editar_Descripcion_JTextPane.setText(datosPerfilModel.getDescripcion());
+        Tripleta<Integer, Integer, Integer> tripleta = CourseRoom.Utilerias().Fecha(datosPerfilModel.getFecha_Nacimiento());
+        editar_Fecha_Nacimiento_DatePicker.setDate(LocalDate.of(tripleta.third(), tripleta.second(), tripleta.first()));
+        editar_Genero_JTextField.setText(datosPerfilModel.getGenero());
+        
+        if(datosPerfilModel.getPromedio_General() >= 0){
+            editar_Promedio_General_JFormattedTextField.setValue(datosPerfilModel.getPromedio_General()); 
+        }
         
         if(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario() != null){
             ImageIcon imagen_Icono = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());

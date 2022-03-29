@@ -5,6 +5,7 @@
  */
 package courseroom;
 
+import datos.estructuras.Par;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
@@ -136,6 +137,28 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
     }
 
     public void Cerrar_Sesion() {
+        
+        if(tablero_Estudiante != null){
+            
+            if(Tablero_Estudiante_Panel.Id_Sesion() > -1){
+        
+                Par<Integer, String> response = CourseRoom.Solicitudes().Cerrar_Sesion(Tablero_Estudiante_Panel.Id_Usuario(),Tablero_Estudiante_Panel.Id_Sesion());
+
+                if(response.first() < 0){
+                    System.err.println(response.second());
+                }
+            }
+        }
+        else if(tablero_Profesor != null){
+            if(Tablero_Profesor_Panel.Id_Sesion() > -1){
+        
+                Par<Integer, String> response = CourseRoom.Solicitudes().Cerrar_Sesion(Tablero_Profesor_Panel.Id_Usuario(),Tablero_Profesor_Panel.Id_Sesion());
+
+                if(response.first() < 0){
+                    System.err.println(response.second());
+                }
+            }
+        }
         
         this.Limpiar();
         

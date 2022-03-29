@@ -8,6 +8,7 @@ package paneles.profesores;
 import clases.Celda_Renderer;
 import courseroom.CourseRoom_Frame;
 import courseroom.CourseRoom;
+import datos.colecciones.Lista;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
@@ -22,6 +23,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.SesionesModel;
 
 /**
  *
@@ -514,30 +516,31 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
-    private void Agregar_Sesion(String id, String dispositivo, String fabricante, String uuid, 
-            String ultima_Fecha_Acceso, String ip, Boolean estatus){
+    private void Agregar_Sesion(SesionesModel sesionModel){
         
         
         Celda_Renderer[] celdas = new Celda_Renderer[6];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
        
-        celda = new Celda_Renderer(dispositivo,id);
+        String id = sesionModel.getId_Sesion().toString();
+        
+        celda = new Celda_Renderer(sesionModel.getDispositivo(),id);
         celdas[0] = celda;
-        celda = new Celda_Renderer(fabricante,id);
+        celda = new Celda_Renderer(sesionModel.getFabricante(),id);
         celdas[1] = celda;
-        celda = new Celda_Renderer(uuid,id);
+        celda = new Celda_Renderer(sesionModel.getUuid(),id);
         celdas[2] = celda;
-        celda = new Celda_Renderer(ultima_Fecha_Acceso,id);
+        celda = new Celda_Renderer(sesionModel.getUltima_Conexion(),id);
         celdas[3] = celda;
-        celda = new Celda_Renderer(ip,id);
+        celda = new Celda_Renderer(sesionModel.getDireccion_Ip(),id);
         celdas[4] = celda;
-        celda = new Celda_Renderer(estatus ? "Activo" : "Inactivo",id);
+        celda = new Celda_Renderer(sesionModel.getEstatus(),id);
         celdas[5] = celda;
 
         modelo.addRow(celdas);
 
-        int altura = CourseRoom.Utilerias().Altura_Fila_Tabla(uuid.length());
+        int altura = CourseRoom.Utilerias().Altura_Fila_Tabla(sesionModel.getUuid().length());
         sesiones_JTable.setRowHeight(modelo.getRowCount()-1, altura);
         
     }
@@ -576,18 +579,10 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
        
-        try {
-            
-            
-            String dispositivo = System.getProperty("os.name");
-            String fabricante = CourseRoom.Utilerias().getComputerSystem().getManufacturer();
-            String uuid = CourseRoom.Utilerias().getComputerSystem().getHardwareUUID();
-            String ip = CourseRoom.Utilerias().DireccionIP();
-            Boolean estatus = CourseRoom.Utilerias().bool().bool();
-            
-            Agregar_Sesion("1",dispositivo, fabricante, uuid, CourseRoom.Utilerias().Fecha_Hora_Local(), ip, estatus);
-        } catch (IOException ex) {
-            
+        Lista<SesionesModel> sesiones = CourseRoom.Solicitudes().Obtener_Sesiones_Usuario(Tablero_Profesor_Panel.Id_Usuario());
+        
+        while(!sesiones.is_empty()){
+            Agregar_Sesion(sesiones.delist());
         }
         
     }

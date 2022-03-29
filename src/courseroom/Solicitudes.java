@@ -25,6 +25,7 @@ import java.net.MalformedURLException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import modelos.DatosPerfilModel;
+import modelos.SesionesModel;
 import org.apache.xmlrpc.XmlRpcClient;
 import org.apache.xmlrpc.XmlRpcException;
 
@@ -328,7 +329,7 @@ public class Solicitudes {
 
                Vector<Object> resultado  = (Vector<Object>)respuesta;
 
-               if(resultado.size()== 12){
+               if(resultado.size()== 13){
                    
                     datosPerfilModel.setNombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosPerfilModel.setPaterno(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
@@ -342,6 +343,7 @@ public class Solicitudes {
                     datosPerfilModel.setEstado(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosPerfilModel.setPromedio_General((double)resultado.remove(0));
                     datosPerfilModel.setFecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.setContrasenia((String)resultado.remove(0));
                 }
                
            }
@@ -353,7 +355,7 @@ public class Solicitudes {
         return datosPerfilModel;
     }
      
-     public byte[] Obtener_Imagen_Perfil(Integer id_Usuario){
+    public byte[] Obtener_Imagen_Perfil(Integer id_Usuario){
         
         byte[] response;
 
@@ -374,7 +376,7 @@ public class Solicitudes {
         return response;
     }
      
-     public Par<Integer, String> Actualizar_Imagen_Perfil(int id_Usuario, byte[] imagen_Codificada){
+    public Par<Integer, String> Actualizar_Imagen_Perfil(int id_Usuario, byte[] imagen_Codificada){
 
         Par<Integer, String> response = new Par<>(-1,"");
         
@@ -409,4 +411,84 @@ public class Solicitudes {
         return response;
     }
      
+    public Par<Integer, String> Cerrar_Sesion(int id_Usuario, int id_Sesion){
+
+        Par<Integer, String> response = new Par<>(-1,"");
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Usuario);
+            parametros.add(id_Sesion);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Cerrar_Sesion", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.first((Integer)resultado.remove(0));
+                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.first(-1);
+                response.second("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.first(-1);
+            response.second(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
+    public Lista<SesionesModel> Obtener_Sesiones_Usuario(int id_Usuario){
+
+        Lista<SesionesModel> response = new Lista<>();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Sesiones_Usuario", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                Vector<Object> fila;
+                SesionesModel sesionesModel;
+                Integer id_Sesion;
+                String dispositivo, fabricante, uuid, ultima_Conexion, direccion_Ip, estatus;
+                while(!resultado.isEmpty()){
+                    fila = resultado.remove(0);
+                    
+                    id_Sesion = (Integer)fila.remove(0);
+                    dispositivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fabricante = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    uuid = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    ultima_Conexion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    direccion_Ip = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    sesionesModel = new SesionesModel(id_Sesion, dispositivo, fabricante, uuid, ultima_Conexion, direccion_Ip, estatus);
+                    response.push_back(sesionesModel);
+                }
+            }
+
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+    
 }

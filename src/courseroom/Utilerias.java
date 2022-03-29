@@ -122,11 +122,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import net.coobird.gui.simpleimageviewer4j.Viewer;
 import oshi.SystemInfo;
@@ -177,7 +174,7 @@ public class Utilerias {
             System.exit(0);
         }
 
-        formato_Fecha = DateTimeFormatter.ofPattern("EEEE dd/MM/yyyy hh:mm:ss a");
+        formato_Fecha = DateTimeFormatter.ofPattern("EEEE dd/MM/yyyy hh:mm:ss");
         color_Azul_Oscuro = new Color(14, 30, 64);
         color_Azul_Claro = new Color(104, 194, 232);
         informacion_Sistema = new SystemInfo();
@@ -902,10 +899,9 @@ public class Utilerias {
         Tripleta<Integer, Integer, Integer> tripleta = new Tripleta<>(-1,-1,-1);
         try{
             
-            Integer dia = Integer.parseInt(Sub_Cadena(fecha, -25, 2));
-            Integer mes = Integer.parseInt(Sub_Cadena(fecha, -22, 2));
-            Integer anio = Integer.parseInt(Sub_Cadena(fecha, -19, 4));
-            
+            Integer dia = Integer.parseInt(Sub_Cadena(fecha, -19, 2));
+            Integer mes = Integer.parseInt(Sub_Cadena(fecha, -16, 2));
+            Integer anio = Integer.parseInt(Sub_Cadena(fecha, -13, 4));
             tripleta.first(dia);
             tripleta.second(mes);
             tripleta.third(anio);
@@ -920,15 +916,11 @@ public class Utilerias {
     public String Sub_Cadena(String cadena, Integer indice, Integer cantidad){
         indice = cadena.length() + indice;
         String retorno = new String();
-        Integer i = cadena.length() - 1;
-        Integer contador = 0;
-        while(i >= 0 || contador >= cantidad){
-            if(Objects.equals(i, indice) || contador > 0){
-                retorno = retorno + cadena.charAt(i);
-                contador++;
-            }
-            
-            i = (contador > 0) ? i + 1 : i -1 ;
+        Integer i = 0;
+        while(i < cantidad){
+            retorno = retorno + cadena.charAt(indice);
+            indice++;
+            i++;
         }
         
         return retorno;

@@ -41,7 +41,7 @@ import paneles.estudiantes.desempeno_escolar.Desempeno_Escolar_Estudiante_Panel;
 public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
 
     private static Image imagen_Usuario;
-    private static Integer IdUsuario;
+    private static Integer IdUsuario, IdSesion;
 
     private static Chats_Estudiante_Panel chats_Panel;
     private static Acerca_General_Panel acerca_De_Panel;
@@ -717,7 +717,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         preguntas_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_preguntas_JButtonMouseExited
 
-   
     public static void Establecer_Colores(){
         if(imagen_Usuario != null){
             try {
@@ -943,6 +942,10 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         }
     }
     
+    public static Integer Id_Sesion() {
+        return IdSesion;
+    }
+    
     public static Integer Id_Usuario() {
         return IdUsuario;
     }
@@ -990,6 +993,15 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         
         perfil_Panel = new Perfil_Estudiante_Panel(datosPerfilModel);
             visualizador_JPanel.add("Perfil",perfil_Panel);
+            
+        Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
+
+        if(response.first() < 0){
+            IdSesion = -1;
+            System.err.println(response.second());
+        }else{
+            IdSesion = response.first();
+        }
 
         desempeno_Escolar_Panel = new Desempeno_Escolar_Estudiante_Panel();
         visualizador_JPanel.add("Desempeno_Escolar",desempeno_Escolar_Panel);
@@ -1024,11 +1036,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         cursos_Panel = new Cursos_Estudiante_Panel();
         visualizador_JPanel.add("Cursos", cursos_Panel);
 
-        Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
-
-        if(response.first() < 0){
-            System.err.println(response.second());
-        }
+        
         
         mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias().Concatenar("Bienvenid@ ", Perfil_Estudiante_Panel.Nombre_Completo()));
 
