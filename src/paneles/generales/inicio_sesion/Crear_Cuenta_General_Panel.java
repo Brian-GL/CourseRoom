@@ -1310,7 +1310,6 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 }else{
                     ((CardLayout)this.getLayout()).show(this,"Datos_Personales");
                 }
-                //validar_Password(contrasenia_Autenticacion_JPasswordField.getText().trim());
             } else {
                 // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
                 JOptionPane.showMessageDialog(this, "Contraseñas Distintas Revisa!!!", "NO", WIDTH);
@@ -1321,13 +1320,15 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     
         
     public void verificar_Datos_Personales(){
-            
-            if (nombres_JTextField.getText().equals("")
-                || apellido_Paterno_JTextField.getText().equals("")) {
+            if (nombres_JTextField.getText().isBlank() || apellido_Paterno_JTextField.getText().isBlank()) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
-            JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
+            JOptionPane.showMessageDialog(this, "Ingresa Los Campos Obligatorios!!!", "Error de Contenido", WIDTH);
+            if(nombres_JTextField.getText().startsWith(" ") || apellido_Paterno_JTextField.getText().startsWith(" ")
+               || apellido_Materno_JTextField.getText().startsWith(" ") || genero_JTextField.getText().startsWith(" ")){
+            // Si Los Campos Inician Con Un Espacio Manda Mensaje De Error.
+            JOptionPane.showMessageDialog(this, "Probablemente Estes Usando Un Espacio\nAl Principío En Algun Apartado", "Error de Contenido", WIDTH);
+            }
         } else {
-            //validar_Password(apellido_Materno_JTextField.getText().trim());
             ((CardLayout) this.getLayout()).show(this, "Perfil");
         }
     }
