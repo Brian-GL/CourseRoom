@@ -1321,6 +1321,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     
         
     public void verificar_Datos_Personales(){
+            
             if (nombres_JTextField.getText().equals("")
                 || apellido_Paterno_JTextField.getText().equals("")) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.

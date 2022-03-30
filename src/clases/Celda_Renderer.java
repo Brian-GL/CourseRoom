@@ -173,11 +173,8 @@ public class Celda_Renderer extends DefaultTableCellRenderer implements Comparab
                     return 0;
                 }
             }
-            
             return 1;
-            
         }
-        
         return 1;
     }
 }
