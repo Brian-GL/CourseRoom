@@ -491,4 +491,44 @@ public class Solicitudes {
         return response;
     }
     
+    public Par<Integer, String> Actualizar_Datos_Personales(int id_Usuario, String nombre, String paterno, 
+            String materno, String genero, String fecha_Nacimiento){
+
+        Par<Integer, String> response = new Par<>(-1,"");
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().Codificacion(nombre));
+            parametros.add(CourseRoom.Utilerias().Codificacion(paterno));
+            parametros.add(CourseRoom.Utilerias().Codificacion(materno));
+            parametros.add(CourseRoom.Utilerias().Codificacion(genero));
+            parametros.add(CourseRoom.Utilerias().Codificacion(fecha_Nacimiento));
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Actualizar_Datos_Personales", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.first((Integer)resultado.remove(0));
+                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.first(-1);
+                response.second("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.first(-1);
+            response.second(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
 }
