@@ -1120,7 +1120,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         if(SwingUtilities.isLeftMouseButton(evt)){
 
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
-            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "png", "jpg", "jpeg", "bmp");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "jpg", "jpeg");
             escogedor_Archivos.addChoosableFileFilter(filtro);
             escogedor_Archivos.setMultiSelectionEnabled(false);
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
@@ -1202,9 +1202,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
+            ComboOption comboOption = (ComboOption)editar_Localidad_AutoCompletionComboBox.getSelectedItem();
+            
             Par<Integer, String> respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Personales(Tablero_Estudiante_Panel.Id_Usuario(),
                     editar_Nombres_JTextField.getText(), editar_Apellido_Paterno_JTextField.getText(),
-                    editar_Apellido_Materno_JTextField.getText(), editar_Genero_JTextField.getText(), CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()));
+                    editar_Apellido_Materno_JTextField.getText(), editar_Genero_JTextField.getText(), 
+                    CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()),comboOption.Id());
             
             if(respuesta.first() == 1){
                 JOptionPane.showMessageDialog(this, "Se Han Actualizado Los Datos Personales Correctamente", "Mensaaje De Confirmación", JOptionPane.INFORMATION_MESSAGE);
@@ -1607,8 +1610,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
         carta_Visible = 0;
         
-        
-        
         if(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario() != null){
             ImageIcon imagen_Icono = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());
 
@@ -1632,8 +1633,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_JTable.getTableHeader().setFont(gadugi);
         intereses_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        
+         
     }
 
     @Override

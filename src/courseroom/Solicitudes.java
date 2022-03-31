@@ -492,7 +492,7 @@ public class Solicitudes {
     }
     
     public Par<Integer, String> Actualizar_Datos_Personales(int id_Usuario, String nombre, String paterno, 
-            String materno, String genero, String fecha_Nacimiento){
+            String materno, String genero, String fecha_Nacimiento, int id_Localidad){
 
         Par<Integer, String> response = new Par<>(-1,"");
         
@@ -506,6 +506,7 @@ public class Solicitudes {
             parametros.add(CourseRoom.Utilerias().Codificacion(materno));
             parametros.add(CourseRoom.Utilerias().Codificacion(genero));
             parametros.add(CourseRoom.Utilerias().Codificacion(fecha_Nacimiento));
+            parametros.add(id_Localidad);
             parametros.add(CourseRoom.Utilerias().MiUidd());
             parametros.add(CourseRoom.Utilerias().MiIP());
             

@@ -595,7 +595,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         if(SwingUtilities.isLeftMouseButton(evt)){
 
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
-            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "png", "jpg", "jpeg", "bmp");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "jpg", "jpeg");
             escogedor_Archivos.addChoosableFileFilter(filtro);
             escogedor_Archivos.setMultiSelectionEnabled(false);
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
