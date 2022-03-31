@@ -121,7 +121,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Localidad_AutoCompletionComboBox = new com.jidesoft.swing.AutoCompletionComboBox();
         editar_Fecha_Nacimiento_DatePicker = new com.github.lgooddatepicker.components.DatePicker();
         editar_Estado_JButton = new javax.swing.JButton();
-        editar_Localidad_JButton = new javax.swing.JButton();
         editar_Fecha_Nacimiento_JButton = new javax.swing.JButton();
         editar_Genero_JButton = new javax.swing.JButton();
         editar_Nombres_JButton = new javax.swing.JButton();
@@ -398,8 +397,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         contrasena_JLabel.setMinimumSize(new java.awt.Dimension(320, 29));
         contrasena_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
-        contrasena_JPasswordField.setEditable(false);
         contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        contrasena_JPasswordField.setEnabled(false);
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
         contrasena_JPasswordField.setToolTipText("Ingrese Aquí Su Contraseña (Mínimo 8 Carácteres)");
@@ -410,8 +409,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Correo_Electronico_JLabel.setMinimumSize(new java.awt.Dimension(500, 29));
         editar_Correo_Electronico_JLabel.setPreferredSize(new java.awt.Dimension(500, 29));
 
-        editar_Correo_Electronico_JTextField.setEditable(false);
         editar_Correo_Electronico_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        editar_Correo_Electronico_JTextField.setEnabled(false);
         editar_Correo_Electronico_JTextField.setMinimumSize(new java.awt.Dimension(500, 36));
         editar_Correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(500, 36));
         editar_Correo_Electronico_JTextField.setToolTipText("Ingrese Aquí Su Correo Electrónico (Ingrese Uno Que Pueda Utilizar)");
@@ -422,8 +421,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         repetir_Contrasena_JLabel.setMinimumSize(new java.awt.Dimension(320, 29));
         repetir_Contrasena_JLabel.setPreferredSize(new java.awt.Dimension(320, 29));
 
-        repetir_Contrasena_JPasswordField.setEditable(false);
         repetir_Contrasena_JPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        repetir_Contrasena_JPasswordField.setEnabled(false);
         repetir_Contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(320, 36));
         repetir_Contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(320, 36));
         repetir_Contrasena_JPasswordField.setToolTipText("Re-Ingrese Aquí La Contraseña");
@@ -563,25 +562,25 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Nombres_JLabel.setText("Nombre(s) *");
         editar_Nombres_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        editar_Nombres_JTextField.setEditable(false);
         editar_Nombres_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Nombres_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        editar_Nombres_JTextField.setEnabled(false);
         editar_Nombres_JTextField.setToolTipText("<html>  <h3> Nombre(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
 
         editar_Apellido_Paterno_JLabel.setText("Apellido Paterno *");
         editar_Apellido_Paterno_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        editar_Apellido_Paterno_JTextField.setEditable(false);
         editar_Apellido_Paterno_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Apellido_Paterno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        editar_Apellido_Paterno_JTextField.setEnabled(false);
         editar_Apellido_Paterno_JTextField.setToolTipText("<html>  <h3> Apellido paterno </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
 
         editar_Localidad_JLabel.setText("Localidad");
         editar_Localidad_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        editar_Genero_JTextField.setEditable(false);
         editar_Genero_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Genero_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        editar_Genero_JTextField.setEnabled(false);
         editar_Genero_JTextField.setToolTipText("<html>  <h3> Identidad de género </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
 
         editar_Genero_JLabel.setText("Género");
@@ -590,12 +589,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
         editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
+        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setText("Guardar Cambios");
+        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         guardar_Cambios_Datos_Personales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         guardar_Cambios_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         ((ImageIcon)guardar_Cambios_Datos_Personales_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -612,9 +611,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Apellido_Materno_JLabel.setText("Apellido Materno");
         editar_Apellido_Materno_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        editar_Apellido_Materno_JTextField.setEditable(false);
         editar_Apellido_Materno_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
+        editar_Apellido_Materno_JTextField.setEnabled(false);
         editar_Apellido_Materno_JTextField.setToolTipText("<html>  <h3> Apellido materno </h3> </html>");
 
         editar_Estado_JLabel.setText("Estado");
@@ -651,22 +650,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 editar_Estado_JButtonMouseExited(evt);
-            }
-        });
-
-        editar_Localidad_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-        editar_Localidad_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        editar_Localidad_JButton.setToolTipText("Editar Localidad");
-        ((ImageIcon)editar_Localidad_JButton.getIcon()).getImage().flush();
-        editar_Localidad_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editar_Localidad_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                editar_Localidad_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                editar_Localidad_JButtonMouseExited(evt);
             }
         });
 
@@ -784,7 +767,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(editar_Estado_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editar_Localidad_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editar_Fecha_Nacimiento_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editar_Genero_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -823,9 +805,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                     .addGroup(datos_Personales_JPanelLayout.createSequentialGroup()
                         .addComponent(editar_Localidad_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(datos_Personales_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(editar_Localidad_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editar_Localidad_AutoCompletionComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                        .addComponent(editar_Localidad_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(editar_Genero_JLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -873,6 +853,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Promedio_General_JLabel.setPreferredSize(new java.awt.Dimension(409, 25));
 
         editar_Promedio_General_JFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##.00"))));
+        editar_Promedio_General_JFormattedTextField.setEnabled(false);
         editar_Promedio_General_JFormattedTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Promedio_General_JFormattedTextField.setPreferredSize(new java.awt.Dimension(126, 40));
         editar_Promedio_General_JFormattedTextField.setToolTipText("<html>\n<h3>Promedio general de tu escuela</h3>\n<ul><li>Esto nos ayudará a generar mayores estadísticas sobre ti<br>\na la hora de tomar tus cursos.</li></ul>\n</html>");
@@ -884,6 +865,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Descripcion_JLabel.setPreferredSize(new java.awt.Dimension(409, 25));
 
         editar_Descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        editar_Descripcion_JTextPane.setEnabled(false);
         editar_Descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
         editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
@@ -1183,7 +1165,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Correo_Electronico_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Correo_Electronico_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Correo_Electronico_JTextField.setEnabled(true);
+            editar_Correo_Electronico_JTextField.setEnabled(!editar_Correo_Electronico_JTextField.isEnabled());
         }
 
     }//GEN-LAST:event_editar_Correo_Electronico_JButtonMouseClicked
@@ -1371,24 +1353,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Estado_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_editar_Estado_JButtonMouseExited
 
-    private void editar_Localidad_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Localidad_JButtonMouseClicked
-        // TODO add your handling code here:
-        if (SwingUtilities.isLeftMouseButton(evt)) {
-            editar_Localidad_AutoCompletionComboBox.setEnabled(true);
-        }
-        
-    }//GEN-LAST:event_editar_Localidad_JButtonMouseClicked
-
-    private void editar_Localidad_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Localidad_JButtonMouseEntered
-        // TODO add your handling code here:
-        editar_Localidad_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-    }//GEN-LAST:event_editar_Localidad_JButtonMouseEntered
-
-    private void editar_Localidad_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Localidad_JButtonMouseExited
-        // TODO add your handling code here:
-        editar_Localidad_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-    }//GEN-LAST:event_editar_Localidad_JButtonMouseExited
-
     private void editar_Genero_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Genero_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -1564,7 +1528,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             editar_Estado_AutoCompletionComboBox.setEnabled(false);
             editar_Estado_AutoCompletionComboBox.setEnabled(false);
             editar_Estado_JButton.setEnabled(false);
-            editar_Localidad_JButton.setEnabled(false);
             
         }
     }
@@ -1610,7 +1573,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private javax.swing.JTextField editar_Genero_JTextField;
     private javax.swing.JButton editar_Informacion_Extra_JButton;
     private com.jidesoft.swing.AutoCompletionComboBox editar_Localidad_AutoCompletionComboBox;
-    private javax.swing.JButton editar_Localidad_JButton;
     private javax.swing.JLabel editar_Localidad_JLabel;
     private javax.swing.JButton editar_Nombres_JButton;
     private javax.swing.JLabel editar_Nombres_JLabel;
@@ -1777,7 +1739,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Apellido_Materno_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Apellido_Paterno_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Estado_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        editar_Localidad_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Genero_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Fecha_Nacimiento_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Correo_Electronico_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
