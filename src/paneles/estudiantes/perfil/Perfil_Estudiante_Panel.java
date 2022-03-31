@@ -1183,8 +1183,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Contrasena_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Contrasena_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            contrasena_JPasswordField.setEnabled(true);
-            repetir_Contrasena_JPasswordField.setEnabled(true);
+            contrasena_JPasswordField.setEnabled(!contrasena_JPasswordField.isEnabled());
+            repetir_Contrasena_JPasswordField.setEnabled(!repetir_Contrasena_JPasswordField.isEnabled());
         }
     }//GEN-LAST:event_editar_Contrasena_JButtonMouseClicked
 
@@ -1288,7 +1288,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Nombres_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombres_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Nombres_JTextField.setEnabled(true);
+            editar_Nombres_JTextField.setEnabled(!editar_Nombres_JTextField.isEnabled());
         }
     }//GEN-LAST:event_editar_Nombres_JButtonMouseClicked
 
@@ -1306,7 +1306,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Apellido_Paterno_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Apellido_Paterno_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Apellido_Paterno_JTextField.setEnabled(true);
+            editar_Apellido_Paterno_JTextField.setEnabled(!editar_Apellido_Paterno_JTextField.isEnabled());
         }
     }//GEN-LAST:event_editar_Apellido_Paterno_JButtonMouseClicked
 
@@ -1323,7 +1323,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Apellido_Materno_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Apellido_Materno_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Apellido_Materno_JTextField.setEnabled(true);
+            editar_Apellido_Materno_JTextField.setEnabled(!editar_Apellido_Materno_JTextField.isEnabled());
         }
         
     }//GEN-LAST:event_editar_Apellido_Materno_JButtonMouseClicked
@@ -1341,7 +1341,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Estado_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Estado_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Estado_AutoCompletionComboBox.setEnabled(true);
+            editar_Estado_AutoCompletionComboBox.setEnabled(!editar_Estado_AutoCompletionComboBox.isEnabled());
         }
         
     }//GEN-LAST:event_editar_Estado_JButtonMouseClicked
@@ -1359,7 +1359,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Genero_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Genero_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Genero_JTextField.setEnabled(true);
+            editar_Genero_JTextField.setEnabled(!editar_Genero_JTextField.isEnabled());
         }
         
     }//GEN-LAST:event_editar_Genero_JButtonMouseClicked
@@ -1377,7 +1377,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Fecha_Nacimiento_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Fecha_Nacimiento_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Fecha_Nacimiento_DatePicker.setEnabled(true);
+            editar_Fecha_Nacimiento_DatePicker.setEnabled(!editar_Fecha_Nacimiento_DatePicker.isEnabled());
         }
     }//GEN-LAST:event_editar_Fecha_Nacimiento_JButtonMouseClicked
 
@@ -1394,7 +1394,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Promedio_General_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Promedio_General_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Promedio_General_JFormattedTextField.setEnabled(true);
+            editar_Promedio_General_JFormattedTextField.setEnabled(!editar_Promedio_General_JFormattedTextField.isEnabled());
         }
     }//GEN-LAST:event_editar_Promedio_General_JButtonMouseClicked
 
@@ -1411,7 +1411,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Descripcion_JTextPane.setEnabled(true);
+            editar_Descripcion_JTextPane.setEnabled(!editar_Descripcion_JTextPane.isEnabled());
         }
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseClicked
 
