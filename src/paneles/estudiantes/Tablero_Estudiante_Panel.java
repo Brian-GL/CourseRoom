@@ -991,9 +991,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             }
         }
         
-        DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(IdUsuario);
-        
-        perfil_Panel = new Perfil_Estudiante_Panel(datosPerfilModel);
+        perfil_Panel = new Perfil_Estudiante_Panel();
             visualizador_JPanel.add("Perfil",perfil_Panel);
             
         Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);

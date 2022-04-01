@@ -648,7 +648,7 @@ CREATE TABLE `tb_sesiones` (
   PRIMARY KEY (`IdSesion`),
   KEY `fk_IdUsuarioSesion_INDEX` (`IdUsuario`),
   CONSTRAINT `fk_IdUsuarioSesion` FOREIGN KEY (`IdUsuario`) REFERENCES `tb_usuarios` (`IdUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -657,7 +657,7 @@ CREATE TABLE `tb_sesiones` (
 
 LOCK TABLES `tb_sesiones` WRITE;
 /*!40000 ALTER TABLE `tb_sesiones` DISABLE KEYS */;
-INSERT INTO `tb_sesiones` VALUES (1,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 28/03/22 22:33:42','177.245.218.199',1,_binary '\0'),(2,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 28/03/22 22:38:20','177.245.218.199',1,_binary '\0'),(3,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:15:30','177.245.219.175',1,_binary ''),(4,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:28:11','177.245.219.175',1,_binary ''),(5,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:37:46','177.245.219.175',1,_binary ''),(6,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:48:39','177.245.219.175',1,_binary ''),(7,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:52:22','177.245.219.175',1,_binary ''),(8,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 20:48:29','177.245.219.175',1,_binary '\0'),(9,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miÃ©rcoles 30/03/22 19:19:10','177.245.216.31',1,_binary '');
+INSERT INTO `tb_sesiones` VALUES (1,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 28/03/22 22:33:42','177.245.218.199',1,_binary '\0'),(2,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 28/03/22 22:38:20','177.245.218.199',1,_binary '\0'),(3,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:15:30','177.245.219.175',1,_binary ''),(4,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:28:11','177.245.219.175',1,_binary ''),(5,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:37:46','177.245.219.175',1,_binary ''),(6,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:48:39','177.245.219.175',1,_binary ''),(7,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:52:22','177.245.219.175',1,_binary ''),(8,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 20:48:29','177.245.219.175',1,_binary '\0'),(9,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miÃ©rcoles 30/03/22 19:19:10','177.245.216.31',1,_binary ''),(10,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 31/03/22 17:55:45','177.245.216.223',1,_binary ''),(11,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 31/03/22 18:01:29','177.245.216.223',1,_binary ''),(12,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 31/03/22 18:48:36','177.245.216.223',1,_binary '');
 /*!40000 ALTER TABLE `tb_sesiones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -871,7 +871,7 @@ CREATE TABLE `tb_usuarios` (
 
 LOCK TABLES `tb_usuarios` WRITE;
 /*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
-INSERT INTO `tb_usuarios` VALUES (1,'BRIANLOMELI096@GMAIL.COM','OTg3NjU0MzIxMFh4JA==','BRIAN','GAYTAN','LOMELI','miÃ©rcoles 31/03/1999 12:00:00','HOMB','Prueba registro primer usuario',97,_binary 'Estudiante','lunes 28/03/22 22:20:44',576,_binary 'ÿ\Øÿ\à\0JFIF\0\0H\0H\0\0ÿ\â(ICC_PROFILE\0\0\0\0\0\0\0\0\0mntrRGB XYZ \0\0\0\0\0\0\0\0\0\0\0\0acsp\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ö\Ö\0\0\0\0\0\Ó-\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	desc\0\0\0ğ\0\0\0trXYZ\0\0d\0\0\0gXYZ\0\0x\0\0\0bXYZ\0\0Œ\0\0\0rTRC\0\0 \0\0\0(gTRC\0\0 \0\0\0(bTRC\0\0 \0\0\0(wtpt\0\0\È\0\0\0cprt\0\0\Ü\0\0\0<mluc\0\0\0\0\0\0\0\0\0\0enUS\0\0\0X\0\0\0\0s\0R\0G\0B\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0XYZ \0\0\0\0\0\0o¢\0\08õ\0\0XYZ \0\0\0\0\0\0b™\0\0·…\0\0\ÚXYZ \0\0\0\0\0\0$ \0\0„\0\0¶\Ïpara\0\0\0\0\0\0\0\0ff\0\0ò§\0\0\rY\0\0\Ğ\0\0\n[\0\0\0\0\0\0\0\0XYZ \0\0\0\0\0\0ö\Ö\0\0\0\0\0\Ó-mluc\0\0\0\0\0\0\0\0\0\0enUS\0\0\0 \0\0\0\0G\0o\0o\0g\0l\0e\0 \0I\0n\0c\0.\0 \02\00\01\06ÿ\Û\0C\0\n\r	\n\n\r\r\Z\Z\Zÿ\Û\0C\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Zÿ\Â\0\"\0ÿ\Ä\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ÿ\Ä\0\Z\0\0\0\0\0\0\0\0\0\0\0\0ÿ\Ú\0\0\0\0ùC©óı\ä\ÉZ…d…$«J @\"\ÈÖ¾µ«½­5\ÄÃŸ_nw8«L\Z¸š`$¶Ëµ¡TÓ½±\ç60\êíš»xô+[o‡>\Ö\Î;\ëlÙ\é\Å\Ö\à8²mMI#m\0À\Ô\Ô.\å%\ãÊS\Æu$B`	‹¦LBsc½+S6–¼\íÍ—&µk–\ÖÕœn\Úf®ös\ÛWi!\ÜÚ’\Z‚Õ²Ô•µmj\Åtö_\ê8}^½§Á\é¦\Ê\èŠiŠd¦¢‡bh­š(dŒ&¢\ì&…e¶C¨«\Ïjõ1wùÜ³kRøÜ§|\è’.T\ÔÀñãˆe\á\ë\ànü¹\"%V*E\åÅ–5Ë“]g®\\¸\Ş\ZÖ¾\r*¶5\"!cfS\r—\Ğ\æ\Ö{{n—õO\Ğn\n¹;Áº\Ù*h\n\Z\0\"nD$£(TET‘\Æ§‚p\ì^f>®­é¢²­r’±¡h\ç\åôq Ÿ9\ÈZ©\Í*1­u-dB\Ùb\0A9\0E!Ulæ–¿O\ås\á\×ôlºşÓ™\î’eBJ \0Q I\n‹$	–Y\Ånw\á¤	C\ÕŞ™¯c›\Ñ\Ï\Ê\ÕÍ‡¿È”§nJ–•`\ÊBY¹ie’¤CS\0œ&\åV9˜4\rÈ·£ö_2÷¾W¿\ÓA\æ{aBÀ@¢•`©\0¥¦€š	¨8*\âe\È¿\Z*V‚Á&\r-\ŞFüœ<w\ÕğT\ß	R“ZL„\İW|up˜*mRm+Œ¡TXAr%0™¨d ©2zO1¹ÿ\0M0\çùß°C\Z…I@,© ’¤ˆ\0¤U\r„ŸG+VeX%P`\âwx=\\<x¹õ<)šW\ç`\Ìõ\ÑVL\Ø÷I°ó\é\ÑÇ½];\Í\Æ\'>+F*\ÉFÕ®ó³²D\ë\ÆÂ–¹mM|=n¤<³ô<”{¯˜õ^/\Ò!œİ‰€&\0‚\0\0D”˜!’\Õ\ãPtr€V@i‘|÷£\âuqyø¸õ|.o\Î\ílWCp\İ\æôñ^\Î^~½<›Õ¼ü]M54pl®Œ5\Ì\Õf39[b2•k™\æ\Ñ1–L&bÑ‹d\ëg§Gƒ\è\Ós?3%ó\îú#\ê8;óPøû\Ğ\Ğ4E-d1·6€h\0!„“B¼­¹\Ò\ÌW	Vˆ\ãö55\æòZı.­\á\á-\í\Ç[¸:üşf©\ã\ïÉ—L¶\Îc\É[F¾Ú‡z¾ZfõÃŸ]¡},5hNö+Æ¶=Èµ5\ì\Ø7#c¼‰Å“»—fº=,5ó^ƒ•›ı›‹ó½¥]P\n¤Å‘R.j•+BC©6¬x\Ør€Û˜%MT\0³E³\àq½_¿\Ï\ä\İe\ìóótuwy{j\ÖL:UMj\æ\é£\Èd¥ñ\ÎBx¢h¶Š\ß¾Ş½ò\ÕÅ³­¯:\ØÁœ\Ø\æuµ—ó•±¥\İÇ·µ\ÍÏı*68;»9qg\äí‘•\Ñ\å(B¹UQ2\É\Z@ˆ@&v\Zs\Ñ6	€P´•*\ã\Ó\ßÇ¦~c¦\âvğ­¬\ë[\ØÇ±–\ÓRW\\µCl\Ğ\Ãh\êO.,\êÎ†9¯N¹»ç¯Ÿ=\Ş,²l{E²\ÓÍ˜V÷5vò\è\Ï\å;\Øô¯Ú¿S\×Ë­³x=\r\Í†\Z¥Et’*	WP\0LÜ‰2\É(˜‘Ê¼°«\â\rª	¡i($©1q»Ü®^v\Æ<\Úó\ç1\Åo–p\ê\Û=~¾>®|¦Ls<exCg¥\É\ísõo\çÅ±Á\ß%‘®\áQ¢\Ñy1*NMj\Ô\Ò7ú\Ü\ÕmbÇºöw1\ä\Çd5M\0	V	49©š…Á#Á2±-\Ì×–˜…\0\Øhƒ1\ÑŞ‹\çç²¼}\\F±§®YôVGQzòŒR\î3\×n[©\æ{”\ä\í\Åac.P“™Yªa·3³»\æK×®ø^²³\Û\çúpR‹$Á0H\æª[&i¶H+Bjj\æ\Ğö\ç@@²\0)\0QD×§\Ğ\â÷ğF\Ã\ÕÃh\è\âLJ<iZ™oZ\èú:\îG§¹©›\Ìõö	\ÏL“‡<±Š4\Î\Ô+\Ö\Òc\Züş¦–\Üø½ŸŒö\ÔÛ¨\æúó4B[C\0jf¥K`•B%¹±\Í#šI§=‚`\Ñ@À%£C\Ë{\ß\æ\ã”wyRÒŠ2(¦)\ÊZ‹\"ºë—·\Å\érúSD\ä\ë\ŞÇª‰×«W*\Â#9!’±e‹\ÔQ«·‚ô\ÔõWºŸTMy¾Ì€\0B@\0$H\0\n©©±’b1¶\ÒkNpÅšˆj²\0Gˆ÷\\¾O}\rOO\ÇU‡¤¥¯]µb\ÙblF]\ím\Üz(1c®\\i!†RKT²R\æD\â\Ì\ÆÅñM1mj\Í\ëôJ\Ô\Ûó=‰*i¨IhĞ¦*™	–¬\0‚hH\æ’i\Ï@\08³\Z)*	`U,¢4º1®^±\Û:¹b¶óröyw±\ÒÛŸ\Ç\Ïw—\Ù\ÆnFj\".+kS”¹¬•¶*”åœµ’TDL\\c\ÇlòLM\èüº\âô¨N\à\0š		Q3@\"f­T„Ô $µy¡Z`\Ğ$h‹2’Aˆ)$Ğ@S‹8­S)¿M9×·2\æq{:<œ½—µ§>.™\ã>¦µó‰ğˆ\ÈJ	1Z¦*\Ãz\n\'Lò“E{¯\èğ\èõ`y~\à	h& \Z	Y\Z’š	j­K9n2i\Î\æ€\Z\n\"ÀM%MTKY5\Ò\Ú\ãiMõ\çõzy}7ƒƒ£—±«£¹¶^‡w\Z\à\ï•µ\ë\Ş+g‹|ZeEó· „­ŠõöÌ©&·R³©T·\Ò\ï‹\Ûò=\Ô3.‰	‘ )V\ä‘4Z€ÃW˜\Õi‚(L\Ô\Ğ4\â\Ì@\ÅU’¡”\×RAóº5zø-{‹»‡\Ãcú?‹Û›™\è¸Ş‹.¯/T\ê\éa\èÃ´rm^‰©uT“hx\ÈCƒ”1Z!Z¬®S­û^\Û\æ\ß@óı‘>˜™Bj$hU%‚b&hšÀ$sˆz\ãbuš&€‹6©(n¥SE€³mBš“‘\×Ò½<gC™§\ìx½M]<ö\Ïu…yo{Zae×¨ºÁŸ=	©LA7\ÊI«À\â‡QQkMVrz)¿\ß@1\äò}À&º \"¨’@\äbH¤Šj&¡4S\rq +,\0© \0µ.,Ü²\åUe\ÜZÔ•Á´\Ó@s\Êı7\Îwùş[wR=+d\Óf\Ö	\0É–2ylB\Åj¸•¦m%jÓŠHº^Õ•´m`\Û\Êş›³\äı\'Ÿ\ël,1V\Â¤M!X\0MI5@˜§-\\JšXqU\0u,·.³uª‹IS\Ë\îüw\çv4½3[S&ş\á\Ë×‰\ä)®\rM\îe\é¦zyDò\ZcI¯‘\ÆJišñe\Ïmˆ\Ø\ç\×6ö—W“»­À\îôøo[ó\Ûôüo¤s½\çzÙe±50,ÔŠ	\Õ\ë\Ê¦-Š,\êB:¬¶‘C©²,ª™W3\ärö\Ç\Ö/¥¿\'¢ó¼ó\Ğñ\êRß‰´Í\îV\Ö]]c—\\şK<š\ì\ë\Äi…‘Zb\È&´\â\â\å\']^Hºk—>,\Øï¹µ¯µ\Í\Òı\Ğòö\Ê|Z\ß\Å\à\'\ŞùZ\Ø\Õ-OG\è~{|İ¿O^g\Ñù~\í’c\Ğ@\n\Õ\å\Ò{`T•½ƒh(’ª$².m²\ì\èy¾wos‘†{<À¼‘­˜š¡R“N\Ü\ŞLºğ,\Ø@f\Ğ$\nMÆ€\Ê\ìóFL¶½œ{XmŸcS›¯£–ñrv\åñ«\ç}\Şv =_ŸZ,nI–\ë¥óQ\ç{^€\Ó\Û\âôœ²³Í¨7\ÊÀ¬ŒPcC¿\ÎÏªOw“A6\Ä\Z´(¸š2\'$«)¡03?K¿—F\æ¾Ñ‡o(\éjë–»¥l\Ø`\ëzeW¡\ía\ß\Ãw±“¯\ÉÙ§\èg_Ÿ«%\â\ä?“·óCOnT4‚,Y‰\Ö\Ù:\\’šú\İÿ\0ù»=’£\Ïõ\İE¬U1M2y\ì®ÿ\02\à;¼°•l\ÛTJiX©¹„\Â$Š‰‰PL\0&t7¸;yut\Ìw\Ï\Ú`Ùµ¹«§g%÷;ùôx­Ÿotğú\Ùc³o=RE³\Ùò1‡\Õñ^hiPH#$P™©\ÊMÀµ¡U\ì\î\éì–»Yó;<Nÿ\02¡®\ß($µÒ¶H	\ÄÁR\ÑM)@\é	PL\äE%SA[Zd[±±ÁË—W \Úó\İ\Şn\ßG\Ğ\áf\àôûùq]º¸üyıO?\Ë\êtñv¸\Ø\Î\Ï:À\×‘+,\ĞM4X„·,öF:ğ¾š½¯1·>œTz~™R„51r€‹”6$\âS\0W\"\02acÊŒfAXe,À‹\0@r\r\rT\Åi¤\ê\0Mr\0P\r\0XM%R£\×\â}5\"!\Ï\àeÁ\éùœtùÀ©&I0”†Ó‰nX“@\Ğ&˜\0\0\r\0	\ÊU¤10%\rL7,L\è ¬TŠ\Óif€¸ 	±\\´ªT!µ½[‹ñ>’¹\İ?¿?)5\éx`È’‰L\ÔÀ\ĞKT18”ÀL0I“\0¤	&Fd\Â\0b`ÀH\n\0©*$\0š›\ZMzE8°%$1Y7·«!ø¿C^s¿\åú¸ğ>‡%J¦a¥d\0\0‰¸±‰Ä•‰50&\Ú˜4D€\0œÁ4Åƒ@\Ä\"%°\0	¸¡Ô‹@\r%1€L\Ó=@G¿\Î\âni÷y¸Æº|ğl\Æ\0É€\Â\É$\0i›™4\Ò\Ø&€\0\0L€Š\0`&\0\ÊH2hšš\n›\0k$ª†\É(½6+\Ôòı\ZCÊ„\Zsa5!SD\rL\n1¨š‘“l”\ÔÀ\Ó\00À\0*A©(VH™n.$a0N…d©,b\àIB ¤Š\Z\Ú\ßÿ\Ä\0*\0\0\0\0\0\0 01!@AP\"#24Bÿ\Ú\0\01;R\íJ[²\ÚOBŠ\ìGT¼ˆ\á•Dª–\ê\ÈÛ¶š¸m?£\ßÿ\0£«J¡–Ø¾\'GCŸŠ­E1\Ë|^7H\Ú\êƒj£„_]c”m.i\Ù\Ù-\ïofP&\ÈX<ƒªefö\çd«\rÄ˜˜˜\ãnø¤§YXi\ŞÇ˜\ì\ë\èşZ6¹N\Ìlv \áRıZ¥A\\®´™\nñVmˆ\ì¤\ŞI´“l¯N¦+CW—\ÒM‰½ô\äııÚƒmø\çC\\\ëvI‘6‹4\Ë¾z1(¿\'\Ñ\î\Ğ~şmV\È\êf0¹[ôC\Ñ#\Ü9\Ùp¦\ÅQ\\M»\ã\Òj1VZ7şmü\æs}ø\ácß±£TıqQÜ’dO\Ğ\Ğ\ê2Dâ‘»÷o\å\Ü:Ÿ¬U¤gºW’~•7\âºz¾VZ>¤p\ÆC\Ø+aVJ‹i\â\îñô~>¾o»§\Õõo\Î\Ób´s$¨\ÌG®4U|´¶FÈ¶6«]}9}ñFø\æC\â\ê\âı±hû.\êº\Â;†H:\ÙQ¿OS\ÇV›²mû·{;\áŸ|5=o‚C\Ù‚11 ƒ\Å\Ğ\Ğ?:Ñº8\ÜjwÀˆ\"˜˜˜˜\ì\Ä\ÆLL`‚ô)ˆ­µ=3\êøÂ¦‚\ÒVÿ\0\à8Õ§½\È\Ñ)˜3\Çi3E1 \Ç\Ö;cm:Qeºzu5Ny\çp\×fh\Ù\â¯~ù¦\İm\îğt–SR\ßKµ¨5²E“Ø\"\ÏlB¹H„[!‰‰\Ç\Ü¦®(·ÆšŠ¹_#OV\no\Í8#|\ŞŞ\\UvÆ Æ`†>ö94jMñöÖ˜ª[¶kJlõUØtÙ´QE\Ô\Æ÷£«\ï\é/-T*²·\ë[#[À­‘\ã<gŒñûñ1\ÔÅ¦EºAƒ\\jfšg£[Q*Q\Åh¤\r_[fı\í\îÿ\0—	³\Û)U°®mš…4\ZE¶&&&$mTz[5-Pwh°#Šu1ı&Sÿ\0Å»\ÛZ-ZIQ¸¤\riLMÉ¾D\Ø\áSÕ©Ú¥,Š”œÛ´gªMÿ\0E5ÿ\0#‘xcsŠ”²*R\ÄD)ú²E’\ÒdddI&D“u\"\Ğ ƒPu&<\Öi<N(³7\ÔHF·Pÿ\0\Ïğ u4pö\â¬ kvH\ê:«Eª‡”òI\å¡\ä\Z\áKÁ&#F©€ê™µi\Ëôºd¤\Ç6Gu¦è­+jÍ‡´o³+ŒŠ•`ZŠdfdddd#Še6\Ú7£Š„z§IòPrúÓ¤SşV\Õ4A¢¸S!\Õ8³f”[\é¨G™dd\æ«]\é¶s†zg*ıH+6Xt9\Â\ÔRG:xtô²L\Çbì›¹¦ªCœƒŸ‰§o–©\ÑStoıgô¢¸‘\Î\ßjJ\Ñn(İª.÷ÿ\0Ö¾uõS\ã“ş‰û“¶/_ü¹\ÎGl’L¶PiOĞ–’I\î\n\Ñ\Âuñ\é\Zn	\â[I<q³Y\èQ\Â\ïmÓ²¤’fddI;\àr{C\ãÿ\0ù¸¿>Î­¹Sw®»{¦#ŒŒŒŒŒ…u²\Ş\ãó\ã]4cg_jwTÿ\0\ÅNøš1\ÆFFFD©>\æß›W\Ø\ã÷\ã]\Ï?U\é-®Ø©d1\Ùo±­ ›«¤\ÊÊ¢{Ş¢¡¥©\ã­\ßñuZl\Çiœ\Ñ\Í\Æ\Ô\é\æ\ßø\ê:’´”\Ä6G¼o\äQ;\Ó?\ÉG\ê{;ú4*\éP©MZ\íf›i\Ó\È\í,(À\æSØ‰f\ÛöD:[H¶’mñµ\'\ìG;ºmxb¬³’J”²*\éñ1­1#Ñ–Ø¾D’d-ôµ|u?>\ï\ï»jÙ¬*4©HkE`´\Ål\r\Ş\ëM¤’l†¯–‡ıX\àı`;<\è\Ä}IôşŒH1C\Æ-#¡\\tdegZGZv|m_õÌ¤\íKõôşü;Yµh;Vƒµ2yd\Ó\'ø\Ø\îœ.÷ºO\é»4\Ù\ß6Kõ+¿ZÃ+…[QfoOò™Sw;d\İ;øú™R\å]“Êœ\ZšDz+VEE¾˜µE2Sß’LŒ‰\Ù6™.ı__¡\ßÔ›Ô ÊƒtTu&9ºš\'\ÓnJ\Ô\Å\nƒŸ\ï\É#jA\æ\Zó#\"I²‹¿ğ¦\èZ5<”öOñu\ìÊò÷j‘\Ö(\ê\ê\âgb(L¶O\nW‚y¤’~f©¹QœE$e<†±­Ö©«M“›OS\Æö;4\á\ê\Óõúß¬Ğ˜ûkL±O •:\è\'*Ù¾_\å\ëôÂ¨®ÛŒˆ\Ó}\n\ã.F \ßE\nDuLF×¦\í³À¿Bx\Ü\Ôrjôl§O!´O\Z4 p\áw\Å\ĞFh…_%C[£Liü…Je\rCu\'t²öuôrD*\ë©\Ó*ü³”©­«PGSnJ\ÔF¡6W \ç\n\î³Fˆ!¥d½İ¹%•R*Q®ú+§ù,†\Ôk÷\É?^G=\ZWùH*j\êT\'cSv+\å<§Z£*\ŞxZ2\Èi“\Zqî³±eGdòJu\ßMi|£\ÚP\Ö2·,r¹\èÒ¦¾›\nŸ(£¾J©SWR¦ô\ÆFFV\Ëdğ Ñ¢Ù›\İşmòp¤·›1\ê\Õ\ÒüŒˆ\ï­SV\Êe_{‡Ts¹\Z¿A£Fö\Ûii\àvK\Ò|\\\ê\ï\Ó\ëŸH\Ó\ë™V\Òw\Å;\\ôiSZÖ•5•*\Î\ßgŒVó5 k}4\Ó\Òò9\ß\äj\Zª¾*u’\Şv ‹§ù¥:zšuy`U+kqZ•ıó\ÇM\Ç\à\êrFø\ØÁ\Z5¥*+Qa)4˜O¯\äwHV”õ\ÕSù¸M].%5Z\ä\è¦û«GR#¨1ƒ[%-,©¦Dš\ÍRSbºx“—¡\Î\Å5\Z©´ò/\r:›1‘i)Š`ªx3KQ\Å\Æ\è\Ø\Òi\Ó¢©6\ÔjR’T¨µ\Ã; ı\à{Ñ‰¨Ô­C»Í£é²®\"TE·vƒ´ò(\ÒF&xW©\ì\ÆÊ°W\Ö#\n•£¸§•\Î\Å5Ö¢ğ®\Î÷\Æ\éV\ÔG² \Êy­\Z˜Š\ÛJªˆTÖµ…mj¸WO\ï\ï‹WW%]ıq\Çz´mUB†½\Z7\äi©ÿ\0>šŸó\Ø.¾™S\äXT\×\ÈıKœ+§‹¯¡¨«ƒWøyô\Ğ^53,ÿ\028$\ÕU„\Ù<“üY\åwù*;\'h:\àO¿\'‚\Òø\î\Õ:)ÿ\0*9º\ß5—\Ï\Ò\ìŸ\èj]5-ƒ­\Îû\İp÷³ó†,\å\Å*;%şR·®ø:5/ô\î)\ã8ûsÁY\Ò\ëtOm\ì\ë\î\Ç7B\ßÕ\ìQ\Ü\Ñô£\ì¦\ï\Ò\ÍO¦s/ñVñd\ßûoÿ\Ä\0(\0\0\0\0\0\0\0\0 !0@1PQA\"3ÿ\Ú\0?O¯#c™;ôe°V\nbYb&:›ƒ°vb€\àcl™9Š\ÜÚ˜¼\Î]\r–\Ì\æ7²\'>ª\ì\Ã(·š›­˜\ßBfLø)µÁ•¾k>l	¢\ç\çF†\ìÿ\0£ôm-û\èHU0`ÁƒmDøM2+\Î\Ë\É\ïd…B€\ë8ŒøÏŒ\àp>#üi3\àp4\Ï5¯;.]‹}¡•Õ@PŒ0`Á@oj^=b\è)€„4:\Î€\à4%³d_f/;E°>>\ä„-±\Ğ\Ğ\Ä4M4AD=	\Ã$\ëÀ¶\æs9Ÿ ¬Ù¡!\"\È&ˆW–%z6-\Ü\Çaò ¬+\îAt&6@È½¡e–òd\ÉZ)¬Kfd\Î\ß&\n\ç\ÎBôYi6OfÈ•@\Ìs3¼\Í7ı==Oa³À„\ng3&zOizzŠù¡\Ô\Ñp8‰ğ§†Vò½7Å§\ÃÈ«D\éD\ëÀ—½´\Ó\ÊÇª†OCÃ¥³&J\'‰z\à\Ø\'©b±¶@ll{gf÷ES\çM¬“\Ó6YC‡r¨wÀ\ì9™İ¾,ÿ\0¯VÅ”9ğ>F\Ìm‘=ŸMS\ÃÈ}[ôù\î‡\Ø\ç²BCc}(ª}Œ™ô²[ª¦lº\è\Í\æ}\ÅcfLˆBDX\ÖQ\rKª]\Êî¿^l¤OU\\	ÿ\0#Zú-\Õ\ÙnõYX;Ga“\"„@­O„rY>\â›EZ\ÉC\ìªøÚ»x§j‡\Ùf·ôN\éLo¥\î5Ğ„$$V„km\Äx\r\ïbf{LV)ı\é\Éuø\ì‰Í³>\n¤c#¬\à`HD\n\È,š‚\Éuœ\Şw[&B\×¡j\äºÁuÿ\0\Ò\'<õ>š\í\ÇØ¦™ƒ\n9‹L…Z[N\ÅÜ¾÷1¿eöy\è~6ˆ\ÜWb!u±\İ_ìª´Y­ı\\\ç÷\ä¶\Ì\"\É\çg\æÉ“&|­—L€±\á?À\Ü\ÇøËŸZö¦[øÿ\Ä\0$\0\0\0\0\0\0\0\0\0 !0@AP2Qÿ\Ú\0?ğ(\nEp¡ÀxÆ†\Ç2ü·\É!@\ØV–_\Z¸\Ç\æLO‚DWQB\\¥2\ã¯=‰–\"^i\ÂÑ‘Sô\"\ÈúV?¿%ñ\ÆG—\â\Ëñ¡ª~†\èZ¶9›\Å\"\Ë,\Şo,³qò¤)¦u\n§\èb}Å£d\æ9›\Ä\Ä\Ë,²\Ë,sJ3÷ô1²L“‰Šfóy¼²\Æ\Å\ßG6Œ”\Ğüé˜¦Y7\Æø\'£rH˜ı\è†Kô£\ã6\áªccf9\Ê,JCcôq±\è (M¥øP\ÊŠùÀ]\È@„\nÕ™§ª\áñ\Ù5Q¢ŒjĞµfFL¢„¸A™¿O§v-,±³!EWe\ïO§É±ŠIĞ¦‹,Ÿi5O\ÓS”G\ÔZ£{!™‘\ë|(H£<*^«\ÓØ¦_Š\Ó4-zV,6.&Ä‰òHKVŒŠŸ¦\Ù©:Ÿc+\ì$,g\Æl(HKQ²½Ln¤l\ŞlH½(kE\Ç\"´5\ê\à\Ï}•£e‹”Œˆ¯S“!%\Üd¦[ %ÁŒl‘	¸³&5Ø)C\ÍB\é\æ\Å\ÑÈ†\ÃY£\ã1G‹É²t¨K°Õ™0E™18?\r¤C¦ÿ\0HÁ!.LO“&\Æt˜\í\ß	E3/O÷\ÂQ+°ı³mxf‹¡L½Y6Ncd \æ\è„6*\ä\à˜ğ.	°\×v%\ãp\Z¢\Í\ã\ÏC\êG‘½!	HÅŠ0òa\Çö%\å¡\ã\'“\Ç3á˜ºy27úF\n*\Ó-‰z4Q^TˆF¿\Z¹ğp¯Á¢ğ`ˆ~ÿ\Ä\0-\0\0\0\0\0\0\0Q\0! 0@1\"Pa2A`‘#Bbqÿ\Ú\0\0?ø˜—ri…\Ê(\"„»¬›(E	‹‚3„Š)¬\ØT\éSÎ³¬t]\Ğ\Â2‰„,3\Ö\çBU“\â{L\Êo\Ş]L\È\Ø2\ÄeÚ¢+«FOxF\æT\çi¼a8\êeUzO7\ÙJœº_ê‚\áxO!2\Âp\ZsûW\ÄÎ˜˜ö¿G=h˜ÀS*w˜L\èUC—S9„†c\È\ë¾:Góœ\É\íg¼H\Ùû4†#™¶½9\ŞOi\Éb„rŒ&\ã\í0‘\Ê4N³bñ‚óŠñS®\\mŒ\à“ªZ\Òi‰…\â\È.×’ø&¼\æ¯xÍ†\â‚pvFM„\èFO®Umù—ŠòA=\ÂÃ¤2„„Í½\"8WY±FµZÑ€\Ê7\ÆŒ^2œEBo®$u\r\ÇU\âğœ8\Ó6S˜\Ì\Ì\ÌLË»6^N©\ÅWü§Aóˆ\ä¬w\Æ\n\è:74PA-\'kL…\ÆÑ§X\åªyñD…¢gI¦s´\Î?\Ömy¿­@£½tB8İ­\Ğü\à¾\Ãn	Mh\ÆmP‚\ÑüH\ÉĞµÓµ7M…¬7G(\Îe\Ç0°£q\ÂS\"Š¬2ü]\ÖHF\Ñ\ìB*0™F\Ñh°b\ál2\Ó6¼*š“i<\ã!(~Zq™#€\Úp5‚\à¡a¸h‹F°Xt}%\Ñh¿µÜ†#iµ§ª÷]º\È\Ş3Pe^=ªF\ßV±T\ê¹NCsaò\âºT¤\éx\n6ñR3™¶BôFók\Èl5œ £a°#!’P\å€m›\ç\ëú_\Å\æÓˆY\è\å‘\ï\ÙğzøC\Ì$\"—\İ3i‘Ma™´¡#…\Ş\ÚE×«\é¼/\é¢\Î(¯\ê}&Š§pU\ã`\ÙwU\áü¬‚fÈ®PùU\ã\Z/\î²ñ¦\Ãc\é×”U>”?tü·=EF3ñ›¦\ØòŠ+\ÂAyr®\Ë!8ABŒ\r¥W‹*}o\å3\é´ûªğe\å‘ƒ\×\Ğ`0T\ê:O\Z/]²}\Ödlø^™F*±\Â>¯k\Æ9\éÁ<}ˆÉ—§Œı0üd¯\İU9¯º\à„Œ½<5i6›AW›/!÷*\â8\Ú\Êq\×òd$/ûb›‚òe\ç\ágÊ¬s0\Ö(Ce\İ	:ª\é}°¾\íW–A’¼—Å´Ey^-€Zli	‹k\Êµ\Úû—i“.õ>où÷„ş\Ó\ĞAUGQ·\Æc*{3\Şqù¾\Ù\ÂÓ„[`m\ámUu\ÛIô*#\ßY½•ôÍ‚Fqü\àor¥\âPı	ÿ\Ä\0(\0\0\0\0\0\0!1AQaq‘ ¡Á±\á0\Ñğñÿ\Ú\0\0?!÷4\Æöc-Ÿ‘lwnª!{_½–b5|\Êln\n\ÑU{*;¤Áñ,3m\êk\êP³6Š\é\0X“\Ûÿ\0%\Ü\Z‚¯2¶\"B\Ö\Ù\Üb\ç\ìX\Z²¢Á/7Pl›\"qK\ß\ê)\Ìb\î—´&H\"!\Ô^\é€\Îü\Êu©EY	EöaI\ï¨\ÛE\ì¨\Ñ\Zşjcof\"y\Ã.\n&<CW\â]j+0\ì\í7‚~Fôúi•J\Ç\ê\"\ãPğ?°I@g©Nª\Ğ\Z°`\Ü\á\âZÕ§9\Ã3#]ø•Úˆ»\Ëz ¾œn-¼!\áOqr\á¶45Œ\Å·%K7¨•»‚|b\ì¹“\Ì[N¡»‚;Šoı\0\Ó\ÊÊ¬\îåºŸ1+2ËŒ—:—Xó0¸\êf¥¹tÁ¿osa\å˜fX¼w)õ‰—c\Ì\ØP:–1«\Ì_Ø•oùL\ã5(\ìbM\Ë\n\Ñr­±PªªPõNs`\Çz—‡¦\rD[9\ÒPH\Ö\İ\Â•\rJ²\Ì,\\0³1\0.\îe>C\ã±\âa`\ÜÁ(s\Ş&¨!Šgl`¦5‡†zf³¸aW\Æ)\İa˜J³¬§ú\Ê5\Óp\ÇQ\ÌOP\È\ê6\'¸~\ïS\Z—\Å&1)\Ò\r½±É•u\Z\ÙvV8ğ²\è€\Ë(€£$Tm\ï\ÌC\ê! \Ã\çs/V\îÉŠ\Ô\ÏqËı!CH\ïR\Ì3\×ewq™HM=Á%x\"¸\Ğ\Şa…ø€Y\ê\0\\°S6e¢Y]\Å.¢[Pq€_qaTn!¯Q“LoÌ¢WS\æ\áEyLœNı0«ÁÜ«Ï˜\Ëôƒ\Ñ¿“,Ù˜ê ­\Äó\Z÷_I_@²\Â\Şe\\«kÁ\Zı\à?ôF\Ê:09*[ºwz”]\æK¾Hô\Ò>LD¾q‹? ‹‹SÖ¡DŸ\ÉdE‚p!A\ãÀ`©lIˆ\Õ\Ş\'e\î TR«9ŠE¶£l5‹‰‰eA—l²Ãˆ5p]\âŒ\í¦Xú2\Õ(Ö¦¥µ@ï€¾D;‹·¢\ÙBbğJ\çSqZ\ïZ\Zôj\Óı¡M3\Z`ıòš\ÖLl÷ë‹¬ Qı•/Tz\à¯Ë„\ÅX\àFš`½y\Ô=E£q«z\Ôu½q¨²â›—ÀbWœA7ŠB\ê!¿\ÈÁ|©²n]\Ëx¹¸M@¾U7·¨J2\á\n†\æõ‡\'™\ÔH¸\î|\Ä\×ıL¾8µbV%7½°\Ì(Œ7ˆ\rÿ\0R¾E©„•prÄ·Ã¨\èñ«\r~jwY…=bn‹`\"x‹l0\Æ\ê§~x&\à\âTÂŒø–U\Ê^¢ˆ\Ûö0 A\àj\\\Û\Â]0\àjµR¬¹¦`•DA•˜aEnYü‰lIX·¸¥lQ}EDÎ¦ó-i7\×û]—‰yŠ%ˆ†[3Sl\\j´–°\í‹.VŸk—Hj:s,xl—\Ã†øB†+¸UÅ¯\Ïø9Ã¨,CIıŸ7-L\Ã(,=0«¯:”_sl¼b8Š;¹g¸¼\â9ã»˜q\â@¡¸¸+ss*\Èå.ó\Æ\n¨ÃŠ´\ÔüÊ¬½²Š6\'ò5¡\ëûw¶b)s\Ô[‹Å¾¥\Ì\\ºqÂ¥M¢ÿ\0’—fo›¹u)û¯PñŸ|]\Üw\Ö%µ\ØP\Í\à\ïŒ\Íu+>f.	Z€z‹O´5/E\"]½L_yeøD\Ål‰œÀb…˜ \Æ%ü›\Ô	q8\ß	QY¶Ê©Rªu.&:\á¨,\î#\Æøp\Îø¬ƒ\êe7\rvJ7sE*hD^ö\î!p[ˆ“ñúÊ¢%O\Ò&*µ¸—ú\æQ\Ülõùÿ\0TSû)¥\\¬À\Ó\ÜW¯\Ø4‘tÿ\0¨Œ,m3Ö¢QƒRø:•\0šB$xõZÀ©”7¸\îjTJG1ššAI):\Ì@÷\êl¨”WL\Â`\"Œ\Ê\Õ\æ%?c`Ê£²P\îT\Çh\Øßˆ…\é\ZşCe’±yˆ‰ºA\é¾=§ró7œ\âVb³<De\0ElLğ\Ë\Ä93,°§pñ/<T\Ò\ÑòT¥ M\"§q3)7\\\î vS\0¸nUúg¸¤q¸y¯{\ÄÀ^\Ø\ç\Ü\İ1	¦£:Š_q¯‰³UL¶±ö\n=‰\ßYŸ\ÙX¸¸\Õ\Ô\Å\Â(#g¸\ê$*Tm\Ür\ÄÌ«\Üu+Ü«\àP‰Y\î4\Õ1UqL•e²¨–%\\¨/°±0fŠ?\"‚\\LF)¹ƒ\Ì\ns\0»…Wpr±\ÜÀ\Ä/¹E;\Ï=\Æş\ÄXbY\ï\Ô \áû™u‰ö7\â?Y\à&o¸5\çÔ¯‘oU\0©|9ñ‰p\î\Ñ\ç\ìl†3®ƒˆY”D¼÷ğ\Ì\n^=\Ù\Í\Ë/QWM\Å©\Ìj½Ê¸R,\È\ê\×Q°º•‰J„S\çr›¨®\Ã\Ì\"6\"ôx—á‰ˆf{ñ:†\Öw\æ Ÿ\"\Ê\ÏX1\â^poÿ\0ª†_N¦¥Ä«÷24\Êju{©ıŒ¬M8”Põ6}\ÔJ¾\æÏ˜­\Å\Äl„.\àf}\"U\ã\ä\İóŠ°\Í\\/\ì½MR–ÀxŠ6C\Ât€#Ag½J\\\Õ{\â(ŠşD¶‰§\Ò%ù”W\Èd\Èw:eóKiy\00±™B\ê\Ä3—0\Í\ìñ†Ó¨·ù\Å}\'d0û¯\á\Í@& õ–]nmój\É\ÜL\ÆU\æ]yÌ²ªais9c;zcRĞ¯„ÓŒ\æ#:)\r<o,«€¬±Ô­’uP5”\ZöaLÄ¸\ZF\06\ÖøRŒ0Q‚¦[¨Z\ÖQ¦\à\Ê\Z0¬f:B\Í~±\Zy±ˆN`÷\ßqUE\Ï\ÙgY‚«\ÕCYÙ¨V”©H\\h˜üD…S\Û+=35D©†®Zrqÿ\0%‡˜LKnoñÜ¦.55lù\ÜOh\çÎ¢#\Ô\Í\Í\Ë\Ä\Ù\Ôõˆ˜<\")L¹tC\Ü)Š•Ák0\ÖÁ¨Ï‘Z‹d¸\ê\0¸–!‚³\æ‹/«\Ô$m+\æ7:©hXBS\Ó\ê\"ü\Ô,ª ¢Xû—‰|\ZŠ\á\Ş\ãC\á&¬s(\êö~õõH\Ù\æ\í˜÷ˆu>~x•Y#G˜\çòg\å@\êuûU.™j\×\\4\ÍŠ„\Ó\æ¬\×\r1—\×qŠ¨#\Ğ0hºswpº Á²T°¨±ÅA_†{Âµ\è€\Ú*±\æ¢$J\ÅK^tˆ~‘u)°Áoˆˆ–.XI‘µlV#>iqˆˆ\Ş7.ó‰Ş·‰’!ü€}™y—†»”\'SÄ°\Ì\Ös.ãˆ„5]\â%:f\çÿ\0– j®{•ó(¸ªÔªı7:”%3R³r\ÎX\î\n_|&©‰™a\æd\ÈbZ4\Ì(–ö\Å.[€Ü¥À\ÏY”«ˆe\0”û*¥bTù,Yh%\á€_ta¤%\Õ\Ş^\æcE1_™A€­Oôa³oBS~¡’\å.\ÉP²ßÊ­\Æ\Ûö—Š”†®\áLKü™t\êc\Ä@ O\ìß©ŸQqqU0\É\r\ÂBe˜‚\Ô;£\Ğf£”Mø\Û	Zˆª\Äw\0H…À\Ì`€EY\Öe[¼E´\â­†ó\Ô„\"\Ù\Â\"8„\Ü(Rj ‘72‰* \ÑS\ÎM\ÂÅ\åbWº›\é*Œ\â\'_Y—\Ì\Ù~\ÍzmJû6fnPn[\Ñ\ç¾£¿KZ¨\Ü\ÛQ\İ@¦W]JEu\0K†\ã“\ä#TKt÷(+$\É\Ô(÷p`¹IX¦+Xaš@T³qo‰´\"ªü ‰¬÷Á\Üw2uˆ”\Ó\n	\Ô\"\ìeS6\ê ô¨\Ãf\âµé®]²ªU«™¨`ˆÔ²\êmÌ¬Âµ\Ù\ÔN+¢YòmTsnTh€@n¨T\Çsr£_\ÙÜªˆ3$µ\Z\Ä\0[\Ã\r-\Æ\0 \î	ö‰\Õ\èe1\ÍşJLT,Yx€™€¯7c¨ˆ\Úi *\"±³0¨…€,ö€¾j*‹1A\îQ‰\Ñrª´\Ï\rUJ®¡<Ù‰SGœb%b«>Yx¿1\ê&\"=G\ë:›fĞ…]y8j\â7d\Ñ2z‰,5\à*AğE±bp•šw\æ+½G\ÛqFº——–¹bÄ½\îá»\ß‘3*¥\Ó2g\Ô0Ä–O1¶3¼™‰XjYû,w˜\0e¸J& $m+T\Ëk7Ô¬J¾Yc+¹mL¯\æ¥!\ÔÃ‰İ½\ÌJ\áfb¡ûG\ÙV\Û\Ô\Ãñ\à‰ÂAhD­Ô ¹µ\İYYIY\åŒm/Œğó%c\å\ÚU\Zu)©\ÌJ‰\rzF\\*’£\ÔTwû-\\d<˜D—¡c\ÊUK\Õq\İ\î¸\ÅF³4B×¸\å†ğ2]\Ç\ÈşE\Ï\rb%¼)35®û‘|;\ÄÔ¸k¶.a”T\Ê\Zz”\ÃP€©c\Ö5(e¨\Ê7©tp8s\nL*^\"bSQ3p8\ZŠnd\Ë7¿e™u«*l¢\İ\Ğ1\Ô\Õ-*Œwx‡(€S¿L§¼Ô¯9·P©Nøde\r\æ5 \ãPb7˜¿Ä¿¨¢\Ç\Ç	\â\ê\\bºn1q,®\ÄcQB\"Ç´J\ÌU`ñÔ¸²\ĞÁR „\ÜMÁÄ \Ì)}\æ%\ÅGQü—QZƒŠ—Fa˜›ûJ\ç”n\Ë4\ãõ‘*U\Äjf*üğ5,&øª–\rø\ê*µiwq²#ò,\Ì,\Å@•‰\Õy†e®%stTf_²\ì%”Í¥‡ú‘**~Ek‚PŒ07–}…n\\\æ\0G¸ĞŒ4e‡QGò]\àŠ†;ƒqsÁi·\Ô	¸\Ù2ü\å=¹÷,\\Mµ¹y‹ò=‰tJ–\ß\Øj	\ê5¨	\ØOõ˜B#/3.ñœfh³¨dû=C$%•\æi5‰opä§©˜Ã˜…ü ‰R<\à\Ü\Ì\Æ&\á”\Ò)ñ‰Œa´bØ©ƒ¾¥5\æ%µL¢X)û\åÁng\Z—\îmÄ¬G%¸š\ÜBº£\0A<\Ê\Ò/\Ïs}\"\Ô\Ñöq»¶!Y\\À¿\È-teı‚$\î\ZƒğJ†»\à%\â\Æ\Æ8®\ã¼\är‘!”nnPG9xŠZ¸\åX˜7QP\Ë2 ·\Û\ãù\Zb\Ü\ÊS\n-˜¦a0Æ™X¸^š‰d¬D±”D.a(\í‡qªÄ«z…\ï\Ä*µ\'W^z¶\æ}Ê­M\ânu5\æTÀfaù\n J\à1qqF\å\Ó.\ÉR¥y••P3\rÄ“T7[¤³\æ\Î\â\î£M@3\0ÀM\ïWöd‘.óÏ\ÔU1b§E\Ê\î`úŠ6­õ‰\İB\\º4\ÄŞ¡\Ï\än\ç_öprB\Ûù\nşÍ“\Ò\ãf(1£1u\Û\Zš\Î\å+Rş\Ä\Ä\Ñ\rK\ç\â%1!k*¢±pÁ|0nùˆ\Â\Â(\ÓR±À_n\åÿ\0&\Õ\ÚPqÔ°>\Ën÷,Aˆo{à •œB\Üo\Ì2\Î\â\Ù\0\î.\"g‰’Y.³†7z%¸ŒÀÀ¿1;³4j 3!¾©)&.Ú˜S¥\à\Ö\âT	­\Ün\ápË™£Ûª@õšBµnı@\âT+\\\"ˆ•û4ğ)Ä£2¥Å¶³ö;\r\æ 5¨\0\ç¦\î ¸€<J`S‘Ã·‹.?X”şEC\Ó2ù†Yjü”T ıˆ\Õ\ÂDSq\Ô\ë\é\ZfV§ü\î-{¹M\Ë\Î;%_\á+¯1\Î\à(\ë}ë…¸yˆÁ*™wû3;#ƒ\ì g\ë7\Î.\á’(Kk¿,ğ›N™yLt~#\ÛKƒ-¸=KMTX—\ÒÔ ù\Ü\×öyDR\Ì\Û0.¥†Qo6„4Å¯¸‹¨¿\ÔUŒ)\è\Ä_³*Eauÿ\0&0gU7\Ü¯\È\çpˆÁ\ÏYº•s~\â7\éÔ¦\ê/5œw&<Ô¦±÷0£·\ØX\ÍÊ¿2\é•\ß¯\ä.|9ı‰´‚Ì¦;\Â\ä@2€ ‡ı±C\ÜR­\\¹ù\\Fp\ĞK®au‚‡¸ÿ\0z€YJ\"¼J\\)\à\çQ¶b®Wú–.\Ìióƒû.y\Ê–?¹Ü²¿’±\Z3™\ì\Äe5\ÜA1+£©¬jø\Í\Å\ÅMüD:”Ã¾]J\ÇRŸ\î¦O\Ş3]\Üê³ˆ-\æ†\åµÁ+a—1y˜%BkjP•~¢:¸²\îg¼\'R\Ã\çS2`¼Ğ–\'¸¢?0Dó¾£¯Á\Ô\î7~³&\âªşu;1¹‡\ä¶\â¯Kw„÷©vVa»\Ì\Ô*j-Î«Á8‰	¸\Òx–\Ä\Ìfj­\ê7¸şKw\æ¦nnc3Qw¾¸_0«\à¹\ï\Ç`+\Ê\Å’@6u}\ê5\0fV£2Š\Ë\Êwó•\ÒQ‰@\â-±\Ó0	fkW½D\ÓqTÛ™b+õ.¦F`Áo\é5œ—µŒ\\W\å²\æX\Å+-\ê!/Ï*;\Ã/Q¡^	UŒ\Êz”\Ù/\Ô\ÊQG€Ssã¼ñ¢3]fU@;¸UL…\Çp\áIB[š‘BµHX«”¥Ä¶\\\ÅuHµ¿ıE\Ç\Ô\ZŠ\ÔiŠxaŠÿ\0\"‹s7ò…g»ˆ5”\Â\r\Ëo¦:\ïŠ\é5™TFÓ¬Lõ\ã\Ä\ÅB•¨úŠGw:†ƒ¸Àª\â¯2\Ç¼f¡ªšbŒ\ê[©š\ÇQ\Ï4påˆº\"\Ú\\f\Úbû‰r\ã‘\0R\è™n!k³oö%|{Š¼AW¸,«…\ÅjZ9­j9ó)_\"\æx„µ\\/¸\×DH\"\İ\ÌaÏˆ\Ôs\ÅK?“z\Äq\Â\Ñ2JIi@™eã¹”\Ì\ÌE•·\à•)|Ü¼\Î\æNx\Ô\'üd@”|™ı15„W\È\ì·*Q:F`\ÄQ¤B÷¨T\îZ\â¾F‡™v÷\ëE¨\ÓWb°Ä£\ä™ø\Ä{EÏ™I_ \Ú‰¶-oQ—_²‡\Î˜—^•§[Ü wrŠô÷*-÷W¶q£\â5fşË–\'s¡ñ\ÅA)CÜ¡#†a?“J1;¬QFOXu+Î¦%\ÔX5\Ù\ïq\ì?7\n~Lµõ0w¹K\Ö\â„\î*\ï\Ü\Ó:?\î*Š\"Šƒ\Üª\î+Q˜”\Û‰B—†r!\îlô–»¨¤¼\ÅS\Åj^!D^s‚\\PŸ*\'\ç\n9©Û¬p55w*™}\âz—˜/\È9\áqÔ¹\Ş ßˆ…ğ¼\Â%ƒ\Ü;úwH\Ín3Sv\ÅE$%\Ä\"ŒE\èMg1Q‹q·™vy—\Ô\Ôu.+¶˜\ê4f/)\Úü\ßD_\Î)`¡^3ñ\n]\Ì\\¼TQıF\r\Ç0\áŠÜ¾ø<x—Š—™¤¡(\ëšG¼3L\Ì\Üğ-N¼K—Á˜*\ïU<e‰A®b¼Ì¢2¼“¢\Ô@_h”Äº‚¨4@\ãq)\Ìm1sPs­Vw˜·“EntWQ\Ü.6š ›%O\Ç\İÅ²U\å*¹\Ä\Ç\â]ë‚ÆŒ[ğ\Üj˜–\æ2¥µõ5*\Ø¸Á\Í=÷\rõ‰¹›„º›eõ\æ\r—¨n…1|fx<\ÃD<3Qk(\Ü®.o¤µx.\àÛ¸\â\î¡n±1\ÕË—ngU2_\É\Ô\re‚,(>Æª\"†Ç©iû¥õ*\Î\åp­Mg3)\Ôeb\Ê\Ö\àW\ì3»ˆXŸş3\æ&7/0´KJn[r\Ò5ù:–T\îT |Á˜~blBÿ\0rP\ÅeË¨-@R\\XS9˜=%‘Â¼E›\ïŒ\\X5ŸÎ¡\n|\Äl¿:•o\ÖX\ÙB^ `\Æx´\Û [\Ôj¡C\Z¨@\î\æR\ë\İE:…\Ìh\ï=\Ê^\'ö+T|°\Õ\ÅÜ»xõ4ûJ\ÌQSR\è\â!œb¸-‹p%F\ê9Œp“Q\Ç\Ñ<D©\Ô.·oP\"P\Ô\"ñ:\Û8ˆ¸>e\Å9- a†²j*sƒL«;1ˆ\"óõ\ZñI^šz`\n‹\Ù-şJ\\\Ã*(c¨ur‡\"´2\ß<\0\à\Ëñ.\Ê\á¬Ë—¸\"\Ï\\`—r\à•,¨¸=ÁÎ¶K+1\ÂaĞ\Ê &Â™%.ÀL µl\ÈÄºIJ£<¹‹z\ã)/uÄª\î\â·(”\\\×R—3S¾^\Éô½(\n”´g\ì±\Ü÷20a˜LfX™~\Æ\î?¥©t\Ô\Ô*B\ê%õX9 Ë‰4Ë† }—ˆTû\n0JBÿ\0dŒ\æbŸr\á.`~#\î\Ã\Úw\çqoqQ2\Ë\"\çi˜qk3É˜\0À¢\Ä51{š4Y\íf2=÷s:‚12£\ÒaAu\'L²\Õ\Å\ÙóQzs-X\ä\îf_Pn)YT\Â\\póx›x»3Á6Aps0„\Û\ÃH$lA\àñ|ªeš\à¤\ÜS1D» \Í1¤XC\ê\Z†¡kò= ÿ\0)Z¼x\Ô†\î\0H\ËyÆ ”Û„\Ú41O\Ùf\0’Ä¼W¨$×¹q»¶şKŠ]J|L\Ü\ï5Ü®£™eBÿ\0º\ãG\Ä3‰qjE\Ú#z\"!X£¹˜­\Ê\ÌY¿ñ9¡©r\åşAb\Û?ñ:¸¤»f^*f>\Ô.\æ\Ğ~B†¡iD\ÌH\â\Ì\â…\ÍË”Tp\Ã¿b\Ó;\Zu·\Æ2K3	\Üq\ËI\ÆM\ÌÜ·gph”a¼\Â¨³p(½\ÙÜ»\ÈñŠX¹\Ô2Å¬Å¶Vø›•\æSÔ¨b#ñŠ\ï›\Ä\n`›wÔª\ÖgR\İÅªX).m\ê|c\ÌW\ïb[)b[\Ô-(™?&+9Š»‰i”½@p\â]\Ô2ı—2\Í{ÿ\0\æ¢X~Ja†\0J0\ØI—\Ü\Ú\Ñ\É	s¨Y¸\à˜„®oü(k\ÌH™ƒ‘ŠŠÁ‡¨œ*»›J\Ä\Â@ı‚œK\àS&¥$\à\Ü“–\à,›ñ…NR3P;Ì¬Ê¦É¶dˆ‰\Ü\n•õ\n¡%-?²ó\\\ÅMp2Ç©u¸@@r_–-³qº¾{\àb¢\àÔ£Q\×ø\ßù¸«@vD3‘pr7¨\Ä\ÒS7h^ Ğ¥\"•X‚2Úˆ•\Z¹\Ô5+‰p±‚®e—\ïúbiõ,\îXqje&Mv@!ïƒº;”/z—ûe§‰\î5|!\\*°\n\ÌÊš8\ïüˆ(\Ãp T³ı%V!z„Š–d•k2ŒK\ĞWú7ò,\Ò\Ì\ÔF½\Ä1r\İM&H\æ`¯\Ì\ÍC1Ô¬ğ5¬\Û·\n¯¼Z\êw3SrÁš³(ôp\ngÆ®²-Ex&·Qm11öme(¨\İx™K›y\Üw\Í\ÔU¸‚YP*@¶j\0¿W9ÿ\0\Ä50\"ÿ\0ú1ª°Ew2€er\Ê(1\Ä1tù›xu.\ÜR±>!¸«,\êez—Lº&#w\â¡c3XT¼K…\Ğa«\àŠ°\Ä\îoÂ¥L\\%Ê˜\ã–ù\'r¡J½Oh™ÿ\0#¬\Û7Œ\0\Ùa¿1ˆ9w7\0M^\àD\r\Ô\0¾,¿W²\"¶\ÙW™m\â%şA\é\áRôÆ’•\ÍË¨CqW5/µB˜VüJŒ¬\Í\ë•\Å\Ñ\Ï»®\ÑQŒprTb\ß¦¸x«„&xm•T§‚¤S¸8A\r1\ÕK™2¶‰_\\u(mqEcp,¨L»3;—Dº‹s¸‰\àU–e•+·òkr\Ò‹ŒC3û\ÍÁ.	/†É¼J\ÛR\Ä&\ã2\î	.*\Ë0£‹\Æxq*ó\Â7\Æ.\'G1)•)¨3. \âZKEK[\Îe\Å\Ì\\B–j]ù•˜u,›\Ä\n˜g¸Ñ˜4E\Û\Ô75ôK=\Ë{!Ø•\Zë¸¬\ÙF¦\Øê¡†i‹‚*³º‹˜¹Qª\à¢S\\o:Æª\Ş%\Ë+‚ju6J‰ˆn\Üh–²¥+Šo‡pcBœVfH„\ï[–\ÜWö^•\ê™ö0<v\Ç1¡›e\æf\Ç\Ë3, Ü§\×‚N\å\Â+p\ÉL°™u+‡L\ÇP8^)—*\Ì\İK›%ğnQ\ÊXd†®7=·\Z«\ÉS\Õ\Ëx@3¨ª*;·ğ¡\Ë0÷so11\Å\Å8i\Ôyõ„.]Ê¦¸\É75\Ç\ïøWø³G\Ş,Š0\áU~gU\Z#c2ƒÁ\ÔU˜q,K;.\"b\Æ%G¸Ó‰Oˆ7q\ÃH~\ì\Ê÷e|\áÄ¹‘•LosR\í#˜•ˆ\â„aœA8s™›†y‡\á˜ğğcò\\l•‰P%ˆ?\î\Z¸!w\â5Q3:\ào{`w\Ú!U\n\Â† q.\Ê\Ün»†5.ÿ\0ıƒ\Şq¿3Ex‰Kˆ@j\ÜhÔºf‘¤™Ô»†\ã¬ğd•\Å!ƒ†jf¹ó/”\Ë\ÌEƒy„m\æ\ê2ñ+÷3\'	qÁ÷¸fj]¦]|R¾Vfuó—©Œn*![˜5Š˜÷±)b3(0\äUÈ­uÀa–,Š°1\Z![p\ê\\¸[)†f¦ønPK\Ì\"ñ\ÕD+üWD\Õ\Çs\Ü1\çË•eK »˜%\Ñ(¸\Õ\Ô\Z*.q™lB\\ÿ\0’\Æv\à÷\Â\\ªX™ƒ_¤«”\Ô£™L ‘Á\rL„mxu-›|8\à\Ôi8nhû\Å)*T0\Ïqx\Ô<4˜e\â¼E‘3ø\á\ãl)e3LD\"\ìB“F¼\Ì%J\Çy™7›5š€py1\rGh.T\Ù*\ã[²\åYp\Ì:ŠeÀ@Œh±À\Ì83\0¹¸„²©•\rD\Ìhq)Á–^cW\ÃsdrÁÌ¸\'q£QHf]G„+\çP˜·ˆ¶Ä™#f%¤£\ÜkÏ¨™¸·}\ç0\×tJ\ÇÈ´Á­¥Â’-‰f%ÀÄ¤\Í\Ïp\nu\Éûş5ˆ3R¦ˆ\İCY•l(|\Íğa\\V$\ï†\åSŸ0Ô¦º˜ù(ù˜•*‘\×\Î\àQöGwN\æ\äsZ…ó\n2F´€«¨¥2õ\ÜL\ã)P _™co\Ú5YkˆÓ™EK¦\ÌÅ¿$e•LQ›cN%4ƒR¥\Ç$J`M±Á3\ÜÁ\Üa\ï…\Åp\Í\Êq\ê\Â/(T»›ˆÁƒ¡˜’\Ğù6\Å!ˆF\î9ˆù‰’q\Ü-\é4OP^™C_øğ!w\Ü}Ÿ\ØE¡Q\å\×#{øMN£\ÃQ¸99\ê<\Z†ÿ\0Á\Ôwşø\ê\Z†§q1ù4\'S©I\ß7_\ãp\è\ãÿ\Ú\0\0\0\0\0\0\Ì0\0*>\à[ƒÅ¡|Ğ$s\Í<°L\èr\Í‰j_ñ²\äó\Ï.L\\‚C8³\0¡\r,\Ä¡~X\æ\Êõi#‚	\\,p€0N€\0œ‰$—À \00€A€F0óƒ\Ë4\Ñ\ßE8	\r0Ğ€J\0C0Óˆ 0k\ĞK\ãPI=š05a÷]48\Ì0\r83ƒP\ÈŒn|1\ÙU¥&e\äŒQ‚<\0,0K\Ñ\ÂB~ğœ\"@\Äğ\0&\Ê\ê\ÆÂ†$ ’\Ä0\Å?HSmy¿2\Ão\0¶)\ë0‘ƒB\Å< T8|!Ë¤ µ2zŠ;4\Ò@8b\Æp\Ë0\Ò-(\ÆD­P˜o½\ÅC( E€8¡4go‡¶\×2¬0\Âd‹AT\Ñ@\Ğ6ó\0\ãOsk˜˜•<Â¡}¢?Hb!ŒI\0<²\ïb\à\ÊY¯£Á(û‹ 2E8I 0@ \0+„Ò¯XÓš\îò(pı\ÈóÀ0ó\Å\0³Àpû\Ó8\Õ\0@üaJ\"ò½8…4\Å0\0cÀviE›B€K…‡¸ó\Ë\ÃÁ \à @$\08mªÂµ,\0M\ç&Ÿ<¡8\Ña,\Î!\Ë\\$XTE(’K\Z¼\Ä\0€\ÈÀ\Ä0¡C PK.l\0¡Â‰+^8H\\\È4£\0B\0ÁŒ8ƒD:F…\ä\Í\Ğ#ˆ(¬1(#ŠÀ‡\0ò€aˆP\å\éLr\Ã\İ\Ò\0\à/—‚\Ê\0†\à(@O-:ÿ\0Sc²±Hñ\ê-30²„±„8³\ËB‡) ½\èM\æ\×/B\í¸GE„\Î\ÃN,0Å„˜¾\0^Œ\0A\Û0f|À\0Võ\ì‘Œ¨M’@ #\ìL&E¡BC2Bƒ2\"(¢„0€€\0OvIW\ë¬z\Ø@C„8°8CrŒğ\ÊT@‹€\'D\èR­\03<Â‚{óVÀ’‰ F!ü3\È Á<€\n\Öò#\Íc\0!ˆ±G000qJ€`\Ã@\Ï<³\0\0\0\0<`q\Î, AM!<³Š ‚@\0\0‚\ĞÀ\0\â\Î‘\Ï\0\ÂóŠ\Ï€	€…\080Š\0N4ğJ{€(4r†` O(CM(rG0ÿ\Ä\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0P ÿ\Ú\0?†?\Ç+\×Õ®¿½{Uó\Û{ÿ\0ı\éj\æû&¯ûû¿ğ¿_Wÿ\0u\Úÿ\0¹ûD¾\Ü;}¸\\>ù\Ûÿ\0{½g\Ïüû\ì\İÿ\0m>ûñüşûşz}›ÿ\0¿/½¯\ÌÍ—³¾\ïû¶]«ı\ç=s\å¿\æw+m÷÷y]V\Ó?û¿\âCÿ\Ä\0\0\0\0\0\0\0\0\0\0\0\0\0\0`Pp€ÿ\Ú\0?\Ã+\ï\ïŸÿ\0ÿ\0÷ÿ\0\Îñÿ\0|\ïÿ\0ò÷\'Ÿ‡\Óş¿Ÿ`÷¿¯\â\ßÿ\0\Øg\ïı{G¾\çÿ\0×‹­ÿ\0+¾ßû\ä§û\ç\Ãû\ãÿ\0—\ë,\İF´¯©½\ß\Âÿ\0\ì·Qø±^\Ó.wÿ\0÷\é÷»~-²\Óÿ\0úõÿ\Ä\0%\0\0\0\0\0\0\0\0\0!@0P`\0 1AQapqÁÿ\Ú\0\0?Àüşÿ\0\ïÿ\0wÿ\0ÿ\0ÿ\0ÿ\0û›{şûı\ßşë¿Ÿÿ\0\ïÿ\0ÿ\0ız\í\ïûúşs¿ıÿ\0¾\ßûÿ\0ÿ\0ÿ\0ÿ\0÷ö\ï\é‚v÷ÿ\0\ßÿ\0}ÿ\0~\ßß¿ÿ\0ÿ\0¿ûõÿ\0ÿ\0ÿ\0¿¿ÿ\0ÿ\0İ»·_ş~ÿ\0Oÿ\0ÿ\0ÿ\0ÿ\0\íÿ\0ı\ßÿ\0ùö{¿÷ÿ\0ÿ\0ÿ\0\ïÿ\0ÿ\0ÿ\0\Ïÿ\0÷«¾\î¿\İo÷÷ÿ\0ÿ\0ûÿ\0ÿ\0>»u\Èy}ÿ\0\ßıÿ\0ÿ\0¿ÿ\0ÿ\0ÿ\0¿[ÿ\0\Î\í\ßııÿ\0\ïÿ\0ıÿ\0ş~¿ûÿ\0ÿ\0®ÿ\0ÿ\0ÿ\0÷ÿ\0ÿ\0ı¿\İo\îÿ\0şÿ\0ÿ\0ÿ\0\ïÿ\0÷ÿ\0ş¿ÿ\0ÿ\0ú\âşö\ßÿ\0ÿ\0÷\ï\ï÷ûÿ\0¿úıü\ß\ïıõÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0kSKşÿ\0û÷\ïÿ\0ÿ\0ÿ\0ñ\ë\ß\îÿ\0ÿ\0»÷\ïÿ\0ÿ\0ÿ\0ÿ\0ùús÷wÿ\0ıÿ\0ÿ\0\íÿ\0\ëûşÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ı¯Á?\ç÷ÿ\0\ßûùÿ\0ÿ\0ÿ\0ÿ\0\ïÿ\0ÿ\0ÿ\0¿\ïÿ\0\ßÿ\0ÿ\0ÿ\0ÿ\0¿ÿ\0\ïÿ\0Œÿ\0¿ÿ\0|ÿ\0Yÿ\0÷¿\ßşû¿\ßû\ê§ù/\0^U¿ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0½?ûÿ\0ÿ\0ı°Oş\ßş¿6ÿ\0\ßÿ\0ÿ\0ı»¿\çşÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0\ïşÿ\0şıwÿ\0ı\ï[iıÿ\0ÿ\0ÿ\0ÿ\0¿÷ÿ\0½Pÿ\0\×ÿ\0¿ÿ\0¿ÿ\0ÿ\0\ÈF	û÷ÿ\0ÿ\0ÿ\0ü\Ûÿ\0~\îÿ\0ÿ\0¿ÿ\0>ÿ\0ÿ\0ÿ\0¾ÿ\0ÿ\0ÿ\0÷ÿ\0ÿ\0ûÿ\0<Â¿ÿ\0ÿ\0\ß\æ¿ú“ı\ï¿ÿ\0ÿ\0ÿ\0ü\'/ÿ\0ı÷ÿ\0\ßÿ\0¾ÿ\0ÿ\0\ßı\ímÿ\0ÿ\0?ı}?ÿ\0»ÿ\0ÿ\0{ÿ\0ÿ\0\Úı\íÿ\0oÿ\0£ÿ\0ÿ\0\ßÿ\0ÿ\0ÿ\0¿ÿ\0û\n=/÷şı¡şFõÿ\0ş÷ÿ\0\ß\ß\ß~ÿ\0ój¿ÿ\0ÿ\0\Ùû‡\æ­÷ÿ\0\Ïÿ\0ÿ\0ÿ\0ÿ\0wÿ\0ÿ\0Ôÿ\0ÿ\0ÿ\0ß¿ÿ\0ıÿ\0ş÷½h\â\Ãÿ\0óÿ\0jÿ\0ÿ\0ÿ\0¿ÿ\0\İıû’\ã\ëŒø\îÿ\0ıÿ\0ÿ\0÷¿_ÿ\0?ÿ\0\îü\Êÿ\0û\çÿ\0ÿ\0\Ûÿ\0z?»ÿ\0÷¶¯¿¿\î\ßö\Ç*û\íÿ\0ÿ\0\îÿ\0ÿ\0üÿ\0ÿ\0wşúõtÿ\0ÿ\0ÿ\0şÿ\0{\îÎ¶\ßúÿ\0ÿ\0ùóÿ\0±ûÿ\0t·óı\×•\å~\àıú\ßşÿ\0\ßÿ\0ûÿ\0÷ûÿ\0ÿ\0ÿ\0\ß÷ÿ\0ÿ\0¿Ã¿ÿ\0ÿ\0ÿ\0\ïÿ\0¶ş¿÷ÿ\0ÿ\0\ï¯ÿ\0Ï¿o\Çø\Ûıÿ\0÷ÿ\0ÿ\0ıÿ\0ÿ\0ÿ\0ÿ\0ÿ\0û\ïÿ\0şşş•÷¿wÿ\0ÿ\0ÿ\0÷·¿ÿ\0¿vÿ\0\ßış]ı»ü¿\ß\ë_ÿ\0ÿ\0¿¯ÿ\0ÿ\0ÿ\0\ï\ãWÿ\0ÿ\0nÿ\0,9sÿ\0ıÿ\0ÿ\0ıÿ\0ÿ\0ÿ\0¿ÿ\0÷ş\îÿ\0¡&}_ş\Ìÿ\0¿¿ÿ\0ÿ\0ıÿ\0ÿ\0ı\Úÿ\0ÿ\0O\ß÷\Ş?x]ÿ\0ÿ\0ÿ\0\í\ï½ûÿ\0Ÿûÿ\0ÿ\0\\øùÿ\0½ºÿ\0ÿ\0ÿ\0óÿ\0ÿ\0ÿ\0÷ß·şÿ\0\êóÿ\0v{¿Ÿ_\Ïó¾ûó\İ÷ö»\íşf\ïù÷÷ÿ\0ÿ\0ÿ\0\İ\ïÿ\0ÿ\0ÿ\0ş…{_\ßÿ\0ıùû¾ÿ\0~÷\ï}´\íûß»÷û\ëşv\åoı»¿ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0şÿ\0\ßÿ\0şeÿ\0÷\ï[^ıõyÿ\0\ŞŞ¿\Ã?oıû\ïÿ\0ÿ\0\Çÿ\0÷\åJÿ\0û÷ÿ\0¦\Äw<ÿ\0¿ªùŸÿ\0Jÿ\0\ßÿ\0ÿ\0ÿ\0şZ\Ù\íM\ß\íÿ\0¿ÿ\0ÿ\0Ÿû¿¿ÿ\0\ïû\ïoşgÿ\0i\ïO\çÿ\0\ßÿ\0\ï¬:ÿ\0=ÿ\0ûÿ\0ÿ\0ıÿ\0®	ÿ\0ÿ\0\ß\ïû\Ò~¯6³¿ÿ\0û\çÿ\0ÿ\0\ßÿ\0\ß\×{ÿ\0ÿ\0ÿ\0ı\ïÿ\0\îÿ\0dVÀ\ßÿ\0\İù\Şıÿ\0ÿ\0Ÿÿ\0}¿¿\ï~\ïÿ\0ÿ\0ÿ\0o÷¯ÿ\0ÿ\0ÿ\0\ßÿ\0?şøø?ÿ\0¿ÿ\0ÿ\0ú?ÿ\0\ßÿ\0î·¾{ÿ\0ÿ\0\ïö\Çÿ\0ÿ\0\ßÿ\0¿ÿ\0¿şÿ\0³ÿ\0\ë}ÿ\0\Î\Ü<û½y{®÷\ï÷şÿ\0ûû\ßóûü»\Ïı\Ïÿ\0wÿ\0oÿ\0ÿ\0oÿ\0¿ÿ\0üy\ÕS\Ü÷¿\ï?ÿ\0\à¿ÿ\0ÿ\0ÿ\0~\íıÿ\0ÿ\0ÿ\0ıÿ\0ıÿ\0ÿ\0wÿ\0\ß÷úÿ\0ÿ\0{¦xË\×ùÿ\0Ÿı›\ï\ë\ßõÿ\0ûÿ\0úÿ\0şÿ\0ÿ\0\ßÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ú-ÿ\0şÿ\0ÿ\0ü‚\Õ)‡I%\Ìó÷ôùûû\ï÷ûÿ\0¿ÿ\0oûÿ\0ÿ\0ù¬ƒÿ\0ÿ\0ÿ\0\ïÿ\0ÿ\0¿~ÿ\0\Şû÷ÿ\0óş\ï9û\Ş\Ş÷ü½¿ı}\ï\×öıÿ\0ÿ\0şÿ\0wı¿\íÿ\0··ÿ\0÷ÿ\0÷ÿ\0ÿ\0¾½ÿ\0\ßÿ\0¿ÿ\0¿÷\ß|{÷\ß\ß÷¿ÿ\0ı÷\ï¿ÿ\0ÿ\0ÿ\0^ÿ\0ÿ\0¿ÿ\0û\ßÿ\0ÿ\0Ê§ÿ\0\í\ï‘xÿ\0\ïış¿\ïŞ¿\Óÿ\0\ï\İ÷ÿ\0\ßÿ\0\ï¯ÿ\0ÿ\0ÿ\0\ßÿ\0ûı\ï¿ÿ\0;ÿ\0ûş÷\ßÿ\0\í\Öûº{\Äwÿ\0yo;ıÿ\0÷ı÷¿¿wÿ\0ÿ\0ÿ\0ÿ\0Ï«zûÿ\0ÿ\0ûÿ\0\îşú\ïö}³7ß—ÿ\0şÿ\0}ÿ\0şÿ\0÷ÿ\0ù~ıÿ\0ÿ\0ıÿ\0V?ÿ\0ı÷ÿ\0ÿ\0\écÿ\0²z·Uş¿\ßwÿ\0ÿ\0ÿ\0ÿ\0\Şÿ\0ÿ\0÷úıÿ\0ÿ\0ÿ\0¿öÿ\0_ÿ\0ûûÿ\0şIü\ëŸoQ÷w\ïÿ\0ô?Õ½\î÷ÿ\0ÿ\0ÿ\0ı\Ûÿ\0?şû~ÿ\0ÿ\0}ÿ\0ÿ\0ÿ\0\ßÿ\0ş·ÿ\0ÿ\0ò\Ûe\í¹\ëù}ÿ\0\Ïÿ\0¿oÿ\0\ß\ç¿ÿ\0ş\Û\ï\ë\ï\é\æŸú\ßş—Ÿÿ\0şÿ\0ªjõ\í·?÷ûû\ïû¿ÿ\0÷ÿ\0ÿ\0ó»ÿ\0ÿ\0ÿ\0ö¿_\Û\'ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0\Óüÿ\0¨«©A}ü\îı{\ßÿ\0ÿ\0ÿ\0ÿ\0?ış÷ÿ\0ÿ\0÷ÿ\0ÿ\0\ßß·\ß_\Çğ~¬\ß\×w›|¯ÿ\0ÿ\0ÿ\0ş\ïû\ç½\Ãÿ\0ÿ\0~ÿ\0ıúıl\ß÷û¹\ïÿ\0\Ïÿ\0ó‡şY÷ÿ\0\ç\ïÿ\0¿¿û¯ûÿ\0#\ÓÁ\ë\î]¿û\î\ß×™³÷~ıı÷ü½k§òu¨{v\ïÿ\0ó\nŸÿ\0yûıûÿ\0ï¹—‹e¿çµ¾ÿ\0\ï\İÿ\0ÿ\0ÿ\0ÿ\0m™\Ã\Şúµ\îş÷ı÷­oÿ\0_ï­®Ÿƒ\æ{\èn^ÿ\0şÿ\0ş\ç¿·ıº\ŞbÁ\à	D¼\í®\Ë}{ÿ\0ÿ\0¯ı{ÿ\0ûµÿ\0\ïÿ\0ı\îk½ÿ\0¿ÿ\0\äE\àwÿ\0ÿ\0ÿ\0ı›M{úÿ\0ÿ\0…¥\ëÿ\0ÿ\0\ï¯ÿ\0ÿ\0¼»\ßÿ\0ÿ\0ÿ\0ª\Æş\ïMoÿ\0÷ß»}\Ñ]Ÿıÿ\0ÿ\0;ÿ\0¿™¹}¶\ëü~¢^_ÿ\0\ïûÿ\0\Íø\ßÿ\0ÿ\0ÿ\0÷ûÿ\0\Çj\Ù[Ÿû\ßO\Ş=şÿ\0¿ÿ\0¸ÿ\0ÿ\0\æ¹ÿ\0j›ÿ\0\ç=úÿ\0\rÈ~\î÷\Îÿ\0ÿ\0õ{!§ı½¿ÿ\0ôÿ\0ÿ\0ş?\ë\äıÿ\0ÿ\0ÿ\0ÿ\0şÿ\0ÿ\0ûÿ\0şş\Ë\ïş‰>ÿ\0ÿ\0÷û¯\ï\êÅ¢[_§\Ç\áú\í\î?ÿ\0ş}ğÿ\0ÿ\0ÿ\0÷ÿ\0û\ïÿ\0\ßv\Ó\ß\î¿ÿ\0Ù¬~\ìûÿ\0wş¾\Îû;\ß÷ş\ï7}ÿ\0ÿ\0İ¿ÿ\0ğ¸ıÿ\0õ3\ïşûkÿ\0\×?\å¿ÿ\0ûŸ\í\ïÿ\0\â½	\Êwÿ\0ÿ\0ÿ\0\Ïo;\ï¿õ\çÛ™ÿ\0\çÿ\0ÿ\0o\åa\Ğı\ë£|÷\Û\â\Ïù·\ïÿ\0ó\ßÿ\0ÿ\0şÿ\0÷\ïÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ıñÿ\0ı¿÷ÿ\0ÿ\0\ßÿ\0ÿ\0\ïÿ\0ÿ\0ÿ\0şnıÿ\0\ßÿ\0şÿ\0ıûÿ\0ÿ\0\Öyÿ\0ÿ\0ÿ\0ÿ\0\ßşşsÿ\0ÿ\0\ïÿ\0ÿ\0\ßÿ\0ÿ\0ş}ÿ\0ÿ\0\ßıÿ\0ÿ\0ò\ŞGÿ\0nÿ\0ıÿ\0¿\\\'û÷ÿ\0\ß\Ûû\Ïÿ\0÷ÿ\0ı\ìÿ\0ÿ\0ÿ\0ÿ\0ıÿ\0ÿ\0\ï\îw\ß\ß\ïÿ\0ÿ\0¿\ßÿ\0\å\áÿ\0Ÿ\ïÿ\0÷ÿ\0\ßÿ\0\çöşÿ\0üÿ\0şÿ\0úÿ\0ÿ\0ÿ\0÷ÿ\0}YÀ?yşûÿ\0ÿ\0\×{\ï¿şÿ\0ÿ\0ÿ\0\ß÷ÿ\0\Ø\î»\ß|‘_ÿ\0ÿ\0ÿ\0\îı»\ïûûÿ\0½ªÿ\0ÿ\0}ÿ\0ÿ\0ú<\í÷ÿ\0ÿ\0óÿ\0şÿ\0¿\ïşÿ\0ÿ\0ÿ\0ß¯şÿ\0\ßúoÿ\0·ÿ\05ÿ\0ÿ\0ûÿ\0‰nÿ\0\ïÿ\0ÿ\0şÿ\0ûÿ\0\ßÿ\0ÿ\0ÿ\0ş¿\ß\ßş«\Åóü»ÿ\0ûÿ\0\×ÿ\0ÿ\0ÿ\0ÿ\0\ïÿ\0ÿ\0ÿ\0÷ûÿ\0ÿ\0.‡ÿ\0ÿ\0ß®ÁiU¥^q\Ø=§\ë\ê\n»øõ\â›?qSdı{ñŞ•4¿uÿ\Ù',_binary '',_binary '',_binary '');
+INSERT INTO `tb_usuarios` VALUES (1,'BRIANLOMELI096@GMAIL.COM','OTg3NjU0MzIxMFh4JA==','BRIAN','GAYTAN','LOMELY','domingo 21/02/1999 12:00:00','HOMBRE','Prueba registro primer usuario',97,_binary 'Estudiante','lunes 28/03/22 22:20:44',436,_binary 'ÿ\Øÿ\à\0JFIF\0\0H\0H\0\0ÿ\â(ICC_PROFILE\0\0\0\0\0\0\0\0\0mntrRGB XYZ \0\0\0\0\0\0\0\0\0\0\0\0acsp\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ö\Ö\0\0\0\0\0\Ó-\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0	desc\0\0\0ğ\0\0\0trXYZ\0\0d\0\0\0gXYZ\0\0x\0\0\0bXYZ\0\0Œ\0\0\0rTRC\0\0 \0\0\0(gTRC\0\0 \0\0\0(bTRC\0\0 \0\0\0(wtpt\0\0\È\0\0\0cprt\0\0\Ü\0\0\0<mluc\0\0\0\0\0\0\0\0\0\0enUS\0\0\0X\0\0\0\0s\0R\0G\0B\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0XYZ \0\0\0\0\0\0o¢\0\08õ\0\0XYZ \0\0\0\0\0\0b™\0\0·…\0\0\ÚXYZ \0\0\0\0\0\0$ \0\0„\0\0¶\Ïpara\0\0\0\0\0\0\0\0ff\0\0ò§\0\0\rY\0\0\Ğ\0\0\n[\0\0\0\0\0\0\0\0XYZ \0\0\0\0\0\0ö\Ö\0\0\0\0\0\Ó-mluc\0\0\0\0\0\0\0\0\0\0enUS\0\0\0 \0\0\0\0G\0o\0o\0g\0l\0e\0 \0I\0n\0c\0.\0 \02\00\01\06ÿ\Û\0C\0\n\r	\n\n\r\r\Z\Z\Zÿ\Û\0C\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Z\Zÿ\Â\0\"\0ÿ\Ä\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ÿ\Ä\0\Z\0\0\0\0\0\0\0\0\0\0\0\0ÿ\Ú\0\0\0\0ùC©óı\ä\ÉZ…d…$«J @\"\ÈÖ¾µ«½­5\ÄÃŸ_nw8«L\Z¸š`$¶Ëµ¡TÓ½±\ç60\êíš»xô+[o‡>\Ö\Î;\ëlÙ\é\Å\Ö\à8²mMI#m\0À\Ô\Ô.\å%\ãÊS\Æu$B`	‹¦LBsc½+S6–¼\íÍ—&µk–\ÖÕœn\Úf®ös\ÛWi!\ÜÚ’\Z‚Õ²Ô•µmj\Åtö_\ê8}^½§Á\é¦\Ê\èŠiŠd¦¢‡bh­š(dŒ&¢\ì&…e¶C¨«\Ïjõ1wùÜ³kRøÜ§|\è’.T\ÔÀñãˆe\á\ë\ànü¹\"%V*E\åÅ–5Ë“]g®\\¸\Ş\ZÖ¾\r*¶5\"!cfS\r—\Ğ\æ\Ö{{n—õO\Ğn\n¹;Áº\Ù*h\n\Z\0\"nD$£(TET‘\Æ§‚p\ì^f>®­é¢²­r’±¡h\ç\åôq Ÿ9\ÈZ©\Í*1­u-dB\Ùb\0A9\0E!Ulæ–¿O\ås\á\×ôlºşÓ™\î’eBJ \0Q I\n‹$	–Y\Ånw\á¤	C\ÕŞ™¯c›\Ñ\Ï\Ê\ÕÍ‡¿È”§nJ–•`\ÊBY¹ie’¤CS\0œ&\åV9˜4\rÈ·£ö_2÷¾W¿\ÓA\æ{aBÀ@¢•`©\0¥¦€š	¨8*\âe\È¿\Z*V‚Á&\r-\ŞFüœ<w\ÕğT\ß	R“ZL„\İW|up˜*mRm+Œ¡TXAr%0™¨d ©2zO1¹ÿ\0M0\çùß°C\Z…I@,© ’¤ˆ\0¤U\r„ŸG+VeX%P`\âwx=\\<x¹õ<)šW\ç`\Ìõ\ÑVL\Ø÷I°ó\é\ÑÇ½];\Í\Æ\'>+F*\ÉFÕ®ó³²D\ë\ÆÂ–¹mM|=n¤<³ô<”{¯˜õ^/\Ò!œİ‰€&\0‚\0\0D”˜!’\Õ\ãPtr€V@i‘|÷£\âuqyø¸õ|.o\Î\ílWCp\İ\æôñ^\Î^~½<›Õ¼ü]M54pl®Œ5\Ì\Õf39[b2•k™\æ\Ñ1–L&bÑ‹d\ëg§Gƒ\è\Ós?3%ó\îú#\ê8;óPøû\Ğ\Ğ4E-d1·6€h\0!„“B¼­¹\Ò\ÌW	Vˆ\ãö55\æòZı.­\á\á-\í\Ç[¸:üşf©\ã\ïÉ—L¶\Îc\É[F¾Ú‡z¾ZfõÃŸ]¡},5hNö+Æ¶=Èµ5\ì\Ø7#c¼‰Å“»—fº=,5ó^ƒ•›ı›‹ó½¥]P\n¤Å‘R.j•+BC©6¬x\Ør€Û˜%MT\0³E³\àq½_¿\Ï\ä\İe\ìóótuwy{j\ÖL:UMj\æ\é£\Èd¥ñ\ÎBx¢h¶Š\ß¾Ş½ò\ÕÅ³­¯:\ØÁœ\Ø\æuµ—ó•±¥\İÇ·µ\ÍÏı*68;»9qg\äí‘•\Ñ\å(B¹UQ2\É\Z@ˆ@&v\Zs\Ñ6	€P´•*\ã\Ó\ßÇ¦~c¦\âvğ­¬\ë[\ØÇ±–\ÓRW\\µCl\Ğ\Ãh\êO.,\êÎ†9¯N¹»ç¯Ÿ=\Ş,²l{E²\ÓÍ˜V÷5vò\è\Ï\å;\Øô¯Ú¿S\×Ë­³x=\r\Í†\Z¥Et’*	WP\0LÜ‰2\É(˜‘Ê¼°«\â\rª	¡i($©1q»Ü®^v\Æ<\Úó\ç1\Åo–p\ê\Û=~¾>®|¦Ls<exCg¥\É\ísõo\çÅ±Á\ß%‘®\áQ¢\Ñy1*NMj\Ô\Ò7ú\Ü\ÕmbÇºöw1\ä\Çd5M\0	V	49©š…Á#Á2±-\Ì×–˜…\0\Øhƒ1\ÑŞ‹\çç²¼}\\F±§®YôVGQzòŒR\î3\×n[©\æ{”\ä\í\Åac.P“™Yªa·3³»\æK×®ø^²³\Û\çúpR‹$Á0H\æª[&i¶H+Bjj\æ\Ğö\ç@@²\0)\0QD×§\Ğ\â÷ğF\Ã\ÕÃh\è\âLJ<iZ™oZ\èú:\îG§¹©›\Ìõö	\ÏL“‡<±Š4\Î\Ô+\Ö\Òc\Züş¦–\Üø½ŸŒö\ÔÛ¨\æúó4B[C\0jf¥K`•B%¹±\Í#šI§=‚`\Ñ@À%£C\Ë{\ß\æ\ã”wyRÒŠ2(¦)\ÊZ‹\"ºë—·\Å\érúSD\ä\ë\ŞÇª‰×«W*\Â#9!’±e‹\ÔQ«·‚ô\ÔõWºŸTMy¾Ì€\0B@\0$H\0\n©©±’b1¶\ÒkNpÅšˆj²\0Gˆ÷\\¾O}\rOO\ÇU‡¤¥¯]µb\ÙblF]\ím\Üz(1c®\\i!†RKT²R\æD\â\Ì\ÆÅñM1mj\Í\ëôJ\Ô\Ûó=‰*i¨IhĞ¦*™	–¬\0‚hH\æ’i\Ï@\08³\Z)*	`U,¢4º1®^±\Û:¹b¶óröyw±\ÒÛŸ\Ç\Ïw—\Ù\ÆnFj\".+kS”¹¬•¶*”åœµ’TDL\\c\ÇlòLM\èüº\âô¨N\à\0š		Q3@\"f­T„Ô $µy¡Z`\Ğ$h‹2’Aˆ)$Ğ@S‹8­S)¿M9×·2\æq{:<œ½—µ§>.™\ã>¦µó‰ğˆ\ÈJ	1Z¦*\Ãz\n\'Lò“E{¯\èğ\èõ`y~\à	h& \Z	Y\Z’š	j­K9n2i\Î\æ€\Z\n\"ÀM%MTKY5\Ò\Ú\ãiMõ\çõzy}7ƒƒ£—±«£¹¶^‡w\Z\à\ï•µ\ë\Ş+g‹|ZeEó· „­ŠõöÌ©&·R³©T·\Ò\ï‹\Ûò=\Ô3.‰	‘ )V\ä‘4Z€ÃW˜\Õi‚(L\Ô\Ğ4\â\Ì@\ÅU’¡”\×RAóº5zø-{‹»‡\Ãcú?‹Û›™\è¸Ş‹.¯/T\ê\éa\èÃ´rm^‰©uT“hx\ÈCƒ”1Z!Z¬®S­û^\Û\æ\ß@óı‘>˜™Bj$hU%‚b&hšÀ$sˆz\ãbuš&€‹6©(n¥SE€³mBš“‘\×Ò½<gC™§\ìx½M]<ö\Ïu…yo{Zae×¨ºÁŸ=	©LA7\ÊI«À\â‡QQkMVrz)¿\ß@1\äò}À&º \"¨’@\äbH¤Šj&¡4S\rq +,\0© \0µ.,Ü²\åUe\ÜZÔ•Á´\Ó@s\Êı7\Îwùş[wR=+d\Óf\Ö	\0É–2ylB\Åj¸•¦m%jÓŠHº^Õ•´m`\Û\Êş›³\äı\'Ÿ\ël,1V\Â¤M!X\0MI5@˜§-\\JšXqU\0u,·.³uª‹IS\Ë\îüw\çv4½3[S&ş\á\Ë×‰\ä)®\rM\îe\é¦zyDò\ZcI¯‘\ÆJišñe\Ïmˆ\Ø\ç\×6ö—W“»­À\îôøo[ó\Ûôüo¤s½\çzÙe±50,ÔŠ	\Õ\ë\Ê¦-Š,\êB:¬¶‘C©²,ª™W3\ärö\Ç\Ö/¥¿\'¢ó¼ó\Ğñ\êRß‰´Í\îV\Ö]]c—\\şK<š\ì\ë\Äi…‘Zb\È&´\â\â\å\']^Hºk—>,\Øï¹µ¯µ\Í\Òı\Ğòö\Ê|Z\ß\Å\à\'\ŞùZ\Ø\Õ-OG\è~{|İ¿O^g\Ñù~\í’c\Ğ@\n\Õ\å\Ò{`T•½ƒh(’ª$².m²\ì\èy¾wos‘†{<À¼‘­˜š¡R“N\Ü\ŞLºğ,\Ø@f\Ğ$\nMÆ€\Ê\ìóFL¶½œ{XmŸcS›¯£–ñrv\åñ«\ç}\Şv =_ŸZ,nI–\ë¥óQ\ç{^€\Ó\Û\âôœ²³Í¨7\ÊÀ¬ŒPcC¿\ÎÏªOw“A6\Ä\Z´(¸š2\'$«)¡03?K¿—F\æ¾Ñ‡o(\éjë–»¥l\Ø`\ëzeW¡\ía\ß\Ãw±“¯\ÉÙ§\èg_Ÿ«%\â\ä?“·óCOnT4‚,Y‰\Ö\Ù:\\’šú\İÿ\0ù»=’£\Ïõ\İE¬U1M2y\ì®ÿ\02\à;¼°•l\ÛTJiX©¹„\Â$Š‰‰PL\0&t7¸;yut\Ìw\Ï\Ú`Ùµ¹«§g%÷;ùôx­Ÿotğú\Ùc³o=RE³\Ùò1‡\Õñ^hiPH#$P™©\ÊMÀµ¡U\ì\î\éì–»Yó;<Nÿ\02¡®\ß($µÒ¶H	\ÄÁR\ÑM)@\é	PL\äE%SA[Zd[±±ÁË—W \Úó\İ\Şn\ßG\Ğ\áf\àôûùq]º¸üyıO?\Ë\êtñv¸\Ø\Î\Ï:À\×‘+,\ĞM4X„·,öF:ğ¾š½¯1·>œTz~™R„51r€‹”6$\âS\0W\"\02acÊŒfAXe,À‹\0@r\r\rT\Åi¤\ê\0Mr\0P\r\0XM%R£\×\â}5\"!\Ï\àeÁ\éùœtùÀ©&I0”†Ó‰nX“@\Ğ&˜\0\0\r\0	\ÊU¤10%\rL7,L\è ¬TŠ\Óif€¸ 	±\\´ªT!µ½[‹ñ>’¹\İ?¿?)5\éx`È’‰L\ÔÀ\ĞKT18”ÀL0I“\0¤	&Fd\Â\0b`ÀH\n\0©*$\0š›\ZMzE8°%$1Y7·«!ø¿C^s¿\åú¸ğ>‡%J¦a¥d\0\0‰¸±‰Ä•‰50&\Ú˜4D€\0œÁ4Åƒ@\Ä\"%°\0	¸¡Ô‹@\r%1€L\Ó=@G¿\Î\âni÷y¸Æº|ğl\Æ\0É€\Â\É$\0i›™4\Ò\Ø&€\0\0L€Š\0`&\0\ÊH2hšš\n›\0k$ª†\É(½6+\Ôòı\ZCÊ„\Zsa5!SD\rL\n1¨š‘“l”\ÔÀ\Ó\00À\0*A©(VH™n.$a0N…d©,b\àIB ¤Š\Z\Ú\ßÿ\Ä\0*\0\0\0\0\0\0 01!@AP\"#24Bÿ\Ú\0\01;R\íJ[²\ÚOBŠ\ìGT¼ˆ\á•Dª–\ê\ÈÛ¶š¸m?£\ßÿ\0£«J¡–Ø¾\'GCŸŠ­E1\Ë|^7H\Ú\êƒj£„_]c”m.i\Ù\Ù-\ïofP&\ÈX<ƒªefö\çd«\rÄ˜˜˜\ãnø¤§YXi\ŞÇ˜\ì\ë\èşZ6¹N\Ìlv \áRıZ¥A\\®´™\nñVmˆ\ì¤\ŞI´“l¯N¦+CW—\ÒM‰½ô\äııÚƒmø\çC\\\ëvI‘6‹4\Ë¾z1(¿\'\Ñ\î\Ğ~şmV\È\êf0¹[ôC\Ñ#\Ü9\Ùp¦\ÅQ\\M»\ã\Òj1VZ7şmü\æs}ø\ácß±£TıqQÜ’dO\Ğ\Ğ\ê2Dâ‘»÷o\å\Ü:Ÿ¬U¤gºW’~•7\âºz¾VZ>¤p\ÆC\Ø+aVJ‹i\â\îñô~>¾o»§\Õõo\Î\Ób´s$¨\ÌG®4U|´¶FÈ¶6«]}9}ñFø\æC\â\ê\âı±hû.\êº\Â;†H:\ÙQ¿OS\ÇV›²mû·{;\áŸ|5=o‚C\Ù‚11 ƒ\Å\Ğ\Ğ?:Ñº8\ÜjwÀˆ\"˜˜˜˜\ì\Ä\ÆLL`‚ô)ˆ­µ=3\êøÂ¦‚\ÒVÿ\0\à8Õ§½\È\Ñ)˜3\Çi3E1 \Ç\Ö;cm:Qeºzu5Ny\çp\×fh\Ù\â¯~ù¦\İm\îğt–SR\ßKµ¨5²E“Ø\"\ÏlB¹H„[!‰‰\Ç\Ü¦®(·ÆšŠ¹_#OV\no\Í8#|\ŞŞ\\UvÆ Æ`†>ö94jMñöÖ˜ª[¶kJlõUØtÙ´QE\Ô\Æ÷£«\ï\é/-T*²·\ë[#[À­‘\ã<gŒñûñ1\ÔÅ¦EºAƒ\\jfšg£[Q*Q\Åh¤\r_[fı\í\îÿ\0—	³\Û)U°®mš…4\ZE¶&&&$mTz[5-Pwh°#Šu1ı&Sÿ\0Å»\ÛZ-ZIQ¸¤\riLMÉ¾D\Ø\áSÕ©Ú¥,Š”œÛ´gªMÿ\0E5ÿ\0#‘xcsŠ”²*R\ÄD)ú²E’\ÒdddI&D“u\"\Ğ ƒPu&<\Öi<N(³7\ÔHF·Pÿ\0\Ïğ u4pö\â¬ kvH\ê:«Eª‡”òI\å¡\ä\Z\áKÁ&#F©€ê™µi\Ëôºd¤\Ç6Gu¦è­+jÍ‡´o³+ŒŠ•`ZŠdfdddd#Še6\Ú7£Š„z§IòPrúÓ¤SşV\Õ4A¢¸S!\Õ8³f”[\é¨G™dd\æ«]\é¶s†zg*ıH+6Xt9\Â\ÔRG:xtô²L\Çbì›¹¦ªCœƒŸ‰§o–©\ÑStoıgô¢¸‘\Î\ßjJ\Ñn(İª.÷ÿ\0Ö¾uõS\ã“ş‰û“¶/_ü¹\ÎGl’L¶PiOĞ–’I\î\n\Ñ\Âuñ\é\Zn	\â[I<q³Y\èQ\Â\ïmÓ²¤’fddI;\àr{C\ãÿ\0ù¸¿>Î­¹Sw®»{¦#ŒŒŒŒŒ…u²\Ş\ãó\ã]4cg_jwTÿ\0\ÅNøš1\ÆFFFD©>\æß›W\Ø\ã÷\ã]\Ï?U\é-®Ø©d1\Ùo±­ ›«¤\ÊÊ¢{Ş¢¡¥©\ã­\ßñuZl\Çiœ\Ñ\Í\Æ\Ô\é\æ\ßø\ê:’´”\Ä6G¼o\äQ;\Ó?\ÉG\ê{;ú4*\éP©MZ\íf›i\Ó\È\í,(À\æSØ‰f\ÛöD:[H¶’mñµ\'\ìG;ºmxb¬³’J”²*\éñ1­1#Ñ–Ø¾D’d-ôµ|u?>\ï\ï»jÙ¬*4©HkE`´\Ål\r\Ş\ëM¤’l†¯–‡ıX\àı`;<\è\Ä}IôşŒH1C\Æ-#¡\\tdegZGZv|m_õÌ¤\íKõôşü;Yµh;Vƒµ2yd\Ó\'ø\Ø\îœ.÷ºO\é»4\Ù\ß6Kõ+¿ZÃ+…[QfoOò™Sw;d\İ;øú™R\å]“Êœ\ZšDz+VEE¾˜µE2Sß’LŒ‰\Ù6™.ı__¡\ßÔ›Ô ÊƒtTu&9ºš\'\ÓnJ\Ô\Å\nƒŸ\ï\É#jA\æ\Zó#\"I²‹¿ğ¦\èZ5<”öOñu\ìÊò÷j‘\Ö(\ê\ê\âgb(L¶O\nW‚y¤’~f©¹QœE$e<†±­Ö©«M“›OS\Æö;4\á\ê\Óõúß¬Ğ˜ûkL±O •:\è\'*Ù¾_\å\ëôÂ¨®ÛŒˆ\Ó}\n\ã.F \ßE\nDuLF×¦\í³À¿Bx\Ü\Ôrjôl§O!´O\Z4 p\áw\Å\ĞFh…_%C[£Liü…Je\rCu\'t²öuôrD*\ë©\Ó*ü³”©­«PGSnJ\ÔF¡6W \ç\n\î³Fˆ!¥d½İ¹%•R*Q®ú+§ù,†\Ôk÷\É?^G=\ZWùH*j\êT\'cSv+\å<§Z£*\ŞxZ2\Èi“\Zqî³±eGdòJu\ßMi|£\ÚP\Ö2·,r¹\èÒ¦¾›\nŸ(£¾J©SWR¦ô\ÆFFV\Ëdğ Ñ¢Ù›\İşmòp¤·›1\ê\Õ\ÒüŒˆ\ï­SV\Êe_{‡Ts¹\Z¿A£Fö\Ûii\àvK\Ò|\\\ê\ï\Ó\ëŸH\Ó\ë™V\Òw\Å;\\ôiSZÖ•5•*\Î\ßgŒVó5 k}4\Ó\Òò9\ß\äj\Zª¾*u’\Şv ‹§ù¥:zšuy`U+kqZ•ıó\ÇM\Ç\à\êrFø\ØÁ\Z5¥*+Qa)4˜O¯\äwHV”õ\ÕSù¸M].%5Z\ä\è¦û«GR#¨1ƒ[%-,©¦Dš\ÍRSbºx“—¡\Î\Å5\Z©´ò/\r:›1‘i)Š`ªx3KQ\Å\Æ\è\Ø\Òi\Ó¢©6\ÔjR’T¨µ\Ã; ı\à{Ñ‰¨Ô­C»Í£é²®\"TE·vƒ´ò(\ÒF&xW©\ì\ÆÊ°W\Ö#\n•£¸§•\Î\Å5Ö¢ğ®\Î÷\Æ\éV\ÔG² \Êy­\Z˜Š\ÛJªˆTÖµ…mj¸WO\ï\ï‹WW%]ıq\Çz´mUB†½\Z7\äi©ÿ\0>šŸó\Ø.¾™S\äXT\×\ÈıKœ+§‹¯¡¨«ƒWøyô\Ğ^53,ÿ\028$\ÕU„\Ù<“üY\åwù*;\'h:\àO¿\'‚\Òø\î\Õ:)ÿ\0*9º\ß5—\Ï\Ò\ìŸ\èj]5-ƒ­\Îû\İp÷³ó†,\å\Å*;%şR·®ø:5/ô\î)\ã8ûsÁY\Ò\ëtOm\ì\ë\î\Ç7B\ßÕ\ìQ\Ü\Ñô£\ì¦\ï\Ò\ÍO¦s/ñVñd\ßûoÿ\Ä\0(\0\0\0\0\0\0\0\0 !0@1PQA\"3ÿ\Ú\0?O¯#c™;ôe°V\nbYb&:›ƒ°vb€\àcl™9Š\ÜÚ˜¼\Î]\r–\Ì\æ7²\'>ª\ì\Ã(·š›­˜\ßBfLø)µÁ•¾k>l	¢\ç\çF†\ìÿ\0£ôm-û\èHU0`ÁƒmDøM2+\Î\Ë\É\ïd…B€\ë8ŒøÏŒ\àp>#üi3\àp4\Ï5¯;.]‹}¡•Õ@PŒ0`Á@oj^=b\è)€„4:\Î€\à4%³d_f/;E°>>\ä„-±\Ğ\Ğ\Ä4M4AD=	\Ã$\ëÀ¶\æs9Ÿ ¬Ù¡!\"\È&ˆW–%z6-\Ü\Çaò ¬+\îAt&6@È½¡e–òd\ÉZ)¬Kfd\Î\ß&\n\ç\ÎBôYi6OfÈ•@\Ìs3¼\Í7ı==Oa³À„\ng3&zOizzŠù¡\Ô\Ñp8‰ğ§†Vò½7Å§\ÃÈ«D\éD\ëÀ—½´\Ó\ÊÇª†OCÃ¥³&J\'‰z\à\Ø\'©b±¶@ll{gf÷ES\çM¬“\Ó6YC‡r¨wÀ\ì9™İ¾,ÿ\0¯VÅ”9ğ>F\Ìm‘=ŸMS\ÃÈ}[ôù\î‡\Ø\ç²BCc}(ª}Œ™ô²[ª¦lº\è\Í\æ}\ÅcfLˆBDX\ÖQ\rKª]\Êî¿^l¤OU\\	ÿ\0#Zú-\Õ\ÙnõYX;Ga“\"„@­O„rY>\â›EZ\ÉC\ìªøÚ»x§j‡\Ùf·ôN\éLo¥\î5Ğ„$$V„km\Äx\r\ïbf{LV)ı\é\Éuø\ì‰Í³>\n¤c#¬\à`HD\n\È,š‚\Éuœ\Şw[&B\×¡j\äºÁuÿ\0\Ò\'<õ>š\í\ÇØ¦™ƒ\n9‹L…Z[N\ÅÜ¾÷1¿eöy\è~6ˆ\ÜWb!u±\İ_ìª´Y­ı\\\ç÷\ä¶\Ì\"\É\çg\æÉ“&|­—L€±\á?À\Ü\ÇøËŸZö¦[øÿ\Ä\0$\0\0\0\0\0\0\0\0\0 !0@AP2Qÿ\Ú\0?ğ(\nEp¡ÀxÆ†\Ç2ü·\É!@\ØV–_\Z¸\Ç\æLO‚DWQB\\¥2\ã¯=‰–\"^i\ÂÑ‘Sô\"\ÈúV?¿%ñ\ÆG—\â\Ëñ¡ª~†\èZ¶9›\Å\"\Ë,\Şo,³qò¤)¦u\n§\èb}Å£d\æ9›\Ä\Ä\Ë,²\Ë,sJ3÷ô1²L“‰Šfóy¼²\Æ\Å\ßG6Œ”\Ğüé˜¦Y7\Æø\'£rH˜ı\è†Kô£\ã6\áªccf9\Ê,JCcôq±\è (M¥øP\ÊŠùÀ]\È@„\nÕ™§ª\áñ\Ù5Q¢ŒjĞµfFL¢„¸A™¿O§v-,±³!EWe\ïO§É±ŠIĞ¦‹,Ÿi5O\ÓS”G\ÔZ£{!™‘\ë|(H£<*^«\ÓØ¦_Š\Ó4-zV,6.&Ä‰òHKVŒŠŸ¦\Ù©:Ÿc+\ì$,g\Æl(HKQ²½Ln¤l\ŞlH½(kE\Ç\"´5\ê\à\Ï}•£e‹”Œˆ¯S“!%\Üd¦[ %ÁŒl‘	¸³&5Ø)C\ÍB\é\æ\Å\ÑÈ†\ÃY£\ã1G‹É²t¨K°Õ™0E™18?\r¤C¦ÿ\0HÁ!.LO“&\Æt˜\í\ß	E3/O÷\ÂQ+°ı³mxf‹¡L½Y6Ncd \æ\è„6*\ä\à˜ğ.	°\×v%\ãp\Z¢\Í\ã\ÏC\êG‘½!	HÅŠ0òa\Çö%\å¡\ã\'“\Ç3á˜ºy27úF\n*\Ó-‰z4Q^TˆF¿\Z¹ğp¯Á¢ğ`ˆ~ÿ\Ä\0-\0\0\0\0\0\0\0Q\0! 0@1\"Pa2A`‘#Bbqÿ\Ú\0\0?ø˜—ri…\Ê(\"„»¬›(E	‹‚3„Š)¬\ØT\éSÎ³¬t]\Ğ\Â2‰„,3\Ö\çBU“\â{L\Êo\Ş]L\È\Ø2\ÄeÚ¢+«FOxF\æT\çi¼a8\êeUzO7\ÙJœº_ê‚\áxO!2\Âp\ZsûW\ÄÎ˜˜ö¿G=h˜ÀS*w˜L\èUC—S9„†c\È\ë¾:Góœ\É\íg¼H\Ùû4†#™¶½9\ŞOi\Éb„rŒ&\ã\í0‘\Ê4N³bñ‚óŠñS®\\mŒ\à“ªZ\Òi‰…\â\È.×’ø&¼\æ¯xÍ†\â‚pvFM„\èFO®Umù—ŠòA=\ÂÃ¤2„„Í½\"8WY±FµZÑ€\Ê7\ÆŒ^2œEBo®$u\r\ÇU\âğœ8\Ó6S˜\Ì\Ì\ÌLË»6^N©\ÅWü§Aóˆ\ä¬w\Æ\n\è:74PA-\'kL…\ÆÑ§X\åªyñD…¢gI¦s´\Î?\Ömy¿­@£½tB8İ­\Ğü\à¾\Ãn	Mh\ÆmP‚\ÑüH\ÉĞµÓµ7M…¬7G(\Îe\Ç0°£q\ÂS\"Š¬2ü]\ÖHF\Ñ\ìB*0™F\Ñh°b\ál2\Ó6¼*š“i<\ã!(~Zq™#€\Úp5‚\à¡a¸h‹F°Xt}%\Ñh¿µÜ†#iµ§ª÷]º\È\Ş3Pe^=ªF\ßV±T\ê¹NCsaò\âºT¤\éx\n6ñR3™¶BôFók\Èl5œ £a°#!’P\å€m›\ç\ëú_\Å\æÓˆY\è\å‘\ï\ÙğzøC\Ì$\"—\İ3i‘Ma™´¡#…\Ş\ÚE×«\é¼/\é¢\Î(¯\ê}&Š§pU\ã`\ÙwU\áü¬‚fÈ®PùU\ã\Z/\î²ñ¦\Ãc\é×”U>”?tü·=EF3ñ›¦\ØòŠ+\ÂAyr®\Ë!8ABŒ\r¥W‹*}o\å3\é´ûªğe\å‘ƒ\×\Ğ`0T\ê:O\Z/]²}\Ödlø^™F*±\Â>¯k\Æ9\éÁ<}ˆÉ—§Œı0üd¯\İU9¯º\à„Œ½<5i6›AW›/!÷*\â8\Ú\Êq\×òd$/ûb›‚òe\ç\ágÊ¬s0\Ö(Ce\İ	:ª\é}°¾\íW–A’¼—Å´Ey^-€Zli	‹k\Êµ\Úû—i“.õ>où÷„ş\Ó\ĞAUGQ·\Æc*{3\Şqù¾\Ù\ÂÓ„[`m\ámUu\ÛIô*#\ßY½•ôÍ‚Fqü\àor¥\âPı	ÿ\Ä\0(\0\0\0\0\0\0!1AQaq‘ ¡Á±\á0\Ñğñÿ\Ú\0\0?!÷4\Æöc-Ÿ‘lwnª!{_½–b5|\Êln\n\ÑU{*;¤Áñ,3m\êk\êP³6Š\é\0X“\Ûÿ\0%\Ü\Z‚¯2¶\"B\Ö\Ù\Üb\ç\ìX\Z²¢Á/7Pl›\"qK\ß\ê)\Ìb\î—´&H\"!\Ô^\é€\Îü\Êu©EY	EöaI\ï¨\ÛE\ì¨\Ñ\Zşjcof\"y\Ã.\n&<CW\â]j+0\ì\í7‚~Fôúi•J\Ç\ê\"\ãPğ?°I@g©Nª\Ğ\Z°`\Ü\á\âZÕ§9\Ã3#]ø•Úˆ»\Ëz ¾œn-¼!\áOqr\á¶45Œ\Å·%K7¨•»‚|b\ì¹“\Ì[N¡»‚;Šoı\0\Ó\ÊÊ¬\îåºŸ1+2ËŒ—:—Xó0¸\êf¥¹tÁ¿osa\å˜fX¼w)õ‰—c\Ì\ØP:–1«\Ì_Ø•oùL\ã5(\ìbM\Ë\n\Ñr­±PªªPõNs`\Çz—‡¦\rD[9\ÒPH\Ö\İ\Â•\rJ²\Ì,\\0³1\0.\îe>C\ã±\âa`\ÜÁ(s\Ş&¨!Šgl`¦5‡†zf³¸aW\Æ)\İa˜J³¬§ú\Ê5\Óp\ÇQ\ÌOP\È\ê6\'¸~\ïS\Z—\Å&1)\Ò\r½±É•u\Z\ÙvV8ğ²\è€\Ë(€£$Tm\ï\ÌC\ê! \Ã\çs/V\îÉŠ\Ô\ÏqËı!CH\ïR\Ì3\×ewq™HM=Á%x\"¸\Ğ\Şa…ø€Y\ê\0\\°S6e¢Y]\Å.¢[Pq€_qaTn!¯Q“LoÌ¢WS\æ\áEyLœNı0«ÁÜ«Ï˜\Ëôƒ\Ñ¿“,Ù˜ê ­\Äó\Z÷_I_@²\Â\Şe\\«kÁ\Zı\à?ôF\Ê:09*[ºwz”]\æK¾Hô\Ò>LD¾q‹? ‹‹SÖ¡DŸ\ÉdE‚p!A\ãÀ`©lIˆ\Õ\Ş\'e\î TR«9ŠE¶£l5‹‰‰eA—l²Ãˆ5p]\âŒ\í¦Xú2\Õ(Ö¦¥µ@ï€¾D;‹·¢\ÙBbğJ\çSqZ\ïZ\Zôj\Óı¡M3\Z`ıòš\ÖLl÷ë‹¬ Qı•/Tz\à¯Ë„\ÅX\àFš`½y\Ô=E£q«z\Ôu½q¨²â›—ÀbWœA7ŠB\ê!¿\ÈÁ|©²n]\Ëx¹¸M@¾U7·¨J2\á\n†\æõ‡\'™\ÔH¸\î|\Ä\×ıL¾8µbV%7½°\Ì(Œ7ˆ\rÿ\0R¾E©„•prÄ·Ã¨\èñ«\r~jwY…=bn‹`\"x‹l0\Æ\ê§~x&\à\âTÂŒø–U\Ê^¢ˆ\Ûö0 A\àj\\\Û\Â]0\àjµR¬¹¦`•DA•˜aEnYü‰lIX·¸¥lQ}EDÎ¦ó-i7\×û]—‰yŠ%ˆ†[3Sl\\j´–°\í‹.VŸk—Hj:s,xl—\Ã†øB†+¸UÅ¯\Ïø9Ã¨,CIıŸ7-L\Ã(,=0«¯:”_sl¼b8Š;¹g¸¼\â9ã»˜q\â@¡¸¸+ss*\Èå.ó\Æ\n¨ÃŠ´\ÔüÊ¬½²Š6\'ò5¡\ëûw¶b)s\Ô[‹Å¾¥\Ì\\ºqÂ¥M¢ÿ\0’—fo›¹u)û¯PñŸ|]\Üw\Ö%µ\ØP\Í\à\ïŒ\Íu+>f.	Z€z‹O´5/E\"]½L_yeøD\Ål‰œÀb…˜ \Æ%ü›\Ô	q8\ß	QY¶Ê©Rªu.&:\á¨,\î#\Æøp\Îø¬ƒ\êe7\rvJ7sE*hD^ö\î!p[ˆ“ñúÊ¢%O\Ò&*µ¸—ú\æQ\Ülõùÿ\0TSû)¥\\¬À\Ó\ÜW¯\Ø4‘tÿ\0¨Œ,m3Ö¢QƒRø:•\0šB$xõZÀ©”7¸\îjTJG1ššAI):\Ì@÷\êl¨”WL\Â`\"Œ\Ê\Õ\æ%?c`Ê£²P\îT\Çh\Øßˆ…\é\ZşCe’±yˆ‰ºA\é¾=§ró7œ\âVb³<De\0ElLğ\Ë\Ä93,°§pñ/<T\Ò\ÑòT¥ M\"§q3)7\\\î vS\0¸nUúg¸¤q¸y¯{\ÄÀ^\Ø\ç\Ü\İ1	¦£:Š_q¯‰³UL¶±ö\n=‰\ßYŸ\ÙX¸¸\Õ\Ô\Å\Â(#g¸\ê$*Tm\Ür\ÄÌ«\Üu+Ü«\àP‰Y\î4\Õ1UqL•e²¨–%\\¨/°±0fŠ?\"‚\\LF)¹ƒ\Ì\ns\0»…Wpr±\ÜÀ\Ä/¹E;\Ï=\Æş\ÄXbY\ï\Ô \áû™u‰ö7\â?Y\à&o¸5\çÔ¯‘oU\0©|9ñ‰p\î\Ñ\ç\ìl†3®ƒˆY”D¼÷ğ\Ì\n^=\Ù\Í\Ë/QWM\Å©\Ìj½Ê¸R,\È\ê\×Q°º•‰J„S\çr›¨®\Ã\Ì\"6\"ôx—á‰ˆf{ñ:†\Öw\æ Ÿ\"\Ê\ÏX1\â^poÿ\0ª†_N¦¥Ä«÷24\Êju{©ıŒ¬M8”Põ6}\ÔJ¾\æÏ˜­\Å\Äl„.\àf}\"U\ã\ä\İóŠ°\Í\\/\ì½MR–ÀxŠ6C\Ât€#Ag½J\\\Õ{\â(ŠşD¶‰§\Ò%ù”W\Èd\Èw:eóKiy\00±™B\ê\Ä3—0\Í\ìñ†Ó¨·ù\Å}\'d0û¯\á\Í@& õ–]nmój\É\ÜL\ÆU\æ]yÌ²ªais9c;zcRĞ¯„ÓŒ\æ#:)\r<o,«€¬±Ô­’uP5”\ZöaLÄ¸\ZF\06\ÖøRŒ0Q‚¦[¨Z\ÖQ¦\à\Ê\Z0¬f:B\Í~±\Zy±ˆN`÷\ßqUE\Ï\ÙgY‚«\ÕCYÙ¨V”©H\\h˜üD…S\Û+=35D©†®Zrqÿ\0%‡˜LKnoñÜ¦.55lù\ÜOh\çÎ¢#\Ô\Í\Í\Ë\Ä\Ù\Ôõˆ˜<\")L¹tC\Ü)Š•Ák0\ÖÁ¨Ï‘Z‹d¸\ê\0¸–!‚³\æ‹/«\Ô$m+\æ7:©hXBS\Ó\ê\"ü\Ô,ª ¢Xû—‰|\ZŠ\á\Ş\ãC\á&¬s(\êö~õõH\Ù\æ\í˜÷ˆu>~x•Y#G˜\çòg\å@\êuûU.™j\×\\4\ÍŠ„\Ó\æ¬\×\r1—\×qŠ¨#\Ğ0hºswpº Á²T°¨±ÅA_†{Âµ\è€\Ú*±\æ¢$J\ÅK^tˆ~‘u)°Áoˆˆ–.XI‘µlV#>iqˆˆ\Ş7.ó‰Ş·‰’!ü€}™y—†»”\'SÄ°\Ì\Ös.ãˆ„5]\â%:f\çÿ\0– j®{•ó(¸ªÔªı7:”%3R³r\ÎX\î\n_|&©‰™a\æd\ÈbZ4\Ì(–ö\Å.[€Ü¥À\ÏY”«ˆe\0”û*¥bTù,Yh%\á€_ta¤%\Õ\Ş^\æcE1_™A€­Oôa³oBS~¡’\å.\ÉP²ßÊ­\Æ\Ûö—Š”†®\áLKü™t\êc\Ä@ O\ìß©ŸQqqU0\É\r\ÂBe˜‚\Ô;£\Ğf£”Mø\Û	Zˆª\Äw\0H…À\Ì`€EY\Öe[¼E´\â­†ó\Ô„\"\Ù\Â\"8„\Ü(Rj ‘72‰* \ÑS\ÎM\ÂÅ\åbWº›\é*Œ\â\'_Y—\Ì\Ù~\ÍzmJû6fnPn[\Ñ\ç¾£¿KZ¨\Ü\ÛQ\İ@¦W]JEu\0K†\ã“\ä#TKt÷(+$\É\Ô(÷p`¹IX¦+Xaš@T³qo‰´\"ªü ‰¬÷Á\Üw2uˆ”\Ó\n	\Ô\"\ìeS6\ê ô¨\Ãf\âµé®]²ªU«™¨`ˆÔ²\êmÌ¬Âµ\Ù\ÔN+¢YòmTsnTh€@n¨T\Çsr£_\ÙÜªˆ3$µ\Z\Ä\0[\Ã\r-\Æ\0 \î	ö‰\Õ\èe1\ÍşJLT,Yx€™€¯7c¨ˆ\Úi *\"±³0¨…€,ö€¾j*‹1A\îQ‰\Ñrª´\Ï\rUJ®¡<Ù‰SGœb%b«>Yx¿1\ê&\"=G\ë:›fĞ…]y8j\â7d\Ñ2z‰,5\à*AğE±bp•šw\æ+½G\ÛqFº——–¹bÄ½\îá»\ß‘3*¥\Ó2g\Ô0Ä–O1¶3¼™‰XjYû,w˜\0e¸J& $m+T\Ëk7Ô¬J¾Yc+¹mL¯\æ¥!\ÔÃ‰İ½\ÌJ\áfb¡ûG\ÙV\Û\Ô\Ãñ\à‰ÂAhD­Ô ¹µ\İYYIY\åŒm/Œğó%c\å\ÚU\Zu)©\ÌJ‰\rzF\\*’£\ÔTwû-\\d<˜D—¡c\ÊUK\Õq\İ\î¸\ÅF³4B×¸\å†ğ2]\Ç\ÈşE\Ï\rb%¼)35®û‘|;\ÄÔ¸k¶.a”T\Ê\Zz”\ÃP€©c\Ö5(e¨\Ê7©tp8s\nL*^\"bSQ3p8\ZŠnd\Ë7¿e™u«*l¢\İ\Ğ1\Ô\Õ-*Œwx‡(€S¿L§¼Ô¯9·P©Nøde\r\æ5 \ãPb7˜¿Ä¿¨¢\Ç\Ç	\â\ê\\bºn1q,®\ÄcQB\"Ç´J\ÌU`ñÔ¸²\ĞÁR „\ÜMÁÄ \Ì)}\æ%\ÅGQü—QZƒŠ—Fa˜›ûJ\ç”n\Ë4\ãõ‘*U\Äjf*üğ5,&øª–\rø\ê*µiwq²#ò,\Ì,\Å@•‰\Õy†e®%stTf_²\ì%”Í¥‡ú‘**~Ek‚PŒ07–}…n\\\æ\0G¸ĞŒ4e‡QGò]\àŠ†;ƒqsÁi·\Ô	¸\Ù2ü\å=¹÷,\\Mµ¹y‹ò=‰tJ–\ß\Øj	\ê5¨	\ØOõ˜B#/3.ñœfh³¨dû=C$%•\æi5‰opä§©˜Ã˜…ü ‰R<\à\Ü\Ì\Æ&\á”\Ò)ñ‰Œa´bØ©ƒ¾¥5\æ%µL¢X)û\åÁng\Z—\îmÄ¬G%¸š\ÜBº£\0A<\Ê\Ò/\Ïs}\"\Ô\Ñöq»¶!Y\\À¿\È-teı‚$\î\ZƒğJ†»\à%\â\Æ\Æ8®\ã¼\är‘!”nnPG9xŠZ¸\åX˜7QP\Ë2 ·\Û\ãù\Zb\Ü\ÊS\n-˜¦a0Æ™X¸^š‰d¬D±”D.a(\í‡qªÄ«z…\ï\Ä*µ\'W^z¶\æ}Ê­M\ânu5\æTÀfaù\n J\à1qqF\å\Ó.\ÉR¥y••P3\rÄ“T7[¤³\æ\Î\â\î£M@3\0ÀM\ïWöd‘.óÏ\ÔU1b§E\Ê\î`úŠ6­õ‰\İB\\º4\ÄŞ¡\Ï\än\ç_öprB\Ûù\nşÍ“\Ò\ãf(1£1u\Û\Zš\Î\å+Rş\Ä\Ä\Ñ\rK\ç\â%1!k*¢±pÁ|0nùˆ\Â\Â(\ÓR±À_n\åÿ\0&\Õ\ÚPqÔ°>\Ën÷,Aˆo{à •œB\Üo\Ì2\Î\â\Ù\0\î.\"g‰’Y.³†7z%¸ŒÀÀ¿1;³4j 3!¾©)&.Ú˜S¥\à\Ö\âT	­\Ün\ápË™£Ûª@õšBµnı@\âT+\\\"ˆ•û4ğ)Ä£2¥Å¶³ö;\r\æ 5¨\0\ç¦\î ¸€<J`S‘Ã·‹.?X”şEC\Ó2ù†Yjü”T ıˆ\Õ\ÂDSq\Ô\ë\é\ZfV§ü\î-{¹M\Ë\Î;%_\á+¯1\Î\à(\ë}ë…¸yˆÁ*™wû3;#ƒ\ì g\ë7\Î.\á’(Kk¿,ğ›N™yLt~#\ÛKƒ-¸=KMTX—\ÒÔ ù\Ü\×öyDR\Ì\Û0.¥†Qo6„4Å¯¸‹¨¿\ÔUŒ)\è\Ä_³*Eauÿ\0&0gU7\Ü¯\È\çpˆÁ\ÏYº•s~\â7\éÔ¦\ê/5œw&<Ô¦±÷0£·\ØX\ÍÊ¿2\é•\ß¯\ä.|9ı‰´‚Ì¦;\Â\ä@2€ ‡ı±C\ÜR­\\¹ù\\Fp\ĞK®au‚‡¸ÿ\0z€YJ\"¼J\\)\à\çQ¶b®Wú–.\Ìióƒû.y\Ê–?¹Ü²¿’±\Z3™\ì\Äe5\ÜA1+£©¬jø\Í\Å\ÅMüD:”Ã¾]J\ÇRŸ\î¦O\Ş3]\Üê³ˆ-\æ†\åµÁ+a—1y˜%BkjP•~¢:¸²\îg¼\'R\Ã\çS2`¼Ğ–\'¸¢?0Dó¾£¯Á\Ô\î7~³&\âªşu;1¹‡\ä¶\â¯Kw„÷©vVa»\Ì\Ô*j-Î«Á8‰	¸\Òx–\Ä\Ìfj­\ê7¸şKw\æ¦nnc3Qw¾¸_0«\à¹\ï\Ç`+\Ê\Å’@6u}\ê5\0fV£2Š\Ë\Êwó•\ÒQ‰@\â-±\Ó0	fkW½D\ÓqTÛ™b+õ.¦F`Áo\é5œ—µŒ\\W\å²\æX\Å+-\ê!/Ï*;\Ã/Q¡^	UŒ\Êz”\Ù/\Ô\ÊQG€Ssã¼ñ¢3]fU@;¸UL…\Çp\áIB[š‘BµHX«”¥Ä¶\\\ÅuHµ¿ıE\Ç\Ô\ZŠ\ÔiŠxaŠÿ\0\"‹s7ò…g»ˆ5”\Â\r\Ëo¦:\ïŠ\é5™TFÓ¬Lõ\ã\Ä\ÅB•¨úŠGw:†ƒ¸Àª\â¯2\Ç¼f¡ªšbŒ\ê[©š\ÇQ\Ï4påˆº\"\Ú\\f\Úbû‰r\ã‘\0R\è™n!k³oö%|{Š¼AW¸,«…\ÅjZ9­j9ó)_\"\æx„µ\\/¸\×DH\"\İ\ÌaÏˆ\Ôs\ÅK?“z\Äq\Â\Ñ2JIi@™eã¹”\Ì\ÌE•·\à•)|Ü¼\Î\æNx\Ô\'üd@”|™ı15„W\È\ì·*Q:F`\ÄQ¤B÷¨T\îZ\â¾F‡™v÷\ëE¨\ÓWb°Ä£\ä™ø\Ä{EÏ™I_ \Ú‰¶-oQ—_²‡\Î˜—^•§[Ü wrŠô÷*-÷W¶q£\â5fşË–\'s¡ñ\ÅA)CÜ¡#†a?“J1;¬QFOXu+Î¦%\ÔX5\Ù\ïq\ì?7\n~Lµõ0w¹K\Ö\â„\î*\ï\Ü\Ó:?\î*Š\"Šƒ\Üª\î+Q˜”\Û‰B—†r!\îlô–»¨¤¼\ÅS\Åj^!D^s‚\\PŸ*\'\ç\n9©Û¬p55w*™}\âz—˜/\È9\áqÔ¹\Ş ßˆ…ğ¼\Â%ƒ\Ü;úwH\Ín3Sv\ÅE$%\Ä\"ŒE\èMg1Q‹q·™vy—\Ô\Ôu.+¶˜\ê4f/)\Úü\ßD_\Î)`¡^3ñ\n]\Ì\\¼TQıF\r\Ç0\áŠÜ¾ø<x—Š—™¤¡(\ëšG¼3L\Ì\Üğ-N¼K—Á˜*\ïU<e‰A®b¼Ì¢2¼“¢\Ô@_h”Äº‚¨4@\ãq)\Ìm1sPs­Vw˜·“EntWQ\Ü.6š ›%O\Ç\İÅ²U\å*¹\Ä\Ç\â]ë‚ÆŒ[ğ\Üj˜–\æ2¥µõ5*\Ø¸Á\Í=÷\rõ‰¹›„º›eõ\æ\r—¨n…1|fx<\ÃD<3Qk(\Ü®.o¤µx.\àÛ¸\â\î¡n±1\ÕË—ngU2_\É\Ô\re‚,(>Æª\"†Ç©iû¥õ*\Î\åp­Mg3)\Ôeb\Ê\Ö\àW\ì3»ˆXŸş3\æ&7/0´KJn[r\Ò5ù:–T\îT |Á˜~blBÿ\0rP\ÅeË¨-@R\\XS9˜=%‘Â¼E›\ïŒ\\X5ŸÎ¡\n|\Äl¿:•o\ÖX\ÙB^ `\Æx´\Û [\Ôj¡C\Z¨@\î\æR\ë\İE:…\Ìh\ï=\Ê^\'ö+T|°\Õ\ÅÜ»xõ4ûJ\ÌQSR\è\â!œb¸-‹p%F\ê9Œp“Q\Ç\Ñ<D©\Ô.·oP\"P\Ô\"ñ:\Û8ˆ¸>e\Å9- a†²j*sƒL«;1ˆ\"óõ\ZñI^šz`\n‹\Ù-şJ\\\Ã*(c¨ur‡\"´2\ß<\0\à\Ëñ.\Ê\á¬Ë—¸\"\Ï\\`—r\à•,¨¸=ÁÎ¶K+1\ÂaĞ\Ê &Â™%.ÀL µl\ÈÄºIJ£<¹‹z\ã)/uÄª\î\â·(”\\\×R—3S¾^\Éô½(\n”´g\ì±\Ü÷20a˜LfX™~\Æ\î?¥©t\Ô\Ô*B\ê%õX9 Ë‰4Ë† }—ˆTû\n0JBÿ\0dŒ\æbŸr\á.`~#\î\Ã\Úw\çqoqQ2\Ë\"\çi˜qk3É˜\0À¢\Ä51{š4Y\íf2=÷s:‚12£\ÒaAu\'L²\Õ\Å\ÙóQzs-X\ä\îf_Pn)YT\Â\\póx›x»3Á6Aps0„\Û\ÃH$lA\àñ|ªeš\à¤\ÜS1D» \Í1¤XC\ê\Z†¡kò= ÿ\0)Z¼x\Ô†\î\0H\ËyÆ ”Û„\Ú41O\Ùf\0’Ä¼W¨$×¹q»¶şKŠ]J|L\Ü\ï5Ü®£™eBÿ\0º\ãG\Ä3‰qjE\Ú#z\"!X£¹˜­\Ê\ÌY¿ñ9¡©r\åşAb\Û?ñ:¸¤»f^*f>\Ô.\æ\Ğ~B†¡iD\ÌH\â\Ì\â…\ÍË”Tp\Ã¿b\Ó;\Zu·\Æ2K3	\Üq\ËI\ÆM\ÌÜ·gph”a¼\Â¨³p(½\ÙÜ»\ÈñŠX¹\Ô2Å¬Å¶Vø›•\æSÔ¨b#ñŠ\ï›\Ä\n`›wÔª\ÖgR\İÅªX).m\ê|c\ÌW\ïb[)b[\Ô-(™?&+9Š»‰i”½@p\â]\Ô2ı—2\Í{ÿ\0\æ¢X~Ja†\0J0\ØI—\Ü\Ú\Ñ\É	s¨Y¸\à˜„®oü(k\ÌH™ƒ‘ŠŠÁ‡¨œ*»›J\Ä\Â@ı‚œK\àS&¥$\à\Ü“–\à,›ñ…NR3P;Ì¬Ê¦É¶dˆ‰\Ü\n•õ\n¡%-?²ó\\\ÅMp2Ç©u¸@@r_–-³qº¾{\àb¢\àÔ£Q\×ø\ßù¸«@vD3‘pr7¨\Ä\ÒS7h^ Ğ¥\"•X‚2Úˆ•\Z¹\Ô5+‰p±‚®e—\ïúbiõ,\îXqje&Mv@!ïƒº;”/z—ûe§‰\î5|!\\*°\n\ÌÊš8\ïüˆ(\Ãp T³ı%V!z„Š–d•k2ŒK\ĞWú7ò,\Ò\Ì\ÔF½\Ä1r\İM&H\æ`¯\Ì\ÍC1Ô¬ğ5¬\Û·\n¯¼Z\êw3SrÁš³(ôp\ngÆ®²-Ex&·Qm11öme(¨\İx™K›y\Üw\Í\ÔU¸‚YP*@¶j\0¿W9ÿ\0\Ä50\"ÿ\0ú1ª°Ew2€er\Ê(1\Ä1tù›xu.\ÜR±>!¸«,\êez—Lº&#w\â¡c3XT¼K…\Ğa«\àŠ°\Ä\îoÂ¥L\\%Ê˜\ã–ù\'r¡J½Oh™ÿ\0#¬\Û7Œ\0\Ùa¿1ˆ9w7\0M^\àD\r\Ô\0¾,¿W²\"¶\ÙW™m\â%şA\é\áRôÆ’•\ÍË¨CqW5/µB˜VüJŒ¬\Í\ë•\Å\Ñ\Ï»®\ÑQŒprTb\ß¦¸x«„&xm•T§‚¤S¸8A\r1\ÕK™2¶‰_\\u(mqEcp,¨L»3;—Dº‹s¸‰\àU–e•+·òkr\Ò‹ŒC3û\ÍÁ.	/†É¼J\ÛR\Ä&\ã2\î	.*\Ë0£‹\Æxq*ó\Â7\Æ.\'G1)•)¨3. \âZKEK[\Îe\Å\Ì\\B–j]ù•˜u,›\Ä\n˜g¸Ñ˜4E\Û\Ô75ôK=\Ë{!Ø•\Zë¸¬\ÙF¦\Øê¡†i‹‚*³º‹˜¹Qª\à¢S\\o:Æª\Ş%\Ë+‚ju6J‰ˆn\Üh–²¥+Šo‡pcBœVfH„\ï[–\ÜWö^•\ê™ö0<v\Ç1¡›e\æf\Ç\Ë3, Ü§\×‚N\å\Â+p\ÉL°™u+‡L\ÇP8^)—*\Ì\İK›%ğnQ\ÊXd†®7=·\Z«\ÉS\Õ\Ëx@3¨ª*;·ğ¡\Ë0÷so11\Å\Å8i\Ôyõ„.]Ê¦¸\É75\Ç\ïøWø³G\Ş,Š0\áU~gU\Z#c2ƒÁ\ÔU˜q,K;.\"b\Æ%G¸Ó‰Oˆ7q\ÃH~\ì\Ê÷e|\áÄ¹‘•LosR\í#˜•ˆ\â„aœA8s™›†y‡\á˜ğğcò\\l•‰P%ˆ?\î\Z¸!w\â5Q3:\ào{`w\Ú!U\n\Â† q.\Ê\Ün»†5.ÿ\0ıƒ\Şq¿3Ex‰Kˆ@j\ÜhÔºf‘¤™Ô»†\ã¬ğd•\Å!ƒ†jf¹ó/”\Ë\ÌEƒy„m\æ\ê2ñ+÷3\'	qÁ÷¸fj]¦]|R¾Vfuó—©Œn*![˜5Š˜÷±)b3(0\äUÈ­uÀa–,Š°1\Z![p\ê\\¸[)†f¦ønPK\Ì\"ñ\ÕD+üWD\Õ\Çs\Ü1\çË•eK »˜%\Ñ(¸\Õ\Ô\Z*.q™lB\\ÿ\0’\Æv\à÷\Â\\ªX™ƒ_¤«”\Ô£™L ‘Á\rL„mxu-›|8\à\Ôi8nhû\Å)*T0\Ïqx\Ô<4˜e\â¼E‘3ø\á\ãl)e3LD\"\ìB“F¼\Ì%J\Çy™7›5š€py1\rGh.T\Ù*\ã[²\åYp\Ì:ŠeÀ@Œh±À\Ì83\0¹¸„²©•\rD\Ìhq)Á–^cW\ÃsdrÁÌ¸\'q£QHf]G„+\çP˜·ˆ¶Ä™#f%¤£\ÜkÏ¨™¸·}\ç0\×tJ\ÇÈ´Á­¥Â’-‰f%ÀÄ¤\Í\Ïp\nu\Éûş5ˆ3R¦ˆ\İCY•l(|\Íğa\\V$\ï†\åSŸ0Ô¦º˜ù(ù˜•*‘\×\Î\àQöGwN\æ\äsZ…ó\n2F´€«¨¥2õ\ÜL\ã)P _™co\Ú5YkˆÓ™EK¦\ÌÅ¿$e•LQ›cN%4ƒR¥\Ç$J`M±Á3\ÜÁ\Üa\ï…\Åp\Í\Êq\ê\Â/(T»›ˆÁƒ¡˜’\Ğù6\Å!ˆF\î9ˆù‰’q\Ü-\é4OP^™C_øğ!w\Ü}Ÿ\ØE¡Q\å\×#{øMN£\ÃQ¸99\ê<\Z†ÿ\0Á\Ôwşø\ê\Z†§q1ù4\'S©I\ß7_\ãp\è\ãÿ\Ú\0\0\0\0\0\0\Ì0\0*>\à[ƒÅ¡|Ğ$s\Í<°L\èr\Í‰j_ñ²\äó\Ï.L\\‚C8³\0¡\r,\Ä¡~X\æ\Êõi#‚	\\,p€0N€\0œ‰$—À \00€A€F0óƒ\Ë4\Ñ\ßE8	\r0Ğ€J\0C0Óˆ 0k\ĞK\ãPI=š05a÷]48\Ì0\r83ƒP\ÈŒn|1\ÙU¥&e\äŒQ‚<\0,0K\Ñ\ÂB~ğœ\"@\Äğ\0&\Ê\ê\ÆÂ†$ ’\Ä0\Å?HSmy¿2\Ão\0¶)\ë0‘ƒB\Å< T8|!Ë¤ µ2zŠ;4\Ò@8b\Æp\Ë0\Ò-(\ÆD­P˜o½\ÅC( E€8¡4go‡¶\×2¬0\Âd‹AT\Ñ@\Ğ6ó\0\ãOsk˜˜•<Â¡}¢?Hb!ŒI\0<²\ïb\à\ÊY¯£Á(û‹ 2E8I 0@ \0+„Ò¯XÓš\îò(pı\ÈóÀ0ó\Å\0³Àpû\Ó8\Õ\0@üaJ\"ò½8…4\Å0\0cÀviE›B€K…‡¸ó\Ë\ÃÁ \à @$\08mªÂµ,\0M\ç&Ÿ<¡8\Ña,\Î!\Ë\\$XTE(’K\Z¼\Ä\0€\ÈÀ\Ä0¡C PK.l\0¡Â‰+^8H\\\È4£\0B\0ÁŒ8ƒD:F…\ä\Í\Ğ#ˆ(¬1(#ŠÀ‡\0ò€aˆP\å\éLr\Ã\İ\Ò\0\à/—‚\Ê\0†\à(@O-:ÿ\0Sc²±Hñ\ê-30²„±„8³\ËB‡) ½\èM\æ\×/B\í¸GE„\Î\ÃN,0Å„˜¾\0^Œ\0A\Û0f|À\0Võ\ì‘Œ¨M’@ #\ìL&E¡BC2Bƒ2\"(¢„0€€\0OvIW\ë¬z\Ø@C„8°8CrŒğ\ÊT@‹€\'D\èR­\03<Â‚{óVÀ’‰ F!ü3\È Á<€\n\Öò#\Íc\0!ˆ±G000qJ€`\Ã@\Ï<³\0\0\0\0<`q\Î, AM!<³Š ‚@\0\0‚\ĞÀ\0\â\Î‘\Ï\0\ÂóŠ\Ï€	€…\080Š\0N4ğJ{€(4r†` O(CM(rG0ÿ\Ä\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0P ÿ\Ú\0?†?\Ç+\×Õ®¿½{Uó\Û{ÿ\0ı\éj\æû&¯ûû¿ğ¿_Wÿ\0u\Úÿ\0¹ûD¾\Ü;}¸\\>ù\Ûÿ\0{½g\Ïüû\ì\İÿ\0m>ûñüşûşz}›ÿ\0¿/½¯\ÌÍ—³¾\ïû¶]«ı\ç=s\å¿\æw+m÷÷y]V\Ó?û¿\âCÿ\Ä\0\0\0\0\0\0\0\0\0\0\0\0\0\0`Pp€ÿ\Ú\0?\Ã+\ï\ïŸÿ\0ÿ\0÷ÿ\0\Îñÿ\0|\ïÿ\0ò÷\'Ÿ‡\Óş¿Ÿ`÷¿¯\â\ßÿ\0\Øg\ïı{G¾\çÿ\0×‹­ÿ\0+¾ßû\ä§û\ç\Ãû\ãÿ\0—\ë,\İF´¯©½\ß\Âÿ\0\ì·Qø±^\Ó.wÿ\0÷\é÷»~-²\Óÿ\0úõÿ\Ä\0%\0\0\0\0\0\0\0\0\0!@0P`\0 1AQapqÁÿ\Ú\0\0?Àüşÿ\0\ïÿ\0wÿ\0ÿ\0ÿ\0ÿ\0û›{şûı\ßşë¿Ÿÿ\0\ïÿ\0ÿ\0ız\í\ïûúşs¿ıÿ\0¾\ßûÿ\0ÿ\0ÿ\0ÿ\0÷ö\ï\é‚v÷ÿ\0\ßÿ\0}ÿ\0~\ßß¿ÿ\0ÿ\0¿ûõÿ\0ÿ\0ÿ\0¿¿ÿ\0ÿ\0İ»·_ş~ÿ\0Oÿ\0ÿ\0ÿ\0ÿ\0\íÿ\0ı\ßÿ\0ùö{¿÷ÿ\0ÿ\0ÿ\0\ïÿ\0ÿ\0ÿ\0\Ïÿ\0÷«¾\î¿\İo÷÷ÿ\0ÿ\0ûÿ\0ÿ\0>»u\Èy}ÿ\0\ßıÿ\0ÿ\0¿ÿ\0ÿ\0ÿ\0¿[ÿ\0\Î\í\ßııÿ\0\ïÿ\0ıÿ\0ş~¿ûÿ\0ÿ\0®ÿ\0ÿ\0ÿ\0÷ÿ\0ÿ\0ı¿\İo\îÿ\0şÿ\0ÿ\0ÿ\0\ïÿ\0÷ÿ\0ş¿ÿ\0ÿ\0ú\âşö\ßÿ\0ÿ\0÷\ï\ï÷ûÿ\0¿úıü\ß\ïıõÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0kSKşÿ\0û÷\ïÿ\0ÿ\0ÿ\0ñ\ë\ß\îÿ\0ÿ\0»÷\ïÿ\0ÿ\0ÿ\0ÿ\0ùús÷wÿ\0ıÿ\0ÿ\0\íÿ\0\ëûşÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ı¯Á?\ç÷ÿ\0\ßûùÿ\0ÿ\0ÿ\0ÿ\0\ïÿ\0ÿ\0ÿ\0¿\ïÿ\0\ßÿ\0ÿ\0ÿ\0ÿ\0¿ÿ\0\ïÿ\0Œÿ\0¿ÿ\0|ÿ\0Yÿ\0÷¿\ßşû¿\ßû\ê§ù/\0^U¿ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0½?ûÿ\0ÿ\0ı°Oş\ßş¿6ÿ\0\ßÿ\0ÿ\0ı»¿\çşÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0\ïşÿ\0şıwÿ\0ı\ï[iıÿ\0ÿ\0ÿ\0ÿ\0¿÷ÿ\0½Pÿ\0\×ÿ\0¿ÿ\0¿ÿ\0ÿ\0\ÈF	û÷ÿ\0ÿ\0ÿ\0ü\Ûÿ\0~\îÿ\0ÿ\0¿ÿ\0>ÿ\0ÿ\0ÿ\0¾ÿ\0ÿ\0ÿ\0÷ÿ\0ÿ\0ûÿ\0<Â¿ÿ\0ÿ\0\ß\æ¿ú“ı\ï¿ÿ\0ÿ\0ÿ\0ü\'/ÿ\0ı÷ÿ\0\ßÿ\0¾ÿ\0ÿ\0\ßı\ímÿ\0ÿ\0?ı}?ÿ\0»ÿ\0ÿ\0{ÿ\0ÿ\0\Úı\íÿ\0oÿ\0£ÿ\0ÿ\0\ßÿ\0ÿ\0ÿ\0¿ÿ\0û\n=/÷şı¡şFõÿ\0ş÷ÿ\0\ß\ß\ß~ÿ\0ój¿ÿ\0ÿ\0\Ùû‡\æ­÷ÿ\0\Ïÿ\0ÿ\0ÿ\0ÿ\0wÿ\0ÿ\0Ôÿ\0ÿ\0ÿ\0ß¿ÿ\0ıÿ\0ş÷½h\â\Ãÿ\0óÿ\0jÿ\0ÿ\0ÿ\0¿ÿ\0\İıû’\ã\ëŒø\îÿ\0ıÿ\0ÿ\0÷¿_ÿ\0?ÿ\0\îü\Êÿ\0û\çÿ\0ÿ\0\Ûÿ\0z?»ÿ\0÷¶¯¿¿\î\ßö\Ç*û\íÿ\0ÿ\0\îÿ\0ÿ\0üÿ\0ÿ\0wşúõtÿ\0ÿ\0ÿ\0şÿ\0{\îÎ¶\ßúÿ\0ÿ\0ùóÿ\0±ûÿ\0t·óı\×•\å~\àıú\ßşÿ\0\ßÿ\0ûÿ\0÷ûÿ\0ÿ\0ÿ\0\ß÷ÿ\0ÿ\0¿Ã¿ÿ\0ÿ\0ÿ\0\ïÿ\0¶ş¿÷ÿ\0ÿ\0\ï¯ÿ\0Ï¿o\Çø\Ûıÿ\0÷ÿ\0ÿ\0ıÿ\0ÿ\0ÿ\0ÿ\0ÿ\0û\ïÿ\0şşş•÷¿wÿ\0ÿ\0ÿ\0÷·¿ÿ\0¿vÿ\0\ßış]ı»ü¿\ß\ë_ÿ\0ÿ\0¿¯ÿ\0ÿ\0ÿ\0\ï\ãWÿ\0ÿ\0nÿ\0,9sÿ\0ıÿ\0ÿ\0ıÿ\0ÿ\0ÿ\0¿ÿ\0÷ş\îÿ\0¡&}_ş\Ìÿ\0¿¿ÿ\0ÿ\0ıÿ\0ÿ\0ı\Úÿ\0ÿ\0O\ß÷\Ş?x]ÿ\0ÿ\0ÿ\0\í\ï½ûÿ\0Ÿûÿ\0ÿ\0\\øùÿ\0½ºÿ\0ÿ\0ÿ\0óÿ\0ÿ\0ÿ\0÷ß·şÿ\0\êóÿ\0v{¿Ÿ_\Ïó¾ûó\İ÷ö»\íşf\ïù÷÷ÿ\0ÿ\0ÿ\0\İ\ïÿ\0ÿ\0ÿ\0ş…{_\ßÿ\0ıùû¾ÿ\0~÷\ï}´\íûß»÷û\ëşv\åoı»¿ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0şÿ\0\ßÿ\0şeÿ\0÷\ï[^ıõyÿ\0\ŞŞ¿\Ã?oıû\ïÿ\0ÿ\0\Çÿ\0÷\åJÿ\0û÷ÿ\0¦\Äw<ÿ\0¿ªùŸÿ\0Jÿ\0\ßÿ\0ÿ\0ÿ\0şZ\Ù\íM\ß\íÿ\0¿ÿ\0ÿ\0Ÿû¿¿ÿ\0\ïû\ïoşgÿ\0i\ïO\çÿ\0\ßÿ\0\ï¬:ÿ\0=ÿ\0ûÿ\0ÿ\0ıÿ\0®	ÿ\0ÿ\0\ß\ïû\Ò~¯6³¿ÿ\0û\çÿ\0ÿ\0\ßÿ\0\ß\×{ÿ\0ÿ\0ÿ\0ı\ïÿ\0\îÿ\0dVÀ\ßÿ\0\İù\Şıÿ\0ÿ\0Ÿÿ\0}¿¿\ï~\ïÿ\0ÿ\0ÿ\0o÷¯ÿ\0ÿ\0ÿ\0\ßÿ\0?şøø?ÿ\0¿ÿ\0ÿ\0ú?ÿ\0\ßÿ\0î·¾{ÿ\0ÿ\0\ïö\Çÿ\0ÿ\0\ßÿ\0¿ÿ\0¿şÿ\0³ÿ\0\ë}ÿ\0\Î\Ü<û½y{®÷\ï÷şÿ\0ûû\ßóûü»\Ïı\Ïÿ\0wÿ\0oÿ\0ÿ\0oÿ\0¿ÿ\0üy\ÕS\Ü÷¿\ï?ÿ\0\à¿ÿ\0ÿ\0ÿ\0~\íıÿ\0ÿ\0ÿ\0ıÿ\0ıÿ\0ÿ\0wÿ\0\ß÷úÿ\0ÿ\0{¦xË\×ùÿ\0Ÿı›\ï\ë\ßõÿ\0ûÿ\0úÿ\0şÿ\0ÿ\0\ßÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ú-ÿ\0şÿ\0ÿ\0ü‚\Õ)‡I%\Ìó÷ôùûû\ï÷ûÿ\0¿ÿ\0oûÿ\0ÿ\0ù¬ƒÿ\0ÿ\0ÿ\0\ïÿ\0ÿ\0¿~ÿ\0\Şû÷ÿ\0óş\ï9û\Ş\Ş÷ü½¿ı}\ï\×öıÿ\0ÿ\0şÿ\0wı¿\íÿ\0··ÿ\0÷ÿ\0÷ÿ\0ÿ\0¾½ÿ\0\ßÿ\0¿ÿ\0¿÷\ß|{÷\ß\ß÷¿ÿ\0ı÷\ï¿ÿ\0ÿ\0ÿ\0^ÿ\0ÿ\0¿ÿ\0û\ßÿ\0ÿ\0Ê§ÿ\0\í\ï‘xÿ\0\ïış¿\ïŞ¿\Óÿ\0\ï\İ÷ÿ\0\ßÿ\0\ï¯ÿ\0ÿ\0ÿ\0\ßÿ\0ûı\ï¿ÿ\0;ÿ\0ûş÷\ßÿ\0\í\Öûº{\Äwÿ\0yo;ıÿ\0÷ı÷¿¿wÿ\0ÿ\0ÿ\0ÿ\0Ï«zûÿ\0ÿ\0ûÿ\0\îşú\ïö}³7ß—ÿ\0şÿ\0}ÿ\0şÿ\0÷ÿ\0ù~ıÿ\0ÿ\0ıÿ\0V?ÿ\0ı÷ÿ\0ÿ\0\écÿ\0²z·Uş¿\ßwÿ\0ÿ\0ÿ\0ÿ\0\Şÿ\0ÿ\0÷úıÿ\0ÿ\0ÿ\0¿öÿ\0_ÿ\0ûûÿ\0şIü\ëŸoQ÷w\ïÿ\0ô?Õ½\î÷ÿ\0ÿ\0ÿ\0ı\Ûÿ\0?şû~ÿ\0ÿ\0}ÿ\0ÿ\0ÿ\0\ßÿ\0ş·ÿ\0ÿ\0ò\Ûe\í¹\ëù}ÿ\0\Ïÿ\0¿oÿ\0\ß\ç¿ÿ\0ş\Û\ï\ë\ï\é\æŸú\ßş—Ÿÿ\0şÿ\0ªjõ\í·?÷ûû\ïû¿ÿ\0÷ÿ\0ÿ\0ó»ÿ\0ÿ\0ÿ\0ö¿_\Û\'ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0\Óüÿ\0¨«©A}ü\îı{\ßÿ\0ÿ\0ÿ\0ÿ\0?ış÷ÿ\0ÿ\0÷ÿ\0ÿ\0\ßß·\ß_\Çğ~¬\ß\×w›|¯ÿ\0ÿ\0ÿ\0ş\ïû\ç½\Ãÿ\0ÿ\0~ÿ\0ıúıl\ß÷û¹\ïÿ\0\Ïÿ\0ó‡şY÷ÿ\0\ç\ïÿ\0¿¿û¯ûÿ\0#\ÓÁ\ë\î]¿û\î\ß×™³÷~ıı÷ü½k§òu¨{v\ïÿ\0ó\nŸÿ\0yûıûÿ\0ï¹—‹e¿çµ¾ÿ\0\ï\İÿ\0ÿ\0ÿ\0ÿ\0m™\Ã\Şúµ\îş÷ı÷­oÿ\0_ï­®Ÿƒ\æ{\èn^ÿ\0şÿ\0ş\ç¿·ıº\ŞbÁ\à	D¼\í®\Ë}{ÿ\0ÿ\0¯ı{ÿ\0ûµÿ\0\ïÿ\0ı\îk½ÿ\0¿ÿ\0\äE\àwÿ\0ÿ\0ÿ\0ı›M{úÿ\0ÿ\0…¥\ëÿ\0ÿ\0\ï¯ÿ\0ÿ\0¼»\ßÿ\0ÿ\0ÿ\0ª\Æş\ïMoÿ\0÷ß»}\Ñ]Ÿıÿ\0ÿ\0;ÿ\0¿™¹}¶\ëü~¢^_ÿ\0\ïûÿ\0\Íø\ßÿ\0ÿ\0ÿ\0÷ûÿ\0\Çj\Ù[Ÿû\ßO\Ş=şÿ\0¿ÿ\0¸ÿ\0ÿ\0\æ¹ÿ\0j›ÿ\0\ç=úÿ\0\rÈ~\î÷\Îÿ\0ÿ\0õ{!§ı½¿ÿ\0ôÿ\0ÿ\0ş?\ë\äıÿ\0ÿ\0ÿ\0ÿ\0şÿ\0ÿ\0ûÿ\0şş\Ë\ïş‰>ÿ\0ÿ\0÷û¯\ï\êÅ¢[_§\Ç\áú\í\î?ÿ\0ş}ğÿ\0ÿ\0ÿ\0÷ÿ\0û\ïÿ\0\ßv\Ó\ß\î¿ÿ\0Ù¬~\ìûÿ\0wş¾\Îû;\ß÷ş\ï7}ÿ\0ÿ\0İ¿ÿ\0ğ¸ıÿ\0õ3\ïşûkÿ\0\×?\å¿ÿ\0ûŸ\í\ïÿ\0\â½	\Êwÿ\0ÿ\0ÿ\0\Ïo;\ï¿õ\çÛ™ÿ\0\çÿ\0ÿ\0o\åa\Ğı\ë£|÷\Û\â\Ïù·\ïÿ\0ó\ßÿ\0ÿ\0şÿ\0÷\ïÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ÿ\0ıñÿ\0ı¿÷ÿ\0ÿ\0\ßÿ\0ÿ\0\ïÿ\0ÿ\0ÿ\0şnıÿ\0\ßÿ\0şÿ\0ıûÿ\0ÿ\0\Öyÿ\0ÿ\0ÿ\0ÿ\0\ßşşsÿ\0ÿ\0\ïÿ\0ÿ\0\ßÿ\0ÿ\0ş}ÿ\0ÿ\0\ßıÿ\0ÿ\0ò\ŞGÿ\0nÿ\0ıÿ\0¿\\\'û÷ÿ\0\ß\Ûû\Ïÿ\0÷ÿ\0ı\ìÿ\0ÿ\0ÿ\0ÿ\0ıÿ\0ÿ\0\ï\îw\ß\ß\ïÿ\0ÿ\0¿\ßÿ\0\å\áÿ\0Ÿ\ïÿ\0÷ÿ\0\ßÿ\0\çöşÿ\0üÿ\0şÿ\0úÿ\0ÿ\0ÿ\0÷ÿ\0}YÀ?yşûÿ\0ÿ\0\×{\ï¿şÿ\0ÿ\0ÿ\0\ß÷ÿ\0\Ø\î»\ß|‘_ÿ\0ÿ\0ÿ\0\îı»\ïûûÿ\0½ªÿ\0ÿ\0}ÿ\0ÿ\0ú<\í÷ÿ\0ÿ\0óÿ\0şÿ\0¿\ïşÿ\0ÿ\0ÿ\0ß¯şÿ\0\ßúoÿ\0·ÿ\05ÿ\0ÿ\0ûÿ\0‰nÿ\0\ïÿ\0ÿ\0şÿ\0ûÿ\0\ßÿ\0ÿ\0ÿ\0ş¿\ß\ßş«\Åóü»ÿ\0ûÿ\0\×ÿ\0ÿ\0ÿ\0ÿ\0\ïÿ\0ÿ\0ÿ\0÷ûÿ\0ÿ\0.‡ÿ\0ÿ\0ß®ÁiU¥^q\Ø=§\ë\ê\n»øõ\â›?qSdı{ñŞ•4¿uÿ\Ù',_binary '',_binary '',_binary '');
 /*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -885,13 +885,14 @@ DROP TABLE IF EXISTS `tb_usuariosgrupos`;
 CREATE TABLE `tb_usuariosgrupos` (
   `IdUsuario` int NOT NULL,
   `IdGrupo` int NOT NULL,
-  `Activo` bit(1) NOT NULL DEFAULT b'1',
+  `FechaIngreso` varchar(100) NOT NULL,
+  `Intentos` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`IdUsuario`,`IdGrupo`),
   KEY `IdUsuarioGrupo_INDEX` (`IdGrupo`) /*!80000 INVISIBLE */,
   KEY `IdGrupoUsuario_INDEX` (`IdUsuario`),
   CONSTRAINT `IdGrupoUsuario` FOREIGN KEY (`IdGrupo`) REFERENCES `tb_grupos` (`IdGrupo`),
   CONSTRAINT `IdUsuarioGrupo` FOREIGN KEY (`IdUsuario`) REFERENCES `tb_usuarios` (`IdUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=binary;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -996,6 +997,43 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_IntentosAceptablesGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_IntentosAceptablesGrupo`(_IdGrupo INT, _IdUsuario INT) RETURNS bit(1)
+    DETERMINISTIC
+BEGIN
+	
+    DECLARE _NumeroMiembros INTEGER;
+    DECLARE _Intentos INTEGER;
+    
+    
+
+    SET _NumeroMiembros = courseroom.fn_ObtenerNumeroMiembrosGrupo(_IdGrupo);
+    
+    SET _Intentos = courseroom.fn_ObtenerIntentosUsuarioGrupo(_IdGrupo, _IdUsuario);
+    
+    SET _NumeroMiembros = _NumeroMiembros / 2;
+
+	IF _NumeroMiembros < _Intentos THEN
+		RETURN 0;
+	ELSE 
+		RETURN 1;
+    END IF;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP FUNCTION IF EXISTS `fn_NombreCompleto` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1077,6 +1115,36 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_ObtenerIntentosUsuarioGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_ObtenerIntentosUsuarioGrupo`(_IdGrupo INT, _IdUsuario INT) RETURNS int
+    DETERMINISTIC
+BEGIN
+	
+    DECLARE _Intentos INTEGER;
+    
+    SET _Intentos = (SELECT Intentos FROM tb_usuariosgrupos WHERE IdGrupo = _IdGrupo AND IdUsuario = _IdUsuario);
+    
+    IF _Intentos IS NULL THEN
+		RETURN 0;
+	ELSE 
+		RETURN _Intentos;
+    END IF;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP FUNCTION IF EXISTS `fn_ObtenerMes` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1091,6 +1159,26 @@ CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_ObtenerMes`(_Fecha V
     DETERMINISTIC
 BEGIN
 	RETURN CONVERT((SUBSTRING(_Fecha, -17, 2)),UNSIGNED INTEGER);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_ObtenerNumeroMiembrosGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_ObtenerNumeroMiembrosGrupo`(_IdGrupo INT) RETURNS int
+    DETERMINISTIC
+BEGIN
+	RETURN (SELECT COUNT(IdGrupo) FROM courseroom.tb_usuariosgrupos WHERE IdGrupo = _IdGrupo);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1114,6 +1202,51 @@ BEGIN
     RETURN (SELECT Mensaje FROM tb_mensajeschat 
     WHERE IdChat = _IdChat ORDER BY IdChat DESC LIMIT 1);
     
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_AbandonarGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_AbandonarGrupo`(
+    IN _IdGrupo INT,
+    IN _IdUsuario INT
+)
+BEGIN
+
+    DECLARE _NumeroMiembros INTEGER;
+    
+     IF EXISTS(SELECT IdGrupo FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1) THEN
+
+        IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
+
+            SET _NumeroMiembros = courseroom.fn_ObtenerNumeroMiembrosGrupo(_IdGrupo);
+
+            SET _NumeroMiembros = (_NumeroMiembros / 2) + 1;
+
+            UPDATE tb_usuariosgrupos SET Intentos = _NumeroMiembros 
+            WHERE IdUsuario = _IdUsuario AND IdGrupo = _IdGrupo;
+
+            SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+
+        ELSE 
+            SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+
+    ELSE 
+        SELECT -1 AS "Codigo", 'El Grupo No Se Encuentra Registrado' AS "Mensaje";
+    END IF;
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1167,8 +1300,8 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ActualizarDatosAutenticacion`(
     IN _IdUsuario INT,
-    IN _CorreoElectronico VARCHAR(150),
-    IN _Contrasenia VARCHAR(256)
+    IN _CorreoElectronico VARCHAR(200),
+    IN _Contrasenia VARCHAR(500)
 )
 BEGIN
 
@@ -1206,6 +1339,39 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ActualizarDatosGeneralesGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ActualizarDatosGeneralesGrupo`(
+    IN _IdGrupo INT,
+    IN _Nombre VARCHAR(80),
+    IN _Descripcion TEXT
+)
+BEGIN
+
+    IF courseroom.fn_CampoValido(_Nombre) = 1 AND courseroom.fn_CampoValido(_Descripcion) = 1 THEN
+        IF EXISTS(SELECT IdGrupo FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1) THEN
+            UPDATE tb_grupos SET Nombre = _Nombre, Descripcion = _Descripcion WHERE IdGrupo = _IdGrupo AND Activo = 1;
+            SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+        ELSE
+            SELECT -1 AS "Codigo", 'El Grupo No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+    ELSE
+        SELECT -1 AS "Codigo", 'AlgÃºn Campo De Entrada No Es Valido' AS "Mensaje";
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ActualizarDatosPersonales` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1226,27 +1392,52 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ActualizarDatosPers
     IN _IdLocalidad INT
 )
 BEGIN
-    IF courseroom.fn_CampoValido(_Nombre) = 0 
-		OR courseroom.fn_CampoValido(_Paterno) = 0  
+    IF courseroom.fn_CampoValido(_Nombre) = 0
+        OR courseroom.fn_CampoValido(_Paterno) = 0
         OR courseroom.fn_CampoValido(_FechaNacimiento) = 0 THEN
         SELECT -1 AS "Codigo", 'Alguno De Los Campos Esta Vacios' AS "Mensaje";
-	ELSE
+    ELSE
         IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
-        
-			IF EXISTS(SELECT IdLocalidad FROM tb_localidades WHERE IdLocalidad = _IdLocalidad) THEN
-				UPDATE tb_usuarios SET Nombre = _Nombre, Paterno = _Paterno,
-				Materno = _Materno, Genero = _Genero,
-				FechaNacimiento = _FechaNacimiento WHERE IdUsuario = _IdUsuario;
-
-				SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
-			ELSE
-				SELECT -1 AS "Codigo", 'La Localidad No Se Encuentra Registrada' AS "Mensaje";
+            IF EXISTS(SELECT IdLocalidad FROM tb_localidades WHERE IdLocalidad = _IdLocalidad) THEN
+                UPDATE tb_usuarios SET Nombre = _Nombre, Paterno = _Paterno,
+                Materno = _Materno, Genero = _Genero, IdLocalidad = _IdLocalidad,
+                FechaNacimiento = _FechaNacimiento WHERE IdUsuario = _IdUsuario;
+                SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+            ELSE
+                SELECT -1 AS "Codigo", 'La Localidad No Se Encuentra Registrada' AS "Mensaje";
             END IF;
         ELSE
             SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
         END IF;
-
     END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ActualizarImagenGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ActualizarImagenGrupo`(
+    IN _IdGrupo INT,
+    IN _Imagen MEDIUMBLOB
+)
+BEGIN
+    
+	IF EXISTS(SELECT IdGrupo FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1) THEN
+		UPDATE tb_grupos SET Imagen = _Imagen WHERE IdGrupo = _IdGrupo AND Activo = 1;
+		SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+	ELSE
+		SELECT -1 AS "Codigo", 'El Grupo No Se Encuentra Registrado' AS "Mensaje";
+	END IF;
 
 END ;;
 DELIMITER ;
@@ -1296,14 +1487,14 @@ DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ActualizarInformacionExtra`(
     IN _IdUsuario INT,
     IN _TipoUsuario VARCHAR(20),
-    IN _PromedioGeneral FLOAT,
+    IN _PromedioGeneral DOUBLE,
     IN _Descripcion TEXT
 )
 BEGIN
 
 	IF _TipoUsuario = 'Estudiante' THEN
 		
-		IF _PromedioGeneral IS NULL OR (_PromedioGeneral < 0 AND _PromedioGeneral > 100)  THEN
+		IF _PromedioGeneral IS NULL  THEN
 			SELECT -1 AS "Codigo", 'El Promedio General No Tiene El Formato Adecuado' AS "Mensaje";
 		ELSE
 			IF EXISTS (SELECT IdUsuario FROM tb_usuarios WHERE IdUsuario = _IdUsuario AND TipoUsuario = 'Estudiante') THEN
@@ -1354,24 +1545,21 @@ BEGIN
 	
 		-- Validar que no exista la relacion:
 		IF NOT EXISTS(SELECT IdChat FROM tb_chatspersonales WHERE IdUsuarioEmisor = _IdUsuario 
-		AND IdUsuarioReceptor = _IdUsuarioReceptor AND Activo = 1) AND 
-		NOT EXISTS (SELECT IdChat FROM tb_chatspersonales WHERE IdUsuarioEmisor = _IdUsuarioReceptor
-		AND IdUsuarioReceptor = _IdUsuario AND Activo = 1) THEN
-		
-			INSERT INTO tb_chatspersonales (IdUsuarioEmisor, IdUsuarioReceptor, FechaCreacion, Activo)
-			VALUES (_IdUsuario,_IdUsuarioReceptor,courseroom.fn_ObtenerFecha(), 1);
-			
-			SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
-		
+			AND IdUsuarioReceptor = _IdUsuarioReceptor AND Activo = 1) AND 
+			NOT EXISTS (SELECT IdChat FROM tb_chatspersonales WHERE IdUsuarioEmisor = _IdUsuarioReceptor
+			AND IdUsuarioReceptor = _IdUsuario AND Activo = 1) THEN
+            
+				INSERT INTO tb_chatspersonales (IdUsuarioEmisor, IdUsuarioReceptor, FechaCreacion, Activo)
+				VALUES (_IdUsuario,_IdUsuarioReceptor,courseroom.fn_ObtenerFecha(), 1);
+                
+				SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
 		ELSE
-			
 			SELECT -1 AS "Codigo", 'El Chat Ya Se Encuentra Registrado' AS "Mensaje";
-		
 		END IF;
 		
 	ELSE 
 	
-		SELECT -1 AS "Codigo", 'AlgÃºn Usuario No Existe' AS "Mensaje";
+		SELECT -1 AS "Codigo", 'AlgÃºn Usuario No Esta Disponible Para Chatear' AS "Mensaje";
 		
 	END IF;
     
@@ -1443,8 +1631,8 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_AgregarPregunta`(
     IN _Descripcion TEXT
 )
 BEGIN
-    IF courseroom.fn_CampoValido(_Descripcion) = 1
-    AND courseroom.fn_CampoValido(_Pregunta) = 1 THEN
+
+    IF courseroom.fn_CampoValido(_Descripcion) = 1 AND courseroom.fn_CampoValido(_Pregunta) = 1 THEN
 
         IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
         
@@ -1501,6 +1689,50 @@ BEGIN
         END IF;
     ELSE
         SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_AgregarTareaPendienteGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_AgregarTareaPendienteGrupo`(
+    IN _Nombre VARCHAR(100),
+    IN _Descripcion TEXT,
+    IN _FechaFinalizacion VARCHAR(100),
+    IN _Estatus VARCHAR(15),
+    IN _IdUsuarioACargo INT,
+    IN _IdGrupo INT
+)
+BEGIN
+
+    IF courseroom.fn_CampoValido(_Nombre) = 1 AND courseroom.fn_CampoValido(_Descripcion) = 1 THEN
+        IF EXISTS(SELECT IdGrupo FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1) THEN
+
+            IF courseroom.fn_ExisteUsuario(_IdUsuarioACargo) = 1 THEN
+                INSERT INTO tb_tareaspendientesgrupos (Nombre, Descripcion, FechaCreacion, FechaFinalizacion, Estatus, IdUsuarioACargo, IdGrupo)
+                VALUES (_Nombre, _Descripcion, courseroom.fn_ObtenerFecha(), _FechaFinalizacion, _Estatus, _IdUsuarioACargo, _IdGrupo);
+
+                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+            ELSE 
+                SELECT -1 AS "Codigo", 'El Usuario A Cargo No Se Encuentra Registrado' AS "Mensaje";
+            END IF;
+
+        ELSE 
+            SELECT -1 AS "Codigo", 'El Grupo No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+    ELSE
+        SELECT -1 AS "Codigo", 'AlgÃºn Campo De Entrada No Es Valido' AS "Mensaje";
     END IF;
 END ;;
 DELIMITER ;
@@ -1703,6 +1935,39 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_BuscarTareas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_BuscarTareas`(
+    IN _IdUsuario INT,
+    IN _Busqueda VARCHAR(250)
+)
+BEGIN
+
+    SELECT Tareas.IdTarea, Tareas.Nombre, Cursos.IdCurso, Cursos.Imagen, Cursos.Nombre, Tareas.FechaCreacion, Tareas.FechaEntrega, TareasCursoUsuarios.Estatus
+	FROM tb_tareas Tareas
+	INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = Tareas.IdCurso
+	INNER JOIN tb_tareascursousuarios TareasCursoUsuarios ON TareasCursoUsuarios.IdTarea = Tareas.IdTarea 
+	WHERE TareasCursoUsuarios.IdUsuario = _IdUsuario AND Tareas.Activo = 1 
+    AND (
+        Tareas.Nombre LIKE CONCAT('%',_Busqueda,'%')
+	    OR Cursos.Nombre LIKE CONCAT('%',_Busqueda,'%')
+    )
+    ORDER BY Tareas.IdTarea DESC LIMIT 100;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_CerrarSesion` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1732,6 +1997,52 @@ BEGIN
 	END IF;
     
 
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_EnviarArchivoCompartidoGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_EnviarArchivoCompartidoGrupo`(
+    IN _IdGrupo INT,
+    IN _IdUsuario INT,
+    IN _NombreArchivo VARCHAR(100),
+    IN _Archivo LONGBLOB,
+    IN _Extension VARCHAR(100)
+)
+BEGIN
+    IF courseroom.fn_CampoValido(_NombreArchivo) = 1 AND corseroom.fn_CampoValido(_Extension) = 1 THEN
+
+        IF EXISTS(SELECT IdGrupo FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1) THEN
+
+            IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
+
+                INSERT INTO tb_archivoscompartidosgrupos (NombreArchivo, Archivo, Extension, FechaSubido, IdUsuario, IdGrupo, Activo)
+                VALUES (_NombreArchivo, _Archivo, _Extension, courseroom.fn_ObtenerFecha(),_IdUsuario, _IdGrupo, 1);
+
+                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+            ELSE 
+                SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+            END IF;
+
+        ELSE 
+            SELECT -1 AS "Codigo", 'El Grupo No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+
+    ELSE 
+        SELECT -1 AS "Codigo", 'AlgÃºn Campo No Tiene El Formato Valido' AS "Mensaje";
+    END IF;
+    
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2067,6 +2378,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerArchivosSubidosTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivosSubidosTarea`(
+    IN _IdUsuario INT,
+    IN _IdTarea INT
+)
+BEGIN
+    SELECT IdArchivoSubido, NombreArchivo, Archivo, Extension, FechaEnviado FROM tb_archivossubidostareas
+    WHERE IdUsuario = _IdUsuario AND IdTarea = _IdTarea And Activo = 1 ORDER BY IdArchivoSubido DESC LIMIT 250;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerAvisos` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2216,6 +2550,28 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGrupo`(IN _IdGrupo INT)
+BEGIN
+    SELECT Grupos.Nombre, Grupos.Descripcion, Grupos.FechaCreacion, Cursos.IdCurso, Cursos.Nombre AS NombreCurso
+    FROM tb_grupos Grupos 
+    INNER JOIN tb_cursos Cursos ON Grupos.IdCurso = Cursos.IdCurso
+    WHERE Grupos.IdGrupo = _IdGrupo And Grupos.Activo = 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosPerfil` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2287,6 +2643,34 @@ BEGIN
     Preguntas.Pregunta, Preguntas.Descripcion, Preguntas.FechaCreacion, Preguntas.Estatus FROM tb_preguntas Preguntas
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Preguntas.IdUsuario
     WHERE Preguntas.IdPregunta = _IdPregunta AND Preguntas.Activo = 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosTareaPendiente` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosTareaPendiente`(
+    IN _IdTareaPendiente INT,
+    IN _IdGrupo INT
+)
+BEGIN
+
+    SELECT TareaPendiente.Nombre, TareaPendiente.Descripcion, TareaPendiente.FechaCreacion, TareaPendiente.FechaFinalizacion, 
+    CAST(TareaPendiente.Estatus AS CHAR) AS Estatus, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+    TareaPendiente.Estatus FROM tb_tareaspendientesgrupos TareaPendiente
+    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = TareaPendiente.IdUsuarioACargo
+    WHERE TareaPendiente.IdGrupo = _IdGrupo AND TareaPendiente.IdTareaPendiente = _IdTareaPendiente LIMIT 1;
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2395,6 +2779,44 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerImagenCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerImagenCurso`(IN _IdCurso INT)
+BEGIN
+    SELECT Imagen FROM tb_cursos WHERE IdCurso = _IdCurso AND Activo = 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerImagenGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerImagenGrupo`(IN _IdGrupo INT)
+BEGIN
+    SELECT Imagen FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerImagenPerfil` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2408,6 +2830,27 @@ DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerImagenPerfil`(IN _IdUsuario INT)
 BEGIN
 	SELECT Imagen FROM tb_usuarios WHERE IdUsuario = _IdUsuario AND Activo = 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerImagenPregunta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerImagenPregunta`(IN _IdPregunta INT)
+BEGIN
+    
+    SELECT @IdUsuario := IdUsuario AS Imagen FROM tb_preguntas WHERE IdPregunta = _IdPregunta AND Activo = 1;
+    CALL courseroom.`sp_ObtenerImagenPerfil`(@IdUsuario);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2641,6 +3084,28 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerMiembrosGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMiembrosGrupo`(IN _IdGrupo INT)
+BEGIN
+    SELECT courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+    UsuariosGrupos.FechaIngreso, UsuariosGrupos.Intentos FROM tb_usuariosgrupos UsuariosGrupos
+    INNER JOIN tb_usuarios Usuarios ON UsuariosGrupos.IdUsuario = Usuarios.IdUsuario
+    WHERE UsuariosGrupos.IdGrupo = _IdGrupo;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerPerfilUsuarioChat` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2843,6 +3308,31 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerTareasPendientes` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerTareasPendientes`(
+    IN _IdGrupo INT
+)
+BEGIN
+    SELECT TareaPendiente.IdTareaPendiente, TareaPendiente.Nombre,
+    courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+    CAST(TareaPendiente.Estatus AS CHAR) AS Estatus FROM tb_tareaspendientesgrupos TareaPendiente
+    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = TareaPendiente.IdUsuarioACargo
+    WHERE TareaPendiente.IdGrupo = _IdGrupo ORDER BY TareaPendiente.IdTareaPendiente DESC LIMIT 250;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2900,6 +3390,74 @@ BEGIN
     SELECT IdUsuario, courseroom.fn_NombreCompleto(Nombre, Paterno, Materno) AS NombreCompleto
     FROM tb_usuarios WHERE Activo = 1 
     AND CONCAT(Nombre, ' ', Paterno, ' ',Materno) LIKE CONCAT('%',_Busqueda,'%') LIMIT 10;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverArchivoCompartidoGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverArchivoCompartidoGrupo`(
+    IN _IdArchivoCompartido INT,
+    IN _IdUsuario INT,
+    IN _IdGrupo INT
+)
+BEGIN
+    
+    IF EXISTS(SELECT IdArchivoCompartido FROM tb_archivoscompartidosgrupos WHERE IdArchivoCompartido = _IdArchivoCompartido 
+        AND Activo = 1 AND IdGrupo = _IdGrupo AND IdUsuario = _IdUsuario) THEN 
+
+        UPDATE tb_archivoscompartidosgrupos SET Activo = 0 WHERE IdGrupo = _IdGrupo AND IdUsuario = _IdUsuario
+        AND IdArchivoCompartido = _IdArchivoCompartido;
+
+        SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+
+    ELSE
+        SELECT -1 AS "Codigo", 'El Archivo Compartido No Existe' AS "Mensaje";
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverArchivosSubidosTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverArchivosSubidosTarea`(
+    IN _IdUsuario INT,
+    IN _IdTarea INT,
+    IN _IdArchivoSubido INT
+)
+BEGIN
+    IF EXISTS (SELECT IdArchivoSubido FROM tb_archivossubidostareas WHERE IdArchivoSubido = _IdArchivoSubido
+    AND IdTarea = _IdTarea AND IdUsuario = _IdUsuario AND Activo = 1) THEN
+    
+        UPDATE tb_archivossubidostareas SET Activo = 0 WHERE IdArchivoSubido = _IdArchivoSubido
+        AND IdTarea = _IdTarea AND IdUsuario = _IdUsuario;
+
+        SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+
+    ELSE
+        SELECT -1 AS "Codigo", 'El Archivo Subido No Se Encuentra Registrado' AS "Mensaje";
+    
+    END IF;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2986,6 +3544,54 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverPorVotoMiembroDeGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverPorVotoMiembroDeGrupo`(
+    IN _IdGrupo INT,
+    IN _IdUsuario INT
+)
+BEGIN
+
+    IF EXISTS(SELECT IdGrupo FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1) THEN
+
+        IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
+
+
+            IF courseroom.fn_IntentosAceptablesGrupo(_IdGrupo, _IdUsuario) = 1 THEN
+                
+                SELECT @Intentos := courseroom.fn_ObtenerIntentosUsuarioGrupo(_IdGrupo, _IdUsuario);
+
+                SET @Intentos := @Intentos + 1;
+
+                UPDATE tb_usuariosgrupos SET Intentos = @Intentos WHERE IdGrupo = _IdGrupo AND IdUsuario = _IdUsuario;
+                
+                SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+                
+            ELSE
+                SELECT -1 AS "Codigo", 'El Usuario Ya Ha Sobrepasado Los Intentos Aceptables' AS "Mensaje";
+            END IF;
+
+        ELSE
+            SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+
+    ELSE
+        SELECT -1 AS "Codigo", 'El Grupo No Se Encuentra Registrado' AS "Mensaje";
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverPregunta` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -3029,4 +3635,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-30 19:48:26
+-- Dump completed on 2022-03-31 21:08:01

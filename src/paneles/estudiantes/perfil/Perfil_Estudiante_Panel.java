@@ -58,9 +58,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private byte carta_Visible;
     
  
-    public Perfil_Estudiante_Panel(DatosPerfilModel _datosPerfilModel) {
+    public Perfil_Estudiante_Panel() {
         initComponents();
-        Actualizar_Datos(_datosPerfilModel);
+        Actualizar_Datos();
         Iniciar_Componentes();
     }
 
@@ -1211,6 +1211,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             
             if(respuesta.first() == 1){
                 JOptionPane.showMessageDialog(this, "Se Han Actualizado Los Datos Personales Correctamente", "Mensaaje De Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                
             }else{
                 JOptionPane.showMessageDialog(this, respuesta.second(), "Mensaaje De Confirmación", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1342,6 +1343,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             editar_Estado_AutoCompletionComboBox.setEnabled(!editar_Estado_AutoCompletionComboBox.isEnabled());
+            editar_Localidad_AutoCompletionComboBox.setEnabled(!editar_Localidad_AutoCompletionComboBox.isEnabled());
         }
         
     }//GEN-LAST:event_editar_Estado_JButtonMouseClicked
@@ -1428,8 +1430,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Estudiante_Panel.Id_Usuario());
-            Actualizar_Datos(datosPerfilModel);
+            Actualizar_Datos();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1489,49 +1490,53 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         }
     }
     
-    private void Actualizar_Datos(DatosPerfilModel datosPerfilModel){
-        nombres_JLabel.setText(datosPerfilModel.getNombre());
-        apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.getPaterno()," ",datosPerfilModel.getMaterno()));
-        correo_Electronico_JLabel.setText(datosPerfilModel.getCorreo_Electronico());
-        localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar(datosPerfilModel.getLocalidad(), " - ", datosPerfilModel.getEstado())));
-        descripcion_JTextPane.setText(
-                CourseRoom.Utilerias().Formato_HTML_Izquierda(
-                        CourseRoom.Utilerias().Concatenar(datosPerfilModel.getDescripcion(), " <br><br><br>Registrado El ",datosPerfilModel.getFecha_Creacion())));
-        genero_JLabel.setText(datosPerfilModel.getGenero());
-        fecha_Nacimiento_JLabel.setText(datosPerfilModel.getFecha_Nacimiento());
-        tipo_Perfil_JLabel.setText(datosPerfilModel.getTipo_Usuario());
-        
-        String contrasenia = CourseRoom.Utilerias().Decodificacion(datosPerfilModel.getContrasenia());
-        contrasena_JPasswordField.setText(contrasenia);
-        editar_Correo_Electronico_JTextField.setText(datosPerfilModel.getCorreo_Electronico());
-        editar_Nombres_JTextField.setText(datosPerfilModel.getNombre());
-        
-        editar_Apellido_Materno_JTextField.setText(datosPerfilModel.getMaterno());
-        editar_Apellido_Paterno_JTextField.setText(datosPerfilModel.getPaterno());
-        editar_Descripcion_JTextPane.setText(datosPerfilModel.getDescripcion());
-        Tripleta<Integer, Integer, Integer> tripleta = CourseRoom.Utilerias().Fecha(datosPerfilModel.getFecha_Nacimiento());
-        editar_Fecha_Nacimiento_DatePicker.setDate(LocalDate.of(tripleta.third(), tripleta.second(), tripleta.first()));
-        editar_Genero_JTextField.setText(datosPerfilModel.getGenero());
-        
-        if(datosPerfilModel.getPromedio_General() >= 0){
-            editar_Promedio_General_JFormattedTextField.setValue(datosPerfilModel.getPromedio_General()); 
-        }
-        
-        //Obtener estados:
-        Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+    private void Actualizar_Datos(){
+        DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Estudiante_Panel.Id_Usuario());
+        if(datosPerfilModel != null){
+            nombres_JLabel.setText(datosPerfilModel.getNombre());
+            apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.getPaterno()," ",datosPerfilModel.getMaterno()));
+            correo_Electronico_JLabel.setText(datosPerfilModel.getCorreo_Electronico());
+            localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar(datosPerfilModel.getLocalidad(), " - ", datosPerfilModel.getEstado())));
+            descripcion_JTextPane.setText(
+                    CourseRoom.Utilerias().Formato_HTML_Izquierda(
+                            CourseRoom.Utilerias().Concatenar(datosPerfilModel.getDescripcion(), " <br><br><br>Registrado El ",datosPerfilModel.getFecha_Creacion())));
+            genero_JLabel.setText(datosPerfilModel.getGenero());
+            fecha_Nacimiento_JLabel.setText(datosPerfilModel.getFecha_Nacimiento());
+            tipo_Perfil_JLabel.setText(datosPerfilModel.getTipo_Usuario());
 
-        if(!estados.is_empty()){
-            while(!estados.is_empty()){
-                editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
+            String contrasenia = CourseRoom.Utilerias().Decodificacion(datosPerfilModel.getContrasenia());
+            contrasena_JPasswordField.setText(contrasenia);
+            editar_Correo_Electronico_JTextField.setText(datosPerfilModel.getCorreo_Electronico());
+            editar_Nombres_JTextField.setText(datosPerfilModel.getNombre());
+
+            editar_Apellido_Materno_JTextField.setText(datosPerfilModel.getMaterno());
+            editar_Apellido_Paterno_JTextField.setText(datosPerfilModel.getPaterno());
+            editar_Descripcion_JTextPane.setText(datosPerfilModel.getDescripcion());
+            Tripleta<Integer, Integer, Integer> tripleta = CourseRoom.Utilerias().Fecha(datosPerfilModel.getFecha_Nacimiento());
+            editar_Fecha_Nacimiento_DatePicker.setDate(LocalDate.of(tripleta.third(), tripleta.second(), tripleta.first()));
+            editar_Genero_JTextField.setText(datosPerfilModel.getGenero());
+
+            if(datosPerfilModel.getPromedio_General() >= 0){
+                editar_Promedio_General_JFormattedTextField.setValue(datosPerfilModel.getPromedio_General()); 
             }
-            editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getEstado());
-            editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getLocalidad());
-        }else{
-            
-            editar_Estado_AutoCompletionComboBox.setEnabled(false);
-            editar_Estado_AutoCompletionComboBox.setEnabled(false);
-            editar_Estado_JButton.setEnabled(false);
-            
+
+            //Obtener estados:
+            Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+
+            if(!estados.is_empty()){
+                while(!estados.is_empty()){
+                    editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
+                }
+                editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getEstado());
+                editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getLocalidad());
+                editar_Estado_JButton.setVisible(true);
+            }else{
+
+                editar_Estado_AutoCompletionComboBox.setEnabled(false);
+                editar_Localidad_AutoCompletionComboBox.setEnabled(false);
+                editar_Estado_JButton.setVisible(false);
+
+            }
         }
     }
 
