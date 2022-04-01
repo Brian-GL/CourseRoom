@@ -33,6 +33,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -40,7 +41,9 @@ import javax.swing.table.TableRowSorter;
 import paneles.profesores.Tablero_Profesor_Panel;
 import paneles.profesores.perfil.Perfil_Profesor_Panel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 
 /**
  *
@@ -914,6 +917,8 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                 
                 try {
                     Celda_Renderer[] celdas = new Celda_Renderer[4];
+                    long tamanio;
+                    boolean archivo_Mayor = false;
                     DefaultTableModel modelo = (DefaultTableModel) materiales_JTable.getModel();
                     Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
                     ImageIcon icono_Abrir = new ImageIcon(icono);
@@ -921,10 +926,12 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                     ImageIcon icono_Remover = new ImageIcon(icono);
                     Celda_Renderer celda;
                     for (File archivo_Abierto : archivos_Abiertos) {
-                        
+                        tamanio = FileUtils.sizeOf(archivo_Abierto);
+                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                        if(tamanio < 75){
                         celda = new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),archivo_Abierto.getAbsolutePath());
                         celdas[0] = celda;
-                        celda = new Celda_Renderer(Perfil_Profesor_Panel.Nombre_Completo(),"");
+                        celda = new Celda_Renderer(Perfil_Estudiante_Panel.Nombre_Completo(),"");
                         celdas[1] = celda;
                         celda = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(),"");
                         celdas[2] = celda;
@@ -932,11 +939,16 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                         celdas[3] = celda;
                         modelo.addRow(celdas);
                         materiales_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(archivo_Abierto.getName().length()));
+                    }else{
+                            archivo_Mayor = true;
+                        }
                     }
-                    
+                    if(archivo_Mayor){
+                        JOptionPane.showMessageDialog(this, "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+                    }                 
                     icono.flush();
                 } catch (IOException ex) {
-                    System.err.println(ex.getMessage());
+                    
                 }
             }
         }

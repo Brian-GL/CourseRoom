@@ -33,10 +33,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import paneles.profesores.Tablero_Profesor_Panel;
 
@@ -501,6 +503,8 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                 
                 try {
                     Celda_Renderer[] celdas = new Celda_Renderer[3];
+                    long tamanio;
+                    boolean archivo_Mayor = false;
                     DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
                     Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
                     ImageIcon icono_Abrir = new ImageIcon(icono);
@@ -509,7 +513,9 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                     Celda_Renderer celda;
                     String vacio = new String();
                     for (File archivo_Abierto : archivos_Abiertos) {
-                        
+                        tamanio = FileUtils.sizeOf(archivo_Abierto);
+                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                        if(tamanio < 75){
                         celda = new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),archivo_Abierto.getAbsolutePath());
                         celdas[0] = celda;
                         celda = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(),vacio);
@@ -517,8 +523,13 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                         celda = new Celda_Renderer(icono_Remover,vacio);
                         celdas[2] = celda;
                         modelo.addRow(celdas);
+                    }else{
+                            archivo_Mayor = true;
+                        }
                     }
-                    
+                    if(archivo_Mayor){
+                        JOptionPane.showMessageDialog(this, "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+                    }                 
                     icono.flush();
                 } catch (IOException ex) {
                     
