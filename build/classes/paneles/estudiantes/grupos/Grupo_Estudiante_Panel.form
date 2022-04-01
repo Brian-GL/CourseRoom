@@ -320,7 +320,7 @@
                           <Group type="102" attributes="0">
                               <Component id="imagen_JLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="descripcion_JScrollPane" pref="616" max="32767" attributes="0"/>
+                              <Component id="descripcion_JScrollPane" pref="672" max="32767" attributes="0"/>
                           </Group>
                           <Component id="fecha_Creacion_JLabel" max="32767" attributes="0"/>
                       </Group>
@@ -630,7 +630,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="archivos_Compartidos_JScrollPane" pref="1046" max="32767" attributes="0"/>
+                          <Component id="archivos_Compartidos_JScrollPane" pref="1110" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="compartir_Archivos_JButton" min="-2" pref="217" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -643,7 +643,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="archivos_Compartidos_JScrollPane" pref="479" max="32767" attributes="0"/>
+                      <Component id="archivos_Compartidos_JScrollPane" pref="575" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="compartir_Archivos_JButton" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -731,7 +731,7 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="anadir_Tarea_Pendiente_JPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tareas_Pendientes_JScrollPane" pref="728" max="32767" attributes="0"/>
+                      <Component id="tareas_Pendientes_JScrollPane" pref="656" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -984,7 +984,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                      <EmptySpace pref="45" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="editar_Descripcion_JScrollPane" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
@@ -994,7 +994,7 @@
                           </Group>
                           <Component id="editar_Nombre_JTextField" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="editar_Descripcion_JLabel" pref="481" max="32767" attributes="0"/>
+                              <Component id="editar_Descripcion_JLabel" pref="503" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="editar_Descripcion_JButton" min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
@@ -1004,14 +1004,14 @@
                           <Component id="cambiar_Imagen_JButton" max="32767" attributes="0"/>
                           <Component id="abandonar_Grupo_JButton" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="51" max="32767" attributes="0"/>
+                      <EmptySpace pref="73" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="56" max="32767" attributes="0"/>
+                      <EmptySpace pref="104" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1035,7 +1035,7 @@
                           </Group>
                           <Component id="abandonar_Grupo_JButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="57" max="32767" attributes="0"/>
+                      <EmptySpace pref="104" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

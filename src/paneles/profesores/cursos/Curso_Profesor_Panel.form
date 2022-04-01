@@ -820,7 +820,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="grupos_JScrollPane" alignment="0" pref="1046" max="32767" attributes="0"/>
+                          <Component id="grupos_JScrollPane" alignment="0" pref="1110" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="generar_Grupos_JButton" min="-2" pref="217" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -833,7 +833,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="grupos_JScrollPane" pref="479" max="32767" attributes="0"/>
+                      <Component id="grupos_JScrollPane" pref="575" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="generar_Grupos_JButton" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -937,7 +937,7 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="compartir_Materiales_JButton" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="materiales_JScrollPane" pref="479" max="32767" attributes="0"/>
+                      <Component id="materiales_JScrollPane" pref="575" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>

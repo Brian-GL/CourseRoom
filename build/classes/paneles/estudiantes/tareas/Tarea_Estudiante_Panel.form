@@ -307,7 +307,7 @@
                           <Group type="102" attributes="0">
                               <Component id="fecha_Creacion_JLabel" min="-2" pref="505" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="fecha_Entrega_JLabel" pref="523" max="32767" attributes="0"/>
+                              <Component id="fecha_Entrega_JLabel" pref="587" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -323,7 +323,7 @@
                           <Component id="estatus_Tarea_JLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="descripcion_JScrollPane" pref="454" max="32767" attributes="0"/>
+                      <Component id="descripcion_JScrollPane" pref="550" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="fecha_Entrega_JLabel" min="-2" max="-2" attributes="0"/>
@@ -629,7 +629,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="archivos_Subidos_JScrollPane" alignment="0" pref="1046" max="32767" attributes="0"/>
+                          <Component id="archivos_Subidos_JScrollPane" alignment="0" pref="1110" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="es_Tarea_Grupal_JLabel" min="-2" pref="309" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -653,7 +653,7 @@
                           <Component id="es_Tarea_Grupal_JLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="archivos_Subidos_JScrollPane" pref="437" max="32767" attributes="0"/>
+                      <Component id="archivos_Subidos_JScrollPane" pref="533" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="subir_Cambios_JButton" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>

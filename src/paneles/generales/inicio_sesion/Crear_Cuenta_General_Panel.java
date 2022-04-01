@@ -1301,14 +1301,18 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
             JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
         } else {
-            
             if (Password.equals(Password2)) {
-                // Si Todo Esta Bien Llamamos A La Función "Validar Correo".
                 var valor = CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo_JTextField.getText().trim());
-                if(!valor){
+                if (!valor) {
                     JOptionPane.showMessageDialog(this, "Correo No Valido", "NO", WIDTH);
-                }else{
-                    ((CardLayout)this.getLayout()).show(this,"Datos_Personales");
+                    correo_JTextField.requestFocus();
+                } else {
+                    if (Password.length() <= 7 || Password2.length() <= 7) {
+                        JOptionPane.showMessageDialog(this, "Las Contraseñas Deben Tener Al Menos 8 Caracteres", "Error de Contenido", WIDTH);
+                    } else {
+                        ((CardLayout) this.getLayout()).show(this, "Datos_Personales");
+                    }
+
                 }
             } else {
                 // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
@@ -1318,9 +1322,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         }
     }
     
+    
         
     public void verificar_Datos_Personales(){
-            if (nombres_JTextField.getText().isBlank() || apellido_Paterno_JTextField.getText().isBlank()) {
+        int longitud = nombres_JTextField.getText().length();
+        int longitud1 = apellido_Paterno_JTextField.getText().length();
+        int longitud2 = apellido_Materno_JTextField.getText().length();
+            if (nombres_JTextField.getText().isBlank() || apellido_Paterno_JTextField.getText().isBlank()
+                    || apellido_Materno_JTextField.getText().isBlank()) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
             JOptionPane.showMessageDialog(this, "Ingresa Los Campos Obligatorios!!!", "Error de Contenido", WIDTH);
             if(nombres_JTextField.getText().startsWith(" ") || apellido_Paterno_JTextField.getText().startsWith(" ")
@@ -1329,9 +1338,23 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             JOptionPane.showMessageDialog(this, "Probablemente Estes Usando Un Espacio\nAl Principío En Algun Apartado", "Error de Contenido", WIDTH);
             }
         } else {
+                 if(longitud <=2){
+            JOptionPane.showMessageDialog(this, "Los Campos Obligatorios Deben Contener Al Menos 3 Caracteres", "Error de Contenido", WIDTH);
+            nombres_JTextField.requestFocus();
+        }else if(longitud1 <=2){
+            JOptionPane.showMessageDialog(this, "Los Campos Obligatorios Deben Contener Al Menos 3 Caracteres", "Error de Contenido", WIDTH);
+            apellido_Paterno_JTextField.requestFocus();
+        }
+        else if(longitud2 <=2){
+            JOptionPane.showMessageDialog(this, "Los Campos Obligatorios Deben Contener Al Menos 3 Caracteres", "Error de Contenido", WIDTH);
+            apellido_Materno_JTextField.requestFocus();
+        }
+        else{
             ((CardLayout) this.getLayout()).show(this, "Perfil");
         }
+        }
     }
+
         
     private void Agregar_Interes_Tematica(String interes_Tematica){
         try {
@@ -1629,7 +1652,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     @Override
     public void Validar_Campos() {
-        
+        int longitud = descripcion_JTextPane.getText().length();
+        if(longitud >500)
+        {
+            JOptionPane.showMessageDialog(this, "La Descripción Rebasa Los 500 Caracteres", "Error de Contenido", WIDTH);
+        }else{      
         if(localidad_AutoCompletionComboBox.getItemCount() > 0){
         
             String correoElectronico = correo_JTextField.getText();
@@ -1643,7 +1670,6 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             Double promedio_General = promedio_General_JFormattedTextField.getText().isBlank() || promedio_General_JFormattedTextField.getText().isEmpty()? Double.valueOf(-1) : Double.valueOf(promedio_General_JFormattedTextField.getText());
             String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
             Integer idLocalidad = ((ComboOption) localidad_AutoCompletionComboBox.getSelectedItem()).Id();
-
 
             if(imagen == null){
                 imagen = new byte[]{};
@@ -1671,6 +1697,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             JOptionPane.showMessageDialog(this, "No Se Ha Seleccionado Una Localidad", "Error Al Agregar Usuario", JOptionPane.ERROR_MESSAGE);
         }
         
+    }
     }
 
 }

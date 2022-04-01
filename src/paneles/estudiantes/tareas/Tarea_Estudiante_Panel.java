@@ -1212,29 +1212,31 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     public void Subir_Archivos() {
         Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
-
+        
         if (resultado == JFileChooser.APPROVE_OPTION) {
             File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
             
             if(archivos_Abiertos != null){
-                
                 try {
                     String fecha;
                     String ruta;
                     String nombre_Archivo;
                     Celda_Renderer[] celdas = new Celda_Renderer[3];
                     Celda_Renderer celda;
+                    long tamanio;
+                    boolean archivo_Mayor = false;
                     DefaultTableModel modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
                     Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
                     ImageIcon icono_Abrir = new ImageIcon(icono);
                     icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-                    ImageIcon icono_Remover = new ImageIcon(icono);
-                    
+                    ImageIcon icono_Remover = new ImageIcon(icono);                    
                     for (File archivo_Abierto : archivos_Abiertos) {
+                        tamanio = FileUtils.sizeOf(archivo_Abierto);
+                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                        if(tamanio < 75){
                         ruta = archivo_Abierto.getAbsolutePath();
                         nombre_Archivo = archivo_Abierto.getName();
-                        fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
-                        
+                        fecha = CourseRoom.Utilerias().Fecha_Hora_Local();                        
                         celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
                         celdas[0] = celda;
                         celda = new Celda_Renderer(fecha);
@@ -1243,8 +1245,13 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         celdas[2] = celda;
                         modelo.addRow(celdas);
                         archivos_Subidos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
+                    }else{
+                            archivo_Mayor = true;
+                        }
                     }
-                    
+                    if(archivo_Mayor){
+                        JOptionPane.showMessageDialog(this, "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+                    }                 
                     icono.flush();
                 } catch (IOException ex) {
                     
@@ -1287,7 +1294,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
 
             if (archivos_Abiertos != null) {
-
                 try {
                     String emisor;
                     String fecha;
@@ -1301,48 +1307,34 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
                     ImageIcon icono_Abrir = new ImageIcon(icono);
                     for (File archivo_Abierto : archivos_Abiertos) {
-                        
                         tamanio = FileUtils.sizeOf(archivo_Abierto);
-                        System.out.println(tamanio);
-                        
                         tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                        
                         if(tamanio < 75){
-                        
-                            System.out.println(tamanio);
                             ruta = archivo_Abierto.getAbsolutePath();
                             nombre_Archivo = archivo_Abierto.getName();
                             emisor = Perfil_Estudiante_Panel.Nombre_Completo();
                             fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
-
                             celda = new Celda_Renderer(emisor);
                             celdas[0] = celda;
                             celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
                             celdas[1] = celda;
                             celda = new Celda_Renderer(fecha);
                             celdas[2] = celda;
-
+                            
                             modelo.addRow(celdas);
-
                             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
                         }else{
-                            System.out.println(tamanio);
                             archivo_Mayor = true;
                         }
                     }
-                    
                     if(archivo_Mayor){
                         JOptionPane.showMessageDialog(this, "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
                     }
-                    
                     icono.flush();
                 } catch (IOException ex) {
                 }
-
             }
-
         }
-
     }
    
 
