@@ -760,9 +760,9 @@ DROP TABLE IF EXISTS `tb_tematicas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_tematicas` (
   `IdTematica` int NOT NULL AUTO_INCREMENT,
-  `Tematica` varchar(45) NOT NULL,
+  `Tematica` varchar(100) NOT NULL,
   PRIMARY KEY (`IdTematica`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=377 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -771,6 +771,7 @@ CREATE TABLE `tb_tematicas` (
 
 LOCK TABLES `tb_tematicas` WRITE;
 /*!40000 ALTER TABLE `tb_tematicas` DISABLE KEYS */;
+INSERT INTO `tb_tematicas` VALUES (1,'ABOGACÍA'),(2,'ABOGADO'),(3,'ACTUARIA'),(4,'ADMINISTRACIÓN'),(5,'ADMINISTRACIÓN AGRARIA'),(6,'ADMINISTRACIÓN AGROPECUARIA'),(7,'ADMINISTRACIÓN DE EMPRESAS'),(8,'ADMINISTRACIÓN DE NEGOCIOS'),(9,'ADMINISTRACIÓN DE ORGANIZACIONES DE SALUD'),(10,'ADMINISTRACIÓN DE POLÍTICAS PÚBLICAS'),(11,'ADMINISTRACIÓN DE POLÍTICAS PÚBLICAS LOCALES'),(12,'ADMINISTRACIÓN DE SISTEMAS'),(13,'ADMINISTRACIÓN EDUCATIVA'),(14,'ADMINISTRACIÓN FINANCIERA'),(15,'ADMINISTRACIÓN GUBERNAMENTAL'),(16,'ADMINISTRACIÓN PÚBLICA'),(17,'ADMINISTRACIÓN URBANA'),(18,'ADUANAS'),(19,'AGROBIOTECNOLOGÍA'),(20,'AGRONEGOCIOS'),(21,'ALIMENTOS Y BEBIDAS'),(22,'ANÁLISIS DE SISTEMAS'),(23,'ANÁLISIS DE SISTEMAS INFORMÁTICOS'),(24,'ANESTESIOLOGÍA PEDIÁTRICA'),(25,'ANTROPOLOGÍA'),(26,'ANTROPOLOGÍA FÍSICA'),(27,'ARCHIVONOMÍA'),(28,'ARQUEOLOGÍA'),(29,'ARQUITECTURA'),(30,'ARTE'),(31,'ARTES AUDIOVISUALES'),(32,'ARTES ESCÉNICAS PARA LA EXPRESIÓN DANCÍSTICA'),(33,'ARTES ESCÉNICAS PARA LA EXPRESIÓN TEATRAL'),(34,'ARTES VISUALES PARA LA EXPRESIÓN FOTOGRÁFICA'),(35,'ARTES VISUALES PARA LA EXPRESIÓN PLÁSTICA'),(36,'ASISTENTE DIRECTIVO'),(37,'ASISTENTE EJECUTIVO'),(38,'AUDIOLOGÍA'),(39,'BIBLIOTECOLOGÍA'),(40,'BIOINGENIERÍA'),(41,'BIOLOGÍA'),(42,'BIOLOGÍA EXPERIMENTAL'),(43,'BIOLOGÍA MARINA'),(44,'BIOMÉDICA'),(45,'BIOMEDICINA BÁSICA'),(46,'BIOMEDICINA EXPERIMENTAL'),(47,'BIOQUÍMICA'),(48,'BIOQUÍMICA DIAGNOSTICA'),(49,'BIOTECNOLOGÍA'),(50,'CARDIOLOGÍA PEDIÁTRICA'),(51,'CIENCIA DE DATOS'),(52,'CIENCIA DE EDIFICACIÓN'),(53,'CIENCIA DE LOS ALIMENTOS'),(54,'CIENCIA Y TECNOLOGÍA'),(55,'CIENCIAS ADMINISTRATIVAS'),(56,'CIENCIAS AGRARIAS'),(57,'CIENCIAS AGROPECUARIAS'),(58,'CIENCIAS APLICADAS'),(59,'CIENCIAS BIOLÓGICAS'),(60,'CIENCIAS BIOMÉDICAS'),(61,'CIENCIAS CONTABLES'),(62,'CIENCIAS DE AUDITORIA'),(63,'CIENCIAS DE LA COMUNICACIÓN'),(64,'CIENCIAS DE LA EDUCACIÓN'),(65,'CIENCIAS DE LA EMPRESA'),(66,'CIENCIAS DE LA INFORMÁTICA'),(67,'CIENCIAS DE LA PRODUCCIÓN'),(68,'CIENCIAS DE LA SALUD'),(69,'CIENCIAS DEL ARTE'),(70,'CIENCIAS DEL DEPORTE'),(71,'CIENCIAS DIPLOMÁTICAS'),(72,'CIENCIAS ECONÓMICAS'),(73,'CIENCIAS EMPRESARIALES'),(74,'CIENCIAS FARMACÉUTICAS'),(75,'CIENCIAS FORESTALES'),(76,'CIENCIAS HUMANAS'),(77,'CIENCIAS INFORMÁTICAS'),(78,'CIENCIAS JURÍDICAS'),(79,'CIENCIAS MÉDICAS'),(80,'CIENCIAS POLÍTICAS'),(81,'CIENCIAS QUÍMICAS'),(82,'CIENCIAS QUIMICOBIOLOGICAS'),(83,'CIENCIAS SOCIALES'),(84,'CIENCIAS TECNOLOGÍCAS'),(85,'CIENCIAS VETERINARIAS'),(86,'CIENCIAS Y ARTE'),(87,'CINEMATOGRAFÍA'),(88,'CIRUGÍA PLÁSTICA ESTÉTICA'),(89,'CIRUGÍA PLÁSTICA RECONSTRUCTIVA'),(90,'CIRUJANO DENTISTA'),(91,'COMERCIALIZACIÓN'),(92,'COMERCIO EXTERIOR'),(93,'COMERCIO INTERNACIONAL'),(94,'COMPOSICIÓN'),(95,'COMPUTACIÓN'),(96,'COMUNICACIÓN AUDIOVISUAL'),(97,'COMUNICACIÓN HUMANA'),(98,'COMUNICACIÓN PÚBLICA'),(99,'COMUNICACIÓN SOCIAL'),(100,'COMUNICACIÓN VISUAL'),(101,'CONSTRUCCIÓN'),(102,'CONTABILIDAD'),(103,'CONTABILIDAD FINANCIERA'),(104,'CONTABILIDAD FISCAL'),(105,'CONTABILIDAD PÚBLICA'),(106,'CONTADOR PRIVADO'),(107,'CONTADOR PÚBLICO'),(108,'CONTADOR PÚBLICO NACIONAL'),(109,'CONTADURÍA'),(110,'CONTADURÍA PRIVADA'),(111,'CONTADURÍA PÚBLICA'),(112,'CRIMINALÍSTICA'),(113,'CRIMINOLOGÍA'),(114,'CULTURA FÍSICA Y DEPORTES'),(115,'DERECHO'),(116,'DERECHO ADMINISTRATIVO'),(117,'DESARROLLO DEL PRODUCTO'),(118,'DESARROLLO EDUCATIVO'),(119,'DESARROLLO HUMANO'),(120,'DESARROLLO RURAL'),(121,'DIDÁCTICA DEL FRANCÉS COMO LENGUA EXTRANJERA'),(122,'DIETÉTICA'),(123,'DIRECCIÓN DE PROYECTOS'),(124,'DISEÑO'),(125,'DISEÑO ARQUITECTÓNICO'),(126,'DISEÑO DE ARTESANÍAS'),(127,'DISEÑO DE INTERIORES Y AMBIENTACIÓN'),(128,'DISEÑO DE MODAS'),(129,'DISEÑO GRÁFICO'),(130,'DISEÑO INDUSTRIAL'),(131,'DISEÑO PARA LA COMUNICACIÓN GRÁFICA'),(132,'DOCENCIA DEL INGLÉS COMO LENGUA EXTRANJERA'),(133,'ECONOMÍA'),(134,'EDUCACIÓN (ABIERTA Y A DISTANCIA)'),(135,'EDUCACIÓN ESPECIAL'),(136,'EDUCACIÓN ESPECIAL DE AUDICIÓN'),(137,'EDUCACIÓN ESPECIAL DE LENGUAJE'),(138,'EDUCACIÓN PARA LA SALUD'),(139,'EDUCACIÓN PREESCOLAR'),(140,'EJECUTIVO BILINGÜE'),(141,'ELECTRICIDAD'),(142,'ELECTRICISTA'),(143,'ELECTROMECÁNICA'),(144,'ELECTRÓNICA'),(145,'ELECTRÓNICA INDUSTRIAL'),(146,'ENFERMERA QUIRÚRGICA'),(147,'ENFERMERÍA'),(148,'ENFERMERÍA DEL NEONATO'),(149,'ENFERMERÍA GENERAL'),(150,'ENFERMERÍA INFANTIL'),(151,'ENFERMERÍA PEDIÁTRICA'),(152,'ENFERMERÍA PERINATAL'),(153,'ESPECIALISTA EN ORTODONCIA'),(154,'ESTADÍSTICA'),(155,'ESTUDIOS ÁRABES'),(156,'ESTUDIOS ASIA ORIENTAL'),(157,'ESTUDIOS DE LA INFORMACIÓN'),(158,'ESTUDIOS FRANCESES'),(159,'ESTUDIOS INGLESES'),(160,'ESTUDIOS ISLÁMICOS'),(161,'ESTUDIOS LIBERALES'),(162,'ESTUDIOS POLÍTICOS Y GOBIERNO'),(163,'FARMACIA'),(164,'FILOLOGÍA CLÁSICA'),(165,'FILOLOGÍA HISPÁNICA'),(166,'FILOSOFÍA'),(167,'FISIATRÍA'),(168,'FÍSICA'),(169,'FISIOTERAPIA'),(170,'FONIATRÍA'),(171,'FOTOGRÁFIA'),(172,'GASTRONOMÍA'),(173,'GENÉTICA PERINATAL'),(174,'GEOGRAFÍA'),(175,'GERONTOLOGÍA'),(176,'GESTIÓN'),(177,'GESTIÓN DE HOTELERÍA'),(178,'GESTIÓN DE TURISMO'),(179,'GESTIÓN DEL TERRITORIO'),(180,'GESTIÓN DIRECTIVA EN SALUD'),(181,'GESTIÓN Y ECONOMÍA AMBIENTAL'),(182,'HEMATOLOGÍA PEDIÁTRICA'),(183,'HISTORIA'),(184,'HISTORÍA'),(185,'HISTORIA DEL ARTE'),(186,'HOTELERÍA'),(187,'HUMANIDADES'),(188,'INDUSTRIA'),(189,'INFORMÁTICA'),(190,'INFORMÁTICA ADMINISTRATIVA'),(191,'INFORMÁTICA EMPRESARIAL'),(192,'INFORMÁTICA FINANCIERA'),(193,'INGENIERÍA'),(194,'INGENIERÍA AEROESPACIAL'),(195,'INGENIERÍA AGRÍCOLA'),(196,'INGENIERÍA AGROINDUSTRIAL'),(197,'INGENIERÍA AGRONÓMICA'),(198,'INGENIERÍA AGROPECUARIA'),(199,'INGENIERÍA AMBIENTAL'),(200,'INGENIERÍA BIOMÉDICA'),(201,'INGENIERÍA BIOQUÍMICA'),(202,'INGENIERÍA CIVIL'),(203,'INGENIERÍA COMERCIAL'),(204,'INGENIERÍA DE ALIMENTOS'),(205,'INGENIERÍA DE LA ENERGÍA'),(206,'INGENIERÍA DE LA SALUD'),(207,'INGENIERÍA DE LAS TECNOLOGÍAS DE TELECOMUNICACIÓN'),(208,'INGENIERÍA DE MATERIALES'),(209,'INGENIERÍA DE ORGANIZACIÓN INDUSTRIAL'),(210,'INGENIERÍA DE PROCESOS Y COMERCIO INTERNACIONAL'),(211,'INGENIERÍA DEL SOFTWARE'),(212,'INGENIERÍA ELÉCTRICA'),(213,'INGENIERÍA ELECTROMECÁNICA'),(214,'INGENIERÍA ELECTRÓNICA'),(215,'INGENIERÍA ELECTRÓNICA INDUSTRIAL'),(216,'INGENIERÍA EMPRESARIAL'),(217,'INGENIERÍA EN ADMINISTRACIÓN INDUSTRIAL'),(218,'INGENIERÍA EN AGROINDUSTRIA'),(219,'INGENIERÍA EN ALIMENTOS Y BIOTECNOLOGÍA'),(220,'INGENIERÍA EN BIOTECNOLOGÍA'),(221,'INGENIERÍA EN CIENCIAS COMPUTACIONALES'),(222,'INGENIERÍA EN COMPUTACIÓN'),(223,'INGENIERÍA EN COMUNICACIONES'),(224,'INGENIERÍA EN COMUNICACIONES Y ELECTRÓNICA'),(225,'INGENIERÍA EN ELECTRICIDAD'),(226,'INGENIERÍA EN ELECTRÓNICA'),(227,'INGENIERÍA EN ELECTRÓNICA Y COMPUTACIÓN'),(228,'INGENIERÍA EN ENERGÍA'),(229,'INGENIERIA EN GESTIÓN EMPRESARIAL'),(230,'INGENIERÍA EN NANOTECNOLOGÍA'),(231,'INGENIERÍA EN NEGOCIOS'),(232,'INGENIERÍA EN OBRAS Y SERVICIOS'),(233,'INGENIERÍA EN RECURSOS NATURALES Y AGROPECURIOS'),(234,'INGENIERÍA EN SISTEMAS'),(235,'INGENIERÍA EN SISTEMAS DE PRODUCCIÓN'),(236,'INGENIERÍA EN SISTEMAS PECUARIOS'),(237,'INGENIERÍA EN TELEMÁTICA'),(238,'INGENIERÍA EN VIDEOJUEGOS'),(239,'INGENIERIA EN ZOOTECNIA'),(240,'INGENIERÍA FORESTAL'),(241,'INGENIERÍA GEOGRÁFICA'),(242,'INGENIERÍA INDUSTRIAL'),(243,'INGENIERÍA INFORMÁTICA'),(244,'INGENIERÍA INFORMÁTICA EMPRESARIAL'),(245,'INGENIERÍA MECÁNICA'),(246,'INGENIERÍA MECÁNICA ELÉCTRICA'),(247,'INGENIERÍA MECÁNICO ELÉCTRICO'),(248,'INGENIERÍA MECATRÓNICA'),(249,'INGENIERÍA QUÍMICA'),(250,'INGENIERÍA SISTEMAS COMPUTACIONALES'),(251,'INGENIERÍA TOPOGRÁFICA'),(252,'INGENIERÍA ZOOTECNIA'),(253,'INGENIERO AGRÓNOMO'),(254,'INGENIERO MECÁNICO ELECTRICISTA'),(255,'INGENIERO MECÁNICO ELECTRÓNICO'),(256,'INHALOTERAPIA'),(257,'INSTALACIONES ELÉCTRICAS'),(258,'INTELIGENCÍA ARTIFICIAL'),(259,'INTERVENCIÓN CLÍNICA EN ADOLESCENTES'),(260,'INTERVENCIÓN CLÍNICA EN NIÑOS'),(261,'INVESTIGACIÓN DE MERCADOS'),(262,'KINESIOLOGÍA'),(263,'LABORATORISTA'),(264,'LABORATORISTA CLÍNICO'),(265,'LENGUA'),(266,'LETRAS HISPÁNICAS'),(267,'LICENCIATURA OBSTETRICIA'),(268,'LITERATURA ALEMANA'),(269,'LITERATURA HISPÁNICAS'),(270,'MANEJO DE APARATOS DE ELECTRODIAGNÓSTICO'),(271,'MANTENIMIENTO ELÉCTRICO'),(272,'MANTENIMIENTO INDUSTRIAL'),(273,'MÁQUINAS DE COMBUSTIÓN INTERNA'),(274,'MARKETING'),(275,'MATEMÁTICAS'),(276,'MECÁNICA AUTOMOTRIZ'),(277,'MECÁNICA DISEL'),(278,'MEDICINA'),(279,'MEDICINA VETERINARIA'),(280,'MÉDICO CIRUJANO'),(281,'MÉDICO PARTERO'),(282,'MERCADOTECNIA'),(283,'MERCADOTECNIA INTERNACIONAL'),(284,'MÚSICA'),(285,'NEGOCIOS INTERNACIONALES'),(286,'NEONATOLOGÍA'),(287,'NEUMOLOGÍA PEDIÁTRICA'),(288,'NEUROCIRUGÍA'),(289,'NEUROLINGÜÍSTICA'),(290,'NIVELACIÓN DE LA ENFERMERÍA'),(291,'NUTRICIÓN'),(292,'NUTRICIÓN HUMANA'),(293,'NUTRICIÓN PEDIÁTRICA'),(294,'OBSTETRICIA'),(295,'ODONTOLOGÍA'),(296,'ODONTOPEDIATRIA'),(297,'ÓPTICA'),(298,'OPTOMETRÍA'),(299,'ORGANIZACIÓN INDUSTRIAL'),(300,'ORIENTACIÓN PSICOLÓGICA'),(301,'OTONEUROLOGÍA'),(302,'OTORRINOLARINGOLOGÍA'),(303,'PEDAGOGÍA'),(304,'PEDIATRÍA'),(305,'PERICULTURA'),(306,'PERIODISMO'),(307,'PODOLOGÍA'),(308,'POLITÉCNICA'),(309,'PROGRAMACIÓN DE VIDEOJUEGOS'),(310,'PROGRAMADOR ANALISTA'),(311,'PROMOCIÓN DE LA SALUD'),(312,'PROTESISTA DENTAL'),(313,'PSICOANALÍSIS'),(314,'PSICOLOGÍA'),(315,'PSICOLOGÍA DE LA SALUD'),(316,'PSICOLOGÍA EDUCATIVA'),(317,'PSICOLOGÍA EN TERAPIA FAMILIAR'),(318,'PSICOLOGÍA SOCIAL'),(319,'PSICOONCOLOGIA'),(320,'PSICOPEDAGOGÍA'),(321,'PSICOTERAPIA'),(322,'PSICOTERAPIA BREVE SISTÉMICA'),(323,'PSICOTERAPIA INFANTIL'),(324,'PSICOTERAPIA PSICOANALÍTICA'),(325,'PUBLICIDAD'),(326,'PUERICULTURA'),(327,'QUÍMICA'),(328,'QUÍMICA CLÍNICA'),(329,'QUÍMICA EN ALIMENTOS'),(330,'QUÍMICA FARMACEÚTICA BIOLÓGICA'),(331,'QUÍMICA Y FARMACIA'),(332,'QUÍMICO BACTERIÓLOGO PARASITÓLOGO'),(333,'QUÍMICO CLÍNICO'),(334,'QUÍMICO FARMACEÚTICO BIOLÓGICO'),(335,'QUÍMICO FARMACÉUTICO INDUSTRIAL'),(336,'QUÍMICO FARMACOBIÓLOGO'),(337,'QUÍMICO INDUSTRIAL'),(338,'QUIROPRÁCTICA'),(339,'RADIOLOGÍA'),(340,'RADIOLOGÍA E IMAGEN'),(341,'RECURSOS HUMANOS'),(342,'REHABILITACIÓN INTEGRAL'),(343,'RELACIONES COMERCIALES'),(344,'RELACIONES INTERNACIONALES'),(345,'REUMATOLOGÍA PEDIÁTRICA'),(346,'ROBÓTICA'),(347,'SALUD PÚBLICA'),(348,'SECRETARIA EJECUTIVA BILINGÜE'),(349,'SECRETARIADO'),(350,'SECRETARIADO BILINGÜE'),(351,'SECRETARIADO EN COMPUTACIÓN'),(352,'SISTEMA EDUCATIVO NACIONAL'),(353,'SISTEMA EN COMPUTACIÓN ADMINISTRATIVA'),(354,'SISTEMAS DE INFORMACIÓN'),(355,'SISTEMAS INFORMÁTICOS'),(356,'SOCIOLOGIA'),(357,'SOCIOLOGÍA'),(358,'TÉCNICO RADIÓLOGO'),(359,'TECNOLOGÍA INFORMÁTICA'),(360,'TECNOLOGÍAS INFORMÁTICAS'),(361,'TERAPIA DE LENGUAJE'),(362,'TERAPIA FAMILIAR'),(363,'TERAPIA FÍSICA'),(364,'TERAPIA OCUPACIONAL'),(365,'TERAPIA RESPIRATORIA'),(366,'TERAPISTA EN COMUNICACIÓN HUMANA'),(367,'TRABAJO SOCIAL'),(368,'TURISMO'),(369,'URBANISMO'),(370,'URBANÍSTICA Y MEDIO AMBIENTE'),(371,'URGENCIAS MÉDICAS BÁSICO'),(372,'UROLOGÍA GINECOLÓGICA'),(373,'VETERINARIA'),(374,'ZOOTECNIA'),(375,'REDES DE COMUNICACIÓN'),(376,'PROTOCOLOS DE COMUNICACIÓN');
 /*!40000 ALTER TABLE `tb_tematicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1049,6 +1050,26 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_ObtenerAnio` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_ObtenerAnio`(_Fecha VARCHAR(100)) RETURNS int
+    DETERMINISTIC
+BEGIN
+	RETURN CONVERT((SUBSTRING(_Fecha, -13, 4)),UNSIGNED INTEGER);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP FUNCTION IF EXISTS `fn_ObtenerDia` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1062,7 +1083,7 @@ DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_ObtenerDia`(_Fecha VARCHAR(100)) RETURNS int
     DETERMINISTIC
 BEGIN
-	RETURN CONVERT((SUBSTRING(_Fecha, -20, 2)),UNSIGNED INTEGER);
+	RETURN CONVERT((SUBSTRING(_Fecha, -19, 2)),UNSIGNED INTEGER);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1153,7 +1174,7 @@ DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_ObtenerMes`(_Fecha VARCHAR(100)) RETURNS int
     DETERMINISTIC
 BEGIN
-	RETURN CONVERT((SUBSTRING(_Fecha, -17, 2)),UNSIGNED INTEGER);
+	RETURN CONVERT((SUBSTRING(_Fecha, -16, 2)),UNSIGNED INTEGER);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1866,11 +1887,7 @@ BEGIN
 		FROM tb_chatspersonales Chats
 		INNER JOIN tb_usuarios Usuarios ON Chats.IdUsuarioEmisor = Usuarios.IdUsuario
 		WHERE Chats.IdUsuarioEmisor = _IdUsuario OR Chats.IdUsuarioReceptor = _IdUsuario 
-		AND (
-			Usuarios.Nombre LIKE CONCAT('%',_Busqueda,'%') OR
-			Usuarios.Paterno LIKE CONCAT('%',_Busqueda,'%') OR
-			Usuarios.Materno LIKE CONCAT('%',_Busqueda,'%')
-		)
+		AND CONCAT(Usuarios.Nombre,' ',Usuarios.Paterno, ' ',Usuarios.Materno) LIKE CONCAT('%',_Busqueda,'%')
 		AND Chats.Activo = 1 ORDER BY Chats.IdChat DESC LIMIT 250;
 
 END ;;
@@ -1930,10 +1947,10 @@ BEGIN
 	FROM tb_preguntas Preguntas
 	INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Preguntas.IdUsuario
 	WHERE Preguntas.Activo = 1
-    AND (Preguntas.Pregunta LIKE CONCAT('%',_Busqueda,'%')
-	OR Usuarios.Nombre LIKE CONCAT('%',_Busqueda,'%')
-    OR Usuarios.Paterno LIKE CONCAT('%',_Busqueda,'%')
-    OR Usuarios.Materno LIKE CONCAT('%',_Busqueda,'%')) LIMIT 250;
+    AND (
+    Preguntas.Pregunta LIKE CONCAT('%',_Busqueda,'%')
+	OR CONCAT(Usuarios.Nombre,' ',Usuarios.Paterno,' ',Usuarios.Materno) LIKE CONCAT('%',_Busqueda,'%')
+    ) LIMIT 250;
   
 END ;;
 DELIMITER ;
@@ -1969,6 +1986,57 @@ BEGIN
     )
     ORDER BY Tareas.IdTarea DESC LIMIT 250;
 
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_CambiarEstatusTareaPendienteGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_CambiarEstatusTareaPendienteGrupo`(
+	IN _NuevoEstatus VARCHAR(20),
+    IN _IdTareaPendiente INT,
+    IN _IdUsuario INT
+)
+BEGIN
+	
+    IF courseroom.fn_CampoValido(_NuevoEstatus) = 1 AND _NuevoEstatus <> 'Pendiente' THEN
+    
+		SELECT @Estatus := Estatus FROM tb_tareaspendientesgrupos WHERE IdTareaPendiente = _IdTareaPendiente AND IdUsuarioACargo = _IdUsuario;
+		IF @Estatus IS NOT NULL AND @Estatus <> 'Finalizada' THEN
+			
+            IF _NuevoEstatus = 'Realizado' THEN
+				
+                UPDATE tb_tareaspendientesgrupos SET Estatus = _NuevoEstatus WHERE 
+                IdTareaPendiente = _IdTareaPendiente;
+				
+                SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+                
+            ELSEIF _NuevoEstatus = 'Finalizada' THEN
+				
+                UPDATE tb_tareaspendientesgrupos SET Estatus = _NuevoEstatus, FechaFInalizacion = courseroom.fn_ObtenerFecha() 
+                WHERE  IdTareaPendiente = _IdTareaPendiente;
+				
+                SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+            ELSE
+				SELECT -1 AS "Codigo", 'El Estatus No Es Permisible Al Cambio' AS "Mensaje";
+            END IF;
+            
+		ELSE
+			SELECT -1 AS "Codigo", 'La Tarea Pendiente No Se Encuentra Registrada O Ya Ha Sido Finalizada' AS "Mensaje";
+		END IF;
+    ELSE  
+		SELECT -1 AS "Codigo", 'Algún Parámetro No Cuenta Con El Formato Adecuado' AS "Mensaje";
+    END IF;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2335,12 +2403,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoAdjuntoTarea`(
-	IN _IdTarea INT,
     IN _IdArchivoAdjunto INT
 )
 BEGIN
-	SELECT NombreArchivo, Archivo, Extension FROM tb_archivosadjuntostareas WHERE IdTarea = _IdTarea AND IdArchivoAdjunto = _IdArchivoAdjunto
-    AND Activo = 1 LIMIT 1;
+	SELECT NombreArchivo, Archivo, Extension FROM tb_archivosadjuntostareas WHERE 
+    IdArchivoAdjunto = _IdArchivoAdjunto AND Activo = 1 LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2358,12 +2425,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoCompartidoGrupo`(
-	IN _IdGrupo INT,
     IN _IdArchivoCompartido INT
 )
 BEGIN
-	SELECT NombreArchivo, Archivo, Extension FROM tb_archivoscompartidosgrupos WHERE IdGrupo = _IdGrupo 
-    AND IdArchivoCompartido = _IdArchivoCompartido AND Activo = 1 LIMIT 1;
+	SELECT NombreArchivo, Archivo, Extension FROM tb_archivoscompartidosgrupos WHERE 
+	IdArchivoCompartido = _IdArchivoCompartido AND Activo = 1 LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2381,13 +2447,12 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoMensajeChat`(
-    IN _IdChat INT,
     IN _IdMensaje INT
 )
 BEGIN
     SELECT Mensaje, Archivo, Extension 
     FROM tb_mensajeschat 
-    WHERE IdChat = _IdChat AND IdMensaje = _IdMensaje LIMIT 1;
+    WHERE IdMensaje = _IdMensaje LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2405,13 +2470,12 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoMensajeCurso`(
-    IN _IdCurso INT,
     IN _IdMensaje INT
 )
 BEGIN
     SELECT Mensaje, Archivo, Extension 
     FROM tb_mensajescurso 
-    WHERE IdCurso = _IdCurso AND IdMensaje = _IdMensaje LIMIT 1;
+    WHERE IdMensaje = _IdMensaje LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2429,13 +2493,12 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoMensajeGrupo`(
-    IN _IdGrupo INT,
     IN _IdMensaje INT
 )
 BEGIN
     SELECT Mensaje, Archivo, Extension 
     FROM tb_mensajesgrupo
-    WHERE IdGrupo = _IdGrupo AND IdMensaje = IdMensaje LIMIT 1;
+    WHERE IdMensaje = IdMensaje LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2453,13 +2516,12 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoMensajePregunta`(
-    IN _IdPregunta INT,
     IN _IdMensaje INT
 )
 BEGIN
     SELECT Mensaje, Archivo, Extension 
     FROM tb_mensajespregunta
-    WHERE IdPregunta = _IdPregunta AND IdMensaje = _IdMensaje LIMIT 1;
+    WHERE IdMensaje = _IdMensaje LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2477,13 +2539,33 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoMensajeTarea`(
-    IN _IdTarea INT,
     IN _IdMensaje INT
 )
 BEGIN
     SELECT Mensaje, Archivo, Extension 
-    FROM tb_mensajestarea
-    WHERE IdTarea = _IdTarea AND IdMensaje = _IdMensaje LIMIT 1;
+    FROM tb_mensajestarea WHERE IdMensaje = _IdMensaje LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerArchivoRetroalimentacionTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoRetroalimentacionTarea`(
+    IN _IdRetroalimentacion INT
+)
+BEGIN
+	SELECT  NombreArchivo, Archivo, Extension FROM tb_retroalimentaciones 
+    WHERE IdRetroalimentacion = _IdRetroalimentacion LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2578,13 +2660,12 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoSubidoTarea`(
-	IN _IdTarea INT,
-    IN _IdUsuario INT,
-    IN _IdArchivoSubido INT
+    IN _IdArchivoSubido INT,
+    IN _IdUsuario INT
 )
 BEGIN
-	SELECT NombreArchivo, Archivo, Extension FROM tb_archivosadjuntostareas WHERE IdTarea = _IdTarea 
-    AND IdUsuario = _IdUsuario AND IdArchivoSubido = _IdArchivoSubido AND Activo = 1 LIMIT 1;
+	SELECT NombreArchivo, Archivo, Extension FROM tb_archivosadjuntostareas WHERE  IdUsuario = _IdUsuario 
+    AND IdArchivoSubido = _IdArchivoSubido AND Activo = 1 LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2775,11 +2856,37 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneral
     IN _IdPregunta INT
 )
 BEGIN
-    SELECT courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+    SELECT Usuarios.IdUsuario, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
     Preguntas.Pregunta, Preguntas.Descripcion, Preguntas.FechaCreacion, CAST(Preguntas.Estatus AS CHAR) AS Estatus
     FROM tb_preguntas Preguntas
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Preguntas.IdUsuario
     WHERE Preguntas.IdPregunta = _IdPregunta AND Preguntas.Activo = 1 LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosGeneralesTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneralesTarea`(
+    IN _IdTarea INT,
+    IN _IdUsuario INT
+)
+BEGIN
+    SELECT Tareas.Nombre, Tareas.Descripcion, Tareas.FechaCreacion, Tareas.FechaEntrega, Tareas.TareaGrupal
+    FROM tb_tareas Tareas
+    INNER JOIN tb_tareascursousuarios TareasCursoUsuario ON TareasCursoUsuario.IdTarea = Tareas.IdTarea
+    WHERE TareasCursoUsuario.IdTarea = _IdTarea AND TareasCursoUsuario.IdUsuario = _IdUsuario AND Tareas.Activo = 1;
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2797,8 +2904,7 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneralesTareaPendiente`(
-    IN _IdTareaPendiente INT,
-    IN _IdGrupo INT
+    IN _IdTareaPendiente INT
 )
 BEGIN
 
@@ -2806,7 +2912,7 @@ BEGIN
     CAST(TareaPendiente.Estatus AS CHAR) AS Estatus, Usuarios.IdUsuario, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto
     FROM tb_tareaspendientesgrupos TareaPendiente
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = TareaPendiente.IdUsuarioACargo
-    WHERE TareaPendiente.IdGrupo = _IdGrupo AND TareaPendiente.IdTareaPendiente = _IdTareaPendiente LIMIT 1;
+    WHERE TareaPendiente.IdTareaPendiente = _IdTareaPendiente LIMIT 1;
 
 END ;;
 DELIMITER ;
@@ -3024,7 +3130,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerIntereses` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerInteresesUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -3034,11 +3140,11 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerIntereses`(
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerInteresesUsuario`(
     IN _IdUsuario INT
 )
 BEGIN
-   SELECT Tematicas.Tematica FROM tb_tematicas Tematicas 
+   SELECT Tematicas.IdTematica, Tematicas.Tematica FROM tb_tematicas Tematicas 
    INNER JOIN  tb_tematicasusuarios TematicasUsuarios 
    ON Tematicas.IdTematica = TematicasUsuarios.IdTematica
    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = TematicasUsuarios.IdUsuario
@@ -3107,8 +3213,8 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMaterialSubidoCurso`(
-	IN _IdCurso INT,
-    IN _IdMaterialSubido INT
+	IN _IdMaterialSubido INT,
+    IN _IdCurso INT
 )
 BEGIN
 	SELECT NombreArchivo, Archivo, Extension FROM tb_materialessubidoscurso WHERE IdCurso = _IdCurso 
@@ -3271,30 +3377,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerPregunta` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerPregunta`(
-    IN _IdPregunta INT
-)
-BEGIN
-    SELECT Usuarios.Imagen, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    Preguntas.Pregunta, Preguntas.Descripcion, Preguntas.FechaCreacion, Preguntas.Estatus FROM tb_preguntas Preguntas
-    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Preguntas.IdUsuario
-    WHERE Preguntas.IdPregunta = _IdPregunta AND Preguntas.Activo = 1;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerPreguntas` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -3310,11 +3392,12 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerPreguntas`(
 )
 BEGIN 
 
-	SELECT Preguntas.IdPregunta, Usuarios.Imagen, courseroom.fn_NombreCompleto(Usuarios.Nombre,Usuarios.Paterno,Usuarios.Materno) As NombreCompleto, Preguntas.Pregunta, Preguntas.Descripcion, Preguntas.FechaCreacion, Preguntas.Estatus 
+	SELECT Preguntas.IdPregunta, courseroom.fn_NombreCompleto(Usuarios.Nombre,Usuarios.Paterno,Usuarios.Materno) AS NombreCompleto, 
+    Preguntas.Pregunta, Preguntas.Descripcion, Preguntas.FechaCreacion, CAST(Preguntas.Estatus AS CHAR) AS Estatus
 	FROM tb_preguntas Preguntas
 	INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Preguntas.IdUsuario
     WHERE Preguntas.IdUsuario = _IdUsuario AND Preguntas.Activo = 1
-	ORDER BY Preguntas.IdPregunta DESC LIMIT 100;
+	ORDER BY Preguntas.IdPregunta DESC LIMIT 250;
    
 END ;;
 DELIMITER ;
@@ -3322,7 +3405,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerRetroalimentaciones` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerRetroalimentacionesTarea` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -3332,12 +3415,16 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerRetroalimentaciones`(
-    IN _IdTarea INT
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerRetroalimentacionesTarea`(
+    IN _IdTarea INT,
+    IN _IdUsuario INT
 )
 BEGIN
-    SELECT IdRetroalimentacion, Retroalimentacion, FechaEnvio, NombreArchivo, Archivo, Extension FROM tb_retroalimentaciones
-    WHERE IdTarea = _IdTarea ORDER BY IdRetroalimentacion DESC LIMIT 250;
+	
+    SELECT Retroalimentaciones.IdRetroalimentacion, Retroalimentaciones.Retroalimentacion, Retroalimentaciones.FechaEnvio,
+    Retroalimentaciones.NombreArchivo, Retroalimentaciones.Extension FROM tb_retroalimentaciones Retroalimentaciones
+    INNER JOIN tb_tareascursousuarios TareasUsuario ON TareasUsuario.IdTarea = Retroalimentaciones.IdTarea
+    WHERE Retroalimentaciones.IdTarea = _IdTarea AND TareasUsuario.IdUsuario = _IdUsuario ORDER BY Retroalimentaciones.IdRetroalimentacion DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3368,32 +3455,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerTarea` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerTarea`(
-    IN _IdTarea INT,
-    IN _IdUsuario INT
-)
-BEGIN
-    SELECT Tareas.Nombre, Tareas.Descripcion, Tareas.FechaCreacion, Tareas.FechaEntrega, Tareas.TareaGrupal
-    FROM tb_tareas Tareas
-    INNER JOIN tb_tareascursousuarios TareasCursoUsuario ON TareasCursoUsuario.IdTarea = Tareas.IdTarea
-    WHERE TareasCursoUsuario.IdTarea = _IdTarea AND TareasCursoUsuario.IdUsuario = _IdUsuario AND Tareas.Activo = 1;
-
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerTareasEstudiante` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -3408,11 +3469,12 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerTareasEstudi
     IN _IdUsuario INT
 )
 BEGIN
-	SELECT Tareas.IdTarea, Tareas.Nombre, Cursos.IdCurso, Cursos.Imagen, Cursos.Nombre, Tareas.FechaCreacion, Tareas.FechaEntrega, TareasCursoUsuarios.Estatus
-	FROM tb_tareas Tareas
+	SELECT Tareas.IdTarea, Tareas.Nombre, Cursos.IdCurso,
+    Cursos.Nombre AS NombreCurso, Tareas.FechaCreacion, Tareas.FechaEntrega, 
+    CAST(TareasCursoUsuarios.Estatus AS CHAR) AS Estatus FROM tb_tareas Tareas
 	INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = Tareas.IdCurso
 	INNER JOIN tb_tareascursousuarios TareasCursoUsuarios ON TareasCursoUsuarios.IdTarea = Tareas.IdTarea 
-	WHERE TareasCursoUsuarios.IdUsuario = _IdUsuario AND Tareas.Activo = 1 ORDER BY Tareas.IdTarea DESC LIMIT 100;
+	WHERE TareasCursoUsuarios.IdUsuario = _IdUsuario AND Tareas.Activo = 1 ORDER BY Tareas.IdTarea DESC LIMIT 250;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3430,13 +3492,13 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerTareasMes`(
-    IN _IdUsuario INT,
-    IN _Mes INT
+    IN _Mes INT,
+    IN _IdUsuario INT
 )
 BEGIN
     
-    SELECT courseroom.fn_ObtenerDia(Tareas.FechaEntrega) AS "Dia", 
-    courseroom.fn_ObtenerHorario(Tareas.FechaEntrega) AS "Horario", Tareas.Descripcion
+    SELECT Tareas.IdTarea, courseroom.fn_ObtenerDia(Tareas.FechaEntrega) AS Dia, 
+    courseroom.fn_ObtenerHorario(Tareas.FechaEntrega) AS Horario, Tareas.Descripcion
     FROM tb_tareas Tareas
     INNER JOIN tb_tareascursousuarios TareasUsuarios ON Tareas.IdTarea = TareasUsuarios.IdTarea
     WHERE TareasUsuarios.IdUsuario = _IdUsuario AND Tareas.Activo = 1 
@@ -3448,7 +3510,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerTareasPendientes` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerTareasPendientesGrupo` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -3458,7 +3520,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerTareasPendientes`(
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerTareasPendientesGrupo`(
     IN _IdGrupo INT
 )
 BEGIN
@@ -3467,6 +3529,27 @@ BEGIN
     CAST(TareaPendiente.Estatus AS CHAR) AS Estatus FROM tb_tareaspendientesgrupos TareaPendiente
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = TareaPendiente.IdUsuarioACargo
     WHERE TareaPendiente.IdGrupo = _IdGrupo ORDER BY TareaPendiente.IdTareaPendiente DESC LIMIT 250;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerTematicas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerTematicas`(
+	IN _Busqueda VARCHAR(100)
+)
+BEGIN
+	SELECT IdTematica, Tematica FROM tb_tematicas WHERE Tematica LIKE CONCAT("%",_Busqueda,"%");
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3494,7 +3577,7 @@ BEGIN
 
     IF courseroom.fn_CampoValido(_CorreoElectronico) = 0 
 		OR courseroom.fn_CampoValido(_Contrasenia) = 0 THEN
-        SELECT -1 AS "Codigo", 'Alguno De Los Campos Esta Vacios' AS "Mensaje";
+        SELECT -1 AS "Codigo", 'Algún Campo No Tiene El Formato Adecuado' AS "Mensaje";
     ELSE
     
         SET @IdUsuario := (SELECT IdUsuario FROM tb_usuarios WHERE CorreoElectronico = _CorreoElectronico AND Contrasenia = _Contrasenia AND Activo = 1);
@@ -3513,7 +3596,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerUsuarioChatear` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerUsuariosParaChatear` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -3523,13 +3606,13 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerUsuarioChatear`(
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerUsuariosParaChatear`(
     IN _Busqueda VARCHAR(250)
 )
 BEGIN
     SELECT IdUsuario, courseroom.fn_NombreCompleto(Nombre, Paterno, Materno) AS NombreCompleto
     FROM tb_usuarios WHERE Activo = 1 
-    AND CONCAT(Nombre, ' ', Paterno, ' ',Materno) LIKE CONCAT('%',_Busqueda,'%') LIMIT 10;
+    AND CONCAT(Nombre, ' ', Paterno, ' ',Materno) LIKE CONCAT('%',_Busqueda,'%') LIMIT 25;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3548,13 +3631,12 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverArchivoCompartidoGrupo`(
     IN _IdArchivoCompartido INT,
-    IN _IdUsuario INT,
-    IN _IdGrupo INT
+    IN _IdUsuario INT
 )
 BEGIN
     
     IF EXISTS(SELECT IdArchivoCompartido FROM tb_archivoscompartidosgrupos WHERE IdArchivoCompartido = _IdArchivoCompartido 
-        AND Activo = 1 AND IdGrupo = _IdGrupo AND IdUsuario = _IdUsuario) THEN 
+        AND Activo = 1 AND IdUsuario = _IdUsuario) THEN 
 
         UPDATE tb_archivoscompartidosgrupos SET Activo = 0 WHERE IdGrupo = _IdGrupo AND IdUsuario = _IdUsuario
         AND IdArchivoCompartido = _IdArchivoCompartido;
@@ -3562,7 +3644,7 @@ BEGIN
         SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
 
     ELSE
-        SELECT -1 AS "Codigo", 'El Archivo Compartido No Existe' AS "Mensaje";
+        SELECT -1 AS "Codigo", 'El Archivo Compartido No Se Encuentra Registrado' AS "Mensaje";
     END IF;
 END ;;
 DELIMITER ;
@@ -3570,7 +3652,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverArchivosSubidosTarea` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverArchivoSubidoTarea` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -3580,17 +3662,16 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverArchivosSubidosTarea`(
-    IN _IdUsuario INT,
-    IN _IdTarea INT,
-    IN _IdArchivoSubido INT
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverArchivoSubidoTarea`(
+    IN _IdArchivoSubido INT,
+    IN _IdUsuario INT
 )
 BEGIN
+
     IF EXISTS (SELECT IdArchivoSubido FROM tb_archivossubidostareas WHERE IdArchivoSubido = _IdArchivoSubido
-    AND IdTarea = _IdTarea AND IdUsuario = _IdUsuario AND Activo = 1) THEN
+		AND IdUsuario = _IdUsuario AND Activo = 1) THEN
     
-        UPDATE tb_archivossubidostareas SET Activo = 0 WHERE IdArchivoSubido = _IdArchivoSubido
-        AND IdTarea = _IdTarea AND IdUsuario = _IdUsuario;
+        UPDATE tb_archivossubidostareas SET Activo = 0 WHERE IdArchivoSubido = _IdArchivoSubido;
 
         SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
 
@@ -3604,7 +3685,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverChat` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverChatPersonal` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -3614,9 +3695,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverChat`(
-    IN _IdUsuario INT,
-    IN _IdChat INT
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverChatPersonal`(
+    IN _IdChat INT,
+    IN _IdUsuario INT
 )
 BEGIN
 
@@ -3626,7 +3707,7 @@ BEGIN
             UPDATE tb_chatspersonales SET Activo = 0 WHERE IdChat = _IdChat;
             SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
         ELSE
-            SELECT -1 AS "Codigo", 'La Pregunta No Se Encuentra Registrada' AS "Mensaje";
+            SELECT -1 AS "Codigo", 'El Chat Personal No Se Encuentra Registrado' AS "Mensaje";
         END IF;
             
     ELSE
@@ -3638,7 +3719,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverInteres` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverInteresUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -3648,9 +3729,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverInteres`(
-    IN _IdUsuario INT,
-    IN _IdTematica INT
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverInteresUsuario`(
+    IN _IdTematica INT,
+    IN _IdUsuario INT
 )
 BEGIN
 
@@ -3684,7 +3765,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverPorVotoMiembroDeGrupo` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_RemoverPorVotoMiembroGrupo` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -3694,7 +3775,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverPorVotoMiembroDeGrupo`(
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverPorVotoMiembroGrupo`(
     IN _IdGrupo INT,
     IN _IdUsuario INT
 )
@@ -3703,7 +3784,6 @@ BEGIN
     IF EXISTS(SELECT IdGrupo FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1) THEN
 
         IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
-
 
             IF courseroom.fn_IntentosAceptablesGrupo(_IdGrupo, _IdUsuario) = 1 THEN
                 
@@ -3743,8 +3823,8 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_RemoverPregunta`(
-    IN _IdUsuario INT,
-    IN _IdPregunta INT
+    IN _IdPregunta INT,
+    IN _IdUsuario INT
 )
 BEGIN
 
@@ -3757,7 +3837,7 @@ BEGIN
         END IF;
             
     ELSE
-        SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+        SELECT -1 AS "Codigo", 'El Usuario No Tiene Permiso Para Remover La Pregunta' AS "Mensaje";
     END IF;
 END ;;
 DELIMITER ;
@@ -3775,4 +3855,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-02 21:28:02
+-- Dump completed on 2022-04-03 18:30:08
