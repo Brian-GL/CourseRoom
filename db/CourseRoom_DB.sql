@@ -270,7 +270,7 @@ DROP TABLE IF EXISTS `tb_desempenousuariocurso`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_desempenousuariocurso` (
   `IdDesempeno` int NOT NULL AUTO_INCREMENT,
-  `Prediccion` float NOT NULL,
+  `Prediccion` double DEFAULT NULL,
   `RumboEstatus` enum('A Aprobar','A Reprobar','Excelente','Bueno','Regular','Malo') NOT NULL,
   `IdUsuario` int NOT NULL,
   `IdCurso` int NOT NULL,
@@ -354,7 +354,7 @@ DROP TABLE IF EXISTS `tb_materialessubidoscurso`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_materialessubidoscurso` (
-  `IdArchivoSubido` int NOT NULL AUTO_INCREMENT,
+  `IdMaterialSubido` int NOT NULL AUTO_INCREMENT,
   `NombreArchivo` varchar(100) NOT NULL,
   `Archivo` longblob NOT NULL,
   `Extension` varchar(32) NOT NULL,
@@ -362,7 +362,7 @@ CREATE TABLE `tb_materialessubidoscurso` (
   `IdUsuario` int NOT NULL,
   `IdCurso` int NOT NULL,
   `Activo` bit(1) NOT NULL DEFAULT b'1',
-  PRIMARY KEY (`IdArchivoSubido`),
+  PRIMARY KEY (`IdMaterialSubido`),
   KEY `fk_IdUsuarioMaterialSubido_INDEX` (`IdUsuario`),
   KEY `fk_IdCursoMaterialSubido_INDEX` (`IdCurso`),
   CONSTRAINT `fk_IdCursoMaterialSubido` FOREIGN KEY (`IdCurso`) REFERENCES `tb_tareas` (`IdCurso`),
@@ -444,13 +444,13 @@ LOCK TABLES `tb_mensajescurso` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_mensajesgrupos`
+-- Table structure for table `tb_mensajesgrupo`
 --
 
-DROP TABLE IF EXISTS `tb_mensajesgrupos`;
+DROP TABLE IF EXISTS `tb_mensajesgrupo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tb_mensajesgrupos` (
+CREATE TABLE `tb_mensajesgrupo` (
   `IdMensaje` int NOT NULL AUTO_INCREMENT,
   `Mensaje` text NOT NULL,
   `FechaEnvio` varchar(100) NOT NULL,
@@ -468,22 +468,22 @@ CREATE TABLE `tb_mensajesgrupos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_mensajesgrupos`
+-- Dumping data for table `tb_mensajesgrupo`
 --
 
-LOCK TABLES `tb_mensajesgrupos` WRITE;
-/*!40000 ALTER TABLE `tb_mensajesgrupos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_mensajesgrupos` ENABLE KEYS */;
+LOCK TABLES `tb_mensajesgrupo` WRITE;
+/*!40000 ALTER TABLE `tb_mensajesgrupo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_mensajesgrupo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_mensajespreguntas`
+-- Table structure for table `tb_mensajespregunta`
 --
 
-DROP TABLE IF EXISTS `tb_mensajespreguntas`;
+DROP TABLE IF EXISTS `tb_mensajespregunta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tb_mensajespreguntas` (
+CREATE TABLE `tb_mensajespregunta` (
   `IdMensaje` int NOT NULL AUTO_INCREMENT,
   `Mensaje` text NOT NULL,
   `FechaEnvio` varchar(100) NOT NULL,
@@ -500,22 +500,22 @@ CREATE TABLE `tb_mensajespreguntas` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_mensajespreguntas`
+-- Dumping data for table `tb_mensajespregunta`
 --
 
-LOCK TABLES `tb_mensajespreguntas` WRITE;
-/*!40000 ALTER TABLE `tb_mensajespreguntas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_mensajespreguntas` ENABLE KEYS */;
+LOCK TABLES `tb_mensajespregunta` WRITE;
+/*!40000 ALTER TABLE `tb_mensajespregunta` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_mensajespregunta` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_mensajestareas`
+-- Table structure for table `tb_mensajestarea`
 --
 
-DROP TABLE IF EXISTS `tb_mensajestareas`;
+DROP TABLE IF EXISTS `tb_mensajestarea`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tb_mensajestareas` (
+CREATE TABLE `tb_mensajestarea` (
   `IdMensaje` int NOT NULL AUTO_INCREMENT,
   `Mensaje` text NOT NULL,
   `FechaEnvio` varchar(100) NOT NULL,
@@ -532,12 +532,12 @@ CREATE TABLE `tb_mensajestareas` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_mensajestareas`
+-- Dumping data for table `tb_mensajestarea`
 --
 
-LOCK TABLES `tb_mensajestareas` WRITE;
-/*!40000 ALTER TABLE `tb_mensajestareas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_mensajestareas` ENABLE KEYS */;
+LOCK TABLES `tb_mensajestarea` WRITE;
+/*!40000 ALTER TABLE `tb_mensajestarea` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_mensajestarea` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -2370,6 +2370,126 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerArchivoMensajeChat` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoMensajeChat`(
+    IN _IdChat INT,
+    IN _IdMensaje INT
+)
+BEGIN
+    SELECT Mensaje, Archivo, Extension 
+    FROM tb_mensajeschat 
+    WHERE IdChat = _IdChat AND IdMensaje = _IdMensaje LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerArchivoMensajeCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoMensajeCurso`(
+    IN _IdCurso INT,
+    IN _IdMensaje INT
+)
+BEGIN
+    SELECT Mensaje, Archivo, Extension 
+    FROM tb_mensajescurso 
+    WHERE IdCurso = _IdCurso AND IdMensaje = _IdMensaje LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerArchivoMensajeGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoMensajeGrupo`(
+    IN _IdGrupo INT,
+    IN _IdMensaje INT
+)
+BEGIN
+    SELECT Mensaje, Archivo, Extension 
+    FROM tb_mensajesgrupo
+    WHERE IdGrupo = _IdGrupo AND IdMensaje = IdMensaje LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerArchivoMensajePregunta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoMensajePregunta`(
+    IN _IdPregunta INT,
+    IN _IdMensaje INT
+)
+BEGIN
+    SELECT Mensaje, Archivo, Extension 
+    FROM tb_mensajespregunta
+    WHERE IdPregunta = _IdPregunta AND IdMensaje = _IdMensaje LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerArchivoMensajeTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerArchivoMensajeTarea`(
+    IN _IdTarea INT,
+    IN _IdMensaje INT
+)
+BEGIN
+    SELECT Mensaje, Archivo, Extension 
+    FROM tb_mensajestarea
+    WHERE IdTarea = _IdTarea AND IdMensaje = _IdMensaje LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerArchivosAdjuntosTarea` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2562,7 +2682,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosChatPersonal` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosGeneralesChatPersonal` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -2572,22 +2692,22 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosChatPersonal`(
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneralesChatPersonal`(
     IN _IdChat INT,
     IN _IdUsuario INT
 )
 BEGIN
 
     IF EXISTS(SELECT IdChat FROM tb_chatspersonales WHERE IdChat = _IdChat And Activo = 1 AND IdUsuarioEmisor = _IdUsuario) THEN
-        SELECT Chats.IdUsuarioEmisor, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto
+        SELECT Chats.IdUsuarioEmisor AS IdUsuario, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto
         FROM tb_chatspersonales Chats
         INNER JOIN tb_usuarios Usuarios ON Chats.IdUsuarioEmisor = Usuarios.IdUsuario
-        WHERE Chats.IdChat = _IdChat AND Chats.Activo = 1;
+        WHERE Chats.IdChat = _IdChat AND Chats.Activo = 1 LIMIT 1;
     ELSE
-        SELECT Chats.IdUsuarioReceptor, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto
+        SELECT Chats.IdUsuarioReceptor AS IdUsuario, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto
         FROM tb_chatspersonales Chats
         INNER JOIN tb_usuarios Usuarios ON Chats.IdUsuarioReceptor = Usuarios.IdUsuario
-        WHERE Chats.IdChat = _IdChat AND Chats.Activo = 1;
+        WHERE Chats.IdChat = _IdChat AND Chats.Activo = 1 LIMIT 1;
     END IF;
 END ;;
 DELIMITER ;
@@ -2609,18 +2729,17 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneral
     IN _IdCurso INT
 )
 BEGIN
-    SELECT Cursos.Nombre, Cursos.Descripcion, 
-    courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    Usuarios.Descripcion, Cursos.FechaCreacion FROM tb_cursos Cursos
+    SELECT Cursos.Nombre, Cursos.Descripcion, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+    Usuarios.Descripcion AS DescripcionProfesor, Cursos.FechaCreacion FROM tb_cursos Cursos
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Cursos.IdProfesor
-    WHERE Cursos.IdCurso = _IdCurso AND Cursos.Activo = 1;
+    WHERE Cursos.IdCurso = _IdCurso AND Cursos.Activo = 1 LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosGrupo` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosGeneralesGrupo` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -2630,12 +2749,65 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGrupo`(IN _IdGrupo INT)
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneralesGrupo`(IN _IdGrupo INT)
 BEGIN
     SELECT Grupos.Nombre, Grupos.Descripcion, Grupos.FechaCreacion, Cursos.IdCurso, Cursos.Nombre AS NombreCurso
     FROM tb_grupos Grupos 
     INNER JOIN tb_cursos Cursos ON Grupos.IdCurso = Cursos.IdCurso
-    WHERE Grupos.IdGrupo = _IdGrupo And Grupos.Activo = 1;
+    WHERE Grupos.IdGrupo = _IdGrupo And Grupos.Activo = 1 LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosGeneralesPregunta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneralesPregunta`(
+    IN _IdPregunta INT
+)
+BEGIN
+    SELECT courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+    Preguntas.Pregunta, Preguntas.Descripcion, Preguntas.FechaCreacion, CAST(Preguntas.Estatus AS CHAR) AS Estatus
+    FROM tb_preguntas Preguntas
+    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Preguntas.IdUsuario
+    WHERE Preguntas.IdPregunta = _IdPregunta AND Preguntas.Activo = 1 LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosGeneralesTareaPendiente` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneralesTareaPendiente`(
+    IN _IdTareaPendiente INT,
+    IN _IdGrupo INT
+)
+BEGIN
+
+    SELECT TareaPendiente.Nombre, TareaPendiente.Descripcion, TareaPendiente.FechaCreacion, TareaPendiente.FechaFinalizacion, 
+    CAST(TareaPendiente.Estatus AS CHAR) AS Estatus, Usuarios.IdUsuario, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto
+    FROM tb_tareaspendientesgrupos TareaPendiente
+    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = TareaPendiente.IdUsuarioACargo
+    WHERE TareaPendiente.IdGrupo = _IdGrupo AND TareaPendiente.IdTareaPendiente = _IdTareaPendiente LIMIT 1;
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2662,7 +2834,7 @@ BEGIN
    Localidades.Localidad,Localidades.Estado,Usuarios.PromedioGeneral, Usuarios.FechaCreacion, Usuarios.Contrasenia
    FROM tb_usuarios Usuarios 
    INNER JOIN tb_localidades Localidades ON Usuarios.IdLocalidad = Localidades.IdLocalidad
-   WHERE Usuarios.IdUsuario = _IdUsuario AND Usuarios.Activo = 1;
+   WHERE Usuarios.IdUsuario = _IdUsuario AND Usuarios.Activo = 1 LIMIT 1;
    
 END ;;
 DELIMITER ;
@@ -2670,7 +2842,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosPerfilUsuarioChatPersonal` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosPerfilChatPersonal` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -2680,14 +2852,14 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosPerfilUsuarioChatPersonal`(
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosPerfilChatPersonal`(
     IN _IdUsuario INT
 )
 BEGIN
 
    SELECT Nombre, Paterno, Materno, CorreoElectronico, 
-   Genero, TipoUsuario FROM tb_usuarios 
-   WHERE IdUsuario = _IdUsuario AND Activo = 1;
+   Genero, CAST(TipoUsuario AS CHAR) AS TipoUsuario FROM tb_usuarios 
+   WHERE IdUsuario = _IdUsuario AND Activo = 1 LIMIT 1;
    
 END ;;
 DELIMITER ;
@@ -2695,7 +2867,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosPregunta` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDesempenoUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -2705,65 +2877,13 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosPregunta`(
-    IN _IdPregunta INT
-)
-BEGIN
-    SELECT Usuarios.Imagen, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    Preguntas.Pregunta, Preguntas.Descripcion, Preguntas.FechaCreacion, Preguntas.Estatus FROM tb_preguntas Preguntas
-    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Preguntas.IdUsuario
-    WHERE Preguntas.IdPregunta = _IdPregunta AND Preguntas.Activo = 1;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosTareaPendiente` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosTareaPendiente`(
-    IN _IdTareaPendiente INT,
-    IN _IdGrupo INT
-)
-BEGIN
-
-    SELECT TareaPendiente.Nombre, TareaPendiente.Descripcion, TareaPendiente.FechaCreacion, TareaPendiente.FechaFinalizacion, 
-    CAST(TareaPendiente.Estatus AS CHAR) AS Estatus, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    TareaPendiente.Estatus FROM tb_tareaspendientesgrupos TareaPendiente
-    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = TareaPendiente.IdUsuarioACargo
-    WHERE TareaPendiente.IdGrupo = _IdGrupo AND TareaPendiente.IdTareaPendiente = _IdTareaPendiente LIMIT 1;
-
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDesempeno` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempeno`(
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoUsuario`(
     IN _IdUsuario INT
 )
 BEGIN
     SELECT DesempenoCurso.IdDesempeno, DesempenoCurso.Prediccion,
-    COUNT(Tareas.IdTarea) AS NumeroTareasCalificadas, DesempenoCurso.RumboEstatus, Cursos.IdCurso,
-    Cursos.Imagen, Cursos.Nombre, Usuarios.PromedioGeneral
+    COUNT(Tareas.IdTarea) AS NumeroTareasCalificadas, CAST(DesempenoCurso.RumboEstatus AS CHAR) AS RumboEstatus, Cursos.IdCurso,
+    Cursos.Nombre, Usuarios.PromedioGeneral
     FROM tb_desempenousuariocurso DesempenoCurso
     INNER JOIN tb_usuarios Usuarios ON DesempenoCurso.IdUsuario = Usuarios.IdUsuario
     INNER JOIN tb_tareascursousuarios TareasUsuarios ON TareasUsuarios.IdUsuario = Usuarios.IdUsuario 
@@ -2797,30 +2917,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerGrupo` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerGrupo`(
-    IN _IdGrupo INT
-)
-BEGIN
-    SELECT Grupos.Imagen, Grupos.Nombre, Grupos.Descripcion, Grupos.FechaCreacion, Cursos.IdCurso,
-    Cursos.Nombre FROM tb_grupos Grupos
-    INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = Grupos.IdCurso
-    WHERE Grupos.IdGrupo = _IdGrupo AND Grupos.Activo = 1;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerGrupos` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2836,12 +2932,12 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerGrupos`(
 )
 BEGIN
 
-	SELECT Grupos.IdGrupo, Grupos.Imagen, Grupos.Nombre, Cursos.IdCurso, Cursos.Imagen, Cursos.Nombre, Grupos.FechaCreacion 
+	SELECT Grupos.IdGrupo, Grupos.Nombre, Cursos.IdCurso, Cursos.Nombre AS NombreCurso, Grupos.FechaCreacion 
 	FROM tb_grupos Grupos
 	INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = Grupos.IdCurso
 	INNER JOIN tb_usuariosgrupos UsuariosGrupos ON UsuariosGrupos.IdGrupo = Grupos.IdGrupo
     WHERE UsuariosGrupos.IdUsuario = _IdUsuario AND Grupos.Activo = 1 AND UsuariosGrupos.Activo = 1
-	ORDER BY Grupos.IdGrupo DESC LIMIT 100;
+	ORDER BY Grupos.IdGrupo DESC LIMIT 250;
     
 END ;;
 DELIMITER ;
@@ -2861,7 +2957,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerImagenCurso`(IN _IdCurso INT)
 BEGIN
-    SELECT Imagen FROM tb_cursos WHERE IdCurso = _IdCurso AND Activo = 1;
+    SELECT Imagen FROM tb_cursos WHERE IdCurso = _IdCurso AND Activo = 1 LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2880,7 +2976,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerImagenGrupo`(IN _IdGrupo INT)
 BEGIN
-    SELECT Imagen FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1;
+    SELECT Imagen FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1 LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2918,9 +3014,10 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerImagenPregunta`(IN _IdPregunta INT)
 BEGIN
-    
-    SELECT @IdUsuario := IdUsuario AS Imagen FROM tb_preguntas WHERE IdPregunta = _IdPregunta AND Activo = 1;
-    CALL courseroom.`sp_ObtenerImagenPerfil`(@IdUsuario);
+    SELECT Usuarios.Imagen FROM tb_usuarios Usuarios
+    INNER JOIN tb_preguntas Preguntas ON Preguntas.IdUsuario = Usuarios.IdUsuario
+    WHERE Preguntas.IdPregunta = _IdPregunta AND Preguntas.Activo = 1 LIMIT 1;
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2973,7 +3070,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerMaterialesSubidos` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerMaterialesSubidosCurso` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -2983,15 +3080,39 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMaterialesSubidos`(
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMaterialesSubidosCurso`(
     IN _IdCurso INT
 )
 BEGIN
-    SELECT MaterialesSubidos.IdArchivoSubido ,MaterialesSubidos.NombreArchivo, MaterialesSubidos.Archivo,
-    MaterialesSubidos.Extension, MaterialesSubidos.FechaEnviado, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno,Usuarios.Materno) AS NombreCompleto
+    SELECT MaterialesSubidos.IdMaterialSubido ,MaterialesSubidos.NombreArchivo,
+    MaterialesSubidos.Extension, MaterialesSubidos.FechaEnviado, 
+    courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno,Usuarios.Materno) AS NombreCompleto
     FROM tb_materialessubidoscurso MaterialesSubidos
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MaterialesSubidos.IdUsuario
-    WHERE MaterialesSubidos.IdCurso = _IdCurso ORDER BY MaterialesSubidos.IdArchivoSubido DESC LIMIT 250;
+    WHERE MaterialesSubidos.IdCurso = _IdCurso ORDER BY MaterialesSubidos.IdMaterialSubido DESC LIMIT 250;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerMaterialSubidoCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMaterialSubidoCurso`(
+	IN _IdCurso INT,
+    IN _IdMaterialSubido INT
+)
+BEGIN
+	SELECT NombreArchivo, Archivo, Extension FROM tb_materialessubidoscurso WHERE IdCurso = _IdCurso 
+    AND IdMaterialSubido = _IdMaterialSubido AND Activo = 1 LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3014,7 +3135,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesChat
 BEGIN
     SELECT MensajesChat.IdMensaje, MensajesChat.Mensaje, MensajesChat.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesChat.NombreArchivo, MensajesChat.Archivo, MensajesChat.Extension 
+    MensajesChat.Extension 
     FROM tb_mensajeschat MensajesChat 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesChat.IdUsuarioEmisor
     WHERE MensajesChat.IdChat = _IdChat ORDER BY MensajesChat.IdChat DESC LIMIT 250;
@@ -3040,33 +3161,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesCurs
 BEGIN
     SELECT MensajesCurso.IdMensaje, MensajesCurso.Mensaje, MensajesCurso.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesCurso.NombreArchivo, MensajesCurso.Archivo, MensajesCurso.Extension 
-    FROM tb_mensajescurso MensajesCurso 
-    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesCurso.IdUsuarioEmisor
-    WHERE MensajesCurso.IdCurso= _IdCurso ORDER BY MensajesCurso.IdMensaje DESC LIMIT 250;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerMensajesCursos` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesCursos`(
-    IN _IdCurso INT
-)
-BEGIN
-    SELECT MensajesCurso.IdMensaje, MensajesCurso.Mensaje, MensajesCurso.FechaEnvio,
-    courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesCurso.NombreArchivo, MensajesCurso.Archivo, MensajesCurso.Extension 
+	MensajesCurso.Extension 
     FROM tb_mensajescurso MensajesCurso 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesCurso.IdUsuarioEmisor
     WHERE MensajesCurso.IdCurso= _IdCurso ORDER BY MensajesCurso.IdMensaje DESC LIMIT 250;
@@ -3092,8 +3187,8 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesGrup
 BEGIN
     SELECT MensajesGrupos.IdMensaje, MensajesGrupos.Mensaje, MensajesGrupos.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesGrupos.NombreArchivo, MensajesGrupos.Archivo, MensajesGrupos.Extension 
-    FROM tb_mensajesgrupos MensajesGrupos 
+     MensajesGrupos.Extension 
+    FROM tb_mensajesgrupo MensajesGrupos 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesGrupos.IdUsuarioEmisor
     WHERE MensajesGrupos.IdGrupo = _IdGrupo ORDER BY MensajesGrupos.IdMensaje DESC LIMIT 250;
 END ;;
@@ -3118,8 +3213,8 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesPreg
 BEGIN
     SELECT MensajesPreguntas.IdMensaje, MensajesPreguntas.Mensaje, MensajesPreguntas.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesPreguntas.NombreArchivo, MensajesPreguntas.Archivo, MensajesPreguntas.Extension 
-    FROM tb_mensajespreguntas MensajesPreguntas 
+    MensajesPreguntas.Extension 
+    FROM tb_mensajespregunta MensajesPreguntas 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesPreguntas.IdUsuarioEmisor
     WHERE MensajesPreguntas.IdPregunta = _IdPregunta ORDER BY MensajesPreguntas.IdMensaje DESC LIMIT 250;
 END ;;
@@ -3144,8 +3239,8 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajeTarea
 BEGIN
     SELECT MensajesTareas.IdMensaje, MensajesTareas.Mensaje, MensajesTareas.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesTareas.NombreArchivo, MensajesTareas.Archivo, MensajesTareas.Extension 
-    FROM tb_mensajestareas MensajesTareas
+    MensajesTareas.Extension 
+    FROM tb_mensajestarea MensajesTareas
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesTareas.IdUsuarioEmisor
     WHERE MensajesTareas.IdTarea = _IdTarea ORDER BY MensajesTareas.IdMensaje DESC LIMIT 250;
 END ;;
@@ -3166,35 +3261,10 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMiembrosGrupo`(IN _IdGrupo INT)
 BEGIN
-    SELECT courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    UsuariosGrupos.FechaIngreso, UsuariosGrupos.Intentos FROM tb_usuariosgrupos UsuariosGrupos
+    SELECT Usuarios.IdUsuario, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+    UsuariosGrupos.FechaIngreso FROM tb_usuariosgrupos UsuariosGrupos
     INNER JOIN tb_usuarios Usuarios ON UsuariosGrupos.IdUsuario = Usuarios.IdUsuario
-    WHERE UsuariosGrupos.IdGrupo = _IdGrupo;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerPerfilUsuarioChat` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerPerfilUsuarioChat`(
-    IN _IdUsuario INT
-)
-BEGIN
-
-   SELECT Imagen, Nombre, Paterno, Materno, CorreoElectronico, 
-   Genero, CAST(TipoUsuario AS CHAR) AS TipoUsuario FROM tb_usuarios 
-   WHERE IdUsuario = _IdUsuario AND Activo = 1;
-   
+    WHERE UsuariosGrupos.IdGrupo = _IdGrupo AND courseroom.fn_IntentosAceptablesGrupo(_IdGrupo, Usuarios.IdUsuario) = 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3705,4 +3775,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-01 21:21:08
+-- Dump completed on 2022-04-02 21:28:02
