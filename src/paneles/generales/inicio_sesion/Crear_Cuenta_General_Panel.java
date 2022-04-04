@@ -1266,14 +1266,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     }//GEN-LAST:event_mostrar_Repetir_Contrasena_JCheckBoxMouseClicked
 
     private void promedio_General_JFormattedTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promedio_General_JFormattedTextFieldKeyTyped
-        char c = evt.getKeyChar();   
-          if(Character.isLetter(c)) {
-              getToolkit().beep();//sonido de no aceptar más caracteres.
-              evt.consume();//hace que esa pulsación de tecla se rechace.
-          }
-          int longitud = genero_JTextField.getText().length();
+        int longitud = promedio_General_JFormattedTextField.getText().length();
             if (longitud > 4) {
-            genero_JTextField.setText(genero_JTextField.getText().substring(0, longitud - 1));
+            promedio_General_JFormattedTextField.setText(promedio_General_JFormattedTextField.getText().substring(0, longitud - 1));
             getToolkit().beep(); 
             evt.consume();
           }

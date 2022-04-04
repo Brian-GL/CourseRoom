@@ -947,6 +947,9 @@
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Nombre(s) &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="editar_Nombres_JTextFieldKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Apellido_Paterno_JLabel">
               <Properties>
@@ -967,6 +970,9 @@
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Apellido paterno &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="editar_Apellido_Paterno_JTextFieldKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Localidad_JLabel">
               <Properties>
@@ -987,6 +993,9 @@
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Identidad de g&#xe9;nero &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Opcional&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="editar_Genero_JTextFieldKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Genero_JLabel">
               <Properties>
@@ -1051,6 +1060,9 @@
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Apellido materno &lt;/h3&gt; &lt;/html&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="editar_Apellido_Materno_JTextFieldKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Estado_JLabel">
               <Properties>
@@ -1358,6 +1370,9 @@
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Promedio general de tu escuela&lt;/h3&gt;&#xa;&lt;ul&gt;&lt;li&gt;Esto nos ayudar&#xe1; a generar mayores estad&#xed;sticas sobre ti&lt;br&gt;&#xa;a la hora de tomar tus cursos.&lt;/li&gt;&lt;/ul&gt;&#xa;&lt;/html&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="editar_Promedio_General_JFormattedTextFieldKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Descripcion_JLabel">
               <Properties>
@@ -1391,6 +1406,9 @@
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&#xa;&lt;h3&gt;Descripci&#xf3;n Personal&lt;/h3&gt;&#xa;&lt;ul&gt;&#xa;&lt;li&gt;&#xa;Descripci&#xf3;n sobre ti, visible para todos&#xa;&lt;/li&gt;&#xa;&lt;/ul&gt;&#xa;&lt;/html&gt;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="editar_Descripcion_JTextPaneKeyTyped"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -549,6 +549,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Nombres_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         editar_Nombres_JTextField.setEnabled(false);
         editar_Nombres_JTextField.setToolTipText("<html>  <h3> Nombre(s) </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
+        editar_Nombres_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editar_Nombres_JTextFieldKeyTyped(evt);
+            }
+        });
 
         editar_Apellido_Paterno_JLabel.setText("Apellido Paterno *");
         editar_Apellido_Paterno_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -557,6 +562,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Apellido_Paterno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         editar_Apellido_Paterno_JTextField.setEnabled(false);
         editar_Apellido_Paterno_JTextField.setToolTipText("<html>  <h3> Apellido paterno </h3>  <ul>    <li>Obligatorio</li> </ul>  </html>");
+        editar_Apellido_Paterno_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editar_Apellido_Paterno_JTextFieldKeyTyped(evt);
+            }
+        });
 
         editar_Localidad_JLabel.setText("Localidad");
         editar_Localidad_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -565,6 +575,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Genero_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         editar_Genero_JTextField.setEnabled(false);
         editar_Genero_JTextField.setToolTipText("<html>  <h3> Identidad de género </h3>  <ul>    <li>Opcional</li> </ul>  </html>");
+        editar_Genero_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editar_Genero_JTextFieldKeyTyped(evt);
+            }
+        });
 
         editar_Genero_JLabel.setText("Género");
         editar_Genero_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -598,6 +613,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Apellido_Materno_JTextField.setCaretColor(new java.awt.Color(104, 194, 232));
         editar_Apellido_Materno_JTextField.setEnabled(false);
         editar_Apellido_Materno_JTextField.setToolTipText("<html>  <h3> Apellido materno </h3> </html>");
+        editar_Apellido_Materno_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editar_Apellido_Materno_JTextFieldKeyTyped(evt);
+            }
+        });
 
         editar_Estado_JLabel.setText("Estado");
         editar_Estado_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -840,6 +860,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Promedio_General_JFormattedTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Promedio_General_JFormattedTextField.setPreferredSize(new java.awt.Dimension(126, 40));
         editar_Promedio_General_JFormattedTextField.setToolTipText("<html>\n<h3>Promedio general de tu escuela</h3>\n<ul><li>Esto nos ayudará a generar mayores estadísticas sobre ti<br>\na la hora de tomar tus cursos.</li></ul>\n</html>");
+        editar_Promedio_General_JFormattedTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editar_Promedio_General_JFormattedTextFieldKeyTyped(evt);
+            }
+        });
 
         editar_Descripcion_JLabel.setText("Descripción");
         editar_Descripcion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -850,6 +875,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Descripcion_JTextPane.setEnabled(false);
         editar_Descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
+        editar_Descripcion_JTextPane.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editar_Descripcion_JTextPaneKeyTyped(evt);
+            }
+        });
         editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
         intereses_JLabel.setText("Intereses");
@@ -1431,6 +1461,80 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         Obtener_Localidades_Estado();
     }//GEN-LAST:event_editar_Estado_AutoCompletionComboBoxItemStateChanged
+
+    private void editar_Nombres_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Nombres_JTextFieldKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
+        }
+        int longitud = editar_Nombres_JTextField.getText().length();
+        if (longitud > 29) {
+            editar_Nombres_JTextField.setText(editar_Nombres_JTextField.getText().substring(0, longitud - 1));
+            getToolkit().beep();
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_editar_Nombres_JTextFieldKeyTyped
+
+    private void editar_Apellido_Paterno_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Apellido_Paterno_JTextFieldKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
+        }
+        int longitud = editar_Apellido_Paterno_JTextField.getText().length();
+        if (longitud > 29) {
+            editar_Apellido_Paterno_JTextField.setText(editar_Apellido_Paterno_JTextField.getText().substring(0, longitud - 1));
+            getToolkit().beep();
+            evt.consume();
+        } 
+    }//GEN-LAST:event_editar_Apellido_Paterno_JTextFieldKeyTyped
+
+    private void editar_Apellido_Materno_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Apellido_Materno_JTextFieldKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
+        }
+        int longitud = editar_Apellido_Materno_JTextField.getText().length();
+        if (longitud > 29) {
+            editar_Apellido_Materno_JTextField.setText(editar_Apellido_Materno_JTextField.getText().substring(0, longitud - 1));
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_editar_Apellido_Materno_JTextFieldKeyTyped
+
+    private void editar_Genero_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Genero_JTextFieldKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
+        }
+        int longitud = editar_Genero_JTextField.getText().length();
+        if (longitud > 29) {
+            editar_Genero_JTextField.setText(editar_Genero_JTextField.getText().substring(0, longitud - 1));
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_editar_Genero_JTextFieldKeyTyped
+
+    private void editar_Promedio_General_JFormattedTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Promedio_General_JFormattedTextFieldKeyTyped
+        int longitud = editar_Promedio_General_JFormattedTextField.getText().length();
+            if (longitud > 4) {
+            editar_Promedio_General_JFormattedTextField.setText(editar_Promedio_General_JFormattedTextField.getText().substring(0, longitud - 1));
+            getToolkit().beep(); 
+            evt.consume();
+          }
+    }//GEN-LAST:event_editar_Promedio_General_JFormattedTextFieldKeyTyped
+
+    private void editar_Descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Descripcion_JTextPaneKeyTyped
+       int longitud = editar_Descripcion_JTextPane.getText().length();
+            if (longitud > 499) {
+            editar_Descripcion_JTextPane.setText(editar_Descripcion_JTextPane.getText().substring(0, longitud - 1));
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
+          }
+    }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
     private void Agregar_Interes_Tematica(String id, String interes_Tematica){
         try {
