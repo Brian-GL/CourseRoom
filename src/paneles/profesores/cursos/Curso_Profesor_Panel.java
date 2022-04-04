@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2022 LENOVO
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- */
 package paneles.profesores.cursos;
 
 import clases.Celda_Renderer;
@@ -59,7 +42,6 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.commons.io.FileUtils;
-import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 
 /**
  *
@@ -2341,7 +2323,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                         if(tamanio < 75){
                         celda = new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),archivo_Abierto.getAbsolutePath());
                         celdas[0] = celda;
-                        celda = new Celda_Renderer(Perfil_Estudiante_Panel.Nombre_Completo(),"");
+                        celda = new Celda_Renderer(Perfil_Profesor_Panel.Nombre_Completo(),"");
                         celdas[1] = celda;
                         celda = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(),"");
                         celdas[2] = celda;
@@ -2416,7 +2398,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                         if(tamanio < 75){
                             ruta = archivo_Abierto.getAbsolutePath();
                             nombre_Archivo = archivo_Abierto.getName();
-                            emisor = Perfil_Estudiante_Panel.Nombre_Completo();
+                            emisor = Perfil_Profesor_Panel.Nombre_Completo();
                             fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
                             celda = new Celda_Renderer(emisor);
                             celdas[0] = celda;

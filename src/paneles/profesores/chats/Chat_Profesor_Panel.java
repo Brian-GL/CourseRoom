@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2022 LENOVO
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- */
 package paneles.profesores.chats;
 
 import clases.Celda_Renderer;
@@ -43,7 +26,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 import paneles.profesores.Tablero_Profesor_Panel;
 import paneles.profesores.perfil.Perfil_Profesor_Panel;
 
@@ -785,7 +767,7 @@ public void Enviar_Archivos() {
                         if(tamanio < 75){
                             ruta = archivo_Abierto.getAbsolutePath();
                             nombre_Archivo = archivo_Abierto.getName();
-                            emisor = Perfil_Estudiante_Panel.Nombre_Completo();
+                            emisor = Perfil_Profesor_Panel.Nombre_Completo();
                             fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
                             celda = new Celda_Renderer(emisor);
                             celdas[0] = celda;

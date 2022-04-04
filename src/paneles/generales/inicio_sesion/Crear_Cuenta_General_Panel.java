@@ -441,7 +441,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             }
         });
 
-        apellido_Materno_JLabel.setText("Apellido Materno");
+        apellido_Materno_JLabel.setText("Apellido Materno *");
         apellido_Materno_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         apellido_Materno_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
