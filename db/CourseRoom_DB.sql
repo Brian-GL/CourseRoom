@@ -2007,8 +2007,8 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_CambiarEstatusTareaPendienteGrupo`(
-	IN _NuevoEstatus VARCHAR(20),
     IN _IdTareaPendiente INT,
+    IN _NuevoEstatus VARCHAR(20),
     IN _IdUsuario INT
 )
 BEGIN
@@ -2023,14 +2023,15 @@ BEGIN
                 UPDATE tb_tareaspendientesgrupos SET Estatus = _NuevoEstatus WHERE 
                 IdTareaPendiente = _IdTareaPendiente;
 				
-                SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+                SELECT 1 AS "Codigo", 'El Estatus De La Tarea Pendiente Se Ha Actualizado Satisfactoriamente' AS "Mensaje";
                 
             ELSEIF _NuevoEstatus = 'Finalizada' THEN
 				
                 UPDATE tb_tareaspendientesgrupos SET Estatus = _NuevoEstatus, FechaFInalizacion = courseroom.fn_ObtenerFecha() 
                 WHERE  IdTareaPendiente = _IdTareaPendiente;
 				
-                SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+                SELECT 1 AS "Codigo", 'Estatus De La Tarea Pendiente Modificado Satisfactoriamente' AS "Mensaje";
+                
             ELSE
 				SELECT -1 AS "Codigo", 'El Estatus No Es Permisible Al Cambio' AS "Mensaje";
             END IF;
@@ -2039,7 +2040,7 @@ BEGIN
 			SELECT -1 AS "Codigo", 'La Tarea Pendiente No Se Encuentra Registrada O Ya Ha Sido Finalizada' AS "Mensaje";
 		END IF;
     ELSE  
-		SELECT -1 AS "Codigo", 'Algún Parámetro No Cuenta Con El Formato Adecuado' AS "Mensaje";
+		SELECT -1 AS "Codigo", 'Algún Parámetro De Entrada No Cuenta Con El Formato Adecuado' AS "Mensaje";
     END IF;
 END ;;
 DELIMITER ;
@@ -2097,7 +2098,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_EnviarArchivoCompar
     IN _IdUsuario INT,
     IN _NombreArchivo VARCHAR(100),
     IN _Archivo LONGBLOB,
-    IN _Extension VARCHAR(100)
+    IN _Extension VARCHAR(32)
 )
 BEGIN
     IF courseroom.fn_CampoValido(_NombreArchivo) = 1 AND corseroom.fn_CampoValido(_Extension) = 1 THEN
@@ -2107,9 +2108,9 @@ BEGIN
             IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
 
                 INSERT INTO tb_archivoscompartidosgrupos (NombreArchivo, Archivo, Extension, FechaSubido, IdUsuario, IdGrupo, Activo)
-                VALUES (_NombreArchivo, _Archivo, _Extension, courseroom.fn_ObtenerFecha(),_IdUsuario, _IdGrupo, 1);
+                VALUES (_NombreArchivo, IF(OCTET_LENGTH(_Archivo) > 0, _Archivo, NULL), _Extension, courseroom.fn_ObtenerFecha(),_IdUsuario, _IdGrupo, 1);
 
-                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+                SELECT LAST_INSERT_ID() AS "Codigo", 'Archivo Compartido Agregado Satisfactoriamente' AS "Mensaje";
             ELSE 
                 SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
             END IF;
@@ -2119,7 +2120,7 @@ BEGIN
         END IF;
 
     ELSE 
-        SELECT -1 AS "Codigo", 'Algún Campo No Tiene El Formato Valido' AS "Mensaje";
+        SELECT -1 AS "Codigo", 'Algún Parámetro De Entrada No Cuenta Con El Formato Adecuado' AS "Mensaje";
     END IF;
     
 END ;;
@@ -2153,9 +2154,9 @@ BEGIN
 
             IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
                 INSERT INTO tb_mensajeschat (Mensaje, FechaEnvio, Archivo, Extension, IdChat, IdUsuarioEmisor)
-                VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), _Archivo, _Extension, _IdChat, _IdUsuarioEmisor);
+                VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), IF(OCTET_LENGTH(_Archivo) > 0, _Archivo, NULL), _Extension, _IdChat, _IdUsuarioEmisor);
 
-                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+                SELECT LAST_INSERT_ID() AS "Codigo", 'Mensaje Agregado Satisfactoriamente' AS "Mensaje";
 
             ELSE
                 SELECT -1 AS "Codigo", 'El Usuario Emisor No Se Encuentra Registrado' AS "Mensaje";
@@ -2166,7 +2167,7 @@ BEGIN
         END IF;
 
     ELSE
-        SELECT -1 AS "Codigo", 'El Mensaje No Tiene El Formato Correcto' AS "Mensaje";
+        SELECT -1 AS "Codigo", 'Algún Parámetro De Entrada No Cuenta Con El Formato Adecuado' AS "Mensaje";
     END IF;
 
 END ;;
@@ -2201,9 +2202,9 @@ BEGIN
             IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
 
                 INSERT INTO tb_mensajescurso (Mensaje, FechaEnvio, Archivo, Extension, IdCurso, IdUsuarioEmisor)
-                VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), _Archivo, _Extension, _IdCurso, _IdUsuarioEmisor);
+                VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), IF(OCTET_LENGTH(_Archivo) > 0, _Archivo, NULL), _Extension, _IdCurso, _IdUsuarioEmisor);
 
-                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+                SELECT LAST_INSERT_ID() AS "Codigo", 'Mensaje Agregado Satisfactoriamente' AS "Mensaje";
 
             ELSE
                 SELECT -1 AS "Codigo", 'El Curso Emisor No Se Encuentra Registrado' AS "Mensaje";
@@ -2214,7 +2215,7 @@ BEGIN
         END IF;
 
     ELSE
-        SELECT -1 AS "Codigo", 'El Mensaje No Tiene El Formato Correcto' AS "Mensaje";
+        SELECT -1 AS "Codigo", 'Algún Parámetro De Entrada No Cuenta Con El Formato Adecuado' AS "Mensaje";
     END IF;
 
 END ;;
@@ -2249,9 +2250,9 @@ BEGIN
             IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
 
                 INSERT INTO tb_mensajesgrupos (Mensaje, FechaEnvio, Archivo, Extension, IdGrupo, IdUsuarioEmisor)
-                VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), _Archivo, _Extension, _IdGrupo, _IdUsuarioEmisor);
+                VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), IF(OCTET_LENGTH(_Archivo) > 0, _Archivo, NULL), _Extension, _IdGrupo, _IdUsuarioEmisor);
 
-                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+                SELECT LAST_INSERT_ID() AS "Codigo", 'Mensaje Agregado Satisfactoriamente' AS "Mensaje";
 
             ELSE
                 SELECT -1 AS "Codigo", 'El Usuario Emisor No Se Encuentra Registrado' AS "Mensaje";
@@ -2262,7 +2263,7 @@ BEGIN
         END IF;
 
     ELSE
-        SELECT -1 AS "Codigo", 'El Mensaje No Tiene El Formato Correcto' AS "Mensaje";
+        SELECT -1 AS "Codigo", 'Algún Parámetro De Entrada No Cuenta Con El Formato Adecuado' AS "Mensaje";
     END IF;
 
 END ;;
@@ -2297,9 +2298,9 @@ BEGIN
             IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
 
                 INSERT INTO tb_mensajespreguntas (Mensaje, FechaEnvio, Archivo, Extension, IdPregunta, IdUsuarioEmisor)
-                VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), _Archivo, _Extension, _IdPregunta, _IdUsuarioEmisor);
+                VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), IF(OCTET_LENGTH(_Archivo) > 0, _Archivo, NULL), _Extension, _IdPregunta, _IdUsuarioEmisor);
 
-                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+                SELECT LAST_INSERT_ID() AS "Codigo", 'Mensaje Agregado Satisfactoriamente' AS "Mensaje";
 
             ELSE
                 SELECT -1 AS "Codigo", 'El Usuario Emisor No Se Encuentra Registrado' AS "Mensaje";
@@ -2310,7 +2311,7 @@ BEGIN
         END IF;
 
     ELSE
-        SELECT -1 AS "Codigo", 'El Mensaje No Tiene El Formato Correcto' AS "Mensaje";
+        SELECT -1 AS "Codigo", 'Algún Parámetro De Entrada No Cuenta Con El Formato Adecuado' AS "Mensaje";
     END IF;
 
 END ;;
@@ -2345,9 +2346,9 @@ BEGIN
             IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
 
                 INSERT INTO tb_mensajestareas (Mensaje, FechaEnvio, Archivo, Extension, IdTarea, IdUsuarioEmisor)
-                VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), _Archivo, _Extension, _IdTarea, _IdUsuarioEmisor);
+                VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), IF(OCTET_LENGTH(_Archivo) > 0, _Archivo, NULL), _Extension, _IdTarea, _IdUsuarioEmisor);
 
-                SELECT LAST_INSERT_ID() AS "Codigo", 'OK' AS "Mensaje";
+                SELECT LAST_INSERT_ID() AS "Codigo", 'Mensaje Agregado Satisfactoriamente' AS "Mensaje";
 
             ELSE
                 SELECT -1 AS "Codigo", 'El Usuario Emisor No Se Encuentra Registrado' AS "Mensaje";
@@ -2358,7 +2359,7 @@ BEGIN
         END IF;
 
     ELSE
-        SELECT -1 AS "Codigo", 'El Mensaje No Tiene El Formato Correcto' AS "Mensaje";
+        SELECT -1 AS "Codigo", 'Algún Parámetro De Entrada No Cuenta Con El Formato Adecuado' AS "Mensaje";
     END IF;
 
 END ;;
@@ -2385,7 +2386,7 @@ BEGIN
 
 	IF EXISTS(SELECT IdPregunta FROM tb_preguntas WHERE IdPregunta = _IdPregunta AND Activo = 1 AND IdUsuario = _IdUsuario) THEN
 		UPDATE tb_preguntas SET Estatus = 'Solucionada' WHERE IdPregunta = _IdPregunta;
-		SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+		SELECT 1 AS "Codigo", 'La Pregunta Se Ha Marcado Solucionada Satisfactoriamente' AS "Mensaje";
 	ELSE
 		SELECT -1 AS "Codigo", 'La Pregunta No Se Encuentra Registrada' AS "Mensaje";
 	END IF;
@@ -3859,4 +3860,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-04 19:59:47
+-- Dump completed on 2022-04-04 22:21:30
