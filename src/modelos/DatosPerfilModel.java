@@ -57,108 +57,108 @@ public class DatosPerfilModel {
         this.promedio_General = -1;
     }
    
-    public String getNombre() {
+    public String Nombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void Nombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getPaterno() {
+    public String Paterno() {
         return paterno;
     }
 
-    public void setPaterno(String paterno) {
+    public void Paterno(String paterno) {
         this.paterno = paterno;
     }
 
-    public String getMaterno() {
+    public String Materno() {
         return materno;
     }
 
-    public void setMaterno(String materno) {
+    public void Materno(String materno) {
         this.materno = materno;
     }
 
-    public String getCorreo_Electronico() {
+    public String Correo_Electronico() {
         return correo_Electronico;
     }
 
-    public void setCorreo_Electronico(String correo_Electronico) {
+    public void Correo_Electronico(String correo_Electronico) {
         this.correo_Electronico = correo_Electronico;
     }
 
-    public String getGenero() {
+    public String Genero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void Genero(String genero) {
         this.genero = genero;
     }
 
-    public String getTipo_Usuario() {
+    public String Tipo_Usuario() {
         return tipo_Usuario;
     }
 
-    public void setTipo_Usuario(String tipo_Usuario) {
+    public void Tipo_Usuario(String tipo_Usuario) {
         this.tipo_Usuario = tipo_Usuario;
     }
 
-    public String getFecha_Nacimiento() {
+    public String Fecha_Nacimiento() {
         return fecha_Nacimiento;
     }
 
-    public void setFecha_Nacimiento(String fecha_Nacimiento) {
+    public void Fecha_Nacimiento(String fecha_Nacimiento) {
         this.fecha_Nacimiento = fecha_Nacimiento;
     }
 
-    public String getDescripcion() {
+    public String Descripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    public void Descripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public String getLocalidad() {
+    public String Localidad() {
         return localidad;
     }
 
-    public void setLocalidad(String localidad) {
+    public void Localidad(String localidad) {
         this.localidad = localidad;
     }
 
-    public String getEstado() {
+    public String Estado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void Estado(String estado) {
         this.estado = estado;
     }
 
-    public String getFecha_Creacion() {
+    public String Fecha_Creacion() {
         return fecha_Creacion;
     }
 
-    public void setFecha_Creacion(String fecha_Creacion) {
+    public void Fecha_Creacion(String fecha_Creacion) {
         this.fecha_Creacion = fecha_Creacion;
     }
 
-    public double getPromedio_General() {
+    public double Promedio_General() {
         return promedio_General;
     }
 
-    public void setPromedio_General(double promedio_General) {
+    public void Promedio_General(double promedio_General) {
         this.promedio_General = promedio_General;
     }
 
     
-    public String getContrasenia() {
+    public String Contrasenia() {
         return contrasenia;
     }
 
-    public void setContrasenia(String contrasenia) {
+    public void Contrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
    

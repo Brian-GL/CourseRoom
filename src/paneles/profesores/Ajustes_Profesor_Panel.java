@@ -523,24 +523,24 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
        
-        String id = sesionModel.getId_Sesion().toString();
+        String id = sesionModel.Id_Sesion().toString();
         
-        celda = new Celda_Renderer(sesionModel.getDispositivo(),id);
+        celda = new Celda_Renderer(sesionModel.Dispositivo(),id);
         celdas[0] = celda;
-        celda = new Celda_Renderer(sesionModel.getFabricante(),id);
+        celda = new Celda_Renderer(sesionModel.Fabricante(),id);
         celdas[1] = celda;
-        celda = new Celda_Renderer(sesionModel.getUuid(),id);
+        celda = new Celda_Renderer(sesionModel.Uuid(),id);
         celdas[2] = celda;
-        celda = new Celda_Renderer(sesionModel.getUltima_Conexion(),id);
+        celda = new Celda_Renderer(sesionModel.Ultima_Conexion(),id);
         celdas[3] = celda;
-        celda = new Celda_Renderer(sesionModel.getDireccion_Ip(),id);
+        celda = new Celda_Renderer(sesionModel.Direccion_Ip(),id);
         celdas[4] = celda;
-        celda = new Celda_Renderer(sesionModel.getEstatus(),id);
+        celda = new Celda_Renderer(sesionModel.Estatus(),id);
         celdas[5] = celda;
 
         modelo.addRow(celdas);
 
-        int altura = CourseRoom.Utilerias().Altura_Fila_Tabla(sesionModel.getUuid().length());
+        int altura = CourseRoom.Utilerias().Altura_Fila_Tabla(sesionModel.Uuid().length());
         sesiones_JTable.setRowHeight(modelo.getRowCount()-1, altura);
         
     }

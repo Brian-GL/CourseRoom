@@ -331,19 +331,19 @@ public class Solicitudes {
 
                if(resultado.size()== 13){
                    
-                    datosPerfilModel.setNombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setPaterno(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setMaterno(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setCorreo_Electronico(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setGenero(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setTipo_Usuario(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setFecha_Nacimiento(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setDescripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setLocalidad(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setEstado(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setPromedio_General((double)resultado.remove(0));
-                    datosPerfilModel.setFecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosPerfilModel.setContrasenia((String)resultado.remove(0));
+                    datosPerfilModel.Nombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Paterno(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Materno(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Correo_Electronico(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Genero(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Tipo_Usuario(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Fecha_Nacimiento(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Localidad(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Estado(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Promedio_General((double)resultado.remove(0));
+                    datosPerfilModel.Fecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilModel.Contrasenia((String)resultado.remove(0));
                 }
                
            }

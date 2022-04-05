@@ -1295,29 +1295,29 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         carta_Visible = 0;
         
-        nombres_JLabel.setText(datosPerfilModel.getNombre());
-        apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.getPaterno()," ",datosPerfilModel.getMaterno()));
-        correo_Electronico_JLabel.setText(datosPerfilModel.getCorreo_Electronico());
-        localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar(datosPerfilModel.getLocalidad(), " - ", datosPerfilModel.getEstado())));
+        nombres_JLabel.setText(datosPerfilModel.Nombre());
+        apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Paterno()," ",datosPerfilModel.Materno()));
+        correo_Electronico_JLabel.setText(datosPerfilModel.Correo_Electronico());
+        localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Localidad(), " - ", datosPerfilModel.Estado())));
         descripcion_JTextPane.setText(
                 CourseRoom.Utilerias().Formato_HTML_Izquierda(
-                        CourseRoom.Utilerias().Concatenar(datosPerfilModel.getDescripcion(), " <br><br><br>Registrado El ",datosPerfilModel.getFecha_Creacion())));
-        genero_JLabel.setText(datosPerfilModel.getGenero());
-        fecha_Nacimiento_JLabel.setText(datosPerfilModel.getFecha_Nacimiento());
+                        CourseRoom.Utilerias().Concatenar(datosPerfilModel.Descripcion(), " <br><br><br>Registrado El ",datosPerfilModel.Fecha_Creacion())));
+        genero_JLabel.setText(datosPerfilModel.Genero());
+        fecha_Nacimiento_JLabel.setText(datosPerfilModel.Fecha_Nacimiento());
 
-        tipo_Perfil_JLabel.setText(datosPerfilModel.getTipo_Usuario());
+        tipo_Perfil_JLabel.setText(datosPerfilModel.Tipo_Usuario());
         
-        String contrasenia = CourseRoom.Utilerias().Decodificacion(datosPerfilModel.getContrasenia());
+        String contrasenia = CourseRoom.Utilerias().Decodificacion(datosPerfilModel.Contrasenia());
         contrasena_JPasswordField.setText(contrasenia);
-        editar_Correo_Electronico_JTextField.setText(datosPerfilModel.getCorreo_Electronico());
-        editar_Nombres_JTextField.setText(datosPerfilModel.getNombre());
+        editar_Correo_Electronico_JTextField.setText(datosPerfilModel.Correo_Electronico());
+        editar_Nombres_JTextField.setText(datosPerfilModel.Nombre());
         
-        editar_Apellido_Materno_JTextField.setText(datosPerfilModel.getMaterno());
-        editar_Apellido_Paterno_JTextField.setText(datosPerfilModel.getPaterno());
-        editar_Descripcion_JTextPane.setText(datosPerfilModel.getDescripcion());
-        Tripleta<Integer, Integer, Integer> tripleta = CourseRoom.Utilerias().Fecha(datosPerfilModel.getFecha_Nacimiento());
+        editar_Apellido_Materno_JTextField.setText(datosPerfilModel.Materno());
+        editar_Apellido_Paterno_JTextField.setText(datosPerfilModel.Paterno());
+        editar_Descripcion_JTextPane.setText(datosPerfilModel.Descripcion());
+        Tripleta<Integer, Integer, Integer> tripleta = CourseRoom.Utilerias().Fecha(datosPerfilModel.Fecha_Nacimiento());
         editar_Fecha_Nacimiento_DatePicker.setDate(LocalDate.of(tripleta.third(), tripleta.second(), tripleta.first()));
-        editar_Genero_JTextField.setText(datosPerfilModel.getGenero());
+        editar_Genero_JTextField.setText(datosPerfilModel.Genero());
        
         
         if(Tablero_Profesor_Panel.Obtener_Imagen_Usuario() != null){
@@ -1344,8 +1344,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                 editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
             }
 
-            editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getEstado());
-            editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.getLocalidad());
+            editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.Estado());
+            editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.Localidad());
         }else{
             
             editar_Estado_AutoCompletionComboBox.setEnabled(false);

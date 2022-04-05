@@ -45,59 +45,59 @@ public class SesionesModel {
         this.estatus = new String();
     }
 
-    public Integer getId_Sesion() {
+    public Integer Id_Sesion() {
         return id_Sesion;
     }
 
-    public void setId_Sesion(Integer id_Sesion) {
+    public void Id_Sesion(Integer id_Sesion) {
         this.id_Sesion = id_Sesion;
     }
 
-    public String getDispositivo() {
+    public String Dispositivo() {
         return dispositivo;
     }
 
-    public void setDispositivo(String dispositivo) {
+    public void Dispositivo(String dispositivo) {
         this.dispositivo = dispositivo;
     }
 
-    public String getFabricante() {
+    public String Fabricante() {
         return fabricante;
     }
 
-    public void setFabricante(String fabricante) {
+    public void Fabricante(String fabricante) {
         this.fabricante = fabricante;
     }
 
-    public String getUuid() {
+    public String Uuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
+    public void Uuid(String uuid) {
         this.uuid = uuid;
     }
 
-    public String getUltima_Conexion() {
+    public String Ultima_Conexion() {
         return ultima_Conexion;
     }
 
-    public void setUltima_Conexion(String ultima_Conexion) {
+    public void Ultima_Conexion(String ultima_Conexion) {
         this.ultima_Conexion = ultima_Conexion;
     }
 
-    public String getDireccion_Ip() {
+    public String Direccion_Ip() {
         return direccion_Ip;
     }
 
-    public void setDireccion_Ip(String direccion_Ip) {
+    public void Direccion_Ip(String direccion_Ip) {
         this.direccion_Ip = direccion_Ip;
     }
 
-    public String getEstatus() {
+    public String Estatus() {
         return estatus;
     }
 
-    public void setEstatus(String estatus) {
+    public void Estatus(String estatus) {
         this.estatus = estatus;
     }
     
