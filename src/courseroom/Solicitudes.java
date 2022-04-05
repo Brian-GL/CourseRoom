@@ -195,7 +195,7 @@ public class Solicitudes {
         return response;
     }
 
-    public Par<Integer, String> Agregar_Nuevo_Usuario(String correo_Electronico, String contrasenia ,String nombre,
+    public Par<Integer, String> Agregar_Usuario(String correo_Electronico, String contrasenia ,String nombre,
         String paterno, String materno, int id_Localidad, String genero, String fecha_Nacimiento, String tipo_Usuario,
         byte[] imagen_Codificada, double promedio_General,String descripcion){
 
@@ -220,7 +220,7 @@ public class Solicitudes {
             parametros.add(CourseRoom.Utilerias().MiUidd());
             parametros.add(CourseRoom.Utilerias().MiIP());
             
-            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Agregar_Nuevo_Usuario", parametros);
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Agregar_Usuario", parametros);
             
             if(respuesta != null){
                 

@@ -45,6 +45,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         initComponents();
         Actualizar_Datos();
         Iniciar_Componentes();
+        
     }
 
     /**
@@ -1520,20 +1521,20 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Promedio_General_JFormattedTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Promedio_General_JFormattedTextFieldKeyTyped
         int longitud = editar_Promedio_General_JFormattedTextField.getText().length();
-            if (longitud > 4) {
+        if (longitud > 6) {
             editar_Promedio_General_JFormattedTextField.setText(editar_Promedio_General_JFormattedTextField.getText().substring(0, longitud - 1));
             getToolkit().beep(); 
             evt.consume();
-          }
+        }
     }//GEN-LAST:event_editar_Promedio_General_JFormattedTextFieldKeyTyped
 
     private void editar_Descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Descripcion_JTextPaneKeyTyped
        int longitud = editar_Descripcion_JTextPane.getText().length();
-            if (longitud > 499) {
+        if (longitud > 499) {
             editar_Descripcion_JTextPane.setText(editar_Descripcion_JTextPane.getText().substring(0, longitud - 1));
             getToolkit().beep();//sonido de no aceptar más caracteres. 
             evt.consume();//hace que esa pulsación de tecla se rechace.
-          }
+        }
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
     private void Agregar_Interes_Tematica(String id, String interes_Tematica){

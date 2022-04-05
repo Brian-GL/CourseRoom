@@ -101,8 +101,10 @@ import frames.generales.Lector_Audio_General_Frame;
 import frames.generales.Lector_PDF_General_Frame;
 import frames.generales.Lector_Video_General_Panel;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
 import java.io.BufferedReader;
@@ -120,10 +122,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Random;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import net.coobird.gui.simpleimageviewer4j.Viewer;
 import oshi.SystemInfo;
@@ -167,12 +169,12 @@ public class Utilerias {
             componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().setMediaPlayer(media_player_Factory.mediaPlayers().newMediaPlayer());
             componente_Reproducto_Lista_Audio.mediaListPlayer().mediaPlayer().mediaPlayer().audio().setEqualizer(media_player_Factory.equalizer().newEqualizer("Flat"));
         }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, 
-                    "Es necesario contar con VLC Media Player instalado en tu dispositivo.\nPuedes obtenerlo desde la siguiente liga:\nhttps://www.videolan.org/vlc/",
-                    "Error Encontrado", JOptionPane.ERROR_MESSAGE);
+        catch(UnsatisfiedLinkError e){
+            Mensaje_Error("VLC No Encontrado",
+                    "Es necesario contar con VLC Media Player instalado en tu dispositivo.\nPuedes obtenerlo desde la siguiente liga:\nhttps://www.videolan.org/vlc/");
             System.exit(0);
         }
+        
 
         formato_Fecha = DateTimeFormatter.ofPattern("EEEE dd/MM/yyyy hh:mm:ss");
         color_Azul_Oscuro = new Color(14, 30, 64);
@@ -194,6 +196,70 @@ public class Utilerias {
     
     private static class UtileriasHolder {
         private static final Utilerias INSTANCE = new Utilerias();
+    }
+    
+    public void Mensaje_Alerta(String titulo, String texto){
+        Toolkit.getDefaultToolkit().beep();
+        Image logo_Imagen;
+        try {
+            logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
+            logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
+            logo_Imagen.flush();
+            JOptionPane optionPane = new JOptionPane(Formato_HTML_Centro(texto),JOptionPane.WARNING_MESSAGE);
+            optionPane.setFont(new Font("Segoe UI",15, Font.BOLD));
+            JDialog dialog = optionPane.createDialog(titulo);
+            dialog.setTitle(titulo);
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            dialog.setFont(optionPane.getFont());
+            dialog.setIconImage(logo_Imagen);
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+        } catch (IOException ex) {
+            
+        }
+    }
+    
+    public void Mensaje_Error(String titulo, String texto){
+        Toolkit.getDefaultToolkit().beep();
+        Image logo_Imagen;
+        try {
+            logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
+            logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
+            logo_Imagen.flush();
+            JOptionPane optionPane = new JOptionPane(Formato_HTML_Centro(texto),JOptionPane.ERROR_MESSAGE);
+            optionPane.setFont(new Font("Segoe UI",15, Font.BOLD));
+            JDialog dialog = optionPane.createDialog(titulo);
+            dialog.setTitle(titulo);
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            dialog.setFont(optionPane.getFont());
+            dialog.setIconImage(logo_Imagen);
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+        } catch (IOException ex) {
+            
+        }
+    }
+    
+    public void Mensaje_Informativo(String titulo, String texto){
+        Toolkit.getDefaultToolkit().beep();
+        Image logo_Imagen;
+        try {
+            logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
+            logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
+            logo_Imagen.flush();
+            JOptionPane optionPane = new JOptionPane(Formato_HTML_Centro(texto),JOptionPane.INFORMATION_MESSAGE);
+            optionPane.setFont(new Font("Segoe UI",15, Font.BOLD));
+            JDialog dialog = optionPane.createDialog(titulo);
+            dialog.setTitle(titulo);
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            dialog.setFont(optionPane.getFont());
+            dialog.setIconImage(logo_Imagen);
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+        } catch (IOException ex) {
+            
+        }
+        
     }
     
     public String DireccionIP() throws MalformedURLException, IOException{

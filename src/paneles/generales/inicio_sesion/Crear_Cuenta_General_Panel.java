@@ -1671,13 +1671,15 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             }
 
 
-            Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Nuevo_Usuario(correoElectronico, contrasena, 
+            Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena, 
                     nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
 
             Integer codigo = response.first();
             String mensaje = response.second();
 
             if(codigo > 0){
+                
+                JOptionPane.showMessageDialog(this, mensaje, "Agregar Usuario", JOptionPane.INFORMATION_MESSAGE);
 
                 CourseRoom.Esconder_Frame();
 
