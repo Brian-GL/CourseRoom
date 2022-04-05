@@ -847,7 +847,7 @@ CREATE TABLE `tb_usuarios` (
   `Genero` varchar(25) DEFAULT NULL,
   `Descripcion` text,
   `PromedioGeneral` double DEFAULT NULL,
-  `TipoUsuario` enum('Estudiante','Profesor') CHARACTER SET binary NOT NULL,
+  `TipoUsuario` enum('Estudiante','Profesor') CHARACTER SET binary COLLATE binary NOT NULL,
   `FechaCreacion` varchar(100) NOT NULL,
   `IdLocalidad` int NOT NULL,
   `Imagen` mediumblob,
@@ -3860,4 +3860,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-04 22:21:30
+-- Dump completed on 2022-04-05 18:48:46
