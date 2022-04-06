@@ -2835,7 +2835,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneralesGrupo`(IN _IdGrupo INT)
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneralesGrupo`(
+	IN _IdGrupo INT
+)
 BEGIN
     SELECT Grupos.Nombre, Grupos.Descripcion, Grupos.FechaCreacion, Cursos.IdCurso, Cursos.Nombre AS NombreCurso
     FROM tb_grupos Grupos 
@@ -3218,12 +3220,11 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMaterialSubidoCurso`(
-	IN _IdMaterialSubido INT,
-    IN _IdCurso INT
+	IN _IdMaterialSubido INT
 )
 BEGIN
-	SELECT NombreArchivo, Archivo, Extension FROM tb_materialessubidoscurso WHERE IdCurso = _IdCurso 
-    AND IdMaterialSubido = _IdMaterialSubido AND Activo = 1 LIMIT 1;
+	SELECT NombreArchivo, Archivo, Extension FROM tb_materialessubidoscurso WHERE 
+    IdMaterialSubido = _IdMaterialSubido AND Activo = 1 LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3246,7 +3247,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesChat
 BEGIN
     SELECT MensajesChat.IdMensaje, MensajesChat.Mensaje, MensajesChat.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesChat.Extension 
+    MensajesChat.Extension, MensajesChat.NombreArchivo
     FROM tb_mensajeschat MensajesChat 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesChat.IdUsuarioEmisor
     WHERE MensajesChat.IdChat = _IdChat ORDER BY MensajesChat.IdChat DESC LIMIT 250;
@@ -3272,7 +3273,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesCurs
 BEGIN
     SELECT MensajesCurso.IdMensaje, MensajesCurso.Mensaje, MensajesCurso.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-	MensajesCurso.Extension 
+	MensajesCurso.Extension, MensajesCurso.NombreArchivo
     FROM tb_mensajescurso MensajesCurso 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesCurso.IdUsuarioEmisor
     WHERE MensajesCurso.IdCurso= _IdCurso ORDER BY MensajesCurso.IdMensaje DESC LIMIT 250;
@@ -3298,7 +3299,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesGrup
 BEGIN
     SELECT MensajesGrupos.IdMensaje, MensajesGrupos.Mensaje, MensajesGrupos.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-     MensajesGrupos.Extension 
+     MensajesGrupos.Extension, MensajesGrupos.NombreArchivo
     FROM tb_mensajesgrupo MensajesGrupos 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesGrupos.IdUsuarioEmisor
     WHERE MensajesGrupos.IdGrupo = _IdGrupo ORDER BY MensajesGrupos.IdMensaje DESC LIMIT 250;
@@ -3324,10 +3325,36 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesPreg
 BEGIN
     SELECT MensajesPreguntas.IdMensaje, MensajesPreguntas.Mensaje, MensajesPreguntas.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesPreguntas.Extension 
+    MensajesPreguntas.Extension , MensajesPreguntas.NombreArchivo
     FROM tb_mensajespregunta MensajesPreguntas 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesPreguntas.IdUsuarioEmisor
     WHERE MensajesPreguntas.IdPregunta = _IdPregunta ORDER BY MensajesPreguntas.IdMensaje DESC LIMIT 250;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerMensajesTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesTarea`(
+    IN _IdTarea INT
+)
+BEGIN
+    SELECT MensajesTareas.IdMensaje, MensajesTareas.Mensaje, MensajesTareas.FechaEnvio,
+    courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+    MensajesTareas.Extension, MensajesTareas.NombreArchivo
+    FROM tb_mensajestarea MensajesTareas
+    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesTareas.IdUsuarioEmisor
+    WHERE MensajesTareas.IdTarea = _IdTarea ORDER BY MensajesTareas.IdMensaje DESC LIMIT 250;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3350,7 +3377,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajeTarea
 BEGIN
     SELECT MensajesTareas.IdMensaje, MensajesTareas.Mensaje, MensajesTareas.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesTareas.Extension 
+    MensajesTareas.Extension, MensajesTareas.NombreArchivo
     FROM tb_mensajestarea MensajesTareas
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesTareas.IdUsuarioEmisor
     WHERE MensajesTareas.IdTarea = _IdTarea ORDER BY MensajesTareas.IdMensaje DESC LIMIT 250;
@@ -3646,7 +3673,7 @@ BEGIN
         UPDATE tb_archivoscompartidosgrupos SET Activo = 0 WHERE IdGrupo = _IdGrupo AND IdUsuario = _IdUsuario
         AND IdArchivoCompartido = _IdArchivoCompartido;
 
-        SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+        SELECT 1 AS "Codigo", 'Se Ha Removido El Archivo Compartido Satisfactoriamente' AS "Mensaje";
 
     ELSE
         SELECT -1 AS "Codigo", 'El Archivo Compartido No Se Encuentra Registrado' AS "Mensaje";
@@ -3678,7 +3705,7 @@ BEGIN
     
         UPDATE tb_archivossubidostareas SET Activo = 0 WHERE IdArchivoSubido = _IdArchivoSubido;
 
-        SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+        SELECT 1 AS "Codigo", 'El Archivo Subido Ha Sido Removido Satisfactoriamente' AS "Mensaje";
 
     ELSE
         SELECT -1 AS "Codigo", 'El Archivo Subido No Se Encuentra Registrado' AS "Mensaje";
@@ -3710,7 +3737,7 @@ BEGIN
         IF EXISTS(SELECT IdChat FROM tb_chatspersonales WHERE IdChat = _IdChat AND Activo = 1
         AND (IdUsuarioEmisor = _IdUsuario OR IdUsuarioReceptor = _IdUsuario)) THEN
             UPDATE tb_chatspersonales SET Activo = 0 WHERE IdChat = _IdChat;
-            SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+            SELECT 1 AS "Codigo", 'El Chat Personal Ha Sido Removido Satisfactoriamente' AS "Mensaje";
         ELSE
             SELECT -1 AS "Codigo", 'El Chat Personal No Se Encuentra Registrado' AS "Mensaje";
         END IF;
@@ -3750,7 +3777,7 @@ BEGIN
             IF EXISTS (SELECT IdTematica FROM tb_tematicasusuarios WHERE IdTematica = _IdTematica and IdUsuario = _IdUsuario) THEN
 
                 DELETE FROM  tb_tematicasusuarios WHERE IdTematica =  _IdTematica AND IdUsuario = _IdUsuario;
-                SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+                SELECT 1 AS "Codigo", 'La Temática Ha Sido Desligada Del Usuario Satisfactoriamente' AS "Mensaje";
 
             ELSE 
                 SELECT -1 AS "Codigo", 'La Tematica No Se Encuentra Registrada En Ese Usuario' AS "Mensaje";
@@ -3798,7 +3825,7 @@ BEGIN
 
                 UPDATE tb_usuariosgrupos SET Intentos = @Intentos WHERE IdGrupo = _IdGrupo AND IdUsuario = _IdUsuario;
                 
-                SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+                SELECT 1 AS "Codigo", 'Agregado Voto Para Remover El Usuario Satisfactoriamente' AS "Mensaje";
                 
             ELSE
                 SELECT -1 AS "Codigo", 'El Usuario Ya Ha Sobrepasado Los Intentos Aceptables' AS "Mensaje";
@@ -3836,7 +3863,7 @@ BEGIN
     IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
         IF EXISTS(SELECT IdPregunta FROM tb_preguntas WHERE IdPregunta = _IdPregunta AND Activo = 1 AND IdUsuario = _IdUsuario) THEN
             UPDATE tb_preguntas SET Activo = 0 WHERE IdPregunta = _IdPregunta;
-            SELECT 1 AS "Codigo", 'OK' AS "Mensaje";
+            SELECT 1 AS "Codigo", 'La Pregunta Ha Sido Removida Satisfactoriamente' AS "Mensaje";
         ELSE
             SELECT -1 AS "Codigo", 'La Pregunta No Se Encuentra Registrada' AS "Mensaje";
         END IF;
@@ -3860,4 +3887,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-05 18:48:46
+-- Dump completed on 2022-04-05 21:33:19

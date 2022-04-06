@@ -16,7 +16,6 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
-import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.border.BevelBorder;
@@ -620,7 +619,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
        
-        Lista<SesionesModel> sesiones = CourseRoom.Solicitudes().Obtener_Sesiones_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
+        Lista<SesionesModel> sesiones = CourseRoom.Solicitudes().Obtener_Sesiones(Tablero_Estudiante_Panel.Id_Usuario());
         
         while(!sesiones.is_empty()){
             Agregar_Sesion(sesiones.delist());

@@ -579,7 +579,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
        
-        Lista<SesionesModel> sesiones = CourseRoom.Solicitudes().Obtener_Sesiones_Usuario(Tablero_Profesor_Panel.Id_Usuario());
+        Lista<SesionesModel> sesiones = CourseRoom.Solicitudes().Obtener_Sesiones(Tablero_Profesor_Panel.Id_Usuario());
         
         while(!sesiones.is_empty()){
             Agregar_Sesion(sesiones.delist());

@@ -446,7 +446,7 @@ public class Solicitudes {
         return response;
     }
     
-    public Lista<SesionesModel> Obtener_Sesiones_Usuario(int id_Usuario){
+    public Lista<SesionesModel> Obtener_Sesiones(int id_Usuario){
 
         Lista<SesionesModel> response = new Lista<>();
         
@@ -458,7 +458,7 @@ public class Solicitudes {
             parametros.add(CourseRoom.Utilerias().MiUidd());
             parametros.add(CourseRoom.Utilerias().MiIP());
             
-            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Sesiones_Usuario", parametros);
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Sesiones", parametros);
             
             if(respuesta != null){
                 
