@@ -102,7 +102,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         informacion_JPanel.setPreferredSize(new java.awt.Dimension(982, 150));
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Chats");
+        regresar_JButton.setToolTipText("<html><h3>Regresar A Preguntas</h3></html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_JButton.setMaximumSize(new java.awt.Dimension(48, 64));
@@ -172,6 +172,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         });
 
         eliminar_Pregunta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
+        eliminar_Pregunta_JButton.setToolTipText("<html><h3>Eliminar<br>Pregunta</h3></html>");
         eliminar_Pregunta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)eliminar_Pregunta_JButton.getIcon()).getImage().flush();
         eliminar_Pregunta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,9 +202,8 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                     .addComponent(descripcion_Pregunta_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(informacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(marcar_Solucionada_JButton)
-                        .addComponent(actualizar_JButton))
+                    .addComponent(marcar_Solucionada_JButton)
+                    .addComponent(actualizar_JButton)
                     .addComponent(eliminar_Pregunta_JButton)))
         );
         informacion_JPanelLayout.setVerticalGroup(
@@ -217,7 +217,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                         .addComponent(descripcion_Pregunta_JScrollPane))
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(preguntador_Imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(actualizar_JButton)
@@ -412,9 +412,14 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     }//GEN-LAST:event_marcar_Solucionada_JButtonMouseExited
 
     private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
-        // TODO add your handling code here:
+        int longitud = redactar_Mensaje_Chat_JTextField.getText().length();
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Archivos();
+            if (longitud > 499) {
+            redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            }else{
+                Enviar_Archivos();
+            }
         }
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseClicked
 
@@ -429,9 +434,14 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseExited
 
     private void redactar_Mensaje_Chat_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
-        // TODO add your handling code here:
+        int longitud = redactar_Mensaje_Chat_JTextField.getText().length();
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Enviar_Mensaje();
+            if (longitud > 499) {
+            redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            }else{
+                Enviar_Mensaje();
+            }
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
