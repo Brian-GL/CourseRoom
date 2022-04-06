@@ -185,11 +185,21 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         editar_Nombre_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         editar_Nombre_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        editar_Nombre_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editar_Nombre_JTextFieldKeyTyped(evt);
+            }
+        });
 
         editar_Descripcion_JLabel.setText("Descripción");
         editar_Descripcion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         editar_Descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        editar_Descripcion_JTextPane.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editar_Descripcion_JTextPaneKeyTyped(evt);
+            }
+        });
         editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
         editar_Fecha_Entrega_JLabel.setText("Fecha De Entrega");
@@ -474,6 +484,27 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         crear_Tarea_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         crear_Tarea_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_crear_Tarea_JButtonMouseExited
+
+    private void editar_Nombre_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Nombre_JTextFieldKeyTyped
+        char c = evt.getKeyChar();
+            if (Character.isDigit(c)) {
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
+        }
+        int longitud = editar_Nombre_JTextField.getText().length();
+            if(longitud > 79){
+            editar_Nombre_JTextField.setText(editar_Nombre_JTextField.getText().substring(0,longitud-1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Título De Tarea","El Título De Tu Tarea<br>Rebasa Los 80 Caracteres");
+        }
+    }//GEN-LAST:event_editar_Nombre_JTextFieldKeyTyped
+
+    private void editar_Descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Descripcion_JTextPaneKeyTyped
+        int longitud = editar_Descripcion_JTextPane.getText().length();
+            if (longitud > 499) {
+            editar_Descripcion_JTextPane.setText(editar_Descripcion_JTextPane.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Descripción De Tarea","La Descripción De Tu Tarea<br>Rebasa Los 500 Caracteres");
+          }
+    }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
     public void Compartir_Archivos() {
         Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
