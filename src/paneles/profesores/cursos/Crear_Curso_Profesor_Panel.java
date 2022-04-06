@@ -205,6 +205,11 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         nombre_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         nombre_JTextField.setMinimumSize(new java.awt.Dimension(64, 32));
         nombre_JTextField.setPreferredSize(new java.awt.Dimension(483, 32));
+        nombre_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombre_JTextFieldKeyTyped(evt);
+            }
+        });
 
         nombre_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         nombre_JLabel.setText("Nombre");
@@ -217,6 +222,11 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
         descripcion_JTextPane.setPreferredSize(new java.awt.Dimension(483, 4));
+        descripcion_JTextPane.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                descripcion_JTextPaneKeyTyped(evt);
+            }
+        });
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         tematicas_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -502,7 +512,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                         .addGap(0, 0, 0)
                         .addComponent(compartir_Materiales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                        .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                         .addGap(0, 0, 0))
                 );
 
@@ -700,6 +710,27 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         compartir_Materiales_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         compartir_Materiales_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_compartir_Materiales_JButtonMouseExited
+
+    private void nombre_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre_JTextFieldKeyTyped
+        char c = evt.getKeyChar();
+            if (Character.isDigit(c)) {
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
+        }
+        int longitud = nombre_JTextField.getText().length();
+            if(longitud > 79){
+            nombre_JTextField.setText(nombre_JTextField.getText().substring(0,longitud-1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Título Del Curso","El título De Tu Curso<br>Rebasa Los 80 Caracteres");
+        }
+    }//GEN-LAST:event_nombre_JTextFieldKeyTyped
+
+    private void descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcion_JTextPaneKeyTyped
+        int longitud = descripcion_JTextPane.getText().length();
+            if (longitud > 499) {
+            descripcion_JTextPane.setText(descripcion_JTextPane.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Descripción Del Curso","La Descripción De Tu Curso<br>Rebasa Los 500 Caracteres");
+          }
+    }//GEN-LAST:event_descripcion_JTextPaneKeyTyped
 
     private void Agregar_Tematica(String id, String interes_Tematica){
         try {

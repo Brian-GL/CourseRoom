@@ -73,7 +73,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="imagen_Perfil_JLabel">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Mostrar Perfil Del Usuario."/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Mostrar Perfil Del Usuario.&lt;/h3&gt; &lt;/html&gt;&#xa;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
@@ -364,7 +364,7 @@
               <Image iconType="3" name="/recursos/iconos/rock.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M&#xfa;sica"/>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h4&gt;Reproducir M&#xfa;sica.&lt;/h4&gt;&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h4&gt;Reproductor De M&#xfa;sica.&lt;/h4&gt;&lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>

@@ -104,7 +104,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         menu_JPanel.setPreferredSize(new java.awt.Dimension(150, 630));
         menu_JPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        imagen_Perfil_JLabel.setToolTipText("Mostrar Perfil Del Usuario.");
+        imagen_Perfil_JLabel.setToolTipText("<html> <h3>Mostrar Perfil Del Usuario.</h3> </html>\n");
         imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(150, 150));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(150, 150));
@@ -261,7 +261,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         reproductor_Musica_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         reproductor_Musica_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rock.png"))); // NOI18N
         reproductor_Musica_JButton.setText("Música");
-        reproductor_Musica_JButton.setToolTipText("<html><h4>Reproducir Música.</h4></html>");
+        reproductor_Musica_JButton.setToolTipText("<html><h4>Reproductor De Música.</h4></html>");
         reproductor_Musica_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         reproductor_Musica_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reproductor_Musica_JButton.setPreferredSize(new java.awt.Dimension(150, 35));

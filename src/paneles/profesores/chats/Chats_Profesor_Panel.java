@@ -91,6 +91,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         acciones_JPanel.setOpaque(false);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html> <h4>Actualizar<br>Página</h4> </html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,6 +107,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         });
 
         chatear_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat.png"))); // NOI18N
+        chatear_JButton.setToolTipText("<html> <h3>Nuevo<br>Chat</h3> </html>");
         chatear_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)chatear_JButton.getIcon()).getImage().flush();
         chatear_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -121,6 +123,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         });
 
         buscar_Chats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/search.png"))); // NOI18N
+        buscar_Chats_JButton.setToolTipText("<html> <h3>Buscar<br>Chat</h3> </html>");
         buscar_Chats_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)buscar_Chats_JButton.getIcon()).getImage().flush();
         buscar_Chats_JButton.addMouseListener(new java.awt.event.MouseAdapter() {

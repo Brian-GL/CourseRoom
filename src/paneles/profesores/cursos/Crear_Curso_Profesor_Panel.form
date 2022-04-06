@@ -334,6 +334,9 @@
                   <Dimension value="[483, 32]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombre_JTextFieldKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="nombre_JLabel">
               <Properties>
@@ -370,6 +373,9 @@
                       <Dimension value="[483, 4]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="descripcion_JTextPaneKeyTyped"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
