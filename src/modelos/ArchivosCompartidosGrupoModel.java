@@ -24,7 +24,6 @@ package modelos;
 public class ArchivosCompartidosGrupoModel {
     private int id_Archivo_Compartido;
     private String nombre_Archivo, extension, fecha_Enviado, nombre_Completo;
-    private byte[] archivo;
 
     public ArchivosCompartidosGrupoModel(int id_Archivo_Compartido, String nombre_Archivo, String extension, String fecha_Enviado, String nombre_Completo, byte[] archivo) {
         this.id_Archivo_Compartido = id_Archivo_Compartido;
@@ -32,13 +31,11 @@ public class ArchivosCompartidosGrupoModel {
         this.extension = extension;
         this.fecha_Enviado = fecha_Enviado;
         this.nombre_Completo = nombre_Completo;
-        this.archivo = archivo;
     }
 
     public ArchivosCompartidosGrupoModel() {
         this.id_Archivo_Compartido = 0;
         this.nombre_Archivo = this.extension = this.fecha_Enviado = this.nombre_Completo = new String();
-        this.archivo = new byte[]{};
     }
 
     public int Id_Archivo_Compartido() {
@@ -79,13 +76,5 @@ public class ArchivosCompartidosGrupoModel {
 
     public void Nombre_Completo(String nombre_Completo) {
         this.nombre_Completo = nombre_Completo;
-    }
-
-    public byte[] Archivo() {
-        return archivo;
-    }
-
-    public void Archivo(byte[] archivo) {
-        this.archivo = archivo;
     }
 }
