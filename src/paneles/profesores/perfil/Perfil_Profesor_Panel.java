@@ -936,7 +936,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     }//GEN-LAST:event_guardar_Cambios_Autenticacion_JButtonMouseExited
 
     private void cambiar_Imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseClicked
-        // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
 
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
@@ -945,6 +944,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             escogedor_Archivos.setMultiSelectionEnabled(false);
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
             int result = escogedor_Archivos.showOpenDialog(this);
+            long tamanio;
+            boolean archivo_Mayor = false;
 
             if (result == JFileChooser.APPROVE_OPTION) {
                 File archivo_Abierto = escogedor_Archivos.getSelectedFile();
@@ -952,19 +953,29 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                 if(archivo_Abierto != null){
                     try {
 
+                        tamanio = FileUtils.sizeOf(archivo_Abierto);
+                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                        if(tamanio < 16){
+
                         Image obtener_Imagen = ImageIO.read(archivo_Abierto);
-                        obtener_Imagen = obtener_Imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
-                        ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
+                            obtener_Imagen = obtener_Imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
+                            ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
 
-                        imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                            imagen_Perfil_JLabel.setIcon(icono_Imagen);
 
-                        Tablero_Profesor_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
+                            Tablero_Profesor_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
 
-                        obtener_Imagen.flush();
-
+                            obtener_Imagen.flush();
+                        }else{
+                            archivo_Mayor = true;
+                        }
                     } catch (IOException ex) {
-
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
                     }
+                }
+                
+                if(archivo_Mayor){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Cambiar Imagen De Perfil","La Imagen Supera El Tamaño Aceptado De Subida");
                 }
             }
 
