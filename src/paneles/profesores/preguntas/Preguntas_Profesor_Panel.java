@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
+import java.awt.event.KeyEvent;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import paneles.profesores.Tablero_Profesor_Panel;
@@ -414,7 +415,13 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
     }//GEN-LAST:event_preguntar_JButtonMouseExited
 
     private void buscar_Preguntas_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_Preguntas_JTextFieldKeyPressed
-        // TODO add your handling code here:
+        int longitud = buscar_Preguntas_JTextField.getText().length();
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            if (longitud > 99) {
+            buscar_Preguntas_JTextField.setText(buscar_Preguntas_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Busqueda De Preguntas<br>Rebasa Los 500 Caracteres");
+          }
+        }
     }//GEN-LAST:event_buscar_Preguntas_JTextFieldKeyPressed
 
     private void mostrar_Preguntas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Preguntas_JButtonMouseClicked

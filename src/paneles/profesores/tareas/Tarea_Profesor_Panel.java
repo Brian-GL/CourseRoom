@@ -181,7 +181,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("Regresar A Mis Chats");
+        regresar_JButton.setToolTipText("<html><h3>Regresar A Tareas</h3></html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
@@ -646,6 +646,11 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
                     editar_Nombre_JTextField.setEditable(false);
                     editar_Nombre_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+                    editar_Nombre_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+                        public void keyTyped(java.awt.event.KeyEvent evt) {
+                            editar_Nombre_JTextFieldKeyTyped(evt);
+                        }
+                    });
 
                     editar_Nombre_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
                     editar_Nombre_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -669,6 +674,11 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
                     editar_Descripcion_JTextPane.setEditable(false);
                     editar_Descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+                    editar_Descripcion_JTextPane.addKeyListener(new java.awt.event.KeyAdapter() {
+                        public void keyTyped(java.awt.event.KeyEvent evt) {
+                            editar_Descripcion_JTextPaneKeyTyped(evt);
+                        }
+                    });
                     editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
                     editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
@@ -731,12 +741,12 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                     editar_Tipo_Entrega_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarea Individual", "Tarea Grupal" }));
                     editar_Tipo_Entrega_JComboBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-                    eliminar_Tarea_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
                     eliminar_Tarea_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
                     eliminar_Tarea_JButton.setText("Eliminar Tarea");
-                    eliminar_Tarea_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
                     eliminar_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                    eliminar_Tarea_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
                     eliminar_Tarea_JButton.setPreferredSize(new java.awt.Dimension(400, 50));
+                    eliminar_Tarea_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
                     ((ImageIcon)eliminar_Tarea_JButton.getIcon()).getImage().flush();
                     eliminar_Tarea_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -915,9 +925,14 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     }//GEN-LAST:event_editar_Tarea_JButtonMouseClicked
 
     private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
-        // TODO add your handling code here:
+        int longitud = redactar_Mensaje_Chat_JTextField.getText().length();
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Archivos();
+            if (longitud > 499) {
+            redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            }else{
+                Enviar_Archivos();
+            }
         }
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseClicked
 
@@ -932,9 +947,14 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseExited
 
     private void redactar_Mensaje_Chat_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
-        // TODO add your handling code here:
+        int longitud = redactar_Mensaje_Chat_JTextField.getText().length();
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Enviar_Mensaje();
+            if (longitud > 499) {
+            redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            }else{
+                Enviar_Mensaje();
+            }
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
@@ -1059,6 +1079,27 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         eliminar_Tarea_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         eliminar_Tarea_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_eliminar_Tarea_JButtonMouseExited
+
+    private void editar_Nombre_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Nombre_JTextFieldKeyTyped
+        char c = evt.getKeyChar();
+            if (Character.isDigit(c)) {
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
+        }
+        int longitud = editar_Nombre_JTextField.getText().length();
+            if(longitud > 79){
+            editar_Nombre_JTextField.setText(editar_Nombre_JTextField.getText().substring(0,longitud-1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Título De Tarea","El Título De Tu Tarea<br>Rebasa Los 80 Caracteres");
+        }
+    }//GEN-LAST:event_editar_Nombre_JTextFieldKeyTyped
+
+    private void editar_Descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Descripcion_JTextPaneKeyTyped
+        int longitud = editar_Descripcion_JTextPane.getText().length();
+            if (longitud > 499) {
+            editar_Descripcion_JTextPane.setText(editar_Descripcion_JTextPane.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Descripción De Tarea","La Descripción De Tu Tarea<br>Rebasa Los 500 Caracteres");
+          }
+    }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
     public String ID(){
         return this.ID;
