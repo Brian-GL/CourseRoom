@@ -1107,11 +1107,18 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             escogedor_Archivos.setMultiSelectionEnabled(false);
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
             int resultado = escogedor_Archivos.showOpenDialog(this);
+            long tamanio;
+            boolean archivo_Mayor = false;
 
             if (resultado == JFileChooser.APPROVE_OPTION) {
                 File archivo = escogedor_Archivos.getSelectedFile();
 
+                if(archivo != null){
                 try {
+                    tamanio = FileUtils.sizeOf(archivo);
+                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                        if(tamanio < 16){
+                
                     Image abrir_Imagen = ImageIO.read(archivo);
                     int largo_Imagen = imagen_JLabel.getHeight();
                     ImageIcon icono_Grupo = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
@@ -1120,8 +1127,16 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                     abrir_Imagen.flush();
 
-                } catch (IOException ex) {
-
+                }else{
+                            archivo_Mayor = true;
+                        }
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
+                    }
+                }
+                
+                if(archivo_Mayor){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Cambiar Imagen De Perfil","La Imagen Supera El Tamaño Aceptado De Subida");
                 }
             }
 
@@ -1251,9 +1266,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
-        // TODO add your handling code here:
+        int longitud = redactar_Mensaje_Chat_JTextField.getText().length();
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Archivos();
+            if (longitud > 499) {
+            redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            }else{
+                Enviar_Archivos();
+            }
         }
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseClicked
 
@@ -1268,9 +1288,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseExited
 
     private void redactar_Mensaje_Chat_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
-        // TODO add your handling code here:
+        int longitud = redactar_Mensaje_Chat_JTextField.getText().length();
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Enviar_Mensaje();
+            if (longitud > 499) {
+            redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            }else{
+                Enviar_Mensaje();
+            }
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 

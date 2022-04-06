@@ -1032,16 +1032,23 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
-            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagenes", "png", "jpg", "jpeg", "bmp");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagenes", "jpg", "jpeg");
             escogedor_Archivos.addChoosableFileFilter(filtro);
             escogedor_Archivos.setMultiSelectionEnabled(false);
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
             int resultado = escogedor_Archivos.showOpenDialog(this);
+            long tamanio;
+            boolean archivo_Mayor = false;
 
             if (resultado == JFileChooser.APPROVE_OPTION) {
                 File archivo_Abierto = escogedor_Archivos.getSelectedFile();
-
+                
+                if(archivo_Abierto != null){
                 try {
+                    tamanio = FileUtils.sizeOf(archivo_Abierto);
+                    tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                    if(tamanio < 16){
+                        
                     Image abrir_Imagen = ImageIO.read(archivo_Abierto);
                     imagen = FileUtils.readFileToByteArray(archivo_Abierto);
                     abrir_Imagen = abrir_Imagen.getScaledInstance(450,450,Image.SCALE_AREA_AVERAGING);
@@ -1050,8 +1057,16 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                     icono.getImage().flush();
                     abrir_Imagen.flush();
 
-                } catch (IOException ex) {
-
+                }else{
+                            archivo_Mayor = true;
+                        }
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
+                    }
+                }
+                
+                if(archivo_Mayor){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Cambiar Imagen De Perfil","La Imagen Supera El Tamaño Aceptado De Subida");
                 }
             }
 
@@ -1304,6 +1319,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 } else {
                     if (Password.length() <= 7 || Password2.length() <= 7) {
                         JOptionPane.showMessageDialog(this, "Las Contraseñas Deben Tener Al Menos 8 Caracteres", "Error de Contenido", WIDTH);
+                        contrasenia_Autenticacion_JPasswordField.requestFocus();
                     } else {
                         ((CardLayout) this.getLayout()).show(this, "Datos_Personales");
                     }

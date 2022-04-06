@@ -110,8 +110,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Descripcion_JTextPane = new javax.swing.JTextPane();
         editar_Descripcion_JButton = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 68));
         contenido_Titulo_JPanel.setPreferredSize(new java.awt.Dimension(276, 68));
@@ -440,9 +440,9 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             }
         });
 
+        editar_Correo_Electronico_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         editar_Correo_Electronico_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Correo_Electronico_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        editar_Correo_Electronico_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         ((ImageIcon)editar_Correo_Electronico_JButton.getIcon()).getImage().flush();
         editar_Correo_Electronico_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -456,9 +456,9 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             }
         });
 
+        editar_Contrasena_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         editar_Contrasena_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
         editar_Contrasena_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        editar_Contrasena_JButton.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         ((ImageIcon)editar_Contrasena_JButton.getIcon()).getImage().flush();
         editar_Contrasena_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -789,12 +789,12 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         informacion_Extra_JPanel.setOpaque(false);
 
+        guardar_Cambios_Informacion_Extra_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         guardar_Cambios_Informacion_Extra_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Informacion_Extra_JButton.setText("Guardar Cambios");
+        guardar_Cambios_Informacion_Extra_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
         guardar_Cambios_Informacion_Extra_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         guardar_Cambios_Informacion_Extra_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        guardar_Cambios_Informacion_Extra_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        guardar_Cambios_Informacion_Extra_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
         ((ImageIcon)guardar_Cambios_Informacion_Extra_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Informacion_Extra_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -936,7 +936,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     }//GEN-LAST:event_guardar_Cambios_Autenticacion_JButtonMouseExited
 
     private void cambiar_Imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseClicked
-        // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
 
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
@@ -945,6 +944,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             escogedor_Archivos.setMultiSelectionEnabled(false);
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
             int result = escogedor_Archivos.showOpenDialog(this);
+            long tamanio;
+            boolean archivo_Mayor = false;
 
             if (result == JFileChooser.APPROVE_OPTION) {
                 File archivo_Abierto = escogedor_Archivos.getSelectedFile();
@@ -952,19 +953,29 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                 if(archivo_Abierto != null){
                     try {
 
+                        tamanio = FileUtils.sizeOf(archivo_Abierto);
+                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                        if(tamanio < 16){
+
                         Image obtener_Imagen = ImageIO.read(archivo_Abierto);
-                        obtener_Imagen = obtener_Imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
-                        ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
+                            obtener_Imagen = obtener_Imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
+                            ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
 
-                        imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                            imagen_Perfil_JLabel.setIcon(icono_Imagen);
 
-                        Tablero_Profesor_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
+                            Tablero_Profesor_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
 
-                        obtener_Imagen.flush();
-
+                            obtener_Imagen.flush();
+                        }else{
+                            archivo_Mayor = true;
+                        }
                     } catch (IOException ex) {
-
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
                     }
+                }
+                
+                if(archivo_Mayor){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Cambiar Imagen De Perfil","La Imagen Supera El Tamaño Aceptado De Subida");
                 }
             }
 
