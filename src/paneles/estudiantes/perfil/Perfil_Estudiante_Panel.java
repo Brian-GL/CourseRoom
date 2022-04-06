@@ -1130,7 +1130,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     }//GEN-LAST:event_guardar_Cambios_Autenticacion_JButtonMouseExited
 
     private void cambiar_Imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseClicked
-        // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
 
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
@@ -1164,7 +1163,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                             archivo_Mayor = true;
                         }
                     } catch (IOException ex) {
-
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
                     }
                 }
                 
@@ -1228,6 +1227,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
+            Object o = editar_Localidad_AutoCompletionComboBox.getSelectedItem();
             ComboOption comboOption = (ComboOption)editar_Localidad_AutoCompletionComboBox.getSelectedItem();
             
             Par<Integer, String> respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Personales(Tablero_Estudiante_Panel.Id_Usuario(),
@@ -1586,7 +1586,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
 
         while(!localidades.is_empty()){
-            editar_Localidad_AutoCompletionComboBox.addItem(localidades.delist());
+            editar_Localidad_AutoCompletionComboBox.addItem((ComboOption)localidades.delist());
         }
     }
     
