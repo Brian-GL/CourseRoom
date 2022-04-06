@@ -1236,10 +1236,10 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                     CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()),comboOption.Id());
             
             if(respuesta.first() == 1){
-                JOptionPane.showMessageDialog(this, "Se Han Actualizado Los Datos Personales Correctamente", "Mensaaje De Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Se Han Actualizado Los Datos Personales Correctamente", "Mensaje De Confirmación", JOptionPane.INFORMATION_MESSAGE);
                 
             }else{
-                JOptionPane.showMessageDialog(this, respuesta.second(), "Mensaaje De Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, respuesta.second(), "Mensaje De Confirmación", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }//GEN-LAST:event_guardar_Cambios_Datos_Personales_JButtonMouseClicked

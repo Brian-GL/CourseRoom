@@ -1838,7 +1838,7 @@ BEGIN
                     
 					INSERT INTO tb_usuarios (CorreoElectronico, Contrasenia, Nombre, Paterno, Materno, Genero, FechaNacimiento, 
 					PromedioGeneral, TipoUsuario,Descripcion, Imagen, IdLocalidad, FechaCreacion,ChatsConmigo,AvisosActivos,Activo)
-					VALUES (_CorreoElectronico, _Contrasenia, _Nombre, _Paterno, _Materno, _Genero, _FechaNacimiento,
+					VALUES (UPPER(_CorreoElectronico), _Contrasenia, _Nombre, _Paterno, _Materno, _Genero, _FechaNacimiento,
 					_PromedioGeneral, _TipoUsuario, _Descripcion, IF(OCTET_LENGTH(_Imagen) > 0, _Imagen,NULL), _IdLocalidad, courseroom.fn_ObtenerFecha(),1,1,1);
 					
                     SELECT LAST_INSERT_ID() AS "Codigo", 'Se Ha Agregado El Usuario Satisfactoriamente' AS "Mensaje";
@@ -1847,7 +1847,7 @@ BEGIN
                 
 					INSERT INTO tb_usuarios (CorreoElectronico, Contrasenia, Nombre, Paterno, Materno, Genero, FechaNacimiento, 
 					PromedioGeneral, TipoUsuario, Descripcion, Imagen, IdLocalidad, FechaCreacion, ChatsConmigo,AvisosActivos,Activo)
-					VALUES (_CorreoElectronico, _Contrasenia, _Nombre, _Paterno, _Materno, _Genero, _FechaNacimiento,
+					VALUES (UPPER(_CorreoElectronico), _Contrasenia, _Nombre, _Paterno, _Materno, _Genero, _FechaNacimiento,
 					-1, _TipoUsuario, _Descripcion, IF(OCTET_LENGTH(_Imagen) > 0, _Imagen,NULL), _IdLocalidad, courseroom.fn_ObtenerFecha(), 1,1,1);
 
 					SELECT LAST_INSERT_ID() AS "Codigo", 'Se Ha Agregado El Usuario Satisfactoriamente' AS "Mensaje";
@@ -3577,11 +3577,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerTematicas`(
-	IN _Busqueda VARCHAR(100)
-)
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerTematicas`()
 BEGIN
-	SELECT IdTematica, Tematica FROM tb_tematicas WHERE Tematica LIKE CONCAT("%",_Busqueda,"%");
+	SELECT IdTematica, Tematica FROM tb_tematicas ORDER BY Tematica;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3887,4 +3885,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-05 21:33:19
+-- Dump completed on 2022-04-06 17:55:12
