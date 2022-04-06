@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
+import java.awt.event.KeyEvent;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
@@ -417,7 +418,13 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
     }//GEN-LAST:event_preguntar_JButtonMouseExited
 
     private void buscar_Preguntas_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_Preguntas_JTextFieldKeyPressed
-        // TODO add your handling code here:
+        int longitud = buscar_Preguntas_JTextField.getText().length();
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            if (longitud > 99) {
+            buscar_Preguntas_JTextField.setText(buscar_Preguntas_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Busqueda De Preguntas<br>Rebasa Los 500 Caracteres");
+          }
+        }
     }//GEN-LAST:event_buscar_Preguntas_JTextFieldKeyPressed
 
     private void mostrar_Preguntas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Preguntas_JButtonMouseClicked
@@ -736,11 +743,19 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         }// </editor-fold>                        
 
         private void preguntar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {                                               
-            // TODO add your handling code here:
+            int longitud = pregunta_JTextField.getText().length();
+            int longitud1 = descripcion_Pregunta_JTextPane.getText().length();
             if(SwingUtilities.isLeftMouseButton(evt)){
                 if(!pregunta_JTextField.getText().isBlank() && !pregunta_JTextField.getText().isEmpty()){
                     if (!descripcion_Pregunta_JTextPane.getText().isBlank() && !descripcion_Pregunta_JTextPane.getText().isEmpty()) {
-                        int cuenta = Numero_Preguntas()+1;
+                        if(longitud > 499)
+                        {
+                            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Título De La Pregunta<br>Rebasa Los 500 Caracteres");
+                        }else{
+                            if(longitud1 >499){
+                                CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Descripción De La Pregunta<br>Rebasa Los 500 Caracteres");
+                            }else{
+                                int cuenta = Numero_Preguntas()+1;
                         String id = CourseRoom.Utilerias().Concatenar("Pregunta_", cuenta);
 
                         Agregar_Pregunta_Local(Perfil_Estudiante_Panel.Nombre_Completo(),
@@ -750,6 +765,8 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                         Tablero_Estudiante_Panel.Mostrar_Vista(id);
 
                         this.dispose();
+                            }
+                        }
                     }
 
                 }

@@ -411,9 +411,12 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
     }//GEN-LAST:event_buscar_Chats_JButtonMouseExited
 
     private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
-        // TODO add your handling code here:
+        int longitud = buscar_JTextField.getText().length();
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-
+            if (longitud > 99) {
+            buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Busqueda De Chats<br>Rebasa Los 500 Caracteres");
+          }
         }
 
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
@@ -774,7 +777,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         }// </editor-fold>                        
 
         private void chatear_JButtonMouseClicked(java.awt.event.MouseEvent evt) {
-            // TODO add your handling code here:
             if (SwingUtilities.isLeftMouseButton(evt)) {
                 if (chatear_AutoCompletionComboBox.getSelectedItem() != null) {
                     if (!((String) chatear_AutoCompletionComboBox.getSelectedItem()).isBlank() && !((String) chatear_AutoCompletionComboBox.getSelectedItem()).isEmpty()) {

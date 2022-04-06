@@ -1304,6 +1304,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 } else {
                     if (Password.length() <= 7 || Password2.length() <= 7) {
                         JOptionPane.showMessageDialog(this, "Las Contraseñas Deben Tener Al Menos 8 Caracteres", "Error de Contenido", WIDTH);
+                        contrasenia_Autenticacion_JPasswordField.requestFocus();
                     } else {
                         ((CardLayout) this.getLayout()).show(this, "Datos_Personales");
                     }

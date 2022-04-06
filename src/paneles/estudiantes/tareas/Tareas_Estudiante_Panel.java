@@ -25,6 +25,7 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
@@ -383,7 +384,13 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     }//GEN-LAST:event_buscar_Tareas_JButtonMouseExited
 
     private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
-        // TODO add your handling code here:
+        int longitud = buscar_JTextField.getText().length();
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            if (longitud > 99) {
+            buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Busqueda De Tareas<br>Rebasa Los 500 Caracteres");
+          }
+        }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
 
     private void mostrar_Tareas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Tareas_JButtonMouseClicked

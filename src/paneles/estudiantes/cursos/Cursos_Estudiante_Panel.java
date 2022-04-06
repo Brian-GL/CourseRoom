@@ -524,7 +524,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         buscar_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
                         buscar_JTextField.setToolTipText("<html> <h3>Buscar curso(s). Presiona ENTER para realizar la búsqueda</h3> </html>");
                         buscar_JTextField.setBorder(null);
-                        buscar_JTextField.setOpaque(true);
                         buscar_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                             public void keyPressed(java.awt.event.KeyEvent evt) {
                                 buscar_JTextFieldKeyPressed(evt);
@@ -643,9 +642,12 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                         }// </editor-fold>//GEN-END:initComponents
 
     private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
-        // TODO add your handling code here:
+        int longitud = buscar_JTextField.getText().length();
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            
+            if (longitud > 99) {
+            buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Busqueda De Cursos<br>Rebasa Los 500 Caracteres");
+          }
         }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
 

@@ -8,7 +8,9 @@ package frames.estudiantes;
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
+import static java.awt.image.ImageObserver.WIDTH;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -55,9 +57,9 @@ public class Estudiante_Frame extends javax.swing.JDialog implements Componentes
         contenido_JPanel.setMinimumSize(new java.awt.Dimension(800, 227));
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(800, 227));
 
+        preguntar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         preguntar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/doubt.png"))); // NOI18N
         preguntar_JButton.setText("Preguntar");
-        preguntar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         ((ImageIcon)preguntar_JButton.getIcon()).getImage().flush();
         preguntar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -79,11 +81,10 @@ public class Estudiante_Frame extends javax.swing.JDialog implements Componentes
 
         pregunta_JTextField.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         pregunta_JTextField.setBorder(null);
-        pregunta_JTextField.setOpaque(true);
 
+        cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         cerrar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
         cerrar_JButton.setText("Cancelar");
-        cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         ((ImageIcon)cerrar_JButton.getIcon()).getImage().flush();
         cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,7 +133,6 @@ public class Estudiante_Frame extends javax.swing.JDialog implements Componentes
     }// </editor-fold>//GEN-END:initComponents
 
     private void preguntar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntar_JButtonMouseClicked
-        // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
         }
