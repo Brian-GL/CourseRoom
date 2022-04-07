@@ -902,7 +902,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
-        intereses_AutoCompletionComboBox.setSelectedIndex(-1);
         intereses_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         intereses_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
 
@@ -917,7 +916,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
                 },
                 new String [] {
-                    "Interes / Temática", "Remover?"
+                    "Intéres", "¿Remover?"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
@@ -961,6 +960,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                         if (columna == 1) {
                             int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                             DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                            //Llamar Solicitud Remover Interes Usuario:
                             modelo.removeRow(fila);
                         }
 
