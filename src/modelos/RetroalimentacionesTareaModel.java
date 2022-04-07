@@ -21,28 +21,45 @@ package modelos;
  *
  * @author JOEL BR
  */
-public class ArchivosTareaModel {
-    private int id_Archivo_Tarea;
-    private String nombre_Archivo, extension, fecha_Enviado;
+public class RetroalimentacionesTareaModel {
+    private int id_Retroalimentacion;
+    private String retroalimentacion, fecha_Envio, nombre_Archivo, extension;
 
-    public ArchivosTareaModel(int id_Archivo_Tarea, String nombre_Archivo, String extension, String fecha_Enviado, byte[] archivo) {
-        this.id_Archivo_Tarea = id_Archivo_Tarea;
+    public RetroalimentacionesTareaModel(int id_Retroalimentacion, String retroalimentacion, String fecha_Envio, String nombre_Archivo, String extension) {
+        this.id_Retroalimentacion = id_Retroalimentacion;
+        this.retroalimentacion = retroalimentacion;
+        this.fecha_Envio = fecha_Envio;
         this.nombre_Archivo = nombre_Archivo;
         this.extension = extension;
-        this.fecha_Enviado = fecha_Enviado;
     }
 
-    public ArchivosTareaModel() {
-        this.id_Archivo_Tarea = 0;
-        this.nombre_Archivo = this.extension = this.fecha_Enviado = new String();
+    public RetroalimentacionesTareaModel() {
+        this.id_Retroalimentacion = 0;
+        this.retroalimentacion = this.fecha_Envio = this.nombre_Archivo = this.extension = new String();
     }
 
-    public int Id_Archivo_Tarea() {
-        return id_Archivo_Tarea;
+    public int Id_Retroalimentacion() {
+        return id_Retroalimentacion;
     }
 
-    public void Id_Archivo_Tarea(int id_Archivo_Tarea) {
-        this.id_Archivo_Tarea = id_Archivo_Tarea;
+    public void Id_Retroalimentacion(int id_Retroalimentacion) {
+        this.id_Retroalimentacion = id_Retroalimentacion;
+    }
+
+    public String Retroalimentacion() {
+        return retroalimentacion;
+    }
+
+    public void Retroalimentacion(String retroalimentacion) {
+        this.retroalimentacion = retroalimentacion;
+    }
+
+    public String Fecha_Envio() {
+        return fecha_Envio;
+    }
+
+    public void Fecha_Envio(String fecha_Envio) {
+        this.fecha_Envio = fecha_Envio;
     }
 
     public String Nombre_Archivo() {
@@ -59,13 +76,5 @@ public class ArchivosTareaModel {
 
     public void Extension(String extension) {
         this.extension = extension;
-    }
-
-    public String Fecha_Enviado() {
-        return fecha_Enviado;
-    }
-
-    public void Fecha_Enviado(String fecha_Enviado) {
-        this.fecha_Enviado = fecha_Enviado;
-    }
+    }  
 }

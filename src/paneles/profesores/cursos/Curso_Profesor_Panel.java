@@ -582,6 +582,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                     mensajes_Chat_JScrollPane.setOpaque(false);
 
                     mensajes_Chat_JTable.setAutoCreateRowSorter(true);
+                    mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                     mensajes_Chat_JTable.setModel(
 
                         new javax.swing.table.DefaultTableModel(
@@ -616,7 +617,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                             }
                         });
                         mensajes_Chat_JTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-                        mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                         mensajes_Chat_JTable.setRowHeight(80);
                         mensajes_Chat_JTable.setShowGrid(true);
                         mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
@@ -793,7 +793,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                 .addGroup(grupos_JPanelLayout.createSequentialGroup()
                                     .addGap(0, 0, 0)
                                     .addGroup(grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                                        .addComponent(grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
                                         .addGroup(grupos_JPanelLayout.createSequentialGroup()
                                             .addComponent(generar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(0, 0, Short.MAX_VALUE))))
@@ -802,7 +802,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                 grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(grupos_JPanelLayout.createSequentialGroup()
                                     .addGap(0, 0, 0)
-                                    .addComponent(grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                                    .addComponent(grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(generar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, 0))
@@ -895,7 +895,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                         .addGap(0, 0, 0)
                                         .addComponent(compartir_Materiales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                                        .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                                         .addGap(0, 0, 0))
                                 );
 
@@ -980,6 +980,11 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                     editar_Nombre_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
                                     editar_Nombre_JTextField.setMinimumSize(new java.awt.Dimension(64, 32));
                                     editar_Nombre_JTextField.setPreferredSize(new java.awt.Dimension(483, 32));
+                                    editar_Nombre_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+                                        public void keyTyped(java.awt.event.KeyEvent evt) {
+                                            editar_Nombre_JTextFieldKeyTyped(evt);
+                                        }
+                                    });
 
                                     editar_Nombre_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                                     editar_Nombre_JLabel.setText("Nombre");
@@ -1028,6 +1033,11 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                     editar_Descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
                                     editar_Descripcion_JTextPane.setText("");
                                     editar_Descripcion_JTextPane.setPreferredSize(new java.awt.Dimension(483, 4));
+                                    editar_Descripcion_JTextPane.addKeyListener(new java.awt.event.KeyAdapter() {
+                                        public void keyTyped(java.awt.event.KeyEvent evt) {
+                                            editar_Descripcion_JTextPaneKeyTyped(evt);
+                                        }
+                                    });
                                     editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
                                     editar_Descripcion_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
@@ -1344,9 +1354,14 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     }//GEN-LAST:event_estadisticas_JButtonMouseClicked
 
     private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
-        // TODO add your handling code here:
+        int longitud = redactar_Mensaje_Chat_JTextField.getText().length();
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Enviar_Archivos();
+            if (longitud > 499) {
+            redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            }else{
+                Enviar_Archivos();
+            }
         }
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseClicked
 
@@ -1361,9 +1376,14 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseExited
 
     private void redactar_Mensaje_Chat_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
-        // TODO add your handling code here:
+        int longitud = redactar_Mensaje_Chat_JTextField.getText().length();
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            Enviar_Mensaje();
+            if (longitud > 499) {
+            redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            }else{
+                Enviar_Mensaje();
+            }
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
@@ -1562,6 +1582,27 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         generar_Grupos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         generar_Grupos_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_generar_Grupos_JButtonMouseExited
+
+    private void editar_Nombre_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Nombre_JTextFieldKeyTyped
+        char c = evt.getKeyChar();
+            if (Character.isDigit(c)) {
+            getToolkit().beep();//sonido de no aceptar más caracteres. 
+            evt.consume();//hace que esa pulsación de tecla se rechace.
+        }
+        int longitud = editar_Nombre_JTextField.getText().length();
+            if(longitud > 79){
+            editar_Nombre_JTextField.setText(editar_Nombre_JTextField.getText().substring(0,longitud-1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Título Del Curso","El título De Tu Curso<br>Rebasa Los 80 Caracteres");
+        }
+    }//GEN-LAST:event_editar_Nombre_JTextFieldKeyTyped
+
+    private void editar_Descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Descripcion_JTextPaneKeyTyped
+        int longitud = editar_Descripcion_JTextPane.getText().length();
+            if (longitud > 499) {
+            editar_Descripcion_JTextPane.setText(editar_Descripcion_JTextPane.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Descripción Del Curso","La Descripción De Tu Curso<br>Rebasa Los 500 Caracteres");
+          }
+    }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
     public String ID() {
         return this.ID;

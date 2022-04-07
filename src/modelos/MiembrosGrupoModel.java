@@ -21,18 +21,19 @@ package modelos;
  *
  * @author JOEL BR
  */
-public class DatosGeneralesChatPersonalModel {
+public class MiembrosGrupoModel {
     private int id_Usuario;
-    private String nombre_Completo;
+    private String nombre_Completo, fecha_Ingreso;
 
-    public DatosGeneralesChatPersonalModel(int id_Usuario, String nombre_Completo) {
+    public MiembrosGrupoModel(int id_Usuario, String nombre_Completo, String fecha_Ingreso) {
         this.id_Usuario = id_Usuario;
         this.nombre_Completo = nombre_Completo;
+        this.fecha_Ingreso = fecha_Ingreso;
     }
 
-    public DatosGeneralesChatPersonalModel() {
+    public MiembrosGrupoModel() {
         this.id_Usuario = 0;
-        this.nombre_Completo = new String();
+        this.nombre_Completo = this.fecha_Ingreso = new String();
     }
 
     public int Id_Usuario() {
@@ -49,5 +50,13 @@ public class DatosGeneralesChatPersonalModel {
 
     public void Nombre_Completo(String nombre_Completo) {
         this.nombre_Completo = nombre_Completo;
+    }
+
+    public String Fecha_Ingreso() {
+        return fecha_Ingreso;
+    }
+
+    public void Fecha_Ingreso(String fecha_Ingreso) {
+        this.fecha_Ingreso = fecha_Ingreso;
     }
 }
