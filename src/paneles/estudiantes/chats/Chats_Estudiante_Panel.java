@@ -41,6 +41,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ChatsPersonalesModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
@@ -476,47 +477,34 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         chatear_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_chatear_JButtonMouseExited
 
-    public void Agregar_Chat(String id,String ruta_Imagen, String nombres_Chat, String apellidos_Chat, String correo_Chat,
-            String genero_Chat, String tipo_Perfil, Lista<String> intereses_Tematicas,
-            String fecha_Chat, String ultimo_Mensaje) {
+    public void Agregar_Chat(ChatsPersonalesModel chatsPersonalesModel) {
 
-        try {
-            DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
-            
-            URL url_Imagen = new URL(ruta_Imagen);
-            Image imagen_Chat = ImageIO.read(url_Imagen);
-            
-            Image imagen = imagen_Chat.getScaledInstance(96, 96,Image.SCALE_SMOOTH);
-            ImageIcon icono = new ImageIcon(imagen);
-            
-            Celda_Renderer[] celdas = new Celda_Renderer[3];
-            Celda_Renderer celda;
-            
-            celda =  new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(nombres_Chat, " ",apellidos_Chat), id);
-            celdas[0] = celda;
-            celda =  new Celda_Renderer(fecha_Chat, id);
-            celdas[1] = celda;
-            celda = new Celda_Renderer(ultimo_Mensaje, id);
-            celdas[2] = celda;
-            
-            modelo.addRow(celdas);
-            
-            mostrar_Chats_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
-            
-            Chat_Estudiante_Panel chat_Estudiante_Panel
-                    = new Chat_Estudiante_Panel(
-                            imagen_Chat, nombres_Chat, apellidos_Chat, 
-                            correo_Chat, genero_Chat, tipo_Perfil, intereses_Tematicas);
-            
-            mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
-            
-            Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id);
-            
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
-        }
+//        DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
+//
+//        
+//        Celda_Renderer[] celdas = new Celda_Renderer[3];
+//        Celda_Renderer celda;
+//
+//        celda =  new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(nombres_Chat, " ",apellidos_Chat), id);
+//        celdas[0] = celda;
+//        celda =  new Celda_Renderer(fecha_Chat, id);
+//        celdas[1] = celda;
+//        celda = new Celda_Renderer(ultimo_Mensaje, id);
+//        celdas[2] = celda;
+//
+//        modelo.addRow(celdas);
+//
+//        mostrar_Chats_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
+//
+//        Chat_Estudiante_Panel chat_Estudiante_Panel
+//                = new Chat_Estudiante_Panel(
+//                        imagen_Chat, nombres_Chat, apellidos_Chat, 
+//                        correo_Chat, genero_Chat, tipo_Perfil, intereses_Tematicas);
+//
+//        mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
+//
+//        Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id);
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -560,25 +548,12 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
         buscar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-
-        String ruta_Imagen, nombres_Chat, apellidos_Chat, correo_Chat,
-            genero_Chat, tipo_Perfil, 
-            fecha_Chat, ultimo_Mensaje, id;
+        Lista<ChatsPersonalesModel> lista = 
+                CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Estudiante_Panel.Id_Usuario());
         
-        Lista<String> intereses_Tematicas = new Lista<>(CourseRoom.Utilerias().lorem().words(5));
-        
-        id = "Chat_1";
-        ruta_Imagen = "https://i.pravatar.cc/450";
-
-        nombres_Chat = CourseRoom.Utilerias().Concatenar(CourseRoom.Utilerias().name().firstName()," ",CourseRoom.Utilerias().name().firstName());
-        apellidos_Chat = CourseRoom.Utilerias().Concatenar(CourseRoom.Utilerias().name().lastName()," ",CourseRoom.Utilerias().name().lastName());
-        ultimo_Mensaje = CourseRoom.Utilerias().lorem().sentence();
-        tipo_Perfil = CourseRoom.Utilerias().bool().bool() ? "Estudiante" : "Profesor";
-        fecha_Chat = CourseRoom.Utilerias().Fecha_Hora_Local();
-        genero_Chat = CourseRoom.Utilerias().demographic().sex();
-        correo_Chat = CourseRoom.Utilerias().internet().emailAddress();
-            
-        Agregar_Chat(id,ruta_Imagen, nombres_Chat, apellidos_Chat, correo_Chat, genero_Chat, tipo_Perfil, intereses_Tematicas, fecha_Chat, ultimo_Mensaje);
+        while(!lista.is_empty()){
+            Agregar_Chat(lista.delist());
+        }
 
     }
 

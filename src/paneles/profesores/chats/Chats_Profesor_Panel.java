@@ -24,6 +24,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ChatsPersonalesModel;
+import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.profesores.Tablero_Profesor_Panel;
 
 /**
@@ -543,25 +545,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
         buscar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-
-        String ruta_Imagen, nombres_Chat, apellidos_Chat, correo_Chat,
-            genero_Chat, tipo_Perfil, 
-            fecha_Chat, ultimo_Mensaje, id;
         
-        Lista<String> intereses_Tematicas = new Lista<>(CourseRoom.Utilerias().lorem().words(5));
-        
-        id = "Chat_1";
-        ruta_Imagen = "https://i.pravatar.cc/450";
-
-        nombres_Chat = CourseRoom.Utilerias().Concatenar(CourseRoom.Utilerias().name().firstName()," ",CourseRoom.Utilerias().name().firstName());
-        apellidos_Chat = CourseRoom.Utilerias().Concatenar(CourseRoom.Utilerias().name().lastName()," ",CourseRoom.Utilerias().name().lastName());
-        ultimo_Mensaje = CourseRoom.Utilerias().lorem().sentence();
-        tipo_Perfil = CourseRoom.Utilerias().bool().bool() ? "Profesor" : "Profesor";
-        fecha_Chat = CourseRoom.Utilerias().Fecha_Hora_Local();
-        genero_Chat = CourseRoom.Utilerias().demographic().sex();
-        correo_Chat = CourseRoom.Utilerias().internet().emailAddress();
-            
-        Agregar_Chat(id,ruta_Imagen, nombres_Chat, apellidos_Chat, correo_Chat, genero_Chat, tipo_Perfil, intereses_Tematicas, fecha_Chat, ultimo_Mensaje);
 
     }
 
