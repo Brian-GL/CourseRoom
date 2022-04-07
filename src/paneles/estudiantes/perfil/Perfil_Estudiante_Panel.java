@@ -902,7 +902,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
-        intereses_AutoCompletionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isaiah Leblanc", "Fitzgerald Dean", "Emma Doyle", "Galvin Gillespie", "Hunter Ross", "Kellie Valencia", "Miranda Holder", "Drake Mendoza", "Uma Parks", "Julian Hill" }));
         intereses_AutoCompletionComboBox.setSelectedIndex(-1);
         intereses_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         intereses_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
@@ -1288,14 +1287,10 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            String id = new String();
+            ComboOption interes = ((ComboOption)intereses_AutoCompletionComboBox.getSelectedItem()) != null
+                    ? ((ComboOption)intereses_AutoCompletionComboBox.getSelectedItem()) : new ComboOption();
             
-            String interes_Tematica = intereses_AutoCompletionComboBox.getSelectedItem() != null
-                    ? intereses_AutoCompletionComboBox.getSelectedItem().toString() : "";
-            
-            if(!interes_Tematica.isEmpty() && !interes_Tematica.isBlank()){
-                Agregar_Interes_Tematica(id,interes_Tematica);
-            }
+            Agregar_Interes_Tematica(interes);
             
         }
     }//GEN-LAST:event_agregar_Interes_JButtonMouseClicked
@@ -1549,7 +1544,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         }
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
-    private void Agregar_Interes_Tematica(String id, String interes_Tematica){
+    private void Agregar_Interes_Tematica(ComboOption interes){
         try {
             DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
             
@@ -1559,14 +1554,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
             ImageIcon remover = new ImageIcon(icono);
             
-            celda = new Celda_Renderer(interes_Tematica,id);
+            celda = new Celda_Renderer(interes.Valor(),interes.Id().toString());
             celdas[0] = celda;
             
             celda = new Celda_Renderer(remover);
             celdas[1] = celda;
             modelo.addRow(celdas);
             
-            intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
+            intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
             
             icono.flush();
         } catch (IOException ex) {
@@ -1593,6 +1588,17 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void Actualizar_Datos(){
         DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Estudiante_Panel.Id_Usuario());
         if(datosPerfilModel != null){
+            
+            if(datosPerfilModel.Tipo_Usuario().equals("Profesor")){
+                editar_Promedio_General_JFormattedTextField.setVisible(false);
+                editar_Promedio_General_JLabel.setVisible(false);
+                agregar_Interes_JButton.setVisible(false);
+                intereses_AutoCompletionComboBox.setVisible(false);
+                intereses_JLabel.setVisible(false);
+                intereses_JScrollPane.setVisible(false);
+                intereses_JTable.setVisible(false);
+            }
+            
             nombres_JLabel.setText(datosPerfilModel.Nombre());
             apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Paterno()," ",datosPerfilModel.Materno()));
             correo_Electronico_JLabel.setText(datosPerfilModel.Correo_Electronico());
@@ -1637,6 +1643,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 editar_Estado_JButton.setVisible(false);
 
             }
+            
+            //Obtener intereses usuario:
+            Lista<ComboOption> tematicas = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
+
+            while(!tematicas.is_empty()){
+                Agregar_Interes_Tematica(tematicas.delist());
+            }
+            
         }
     }
 
@@ -1722,6 +1736,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             imagen_Icono.getImage().flush();
         }
         
+        
+        
         nombres_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         apellidos_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
@@ -1738,6 +1754,20 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_JTable.getTableHeader().setFont(gadugi);
         intereses_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        
+        // Obtener temáticas:
+        Lista<ComboOption> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
+
+        if(!tematicas.is_empty()){
+            while(!tematicas.is_empty()){
+                intereses_AutoCompletionComboBox.addItem(tematicas.delist());
+            }
+            intereses_AutoCompletionComboBox.setSelectedIndex(0);
+        }else{
+            intereses_AutoCompletionComboBox.setEnabled(false);
+            agregar_Interes_JButton.setEnabled(false);
+            intereses_JTable.setEnabled(false);
+        }
          
     }
 

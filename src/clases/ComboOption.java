@@ -30,6 +30,11 @@ public class ComboOption {
         this.valor = _valor;
         this.id = _id;
     }
+    
+    public ComboOption(){
+        this.valor = "";
+        this.id = -1;
+    }
 
     public String Valor() {
         return valor;

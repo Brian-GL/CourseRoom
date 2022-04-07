@@ -30,7 +30,6 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import modelos.DatosPerfilModel;
 import paneles.estudiantes.cursos.Cursos_Estudiante_Panel;
 import paneles.estudiantes.desempeno_escolar.Desempeno_Escolar_Estudiante_Panel;
 
@@ -41,7 +40,7 @@ import paneles.estudiantes.desempeno_escolar.Desempeno_Escolar_Estudiante_Panel;
 public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
 
     private static Image imagen_Usuario;
-    private static Integer IdUsuario, IdSesion;
+    private static int IdUsuario, IdSesion;
 
     private static Chats_Estudiante_Panel chats_Panel;
     private static Acerca_General_Panel acerca_De_Panel;
@@ -942,11 +941,11 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         }
     }
     
-    public static Integer Id_Sesion() {
+    public static int Id_Sesion() {
         return IdSesion;
     }
     
-    public static Integer Id_Usuario() {
+    public static int Id_Usuario() {
         return IdUsuario;
     }
     

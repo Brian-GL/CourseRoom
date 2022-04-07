@@ -313,7 +313,7 @@ public class Solicitudes {
         return response;
     }
     
-     public DatosPerfilModel Obtener_Datos_Perfil(int id_Usuario){
+    public DatosPerfilModel Obtener_Datos_Perfil(int id_Usuario){
         DatosPerfilModel datosPerfilModel = new DatosPerfilModel();
         try {
 
@@ -532,4 +532,113 @@ public class Solicitudes {
         return response;
     }
     
+    public Lista<ComboOption> Obtener_Tematicas(){
+
+        Lista<ComboOption> response = new Lista<>();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Tematicas", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                Vector<Object> fila;
+                ComboOption comboOption;
+                Integer id_Tematica;
+                String tematica;
+                while(!resultado.isEmpty()){
+                    fila = resultado.remove(0);
+                    id_Tematica = (Integer)fila.remove(0);
+                    tematica = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    comboOption = new ComboOption(id_Tematica,tematica);
+                    response.push_back(comboOption);
+                }
+            }
+
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+
+    public Par<Integer, String> Agregar_Interes(int id_Usuario, int id_Tematica){
+        Par<Integer, String> response = new Par<>(-1,"");
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Usuario);
+            parametros.add(id_Tematica);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Agregar_Interes", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.first((Integer)resultado.remove(0));
+                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.first(-1);
+                response.second("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.first(-1);
+            response.second(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
+    public Lista<ComboOption> Obtener_Intereses_Usuario(int id_Usuario){
+
+        Lista<ComboOption> response = new Lista<>();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Intereses_Usuario", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                Vector<Object> fila;
+                ComboOption comboOption;
+                Integer id_Tematica;
+                String tematica;
+                while(!resultado.isEmpty()){
+                    fila = resultado.remove(0);
+                    id_Tematica = (Integer)fila.remove(0);
+                    tematica = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    comboOption = new ComboOption(id_Tematica,tematica);
+                    response.push_back(comboOption);
+                }
+            }
+
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+
 }
