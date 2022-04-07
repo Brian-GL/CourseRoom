@@ -5,6 +5,7 @@ import datos.interfaces.Componentes_Interface;
 import datos.estructuras.Par;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.io.IOException;
@@ -71,6 +72,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         contrasena_JPasswordField.setMinimumSize(new java.awt.Dimension(430, 45));
         contrasena_JPasswordField.setPreferredSize(new java.awt.Dimension(430, 45));
         contrasena_JPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                contrasena_JPasswordFieldKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 contrasena_JPasswordFieldKeyTyped(evt);
             }
@@ -88,6 +92,9 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         correo_Electronico_JTextField.setMinimumSize(new java.awt.Dimension(430, 45));
         correo_Electronico_JTextField.setPreferredSize(new java.awt.Dimension(430, 45));
         correo_Electronico_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                correo_Electronico_JTextFieldKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 correo_Electronico_JTextFieldKeyTyped(evt);
             }
@@ -303,6 +310,18 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         }
     }//GEN-LAST:event_contrasena_JPasswordFieldKeyTyped
 
+    private void correo_Electronico_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correo_Electronico_JTextFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            verificar_Campos();
+        }
+    }//GEN-LAST:event_correo_Electronico_JTextFieldKeyPressed
+
+    private void contrasena_JPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contrasena_JPasswordFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            verificar_Campos();
+        }
+    }//GEN-LAST:event_contrasena_JPasswordFieldKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JLabel contrasena_JLabel;
@@ -392,7 +411,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
                 CourseRoom.Frame().Mostrar_Tablero(response.second().equals("Estudiante"),response.first());
             }else{
                 getToolkit().beep();
-                JOptionPane.showMessageDialog(this, response.second(),"Advertencia Al Iniciar Sesión", JOptionPane.INFORMATION_MESSAGE);
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", response.second());
                 correo_Electronico_JTextField.setText("");
                 contrasena_JPasswordField.setText("");
                 correo_Electronico_JTextField.requestFocus();   
@@ -403,7 +422,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             CourseRoom.Mostrar_Frame();
         } else {
             getToolkit().beep();
-            JOptionPane.showMessageDialog(this, "El Correo Electrónico \n*" + correo + "*\nNo Es Valido");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "El Correo Electrónico <br>*" + correo + "*<br>No Es Valido");
             correo_Electronico_JTextField.setText("");
             contrasena_JPasswordField.setText("");
             correo_Electronico_JTextField.requestFocus();   
@@ -416,7 +435,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         if (password.isEmpty() || password.isBlank()){
             getToolkit().beep();
             // Si Los Campos Estan Vacíos Manda Mensaje De Error.
-            JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios", "Error de Contenido", WIDTH);
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Permiten Campos Vacios");
         } else {
             validar_Correo(correo_Electronico_JTextField.getText().trim());
         }
