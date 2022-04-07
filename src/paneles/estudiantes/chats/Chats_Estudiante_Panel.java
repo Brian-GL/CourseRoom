@@ -415,7 +415,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             if (longitud > 99) {
             buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Busqueda De Chats<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Chats<br>Rebasa Los 100 Caracteres");
           }
         }
 

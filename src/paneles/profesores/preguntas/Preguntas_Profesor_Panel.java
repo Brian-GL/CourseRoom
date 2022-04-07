@@ -419,7 +419,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
             if (longitud > 99) {
             buscar_Preguntas_JTextField.setText(buscar_Preguntas_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Busqueda De Preguntas<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Preguntas<br>Rebasa Los 100 Caracteres");
           }
         }
     }//GEN-LAST:event_buscar_Preguntas_JTextFieldKeyPressed
@@ -740,11 +740,19 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         }// </editor-fold>                        
 
         private void preguntar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {                                               
-            // TODO add your handling code here:
+            int longitud = pregunta_JTextField.getText().length();
+            int longitud1 = descripcion_Pregunta_JTextPane.getText().length();
             if(SwingUtilities.isLeftMouseButton(evt)){
                 if(!pregunta_JTextField.getText().isBlank() && !pregunta_JTextField.getText().isEmpty()){
                     if (!descripcion_Pregunta_JTextPane.getText().isBlank() && !descripcion_Pregunta_JTextPane.getText().isEmpty()) {
-                        int cuenta = Numero_Preguntas()+1;
+                        if(longitud > 499)
+                        {
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Título De La Pregunta<br>Rebasa Los 500 Caracteres");
+                        }else{
+                            if(longitud1 >499){
+                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción De La Pregunta<br>Rebasa Los 500 Caracteres");
+                            }else{
+                                int cuenta = Numero_Preguntas()+1;
                         String id = CourseRoom.Utilerias().Concatenar("Pregunta_", cuenta);
 
                         Agregar_Pregunta_Local(Perfil_Profesor_Panel.Nombre_Completo(),
@@ -754,11 +762,13 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                         Tablero_Profesor_Panel.Mostrar_Vista(id);
 
                         this.dispose();
+                            }
+                        }
                     }
 
                 }
             }
-        }                                              
+        }                                             
 
         private void preguntar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {                                               
             // TODO add your handling code here:

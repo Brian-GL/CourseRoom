@@ -422,7 +422,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
             if (longitud > 99) {
             buscar_Preguntas_JTextField.setText(buscar_Preguntas_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Busqueda De Preguntas<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Preguntas<br>Rebasa Los 100 Caracteres");
           }
         }
     }//GEN-LAST:event_buscar_Preguntas_JTextFieldKeyPressed
@@ -750,10 +750,10 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                     if (!descripcion_Pregunta_JTextPane.getText().isBlank() && !descripcion_Pregunta_JTextPane.getText().isEmpty()) {
                         if(longitud > 499)
                         {
-                            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Título De La Pregunta<br>Rebasa Los 500 Caracteres");
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Título De La Pregunta<br>Rebasa Los 500 Caracteres");
                         }else{
                             if(longitud1 >499){
-                                CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Descripción De La Pregunta<br>Rebasa Los 500 Caracteres");
+                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción De La Pregunta<br>Rebasa Los 500 Caracteres");
                             }else{
                                 int cuenta = Numero_Preguntas()+1;
                         String id = CourseRoom.Utilerias().Concatenar("Pregunta_", cuenta);

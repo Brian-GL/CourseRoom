@@ -287,7 +287,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         } catch (MalformedURLException ex) {
             
         } catch (IOException ex) {
-            
+            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar El Curso",ex.getMessage());
         }
     }
 

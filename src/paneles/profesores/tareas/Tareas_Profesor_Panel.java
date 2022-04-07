@@ -384,7 +384,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         } catch (MalformedURLException ex) {
             
         } catch (IOException ex) {
-            
+            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar La Tarea Creada",ex.getMessage());
         }
     }
     

@@ -929,7 +929,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         if(SwingUtilities.isLeftMouseButton(evt)){
             if (longitud > 499) {
             redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
             }else{
                 Enviar_Archivos();
             }
@@ -951,7 +951,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             if (longitud > 499) {
             redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
             }else{
                 Enviar_Mensaje();
             }
@@ -1089,7 +1089,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         int longitud = editar_Nombre_JTextField.getText().length();
             if(longitud > 79){
             editar_Nombre_JTextField.setText(editar_Nombre_JTextField.getText().substring(0,longitud-1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Título De Tarea","El Título De Tu Tarea<br>Rebasa Los 80 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Título De Tu Tarea<br>Rebasa Los 80 Caracteres");
         }
     }//GEN-LAST:event_editar_Nombre_JTextFieldKeyTyped
 
@@ -1097,7 +1097,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         int longitud = editar_Descripcion_JTextPane.getText().length();
             if (longitud > 499) {
             editar_Descripcion_JTextPane.setText(editar_Descripcion_JTextPane.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Descripción De Tarea","La Descripción De Tu Tarea<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción De Tu Tarea<br>Rebasa Los 500 Caracteres");
           }
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
@@ -1152,7 +1152,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         } catch (MalformedURLException ex) {
             
         } catch (IOException ex) {
-            
+            CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Tarea Por Calificar",ex.getMessage());
         }
            
     }
@@ -1438,11 +1438,11 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         }
                     }
                     if(archivo_Mayor){
-                        JOptionPane.showMessageDialog(this, "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
                     }                 
                     icono.flush();
                 } catch (IOException ex) {
-                    
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Arvhivo",ex.getMessage());
                 }
             }
         }
@@ -1515,10 +1515,11 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         }
                     }
                     if(archivo_Mayor){
-                        JOptionPane.showMessageDialog(this, "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
                     }
                     icono.flush();
                 } catch (IOException ex) {
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Arvhivo",ex.getMessage());
                 }
             }
         }

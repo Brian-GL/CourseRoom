@@ -1167,7 +1167,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 }
                 
                 if(archivo_Mayor){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Cambiar Imagen De Perfil","La Imagen Supera El Tamaño Aceptado De Subida");
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
                 }
             }
 
@@ -1235,10 +1235,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                     CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()),comboOption.Id());
             
             if(respuesta.first() == 1){
-                JOptionPane.showMessageDialog(this, "Se Han Actualizado Los Datos Personales Correctamente", "Mensaje De Confirmación", JOptionPane.INFORMATION_MESSAGE);
-                
+                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", "Se Han Actualizado Los Datos Personales Correctamente.");
             }else{
-                JOptionPane.showMessageDialog(this, respuesta.second(), "Mensaje De Confirmación", JOptionPane.INFORMATION_MESSAGE);
+                CourseRoom.Utilerias().Mensaje_Error("Error", "Probablemente No Se Guardaron Los Cambios.");
             }
         }
     }//GEN-LAST:event_guardar_Cambios_Datos_Personales_JButtonMouseClicked

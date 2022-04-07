@@ -1065,7 +1065,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 }
                 
                 if(archivo_Mayor){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Cambiar Imagen De Perfil","La Imagen Supera El Tamaño Aceptado De Subida");
+                    CourseRoom.Utilerias().Mensaje_Alerta("Warning","La Imagen Supera El Tamaño Aceptado De Subida");
                 }
             }
 
@@ -1296,8 +1296,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
        int longitud = descripcion_JTextPane.getText().length();
             if (longitud > 499) {
             descripcion_JTextPane.setText(descripcion_JTextPane.getText().substring(0, longitud - 1));
-            getToolkit().beep();//sonido de no aceptar más caracteres. 
-            evt.consume();//hace que esa pulsación de tecla se rechace.
+            CourseRoom.Utilerias().Mensaje_Alerta("Warnig","La Descripción Rebasa<br>Los 500 Caracteres");
           }
     }//GEN-LAST:event_descripcion_JTextPaneKeyTyped
 
@@ -1307,16 +1306,16 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         // Checa Los Campos Vacíos.
         if (correo_JTextField.getText().isBlank() || Password.isBlank() || Password2.isBlank()) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
-            JOptionPane.showMessageDialog(this, "No Se Permiten Campos Vacios !!!", "Error de Contenido", WIDTH);
+            CourseRoom.Utilerias().Mensaje_Alerta("Warnig","No Se Permiten Campos Vacios !!!");
         } else {
             if (Password.equals(Password2)) {
                 var valor = CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo_JTextField.getText().trim());
                 if (!valor) {
-                    JOptionPane.showMessageDialog(this, "Correo No Valido", "NO", WIDTH);
+                    CourseRoom.Utilerias().Mensaje_Alerta("Warnig","Correo No Valido");
                     correo_JTextField.requestFocus();
                 } else {
                     if (Password.length() <= 7 || Password2.length() <= 7) {
-                        JOptionPane.showMessageDialog(this, "Las Contraseñas Deben Tener Al Menos 8 Caracteres", "Error de Contenido", WIDTH);
+                        CourseRoom.Utilerias().Mensaje_Alerta("Warnig","Las Contraseñas Deben Tener Al Menos 8 Caracteres");
                         contrasenia_Autenticacion_JPasswordField.requestFocus();
                     } else {
                         ((CardLayout) this.getLayout()).show(this, "Datos_Personales");
@@ -1325,7 +1324,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 }
             } else {
                 // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
-                JOptionPane.showMessageDialog(this, "Contraseñas Distintas Revisa!!!", "NO", WIDTH);
+                CourseRoom.Utilerias().Mensaje_Alerta("Warnig","Contraseñas Distintas Revisa!!!");
                 contrasenia_Autenticacion_JPasswordField.requestFocus();
             }
         }
@@ -1340,18 +1339,18 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             if (nombres_JTextField.getText().isBlank() || apellido_Paterno_JTextField.getText().isBlank()
                     || apellido_Materno_JTextField.getText().isBlank()) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
-            JOptionPane.showMessageDialog(this, "Ingresa Los Campos Obligatorios!!!", "Error de Contenido", WIDTH);
+            CourseRoom.Utilerias().Mensaje_Alerta("Warnig","Ingresa Los Campos Obligatorios!!!");
             if(nombres_JTextField.getText().startsWith(" ") || apellido_Paterno_JTextField.getText().startsWith(" ")
                || apellido_Materno_JTextField.getText().startsWith(" ") || genero_JTextField.getText().startsWith(" ")){
             // Si Los Campos Inician Con Un Espacio Manda Mensaje De Error.
-            JOptionPane.showMessageDialog(this, "Probablemente Estes Usando Un Espacio\nAl Principío En Algun Apartado", "Error de Contenido", WIDTH);
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning","Probablemente Estes Usando Un Espacio<br>Al Principío En Algun Apartado");
             }
         } else {
                  if(longitud <=2){
-            JOptionPane.showMessageDialog(this, "Los Campos Obligatorios Deben Contener Al Menos 3 Caracteres", "Error de Contenido", WIDTH);
+                     CourseRoom.Utilerias().Mensaje_Alerta("Warning","Los Campos Obligatorios<br>Deben Contener Al Menos 3 Caracteres");
             nombres_JTextField.requestFocus();
         }else if(longitud1 <=2){
-            JOptionPane.showMessageDialog(this, "Los Campos Obligatorios Deben Contener Al Menos 3 Caracteres", "Error de Contenido", WIDTH);
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning","Los Campos Obligatorios<br>Deben Contener Al Menos 3 Caracteres");
             apellido_Paterno_JTextField.requestFocus();
         }
         else if(longitud2 <=2){
@@ -1386,7 +1385,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             
             icono.flush();
         } catch (IOException ex) {
-            
+            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Interes/Tematica",ex.getMessage());
         }
     }
     
@@ -1679,66 +1678,51 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         int longitud = descripcion_JTextPane.getText().length();
         if(longitud > 500)
         {
-            JOptionPane.showMessageDialog(this, "La Descripción Rebasa Los 500 Caracteres", "Error de Contenido", WIDTH);
-        }
-        else{      
-            if(localidad_AutoCompletionComboBox.getItemCount() > 0){
+            CourseRoom.Utilerias().Mensaje_Alerta("Warning","La Descripción Rebasa Los 500 Caracteres");
+        }else{      
+        if(localidad_AutoCompletionComboBox.getItemCount() > 0){
+        
+            String correoElectronico = correo_JTextField.getText();
+            String contrasena = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
+            String nombre = nombres_JTextField.getText();
+            String paterno = apellido_Paterno_JTextField.getText();
+            String materno = apellido_Materno_JTextField.getText();
+            String genero = genero_JTextField.getText();
+            String fecha_Nacimiento = CourseRoom.Utilerias().Fecha(fecha_Nacimiento_DatePicker.getDate());
+            String descripcion = descripcion_JTextPane.getText();
+            Double promedio_General = promedio_General_JFormattedTextField.getText().isBlank() || promedio_General_JFormattedTextField.getText().isEmpty()? Double.valueOf(-1) : Double.valueOf(promedio_General_JFormattedTextField.getText());
+            String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
+            Integer idLocalidad = ((ComboOption) localidad_AutoCompletionComboBox.getSelectedItem()).Id();
 
-                String correoElectronico = correo_JTextField.getText();
-                String contrasena = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
-                String nombre = nombres_JTextField.getText();
-                String paterno = apellido_Paterno_JTextField.getText();
-                String materno = apellido_Materno_JTextField.getText();
-                String genero = genero_JTextField.getText();
-                String fecha_Nacimiento = CourseRoom.Utilerias().Fecha(fecha_Nacimiento_DatePicker.getDate());
-                String descripcion = descripcion_JTextPane.getText();
-                Double promedio_General = promedio_General_JFormattedTextField.getText().isBlank() || promedio_General_JFormattedTextField.getText().isEmpty()? Double.valueOf(-1) : Double.valueOf(promedio_General_JFormattedTextField.getText());
-                String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
-                Integer idLocalidad = ((ComboOption) localidad_AutoCompletionComboBox.getSelectedItem()).Id();
-
-                if(imagen == null){
-                    imagen = new byte[]{};
-                }
-
-                Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena, 
-                        nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
-
-                Integer codigo = response.first();
-                String mensaje = response.second();
-
-                if(codigo > 0){
-
-                    CourseRoom.Utilerias().Mensaje_Informativo("Agregar Usuario", mensaje);
-                    
-                    //Agregar intereses:
-                    DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
-                    Celda_Renderer celda;
-                    for (int i = 0; i < modelo.getRowCount(); i++) {
-                        celda = (Celda_Renderer) modelo.getValueAt(i, 0);
-                            
-                        response = CourseRoom.Solicitudes().Agregar_Interes(codigo, Integer.parseInt(celda.ID()));
-                        
-                        if(response.first() == -1){
-                            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Ínteres", response.second());
-                            break;
-                        }
-                        
-                    }
-
-                    CourseRoom.Esconder_Frame();
-
-                    CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"),codigo);
-
-                    CourseRoom.Mostrar_Frame();
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario", mensaje);
-                }
-
-            }else{
-                CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario","No Se Ha Seleccionado Una Localidad");
+            if(imagen == null){
+                imagen = new byte[]{};
             }
 
+
+            Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena, 
+                    nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
+
+            Integer codigo = response.first();
+            String mensaje = response.second();
+
+            if(codigo > 0){
+                
+                JOptionPane.showMessageDialog(this, mensaje, "Agregar Usuario", JOptionPane.INFORMATION_MESSAGE);
+
+                CourseRoom.Esconder_Frame();
+
+                CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"),codigo);
+
+                CourseRoom.Mostrar_Frame();
+            }else{
+                JOptionPane.showMessageDialog(this, mensaje, "Error Al Agregar Usuario", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }else{
+            JOptionPane.showMessageDialog(this, "No Se Ha Seleccionado Una Localidad", "Error Al Agregar Usuario", JOptionPane.ERROR_MESSAGE);
         }
+        
+    }
     }
 
 }

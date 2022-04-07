@@ -975,7 +975,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                 }
                 
                 if(archivo_Mayor){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Cambiar Imagen De Perfil","La Imagen Supera El Tamaño Aceptado De Subida");
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
                 }
             }
 
@@ -997,7 +997,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void editar_Correo_Electronico_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Correo_Electronico_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Correo_Electronico_JTextField.setEditable(!editar_Correo_Electronico_JTextField.isEnabled());
+            editar_Correo_Electronico_JTextField.setEnabled(!editar_Correo_Electronico_JTextField.isEnabled());
         }
 
     }//GEN-LAST:event_editar_Correo_Electronico_JButtonMouseClicked
@@ -1015,8 +1015,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void editar_Contrasena_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Contrasena_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            contrasena_JPasswordField.setEditable(!contrasena_JPasswordField.isEnabled());
-            repetir_Contrasena_JPasswordField.setEditable(!repetir_Contrasena_JPasswordField.isEnabled());
+            contrasena_JPasswordField.setEnabled(!contrasena_JPasswordField.isEnabled());
+            repetir_Contrasena_JPasswordField.setEnabled(!repetir_Contrasena_JPasswordField.isEnabled());
         }
     }//GEN-LAST:event_editar_Contrasena_JButtonMouseClicked
 
@@ -1080,7 +1080,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void editar_Nombres_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombres_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Nombres_JTextField.setEditable(!editar_Nombres_JTextField.isEnabled());
+            editar_Nombres_JTextField.setEnabled(!editar_Nombres_JTextField.isEnabled());
         }
     }//GEN-LAST:event_editar_Nombres_JButtonMouseClicked
 
@@ -1098,7 +1098,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void editar_Apellido_Paterno_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Apellido_Paterno_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Apellido_Paterno_JTextField.setEditable(!editar_Apellido_Paterno_JTextField.isEnabled());
+            editar_Apellido_Paterno_JTextField.setEnabled(!editar_Apellido_Paterno_JTextField.isEnabled());
         }
     }//GEN-LAST:event_editar_Apellido_Paterno_JButtonMouseClicked
 
@@ -1115,7 +1115,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void editar_Apellido_Materno_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Apellido_Materno_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Apellido_Materno_JTextField.setEditable(!editar_Apellido_Materno_JTextField.isEnabled());
+            editar_Apellido_Materno_JTextField.setEnabled(!editar_Apellido_Materno_JTextField.isEnabled());
         }
         
     }//GEN-LAST:event_editar_Apellido_Materno_JButtonMouseClicked
@@ -1152,7 +1152,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void editar_Genero_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Genero_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Genero_JTextField.setEditable(!editar_Genero_JTextField.isEnabled());
+            editar_Genero_JTextField.setEnabled(!editar_Genero_JTextField.isEnabled());
         }
         
     }//GEN-LAST:event_editar_Genero_JButtonMouseClicked
@@ -1187,7 +1187,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Descripcion_JTextPane.setEditable(!editar_Descripcion_JTextPane.isEnabled());
+            editar_Descripcion_JTextPane.setEnabled(!editar_Descripcion_JTextPane.isEnabled());
         }
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseClicked
 

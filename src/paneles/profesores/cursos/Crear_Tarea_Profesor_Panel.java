@@ -494,15 +494,15 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         int longitud = editar_Nombre_JTextField.getText().length();
             if(longitud > 79){
             editar_Nombre_JTextField.setText(editar_Nombre_JTextField.getText().substring(0,longitud-1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Título De Tarea","El Título De Tu Tarea<br>Rebasa Los 80 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Título De Tu Tarea<br>Rebasa Los 80 Caracteres");
         }
     }//GEN-LAST:event_editar_Nombre_JTextFieldKeyTyped
 
     private void editar_Descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Descripcion_JTextPaneKeyTyped
         int longitud = editar_Descripcion_JTextPane.getText().length();
-            if (longitud > 499) {
+            if (longitud > 1499) {
             editar_Descripcion_JTextPane.setText(editar_Descripcion_JTextPane.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Descripción De Tarea","La Descripción De Tu Tarea<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción De Tu Tarea<br>Rebasa Los 1500 Caracteres");
           }
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
@@ -542,11 +542,11 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                         }
                     }
                     if(archivo_Mayor){
-                        JOptionPane.showMessageDialog(this, "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
                     }                 
                     icono.flush();
                 } catch (IOException ex) {
-                    
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Archivo",ex.getMessage());
                 }
             }
         }

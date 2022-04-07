@@ -393,7 +393,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
             if (longitud > 99) {
             buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Busqueda De Grupos<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Grupos<br>Rebasa Los 100 Caracteres");
           }
         }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
@@ -473,7 +473,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         } catch (MalformedURLException ex) {
             
         } catch (IOException ex) {
-            
+            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar El Grupo",ex.getMessage());
         }
         
     }

@@ -81,8 +81,8 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         materiales_JScrollPane = new javax.swing.JScrollPane();
         materiales_JTable = new javax.swing.JTable();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setOpaque(false);
@@ -119,9 +119,9 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("<html><h3>Regresar A Mis Cursos</h3></html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar_JButton.setToolTipText("<html><h3>Regresar A Mis Cursos</h3></html>");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -201,7 +201,6 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
         informacion_JPanel.setOpaque(false);
 
-        nombre_JTextField.setEditable(false);
         nombre_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         nombre_JTextField.setMinimumSize(new java.awt.Dimension(64, 32));
         nombre_JTextField.setPreferredSize(new java.awt.Dimension(483, 32));
@@ -217,7 +216,6 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         descripcion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         descripcion_JLabel.setText("Descripción");
 
-        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         descripcion_JTextPane.setText("");
@@ -624,7 +622,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                 }
                 
                 if(archivo_Mayor){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Cambiar Imagen De Perfil","La Imagen Supera El Tamaño Aceptado De Subida");
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
                 }
             }
 
@@ -726,9 +724,9 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
     private void descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcion_JTextPaneKeyTyped
         int longitud = descripcion_JTextPane.getText().length();
-            if (longitud > 499) {
+            if (longitud > 1499) {
             descripcion_JTextPane.setText(descripcion_JTextPane.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Descripción Del Curso","La Descripción De Tu Curso<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Descripción Del Curso","La Descripción De Tu Curso<br>Rebasa Los 1500 Caracteres");
           }
     }//GEN-LAST:event_descripcion_JTextPaneKeyTyped
 
@@ -973,11 +971,11 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                         }
                     }
                     if(archivo_Mayor){
-                        JOptionPane.showMessageDialog(this, "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","LHay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
                     }                 
                     icono.flush();
                 } catch (IOException ex) {
-                    
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Archivo",ex.getMessage());
                 }
             }
         }

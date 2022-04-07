@@ -394,9 +394,12 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
     }//GEN-LAST:event_buscar_Chats_JButtonMouseExited
 
     private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
-        // TODO add your handling code here:
+        int longitud = buscar_JTextField.getText().length();
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-
+            if (longitud > 99) {
+            buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Chats<br>Rebasa Los 100 Caracteres");
+          }
         }
 
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed

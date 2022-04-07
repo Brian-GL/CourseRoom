@@ -915,7 +915,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         if(SwingUtilities.isLeftMouseButton(evt)){
             if (longitud > 499) {
             redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
             }else{
                 Enviar_Archivos();
             }
@@ -937,7 +937,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             if (longitud > 499) {
             redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
             }else{
                 Enviar_Mensaje();
             }
@@ -967,7 +967,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             
             imagen.flush();
         } catch (IOException ex) {
-            
+            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar La Retroalimentación",ex.getMessage());
         }
         
     }
@@ -992,7 +992,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             
             imagen.flush();
         } catch (IOException ex) {
-            
+            CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Archivo Adjunto",ex.getMessage());
         }
     }
     
@@ -1260,11 +1260,11 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         }
                     }
                     if(archivo_Mayor){
-                        JOptionPane.showMessageDialog(this, "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
                     }                 
                     icono.flush();
                 } catch (IOException ex) {
-                    
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Archivo",ex.getMessage());
                 }
             }
         }
@@ -1338,10 +1338,11 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         }
                     }
                     if(archivo_Mayor){
-                        JOptionPane.showMessageDialog(this, "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
                     }
                     icono.flush();
                 } catch (IOException ex) {
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Archivo",ex.getMessage());
                 }
             }
         }
