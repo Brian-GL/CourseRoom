@@ -53,25 +53,14 @@ import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Componentes_Interface,  Envio_Interface,Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private boolean carta_Visible;
+    private int Id_Chat;
     
     
-    public Chat_Estudiante_Panel(Image imagen_Chat,String nombres_Chat, String apellidos_Chat, String correo_Chat,
-            String genero_Chat, String tipo_Perfil, Lista<String> intereses_Tematicas) {
+    public Chat_Estudiante_Panel(int id_Chat) {
         initComponents();
         
-        titulo_JLabel.setText(CourseRoom.Utilerias().Concatenar(nombres_Chat, " ",apellidos_Chat));
-        genero_JLabel.setText(genero_Chat);
-        tipo_Perfil_JLabel.setText(tipo_Perfil);
-        apellidos_JLabel.setText(apellidos_Chat);
-        nombres_JLabel.setText(nombres_Chat);
-        correo_JLabel.setText(correo_Chat);
-        String id = new String();
-        while(!intereses_Tematicas.is_empty()){
-            Agregar_Interes_Tematica(id,intereses_Tematicas.delist());
-        }
-        
-        ImageIcon icono = new ImageIcon(imagen_Chat);
-        imagen_Perfil_JLabel.setIcon(icono);
+        Id_Chat = id_Chat;
+
         
         Iniciar_Componentes();
         
@@ -610,6 +599,22 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_eliminar_Chat_JButtonMouseExited
 
+    private void Obtener_Datos_Generales_Chat(){
+//        titulo_JLabel.setText(CourseRoom.Utilerias().Concatenar(nombres_Chat, " ",apellidos_Chat));
+//        genero_JLabel.setText(genero_Chat);
+//        tipo_Perfil_JLabel.setText(tipo_Perfil);
+//        apellidos_JLabel.setText(apellidos_Chat);
+//        nombres_JLabel.setText(nombres_Chat);
+//        correo_JLabel.setText(correo_Chat);
+//        String id = new String();
+//        while(!intereses_Tematicas.is_empty()){
+//            Agregar_Interes_Tematica(id,intereses_Tematicas.delist());
+//        }
+//        
+//        ImageIcon icono = new ImageIcon(imagen_Chat);
+//        imagen_Perfil_JLabel.setIcon(icono);
+    }
+    
     private void Agregar_Interes_Tematica(String id, String interes_Tematica){
         
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();

@@ -23,12 +23,9 @@ import datos.estructuras.Par;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelos.ChatsPersonalesModel;
 import modelos.DatosPerfilModel;
-import modelos.GruposModel;
 import modelos.SesionesModel;
 import org.apache.xmlrpc.XmlRpcClient;
 import org.apache.xmlrpc.XmlRpcException;
@@ -689,4 +686,73 @@ public class Solicitudes {
         return response;
         
     }
+
+    public byte[] Obtener_Imagen_Chat_Personal(int id_Chat, int id_Usuario){
+        
+        byte[] response;
+
+        try {
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Chat);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Imagen_Chat_Personal", parametros);
+            
+            response =  (respuesta != null) ? (byte[])respuesta : new byte[]{};
+        } catch (XmlRpcException | IOException ex) {
+            response = new byte[]{};
+        }
+        
+        return response;
+    }
+     
+    public Lista<ChatsPersonalesModel> Buscar_Chats_Personales(String busqueda, int id_Usuario){
+        
+        Lista<ChatsPersonalesModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(CourseRoom.Utilerias().Codificacion(busqueda));
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Buscar_Chats_Personales", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                ChatsPersonalesModel chatsPersonalesModel;
+                int id;
+                String valor,valor1,valor2;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id = (int) fila.remove(0);
+                    valor = (String)fila.remove(0);
+                    valor1 = (String)fila.remove(0);
+                    valor2 = (String)fila.remove(0);
+                    
+                    chatsPersonalesModel = new ChatsPersonalesModel(id, valor2, valor, valor1);
+                    
+                    response.push_back(chatsPersonalesModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+        
+    }
+
 }

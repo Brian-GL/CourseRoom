@@ -981,7 +981,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
             
             if(imagen_Usuario != null){
                 
-                imagen_Usuario = imagen_Usuario.getScaledInstance(450, 450, 450);
+                imagen_Usuario = imagen_Usuario.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
                 Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
                 ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
                 imagen_Perfil_JLabel.setIcon(icono_Imagen);

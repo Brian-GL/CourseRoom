@@ -643,7 +643,7 @@ CREATE TABLE `tb_sesiones` (
   PRIMARY KEY (`IdSesion`),
   KEY `fk_IdUsuarioSesion_INDEX` (`IdUsuario`),
   CONSTRAINT `fk_IdUsuarioSesion` FOREIGN KEY (`IdUsuario`) REFERENCES `tb_usuarios` (`IdUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -652,7 +652,7 @@ CREATE TABLE `tb_sesiones` (
 
 LOCK TABLES `tb_sesiones` WRITE;
 /*!40000 ALTER TABLE `tb_sesiones` DISABLE KEYS */;
-INSERT INTO `tb_sesiones` VALUES (1,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 28/03/22 22:33:42','177.245.218.199',1,_binary '\0'),(2,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 28/03/22 22:38:20','177.245.218.199',1,_binary '\0'),(3,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:15:30','177.245.219.175',1,_binary ''),(4,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:28:11','177.245.219.175',1,_binary ''),(5,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:37:46','177.245.219.175',1,_binary ''),(6,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:48:39','177.245.219.175',1,_binary ''),(7,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:52:22','177.245.219.175',1,_binary ''),(8,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 20:48:29','177.245.219.175',1,_binary '\0'),(9,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 30/03/22 19:19:10','177.245.216.31',1,_binary ''),(10,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 31/03/22 17:55:45','177.245.216.223',1,_binary ''),(11,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 31/03/22 18:01:29','177.245.216.223',1,_binary ''),(12,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 31/03/22 18:48:36','177.245.216.223',1,_binary ''),(13,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','viernes 01/04/22 20:11:31','177.245.217.31',1,_binary ''),(14,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 04/04/22 18:34:17','177.245.217.31',1,_binary ''),(15,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 18:37:39','177.245.217.31',1,_binary ''),(16,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 18:44:08','177.245.217.31',2,_binary ''),(17,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 19:13:29','177.245.217.31',2,_binary ''),(18,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 19:24:27','177.245.217.31',2,_binary ''),(19,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 19:42:06','177.245.217.31',2,_binary ''),(20,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 19:56:00','177.245.217.31',2,_binary '');
+INSERT INTO `tb_sesiones` VALUES (1,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 28/03/22 22:33:42','177.245.218.199',1,_binary '\0'),(2,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 28/03/22 22:38:20','177.245.218.199',1,_binary '\0'),(3,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:15:30','177.245.219.175',1,_binary ''),(4,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:28:11','177.245.219.175',1,_binary ''),(5,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:37:46','177.245.219.175',1,_binary ''),(6,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:48:39','177.245.219.175',1,_binary ''),(7,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 18:52:22','177.245.219.175',1,_binary ''),(8,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','martes 29/03/22 20:48:29','177.245.219.175',1,_binary '\0'),(9,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 30/03/22 19:19:10','177.245.216.31',1,_binary ''),(10,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 31/03/22 17:55:45','177.245.216.223',1,_binary ''),(11,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 31/03/22 18:01:29','177.245.216.223',1,_binary ''),(12,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 31/03/22 18:48:36','177.245.216.223',1,_binary ''),(13,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','viernes 01/04/22 20:11:31','177.245.217.31',1,_binary ''),(14,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 04/04/22 18:34:17','177.245.217.31',1,_binary ''),(15,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 18:37:39','177.245.217.31',1,_binary ''),(16,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 18:44:08','177.245.217.31',2,_binary ''),(17,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 19:13:29','177.245.217.31',2,_binary ''),(18,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 19:24:27','177.245.217.31',2,_binary ''),(19,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 19:42:06','177.245.217.31',2,_binary ''),(20,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','miércoles 06/04/22 19:56:00','177.245.217.31',2,_binary ''),(21,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 07/04/22 07:16:21','177.245.217.31',2,_binary '\0'),(22,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','jueves 07/04/22 07:22:03','177.245.217.31',2,_binary '');
 /*!40000 ALTER TABLE `tb_sesiones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3059,6 +3059,37 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerImagenChatPersonal` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerImagenChatPersonal`(
+    IN _IdChat INT,
+    IN _IdUsuario INT
+)
+BEGIN
+
+    IF EXISTS(SELECT IdChat FROM tb_chatspersonales WHERE IdChat = _IdChat And Activo = 1 AND IdUsuarioEmisor = _IdUsuario) THEN
+        SELECT Usuarios.Imagen FROM tb_usuarios Usuarios 
+        INNER JOIN  tb_chatspersonales Chats ON Chats.IdUsuarioEmisor = Usuarios.IdUsuario
+        WHERE Chats.IdChat = _IdChat AND Chats.Activo = 1 LIMIT 1;
+    ELSE
+        SELECT Usuarios.Imagen FROM tb_usuarios Usuarios
+        INNER JOIN tb_chatspersonales Chats ON Chats.IdUsuarioReceptor = Usuarios.IdUsuario
+        WHERE Chats.IdChat = _IdChat AND Chats.Activo = 1 LIMIT 1;
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerImagenCurso` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -3885,4 +3916,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-06 20:08:16
+-- Dump completed on 2022-04-07  7:23:20
