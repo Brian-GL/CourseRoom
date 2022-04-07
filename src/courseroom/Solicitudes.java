@@ -755,4 +755,117 @@ public class Solicitudes {
         
     }
 
+    public Par<Integer, String> Abandonar_Grupo(int id_Grupo, int id_Usuario){
+        
+        Par<Integer, String> response = new Par<>(-1,"");
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Grupo);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Abandonar_Grupo", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.first((Integer)resultado.remove(0));
+                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.first(-1);
+                response.second("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.first(-1);
+            response.second(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
+    public Par<Integer, String> Actualizar_Configuracion(int id_Usuario, boolean chats_Conmigo, 
+            boolean avisos_Activo, boolean activo){
+        
+        Par<Integer, String> response = new Par<>(-1,"");
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Usuario);
+            parametros.add(chats_Conmigo);
+            parametros.add(avisos_Activo);
+            parametros.add(activo);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Actualizar_Configuracion", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.first((Integer)resultado.remove(0));
+                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.first(-1);
+                response.second("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.first(-1);
+            response.second(ex.getMessage());
+        }
+        
+        return response;
+        
+    }
+
+    public Par<Integer, String> Agregar_Tarea_Pendiente_Grupo(int id_Grupo, String nombre, 
+            String descripcion, String fecha_Finalizacion, int id_Usuario_Cargo){
+        
+        Par<Integer, String> response = new Par<>(-1,"");
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Grupo);
+            parametros.add(CourseRoom.Utilerias().Codificacion(nombre));
+            parametros.add(CourseRoom.Utilerias().Codificacion(descripcion));
+            parametros.add(CourseRoom.Utilerias().Codificacion(fecha_Finalizacion));
+            parametros.add(id_Usuario_Cargo);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Agregar_Tarea_Pendiente_Grupo", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.first((Integer)resultado.remove(0));
+                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.first(-1);
+                response.second("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.first(-1);
+            response.second(ex.getMessage());
+        }
+        
+        return response;
+        
+    }
 }

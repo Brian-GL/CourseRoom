@@ -10,5 +10,4 @@ DELETE FROM tb_tematicas WHERE IdTematica > 0;
 
 USE courseroom;
 SELECT *FROM tb_usuarios;
-SELECT *FROM tb_localidades WHERE IdLocalidad = 576;
 SELECT *FROM tb_sesiones ORDER BY IdSesion DESC;
