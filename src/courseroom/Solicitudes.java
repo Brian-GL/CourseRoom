@@ -58,6 +58,43 @@ public class Solicitudes {
         private static final Solicitudes INSTANCE = new Solicitudes();
     }
     
+    public List<ComboOption> Obtener_Usuarios_Chatear(String busqueda){
+        Lista<ComboOption> response = new Lista<>();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(CourseRoom.Utilerias().Codificacion(busqueda));
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Usuarios_Chatear", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                Vector<Object> fila;
+                ComboOption comboOption;
+                Integer id_Localidad;
+                String localidad;
+                while(!resultado.isEmpty()){
+                    fila = resultado.remove(0);
+                    id_Localidad = (Integer)fila.remove(0);
+                    localidad = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    comboOption = new ComboOption(id_Localidad,localidad);
+                    response.push_back(comboOption);
+                }
+            }
+
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+    
     public Vector<Integer> Fecha_Hora_Servidor(){
         
         Vector<Integer> response = new Vector<>();
