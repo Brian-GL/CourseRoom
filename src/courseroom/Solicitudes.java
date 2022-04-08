@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import modelos.ArchivoModel;
 import modelos.ChatsPersonalesModel;
 import modelos.DatosPerfilModel;
 import modelos.SesionesModel;
@@ -1617,4 +1618,42 @@ public class Solicitudes {
         return response;
     }
     
+    public ArchivoModel Obtener_Archivo_Subido_Tarea(int id_Archivo_Subido, int id_Usuario){
+        
+        ArchivoModel archivoModel = new ArchivoModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Archivo_Subido);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivo_Subido_Tarea", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 3){
+                   
+                    archivoModel.Nombre_Archivo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    archivoModel.Archivo((byte[])resultado.remove(0));
+                    archivoModel.Extension(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        
+        return archivoModel;
+        
+    }
+    
+
 }
