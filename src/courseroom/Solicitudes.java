@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import modelos.ArchivoModel;
 import modelos.ChatsPersonalesModel;
 import modelos.DatosPerfilModel;
+import modelos.MensajesModel;
 import modelos.SesionesModel;
 import org.apache.xmlrpc.XmlRpcClient;
 import org.apache.xmlrpc.XmlRpcException;
@@ -1655,5 +1656,234 @@ public class Solicitudes {
         
     }
     
+    public ArchivoModel Obtener_Archivo_Compartido_Grupo(int id_Archivo_Compartido){
+        ArchivoModel archivoModel = new ArchivoModel();
+        
+        try {
 
+            Vector parametros = new Vector();
+
+            parametros.add(id_Archivo_Compartido);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivo_Compartido_Grupo", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 3){
+                   
+                    archivoModel.Nombre_Archivo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    archivoModel.Archivo((byte[])resultado.remove(0));
+                    archivoModel.Extension(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+                
+        return archivoModel;
+    }
+    
+    public ArchivoModel Obtener_Archivo_Mensaje_Chat(int id_Mensaje){
+        ArchivoModel archivoModel = new ArchivoModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Mensaje);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivo_Mensaje_Chat", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 3){
+                   
+                    archivoModel.Nombre_Archivo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    archivoModel.Archivo((byte[])resultado.remove(0));
+                    archivoModel.Extension(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+                
+        return archivoModel;
+    }
+    
+    public ArchivoModel Obtener_Archivo_Mensaje_Curso(int id_Mensaje){
+        ArchivoModel archivoModel = new ArchivoModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Mensaje);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivo_Mensaje_Curso", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 3){
+                   
+                    archivoModel.Nombre_Archivo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    archivoModel.Archivo((byte[])resultado.remove(0));
+                    archivoModel.Extension(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+                
+        return archivoModel;
+    }
+    
+    public ArchivoModel Obtener_Archivo_Mensaje_Grupo(int id_Mensaje){
+        ArchivoModel archivoModel = new ArchivoModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Mensaje);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivo_Mensaje_Grupo", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 3){
+                   
+                    archivoModel.Nombre_Archivo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    archivoModel.Archivo((byte[])resultado.remove(0));
+                    archivoModel.Extension(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+                
+        return archivoModel;
+    }
+    
+    public ArchivoModel Obtener_Archivo_Mensaje_Pregunta(int id_Mensaje){
+        ArchivoModel archivoModel = new ArchivoModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Mensaje);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivo_Mensaje_Pregunta", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 3){
+                   
+                    archivoModel.Nombre_Archivo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    archivoModel.Archivo((byte[])resultado.remove(0));
+                    archivoModel.Extension(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return archivoModel;
+    }
+    
+    public ArchivoModel Obtener_Archivo_Mensaje_Tarea(int id_Mensaje){
+        ArchivoModel archivoModel = new ArchivoModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Mensaje);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivo_Mensaje_Tarea", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 3){
+                   
+                    archivoModel.Nombre_Archivo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    archivoModel.Archivo((byte[])resultado.remove(0));
+                    archivoModel.Extension(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return archivoModel;
+    }    
+    
+    public ArchivoModel Obtener_Archivo_Retoalimentacion_Tarea(int id_Retroalimentacion){
+        ArchivoModel archivoModel = new ArchivoModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Retroalimentacion);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivo_Retoalimentacion_Tarea", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 3){
+                   
+                    archivoModel.Nombre_Archivo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    archivoModel.Archivo((byte[])resultado.remove(0));
+                    archivoModel.Extension(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return archivoModel;
+    }
 }
