@@ -1735,10 +1735,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             imagen_Icono.getImage().flush();
         }
         
-        
-        
-        nombres_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        apellidos_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1767,6 +1763,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             agregar_Interes_JButton.setEnabled(false);
             intereses_JTable.setEnabled(false);
         }
+        
+        Colorear_Componentes();
          
     }
 
