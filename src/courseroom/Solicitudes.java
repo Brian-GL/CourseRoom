@@ -1886,4 +1886,38 @@ public class Solicitudes {
         
         return archivoModel;
     }
+    
+    public ArchivoModel Obtener_Material_Subido_Curso(int id_Material_Subido){
+        ArchivoModel archivoModel = new ArchivoModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Material_Subido);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Material_Subido_Curso", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 3){
+                   
+                    archivoModel.Nombre_Archivo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    archivoModel.Archivo((byte[])resultado.remove(0));
+                    archivoModel.Extension(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return archivoModel;
+    }
+    
 }
