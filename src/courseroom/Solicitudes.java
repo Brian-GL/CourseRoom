@@ -27,7 +27,6 @@ import javax.swing.JOptionPane;
 import modelos.ArchivoModel;
 import modelos.ChatsPersonalesModel;
 import modelos.DatosPerfilModel;
-import modelos.MensajesModel;
 import modelos.SesionesModel;
 import org.apache.xmlrpc.XmlRpcClient;
 import org.apache.xmlrpc.XmlRpcException;
@@ -58,7 +57,7 @@ public class Solicitudes {
         private static final Solicitudes INSTANCE = new Solicitudes();
     }
     
-    public List<ComboOption> Obtener_Usuarios_Chatear(String busqueda){
+    public Lista<ComboOption> Obtener_Usuarios_Chatear(String busqueda){
         Lista<ComboOption> response = new Lista<>();
         
         try {
@@ -77,13 +76,13 @@ public class Solicitudes {
                 
                 Vector<Object> fila;
                 ComboOption comboOption;
-                Integer id_Localidad;
-                String localidad;
+                Integer id_Usuario;
+                String nombre_Usuario;
                 while(!resultado.isEmpty()){
                     fila = resultado.remove(0);
-                    id_Localidad = (Integer)fila.remove(0);
-                    localidad = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    comboOption = new ComboOption(id_Localidad,localidad);
+                    id_Usuario = (Integer)fila.remove(0);
+                    nombre_Usuario = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    comboOption = new ComboOption(id_Usuario,nombre_Usuario);
                     response.push_back(comboOption);
                 }
             }

@@ -18,12 +18,17 @@
 package frames.estudiantes;
 
 import clases.Celda_Renderer;
+import clases.ComboOption;
 import courseroom.CourseRoom;
+import datos.colecciones.Lista;
 import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -62,9 +67,11 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Chatear");
-        setMaximumSize(new java.awt.Dimension(800, 500));
+        setMaximumSize(new java.awt.Dimension(800, 495));
+        setMinimumSize(new java.awt.Dimension(800, 495));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 495));
+        setResizable(false);
 
         usuarios_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         usuarios_JLabel.setText("Buscar Usuario Para Chatear");
@@ -108,7 +115,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
                     return super.getColumnClass(column);
                 }
             });
-            usuarios_Chatear_JTable.setRowHeight(32);
+            usuarios_Chatear_JTable.setRowHeight(64);
             usuarios_Chatear_JTable.setShowGrid(true);
             usuarios_Chatear_JTable.setSurrendersFocusOnKeystroke(true);
             usuarios_Chatear_JTable.setRowSorter(new TableRowSorter(usuarios_Chatear_JTable.getModel()));
@@ -186,7 +193,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(usuarios_Chatear_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(cerrar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                    .addComponent(cerrar_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(32, 32, 32))
             );
 
@@ -202,8 +209,8 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
                 buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Usuarios Para Chatear<br>Rebasa Los 100 Caracteres");
             }else{
-                DefaultTableModel modelo = (DefaultTableModel) usuarios_Chatear_JTable.getModel();
-                modelo.setRowCount(0);
+                
+                Buscar_Usuarios_Chatear(buscar_JTextField.getText());
             }
         }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
@@ -227,6 +234,65 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
         cerrar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
     }//GEN-LAST:event_cerrar_JButtonMouseExited
 
+    private void Buscar_Usuarios_Chatear(String busqueda){
+        DefaultTableModel modelo = (DefaultTableModel) usuarios_Chatear_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Lista<ComboOption> usuarios = CourseRoom.Solicitudes().Obtener_Usuarios_Chatear(busqueda);
+        
+        if(!usuarios.is_empty()){
+            while(!usuarios.is_empty()){
+                Agregar_Usuarios_Chatear(usuarios.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta","No Se Encontraron Registros");
+        } 
+    }
+    
+    private void Agregar_Usuarios_Chatear(ComboOption usuario){
+        try {
+            
+            DefaultTableModel modelo = (DefaultTableModel) usuarios_Chatear_JTable.getModel();
+            
+            Celda_Renderer[] celdas = new Celda_Renderer[2];
+            Celda_Renderer celda;
+            Image imagen;
+            ImageIcon icono;
+            
+            byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(usuario.Id());
+        
+            if(bytes_Imagen_Perfil.length > 0){
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+
+                if(imagen != null){
+
+                    imagen = imagen.getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+            
+                    celda = new Celda_Renderer(icono, usuario.Valor(),usuario.Id().toString());
+                    celdas[0] = celda;
+                }else{
+                    celda = new Celda_Renderer(usuario.Valor(),usuario.Id().toString());
+                    celdas[0] = celda;
+                }
+            }else{
+                celda = new Celda_Renderer(usuario.Valor(),usuario.Id().toString());
+                celdas[0] = celda;
+            }
+            
+            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
+            icono = new ImageIcon(imagen);
+            
+            celda = new Celda_Renderer(icono);
+            celdas[1] = celda;
+            modelo.addRow(celdas);
+            
+            
+            imagen.flush();
+        } catch (IOException ex) {
+            
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscar_JTextField;
@@ -242,6 +308,15 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
         this.setLocationRelativeTo(null);
         this.setAlwaysOnTop(true);
         
+        try {
+            Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
+            logo_Imagen = logo_Imagen.getScaledInstance(75, 62, Image.SCALE_SMOOTH);
+            this.setIconImage(logo_Imagen);
+            logo_Imagen.flush();
+        } catch(IOException ex){
+            
+        }
+        
         usuarios_Chatear_JScrollPane.getViewport().setOpaque(false);
         usuarios_Chatear_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         usuarios_Chatear_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -250,7 +325,6 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
         usuarios_Chatear_JTable.getTableHeader().setFont(gadugi);
         usuarios_Chatear_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-
         Colorear_Componentes();
     }
 
@@ -268,8 +342,8 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
         
         contenido_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
-        cerrar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        cerrar_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        cerrar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
+        cerrar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
         usuarios_Chatear_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
         usuarios_Chatear_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
@@ -288,7 +362,6 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
-        }
-        
+        } 
     }
 }

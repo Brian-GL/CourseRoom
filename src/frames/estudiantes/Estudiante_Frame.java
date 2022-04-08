@@ -8,9 +8,7 @@ package frames.estudiantes;
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
-import static java.awt.image.ImageObserver.WIDTH;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
