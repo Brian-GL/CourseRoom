@@ -26,6 +26,12 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import modelos.ArchivoModel;
 import modelos.ChatsPersonalesModel;
+import modelos.DatosGeneralesCursoModel;
+import modelos.DatosGeneralesGrupoModel;
+import modelos.DatosGeneralesPreguntaModel;
+import modelos.DatosGeneralesTareaModel;
+import modelos.DatosGeneralesTareaPendienteModel;
+import modelos.DatosPerfilChatPersonalModel;
 import modelos.DatosPerfilModel;
 import modelos.SesionesModel;
 import org.apache.xmlrpc.XmlRpcClient;
@@ -1956,4 +1962,252 @@ public class Solicitudes {
         return archivoModel;
     }
     
+    public ComboOption Obtener_Datos_Generales_Chat_Personal(int id_Chat, int id_Usuario){
+        ComboOption comboOption = new ComboOption();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Chat);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Datos_Generales_Chat_Personal", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 2){
+                   
+                    comboOption.Id((int)resultado.remove(0));
+                    comboOption.Valor(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return comboOption;
+    }
+    
+    public DatosGeneralesCursoModel Obtener_Datos_Generales_Curso(int id_Curso){
+        DatosGeneralesCursoModel datosGeneralesCursoModel = new DatosGeneralesCursoModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Curso);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Datos_Generales_Curso", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 5){
+                   
+                    datosGeneralesCursoModel.Nombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesCursoModel.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesCursoModel.Nombre_Completo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesCursoModel.Descripcion_Profesor(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesCursoModel.Fecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return datosGeneralesCursoModel;
+    }
+    
+    public DatosGeneralesGrupoModel Obtener_Datos_Generales_Grupo(int id_Grupo){
+        DatosGeneralesGrupoModel datosGeneralesGrupoModel = new DatosGeneralesGrupoModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Grupo);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Datos_Generales_Curso", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 5){
+                   
+                    datosGeneralesGrupoModel.Nombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesGrupoModel.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesGrupoModel.Fecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesGrupoModel.Id_Grupo((int)resultado.remove(0));
+                    datosGeneralesGrupoModel.Nombre_Curso(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return datosGeneralesGrupoModel;
+    }
+    
+    public DatosGeneralesPreguntaModel Obtener_Datos_Generales_Pregunta(int id_Pregunta){
+        DatosGeneralesPreguntaModel datosGeneralesPreguntaModel = new DatosGeneralesPreguntaModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Pregunta);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Datos_Generales_Pregunta", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 6){
+                   
+                    datosGeneralesPreguntaModel.Id_Usuario((int)resultado.remove(0));
+                    datosGeneralesPreguntaModel.Nombre_Completo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesPreguntaModel.Pregunta(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesPreguntaModel.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesPreguntaModel.Fecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesPreguntaModel.Estatus(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return datosGeneralesPreguntaModel;
+    }
+    
+    public DatosGeneralesTareaModel Obtener_Datos_Generales_Tarea(int id_Tarea, int id_Usuario){
+        DatosGeneralesTareaModel datosGeneralesTareaModel = new DatosGeneralesTareaModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Tarea);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Datos_Generales_Tarea", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 5){
+                   
+                    datosGeneralesTareaModel.Nombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaModel.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaModel.Fecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaModel.Fecha_Entrega(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaModel.Tarea_Grupal((boolean)resultado.remove(0));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return datosGeneralesTareaModel;
+    }
+    
+    public DatosGeneralesTareaPendienteModel Obtener_Datos_Generales_Tarea_Pendiente(int id_Tarea_Pendiente, int id_Usuario){
+        DatosGeneralesTareaPendienteModel datosGeneralesTareaPendienteModel = new DatosGeneralesTareaPendienteModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Tarea_Pendiente);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Datos_Generales_Tarea_Pendiente", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 7){
+                   
+                    datosGeneralesTareaPendienteModel.Nombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaPendienteModel.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaPendienteModel.Fecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaPendienteModel.Fecha_Finalizacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaPendienteModel.Estatus(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaPendienteModel.Id_Usuario((int)resultado.remove(0));
+                    datosGeneralesTareaPendienteModel.Nombre_Completo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return datosGeneralesTareaPendienteModel;
+    }
+    
+    public DatosPerfilChatPersonalModel Obtener_Datos_Perfil_Chat_Personal(int id_Usuario){
+        DatosPerfilChatPersonalModel datosPerfilChatPersonalModel = new DatosPerfilChatPersonalModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Datos_Perfil_Chat_Personal", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 6){
+                   
+                    datosPerfilChatPersonalModel.Nombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilChatPersonalModel.Paterno(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilChatPersonalModel.Materno(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilChatPersonalModel.Correo_Electronico(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilChatPersonalModel.Genero(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosPerfilChatPersonalModel.Tipo_Usuario(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return datosPerfilChatPersonalModel;
+    }
 }
