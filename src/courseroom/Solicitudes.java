@@ -26,6 +26,8 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import modelos.ArchivoModel;
 import modelos.ArchivosCompartidosGrupoModel;
+import modelos.ArchivosTareaModel;
+import modelos.AvisosModel;
 import modelos.ChatsPersonalesModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.DatosGeneralesGrupoModel;
@@ -35,7 +37,14 @@ import modelos.DatosGeneralesTareaPendienteModel;
 import modelos.DatosPerfilChatPersonalModel;
 import modelos.DatosPerfilModel;
 import modelos.DesempenoUsuarioModel;
+import modelos.GruposModel;
+import modelos.MensajesModel;
+import modelos.MiembrosGrupoModel;
+import modelos.PreguntasModel;
+import modelos.RetroalimentacionesTareaModel;
 import modelos.SesionesModel;
+import modelos.TareasEstudianteModel;
+import modelos.TareasMesModel;
 import org.apache.xmlrpc.XmlRpcClient;
 import org.apache.xmlrpc.XmlRpcException;
 
@@ -2356,7 +2365,6 @@ public class Solicitudes {
                     nombre = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     promedio_General = (double)fila.remove(0);
                     
-                    
                     desempenoUsuarioModel = new DesempenoUsuarioModel(id_Desempeno, numero_Tareas_Calificadas, id_Curso, prediccion, promedio_General, rumbo_Estatus, nombre);
                     
                     response.push_back(desempenoUsuarioModel);
@@ -2369,7 +2377,1090 @@ public class Solicitudes {
         }
         
         return response;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public Lista<MensajesModel> Obtener_Mensajes_Chat(int id_Chat){
+        Lista<MensajesModel> response = new Lista<>();
         
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Chat);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Mensajes_Chat", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                MensajesModel mensajesModel;
+                int id_Mensaje;
+                String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Mensaje = (int) fila.remove(0);
+                    mensaje = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension);
+                    
+                    response.push_back(mensajesModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+    
+    public Lista<MensajesModel> Obtener_Mensajes_Curso(int id_Curso){
+         Lista<MensajesModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Curso);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Mensajes_Curso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                MensajesModel mensajesModel;
+                int id_Mensaje;
+                String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Mensaje = (int) fila.remove(0);
+                    mensaje = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension);
+                    
+                    response.push_back(mensajesModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+     }
+    
+    public Lista<MensajesModel> Obtener_Mensajes_Grupo(int id_Grupo){
+       Lista<MensajesModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Grupo);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Mensajes_Grupo", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                MensajesModel mensajesModel;
+                int id_Mensaje;
+                String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Mensaje = (int) fila.remove(0);
+                    mensaje = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension);
+                    
+                    response.push_back(mensajesModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response; 
+    }
+    
+    public Lista<MensajesModel> Obtener_Mensajes_Pregunta(int id_Pregunta){
+        Lista<MensajesModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Pregunta);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Mensajes_Pregunta", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                MensajesModel mensajesModel;
+                int id_Mensaje;
+                String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Mensaje = (int) fila.remove(0);
+                    mensaje = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension);
+                    
+                    response.push_back(mensajesModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+    
+    public Lista<MensajesModel> Obtener_Mensajes_Tarea(int id_Tarea){
+        Lista<MensajesModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Tarea);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Mensajes_Tarea", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                MensajesModel mensajesModel;
+                int id_Mensaje;
+                String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Mensaje = (int) fila.remove(0);
+                    mensaje = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension);
+                    
+                    response.push_back(mensajesModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+    
+    public Lista<MiembrosGrupoModel> Obtener_Miembros_Grupo(int id_Grupo){
+        Lista<MiembrosGrupoModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Grupo);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Miembros_Grupo", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                MiembrosGrupoModel miembrosGrupoModel;
+                int id_Usuario;
+                String nombre_Completo, fecha_Ingreso;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Usuario = (int) fila.remove(0);
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Ingreso = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    miembrosGrupoModel = new MiembrosGrupoModel(id_Grupo, nombre_Completo, fecha_Ingreso);
+                    
+                    response.push_back(miembrosGrupoModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+    
+    public Lista<PreguntasModel> Obtener_Preguntas(int id_Usuario){
+        Lista<PreguntasModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Preguntas", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                PreguntasModel preguntasModel;
+                int id_Pregunta;
+                String nombre_Completo, pregunta, descripcion, fecha_Creacion, estatus;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Pregunta = (int) fila.remove(0);
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    pregunta = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    descripcion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Creacion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    preguntasModel = new PreguntasModel(id_Pregunta, nombre_Completo, pregunta, descripcion, fecha_Creacion, estatus);
+                    
+                    response.push_back(preguntasModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+    
+    public Lista<RetroalimentacionesTareaModel> Obtener_Retroalimentaciones_Tarea(int id_Tarea, int id_Usuario){
+        Lista<RetroalimentacionesTareaModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Tarea);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Retroalimentaciones_Tarea", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                RetroalimentacionesTareaModel retroalimentacionesTareaModel;
+                int id_Retroalimentacion;
+                String retroalimentacion, fecha_Envio, nombre_Archivo, extension;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Retroalimentacion = (int) fila.remove(0);
+                    retroalimentacion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    retroalimentacionesTareaModel = new RetroalimentacionesTareaModel(id_Retroalimentacion, retroalimentacion, fecha_Envio, nombre_Archivo, extension);
+                    
+                    response.push_back(retroalimentacionesTareaModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+    
+    public Lista<TareasEstudianteModel> Obtener_Tareas_Estudiante(int id_Usuario){
+        Lista<TareasEstudianteModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Tareas_Estudiante", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                TareasEstudianteModel tareasEstudianteModel;
+                int id_Tarea, id_Curso;
+                String nombre, nombre_Curso, fecha_Creacion, fecha_Entrega, estatus;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Tarea = (int) fila.remove(0);
+                    nombre = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    id_Curso = (int)fila.remove(0);
+                    nombre_Curso = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Creacion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Entrega = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    tareasEstudianteModel = new TareasEstudianteModel(id_Tarea, id_Curso, nombre, nombre_Curso, fecha_Creacion, fecha_Entrega, estatus);
+                    
+                    response.push_back(tareasEstudianteModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+    }
+    
+    public Lista<TareasMesModel> Obtener_Tareas_Mes(int mes, int id_Usuario){
+        Lista <TareasMesModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(mes);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Tareas_Mes", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                TareasMesModel tareasMesModel;
+                int id_Tarea;
+                String dia, horario, descripcion;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Tarea = (int) fila.remove(0);
+                    dia = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    horario = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    descripcion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                                        
+                    tareasMesModel = new TareasMesModel(id_Tarea, dia, horario, descripcion);
+                    
+                    response.push_back(tareasMesModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+                
+        return response;
+    }
+    
+    public Lista<AvisosModel> Obtener_Avisos(int id_Usuario){
+        Lista <AvisosModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Avisos", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                AvisosModel avisosModel;
+                int id_Aviso;
+                String tipo_Aviso, aviso, fecha_Envio;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Aviso = (int) fila.remove(0);
+                    tipo_Aviso = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    aviso = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                                        
+                    avisosModel = new AvisosModel(id_Aviso, tipo_Aviso, aviso, fecha_Envio);
+                    
+                    response.push_back(avisosModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+                
+        return response;
+    }
+    
+    public Lista<GruposModel> Obtener_Grupos(int id_Usuario){
+        Lista<GruposModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Grupos", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                GruposModel gruposModel;
+                int id_Grupo, id_Curso;
+                String nombre, nombre_Curso, fecha_Creacion;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Grupo = (int) fila.remove(0);
+                    nombre = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    id_Curso = (int) fila.remove(0);
+                    nombre_Curso = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Creacion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                                        
+                    gruposModel = new GruposModel(id_Grupo, id_Curso, nombre, nombre_Curso, fecha_Creacion);
+                    
+                    response.push_back(gruposModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+                
+        return response;
+    }
+    
+    public Lista<ArchivosTareaModel> Obtener_Archivos_Subidos_Tarea(int id_Tarea,int id_Usuario){
+        Lista<ArchivosTareaModel> response = new Lista<>();
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Tarea);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivos_Subidos_Tarea", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                ArchivosTareaModel archivosTareaModel;
+                int id_Archivo_Tarea;
+                String nombre_Archivo, extension, fecha_Enviado;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Archivo_Tarea = (int) fila.remove(0);
+                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Enviado = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                                        
+                    archivosTareaModel = new ArchivosTareaModel(id_Archivo_Tarea, nombre_Archivo, extension, fecha_Enviado);
+                    
+                    response.push_back(archivosTareaModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+                
+        return response;
     }
 
     
