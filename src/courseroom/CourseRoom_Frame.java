@@ -113,7 +113,7 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        this.Limpiar();
+        Cerrar_Sesion();
         System.gc();
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing

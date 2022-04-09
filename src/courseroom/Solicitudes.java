@@ -714,9 +714,9 @@ public class Solicitudes {
                     fila = resultado.remove(0);
                     
                     id = (int) fila.remove(0);
-                    valor = (String)fila.remove(0);
-                    valor1 = (String)fila.remove(0);
-                    valor2 = (String)fila.remove(0);
+                    valor = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    valor1 = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    valor2 = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
                     chatsPersonalesModel = new ChatsPersonalesModel(id, valor2, valor, valor1);
                     
@@ -746,6 +746,69 @@ public class Solicitudes {
             parametros.add(CourseRoom.Utilerias().MiIP());
             
             Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Imagen_Chat_Personal", parametros);
+            
+            response =  (respuesta != null) ? (byte[])respuesta : new byte[]{};
+        } catch (XmlRpcException | IOException ex) {
+            response = new byte[]{};
+        }
+        
+        return response;
+    }
+    
+    public byte[] Obtener_Imagen_Pregunta(int id_Pregunta){
+        
+        byte[] response;
+
+        try {
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Pregunta);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Imagen_Pregunta", parametros);
+            
+            response =  (respuesta != null) ? (byte[])respuesta : new byte[]{};
+        } catch (XmlRpcException | IOException ex) {
+            response = new byte[]{};
+        }
+        
+        return response;
+    }
+     
+    public byte[] Obtener_Imagen_Grupo(int id_Grupo){
+        
+        byte[] response;
+
+        try {
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Grupo);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Imagen_Grupo", parametros);
+            
+            response =  (respuesta != null) ? (byte[])respuesta : new byte[]{};
+        } catch (XmlRpcException | IOException ex) {
+            response = new byte[]{};
+        }
+        
+        return response;
+    }
+    
+    public byte[] Obtener_Imagen_Curso(int id_Curso){
+        
+        byte[] response;
+
+        try {
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Curso);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Imagen_Curso", parametros);
             
             response =  (respuesta != null) ? (byte[])respuesta : new byte[]{};
         } catch (XmlRpcException | IOException ex) {
@@ -2308,4 +2371,6 @@ public class Solicitudes {
         return response;
         
     }
+
+    
 }
