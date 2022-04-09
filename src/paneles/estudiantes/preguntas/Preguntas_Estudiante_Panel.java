@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
+import datos.estructuras.Par;
 import java.awt.event.KeyEvent;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
@@ -421,8 +422,8 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         int longitud = buscar_Preguntas_JTextField.getText().length();
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
             if (longitud > 99) {
-            buscar_Preguntas_JTextField.setText(buscar_Preguntas_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Preguntas<br>Rebasa Los 100 Caracteres");
+                buscar_Preguntas_JTextField.setText(buscar_Preguntas_JTextField.getText().substring(0, longitud - 1));
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Preguntas<br>Rebasa Los 100 Caracteres");
           }
         }
     }//GEN-LAST:event_buscar_Preguntas_JTextFieldKeyPressed
@@ -466,11 +467,12 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
     }
     
     public void Agregar_Pregunta_Local(
+            int real_ID,
+            String id,
             String preguntador_Nombre,
             String pregunta, 
             String descripcion_Pregunta,
-            String fecha_Pregunta,
-            String id) {
+            String fecha_Pregunta) {
         
         
         String estatus = "Abierta";
@@ -497,10 +499,13 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         imagen_Usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
         
         Pregunta_Estudiante_Panel pregunta_Estudiante_Panel = 
-                new Pregunta_Estudiante_Panel(imagen_Usuario,pregunta, preguntador_Nombre, descripcion_Pregunta, fecha_Pregunta, estatus);
+                new Pregunta_Estudiante_Panel(real_ID,imagen_Usuario);
+        
         mostrar_Preguntas_Lista.push_back(pregunta_Estudiante_Panel);
         
         Tablero_Estudiante_Panel.Agregar_Vista(pregunta_Estudiante_Panel, id);
+        
+        Tablero_Estudiante_Panel.Mostrar_Vista(id);
         
     }
   
@@ -752,19 +757,28 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                         {
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Título De La Pregunta<br>Rebasa Los 500 Caracteres");
                         }else{
-                            if(longitud1 >499){
+                            if(longitud1 > 499){
                                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción De La Pregunta<br>Rebasa Los 500 Caracteres");
                             }else{
-                                int cuenta = Numero_Preguntas()+1;
-                        String id = CourseRoom.Utilerias().Concatenar("Pregunta_", cuenta);
+                                
+                                String fecha_Local = CourseRoom.Utilerias().Fecha_Hora_Local();
+                                
+                                Par<Integer,String> response = CourseRoom.Solicitudes().Agregar_Pregunta(Tablero_Estudiante_Panel.Id_Usuario(),
+                                        pregunta_JTextField.getText(),descripcion_Pregunta_JTextPane.getText());
+                                
+                                if(response.first() == 1){
+                                
+                                    CourseRoom.Utilerias().Mensaje_Informativo("Información",response.second());
+                                    
+                                    String id = CourseRoom.Utilerias().Concatenar("Pregunta_", response.first());
 
-                        Agregar_Pregunta_Local(Perfil_Estudiante_Panel.Nombre_Completo(),
-                                pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(),
-                        CourseRoom.Utilerias().Fecha_Hora_Local(), id);
-                        
-                        Tablero_Estudiante_Panel.Mostrar_Vista(id);
+                                    Agregar_Pregunta_Local(response.first(),id, Perfil_Estudiante_Panel.Nombre_Completo(),
+                                            pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(),fecha_Local);
 
-                        this.dispose();
+                                    this.dispose();
+                                } else{
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.second());
+                                }
                             }
                         }
                     }

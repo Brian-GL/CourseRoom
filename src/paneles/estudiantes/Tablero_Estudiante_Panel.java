@@ -679,7 +679,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            CourseRoom.Frame().Cerrar_Sesion();
             this.Limpiar();
         }
     }//GEN-LAST:event_salir_JButtonMouseClicked
@@ -880,6 +879,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     
     @Override
     public void Limpiar(){
+        
         tiempo_Servidor.interrupt();
         tareas_Panel.Limpiar();
         reproductor_Musica_Panel.Limpiar();
