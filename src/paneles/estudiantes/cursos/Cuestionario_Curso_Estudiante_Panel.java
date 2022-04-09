@@ -28,7 +28,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
@@ -1221,8 +1220,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private void terminar_Cuestionario_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terminar_Cuestionario_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            JOptionPane.showMessageDialog(this, CourseRoom.Utilerias().Concatenar("Gracias por contestar el cuestionario\n", Perfil_Estudiante_Panel.Nombre_Completo()),
-                    "Cuestionario Completado", JOptionPane.INFORMATION_MESSAGE);
+            CourseRoom.Utilerias().Mensaje_Informativo("Cuestionario Completado",CourseRoom.Utilerias().Concatenar("Gracias por contestar el cuestionario\n", Perfil_Estudiante_Panel.Nombre_Completo()));
 
             Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
         }

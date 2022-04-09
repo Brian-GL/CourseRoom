@@ -28,7 +28,6 @@ import java.awt.image.PixelGrabber;
 import java.time.LocalDateTime;
 import java.util.Vector;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import paneles.estudiantes.cursos.Cursos_Estudiante_Panel;
 import paneles.estudiantes.desempeno_escolar.Desempeno_Escolar_Estudiante_Panel;
@@ -813,7 +812,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                 }
 
             } catch (InterruptedException ex) {
-                JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), ex.getMessage(), "Error Al Establecer Colores", JOptionPane.ERROR_MESSAGE);
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Establecer Colores",ex.getMessage());
             }
 
         }else{
@@ -933,11 +932,12 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
                     imagen_Redimensionada.flush();
 
                     Establecer_Colores();
+                    
+                    CourseRoom.Utilerias().Mensaje_Informativo("Cambiar Imagen Perfil",response.second());
                 }
             
             }else{
-                JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), response.second(), "Error Al Actualizar La Imagen De Perfil", JOptionPane.ERROR_MESSAGE);
-            }
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar La Imagen De Perfil",response.second());            }
         }
     }
     

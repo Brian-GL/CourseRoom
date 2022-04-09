@@ -19,7 +19,6 @@ import java.awt.image.PixelGrabber;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
@@ -1956,7 +1955,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().setVolume(volumen_JSlider.getValue());
                     
                 }else{
-                    JOptionPane.showMessageDialog(null, "Archivo Demasiado Grande","ERROR",JOptionPane.ERROR_MESSAGE);
+                    CourseRoom.Utilerias().Mensaje_Error("ERROR","Archivo Demasiado Grande");
                 } 
             }
         });
@@ -2022,7 +2021,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 
             }else{
                 mrl = nodo_actual.element();
-                JOptionPane.showMessageDialog(this, mrl,"El Archivo No Se Encontró",JOptionPane.ERROR_MESSAGE);
+                CourseRoom.Utilerias().Mensaje_Error("El Archivo No Se Encontró",mrl);
                 rutas.remove(mrl);
                 if((indice+1) < rutas.size()){
                     Siguiente_Pista();

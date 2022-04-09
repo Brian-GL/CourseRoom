@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements Componentes_Interface{

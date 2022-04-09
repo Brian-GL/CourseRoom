@@ -27,7 +27,6 @@ import java.awt.image.PixelGrabber;
 import java.time.LocalDateTime;
 import java.util.Vector;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import modelos.DatosPerfilModel;
 import paneles.profesores.cursos.Cursos_Profesor_Panel;
@@ -774,7 +773,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 }
 
             } catch (InterruptedException ex) {
-                JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), ex.getMessage(), "Error Al Establecer Colores", JOptionPane.ERROR_MESSAGE);
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Establecer Colores",ex.getMessage());
             }
 
         }else{
@@ -896,7 +895,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 }
             
             }else{
-                JOptionPane.showMessageDialog(CourseRoom_Frame.getInstance(), response.second(), "Error Al Actualizar La Imagen De Perfil", JOptionPane.ERROR_MESSAGE);
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar La Imagen De Perfil",response.second());
             }
         }
     }

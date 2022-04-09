@@ -58,7 +58,7 @@ public class Solicitudes {
         private static final Solicitudes INSTANCE = new Solicitudes();
     }
     
-    public List<ComboOption> Obtener_Usuarios_Chatear(String busqueda){
+    public Lista<ComboOption> Obtener_Usuarios_Chatear(String busqueda){
         Lista<ComboOption> response = new Lista<>();
         
         try {
