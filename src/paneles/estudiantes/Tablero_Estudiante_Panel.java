@@ -1035,8 +1035,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         cursos_Panel = new Cursos_Estudiante_Panel();
         visualizador_JPanel.add("Cursos", cursos_Panel);
 
-        
-        
         mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias().Concatenar("Bienvenid@ ", Perfil_Estudiante_Panel.Nombre_Completo()));
 
         tiempo_Servidor = new Tiempo_Servidor();

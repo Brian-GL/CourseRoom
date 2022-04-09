@@ -31,10 +31,6 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -518,7 +514,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
 
-        
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         Image imagen;
@@ -645,6 +640,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         
         Obtener_Chats_Personales();
 
+        Colorear_Componentes();
     }
 
     @Override
@@ -654,7 +650,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
-        buscar_Chats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
         Font fuente = new java.awt.Font("Segoe UI", 1, 14);
@@ -667,7 +662,9 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         buscar_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         buscar_JTextField.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         buscar_JTextField.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-
+        
+        buscar_Chats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        
         mostrar_Chats_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
         
         mostrar_Chats_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
@@ -728,6 +725,5 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
         modelo.setRowCount(0);
     }
-    
     
 }
