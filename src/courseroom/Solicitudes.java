@@ -25,6 +25,7 @@ import java.net.MalformedURLException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import modelos.ArchivoModel;
+import modelos.ArchivosCompartidosGrupoModel;
 import modelos.ChatsPersonalesModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.DatosGeneralesGrupoModel;
@@ -33,6 +34,7 @@ import modelos.DatosGeneralesTareaModel;
 import modelos.DatosGeneralesTareaPendienteModel;
 import modelos.DatosPerfilChatPersonalModel;
 import modelos.DatosPerfilModel;
+import modelos.DesempenoUsuarioModel;
 import modelos.SesionesModel;
 import org.apache.xmlrpc.XmlRpcClient;
 import org.apache.xmlrpc.XmlRpcException;
@@ -2209,5 +2211,101 @@ public class Solicitudes {
         }
         
         return datosPerfilChatPersonalModel;
+    }
+
+    public Lista<ArchivosCompartidosGrupoModel> Obtener_Materiales_Subidos_Curso(int id_Curso){
+        
+        Lista<ArchivosCompartidosGrupoModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Curso);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Materiales_Subidos_Curso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                ArchivosCompartidosGrupoModel archivosCompartidosGrupoModel;
+                int id_Archivo_Compartido;
+                String nombre_Archivo, extension, fecha_Enviado, nombre_Completo;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Archivo_Compartido = (int) fila.remove(0);
+                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Enviado = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    archivosCompartidosGrupoModel = new ArchivosCompartidosGrupoModel(id_Archivo_Compartido, nombre_Archivo, extension, fecha_Enviado, nombre_Completo);
+                    
+                    response.push_back(archivosCompartidosGrupoModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+        
+    }
+    
+    public Lista<DesempenoUsuarioModel> Obtener_Desempeno_Usuario(int id_Usuario){
+        
+        Lista<DesempenoUsuarioModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Desempeno_Usuario", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                DesempenoUsuarioModel desempenoUsuarioModel;
+                int id_Desempeno, numero_Tareas_Calificadas, id_Curso;
+                double prediccion, promedio_General;
+                String rumbo_Estatus, nombre;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Desempeno = (int) fila.remove(0);
+                    prediccion = (double)fila.remove(0);
+                    numero_Tareas_Calificadas = (int)fila.remove(0);
+                    rumbo_Estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    id_Curso = (int)fila.remove(0);
+                    nombre = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    promedio_General = (double)fila.remove(0);
+                    
+                    
+                    desempenoUsuarioModel = new DesempenoUsuarioModel(id_Desempeno, numero_Tareas_Calificadas, id_Curso, prediccion, promedio_General, rumbo_Estatus, nombre);
+                    
+                    response.push_back(desempenoUsuarioModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            
+        }
+        
+        return response;
+        
     }
 }
