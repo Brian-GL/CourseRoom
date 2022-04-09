@@ -23,20 +23,19 @@ package modelos;
  */
 public class PreguntasModel {
     private int id_Pregunta;
-    private String nombre_Completo, pregunta, descripcion, fecha_Creacion, estatus;
+    private String nombre_Completo, pregunta, fecha_Creacion, estatus;
 
-    public PreguntasModel(int id_Pregunta, String nombre_Completo, String pregunta, String descripcion, String fecha_Creacion, String estatus) {
+    public PreguntasModel(int id_Pregunta, String nombre_Completo, String pregunta, String fecha_Creacion, String estatus) {
         this.id_Pregunta = id_Pregunta;
         this.nombre_Completo = nombre_Completo;
         this.pregunta = pregunta;
-        this.descripcion = descripcion;
         this.fecha_Creacion = fecha_Creacion;
         this.estatus = estatus;
     }
 
     public PreguntasModel() {
         this.id_Pregunta = 0;
-        this.nombre_Completo = this.pregunta = this.descripcion = this.fecha_Creacion = this.estatus = new String();
+        this.nombre_Completo = this.pregunta = this.fecha_Creacion = this.estatus = new String();
     }
 
     public int Id_Pregunta() {
@@ -61,14 +60,6 @@ public class PreguntasModel {
 
     public void Pregunta(String pregunta) {
         this.pregunta = pregunta;
-    }
-
-    public String Descripcion() {
-        return descripcion;
-    }
-
-    public void Descripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public String Fecha_Creacion() {

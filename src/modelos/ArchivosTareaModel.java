@@ -25,7 +25,7 @@ public class ArchivosTareaModel {
     private int id_Archivo_Tarea;
     private String nombre_Archivo, extension, fecha_Enviado;
 
-    public ArchivosTareaModel(int id_Archivo_Tarea, String nombre_Archivo, String extension, String fecha_Enviado, byte[] archivo) {
+    public ArchivosTareaModel(int id_Archivo_Tarea, String nombre_Archivo, String extension, String fecha_Enviado) {
         this.id_Archivo_Tarea = id_Archivo_Tarea;
         this.nombre_Archivo = nombre_Archivo;
         this.extension = extension;
