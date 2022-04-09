@@ -53,8 +53,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
     private boolean carta_Visible;
     private int Id_Chat;
-    
-    
+
     public Chat_Estudiante_Panel(int id_Chat) {
         initComponents();
         
@@ -627,6 +626,33 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
         
     }
+    
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + this.Id_Chat;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Chat_Estudiante_Panel other = (Chat_Estudiante_Panel) obj;
+        return this.Id_Chat == other.Id_Chat;
+    }
+    
+    public int Id_Chat() {
+        return Id_Chat;
+    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;

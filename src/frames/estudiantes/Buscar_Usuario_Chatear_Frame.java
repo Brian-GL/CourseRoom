@@ -18,7 +18,7 @@
 package frames.estudiantes;
 
 import clases.Celda_Renderer;
-import clases.ComboOption;
+import modelos.ComboOptionModel;
 import courseroom.CourseRoom;
 import datos.colecciones.Lista;
 import datos.interfaces.Componentes_Interface;
@@ -238,7 +238,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
         DefaultTableModel modelo = (DefaultTableModel) usuarios_Chatear_JTable.getModel();
         modelo.setRowCount(0);
         
-        Lista<ComboOption> usuarios = CourseRoom.Solicitudes().Obtener_Usuarios_Chatear(busqueda);
+        Lista<ComboOptionModel> usuarios = CourseRoom.Solicitudes().Obtener_Usuarios_Chatear(busqueda);
         
         if(!usuarios.is_empty()){
             while(!usuarios.is_empty()){
@@ -249,7 +249,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
         } 
     }
     
-    private void Agregar_Usuarios_Chatear(ComboOption usuario){
+    private void Agregar_Usuarios_Chatear(ComboOptionModel usuario){
         try {
             
             DefaultTableModel modelo = (DefaultTableModel) usuarios_Chatear_JTable.getModel();

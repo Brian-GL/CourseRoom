@@ -2,7 +2,7 @@ package paneles.generales.inicio_sesion;
 
 import javax.swing.JLayeredPane;
 import clases.Celda_Renderer;
-import clases.ComboOption;
+import modelos.ComboOptionModel;
 import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import datos.interfaces.Componentes_Interface;
@@ -13,7 +13,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import static java.awt.image.ImageObserver.WIDTH;
 import java.io.File;
 import java.io.IOException;
 import java.time.DayOfWeek;
@@ -30,8 +29,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
 import datos.colecciones.Lista;
-import datos.estructuras.Par;
 import java.util.Locale;
+import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 
 public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componentes_Interface, Limpieza_Interface, Validaciones_Interface{
@@ -1174,8 +1173,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            ComboOption interes = ((ComboOption)intereses_AutoCompletionComboBox.getSelectedItem()) != null
-                    ? ((ComboOption)intereses_AutoCompletionComboBox.getSelectedItem()) : new ComboOption();
+            ComboOptionModel interes = ((ComboOptionModel)intereses_AutoCompletionComboBox.getSelectedItem()) != null
+                    ? ((ComboOptionModel)intereses_AutoCompletionComboBox.getSelectedItem()) : new ComboOptionModel();
             
             Agregar_Interes_Tematica(interes);
             
@@ -1329,8 +1328,6 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         }
     }
     
-    
-        
     public void verificar_Datos_Personales(){
         int longitud = nombres_JTextField.getText().length();
         int longitud1 = apellido_Paterno_JTextField.getText().length();
@@ -1362,8 +1359,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         }
     }
 
-        
-    private void Agregar_Interes_Tematica(ComboOption interes){
+    private void Agregar_Interes_Tematica(ComboOptionModel interes){
         try {
             DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
             
@@ -1393,7 +1389,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         localidad_AutoCompletionComboBox.removeAllItems();
        
         //Obtener localidades:
-        Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+        Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
 
         while(!localidades.is_empty()){
             localidad_AutoCompletionComboBox.addItem(localidades.delist());
@@ -1533,7 +1529,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         }
 
         // Obtener temáticas:
-        Lista<ComboOption> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
+        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
 
         if(!tematicas.is_empty()){
             while(!tematicas.is_empty()){
@@ -1678,50 +1674,66 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         if(longitud > 500)
         {
             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción Rebasa Los 500 Caracteres");
-        }else{      
-        if(localidad_AutoCompletionComboBox.getItemCount() > 0){
-        
-            String correoElectronico = correo_JTextField.getText();
-            String contrasena = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
-            String nombre = nombres_JTextField.getText();
-            String paterno = apellido_Paterno_JTextField.getText();
-            String materno = apellido_Materno_JTextField.getText();
-            String genero = genero_JTextField.getText();
-            String fecha_Nacimiento = CourseRoom.Utilerias().Fecha(fecha_Nacimiento_DatePicker.getDate());
-            String descripcion = descripcion_JTextPane.getText();
-            Double promedio_General = promedio_General_JFormattedTextField.getText().isBlank() || promedio_General_JFormattedTextField.getText().isEmpty()? Double.valueOf(-1) : Double.valueOf(promedio_General_JFormattedTextField.getText());
-            String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
-            Integer idLocalidad = ((ComboOption) localidad_AutoCompletionComboBox.getSelectedItem()).Id();
-
-            if(imagen == null){
-                imagen = new byte[]{};
-            }
-
-
-            Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena, 
-                    nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
-
-            Integer codigo = response.first();
-            String mensaje = response.second();
-
-            if(codigo > 0){
-                
-                CourseRoom.Utilerias().Mensaje_Informativo("Agregar Usuario",mensaje);
-
-                CourseRoom.Esconder_Frame();
-
-                CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"),codigo);
-
-                CourseRoom.Mostrar_Frame();
-            }else{
-                CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario",mensaje);
-            }
-
-        }else{
-            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario","No Se Ha Seleccionado Una Localidad");
         }
-        
-    }
+        else{      
+            if(localidad_AutoCompletionComboBox.getItemCount() > 0){
+
+                String correoElectronico = correo_JTextField.getText();
+                String contrasena = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
+                String nombre = nombres_JTextField.getText();
+                String paterno = apellido_Paterno_JTextField.getText();
+                String materno = apellido_Materno_JTextField.getText();
+                String genero = genero_JTextField.getText();
+                String fecha_Nacimiento = CourseRoom.Utilerias().Fecha(fecha_Nacimiento_DatePicker.getDate());
+                String descripcion = descripcion_JTextPane.getText();
+                Double promedio_General = promedio_General_JFormattedTextField.getText().isBlank() || promedio_General_JFormattedTextField.getText().isEmpty()? Double.valueOf(-1) : Double.valueOf(promedio_General_JFormattedTextField.getText());
+                String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
+                Integer idLocalidad = ((ComboOptionModel) localidad_AutoCompletionComboBox.getSelectedItem()).Id();
+
+                if(imagen == null){
+                    imagen = new byte[]{};
+                }
+
+                ResponseModel response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena, 
+                        nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
+
+
+                int codigo = response.Codigo();
+                String mensaje = response.Mensaje();
+
+                if(response.Is_Success()){
+
+                    //Agregar intereses:
+                    DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
+                    Celda_Renderer celda;
+                    for (int i = 0; i < modelo.getRowCount(); i++) {
+                        celda = (Celda_Renderer) modelo.getValueAt(i, 0);
+
+                        response = CourseRoom.Solicitudes().Agregar_Interes(codigo, Integer.parseInt(celda.ID()));
+
+                        if(!response.Is_Success()){
+                            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Ínteres", response.Mensaje());
+                            break;
+                        }
+
+                    }
+
+                    CourseRoom.Utilerias().Mensaje_Informativo("Agregar Usuario",mensaje);
+
+                    CourseRoom.Esconder_Frame();
+
+                    CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"),codigo);
+
+                    CourseRoom.Mostrar_Frame();
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario",mensaje);
+                }
+
+            }else{
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario","No Se Ha Seleccionado Una Localidad");
+            }
+
+        }
     }
 
 }

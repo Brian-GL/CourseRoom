@@ -29,6 +29,7 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import modelos.DatosPerfilModel;
+import modelos.ResponseModel;
 import paneles.profesores.cursos.Cursos_Profesor_Panel;
 import paneles.profesores.desempeno_profesional.Desempeno_Profesional_Profesor_Panel;
 
@@ -835,7 +836,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         desempeno_Profesional_Panel.Colorear_Componentes();
     }
     
-    
     @Override
     public void Limpiar(){
         tiempo_Servidor.interrupt();
@@ -877,9 +877,9 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         
         if(bytes_Imagen_Perfil.length > 0){
             
-            Par<Integer, String> response = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(IdUsuario, bytes_Imagen_Perfil);
+            ResponseModel response = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(IdUsuario, bytes_Imagen_Perfil);
             
-            if(response.first() == 1){
+            if(response.Is_Success()){
             
                 imagen_Usuario = imagen;
 
@@ -892,21 +892,19 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                     imagen_Redimensionada.flush();
 
                     Establecer_Colores();
+                    
+                    CourseRoom.Utilerias().Mensaje_Informativo("Cambiar Imagen Perfil",response.Mensaje());
                 }
             
             }else{
-                CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar La Imagen De Perfil",response.second());
-            }
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar La Imagen De Perfil",response.Mensaje());            }
         }
     }
     
     public static Integer Id_Sesion() {
         return IdSesion;
     }
-    
-    public static Integer IdUsuario() {
-        return IdUsuario;
-    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton acerca_De_JButton;
@@ -947,18 +945,16 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
             }
         }
         
-        DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(IdUsuario);
-        
-        perfil_Panel = new Perfil_Profesor_Panel(datosPerfilModel);
+        perfil_Panel = new Perfil_Profesor_Panel();
         visualizador_JPanel.add("Perfil",perfil_Panel);
 
-        Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
+        ResponseModel response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
 
-        if(response.first() < 0){
+        if(!response.Is_Success()){
             IdSesion = -1;
-            System.err.println(response.second());
+            System.err.println(response.Mensaje());
         }else{
-            IdSesion = response.first();
+            IdSesion = response.Codigo();
         }
         
         desempeno_Profesional_Panel = new Desempeno_Profesional_Profesor_Panel();
@@ -991,8 +987,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         cursos_Panel = new Cursos_Profesor_Panel();
         visualizador_JPanel.add("Cursos", cursos_Panel);
         
-        
-
         mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias().Concatenar("Bienvenid@ ", Perfil_Profesor_Panel.Nombre_Completo()));
 
         tiempo_Servidor = new Tiempo_Servidor();

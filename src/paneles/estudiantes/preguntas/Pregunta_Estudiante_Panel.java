@@ -29,6 +29,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.DatosGeneralesPreguntaModel;
+import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
@@ -36,7 +37,7 @@ import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 
 public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Componentes_Interface, Envio_Interface, Limpieza_Interface{
 
-    private Integer id;
+    private int id;
     
     public Pregunta_Estudiante_Panel(int _id,
             Image imagen_Preguntador) {
@@ -45,10 +46,13 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         
         this.id = _id;
         
-        ImageIcon icono_Usuario = new ImageIcon(imagen_Preguntador);
+        if(imagen_Preguntador != null){
+            ImageIcon icono_Usuario = new ImageIcon(imagen_Preguntador);
+            preguntador_Imagen_JLabel.setIcon(icono_Usuario);
 
-        imagen_Preguntador.flush();
-        icono_Usuario.getImage().flush();
+            imagen_Preguntador.flush();
+            icono_Usuario.getImage().flush();
+        }
         
         Iniciar_Componentes();
     }
@@ -386,18 +390,18 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         if(SwingUtilities.isLeftMouseButton(evt)){
             int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), "¿Está Seguro De Marcar Como Solucionada Esta Pregunta?", "Pregunta", JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.QUESTION_MESSAGE);
             if(resultado == JOptionPane.YES_OPTION){
-                Par<Integer, String> response = CourseRoom.Solicitudes().Marcar_Pregunta_Solucionada(Tablero_Estudiante_Panel.Id_Usuario(), id);
+                ResponseModel response = CourseRoom.Solicitudes().Marcar_Pregunta_Solucionada(Tablero_Estudiante_Panel.Id_Usuario(), id);
                 
-                if(response.first() == 1){
+                if(response.Is_Success()){
                     
-                    CourseRoom.Utilerias().Mensaje_Informativo("Información",response.second());
+                    CourseRoom.Utilerias().Mensaje_Informativo("Información",response.Mensaje());
                     
                     Tablero_Estudiante_Panel.Retirar_Vista(this);
                     
                     Tablero_Estudiante_Panel.Mostrar_Vista("Preguntas");
                 }
                 else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.second());
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
                 }
             }
         }
@@ -449,18 +453,18 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         if(SwingUtilities.isLeftMouseButton(evt)){
             int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), "¿Está Seguro De Eliminar Esta Pregunta?", "Pregunta", JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.QUESTION_MESSAGE);
             if(resultado == JOptionPane.YES_OPTION){
-                Par<Integer, String> response = CourseRoom.Solicitudes().Remover_Pregunta(id,Tablero_Estudiante_Panel.Id_Usuario());
+                ResponseModel response = CourseRoom.Solicitudes().Remover_Pregunta(id,Tablero_Estudiante_Panel.Id_Usuario());
                 
-                if(response.first() == 1){
+                if(response.Is_Success()){
                     
-                    CourseRoom.Utilerias().Mensaje_Informativo("Información",response.second());
+                    CourseRoom.Utilerias().Mensaje_Informativo("Información",response.Mensaje());
                     
                     Tablero_Estudiante_Panel.Retirar_Vista(this);
                     
                     Tablero_Estudiante_Panel.Mostrar_Vista("Preguntas");
                 }
                 else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.second());
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
                 }
             }
         }
@@ -526,6 +530,10 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
             }
         }
         
+    }
+    
+    public int Id_Pregunta(){
+        return this.id;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

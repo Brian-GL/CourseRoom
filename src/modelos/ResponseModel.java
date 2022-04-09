@@ -15,53 +15,45 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package clases;
+package modelos;
 
 /**
  *
  * @author LENOVO
  */
-public class ComboOption {
+public class ResponseModel {
     
-    private String valor;
-    private Integer id;
-    
-    public ComboOption(Integer _id,String _valor){
-        this.valor = _valor;
-        this.id = _id;
-    }
-    
-    public ComboOption(){
-        this.valor = "";
-        this.id = -1;
+    private int codigo;
+    private String mensaje;
+
+    public ResponseModel(int codigo, String mensaje) {
+        this.codigo = codigo;
+        this.mensaje = mensaje;
     }
 
-    public String Valor() {
-        return valor;
+    public ResponseModel() {
+        this.codigo = -1;
+        this.mensaje = new String();
     }
 
-    public void Valor(String valor) {
-        this.valor = valor;
+    public int Codigo() {
+        return codigo;
     }
 
-    public Integer Id() {
-        return id;
+    public void Codigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public void Id(Integer id) {
-        this.id = id;
+    public String Mensaje() {
+        return mensaje;
     }
 
-    @Override
-    public String toString() {
-        return valor;
+    public void Mensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return (obj != null) ? obj.toString().equals(this.toString()) : false;
+    public boolean Is_Success(){
+        return this.codigo == 1;
     }
-    
-    
     
 }

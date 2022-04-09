@@ -29,6 +29,7 @@ import java.time.LocalDateTime;
 import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import modelos.ResponseModel;
 import paneles.estudiantes.cursos.Cursos_Estudiante_Panel;
 import paneles.estudiantes.desempeno_escolar.Desempeno_Escolar_Estudiante_Panel;
 
@@ -917,9 +918,9 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         
         if(bytes_Imagen_Perfil.length > 0){
             
-            Par<Integer, String> response = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(IdUsuario, bytes_Imagen_Perfil);
+            ResponseModel response = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(IdUsuario, bytes_Imagen_Perfil);
             
-            if(response.first() == 1){
+            if(response.Is_Success()){
             
                 imagen_Usuario = imagen;
 
@@ -933,11 +934,11 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
 
                     Establecer_Colores();
                     
-                    CourseRoom.Utilerias().Mensaje_Informativo("Cambiar Imagen Perfil",response.second());
+                    CourseRoom.Utilerias().Mensaje_Informativo("Cambiar Imagen Perfil",response.Mensaje());
                 }
             
             }else{
-                CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar La Imagen De Perfil",response.second());            }
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar La Imagen De Perfil",response.Mensaje());            }
         }
     }
     
@@ -993,13 +994,13 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         perfil_Panel = new Perfil_Estudiante_Panel();
             visualizador_JPanel.add("Perfil",perfil_Panel);
             
-        Par<Integer, String> response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
+        ResponseModel response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
 
-        if(response.first() < 0){
+        if(!response.Is_Success()){
             IdSesion = -1;
-            System.err.println(response.second());
+            System.err.println(response.Mensaje());
         }else{
-            IdSesion = response.first();
+            IdSesion = response.Codigo();
         }
 
         desempeno_Escolar_Panel = new Desempeno_Escolar_Estudiante_Panel();

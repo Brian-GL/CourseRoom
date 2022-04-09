@@ -5,7 +5,6 @@
  */
 package courseroom;
 
-import datos.estructuras.Par;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
@@ -19,6 +18,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import modelos.ResponseModel;
 import paneles.generales.inicio_sesion.Inicio_Sesion_General_Panel;
 import paneles.generales.inicio_sesion.Recuperar_Credenciales_General_Panel;
 import paneles.generales.inicio_sesion.Crear_Cuenta_General_Panel;
@@ -142,20 +142,20 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
             
             if(Tablero_Estudiante_Panel.Id_Sesion() > -1){
         
-                Par<Integer, String> response = CourseRoom.Solicitudes().Cerrar_Sesion(Tablero_Estudiante_Panel.Id_Usuario(),Tablero_Estudiante_Panel.Id_Sesion());
+                ResponseModel response = CourseRoom.Solicitudes().Cerrar_Sesion(Tablero_Estudiante_Panel.Id_Usuario(),Tablero_Estudiante_Panel.Id_Sesion());
 
-                if(response.first() < 0){
-                    System.err.println(response.second());
+                if(!response.Is_Success()){
+                    System.err.println(response.Mensaje());
                 }
             }
         }
         else if(tablero_Profesor != null){
             if(Tablero_Profesor_Panel.Id_Sesion() > -1){
         
-                Par<Integer, String> response = CourseRoom.Solicitudes().Cerrar_Sesion(Tablero_Profesor_Panel.Id_Usuario(),Tablero_Profesor_Panel.Id_Sesion());
+                ResponseModel response = CourseRoom.Solicitudes().Cerrar_Sesion(Tablero_Profesor_Panel.Id_Usuario(),Tablero_Profesor_Panel.Id_Sesion());
 
-                if(response.first() < 0){
-                    System.err.println(response.second());
+                if(!response.Is_Success()){
+                    System.err.println(response.Mensaje());
                 }
             }
         }

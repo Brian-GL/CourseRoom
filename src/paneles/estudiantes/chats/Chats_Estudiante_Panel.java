@@ -480,9 +480,15 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
     private void Obtener_Chats_Personales(){
         
-        mostrar_Chats_Lista.clear();
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
         modelo.setRowCount(0);
+        
+        Chat_Estudiante_Panel chat_Estudiante_Panel;
+        while(!mostrar_Chats_Lista.is_empty()){
+            chat_Estudiante_Panel= mostrar_Chats_Lista.delist();
+            Tablero_Estudiante_Panel.Retirar_Vista(chat_Estudiante_Panel);
+            chat_Estudiante_Panel.Limpiar();
+        }
         
         Lista<ChatsPersonalesModel> lista = 
                 CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Estudiante_Panel.Id_Usuario());
@@ -494,9 +500,15 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
     
     private void Buscar_Chats_Personales(String busqueda){
         
-        buscar_Chats_Lista.clear();
         DefaultTableModel modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
         modelo.setRowCount(0);
+        
+        Chat_Estudiante_Panel chat_Estudiante_Panel;
+        while(!buscar_Chats_Lista.is_empty()){
+            chat_Estudiante_Panel= buscar_Chats_Lista.delist();
+            Tablero_Estudiante_Panel.Retirar_Vista(chat_Estudiante_Panel);
+            chat_Estudiante_Panel.Limpiar();
+        }
         
         Lista<ChatsPersonalesModel> lista = 
                 CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda,Tablero_Estudiante_Panel.Id_Usuario());
@@ -514,6 +526,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
 
+        String id_Chat = CourseRoom.Utilerias().Concatenar("Chat_Personal_",chatsPersonalesModel.Id_Chat());
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         Image imagen;
@@ -526,18 +539,18 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 
                 imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
                 ImageIcon icono_Imagen = new ImageIcon(imagen);
-                celda =  new Celda_Renderer(icono_Imagen,chatsPersonalesModel.Nombre_Completo(), String.valueOf(chatsPersonalesModel.Id_Chat()));
+                celda =  new Celda_Renderer(icono_Imagen,chatsPersonalesModel.Nombre_Completo(), id_Chat);
                 celdas[0] = celda;
                 icono_Imagen.getImage().flush();
             }else{
-                celda =  new Celda_Renderer(chatsPersonalesModel.Nombre_Completo(), String.valueOf(chatsPersonalesModel.Id_Chat()));
+                celda =  new Celda_Renderer(chatsPersonalesModel.Nombre_Completo(), id_Chat);
                 celdas[0] = celda;
             }
         }
         
-        celda =  new Celda_Renderer(chatsPersonalesModel.Fecha_Creacion(), String.valueOf(chatsPersonalesModel.Id_Chat()));
+        celda =  new Celda_Renderer(chatsPersonalesModel.Fecha_Creacion(), id_Chat);
         celdas[1] = celda;
-        celda = new Celda_Renderer(chatsPersonalesModel.Ultimo_Mensaje(), String.valueOf(chatsPersonalesModel.Id_Chat()));
+        celda = new Celda_Renderer(chatsPersonalesModel.Ultimo_Mensaje(), id_Chat);
         celdas[2] = celda;
 
         modelo.addRow(celdas);
@@ -549,15 +562,16 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
         mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
 
-        Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, CourseRoom.Utilerias().Concatenar("Chat_Personal_", chatsPersonalesModel.Id_Chat()));
+        Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id_Chat);
         
     }
     
     private void Agregar_Chat_Busqueda(ChatsPersonalesModel chatsPersonalesModel) {
 
+        String id_Chat = CourseRoom.Utilerias().Concatenar("Chat_Personal_",chatsPersonalesModel.Id_Chat());
+        
         DefaultTableModel modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
 
-        
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         Image imagen;
@@ -570,33 +584,75 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 
                 imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
                 ImageIcon icono_Imagen = new ImageIcon(imagen);
-                celda =  new Celda_Renderer(icono_Imagen,chatsPersonalesModel.Nombre_Completo(), String.valueOf(chatsPersonalesModel.Id_Chat()));
+                celda =  new Celda_Renderer(icono_Imagen,chatsPersonalesModel.Nombre_Completo(), CourseRoom.Utilerias().Concatenar("Chat_Personal_",chatsPersonalesModel.Id_Chat()));
                 celdas[0] = celda;
                 icono_Imagen.getImage().flush();
             }else{
-                celda =  new Celda_Renderer(chatsPersonalesModel.Nombre_Completo(), String.valueOf(chatsPersonalesModel.Id_Chat()));
+                celda =  new Celda_Renderer(chatsPersonalesModel.Nombre_Completo(), id_Chat);
                 celdas[0] = celda;
             }
         }
         
-        celda =  new Celda_Renderer(chatsPersonalesModel.Fecha_Creacion(), String.valueOf(chatsPersonalesModel.Id_Chat()));
+        celda =  new Celda_Renderer(chatsPersonalesModel.Fecha_Creacion(), id_Chat);
         celdas[1] = celda;
-        celda = new Celda_Renderer(chatsPersonalesModel.Ultimo_Mensaje(), String.valueOf(chatsPersonalesModel.Id_Chat()));
+        celda = new Celda_Renderer(chatsPersonalesModel.Ultimo_Mensaje(), id_Chat);
         celdas[2] = celda;
 
         modelo.addRow(celdas);
 
         buscar_Chats_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
 
-        Chat_Estudiante_Panel chat_Estudiante_Panel
+        if(!Existe_Chat(chatsPersonalesModel.Id_Chat())){
+            Chat_Estudiante_Panel chat_Estudiante_Panel
                 = new Chat_Estudiante_Panel(chatsPersonalesModel.Id_Chat());
+            buscar_Chats_Lista.push_back(chat_Estudiante_Panel);
 
-        buscar_Chats_Lista.push_back(chat_Estudiante_Panel);
+            Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, CourseRoom.Utilerias().Concatenar("Chat_Personal_", chatsPersonalesModel.Id_Chat()));
+        }
 
-        Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, CourseRoom.Utilerias().Concatenar("Chat_Personal_", chatsPersonalesModel.Id_Chat()));
-        
     }
     
+    private boolean Existe_Chat(int id_Chat){
+        Nodo<Chat_Estudiante_Panel> first = mostrar_Chats_Lista.front();
+        Nodo<Chat_Estudiante_Panel> last = mostrar_Chats_Lista.back();
+
+        int middle_index = (mostrar_Chats_Lista.size())/2;
+
+        if(middle_index % 2 == 0){
+            for (int i = 0; i < middle_index; i++) {
+
+                if (first.element().Id_Chat() == id_Chat){
+                    return true;
+                }
+
+                if (last.element().Id_Chat() == id_Chat){
+                    return true;
+                }
+
+                first = first.next();
+                last = last.previous();
+            }
+            return false;
+        }else{
+            for(int i = 0; i < middle_index;i++) {
+
+                if(first.element().Id_Chat() == id_Chat){
+                    return true;
+                }
+
+                if(last.element().Id_Chat() == id_Chat){
+                    return true;
+                }
+
+                first = first.next();
+                last = last.previous();
+            }
+
+            return mostrar_Chats_Lista.medium().Id_Chat() == id_Chat;
+        }
+      
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;

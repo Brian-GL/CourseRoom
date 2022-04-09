@@ -1,6 +1,6 @@
 package paneles.profesores.perfil;
 
-import clases.ComboOption;
+import modelos.ComboOptionModel;
 import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import courseroom.CourseRoom;
@@ -20,6 +20,7 @@ import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelos.DatosPerfilModel;
+import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import paneles.profesores.Tablero_Profesor_Panel;
 
@@ -30,14 +31,12 @@ import paneles.profesores.Tablero_Profesor_Panel;
 public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private byte carta_Visible;
-    private DatosPerfilModel datosPerfilModel;
     
     /**
      * Creates new form Profile_Profesor_Panel
      */
-    public Perfil_Profesor_Panel(DatosPerfilModel _datosPerfilModel) {
+    public Perfil_Profesor_Panel() {
         initComponents();
-        datosPerfilModel = _datosPerfilModel;
         Iniciar_Componentes();
     }
 
@@ -918,7 +917,18 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void guardar_Cambios_Autenticacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Autenticacion_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            if(Verificar_Campos_Autenticacion()){
+                            
+                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Autenticacion(Tablero_Profesor_Panel.Id_Usuario(),
+                        editar_Correo_Electronico_JTextField.getText(), String.valueOf(contrasena_JPasswordField.getPassword()));
+
+                if(respuesta.Is_Success()){
+                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar Los Datos De Autenticación", respuesta.Mensaje());
+                }
+        
+            }
         }
 
     }//GEN-LAST:event_guardar_Cambios_Autenticacion_JButtonMouseClicked
@@ -957,7 +967,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                         tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
                         if(tamanio < 16){
 
-                        Image obtener_Imagen = ImageIO.read(archivo_Abierto);
+                            Image obtener_Imagen = ImageIO.read(archivo_Abierto);
                             obtener_Imagen = obtener_Imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
                             ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
 
@@ -1033,7 +1043,19 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void guardar_Cambios_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Personales_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            
+            ComboOptionModel comboOption = (ComboOptionModel)editar_Localidad_AutoCompletionComboBox.getSelectedItem();
+            
+            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Personales(Tablero_Profesor_Panel.Id_Usuario(),
+                    editar_Nombres_JTextField.getText(), editar_Apellido_Paterno_JTextField.getText(),
+                    editar_Apellido_Materno_JTextField.getText(), editar_Genero_JTextField.getText(), 
+                    CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()),comboOption.Id());
+            
+            if(respuesta.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", "Se Han Actualizado Los Datos Personales Correctamente.");
+            }else{
+                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+            }
         }
     }//GEN-LAST:event_guardar_Cambios_Datos_Personales_JButtonMouseClicked
 
@@ -1061,7 +1083,14 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void guardar_Cambios_Informacion_Extra_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Informacion_Extra_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Informacion_Extra(Tablero_Profesor_Panel.Id_Usuario(), "Profesor", -1, editar_Descripcion_JTextPane.getText());
+            
+            if(respuesta.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+            }else{
+                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+            }
+            
         }
     }//GEN-LAST:event_guardar_Cambios_Informacion_Extra_JButtonMouseClicked
 
@@ -1204,7 +1233,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            Actualizar_Datos();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1232,10 +1261,98 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Localidad_AutoCompletionComboBox.removeAllItems();
        
         //Obtener localidades:
-        Lista<ComboOption> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+        Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
 
         while(!localidades.is_empty()){
-            editar_Localidad_AutoCompletionComboBox.addItem(localidades.delist());
+            editar_Localidad_AutoCompletionComboBox.addItem((ComboOptionModel)localidades.delist());
+        }
+    }
+    
+    private boolean Verificar_Campos_Autenticacion() {
+        String Password = String.valueOf(contrasena_JPasswordField.getPassword());
+        String Password2 = String.valueOf(repetir_Contrasena_JPasswordField.getPassword());
+        
+        // Checa Los Campos Vacíos.
+        if (editar_Correo_Electronico_JTextField.getText().isBlank() || Password.isBlank() || Password2.isBlank()) {
+            // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","No Se Permiten Campos Vacios !!!");
+            return false;
+        } else {
+            
+            if (Password.equals(Password2)) {
+                var valor = CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(editar_Correo_Electronico_JTextField.getText().trim());
+                if (!valor) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Correo No Valido");
+                    editar_Correo_Electronico_JTextField.requestFocus();
+                    return false;
+                } else {
+                    if (Password.length() <= 7 || Password2.length() <= 7) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Las Contraseñas Deben Tener Al Menos 8 Caracteres");
+                        contrasena_JPasswordField.requestFocus();
+                        return false;
+                    } else{
+                        return true;
+                    }
+
+                }
+            } else {
+                // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Contraseñas Distintas Revisa!!!");
+                contrasena_JPasswordField.requestFocus();
+                return false;
+            }
+            
+        }
+        
+    }
+    
+    private void Actualizar_Datos(){
+        DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Profesor_Panel.Id_Usuario());
+        if(datosPerfilModel != null){
+            
+
+            nombres_JLabel.setText(datosPerfilModel.Nombre());
+            apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Paterno()," ",datosPerfilModel.Materno()));
+            correo_Electronico_JLabel.setText(datosPerfilModel.Correo_Electronico());
+            localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Localidad(), " - ", datosPerfilModel.Estado())));
+            descripcion_JTextPane.setText(
+                    CourseRoom.Utilerias().Formato_HTML_Izquierda(
+                            CourseRoom.Utilerias().Concatenar(datosPerfilModel.Descripcion(), " <br><br><br>Registrad@ El ",datosPerfilModel.Fecha_Creacion())));
+            genero_JLabel.setText(datosPerfilModel.Genero());
+            fecha_Nacimiento_JLabel.setText(datosPerfilModel.Fecha_Nacimiento());
+            tipo_Perfil_JLabel.setText(datosPerfilModel.Tipo_Usuario());
+
+            String contrasenia = CourseRoom.Utilerias().Decodificacion(datosPerfilModel.Contrasenia());
+            contrasena_JPasswordField.setText(contrasenia);
+            editar_Correo_Electronico_JTextField.setText(datosPerfilModel.Correo_Electronico());
+            editar_Nombres_JTextField.setText(datosPerfilModel.Nombre());
+
+            editar_Apellido_Materno_JTextField.setText(datosPerfilModel.Materno());
+            editar_Apellido_Paterno_JTextField.setText(datosPerfilModel.Paterno());
+            editar_Descripcion_JTextPane.setText(datosPerfilModel.Descripcion());
+            Tripleta<Integer, Integer, Integer> tripleta = CourseRoom.Utilerias().Fecha(datosPerfilModel.Fecha_Nacimiento());
+            editar_Fecha_Nacimiento_DatePicker.setDate(LocalDate.of(tripleta.third(), tripleta.second(), tripleta.first()));
+            editar_Genero_JTextField.setText(datosPerfilModel.Genero());
+
+
+            //Obtener estados:
+            Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+
+            if(!estados.is_empty()){
+                while(!estados.is_empty()){
+                    editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
+                }
+                editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.Estado());
+                editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.Localidad());
+                editar_Estado_JButton.setVisible(true);
+            }else{
+
+                editar_Estado_AutoCompletionComboBox.setEnabled(false);
+                editar_Localidad_AutoCompletionComboBox.setEnabled(false);
+                editar_Estado_JButton.setVisible(false);
+
+            }
+           
         }
     }
 
@@ -1306,63 +1423,13 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         carta_Visible = 0;
         
-        nombres_JLabel.setText(datosPerfilModel.Nombre());
-        apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Paterno()," ",datosPerfilModel.Materno()));
-        correo_Electronico_JLabel.setText(datosPerfilModel.Correo_Electronico());
-        localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Localidad(), " - ", datosPerfilModel.Estado())));
-        descripcion_JTextPane.setText(
-                CourseRoom.Utilerias().Formato_HTML_Izquierda(
-                        CourseRoom.Utilerias().Concatenar(datosPerfilModel.Descripcion(), " <br><br><br>Registrado El ",datosPerfilModel.Fecha_Creacion())));
-        genero_JLabel.setText(datosPerfilModel.Genero());
-        fecha_Nacimiento_JLabel.setText(datosPerfilModel.Fecha_Nacimiento());
-
-        tipo_Perfil_JLabel.setText(datosPerfilModel.Tipo_Usuario());
-        
-        String contrasenia = CourseRoom.Utilerias().Decodificacion(datosPerfilModel.Contrasenia());
-        contrasena_JPasswordField.setText(contrasenia);
-        editar_Correo_Electronico_JTextField.setText(datosPerfilModel.Correo_Electronico());
-        editar_Nombres_JTextField.setText(datosPerfilModel.Nombre());
-        
-        editar_Apellido_Materno_JTextField.setText(datosPerfilModel.Materno());
-        editar_Apellido_Paterno_JTextField.setText(datosPerfilModel.Paterno());
-        editar_Descripcion_JTextPane.setText(datosPerfilModel.Descripcion());
-        Tripleta<Integer, Integer, Integer> tripleta = CourseRoom.Utilerias().Fecha(datosPerfilModel.Fecha_Nacimiento());
-        editar_Fecha_Nacimiento_DatePicker.setDate(LocalDate.of(tripleta.third(), tripleta.second(), tripleta.first()));
-        editar_Genero_JTextField.setText(datosPerfilModel.Genero());
-       
-        
-        if(Tablero_Profesor_Panel.Obtener_Imagen_Usuario() != null){
-            ImageIcon imagen_Icono = new ImageIcon(Tablero_Profesor_Panel.Obtener_Imagen_Usuario());
-
-            imagen_Perfil_JLabel.setIcon(imagen_Icono);
-            imagen_Icono.getImage().flush();
-        }
-        
-        nombres_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        apellidos_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-
+      
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
-        //Obtener estados:
-        Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
-
-        if(!estados.is_empty()){
-            while(!estados.is_empty()){
-                editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
-            }
-
-            editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.Estado());
-            editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.Localidad());
-        }else{
-            
-            editar_Estado_AutoCompletionComboBox.setEnabled(false);
-            editar_Estado_AutoCompletionComboBox.setEnabled(false);
-            editar_Estado_JButton.setEnabled(false);            
-        }
         
     }
 

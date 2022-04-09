@@ -21,10 +21,11 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
-import datos.estructuras.Par;
 import java.awt.event.KeyEvent;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
+import modelos.PreguntasModel;
+import modelos.ResponseModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 
@@ -424,7 +425,9 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
             if (longitud > 99) {
                 buscar_Preguntas_JTextField.setText(buscar_Preguntas_JTextField.getText().substring(0, longitud - 1));
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Preguntas<br>Rebasa Los 100 Caracteres");
-          }
+            }else{
+                Buscar_Preguntas(buscar_Preguntas_JTextField.getText());
+            }
         }
     }//GEN-LAST:event_buscar_Preguntas_JTextFieldKeyPressed
 
@@ -448,22 +451,52 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            Obtener_Preguntas();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
-    private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
-        // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-    }//GEN-LAST:event_actualizar_JButtonMouseEntered
-
-    private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
-        // TODO add your handling code here:
-        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-    }//GEN-LAST:event_actualizar_JButtonMouseExited
-
-    public int Numero_Preguntas(){
-        return mostrar_Preguntas_Lista.size();
+    private void Buscar_Preguntas(String busqueda){
+        
+        DefaultTableModel modelo = (DefaultTableModel) buscar_Preguntas_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Pregunta_Estudiante_Panel pregunta_Estudiante_Panel;
+        while(!buscar_Preguntas_Lista.is_empty()){
+            pregunta_Estudiante_Panel = buscar_Preguntas_Lista.delist();
+            Tablero_Estudiante_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
+            pregunta_Estudiante_Panel.Limpiar();
+        }
+        
+        Lista<PreguntasModel> lista = 
+                CourseRoom.Solicitudes().Buscar_Preguntas(busqueda);
+        
+        if(!lista.is_empty()){
+            while(!lista.is_empty()){
+                Agregar_Pregunta_Busqueda(lista.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta","No Se Encontraron Registros");
+        }
+    }
+    
+    private void Obtener_Preguntas(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Pregunta_Estudiante_Panel pregunta_Estudiante_Panel;
+        while(!mostrar_Preguntas_Lista.is_empty()){
+            pregunta_Estudiante_Panel = mostrar_Preguntas_Lista.delist();
+            Tablero_Estudiante_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
+            pregunta_Estudiante_Panel.Limpiar();
+        }
+        
+        Lista<PreguntasModel> lista = 
+                CourseRoom.Solicitudes().Obtener_Preguntas(Tablero_Estudiante_Panel.Id_Usuario());
+        
+        while(!lista.is_empty()){
+            Agregar_Pregunta(lista.delist());
+        }
     }
     
     public void Agregar_Pregunta_Local(
@@ -508,7 +541,146 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         Tablero_Estudiante_Panel.Mostrar_Vista(id);
         
     }
+    
+    private void actualizar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseEntered
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseEntered
+
+    private void actualizar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseExited
+        // TODO add your handling code here:
+        actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+    }//GEN-LAST:event_actualizar_JButtonMouseExited
+
+    public void Agregar_Pregunta(
+            PreguntasModel preguntasModel) {
+        
+        String id_Pregunta = CourseRoom.Utilerias().Concatenar("Pregunta_",preguntasModel.Id_Pregunta());
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        
+        Image imagen_Usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
+        ImageIcon icono_Usuario = new ImageIcon(imagen_Usuario);
+        
+        celda = new Celda_Renderer(icono_Usuario, preguntasModel.Nombre_Completo(),id_Pregunta);
+        celdas[0] = celda;
+        celda = new Celda_Renderer(preguntasModel.Pregunta(),id_Pregunta);
+        celdas[1] = celda;
+        celda = new Celda_Renderer(preguntasModel.Fecha_Creacion(),id_Pregunta);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(preguntasModel.Estatus(),id_Pregunta);
+        celdas[3] = celda;
+        
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
+        modelo.addRow(celdas);
+        mostrar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(preguntasModel.Pregunta().length()));
+        
+        imagen_Usuario = imagen_Usuario.getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+        
+        Pregunta_Estudiante_Panel pregunta_Estudiante_Panel = 
+                new Pregunta_Estudiante_Panel(preguntasModel.Id_Pregunta(),imagen_Usuario);
+        
+        mostrar_Preguntas_Lista.push_back(pregunta_Estudiante_Panel);
+        
+        Tablero_Estudiante_Panel.Agregar_Vista(pregunta_Estudiante_Panel, id_Pregunta);
+        
+    }
+    
+    public void Agregar_Pregunta_Busqueda(
+            PreguntasModel preguntasModel) {
+        
+        String id_Pregunta = CourseRoom.Utilerias().Concatenar("Pregunta_",preguntasModel.Id_Pregunta());
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        
+        Image imagen = null;
+        byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Pregunta(preguntasModel.Id_Pregunta());
+        
+        if(bytes_Imagen.length > 0){
+            imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+            
+            if(imagen != null){
+                
+                imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                ImageIcon icono_Imagen = new ImageIcon(imagen);
+                celda =  new Celda_Renderer(icono_Imagen,preguntasModel.Nombre_Completo(), id_Pregunta);
+                celdas[0] = celda;
+                icono_Imagen.getImage().flush();
+            }else{
+                celda =  new Celda_Renderer(preguntasModel.Nombre_Completo(), id_Pregunta);
+                celdas[0] = celda;
+            }
+        }
+        
+        celda = new Celda_Renderer(preguntasModel.Pregunta(),id_Pregunta);
+        celdas[1] = celda;
+        celda = new Celda_Renderer(preguntasModel.Fecha_Creacion(),id_Pregunta);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(preguntasModel.Estatus(),id_Pregunta);
+        celdas[3] = celda;
+        
+        DefaultTableModel modelo = (DefaultTableModel) buscar_Preguntas_JTable.getModel();
+        modelo.addRow(celdas);
+        buscar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(preguntasModel.Pregunta().length()));
+        
+        
+        if(!Existe_Pregunta(preguntasModel.Id_Pregunta())){
+            
+            imagen = (imagen != null) ? imagen.getScaledInstance(48, 48, Image.SCALE_SMOOTH) : null;
+
+            Pregunta_Estudiante_Panel pregunta_Estudiante_Panel = 
+                    new Pregunta_Estudiante_Panel(preguntasModel.Id_Pregunta(),imagen);
+
+            buscar_Preguntas_Lista.push_back(pregunta_Estudiante_Panel);
+
+            Tablero_Estudiante_Panel.Agregar_Vista(pregunta_Estudiante_Panel, id_Pregunta);
+        }
+        
+    }
   
+    private boolean Existe_Pregunta(int id_Pregunta){
+        Nodo<Pregunta_Estudiante_Panel> first = mostrar_Preguntas_Lista.front();
+        Nodo<Pregunta_Estudiante_Panel> last = mostrar_Preguntas_Lista.back();
+
+        int middle_index = (mostrar_Preguntas_Lista.size())/2;
+
+        if(middle_index % 2 == 0){
+            for (int i = 0; i < middle_index; i++) {
+
+                if (first.element().Id_Pregunta() == id_Pregunta){
+                    return true;
+                }
+
+                if (last.element().Id_Pregunta() == id_Pregunta){
+                    return true;
+                }
+
+                first = first.next();
+                last = last.previous();
+            }
+            return false;
+        }else{
+            for(int i = 0; i < middle_index;i++) {
+
+                if(first.element().Id_Pregunta() == id_Pregunta){
+                    return true;
+                }
+
+                if(last.element().Id_Pregunta() == id_Pregunta){
+                    return true;
+                }
+
+                first = first.next();
+                last = last.previous();
+            }
+
+            return mostrar_Preguntas_Lista.medium().Id_Pregunta() == id_Pregunta;
+        }
+      
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
@@ -763,21 +935,21 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                                 
                                 String fecha_Local = CourseRoom.Utilerias().Fecha_Hora_Local();
                                 
-                                Par<Integer,String> response = CourseRoom.Solicitudes().Agregar_Pregunta(Tablero_Estudiante_Panel.Id_Usuario(),
+                                ResponseModel response = CourseRoom.Solicitudes().Agregar_Pregunta(Tablero_Estudiante_Panel.Id_Usuario(),
                                         pregunta_JTextField.getText(),descripcion_Pregunta_JTextPane.getText());
                                 
-                                if(response.first() == 1){
+                                if(response.Is_Success()){
                                 
-                                    CourseRoom.Utilerias().Mensaje_Informativo("Información",response.second());
+                                    CourseRoom.Utilerias().Mensaje_Informativo("Información",response.Mensaje());
                                     
-                                    String id = CourseRoom.Utilerias().Concatenar("Pregunta_", response.first());
+                                    String id = CourseRoom.Utilerias().Concatenar("Pregunta_", response.Codigo());
 
-                                    Agregar_Pregunta_Local(response.first(),id, Perfil_Estudiante_Panel.Nombre_Completo(),
+                                    Agregar_Pregunta_Local(response.Codigo(),id, Perfil_Estudiante_Panel.Nombre_Completo(),
                                             pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(),fecha_Local);
 
                                     this.dispose();
                                 } else{
-                                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.second());
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
                                 }
                             }
                         }

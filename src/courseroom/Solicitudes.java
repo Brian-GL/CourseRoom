@@ -17,9 +17,8 @@
  */
 package courseroom;
 
-import clases.ComboOption;
+import modelos.ComboOptionModel;
 import datos.colecciones.Lista;
-import datos.estructuras.Par;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Vector;
@@ -39,13 +38,11 @@ import modelos.DatosPerfilChatPersonalModel;
 import modelos.DatosPerfilModel;
 import modelos.DesempenoUsuarioModel;
 import modelos.GruposModel;
-import modelos.PreguntasModel;
-import modelos.SesionesModel;
-import modelos.TareasEstudianteModel;
 import modelos.TareasPendientesGrupoModel;
 import modelos.MensajesModel;
 import modelos.MiembrosGrupoModel;
 import modelos.PreguntasModel;
+import modelos.ResponseModel;
 import modelos.RetroalimentacionesTareaModel;
 import modelos.SesionesModel;
 import modelos.TareasEstudianteModel;
@@ -79,9 +76,9 @@ public class Solicitudes {
         private static final Solicitudes INSTANCE = new Solicitudes();
     }
     
-    public Par<Integer, String> Abandonar_Grupo(int id_Grupo, int id_Usuario){
+    public ResponseModel Abandonar_Grupo(int id_Grupo, int id_Usuario){
         
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -98,26 +95,26 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Actualizar_Configuracion(int id_Usuario, boolean chats_Conmigo, 
+    public ResponseModel Actualizar_Configuracion(int id_Usuario, boolean chats_Conmigo, 
             boolean avisos_Activo, boolean activo){
         
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -136,25 +133,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
         
     }
 
-    public Par<Integer, String> Actualizar_Datos_Autenticacion(int id_Usuario, String correo_Electronico, String contrasenia){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Actualizar_Datos_Autenticacion(int id_Usuario, String correo_Electronico, String contrasenia){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -172,25 +169,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Actualizar_Datos_Generales_Grupo(int id_Grupo, String nombre, 
+    public ResponseModel Actualizar_Datos_Generales_Grupo(int id_Grupo, String nombre, 
             String descripcion){
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -208,26 +205,26 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Actualizar_Datos_Personales(int id_Usuario, String nombre, String paterno, 
+    public ResponseModel Actualizar_Datos_Personales(int id_Usuario, String nombre, String paterno, 
             String materno, String genero, String fecha_Nacimiento, int id_Localidad){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -249,24 +246,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Actualizar_Imagen_Curso(int id_Curso, byte[] imagen){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Actualizar_Imagen_Curso(int id_Curso, byte[] imagen){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -283,24 +280,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Actualizar_Imagen_Grupo(int id_Grupo, byte[] imagen){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Actualizar_Imagen_Grupo(int id_Grupo, byte[] imagen){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -317,25 +314,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Actualizar_Imagen_Perfil(int id_Usuario, byte[] imagen_Codificada){
+    public ResponseModel Actualizar_Imagen_Perfil(int id_Usuario, byte[] imagen_Codificada){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -352,25 +349,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Actualizar_Informacion_Extra(int id_Usuario, String tipo_Usuario, double promedio_General, 
+    public ResponseModel Actualizar_Informacion_Extra(int id_Usuario, String tipo_Usuario, double promedio_General, 
             String descripcion){
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -389,24 +386,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Agregar_Chat(int id_Usuario, int id_Usuario_Receptor){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Agregar_Chat(int id_Usuario, int id_Usuario_Receptor){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -423,24 +420,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
 
-    public Par<Integer, String> Agregar_Interes(int id_Usuario, int id_Tematica){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Agregar_Interes(int id_Usuario, int id_Tematica){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -457,24 +454,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Agregar_Pregunta(int id_Usuario, String pregunta, String descripcion){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Agregar_Pregunta(int id_Usuario, String pregunta, String descripcion){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -492,24 +489,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
      
-    public Par<Integer, String> Agregar_Sesion(int id_Usuario){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Agregar_Sesion(int id_Usuario){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -527,26 +524,26 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Agregar_Tarea_Pendiente_Grupo(int id_Grupo, String nombre, 
+    public ResponseModel Agregar_Tarea_Pendiente_Grupo(int id_Grupo, String nombre, 
             String descripcion, String fecha_Finalizacion, int id_Usuario_Cargo){
         
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -566,28 +563,28 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
         
     }
 
-    public Par<Integer, String> Agregar_Usuario(String correo_Electronico, String contrasenia ,String nombre,
+    public ResponseModel Agregar_Usuario(String correo_Electronico, String contrasenia ,String nombre,
         String paterno, String materno, int id_Localidad, String genero, String fecha_Nacimiento, String tipo_Usuario,
         byte[] imagen_Codificada, double promedio_General,String descripcion){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -614,17 +611,17 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
@@ -813,9 +810,9 @@ public class Solicitudes {
         return response;
     }
     
-    public Par<Integer, String> Cambiar_Estatus_Tarea_Pendiente(int id_Tarea_Pendiente, String nuevo_Estatus, int id_Usuario){
+    public ResponseModel Cambiar_Estatus_Tarea_Pendiente(int id_Tarea_Pendiente, String nuevo_Estatus, int id_Usuario){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -833,25 +830,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Cerrar_Sesion(int id_Usuario, int id_Sesion){
+    public ResponseModel Cerrar_Sesion(int id_Usuario, int id_Sesion){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -868,25 +865,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Enviar_Archivo_Compartido_Grupo(int id_Grupo, int id_Usuario, String nombre_Archivo, byte[] archivo, String extension){
+    public ResponseModel Enviar_Archivo_Compartido_Grupo(int id_Grupo, int id_Usuario, String nombre_Archivo, byte[] archivo, String extension){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -906,25 +903,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
      
-    public Par<Integer, String> Enviar_Mensaje_Chat(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Chat){
+    public ResponseModel Enviar_Mensaje_Chat(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Chat){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -944,25 +941,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Enviar_Mensaje_Curso(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Curso){
+    public ResponseModel Enviar_Mensaje_Curso(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Curso){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -982,25 +979,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Enviar_Mensaje_Grupo(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Grupo){
+    public ResponseModel Enviar_Mensaje_Grupo(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Grupo){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -1020,25 +1017,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Enviar_Mensaje_Pregunta(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Pregunta){
+    public ResponseModel Enviar_Mensaje_Pregunta(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Pregunta){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -1058,25 +1055,25 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Enviar_Mensaje_Tarea(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Tarea){
+    public ResponseModel Enviar_Mensaje_Tarea(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Tarea){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -1096,17 +1093,17 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
@@ -1156,9 +1153,9 @@ public class Solicitudes {
         return response;
     }
 
-    public Par<Integer, String> Marcar_Pregunta_Solucionada(int id_Usuario,int id_Pregunta){
+    public ResponseModel Marcar_Pregunta_Solucionada(int id_Usuario,int id_Pregunta){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -1175,17 +1172,17 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
@@ -1742,8 +1739,8 @@ public class Solicitudes {
         return configuracionesModel;
     }
     
-    public ComboOption Obtener_Datos_Generales_Chat_Personal(int id_Chat, int id_Usuario){
-        ComboOption comboOption = new ComboOption();
+    public ComboOptionModel Obtener_Datos_Generales_Chat_Personal(int id_Chat, int id_Usuario){
+        ComboOptionModel comboOption = new ComboOptionModel();
         
         try {
 
@@ -2264,9 +2261,9 @@ public class Solicitudes {
         return response;
     }
      
-    public Lista<ComboOption> Obtener_Intereses_Usuario(int id_Usuario){
+    public Lista<ComboOptionModel> Obtener_Intereses_Usuario(int id_Usuario){
 
-        Lista<ComboOption> response = new Lista<>();
+        Lista<ComboOptionModel> response = new Lista<>();
         
         try {
             
@@ -2283,14 +2280,14 @@ public class Solicitudes {
                 Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
                 
                 Vector<Object> fila;
-                ComboOption comboOption;
+                ComboOptionModel comboOption;
                 Integer id_Tematica;
                 String tematica;
                 while(!resultado.isEmpty()){
                     fila = resultado.remove(0);
                     id_Tematica = (Integer)fila.remove(0);
                     tematica = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    comboOption = new ComboOption(id_Tematica,tematica);
+                    comboOption = new ComboOptionModel(id_Tematica,tematica);
                     response.push_back(comboOption);
                 }
             }
@@ -2302,9 +2299,9 @@ public class Solicitudes {
         return response;
     }
 
-    public Lista<ComboOption> Obtener_Localidades_Por_Estado(String estado){
+    public Lista<ComboOptionModel> Obtener_Localidades_Por_Estado(String estado){
 
-        Lista<ComboOption> response = new Lista<>();
+        Lista<ComboOptionModel> response = new Lista<>();
         
         try {
             
@@ -2321,14 +2318,14 @@ public class Solicitudes {
                 Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
                 
                 Vector<Object> fila;
-                ComboOption comboOption;
+                ComboOptionModel comboOption;
                 Integer id_Localidad;
                 String localidad;
                 while(!resultado.isEmpty()){
                     fila = resultado.remove(0);
                     id_Localidad = (Integer)fila.remove(0);
                     localidad = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    comboOption = new ComboOption(id_Localidad,localidad);
+                    comboOption = new ComboOptionModel(id_Localidad,localidad);
                     response.push_back(comboOption);
                 }
             }
@@ -2953,9 +2950,9 @@ public class Solicitudes {
         return response;
     }
     
-    public Lista<ComboOption> Obtener_Tematicas(){
+    public Lista<ComboOptionModel> Obtener_Tematicas(){
 
-        Lista<ComboOption> response = new Lista<>();
+        Lista<ComboOptionModel> response = new Lista<>();
         
         try {
             
@@ -2971,14 +2968,14 @@ public class Solicitudes {
                 Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
                 
                 Vector<Object> fila;
-                ComboOption comboOption;
+                ComboOptionModel comboOption;
                 Integer id_Tematica;
                 String tematica;
                 while(!resultado.isEmpty()){
                     fila = resultado.remove(0);
                     id_Tematica = (Integer)fila.remove(0);
                     tematica = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    comboOption = new ComboOption(id_Tematica,tematica);
+                    comboOption = new ComboOptionModel(id_Tematica,tematica);
                     response.push_back(comboOption);
                 }
             }
@@ -2990,9 +2987,9 @@ public class Solicitudes {
         return response;
     }
 
-    public Par<Integer, String> Obtener_Usuario(String correo_Electronico, String contrasenia){
+    public ResponseModel Obtener_Usuario(String correo_Electronico, String contrasenia){
 
-        Par<Integer, String> response = new Par<>(-1,"");
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -3010,24 +3007,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
 
-    public Lista<ComboOption> Obtener_Usuarios_Chatear(String busqueda){
-        Lista<ComboOption> response = new Lista<>();
+    public Lista<ComboOptionModel> Obtener_Usuarios_Chatear(String busqueda){
+        Lista<ComboOptionModel> response = new Lista<>();
         
         try {
             
@@ -3044,14 +3041,14 @@ public class Solicitudes {
                 Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
                 
                 Vector<Object> fila;
-                ComboOption comboOption;
+                ComboOptionModel comboOption;
                 Integer id_Usuario;
                 String nombre_Usuario;
                 while(!resultado.isEmpty()){
                     fila = resultado.remove(0);
                     id_Usuario = (Integer)fila.remove(0);
                     nombre_Usuario = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    comboOption = new ComboOption(id_Usuario,nombre_Usuario);
+                    comboOption = new ComboOptionModel(id_Usuario,nombre_Usuario);
                     response.push_back(comboOption);
                 }
             }
@@ -3088,8 +3085,8 @@ public class Solicitudes {
         
     }
 
-    public Par<Integer, String> Remover_Archivo_Compartido_Grupo(int id_Archivo_Compartido, int id_Usuario){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Remover_Archivo_Compartido_Grupo(int id_Archivo_Compartido, int id_Usuario){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -3106,24 +3103,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
 
-    public Par<Integer, String> Remover_Archivo_Subido_Tarea(int id_Archivo_Subido, int id_Usuario){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Remover_Archivo_Subido_Tarea(int id_Archivo_Subido, int id_Usuario){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -3140,24 +3137,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Remover_Chat_Personal(int id_Chat, int id_Usuario){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Remover_Chat_Personal(int id_Chat, int id_Usuario){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -3174,24 +3171,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Remover_Interes_Usuario(int id_Tematica, int id_Usuario){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Remover_Interes_Usuario(int id_Tematica, int id_Usuario){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -3208,24 +3205,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Remover_Voto_Miembro_Grupo(int id_Grupo, int id_Usuario){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Remover_Voto_Miembro_Grupo(int id_Grupo, int id_Usuario){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -3242,24 +3239,24 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;
     }
     
-    public Par<Integer, String> Remover_Pregunta(int id_Pregunta, int id_Usuario){
-        Par<Integer, String> response = new Par<>(-1,"");
+    public ResponseModel Remover_Pregunta(int id_Pregunta, int id_Usuario){
+        ResponseModel response = new ResponseModel();
         
         try {
             
@@ -3276,17 +3273,17 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
-                response.first((Integer)resultado.remove(0));
-                response.second(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
             }else{
-                response.first(-1);
-                response.second("No Se Obtuvo Una Respuesta");
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
             }
             
         } catch (XmlRpcException | IOException ex) {
-            response.first(-1);
-            response.second(ex.getMessage());
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
         }
         
         return response;

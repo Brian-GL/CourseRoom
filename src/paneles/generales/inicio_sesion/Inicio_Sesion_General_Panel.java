@@ -2,17 +2,16 @@ package paneles.generales.inicio_sesion;
 
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
-import datos.estructuras.Par;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import static java.awt.image.ImageObserver.WIDTH;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import modelos.ResponseModel;
 
 public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
   
@@ -403,14 +402,14 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         
         if(CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo)) {
             String password = String.valueOf(contrasena_JPasswordField.getPassword());
-            Par<Integer, String> response = CourseRoom.Solicitudes().Obtener_Usuario(correo, password);
+            ResponseModel response = CourseRoom.Solicitudes().Obtener_Usuario(correo, password);
 
-            if(response.first() > 0){
+            if(response.Is_Success()){
                 CourseRoom.Esconder_Frame();
-                CourseRoom.Frame().Mostrar_Tablero(response.second().equals("Estudiante"),response.first());
+                CourseRoom.Frame().Mostrar_Tablero(response.Mensaje().equals("Estudiante"),response.Codigo());
             }else{
                 getToolkit().beep();
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", response.second());
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", response.Mensaje());
                 correo_Electronico_JTextField.setText("");
                 contrasena_JPasswordField.setText("");
                 correo_Electronico_JTextField.requestFocus();   
@@ -421,7 +420,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             CourseRoom.Mostrar_Frame();
         } else {
             getToolkit().beep();
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "El Correo Electrónico <br>*" + correo + "*<br>No Es Valido");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "El Correo Electrónico <br>*" + correo + "*<br>No Cuenta Con El Formato Adecuado");
             correo_Electronico_JTextField.setText("");
             contrasena_JPasswordField.setText("");
             correo_Electronico_JTextField.requestFocus();   
