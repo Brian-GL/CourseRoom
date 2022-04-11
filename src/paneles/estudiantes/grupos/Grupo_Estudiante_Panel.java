@@ -153,6 +153,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         editar_Descripcion_JScrollPane = new javax.swing.JScrollPane();
         editar_Descripcion_JTextPane = new javax.swing.JTextPane();
         editar_Descripcion_JButton = new javax.swing.JButton();
+        guardar_Cambios_Datos_Generales_Grupo_JButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
@@ -354,7 +355,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     .addGroup(informacion_Grupo_JPanelLayout.createSequentialGroup()
                         .addComponent(imagen_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
+                        .addComponent(descripcion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE))
                     .addComponent(fecha_Creacion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -642,7 +643,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
                             .addGap(0, 0, 0)
                             .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                                .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
                                 .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
                                     .addComponent(compartir_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, Short.MAX_VALUE))))
@@ -651,7 +652,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         archivos_Compartidos_Grupo_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(archivos_Compartidos_Grupo_JPanelLayout.createSequentialGroup()
                             .addGap(0, 0, 0)
-                            .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                            .addComponent(archivos_Compartidos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(compartir_Archivos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0))
@@ -827,7 +828,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                 .addGap(0, 0, 0)
                                 .addComponent(anadir_Tarea_Pendiente_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tareas_Pendientes_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+                                .addComponent(tareas_Pendientes_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
                                 .addGap(0, 0, 0))
                         );
                         tareas_Pendientes_JPanelLayout.setVerticalGroup(
@@ -934,6 +935,25 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             }
                         });
 
+                        guardar_Cambios_Datos_Generales_Grupo_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+                        guardar_Cambios_Datos_Generales_Grupo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
+                        guardar_Cambios_Datos_Generales_Grupo_JButton.setText("Guardar Cambios");
+                        guardar_Cambios_Datos_Generales_Grupo_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
+                        guardar_Cambios_Datos_Generales_Grupo_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                        guardar_Cambios_Datos_Generales_Grupo_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                        ((ImageIcon)guardar_Cambios_Datos_Generales_Grupo_JButton.getIcon()).getImage().flush();
+                        guardar_Cambios_Datos_Generales_Grupo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                guardar_Cambios_Datos_Generales_Grupo_JButtonMouseClicked(evt);
+                            }
+                            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                guardar_Cambios_Datos_Generales_Grupo_JButtonMouseEntered(evt);
+                            }
+                            public void mouseExited(java.awt.event.MouseEvent evt) {
+                                guardar_Cambios_Datos_Generales_Grupo_JButtonMouseExited(evt);
+                            }
+                        });
+
                         javax.swing.GroupLayout editar_JPanelLayout = new javax.swing.GroupLayout(editar_JPanel);
                         editar_JPanel.setLayout(editar_JPanelLayout);
                         editar_JPanelLayout.setHorizontalGroup(
@@ -954,13 +974,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                 .addGap(40, 40, 40)
                                 .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(guardar_Cambios_Datos_Generales_Grupo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap(51, Short.MAX_VALUE))
                         );
                         editar_JPanelLayout.setVerticalGroup(
                             editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(editar_JPanelLayout.createSequentialGroup()
-                                .addContainerGap(56, Short.MAX_VALUE)
+                                .addContainerGap(57, Short.MAX_VALUE)
                                 .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(editar_JPanelLayout.createSequentialGroup()
                                         .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -969,16 +990,20 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(editar_Nombre_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(24, 24, 24)
-                                .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(editar_JPanelLayout.createSequentialGroup()
+                                        .addGap(24, 24, 24)
                                         .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(57, Short.MAX_VALUE))
+                                    .addGroup(editar_JPanelLayout.createSequentialGroup()
+                                        .addGap(18, 18, Short.MAX_VALUE)
+                                        .addComponent(guardar_Cambios_Datos_Generales_Grupo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, Short.MAX_VALUE)
+                                        .addComponent(abandonar_Grupo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(56, Short.MAX_VALUE))
                         );
 
                         grupo_JLayeredPane.add(editar_JPanel, "Edicion");
@@ -1298,6 +1323,33 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
+    private void guardar_Cambios_Datos_Generales_Grupo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+
+//            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Generales_Grupo(Tablero_Estudiante_Panel.Id_Usuario(),
+//                "Estudiante", promedio_General, editar_Descripcion_JTextPane.getText());
+//
+//            if(respuesta.Is_Success()){
+//                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+//            }else{
+//                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+//            }
+        }
+    }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseClicked
+
+    private void guardar_Cambios_Datos_Generales_Grupo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseEntered
+        // TODO add your handling code here:
+        guardar_Cambios_Datos_Generales_Grupo_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        guardar_Cambios_Datos_Generales_Grupo_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+    }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseEntered
+
+    private void guardar_Cambios_Datos_Generales_Grupo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseExited
+        // TODO add your handling code here:
+        guardar_Cambios_Datos_Generales_Grupo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        guardar_Cambios_Datos_Generales_Grupo_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+    }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseExited
+
     private void Agregar_Tarea_Pendiente_Local(String nombre_Tarea_Pendiente, String descripcion, String miembro_A_Cargo,
             String fecha_Creacion, String fecha_Finalizacion, byte estatus, String id){
         
@@ -1437,6 +1489,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private javax.swing.JLabel fecha_Finalizacion_Tarea_Pendiente_JLabel;
     private javax.swing.JPanel fecha_Finalizacion_Tarea_Pendiente_JPanel;
     private javax.swing.JLayeredPane grupo_JLayeredPane;
+    private javax.swing.JButton guardar_Cambios_Datos_Generales_Grupo_JButton;
     private javax.swing.JLabel imagen_JLabel;
     private javax.swing.JPanel informacion_Grupo_JPanel;
     private javax.swing.JButton informacion_JButton;
@@ -1639,6 +1692,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         mensajes_Chat_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
         mensajes_Chat_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        
+        guardar_Cambios_Datos_Generales_Grupo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        guardar_Cambios_Datos_Generales_Grupo_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 
         DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
         Celda_Renderer celda;

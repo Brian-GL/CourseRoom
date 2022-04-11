@@ -55,8 +55,8 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
      */
     public Chats_Estudiante_Panel() {
         initComponents();
-        
         Iniciar_Componentes();
+        Obtener_Chats_Personales();
     }
 
     /**
@@ -416,7 +416,10 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Chats<br>Rebasa Los 100 Caracteres");
             }else{
-                Buscar_Chats_Personales(buscar_JTextField.getText());
+                SwingUtilities.invokeLater(() -> {
+                    Buscar_Chats_Personales(buscar_JTextField.getText());
+                });
+
             }
         }
 
@@ -443,7 +446,9 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Obtener_Chats_Personales();
+            SwingUtilities.invokeLater(() -> {
+                Obtener_Chats_Personales();
+            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -694,13 +699,13 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
         buscar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        Obtener_Chats_Personales();
-
-        Colorear_Componentes();
     }
 
     @Override
     public void Colorear_Componentes() {
+        
+        chatear_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
         titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());

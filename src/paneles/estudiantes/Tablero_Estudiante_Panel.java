@@ -680,7 +680,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            this.Limpiar();
+            CourseRoom_Frame.getInstance().Cerrar_Sesion();
         }
     }//GEN-LAST:event_salir_JButtonMouseClicked
 
@@ -992,8 +992,8 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         }
         
         perfil_Panel = new Perfil_Estudiante_Panel();
-            visualizador_JPanel.add("Perfil",perfil_Panel);
-            
+        visualizador_JPanel.add("Perfil",perfil_Panel);
+        
         ResponseModel response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
 
         if(!response.Is_Success()){

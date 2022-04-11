@@ -405,8 +405,14 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             ResponseModel response = CourseRoom.Solicitudes().Obtener_Usuario(correo, password);
 
             if(response.Is_Success()){
-                CourseRoom.Esconder_Frame();
-                CourseRoom.Frame().Mostrar_Tablero(response.Mensaje().equals("Estudiante"),response.Codigo());
+                
+                SwingUtilities.invokeLater(() -> {
+                    CourseRoom.Esconder_Frame();
+                    CourseRoom.Frame().Mostrar_Tablero(response.Mensaje().equals("Estudiante"),response.Codigo());
+                    CourseRoom.Mostrar_Frame();
+                });
+                
+                
             }else{
                 getToolkit().beep();
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta", response.Mensaje());
@@ -417,7 +423,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             correo_Electronico_JTextField.setText("");
             contrasena_JPasswordField.setText("");
             
-            CourseRoom.Mostrar_Frame();
+
         } else {
             getToolkit().beep();
             CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "El Correo Electrónico <br>*" + correo + "*<br>No Cuenta Con El Formato Adecuado");

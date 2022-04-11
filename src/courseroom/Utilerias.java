@@ -1075,43 +1075,4 @@ public class Utilerias {
         
         return obtener_Imagen;
     }
-    
-    public Float Puntualidad(String fecha_Creacion, String fecha_Entregada, String fecha_Entrega ){
-        
-        Float puntualidad;
-        Long total_Dias_Creacion, total_Dias_Entrega,
-                total_Dias_Entregada, diferencia_Creacion_Entrega, diferencia_Creacion_Entregada;
-        
-        Tripleta<Integer,Integer, Integer> valores_Fecha_Creacion = Fecha(fecha_Creacion);
-        Tripleta<Integer,Integer, Integer> valores_Fecha_Entregada = Fecha(fecha_Entregada);
-        Tripleta<Integer,Integer, Integer> valores_Fecha_Entrega = Fecha(fecha_Entrega);
-        
-        //Diferencia dias entre fecha creacion y fecha de entrega:
-        
-        //Creacion:
-        Long dias_anio = ((Double)(valores_Fecha_Creacion.third() * 365.25)).longValue();
-        Integer dias_Mes = Dias_Mes(valores_Fecha_Creacion.second()-1);
-
-        total_Dias_Creacion = dias_anio + dias_Mes + valores_Fecha_Creacion.first();
-
-        //Entrega:
-        dias_anio = ((Double) (valores_Fecha_Entrega.third() * 365.25)).longValue();
-        dias_Mes = Dias_Mes(valores_Fecha_Entrega.second() - 1);
-
-        total_Dias_Entrega = dias_anio + dias_Mes + valores_Fecha_Entrega.first();
-
-        // Entregada:
-        dias_anio = ((Double) (valores_Fecha_Entregada.third() * 365.25)).longValue();
-        dias_Mes = Dias_Mes(valores_Fecha_Entregada.second() - 1);
-
-        total_Dias_Entregada = dias_anio + dias_Mes + valores_Fecha_Entregada.first();
-
-        // Calculos:
-        diferencia_Creacion_Entrega = total_Dias_Entrega - total_Dias_Creacion;
-        diferencia_Creacion_Entregada = total_Dias_Entrega - total_Dias_Entregada;
-
-        puntualidad = Math.abs(( (diferencia_Creacion_Entregada * 100 ) / diferencia_Creacion_Entrega) - 100f);
- 
-        return puntualidad;
-    }
 }

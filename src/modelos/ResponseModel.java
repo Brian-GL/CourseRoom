@@ -53,7 +53,7 @@ public class ResponseModel {
     }
 
     public boolean Is_Success(){
-        return this.codigo == 1;
+        return this.codigo > 0;
     }
     
 }

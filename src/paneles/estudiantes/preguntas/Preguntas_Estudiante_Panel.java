@@ -45,6 +45,8 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
        initComponents();
         
        Iniciar_Componentes();
+       
+       Obtener_Preguntas();
         
     }
    
@@ -426,7 +428,9 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                 buscar_Preguntas_JTextField.setText(buscar_Preguntas_JTextField.getText().substring(0, longitud - 1));
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Preguntas<br>Rebasa Los 100 Caracteres");
             }else{
-                Buscar_Preguntas(buscar_Preguntas_JTextField.getText());
+                SwingUtilities.invokeLater(() -> {
+                    Buscar_Preguntas(buscar_Preguntas_JTextField.getText());
+                });
             }
         }
     }//GEN-LAST:event_buscar_Preguntas_JTextFieldKeyPressed
@@ -451,7 +455,9 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Obtener_Preguntas();
+            SwingUtilities.invokeLater(() -> {
+                Obtener_Preguntas();
+            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -552,8 +558,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    public void Agregar_Pregunta(
-            PreguntasModel preguntasModel) {
+    public void Agregar_Pregunta(PreguntasModel preguntasModel) {
         
         String id_Pregunta = CourseRoom.Utilerias().Concatenar("Pregunta_",preguntasModel.Id_Pregunta());
         
@@ -587,8 +592,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         
     }
     
-    public void Agregar_Pregunta_Busqueda(
-            PreguntasModel preguntasModel) {
+    public void Agregar_Pregunta_Busqueda(PreguntasModel preguntasModel) {
         
         String id_Pregunta = CourseRoom.Utilerias().Concatenar("Pregunta_",preguntasModel.Id_Pregunta());
         
@@ -599,6 +603,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Pregunta(preguntasModel.Id_Pregunta());
         
         if(bytes_Imagen.length > 0){
+            
             imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
             
             if(imagen != null){
@@ -607,7 +612,6 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                 ImageIcon icono_Imagen = new ImageIcon(imagen);
                 celda =  new Celda_Renderer(icono_Imagen,preguntasModel.Nombre_Completo(), id_Pregunta);
                 celdas[0] = celda;
-                icono_Imagen.getImage().flush();
             }else{
                 celda =  new Celda_Renderer(preguntasModel.Nombre_Completo(), id_Pregunta);
                 celdas[0] = celda;
@@ -622,7 +626,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         celdas[3] = celda;
         
         DefaultTableModel modelo = (DefaultTableModel) buscar_Preguntas_JTable.getModel();
-        modelo.addRow(celdas);
+        modelo.insertRow(0, celdas);
         buscar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(preguntasModel.Pregunta().length()));
         
         
