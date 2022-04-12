@@ -67,8 +67,6 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         editar_Descripcion_JTextPane = new javax.swing.JTextPane();
         editar_Fecha_Entrega_JLabel = new javax.swing.JLabel();
         escogedor_Fecha_Hora_Entrega = new com.github.lgooddatepicker.components.DateTimePicker();
-        editar_Tipo_Entrega_JLabel = new javax.swing.JLabel();
-        editar_Tipo_Entrega_JComboBox = new javax.swing.JComboBox<>();
         archivos_Adjuntos_JPanel = new javax.swing.JPanel();
         subir_Archivos_Adjuntos_JButton = new javax.swing.JButton();
         archivos_Adjuntos_JScrollPane = new javax.swing.JScrollPane();
@@ -206,12 +204,6 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
 
         escogedor_Fecha_Hora_Entrega.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
 
-        editar_Tipo_Entrega_JLabel.setText("Tipo De Entrega");
-        editar_Tipo_Entrega_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
-        editar_Tipo_Entrega_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarea Individual", "Tarea Grupal" }));
-        editar_Tipo_Entrega_JComboBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
         javax.swing.GroupLayout informacion_Tarea_JPanelLayout = new javax.swing.GroupLayout(informacion_Tarea_JPanel);
         informacion_Tarea_JPanel.setLayout(informacion_Tarea_JPanelLayout);
         informacion_Tarea_JPanelLayout.setHorizontalGroup(
@@ -221,14 +213,12 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                 .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(editar_Nombre_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
                     .addComponent(editar_Nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(editar_Tipo_Entrega_JComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(escogedor_Fecha_Hora_Entrega, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
-                    .addComponent(editar_Fecha_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(editar_Tipo_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(editar_Fecha_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(editar_Descripcion_JScrollPane)
-                    .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
+                    .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
                 .addContainerGap())
         );
         informacion_Tarea_JPanelLayout.setVerticalGroup(
@@ -248,11 +238,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                         .addComponent(editar_Fecha_Entrega_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(escogedor_Fecha_Hora_Entrega, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(editar_Tipo_Entrega_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editar_Tipo_Entrega_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 274, Short.MAX_VALUE)))
+                        .addGap(0, 370, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -563,8 +549,6 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JLabel editar_Fecha_Entrega_JLabel;
     private javax.swing.JLabel editar_Nombre_JLabel;
     private javax.swing.JTextField editar_Nombre_JTextField;
-    private javax.swing.JComboBox<String> editar_Tipo_Entrega_JComboBox;
-    private javax.swing.JLabel editar_Tipo_Entrega_JLabel;
     private com.github.lgooddatepicker.components.DateTimePicker escogedor_Fecha_Hora_Entrega;
     private javax.swing.JButton informacion_JButton;
     private javax.swing.JPanel informacion_Tarea_JPanel;
@@ -638,7 +622,6 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         editar_Nombre_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Descripcion_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Fecha_Entrega_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        editar_Tipo_Entrega_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
 
         editar_Nombre_JTextField.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         editar_Nombre_JTextField.setBackground(CourseRoom.Utilerias().Tercer_Color());
@@ -646,9 +629,6 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         editar_Descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         editar_Descripcion_JTextPane.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-
-        editar_Tipo_Entrega_JComboBox.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        editar_Tipo_Entrega_JComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
         escogedor_Fecha_Hora_Entrega.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         escogedor_Fecha_Hora_Entrega.setBackground(CourseRoom.Utilerias().Tercer_Color());

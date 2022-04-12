@@ -23,19 +23,16 @@ package modelos;
  */
 public class DatosGeneralesTareaModel {
     private String nombre, descripcion, fecha_Creacion, fecha_Entrega;
-    private boolean tarea_Grupal;
 
-    public DatosGeneralesTareaModel(String nombre, String descripcion, String fecha_Creacion, String fecha_Entrega, boolean tarea_Grupal) {
+    public DatosGeneralesTareaModel(String nombre, String descripcion, String fecha_Creacion, String fecha_Entrega) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha_Creacion = fecha_Creacion;
         this.fecha_Entrega = fecha_Entrega;
-        this.tarea_Grupal = tarea_Grupal;
     }
 
     public DatosGeneralesTareaModel() {
         this.nombre = this.descripcion = this.fecha_Creacion = this.fecha_Entrega = new String();
-        this.tarea_Grupal = false;
     }
 
     public String Nombre() {
@@ -70,11 +67,4 @@ public class DatosGeneralesTareaModel {
         this.fecha_Entrega = fecha_Entrega;
     }
 
-    public boolean Tarea_Grupal() {
-        return tarea_Grupal;
-    }
-
-    public void Tarea_Grupal(boolean tarea_Grupal) {
-        this.tarea_Grupal = tarea_Grupal;
-    }  
 }

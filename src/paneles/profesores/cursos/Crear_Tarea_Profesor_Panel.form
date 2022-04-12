@@ -238,15 +238,13 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="editar_Nombre_JTextField" alignment="0" pref="462" max="32767" attributes="0"/>
                           <Component id="editar_Nombre_JLabel" max="32767" attributes="0"/>
-                          <Component id="editar_Tipo_Entrega_JComboBox" alignment="1" max="32767" attributes="0"/>
                           <Component id="escogedor_Fecha_Hora_Entrega" alignment="1" pref="462" max="32767" attributes="0"/>
                           <Component id="editar_Fecha_Entrega_JLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="editar_Tipo_Entrega_JLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="editar_Descripcion_JScrollPane" max="32767" attributes="0"/>
-                          <Component id="editar_Descripcion_JLabel" pref="500" max="32767" attributes="0"/>
+                          <Component id="editar_Descripcion_JLabel" pref="490" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -270,11 +268,7 @@
                               <Component id="editar_Fecha_Entrega_JLabel" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="escogedor_Fecha_Hora_Entrega" min="-2" pref="37" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="editar_Tipo_Entrega_JLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="editar_Tipo_Entrega_JComboBox" min="-2" pref="42" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="274" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="370" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -342,30 +336,6 @@
                   <Font name="Segoe UI" size="15" style="0"/>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="editar_Tipo_Entrega_JLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tipo De Entrega"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="18" style="1"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="editar_Tipo_Entrega_JComboBox">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Tarea Individual"/>
-                    <StringItem index="1" value="Tarea Grupal"/>
-                  </StringArray>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="18" style="1"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

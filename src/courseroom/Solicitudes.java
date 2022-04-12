@@ -1902,7 +1902,6 @@ public class Solicitudes {
                     datosGeneralesTareaModel.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesTareaModel.Fecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesTareaModel.Fecha_Entrega(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                    datosGeneralesTareaModel.Tarea_Grupal((boolean)resultado.remove(0));
                 }
                
            }

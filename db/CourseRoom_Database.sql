@@ -114,39 +114,6 @@ LOCK TABLES `tb_archivossubidostareas` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_archivossubidostareasgrupales`
---
-
-DROP TABLE IF EXISTS `tb_archivossubidostareasgrupales`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tb_archivossubidostareasgrupales` (
-  `IdArchivoSubido` int NOT NULL AUTO_INCREMENT,
-  `NombreArchivo` varchar(100) NOT NULL,
-  `Archivo` longblob NOT NULL,
-  `Extension` varchar(32) NOT NULL,
-  `FechaEnviado` varchar(100) NOT NULL,
-  `IdGrupo` int NOT NULL,
-  `IdTarea` int NOT NULL,
-  `Activo` bit(1) NOT NULL DEFAULT b'1',
-  PRIMARY KEY (`IdArchivoSubido`),
-  KEY `fk_IdGrupoArchivoSubido_INDEX` (`IdGrupo`),
-  KEY `fk_IdTareaArchivoSubidoGrupo_INDEX` (`IdTarea`),
-  CONSTRAINT `fk_IdGrupoArchivoSubidoTarea` FOREIGN KEY (`IdGrupo`) REFERENCES `tb_grupos` (`IdGrupo`),
-  CONSTRAINT `fk_IdTareaArchivoSubidoGrupo` FOREIGN KEY (`IdTarea`) REFERENCES `tb_tareas` (`IdTarea`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_archivossubidostareasgrupales`
---
-
-LOCK TABLES `tb_archivossubidostareasgrupales` WRITE;
-/*!40000 ALTER TABLE `tb_archivossubidostareasgrupales` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_archivossubidostareasgrupales` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tb_avisos`
 --
 
@@ -250,6 +217,7 @@ CREATE TABLE `tb_cursos` (
   `Imagen` mediumblob,
   `IdProfesor` int NOT NULL,
   `Activo` bit(1) NOT NULL DEFAULT b'1',
+  `Finalizado` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`IdCurso`),
   KEY `fk_IdProfesorCurso_INDEX` (`IdProfesor`),
   CONSTRAINT `fk_IdProfesorCurso` FOREIGN KEY (`IdProfesor`) REFERENCES `tb_usuarios` (`IdUsuario`)
@@ -677,7 +645,7 @@ CREATE TABLE `tb_sesiones` (
   PRIMARY KEY (`IdSesion`),
   KEY `fk_IdUsuarioSesion_INDEX` (`IdUsuario`),
   CONSTRAINT `fk_IdUsuarioSesion` FOREIGN KEY (`IdUsuario`) REFERENCES `tb_usuarios` (`IdUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -686,7 +654,7 @@ CREATE TABLE `tb_sesiones` (
 
 LOCK TABLES `tb_sesiones` WRITE;
 /*!40000 ALTER TABLE `tb_sesiones` DISABLE KEYS */;
-INSERT INTO `tb_sesiones` VALUES (1,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 11/04/2022 17:48:58','177.245.217.175',1,_binary '\0'),(2,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 11/04/2022 19:32:33','177.245.217.175',1,_binary '\0'),(3,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 11/04/2022 19:55:35','177.245.217.175',1,_binary '');
+INSERT INTO `tb_sesiones` VALUES (1,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 11/04/2022 17:48:58','177.245.217.175',1,_binary '\0'),(2,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 11/04/2022 19:32:33','177.245.217.175',1,_binary '\0'),(3,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 11/04/2022 20:03:06','177.245.217.175',1,_binary '\0'),(4,'C6CC0026-C2C2-11E8-B5F5-E86A64292601','Windows 10','LENOVO','lunes 11/04/2022 22:05:45','177.245.217.175',1,_binary '\0');
 /*!40000 ALTER TABLE `tb_sesiones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -704,7 +672,6 @@ CREATE TABLE `tb_tareas` (
   `FechaCreacion` varchar(100) NOT NULL,
   `FechaEntrega` varchar(100) NOT NULL,
   `IdCurso` int NOT NULL,
-  `TareaGrupal` bit(1) NOT NULL DEFAULT b'0',
   `Activo` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`IdTarea`),
   KEY `fk_IdCursoTarea_INDEX` (`IdCurso`),
@@ -719,38 +686,6 @@ CREATE TABLE `tb_tareas` (
 LOCK TABLES `tb_tareas` WRITE;
 /*!40000 ALTER TABLE `tb_tareas` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tb_tareas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tb_tareascursogrupos`
---
-
-DROP TABLE IF EXISTS `tb_tareascursogrupos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tb_tareascursogrupos` (
-  `IdTarea` int NOT NULL,
-  `IdGrupo` int NOT NULL,
-  `Estatus` enum('PENDIENTE','ENTREGADA','ENTREGADA CON RETRASO','SIN ENTREGA','CALIFICADA','ABIERTA','CERRADA') NOT NULL,
-  `Calificacion` double DEFAULT NULL,
-  `FechaCalificacion` varchar(100) DEFAULT NULL,
-  `Puntualidad` double DEFAULT NULL,
-  `FechaSubida` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`IdTarea`,`IdGrupo`),
-  KEY `IdTareaGrupoINDEX` (`IdGrupo`) /*!80000 INVISIBLE */,
-  KEY `IdGrupoTarea_INDEX` (`IdTarea`),
-  CONSTRAINT `IdGrupoTarea` FOREIGN KEY (`IdTarea`) REFERENCES `tb_tareas` (`IdTarea`),
-  CONSTRAINT `IdTareaGrupo` FOREIGN KEY (`IdGrupo`) REFERENCES `tb_grupos` (`IdGrupo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_tareascursogrupos`
---
-
-LOCK TABLES `tb_tareascursogrupos` WRITE;
-/*!40000 ALTER TABLE `tb_tareascursogrupos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_tareascursogrupos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1337,6 +1272,34 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_PromedioCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_PromedioCurso`(_IdCurso INT, _IdUsuario INT, _IdTarea INT) RETURNS double
+    DETERMINISTIC
+BEGIN
+	
+	RETURN (SELECT AVG(TareasCursoUsuarios.Calificacion)
+    FROM tb_tareascursousuarios TareasCursoUsuarios
+	INNER JOIN tb_tareas Tareas ON Tareas.IdTarea = TareasCursoUsuarios.IdTarea
+	INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = Tareas.IdCurso
+	WHERE TareasCursoUsuarios.IdUsuario = _IdUsuario AND Cursos.IdCurso = _IdCurso 
+    AND TareasCursoUsuarios.IdTarea <= _IdTarea
+    GROUP BY TareasCursoUsuarios.IdUsuario);
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP FUNCTION IF EXISTS `fn_UltimoMensajeChat` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1354,6 +1317,51 @@ BEGIN
     RETURN (SELECT Mensaje FROM tb_mensajeschat 
     WHERE IdChat = _IdChat ORDER BY IdChat DESC LIMIT 1);
     
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_AbandonarCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_AbandonarCurso`(
+	IN _IdCurso INT,
+	IN _IdUsuario INT
+)
+BEGIN
+	-- Validar que exista el curso:
+    IF EXISTS (SELECT IdCurso FROM tb_cursos WHERE IdCurso = _IdCurso AND Activo = 1) THEN
+        
+        -- Validar que exista el usuario:
+        IF courseroom.fn_ExisteUsuario(_IdUsuario) THEN
+			
+            -- Validar que  se encuentre enrolado en el curso:
+            IF EXISTS (SELECT IdCurso FROM tb_cursosusuarios WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso AND Estatus = 'Actual') THEN
+				
+                UPDATE tb_cursosusuarios SET Estatus = 'Suspendido' WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso AND Estatus = 'Actual';
+                
+                SELECT 1 AS "Codigo", 'El Usuario Ha Abandonado El Curso Satisfactoriamente' AS "Mensaje";
+                
+            ELSE
+				SELECT -1 AS "Codigo", 'El Usuario No Está Tomando El Curso Actualmente' AS "Mensaje";
+            END IF;
+            
+        ELSE 
+			SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+        
+	ELSE 
+		SELECT -1 AS "Codigo", 'El Curso No Se Encuentra Registrado' AS "Mensaje";
+    END IF;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2759,6 +2767,52 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_FinalizarCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_FinalizarCurso`(
+	IN _IdCurso INT,
+	IN _IdUsuario INT
+)
+BEGIN
+	
+    -- Validar que exista el curso:
+    IF EXISTS (SELECT IdCurso FROM tb_cursos WHERE IdCurso = _IdCurso AND Activo = 1 AND Finalizado = 1) THEN
+        
+        -- Validar que exista el usuario:
+        IF courseroom.fn_ExisteUsuario(_IdUsuario) THEN
+			
+            -- Validar que se encuentre enrolado en el curso:
+            IF EXISTS (SELECT IdCurso FROM tb_cursosusuarios WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso AND Estatus = 'Actual') THEN
+				
+                UPDATE tb_cursosusuarios SET Estatus = 'Finalizado' WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso AND Estatus = 'Actual';
+                
+                SELECT 1 AS "Codigo", 'El Usuario Ha Finalizado El Curso Satisfactoriamente' AS "Mensaje";
+                
+            ELSE
+				SELECT -1 AS "Codigo", 'El Usuario No Está Tomando El Curso Actualmente' AS "Mensaje";
+            END IF;
+            
+        ELSE 
+			SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+        END IF;
+        
+	ELSE 
+		SELECT -1 AS "Codigo", 'El Curso No Se Encuentra Finalizado O Registrado' AS "Mensaje";
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_MarcarPreguntaSolucionada` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -3363,7 +3417,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneral
     IN _IdUsuario INT
 )
 BEGIN
-    SELECT Tareas.Nombre, Tareas.Descripcion, Tareas.FechaCreacion, Tareas.FechaEntrega, Tareas.TareaGrupal
+    SELECT Tareas.Nombre, Tareas.Descripcion, Tareas.FechaCreacion, Tareas.FechaEntrega
     FROM tb_tareas Tareas
     INNER JOIN tb_tareascursousuarios TareasCursoUsuario ON TareasCursoUsuario.IdTarea = Tareas.IdTarea
     WHERE TareasCursoUsuario.IdTarea = _IdTarea AND TareasCursoUsuario.IdUsuario = _IdUsuario AND Tareas.Activo = 1;
@@ -3448,6 +3502,32 @@ BEGIN
    Genero, CAST(TipoUsuario AS CHAR) AS TipoUsuario FROM tb_usuarios 
    WHERE IdUsuario = _IdUsuario AND Activo = 1 LIMIT 1;
    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDesempenoCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoCurso`(
+	IN _IdCurso INT,
+    IN _IdUsuario INT
+)
+BEGIN
+	SELECT Tareas.IdTarea, Tareas.Nombre, TareasCursoUsuarios.Calificacion, courseroom.fn_PromedioCurso(_IdCurso,_IdUsuario,Tareas.IdTarea), TareasCursoUsuarios.FechaCalificacion
+    FROM tb_tareas Tareas
+    INNER JOIN tb_tareascursousuarios TareasCursoUsuarios ON TareasCursoUsuarios.IdTarea = Tareas.IdTarea
+    WHERE TareasCursoUsuarios.IdUsuario = _IdUsuario AND Tareas.IdCurso = _IdCurso AND TareasCursoUsuarios.Estatus = 'Calificada' 
+    ORDER BY Tareas.IdTarea DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -4591,4 +4671,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-11 20:02:59
+-- Dump completed on 2022-04-11 22:06:29
