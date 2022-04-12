@@ -1209,17 +1209,25 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), evt, ID, WIDTH, HEIGHT)
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Abandonar El Grupo?", "Pregunta", 
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
-            ResponseModel response = CourseRoom.Solicitudes().Abandonar_Grupo(Id_Grupo, 
-                    Tablero_Estudiante_Panel.Id_Usuario());
+            if(resultado == JOptionPane.YES_OPTION){
             
-            if(response.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Informativo("Abandonar Grupo", response.Mensaje());
-            }else{
-                CourseRoom.Utilerias().Mensaje_Alerta("Abandonar Grupo", response.Mensaje());
+                ResponseModel response = CourseRoom.Solicitudes().Abandonar_Grupo(Id_Grupo, 
+                        Tablero_Estudiante_Panel.Id_Usuario());
+
+                if(response.Is_Success()){
+                    CourseRoom.Utilerias().Mensaje_Informativo("Abandonar Grupo", response.Mensaje());
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Abandonar Grupo", response.Mensaje());
+                }
+            
+                Tablero_Estudiante_Panel.Mostrar_Vista("Grupos");
+                Tablero_Estudiante_Panel.Retirar_Vista(this);
+                this.Limpiar();
             }
-            
             
         }
     }//GEN-LAST:event_abandonar_Grupo_JButtonMouseClicked
