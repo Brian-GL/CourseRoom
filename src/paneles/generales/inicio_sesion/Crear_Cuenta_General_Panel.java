@@ -1370,11 +1370,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             ImageIcon remover = new ImageIcon(icono);
             
             celda = new Celda_Renderer(interes.Valor(),interes.Id().toString());
+            celda.Color_Fuente(CourseRoom.Utilerias().Color_Azul_Claro());
             celdas[0] = celda;
             
             celda = new Celda_Renderer(remover);
+            celda.Color_Fuente(CourseRoom.Utilerias().Color_Azul_Claro());
             celdas[1] = celda;
             modelo.addRow(celdas);
+            
             
             intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
             

@@ -139,12 +139,12 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/id-card_1.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Ajuste De&lt;br&gt;Datos Personales&lt;/h3&gt;&lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Ajuste De&lt;br&gt;Datos Personales&lt;/h3&gt;&lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Datos_Personales_JButtonMouseClicked"/>
@@ -179,12 +179,12 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/online-learning.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Ajustes De&lt;br&gt;Informaci&#xf3;n&lt;br&gt;Extra&lt;/h3&gt;&lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Ajustes De&lt;br&gt;Informaci&#xf3;n&lt;br&gt;Extra&lt;/h3&gt;&lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Informacion_Extra_JButtonMouseClicked"/>
@@ -198,12 +198,12 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/info_1.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Descripci&#xf3;nn&lt;br&gt;Del Usuario&lt;/h3&gt;&lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Descripci&#xf3;nn&lt;br&gt;Del Usuario&lt;/h3&gt;&lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="informacion_JButtonMouseClicked"/>
@@ -217,12 +217,12 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/authentication.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Ajustes&lt;br&gt;De Seguridad&lt;/h3&gt;&lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Ajustes&lt;br&gt;De Seguridad&lt;/h3&gt;&lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editar_Autenticacion_JButtonMouseClicked"/>
@@ -445,12 +445,11 @@
             </Component>
             <Component class="javax.swing.JLabel" name="localidad_JLabel">
               <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="focusable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="toolTipText" type="java.lang.String" value="Localidad"/>
-                <Property name="focusable" type="boolean" value="false"/>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[380, 60]"/>
                 </Property>
@@ -458,6 +457,7 @@
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[380, 60]"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Localidad"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="genero_JLabel">
@@ -615,7 +615,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Ingrese Aqu&#xed; Su Contrase&#xf1;a (M&#xed;nimo 8 Car&#xe1;cteres)"/>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[320, 36]"/>
@@ -623,6 +622,7 @@
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[320, 36]"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Ingrese Aqu&#xed; Su Contrase&#xf1;a (M&#xed;nimo 8 Car&#xe1;cteres)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Correo_Electronico_JLabel">
@@ -679,7 +679,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Re-Ingrese Aqu&#xed; La Contrase&#xf1;a"/>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[320, 36]"/>
@@ -687,6 +686,7 @@
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[320, 36]"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Re-Ingrese Aqu&#xed; La Contrase&#xf1;a"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="guardar_Cambios_Autenticacion_JButton">
@@ -783,9 +783,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="editar_Contrasena_JButton">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Gadugi" size="14" style="1"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/rename.png"/>
                 </Property>
@@ -793,6 +790,9 @@
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Gadugi" size="14" style="1"/>
                 </Property>
               </Properties>
               <Events>
@@ -931,10 +931,10 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="editar_Nombres_JLabel">
               <Properties>
+                <Property name="text" type="java.lang.String" value="Nombre(s) *"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nombre(s) *"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="editar_Nombres_JTextField">
@@ -942,19 +942,19 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Nombre(s) &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Nombre(s) &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Apellido_Paterno_JLabel">
               <Properties>
+                <Property name="text" type="java.lang.String" value="Apellido Paterno *"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Apellido Paterno *"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="editar_Apellido_Paterno_JTextField">
@@ -962,19 +962,19 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Apellido paterno &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Apellido paterno &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Obligatorio&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Localidad_JLabel">
               <Properties>
+                <Property name="text" type="java.lang.String" value="Localidad"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Localidad"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="editar_Genero_JTextField">
@@ -982,27 +982,27 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Identidad de g&#xe9;nero &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Opcional&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Identidad de g&#xe9;nero &lt;/h3&gt;  &lt;ul&gt;    &lt;li&gt;Opcional&lt;/li&gt; &lt;/ul&gt;  &lt;/html&gt;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Genero_JLabel">
               <Properties>
+                <Property name="text" type="java.lang.String" value="G&#xe9;nero"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="G&#xe9;nero"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Fecha_Nacimiento_JLabel">
               <Properties>
+                <Property name="text" type="java.lang.String" value="Fecha De Nacimiento *"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Fecha De Nacimiento *"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="guardar_Cambios_Datos_Personales_JButton">
@@ -1035,10 +1035,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Apellido_Materno_JLabel">
               <Properties>
+                <Property name="text" type="java.lang.String" value="Apellido Materno"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Apellido Materno"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="editar_Apellido_Materno_JTextField">
@@ -1046,28 +1046,28 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="19" style="0"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Apellido materno &lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e8" green="c2" red="68" type="rgb"/>
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;  &lt;h3&gt; Apellido materno &lt;/h3&gt; &lt;/html&gt;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="editar_Estado_JLabel">
               <Properties>
+                <Property name="text" type="java.lang.String" value="Estado"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Estado"/>
               </Properties>
             </Component>
             <Component class="com.jidesoft.swing.AutoCompletionComboBox" name="editar_Estado_AutoCompletionComboBox">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Estado de proveniencia&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Estado de proveniencia&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="editar_Estado_AutoCompletionComboBoxItemStateChanged"/>
@@ -1075,12 +1075,12 @@
             </Component>
             <Component class="com.jidesoft.swing.AutoCompletionComboBox" name="editar_Localidad_AutoCompletionComboBox">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Localidad de provenencia&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h3&gt;Localidad de provenencia&lt;/h3&gt;&#xa;&lt;/html&gt;"/>
               </Properties>
             </Component>
             <Component class="com.github.lgooddatepicker.components.DatePicker" name="editar_Fecha_Nacimiento_DatePicker">
@@ -1228,17 +1228,17 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="178" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="editar_Descripcion_JLabel" pref="642" max="32767" attributes="0"/>
+                          <Component id="guardar_Cambios_Informacion_Extra_JButton" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="editar_Descripcion_JLabel" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="editar_Descripcion_JButton" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="editar_Descripcion_JScrollPane" max="32767" attributes="0"/>
-                          <Component id="guardar_Cambios_Informacion_Extra_JButton" max="32767" attributes="0"/>
+                          <Component id="editar_Descripcion_JScrollPane" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="178" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1306,6 +1306,11 @@
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="editar_Descripcion_JScrollPane">
+              <Properties>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[690, 32]"/>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>

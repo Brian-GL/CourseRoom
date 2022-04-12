@@ -365,8 +365,8 @@ public class Solicitudes {
         return response;
     }
     
-    public ResponseModel Actualizar_Informacion_Extra(int id_Usuario, String tipo_Usuario, double promedio_General, 
-            String descripcion){
+    public ResponseModel Actualizar_Informacion_Extra(int id_Usuario, String tipo_Usuario, double promedio_General, String descripcion){
+        
         ResponseModel response = new ResponseModel();
         
         try {
@@ -376,7 +376,7 @@ public class Solicitudes {
             parametros.add(id_Usuario);
             parametros.add(CourseRoom.Utilerias().Codificacion(tipo_Usuario));
             parametros.add(promedio_General);
-            parametros.add(descripcion);
+            parametros.add(CourseRoom.Utilerias().Codificacion(descripcion));
             parametros.add(CourseRoom.Utilerias().MiUidd());
             parametros.add(CourseRoom.Utilerias().MiIP());
             

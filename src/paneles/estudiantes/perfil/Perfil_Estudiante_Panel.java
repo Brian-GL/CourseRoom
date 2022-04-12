@@ -873,6 +873,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Descripcion_JLabel.setMinimumSize(new java.awt.Dimension(409, 25));
         editar_Descripcion_JLabel.setPreferredSize(new java.awt.Dimension(409, 25));
 
+        editar_Descripcion_JScrollPane.setPreferredSize(new java.awt.Dimension(329, 32));
+
         editar_Descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         editar_Descripcion_JTextPane.setEnabled(false);
         editar_Descripcion_JTextPane.setToolTipText("<html>\n\n<h3>Descripción Personal</h3>\n<ul>\n<li>\nDescripción sobre ti, visible para todos\n</li>\n</ul>\n</html>");
@@ -902,6 +904,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
 
+        intereses_AutoCompletionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isaiah Leblanc", "Fitzgerald Dean", "Emma Doyle", "Galvin Gillespie", "Hunter Ross", "Kellie Valencia", "Miranda Holder", "Drake Mendoza", "Uma Parks", "Julian Hill" }));
+        intereses_AutoCompletionComboBox.setSelectedIndex(-1);
         intereses_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         intereses_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
 
@@ -916,7 +920,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
                 },
                 new String [] {
-                    "Intéres", "¿Remover?"
+                    "Interes / Temática", "Remover?"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
@@ -960,7 +964,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                         if (columna == 1) {
                             int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                             DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                            //Llamar Solicitud Remover Interes Usuario:
                             modelo.removeRow(fila);
                         }
 
@@ -1009,10 +1012,10 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                     .addContainerGap(47, Short.MAX_VALUE)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(editar_Descripcion_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(editar_Promedio_General_JFormattedTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editar_Promedio_General_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(editar_Promedio_General_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(guardar_Cambios_Informacion_Extra_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
