@@ -447,7 +447,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             imagen = ImageIO.read(url_Imagen);
             Grupo_Estudiante_Panel grupo_Estudiante_Panel
                     = new Grupo_Estudiante_Panel(imagen, nombre_Grupo,
-                            nombre_Curso, fecha_Creacion,id);
+                            nombre_Curso, fecha_Creacion,id,-1);
             
             
             imagen = imagen.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
@@ -531,7 +531,8 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         curso = CourseRoom.Utilerias().educator().course();
         nombre = CourseRoom.Utilerias().team().name();
 
-        Agregar_Grupo(ruta_Imagen_Grupo, nombre, ruta_Imagen_Curso, curso, CourseRoom.Utilerias().Fecha_Hora_Local(), "", id);
+        Agregar_Grupo(ruta_Imagen_Grupo, nombre, ruta_Imagen_Curso, curso,
+                CourseRoom.Utilerias().Fecha_Hora_Local(), "", id);
         
     }
 

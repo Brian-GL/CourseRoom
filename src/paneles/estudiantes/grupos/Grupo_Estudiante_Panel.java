@@ -22,6 +22,7 @@ import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.TimePickerSettings;
 import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 import datos.colecciones.Lista;
 import datos.estructuras.Nodo;
 import datos.interfaces.Carta_Visibilidad_Interface;
@@ -45,6 +46,7 @@ import java.util.Locale;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -53,6 +55,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
@@ -68,13 +71,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private int id_Tarea_Pendiente;
     private String ID;
     private Lista<Tarea_Pendiente_Estudiante_Panel> tareas_Pendientes_Estudiante_Lista;
+    private int Id_Grupo;
     
     
     public Grupo_Estudiante_Panel(Image _imagen_Grupo, 
             String nombre_Grupo, 
             String _curso,
             String _fecha_Creacion,
-            String _id) {
+            String _id,
+            int id_Grupo) {
         initComponents();
         
         ImageIcon icono_Grupo = new ImageIcon(_imagen_Grupo);
@@ -85,6 +90,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creado El ",_fecha_Creacion));
 
         this.ID = _id;
+        Id_Grupo = id_Grupo;
+        
         icono_Grupo.getImage().flush();
         
         Iniciar_Componentes();
@@ -1202,6 +1209,18 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), evt, ID, WIDTH, HEIGHT)
+            
+            ResponseModel response = CourseRoom.Solicitudes().Abandonar_Grupo(Id_Grupo, 
+                    Tablero_Estudiante_Panel.Id_Usuario());
+            
+            if(response.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Informativo("Abandonar Grupo", response.Mensaje());
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Abandonar Grupo", response.Mensaje());
+            }
+            
+            
         }
     }//GEN-LAST:event_abandonar_Grupo_JButtonMouseClicked
 
@@ -1453,6 +1472,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
     }
     
+    public int Id_Grupo() {
+        return Id_Grupo;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abandonar_Grupo_JButton;
@@ -1994,4 +2016,6 @@ public void Enviar_Archivos() {
                 break;
         }
     }
+
+    
 }
