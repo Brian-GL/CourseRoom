@@ -494,7 +494,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         imagen_Usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
         
         Pregunta_Profesor_Panel pregunta_Profesor_Panel = 
-                new Pregunta_Profesor_Panel(imagen_Usuario,pregunta, preguntador_Nombre, descripcion_Pregunta, fecha_Pregunta, estatus);
+                new Pregunta_Profesor_Panel(imagen_Usuario,pregunta, preguntador_Nombre, descripcion_Pregunta, fecha_Pregunta, estatus,-1);
         mostrar_Preguntas_Lista.push_back(pregunta_Profesor_Panel);
         
         Tablero_Profesor_Panel.Agregar_Vista(pregunta_Profesor_Panel, id);

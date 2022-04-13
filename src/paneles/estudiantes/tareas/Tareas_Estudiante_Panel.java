@@ -448,7 +448,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         modelo_Mostrar_Tareas.addRow(celdas);
         
         Tarea_Estudiante_Panel tarea_Estudiante_Panel =
-                new Tarea_Estudiante_Panel(nombre_Tarea,nombre_Curso,fecha_Creacion, fecha_Entrega, estatus);
+                new Tarea_Estudiante_Panel(nombre_Tarea,nombre_Curso,fecha_Creacion, fecha_Entrega, estatus,-1);
         mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
         
         Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, _id);

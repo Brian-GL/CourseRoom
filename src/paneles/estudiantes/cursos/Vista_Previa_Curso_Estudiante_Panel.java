@@ -341,7 +341,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         if(SwingUtilities.isLeftMouseButton(evt)){
             
             Curso_Estudiante_Panel curso_Estudiante_Panel = 
-                    new Curso_Estudiante_Panel(nombre_Curso, imagen_Curso, nombre_Profesor, imagen_Profesor, fecha_Creacion, ID);
+                    new Curso_Estudiante_Panel(nombre_Curso, imagen_Curso, nombre_Profesor, imagen_Profesor, fecha_Creacion, ID,-1);
             Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, ID);
             
             // Nuevo curso

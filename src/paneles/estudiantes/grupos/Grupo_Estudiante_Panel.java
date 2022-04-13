@@ -1131,7 +1131,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void cambiar_Imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            
+            
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "jpg", "jpeg");
             escogedor_Archivos.addChoosableFileFilter(filtro);
@@ -1155,6 +1156,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     ImageIcon icono_Grupo = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
 
                     imagen_JLabel.setIcon(icono_Grupo);
+                    ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Grupo(Id_Grupo, FileUtils.readFileToByteArray(archivo));
+                    if (respuesta.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                    }
 
                     abrir_Imagen.flush();
 
@@ -1353,15 +1360,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void guardar_Cambios_Datos_Generales_Grupo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+                       
+            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Generales_Grupo(Id_Grupo,
+                editar_Nombre_JTextField.getText(), editar_Descripcion_JTextPane.getText());
 
-//            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Generales_Grupo(Tablero_Estudiante_Panel.Id_Usuario(),
-//                "Estudiante", promedio_General, editar_Descripcion_JTextPane.getText());
-//
-//            if(respuesta.Is_Success()){
-//                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-//            }else{
-//                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-//            }
+            if(respuesta.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+            }else{
+                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+            }
         }
     }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseClicked
 
@@ -1899,7 +1906,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
-            
+            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Grupo(mensaje, new byte[]{}, "", Tablero_Estudiante_Panel.Id_Usuario(), Id_Grupo);
+            if(responseModel.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            }
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
         }
@@ -1924,6 +1936,7 @@ public void Enviar_Archivos() {
                     Celda_Renderer celda;
                     long tamanio;
                     boolean archivo_Mayor = false;
+                    ResponseModel response;
                     Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
                     ImageIcon icono_Abrir = new ImageIcon(icono);
                     for (File archivo_Abierto : archivos_Abiertos) {
@@ -1941,6 +1954,15 @@ public void Enviar_Archivos() {
                             celda = new Celda_Renderer(fecha);
                             celdas[2] = celda;
                             modelo.addRow(celdas);
+                        response = CourseRoom.Solicitudes().Enviar_Mensaje_Grupo(nombre_Archivo,
+                                FileUtils.readFileToByteArray(archivo_Abierto), FilenameUtils.getExtension(nombre_Archivo), 
+                                Tablero_Estudiante_Panel.Id_Usuario(), Id_Grupo);
+                        if(response.Is_Success()){
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                        }else{
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                            break;
+                        }
                             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
                         }else{
                             archivo_Mayor = true;

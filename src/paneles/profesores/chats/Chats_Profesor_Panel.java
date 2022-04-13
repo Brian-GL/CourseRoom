@@ -491,7 +491,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
             Chat_Profesor_Panel chat_Profesor_Panel
                     = new Chat_Profesor_Panel(
                             imagen_Chat, nombres_Chat, apellidos_Chat, 
-                            correo_Chat, genero_Chat, tipo_Perfil, intereses_Tematicas);
+                            correo_Chat, genero_Chat, tipo_Perfil, intereses_Tematicas, -1);
             
             mostrar_Chats_Lista.push_back(chat_Profesor_Panel);
             

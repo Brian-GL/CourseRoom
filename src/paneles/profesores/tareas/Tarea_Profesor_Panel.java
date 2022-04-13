@@ -45,6 +45,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import paneles.profesores.Tablero_Profesor_Panel;
@@ -59,6 +60,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     private String ID;
     private byte carta_Visible;
     private Lista<Tarea_Por_Calificar_Profesor_Panel> tareas_Por_Calificar_Lista;
+    private int Id_Tarea;
     
     public Tarea_Profesor_Panel(
             String nombre_Tarea, 
@@ -66,7 +68,8 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             String fecha_Creacion,
             String fecha_Entrega,
             String estatus,
-            String _id){
+            String _id,
+            int id_Tarea){
         initComponents();
         
         
@@ -1466,7 +1469,12 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
-            
+            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Tarea(mensaje, new byte[]{}, "", Tablero_Profesor_Panel.Id_Usuario(), Id_Tarea);
+            if(responseModel.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            }
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
         }
@@ -1491,6 +1499,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                     Celda_Renderer celda;
                     long tamanio;
                     boolean archivo_Mayor = false;
+                    ResponseModel response;
                     Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
                     ImageIcon icono_Abrir = new ImageIcon(icono);
                     for (File archivo_Abierto : archivos_Abiertos) {
@@ -1508,6 +1517,15 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                             celda = new Celda_Renderer(fecha);
                             celdas[2] = celda;
                             modelo.addRow(celdas);
+                    response = CourseRoom.Solicitudes().Enviar_Mensaje_Tarea(nombre_Archivo,
+                                FileUtils.readFileToByteArray(archivo_Abierto), FilenameUtils.getExtension(nombre_Archivo), 
+                                Tablero_Profesor_Panel.Id_Usuario(), Id_Tarea);
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                        break;
+                    }
                             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
                         }else{
                             archivo_Mayor = true;
@@ -1583,5 +1601,9 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                 break;
             
         }
+    }
+    
+    public int Id_Tarea() {
+        return Id_Tarea;
     }
 }

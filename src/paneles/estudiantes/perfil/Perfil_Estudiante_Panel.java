@@ -1170,6 +1170,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                             ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
 
                             imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(Tablero_Estudiante_Panel.Id_Usuario(), FileUtils.readFileToByteArray(archivo_Abierto));
+                            if (respuesta.Is_Success()) {
+                                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                            } else {
+                                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                            }
 
                             Tablero_Estudiante_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
 
@@ -1583,6 +1589,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             
             celda = new Celda_Renderer(remover);
             celdas[1] = celda;
+            ResponseModel responseModel = CourseRoom.Solicitudes().Agregar_Interes(Tablero_Estudiante_Panel.Id_Usuario(), interes.Id());
+            if(responseModel.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente",responseModel.Mensaje());
+            }else{
+                CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente",responseModel.Mensaje());
+            }
             modelo.addRow(celdas);
             
             intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
