@@ -74,7 +74,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private int Id_Grupo;
     
     
-    public Grupo_Estudiante_Panel(Image _imagen_Grupo, 
+    public Grupo_Estudiante_Panel(
+            Image _imagen_Grupo, 
             String nombre_Grupo, 
             String _curso,
             String _fecha_Creacion,

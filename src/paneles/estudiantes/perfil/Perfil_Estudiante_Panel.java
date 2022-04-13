@@ -43,9 +43,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
  
     public Perfil_Estudiante_Panel() {
         initComponents();
-        Actualizar_Datos();
         Iniciar_Componentes();
-        
+        Actualizar_Datos();
     }
 
     /**
@@ -1170,12 +1169,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                             ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
 
                             imagen_Perfil_JLabel.setIcon(icono_Imagen);
-                            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(Tablero_Estudiante_Panel.Id_Usuario(), FileUtils.readFileToByteArray(archivo_Abierto));
-                            if (respuesta.Is_Success()) {
-                                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                            } else {
-                                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-                            }
 
                             Tablero_Estudiante_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
 

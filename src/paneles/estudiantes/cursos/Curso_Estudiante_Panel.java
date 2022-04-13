@@ -1281,7 +1281,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         celda = new Celda_Renderer(estatus, _id);
         celdas[3] = celda;
         
-        Tareas_Estudiante_Panel.Agregar_Tarea_Desde_Curso(_id,nombre_Tarea, this.titulo_JLabel.getText() ,icono_Curso, fecha_Creacion, fecha_Entrega, estatus);
+        //Tareas_Estudiante_Panel.Agregar_Tarea_Desde_Curso(_id,nombre_Tarea, this.titulo_JLabel.getText() ,icono_Curso, fecha_Creacion, fecha_Entrega, estatus);
         
         modelo.addRow(celdas);
         

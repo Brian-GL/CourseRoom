@@ -445,6 +445,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             
             url_Imagen = new URL(ruta_Imagen_Grupo);
             imagen = ImageIO.read(url_Imagen);
+            
             Grupo_Estudiante_Panel grupo_Estudiante_Panel
                     = new Grupo_Estudiante_Panel(imagen, nombre_Grupo,
                             nombre_Curso, fecha_Creacion,id,-1);
@@ -518,21 +519,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        String id;
-        String nombre, curso, fecha, ruta_Imagen_Grupo, ruta_Imagen_Curso;
-        
-        id = "Grupo_1";
-
-        ruta_Imagen_Grupo = "https://picsum.photos/400/400";
-
-        ruta_Imagen_Curso = "https://picsum.photos/96/96";
-
-        fecha = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
-        curso = CourseRoom.Utilerias().educator().course();
-        nombre = CourseRoom.Utilerias().team().name();
-
-        Agregar_Grupo(ruta_Imagen_Grupo, nombre, ruta_Imagen_Curso, curso,
-                CourseRoom.Utilerias().Fecha_Hora_Local(), "", id);
+       
         
     }
 

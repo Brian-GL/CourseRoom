@@ -25,6 +25,7 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -36,6 +37,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.TareasEstudianteModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
@@ -44,9 +46,8 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  */
 public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface{
 
-    private static Lista<Tarea_Estudiante_Panel> mostrar_Tareas_Lista;
+    private Lista<Tarea_Estudiante_Panel> mostrar_Tareas_Lista;
     private Lista<Tarea_Estudiante_Panel> buscar_Tareas_Lista;
-    private static DefaultTableModel modelo_Mostrar_Tareas;
     
     /**
      * Creates new form Tareas_Estudiante
@@ -55,6 +56,9 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         initComponents();
         
         Iniciar_Componentes();
+        
+        Obtener_Tareas();
+        
     }
 
     /**
@@ -413,7 +417,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            Obtener_Tareas();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -427,31 +431,78 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    public static void Agregar_Tarea_Desde_Curso(String _id, String nombre_Tarea, String nombre_Curso, 
-            ImageIcon icono_Curso, String fecha_Creacion, 
-            String fecha_Entrega, String estatus){
+    private void Agregar_Tarea(TareasEstudianteModel tareasEstudianteModel){
+        
+        DefaultTableModel modelo_Mostrar_Tareas = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
+        
+        String id_Tarea = CourseRoom.Utilerias().Concatenar("Tarea_", tareasEstudianteModel.Id_Tarea());
         
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
         
-        celda = new Celda_Renderer(nombre_Tarea, _id);
+        celda = new Celda_Renderer(tareasEstudianteModel.Nombre(), id_Tarea);
         celdas[0] = celda;
-        celda = new Celda_Renderer(icono_Curso,nombre_Curso,_id);
-        celdas[1] = celda;
-        celda = new Celda_Renderer(fecha_Creacion, _id);
+        
+        byte[] bytes_Imagen_Curso = CourseRoom.Solicitudes().Obtener_Imagen_Curso(tareasEstudianteModel.Id_Curso());
+        
+        if(bytes_Imagen_Curso.length > 0 ){
+            
+            Image imagen_Curso = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Curso);
+            if(imagen_Curso != null){
+                imagen_Curso = imagen_Curso.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                
+                ImageIcon icono_Curso = new ImageIcon(imagen_Curso);
+                celda = new Celda_Renderer(icono_Curso,tareasEstudianteModel.Nombre_Curso(),id_Tarea);
+                celdas[1] = celda;
+                
+                icono_Curso.getImage().flush();
+                
+            }else{
+                celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(),id_Tarea);
+                celdas[1] = celda;
+            }
+            
+        }else{
+            celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(),id_Tarea);
+            celdas[1] = celda;
+        }
+        
+        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Creacion(), id_Tarea);
         celdas[2] = celda;
-        celda = new Celda_Renderer(fecha_Entrega, _id);
+        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Entrega(), id_Tarea);
         celdas[3] = celda;
-        celda = new Celda_Renderer(estatus, _id);
+        celda = new Celda_Renderer(tareasEstudianteModel.Estatus(), id_Tarea);
         celdas[4] = celda;
         
         modelo_Mostrar_Tareas.addRow(celdas);
         
         Tarea_Estudiante_Panel tarea_Estudiante_Panel =
-                new Tarea_Estudiante_Panel(nombre_Tarea,nombre_Curso,fecha_Creacion, fecha_Entrega, estatus,-1);
+                new Tarea_Estudiante_Panel(tareasEstudianteModel.Id_Tarea());
+        
         mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
         
-        Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, _id);
+        Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, id_Tarea);
+    }
+    
+    private void Obtener_Tareas(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Tarea_Estudiante_Panel tarea_Estudiante_Panel;
+        while(!mostrar_Tareas_Lista.is_empty()){
+            tarea_Estudiante_Panel  = mostrar_Tareas_Lista.delist();
+            Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
+        }
+        
+        
+        Lista<TareasEstudianteModel> tareas_Estudiante 
+                = CourseRoom.Solicitudes().Obtener_Tareas_Estudiante(Tablero_Estudiante_Panel.Id_Usuario());
+        
+        while(!tareas_Estudiante.is_empty()){
+            Agregar_Tarea(tareas_Estudiante.delist());
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -483,7 +534,6 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Tareas_JTable.getTableHeader().setFont(gadugi);
 
         mostrar_Tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        modelo_Mostrar_Tareas = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
 
         buscar_Tareas_JScrollPane.getViewport().setOpaque(false);
         buscar_Tareas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -494,7 +544,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_Tareas_JTable.getTableHeader().setFont(gadugi);
 
         buscar_Tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-
+        
+        
     }
 
     @Override

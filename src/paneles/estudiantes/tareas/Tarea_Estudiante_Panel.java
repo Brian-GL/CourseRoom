@@ -58,22 +58,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private byte carta_Visible;
     private int Id_Tarea;
     
-    public Tarea_Estudiante_Panel(
-            String nombre_Tarea, 
-            String nombre_Curso,
-            String fecha_Creacion,
-            String fecha_Entrega,
-            String estatus,
-            int id_Tarea){
+    public Tarea_Estudiante_Panel(int id_Tarea){
         initComponents();
-        
-        
-        titulo_JLabel.setText(nombre_Tarea);
-        curso_JLabel.setText(nombre_Curso);
-        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", fecha_Entrega));
-        fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", fecha_Entrega));
-        estatus_Tarea_JLabel.setText(estatus);
-        
+        Id_Tarea = id_Tarea;
         Iniciar_Componentes();
     }
 
@@ -1080,6 +1067,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         Colorear_Componentes();
+        
+//        titulo_JLabel.setText(nombre_Tarea);
+//        curso_JLabel.setText(nombre_Curso);
+//        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", fecha_Entrega));
+//        fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", fecha_Entrega));
+//        estatus_Tarea_JLabel.setText(estatus);
     }
 
     @Override
