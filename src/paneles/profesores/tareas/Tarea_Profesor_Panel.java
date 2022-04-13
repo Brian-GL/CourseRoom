@@ -1470,10 +1470,8 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
             ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Tarea(mensaje, new byte[]{}, "", Tablero_Profesor_Panel.Id_Usuario(), Id_Tarea);
-            if(responseModel.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-            }else{
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            if(!responseModel.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",responseModel.Mensaje());
             }
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
@@ -1520,10 +1518,8 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                     response = CourseRoom.Solicitudes().Enviar_Mensaje_Tarea(nombre_Archivo,
                                 FileUtils.readFileToByteArray(archivo_Abierto), FilenameUtils.getExtension(nombre_Archivo), 
                                 Tablero_Profesor_Panel.Id_Usuario(), Id_Tarea);
-                    if(response.Is_Success()){
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                    }else{
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                    if(!response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
                         break;
                     }
                             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));

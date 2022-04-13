@@ -1102,7 +1102,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     private void miembros_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miembros_JButtonMouseClicked
-        // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout) grupo_JLayeredPane.getLayout()).show(grupo_JLayeredPane, "Miembros");
             carta_Visible = 1;
@@ -1908,10 +1907,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
             ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Grupo(mensaje, new byte[]{}, "", Tablero_Estudiante_Panel.Id_Usuario(), Id_Grupo);
-            if(responseModel.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-            }else{
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            if(!responseModel.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",responseModel.Mensaje());
             }
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
@@ -1958,10 +1955,8 @@ public void Enviar_Archivos() {
                         response = CourseRoom.Solicitudes().Enviar_Mensaje_Grupo(nombre_Archivo,
                                 FileUtils.readFileToByteArray(archivo_Abierto), FilenameUtils.getExtension(nombre_Archivo), 
                                 Tablero_Estudiante_Panel.Id_Usuario(), Id_Grupo);
-                        if(response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                        if(!response.Is_Success()){
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
                             break;
                         }
                             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));

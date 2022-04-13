@@ -42,6 +42,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import java.awt.event.KeyEvent;
+import modelos.GruposModel;
 
 /**
  *
@@ -374,6 +375,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     private void buscar_Grupos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Grupos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+            actualizar_JButton.setVisible(false);
             ((CardLayout) this.getLayout()).show(this, "Buscar");
         }
     }//GEN-LAST:event_buscar_Grupos_JButtonMouseClicked
@@ -477,6 +479,47 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar El Grupo",ex.getMessage());
         }
         
+    }
+       
+        private boolean Existe_Grupo(int id_Grupo){
+        Nodo<Grupo_Estudiante_Panel> first = mostrar_Grupos_Lista.front();
+        Nodo<Grupo_Estudiante_Panel> last = mostrar_Grupos_Lista.back();
+
+        int middle_index = (mostrar_Grupos_Lista.size())/2;
+
+        if(middle_index % 2 == 0){
+            for (int i = 0; i < middle_index; i++) {
+
+                if (first.element().Id_Grupo() == id_Grupo){
+                    return true;
+                }
+
+                if (last.element().Id_Grupo() == id_Grupo){
+                    return true;
+                }
+
+                first = first.next();
+                last = last.previous();
+            }
+            return false;
+        }else{
+            for(int i = 0; i < middle_index;i++) {
+
+                if(first.element().Id_Grupo() == id_Grupo){
+                    return true;
+                }
+
+                if(last.element().Id_Grupo() == id_Grupo){
+                    return true;
+                }
+
+                first = first.next();
+                last = last.previous();
+            }
+
+            return mostrar_Grupos_Lista.medium().Id_Grupo() == id_Grupo;
+        }
+      
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

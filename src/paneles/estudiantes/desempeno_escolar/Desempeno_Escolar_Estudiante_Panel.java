@@ -19,6 +19,7 @@ package paneles.estudiantes.desempeno_escolar;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
+import datos.colecciones.Lista;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
@@ -33,6 +34,7 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.DesempenoUsuarioModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -43,12 +45,13 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
  *
  * @author LENOVO
  */
-public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
+public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private byte carta_Visible;
     
@@ -57,8 +60,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
      */
     public Desempeno_Escolar_Estudiante_Panel() {
         initComponents();
-        
         Iniciar_Componentes();
+        //Actualizar_Datos();
     }
 
     /**
@@ -287,7 +290,8 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            this.Limpiar();
+            //Actualizar_Datos();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -395,6 +399,16 @@ public class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel imple
         } 
         
     }
+    
+    /*private void Actualizar_Datos(){
+        
+        Lista<DesempenoUsuarioModel> response = CourseRoom.Solicitudes().Obtener_Desempeno_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
+        
+        while(!response.is_empty()){
+            Agregar_Estadistica(response.delist());
+        }
+        
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
