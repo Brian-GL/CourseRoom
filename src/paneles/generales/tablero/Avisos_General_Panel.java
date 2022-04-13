@@ -7,6 +7,7 @@ package paneles.generales.tablero;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
+import datos.colecciones.Lista;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.Font;
@@ -17,6 +18,8 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.AvisosModel;
+import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 
 /**
@@ -31,6 +34,8 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
        initComponents();
         
        Iniciar_Componentes();
+       
+       Actualizar_Datos();
     }
     
 
@@ -176,6 +181,9 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
+            this.Limpiar();
+            
+            Actualizar_Datos();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -189,7 +197,12 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    private void Agregar_Aviso(String id, String tipo, String aviso, String fecha){
+    private void Agregar_Aviso(AvisosModel aviso){
+        
+        String id = String.valueOf(aviso.Id_Aviso());
+        String tipo = aviso.Tipo_Aviso();
+        String mensaje = aviso.Aviso();
+        String fecha = aviso.Fecha_Envio();
         
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
@@ -239,18 +252,29 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
                     break;
             }
             
-            celda = new Celda_Renderer(aviso,id);
+            celda = new Celda_Renderer(mensaje,id);
             celdas[1] = celda;
             celda = new Celda_Renderer(fecha,id);
             celdas[2] = celda;
             
             modelo.addRow(celdas);
-            avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(aviso.length()));
+            avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
             
             imagen.flush();
             
         } catch (IOException ex) {
             
+        }
+        
+    }
+    
+    
+    private void Actualizar_Datos(){
+        
+        Lista<AvisosModel> response = CourseRoom.Solicitudes().Obtener_Avisos(Tablero_Estudiante_Panel.Id_Usuario());
+        
+        while(!response.is_empty()){
+            Agregar_Aviso(response.delist());
         }
         
     }
@@ -275,14 +299,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         avisos_JTable.getTableHeader().setFont(fuente);
         
         avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        String tipo, aviso, fecha;
-        String[] opciones = {"Curso","Tarea","Grupo","Chat","Pregunta","General"};
-        tipo = CourseRoom.Utilerias().options().nextElement(opciones);
-        aviso = CourseRoom.Utilerias().lorem().sentence();
-        fecha = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
 
-        Agregar_Aviso("0",tipo, aviso, fecha);
-        
     }
 
     @Override
