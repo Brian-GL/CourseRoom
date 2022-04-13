@@ -180,9 +180,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
             this.Limpiar();
-            
             Actualizar_Datos();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
