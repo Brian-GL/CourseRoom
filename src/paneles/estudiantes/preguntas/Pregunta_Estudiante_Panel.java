@@ -38,7 +38,7 @@ import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Componentes_Interface, Envio_Interface, Limpieza_Interface{
 
     private int id;
-    
+   
     public Pregunta_Estudiante_Panel(int _id,
             Image imagen_Preguntador) {
         
@@ -636,7 +636,12 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
-            
+            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Pregunta(mensaje, new byte[]{}, "", Tablero_Estudiante_Panel.Id_Usuario(), id);
+            if(responseModel.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            }
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
         }
@@ -661,6 +666,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                     Celda_Renderer celda;
                     long tamanio;
                     boolean archivo_Mayor = false;
+                    ResponseModel response;
                     Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
                     ImageIcon icono_Abrir = new ImageIcon(icono);
                     for (File archivo_Abierto : archivos_Abiertos) {
@@ -678,6 +684,15 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                             celda = new Celda_Renderer(fecha);
                             celdas[2] = celda;
                             modelo.addRow(celdas);
+                        response = CourseRoom.Solicitudes().Enviar_Mensaje_Pregunta(nombre_Archivo,
+                                FileUtils.readFileToByteArray(archivo_Abierto), FilenameUtils.getExtension(nombre_Archivo), 
+                                Tablero_Estudiante_Panel.Id_Usuario(), id);
+                        if(response.Is_Success()){
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                        }else{
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                            break;
+                        }
                             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
                         }else{
                             archivo_Mayor = true;
@@ -699,6 +714,5 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
     }
-
     
 }

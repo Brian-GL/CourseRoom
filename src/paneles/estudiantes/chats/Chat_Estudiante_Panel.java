@@ -20,6 +20,7 @@ package paneles.estudiantes.chats;
 import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 import datos.colecciones.Lista;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import java.io.File;
@@ -37,12 +38,15 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
+import static paneles.estudiantes.Tablero_Estudiante_Panel.Id_Usuario;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 
 /**
@@ -581,7 +585,24 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
     private void eliminar_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Chat_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Eliminar El Chat?", "Pregunta", 
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            
+            if(resultado == JOptionPane.YES_OPTION){
+            
+                ResponseModel response = CourseRoom.Solicitudes().Remover_Chat_Personal(Id_Chat, Tablero_Estudiante_Panel.Id_Usuario());
 
+                if(response.Is_Success()){
+                    CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Chat", response.Mensaje());
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Chat", response.Mensaje());
+                }
+            
+                Tablero_Estudiante_Panel.Mostrar_Vista("Chats");
+                Tablero_Estudiante_Panel.Retirar_Vista(this);
+                this.Limpiar();
+            }
         }
     }//GEN-LAST:event_eliminar_Chat_JButtonMouseClicked
 
@@ -792,7 +813,12 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
                     CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
-            
+            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(mensaje, new byte[]{}, "", Tablero_Estudiante_Panel.Id_Usuario(), Id_Chat);
+                            if(responseModel.Is_Success()){
+                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                            }else{
+                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                            }
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
         }
@@ -817,6 +843,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     Celda_Renderer celda;
                     long tamanio;
                     boolean archivo_Mayor = false;
+                    ResponseModel response;
                     Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
                     ImageIcon icono_Abrir = new ImageIcon(icono);
                     for (File archivo_Abierto : archivos_Abiertos) {
@@ -834,7 +861,17 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                             celda = new Celda_Renderer(fecha);
                             celdas[2] = celda;
                             modelo.addRow(celdas);
+                            response = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(nombre_Archivo, 
+                                    FileUtils.readFileToByteArray(archivo_Abierto), FilenameUtils.getExtension(nombre_Archivo), 
+                                    Tablero_Estudiante_Panel.Id_Usuario(), Id_Chat);
+                            if(response.Is_Success()){
+                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                            }else{
+                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                                break;
+                            }
                             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
+      
                         }else{
                             archivo_Mayor = true;
                         }

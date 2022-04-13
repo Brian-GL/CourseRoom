@@ -824,7 +824,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             celdas[4] = celda;
             Curso_Estudiante_Panel curso_Estudiante_Panel
                     = new Curso_Estudiante_Panel(nombre_Curso, obtener_Imagen_Curso,
-                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id);
+                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id,-1);
             mostrar_Cursos_Actuales_Lista.push_back(curso_Estudiante_Panel);
             Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
             modelo_Cursos_Actuales.addRow(celdas);
@@ -868,7 +868,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             celdas[4] = celda;
             Curso_Estudiante_Panel curso_Estudiante_Panel
                     = new Curso_Estudiante_Panel(nombre_Curso, obtener_Imagen_Curso,
-                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id);
+                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id,-1);
             mostrar_Cursos_Finalizados_Lista.push_back(curso_Estudiante_Panel);
             Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
             DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();

@@ -372,7 +372,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             
             Tarea_Profesor_Panel tarea_Profesor_Panel =
                     new Tarea_Profesor_Panel(nombre_Tarea,nombre_Curso,
-                            fecha_Creacion, fecha_Entrega, estatus_Tarea, _id);
+                            fecha_Creacion, fecha_Entrega, estatus_Tarea, _id,-1);
             tareas_Creadas_Lista.push_back(tarea_Profesor_Panel);
             
             modelo_Tareas_Creadas.addRow(celdas);
