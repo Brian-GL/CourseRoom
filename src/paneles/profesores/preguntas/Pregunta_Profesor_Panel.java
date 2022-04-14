@@ -40,27 +40,22 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     private int Id_Pregunta;
     
     public Pregunta_Profesor_Panel(
-            Image imagen_Preguntador,
-            String _pregunta, 
-            String _preguntador_Nombre,
-            String _descripcion_Pregunta,
-            String _fecha,
-            String estatus,
-            int id_Pregunta) {
-        
+            int id_Pregunta,
+            Image imagen_Preguntador) {
+        Id_Pregunta = id_Pregunta;
         initComponents();
         
         ImageIcon icono_Usuario = new ImageIcon(imagen_Preguntador);
         preguntador_Imagen_JLabel.setIcon(icono_Usuario);
-        preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("Pregunta Por ", _preguntador_Nombre));
+        //preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("Pregunta Por ", _preguntador_Nombre));
         
-        String valor = CourseRoom.Utilerias().Concatenar(_pregunta, " - ",estatus);
-        pregunta_JLabel.setText(valor);
+        //String valor = CourseRoom.Utilerias().Concatenar(_pregunta, " - ",estatus);
+        //pregunta_JLabel.setText(valor);
         
-        valor = CourseRoom.Utilerias().Concatenar(_descripcion_Pregunta, "<br><br>Por ",_preguntador_Nombre," A ",_fecha);
+        //valor = CourseRoom.Utilerias().Concatenar(_descripcion_Pregunta, "<br><br>Por ",_preguntador_Nombre," A ",_fecha);
         
         
-        descripcion_Pregunta_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(valor));
+        //descripcion_Pregunta_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(valor));
         
         imagen_Preguntador.flush();
         icono_Usuario.getImage().flush();

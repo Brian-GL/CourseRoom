@@ -40,11 +40,10 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
     private boolean carta_Visible;
     private int Id_Chat;
    
-    public Chat_Profesor_Panel(Image imagen_Chat,String nombres_Chat, String apellidos_Chat, String correo_Chat,
-            String genero_Chat, String tipo_Perfil, Lista<String> intereses_Tematicas, int id_Chat) {
+    public Chat_Profesor_Panel(int id_Chat) {
         initComponents();
-        
-        titulo_JLabel.setText(CourseRoom.Utilerias().Concatenar(nombres_Chat, " ",apellidos_Chat));
+        Id_Chat = id_Chat;
+        /*titulo_JLabel.setText(CourseRoom.Utilerias().Concatenar(nombres_Chat, " ",apellidos_Chat));
         genero_JLabel.setText(genero_Chat);
         tipo_Perfil_JLabel.setText(tipo_Perfil);
         apellidos_JLabel.setText(apellidos_Chat);
@@ -56,7 +55,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         }
         
         ImageIcon icono = new ImageIcon(imagen_Chat);
-        imagen_Perfil_JLabel.setIcon(icono);
+        imagen_Perfil_JLabel.setIcon(icono);*/
         
         Iniciar_Componentes();
         
