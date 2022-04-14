@@ -17,7 +17,6 @@
  */
 package paneles.profesores.chats;
 
-import paneles.estudiantes.chats.*;
 import javax.swing.JLayeredPane;
 import clases.Celda_Renderer;
 import datos.colecciones.Lista;
@@ -40,7 +39,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.ChatsPersonalesModel;
-import paneles.estudiantes.Tablero_Estudiante_Panel;
+import paneles.profesores.Tablero_Profesor_Panel;
 
 /**
  *
@@ -48,8 +47,8 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  */
 public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface{
 
-    private Lista<Chat_Estudiante_Panel> mostrar_Chats_Lista;
-    private Lista<Chat_Estudiante_Panel> buscar_Chats_Lista;
+    private Lista<Chat_Profesor_Panel> mostrar_Chats_Lista;
+    private Lista<Chat_Profesor_Panel> buscar_Chats_Lista;
     
     /**
      * Creates new form Pagina_Chats_Estudiante
@@ -235,7 +234,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
                         Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
 
-                        Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+                        Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
 
                     }
                 }
@@ -355,7 +354,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
                             Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
 
-                            Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
+                            Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
 
                         }
                     }
@@ -488,15 +487,15 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
         modelo.setRowCount(0);
         
-        Chat_Estudiante_Panel chat_Estudiante_Panel;
+        Chat_Profesor_Panel chat_Estudiante_Panel;
         while(!mostrar_Chats_Lista.is_empty()){
             chat_Estudiante_Panel= mostrar_Chats_Lista.delist();
-            Tablero_Estudiante_Panel.Retirar_Vista(chat_Estudiante_Panel);
+            Tablero_Profesor_Panel.Retirar_Vista(chat_Estudiante_Panel);
             chat_Estudiante_Panel.Limpiar();
         }
         
         Lista<ChatsPersonalesModel> lista = 
-                CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Estudiante_Panel.Id_Usuario());
+                CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Profesor_Panel.Id_Usuario());
         
         if(!lista.is_empty()){
             while(!lista.is_empty()){
@@ -512,15 +511,15 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         DefaultTableModel modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
         modelo.setRowCount(0);
         
-        Chat_Estudiante_Panel chat_Estudiante_Panel;
+        Chat_Profesor_Panel chat_Estudiante_Panel;
         while(!buscar_Chats_Lista.is_empty()){
             chat_Estudiante_Panel= buscar_Chats_Lista.delist();
-            Tablero_Estudiante_Panel.Retirar_Vista(chat_Estudiante_Panel);
+            Tablero_Profesor_Panel.Retirar_Vista(chat_Estudiante_Panel);
             chat_Estudiante_Panel.Limpiar();
         }
         
         Lista<ChatsPersonalesModel> lista = 
-                CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda,Tablero_Estudiante_Panel.Id_Usuario());
+                CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda,Tablero_Profesor_Panel.Id_Usuario());
         
         if(!lista.is_empty()){
             while(!lista.is_empty()){
@@ -539,7 +538,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         Image imagen;
-        byte[] bytes_Imagen_Chat = CourseRoom.Solicitudes().Obtener_Imagen_Chat_Personal(chatsPersonalesModel.Id_Chat(), Tablero_Estudiante_Panel.Id_Usuario());
+        byte[] bytes_Imagen_Chat = CourseRoom.Solicitudes().Obtener_Imagen_Chat_Personal(chatsPersonalesModel.Id_Chat(), Tablero_Profesor_Panel.Id_Usuario());
         
         if(bytes_Imagen_Chat.length > 0){
             imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Chat);
@@ -566,12 +565,12 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
         mostrar_Chats_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
 
-        Chat_Estudiante_Panel chat_Estudiante_Panel
-                = new Chat_Estudiante_Panel(chatsPersonalesModel.Id_Chat());
+        Chat_Profesor_Panel chat_Estudiante_Panel
+                = new Chat_Profesor_Panel(chatsPersonalesModel.Id_Chat());
 
         mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
 
-        Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id_Chat);
+        Tablero_Profesor_Panel.Agregar_Vista(chat_Estudiante_Panel, id_Chat);
         
     }
     
@@ -584,7 +583,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         Image imagen;
-        byte[] bytes_Imagen_Chat = CourseRoom.Solicitudes().Obtener_Imagen_Chat_Personal(chatsPersonalesModel.Id_Chat(), Tablero_Estudiante_Panel.Id_Usuario());
+        byte[] bytes_Imagen_Chat = CourseRoom.Solicitudes().Obtener_Imagen_Chat_Personal(chatsPersonalesModel.Id_Chat(), Tablero_Profesor_Panel.Id_Usuario());
         
         if(bytes_Imagen_Chat.length > 0){
             imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Chat);
@@ -612,18 +611,18 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         buscar_Chats_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
 
         if(!Existe_Chat(chatsPersonalesModel.Id_Chat())){
-            Chat_Estudiante_Panel chat_Estudiante_Panel
-                = new Chat_Estudiante_Panel(chatsPersonalesModel.Id_Chat());
+            Chat_Profesor_Panel chat_Estudiante_Panel
+                = new Chat_Profesor_Panel(chatsPersonalesModel.Id_Chat());
             buscar_Chats_Lista.push_back(chat_Estudiante_Panel);
 
-            Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, CourseRoom.Utilerias().Concatenar("Chat_Personal_", chatsPersonalesModel.Id_Chat()));
+            Tablero_Profesor_Panel.Agregar_Vista(chat_Estudiante_Panel, CourseRoom.Utilerias().Concatenar("Chat_Personal_", chatsPersonalesModel.Id_Chat()));
         }
 
     }
     
     private boolean Existe_Chat(int id_Chat){
-        Nodo<Chat_Estudiante_Panel> first = mostrar_Chats_Lista.front();
-        Nodo<Chat_Estudiante_Panel> last = mostrar_Chats_Lista.back();
+        Nodo<Chat_Profesor_Panel> first = mostrar_Chats_Lista.front();
+        Nodo<Chat_Profesor_Panel> last = mostrar_Chats_Lista.back();
 
         int middle_index = (mostrar_Chats_Lista.size())/2;
 
@@ -761,8 +760,8 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
             }
         }
 
-        Chat_Estudiante_Panel chat_Estudiante_Panel;
-        for (Nodo<Chat_Estudiante_Panel> nodo = mostrar_Chats_Lista.front(); nodo != null; nodo = nodo.next()) {
+        Chat_Profesor_Panel chat_Estudiante_Panel;
+        for (Nodo<Chat_Profesor_Panel> nodo = mostrar_Chats_Lista.front(); nodo != null; nodo = nodo.next()) {
             chat_Estudiante_Panel = nodo.element();
             chat_Estudiante_Panel.Colorear_Componentes();
         }
@@ -775,7 +774,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
             }
         }
 
-        for (Nodo<Chat_Estudiante_Panel> nodo = buscar_Chats_Lista.front(); nodo != null; nodo = nodo.next()) {
+        for (Nodo<Chat_Profesor_Panel> nodo = buscar_Chats_Lista.front(); nodo != null; nodo = nodo.next()) {
             chat_Estudiante_Panel = nodo.element();
             chat_Estudiante_Panel.Colorear_Componentes();
         }

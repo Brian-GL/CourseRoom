@@ -8,6 +8,7 @@ package paneles.profesores.preguntas;
 import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -25,45 +26,37 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.DatosGeneralesPreguntaModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 import paneles.profesores.Tablero_Profesor_Panel;
 import paneles.profesores.perfil.Perfil_Profesor_Panel;
 
-/**
- *
- * @author LENOVO
- */
 public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Componentes_Interface, Envio_Interface, Limpieza_Interface{
-    private int Id_Pregunta;
+
+    private int id;
     private DatagramSocket datagramSocket;
     private Conexion_Notificador_Pregunta conexion_Notificador;
-    
-    public Pregunta_Profesor_Panel(
-            int id_Pregunta,
+   
+    public Pregunta_Profesor_Panel(int _id,
             Image imagen_Preguntador) {
-        Id_Pregunta = id_Pregunta;
+        
         initComponents();
         
-        ImageIcon icono_Usuario = new ImageIcon(imagen_Preguntador);
-        preguntador_Imagen_JLabel.setIcon(icono_Usuario);
-        //preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("Pregunta Por ", _preguntador_Nombre));
+        this.id = _id;
         
-        //String valor = CourseRoom.Utilerias().Concatenar(_pregunta, " - ",estatus);
-        //pregunta_JLabel.setText(valor);
-        
-        //valor = CourseRoom.Utilerias().Concatenar(_descripcion_Pregunta, "<br><br>Por ",_preguntador_Nombre," A ",_fecha);
-        
-        
-        //descripcion_Pregunta_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(valor));
-        
-        imagen_Preguntador.flush();
-        icono_Usuario.getImage().flush();
+        if(imagen_Preguntador != null){
+            ImageIcon icono_Usuario = new ImageIcon(imagen_Preguntador);
+            preguntador_Imagen_JLabel.setIcon(icono_Usuario);
+
+            imagen_Preguntador.flush();
+            icono_Usuario.getImage().flush();
+        }
         
         Iniciar_Componentes();
     }
@@ -104,7 +97,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         informacion_JPanel.setPreferredSize(new java.awt.Dimension(982, 150));
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("<html><h3>Regresar A Preguntas</h3></html>");
+        regresar_JButton.setToolTipText("<html> <h3>Regresar A Mis Preguntas</h3> </html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_JButton.setMaximumSize(new java.awt.Dimension(48, 64));
@@ -144,6 +137,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         descripcion_Pregunta_JScrollPane.setViewportView(descripcion_Pregunta_JTextPane);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
+        actualizar_JButton.setToolTipText("<html> <h3>Actualizar<br>Página</h3> </html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,7 +168,6 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         });
 
         eliminar_Pregunta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
-        eliminar_Pregunta_JButton.setToolTipText("<html><h3>Eliminar<br>Pregunta</h3></html>");
         eliminar_Pregunta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)eliminar_Pregunta_JButton.getIcon()).getImage().flush();
         eliminar_Pregunta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -223,9 +216,9 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                         .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(actualizar_JButton)
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGap(18, 19, Short.MAX_VALUE)
                         .addComponent(eliminar_Pregunta_JButton)
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGap(18, 19, Short.MAX_VALUE)
                         .addComponent(marcar_Solucionada_JButton))))
         );
 
@@ -382,7 +375,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            Obtener_Datos_Generales_Pregunta(true);
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -399,7 +392,22 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     private void marcar_Solucionada_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_marcar_Solucionada_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), "¿Está Seguro De Marcar Como Solucionada Esta Pregunta?", "Pregunta", JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.QUESTION_MESSAGE);
+            if(resultado == JOptionPane.YES_OPTION){
+                ResponseModel response = CourseRoom.Solicitudes().Marcar_Pregunta_Solucionada(Tablero_Profesor_Panel.Id_Usuario(), id);
+                
+                if(response.Is_Success()){
+                    
+                    CourseRoom.Utilerias().Mensaje_Informativo("Información",response.Mensaje());
+                    
+                    Tablero_Profesor_Panel.Retirar_Vista(this);
+                    
+                    Tablero_Profesor_Panel.Mostrar_Vista("Preguntas");
+                }
+                else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
+                }
+            }
         }
     }//GEN-LAST:event_marcar_Solucionada_JButtonMouseClicked
 
@@ -414,7 +422,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     }//GEN-LAST:event_marcar_Solucionada_JButtonMouseExited
 
     private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
-        
+
         if(SwingUtilities.isLeftMouseButton(evt)){
             Enviar_Archivo();
         }
@@ -434,8 +442,8 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         int longitud = redactar_Mensaje_Chat_JTextField.getText().length();
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             if (longitud > 499) {
-            redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+                redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
             }else{
                 Enviar_Mensaje();
             }
@@ -445,7 +453,25 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     private void eliminar_Pregunta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Pregunta_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                    "¿Está Seguro De Eliminar Esta Pregunta?", "Pregunta", JOptionPane.YES_NO_CANCEL_OPTION ,
+                    JOptionPane.QUESTION_MESSAGE);
+            if(resultado == JOptionPane.YES_OPTION){
+                ResponseModel response = CourseRoom.Solicitudes().Remover_Pregunta(id,Tablero_Profesor_Panel.Id_Usuario());
+                
+                if(response.Is_Success()){
+                    
+                    CourseRoom.Utilerias().Mensaje_Informativo("Información",response.Mensaje());
+                    
+                    this.Limpiar();
+                    Tablero_Profesor_Panel.Retirar_Vista(this);
+                    
+                    Tablero_Profesor_Panel.Mostrar_Vista("Preguntas");
+                }
+                else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
+                }
+            }
         }
     }//GEN-LAST:event_eliminar_Pregunta_JButtonMouseClicked
 
@@ -459,13 +485,69 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         eliminar_Pregunta_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_eliminar_Pregunta_JButtonMouseExited
 
-            private class Conexion_Notificador_Pregunta extends Thread{
+    private void Obtener_Datos_Generales_Pregunta(boolean bandera) {
+        
+        if(bandera){
+            DatosGeneralesPreguntaModel datosGeneralesPreguntaModel = CourseRoom.Solicitudes().Obtener_Datos_Generales_Pregunta(id);
+        
+            if(!datosGeneralesPreguntaModel.Pregunta().isEmpty()){
+
+                byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Pregunta(id);
+
+                if(bytes_Imagen.length > 0){
+                    Image imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                    if(imagen != null){
+
+                        imagen = imagen.getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+                        ImageIcon icono_Imagen = new ImageIcon(imagen);
+                        preguntador_Imagen_JLabel.setIcon(icono_Imagen);
+                        icono_Imagen.getImage().flush();
+                    }
+                }
+
+                preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("Pregunta Por ", 
+                        datosGeneralesPreguntaModel.Nombre_Completo()));
+
+                String valor = CourseRoom.Utilerias().Concatenar(datosGeneralesPreguntaModel.Pregunta(), " - ",datosGeneralesPreguntaModel.Estatus());
+                pregunta_JLabel.setText(valor);
+
+                valor = CourseRoom.Utilerias().Concatenar(datosGeneralesPreguntaModel.Descripcion(), "<br><br>Por ",datosGeneralesPreguntaModel.Nombre_Completo()," A ",datosGeneralesPreguntaModel.Fecha_Creacion());
+
+
+                descripcion_Pregunta_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(valor));
+            }
+        }else{
+            DatosGeneralesPreguntaModel datosGeneralesPreguntaModel = CourseRoom.Solicitudes().Obtener_Datos_Generales_Pregunta(id);
+        
+            if(!datosGeneralesPreguntaModel.Pregunta().isEmpty()){
+
+                preguntador_Imagen_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("Pregunta Por ", 
+                        datosGeneralesPreguntaModel.Nombre_Completo()));
+
+                String valor = CourseRoom.Utilerias().Concatenar(datosGeneralesPreguntaModel.Pregunta(), " - ",datosGeneralesPreguntaModel.Estatus());
+                pregunta_JLabel.setText(valor);
+
+                valor = CourseRoom.Utilerias().Concatenar(datosGeneralesPreguntaModel.Descripcion(), "<br><br>Por ",datosGeneralesPreguntaModel.Nombre_Completo()," A ",datosGeneralesPreguntaModel.Fecha_Creacion());
+
+
+                descripcion_Pregunta_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(valor));
+            }
+        }
+        
+    }
+    
+    public int Id_Pregunta(){
+        return this.id;
+    }
+    
+    private class Conexion_Notificador_Pregunta extends Thread{
         
         @Override
         public void run(){
             
             System.out.println("Esperando Conexión Con CourseRoom Notifier Desde Preguntas...");
-            byte[] entryBuffer = new byte[128];
+            byte[] entryBuffer = new byte[64];
             DatagramPacket datagramPacket = new DatagramPacket(entryBuffer,entryBuffer.length);
             String mensaje;
             String valor;
@@ -543,7 +625,6 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     @Override
     public void Iniciar_Componentes() {
         
-        
         descripcion_Pregunta_JTextPane.setCaretPosition(0);
         descripcion_Pregunta_JScrollPane.getViewport().setOpaque(false);
         descripcion_Pregunta_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -557,6 +638,8 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         mensajes_Chat_JTable.getTableHeader().setFont(gadugi);
         
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        
+        Obtener_Datos_Generales_Pregunta(false);
         
         try {
             datagramSocket = new DatagramSocket(9004);
@@ -609,7 +692,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         }
     }
     
-        @Override
+    @Override
     public void Enviar_Mensaje() {
         
         String mensaje = redactar_Mensaje_Chat_JTextField.getText();
@@ -628,12 +711,12 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
-            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Pregunta(mensaje, new byte[]{}, "", Tablero_Profesor_Panel.Id_Usuario(), Id_Pregunta);
-                            if(responseModel.Is_Success()){
-                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                            }else{
-                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                            }
+            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Pregunta(mensaje, new byte[]{}, "", Tablero_Profesor_Panel.Id_Usuario(), id);
+            if(responseModel.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            }
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
         }
@@ -641,7 +724,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
 
     @Override
     public void Enviar_Archivo() {
-                Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
+        Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
 
         if (resultado == JFileChooser.APPROVE_OPTION) {
@@ -656,12 +739,12 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
 
                         String ruta = archivo_Abierto.getAbsolutePath();
                         String nombre_Archivo = archivo_Abierto.getName();
-                        String emisor = Perfil_Estudiante_Panel.Nombre_Completo();
+                        String emisor = Perfil_Profesor_Panel.Nombre_Completo();
                        
                         ResponseModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Pregunta(nombre_Archivo, 
                                 FileUtils.readFileToByteArray(archivo_Abierto), 
                                 FilenameUtils.getExtension(nombre_Archivo), 
-                                Tablero_Profesor_Panel.Id_Usuario(), Id_Pregunta);
+                                Tablero_Profesor_Panel.Id_Usuario(), Id_Pregunta());
                         
                         String fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
                         if(response.Is_Success()){
@@ -703,7 +786,4 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         modelo.setRowCount(0);
     }
     
-    public int Id_Pregunta() {
-        return Id_Pregunta;
-    }
 }

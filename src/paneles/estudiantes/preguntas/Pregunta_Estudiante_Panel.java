@@ -453,7 +453,9 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
     private void eliminar_Pregunta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Pregunta_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), "¿Está Seguro De Eliminar Esta Pregunta?", "Pregunta", JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.QUESTION_MESSAGE);
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                    "¿Está Seguro De Eliminar Esta Pregunta?", "Pregunta", JOptionPane.YES_NO_CANCEL_OPTION ,
+                    JOptionPane.QUESTION_MESSAGE);
             if(resultado == JOptionPane.YES_OPTION){
                 ResponseModel response = CourseRoom.Solicitudes().Remover_Pregunta(id,Tablero_Estudiante_Panel.Id_Usuario());
                 
@@ -461,6 +463,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                     
                     CourseRoom.Utilerias().Mensaje_Informativo("Información",response.Mensaje());
                     
+                    this.Limpiar();
                     Tablero_Estudiante_Panel.Retirar_Vista(this);
                     
                     Tablero_Estudiante_Panel.Mostrar_Vista("Preguntas");
