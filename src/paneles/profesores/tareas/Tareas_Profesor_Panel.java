@@ -47,8 +47,7 @@ import paneles.profesores.Tablero_Profesor_Panel;
 public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface{
 
     private Lista<Tarea_Por_Calificar_Profesor_Panel> tareas_Por_Calificar_Lista;
-    private static Lista<Tarea_Profesor_Panel> tareas_Creadas_Lista;
-    private static DefaultTableModel modelo_Tareas_Creadas;
+    private Lista<Tarea_Profesor_Panel> tareas_Creadas_Lista; 
     private byte carta_Visible;
     
     /**
@@ -56,8 +55,8 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
      */
     public Tareas_Profesor_Panel() {
         initComponents();
-        
         Iniciar_Componentes();
+        //Obtener_Tareas();
     }
 
     /**
@@ -322,7 +321,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            //Obtener_Tareas();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -345,9 +344,9 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         }
     }//GEN-LAST:event_tareas_Creadas_JButtonMouseClicked
 
-    private static void Agregar_Tarea_Creada(String nombre_Tarea, String ruta_Imagen_Curso, String nombre_Curso,
+    private void Agregar_Tarea_Creada(String nombre_Tarea, String ruta_Imagen_Curso, String nombre_Curso,
             String fecha_Entrega, String estatus_Tarea, String _id){
-        
+        DefaultTableModel modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
         try {
             Celda_Renderer[] celdas = new Celda_Renderer[5];
             String fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
@@ -439,6 +438,27 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         }
            
     }
+    
+    /*private void Obtener_Tareas(){
+        
+        DefaultTableModel modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
+        modelo_Tareas_Creadas.setRowCount(0);
+        
+        Tarea_Profesor_Panel tarea_Profesor_Panel;
+        while(!mostrar_Tareas_Lista.is_empty()){
+            tarea_Profesor_Panel  = mostrar_Tareas_Lista.delist();
+            tarea_Profesor_Panel.Retirar_Vista(tarea_Profesor_Panel);
+        }
+        
+        
+        Lista<TareasEstudianteModel> tareas_Estudiante 
+                = CourseRoom.Solicitudes().Obtener_Tareas_Estudiante(Tablero_Profesor_Panel.Id_Usuario());
+        
+        while(!tareas_Estudiante.is_empty()){
+            Agregar_Tarea(tareas_Estudiante.delist());
+        }
+        
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
@@ -473,7 +493,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         tareas_Creadas_JTable.getTableHeader().setFont(gadugi);
         tareas_Por_Calificar_JTable.getTableHeader().setFont(gadugi);
         
-        modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
+        DefaultTableModel modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
         
         String _id, ruta_Imagen_Curso, ruta_Imagen_Estudiante;
         String nombre_Tarea,nombre_Curso, nombre_Estudiante, fecha_Creacion, fecha_Entregado, fecha_Entrega, estatus;
@@ -530,6 +550,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         tareas_Creadas_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
+        DefaultTableModel modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < modelo.getRowCount(); i++) {
             for (int j = 0; j < modelo.getColumnCount(); j++) {
@@ -563,6 +584,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
     
     @Override
     public void Limpiar() {
+        DefaultTableModel modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
         modelo_Tareas_Creadas.setRowCount(0);
         DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
         modelo.setRowCount(0);
@@ -573,16 +595,16 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
     @Override
     public void Carta_Visible() {
         switch(carta_Visible){
-            case 0:
+            case 0 -> {
                 titulo_JLabel.setText("Tareas Por Calificar");
                 tareas_Por_Calificar_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
                 tareas_Creadas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-            break;
-            case 1:
+            }
+            case 1 -> {
                 titulo_JLabel.setText("Tareas Creadas");
                 tareas_Por_Calificar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 tareas_Creadas_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-            break;
+            }
         }
     }
 
