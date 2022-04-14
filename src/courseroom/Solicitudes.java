@@ -29,6 +29,7 @@ import modelos.ArchivosTareaModel;
 import modelos.AvisosModel;
 import modelos.ChatsPersonalesModel;
 import modelos.ConfiguracionesModel;
+import modelos.CursosModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.DatosGeneralesGrupoModel;
 import modelos.DatosGeneralesPreguntaModel;
@@ -74,6 +75,41 @@ public class Solicitudes {
     private static class SolicitudHolder {
 
         private static final Solicitudes INSTANCE = new Solicitudes();
+    }
+    
+    public ResponseModel Abandonar_Curso(int id_Curso, int id_Usuario){
+        
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Curso);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Abandonar_Curso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
     }
     
     public ResponseModel Abandonar_Grupo(int id_Grupo, int id_Usuario){
@@ -881,6 +917,113 @@ public class Solicitudes {
         return response;
     }
     
+    public ResponseModel Enrolar_Usuario_Curso(int id_Curso, int id_Usuario){
+
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Curso);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Enrolar_Usuario_Curso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
+    public ResponseModel Entregar_Tarea_Usuario(int id_Tarea, int id_Usuario){
+
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Tarea);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Entregar_Tarea_Usuario", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
+    public ResponseModel Enviar_Archivo_Adjunto_Tarea(int id_Tarea, String nombre_Archivo, byte[] archivo, String extension){
+
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Tarea);
+            parametros.add(CourseRoom.Utilerias().Codificacion(nombre_Archivo));
+            parametros.add(archivo);
+            parametros.add(CourseRoom.Utilerias().Codificacion(extension));
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Enviar_Archivo_Adjunto_Tarea", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
     public ResponseModel Enviar_Archivo_Compartido_Grupo(int id_Grupo, int id_Usuario, String nombre_Archivo, byte[] archivo, String extension){
 
         ResponseModel response = new ResponseModel();
@@ -919,6 +1062,82 @@ public class Solicitudes {
         return response;
     }
      
+    public ResponseModel Enviar_Archivo_Subido_Tarea(int id_Tarea, int id_Usuario, String nombre_Archivo, byte[] archivo, String extension){
+
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Tarea);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().Codificacion(nombre_Archivo));
+            parametros.add(archivo);
+            parametros.add(CourseRoom.Utilerias().Codificacion(extension));
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Enviar_Archivo_Subido_Tarea", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
+    public ResponseModel Enviar_Material_Curso(int id_Curso, int id_Usuario, String nombre_Archivo, byte[] archivo, String extension){
+
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Curso);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().Codificacion(nombre_Archivo));
+            parametros.add(archivo);
+            parametros.add(CourseRoom.Utilerias().Codificacion(extension));
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Enviar_Material_Curso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
     public ResponseModel Enviar_Mensaje_Chat(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Chat){
 
         ResponseModel response = new ResponseModel();
@@ -1088,6 +1307,41 @@ public class Solicitudes {
             parametros.add(CourseRoom.Utilerias().MiIP());
             
             Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Enviar_Mensaje_Tarea", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
+    public ResponseModel Finalizar_Curso(int id_Curso,int id_Usuario){
+
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Curso);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Finalizar_Curso", parametros);
             
             if(respuesta != null){
                 
@@ -3220,6 +3474,40 @@ public class Solicitudes {
         return response;
     }
     
+    public ResponseModel Remover_Material_Curso(int id_Material_Subido, int id_Usuario){
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Material_Subido);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Remover_Material_Curso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
     public ResponseModel Remover_Voto_Miembro_Grupo(int id_Grupo, int id_Usuario){
         ResponseModel response = new ResponseModel();
         
@@ -3288,4 +3576,37 @@ public class Solicitudes {
         return response;
     }
     
+    public ResponseModel Remover_Tematica_Curso(int id_Tematica, int id_Usuario){
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Tematica);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Remover_Tematica_Curso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
 }
