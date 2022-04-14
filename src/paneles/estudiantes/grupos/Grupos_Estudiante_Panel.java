@@ -442,45 +442,45 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
    
     private void Agregar_Grupos(GruposModel gruposModel) {
 
-        DefaultTableModel modelo = (DefaultTableModel) mostrar_Grupos_JTable.getModel();
-
-        String id_Grupo = CourseRoom.Utilerias().Concatenar("Grupos_",gruposModel.Id_Grupo());
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
-        Celda_Renderer celda;
-        Image imagen;
-        byte[] bytes_Imagen_Grupo = CourseRoom.Solicitudes().Obtener_Imagen_Grupo(gruposModel.Id_Grupo());
-        
-        if(bytes_Imagen_Grupo.length > 0){
-            imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Grupo);
-            
-            if(imagen != null){
-                
-                imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-                ImageIcon icono_Imagen = new ImageIcon(imagen);
-                celda =  new Celda_Renderer(icono_Imagen,gruposModel.Nombre(), id_Grupo);
-                celdas[0] = celda;
-                icono_Imagen.getImage().flush();
-            }else{
-                celda =  new Celda_Renderer(gruposModel.Nombre(), id_Grupo);
-                celdas[0] = celda;
-            }
-        }
-        
-        celda =  new Celda_Renderer(gruposModel.Nombre_Curso(), id_Grupo);
-        celdas[1] = celda;
-        celda = new Celda_Renderer(gruposModel.Fecha_Creacion(), id_Grupo);
-        celdas[2] = celda;
-
-        modelo.addRow(celdas);
-
-        mostrar_Grupos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
-
-        Grupo_Estudiante_Panel grupo_Estudiante_Panel
-                = new Grupo_Estudiante_Panel(gruposModel.Id_Grupo());
-
-        mostrar_Grupos_Lista.push_back(grupo_Estudiante_Panel);
-
-        Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id_Grupo);
+//        DefaultTableModel modelo = (DefaultTableModel) mostrar_Grupos_JTable.getModel();
+//
+//        String id_Grupo = CourseRoom.Utilerias().Concatenar("Grupos_",gruposModel.Id_Grupo());
+//        Celda_Renderer[] celdas = new Celda_Renderer[3];
+//        Celda_Renderer celda;
+//        Image imagen;
+//        byte[] bytes_Imagen_Grupo = CourseRoom.Solicitudes().Obtener_Imagen_Grupo(gruposModel.Id_Grupo());
+//        
+//        if(bytes_Imagen_Grupo.length > 0){
+//            imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Grupo);
+//            
+//            if(imagen != null){
+//                
+//                imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+//                ImageIcon icono_Imagen = new ImageIcon(imagen);
+//                celda =  new Celda_Renderer(icono_Imagen,gruposModel.Nombre(), id_Grupo);
+//                celdas[0] = celda;
+//                icono_Imagen.getImage().flush();
+//            }else{
+//                celda =  new Celda_Renderer(gruposModel.Nombre(), id_Grupo);
+//                celdas[0] = celda;
+//            }
+//        }
+//        
+//        celda =  new Celda_Renderer(gruposModel.Nombre_Curso(), id_Grupo);
+//        celdas[1] = celda;
+//        celda = new Celda_Renderer(gruposModel.Fecha_Creacion(), id_Grupo);
+//        celdas[2] = celda;
+//
+//        modelo.addRow(celdas);
+//
+//        mostrar_Grupos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
+//
+//        Grupo_Estudiante_Panel grupo_Estudiante_Panel
+//                = new Grupo_Estudiante_Panel(gruposModel.Id_Grupo());
+//
+//        mostrar_Grupos_Lista.push_back(grupo_Estudiante_Panel);
+//
+//        Tablero_Estudiante_Panel.Agregar_Vista(grupo_Estudiante_Panel, id_Grupo);
         
     }
     

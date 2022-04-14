@@ -13,6 +13,9 @@ import datos.interfaces.Limpieza_Interface;
 import java.awt.Font;
 import java.awt.Image;
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
@@ -28,6 +31,8 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  */
 public final class Avisos_General_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
+    private DatagramSocket datagramSocket;
+    private Conexion_Notificador conexion_Notificador;
     
     public Avisos_General_Panel(){
         
@@ -276,6 +281,71 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         }
         
     }
+    
+    
+    private class Conexion_Notificador extends Thread{
+        
+        
+        @Override
+        public void run(){
+            
+            System.out.println("Esperando Conexión Con CourseRoom Notifier...");
+            byte[] entryBuffer = new byte[128];
+            DatagramPacket datagramPacket = new DatagramPacket(entryBuffer,entryBuffer.length);
+            String mensaje;
+            String valor;
+            int longitud;
+            int indice;
+            int id_Usuario;
+            while(true){
+                
+                try {
+                    
+                    datagramSocket.receive(datagramPacket);
+                    
+                    //Usuario:
+                    indice = 0;
+                    longitud = (int)entryBuffer[indice];
+                    byte[] arreglo = new byte[longitud];
+                    
+                    for(int i = 1; i <= longitud; i++){
+                        arreglo[i-1] = entryBuffer[i];
+                    }
+                    
+                    indice = indice + 1;
+                    valor = ConvertirArreglo(arreglo);
+                    System.out.println(valor);
+                    
+                    id_Usuario = Integer.parseInt(valor);
+                    
+                    //Ip:
+                    longitud = (int)entryBuffer[indice];
+                    indice++;
+                    arreglo = new byte[longitud];
+                    
+                    for(int i = 0; i < longitud; i++,indice++){
+                        arreglo[i] = entryBuffer[indice];
+                    }
+                    
+                    valor = ConvertirArreglo(arreglo);
+                    
+                    mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación Con IP: "+valor;
+                    System.out.println(mensaje+"\n");
+                    
+
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                
+            }
+        }
+    }
+    
+    
+    public String ConvertirArreglo(byte[] arreglo) {
+        return new String(arreglo);
+    }
+    
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
@@ -289,15 +359,22 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
     @Override
     public void Iniciar_Componentes() {
         
-        avisos_JScrollPane.getViewport().setOpaque(false);
+         avisos_JScrollPane.getViewport().setOpaque(false);
         avisos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         avisos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
+
         Font fuente = new Font("Segoe UI", Font.BOLD, 16);
         avisos_JTable.getTableHeader().setFont(fuente);
-        
-        avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
+        avisos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        
+        try {
+            datagramSocket = new DatagramSocket(9002);
+            conexion_Notificador = new Conexion_Notificador();
+            conexion_Notificador.start();
+        } catch (SocketException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
 
     @Override

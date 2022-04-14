@@ -28,9 +28,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.io.IOException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
@@ -62,7 +59,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     /**
      * Creates new form Profile_Estudiante_Panel
      */
-    public Desempeno_Escolar_Estudiante_Panel() throws IOException {
+    public Desempeno_Escolar_Estudiante_Panel(){
         initComponents();
         Iniciar_Componentes();
         Actualizar_Datos();
@@ -295,11 +292,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             this.Limpiar();
-            try {
-                Actualizar_Datos();
-            } catch (IOException ex) {
-                Logger.getLogger(Desempeno_Escolar_Estudiante_Panel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Actualizar_Datos();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -357,9 +350,8 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     }  
 
     
-    private void Agregar_Estadistica(DesempenoUsuarioModel desempenoUsuarioModel) throws IOException{
+    private void Agregar_Estadistica(DesempenoUsuarioModel desempenoUsuarioModel) {
         
-        String ruta_Imagen_Curso;
         String nombre_Curso = String.valueOf(desempenoUsuarioModel.Nombre());
         String numero_Tareas_Calificadas = String.valueOf(desempenoUsuarioModel.Numero_Tareas_Calificadas());
         //String promedio_Curso;
@@ -369,10 +361,8 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         
         Celda_Renderer[] celdas = new Celda_Renderer[6];
         Celda_Renderer celda;
-        String id = new String();
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         String Id_Curso = CourseRoom.Utilerias().Concatenar("Curso_",desempenoUsuarioModel.Id_Curso());
-        URL url_Imagen;
         Image imagen;
         ImageIcon icono;
 
@@ -385,15 +375,16 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
                 
                 imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
                 ImageIcon icono_Imagen = new ImageIcon(imagen);
-                celda =  new Celda_Renderer(icono_Imagen,desempenoUsuarioModel.Nombre(), Id_Curso);
+                celda =  new Celda_Renderer(icono_Imagen,nombre_Curso, Id_Curso);
                 celdas[0] = celda;
                 icono_Imagen.getImage().flush();
             }else{
-                celda =  new Celda_Renderer(desempenoUsuarioModel.Nombre(), Id_Curso);
+                celda =  new Celda_Renderer(nombre_Curso, Id_Curso);
                 celdas[0] = celda;
             }
         }
 
+        try{
             celda = new Celda_Renderer(numero_Tareas_Calificadas,Id_Curso);
             celdas[1] = celda;
             //celda = new Celda_Renderer(promedio_Curso, Id_Curso);
@@ -405,24 +396,28 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
             if(rumbo){
                 imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
                 icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono,"Aprobar",id);
+                celda = new Celda_Renderer(icono,"Aprobar",Id_Curso);
                 celdas[5] = celda;
             }else{
                 imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
                 icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono,"Reprobar",id);
+                celda = new Celda_Renderer(icono,"Reprobar",Id_Curso);
                 celdas[5] = celda;
             }
-            
+
             modelo.addRow(celdas);
-            
+
             imagen.flush();
+        } catch(IOException ex){
+            
+        }
         
     }
     
-    private void Actualizar_Datos() throws IOException{
+    private void Actualizar_Datos() {
         
-        Lista<DesempenoUsuarioModel> response = CourseRoom.Solicitudes().Obtener_Desempeno_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
+        Lista<DesempenoUsuarioModel> response = 
+                CourseRoom.Solicitudes().Obtener_Desempeno_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
         
         while(!response.is_empty()){
             Agregar_Estadistica(response.delist());
