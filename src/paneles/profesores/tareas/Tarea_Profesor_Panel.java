@@ -20,6 +20,7 @@ package paneles.profesores.tareas;
 import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 import datos.colecciones.Lista;
 import datos.estructuras.Nodo;
 import datos.interfaces.Carta_Visibilidad_Interface;
@@ -42,6 +43,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.border.BevelBorder;
@@ -140,9 +142,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         editar_Fecha_Entrega_JLabel = new javax.swing.JLabel();
         editar_Fecha_Entrega_JButton = new javax.swing.JButton();
         escogedor_Fecha_Hora_Entrega = new com.github.lgooddatepicker.components.DateTimePicker();
-        editar_Tipo_Entrega_JLabel = new javax.swing.JLabel();
-        editar_Tipo_Entrega_JButton = new javax.swing.JButton();
-        editar_Tipo_Entrega_JComboBox = new javax.swing.JComboBox<>();
         eliminar_Tarea_JButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -458,9 +457,29 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                             // Remover
                             case 3:
                             {
-                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                modelo.removeRow(fila);
+                                int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                                    "¿Estás Segur@ De Remover Está Tarea?", "Remover Tarea", 
+                                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                                if(resultado == JOptionPane.YES_OPTION){
+                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
+                                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                    Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
+
+                                    int id_Archivo_Subido = Integer.parseInt(celda.ID());
+
+                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());
+
+                                    if(response.Is_Success()){
+                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
+                                        modelo.removeRow(fila);
+                                    }else{
+                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
+                                    }
+
+                                }
+
                                 break;
                             }
                             default:
@@ -726,28 +745,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
                     escogedor_Fecha_Hora_Entrega.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
 
-                    editar_Tipo_Entrega_JLabel.setText("Tipo De Entrega");
-                    editar_Tipo_Entrega_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
-                    editar_Tipo_Entrega_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-                    editar_Tipo_Entrega_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-                    editar_Tipo_Entrega_JButton.setToolTipText("Editar Nombre Del Grupo");
-                    ((ImageIcon)editar_Tipo_Entrega_JButton.getIcon()).getImage().flush();
-                    editar_Tipo_Entrega_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            editar_Tipo_Entrega_JButtonMouseClicked(evt);
-                        }
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                            editar_Tipo_Entrega_JButtonMouseEntered(evt);
-                        }
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                            editar_Tipo_Entrega_JButtonMouseExited(evt);
-                        }
-                    });
-
-                    editar_Tipo_Entrega_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarea Individual", "Tarea Grupal" }));
-                    editar_Tipo_Entrega_JComboBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
                     eliminar_Tarea_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
                     eliminar_Tarea_JButton.setText("Eliminar Tarea");
                     eliminar_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -787,14 +784,9 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                             .addGap(18, 49, Short.MAX_VALUE)
                             .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editar_Tarea_JPanelLayout.createSequentialGroup()
-                                    .addComponent(editar_Tipo_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(editar_Tipo_Entrega_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editar_Tarea_JPanelLayout.createSequentialGroup()
                                     .addComponent(editar_Fecha_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(editar_Fecha_Entrega_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(editar_Tipo_Entrega_JComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(escogedor_Fecha_Hora_Entrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(eliminar_Tarea_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE))
                             .addContainerGap(39, Short.MAX_VALUE))
@@ -802,7 +794,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                     editar_Tarea_JPanelLayout.setVerticalGroup(
                         editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
-                            .addContainerGap(34, Short.MAX_VALUE)
+                            .addContainerGap(28, Short.MAX_VALUE)
                             .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
                                     .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -816,7 +808,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                                         .addComponent(editar_Fecha_Entrega_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(escogedor_Fecha_Hora_Entrega, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
                                     .addGap(16, 16, 16)
                                     .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -824,16 +816,10 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                                         .addComponent(editar_Descripcion_JButton))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(editar_Tipo_Entrega_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(editar_Tipo_Entrega_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(editar_Tipo_Entrega_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editar_Tarea_JPanelLayout.createSequentialGroup()
+                                    .addGap(57, 57, 57)
                                     .addComponent(eliminar_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addContainerGap(34, Short.MAX_VALUE))
+                            .addContainerGap(27, Short.MAX_VALUE))
                     );
 
                     tarea_JLayeredPane.add(editar_Tarea_JPanel, "Edicion");
@@ -1037,23 +1023,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         editar_Fecha_Entrega_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_editar_Fecha_Entrega_JButtonMouseExited
 
-    private void editar_Tipo_Entrega_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Tipo_Entrega_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-        }
-    }//GEN-LAST:event_editar_Tipo_Entrega_JButtonMouseClicked
-
-    private void editar_Tipo_Entrega_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Tipo_Entrega_JButtonMouseEntered
-        // TODO add your handling code here:
-        editar_Tipo_Entrega_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-    }//GEN-LAST:event_editar_Tipo_Entrega_JButtonMouseEntered
-
-    private void editar_Tipo_Entrega_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Tipo_Entrega_JButtonMouseExited
-        // TODO add your handling code here:
-        editar_Tipo_Entrega_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-    }//GEN-LAST:event_editar_Tipo_Entrega_JButtonMouseExited
-
     private void tareas_Por_Calificar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_Por_Calificar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -1243,9 +1212,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     private javax.swing.JTextField editar_Nombre_JTextField;
     private javax.swing.JButton editar_Tarea_JButton;
     private javax.swing.JPanel editar_Tarea_JPanel;
-    private javax.swing.JButton editar_Tipo_Entrega_JButton;
-    private javax.swing.JComboBox<String> editar_Tipo_Entrega_JComboBox;
-    private javax.swing.JLabel editar_Tipo_Entrega_JLabel;
     private javax.swing.JButton eliminar_Tarea_JButton;
     private javax.swing.JButton enviar_Archivo_Chat_JButton;
     private javax.swing.JPanel enviar_Mensaje_Chat_JPanel;
@@ -1423,7 +1389,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         editar_Nombre_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Descripcion_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Fecha_Entrega_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        editar_Tipo_Entrega_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
         editar_Nombre_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Nombre_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
@@ -1433,17 +1398,13 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         editar_Descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         editar_Descripcion_JTextPane.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
-        editar_Tipo_Entrega_JComboBox.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        editar_Tipo_Entrega_JComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        
+                
         escogedor_Fecha_Hora_Entrega.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         escogedor_Fecha_Hora_Entrega.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
         editar_Nombre_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Descripcion_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Fecha_Entrega_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        editar_Tipo_Entrega_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
         subir_Archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         subir_Archivos_Adjuntos_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());

@@ -302,7 +302,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
             imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
             icono = new ImageIcon(imagen);
             
-            celda = new Celda_Renderer(icono);
+            celda = new Celda_Renderer(icono,usuario.Id().toString());
             celdas[1] = celda;
             modelo.addRow(celdas);
             

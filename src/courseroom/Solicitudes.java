@@ -690,9 +690,9 @@ public class Solicitudes {
                     fila = resultado.remove(0);
                     
                     id = (int) fila.remove(0);
-                    valor = (String)fila.remove(0);
-                    valor1 = (String)fila.remove(0);
-                    valor2 = (String)fila.remove(0);
+                    valor = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    valor1 = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    valor2 = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
                     chatsPersonalesModel = new ChatsPersonalesModel(id, valor2, valor, valor1);
                     

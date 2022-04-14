@@ -50,10 +50,10 @@
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[32767, 72]"/>
         </Property>
+        <Property name="opaque" type="boolean" value="false"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[982, 72]"/>
         </Property>
-        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
 
       <Layout>
@@ -130,12 +130,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/info_1.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Descripci&#xf3;n De&lt;br&gt;Tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
               </Border>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Descripci&#xf3;n De&lt;br&gt;Tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="informacion_JButtonMouseClicked"/>
@@ -168,12 +168,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/context.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Archivos&lt;br&gt;Adjuntos&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
               </Border>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Archivos&lt;br&gt;Adjuntos&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="archivos_Adjuntos_JButtonMouseClicked"/>
@@ -187,12 +187,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/woman.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Entrega De&lt;br&gt;Tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
               </Border>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Entrega De&lt;br&gt;Tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="entregar_Tarea_JButtonMouseClicked"/>
@@ -230,12 +230,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/updated.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h4&gt;Actulizar&lt;br&gt;P&#xe1;gina&lt;/h4&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
               </Border>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h4&gt;Actulizar&lt;br&gt;P&#xe1;gina&lt;/h4&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="actualizar_JButtonMouseClicked"/>
@@ -251,12 +251,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/feedback.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Retroalimentaci&#xf3;n&lt;br&gt;De Tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
               </Border>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Retroalimentaci&#xf3;n&lt;br&gt;De Tarea(s)&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="retroalimentacion_JButtonMouseClicked"/>
@@ -400,12 +400,12 @@
             </Container>
             <Component class="javax.swing.JLabel" name="fecha_Entrega_JLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="15" style="1"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/clock.png"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="15" style="1"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -414,6 +414,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="estatus_Tarea_JLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="15" style="1"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/homework_1.png"/>
@@ -424,9 +427,6 @@
                     <BevelBorder bevelType="1"/>
                   </Border>
                 </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="15" style="1"/>
-                </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <AuxValues>
@@ -435,12 +435,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="fecha_Creacion_JLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="15" style="1"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/daily-tasks.png"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="15" style="1"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -611,11 +611,11 @@
         </Container>
         <Container class="javax.swing.JPanel" name="entregar_Tarea_JPanel">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[1110, 630]"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -663,19 +663,19 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="subir_Archivos_JButton">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="16" style="1"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/submit.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Subir Archivo(s)"/>
+                <Property name="toolTipText" type="java.lang.String" value="Compartir Y Subir Archivo(s)"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
                 </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="1"/>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Compartir Y Subir Archivo(s)"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="subir_Archivos_JButtonMouseClicked"/>
@@ -702,11 +702,11 @@
                 <Component class="javax.swing.JTable" name="archivos_Subidos_JTable">
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Archivo&quot;, &quot;Subido&quot;, &quot;Remover&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; archivos_Subidos_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
-                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="&#xd;&#xa;&#xd;&#xa;new javax.swing.table.DefaultTableModel(&#xd;&#xa;    new Object [][] {&#xd;&#xa;&#xd;&#xa;    },&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Archivo&quot;, &quot;Subido&quot;, &quot;Remover&quot;&#xd;&#xa;    }&#xd;&#xa;) {&#xd;&#xa;    boolean[] canEdit = new boolean [] {&#xd;&#xa;        false, false, false&#xd;&#xa;    };&#xd;&#xa;&#xd;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xd;&#xa;        return canEdit [columnIndex];&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public Class getColumnClass(int column)&#xd;&#xa;    {&#xd;&#xa;        for(int i = 0; i &lt; archivos_Subidos_JTable.getRowCount(); i++)&#xd;&#xa;        {&#xd;&#xa;            //The first valid value of a cell of given column is retrieved.&#xd;&#xa;            if(getValueAt(i,column) != null)&#xd;&#xa;            {&#xd;&#xa;                return getValueAt(i, column).getClass();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;        //if no valid value is found, default renderer is returned.&#xd;&#xa;        return super.getColumnClass(column);&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
                     </Property>
                     <Property name="rowHeight" type="int" value="75"/>
                     <Property name="showGrid" type="boolean" value="true"/>
@@ -714,26 +714,26 @@
                     <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="archivos_Subidos_JTable.setRowSorter(new TableRowSorter(archivos_Subidos_JTable.getModel()));&#xd;&#xa;archivos_Subidos_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable) e.getComponent();&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;&#xd;&#xa;            // Abrir&#xd;&#xa;            switch (columna) {&#xd;&#xa;                case 0: {&#xd;&#xa;                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);&#xd;&#xa;                    String extension = FilenameUtils.getExtension(celda.Texto());&#xd;&#xa;                    String ruta = celda.ID();&#xd;&#xa;                    CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());&#xd;&#xa;                }&#xd;&#xa;                break;&#xd;&#xa;                // Remover&#xd;&#xa;                case 2: {&#xd;&#xa;                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                    modelo.removeRow(fila);&#xd;&#xa;                    break;&#xd;&#xa;                }&#xd;&#xa;                default:&#xd;&#xa;                    break;&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="archivos_Subidos_JTable.setRowSorter(new TableRowSorter(archivos_Subidos_JTable.getModel()));&#xd;&#xa;archivos_Subidos_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable) e.getComponent();&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;&#xd;&#xa;            // Abrir&#xd;&#xa;            switch (columna) {&#xd;&#xa;                case 0: {&#xd;&#xa;                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);&#xd;&#xa;                    String extension = FilenameUtils.getExtension(celda.Texto());&#xd;&#xa;                    String ruta = celda.ID();&#xd;&#xa;                    CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());&#xd;&#xa;                }&#xd;&#xa;                break;&#xd;&#xa;                // Remover&#xd;&#xa;                case 2: {&#xd;&#xa;                    int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), &#xd;&#xa;                            &quot;&#xbf;Est&#xe1;s Segur@ De Remover Est&#xe1; Tarea?&quot;, &quot;Remover Tarea&quot;, &#xd;&#xa;                                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);&#xd;&#xa;&#xd;&#xa;                        if(resultado == JOptionPane.YES_OPTION){&#xd;&#xa;                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                            &#xd;&#xa;                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                            Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);&#xd;&#xa;                            &#xd;&#xa;                            int id_Archivo_Subido = Integer.parseInt(celda.ID());&#xd;&#xa;&#xd;&#xa;                            ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Estudiante_Panel.Id_Usuario());&#xd;&#xa;&#xd;&#xa;                            if(response.Is_Success()){&#xd;&#xa;                                CourseRoom.Utilerias().Mensaje_Informativo(&quot;Remover Tarea&quot;, response.Mensaje());&#xd;&#xa;                                modelo.removeRow(fila);&#xd;&#xa;                            }else{&#xd;&#xa;                                CourseRoom.Utilerias().Mensaje_Alerta(&quot;Remover Tarea&quot;, response.Mensaje());&#xd;&#xa;                            }&#xd;&#xa;                            &#xd;&#xa;                        }&#xd;&#xa;&#xd;&#xa;                        break;&#xd;&#xa;                }&#xd;&#xa;                default:&#xd;&#xa;                    break;&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="subir_Cambios_JButton">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="16" style="1"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/document.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Subir Cambio(s)"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
                 </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="1"/>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="subir_Cambios_JButtonMouseClicked"/>
@@ -746,14 +746,14 @@
             </Component>
             <Component class="javax.swing.JLabel" name="fecha_Actualizacion_JLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="15" style="0"/>
+                </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/circular-clock.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Actualizado nunca"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="15" style="0"/>
-                </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <AuxValues>

@@ -425,6 +425,45 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             miembros_JTable.setShowGrid(true);
             miembros_JTable.setSurrendersFocusOnKeystroke(true);
             miembros_JTable.setRowSorter(new TableRowSorter(miembros_JTable.getModel()));
+            miembros_JTable.addMouseListener(new MouseAdapter() {
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (e.getClickCount() == 2) {
+
+                        JTable tabla = (JTable) e.getComponent();
+
+                        int columna = tabla.getSelectedColumn();
+
+                        if (columna == 2) {
+
+                            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                                "¿Estás Segur@ De Votar Por La Salida Del Usuario?", "Remover Usuario", 
+                                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                            if(resultado == JOptionPane.YES_OPTION){
+                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
+                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
+
+                                int id_Grupo = Integer.parseInt(celda.ID());
+
+                                ResponseModel response = CourseRoom.Solicitudes().Remover_Voto_Miembro_Grupo(id_Grupo, Tablero_Estudiante_Panel.Id_Usuario());
+
+                                if(response.Is_Success()){
+                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
+                                    modelo.removeRow(fila);
+                                }else{
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
+                                }
+
+                            }
+                        }
+
+                    }
+                }
+            });
             miembros_JScrollPane.setViewportView(miembros_JTable);
 
             grupo_JLayeredPane.add(miembros_JScrollPane, "Miembros");

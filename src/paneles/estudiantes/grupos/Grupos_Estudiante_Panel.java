@@ -375,7 +375,6 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     private void buscar_Grupos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Grupos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            actualizar_JButton.setVisible(false);
             ((CardLayout) this.getLayout()).show(this, "Buscar");
         }
     }//GEN-LAST:event_buscar_Grupos_JButtonMouseClicked

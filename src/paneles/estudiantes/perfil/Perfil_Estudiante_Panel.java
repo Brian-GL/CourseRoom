@@ -5,6 +5,7 @@ import modelos.ComboOptionModel;
 import clases.Escogedor_Archivos;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 import datos.colecciones.Lista;
 import datos.estructuras.Par;
 import datos.estructuras.Tripleta;
@@ -22,6 +23,7 @@ import java.time.LocalDate;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -961,9 +963,29 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                         int columna = tabla.getSelectedColumn();
 
                         if (columna == 1) {
-                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                            modelo.removeRow(fila);
+
+                            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                                "¿Estás Segur@ De Remover El Interes?", "Remover Interes", 
+                                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                            if(resultado == JOptionPane.YES_OPTION){
+                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
+                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
+
+                                int id_Tematica = Integer.parseInt(celda.ID());
+
+                                ResponseModel response = CourseRoom.Solicitudes().Remover_Interes_Usuario(id_Tematica,Tablero_Estudiante_Panel.Id_Usuario());
+
+                                if(response.Is_Success()){
+                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Interes", response.Mensaje());
+                                    modelo.removeRow(fila);
+                                }else{
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Interes", response.Mensaje());
+                                }
+
+                            }
                         }
 
                     }
@@ -1612,7 +1634,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             celda = new Celda_Renderer(interes.Valor(),interes.Id().toString());
             celdas[0] = celda;
             
-            celda = new Celda_Renderer(remover);
+            celda = new Celda_Renderer(remover,interes.Id().toString());
             celdas[1] = celda;
             
             modelo.addRow(celdas);

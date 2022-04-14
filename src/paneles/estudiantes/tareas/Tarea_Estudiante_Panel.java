@@ -20,6 +20,7 @@ package paneles.estudiantes.tareas;
 import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
@@ -38,6 +39,7 @@ import java.net.SocketException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.border.BevelBorder;
@@ -110,12 +112,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         retroalimentacion_JScrollPane = new javax.swing.JScrollPane();
         retroalimentacion_JTable = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
-        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
         titulo_JPanel.setOpaque(false);
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -126,8 +128,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
-        informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         informacion_JButton.setToolTipText("<html> <h3>Descripción De<br>Tarea(s)</h3> </html>");
+        informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -136,8 +138,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat_1.png"))); // NOI18N
-        chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         chat_JButton.setToolTipText("<html> <h3>Chat</h3> </html>");
+        chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)chat_JButton.getIcon()).getImage().flush();
         chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,8 +148,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         archivos_Adjuntos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/context.png"))); // NOI18N
-        archivos_Adjuntos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         archivos_Adjuntos_JButton.setToolTipText("<html> <h3>Archivos<br>Adjuntos</h3> </html>");
+        archivos_Adjuntos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)archivos_Adjuntos_JButton.getIcon()).getImage().flush();
         archivos_Adjuntos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -156,8 +158,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         entregar_Tarea_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
-        entregar_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         entregar_Tarea_JButton.setToolTipText("<html> <h3>Entrega De<br>Tarea(s)</h3> </html>");
+        entregar_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)entregar_Tarea_JButton.getIcon()).getImage().flush();
         entregar_Tarea_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -166,9 +168,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_JButton.setToolTipText("<html> <h3>Regresar A Mis Tareas</h3> </html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar_JButton.setToolTipText("<html> <h3>Regresar A Mis Tareas</h3> </html>");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -254,13 +256,13 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         informacion_Tarea_JPanel.setToolTipText("");
         informacion_Tarea_JPanel.setOpaque(false);
 
+        curso_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         curso_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
+        curso_JLabel.setToolTipText("<html>\n<h3>Curso de provenencia</h3>\n</html>");
         curso_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         curso_JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        curso_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         curso_JLabel.setOpaque(true);
-        curso_JLabel.setToolTipText("<html>\n<h3>Curso de provenencia</h3>\n</html>");
         ((ImageIcon)curso_JLabel.getIcon()).getImage().flush();
         curso_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -408,8 +410,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             tarea_JLayeredPane.add(archivos_Adjuntos_JScrollPane, "Archivos_Adjuntos");
 
             chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-            chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
             chat_JPanel.setOpaque(false);
+            chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
             chat_JPanel.setLayout(new java.awt.BorderLayout());
 
             mensajes_Chat_JScrollPane.setBorder(null);
@@ -488,9 +490,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 enviar_Mensaje_Chat_JPanel.setLayout(new java.awt.BorderLayout());
 
                 enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
+                enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
                 enviar_Archivo_Chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
                 ((ImageIcon)enviar_Archivo_Chat_JButton.getIcon()).getImage().flush();
                 enviar_Archivo_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -518,9 +520,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                 tarea_JLayeredPane.add(chat_JPanel, "Chat");
 
-                entregar_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
                 entregar_Tarea_JPanel.setToolTipText("");
                 entregar_Tarea_JPanel.setOpaque(false);
+                entregar_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
                 subir_Archivos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
                 subir_Archivos_JButton.setText("Subir Archivo(s)");
@@ -544,6 +546,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 archivos_Subidos_JScrollPane.setOpaque(false);
 
                 archivos_Subidos_JTable.setAutoCreateRowSorter(true);
+                archivos_Subidos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 archivos_Subidos_JTable.setModel(
 
                     new javax.swing.table.DefaultTableModel(
@@ -577,7 +580,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             return super.getColumnClass(column);
                         }
                     });
-                    archivos_Subidos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                     archivos_Subidos_JTable.setRowHeight(75);
                     archivos_Subidos_JTable.setShowGrid(true);
                     archivos_Subidos_JTable.setShowVerticalLines(false);
@@ -605,9 +607,29 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                     break;
                                     // Remover
                                     case 2: {
-                                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                        modelo.removeRow(fila);
+                                        int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                                            "¿Estás Segur@ De Remover Está Tarea?", "Remover Tarea", 
+                                            JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                                        if(resultado == JOptionPane.YES_OPTION){
+                                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
+                                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                            Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
+
+                                            int id_Archivo_Subido = Integer.parseInt(celda.ID());
+
+                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Estudiante_Panel.Id_Usuario());
+
+                                            if(response.Is_Success()){
+                                                CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
+                                                modelo.removeRow(fila);
+                                            }else{
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
+                                            }
+
+                                        }
+
                                         break;
                                     }
                                     default:
