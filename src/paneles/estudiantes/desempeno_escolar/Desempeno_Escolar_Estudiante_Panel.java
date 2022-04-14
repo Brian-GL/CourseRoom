@@ -29,6 +29,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
@@ -46,6 +48,7 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
+import paneles.estudiantes.cursos.Curso_Estudiante_Panel;
 
 /**
  *
@@ -54,14 +57,15 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
 public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private byte carta_Visible;
+    private Lista<Curso_Estudiante_Panel> mostrar_Cursos_Lista;
     
     /**
      * Creates new form Profile_Estudiante_Panel
      */
-    public Desempeno_Escolar_Estudiante_Panel() {
+    public Desempeno_Escolar_Estudiante_Panel() throws IOException {
         initComponents();
         Iniciar_Componentes();
-        //Actualizar_Datos();
+        Actualizar_Datos();
     }
 
     /**
@@ -291,7 +295,11 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             this.Limpiar();
-            //Actualizar_Datos();
+            try {
+                Actualizar_Datos();
+            } catch (IOException ex) {
+                Logger.getLogger(Desempeno_Escolar_Estudiante_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -349,34 +357,50 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     }  
 
     
-    private void Agregar_Estadistica(String ruta_Imagen_Curso, String nombre_Curso, String numero_Tareas_Calificadas,
-            String promedio_Curso, String promedio_General, String prediccion, boolean rumbo){
+    private void Agregar_Estadistica(DesempenoUsuarioModel desempenoUsuarioModel) throws IOException{
+        
+        String ruta_Imagen_Curso;
+        String nombre_Curso = String.valueOf(desempenoUsuarioModel.Nombre());
+        String numero_Tareas_Calificadas = String.valueOf(desempenoUsuarioModel.Numero_Tareas_Calificadas());
+        //String promedio_Curso;
+        String promedio_General = String.valueOf(desempenoUsuarioModel.Promedio_General());
+        String prediccion = String.valueOf(desempenoUsuarioModel.Prediccion());
+        Boolean rumbo = !"A Reprobar".equals(desempenoUsuarioModel.Rumbo_Estatus());
         
         Celda_Renderer[] celdas = new Celda_Renderer[6];
         Celda_Renderer celda;
         String id = new String();
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
-        
+        String Id_Curso = CourseRoom.Utilerias().Concatenar("Curso_",desempenoUsuarioModel.Id_Curso());
         URL url_Imagen;
         Image imagen;
         ImageIcon icono;
-        
-        try {
-            
-            url_Imagen = new URL(ruta_Imagen_Curso);
-            imagen = ImageIO.read(url_Imagen);
-            
-            icono = new ImageIcon(imagen);
 
-            celda = new Celda_Renderer(icono, nombre_Curso,id);
-            celdas[0] = celda;
-            celda = new Celda_Renderer(numero_Tareas_Calificadas,id);
+        byte[] bytes_Imagen_Estadistica = CourseRoom.Solicitudes().Obtener_Imagen_Curso(desempenoUsuarioModel.Id_Curso());
+        
+        if(bytes_Imagen_Estadistica.length > 0){
+            imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Estadistica);
+            
+            if(imagen != null){
+                
+                imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                ImageIcon icono_Imagen = new ImageIcon(imagen);
+                celda =  new Celda_Renderer(icono_Imagen,desempenoUsuarioModel.Nombre(), Id_Curso);
+                celdas[0] = celda;
+                icono_Imagen.getImage().flush();
+            }else{
+                celda =  new Celda_Renderer(desempenoUsuarioModel.Nombre(), Id_Curso);
+                celdas[0] = celda;
+            }
+        }
+
+            celda = new Celda_Renderer(numero_Tareas_Calificadas,Id_Curso);
             celdas[1] = celda;
-            celda = new Celda_Renderer(promedio_Curso, id);
-            celdas[2] = celda;
-            celda = new Celda_Renderer(promedio_General, id);
+            //celda = new Celda_Renderer(promedio_Curso, Id_Curso);
+            //celdas[2] = celda;
+            celda = new Celda_Renderer(promedio_General, Id_Curso);
             celdas[3] = celda;
-            celda = new Celda_Renderer(prediccion, id);
+            celda = new Celda_Renderer(prediccion, Id_Curso);
             celdas[4] = celda;
             if(rumbo){
                 imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
@@ -393,14 +417,10 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
             modelo.addRow(celdas);
             
             imagen.flush();
-
-        } catch (IOException ex) {
-
-        } 
         
     }
     
-    /*private void Actualizar_Datos(){
+    private void Actualizar_Datos() throws IOException{
         
         Lista<DesempenoUsuarioModel> response = CourseRoom.Solicitudes().Obtener_Desempeno_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
         
@@ -408,7 +428,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
             Agregar_Estadistica(response.delist());
         }
         
-    }*/
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
@@ -429,6 +449,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     public void Iniciar_Componentes() {
         
         carta_Visible = 0;
+        mostrar_Cursos_Lista = new Lista<>();
 
         //Tabla estadisticas:
         estadisticas_JScrollPane.getViewport().setOpaque(false);
@@ -439,20 +460,6 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         estadisticas_JTable.getTableHeader().setFont(gadugi);
 
         estadisticas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        String ruta_Imagen_Curso, nombre_Curso, numero_Tareas_Calificadas,promedio_Curso,promedio_General,prediccion;
-        boolean rumbo;
-       
-        ruta_Imagen_Curso = "https://picsum.photos/96/96";
-        nombre_Curso = CourseRoom.Utilerias().educator().course();
-        numero_Tareas_Calificadas = String.valueOf(CourseRoom.Utilerias().number().numberBetween(1, 10));
-        promedio_Curso = String.valueOf(CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        promedio_General = String.valueOf(CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        prediccion = String.valueOf(CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        rumbo = CourseRoom.Utilerias().bool().bool();
-
-        Agregar_Estadistica(ruta_Imagen_Curso, nombre_Curso, numero_Tareas_Calificadas, promedio_Curso, promedio_General, prediccion, rumbo);
-
         
         //Regresion Lineal:
         // Create dataset  
@@ -571,4 +578,23 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         }
     }
 
+     private void Obtener_Desempeno_Usuario() throws IOException{
+        
+        DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Curso_Estudiante_Panel grupo_Estudiante_Panel;
+        while(!mostrar_Cursos_Lista.is_empty()){
+            grupo_Estudiante_Panel= mostrar_Cursos_Lista.delist();
+            Tablero_Estudiante_Panel.Retirar_Vista(grupo_Estudiante_Panel);
+            grupo_Estudiante_Panel.Limpiar();
+        }
+        
+        Lista<DesempenoUsuarioModel> lista = 
+                CourseRoom.Solicitudes().Obtener_Desempeno_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
+        
+        while(!lista.is_empty()){
+            Agregar_Estadistica(lista.delist());
+        }
+    }
 }
