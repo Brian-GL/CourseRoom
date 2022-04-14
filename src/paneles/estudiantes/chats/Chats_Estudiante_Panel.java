@@ -523,7 +523,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 Agregar_Chat_Busqueda(lista.delist());
             }
         }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta","No Se Encontraron Registros");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta","No Se Encontraron Chats");
         }
     }
     

@@ -396,7 +396,12 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             if (longitud > 99) {
             buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Grupos<br>Rebasa Los 100 Caracteres");
-          }
+          }else{
+                SwingUtilities.invokeLater(() -> {
+                    Buscar_Grupos(buscar_JTextField.getText());
+                });
+
+            }
         }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
 
@@ -418,9 +423,10 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     }//GEN-LAST:event_mostrar_Grupos_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
-        // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            SwingUtilities.invokeLater(() -> {
+                Obtener_Grupos();
+            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
