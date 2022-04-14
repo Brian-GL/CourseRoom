@@ -37,7 +37,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.MalformedURLException;
+import java.net.SocketException;
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -72,6 +75,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private String ID;
     private Lista<Tarea_Pendiente_Estudiante_Panel> tareas_Pendientes_Estudiante_Lista;
     private int Id_Grupo;
+    private DatagramSocket datagramSocket;
+    private Conexion_Notificador_Grupo conexion_Notificador;
     
     
     public Grupo_Estudiante_Panel(
@@ -1481,6 +1486,68 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         return Id_Grupo;
     }
     
+            private class Conexion_Notificador_Grupo extends Thread{
+        
+        @Override
+        public void run(){
+            
+            System.out.println("Esperando Conexión Con CourseRoom Notifier Desde Grupo...");
+            byte[] entryBuffer = new byte[128];
+            DatagramPacket datagramPacket = new DatagramPacket(entryBuffer,entryBuffer.length);
+            String mensaje;
+            String valor;
+            int longitud;
+            int indice;
+            int id_Usuario;
+            while(true){
+                
+                try {
+                    
+                    datagramSocket.receive(datagramPacket);
+                    
+                    //Usuario:
+                    indice = 0;
+                    longitud = (int)entryBuffer[indice];
+                    byte[] arreglo = new byte[longitud];
+                    
+                    for(int i = 1; i <= longitud; i++){
+                        arreglo[i-1] = entryBuffer[i];
+                    }
+                    
+                    indice = indice + 1;
+                    valor = ConvertirArreglo(arreglo);
+                    
+                    id_Usuario = Integer.parseInt(valor);
+                    
+                    //Ip:
+                    longitud = (int)entryBuffer[indice];
+                    indice++;
+                    arreglo = new byte[longitud];
+                    
+                    for(int i = 0; i < longitud; i++,indice++){
+                        arreglo[i] = entryBuffer[indice];
+                    }
+                    
+                    valor = ConvertirArreglo(arreglo).substring(1);
+                    
+                    //Estudiante:
+                    if(id_Usuario == Tablero_Estudiante_Panel.Id_Usuario()){
+                        mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Un Nuevo Mensaje Con IP: "+valor;
+                        System.out.println(mensaje+"\n");
+                    }
+                   
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+    }
+    
+    
+    public String ConvertirArreglo(byte[] arreglo) {
+        return new String(arreglo);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abandonar_Grupo_JButton;
     private javax.swing.JButton actualizar_JButton;
@@ -1646,6 +1713,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         mensajes_Chat_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        
+        try {
+            datagramSocket = new DatagramSocket(9005);
+            conexion_Notificador = new Conexion_Notificador_Grupo();
+            conexion_Notificador.start();
+        } catch (SocketException ex) {
+            System.err.println(ex.getMessage());
+        }
         
         Colorear_Componentes();
     }
