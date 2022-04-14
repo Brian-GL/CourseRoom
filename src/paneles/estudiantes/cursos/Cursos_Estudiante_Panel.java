@@ -1028,25 +1028,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Actuales_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         modelo_Cursos_Actuales = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
 
-        String id, nombre_Curso, nombre_Profesor, puntuacion, fecha_Creacion, intereses_Tematicas, ruta_Imagen_Curso, ruta_Imagen_Profesor;
-        
-        id = CourseRoom.Utilerias().Concatenar("Curso_Actual_", id_Curso_Actual);
-        
-        ruta_Imagen_Curso = "https://picsum.photos/450/450";
-        nombre_Curso =  CourseRoom.Utilerias().educator().course();
-
-        ruta_Imagen_Profesor = "https://i.pravatar.cc/450";
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        nombre_Profesor = CourseRoom.Utilerias().name().fullName();
-        intereses_Tematicas = CourseRoom.Utilerias().lorem().words(5).toString();
-
-        puntuacion = CourseRoom.Utilerias().Concatenar(
-                String.valueOf(CourseRoom.Utilerias().number().numberBetween(0, 6)), "/",
-                String.valueOf(CourseRoom.Utilerias().number().numberBetween(0, 6)));
-
-        Agregar_Curso_Actual(ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id);
-
-        
         //Cursos finalizados:
         mostrar_Cursos_Finalizados_JScrollPane.getViewport().setOpaque(false);
         mostrar_Cursos_Finalizados_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1058,20 +1039,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         mostrar_Cursos_Finalizados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        id = "Curso_Finalizado_0";
-       
-        nombre_Curso =  CourseRoom.Utilerias().educator().course();
-
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        nombre_Profesor = CourseRoom.Utilerias().name().fullName();
-        intereses_Tematicas = CourseRoom.Utilerias().lorem().words(5).toString();
-
-        puntuacion = CourseRoom.Utilerias().Concatenar(
-                String.valueOf(CourseRoom.Utilerias().number().numberBetween(0, 6)), "/",
-                String.valueOf(CourseRoom.Utilerias().number().numberBetween(0, 6)));
-
-        Agregar_Curso_Finalizado(ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id);
-
+        
           
         //Cursos Recomendados:
         mostrar_Cursos_Recomendados_JScrollPane.getViewport().setOpaque(false);
@@ -1085,21 +1053,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         mostrar_Cursos_Recomendados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         modelo_Cursos_Recomendados = (DefaultTableModel) mostrar_Cursos_Recomendados_JTable.getModel();
 
-        String id_curso_Actual_Enrolar = CourseRoom.Utilerias().Concatenar("Curso_Actual_", id_Curso_Actual);
-        id = "Curso_Recomendado_0";
-        
-        nombre_Curso =  CourseRoom.Utilerias().educator().course();
-
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        nombre_Profesor = CourseRoom.Utilerias().name().fullName();
-        intereses_Tematicas = CourseRoom.Utilerias().lorem().words(5).toString();
-
-        puntuacion = CourseRoom.Utilerias().Concatenar(
-                String.valueOf(CourseRoom.Utilerias().number().numberBetween(0, 6)), "/",
-                String.valueOf(CourseRoom.Utilerias().number().numberBetween(0, 6)));
-
-        Agregar_Curso_Recomendado(ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id, id_curso_Actual_Enrolar);
-
+       
         //Cursos nuevos:
         mostrar_Cursos_Nuevos_JScrollPane.getViewport().setOpaque(false);
         mostrar_Cursos_Nuevos_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1110,21 +1064,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         mostrar_Cursos_Nuevos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         modelo_Cursos_Nuevos = (DefaultTableModel) mostrar_Cursos_Nuevos_JTable.getModel();
-
-        id_curso_Actual_Enrolar = CourseRoom.Utilerias().Concatenar("Curso_Actual_", id_Curso_Actual);
-        id = "Curso_Nuevo_0";
-        nombre_Curso =  CourseRoom.Utilerias().educator().course();
-
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        nombre_Profesor = CourseRoom.Utilerias().name().fullName();
-        intereses_Tematicas = CourseRoom.Utilerias().lorem().words(5).toString();
-
-        puntuacion = CourseRoom.Utilerias().Concatenar(
-                String.valueOf(CourseRoom.Utilerias().number().numberBetween(0, 6)), "/",
-                String.valueOf(CourseRoom.Utilerias().number().numberBetween(0, 6)));
-
-        Agregar_Curso_Nuevo(ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Profesor, nombre_Profesor, intereses_Tematicas, fecha_Creacion, puntuacion, id, id_curso_Actual_Enrolar);
-
 
 
         titulo_JLabel.setText("Cursos Actuales");

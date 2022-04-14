@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.AvisosModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
+import paneles.profesores.Tablero_Profesor_Panel;
 
 
 /**
@@ -33,10 +34,14 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
     
     private DatagramSocket datagramSocket;
     private Conexion_Notificador conexion_Notificador;
+    // 0 -> Estudiante | 1 -> Profesor:
+    private boolean tipo_Usuario;
     
-    public Avisos_General_Panel(){
+    public Avisos_General_Panel(boolean _tipo_Usuario){
         
        initComponents();
+       
+       tipo_Usuario = _tipo_Usuario;
         
        Iniciar_Componentes();
        
@@ -314,7 +319,6 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
                     
                     indice = indice + 1;
                     valor = ConvertirArreglo(arreglo);
-                    System.out.println(valor);
                     
                     id_Usuario = Integer.parseInt(valor);
                     
@@ -327,10 +331,20 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
                         arreglo[i] = entryBuffer[indice];
                     }
                     
-                    valor = ConvertirArreglo(arreglo);
+                    valor = ConvertirArreglo(arreglo).substring(1);
                     
-                    mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación Con IP: "+valor;
-                    System.out.println(mensaje+"\n");
+                    //Estudiante:
+                    if(!tipo_Usuario){
+                        if(id_Usuario == Tablero_Estudiante_Panel.Id_Usuario()){
+                            mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación Con IP: "+valor;
+                            System.out.println(mensaje+"\n");
+                        }
+                    }else{
+                        if(id_Usuario == Tablero_Profesor_Panel.Id_Usuario()){
+                            mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación Con IP: "+valor;
+                            System.out.println(mensaje+"\n");
+                        }
+                    }
                     
 
                 } catch (IOException ex) {
