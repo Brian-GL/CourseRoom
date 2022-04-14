@@ -1419,7 +1419,7 @@ public class Solicitudes {
         return archivoModel;
     }    
     
-    public ArchivoModel Obtener_Archivo_Retoalimentacion_Tarea(int id_Retroalimentacion){
+    public ArchivoModel Obtener_Archivo_Retroalimentacion_Tarea(int id_Retroalimentacion){
         ArchivoModel archivoModel = new ArchivoModel();
         
         try {
@@ -1430,7 +1430,7 @@ public class Solicitudes {
             parametros.add(CourseRoom.Utilerias().MiUidd());
             parametros.add(CourseRoom.Utilerias().MiIP());
 
-            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivo_Retoalimentacion_Tarea", parametros);
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Archivo_Retroalimentacion_Tarea", parametros);
 
             if(respuesta != null){
 
