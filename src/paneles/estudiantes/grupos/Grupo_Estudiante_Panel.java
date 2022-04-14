@@ -75,25 +75,25 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     
     
     public Grupo_Estudiante_Panel(
-            Image _imagen_Grupo, 
-            String nombre_Grupo, 
-            String _curso,
-            String _fecha_Creacion,
-            String _id,
+            //Image _imagen_Grupo, 
+            //String nombre_Grupo, 
+            //String _curso,
+            //String _fecha_Creacion,
+            //String _id,
             int id_Grupo) {
         initComponents();
         
-        ImageIcon icono_Grupo = new ImageIcon(_imagen_Grupo);
+        /*ImageIcon icono_Grupo = new ImageIcon(_imagen_Grupo);
         titulo_JLabel.setText(nombre_Grupo);
         editar_Nombre_JTextField.setText(nombre_Grupo);
         curso_JLabel.setText(CourseRoom.Utilerias().Concatenar("Del Curso ",_curso));
         imagen_JLabel.setIcon(icono_Grupo);
         fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creado El ",_fecha_Creacion));
 
-        this.ID = _id;
+        this.ID = _id;*/
         Id_Grupo = id_Grupo;
         
-        icono_Grupo.getImage().flush();
+        //icono_Grupo.getImage().flush();
         
         Iniciar_Componentes();
     }
