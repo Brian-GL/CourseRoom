@@ -28,7 +28,6 @@ import java.time.LocalDateTime;
 import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import modelos.DatosPerfilModel;
 import modelos.ResponseModel;
 import paneles.profesores.cursos.Cursos_Profesor_Panel;
 import paneles.profesores.desempeno_profesional.Desempeno_Profesional_Profesor_Panel;
@@ -969,7 +968,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         fechas_Panel = new Fechas_General_Panel();
         visualizador_JPanel.add("Fechas",fechas_Panel);
 
-        avisos_Panel = new Avisos_General_Panel();
+        avisos_Panel = new Avisos_General_Panel(true);
         visualizador_JPanel.add("Avisos",avisos_Panel);
 
         acerca_De_Panel = new Acerca_General_Panel();
