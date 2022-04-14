@@ -20,6 +20,7 @@ package paneles.estudiantes.cursos;
 import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
@@ -41,6 +42,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -1127,7 +1129,25 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void abandonar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abandonar_Curso_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Abandonar El Curso?", "Pregunta De Confirmación", 
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            
+            if(resultado == JOptionPane.YES_OPTION){
+            
+                ResponseModel response = CourseRoom.Solicitudes().Abandonar_Curso(Id_Curso, 
+                        Tablero_Estudiante_Panel.Id_Usuario());
 
+                if(response.Is_Success()){
+                    CourseRoom.Utilerias().Mensaje_Informativo("Abandonar Curso", response.Mensaje());
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Abandonar Curso", response.Mensaje());
+                }
+            
+                Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
+                Tablero_Estudiante_Panel.Retirar_Vista(this);
+                this.Limpiar();
+            }
         }
     }//GEN-LAST:event_abandonar_Curso_JButtonMouseClicked
 

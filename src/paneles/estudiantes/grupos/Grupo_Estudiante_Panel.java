@@ -46,6 +46,8 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -58,6 +60,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ComboOptionModel;
+import modelos.MiembrosGrupoModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -1278,7 +1282,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         if(SwingUtilities.isLeftMouseButton(evt)){
             
             int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
-                    "¿Estás Segur@ De Abandonar El Grupo?", "Pregunta", 
+                    "¿Estás Segur@ De Abandonar El Grupo?", "Pregunta De Confirmación", 
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
@@ -1333,8 +1337,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
 
-            String miembro_A_Cargo = miembro_A_Cargo_JComboBox.getSelectedItem() != null ?
-                    miembro_A_Cargo_JComboBox.getSelectedItem().toString() : "Indefinido";
+            ComboOptionModel comboOptionModel = (ComboOptionModel)miembro_A_Cargo_JComboBox.getSelectedItem();
             String nombre_Tarea_Pendiente = nombre_Tarea_Pendiente_JTextField.getText();
             String descripcion = descripcion_Tarea_Pendiente_JTextPane.getText();
             String fecha_Finalizacion =
@@ -1344,9 +1347,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 !descripcion.isEmpty() && !descripcion.isBlank() &&
                 !fecha_Finalizacion.isEmpty() && !fecha_Finalizacion.isBlank()){
 
-                String id_Tarea = CourseRoom.Utilerias().Concatenar(this.ID, "_Tarea_Pendiente_",String.valueOf(id_Tarea_Pendiente));
-                Agregar_Tarea_Pendiente_Local(nombre_Tarea_Pendiente,descripcion,miembro_A_Cargo,CourseRoom.Utilerias().Fecha_Hora_Local(),
-                        fecha_Finalizacion,(byte) 0, id_Tarea);
+                //Agregar_Tarea_Pendiente_Local(nombre_Tarea_Pendiente,descripcion,miembro_A_Cargo,CourseRoom.Utilerias().Fecha_Hora_Local(),
+                     //   fecha_Finalizacion,(byte) 0);
                         
                 nombre_Tarea_Pendiente_JTextField.setText("");
                 descripcion_Tarea_Pendiente_JTextPane.setText("");
@@ -1440,7 +1442,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         guardar_Cambios_Datos_Generales_Grupo_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseExited
 
-    private void Agregar_Tarea_Pendiente_Local(String nombre_Tarea_Pendiente, String descripcion, String miembro_A_Cargo,
+    private void Agregar_Tarea_Pendiente_Local(String nombre_Tarea_Pendiente, String descripcion, ComboOptionModel miembro_A_Cargo,
             String fecha_Creacion, String fecha_Finalizacion, byte estatus, String id){
         
         //Estatus -> 0 : Pendiente.
@@ -1460,7 +1462,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             celdas[0] = celda;
             imagen = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
             icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono, miembro_A_Cargo, id);
+            celda = new Celda_Renderer(icono, miembro_A_Cargo.Valor(), id);
             celdas[1] = celda;
             switch(estatus){
                 case 1:
@@ -1491,7 +1493,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             
             Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel =
                     new Tarea_Pendiente_Estudiante_Panel(nombre_Tarea_Pendiente,
-                            Tablero_Estudiante_Panel.Obtener_Imagen_Usuario(), miembro_A_Cargo, descripcion, 
+                            Tablero_Estudiante_Panel.Obtener_Imagen_Usuario(), miembro_A_Cargo.Valor(), descripcion, 
                             fecha_Creacion, fecha_Finalizacion, estatus_Tarea, this.ID);
             
             tareas_Pendientes_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
@@ -1504,43 +1506,67 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     }
     
     
-    private void Agregar_Miembro(String ruta_Imagen, String nombre_Miembro, String fecha_Ingreso){
-        URL url_Imagen;
-        Image imagen;
-        ImageIcon icono;
-        
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
-        Celda_Renderer celda;
-        DefaultTableModel modelo = (DefaultTableModel)miembros_JTable.getModel();
-        
+    private void Agregar_Miembro(MiembrosGrupoModel miembrosGrupoModel){
         try {
+            ComboOptionModel comboOptionModel = new ComboOptionModel(miembrosGrupoModel.Id_Usuario(), miembrosGrupoModel.Nombre_Completo());
+            //miembro_A_Cargo_JComboBox.addItem(comboOptionModel);
+            String Id_Usuario = String.valueOf(miembrosGrupoModel.Id_Usuario());
+            String nombre_Miembro = miembrosGrupoModel.Nombre_Completo();
+            String fecha_Ingreso = miembrosGrupoModel.Fecha_Ingreso();
             
-            url_Imagen = new URL(ruta_Imagen);
-            imagen = ImageIO.read(url_Imagen);
-            icono = new ImageIcon(imagen);
+            Image imagen;
+            ImageIcon icono;
             
-            celda = new Celda_Renderer(icono, nombre_Miembro,"");
-            celdas[0] = celda;
+            Celda_Renderer[] celdas = new Celda_Renderer[3];
+            Celda_Renderer celda;
+            DefaultTableModel modelo = (DefaultTableModel)miembros_JTable.getModel();
             
-            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-            icono  = new ImageIcon(imagen);
-
-            celda = new Celda_Renderer(fecha_Ingreso);
+            byte[] bytes_Imagen_Grupo = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(miembrosGrupoModel.Id_Usuario());
+            if(bytes_Imagen_Grupo.length > 0){
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Grupo);
+                
+                if(imagen != null){
+                    
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    ImageIcon icono_Imagen = new ImageIcon(imagen);
+                    celda =  new Celda_Renderer(icono_Imagen,miembrosGrupoModel.Nombre_Completo());
+                    celdas[0] = celda;
+                    //icono_Imagen.getImage().flush();
+                }else{
+                    celda =  new Celda_Renderer(miembrosGrupoModel.Nombre_Completo(), Id_Usuario);
+                    celdas[0] = celda;
+                }
+            }
+            celda = new Celda_Renderer(fecha_Ingreso,Id_Usuario);
             celdas[1] = celda;
-            celda = new Celda_Renderer(icono);
+            Image iconos = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            ImageIcon remover = new ImageIcon(iconos);
+            celda = new Celda_Renderer(remover, Id_Usuario);
             celdas[2] = celda;
-            miembro_A_Cargo_JComboBox.addItem(nombre_Miembro);
             modelo.addRow(celdas);
             miembros_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
-
-            imagen.flush();
-        } catch (MalformedURLException ex) {
-
         } catch (IOException ex) {
-
+            Logger.getLogger(Grupo_Estudiante_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         
+    }
+    
+        private void Obtener_Miembros(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
+        modelo.setRowCount(0);
+               
+        Lista<MiembrosGrupoModel> lista = 
+                CourseRoom.Solicitudes().Obtener_Miembros_Grupo(Tablero_Estudiante_Panel.Id_Usuario());
+        
+        if(!lista.is_empty()){
+            while(!lista.is_empty()){
+                Agregar_Miembro(lista.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
+        }
     }
     
     public int Id_Grupo() {
@@ -1703,33 +1729,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         miembros_JTable.getTableHeader().setFont(gadugi);
-
         miembros_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        String ruta = "https://i.pravatar.cc/96";
-        String miembro = CourseRoom.Utilerias().name().fullName();
-        String fecha_Ingreso = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22,23));
-        
-        Agregar_Miembro(ruta, miembro, fecha_Ingreso);
-                
-        miembros_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int columna = tabla.getSelectedColumn();
-
-                    if (columna == 2) {
-                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                        modelo.removeRow(fila);
-                    }
-
-                }
-            }
-        });
         
         archivos_Compartidos_JTable.getTableHeader().setFont(gadugi);
         archivos_Compartidos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
@@ -1784,6 +1785,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         }
         
         Colorear_Componentes();
+        Obtener_Miembros();
     }
 
     @Override
