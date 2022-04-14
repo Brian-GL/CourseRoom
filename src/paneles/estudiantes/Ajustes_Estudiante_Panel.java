@@ -23,6 +23,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ConfiguracionesModel;
 import modelos.ResponseModel;
 import modelos.SesionesModel;
 
@@ -33,6 +34,7 @@ import modelos.SesionesModel;
 public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface, Limpieza_Interface{
 
     private byte carta_Visible;
+    private boolean chats_Conmigo, avisos_Activo;
     private Color primer_Color_Personalizado, segundo_Color_Personalizado, tercer_Color_Personalizado, primer_Color_Fuente_Personalizado, segundo_Color_Fuente_Personalizado, tercer_Color_Fuente_Personalizado;
     
     /**
@@ -509,7 +511,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             
             if(resultado == JOptionPane.YES_OPTION){
             
-                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), false, false, false);
+                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), chats_Conmigo, avisos_Activo, false);
 
                 if(response.Is_Success()){
                     CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Cuenta", response.Mensaje());
@@ -517,6 +519,8 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
                     CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Cuenta", response.Mensaje());
                 }
             }
+            
+            CourseRoom_Frame.getInstance().Cerrar_Sesion();
         }
     }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseClicked
 
@@ -535,20 +539,43 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
     private void desactivar_Activar_Notificaciones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+            
+            if(desactivar_Activar_Notificaciones_JButton.getText().equals("¿Desactivar Notificaciones?")){
+                int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
                     "¿Estás Segur@ De Desactivar Las Notificaciones?", "Pregunta", 
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
-            if(resultado == JOptionPane.YES_OPTION){
-            
-                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), false, false, false);
+                if(resultado == JOptionPane.YES_OPTION){
 
-                if(response.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
+                            chats_Conmigo, false, true);
+
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
+                        avisos_Activo = false;
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
+                    }
+                }
+            }else{
+                int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Activar Las Notificaciones?", "Pregunta", 
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            
+                if(resultado == JOptionPane.YES_OPTION){
+
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
+                            chats_Conmigo, true, true);
+
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Activar Notificaciones", response.Mensaje());
+                        avisos_Activo = true;
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Activar Notificaciones", response.Mensaje());
+                    }
                 }
             }
+            
         }
     }//GEN-LAST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
 
@@ -567,18 +594,39 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
     private void permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
-                    "¿Estás Segur@ De Desactivar Los Chats?", "Pregunta", 
+            if(desactivar_Activar_Notificaciones_JButton.getText().equals("¿Desactivar Chats Conmigo?")){
+                int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Desactivar Los Chats Con Usted?", "Pregunta", 
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
-            if(resultado == JOptionPane.YES_OPTION){
-            
-                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), false, false, false);
+                if(resultado == JOptionPane.YES_OPTION){
 
-                if(response.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats", response.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats", response.Mensaje());
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
+                            false, avisos_Activo, true);
+
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats Conmigo", response.Mensaje());
+                        chats_Conmigo = false;
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats Conmigo", response.Mensaje());
+                    }
+                }
+            }else{
+                int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Activar Los Chats Conmigo?", "Pregunta", 
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            
+                if(resultado == JOptionPane.YES_OPTION){
+
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
+                            true, avisos_Activo, true);
+
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Activar Chats Conmigo", response.Mensaje());
+                        chats_Conmigo = true;
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Activar Chats Conmigo", response.Mensaje());
+                    }
                 }
             }
         }
@@ -666,6 +714,28 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             Agregar_Sesion(sesiones.delist());
         }
         
+        ConfiguracionesModel configuracionesModel = 
+                CourseRoom.Solicitudes().Obtener_Configuraciones(Tablero_Estudiante_Panel.Id_Usuario());
+        
+        chats_Conmigo = configuracionesModel.Chats_Conmigo();
+        avisos_Activo = configuracionesModel.Avisos_Activos();
+        
+        if(configuracionesModel.Avisos_Activos()){
+            desactivar_Activar_Notificaciones_JButton.setText("¿Desactivar Notificaciones?");
+            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Desactivar Sus Notificaciones?");
+        }else{
+            desactivar_Activar_Notificaciones_JButton.setText("¿Activar Notificaciones?");
+            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Activar Sus Notificaciones?");
+        }
+        
+        if(configuracionesModel.Chats_Conmigo()){
+            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Desactivar Chats Conmigo?");
+            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Desactivar La Opción De Permitir Chats Con Usted?");
+        }else{
+            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Activar Chats Conmigo?");
+            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Activar La Opción De Permitir Chats Con Usted?");
+        }
+        
     }
     
     @Override
@@ -710,7 +780,6 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         primer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Primer_Color()));
         segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Segundo_Color()));
         tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Tercer_Color()));
-        
         
         BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Primer Color", TitledBorder.CENTER,

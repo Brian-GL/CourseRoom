@@ -9,7 +9,6 @@ import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
 import courseroom.CourseRoom_Frame;
-import datos.estructuras.Par;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -420,9 +419,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
     private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
 
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            Enviar_Archivos();
-            
+            Enviar_Archivo();
         }
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseClicked
 
@@ -648,35 +645,36 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
     }
 
     @Override
-    public void Enviar_Archivos() {
+    public void Enviar_Archivo() {
         Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
 
         if (resultado == JFileChooser.APPROVE_OPTION) {
-            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
+            File archivo_Abierto = escogedor_Archivos.getSelectedFile();
 
-            if (archivos_Abiertos != null) {
+            if (archivo_Abierto != null) {
                 try {
-                    String emisor;
-                    String fecha;
-                    String ruta;
-                    String nombre_Archivo;
-                    Celda_Renderer[] celdas = new Celda_Renderer[3];
-                    DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-                    Celda_Renderer celda;
-                    long tamanio;
-                    boolean archivo_Mayor = false;
-                    ResponseModel response;
-                    Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-                    ImageIcon icono_Abrir = new ImageIcon(icono);
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        tamanio = FileUtils.sizeOf(archivo_Abierto);
-                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                        if(tamanio < 75){
-                            ruta = archivo_Abierto.getAbsolutePath();
-                            nombre_Archivo = archivo_Abierto.getName();
-                            emisor = Perfil_Estudiante_Panel.Nombre_Completo();
-                            fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
+                    
+                    long tamanio = FileUtils.sizeOf(archivo_Abierto);
+                    tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                    if(tamanio < 35){
+
+                        String ruta = archivo_Abierto.getAbsolutePath();
+                        String nombre_Archivo = archivo_Abierto.getName();
+                        String emisor = Perfil_Estudiante_Panel.Nombre_Completo();
+                       
+                        ResponseModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Pregunta(nombre_Archivo, 
+                                FileUtils.readFileToByteArray(archivo_Abierto), 
+                                FilenameUtils.getExtension(nombre_Archivo), 
+                                Tablero_Estudiante_Panel.Id_Usuario(), Id_Pregunta());
+                        
+                        String fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
+                        if(response.Is_Success()){
+                            Celda_Renderer[] celdas = new Celda_Renderer[3];
+                            DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+                            Celda_Renderer celda;
+                            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                            ImageIcon icono_Abrir = new ImageIcon(icono);
                             celda = new Celda_Renderer(emisor);
                             celdas[0] = celda;
                             celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
@@ -684,28 +682,23 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                             celda = new Celda_Renderer(fecha);
                             celdas[2] = celda;
                             modelo.addRow(celdas);
-                        response = CourseRoom.Solicitudes().Enviar_Mensaje_Pregunta(nombre_Archivo,
-                                FileUtils.readFileToByteArray(archivo_Abierto), FilenameUtils.getExtension(nombre_Archivo), 
-                                Tablero_Estudiante_Panel.Id_Usuario(), id);
-                        if(response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                            break;
-                        }
                             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
+                            icono.flush();
+                            CourseRoom.Utilerias().Mensaje_Informativo("Pregunta",response.Mensaje());
                         }else{
-                            archivo_Mayor = true;
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
                         }
+                       
                     }
-                    if(archivo_Mayor){
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                    else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo Supera El Tamaño Aceptado De Subida");
                     }
-                    icono.flush();
+                  
                 } catch (IOException ex) {
-                    CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Archivo",ex.getMessage());
                 }
             }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo No Tiene Un Formato Adecuado");
         }
     }
 

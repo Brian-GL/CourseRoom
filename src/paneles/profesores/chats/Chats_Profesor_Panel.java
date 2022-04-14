@@ -1,5 +1,23 @@
+/*
+ * Copyright (C) 2022 LENOVO
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
 package paneles.profesores.chats;
 
+import paneles.estudiantes.chats.*;
 import javax.swing.JLayeredPane;
 import clases.Celda_Renderer;
 import datos.colecciones.Lista;
@@ -7,16 +25,13 @@ import datos.estructuras.Nodo;
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
+import frames.estudiantes.Buscar_Usuario_Chatear_Frame;
 import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -26,7 +41,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.ChatsPersonalesModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
-import paneles.profesores.Tablero_Profesor_Panel;
 
 /**
  *
@@ -34,16 +48,15 @@ import paneles.profesores.Tablero_Profesor_Panel;
  */
 public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface{
 
-    private Lista<Chat_Profesor_Panel> mostrar_Chats_Lista;
-    private Lista<Chat_Profesor_Panel> buscar_Chats_Lista;
+    private Lista<Chat_Estudiante_Panel> mostrar_Chats_Lista;
+    private Lista<Chat_Estudiante_Panel> buscar_Chats_Lista;
     
     /**
-     * Creates new form Pagina_Chats_Profesor
+     * Creates new form Pagina_Chats_Estudiante
      */
     public Chats_Profesor_Panel() {
         initComponents();
         Iniciar_Componentes();
-        Obtener_Chats_Profesor();
     }
 
     /**
@@ -73,8 +86,8 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         setPreferredSize(new java.awt.Dimension(1110, 630));
         setLayout(new java.awt.CardLayout());
 
-        mostrar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         mostrar_Chats_JPanel.setOpaque(false);
+        mostrar_Chats_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
         contenido_Titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 118));
         contenido_Titulo_JPanel.setOpaque(false);
@@ -218,11 +231,11 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
                         int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                         int columna = tabla.getSelectedColumn();
 
-                        DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
+                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
 
                         Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
 
-                        Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
+                        Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
 
                     }
                 }
@@ -268,7 +281,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
             });
 
             mostrar_Chats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/video-chat.png"))); // NOI18N
-            mostrar_Chats_JButton.setToolTipText("<html>\n<h3>Regresar a mis chats personales</h3>\n</html>");
+            mostrar_Chats_JButton.setToolTipText("<html>\n<h3>Regresar A Mis Chats Personales</h3>\n</html>");
             mostrar_Chats_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             mostrar_Chats_JButton.setMaximumSize(new java.awt.Dimension(64, 64));
             mostrar_Chats_JButton.setMinimumSize(new java.awt.Dimension(64, 64));
@@ -342,7 +355,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
                             Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
 
-                            Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
+                            Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
 
                         }
                     }
@@ -381,6 +394,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
     private void buscar_Chats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Chats_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+            actualizar_JButton.setVisible(false);
             ((CardLayout)this.getLayout()).show(this, "Buscar");
         }
     }//GEN-LAST:event_buscar_Chats_JButtonMouseClicked
@@ -399,20 +413,22 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         int longitud = buscar_JTextField.getText().length();
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             if (longitud > 99) {
-            buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Chats<br>Rebasa Los 100 Caracteres");
-          }else{
+                buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Chats<br>Rebasa Los 100 Caracteres");
+            }else{
                 SwingUtilities.invokeLater(() -> {
-                    Buscar_Chats_Profesor(buscar_JTextField.getText());
+                    Buscar_Chats_Personales(buscar_JTextField.getText());
                 });
 
             }
         }
+
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
 
     private void mostrar_Chats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Chats_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+            actualizar_JButton.setVisible(true);
             ((CardLayout)this.getLayout()).show(this, "Mostrar");
         }
     }//GEN-LAST:event_mostrar_Chats_JButtonMouseClicked
@@ -428,9 +444,10 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
     }//GEN-LAST:event_mostrar_Chats_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
+        // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             SwingUtilities.invokeLater(() -> {
-                Obtener_Chats_Profesor();
+                Obtener_Chats_Personales();
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -449,10 +466,10 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
 
-            Chatear_Profesor_Frame chatear_Profesor_Frame
-            = new Chatear_Profesor_Frame();
+            Buscar_Usuario_Chatear_Frame buscar_Usuario_Chatear_Frame
+            = new Buscar_Usuario_Chatear_Frame();
 
-            chatear_Profesor_Frame.setVisible(true);
+            buscar_Usuario_Chatear_Frame.setVisible(true);
         }
     }//GEN-LAST:event_chatear_JButtonMouseClicked
 
@@ -466,27 +483,55 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         chatear_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_chatear_JButtonMouseExited
 
-        private void Obtener_Chats_Profesor(){
+    private void Obtener_Chats_Personales(){
         
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
         modelo.setRowCount(0);
         
-        Chat_Profesor_Panel chat_Profesor_Panel;
+        Chat_Estudiante_Panel chat_Estudiante_Panel;
         while(!mostrar_Chats_Lista.is_empty()){
-            chat_Profesor_Panel= mostrar_Chats_Lista.delist();
-            Tablero_Profesor_Panel.Retirar_Vista(chat_Profesor_Panel);
-            chat_Profesor_Panel.Limpiar();
+            chat_Estudiante_Panel= mostrar_Chats_Lista.delist();
+            Tablero_Estudiante_Panel.Retirar_Vista(chat_Estudiante_Panel);
+            chat_Estudiante_Panel.Limpiar();
         }
         
         Lista<ChatsPersonalesModel> lista = 
-                CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Profesor_Panel.Id_Usuario());
+                CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Estudiante_Panel.Id_Usuario());
         
-        while(!lista.is_empty()){
-            Agregar_Chat(lista.delist());
+        if(!lista.is_empty()){
+            while(!lista.is_empty()){
+                Agregar_Chat(lista.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
         }
     }
     
-    public void Agregar_Chat(ChatsPersonalesModel chatsPersonalesModel) {
+    private void Buscar_Chats_Personales(String busqueda){
+        
+        DefaultTableModel modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Chat_Estudiante_Panel chat_Estudiante_Panel;
+        while(!buscar_Chats_Lista.is_empty()){
+            chat_Estudiante_Panel= buscar_Chats_Lista.delist();
+            Tablero_Estudiante_Panel.Retirar_Vista(chat_Estudiante_Panel);
+            chat_Estudiante_Panel.Limpiar();
+        }
+        
+        Lista<ChatsPersonalesModel> lista = 
+                CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda,Tablero_Estudiante_Panel.Id_Usuario());
+        
+        if(!lista.is_empty()){
+            while(!lista.is_empty()){
+                Agregar_Chat_Busqueda(lista.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta","No Se Encontraron Chats");
+        }
+    }
+    
+    private void Agregar_Chat(ChatsPersonalesModel chatsPersonalesModel) {
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
 
@@ -521,12 +566,13 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
         mostrar_Chats_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
 
-        Chat_Profesor_Panel chat_Profesor_Panel
-                = new Chat_Profesor_Panel(chatsPersonalesModel.Id_Chat());
+        Chat_Estudiante_Panel chat_Estudiante_Panel
+                = new Chat_Estudiante_Panel(chatsPersonalesModel.Id_Chat());
 
-        mostrar_Chats_Lista.push_back(chat_Profesor_Panel);
+        mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
 
-        Tablero_Profesor_Panel.Agregar_Vista(chat_Profesor_Panel, id_Chat);
+        Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id_Chat);
+        
     }
     
     private void Agregar_Chat_Busqueda(ChatsPersonalesModel chatsPersonalesModel) {
@@ -566,42 +612,18 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         buscar_Chats_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
 
         if(!Existe_Chat(chatsPersonalesModel.Id_Chat())){
-            Chat_Profesor_Panel chat_Profesor_Panel
-                = new Chat_Profesor_Panel(chatsPersonalesModel.Id_Chat());
-            buscar_Chats_Lista.push_back(chat_Profesor_Panel);
+            Chat_Estudiante_Panel chat_Estudiante_Panel
+                = new Chat_Estudiante_Panel(chatsPersonalesModel.Id_Chat());
+            buscar_Chats_Lista.push_back(chat_Estudiante_Panel);
 
-            Tablero_Estudiante_Panel.Agregar_Vista(chat_Profesor_Panel, CourseRoom.Utilerias().Concatenar("Chat_Personal_", chatsPersonalesModel.Id_Chat()));
+            Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, CourseRoom.Utilerias().Concatenar("Chat_Personal_", chatsPersonalesModel.Id_Chat()));
         }
 
-    }
-    
-        private void Buscar_Chats_Profesor(String busqueda){
-        
-        DefaultTableModel modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
-        modelo.setRowCount(0);
-        
-        Chat_Profesor_Panel chat_Profesor_Panel;
-        while(!buscar_Chats_Lista.is_empty()){
-            chat_Profesor_Panel= buscar_Chats_Lista.delist();
-            Tablero_Profesor_Panel.Retirar_Vista(chat_Profesor_Panel);
-            chat_Profesor_Panel.Limpiar();
-        }
-        
-        Lista<ChatsPersonalesModel> lista = 
-                CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda,Tablero_Profesor_Panel.Id_Usuario());
-        
-        if(!lista.is_empty()){
-            while(!lista.is_empty()){
-                Agregar_Chat_Busqueda(lista.delist());
-            }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta","No Se Encontraron Chats");
-        }
     }
     
     private boolean Existe_Chat(int id_Chat){
-        Nodo<Chat_Profesor_Panel> first = mostrar_Chats_Lista.front();
-        Nodo<Chat_Profesor_Panel> last = mostrar_Chats_Lista.back();
+        Nodo<Chat_Estudiante_Panel> first = mostrar_Chats_Lista.front();
+        Nodo<Chat_Estudiante_Panel> last = mostrar_Chats_Lista.back();
 
         int middle_index = (mostrar_Chats_Lista.size())/2;
 
@@ -639,7 +661,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         }
       
     }
-    
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
@@ -681,18 +703,18 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
         buscar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        
-
     }
 
     @Override
     public void Colorear_Componentes() {
+        
+        chatear_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
         titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
-        buscar_Chats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
         Font fuente = new java.awt.Font("Segoe UI", 1, 14);
@@ -705,7 +727,9 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         buscar_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         buscar_JTextField.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         buscar_JTextField.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-
+        
+        buscar_Chats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        
         mostrar_Chats_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
         
         mostrar_Chats_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
@@ -737,10 +761,10 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
             }
         }
 
-        Chat_Profesor_Panel chat_Profesor_Panel;
-        for (Nodo<Chat_Profesor_Panel> nodo = mostrar_Chats_Lista.front(); nodo != null; nodo = nodo.next()) {
-            chat_Profesor_Panel = nodo.element();
-            chat_Profesor_Panel.Colorear_Componentes();
+        Chat_Estudiante_Panel chat_Estudiante_Panel;
+        for (Nodo<Chat_Estudiante_Panel> nodo = mostrar_Chats_Lista.front(); nodo != null; nodo = nodo.next()) {
+            chat_Estudiante_Panel = nodo.element();
+            chat_Estudiante_Panel.Colorear_Componentes();
         }
         
         modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
@@ -751,9 +775,9 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
             }
         }
 
-        for (Nodo<Chat_Profesor_Panel> nodo = buscar_Chats_Lista.front(); nodo != null; nodo = nodo.next()) {
-            chat_Profesor_Panel = nodo.element();
-            chat_Profesor_Panel.Colorear_Componentes();
+        for (Nodo<Chat_Estudiante_Panel> nodo = buscar_Chats_Lista.front(); nodo != null; nodo = nodo.next()) {
+            chat_Estudiante_Panel = nodo.element();
+            chat_Estudiante_Panel.Colorear_Componentes();
         }
     }
 
@@ -766,201 +790,5 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
         modelo.setRowCount(0);
     }
-    
-    public class Chatear_Profesor_Frame extends javax.swing.JDialog implements Componentes_Interface {
-
-        public Chatear_Profesor_Frame() {
-
-            initComponents();
-
-            Iniciar_Componentes();
-        }
-
-        /**
-         * This method is called from within the constructor to initialize the
-         * form. WARNING: Do NOT modify this code. The content of this method is
-         * always regenerated by the Form Editor.
-         */
-        @SuppressWarnings("unchecked")
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-        private void initComponents() {
-
-            contenido_JPanel = new javax.swing.JPanel();
-            chatear_JButton = new javax.swing.JButton();
-            cerrar_JButton = new javax.swing.JButton();
-            chatear_AutoCompletionComboBox = new com.jidesoft.swing.AutoCompletionComboBox();
-
-            setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-            setAlwaysOnTop(true);
-            setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-            setMaximumSize(new java.awt.Dimension(900, 150));
-            setMinimumSize(new java.awt.Dimension(900, 150));
-            setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-            setUndecorated(true);
-            setResizable(false);
-            setType(java.awt.Window.Type.POPUP);
-            getContentPane().setLayout(new java.awt.CardLayout());
-
-            contenido_JPanel.setMaximumSize(new java.awt.Dimension(900, 150));
-            contenido_JPanel.setMinimumSize(new java.awt.Dimension(900, 150));
-            contenido_JPanel.setPreferredSize(new java.awt.Dimension(900, 150));
-
-            chatear_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat_1.png"))); // NOI18N
-            chatear_JButton.setText("Chatear");
-            chatear_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-            ((ImageIcon) chatear_JButton.getIcon()).getImage().flush();
-            chatear_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    chatear_JButtonMouseClicked(evt);
-                }
-                @Override
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    chatear_JButtonMouseEntered(evt);
-                }
-
-                @Override
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    chatear_JButtonMouseExited(evt);
-                }
-            });
-
-            cerrar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
-            cerrar_JButton.setText("Cancelar");
-            cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-            ((ImageIcon) cerrar_JButton.getIcon()).getImage().flush();
-            cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    cerrar_JButtonMouseClicked(evt);
-                }
-
-                @Override
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    cerrar_JButtonMouseEntered(evt);
-                }
-
-                @Override
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    cerrar_JButtonMouseExited(evt);
-                }
-            });
-
-            chatear_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-
-            javax.swing.GroupLayout contenido_JPanelLayout = new javax.swing.GroupLayout(contenido_JPanel);
-            contenido_JPanel.setLayout(contenido_JPanelLayout);
-            contenido_JPanelLayout.setHorizontalGroup(
-                    contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chatear_AutoCompletionComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                                                    .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 510, Short.MAX_VALUE)
-                                                    .addComponent(chatear_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addContainerGap())
-            );
-            contenido_JPanelLayout.setVerticalGroup(
-                    contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(contenido_JPanelLayout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(chatear_AutoCompletionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(contenido_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cerrar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(chatear_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addContainerGap(14, Short.MAX_VALUE))
-            );
-
-            getContentPane().add(contenido_JPanel, "card2");
-
-            pack();
-        }// </editor-fold>                        
-
-        private void chatear_JButtonMouseClicked(java.awt.event.MouseEvent evt) {
-            // TODO add your handling code here:
-            if (SwingUtilities.isLeftMouseButton(evt)) {
-                if (chatear_AutoCompletionComboBox.getSelectedItem() != null) {
-                    if (!((String) chatear_AutoCompletionComboBox.getSelectedItem()).isBlank() && !((String) chatear_AutoCompletionComboBox.getSelectedItem()).isEmpty()) {
-
-                        // Chats_Profesor_Panel.Agregar_Chat();
-                        //Tablero_Profesor_Panel.Mostrar_Vista(id);
-                        this.dispose();
-
-                    }
-                }
-            }
-        }
-
-        private void chatear_JButtonMouseEntered(java.awt.event.MouseEvent evt) {
-            // TODO add your handling code here:
-            chatear_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-            chatear_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        }
-
-        private void chatear_JButtonMouseExited(java.awt.event.MouseEvent evt) {
-            // TODO add your handling code here:
-            chatear_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
-            chatear_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        }
-
-        private void cerrar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {
-            // TODO add your handling code here:
-            if (SwingUtilities.isLeftMouseButton(evt)) {
-                this.dispose();
-            }
-        }
-
-        private void cerrar_JButtonMouseEntered(java.awt.event.MouseEvent evt) {
-            // TODO add your handling code here:
-            cerrar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-            cerrar_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        }
-
-        private void cerrar_JButtonMouseExited(java.awt.event.MouseEvent evt) {
-            // TODO add your handling code here:
-            cerrar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
-            cerrar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        }
-
-        // Variables declaration - do not modify                     
-        private javax.swing.JButton cerrar_JButton;
-        private com.jidesoft.swing.AutoCompletionComboBox chatear_AutoCompletionComboBox;
-        private javax.swing.JButton chatear_JButton;
-        private javax.swing.JPanel contenido_JPanel;
-        // End of variables declaration                   
-
-        @Override
-        public void Iniciar_Componentes() {
-            this.setLocationRelativeTo(null);
-            Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
-
-            chatear_AutoCompletionComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
-                    "Chatear Con", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                    javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                    gadugi, CourseRoom.Utilerias().Tercer_Color_Fuente()));
-
-            Colorear_Componentes();
-        }
-
-        @Override
-        public void Colorear_Componentes() {
-
-            chatear_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Tercer_Color());
-            chatear_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-
-            contenido_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
-
-            cerrar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
-            cerrar_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-
-            chatear_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
-            chatear_JButton.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-
-        }
-    }
-    
     
 }

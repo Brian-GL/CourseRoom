@@ -418,16 +418,16 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             celda = new Celda_Renderer(fecha_Entrega, _id);
             celdas[4] = celda;
             
-            Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel =
-                    new Tarea_Por_Calificar_Profesor_Panel(nombre_Tarea,nombre_Curso,
-                            fecha_Creacion, fecha_Entrega, fecha_Entregada, "Por Calificar");
-            
-            tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
+//            Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel =
+//                    new Tarea_Por_Calificar_Profesor_Panel(nombre_Tarea,nombre_Curso,
+//                            fecha_Creacion, fecha_Entrega, fecha_Entregada, "Por Calificar");
+//            
+//            tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
             
             DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
             modelo.addRow(celdas);
             
-            Tablero_Profesor_Panel.Agregar_Vista(tarea_Entregada_Profesor_Panel, _id);
+//            Tablero_Profesor_Panel.Agregar_Vista(tarea_Entregada_Profesor_Panel, _id);
             
             imagen.flush();
             

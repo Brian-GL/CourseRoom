@@ -56,7 +56,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
     public Chats_Estudiante_Panel() {
         initComponents();
         Iniciar_Componentes();
-        Obtener_Chats_Personales();
     }
 
     /**
@@ -498,8 +497,12 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         Lista<ChatsPersonalesModel> lista = 
                 CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Estudiante_Panel.Id_Usuario());
         
-        while(!lista.is_empty()){
-            Agregar_Chat(lista.delist());
+        if(!lista.is_empty()){
+            while(!lista.is_empty()){
+                Agregar_Chat(lista.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
         }
     }
     

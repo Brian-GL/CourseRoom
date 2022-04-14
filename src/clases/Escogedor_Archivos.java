@@ -48,8 +48,7 @@ public class Escogedor_Archivos extends JFileChooser{
         this.setup(FileSystemView.getFileSystemView());
         
         this.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        this.setApproveButtonText("Subir Archivo(s)");
-        this.setMultiSelectionEnabled(true);
+        this.setApproveButtonText("Subir Archivo");
         
     }
     

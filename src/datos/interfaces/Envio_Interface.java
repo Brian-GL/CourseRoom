@@ -25,6 +25,6 @@ public interface Envio_Interface {
     
     public void Enviar_Mensaje();
 
-    public void Enviar_Archivos();
+    public void Enviar_Archivo();
     
 }

@@ -16,7 +16,6 @@ import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
-import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
@@ -24,6 +23,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ConfiguracionesModel;
 import modelos.ResponseModel;
 import modelos.SesionesModel;
 
@@ -34,6 +34,7 @@ import modelos.SesionesModel;
 public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface, Limpieza_Interface{
 
     private byte carta_Visible;
+    private boolean chats_Conmigo, avisos_Activo;
     private Color primer_Color_Personalizado, segundo_Color_Personalizado, tercer_Color_Personalizado, primer_Color_Fuente_Personalizado, segundo_Color_Fuente_Personalizado, tercer_Color_Fuente_Personalizado;
     
     /**
@@ -70,6 +71,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         sesiones_JScrollPane = new javax.swing.JScrollPane();
         sesiones_JTable = new javax.swing.JTable();
         cuenta_JPanel = new javax.swing.JPanel();
+        eliminar_Cuenta_JButton = new javax.swing.JButton();
         desactivar_Activar_Notificaciones_JButton = new javax.swing.JButton();
         permitir_No_Permitir_Chats_Conmigo_JButton = new javax.swing.JButton();
 
@@ -286,6 +288,23 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
             cuenta_JPanel.setOpaque(false);
 
+            eliminar_Cuenta_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+            eliminar_Cuenta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
+            eliminar_Cuenta_JButton.setText("¿Eliminar Cuenta?");
+            eliminar_Cuenta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            ((ImageIcon)eliminar_Cuenta_JButton.getIcon()).getImage().flush();
+            eliminar_Cuenta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    eliminar_Cuenta_JButtonMouseClicked(evt);
+                }
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    eliminar_Cuenta_JButtonMouseEntered(evt);
+                }
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    eliminar_Cuenta_JButtonMouseExited(evt);
+                }
+            });
+
             desactivar_Activar_Notificaciones_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
             desactivar_Activar_Notificaciones_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/bell_warning.png"))); // NOI18N
             desactivar_Activar_Notificaciones_JButton.setText("Desactivar Notificaciones");
@@ -325,11 +344,12 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
             cuenta_JPanelLayout.setHorizontalGroup(
                 cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(cuenta_JPanelLayout.createSequentialGroup()
-                    .addContainerGap(338, Short.MAX_VALUE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                        .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(339, Short.MAX_VALUE))
+                        .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             cuenta_JPanelLayout.setVerticalGroup(
                 cuenta_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,7 +358,9 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                     .addComponent(desactivar_Activar_Notificaciones_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                     .addComponent(permitir_No_Permitir_Chats_Conmigo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(244, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                    .addComponent(eliminar_Cuenta_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(95, Short.MAX_VALUE))
             );
 
             ajustes_JLayeredPane.add(cuenta_JPanel, "Cuenta");
@@ -350,7 +372,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                 .addGroup(layout.createSequentialGroup()
                     .addGap(32, 32, 32)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ajustes_JLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, Short.MAX_VALUE)
+                        .addComponent(ajustes_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE)
                         .addComponent(contenido_Titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGap(32, 32, 32))
             );
@@ -480,23 +502,80 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         }
     }//GEN-LAST:event_sesiones_JButtonMouseClicked
 
-    private void desactivar_Activar_Notificaciones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
+    private void eliminar_Cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
-                    "¿Estás Segur@ De Desactivar Las Notificaciones?", "Pregunta", 
+                    "¿Estás Segur@ De Eliminar Tu Cuenta?", "Pregunta", 
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
             
-                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), false, false, false);
+                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), chats_Conmigo, avisos_Activo, false);
 
                 if(response.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
+                    CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Cuenta", response.Mensaje());
                 }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
+                    CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Cuenta", response.Mensaje());
                 }
             }
+            
+            CourseRoom_Frame.getInstance().Cerrar_Sesion();
+        }
+    }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseClicked
+
+    private void eliminar_Cuenta_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseEntered
+        // TODO add your handling code here:
+        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+    }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseEntered
+
+    private void eliminar_Cuenta_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseExited
+        // TODO add your handling code here:
+        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+    }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseExited
+
+    private void desactivar_Activar_Notificaciones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+            if(desactivar_Activar_Notificaciones_JButton.getText().equals("¿Desactivar Notificaciones?")){
+                int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Desactivar Las Notificaciones?", "Pregunta", 
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            
+                if(resultado == JOptionPane.YES_OPTION){
+
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
+                            chats_Conmigo, false, true);
+
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
+                        avisos_Activo = false;
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
+                    }
+                }
+            }else{
+                int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Activar Las Notificaciones?", "Pregunta", 
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            
+                if(resultado == JOptionPane.YES_OPTION){
+
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
+                            chats_Conmigo, true, true);
+
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Activar Notificaciones", response.Mensaje());
+                        avisos_Activo = true;
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Activar Notificaciones", response.Mensaje());
+                    }
+                }
+            }
+            
         }
     }//GEN-LAST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
 
@@ -515,18 +594,39 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
     private void permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
-                    "¿Estás Segur@ De Desactivar Los Chats?", "Pregunta", 
+            if(desactivar_Activar_Notificaciones_JButton.getText().equals("¿Desactivar Chats Conmigo?")){
+                int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Desactivar Los Chats Con Usted?", "Pregunta", 
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
-            if(resultado == JOptionPane.YES_OPTION){
-            
-                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), false, false, false);
+                if(resultado == JOptionPane.YES_OPTION){
 
-                if(response.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats", response.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats", response.Mensaje());
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
+                            false, avisos_Activo, true);
+
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats Conmigo", response.Mensaje());
+                        chats_Conmigo = false;
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats Conmigo", response.Mensaje());
+                    }
+                }
+            }else{
+                int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Activar Los Chats Conmigo?", "Pregunta", 
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            
+                if(resultado == JOptionPane.YES_OPTION){
+
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
+                            true, avisos_Activo, true);
+
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Activar Chats Conmigo", response.Mensaje());
+                        chats_Conmigo = true;
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Activar Chats Conmigo", response.Mensaje());
+                    }
                 }
             }
         }
@@ -545,7 +645,6 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
     private void Agregar_Sesion(SesionesModel sesionModel){
-        
         
         Celda_Renderer[] celdas = new Celda_Renderer[6];
         Celda_Renderer celda;
@@ -581,6 +680,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
     private javax.swing.JButton cuenta_JButton;
     private javax.swing.JPanel cuenta_JPanel;
     private javax.swing.JButton desactivar_Activar_Notificaciones_JButton;
+    private javax.swing.JButton eliminar_Cuenta_JButton;
     private javax.swing.JButton interfaz_JButton;
     private javax.swing.JPanel interfaz_JPanel;
     private javax.swing.JButton permitir_No_Permitir_Chats_Conmigo_JButton;
@@ -613,6 +713,28 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
             Agregar_Sesion(sesiones.delist());
         }
         
+        ConfiguracionesModel configuracionesModel = 
+                CourseRoom.Solicitudes().Obtener_Configuraciones(Tablero_Profesor_Panel.Id_Usuario());
+        
+        chats_Conmigo = configuracionesModel.Chats_Conmigo();
+        avisos_Activo = configuracionesModel.Avisos_Activos();
+        
+        if(configuracionesModel.Avisos_Activos()){
+            desactivar_Activar_Notificaciones_JButton.setText("¿Desactivar Notificaciones?");
+            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Desactivar Sus Notificaciones?");
+        }else{
+            desactivar_Activar_Notificaciones_JButton.setText("¿Activar Notificaciones?");
+            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Activar Sus Notificaciones?");
+        }
+        
+        if(configuracionesModel.Chats_Conmigo()){
+            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Desactivar Chats Conmigo?");
+            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Desactivar La Opción De Permitir Chats Con Usted?");
+        }else{
+            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Activar Chats Conmigo?");
+            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Activar La Opción De Permitir Chats Con Usted?");
+        }
+        
     }
     
     @Override
@@ -636,6 +758,9 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         recargar_Colores_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         recargar_Colores_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
+        eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        
         desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
@@ -654,7 +779,6 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         primer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Primer_Color()));
         segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Segundo_Color()));
         tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Tercer_Color()));
-        
         
         BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Primer Color", TitledBorder.CENTER,

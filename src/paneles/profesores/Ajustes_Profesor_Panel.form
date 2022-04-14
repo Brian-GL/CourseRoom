@@ -381,12 +381,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="349" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="desactivar_Activar_Notificaciones_JButton" pref="370" max="32767" attributes="0"/>
                           <Component id="permitir_No_Permitir_Chats_Conmigo_JButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="eliminar_Cuenta_JButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="349" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -397,12 +398,38 @@
                       <Component id="desactivar_Activar_Notificaciones_JButton" min="-2" pref="55" max="-2" attributes="0"/>
                       <EmptySpace pref="94" max="32767" attributes="0"/>
                       <Component id="permitir_No_Permitir_Chats_Conmigo_JButton" min="-2" pref="55" max="-2" attributes="0"/>
-                      <EmptySpace pref="244" max="32767" attributes="0"/>
+                      <EmptySpace pref="94" max="32767" attributes="0"/>
+                      <Component id="eliminar_Cuenta_JButton" min="-2" pref="55" max="-2" attributes="0"/>
+                      <EmptySpace pref="95" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JButton" name="eliminar_Cuenta_JButton">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="24" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/recursos/iconos/close.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#xbf;Eliminar Cuenta?"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminar_Cuenta_JButtonMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminar_Cuenta_JButtonMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminar_Cuenta_JButtonMouseExited"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)eliminar_Cuenta_JButton.getIcon()).getImage().flush();"/>
+              </AuxValues>
+            </Component>
             <Component class="javax.swing.JButton" name="desactivar_Activar_Notificaciones_JButton">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

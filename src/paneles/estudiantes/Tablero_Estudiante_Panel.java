@@ -876,8 +876,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         desempeno_Escolar_Panel.Colorear_Componentes();
     }
     
-    
-    
     @Override
     public void Limpiar(){
         
@@ -905,7 +903,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     public static void Retirar_Vista(Component componente){
         ((CardLayout)visualizador_JPanel.getLayout()).removeLayoutComponent(componente);
     }
-    
     
     /**
     * @return the imagen_Usuario

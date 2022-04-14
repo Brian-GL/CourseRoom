@@ -33,7 +33,7 @@ import paneles.profesores.Tablero_Profesor_Panel;
 public final class Avisos_General_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
     
     private DatagramSocket datagramSocket;
-    private Conexion_Notificador conexion_Notificador;
+    private Conexion_Notificador_Aviso conexion_Notificador;
     // 0 -> Estudiante | 1 -> Profesor:
     private boolean tipo_Usuario;
     
@@ -288,13 +288,12 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
     }
     
     
-    private class Conexion_Notificador extends Thread{
-        
+    private class Conexion_Notificador_Aviso extends Thread{
         
         @Override
         public void run(){
             
-            System.out.println("Esperando Conexión Con CourseRoom Notifier...");
+            System.out.println("Esperando Conexión Con CourseRoom Notifier Desde Aviso...");
             byte[] entryBuffer = new byte[128];
             DatagramPacket datagramPacket = new DatagramPacket(entryBuffer,entryBuffer.length);
             String mensaje;
@@ -384,7 +383,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         
         try {
             datagramSocket = new DatagramSocket(9002);
-            conexion_Notificador = new Conexion_Notificador();
+            conexion_Notificador = new Conexion_Notificador_Aviso();
             conexion_Notificador.start();
         } catch (SocketException ex) {
             System.err.println(ex.getMessage());

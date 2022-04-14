@@ -34,6 +34,8 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ResponseModel;
+import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
  *
@@ -41,6 +43,8 @@ import javax.swing.table.TableRowSorter;
  */
 public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements Componentes_Interface{
 
+    private static Buscar_Usuario_Chatear_Frame _this;
+    
     /**
      * Creates new form Buscar_Usuario_Chatear_Frame
      */
@@ -132,6 +136,21 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
                         if (columna == 1) {
                             int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                             DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+                            Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
+
+                            int id_Usuario_Receptor = Integer.parseInt(celda.ID());
+
+                            ResponseModel response = CourseRoom.Solicitudes().Agregar_Chat(Tablero_Estudiante_Panel.Id_Usuario()
+                                , id_Usuario_Receptor);
+
+                            if(response.Is_Success()){
+                                CourseRoom.Utilerias().Mensaje_Informativo("Agregar Chat", response.Mensaje());
+                                Buscar_Usuario_Chatear_Frame.Limpiar();
+
+                            }else{
+                                CourseRoom.Utilerias().Mensaje_Alerta("Agregar Chat", response.Mensaje());
+                            }
 
                         }
 
@@ -299,7 +318,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
     private javax.swing.JButton cerrar_JButton;
     private javax.swing.JPanel contenido_JPanel;
     private javax.swing.JScrollPane usuarios_Chatear_JScrollPane;
-    private javax.swing.JTable usuarios_Chatear_JTable;
+    private static javax.swing.JTable usuarios_Chatear_JTable;
     private javax.swing.JLabel usuarios_JLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -326,6 +345,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
         usuarios_Chatear_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         Colorear_Componentes();
+        _this = this;
     }
 
     @Override
@@ -363,5 +383,11 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
                 celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         } 
+    }
+    
+    public static void Limpiar(){
+        DefaultTableModel modelo = (DefaultTableModel) usuarios_Chatear_JTable.getModel();
+        modelo.setRowCount(0);
+        _this.dispose();
     }
 }
