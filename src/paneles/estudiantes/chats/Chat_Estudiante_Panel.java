@@ -70,9 +70,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         Id_Chat = id_Chat;
 
         Iniciar_Componentes();
-        
-        
-        
+         
     }
 
     /**
@@ -713,7 +711,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         public void run(){
             
             System.out.println("Esperando Conexión Con CourseRoom Notifier Desde Chat...");
-            byte[] entryBuffer = new byte[128];
+            byte[] entryBuffer = new byte[64];
             DatagramPacket datagramPacket = new DatagramPacket(entryBuffer,entryBuffer.length);
             String mensaje;
             String valor;

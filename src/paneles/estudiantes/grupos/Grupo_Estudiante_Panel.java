@@ -631,9 +631,31 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                     // Remover
                                     case 3:
                                     {
-                                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                        modelo.removeRow(fila);
+
+                                        int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                                            "¿Estás Segur@ De Remover Este Archivo Compartido?", "Archivo Compartido", 
+                                            JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                                        if(resultado == JOptionPane.YES_OPTION){
+                                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
+                                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                            Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
+
+                                            int id_Archivo_Compartido = Integer.parseInt(celda.ID());
+
+                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Compartido_Grupo(
+                                                id_Archivo_Compartido,Tablero_Estudiante_Panel.Id_Usuario());
+
+                                            if(response.Is_Success()){
+                                                CourseRoom.Utilerias().Mensaje_Informativo("Archivo Compartido", response.Mensaje());
+                                                modelo.removeRow(fila);
+                                            }else{
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Archivo Compartido", response.Mensaje());
+                                            }
+
+                                        }
+
                                         break;
                                     }
                                     default:
@@ -943,12 +965,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             }
                         });
 
-                        guardar_Cambios_Datos_Generales_Grupo_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
                         guardar_Cambios_Datos_Generales_Grupo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
                         guardar_Cambios_Datos_Generales_Grupo_JButton.setText("Guardar Cambios");
-                        guardar_Cambios_Datos_Generales_Grupo_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
                         guardar_Cambios_Datos_Generales_Grupo_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                         guardar_Cambios_Datos_Generales_Grupo_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                        guardar_Cambios_Datos_Generales_Grupo_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+                        guardar_Cambios_Datos_Generales_Grupo_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
                         ((ImageIcon)guardar_Cambios_Datos_Generales_Grupo_JButton.getIcon()).getImage().flush();
                         guardar_Cambios_Datos_Generales_Grupo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                             public void mouseClicked(java.awt.event.MouseEvent evt) {
