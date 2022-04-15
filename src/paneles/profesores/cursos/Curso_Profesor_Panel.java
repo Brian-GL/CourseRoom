@@ -3,6 +3,7 @@ package paneles.profesores.cursos;
 import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
@@ -24,6 +25,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -881,6 +883,62 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                 materiales_JTable.setShowGrid(true);
                                 materiales_JTable.setSurrendersFocusOnKeystroke(true);
                                 materiales_JTable.setRowSorter(new TableRowSorter(materiales_JTable.getModel()));
+                                materiales_JTable.addMouseListener(new MouseAdapter() {        
+
+                                    @Override
+                                    public void mousePressed(MouseEvent e) {
+                                        if (e.getClickCount() == 2) {
+
+                                            JTable tabla = (JTable) e.getComponent();
+                                            int columna = tabla.getSelectedColumn();
+
+                                            switch (columna) {
+                                                // Abrir
+                                                case 0:
+                                                {
+                                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
+                                                    String extension = FilenameUtils.getExtension(celda.Texto());
+                                                    String ruta = celda.ID();
+                                                    CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+                                                }
+                                                break;
+                                                // Remover
+                                                case 3:
+                                                {
+
+                                                    int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                                                        "¿Estás Segur@ De Remover Este Material Compartido?", "Materiales Compartidos", 
+                                                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                                                    if(resultado == JOptionPane.YES_OPTION){
+                                                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
+                                                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                                        Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
+
+                                                        int id_Material_Subido = Integer.parseInt(celda.ID());
+
+                                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Material_Curso(id_Material_Subido,Tablero_Profesor_Panel.Id_Usuario());
+
+                                                        if(response.Is_Success()){
+                                                            CourseRoom.Utilerias().Mensaje_Informativo("Materiales Compartidos", response.Mensaje());
+                                                            modelo.removeRow(fila);
+                                                        }else{
+                                                            CourseRoom.Utilerias().Mensaje_Alerta("Materiales Compartidos", response.Mensaje());
+                                                        }
+
+                                                    }
+
+                                                    break;
+                                                }
+                                                default:
+                                                break;
+                                            }
+                                        }
+                                    }
+                                });
                                 materiales_JScrollPane.setViewportView(materiales_JTable);
 
                                 javax.swing.GroupLayout materiales_Curso_JPanelLayout = new javax.swing.GroupLayout(materiales_Curso_JPanel);
@@ -1141,9 +1199,29 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                                     int columna = tabla.getSelectedColumn();
 
                                                     if (columna == 1) {
-                                                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                                                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                                        modelo.removeRow(fila);
+
+                                                        int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                                                            "¿Estás Segur@ De Remover El Interes?", "Remover Interes Curso", 
+                                                            JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                                                        if(resultado == JOptionPane.YES_OPTION){
+                                                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
+                                                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                                            Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
+
+                                                            int id_Tematica = Integer.parseInt(celda.ID());
+
+                                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Tematica_Curso(id_Tematica,Tablero_Profesor_Panel.Id_Usuario());
+
+                                                            if(response.Is_Success()){
+                                                                CourseRoom.Utilerias().Mensaje_Informativo("Remover Interes Curso", response.Mensaje());
+                                                                modelo.removeRow(fila);
+                                                            }else{
+                                                                CourseRoom.Utilerias().Mensaje_Alerta("Remover Interes Curso", response.Mensaje());
+                                                            }
+
+                                                        }
                                                     }
 
                                                 }

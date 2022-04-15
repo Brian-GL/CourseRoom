@@ -23,6 +23,7 @@ import javax.swing.table.TableRowSorter;
 import paneles.profesores.Tablero_Profesor_Panel;
 import paneles.profesores.perfil.Perfil_Profesor_Panel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
@@ -34,12 +35,14 @@ import org.apache.commons.io.FilenameUtils;
 public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface{
 
     private byte carta_Visible;
-    private String id_Curso;
+    private int id_Curso;
+    private String id_Curso_Vista;
     
-    public Crear_Curso_Profesor_Panel(String Id_Curso) {
+    public Crear_Curso_Profesor_Panel(int Id_Curso, String Id_Curso_Vista) {
         initComponents();
        
         this.id_Curso = Id_Curso;
+        this.id_Curso_Vista = Id_Curso_Vista;
         
         Iniciar_Componentes();
     }
@@ -608,8 +611,13 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                     Image abrir_Imagen = ImageIO.read(archivo);
                     int largo_Imagen = imagen_Curso_JLabel.getHeight();
                     ImageIcon icono_Grupo = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
-
                     imagen_Curso_JLabel.setIcon(icono_Grupo);
+                    ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Curso(id_Curso,FileUtils.readFileToByteArray(archivo));
+                    if (respuesta.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                    }
                     abrir_Imagen.flush();
 
                 }else{
@@ -644,7 +652,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             Tablero_Profesor_Panel.Retirar_Vista(this);
-            Tablero_Profesor_Panel.Mostrar_Vista(this.id_Curso);
+            Tablero_Profesor_Panel.Mostrar_Vista(this.id_Curso_Vista);
             this.Limpiar();
         }
     }//GEN-LAST:event_crear_Curso_JButtonMouseClicked

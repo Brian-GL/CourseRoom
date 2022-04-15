@@ -208,7 +208,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             String id = "Curso_Temporal";
-            Crear_Curso_Profesor_Panel crear_Curso_Profesor_Panel = new Crear_Curso_Profesor_Panel(id);
+            Crear_Curso_Profesor_Panel crear_Curso_Profesor_Panel = new Crear_Curso_Profesor_Panel(-1,id);
             Tablero_Profesor_Panel.Agregar_Vista(crear_Curso_Profesor_Panel,id);
             Tablero_Profesor_Panel.Mostrar_Vista(id);
         }
