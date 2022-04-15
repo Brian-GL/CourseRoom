@@ -29,7 +29,6 @@ import modelos.ArchivosTareaModel;
 import modelos.AvisosModel;
 import modelos.ChatsPersonalesModel;
 import modelos.ConfiguracionesModel;
-import modelos.CursosModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.DatosGeneralesGrupoModel;
 import modelos.DatosGeneralesPreguntaModel;
@@ -702,7 +701,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -748,7 +747,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -772,7 +771,7 @@ public class Solicitudes {
                 
                 PreguntasModel preguntasModel;
                 int id_Pregunta;
-                String nombre_Completo, pregunta, descripcion, fecha_Creacion, estatus;
+                String nombre_Completo, pregunta, fecha_Creacion, estatus;
                 Vector<Object> fila;
                 while(!resultado.isEmpty()){
                     
@@ -792,7 +791,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -840,7 +839,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -1380,7 +1379,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -1780,7 +1779,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -1824,7 +1823,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -1867,7 +1866,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
                 
         return response;
@@ -1910,7 +1909,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
                 
         return response;
@@ -1954,7 +1953,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -1978,7 +1977,7 @@ public class Solicitudes {
 
                Vector<Object> resultado  = (Vector<Object>)respuesta;
 
-               if(resultado.size()== 2){
+               if(!resultado.isEmpty()){
                    
                     configuracionesModel.Chats_Conmigo((boolean)resultado.remove(0));
                     configuracionesModel.Avisos_Activos((boolean)resultado.remove(0));
@@ -2325,7 +2324,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -2357,7 +2356,7 @@ public class Solicitudes {
             
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -2402,7 +2401,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
                 
         return response;
@@ -2424,6 +2423,7 @@ public class Solicitudes {
             
             response =  (respuesta != null) ? (byte[])respuesta : new byte[]{};
         } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
             response = new byte[]{};
         }
         
@@ -2445,6 +2445,7 @@ public class Solicitudes {
             
             response =  (respuesta != null) ? (byte[])respuesta : new byte[]{};
         } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
             response = new byte[]{};
         }
         
@@ -2466,6 +2467,7 @@ public class Solicitudes {
             
             response =  (respuesta != null) ? (byte[])respuesta : new byte[]{};
         } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
             response = new byte[]{};
         }
         
@@ -2487,6 +2489,7 @@ public class Solicitudes {
             
             response =  (respuesta != null) ? (byte[])respuesta : new byte[]{};
         } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
             response = new byte[]{};
         }
         
@@ -2508,6 +2511,7 @@ public class Solicitudes {
             
             response =  (respuesta != null) ? (byte[])respuesta : new byte[]{};
         } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
             response = new byte[]{};
         }
         
@@ -2546,7 +2550,7 @@ public class Solicitudes {
             }
 
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -2584,7 +2588,7 @@ public class Solicitudes {
             }
 
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -2629,7 +2633,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -2708,7 +2712,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -2753,7 +2757,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -2798,7 +2802,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response; 
@@ -2843,7 +2847,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -2888,7 +2892,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -2922,7 +2926,7 @@ public class Solicitudes {
                     nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     fecha_Ingreso = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    miembrosGrupoModel = new MiembrosGrupoModel(id_Grupo, nombre_Completo, fecha_Ingreso);
+                    miembrosGrupoModel = new MiembrosGrupoModel(id_Usuario, nombre_Completo, fecha_Ingreso);
                     
                     response.push_back(miembrosGrupoModel);
                 }
@@ -2930,7 +2934,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -2974,7 +2978,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -3019,7 +3023,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -3064,7 +3068,7 @@ public class Solicitudes {
             }
 
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -3110,7 +3114,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -3154,7 +3158,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
                 
         return response;
@@ -3197,7 +3201,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -3234,12 +3238,42 @@ public class Solicitudes {
             }
 
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
     }
 
+    public AvisosModel Obtener_Ultimo_Aviso(int id_Usuario){
+        AvisosModel avisosModel = new AvisosModel();
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Ultimo_Aviso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado = (Vector<Object>) respuesta;
+                
+                if(!resultado.isEmpty()){
+                    avisosModel.Id_Aviso((int) resultado.remove(0));
+                    avisosModel.Tipo_Aviso(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    avisosModel.Aviso(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    avisosModel.Fecha_Envio(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return avisosModel;
+    }
+    
     public ResponseModel Obtener_Usuario(String correo_Electronico, String contrasenia){
 
         ResponseModel response = new ResponseModel();
@@ -3307,7 +3341,7 @@ public class Solicitudes {
             }
 
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;
@@ -3331,7 +3365,7 @@ public class Solicitudes {
             }
             
         } catch (XmlRpcException | IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
         
         return response;

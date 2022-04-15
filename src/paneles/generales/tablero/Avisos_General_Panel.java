@@ -276,6 +276,76 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         
     }
     
+    private void Agregar_Ultimo_Aviso(AvisosModel aviso){
+        
+        String id = String.valueOf(aviso.Id_Aviso());
+        String tipo = aviso.Tipo_Aviso();
+        String mensaje = aviso.Aviso();
+        String fecha = aviso.Fecha_Envio();
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+        Celda_Renderer celda;
+        DefaultTableModel modelo = (DefaultTableModel) avisos_JTable.getModel();
+            
+        try {
+            
+            Image imagen;
+            ImageIcon icono;
+            
+            switch(tipo){
+                case "Curso":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/course_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,id);
+                    celdas[0] = celda;
+                    break;
+                case "Tarea":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/homework_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,id);
+                    celdas[0] = celda;
+                    break;
+                case "Grupo":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/group_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,id);
+                    celdas[0] = celda;
+                    break;
+                case "Chat":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/chat_notification.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,id);
+                    celdas[0] = celda;
+                    break;
+                case "Pregunta":
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/homework_make.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tipo,"");
+                    celdas[0] = celda;
+                    break;
+                default:
+                    imagen = ImageIO.read(getClass().getResource("/recursos/iconos/bell_warning.png"));
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,"General",id);
+                    celdas[0] = celda;
+                    break;
+            }
+            
+            celda = new Celda_Renderer(mensaje,id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(fecha,id);
+            celdas[2] = celda;
+            
+            modelo.insertRow(0,celdas);
+            avisos_JTable.setRowHeight(0, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
+            
+            imagen.flush();
+            
+        } catch (IOException ex) {
+            
+        }
+        
+    }
     
     private void Actualizar_Datos(){
         
@@ -287,20 +357,20 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         
     }
     
-    
     private class Conexion_Notificador_Aviso extends Thread{
         
         @Override
         public void run(){
             
             System.out.println("Esperando Conexión Con CourseRoom Notifier Desde Aviso...");
-            byte[] entryBuffer = new byte[128];
+            byte[] entryBuffer = new byte[16];
             DatagramPacket datagramPacket = new DatagramPacket(entryBuffer,entryBuffer.length);
             String mensaje;
             String valor;
             int longitud;
             int indice;
             int id_Usuario;
+            AvisosModel avisosModel;
             while(true){
                 
                 try {
@@ -316,32 +386,31 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
                         arreglo[i-1] = entryBuffer[i];
                     }
                     
-                    indice = indice + 1;
+                    
                     valor = ConvertirArreglo(arreglo);
                     
                     id_Usuario = Integer.parseInt(valor);
                     
-                    //Ip:
-                    longitud = (int)entryBuffer[indice];
-                    indice++;
-                    arreglo = new byte[longitud];
-                    
-                    for(int i = 0; i < longitud; i++,indice++){
-                        arreglo[i] = entryBuffer[indice];
-                    }
-                    
-                    valor = ConvertirArreglo(arreglo).substring(1);
                     
                     //Estudiante:
                     if(!tipo_Usuario){
                         if(id_Usuario == Tablero_Estudiante_Panel.Id_Usuario()){
-                            mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación Con IP: "+valor;
-                            System.out.println(mensaje+"\n");
+                            mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación\n";
+                            System.out.println(mensaje);
+                            avisosModel = CourseRoom.Solicitudes().Obtener_Ultimo_Aviso(id_Usuario);
+                            if(avisosModel.Id_Aviso() > 0){
+                                Agregar_Ultimo_Aviso(avisosModel);
+                            }
+                            
                         }
                     }else{
                         if(id_Usuario == Tablero_Profesor_Panel.Id_Usuario()){
-                            mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación Con IP: "+valor;
-                            System.out.println(mensaje+"\n");
+                            mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación\n";
+                            System.out.println(mensaje);
+                            avisosModel = CourseRoom.Solicitudes().Obtener_Ultimo_Aviso(id_Usuario);
+                            if(avisosModel.Id_Aviso() > 0){
+                                Agregar_Ultimo_Aviso(avisosModel);
+                            }
                         }
                     }
                     

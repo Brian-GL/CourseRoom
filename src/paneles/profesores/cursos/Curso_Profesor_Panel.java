@@ -17,10 +17,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 import java.net.MalformedURLException;
-import java.net.SocketException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -57,8 +54,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private byte carta_Visible;
     private String ID;
     private int Id_Curso;
-    private DatagramSocket datagramSocket;
-    private Conexion_Notificador_Curso conexion_Notificador;
     
     public Curso_Profesor_Panel(String _nombre_Curso,
         Image _imagen_Curso,
@@ -72,6 +67,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         ImageIcon icono = new ImageIcon(_imagen_Curso);
         imagen_Curso_JLabel.setIcon(icono);
         this.ID = _id;
+        this.Id_Curso = id_Curso;
         fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creado El ",_fecha_Creacion)));
         _imagen_Curso.flush();
         
@@ -1900,68 +1896,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
             CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar La Estadística",ex.getMessage());
         }
     }
-    
-    private class Conexion_Notificador_Curso extends Thread{
-        
-        @Override
-        public void run(){
-            
-            System.out.println("Esperando Conexión Con CourseRoom Notifier Desde Curso...");
-            byte[] entryBuffer = new byte[128];
-            DatagramPacket datagramPacket = new DatagramPacket(entryBuffer,entryBuffer.length);
-            String mensaje;
-            String valor;
-            int longitud;
-            int indice;
-            int id_Usuario;
-            while(true){
-                
-                try {
-                    
-                    datagramSocket.receive(datagramPacket);
-                    
-                    //Usuario:
-                    indice = 0;
-                    longitud = (int)entryBuffer[indice];
-                    byte[] arreglo = new byte[longitud];
-                    
-                    for(int i = 1; i <= longitud; i++){
-                        arreglo[i-1] = entryBuffer[i];
-                    }
-                    
-                    indice = indice + 1;
-                    valor = ConvertirArreglo(arreglo);
-                    
-                    id_Usuario = Integer.parseInt(valor);
-                    
-                    //Ip:
-                    longitud = (int)entryBuffer[indice];
-                    indice++;
-                    arreglo = new byte[longitud];
-                    
-                    for(int i = 0; i < longitud; i++,indice++){
-                        arreglo[i] = entryBuffer[indice];
-                    }
-                    
-                    valor = ConvertirArreglo(arreglo).substring(1);
-                    
-                    //Estudiante:
-                    if(id_Usuario == Tablero_Profesor_Panel.Id_Usuario()){
-                        mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Un Nuevo Mensaje Con IP: "+valor;
-                        System.out.println(mensaje+"\n");
-                    }
-                   
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
-            }
-        }
-    }
-    
-    
-    public String ConvertirArreglo(byte[] arreglo) {
-        return new String(arreglo);
-    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
@@ -2274,15 +2209,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         editar_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         Agregar_Interes_Tematica_Edicion(id, tematica);
-        
-        try {
-            datagramSocket = new DatagramSocket(9007);
-            conexion_Notificador = new Conexion_Notificador_Curso();
-            conexion_Notificador.start();
-        } catch (SocketException ex) {
-            System.err.println(ex.getMessage());
-        }
-        
+       
         Colorear_Componentes();
     }
 

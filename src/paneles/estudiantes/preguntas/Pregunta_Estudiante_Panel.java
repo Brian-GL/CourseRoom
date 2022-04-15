@@ -40,8 +40,6 @@ import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Componentes_Interface, Envio_Interface, Limpieza_Interface{
 
     private int id;
-    private DatagramSocket datagramSocket;
-    private Conexion_Notificador_Pregunta conexion_Notificador;
    
     public Pregunta_Estudiante_Panel(int _id,
             Image imagen_Preguntador) {
@@ -540,68 +538,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
     public int Id_Pregunta(){
         return this.id;
     }
-    
-            private class Conexion_Notificador_Pregunta extends Thread{
-        
-        @Override
-        public void run(){
-            
-            System.out.println("Esperando Conexión Con CourseRoom Notifier Desde Preguntas...");
-            byte[] entryBuffer = new byte[128];
-            DatagramPacket datagramPacket = new DatagramPacket(entryBuffer,entryBuffer.length);
-            String mensaje;
-            String valor;
-            int longitud;
-            int indice;
-            int id_Usuario;
-            while(true){
-                
-                try {
-                    
-                    datagramSocket.receive(datagramPacket);
-                    
-                    //Usuario:
-                    indice = 0;
-                    longitud = (int)entryBuffer[indice];
-                    byte[] arreglo = new byte[longitud];
-                    
-                    for(int i = 1; i <= longitud; i++){
-                        arreglo[i-1] = entryBuffer[i];
-                    }
-                    
-                    indice = indice + 1;
-                    valor = ConvertirArreglo(arreglo);
-                    
-                    id_Usuario = Integer.parseInt(valor);
-                    
-                    //Ip:
-                    longitud = (int)entryBuffer[indice];
-                    indice++;
-                    arreglo = new byte[longitud];
-                    
-                    for(int i = 0; i < longitud; i++,indice++){
-                        arreglo[i] = entryBuffer[indice];
-                    }
-                    
-                    valor = ConvertirArreglo(arreglo).substring(1);
-                    
-                    //Estudiante:
-                    if(id_Usuario == Tablero_Estudiante_Panel.Id_Usuario()){
-                        mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Un Nuevo Mensaje Con IP: "+valor;
-                        System.out.println(mensaje+"\n");
-                    }
-                   
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
-            }
-        }
-    }
-    
-    
-    public String ConvertirArreglo(byte[] arreglo) {
-        return new String(arreglo);
-    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
@@ -640,15 +577,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         Obtener_Datos_Generales_Pregunta(false);
-        
-        try {
-            datagramSocket = new DatagramSocket(9004);
-            conexion_Notificador = new Conexion_Notificador_Pregunta();
-            conexion_Notificador.start();
-        } catch (SocketException ex) {
-            System.err.println(ex.getMessage());
-        }
-        
+   
         Colorear_Componentes();
         
     }

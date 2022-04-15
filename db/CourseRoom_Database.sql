@@ -1562,7 +1562,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_AbandonarCurso`(
 )
 BEGIN
 
-	SET @IdProfesor = -1;
+	
 	-- Validar que exista el curso:
     IF EXISTS (SELECT IdCurso FROM tb_cursos WHERE IdCurso = _IdCurso AND Activo = 1) THEN
         
@@ -1574,6 +1574,7 @@ BEGIN
 				
                 UPDATE tb_cursosusuarios SET Estatus = 'Suspendido' WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso AND Estatus = 'Actual';
                 
+                SET @IdProfesor := -1;
                 SELECT IdProfesor INTO @IdProfesor FROM tb_cursos WHERE IdCurso = _IdCurso LIMIT 1;
                 
                 CALL sp_AgregarAviso(@IdProfesor,CONCAT('El Usuario ',courseroom.fn_NombreCompletoUsuario(_IdUsuario),' Ha Salido Del Curso ',courseroom.fn_NombreCurso(_IdCurso)),'Curso');
@@ -2024,7 +2025,7 @@ BEGIN
             
             DROP TABLE tabla_Cursos;
             
-            SELECT LAST_INSERT_ID() AS "Codigo", 'El Aviso Ha Sido Registrado En Los Usuarios Del Curso Satisfactoriamente' AS "Mensaje";
+            SELECT 1 AS "Codigo", 'El Aviso Ha Sido Registrado En Los Usuarios Del Curso Satisfactoriamente' AS "Mensaje";
 		ELSE 
 			SELECT -1 AS "Codigo", 'El Curso No Se Encuentra Registrado' AS "Mensaje";
 		END IF;
@@ -2074,9 +2075,59 @@ BEGIN
             
             DROP TABLE tabla_Grupos;
             
-            SELECT LAST_INSERT_ID() AS "Codigo", 'El Aviso Ha Sido Registrado En Los Usuarios Del Grupo Satisfactoriamente' AS "Mensaje";
+            SELECT 1 AS "Codigo", 'El Aviso Ha Sido Registrado En Los Usuarios Del Grupo Satisfactoriamente' AS "Mensaje";
 		ELSE 
 			SELECT -1 AS "Codigo", 'El Grupo No Se Encuentra Registrado' AS "Mensaje";
+		END IF;
+        
+	ELSE
+		SELECT -1 AS "Codigo", 'Algún Parámetro De Entrada No Cuenta Con El Formato Adecuado' AS "Mensaje";
+    END IF;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_AgregarAvisosTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_AgregarAvisosTarea`(
+	IN _IdTarea INT,
+    IN _IdUsuario INT,
+    IN _Aviso VARCHAR(256),
+    IN _TipoAviso VARCHAR(20)
+)
+BEGIN
+	
+    IF courseroom.fn_CampoValido(_Aviso) = 1 AND courseroom.fn_CampoValido(_TipoAviso) THEN
+    
+		IF EXISTS(SELECT IdTarea FROM tb_tareas WHERE IdTarea = _IdTarea AND Activo = 1) THEN
+        
+			CREATE TEMPORARY TABLE tabla_Tareas (SELECT IdUsuario FROM tb_tareascursousuarios WHERE IdTarea = _IdTarea AND IdUsuario <> _IdUsuario);
+            
+            SET @IdUsuario := -1;
+            SELECT IdUsuario  INTO @IdUsuario FROM tabla_Tareas LIMIT 1;
+			WHILE @IdUsuario > 0 AND @IdUsuario IS NOT NULL DO
+				INSERT INTO tb_avisos(Aviso,FechaEnvio,IdUsuario,TipoAviso) 
+                VALUES(_Aviso,courseroom.fn_Obtener_Fecha(),@IdUsuario,_TipoAviso);
+				DELETE FROM tabla_Tareas LIMIT 1;
+                SELECT IdUsuario  INTO @IdUsuario FROM tabla_Tareas LIMIT 1;
+			END WHILE;
+            
+            DROP TABLE tabla_Tareas;
+            
+            SELECT 1 AS "Codigo", 'El Aviso Ha Sido Registrado En Los Usuarios De La Tarea Satisfactoriamente' AS "Mensaje";
+		ELSE 
+			SELECT -1 AS "Codigo", 'El Curso No Se Encuentra Registrado' AS "Mensaje";
 		END IF;
         
 	ELSE
@@ -3148,6 +3199,9 @@ BEGIN
                 INSERT INTO tb_mensajestareas (Mensaje, FechaEnvio, Archivo, Extension, IdTarea, IdUsuarioEmisor)
                 VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), IF(OCTET_LENGTH(_Archivo) > 0, _Archivo, NULL), _Extension, _IdTarea, _IdUsuarioEmisor);
 
+				CALL sp_AgregarAvisosTarea(_IdTarea,_IdUsuarioEmisor,CONCAT('El Usuario ',
+				courseroom.fn_NombreCompletoUsuario(_IdUsuarioEmisor),' Ha Enviado Un Nuevo Mensaje En La Tarea ',courseroom.fn_NombreTarea(_IdTarea)),'Tarea');
+
                 SELECT LAST_INSERT_ID() AS "Codigo", 'Mensaje Agregado Satisfactoriamente' AS "Mensaje";
 
             ELSE
@@ -3195,7 +3249,12 @@ BEGIN
 				
                 UPDATE tb_cursosusuarios SET Estatus = 'Finalizado' WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso AND Estatus = 'Actual';
                 
-                SELECT 1 AS "Codigo", 'El Usuario Ha Finalizado El Curso Satisfactoriamente' AS "Mensaje";
+				SET @IdProfesor := -1;
+                SELECT IdProfesor INTO @IdProfesor FROM tb_cursos WHERE IdCurso = _IdCurso LIMIT 1;
+                
+                CALL sp_AgregarAviso(@IdProfesor,CONCAT('El Usuario ',courseroom.fn_NombreCompletoUsuario(_IdUsuario),' Ha Finalizado El Curso ',courseroom.fn_NombreCurso(_IdCurso)),'Curso');
+                
+                SELECT @IdProfesor AS "Codigo", 'El Usuario Ha Finalizado El Curso Satisfactoriamente' AS "Mensaje";
                 
             ELSE
 				SELECT -1 AS "Codigo", 'El Usuario No Está Tomando El Curso Actualmente' AS "Mensaje";
@@ -4125,6 +4184,28 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerIDsUsuariosTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerIDsUsuariosTarea`(
+	IN _IdTarea INT,
+    IN _IdUsuario INT
+)
+BEGIN
+	SELECT IdUsuario FROM tb_tareascursousuarios WHERE IdTarea = _IdTarea AND IdUsuario <> _IdUsuario;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerImagenChatPersonal` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -4738,6 +4819,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerUltimoAviso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerUltimoAviso`(
+	IN _IdUsuario INT
+)
+BEGIN
+	SELECT Avisos.IdAviso, CAST(Avisos.TipoAviso AS CHAR) AS TipoAviso, Avisos.Aviso, Avisos.FechaEnvio FROM tb_avisos Avisos
+    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Avisos.IdUsuario
+    WHERE Avisos.IdUsuario = _IdUsuario AND Usuarios.AvisosActivos = 1 ORDER BY Avisos.IdAviso DESC LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -5113,4 +5217,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15  9:40:45
+-- Dump completed on 2022-04-15 10:27:06
