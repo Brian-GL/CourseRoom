@@ -731,7 +731,7 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="anadir_Tarea_Pendiente_JPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tareas_Pendientes_JScrollPane" pref="656" max="32767" attributes="0"/>
+                      <Component id="tareas_Pendientes_JScrollPane" pref="728" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -755,7 +755,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="nombre_Tarea_Pendiente_JTextField" alignment="0" pref="0" max="32767" attributes="0"/>
@@ -764,9 +764,9 @@
                               <Component id="fecha_Finalizacion_Tarea_Pendiente_JLabel" alignment="0" max="32767" attributes="0"/>
                               <Component id="descripcion_Tarea_Pendiente_JScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
                               <Component id="descripcion_Tarea_Pendiente_JLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="miembro_A_Cargo_JComboBox" alignment="0" max="32767" attributes="0"/>
                               <Component id="miembro_A_Cargo_JLabel" alignment="0" max="32767" attributes="0"/>
                               <Component id="anadir_Tarea_Pendiente_JButton" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="miembro_A_Cargo_autoCompletionComboBox" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -781,9 +781,9 @@
                           <Component id="nombre_Tarea_Pendiente_JTextField" min="-2" pref="37" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="miembro_A_Cargo_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="miembro_A_Cargo_JComboBox" min="-2" pref="37" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="miembro_A_Cargo_autoCompletionComboBox" min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="descripcion_Tarea_Pendiente_JLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="descripcion_Tarea_Pendiente_JScrollPane" min="-2" pref="212" max="-2" attributes="0"/>
@@ -920,18 +920,13 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="miembro_A_Cargo_JComboBox">
+                <Component class="com.jidesoft.swing.AutoCompletionComboBox" name="miembro_A_Cargo_autoCompletionComboBox">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="15" style="0"/>
+                      <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>

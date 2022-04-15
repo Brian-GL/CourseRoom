@@ -1287,7 +1287,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
 
         Image imagen_Curso = ((ImageIcon)imagen_Curso_JLabel.getIcon()).getImage();
-        imagen_Curso = imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+        imagen_Curso = imagen_Curso.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
         ImageIcon icono_Curso = new ImageIcon(imagen_Curso);
         
         celda = new Celda_Renderer(nombre_Tarea, _id);

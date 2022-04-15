@@ -255,7 +255,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
             
             try(ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imagen_Curso)){
                 obtener_Imagen_Curso = ImageIO.read(byteArrayInputStream);
-                imagen = obtener_Imagen_Curso.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
+                imagen = obtener_Imagen_Curso.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
                 icono = new ImageIcon(imagen);
                 celda = new Celda_Renderer(icono, nombre_Curso, id);
                 celdas[0] = celda;

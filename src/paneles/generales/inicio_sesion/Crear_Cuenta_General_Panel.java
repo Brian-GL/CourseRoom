@@ -1048,7 +1048,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                         
                     Image abrir_Imagen = ImageIO.read(archivo_Abierto);
                     imagen = FileUtils.readFileToByteArray(archivo_Abierto);
-                    abrir_Imagen = abrir_Imagen.getScaledInstance(450,450,Image.SCALE_AREA_AVERAGING);
+                    abrir_Imagen = abrir_Imagen.getScaledInstance(450,450,Image.SCALE_SMOOTH);
                     ImageIcon icono = new ImageIcon(abrir_Imagen);
                     imagen_Perfil_JLabel.setIcon(icono);
                     icono.getImage().flush();

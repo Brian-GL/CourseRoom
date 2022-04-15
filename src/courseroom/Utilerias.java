@@ -118,6 +118,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.List;
@@ -335,6 +336,16 @@ public class Utilerias {
         Integer month = fecha.getMonthValue();
         Integer day = fecha.getDayOfMonth();
         return LocalDateTime.of(year, month,day,0,0,0).format(formato_Fecha);
+    }
+    
+    public String Fecha_Hora(LocalDate fecha, LocalTime hora){
+        Integer year = fecha.getYear();
+        Integer month = fecha.getMonthValue();
+        Integer day = fecha.getDayOfMonth();
+        Integer hour = hora.getHour();
+        Integer minutes = hora.getMinute();
+        Integer seconds = hora.getSecond();
+        return LocalDateTime.of(year, month,day,hour,minutes,seconds).format(formato_Fecha);
     }
 
     public AudioListPlayerComponent Componente_Reproducto_Lista_Audio() {

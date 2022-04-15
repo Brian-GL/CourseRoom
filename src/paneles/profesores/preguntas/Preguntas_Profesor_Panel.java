@@ -481,7 +481,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         String estatus = "Abierta";
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        Image imagen_Usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
+        Image imagen_Usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(95, 95, Image.SCALE_SMOOTH);
         ImageIcon icono_Usuario = new ImageIcon(imagen_Usuario);
         
         celda = new Celda_Renderer(icono_Usuario, preguntador_Nombre,id);
@@ -499,7 +499,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         
         mostrar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(pregunta.length()));
         
-        imagen_Usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_AREA_AVERAGING);
+        imagen_Usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_SMOOTH);
         
         Pregunta_Profesor_Panel pregunta_Estudiante_Panel = 
                 new Pregunta_Profesor_Panel(real_ID,imagen_Usuario);
@@ -563,7 +563,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
         
-        Image imagen_Usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(96, 96, Image.SCALE_AREA_AVERAGING);
+        Image imagen_Usuario = Tablero_Profesor_Panel.Obtener_Imagen_Usuario().getScaledInstance(95, 95, Image.SCALE_SMOOTH);
         ImageIcon icono_Usuario = new ImageIcon(imagen_Usuario);
         
         celda = new Celda_Renderer(icono_Usuario, preguntasModel.Nombre_Completo(),id_Pregunta);

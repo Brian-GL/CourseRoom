@@ -35,35 +35,35 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
     
     private String grupo_ID;
+    private int Id_Tarea_Pendiente;
     /**
      * Creates new form Tarea_Pendiente_Estudiante_Panel
      */
-    public Tarea_Pendiente_Estudiante_Panel(String nombre_Tarea, Image miembro_A_Cargo, 
-            String nombre_Miembro_A_Cargo, String descripcion, String fecha_Creacion, String fecha_Finalizacion,
-            String estatus,String _grupo_ID) {
+    public Tarea_Pendiente_Estudiante_Panel(int id_Tarea_Pendiente, String id_vista_Grupo) {
         initComponents();
         
-        titulo_JLabel.setText(nombre_Tarea);
-        ImageIcon icono = new ImageIcon(miembro_A_Cargo);
-        miembro_A_Cargo_JLabel.setIcon(icono);
-        nombre_Miembro_A_Cargo_JLabel.setText(nombre_Miembro_A_Cargo);
-        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creada El ",fecha_Creacion)));
-        fecha_Finalizacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Fecha A Finalizar: ",fecha_Finalizacion)));
-        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(descripcion));
+//        titulo_JLabel.setText(nombre_Tarea);
+//        ImageIcon icono = new ImageIcon(miembro_A_Cargo);
+//        miembro_A_Cargo_JLabel.setIcon(icono);
+//        nombre_Miembro_A_Cargo_JLabel.setText(nombre_Miembro_A_Cargo);
+//        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creada El ",fecha_Creacion)));
+//        fecha_Finalizacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Fecha A Finalizar: ",fecha_Finalizacion)));
+//        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(descripcion));
+//        
+//        estatus_Tarea_JComboBox.setSelectedItem(estatus);
+//        
+//        if(estatus.equals("Realizando")){
+//            estatus_Tarea_JComboBox.removeItemAt(0);
+//        }
+//        
+//        if(estatus.equals("Finalizado")){
+//            estatus_Tarea_JComboBox.removeItemAt(0);
+//        }
+//        
+//        grupo_ID = _grupo_ID;
         
-        estatus_Tarea_JComboBox.setSelectedItem(estatus);
-        
-        if(estatus.equals("Realizando")){
-            estatus_Tarea_JComboBox.removeItemAt(0);
-        }
-        
-        if(estatus.equals("Finalizado")){
-            estatus_Tarea_JComboBox.removeItemAt(0);
-        }
-        
-        grupo_ID = _grupo_ID;
-        
-        System.out.println(grupo_ID);
+        this.Id_Tarea_Pendiente = id_Tarea_Pendiente;
+        this.grupo_ID = id_vista_Grupo;
         
         
         Iniciar_Componentes();
