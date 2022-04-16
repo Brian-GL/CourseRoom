@@ -3149,7 +3149,7 @@ BEGIN
 
             IF courseroom.fn_ExisteUsuario(_IdUsuarioEmisor) = 1 THEN
 
-                INSERT INTO tb_mensajespreguntas (Mensaje, FechaEnvio, Archivo, Extension, IdPregunta, IdUsuarioEmisor)
+                INSERT INTO tb_mensajespregunta (Mensaje, FechaEnvio, Archivo, Extension, IdPregunta, IdUsuarioEmisor)
                 VALUES (_Mensaje, courseroom.fn_ObtenerFecha(), IF(OCTET_LENGTH(_Archivo) > 0, _Archivo, NULL), _Extension, _IdPregunta, _IdUsuarioEmisor);
 
                 SET @IdUsuario = -1;
@@ -5216,4 +5216,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15 19:45:25
+-- Dump completed on 2022-04-16  9:57:24
