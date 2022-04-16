@@ -151,6 +151,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         });
 
         marcar_Solucionada_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/problem-solving.png"))); // NOI18N
+        marcar_Solucionada_JButton.setToolTipText("<html> <h3>Marcar<br>Pregunta<br>Solucionada</h3> </html>");
         marcar_Solucionada_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)marcar_Solucionada_JButton.getIcon()).getImage().flush();
         marcar_Solucionada_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,6 +167,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         });
 
         eliminar_Pregunta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
+        eliminar_Pregunta_JButton.setToolTipText("<html> <h3>Eliminar<br>Pregunta</h3> </html>");
         eliminar_Pregunta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)eliminar_Pregunta_JButton.getIcon()).getImage().flush();
         eliminar_Pregunta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -640,11 +642,11 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
-            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Pregunta(mensaje, new byte[]{}, "", Tablero_Estudiante_Panel.Id_Usuario(), id);
-            if(responseModel.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-            }else{
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(mensaje, new byte[]{}, "", 
+                    Tablero_Estudiante_Panel.Id_Usuario(), id);
+            
+            if(!responseModel.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",responseModel.Mensaje());
             }
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
