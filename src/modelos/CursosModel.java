@@ -22,9 +22,9 @@ package modelos;
  * @author JOEL BR
  */
 public class CursosModel {
-    private int id_Curso, id_Usuario, lista_Tematicas;
+    private Integer id_Curso, id_Usuario, lista_Tematicas;
     private String nombre, nombre_Completo, fecha_Creacion;
-    private double puntuacion;
+    private Double puntuacion;
 
     public CursosModel(int id_Curso, int id_Usuario, int lista_Tematicas, String nombre, String nombre_Completo, String fecha_Creacion, double puntuacion) {
         this.id_Curso = id_Curso;
@@ -39,7 +39,7 @@ public class CursosModel {
     public CursosModel() {
         this.id_Curso = this.id_Usuario = this.lista_Tematicas = 0;
         this.nombre = this.nombre_Completo = this.fecha_Creacion = new String();
-        this.puntuacion = -1;
+        this.puntuacion = -1.0;
     }
 
     public int Id_Curso() {

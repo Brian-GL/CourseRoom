@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class ChatsPersonalesModel {
-    private int id_Chat;
+    private Integer id_Chat;
     private String nombre_Completo, fecha_Creacion, ultimo_Mensaje;
 
     public ChatsPersonalesModel(int id_Chat, String ultimo_Mensaje, String nombre_Completo, String fecha_Creacion) {

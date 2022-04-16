@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class AvisosModel {
-    private int id_Aviso;
+    private Integer id_Aviso;
     private String tipo_Aviso, aviso, fecha_Envio;
 
     public AvisosModel(int id_Aviso, String tipo_Aviso, String aviso, String fecha_Envio) {

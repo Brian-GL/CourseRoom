@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class TareasPendientesGrupoModel {
-    private int id_Tarea_Pendiente;
+    private Integer id_Tarea_Pendiente;
     private String nombre, nombre_Completo, estatus;
 
     public TareasPendientesGrupoModel(int id_Tarea_Pendiente, String nombre, String nombre_Completo, String estatus) {

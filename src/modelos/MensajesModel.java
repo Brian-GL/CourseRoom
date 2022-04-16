@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class MensajesModel {
-    private int id_Mensaje;
+    private Integer id_Mensaje;
     private String mensaje, fecha_Envio, nombre_Completo, extension;
 
     public MensajesModel(int id_Mensaje, String mensaje, String fecha_Envio, String nombre_Completo, String extension) {

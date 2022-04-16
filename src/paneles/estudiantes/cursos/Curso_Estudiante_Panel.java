@@ -591,6 +591,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     mensajes_Chat_JScrollPane.setOpaque(false);
 
                     mensajes_Chat_JTable.setAutoCreateRowSorter(true);
+                    mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                     mensajes_Chat_JTable.setModel(
 
                         new javax.swing.table.DefaultTableModel(
@@ -625,7 +626,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             }
                         });
                         mensajes_Chat_JTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-                        mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                         mensajes_Chat_JTable.setRowHeight(80);
                         mensajes_Chat_JTable.setShowGrid(true);
                         mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
@@ -779,7 +779,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                     .addGap(0, 0, 0)
                                     .addComponent(compartir_Materiales_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                                    .addComponent(materiales_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                                     .addGap(0, 0, 0))
                             );
 
@@ -827,41 +827,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                 grupos_JTable.setShowGrid(true);
                                 grupos_JTable.setSurrendersFocusOnKeystroke(true);
                                 grupos_JTable.setRowSorter(new TableRowSorter(grupos_JTable.getModel()));
-                                grupos_JTable.addMouseListener(new MouseAdapter() {
-
-                                    @Override
-                                    public void mousePressed(MouseEvent e) {
-                                        if (e.getClickCount() == 2) {
-
-                                            JTable tabla = (JTable) e.getComponent();
-                                            int columna = tabla.getSelectedColumn();
-
-                                            switch (columna) {
-                                                // Abrir
-                                                case 0:
-                                                {
-                                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                                                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                                    String extension = FilenameUtils.getExtension(celda.Texto());
-                                                    String ruta = celda.ID();
-                                                    CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
-                                                }
-                                                break;
-                                                // Remover
-                                                case 3:
-                                                {
-                                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                                                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                                    modelo.removeRow(fila);
-                                                    break;
-                                                }
-                                                default:
-                                                break;
-                                            }
-                                        }
-                                    }
-                                });
                                 grupos_JScrollPane.setViewportView(grupos_JTable);
 
                                 curso_JLayeredPane.add(grupos_JScrollPane, "Grupos");
@@ -886,7 +851,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                                         },
                                         new String [] {
-                                            "Tarea Calificada", "Calificación","Promedio Curso","Predicción","Rumbo", "Fecha"
+                                            "Tarea","Calificación","Promedio Curso","Promedio General","Predicción","Fecha"
                                         }
                                     ) {
                                         boolean[] canEdit = new boolean [] {

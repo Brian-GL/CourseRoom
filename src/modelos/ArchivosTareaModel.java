@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class ArchivosTareaModel {
-    private int id_Archivo_Tarea;
+    private Integer id_Archivo_Tarea;
     private String nombre_Archivo, extension, fecha_Enviado;
 
     public ArchivosTareaModel(int id_Archivo_Tarea, String nombre_Archivo, String extension, String fecha_Enviado) {

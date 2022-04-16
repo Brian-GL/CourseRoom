@@ -264,13 +264,13 @@ LOCK TABLES `tb_cursosusuarios` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_desempenousuariocurso`
+-- Table structure for table `tb_desempenousuario`
 --
 
-DROP TABLE IF EXISTS `tb_desempenousuariocurso`;
+DROP TABLE IF EXISTS `tb_desempenousuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tb_desempenousuariocurso` (
+CREATE TABLE `tb_desempenousuario` (
   `IdDesempeno` int NOT NULL AUTO_INCREMENT,
   `PromedioCurso` double DEFAULT NULL,
   `Prediccion` double DEFAULT NULL,
@@ -284,6 +284,41 @@ CREATE TABLE `tb_desempenousuariocurso` (
   KEY `fk_IdCursoDesempeñoProfesional_INDEX` (`IdCurso`),
   CONSTRAINT `fk_IdCursoDesempeñoProfesional` FOREIGN KEY (`IdCurso`) REFERENCES `tb_cursos` (`IdCurso`),
   CONSTRAINT `fk_IdUsuarioDesempeñoProfesional` FOREIGN KEY (`IdUsuario`) REFERENCES `tb_usuarios` (`IdUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_desempenousuario`
+--
+
+LOCK TABLES `tb_desempenousuario` WRITE;
+/*!40000 ALTER TABLE `tb_desempenousuario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_desempenousuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_desempenousuariocurso`
+--
+
+DROP TABLE IF EXISTS `tb_desempenousuariocurso`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_desempenousuariocurso` (
+  `IdDesempenoCurso` int NOT NULL AUTO_INCREMENT,
+  `TareaCalificada` varchar(150) NOT NULL,
+  `Calificacion` double NOT NULL,
+  `PromedioCurso` double NOT NULL,
+  `PromedioGeneral` double DEFAULT NULL,
+  `Prediccion` double NOT NULL,
+  `RumboEstatus` enum('A Aprobar','A Reprobar','Excelente','Bueno','Regular','Malo') NOT NULL,
+  `FechaRegistro` varchar(100) NOT NULL,
+  `IdCurso` int NOT NULL,
+  `IdUsuario` int NOT NULL,
+  PRIMARY KEY (`IdDesempenoCurso`),
+  KEY `fk_IdCursoDesempenoUsuarioCurso_idx` (`IdCurso`),
+  KEY `fk_IdUsuarioDesempenoUsuarioCurso_idx` (`IdUsuario`),
+  CONSTRAINT `fk_IdCursoDesempenoUsuarioCurso` FOREIGN KEY (`IdCurso`) REFERENCES `tb_cursos` (`IdCurso`),
+  CONSTRAINT `fk_IdUsuarioDesempenoUsuarioCurso` FOREIGN KEY (`IdUsuario`) REFERENCES `tb_usuarios` (`IdUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3972,32 +4007,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDesempenoCurso` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoCurso`(
-	IN _IdCurso INT,
-    IN _IdUsuario INT
-)
-BEGIN
-	SELECT Tareas.IdTarea, Tareas.Nombre, TareasCursoUsuarios.Calificacion, courseroom.fn_PromedioCurso(_IdCurso,_IdUsuario,Tareas.IdTarea), TareasCursoUsuarios.FechaCalificacion
-    FROM tb_tareas Tareas
-    INNER JOIN tb_tareascursousuarios TareasCursoUsuarios ON TareasCursoUsuarios.IdTarea = Tareas.IdTarea
-    WHERE TareasCursoUsuarios.IdUsuario = _IdUsuario AND Tareas.IdCurso = _IdCurso AND TareasCursoUsuarios.Estatus = 'Calificada' 
-    ORDER BY Tareas.IdTarea DESC;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDesempenoUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -4012,12 +4021,38 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoUsu
     IN _IdUsuario INT
 )
 BEGIN
-    SELECT DesempenoCurso.IdDesempeno, Cursos.IdCurso, Cursos.Nombre, DesempenoCurso.PromedioCurso,
-    DesempenoCurso.PromedioGeneral, CAST(DesempenoCurso.RumboEstatus AS CHAR) AS RumboEstatus, 
-    DesempenoCurso.Prediccion, DesempenoCurso.FechaRegistro
-    FROM tb_desempenousuariocurso DesempenoCurso
-    INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = DesempenoCurso.IdCurso
-    WHERE DesempenoCurso.IdUsuario = _IdUsuario ORDER BY DesempenoCurso.IdDesempeno DESC;
+    SELECT DesempenoUsuario.IdDesempeno, Cursos.IdCurso, Cursos.Nombre, DesempenoUsuario.PromedioCurso,
+    DesempenoUsuario.PromedioGeneral, CAST(DesempenoUsuario.RumboEstatus AS CHAR) AS RumboEstatus, 
+    DesempenoUsuario.Prediccion, DesempenoUsuario.FechaRegistro
+    FROM tb_desempenousuario DesempenoUsuario
+    INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = DesempenoUsuario.IdCurso
+    WHERE DesempenoUsuario.IdUsuario = _IdUsuario ORDER BY DesempenoUsuario.IdDesempeno DESC;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDesempenoUsuarioCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoUsuarioCurso`(
+	IN _IdCurso INT,
+    IN _IdUsuario INT
+)
+BEGIN
+	SELECT IdDesempenoCurso, TareaCalificada,Calificacion, PromedioCurso, PromedioGeneral,Prediccion, 
+    CAST(RumboEstatus AS CHAR) AS RumboEstatus, FechaRegistro
+    FROM tb_desempenousuariocurso
+    WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso
+    ORDER BY IdDesempenoCurso DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -5216,4 +5251,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-16 10:23:13
+-- Dump completed on 2022-04-16 11:18:22

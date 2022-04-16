@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class MiembrosGrupoModel {
-    private int id_Usuario;
+    private Integer id_Usuario;
     private String nombre_Completo, fecha_Ingreso;
 
     public MiembrosGrupoModel(int id_Usuario, String nombre_Completo, String fecha_Ingreso) {

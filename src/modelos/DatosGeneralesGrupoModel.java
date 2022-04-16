@@ -23,7 +23,7 @@ package modelos;
  */
 public class DatosGeneralesGrupoModel {
     private String nombre, descripcion, fecha_Creacion, nombre_Curso;
-    private int id_Grupo;
+    private Integer id_Grupo;
 
     public DatosGeneralesGrupoModel(String nombre, String descripcion, String fecha_Creacion, String nombre_Curso, int id_Grupo) {
         this.nombre = nombre;

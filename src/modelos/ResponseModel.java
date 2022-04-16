@@ -23,7 +23,7 @@ package modelos;
  */
 public class ResponseModel {
     
-    private int codigo;
+    private Integer codigo;
     private String mensaje;
 
     public ResponseModel(int codigo, String mensaje) {

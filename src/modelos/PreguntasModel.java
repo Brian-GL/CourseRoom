@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class PreguntasModel {
-    private int id_Pregunta;
+    private Integer id_Pregunta;
     private String nombre_Completo, pregunta, fecha_Creacion, estatus;
 
     public PreguntasModel(int id_Pregunta, String nombre_Completo, String pregunta, String fecha_Creacion, String estatus) {

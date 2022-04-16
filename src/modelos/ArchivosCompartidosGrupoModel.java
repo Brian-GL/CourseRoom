@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class ArchivosCompartidosGrupoModel {
-    private int id_Archivo_Compartido;
+    private Integer id_Archivo_Compartido;
     private String nombre_Archivo, extension, fecha_Enviado, nombre_Completo;
 
     public ArchivosCompartidosGrupoModel(int id_Archivo_Compartido, String nombre_Archivo, String extension, String fecha_Enviado, String nombre_Completo) {

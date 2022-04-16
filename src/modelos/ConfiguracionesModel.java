@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class ConfiguracionesModel {
-    private boolean chats_Conmigo, avisos_Activos;
+    private Boolean chats_Conmigo, avisos_Activos;
 
     public ConfiguracionesModel(boolean chats_Conmigo, boolean avisos_Activos) {
         this.chats_Conmigo = chats_Conmigo;

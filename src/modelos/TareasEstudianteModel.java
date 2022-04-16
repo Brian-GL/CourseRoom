@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class TareasEstudianteModel {
-    private int id_Tarea, id_Curso;
+    private Integer id_Tarea, id_Curso;
     private String nombre, nombre_Curso, fecha_Creacion, fecha_Entrega, estatus;
 
     public TareasEstudianteModel(int id_Tarea, int id_Curso, String nombre, String nombre_Curso, String fecha_Creacion, String fecha_Entrega, String estatus) {

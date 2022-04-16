@@ -22,8 +22,8 @@ package modelos;
  * @author JOEL BR
  */
 public class DesempenoUsuarioModel {
-    private int id_Desempeno, id_Curso;
-    private double prediccion, promedio_General, promedio_Curso;
+    private Integer id_Desempeno, id_Curso;
+    private Double prediccion, promedio_General, promedio_Curso;
     private String rumbo_Estatus, nombre_Curso, fecha_Registro;
 
     public DesempenoUsuarioModel(int id_Desempeno, int id_Curso, double prediccion, double promedio_General, double promedio_Curso, String rumbo_Estatus, String nombre_Curso, String fecha_Registro) {
@@ -40,7 +40,7 @@ public class DesempenoUsuarioModel {
     public DesempenoUsuarioModel() {
         rumbo_Estatus = nombre_Curso = fecha_Registro = new String();
         id_Desempeno = id_Curso = -1;
-        prediccion = promedio_General = promedio_Curso = -1;
+        prediccion = promedio_General = promedio_Curso = -1.0;
     }
 
     public int Id_Desempeno() {

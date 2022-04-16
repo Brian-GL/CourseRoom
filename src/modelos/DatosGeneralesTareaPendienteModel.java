@@ -23,7 +23,7 @@ package modelos;
  */
 public class DatosGeneralesTareaPendienteModel {
     private String nombre, descripcion, fecha_Creacion, fecha_Finalizacion, estatus, nombre_Completo;
-    private int id_Usuario;
+    private Integer id_Usuario;
 
     public DatosGeneralesTareaPendienteModel(String nombre, String descripcion, String fecha_Creacion, String fecha_Finalizacion, String estatus, String nombre_Completo, int id_Usuario) {
         this.nombre = nombre;

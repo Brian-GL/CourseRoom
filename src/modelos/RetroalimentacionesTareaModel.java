@@ -22,7 +22,7 @@ package modelos;
  * @author JOEL BR
  */
 public class RetroalimentacionesTareaModel {
-    private int id_Retroalimentacion;
+    private Integer id_Retroalimentacion;
     private String retroalimentacion, fecha_Envio, nombre_Archivo, extension;
 
     public RetroalimentacionesTareaModel(int id_Retroalimentacion, String retroalimentacion, String fecha_Envio, String nombre_Archivo, String extension) {
