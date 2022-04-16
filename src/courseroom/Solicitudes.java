@@ -2692,7 +2692,7 @@ public class Solicitudes {
                 
                 MensajesModel mensajesModel;
                 int id_Mensaje;
-                String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+                String mensaje, fecha_Envio, nombre_Completo, extension;
                 Vector<Object> fila;
                 while(!resultado.isEmpty()){
                     
@@ -2703,9 +2703,9 @@ public class Solicitudes {
                     fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension);
+                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio,
+                            nombre_Completo, extension);
                     
                     response.push_back(mensajesModel);
                 }
@@ -2737,7 +2737,7 @@ public class Solicitudes {
                 
                 MensajesModel mensajesModel;
                 int id_Mensaje;
-                String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+                String mensaje, fecha_Envio, nombre_Completo, extension;
                 Vector<Object> fila;
                 while(!resultado.isEmpty()){
                     
@@ -2748,9 +2748,9 @@ public class Solicitudes {
                     fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension);
+                    mensajesModel = new MensajesModel(id_Mensaje, mensaje,
+                            fecha_Envio, nombre_Completo, extension);
                     
                     response.push_back(mensajesModel);
                 }
@@ -2782,7 +2782,7 @@ public class Solicitudes {
                 
                 MensajesModel mensajesModel;
                 int id_Mensaje;
-                String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+                String mensaje, fecha_Envio, nombre_Completo, extension;
                 Vector<Object> fila;
                 while(!resultado.isEmpty()){
                     
@@ -2793,9 +2793,8 @@ public class Solicitudes {
                     fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension);
+                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, extension);
                     
                     response.push_back(mensajesModel);
                 }
@@ -2827,7 +2826,7 @@ public class Solicitudes {
                 
                 MensajesModel mensajesModel;
                 int id_Mensaje;
-                String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+                String mensaje, fecha_Envio, nombre_Completo, extension;
                 Vector<Object> fila;
                 while(!resultado.isEmpty()){
                     
@@ -2838,9 +2837,8 @@ public class Solicitudes {
                     fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension);
+                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, extension);
                     
                     response.push_back(mensajesModel);
                 }
@@ -2872,7 +2870,7 @@ public class Solicitudes {
                 
                 MensajesModel mensajesModel;
                 int id_Mensaje;
-                String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+                String mensaje, fecha_Envio, nombre_Completo, extension;
                 Vector<Object> fila;
                 while(!resultado.isEmpty()){
                     
@@ -2883,9 +2881,8 @@ public class Solicitudes {
                     fecha_Envio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     extension = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    nombre_Archivo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension);
+                    mensajesModel = new MensajesModel(id_Mensaje, mensaje, fecha_Envio, nombre_Completo, extension);
                     
                     response.push_back(mensajesModel);
                 }

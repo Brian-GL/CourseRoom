@@ -23,20 +23,19 @@ package modelos;
  */
 public class MensajesModel {
     private int id_Mensaje;
-    private String mensaje, fecha_Envio, nombre_Completo, nombre_Archivo, extension;
+    private String mensaje, fecha_Envio, nombre_Completo, extension;
 
-    public MensajesModel(int id_Mensaje, String mensaje, String fecha_Envio, String nombre_Completo, String nombre_Archivo, String extension) {
+    public MensajesModel(int id_Mensaje, String mensaje, String fecha_Envio, String nombre_Completo, String extension) {
         this.id_Mensaje = id_Mensaje;
         this.mensaje = mensaje;
         this.fecha_Envio = fecha_Envio;
         this.nombre_Completo = nombre_Completo;
-        this.nombre_Archivo = nombre_Archivo;
         this.extension = extension;
     }
 
     public MensajesModel() {
-        this.id_Mensaje = id_Mensaje;
-        this.mensaje = this.fecha_Envio = this.nombre_Completo = this.nombre_Archivo = this.extension = new String();
+        this.id_Mensaje = -1;
+        this.mensaje = this.fecha_Envio = this.nombre_Completo = this.extension = new String();
     }
 
     public int Id_Mensaje() {
@@ -69,14 +68,6 @@ public class MensajesModel {
 
     public void Nombre_Completo(String nombre_Completo) {
         this.nombre_Completo = nombre_Completo;
-    }
-
-    public String Nombre_Archivo() {
-        return nombre_Archivo;
-    }
-
-    public void Nombre_Archivo(String nombre_Archivo) {
-        this.nombre_Archivo = nombre_Archivo;
     }
 
     public String Extension() {

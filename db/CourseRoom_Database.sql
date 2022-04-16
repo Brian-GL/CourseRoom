@@ -4424,8 +4424,8 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesChat
 )
 BEGIN
     SELECT MensajesChat.IdMensaje, MensajesChat.Mensaje, MensajesChat.FechaEnvio,
-    courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesChat.Extension, MensajesChat.NombreArchivo
+    courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto, 
+    MensajesChat.Extension
     FROM tb_mensajeschat MensajesChat 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesChat.IdUsuarioEmisor
     WHERE MensajesChat.IdChat = _IdChat ORDER BY MensajesChat.IdChat DESC LIMIT 250;
@@ -4451,7 +4451,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesCurs
 BEGIN
     SELECT MensajesCurso.IdMensaje, MensajesCurso.Mensaje, MensajesCurso.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-	MensajesCurso.Extension, MensajesCurso.NombreArchivo
+	MensajesCurso.Extension
     FROM tb_mensajescurso MensajesCurso 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesCurso.IdUsuarioEmisor
     WHERE MensajesCurso.IdCurso= _IdCurso ORDER BY MensajesCurso.IdMensaje DESC LIMIT 250;
@@ -4477,7 +4477,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesGrup
 BEGIN
     SELECT MensajesGrupos.IdMensaje, MensajesGrupos.Mensaje, MensajesGrupos.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-     MensajesGrupos.Extension, MensajesGrupos.NombreArchivo
+     MensajesGrupos.Extension
     FROM tb_mensajesgrupo MensajesGrupos 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesGrupos.IdUsuarioEmisor
     WHERE MensajesGrupos.IdGrupo = _IdGrupo ORDER BY MensajesGrupos.IdMensaje DESC LIMIT 250;
@@ -4503,7 +4503,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesPreg
 BEGIN
     SELECT MensajesPreguntas.IdMensaje, MensajesPreguntas.Mensaje, MensajesPreguntas.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesPreguntas.Extension , MensajesPreguntas.NombreArchivo
+    MensajesPreguntas.Extension 
     FROM tb_mensajespregunta MensajesPreguntas 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesPreguntas.IdUsuarioEmisor
     WHERE MensajesPreguntas.IdPregunta = _IdPregunta ORDER BY MensajesPreguntas.IdMensaje DESC LIMIT 250;
@@ -4529,7 +4529,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerMensajesTare
 BEGIN
     SELECT MensajesTareas.IdMensaje, MensajesTareas.Mensaje, MensajesTareas.FechaEnvio,
     courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
-    MensajesTareas.Extension, MensajesTareas.NombreArchivo
+    MensajesTareas.Extension
     FROM tb_mensajestarea MensajesTareas
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = MensajesTareas.IdUsuarioEmisor
     WHERE MensajesTareas.IdTarea = _IdTarea ORDER BY MensajesTareas.IdMensaje DESC LIMIT 250;
@@ -5216,4 +5216,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-16  9:57:24
+-- Dump completed on 2022-04-16 10:23:13
