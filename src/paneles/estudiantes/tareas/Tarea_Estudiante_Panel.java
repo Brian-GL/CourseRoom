@@ -21,6 +21,7 @@ import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
 import courseroom.CourseRoom_Frame;
+import datos.colecciones.Lista;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
@@ -43,6 +44,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.MensajesModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -884,7 +886,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            SwingUtilities.invokeLater(() -> {
+                Obtener_Mensajes_Tarea();
+            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -938,6 +942,10 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
 
+    public int Id_Tarea() {
+        return Id_Tarea;
+    }
+    
     private void Agregar_Retroalimentacion(String retroalimentacion, 
             String fecha_Retroalimentacion, String archivo_Adjunto, String ruta_Archivo_Adjunto){
         
@@ -988,6 +996,46 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         } catch (IOException ex) {
             CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Archivo Adjunto",ex.getMessage());
         }
+    }
+    
+    private void Obtener_Mensajes_Tarea(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Tarea);
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Mensaje_Tarea(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
+        }
+        
+    }
+    
+    private void Agregar_Mensaje_Tarea(MensajesModel mensajesModel){
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+  
+        Celda_Renderer celda;
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        celdas[0] = celda;
+        if(mensajesModel.Extension().isBlank()){
+            celda = new Celda_Renderer(mensajesModel.Mensaje());
+            celdas[1] = celda;
+        }else{
+            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()));
+            celdas[1] = celda;
+        }
+        celda = new Celda_Renderer(mensajesModel.Fecha_Envio());
+        celdas[2] = celda;
+
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.addRow(celdas);
+        
+        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
+                CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1407,9 +1455,5 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 break;
             
         }
-    }
-    
-    public int Id_Tarea() {
-        return Id_Tarea;
     }
 }

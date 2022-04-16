@@ -54,6 +54,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.ComboOptionModel;
+import modelos.MensajesModel;
 import modelos.MiembrosGrupoModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
@@ -1371,7 +1372,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            SwingUtilities.invokeLater(() -> {
+                Obtener_Mensajes_Grupo();
+            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1637,6 +1640,46 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     
     public int Id_Grupo() {
         return Id_Grupo;
+    }
+    
+    private void Obtener_Mensajes_Grupo(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Grupo);
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Mensaje_Grupo(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Grupo", "No Se Encontraron Mensajes En El Grupo");
+        }
+        
+    }
+    
+    private void Agregar_Mensaje_Grupo(MensajesModel mensajesModel){
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+  
+        Celda_Renderer celda;
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        celdas[0] = celda;
+        if(mensajesModel.Extension().isBlank()){
+            celda = new Celda_Renderer(mensajesModel.Mensaje());
+            celdas[1] = celda;
+        }else{
+            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()));
+            celdas[1] = celda;
+        }
+        celda = new Celda_Renderer(mensajesModel.Fecha_Envio());
+        celdas[2] = celda;
+
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.addRow(celdas);
+        
+        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
+                CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
     
        

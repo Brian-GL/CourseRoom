@@ -4,6 +4,7 @@ import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
 import courseroom.CourseRoom_Frame;
+import datos.colecciones.Lista;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
@@ -42,6 +43,7 @@ import paneles.profesores.perfil.Perfil_Profesor_Panel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelos.MensajesModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 
@@ -55,21 +57,18 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private String ID;
     private int Id_Curso;
     
-    public Curso_Profesor_Panel(String _nombre_Curso,
-        Image _imagen_Curso,
-        String _fecha_Creacion,
-        String _id,
+    public Curso_Profesor_Panel(
         int id_Curso) {
         initComponents();
-        
-        titulo_JLabel.setText(_nombre_Curso);
+        Id_Curso = id_Curso;
+        /*titulo_JLabel.setText(_nombre_Curso);
         editar_Nombre_JTextField.setText(_nombre_Curso);
         ImageIcon icono = new ImageIcon(_imagen_Curso);
         imagen_Curso_JLabel.setIcon(icono);
         this.ID = _id;
         this.Id_Curso = id_Curso;
         fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creado El ",_fecha_Creacion)));
-        _imagen_Curso.flush();
+        _imagen_Curso.flush();*/
         
         Iniciar_Componentes();
     }
@@ -1373,7 +1372,9 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            SwingUtilities.invokeLater(() -> {
+                Obtener_Mensajes_Curso();
+            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1686,8 +1687,48 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
           }
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
-    public String ID() {
-        return this.ID;
+    public int Id_Curso() {
+        return Id_Curso;
+    }
+    
+    private void Obtener_Mensajes_Curso(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Curso);
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Mensaje_Curso(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Curso", "No Se Encontraron Mensajes En El Curso");
+        }
+        
+    }
+    
+    private void Agregar_Mensaje_Curso(MensajesModel mensajesModel){
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+  
+        Celda_Renderer celda;
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        celdas[0] = celda;
+        if(mensajesModel.Extension().isBlank()){
+            celda = new Celda_Renderer(mensajesModel.Mensaje());
+            celdas[1] = celda;
+        }else{
+            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()));
+            celdas[1] = celda;
+        }
+        celda = new Celda_Renderer(mensajesModel.Fecha_Envio());
+        celdas[2] = celda;
+
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.addRow(celdas);
+        
+        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
+                CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
     
     private XYDataset createDataset() {  
@@ -2696,9 +2737,5 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
             break;
             
         }
-    }
-    
-    public int Id_Curso() {
-        return Id_Curso;
     }
 }
