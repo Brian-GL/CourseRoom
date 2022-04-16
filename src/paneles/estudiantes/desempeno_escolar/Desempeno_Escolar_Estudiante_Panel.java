@@ -40,7 +40,6 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -54,7 +53,6 @@ import paneles.estudiantes.cursos.Curso_Estudiante_Panel;
 public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private byte carta_Visible;
-    private Lista<Curso_Estudiante_Panel> mostrar_Cursos_Lista;
     
     /**
      * Creates new form Profile_Estudiante_Panel
@@ -62,7 +60,6 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     public Desempeno_Escolar_Estudiante_Panel(){
         initComponents();
         Iniciar_Componentes();
-        Actualizar_Datos();
     }
 
     /**
@@ -80,10 +77,8 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         actualizar_JButton = new javax.swing.JButton();
         regresion_Lineal_JButton = new javax.swing.JButton();
         estadisticas_JButton = new javax.swing.JButton();
-        grafica_Pastel_JButton = new javax.swing.JButton();
         desempeno_Escolar_JLayeredPane = new javax.swing.JLayeredPane();
         regresion_Lineal_JPanel = new javax.swing.JPanel();
-        grafica_Pastel_JPanel = new javax.swing.JPanel();
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
         estadisticas_JTable = new javax.swing.JTable();
 
@@ -143,25 +138,13 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
             }
         });
 
-        grafica_Pastel_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/pie-chart.png"))); // NOI18N
-        grafica_Pastel_JButton.setToolTipText("<html><h3>Grafica De<br>Desempeño</h3></html>");
-        grafica_Pastel_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ((ImageIcon)grafica_Pastel_JButton.getIcon()).getImage().flush();
-        grafica_Pastel_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                grafica_Pastel_JButtonMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
         acciones_JPanel.setLayout(acciones_JPanelLayout);
         acciones_JPanelLayout.setHorizontalGroup(
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addGap(42, 42, 42)
                 .addComponent(regresion_Lineal_JButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(grafica_Pastel_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(estadisticas_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -173,11 +156,10 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(grafica_Pastel_JButton)
                     .addComponent(regresion_Lineal_JButton)
                     .addComponent(estadisticas_JButton)
                     .addComponent(actualizar_JButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
@@ -187,10 +169,6 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         regresion_Lineal_JPanel.setOpaque(false);
         regresion_Lineal_JPanel.setLayout(new java.awt.BorderLayout());
         desempeno_Escolar_JLayeredPane.add(regresion_Lineal_JPanel, "Regresion_Lineal");
-
-        grafica_Pastel_JPanel.setOpaque(false);
-        grafica_Pastel_JPanel.setLayout(new java.awt.BorderLayout());
-        desempeno_Escolar_JLayeredPane.add(grafica_Pastel_JPanel, "Grafica_Pastel");
 
         estadisticas_JScrollPane.setBorder(null);
         estadisticas_JScrollPane.setOpaque(false);
@@ -204,11 +182,11 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
 
                 },
                 new String [] {
-                    "Curso", "Tareas Calificadas", "Promedio Curso", "Promedio General" ,"Predicción", "Rumbo"
+                    "Curso", "Promedio Curso", "Promedio General" ,"Predicción", "Fecha"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false, false
+                    false, false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -260,15 +238,6 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
             );
         }// </editor-fold>//GEN-END:initComponents
 
-    private void grafica_Pastel_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grafica_Pastel_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)desempeno_Escolar_JLayeredPane.getLayout()).show(desempeno_Escolar_JLayeredPane, "Grafica_Pastel");
-            carta_Visible = 1;
-            Carta_Visible();
-        }
-    }//GEN-LAST:event_grafica_Pastel_JButtonMouseClicked
-
     private void regresion_Lineal_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresion_Lineal_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
@@ -283,7 +252,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)desempeno_Escolar_JLayeredPane.getLayout()).show(desempeno_Escolar_JLayeredPane, "Estadisticas");
-            carta_Visible = 2;
+            carta_Visible = 1;
             Carta_Visible();
         }
     }//GEN-LAST:event_estadisticas_JButtonMouseClicked
@@ -291,8 +260,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            this.Limpiar();
-            Actualizar_Datos();
+            Obtener_Desempeno_Usuario();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -352,17 +320,12 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     
     private void Agregar_Estadistica(DesempenoUsuarioModel desempenoUsuarioModel) {
         
-        String nombre_Curso = String.valueOf(desempenoUsuarioModel.Nombre());
-        String numero_Tareas_Calificadas = String.valueOf(desempenoUsuarioModel.Numero_Tareas_Calificadas());
-        //String promedio_Curso;
-        String promedio_General = String.valueOf(desempenoUsuarioModel.Promedio_General());
-        String prediccion = String.valueOf(desempenoUsuarioModel.Prediccion());
         Boolean rumbo = !"A Reprobar".equals(desempenoUsuarioModel.Rumbo_Estatus());
         
-        Celda_Renderer[] celdas = new Celda_Renderer[6];
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
-        String Id_Curso = CourseRoom.Utilerias().Concatenar("Curso_",desempenoUsuarioModel.Id_Curso());
+        String Id_Desempeno = String.valueOf(desempenoUsuarioModel.Id_Desempeno());
         Image imagen;
         ImageIcon icono;
 
@@ -375,35 +338,36 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
                 
                 imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
                 ImageIcon icono_Imagen = new ImageIcon(imagen);
-                celda =  new Celda_Renderer(icono_Imagen,nombre_Curso, Id_Curso);
+                celda =  new Celda_Renderer(icono_Imagen,desempenoUsuarioModel.Nombre_Curso(), Id_Desempeno);
                 celdas[0] = celda;
                 icono_Imagen.getImage().flush();
             }else{
-                celda =  new Celda_Renderer(nombre_Curso, Id_Curso);
+                celda =  new Celda_Renderer(desempenoUsuarioModel.Nombre_Curso(), Id_Desempeno);
                 celdas[0] = celda;
             }
         }
 
         try{
-            celda = new Celda_Renderer(numero_Tareas_Calificadas,Id_Curso);
+            celda = new Celda_Renderer(String.valueOf(desempenoUsuarioModel.Promedio_Curso()),Id_Desempeno);
             celdas[1] = celda;
-            //celda = new Celda_Renderer(promedio_Curso, Id_Curso);
-            //celdas[2] = celda;
-            celda = new Celda_Renderer(promedio_General, Id_Curso);
-            celdas[3] = celda;
-            celda = new Celda_Renderer(prediccion, Id_Curso);
-            celdas[4] = celda;
+            
+            celda = new Celda_Renderer(String.valueOf(desempenoUsuarioModel.Promedio_General()), Id_Desempeno);
+            celdas[2] = celda;
+            
             if(rumbo){
                 imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
                 icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono,"Aprobar",Id_Curso);
-                celdas[5] = celda;
+                celda = new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(String.valueOf(desempenoUsuarioModel.Prediccion()),"<br>",desempenoUsuarioModel.Rumbo_Estatus()),Id_Desempeno);
+                celdas[3] = celda;
             }else{
                 imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
                 icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono,"Reprobar",Id_Curso);
-                celdas[5] = celda;
+                celda = new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(String.valueOf(desempenoUsuarioModel.Prediccion()),"<br>",desempenoUsuarioModel.Rumbo_Estatus()),Id_Desempeno);
+                celdas[3] = celda;
             }
+            
+            celda = new Celda_Renderer(desempenoUsuarioModel.Fecha_Registro(), Id_Desempeno);
+            celdas[4] = celda;
 
             modelo.addRow(celdas);
 
@@ -414,13 +378,19 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         
     }
     
-    private void Actualizar_Datos() {
+    private void Obtener_Desempeno_Usuario() {
+        
+        this.Limpiar();
         
         Lista<DesempenoUsuarioModel> response = 
                 CourseRoom.Solicitudes().Obtener_Desempeno_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
         
-        while(!response.is_empty()){
-            Agregar_Estadistica(response.delist());
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Estadistica(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Desempeño Usuario", "No Se Encontraron Registros");
         }
         
     }
@@ -433,8 +403,6 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     private javax.swing.JButton estadisticas_JButton;
     private javax.swing.JScrollPane estadisticas_JScrollPane;
     private static javax.swing.JTable estadisticas_JTable;
-    private javax.swing.JButton grafica_Pastel_JButton;
-    private javax.swing.JPanel grafica_Pastel_JPanel;
     private javax.swing.JButton regresion_Lineal_JButton;
     private javax.swing.JPanel regresion_Lineal_JPanel;
     private javax.swing.JLabel titulo_JLabel;
@@ -444,7 +412,6 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     public void Iniciar_Componentes() {
         
         carta_Visible = 0;
-        mostrar_Cursos_Lista = new Lista<>();
 
         //Tabla estadisticas:
         estadisticas_JScrollPane.getViewport().setOpaque(false);
@@ -490,28 +457,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         chartPanel.setMaximumSize(regresion_Lineal_JPanel.getMaximumSize());
         regresion_Lineal_JPanel.add(chartPanel);
         
-        // Grafica de pastel:
-        DefaultPieDataset dataseto = new DefaultPieDataset();
-        dataseto.setValue("IPhone 5s", 20d);
-        dataseto.setValue("SamSung Grand", 20d);
-        dataseto.setValue("MotoG", 40d);
-        dataseto.setValue("Nokia Lumia", 10d);
         
-        chart = ChartFactory.createPieChart(
-                "Ventas", // chart title 
-                dataseto, // data    
-                true, // include legend   
-                true,
-                false);
-        
-        chartPanel = new ChartPanel((JFreeChart) chart);
-        chartPanel.setFont(gadugi);
-        chartPanel.setMouseWheelEnabled(true);
-        chartPanel.setMaximumDrawHeight(grafica_Pastel_JPanel.getMaximumSize().height);
-        chartPanel.setMaximumDrawWidth(grafica_Pastel_JPanel.getMaximumSize().width);
-        chartPanel.setMaximumSize(grafica_Pastel_JPanel.getMaximumSize());
-        
-        grafica_Pastel_JPanel.add(chartPanel);
     }
 
     @Override
@@ -557,39 +503,14 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         switch (carta_Visible) {
             case 0:
                 regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 break;
             case 1:
                 regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                break;
-            case 2:
-                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
                 break;
         }
     }
 
-     private void Obtener_Desempeno_Usuario() throws IOException{
-        
-        DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
-        modelo.setRowCount(0);
-        
-        Curso_Estudiante_Panel grupo_Estudiante_Panel;
-        while(!mostrar_Cursos_Lista.is_empty()){
-            grupo_Estudiante_Panel= mostrar_Cursos_Lista.delist();
-            Tablero_Estudiante_Panel.Retirar_Vista(grupo_Estudiante_Panel);
-            grupo_Estudiante_Panel.Limpiar();
-        }
-        
-        Lista<DesempenoUsuarioModel> lista = 
-                CourseRoom.Solicitudes().Obtener_Desempeno_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
-        
-        while(!lista.is_empty()){
-            Agregar_Estadistica(lista.delist());
-        }
-    }
+     
 }

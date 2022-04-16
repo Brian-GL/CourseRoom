@@ -272,10 +272,13 @@ DROP TABLE IF EXISTS `tb_desempenousuariocurso`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_desempenousuariocurso` (
   `IdDesempeno` int NOT NULL AUTO_INCREMENT,
+  `PromedioCurso` double DEFAULT NULL,
   `Prediccion` double DEFAULT NULL,
   `RumboEstatus` enum('A Aprobar','A Reprobar','Excelente','Bueno','Regular','Malo') NOT NULL,
   `IdUsuario` int NOT NULL,
   `IdCurso` int NOT NULL,
+  `PromedioGeneral` double DEFAULT NULL,
+  `FechaRegistro` varchar(100) NOT NULL,
   PRIMARY KEY (`IdDesempeno`),
   KEY `fk_IdUsuarioDesempeñoProfesional_INDEX` (`IdUsuario`) /*!80000 INVISIBLE */,
   KEY `fk_IdCursoDesempeñoProfesional_INDEX` (`IdCurso`),
@@ -1514,7 +1517,8 @@ BEGIN
     FROM tb_tareascursousuarios TareasCursoUsuarios
 	INNER JOIN tb_tareas Tareas ON Tareas.IdTarea = TareasCursoUsuarios.IdTarea
 	INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = Tareas.IdCurso
-	WHERE TareasCursoUsuarios.IdUsuario = _IdUsuario AND Cursos.IdCurso = _IdCurso 
+	WHERE TareasCursoUsuarios.IdUsuario = _IdUsuario 
+    AND Cursos.IdCurso = _IdCurso  AND TareasCursoUsuarios.Estatus = 'CALIFICADA'
     GROUP BY TareasCursoUsuarios.IdUsuario);
     
 END ;;
@@ -4008,17 +4012,12 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoUsu
     IN _IdUsuario INT
 )
 BEGIN
-    SELECT DesempenoCurso.IdDesempeno, DesempenoCurso.Prediccion,
-    COUNT(Tareas.IdTarea) AS NumeroTareasCalificadas, CAST(DesempenoCurso.RumboEstatus AS CHAR) AS RumboEstatus, Cursos.IdCurso,
-    Cursos.Nombre, Usuarios.PromedioGeneral
+    SELECT DesempenoCurso.IdDesempeno, Cursos.IdCurso, Cursos.Nombre, DesempenoCurso.PromedioCurso,
+    DesempenoCurso.PromedioGeneral, CAST(DesempenoCurso.RumboEstatus AS CHAR) AS RumboEstatus, 
+    DesempenoCurso.Prediccion, DesempenoCurso.FechaRegistro
     FROM tb_desempenousuariocurso DesempenoCurso
-    INNER JOIN tb_usuarios Usuarios ON DesempenoCurso.IdUsuario = Usuarios.IdUsuario
-    INNER JOIN tb_tareascursousuarios TareasUsuarios ON TareasUsuarios.IdUsuario = Usuarios.IdUsuario 
-    AND TareasUsuarios.Estatus = 'CALIFICADA'
-    INNER JOIN tb_tareas Tareas ON Tareas.IdTarea = TareasUsuarios.IdTarea
-    AND Tareas.IdCurso = DesempenoCurso.IdCurso
     INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = DesempenoCurso.IdCurso
-    WHERE DesempenoCurso.IdUsuario = _IdUsuario;
+    WHERE DesempenoCurso.IdUsuario = _IdUsuario ORDER BY DesempenoCurso.IdDesempeno DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -5217,4 +5216,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15 10:27:06
+-- Dump completed on 2022-04-15 19:45:25

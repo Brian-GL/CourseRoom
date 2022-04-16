@@ -2300,23 +2300,24 @@ public class Solicitudes {
                 Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
                 
                 DesempenoUsuarioModel desempenoUsuarioModel;
-                int id_Desempeno, numero_Tareas_Calificadas, id_Curso;
-                double prediccion, promedio_General;
-                String rumbo_Estatus, nombre;
+                int id_Desempeno, id_Curso;
+                double prediccion, promedio_General, promedio_Curso;
+                String rumbo_Estatus, nombre_Curso, fecha_Registro;
                 Vector<Object> fila;
                 while(!resultado.isEmpty()){
                     
                     fila = resultado.remove(0);
                     
                     id_Desempeno = (int) fila.remove(0);
-                    prediccion = (double)fila.remove(0);
-                    numero_Tareas_Calificadas = (int)fila.remove(0);
-                    rumbo_Estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     id_Curso = (int)fila.remove(0);
-                    nombre = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    nombre_Curso = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    promedio_Curso = (double)fila.remove(0);
                     promedio_General = (double)fila.remove(0);
+                    rumbo_Estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    prediccion = (double)fila.remove(0);
+                    fecha_Registro = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    desempenoUsuarioModel = new DesempenoUsuarioModel(id_Desempeno, numero_Tareas_Calificadas, id_Curso, prediccion, promedio_General, rumbo_Estatus, nombre);
+                    desempenoUsuarioModel = new DesempenoUsuarioModel(id_Desempeno, id_Curso, prediccion, promedio_General, promedio_Curso, rumbo_Estatus, nombre_Curso, fecha_Registro);
                     
                     response.push_back(desempenoUsuarioModel);
                 }

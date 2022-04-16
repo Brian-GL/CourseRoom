@@ -39,7 +39,6 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -76,10 +75,8 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         actualizar_JButton = new javax.swing.JButton();
         regresion_Lineal_JButton = new javax.swing.JButton();
         estadisticas_JButton = new javax.swing.JButton();
-        grafica_Pastel_JButton = new javax.swing.JButton();
         desempeno_Profesional_JLayeredPane = new javax.swing.JLayeredPane();
         regresion_Lineal_JPanel = new javax.swing.JPanel();
-        grafica_Pastel_JPanel = new javax.swing.JPanel();
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
         estadisticas_JTable = new javax.swing.JTable();
 
@@ -139,25 +136,13 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
             }
         });
 
-        grafica_Pastel_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/pie-chart.png"))); // NOI18N
-        grafica_Pastel_JButton.setToolTipText("<html><h3>Grafica De<br>Desempeño</h3></html>");
-        grafica_Pastel_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ((ImageIcon)grafica_Pastel_JButton.getIcon()).getImage().flush();
-        grafica_Pastel_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                grafica_Pastel_JButtonMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout acciones_JPanelLayout = new javax.swing.GroupLayout(acciones_JPanel);
         acciones_JPanel.setLayout(acciones_JPanelLayout);
         acciones_JPanelLayout.setHorizontalGroup(
             acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addGap(42, 42, 42)
                 .addComponent(regresion_Lineal_JButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(grafica_Pastel_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(estadisticas_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -169,11 +154,10 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
             .addGroup(acciones_JPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(acciones_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(grafica_Pastel_JButton)
                     .addComponent(regresion_Lineal_JButton)
                     .addComponent(estadisticas_JButton)
                     .addComponent(actualizar_JButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         contenido_Titulo_JPanel.add(acciones_JPanel, java.awt.BorderLayout.EAST);
@@ -183,10 +167,6 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         regresion_Lineal_JPanel.setOpaque(false);
         regresion_Lineal_JPanel.setLayout(new java.awt.BorderLayout());
         desempeno_Profesional_JLayeredPane.add(regresion_Lineal_JPanel, "Regresion_Lineal");
-
-        grafica_Pastel_JPanel.setOpaque(false);
-        grafica_Pastel_JPanel.setLayout(new java.awt.BorderLayout());
-        desempeno_Profesional_JLayeredPane.add(grafica_Pastel_JPanel, "Grafica_Pastel");
 
         estadisticas_JScrollPane.setBorder(null);
         estadisticas_JScrollPane.setOpaque(false);
@@ -200,11 +180,11 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
 
                 },
                 new String [] {
-                    "Curso", "Tareas Calificadas", "Promedio Curso", "Promedio General" ,"Predicción", "Rumbo"
+                    "Curso", "Promedio Curso", "Promedio General" ,"Predicción", "Fecha"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false, false
+                    false, false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -256,15 +236,6 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
             );
         }// </editor-fold>//GEN-END:initComponents
 
-    private void grafica_Pastel_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grafica_Pastel_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)desempeno_Profesional_JLayeredPane.getLayout()).show(desempeno_Profesional_JLayeredPane, "Grafica_Pastel");
-            carta_Visible = 1;
-            Carta_Visible();
-        }
-    }//GEN-LAST:event_grafica_Pastel_JButtonMouseClicked
-
     private void regresion_Lineal_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresion_Lineal_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
@@ -279,7 +250,7 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout)desempeno_Profesional_JLayeredPane.getLayout()).show(desempeno_Profesional_JLayeredPane, "Estadisticas");
-            carta_Visible = 2;
+            carta_Visible = 1;
             Carta_Visible();
         }
     }//GEN-LAST:event_estadisticas_JButtonMouseClicked
@@ -404,8 +375,6 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
     private javax.swing.JButton estadisticas_JButton;
     private javax.swing.JScrollPane estadisticas_JScrollPane;
     private static javax.swing.JTable estadisticas_JTable;
-    private javax.swing.JButton grafica_Pastel_JButton;
-    private javax.swing.JPanel grafica_Pastel_JPanel;
     private javax.swing.JButton regresion_Lineal_JButton;
     private javax.swing.JPanel regresion_Lineal_JPanel;
     private javax.swing.JLabel titulo_JLabel;
@@ -474,28 +443,6 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         chartPanel.setMaximumSize(regresion_Lineal_JPanel.getMaximumSize());
         regresion_Lineal_JPanel.add(chartPanel);
         
-        // Grafica de pastel:
-        DefaultPieDataset dataseto = new DefaultPieDataset();
-        dataseto.setValue("IPhone 5s", 20d);
-        dataseto.setValue("SamSung Grand", 20d);
-        dataseto.setValue("MotoG", 40d);
-        dataseto.setValue("Nokia Lumia", 10d);
-        
-        chart = ChartFactory.createPieChart(
-                "Ventas", // chart title 
-                dataseto, // data    
-                true, // include legend   
-                true,
-                false);
-        
-        chartPanel = new ChartPanel((JFreeChart) chart);
-        chartPanel.setFont(gadugi);
-        chartPanel.setMouseWheelEnabled(true);
-        chartPanel.setMaximumDrawHeight(grafica_Pastel_JPanel.getMaximumSize().height);
-        chartPanel.setMaximumDrawWidth(grafica_Pastel_JPanel.getMaximumSize().width);
-        chartPanel.setMaximumSize(grafica_Pastel_JPanel.getMaximumSize());
-        
-        grafica_Pastel_JPanel.add(chartPanel);
     }
 
     @Override
@@ -541,17 +488,10 @@ public class Desempeno_Profesional_Profesor_Panel extends javax.swing.JPanel imp
         switch (carta_Visible) {
             case 0:
                 regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 break;
             case 1:
                 regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-                estadisticas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                break;
-            case 2:
-                regresion_Lineal_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                grafica_Pastel_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 estadisticas_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
                 break;
         }

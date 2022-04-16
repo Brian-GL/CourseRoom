@@ -22,24 +22,25 @@ package modelos;
  * @author JOEL BR
  */
 public class DesempenoUsuarioModel {
-    private int id_Desempeno, numero_Tareas_Calificadas, id_Curso;
-    private double prediccion, promedio_General;
-    private String rumbo_Estatus, nombre;
+    private int id_Desempeno, id_Curso;
+    private double prediccion, promedio_General, promedio_Curso;
+    private String rumbo_Estatus, nombre_Curso, fecha_Registro;
 
-    public DesempenoUsuarioModel(int id_Desempeno, int numero_Tareas_Calificadas, int id_Curso, double prediccion, double promedio_General, String rumbo_Estatus, String nombre) {
+    public DesempenoUsuarioModel(int id_Desempeno, int id_Curso, double prediccion, double promedio_General, double promedio_Curso, String rumbo_Estatus, String nombre_Curso, String fecha_Registro) {
         this.id_Desempeno = id_Desempeno;
-        this.numero_Tareas_Calificadas = numero_Tareas_Calificadas;
         this.id_Curso = id_Curso;
         this.prediccion = prediccion;
         this.promedio_General = promedio_General;
+        this.promedio_Curso = promedio_Curso;
         this.rumbo_Estatus = rumbo_Estatus;
-        this.nombre = nombre;
+        this.nombre_Curso = nombre_Curso;
+        this.fecha_Registro = fecha_Registro;
     }
 
     public DesempenoUsuarioModel() {
-        this.id_Desempeno = this.numero_Tareas_Calificadas = this.id_Curso = 0;
-        this.prediccion = this.promedio_General = -1;
-        this.rumbo_Estatus = this.nombre = new String();
+        rumbo_Estatus = nombre_Curso = fecha_Registro = new String();
+        id_Desempeno = id_Curso = -1;
+        prediccion = promedio_General = promedio_Curso = -1;
     }
 
     public int Id_Desempeno() {
@@ -48,14 +49,6 @@ public class DesempenoUsuarioModel {
 
     public void Id_Desempeno(int id_Desempeno) {
         this.id_Desempeno = id_Desempeno;
-    }
-
-    public int Numero_Tareas_Calificadas() {
-        return numero_Tareas_Calificadas;
-    }
-
-    public void Numero_Tareas_Calificadas(int numero_Tareas_Calificadas) {
-        this.numero_Tareas_Calificadas = numero_Tareas_Calificadas;
     }
 
     public int Id_Curso() {
@@ -82,6 +75,14 @@ public class DesempenoUsuarioModel {
         this.promedio_General = promedio_General;
     }
 
+    public double Promedio_Curso() {
+        return promedio_Curso;
+    }
+
+    public void Promedio_Curso(double promedio_Curso) {
+        this.promedio_Curso = promedio_Curso;
+    }
+
     public String Rumbo_Estatus() {
         return rumbo_Estatus;
     }
@@ -90,11 +91,23 @@ public class DesempenoUsuarioModel {
         this.rumbo_Estatus = rumbo_Estatus;
     }
 
-    public String Nombre() {
-        return nombre;
+    public String Nombre_Curso() {
+        return nombre_Curso;
     }
 
-    public void Nombre(String nombre) {
-        this.nombre = nombre;
+    public void Nombre_Curso(String nombre_Curso) {
+        this.nombre_Curso = nombre_Curso;
     }
+
+    public String Fecha_Registro() {
+        return fecha_Registro;
+    }
+
+    public void Fecha_Registro(String fecha_Registro) {
+        this.fecha_Registro = fecha_Registro;
+    }
+    
+    
+
+   
 }
