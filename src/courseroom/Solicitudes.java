@@ -36,6 +36,7 @@ import modelos.DatosGeneralesTareaModel;
 import modelos.DatosGeneralesTareaPendienteModel;
 import modelos.DatosPerfilChatPersonalModel;
 import modelos.DatosPerfilModel;
+import modelos.DesempenoUsuarioCursoModel;
 import modelos.DesempenoUsuarioModel;
 import modelos.GruposModel;
 import modelos.TareasPendientesGrupoModel;
@@ -2282,6 +2283,56 @@ public class Solicitudes {
         return datosPerfilChatPersonalModel;
     }
 
+    public Lista<DesempenoUsuarioCursoModel> Obtener_Desempeno_Usuario_Curso(int id_Curso, int id_Usuario){
+        
+        Lista<DesempenoUsuarioCursoModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Curso);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Desempeno_Usuario_Curso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                DesempenoUsuarioCursoModel desempenoUsuarioCursoModel;
+                Integer id_Desempeno_Curso;
+                String tarea_Calificada, rumbo_Estatus, fecha_Registro;
+                Double calificacion, promedio_Curso, promedio_General, prediccion;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Desempeno_Curso = (int) fila.remove(0);
+                    tarea_Calificada = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    calificacion = (double)fila.remove(0);
+                    promedio_Curso = (double)fila.remove(0);
+                    promedio_General = (double)fila.remove(0);
+                    prediccion = (double)fila.remove(0);
+                    rumbo_Estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Registro = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    desempenoUsuarioCursoModel = new DesempenoUsuarioCursoModel(id_Desempeno_Curso, tarea_Calificada, rumbo_Estatus, calificacion, promedio_Curso, promedio_General, prediccion, fecha_Registro);
+                    
+                    response.push_back(desempenoUsuarioCursoModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
     public Lista<DesempenoUsuarioModel> Obtener_Desempeno_Usuario(int id_Usuario){
         
         Lista<DesempenoUsuarioModel> response = new Lista<>();

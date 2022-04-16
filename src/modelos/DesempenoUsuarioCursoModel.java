@@ -23,23 +23,26 @@ package modelos;
  */
 public class DesempenoUsuarioCursoModel {
     private Integer id_Desempeno_Curso;
-    private String tarea_Calificada, RumboEstatus;
+    private String tarea_Calificada, rumbo_Estatus, fecha_Registro;
     private Double calificacion, promedio_Curso, promedio_General, prediccion;
 
-    public DesempenoUsuarioCursoModel(int id_Desempeno_Curso, String tarea_Calificada, String RumboEstatus, Double calificacion, Double promedio_Curso, Double promedio_General, Double prediccion) {
+    public DesempenoUsuarioCursoModel(int id_Desempeno_Curso, String tarea_Calificada, 
+            String rumbo_Estatus, Double calificacion, Double promedio_Curso, Double promedio_General, Double prediccion, String fecha_Registro) {
         this.id_Desempeno_Curso = id_Desempeno_Curso;
         this.tarea_Calificada = tarea_Calificada;
-        this.RumboEstatus = RumboEstatus;
+        this.rumbo_Estatus = rumbo_Estatus;
         this.calificacion = calificacion;
         this.promedio_Curso = promedio_Curso;
         this.promedio_General = promedio_General;
         this.prediccion = prediccion;
+        this.fecha_Registro = fecha_Registro;
     }
 
     public DesempenoUsuarioCursoModel() {
         this.id_Desempeno_Curso = -1;
         this.tarea_Calificada = 
-        this.RumboEstatus = new String();
+        this.fecha_Registro =
+        this.rumbo_Estatus = new String();
         this.calificacion = 
         this.promedio_Curso = 
         this.promedio_General = 
@@ -62,12 +65,12 @@ public class DesempenoUsuarioCursoModel {
         this.tarea_Calificada = tarea_Calificada;
     }
 
-    public String RumboEstatus() {
-        return RumboEstatus;
+    public String Rumbo_Estatus() {
+        return rumbo_Estatus;
     }
 
-    public void RumboEstatus(String RumboEstatus) {
-        this.RumboEstatus = RumboEstatus;
+    public void Rumbo_Estatus(String rumbo_Estatus) {
+        this.rumbo_Estatus = rumbo_Estatus;
     }
 
     public Double Calificacion() {
@@ -101,8 +104,13 @@ public class DesempenoUsuarioCursoModel {
     public void Prediccion(Double prediccion) {
         this.prediccion = prediccion;
     }
-    
-    
-    
+
+    public String Fecha_Registro() {
+        return fecha_Registro;
+    }
+
+    public void Fecha_Registro(String fecha_Registro) {
+        this.fecha_Registro = fecha_Registro;
+    }
     
 }
