@@ -50,6 +50,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.MensajesModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -67,25 +68,15 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     private Lista<Tarea_Por_Calificar_Profesor_Panel> tareas_Por_Calificar_Lista;
     private int Id_Tarea;
     
-    public Tarea_Profesor_Panel(
-            String nombre_Tarea, 
-            String nombre_Curso,
-            String fecha_Creacion,
-            String fecha_Entrega,
-            String estatus,
-            String _id,
-            int id_Tarea){
+    public Tarea_Profesor_Panel(int id_Tarea){
         initComponents();
+        Id_Tarea = id_Tarea;
         
-        
-        titulo_JLabel.setText(nombre_Tarea);
+        /*titulo_JLabel.setText(nombre_Tarea);
         curso_JLabel.setText(nombre_Curso);
         fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", fecha_Creacion));
         fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Se entrega el ", fecha_Entrega));
-        
-        estatus_Tarea_JLabel.setText(estatus);
-        
-        this.ID = _id;
+        estatus_Tarea_JLabel.setText(estatus);*/
        
         
         Iniciar_Componentes();
@@ -892,7 +883,9 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            SwingUtilities.invokeLater(() -> {
+                Obtener_Mensajes_Tarea();
+            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1069,9 +1062,49 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción De Tu Tarea<br>Rebasa Los 500 Caracteres");
           }
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
+    
+    public int Id_Tarea() {
+        return Id_Tarea;
+    }
+    
+     private void Obtener_Mensajes_Tarea(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Tarea);
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Mensaje_Tarea(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
+        }
+        
+    }
+    
+    private void Agregar_Mensaje_Tarea(MensajesModel mensajesModel){
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+  
+        Celda_Renderer celda;
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        celdas[0] = celda;
+        if(mensajesModel.Extension().isBlank()){
+            celda = new Celda_Renderer(mensajesModel.Mensaje());
+            celdas[1] = celda;
+        }else{
+            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()));
+            celdas[1] = celda;
+        }
+        celda = new Celda_Renderer(mensajesModel.Fecha_Envio());
+        celdas[2] = celda;
 
-    public String ID(){
-        return this.ID;
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.addRow(celdas);
+        
+        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
+                CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
  
     private void Agregar_Tarea_Por_Calificar(String nombre_Tarea, String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Estudiante,
@@ -1557,7 +1590,4 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         }
     }
     
-    public int Id_Tarea() {
-        return Id_Tarea;
-    }
 }

@@ -276,7 +276,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
             DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
             
             Curso_Profesor_Panel curso_Profesor_Panel
-                    = new Curso_Profesor_Panel(nombre_Curso, obtener_Imagen_Curso,fecha_Creacion,  id,-1);
+                    = new Curso_Profesor_Panel(/*nombre_Curso, obtener_Imagen_Curso,fecha_Creacion,  id,*/-1);
             
             cursos_Creados_Lista.push_back(curso_Profesor_Panel);
             Tablero_Profesor_Panel.Agregar_Vista(curso_Profesor_Panel, id);
