@@ -621,7 +621,7 @@ CREATE TABLE `tb_preguntascuestionarios` (
   `IdPregunta` int NOT NULL AUTO_INCREMENT,
   `Pregunta` varchar(100) NOT NULL,
   PRIMARY KEY (`IdPregunta`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2311,6 +2311,54 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_AgregarRespuestaCuestionario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_AgregarRespuestaCuestionario`(
+	IN _IdCurso INT,
+    IN _IdUsuario INT,
+    IN _IdPregunta INT,
+    IN _Respuesta VARCHAR(15)
+)
+BEGIN
+	
+
+	IF EXISTS(SELECT IdPregunta FROM tb_preguntascuestionarios WHERE IdPregunta = _IdPregunta) THEN
+
+		IF EXISTS(SELECT CursosUsuarios.IdCurso FROM 
+			tb_cursosusuarios CursosUsuarios
+			INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = CursosUsuarios.IdCurso 
+			WHERE CursosUsuarios.IdCurso = _IdCurso AND Cursos.Finalizado = 1 AND Cursos.Activo = 1
+			AND CursosUsuarios.IdUsuario = _IdUsuario AND CursosUsuarios.Estatus = 'Actual') THEN
+			
+            IF (SELECT COUNT(IdUsuario) FROM tb_cuestionarios WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso) <= 20 THEN
+            
+				INSERT INTO tb_cuestionarios(IdCurso,IdUsuario,IdPregunta,Respuesta) 
+				VALUES(_IdCurso, _IdUsuario, _IdPregunta, _Respuesta);
+				
+				SELECT LAST_INSERT_ID() AS "Codigo", 'Se Ha Registrado La Respuesta En El Cuestionario Correctamente' AS "Mensaje";
+			ELSE
+                SELECT -1 AS "Codigo", 'El Cuestionario Ya Ha Sido Contestado Con Anterioridad' AS "Mensaje";
+			END IF;
+		ELSE  
+			SELECT -1 AS "Codigo", 'El Cuestionario No Puede Ser Respondido Por El Usuario En Este Momento' AS "Mensaje";
+		END IF;
+	ELSE  
+		SELECT -1 AS "Codigo", 'La Pregunta No Se Encuentra Registrada' AS "Mensaje";
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_AgregarSesion` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -3286,14 +3334,20 @@ BEGIN
             -- Validar que se encuentre enrolado en el curso:
             IF EXISTS (SELECT IdCurso FROM tb_cursosusuarios WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso AND Estatus = 'Actual') THEN
 				
-                UPDATE tb_cursosusuarios SET Estatus = 'Finalizado' WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso AND Estatus = 'Actual';
+                -- Validar que hayan registrado las respuestas en el cuestionario:
+                IF (SELECT COUNT(IdUsuario) FROM tb_cuestionarios WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso) = 20 THEN
                 
-				SET @IdProfesor := -1;
-                SELECT IdProfesor INTO @IdProfesor FROM tb_cursos WHERE IdCurso = _IdCurso LIMIT 1;
-                
-                CALL sp_AgregarAviso(@IdProfesor,CONCAT('El Usuario ',courseroom.fn_NombreCompletoUsuario(_IdUsuario),' Ha Finalizado El Curso ',courseroom.fn_NombreCurso(_IdCurso)),'Curso');
-                
-                SELECT @IdProfesor AS "Codigo", 'El Usuario Ha Finalizado El Curso Satisfactoriamente' AS "Mensaje";
+					UPDATE tb_cursosusuarios SET Estatus = 'Finalizado' WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso AND Estatus = 'Actual';
+					
+					SET @IdProfesor := -1;
+					SELECT IdProfesor INTO @IdProfesor FROM tb_cursos WHERE IdCurso = _IdCurso LIMIT 1;
+					
+					CALL sp_AgregarAviso(@IdProfesor,CONCAT('El Usuario ',courseroom.fn_NombreCompletoUsuario(_IdUsuario),' Ha Finalizado El Curso ',courseroom.fn_NombreCurso(_IdCurso)),'Curso');
+					
+					SELECT @IdProfesor AS "Codigo", 'El Usuario Ha Finalizado El Curso Satisfactoriamente' AS "Mensaje";
+                ELSE
+					SELECT -1 AS "Codigo", 'El Usuario No ha Respondido El Cuestionario Del Curso' AS "Mensaje";
+                END IF;
                 
             ELSE
 				SELECT -1 AS "Codigo", 'El Usuario No Está Tomando El Curso Actualmente' AS "Mensaje";
@@ -5241,6 +5295,36 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ValidacionContestarCuestionario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ValidacionContestarCuestionario`(
+	IN _IdCurso INT,
+    IN _IdUsuario INT
+)
+BEGIN
+	IF EXISTS(SELECT CursosUsuarios.IdCurso FROM 
+			tb_cursosusuarios CursosUsuarios
+			INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = CursosUsuarios.IdCurso 
+			WHERE CursosUsuarios.IdCurso = _IdCurso AND Cursos.Finalizado = 1 AND Cursos.Activo = 1
+			AND CursosUsuarios.IdUsuario = _IdUsuario AND CursosUsuarios.Estatus = 'Actual')  THEN
+            SELECT 1 AS "Codigo", 'El Usuario Puede Contestar El Cuestionario' As "Mensaje";
+		ELSE
+            SELECT -1 AS "Codigo", 'El Usuario No Puede Contestar El Cuestionario' As "Mensaje";
+		END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -5251,4 +5335,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-16 11:18:22
+-- Dump completed on 2022-04-16 19:34:48

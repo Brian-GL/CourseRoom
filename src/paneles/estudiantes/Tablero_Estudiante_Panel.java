@@ -876,6 +876,16 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         desempeno_Escolar_Panel.Colorear_Componentes();
     }
     
+    public static void Des_Habilitar_Menu(boolean valor){
+        if(valor){
+            menu_JButton.setEnabled(!valor);
+            menu_JPanel.setVisible(!valor);
+        }else{
+            menu_JButton.setEnabled(!valor);
+            menu_JPanel.setVisible(!valor);
+        }
+    }
+    
     @Override
     public void Limpiar(){
         
@@ -960,7 +970,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private static javax.swing.JLabel imagen_Perfil_JLabel;
     private static javax.swing.JLabel mensaje_Bienvenida_JLabel;
     private static javax.swing.JButton menu_JButton;
-    private javax.swing.JPanel menu_JPanel;
+    private static javax.swing.JPanel menu_JPanel;
     private static javax.swing.JButton preguntas_JButton;
     private static javax.swing.JButton reproductor_Musica_JButton;
     private static javax.swing.JButton salir_JButton;

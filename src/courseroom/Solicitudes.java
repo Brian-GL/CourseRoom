@@ -101,7 +101,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -136,7 +136,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -174,7 +174,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -210,7 +210,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -246,7 +246,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -287,7 +287,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -321,7 +321,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -355,7 +355,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -390,7 +390,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -427,7 +427,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -461,7 +461,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -495,7 +495,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -530,7 +530,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -541,6 +541,42 @@ public class Solicitudes {
         return response;
     }
      
+    public ResponseModel Agregar_Respuesta_Cuestionario(int id_Curso,int id_Usuario, int id_Pregunta, String respuesta){
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Curso);
+            parametros.add(id_Usuario);
+            parametros.add(id_Pregunta);
+            parametros.add(CourseRoom.Utilerias().Codificacion(respuesta));
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object resultado = xmlRpcClient.execute("CourseRoom_Server.Agregar_Respuesta_Cuestionario", parametros);
+            
+            if(resultado != null){
+                
+                Vector<Object> result  = (Vector<Object>)resultado;
+                
+                response.Codigo((Integer)result.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)result.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
     public ResponseModel Agregar_Sesion(int id_Usuario){
         ResponseModel response = new ResponseModel();
         
@@ -565,7 +601,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -604,7 +640,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -652,7 +688,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -871,7 +907,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -906,7 +942,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -941,7 +977,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -976,7 +1012,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1013,7 +1049,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1051,7 +1087,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1089,7 +1125,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1127,7 +1163,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1165,7 +1201,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1203,7 +1239,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1241,7 +1277,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1279,7 +1315,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1317,7 +1353,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1352,7 +1388,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -1431,7 +1467,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -3348,7 +3384,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -3444,7 +3480,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -3478,7 +3514,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -3512,7 +3548,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -3546,7 +3582,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -3580,7 +3616,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -3614,7 +3650,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -3648,7 +3684,7 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {
@@ -3682,7 +3718,41 @@ public class Solicitudes {
                 
             }else{
                 response.Codigo(-1);
-                response.Mensaje("No Se Obtuvo Una Respuesta");
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
+    public ResponseModel Validacion_Contestar_Cuestionario(int id_Curso, int id_Usuario){
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(id_Curso);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Validacion_Contestar_Cuestionario", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
             }
             
         } catch (XmlRpcException | IOException ex) {

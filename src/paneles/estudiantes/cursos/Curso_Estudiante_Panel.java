@@ -79,6 +79,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     public Curso_Estudiante_Panel(int id_Curso) {
         initComponents();
         Id_Curso = id_Curso;
+        
+        ID_Cuestionario = CourseRoom.Utilerias().Concatenar("Cuestionario_Curso_", id_Curso);
+        
         /*titulo_JLabel.setText(_nombre_Curso);
         ImageIcon icono = new ImageIcon(_imagen_Curso);
         imagen_Curso_JLabel.setIcon(icono);
@@ -148,7 +151,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         estadisticas_JScrollPane = new javax.swing.JScrollPane();
         estadisticas_JTable = new javax.swing.JTable();
         abandonar_Curso_JButton = new javax.swing.JButton();
-        finalizar_Curso_JButton = new javax.swing.JButton();
+        contestar_Cuestionario_Finalizar_Curso_JButton = new javax.swing.JButton();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -898,21 +901,21 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                         }
                                     });
 
-                                    finalizar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-                                    finalizar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
-                                    finalizar_Curso_JButton.setText("Finalizar Curso");
-                                    finalizar_Curso_JButton.setToolTipText("Finaliza el curso");
-                                    finalizar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                                    ((ImageIcon)finalizar_Curso_JButton.getIcon()).getImage().flush();
-                                    finalizar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                                    contestar_Cuestionario_Finalizar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                                    contestar_Cuestionario_Finalizar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/woman.png"))); // NOI18N
+                                    contestar_Cuestionario_Finalizar_Curso_JButton.setText("Contestar Cuestionario Para Finalizar El Curso ");
+                                    contestar_Cuestionario_Finalizar_Curso_JButton.setToolTipText("Finaliza el curso");
+                                    contestar_Cuestionario_Finalizar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                                    ((ImageIcon)contestar_Cuestionario_Finalizar_Curso_JButton.getIcon()).getImage().flush();
+                                    contestar_Cuestionario_Finalizar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                                         public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                            finalizar_Curso_JButtonMouseClicked(evt);
+                                            contestar_Cuestionario_Finalizar_Curso_JButtonMouseClicked(evt);
                                         }
                                         public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                            finalizar_Curso_JButtonMouseEntered(evt);
+                                            contestar_Cuestionario_Finalizar_Curso_JButtonMouseEntered(evt);
                                         }
                                         public void mouseExited(java.awt.event.MouseEvent evt) {
-                                            finalizar_Curso_JButtonMouseExited(evt);
+                                            contestar_Cuestionario_Finalizar_Curso_JButtonMouseExited(evt);
                                         }
                                     });
 
@@ -926,18 +929,18 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                                 .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
                                                     .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(contestar_Cuestionario_Finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGap(0, 0, 0))
                                     );
                                     estadisticas_JPanelLayout.setVerticalGroup(
                                         estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(estadisticas_JPanelLayout.createSequentialGroup()
-                                            .addGap(0, 0, 0)
-                                            .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
-                                            .addGap(18, 18, 18)
+                                            .addContainerGap()
+                                            .addComponent(estadisticas_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addGroup(estadisticas_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(abandonar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(contestar_Cuestionario_Finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addContainerGap())
                                     );
 
@@ -1122,24 +1125,38 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         abandonar_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente().brighter());
     }//GEN-LAST:event_abandonar_Curso_JButtonMouseExited
 
-    private void finalizar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseClicked
+    private void contestar_Cuestionario_Finalizar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contestar_Cuestionario_Finalizar_Curso_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista(ID_Cuestionario);
+            
+            ResponseModel response = CourseRoom.Solicitudes().Validacion_Contestar_Cuestionario(Id_Curso, Tablero_Estudiante_Panel.Id_Usuario());
+            
+            if(response.Is_Success()){
+                //Cuestionario:
+                cuestionario_Curso_Estudiante_Panel = 
+                        new Cuestionario_Curso_Estudiante_Panel(this.Id_Curso, this.titulo_JLabel.getText(), this);
+        
+                Tablero_Estudiante_Panel.Agregar_Vista(cuestionario_Curso_Estudiante_Panel, ID_Cuestionario);
+                Tablero_Estudiante_Panel.Mostrar_Vista(ID_Cuestionario);
+                
+                
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Contestar Cuestionario", response.Mensaje());
+            }
         }
-    }//GEN-LAST:event_finalizar_Curso_JButtonMouseClicked
+    }//GEN-LAST:event_contestar_Cuestionario_Finalizar_Curso_JButtonMouseClicked
 
-    private void finalizar_Curso_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseEntered
+    private void contestar_Cuestionario_Finalizar_Curso_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contestar_Cuestionario_Finalizar_Curso_JButtonMouseEntered
         // TODO add your handling code here:
-        finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color().darker());
-        finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente().brighter());
-    }//GEN-LAST:event_finalizar_Curso_JButtonMouseEntered
+        contestar_Cuestionario_Finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color().darker());
+        contestar_Cuestionario_Finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente().brighter());
+    }//GEN-LAST:event_contestar_Cuestionario_Finalizar_Curso_JButtonMouseEntered
 
-    private void finalizar_Curso_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseExited
+    private void contestar_Cuestionario_Finalizar_Curso_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contestar_Cuestionario_Finalizar_Curso_JButtonMouseExited
         // TODO add your handling code here:
-        finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color().darker());
-        finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente().brighter());
-    }//GEN-LAST:event_finalizar_Curso_JButtonMouseExited
+        contestar_Cuestionario_Finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color().darker());
+        contestar_Cuestionario_Finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente().brighter());
+    }//GEN-LAST:event_contestar_Cuestionario_Finalizar_Curso_JButtonMouseExited
 
     private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
 
@@ -1395,6 +1412,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JButton chat_JButton;
     private javax.swing.JPanel chat_JPanel;
     private javax.swing.JButton compartir_Materiales_JButton;
+    private javax.swing.JButton contestar_Cuestionario_Finalizar_Curso_JButton;
     private javax.swing.JLayeredPane curso_JLayeredPane;
     private javax.swing.JScrollPane descripcion_Curso_JScrollPane;
     private javax.swing.JTextPane descripcion_Curso_JTextPane;
@@ -1407,7 +1425,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JScrollPane estadisticas_JScrollPane;
     private javax.swing.JTable estadisticas_JTable;
     private javax.swing.JLabel fecha_Creacion_JLabel;
-    private javax.swing.JButton finalizar_Curso_JButton;
     private javax.swing.JButton grupos_JButton;
     private javax.swing.JScrollPane grupos_JScrollPane;
     private javax.swing.JTable grupos_JTable;
@@ -1636,13 +1653,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         Agregar_Estadistica(tarea_Calificada, calificacion, promedio_Curso, prediccion, rumbo, fecha_Calificacion);
         
-        //Cuestionario:
-        String id_Cuestionario = CourseRoom.Utilerias().Concatenar(ID, "_Cuestionario_1");
-        cuestionario_Curso_Estudiante_Panel = new Cuestionario_Curso_Estudiante_Panel(id_Cuestionario, ID, this.titulo_JLabel.getText());
-        
-        Tablero_Estudiante_Panel.Agregar_Vista(cuestionario_Curso_Estudiante_Panel, id_Cuestionario);
-        
-        this.ID_Cuestionario = id_Cuestionario;
        
         Colorear_Componentes();
     }
@@ -1829,8 +1839,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         abandonar_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color().darker());
         abandonar_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente().brighter());
         
-        finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color().darker());
-        finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente().brighter());
+        contestar_Cuestionario_Finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color().darker());
+        contestar_Cuestionario_Finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente().brighter());
         
         cuestionario_Curso_Estudiante_Panel.Colorear_Componentes();
         

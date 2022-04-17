@@ -22,7 +22,6 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;

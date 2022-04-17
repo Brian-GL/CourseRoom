@@ -18,6 +18,7 @@
 package paneles.estudiantes.cursos;
 
 import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 import datos.interfaces.Componentes_Interface;
 import java.awt.CardLayout;
 import java.awt.Font;
@@ -28,7 +29,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import modelos.ResponseModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 
@@ -38,15 +41,16 @@ import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
  */
 public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements Componentes_Interface{
 
-    private final String Id_Curso;
+    private int Id_Curso;
+    private Curso_Estudiante_Panel curso_Estudiante_Panel;
     private JLabel[] labeles_Pares;
     private JLabel[] labeles_Impares;
     
-    public Cuestionario_Curso_Estudiante_Panel(String id_Cuestionario, String id_Curso, String nombre_Curso) {
+    public Cuestionario_Curso_Estudiante_Panel(int id_Curso,  String nombre_Curso, Curso_Estudiante_Panel _curso_Estudiante_Panel) {
         initComponents();
         
         this.Id_Curso = id_Curso;
-        
+        this.curso_Estudiante_Panel = _curso_Estudiante_Panel;
         informacion_Inicio_JLabel.setText(Descripcion_Cuestionario(nombre_Curso));
         
         Iniciar_Componentes();
@@ -66,7 +70,6 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         titulo_Inicio_JLabel = new javax.swing.JLabel();
         informacion_Inicio_JLabel = new javax.swing.JLabel();
         continuar_Relevancia_JButton = new javax.swing.JButton();
-        regresar_Curso_JButton = new javax.swing.JButton();
         relevancia_JPanel = new javax.swing.JPanel();
         relevancia_JLabel = new javax.swing.JLabel();
         continuar_Pensamiento_Reflexivo_JButton = new javax.swing.JButton();
@@ -179,7 +182,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
         informacion_Inicio_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         informacion_Inicio_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        informacion_Inicio_JLabel.setText("<html>\n\n<p style=\"text-align:center;\">\n\nA continuación te pediremos que nos ayudes a contestar este cuestionario<br>\n final del curso <br>\nEsto debido a que requerimos datos para brindarle a todos nuestros usuarios<br>\nmejores estadísticas e información relevante al tomar un curso o dentro de este.<br>\nEsperamos no molestarte, te aseguramos no te tomará más de 5 minutos en contestar.<br>\nDe antemano muchas gracias por tu tiempo y por hacer de CourseRoom® un mejor lugar cada día.\n</p>\n\n</html>");
+        informacion_Inicio_JLabel.setText("<html>\n\n<p style=\"text-align:center;\">\n\nA continuación te pediremos que nos ayudes a contestar este cuestionario.\n final del curso <br> Esto debido a que requerimos datos para brindarle a todos\n nuestros usuariosmejores estadísticas e información relevante al tomar un curso o dentro de este.\nEsperamos no molestarte, te aseguramos no te tomará más de 5 minutos en contestar.\nDe antemano muchas gracias por tu tiempo y por hacer de CourseRoom® un mejor lugar cada día.\n</p>\n\n</html>");
         informacion_Inicio_JLabel.setPreferredSize(new java.awt.Dimension(670, 104));
 
         continuar_Relevancia_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/inreply.png"))); // NOI18N
@@ -199,23 +202,6 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
             }
         });
 
-        regresar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_Curso_JButton.setToolTipText("<html> <h3>Regresar a la página de inicio de sesión</h3> </html>");
-        regresar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        regresar_Curso_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ((ImageIcon)regresar_Curso_JButton.getIcon()).getImage().flush();
-        regresar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresar_Curso_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                regresar_Curso_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                regresar_Curso_JButtonMouseExited(evt);
-            }
-        });
-
         javax.swing.GroupLayout inicio_JPanelLayout = new javax.swing.GroupLayout(inicio_JPanel);
         inicio_JPanel.setLayout(inicio_JPanelLayout);
         inicio_JPanelLayout.setHorizontalGroup(
@@ -225,8 +211,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
                 .addGroup(inicio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(logo_Inicio_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(inicio_JPanelLayout.createSequentialGroup()
-                        .addComponent(regresar_Curso_JButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(continuar_Relevancia_JButton))
                     .addComponent(titulo_Inicio_JLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE)
                     .addComponent(informacion_Inicio_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -242,9 +227,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
                 .addGap(9, 9, 9)
                 .addComponent(informacion_Inicio_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-                .addGroup(inicio_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(continuar_Relevancia_JButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(regresar_Curso_JButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addComponent(continuar_Relevancia_JButton)
                 .addContainerGap())
         );
 
@@ -305,7 +288,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Relevancia_JPanel.add(titulo_Respuesta_Relevancia_JPanel);
 
         pregunta1_Relevancia_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta1_Relevancia_JLabel.setText(" 1. Mi aprendizaje se centra en asuntos que me interesan");
+        pregunta1_Relevancia_JLabel.setText(" 1.  Mi aprendizaje se centra en asuntos que me interesan");
         cuestionario_Relevancia_JPanel.add(pregunta1_Relevancia_JLabel);
 
         respuesta1_Relevancia_JPanel.setOpaque(false);
@@ -341,7 +324,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Relevancia_JPanel.add(respuesta2_Relevancia_JPanel);
 
         pregunta3_Relevancia_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta3_Relevancia_JLabel.setText(" 3. Aprendo cómo mejorar mi práctica profesional");
+        pregunta3_Relevancia_JLabel.setText(" 3.  Aprendo cómo mejorar mi práctica profesional");
         cuestionario_Relevancia_JPanel.add(pregunta3_Relevancia_JLabel);
 
         respuesta3_Relevancia_JPanel.setOpaque(false);
@@ -522,7 +505,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Pensamiento_Reflexivo_JPanel.add(pregunta4_Pensamiento_Reflexivo_JLabel);
 
         respuesta4_Pensamiento_Reflexivo_JPanel.setOpaque(false);
-        respuesta4_Pensamiento_Reflexivo_JPanel.setLayout(new java.awt.GridLayout());
+        respuesta4_Pensamiento_Reflexivo_JPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         respuesta4_Pensamiento_Reflexivo_JSlider.setMajorTickSpacing(1);
         respuesta4_Pensamiento_Reflexivo_JSlider.setMaximum(4);
@@ -623,7 +606,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Interactividad_JPanel.add(titulo_Respuesta_Interactividad_JPanel);
 
         pregunta1_Interactividad_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta1_Interactividad_JLabel.setText(" 1. Explico mis ideas a otros estudiantes");
+        pregunta1_Interactividad_JLabel.setText(" 1.  Explico mis ideas a otros estudiantes");
         cuestionario_Interactividad_JPanel.add(pregunta1_Interactividad_JLabel);
 
         respuesta1_Interactividad_JPanel.setOpaque(false);
@@ -682,7 +665,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Interactividad_JPanel.add(pregunta4_Interactividad_JLabel);
 
         respuesta4_Interactividad_JPanel.setOpaque(false);
-        respuesta4_Interactividad_JPanel.setLayout(new java.awt.GridLayout());
+        respuesta4_Interactividad_JPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         respuesta4_Interactividad_JSlider.setMajorTickSpacing(1);
         respuesta4_Interactividad_JSlider.setMaximum(4);
@@ -783,7 +766,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Apoyo_Profesor_JPanel.add(titulo_Respuesta_Apoyo_Profesor_JPanel);
 
         pregunta1_Apoyo_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta1_Apoyo_Profesor_JLabel.setText(" 1. El profesor incita a la reflexión");
+        pregunta1_Apoyo_Profesor_JLabel.setText(" 1. El tutor me estimula a reflexionar");
         cuestionario_Apoyo_Profesor_JPanel.add(pregunta1_Apoyo_Profesor_JLabel);
 
         respuesta1_Apoyo_Profesor_JPanel.setOpaque(false);
@@ -801,7 +784,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Apoyo_Profesor_JPanel.add(respuesta1_Apoyo_Profesor_JPanel);
 
         pregunta2_Apoyo_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta2_Apoyo_Profesor_JLabel.setText(" 2. El profesor anima a la participación");
+        pregunta2_Apoyo_Profesor_JLabel.setText(" 2. El tutor me anima a participar");
         cuestionario_Apoyo_Profesor_JPanel.add(pregunta2_Apoyo_Profesor_JLabel);
 
         respuesta2_Apoyo_Profesor_JPanel.setOpaque(false);
@@ -819,7 +802,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Apoyo_Profesor_JPanel.add(respuesta2_Apoyo_Profesor_JPanel);
 
         pregunta3_Apoyo_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta3_Apoyo_Profesor_JLabel.setText(" 3. El profesor ejemplifica las buenas disertaciones");
+        pregunta3_Apoyo_Profesor_JLabel.setText(" 3. El tutor ejemplifica las buenas disertaciones");
         cuestionario_Apoyo_Profesor_JPanel.add(pregunta3_Apoyo_Profesor_JLabel);
 
         respuesta3_Apoyo_Profesor_JPanel.setOpaque(false);
@@ -837,11 +820,11 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Apoyo_Profesor_JPanel.add(respuesta3_Apoyo_Profesor_JPanel);
 
         pregunta4_Apoyo_Profesor_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta4_Apoyo_Profesor_JLabel.setText(" 4. El profesor ejemplifica la auto reflexión crítica");
+        pregunta4_Apoyo_Profesor_JLabel.setText(" 4. El tutor ejemplifica la auto reflexión crítica");
         cuestionario_Apoyo_Profesor_JPanel.add(pregunta4_Apoyo_Profesor_JLabel);
 
         respuesta4_Apoyo_Profesor_JPanel.setOpaque(false);
-        respuesta4_Apoyo_Profesor_JPanel.setLayout(new java.awt.GridLayout());
+        respuesta4_Apoyo_Profesor_JPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         respuesta4_Apoyo_Profesor_JSlider.setMajorTickSpacing(1);
         respuesta4_Apoyo_Profesor_JSlider.setMaximum(4);
@@ -978,7 +961,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Interpretacion_JPanel.add(respuesta2_Interpretacion_JPanel);
 
         pregunta3_Interpretacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pregunta3_Interpretacion_JLabel.setText(" 3. El profesor se dirigio con respeto hacia los estudiantes");
+        pregunta3_Interpretacion_JLabel.setText(" 3.  El profesor se dirigio con respecto hacia los estudiantes");
         cuestionario_Interpretacion_JPanel.add(pregunta3_Interpretacion_JLabel);
 
         respuesta3_Interpretacion_JPanel.setOpaque(false);
@@ -1000,7 +983,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         cuestionario_Interpretacion_JPanel.add(pregunta4_Interpretacion_JLabel);
 
         respuesta4_Interpretacion_JPanel.setOpaque(false);
-        respuesta4_Interpretacion_JPanel.setLayout(new java.awt.GridLayout());
+        respuesta4_Interpretacion_JPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         respuesta4_Interpretacion_JSlider.setMajorTickSpacing(1);
         respuesta4_Interpretacion_JSlider.setMaximum(4);
@@ -1063,23 +1046,6 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         // TODO add your handling code here:
         continuar_Relevancia_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_continuar_Relevancia_JButtonMouseExited
-
-    private void regresar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Curso_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Estudiante_Panel.Mostrar_Vista(Id_Curso);
-        }
-    }//GEN-LAST:event_regresar_Curso_JButtonMouseClicked
-
-    private void regresar_Curso_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Curso_JButtonMouseEntered
-        // TODO add your handling code here:
-        regresar_Curso_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
-    }//GEN-LAST:event_regresar_Curso_JButtonMouseEntered
-
-    private void regresar_Curso_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Curso_JButtonMouseExited
-        // TODO add your handling code here:
-        regresar_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-    }//GEN-LAST:event_regresar_Curso_JButtonMouseExited
 
     private void continuar_Pensamiento_Reflexivo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Pensamiento_Reflexivo_JButtonMouseClicked
         // TODO add your handling code here:
@@ -1220,9 +1186,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private void terminar_Cuestionario_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terminar_Cuestionario_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            CourseRoom.Utilerias().Mensaje_Informativo("Cuestionario Completado",CourseRoom.Utilerias().Concatenar("Gracias por contestar el cuestionario\n", Perfil_Estudiante_Panel.Nombre_Completo()));
-
-            Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
+            
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), "¿Estás Segur@ De Enviar Las Respuestas De Tu Cuestionario?", "Terminar Cuestionario", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            
+            if(resultado == JOptionPane.YES_OPTION){
+                Registrar_Cuestionario();
+            }
         }
         
     }//GEN-LAST:event_terminar_Cuestionario_JButtonMouseClicked
@@ -1262,6 +1231,260 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
                 CourseRoom.Utilerias().Concatenar("A continuación te pediremos que nos ayudes a contestar este cuestionario final del curso '",
                         nombre_Curso,"'Esto debido a que requerimos datos para brindarle a todos nuestros usuarios mejores estadísticas e información relevante al tomar un curso o dentro de este.Esperamos no molestarte, te aseguramos no te tomará más de 5 minutos en contestar.De antemano muchas gracias por tu tiempo y por hacer de CourseRoom® un mejor lugar cada día."));
         
+    }
+    
+    private void Registrar_Cuestionario(){
+        
+        String respuesta;
+        ResponseModel responseModel;
+        
+        respuesta = Respuesta(respuesta1_Relevancia_JSlider.getValue());
+        
+        responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso, 
+                Tablero_Estudiante_Panel.Id_Usuario(), 1, respuesta);
+        
+        if(responseModel.Is_Success()){
+            
+            respuesta = Respuesta(respuesta2_Relevancia_JSlider.getValue());
+            
+            responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso, 
+                Tablero_Estudiante_Panel.Id_Usuario(), 2, respuesta);
+            
+            if(responseModel.Is_Success()){
+                respuesta = Respuesta(respuesta3_Relevancia_JSlider.getValue());
+                
+                responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso, 
+                Tablero_Estudiante_Panel.Id_Usuario(), 3, respuesta);
+
+                if(responseModel.Is_Success()){
+                    respuesta = Respuesta(respuesta4_Relevancia_JSlider.getValue());
+                    
+                    responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso, 
+                    Tablero_Estudiante_Panel.Id_Usuario(), 4, respuesta);
+
+                    if(responseModel.Is_Success()){
+
+                        respuesta = Respuesta(respuesta1_Pensamiento_Reflexivo_JSlider.getValue());
+                        
+                        responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso, 
+                        Tablero_Estudiante_Panel.Id_Usuario(), 5, respuesta);
+
+                        if(responseModel.Is_Success()){
+                        
+                            respuesta = Respuesta(respuesta2_Pensamiento_Reflexivo_JSlider.getValue());
+                            
+                            responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                    Tablero_Estudiante_Panel.Id_Usuario(), 6, respuesta);
+
+                            if (responseModel.Is_Success()) {
+                            
+                                respuesta = Respuesta(respuesta3_Pensamiento_Reflexivo_JSlider.getValue());
+                                
+                                responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                        Tablero_Estudiante_Panel.Id_Usuario(), 7, respuesta);
+
+                                if (responseModel.Is_Success()) {
+                                
+                                    respuesta = Respuesta(respuesta4_Pensamiento_Reflexivo_JSlider.getValue());
+                                    
+                                    responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                            Tablero_Estudiante_Panel.Id_Usuario(), 8, respuesta);
+
+                                    if (responseModel.Is_Success()) {
+                                    
+                                        respuesta = Respuesta(respuesta1_Interactividad_JSlider.getValue());
+                                        
+                                        responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                Tablero_Estudiante_Panel.Id_Usuario(), 9, respuesta);
+
+                                        if (responseModel.Is_Success()) {
+                                        
+                                            respuesta = Respuesta(respuesta2_Interactividad_JSlider.getValue());
+                                            
+                                            responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                    Tablero_Estudiante_Panel.Id_Usuario(), 10, respuesta);
+
+                                            if (responseModel.Is_Success()) {
+                                            
+                                                respuesta = Respuesta(respuesta3_Interactividad_JSlider.getValue());
+                                                
+                                                responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                        Tablero_Estudiante_Panel.Id_Usuario(), 11, respuesta);
+
+                                                if (responseModel.Is_Success()) {
+                                                
+                                                    respuesta = Respuesta(respuesta4_Interactividad_JSlider.getValue());
+                                                    
+                                                    responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                            Tablero_Estudiante_Panel.Id_Usuario(), 12, respuesta);
+
+                                                    if (responseModel.Is_Success()) {
+
+                                                        respuesta = Respuesta(respuesta1_Apoyo_Profesor_JSlider.getValue());
+                                                        
+                                                        responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                            Tablero_Estudiante_Panel.Id_Usuario(), 13, respuesta);
+
+                                                        if (responseModel.Is_Success()) {
+                                                        
+                                                            respuesta = Respuesta(respuesta2_Apoyo_Profesor_JSlider.getValue());
+                                                            
+                                                            responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                                    Tablero_Estudiante_Panel.Id_Usuario(), 14, respuesta);
+
+                                                            if (responseModel.Is_Success()) {
+
+                                                                respuesta = Respuesta(respuesta3_Apoyo_Profesor_JSlider.getValue());
+                                                                
+                                                                responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                                        Tablero_Estudiante_Panel.Id_Usuario(), 15, respuesta);
+
+                                                                if (responseModel.Is_Success()) {
+                                                                
+                                                                    respuesta = Respuesta(respuesta4_Apoyo_Profesor_JSlider.getValue());
+                                                                    
+                                                                    responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                                            Tablero_Estudiante_Panel.Id_Usuario(), 16, respuesta);
+
+                                                                    if (responseModel.Is_Success()) {
+
+                                                                        respuesta = Respuesta(respuesta1_Interpretacion_JSlider.getValue());
+                                                                        
+                                                                        responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                                                Tablero_Estudiante_Panel.Id_Usuario(), 17, respuesta);
+
+                                                                        if (responseModel.Is_Success()) {
+                                                                        
+                                                                            respuesta = Respuesta(respuesta2_Interpretacion_JSlider.getValue());
+                                                                            
+                                                                            responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                                                    Tablero_Estudiante_Panel.Id_Usuario(), 18, respuesta);
+
+                                                                            if (responseModel.Is_Success()) {
+                                                                            
+                                                                                respuesta = Respuesta(respuesta3_Interpretacion_JSlider.getValue());
+                                                                                
+                                                                                responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                                                        Tablero_Estudiante_Panel.Id_Usuario(), 19, respuesta);
+
+                                                                                if (responseModel.Is_Success()) {
+                                                                                
+                                                                                    respuesta = Respuesta(respuesta4_Interpretacion_JSlider.getValue());
+
+                                                                                    responseModel = CourseRoom.Solicitudes().Agregar_Respuesta_Cuestionario(Id_Curso,
+                                                                                            Tablero_Estudiante_Panel.Id_Usuario(), 20, respuesta);
+
+                                                                                    if (responseModel.Is_Success()) {
+                                                                                    
+                                                                                        CourseRoom.Utilerias().Mensaje_Informativo("Cuestionario Completado",CourseRoom.Utilerias().Concatenar("Gracias por contestar el cuestionario<br>", Perfil_Estudiante_Panel.Nombre_Completo()));
+
+                                                                                        //Finalizar curso:
+                                                                                        
+                                                                                        responseModel = CourseRoom.Solicitudes().Finalizar_Curso(Id_Curso, Tablero_Estudiante_Panel.Id_Usuario());
+                                                                                        
+                                                                                        if (responseModel.Is_Success()) {
+                                                                                            CourseRoom.Utilerias().Mensaje_Informativo("Finalizar Curso", responseModel.Mensaje());
+                                                                                            
+                                                                                            Tablero_Estudiante_Panel.Des_Habilitar_Menu(false);
+
+                                                                                            Tablero_Estudiante_Panel.Retirar_Vista(curso_Estudiante_Panel);
+
+                                                                                            Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
+                                                                                            curso_Estudiante_Panel.Limpiar();
+                                                                                        }else{
+                                                                                            CourseRoom.Utilerias().Mensaje_Alerta("Finalizar Curso", responseModel.Mensaje());
+                                                                                        }
+                                                                                        
+                                                                                    } else {
+                                                                                        CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                                                                    }
+                                                                                } else {
+                                                                                    CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                                                                }
+                                                                            } else {
+                                                                                CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                                                            }
+                                                                        } else {
+                                                                            CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                                                        } 
+                                                                    } else {
+                                                                        CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                                                    }
+                                                                        
+                                                                } else {
+                                                                    CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                                                }
+                                                            } else {
+                                                                CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                                            }
+                                                        } else {
+                                                            CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                                        }
+                                                        
+                                                    } else {
+                                                        CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                                    }
+                                                    
+                                                } else {
+                                                    CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                                }
+                                            } else {
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                            }
+                                        } else {
+                                            CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                        }
+                                    } else {
+                                        CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                    }
+                                } else {
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                                }
+                            } else {
+                                CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                            }
+                        } else {
+                            CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                        }   
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                    }
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+                }
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Cuestionario", responseModel.Mensaje());
+        }
+        
+        
+        
+        
+    }
+    
+    private String Respuesta(int valor){
+        String respuesta;
+        switch(valor){
+            case 1:
+                respuesta = "Rara Vez";
+                break;
+            case 2:
+                respuesta = "Alguna Vez";
+                break;
+            case 3:
+                respuesta = "A Menudo";
+                break;
+            case 4: 
+                respuesta = "Casi Siempre";
+                break;
+            default:
+                respuesta = "Casi Nunca";
+                break;
+        }
+        
+        return respuesta;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1307,7 +1530,6 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private javax.swing.JLabel pregunta4_Pensamiento_Reflexivo_JLabel;
     private javax.swing.JLabel pregunta4_Relevancia_JLabel;
     private javax.swing.JButton regresar_Apoyo_Profesor_JButton;
-    private javax.swing.JButton regresar_Curso_JButton;
     private javax.swing.JButton regresar_Inicio_JButton;
     private javax.swing.JButton regresar_Interactividad_JButton;
     private javax.swing.JButton regresar_Pensamiento_Reflexivo_JButton;
@@ -1446,6 +1668,8 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         respuesta3_Apoyo_Profesor_JSlider.setLabelTable(labels);
         respuesta4_Apoyo_Profesor_JSlider.setLabelTable(labels);
         
+        Tablero_Estudiante_Panel.Des_Habilitar_Menu(true);
+        
     }
 
     @Override
@@ -1456,7 +1680,6 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         titulo_Inicio_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         informacion_Inicio_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         continuar_Relevancia_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        regresar_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
         // Relevancia:
         relevancia_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
@@ -1551,7 +1774,6 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         respuesta2_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         respuesta3_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         respuesta4_Interpretacion_JSlider.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
         
         for (JLabel label : labeles_Pares) {
             label.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
