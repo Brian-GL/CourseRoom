@@ -1845,10 +1845,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-      
         Colorear_Componentes();
         
-        Obtener_Miembros_Grupo();
     }
 
     @Override
@@ -2108,7 +2106,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     @Override
     public void Enviar_Archivo() {
-                Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
+        Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
 
         if (resultado == JFileChooser.APPROVE_OPTION) {

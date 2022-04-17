@@ -2,6 +2,7 @@ package paneles.profesores.cursos;
 
 import clases.Celda_Renderer;
 import clases.Escogedor_Archivos;
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import courseroom.CourseRoom;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
@@ -13,6 +14,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Locale;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -66,7 +71,8 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         editar_Descripcion_JScrollPane = new javax.swing.JScrollPane();
         editar_Descripcion_JTextPane = new javax.swing.JTextPane();
         editar_Fecha_Entrega_JLabel = new javax.swing.JLabel();
-        escogedor_Fecha_Hora_Entrega = new com.github.lgooddatepicker.components.DateTimePicker();
+        escogedor_Fecha_Hora = new com.github.lgooddatepicker.components.DateTimePicker();
+        guardar_Cambios_Datos_Generales_Tarea_JButton = new javax.swing.JButton();
         archivos_Adjuntos_JPanel = new javax.swing.JPanel();
         subir_Archivos_Adjuntos_JButton = new javax.swing.JButton();
         archivos_Adjuntos_JScrollPane = new javax.swing.JScrollPane();
@@ -202,7 +208,26 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         editar_Fecha_Entrega_JLabel.setText("Fecha De Entrega");
         editar_Fecha_Entrega_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        escogedor_Fecha_Hora_Entrega.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        escogedor_Fecha_Hora.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setText("Guardar Cambios");
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ((ImageIcon)guardar_Cambios_Datos_Generales_Tarea_JButton.getIcon()).getImage().flush();
+        guardar_Cambios_Datos_Generales_Tarea_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                guardar_Cambios_Datos_Generales_Tarea_JButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout informacion_Tarea_JPanelLayout = new javax.swing.GroupLayout(informacion_Tarea_JPanel);
         informacion_Tarea_JPanel.setLayout(informacion_Tarea_JPanelLayout);
@@ -213,8 +238,9 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                 .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(editar_Nombre_JTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
                     .addComponent(editar_Nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(escogedor_Fecha_Hora_Entrega, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
-                    .addComponent(editar_Fecha_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(escogedor_Fecha_Hora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+                    .addComponent(editar_Fecha_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(guardar_Cambios_Datos_Generales_Tarea_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addGroup(informacion_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(editar_Descripcion_JScrollPane)
@@ -237,8 +263,10 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editar_Fecha_Entrega_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(escogedor_Fecha_Hora_Entrega, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 370, Short.MAX_VALUE)))
+                        .addComponent(escogedor_Fecha_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(guardar_Cambios_Datos_Generales_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 279, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -491,6 +519,33 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
           }
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
+    private void guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+
+            //            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Generales_Grupo(Id_Grupo,
+                //                editar_Nombre_JTextField.getText(), editar_Descripcion_JTextPane.getText());
+            //
+            //            if(respuesta.Is_Success()){
+                //                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                //            }else{
+                //                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                //            }
+        }
+    }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked
+
+    private void guardar_Cambios_Datos_Generales_Tarea_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseEntered
+        // TODO add your handling code here:
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+    }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseEntered
+
+    private void guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited
+        // TODO add your handling code here:
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+    }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited
+
     public void Compartir_Archivos() {
         Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
@@ -549,7 +604,8 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
     private javax.swing.JLabel editar_Fecha_Entrega_JLabel;
     private javax.swing.JLabel editar_Nombre_JLabel;
     private javax.swing.JTextField editar_Nombre_JTextField;
-    private com.github.lgooddatepicker.components.DateTimePicker escogedor_Fecha_Hora_Entrega;
+    private com.github.lgooddatepicker.components.DateTimePicker escogedor_Fecha_Hora;
+    private javax.swing.JButton guardar_Cambios_Datos_Generales_Tarea_JButton;
     private javax.swing.JButton informacion_JButton;
     private javax.swing.JPanel informacion_Tarea_JPanel;
     private javax.swing.JButton regresar_JButton;
@@ -589,6 +645,33 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                 }
             }
         });
+        
+        LocalDate fecha_Minima = LocalDate.now();
+        Locale local = new Locale("es","MX");
+        DatePickerSettings ajustes_Fecha = new DatePickerSettings(local);
+        ajustes_Fecha.setFirstDayOfWeek(DayOfWeek.MONDAY);
+        ajustes_Fecha.setFontVetoedDate(gadugi);
+        ajustes_Fecha.setFontValidDate(gadugi);
+        ajustes_Fecha.setFontCalendarDateLabels(gadugi);
+        ajustes_Fecha.setFontCalendarWeekNumberLabels(gadugi);
+        ajustes_Fecha.setFontCalendarWeekdayLabels(gadugi);
+        ajustes_Fecha.setFontTodayLabel(gadugi);
+        ajustes_Fecha.setFontMonthAndYearMenuLabels(gadugi);
+        ajustes_Fecha.setFontTodayLabel(gadugi);
+        ajustes_Fecha.setVisibleClearButton(false);
+        ajustes_Fecha.setVisibleTodayButton(false);
+        escogedor_Fecha_Hora.getDatePicker().setSettings(ajustes_Fecha);
+        escogedor_Fecha_Hora.getDatePicker().getComponent(0).setFont(gadugi);
+        escogedor_Fecha_Hora.getDatePicker().getSettings().setDateRangeLimits(fecha_Minima, LocalDate.MAX);
+        escogedor_Fecha_Hora.getDatePicker().setDate(fecha_Minima);
+        escogedor_Fecha_Hora.getDatePicker().setOpaque(false);
+        escogedor_Fecha_Hora.getDatePicker().setVisible(true);
+        
+        escogedor_Fecha_Hora.getTimePicker().setFont(gadugi);
+        escogedor_Fecha_Hora.getTimePicker().getComponent(0).setFont(gadugi);
+        escogedor_Fecha_Hora.getTimePicker().setTime(LocalTime.now());
+        escogedor_Fecha_Hora.getTimePicker().setOpaque(false);
+        escogedor_Fecha_Hora.getTimePicker().setVisible(true);
         
         Colorear_Componentes();
     }
@@ -630,14 +713,17 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         editar_Descripcion_JTextPane.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
-        escogedor_Fecha_Hora_Entrega.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-        escogedor_Fecha_Hora_Entrega.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        escogedor_Fecha_Hora.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        escogedor_Fecha_Hora.setBackground(CourseRoom.Utilerias().Tercer_Color());
 
         subir_Archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         subir_Archivos_Adjuntos_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
         crear_Tarea_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         crear_Tarea_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 
         Carta_Visible();
     }

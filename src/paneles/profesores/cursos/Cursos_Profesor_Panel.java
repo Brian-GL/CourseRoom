@@ -80,8 +80,8 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         acciones_JPanel.setOpaque(false);
 
         crear_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
-        crear_Curso_JButton.setToolTipText("<html><h3>Crear Un<br>Nuevo Curso</h3></html>");
         crear_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        crear_Curso_JButton.setToolTipText("<html><h3>Crear Un<br>Nuevo Curso</h3></html>");
         ((ImageIcon)crear_Curso_JButton.getIcon()).getImage().flush();
         crear_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -138,7 +138,6 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         cursos_Creados_JScrollPane.setOpaque(false);
 
         cursos_Creados_JTable.setAutoCreateRowSorter(true);
-        cursos_Creados_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cursos_Creados_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -146,7 +145,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
 
                 },
                 new String [] {
-                    "Curso", "Temáticas", "Creado", "Inscripciones", "Remover?"
+                    "Curso", "Temáticas", "Creado", "Estatus", "Remover?"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
@@ -172,6 +171,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                     return super.getColumnClass(column);
                 }
             });
+            cursos_Creados_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             cursos_Creados_JTable.setRowHeight(96);
             cursos_Creados_JTable.setRowMargin(5);
             cursos_Creados_JTable.setShowGrid(true);

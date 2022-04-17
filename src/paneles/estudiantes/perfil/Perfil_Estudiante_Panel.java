@@ -7,7 +7,6 @@ import com.github.lgooddatepicker.components.DatePickerSettings;
 import courseroom.CourseRoom;
 import courseroom.CourseRoom_Frame;
 import datos.colecciones.Lista;
-import datos.estructuras.Par;
 import datos.estructuras.Tripleta;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
@@ -123,7 +122,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         intereses_AutoCompletionComboBox = new com.jidesoft.swing.AutoCompletionComboBox();
         intereses_JScrollPane = new javax.swing.JScrollPane();
         intereses_JTable = new javax.swing.JTable();
-        editar_Promedio_General_JButton = new javax.swing.JButton();
         editar_Descripcion_JButton = new javax.swing.JButton();
 
         setOpaque(false);
@@ -993,22 +991,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             });
             intereses_JScrollPane.setViewportView(intereses_JTable);
 
-            editar_Promedio_General_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-            editar_Promedio_General_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-            editar_Promedio_General_JButton.setToolTipText("Editar Promedio General");
-            ((ImageIcon)editar_Promedio_General_JButton.getIcon()).getImage().flush();
-            editar_Promedio_General_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    editar_Promedio_General_JButtonMouseClicked(evt);
-                }
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    editar_Promedio_General_JButtonMouseEntered(evt);
-                }
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    editar_Promedio_General_JButtonMouseExited(evt);
-                }
-            });
-
             editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
             editar_Descripcion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             editar_Descripcion_JButton.setToolTipText("Editar Descripción");
@@ -1039,9 +1021,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                             .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(guardar_Cambios_Informacion_Extra_JButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(editar_Promedio_General_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(informacion_Extra_JPanelLayout.createSequentialGroup()
@@ -1063,8 +1043,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(editar_Promedio_General_JFormattedTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(agregar_Interes_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editar_Promedio_General_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(agregar_Interes_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(intereses_AutoCompletionComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(informacion_Extra_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1459,23 +1438,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Fecha_Nacimiento_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_editar_Fecha_Nacimiento_JButtonMouseExited
 
-    private void editar_Promedio_General_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Promedio_General_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            editar_Promedio_General_JFormattedTextField.setEnabled(!editar_Promedio_General_JFormattedTextField.isEnabled());
-        }
-    }//GEN-LAST:event_editar_Promedio_General_JButtonMouseClicked
-
-    private void editar_Promedio_General_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Promedio_General_JButtonMouseEntered
-        // TODO add your handling code here:
-        editar_Promedio_General_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-    }//GEN-LAST:event_editar_Promedio_General_JButtonMouseEntered
-
-    private void editar_Promedio_General_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Promedio_General_JButtonMouseExited
-        // TODO add your handling code here:
-        editar_Promedio_General_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-    }//GEN-LAST:event_editar_Promedio_General_JButtonMouseExited
-
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -1815,7 +1777,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private javax.swing.JButton editar_Nombres_JButton;
     private javax.swing.JLabel editar_Nombres_JLabel;
     private javax.swing.JTextField editar_Nombres_JTextField;
-    private javax.swing.JButton editar_Promedio_General_JButton;
     private javax.swing.JFormattedTextField editar_Promedio_General_JFormattedTextField;
     private javax.swing.JLabel editar_Promedio_General_JLabel;
     private javax.swing.JLabel fecha_Nacimiento_JLabel;
@@ -1992,7 +1953,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Fecha_Nacimiento_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Correo_Electronico_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Contrasena_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        editar_Promedio_General_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Descripcion_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
         guardar_Cambios_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
