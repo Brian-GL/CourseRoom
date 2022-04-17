@@ -126,7 +126,8 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         archivos_Entregados_JTable = new javax.swing.JTable();
         calificar_JButton = new javax.swing.JButton();
         fecha_Entregado_JLabel = new javax.swing.JLabel();
-        es_Tarea_Grupal_JLabel = new javax.swing.JLabel();
+        estatus_Envio_JLabel = new javax.swing.JLabel();
+        calificacion_JLabel = new javax.swing.JLabel();
         retroalimentacion_JPanel = new javax.swing.JPanel();
         retroalimentacion_JScrollPane = new javax.swing.JScrollPane();
         retroalimentacion_JTable = new javax.swing.JTable();
@@ -410,6 +411,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         intereses_Tematicas_JScrollPane.setOpaque(false);
 
         intereses_Tematicas_JTable.setAutoCreateRowSorter(true);
+        intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         intereses_Tematicas_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -443,7 +445,6 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                     return super.getColumnClass(column);
                 }
             });
-            intereses_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             intereses_Tematicas_JTable.setRowHeight(32);
             intereses_Tematicas_JTable.setShowGrid(true);
             intereses_Tematicas_JTable.setShowVerticalLines(false);
@@ -696,13 +697,21 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                     fecha_Entregado_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/circular-clock.png"))); // NOI18N
                     ((ImageIcon)fecha_Entregado_JLabel.getIcon()).getImage().flush();
 
-                    es_Tarea_Grupal_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-                    es_Tarea_Grupal_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                    es_Tarea_Grupal_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_2.png"))); // NOI18N
-                    es_Tarea_Grupal_JLabel.setText("Esta Tarea Se Envió De Manera Grupal");
-                    es_Tarea_Grupal_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-                    es_Tarea_Grupal_JLabel.setOpaque(true);
-                    ((ImageIcon)es_Tarea_Grupal_JLabel.getIcon()).getImage().flush();
+                    estatus_Envio_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+                    estatus_Envio_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                    estatus_Envio_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/computer.png"))); // NOI18N
+                    estatus_Envio_JLabel.setText("ENTREGADA");
+                    estatus_Envio_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+                    estatus_Envio_JLabel.setOpaque(true);
+                    ((ImageIcon)estatus_Envio_JLabel.getIcon()).getImage().flush();
+
+                    calificacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+                    calificacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                    calificacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-class.png"))); // NOI18N
+                    calificacion_JLabel.setText("Calfiicacion");
+                    calificacion_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+                    calificacion_JLabel.setOpaque(true);
+                    ((ImageIcon)calificacion_JLabel.getIcon()).getImage().flush();
 
                     javax.swing.GroupLayout archivos_Entregados_JPanelLayout = new javax.swing.GroupLayout(archivos_Entregados_JPanel);
                     archivos_Entregados_JPanel.setLayout(archivos_Entregados_JPanelLayout);
@@ -714,9 +723,10 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                                 .addComponent(archivos_Entregados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                                 .addGroup(archivos_Entregados_JPanelLayout.createSequentialGroup()
                                     .addComponent(calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(calificacion_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(archivos_Entregados_JPanelLayout.createSequentialGroup()
-                                    .addComponent(es_Tarea_Grupal_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(estatus_Envio_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(fecha_Entregado_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(0, 0, 0))
@@ -727,11 +737,13 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                             .addGap(0, 0, 0)
                             .addGroup(archivos_Entregados_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(fecha_Entregado_JLabel)
-                                .addComponent(es_Tarea_Grupal_JLabel))
+                                .addComponent(estatus_Envio_JLabel))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(archivos_Entregados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                            .addComponent(archivos_Entregados_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(archivos_Entregados_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(calificar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(calificacion_JLabel))
                             .addGap(0, 0, 0))
                     );
 
@@ -837,9 +849,8 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                                 .addGroup(retroalimentacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(retroalimentacion_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                                     .addGroup(retroalimentacion_JPanelLayout.createSequentialGroup()
-                                        .addComponent(retroalimentar_JButton)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(0, 0, 0))
+                                        .addComponent(retroalimentar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                         );
                         retroalimentacion_JPanelLayout.setVerticalGroup(
                             retroalimentacion_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1055,6 +1066,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
     private javax.swing.JPanel archivos_Entregados_JPanel;
     private javax.swing.JScrollPane archivos_Entregados_JScrollPane;
     private javax.swing.JTable archivos_Entregados_JTable;
+    private javax.swing.JLabel calificacion_JLabel;
     private javax.swing.JButton calificar_JButton;
     private javax.swing.JButton chat_JButton;
     private javax.swing.JPanel chat_JPanel;
@@ -1064,7 +1076,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
     private javax.swing.JTextPane descripcion_JTextPane;
     private javax.swing.JButton enviar_Archivo_Chat_JButton;
     private javax.swing.JPanel enviar_Mensaje_Chat_JPanel;
-    private javax.swing.JLabel es_Tarea_Grupal_JLabel;
+    private javax.swing.JLabel estatus_Envio_JLabel;
     private javax.swing.JLabel estatus_Tarea_JLabel;
     private javax.swing.JLabel fecha_Creacion_JLabel;
     private javax.swing.JLabel fecha_Entrega_JLabel;
@@ -1185,8 +1197,11 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         redactar_Mensaje_Chat_JTextField.setBackground(CourseRoom.Utilerias().Primer_Color());
         redactar_Mensaje_Chat_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
-        es_Tarea_Grupal_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        es_Tarea_Grupal_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        estatus_Envio_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        estatus_Envio_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        
+        calificacion_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        calificacion_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
         
         enviar_Mensaje_Chat_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         enviar_Archivo_Chat_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());

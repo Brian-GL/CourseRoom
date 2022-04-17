@@ -128,10 +128,8 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         editar_Descripcion_JScrollPane = new javax.swing.JScrollPane();
         editar_Descripcion_JTextPane = new javax.swing.JTextPane();
         editar_Descripcion_JButton = new javax.swing.JButton();
-        editar_Fecha_Entrega_JLabel = new javax.swing.JLabel();
-        editar_Fecha_Entrega_JButton = new javax.swing.JButton();
-        escogedor_Fecha_Hora_Entrega = new com.github.lgooddatepicker.components.DateTimePicker();
         eliminar_Tarea_JButton = new javax.swing.JButton();
+        guardar_Cambios_Datos_Generales_Tarea_JButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
@@ -713,27 +711,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         }
                     });
 
-                    editar_Fecha_Entrega_JLabel.setText("Fecha De Entrega");
-                    editar_Fecha_Entrega_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
-                    editar_Fecha_Entrega_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-                    editar_Fecha_Entrega_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-                    editar_Fecha_Entrega_JButton.setToolTipText("Editar Nombre Del Grupo");
-                    ((ImageIcon)editar_Fecha_Entrega_JButton.getIcon()).getImage().flush();
-                    editar_Fecha_Entrega_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            editar_Fecha_Entrega_JButtonMouseClicked(evt);
-                        }
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                            editar_Fecha_Entrega_JButtonMouseEntered(evt);
-                        }
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                            editar_Fecha_Entrega_JButtonMouseExited(evt);
-                        }
-                    });
-
-                    escogedor_Fecha_Hora_Entrega.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-
                     eliminar_Tarea_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
                     eliminar_Tarea_JButton.setText("Eliminar Tarea");
                     eliminar_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -750,6 +727,25 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         }
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                             eliminar_Tarea_JButtonMouseExited(evt);
+                        }
+                    });
+
+                    guardar_Cambios_Datos_Generales_Tarea_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
+                    guardar_Cambios_Datos_Generales_Tarea_JButton.setText("Guardar Cambios");
+                    guardar_Cambios_Datos_Generales_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                    guardar_Cambios_Datos_Generales_Tarea_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                    guardar_Cambios_Datos_Generales_Tarea_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+                    guardar_Cambios_Datos_Generales_Tarea_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
+                    ((ImageIcon)guardar_Cambios_Datos_Generales_Tarea_JButton.getIcon()).getImage().flush();
+                    guardar_Cambios_Datos_Generales_Tarea_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked(evt);
+                        }
+                        public void mouseEntered(java.awt.event.MouseEvent evt) {
+                            guardar_Cambios_Datos_Generales_Tarea_JButtonMouseEntered(evt);
+                        }
+                        public void mouseExited(java.awt.event.MouseEvent evt) {
+                            guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited(evt);
                         }
                     });
 
@@ -770,34 +766,25 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                                     .addComponent(editar_Descripcion_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(editar_Nombre_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 49, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                             .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editar_Tarea_JPanelLayout.createSequentialGroup()
-                                    .addComponent(editar_Fecha_Entrega_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(editar_Fecha_Entrega_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(escogedor_Fecha_Hora_Entrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(eliminar_Tarea_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE))
+                                .addComponent(eliminar_Tarea_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+                                .addComponent(guardar_Cambios_Datos_Generales_Tarea_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addContainerGap(39, Short.MAX_VALUE))
                     );
                     editar_Tarea_JPanelLayout.setVerticalGroup(
                         editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
-                            .addContainerGap(28, Short.MAX_VALUE)
-                            .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
-                                    .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(editar_Nombre_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                                        .addComponent(editar_Nombre_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(editar_Nombre_JTextField))
-                                .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
-                                    .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(editar_Fecha_Entrega_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(editar_Fecha_Entrega_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(escogedor_Fecha_Hora_Entrega, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addContainerGap(34, Short.MAX_VALUE)
                             .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
+                                    .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(editar_Nombre_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(editar_Nombre_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(editar_Nombre_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(guardar_Cambios_Datos_Generales_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
                                     .addGap(16, 16, 16)
                                     .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -805,10 +792,10 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                                         .addComponent(editar_Descripcion_JButton))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editar_Tarea_JPanelLayout.createSequentialGroup()
-                                    .addGap(57, 57, 57)
+                                .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(eliminar_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addContainerGap(27, Short.MAX_VALUE))
+                            .addContainerGap(34, Short.MAX_VALUE))
                     );
 
                     tarea_JLayeredPane.add(editar_Tarea_JPanel, "Edicion");
@@ -997,23 +984,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         editar_Descripcion_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseExited
 
-    private void editar_Fecha_Entrega_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Fecha_Entrega_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-        }
-    }//GEN-LAST:event_editar_Fecha_Entrega_JButtonMouseClicked
-
-    private void editar_Fecha_Entrega_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Fecha_Entrega_JButtonMouseEntered
-        // TODO add your handling code here:
-        editar_Fecha_Entrega_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-    }//GEN-LAST:event_editar_Fecha_Entrega_JButtonMouseEntered
-
-    private void editar_Fecha_Entrega_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Fecha_Entrega_JButtonMouseExited
-        // TODO add your handling code here:
-        editar_Fecha_Entrega_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-    }//GEN-LAST:event_editar_Fecha_Entrega_JButtonMouseExited
-
     private void tareas_Por_Calificar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_Por_Calificar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
@@ -1062,6 +1032,33 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción De Tu Tarea<br>Rebasa Los 500 Caracteres");
           }
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
+
+    private void guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+
+//            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Generales_Grupo(Id_Grupo,
+//                editar_Nombre_JTextField.getText(), editar_Descripcion_JTextPane.getText());
+//
+//            if(respuesta.Is_Success()){
+//                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+//            }else{
+//                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+//            }
+        }
+    }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked
+
+    private void guardar_Cambios_Datos_Generales_Tarea_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseEntered
+        // TODO add your handling code here:
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+    }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseEntered
+
+    private void guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited
+        // TODO add your handling code here:
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+    }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited
     
     public int Id_Tarea() {
         return Id_Tarea;
@@ -1175,8 +1172,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     private javax.swing.JLabel editar_Descripcion_JLabel;
     private javax.swing.JScrollPane editar_Descripcion_JScrollPane;
     private javax.swing.JTextPane editar_Descripcion_JTextPane;
-    private javax.swing.JButton editar_Fecha_Entrega_JButton;
-    private javax.swing.JLabel editar_Fecha_Entrega_JLabel;
     private javax.swing.JButton editar_Nombre_JButton;
     private javax.swing.JLabel editar_Nombre_JLabel;
     private javax.swing.JTextField editar_Nombre_JTextField;
@@ -1185,10 +1180,10 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     private javax.swing.JButton eliminar_Tarea_JButton;
     private javax.swing.JButton enviar_Archivo_Chat_JButton;
     private javax.swing.JPanel enviar_Mensaje_Chat_JPanel;
-    private com.github.lgooddatepicker.components.DateTimePicker escogedor_Fecha_Hora_Entrega;
     private javax.swing.JLabel estatus_Tarea_JLabel;
     private javax.swing.JLabel fecha_Creacion_JLabel;
     private javax.swing.JLabel fecha_Entrega_JLabel;
+    private javax.swing.JButton guardar_Cambios_Datos_Generales_Tarea_JButton;
     private javax.swing.JButton informacion_JButton;
     private javax.swing.JPanel informacion_Tarea_JPanel;
     private javax.swing.JScrollPane mensajes_Chat_JScrollPane;
@@ -1351,7 +1346,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         
         editar_Nombre_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Descripcion_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        editar_Fecha_Entrega_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         
         editar_Nombre_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Nombre_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
@@ -1361,13 +1355,9 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         editar_Descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         editar_Descripcion_JTextPane.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-                
-        escogedor_Fecha_Hora_Entrega.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-        escogedor_Fecha_Hora_Entrega.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+            
         editar_Nombre_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Descripcion_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        editar_Fecha_Entrega_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         
         subir_Archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         subir_Archivos_Adjuntos_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
@@ -1395,6 +1385,9 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             tarea_Entregada_Profesor_Panel = nodo.element();
             tarea_Entregada_Profesor_Panel.Colorear_Componentes();
         }
+        
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        guardar_Cambios_Datos_Generales_Tarea_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 
     }
 
@@ -1403,44 +1396,54 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         int resultado = escogedor_Archivos.showOpenDialog(this);
 
         if (resultado == JFileChooser.APPROVE_OPTION) {
-            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
-            
-            if(archivos_Abiertos != null){
-                
+            File archivo_Abierto = escogedor_Archivos.getSelectedFile();
+
+            if (archivo_Abierto != null) {
                 try {
-                    Celda_Renderer[] celdas = new Celda_Renderer[3];
-                    long tamanio;
-                    boolean archivo_Mayor = false;
-                    DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
-                    Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-                    ImageIcon icono_Abrir = new ImageIcon(icono);
-                    icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-                    ImageIcon icono_Remover = new ImageIcon(icono);
-                    Celda_Renderer celda;
-                    String vacio = new String();
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        tamanio = FileUtils.sizeOf(archivo_Abierto);
-                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                        if(tamanio < 75){
-                        celda = new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),archivo_Abierto.getAbsolutePath());
-                        celdas[0] = celda;
-                        celda = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(),vacio);
-                        celdas[1] = celda;
-                        celda = new Celda_Renderer(icono_Remover,vacio);
-                        celdas[2] = celda;
-                        modelo.addRow(celdas);
-                    }else{
-                            archivo_Mayor = true;
+                    
+                    long tamanio = FileUtils.sizeOf(archivo_Abierto);
+                    tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                    if(tamanio < 35){
+
+                        String ruta = archivo_Abierto.getAbsolutePath();
+                        String nombre_Archivo = archivo_Abierto.getName();
+                        String emisor = Perfil_Profesor_Panel.Nombre_Completo();
+                       
+                        ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Id_Tarea,
+                                nombre_Archivo, 
+                                FileUtils.readFileToByteArray(archivo_Abierto),  
+                                FilenameUtils.getExtension(nombre_Archivo));
+                        String fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
+                        if(response.Is_Success()){
+                            Celda_Renderer[] celdas = new Celda_Renderer[3];
+                            DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+                            Celda_Renderer celda;
+                            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                            ImageIcon icono_Abrir = new ImageIcon(icono);
+                            celda = new Celda_Renderer(emisor);
+                            celdas[0] = celda;
+                            celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
+                            celdas[1] = celda;
+                            celda = new Celda_Renderer(fecha);
+                            celdas[2] = celda;
+                            modelo.addRow(celdas);
+                            mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
+                            icono.flush();
+                            CourseRoom.Utilerias().Mensaje_Informativo("Tarea",response.Mensaje());
+                        }else{
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
                         }
+                       
                     }
-                    if(archivo_Mayor){
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                    }                 
-                    icono.flush();
+                    else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo Supera El Tamaño Aceptado De Subida");
+                    }
+                  
                 } catch (IOException ex) {
-                    CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Arvhivo",ex.getMessage());
                 }
             }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo No Tiene Un Formato Adecuado");
         }
     }
 
