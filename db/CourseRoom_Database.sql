@@ -264,39 +264,6 @@ LOCK TABLES `tb_cursosusuarios` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_desempenousuario`
---
-
-DROP TABLE IF EXISTS `tb_desempenousuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tb_desempenousuario` (
-  `IdDesempeno` int NOT NULL AUTO_INCREMENT,
-  `PromedioCurso` double DEFAULT NULL,
-  `Prediccion` double DEFAULT NULL,
-  `RumboEstatus` enum('A Aprobar','A Reprobar','Excelente','Bueno','Regular','Malo') NOT NULL,
-  `IdUsuario` int NOT NULL,
-  `IdCurso` int NOT NULL,
-  `PromedioGeneral` double DEFAULT NULL,
-  `FechaRegistro` varchar(100) NOT NULL,
-  PRIMARY KEY (`IdDesempeno`),
-  KEY `fk_IdUsuarioDesempeñoProfesional_INDEX` (`IdUsuario`) /*!80000 INVISIBLE */,
-  KEY `fk_IdCursoDesempeñoProfesional_INDEX` (`IdCurso`),
-  CONSTRAINT `fk_IdCursoDesempeñoProfesional` FOREIGN KEY (`IdCurso`) REFERENCES `tb_cursos` (`IdCurso`),
-  CONSTRAINT `fk_IdUsuarioDesempeñoProfesional` FOREIGN KEY (`IdUsuario`) REFERENCES `tb_usuarios` (`IdUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_desempenousuario`
---
-
-LOCK TABLES `tb_desempenousuario` WRITE;
-/*!40000 ALTER TABLE `tb_desempenousuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_desempenousuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tb_desempenousuariocurso`
 --
 
@@ -305,15 +272,19 @@ DROP TABLE IF EXISTS `tb_desempenousuariocurso`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_desempenousuariocurso` (
   `IdDesempenoCurso` int NOT NULL AUTO_INCREMENT,
-  `TareaCalificada` varchar(150) NOT NULL,
-  `Calificacion` double NOT NULL,
-  `PromedioCurso` double NOT NULL,
+  `TareaCalificada` varchar(150) DEFAULT NULL,
+  `Calificacion` double DEFAULT NULL,
+  `PromedioCurso` double DEFAULT NULL,
   `PromedioGeneral` double DEFAULT NULL,
-  `Prediccion` double NOT NULL,
-  `RumboEstatus` enum('A Aprobar','A Reprobar','Excelente','Bueno','Regular','Malo') NOT NULL,
+  `PrediccionPromedio` double DEFAULT NULL,
+  `RumboEstatusPromedio` enum('A Aprobar','A Reprobar','Excelente','Bueno','Regular','Malo') DEFAULT NULL,
+  `Puntualidad` double DEFAULT NULL,
+  `PromedioPuntualidad` double DEFAULT NULL,
+  `RumboEstatusPuntualidad` enum('Pésimo','Regular','Bueno','Excelente') DEFAULT NULL,
+  `Rezago` bit(1) DEFAULT NULL,
   `FechaRegistro` varchar(100) NOT NULL,
-  `IdCurso` int NOT NULL,
-  `IdUsuario` int NOT NULL,
+  `IdUsuario` int DEFAULT NULL,
+  `IdCurso` int DEFAULT NULL,
   PRIMARY KEY (`IdDesempenoCurso`),
   KEY `fk_IdCursoDesempenoUsuarioCurso_idx` (`IdCurso`),
   KEY `fk_IdUsuarioDesempenoUsuarioCurso_idx` (`IdUsuario`),
@@ -4506,11 +4477,10 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoCur
 	IN _IdCurso INT
 )
 BEGIN
-	SELECT IdDesempenoCurso, TareaCalificada,Calificacion, PromedioCurso, PromedioGeneral,Prediccion, 
-    CAST(RumboEstatus AS CHAR) AS RumboEstatus, FechaRegistro
-    FROM tb_desempenousuariocurso
-    WHERE IdCurso = _IdCurso
-    ORDER BY IdDesempenoCurso DESC;
+	SELECT IdDesempenoCurso, TareaCalificada,Calificacion, PromedioCurso, PromedioGeneral,PrediccionPromedio, 
+    CAST(RumboEstatusPromedio AS CHAR) AS RumboEstatusPromedio, Puntualidad, PromedioPuntualidad, 
+    CAST(RumboEstatusPuntualidad AS CHAR) AS RumboEstatusPuntualidad, Rezago, FechaRegistro
+    FROM tb_desempenousuariocurso WHERE IdCurso = _IdCurso ORDER BY IdDesempenoCurso DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -4531,12 +4501,10 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoUsu
     IN _IdUsuario INT
 )
 BEGIN
-    SELECT DesempenoUsuario.IdDesempeno, Cursos.IdCurso, Cursos.Nombre, DesempenoUsuario.PromedioCurso,
-    DesempenoUsuario.PromedioGeneral, CAST(DesempenoUsuario.RumboEstatus AS CHAR) AS RumboEstatus, 
-    DesempenoUsuario.Prediccion, DesempenoUsuario.FechaRegistro
-    FROM tb_desempenousuario DesempenoUsuario
-    INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = DesempenoUsuario.IdCurso
-    WHERE DesempenoUsuario.IdUsuario = _IdUsuario ORDER BY DesempenoUsuario.IdDesempeno DESC;
+	SELECT IdDesempenoCurso, TareaCalificada,Calificacion, PromedioCurso, PromedioGeneral,PrediccionPromedio, 
+    CAST(RumboEstatusPromedio AS CHAR) AS RumboEstatusPromedio, Puntualidad, PromedioPuntualidad, 
+    CAST(RumboEstatusPuntualidad AS CHAR) AS RumboEstatusPuntualidad, Rezago, FechaRegistro
+    FROM tb_desempenousuariocurso WHERE IdUsuario = _IdUsuario ORDER BY IdDesempenoCurso DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -4558,11 +4526,10 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoUsu
     IN _IdUsuario INT
 )
 BEGIN
-	SELECT IdDesempenoCurso, TareaCalificada,Calificacion, PromedioCurso, PromedioGeneral,Prediccion, 
-    CAST(RumboEstatus AS CHAR) AS RumboEstatus, FechaRegistro
-    FROM tb_desempenousuariocurso
-    WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso
-    ORDER BY IdDesempenoCurso DESC;
+	SELECT IdDesempenoCurso, TareaCalificada,Calificacion, PromedioCurso, PromedioGeneral,PrediccionPromedio, 
+    CAST(RumboEstatusPromedio AS CHAR) AS RumboEstatusPromedio, Puntualidad, PromedioPuntualidad, 
+    CAST(RumboEstatusPuntualidad AS CHAR) AS RumboEstatusPuntualidad, Rezago, FechaRegistro
+    FROM tb_desempenousuariocurso WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso ORDER BY IdDesempenoCurso DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -6064,4 +6031,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-17 17:35:40
+-- Dump completed on 2022-04-18 17:52:01

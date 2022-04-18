@@ -26,7 +26,8 @@ public class CursosModel {
     private String nombre, nombre_Completo, fecha_Creacion;
     private Double puntuacion;
 
-    public CursosModel(int id_Curso, int id_Usuario, int lista_Tematicas, String nombre, String nombre_Completo, String fecha_Creacion, double puntuacion) {
+    public CursosModel(int id_Curso, int id_Usuario, int lista_Tematicas, String nombre, 
+            String nombre_Completo, String fecha_Creacion, double puntuacion) {
         this.id_Curso = id_Curso;
         this.id_Usuario = id_Usuario;
         this.lista_Tematicas = lista_Tematicas;
