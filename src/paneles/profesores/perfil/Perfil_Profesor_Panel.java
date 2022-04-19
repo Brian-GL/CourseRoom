@@ -957,7 +957,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
             int result = escogedor_Archivos.showOpenDialog(this);
             long tamanio;
-            boolean archivo_Mayor = false;
 
             if (result == JFileChooser.APPROVE_OPTION) {
                 File archivo_Abierto = escogedor_Archivos.getSelectedFile();
@@ -979,15 +978,11 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
                             obtener_Imagen.flush();
                         }else{
-                            archivo_Mayor = true;
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
                         }
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
                     }
-                }
-                
-                if(archivo_Mayor){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
                 }
             }
 
