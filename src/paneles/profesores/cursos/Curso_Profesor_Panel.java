@@ -144,8 +144,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         editar_Tematicas_JTable = new javax.swing.JTable();
         guardar_Datos_Generales_Curso_JButton = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
@@ -190,9 +190,9 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_JButton.setToolTipText("<html><h3>Regresar A Mis Cursos</h3></html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar_JButton.setToolTipText("<html><h3>Regresar A Mis Cursos</h3></html>");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -660,9 +660,9 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                         enviar_Mensaje_Chat_JPanel.setLayout(new java.awt.BorderLayout());
 
                         enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
+                        enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
                         enviar_Archivo_Chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                         enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                        enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
                         ((ImageIcon)enviar_Archivo_Chat_JButton.getIcon()).getImage().flush();
                         enviar_Archivo_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -971,6 +971,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                 estadisticas_JScrollPane.setOpaque(false);
 
                                 estadisticas_JTable.setAutoCreateRowSorter(true);
+                                estadisticas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                                 estadisticas_JTable.setModel(
 
                                     new javax.swing.table.DefaultTableModel(
@@ -978,11 +979,11 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
                                         },
                                         new String [] {
-                                            "Tarea","Calificación","Promedio Curso","Promedio General","Predicción","Fecha"
+                                            "Tarea","Calificación","Promedio Curso","Predicción", "Puntualidad","Promedio","Predicción","Fecha"
                                         }
                                     ) {
                                         boolean[] canEdit = new boolean [] {
-                                            false, false, false, false, false, false
+                                            false, false, false, false, false, false, false, false
                                         };
 
                                         public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1004,7 +1005,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                             return super.getColumnClass(column);
                                         }
                                     });
-                                    estadisticas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                                     estadisticas_JTable.setRowHeight(100);
                                     estadisticas_JTable.setShowGrid(true);
                                     estadisticas_JTable.setSurrendersFocusOnKeystroke(true);

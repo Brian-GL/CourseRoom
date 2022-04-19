@@ -851,11 +851,11 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                                         },
                                         new String [] {
-                                            "Tarea","Calificación","Promedio Curso","Promedio General","Predicción","Fecha"
+                                            "Tarea","Calificación","Promedio Curso","Predicción", "Puntualidad","Promedio","Predicción","Fecha"
                                         }
                                     ) {
                                         boolean[] canEdit = new boolean [] {
-                                            false, false, false, false, false, false
+                                            false, false, false, false, false, false, false, false
                                         };
 
                                         public boolean isCellEditable(int rowIndex, int columnIndex) {
