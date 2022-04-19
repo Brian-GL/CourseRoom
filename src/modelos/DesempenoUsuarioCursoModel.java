@@ -23,37 +23,48 @@ package modelos;
  */
 public class DesempenoUsuarioCursoModel {
     private Integer id_Desempeno_Curso;
-    private String tarea_Calificada, rumbo_Estatus, fecha_Registro;
-    private Double calificacion, promedio_Curso, promedio_General, prediccion;
+    private String tarea_Calificada, rumbo_Estatus_Promedio, rumbo_Estatus_Puntualidad, fecha_Registro;
+    private Double calificacion, promedio_Curso, prediccion_Promedio, puntualidad, promedio_Puntualidad, prediccion_Puntualidad;
+    private Boolean rezago;
 
-    public DesempenoUsuarioCursoModel(int id_Desempeno_Curso, String tarea_Calificada, 
-            String rumbo_Estatus, Double calificacion, Double promedio_Curso, Double promedio_General, Double prediccion, String fecha_Registro) {
+    public DesempenoUsuarioCursoModel(Integer id_Desempeno_Curso, String tarea_Calificada, 
+            String rumbo_Estatus_Promedio, String rumbo_Estatus_Puntualidad, String fecha_Registro, Double calificacion, Double promedio_Curso, Double promedio_General, Double prediccion_Promedio, Double puntualidad, Double promedio_Puntualidad, Double prediccion_Puntualidad, Boolean rezago) {
         this.id_Desempeno_Curso = id_Desempeno_Curso;
         this.tarea_Calificada = tarea_Calificada;
-        this.rumbo_Estatus = rumbo_Estatus;
+        this.rumbo_Estatus_Promedio = rumbo_Estatus_Promedio;
+        this.rumbo_Estatus_Puntualidad = rumbo_Estatus_Puntualidad;
+        this.fecha_Registro = fecha_Registro;
         this.calificacion = calificacion;
         this.promedio_Curso = promedio_Curso;
-        this.promedio_General = promedio_General;
-        this.prediccion = prediccion;
-        this.fecha_Registro = fecha_Registro;
+        this.prediccion_Promedio = prediccion_Promedio;
+        this.puntualidad = puntualidad;
+        this.prediccion_Puntualidad = prediccion_Puntualidad;
+        this.promedio_Puntualidad = promedio_Puntualidad;
+        this.rezago = rezago;
     }
 
     public DesempenoUsuarioCursoModel() {
+        
         this.id_Desempeno_Curso = -1;
         this.tarea_Calificada = 
-        this.fecha_Registro =
-        this.rumbo_Estatus = new String();
+        this.rumbo_Estatus_Promedio = 
+        this.rumbo_Estatus_Puntualidad = 
+        this.fecha_Registro = new String();
         this.calificacion = 
         this.promedio_Curso = 
-        this.promedio_General = 
-        this.prediccion = -1.0;
+        this.prediccion_Promedio = 
+        this.puntualidad = 
+        this.prediccion_Puntualidad =
+        this.promedio_Puntualidad = -1.0;
+        this.rezago = false;
+        
     }
 
-    public int Id_Desempeno_Curso() {
+    public Integer Id_Desempeno_Curso() {
         return id_Desempeno_Curso;
     }
 
-    public void Id_Desempeno_Curso(int id_Desempeno_Curso) {
+    public void Id_Desempeno_Curso(Integer id_Desempeno_Curso) {
         this.id_Desempeno_Curso = id_Desempeno_Curso;
     }
 
@@ -65,12 +76,36 @@ public class DesempenoUsuarioCursoModel {
         this.tarea_Calificada = tarea_Calificada;
     }
 
-    public String Rumbo_Estatus() {
-        return rumbo_Estatus;
+    public String Rumbo_Estatus_Promedio() {
+        return rumbo_Estatus_Promedio;
     }
 
-    public void Rumbo_Estatus(String rumbo_Estatus) {
-        this.rumbo_Estatus = rumbo_Estatus;
+    public void Rumbo_Estatus_Promedio(String rumbo_Estatus_Promedio) {
+        this.rumbo_Estatus_Promedio = rumbo_Estatus_Promedio;
+    }
+
+    public String Rumbo_Estatus_Puntualidad() {
+        return rumbo_Estatus_Puntualidad;
+    }
+
+    public void Rumbo_Estatus_Puntualidad(String rumbo_Estatus_Puntualidad) {
+        this.rumbo_Estatus_Puntualidad = rumbo_Estatus_Puntualidad;
+    }
+
+    public String Fecha_Registro() {
+        return fecha_Registro;
+    }
+
+    public Double Prediccion_Puntualidad() {
+        return prediccion_Puntualidad;
+    }
+
+    public void Prediccion_Puntualidad(Double prediccion_Puntualidad) {
+        this.prediccion_Puntualidad = prediccion_Puntualidad;
+    }
+    
+    public void Fecha_Registro(String fecha_Registro) {
+        this.fecha_Registro = fecha_Registro;
     }
 
     public Double Calificacion() {
@@ -89,28 +124,36 @@ public class DesempenoUsuarioCursoModel {
         this.promedio_Curso = promedio_Curso;
     }
 
-    public Double Promedio_General() {
-        return promedio_General;
+    public Double Prediccion_Promedio() {
+        return prediccion_Promedio;
     }
 
-    public void Promedio_General(Double promedio_General) {
-        this.promedio_General = promedio_General;
+    public void Prediccion_Promedio(Double prediccion_Promedio) {
+        this.prediccion_Promedio = prediccion_Promedio;
     }
 
-    public Double Prediccion() {
-        return prediccion;
+    public Double Puntualidad() {
+        return puntualidad;
     }
 
-    public void Prediccion(Double prediccion) {
-        this.prediccion = prediccion;
+    public void Puntualidad(Double puntualidad) {
+        this.puntualidad = puntualidad;
     }
 
-    public String Fecha_Registro() {
-        return fecha_Registro;
+    public Double Promedio_Puntualidad() {
+        return promedio_Puntualidad;
     }
 
-    public void Fecha_Registro(String fecha_Registro) {
-        this.fecha_Registro = fecha_Registro;
+    public void Promedio_Puntualidad(Double promedio_Puntualidad) {
+        this.promedio_Puntualidad = promedio_Puntualidad;
+    }
+
+    public Boolean Rezago() {
+        return rezago;
+    }
+
+    public void Rezago(Boolean rezago) {
+        this.rezago = rezago;
     }
     
 }

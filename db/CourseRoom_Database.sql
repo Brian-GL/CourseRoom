@@ -280,11 +280,12 @@ CREATE TABLE `tb_desempenousuariocurso` (
   `RumboEstatusPromedio` enum('A Aprobar','A Reprobar','Excelente','Bueno','Regular','Malo') DEFAULT NULL,
   `Puntualidad` double DEFAULT NULL,
   `PromedioPuntualidad` double DEFAULT NULL,
+  `PrediccionPuntualidad` double DEFAULT NULL,
   `RumboEstatusPuntualidad` enum('Pésimo','Regular','Bueno','Excelente') DEFAULT NULL,
   `Rezago` bit(1) DEFAULT NULL,
   `FechaRegistro` varchar(100) NOT NULL,
-  `IdUsuario` int DEFAULT NULL,
-  `IdCurso` int DEFAULT NULL,
+  `IdUsuario` int NOT NULL,
+  `IdCurso` int NOT NULL,
   PRIMARY KEY (`IdDesempenoCurso`),
   KEY `fk_IdCursoDesempenoUsuarioCurso_idx` (`IdCurso`),
   KEY `fk_IdUsuarioDesempenoUsuarioCurso_idx` (`IdUsuario`),
@@ -4042,8 +4043,8 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerCalificacion
 	IN _IdTarea INT,
     IN _IdUsuario INT)
 BEGIN
-	SELECT Calificacion, FechaCalificacion FROM tb_tareascursousuarios WHERE IdTarea = _IdTarea 
-    AND IdUsuario = _IdUsuario;
+	SELECT Calificacion, FechaCalificacion FROM tb_tareascursousuarios WHERE 
+    IdTarea = _IdTarea  AND IdUsuario = _IdUsuario LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -4477,8 +4478,8 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoCur
 	IN _IdCurso INT
 )
 BEGIN
-	SELECT IdDesempenoCurso, TareaCalificada,Calificacion, PromedioCurso, PromedioGeneral,PrediccionPromedio, 
-    CAST(RumboEstatusPromedio AS CHAR) AS RumboEstatusPromedio, Puntualidad, PromedioPuntualidad, 
+	SELECT IdDesempenoCurso, TareaCalificada, Calificacion, PromedioCurso,PrediccionPromedio, 
+    CAST(RumboEstatusPromedio AS CHAR) AS RumboEstatusPromedio, Puntualidad, PromedioPuntualidad, PrediccionPuntualidad,
     CAST(RumboEstatusPuntualidad AS CHAR) AS RumboEstatusPuntualidad, Rezago, FechaRegistro
     FROM tb_desempenousuariocurso WHERE IdCurso = _IdCurso ORDER BY IdDesempenoCurso DESC;
 END ;;
@@ -4501,10 +4502,16 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoUsu
     IN _IdUsuario INT
 )
 BEGIN
-	SELECT IdDesempenoCurso, TareaCalificada,Calificacion, PromedioCurso, PromedioGeneral,PrediccionPromedio, 
-    CAST(RumboEstatusPromedio AS CHAR) AS RumboEstatusPromedio, Puntualidad, PromedioPuntualidad, 
-    CAST(RumboEstatusPuntualidad AS CHAR) AS RumboEstatusPuntualidad, Rezago, FechaRegistro
-    FROM tb_desempenousuariocurso WHERE IdUsuario = _IdUsuario ORDER BY IdDesempenoCurso DESC;
+	SELECT DesempenoUsuarioCurso.IdDesempenoCurso, Cursos.IdCurso, Cursos.Nombre AS NombreCurso, 
+    DesempenoUsuarioCurso.PromedioCurso, DesempenoUsuarioCurso.PromedioGeneral, 
+    DesempenoUsuarioCurso.PrediccionPromedio, 
+    CAST(DesempenoUsuarioCurso.RumboEstatusPromedio AS CHAR) AS RumboEstatusPromedio, 
+    DesempenoUsuarioCurso.Puntualidad, DesempenoUsuarioCurso.PromedioPuntualidad, DesempenoUsuarioCurso.PrediccionPuntualidad,
+    CAST(DesempenoUsuarioCurso.RumboEstatusPuntualidad AS CHAR) AS RumboEstatusPuntualidad, 
+    DesempenoUsuarioCurso.Rezago, DesempenoUsuarioCurso.FechaRegistro
+    FROM tb_desempenousuariocurso DesempenoUsuarioCurso 
+    INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = DesempenoUsuarioCurso.IdCurso
+    WHERE DesempenoUsuarioCurso.IdUsuario = _IdUsuario ORDER BY DesempenoUsuarioCurso.IdDesempenoCurso DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -4526,8 +4533,8 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDesempenoUsu
     IN _IdUsuario INT
 )
 BEGIN
-	SELECT IdDesempenoCurso, TareaCalificada,Calificacion, PromedioCurso, PromedioGeneral,PrediccionPromedio, 
-    CAST(RumboEstatusPromedio AS CHAR) AS RumboEstatusPromedio, Puntualidad, PromedioPuntualidad, 
+	SELECT IdDesempenoCurso, TareaCalificada, Calificacion, PromedioCurso,PrediccionPromedio, 
+    CAST(RumboEstatusPromedio AS CHAR) AS RumboEstatusPromedio, Puntualidad, PromedioPuntualidad, PrediccionPuntualidad,
     CAST(RumboEstatusPuntualidad AS CHAR) AS RumboEstatusPuntualidad, Rezago, FechaRegistro
     FROM tb_desempenousuariocurso WHERE IdUsuario = _IdUsuario AND IdCurso = _IdCurso ORDER BY IdDesempenoCurso DESC;
 END ;;
@@ -6031,4 +6038,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-18 17:52:01
+-- Dump completed on 2022-04-18 19:29:38

@@ -30,7 +30,6 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import modelos.ResponseModel;
 import paneles.profesores.cursos.Cursos_Profesor_Panel;
-import paneles.profesores.desempeno_profesional.Desempeno_Profesional_Profesor_Panel;
 
 /**
  *
@@ -45,7 +44,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     private static Chats_Profesor_Panel chats_Panel;
     private static Acerca_General_Panel acerca_De_Panel;
     private static Perfil_Profesor_Panel perfil_Panel;
-    private static Desempeno_Profesional_Profesor_Panel desempeno_Profesional_Panel;
     private static Reproductor_Musica_General_Panel reproductor_Musica_Panel;
     private static Avisos_General_Panel avisos_Panel;
     private static Fechas_General_Panel fechas_Panel;
@@ -74,7 +72,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
         menu_JPanel = new javax.swing.JPanel();
         imagen_Perfil_JLabel = new javax.swing.JLabel();
-        stats_JButton = new javax.swing.JButton();
         cursos_JButton = new javax.swing.JButton();
         tareas_JButton = new javax.swing.JButton();
         fechas_JButton = new javax.swing.JButton();
@@ -115,26 +112,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         });
         menu_JPanel.add(imagen_Perfil_JLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        stats_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        stats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/qualification_1.png"))); // NOI18N
-        stats_JButton.setText("Stats");
-        stats_JButton.setToolTipText("<html><h4>Mostrar Las Estadisticas & Desempeño Escolar Del Usuario.</h4></html> ");
-        stats_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        stats_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        stats_JButton.setPreferredSize(new java.awt.Dimension(150, 35));
-        stats_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stats_JButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                stats_JButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                stats_JButtonMouseExited(evt);
-            }
-        });
-        menu_JPanel.add(stats_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
-
         cursos_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         cursos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
         cursos_JButton.setText("Cursos");
@@ -153,7 +130,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 cursos_JButtonMouseExited(evt);
             }
         });
-        menu_JPanel.add(cursos_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 185, -1, -1));
+        menu_JPanel.add(cursos_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
 
         tareas_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework.png"))); // NOI18N
@@ -173,7 +150,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 tareas_JButtonMouseExited(evt);
             }
         });
-        menu_JPanel.add(tareas_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, -1));
+        menu_JPanel.add(tareas_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 185, -1, -1));
 
         fechas_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         fechas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/schedule.png"))); // NOI18N
@@ -193,7 +170,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 fechas_JButtonMouseExited(evt);
             }
         });
-        menu_JPanel.add(fechas_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 255, -1, -1));
+        menu_JPanel.add(fechas_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, -1));
 
         avisos_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         avisos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/bell.png"))); // NOI18N
@@ -213,7 +190,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 avisos_JButtonMouseExited(evt);
             }
         });
-        menu_JPanel.add(avisos_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
+        menu_JPanel.add(avisos_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 255, -1, -1));
 
         chats_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         chats_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-chat.png"))); // NOI18N
@@ -233,7 +210,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 chats_JButtonMouseExited(evt);
             }
         });
-        menu_JPanel.add(chats_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 325, -1, -1));
+        menu_JPanel.add(chats_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
 
         reproductor_Musica_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         reproductor_Musica_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rock.png"))); // NOI18N
@@ -253,7 +230,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 reproductor_Musica_JButtonMouseExited(evt);
             }
         });
-        menu_JPanel.add(reproductor_Musica_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, -1, -1));
+        menu_JPanel.add(reproductor_Musica_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 325, -1, -1));
 
         acerca_De_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         acerca_De_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info.png"))); // NOI18N
@@ -273,7 +250,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 acerca_De_JButtonMouseExited(evt);
             }
         });
-        menu_JPanel.add(acerca_De_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 465, -1, -1));
+        menu_JPanel.add(acerca_De_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, -1, -1));
 
         ajustes_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         ajustes_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/settings.png"))); // NOI18N
@@ -293,7 +270,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 ajustes_JButtonMouseExited(evt);
             }
         });
-        menu_JPanel.add(ajustes_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, -1, -1));
+        menu_JPanel.add(ajustes_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 395, -1, -1));
 
         salir_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         salir_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/exit-door.png"))); // NOI18N
@@ -313,7 +290,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 salir_JButtonMouseExited(evt);
             }
         });
-        menu_JPanel.add(salir_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, -1, -1));
+        menu_JPanel.add(salir_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 465, -1, -1));
 
         preguntas_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         preguntas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/doubt.png"))); // NOI18N
@@ -333,12 +310,12 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 preguntas_JButtonMouseExited(evt);
             }
         });
-        menu_JPanel.add(preguntas_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 395, -1, -1));
+        menu_JPanel.add(preguntas_JButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, -1, -1));
 
         barra_Superior_JPanel.setBackground(java.awt.Color.black);
         barra_Superior_JPanel.setMinimumSize(new java.awt.Dimension(1260, 40));
-        barra_Superior_JPanel.setPreferredSize(new java.awt.Dimension(1260, 40));
         barra_Superior_JPanel.setOpaque(false);
+        barra_Superior_JPanel.setPreferredSize(new java.awt.Dimension(1260, 40));
 
         menu_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         menu_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/menu.png"))); // NOI18N
@@ -360,9 +337,9 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
             }
         });
 
+        mensaje_Bienvenida_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         mensaje_Bienvenida_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mensaje_Bienvenida_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/avatar.png"))); // NOI18N
-        mensaje_Bienvenida_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
 
         fecha_Hora_Servidor_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         fecha_Hora_Servidor_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock_2.png"))); // NOI18N
@@ -370,7 +347,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         fecha_Hora_Servidor_JLabel.setMaximumSize(new java.awt.Dimension(400, 32));
         fecha_Hora_Servidor_JLabel.setMinimumSize(new java.awt.Dimension(400, 32));
         fecha_Hora_Servidor_JLabel.setPreferredSize(new java.awt.Dimension(400, 32));
-        ((ImageIcon)stats_JButton.getIcon()).getImage().flush();
         ((ImageIcon)cursos_JButton.getIcon()).getImage().flush();
         ((ImageIcon)tareas_JButton.getIcon()).getImage().flush();
         ((ImageIcon)fechas_JButton.getIcon()).getImage().flush();
@@ -462,25 +438,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         menu_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         menu_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_menu_JButtonMouseExited
-
-    private void stats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stats_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            Tablero_Profesor_Panel.Mostrar_Vista("Desempeno_Escolar");
-        }
-    }//GEN-LAST:event_stats_JButtonMouseClicked
-
-    private void stats_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stats_JButtonMouseEntered
-        // TODO add your handling code here:
-        stats_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        stats_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-    }//GEN-LAST:event_stats_JButtonMouseEntered
-
-    private void stats_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stats_JButtonMouseExited
-        // TODO add your handling code here:
-        stats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        stats_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-    }//GEN-LAST:event_stats_JButtonMouseExited
 
     private void cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_JButtonMouseClicked
         // TODO add your handling code here:
@@ -798,7 +755,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         chats_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         cursos_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         fechas_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        stats_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         reproductor_Musica_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         salir_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         tareas_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
@@ -810,7 +766,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         chats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         cursos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         fechas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        stats_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         reproductor_Musica_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         salir_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         tareas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
@@ -832,7 +787,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         ajustes_Panel.Colorear_Componentes();
         preguntas_Panel.Colorear_Componentes();
         cursos_Panel.Colorear_Componentes();
-        desempeno_Profesional_Panel.Colorear_Componentes();
     }
     
     @Override
@@ -845,7 +799,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         fechas_Panel.Limpiar();
         cursos_Panel.Limpiar();
         perfil_Panel.Limpiar();
-        desempeno_Profesional_Panel.Limpiar();
         
     }
     
@@ -921,7 +874,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     private static javax.swing.JButton preguntas_JButton;
     private static javax.swing.JButton reproductor_Musica_JButton;
     private static javax.swing.JButton salir_JButton;
-    private static javax.swing.JButton stats_JButton;
     private static javax.swing.JButton tareas_JButton;
     private static javax.swing.JPanel visualizador_JPanel;
     // End of variables declaration//GEN-END:variables
@@ -956,8 +908,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
             IdSesion = response.Codigo();
         }
         
-        desempeno_Profesional_Panel = new Desempeno_Profesional_Profesor_Panel();
-        visualizador_JPanel.add("Desempeno_Profesional",desempeno_Profesional_Panel);
 
         chats_Panel = new Chats_Profesor_Panel();
         visualizador_JPanel.add("Chats", chats_Panel);

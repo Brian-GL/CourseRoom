@@ -44,7 +44,6 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
-import paneles.estudiantes.cursos.Curso_Estudiante_Panel;
 
 /**
  *
@@ -182,11 +181,11 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
 
                 },
                 new String [] {
-                    "Curso", "Promedio Curso", "Promedio General" ,"Predicción", "Fecha"
+                    "Curso", "Promedio", "Promedio General" ,"Predicción","Puntualidad","Promedio","Prediccion", "Fecha"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false, false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -320,12 +319,12 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     
     private void Agregar_Estadistica(DesempenoUsuarioModel desempenoUsuarioModel) {
         
-        Boolean rumbo = !"A Reprobar".equals(desempenoUsuarioModel.Rumbo_Estatus());
+        Boolean rumbo = !"A Reprobar".equals(desempenoUsuarioModel.Rumbo_Estatus_Promedio());
         
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer[] celdas = new Celda_Renderer[8];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
-        String Id_Desempeno = String.valueOf(desempenoUsuarioModel.Id_Desempeno());
+        String Id_Desempeno = String.valueOf(desempenoUsuarioModel.Id_Desempeno_Curso());
         Image imagen;
         ImageIcon icono;
 
@@ -357,17 +356,39 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
             if(rumbo){
                 imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
                 icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(String.valueOf(desempenoUsuarioModel.Prediccion()),"<br>",desempenoUsuarioModel.Rumbo_Estatus()),Id_Desempeno);
+                celda = new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(String.valueOf(desempenoUsuarioModel.Prediccion_Promedio()),"<br>",desempenoUsuarioModel.Rumbo_Estatus_Promedio()),Id_Desempeno);
                 celdas[3] = celda;
             }else{
                 imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
                 icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(String.valueOf(desempenoUsuarioModel.Prediccion()),"<br>",desempenoUsuarioModel.Rumbo_Estatus()),Id_Desempeno);
+                celda = new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(String.valueOf(desempenoUsuarioModel.Prediccion_Promedio()),"<br>",desempenoUsuarioModel.Rumbo_Estatus_Promedio()),Id_Desempeno);
                 celdas[3] = celda;
             }
             
-            celda = new Celda_Renderer(desempenoUsuarioModel.Fecha_Registro(), Id_Desempeno);
+            
+            
+            celda = new Celda_Renderer(String.valueOf(desempenoUsuarioModel.Puntualidad()),Id_Desempeno);
             celdas[4] = celda;
+            
+            celda = new Celda_Renderer(String.valueOf(desempenoUsuarioModel.Promedio_Puntualidad()), Id_Desempeno);
+            celdas[5] = celda;
+            
+            rumbo = desempenoUsuarioModel.Rumbo_Estatus_Puntualidad().equals("Bueno") || desempenoUsuarioModel.Rumbo_Estatus_Puntualidad().equals("Excelente");
+            
+            if(rumbo){
+                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
+                icono = new ImageIcon(imagen);
+                celda = new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(String.valueOf(desempenoUsuarioModel.Prediccion_Puntualidad()),"<br>",desempenoUsuarioModel.Rumbo_Estatus_Puntualidad()),Id_Desempeno);
+                celdas[6] = celda;
+            }else{
+                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+                icono = new ImageIcon(imagen);
+                celda = new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(String.valueOf(desempenoUsuarioModel.Prediccion_Puntualidad()),"<br>",desempenoUsuarioModel.Rumbo_Estatus_Puntualidad()),Id_Desempeno);
+                celdas[6] = celda;
+            }
+            
+            celda = new Celda_Renderer(desempenoUsuarioModel.Fecha_Registro(), Id_Desempeno);
+            celdas[7] = celda;
 
             modelo.addRow(celdas);
 

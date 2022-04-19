@@ -1191,7 +1191,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "jpg", "jpeg");
             escogedor_Archivos.addChoosableFileFilter(filtro);
@@ -1199,44 +1198,38 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
             int resultado = escogedor_Archivos.showOpenDialog(this);
             long tamanio;
-            boolean archivo_Mayor = false;
 
             if (resultado == JFileChooser.APPROVE_OPTION) {
                 File archivo = escogedor_Archivos.getSelectedFile();
 
                 if(archivo != null){
-                try {
-                    tamanio = FileUtils.sizeOf(archivo);
+                    try {
+                        tamanio = FileUtils.sizeOf(archivo);
                         tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
                         if(tamanio < 16){
-                
-                    Image abrir_Imagen = ImageIO.read(archivo);
-                    int largo_Imagen = imagen_JLabel.getHeight();
-                    ImageIcon icono_Grupo = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
 
-                    imagen_JLabel.setIcon(icono_Grupo);
-                    ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Grupo(Id_Grupo, FileUtils.readFileToByteArray(archivo));
-                    if (respuesta.Is_Success()) {
-                        CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                    } else {
-                        CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-                    }
+                            Image abrir_Imagen = ImageIO.read(archivo);
+                            int largo_Imagen = imagen_JLabel.getHeight();
+                            ImageIcon icono_Grupo = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
 
-                    abrir_Imagen.flush();
+                            imagen_JLabel.setIcon(icono_Grupo);
+                            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Grupo(Id_Grupo, FileUtils.readFileToByteArray(archivo));
+                            if (respuesta.Is_Success()) {
+                                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                            } else {
+                                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                            }
 
-                }else{
-                            archivo_Mayor = true;
+                            abrir_Imagen.flush();
+
+                        }else{
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
                         }
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
                     }
                 }
-                
-                if(archivo_Mayor){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
-                }
             }
-
         }
     }//GEN-LAST:event_cambiar_Imagen_JButtonMouseClicked
 

@@ -2339,9 +2339,11 @@ public class Solicitudes {
                 
                 DesempenoUsuarioCursoModel desempenoUsuarioCursoModel;
                 Integer id_Desempeno_Curso;
-                String tarea_Calificada, rumbo_Estatus, fecha_Registro;
-                Double calificacion, promedio_Curso, promedio_General, prediccion;
+                String tarea_Calificada, rumbo_Estatus_Promedio, rumbo_Estatus_Puntualidad, fecha_Registro;
+                Double calificacion, prediccion_Puntualidad, promedio_Curso, prediccion_Promedio, puntualidad, promedio_Puntualidad;
+                Boolean rezago;
                 Vector<Object> fila;
+                
                 while(!resultado.isEmpty()){
                     
                     fila = resultado.remove(0);
@@ -2350,12 +2352,16 @@ public class Solicitudes {
                     tarea_Calificada = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     calificacion = (double)fila.remove(0);
                     promedio_Curso = (double)fila.remove(0);
-                    promedio_General = (double)fila.remove(0);
-                    prediccion = (double)fila.remove(0);
-                    rumbo_Estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    prediccion_Promedio = (double)fila.remove(0);
+                    rumbo_Estatus_Promedio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    puntualidad = (double)fila.remove(0);
+                    promedio_Puntualidad = (double)fila.remove(0);
+                    prediccion_Puntualidad = (double)fila.remove(0);
+                    rumbo_Estatus_Puntualidad = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    rezago = (boolean)fila.remove(0);
                     fecha_Registro = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    desempenoUsuarioCursoModel = new DesempenoUsuarioCursoModel(id_Desempeno_Curso, tarea_Calificada, rumbo_Estatus, calificacion, promedio_Curso, promedio_General, prediccion, fecha_Registro);
+                    desempenoUsuarioCursoModel = new DesempenoUsuarioCursoModel(id_Desempeno_Curso, tarea_Calificada, rumbo_Estatus_Promedio, rumbo_Estatus_Puntualidad, fecha_Registro, calificacion, promedio_Curso, promedio_Curso, prediccion_Promedio, puntualidad, promedio_Puntualidad, prediccion_Puntualidad, rezago);
                     
                     response.push_back(desempenoUsuarioCursoModel);
                 }
@@ -2387,25 +2393,32 @@ public class Solicitudes {
                 Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
                 
                 DesempenoUsuarioModel desempenoUsuarioModel;
-                int id_Desempeno, id_Curso;
-                double prediccion, promedio_General, promedio_Curso;
-                String rumbo_Estatus, nombre_Curso, fecha_Registro;
+                Integer id_Desempeno_Curso, id_Curso;
+                String nombre_Curso, rumbo_Estatus_Promedio, rumbo_Estatus_Puntualidad, fecha_Registro;
+                Double promedio_Curso, promedio_General, prediccion_Promedio, prediccion_Puntualidad, puntualidad, promedio_Puntualidad;
+                Boolean rezago;
                 Vector<Object> fila;
+                
                 while(!resultado.isEmpty()){
                     
                     fila = resultado.remove(0);
                     
-                    id_Desempeno = (int) fila.remove(0);
-                    id_Curso = (int)fila.remove(0);
+                    id_Desempeno_Curso = (int) fila.remove(0);
+                    id_Curso = (int) fila.remove(0);
                     nombre_Curso = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     promedio_Curso = (double)fila.remove(0);
                     promedio_General = (double)fila.remove(0);
-                    rumbo_Estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
-                    prediccion = (double)fila.remove(0);
+                    prediccion_Promedio = (double)fila.remove(0);
+                    rumbo_Estatus_Promedio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    puntualidad = (double)fila.remove(0);
+                    promedio_Puntualidad = (double)fila.remove(0);
+                    prediccion_Puntualidad = (double)fila.remove(0);
+                    rumbo_Estatus_Puntualidad = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    rezago = (boolean)fila.remove(0);
                     fecha_Registro = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    desempenoUsuarioModel = new DesempenoUsuarioModel(id_Desempeno, id_Curso, prediccion, promedio_General, promedio_Curso, rumbo_Estatus, nombre_Curso, fecha_Registro);
-                    
+                    desempenoUsuarioModel = new DesempenoUsuarioModel(id_Desempeno_Curso, id_Curso, nombre_Curso, rumbo_Estatus_Promedio, rumbo_Estatus_Puntualidad, fecha_Registro, promedio_Curso, promedio_General, prediccion_Promedio, puntualidad, promedio_Puntualidad, prediccion_Puntualidad, rezago);
+    
                     response.push_back(desempenoUsuarioModel);
                 }
                 
