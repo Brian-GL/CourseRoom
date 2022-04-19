@@ -912,8 +912,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             celda = new Celda_Renderer(puntuacion, id);
             celdas[4] = celda;
             Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel
-                    = new Vista_Previa_Curso_Estudiante_Panel(nombre_Curso, obtener_Imagen_Curso,
-                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id, false, _id_Curso_Actual);
+                    = new Vista_Previa_Curso_Estudiante_Panel(/*nombre_Curso, obtener_Imagen_Curso,
+                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id, false, _id_Curso_Actual*/-1);
             mostrar_Cursos_Recomendados_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
             Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
             modelo_Cursos_Recomendados.addRow(celdas);
@@ -956,8 +956,8 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             celda = new Celda_Renderer(puntuacion, id);
             celdas[4] = celda;
             Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel
-                    = new Vista_Previa_Curso_Estudiante_Panel(nombre_Curso, obtener_Imagen_Curso,
-                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id, true, _id_Curso_Actual);
+                    = new Vista_Previa_Curso_Estudiante_Panel(/*nombre_Curso, obtener_Imagen_Curso,
+                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id, true, _id_Curso_Actual*/-1);
             mostrar_Cursos_Nuevos_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
             Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
             modelo_Cursos_Nuevos.addRow(celdas);

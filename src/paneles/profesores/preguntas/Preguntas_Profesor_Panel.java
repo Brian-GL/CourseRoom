@@ -512,7 +512,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         
     }
     
-        private void Buscar_Preguntas(String busqueda){
+    private void Buscar_Preguntas(String busqueda){
         
         DefaultTableModel modelo = (DefaultTableModel) buscar_Preguntas_JTable.getModel();
         modelo.setRowCount(0);
@@ -536,7 +536,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         }
     }
         
-        private void Obtener_Preguntas(){
+    private void Obtener_Preguntas(){
         
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
         modelo.setRowCount(0);
@@ -556,7 +556,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         }
     }
     
-        public void Agregar_Pregunta(PreguntasModel preguntasModel) {
+    public void Agregar_Pregunta(PreguntasModel preguntasModel) {
         
         String id_Pregunta = CourseRoom.Utilerias().Concatenar("Pregunta_",preguntasModel.Id_Pregunta());
         
@@ -590,7 +590,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         
     }
         
-     public void Agregar_Pregunta_Busqueda(PreguntasModel preguntasModel) {
+    public void Agregar_Pregunta_Busqueda(PreguntasModel preguntasModel) {
         
         String id_Pregunta = CourseRoom.Utilerias().Concatenar("Pregunta_",preguntasModel.Id_Pregunta());
         
@@ -642,7 +642,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         
     }
      
-         private boolean Existe_Pregunta(int id_Pregunta){
+    private boolean Existe_Pregunta(int id_Pregunta){
         Nodo<Pregunta_Profesor_Panel> first = mostrar_Preguntas_Lista.front();
         Nodo<Pregunta_Profesor_Panel> last = mostrar_Preguntas_Lista.back();
 

@@ -25,6 +25,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
+import modelos.ResponseModel;
 
 /**
  *
@@ -89,8 +90,8 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         fecha_Finalizacion_JLabel = new javax.swing.JLabel();
         estatus_Tarea_JComboBox = new javax.swing.JComboBox<>();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setOpaque(false);
@@ -105,9 +106,9 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_JButton.setToolTipText("Regresar A Mis Chats");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        regresar_JButton.setToolTipText("Regresar A Mis Chats");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -122,8 +123,8 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         actualizar_JButton.setToolTipText("<html><h3>Actualizar<br>Págin</h3></html>");
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -144,7 +145,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(actualizar_JButton))
         );
@@ -204,6 +205,11 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
         estatus_Tarea_JComboBox.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         estatus_Tarea_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Realizando", "Finalizada" }));
+        estatus_Tarea_JComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                estatus_Tarea_JComboBoxItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -279,6 +285,15 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         // TODO add your handling code here:
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
+
+    private void estatus_Tarea_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_estatus_Tarea_JComboBoxItemStateChanged
+        ResponseModel response = CourseRoom.Solicitudes().Cambiar_Estatus_Tarea_Pendiente(Id_Tarea_Pendiente, (String)estatus_Tarea_JComboBox.getSelectedItem(), Tablero_Estudiante_Panel.Id_Usuario());
+        if(response.Is_Success()){
+                    CourseRoom.Utilerias().Mensaje_Informativo("Tarea Pendiente", response.Mensaje());
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Tarea Pendiente", response.Mensaje());
+                }
+    }//GEN-LAST:event_estatus_Tarea_JComboBoxItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
