@@ -37,6 +37,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.PreguntasModel;
 import modelos.TareasEstudianteModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
@@ -393,7 +394,11 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             if (longitud > 99) {
             buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Tareas<br>Rebasa Los 100 Caracteres");
-          }
+          }else{
+                SwingUtilities.invokeLater(() -> {
+                    Buscar_Tareas(buscar_JTextField.getText());
+                });
+            }
         }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
 
@@ -503,6 +508,122 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             Agregar_Tarea(tareas_Estudiante.delist());
         }
         
+    }
+    
+    private void Buscar_Tareas(String busqueda){
+        
+        DefaultTableModel modelo = (DefaultTableModel) buscar_Tareas_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Tarea_Estudiante_Panel tarea_Estudiante_Panel;
+        while(!buscar_Tareas_Lista.is_empty()){
+            tarea_Estudiante_Panel = buscar_Tareas_Lista.delist();
+            Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
+            tarea_Estudiante_Panel.Limpiar();
+        }
+        
+        Lista<TareasEstudianteModel> lista = 
+                CourseRoom.Solicitudes().Buscar_Tareas(busqueda, Tablero_Estudiante_Panel.Id_Usuario() );
+        
+        if(!lista.is_empty()){
+            while(!lista.is_empty()){
+                Agregar_Tarea_Busqueda(lista.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta","No Se Encontraron Registros");
+        }
+    }
+    
+    public void Agregar_Tarea_Busqueda(TareasEstudianteModel tareasEstudianteModel) {
+        String id_Tarea = CourseRoom.Utilerias().Concatenar("Tarea_",tareasEstudianteModel.Id_Tarea());
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        
+        Image imagen = null;
+        byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(tareasEstudianteModel.Id_Curso());
+        
+        if(bytes_Imagen.length > 0){
+            
+            imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+            
+            if(imagen != null){
+                
+                imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                ImageIcon icono_Imagen = new ImageIcon(imagen);
+                celda =  new Celda_Renderer(icono_Imagen,tareasEstudianteModel.Nombre_Curso(), id_Tarea);
+                celdas[1] = celda;
+            }else{
+                celda =  new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(), id_Tarea);
+                celdas[1] = celda;
+            }
+        }
+        
+        celda = new Celda_Renderer(tareasEstudianteModel.Nombre(),id_Tarea);
+        celdas[0] = celda;
+        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Creacion(),id_Tarea);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Entrega(),id_Tarea);
+        celdas[3] = celda;
+        celda = new Celda_Renderer(tareasEstudianteModel.Estatus(),id_Tarea);
+        celdas[4] = celda;
+        
+        DefaultTableModel modelo = (DefaultTableModel) buscar_Tareas_JTable.getModel();
+        modelo.insertRow(0, celdas);
+        buscar_Tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(tareasEstudianteModel.Nombre().length()));
+        
+        if(!Existe_Tarea(tareasEstudianteModel.Id_Tarea())){
+            
+            imagen = (imagen != null) ? imagen.getScaledInstance(48, 48, Image.SCALE_SMOOTH) : null;
+
+            Tarea_Estudiante_Panel tarea_Estudiante_Panel = 
+                    new Tarea_Estudiante_Panel(tareasEstudianteModel.Id_Tarea());
+
+            buscar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
+
+            Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, id_Tarea);
+        }
+    }
+    
+    private boolean Existe_Tarea(int id_Tarea){
+        Nodo<Tarea_Estudiante_Panel> first = mostrar_Tareas_Lista.front();
+        Nodo<Tarea_Estudiante_Panel> last = mostrar_Tareas_Lista.back();
+
+        int middle_index = (mostrar_Tareas_Lista.size())/2;
+
+        if(middle_index % 2 == 0){
+            for (int i = 0; i < middle_index; i++) {
+
+                if (first.element().Id_Tarea() == id_Tarea){
+                    return true;
+                }
+
+                if (last.element().Id_Tarea() == id_Tarea){
+                    return true;
+                }
+
+                first = first.next();
+                last = last.previous();
+            }
+            return false;
+        }else{
+            for(int i = 0; i < middle_index;i++) {
+
+                if(first.element().Id_Tarea() == id_Tarea){
+                    return true;
+                }
+
+                if(last.element().Id_Tarea() == id_Tarea){
+                    return true;
+                }
+
+                first = first.next();
+                last = last.previous();
+            }
+
+            return mostrar_Tareas_Lista.medium().Id_Tarea() == id_Tarea;
+        }
+      
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

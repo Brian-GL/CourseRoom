@@ -19,16 +19,19 @@ package paneles.estudiantes.cursos;
 
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
+import courseroom.CourseRoom_Frame;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ResponseModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
@@ -45,18 +48,13 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
     private String fecha_Creacion;
     private String nuevo_Curso_ID;
     private boolean tipo_Curso; // 0 -> Recomendado | 1 -> Nuevo
+     private int Id_Curso;
     
-    public Vista_Previa_Curso_Estudiante_Panel(String _nombre_Curso,
-        Image _imagen_Curso,
-        String _nombre_Profesor,
-        Image _imagen_Profesor,
-        String _fecha_Creacion,
-        String _id,
-        boolean _tipo_Curso,
-        String _nuevo_Curso_ID) {
+    public Vista_Previa_Curso_Estudiante_Panel(int id_Curso) {
         initComponents();
+        Id_Curso = id_Curso;
         
-        titulo_JLabel.setText(_nombre_Curso);
+        /*titulo_JLabel.setText(_nombre_Curso);
         ImageIcon icono = new ImageIcon(_imagen_Curso);
         imagen_Curso_JLabel.setIcon(icono);
         icono = new ImageIcon(_imagen_Profesor);
@@ -71,7 +69,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         imagen_Profesor = _imagen_Profesor;
         fecha_Creacion = _fecha_Creacion;
         nuevo_Curso_ID = _nuevo_Curso_ID;
-        tipo_Curso = _tipo_Curso;
+        tipo_Curso = _tipo_Curso;*/
         
         Iniciar_Componentes();
     }
@@ -337,26 +335,30 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         }// </editor-fold>//GEN-END:initComponents
 
     private void enrolarme_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enrolarme_JButtonMouseClicked
-        // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             
-            Curso_Estudiante_Panel curso_Estudiante_Panel = 
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Enrolarte En El Curso?", "Pregunta De Confirmación", 
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            
+            if(resultado == JOptionPane.YES_OPTION){
+            
+                ResponseModel response = CourseRoom.Solicitudes().Enrolar_Usuario_Curso(Id_Curso, 
+                        Tablero_Estudiante_Panel.Id_Usuario());
+
+                if(response.Is_Success()){
+                    Curso_Estudiante_Panel curso_Estudiante_Panel = 
                     new Curso_Estudiante_Panel(/*nombre_Curso, imagen_Curso, nombre_Profesor, imagen_Profesor, fecha_Creacion, ID,*/-1);
-            Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, ID);
+                    Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, ID);
+                    CourseRoom.Utilerias().Mensaje_Informativo("Enrolar Curso", response.Mensaje());
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Enrolar Curso", response.Mensaje());
+                }
             
-            // Nuevo curso
-            if(tipo_Curso){
-                Cursos_Estudiante_Panel.Remover_Curso_Nuevo(ID);
+                Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
+                Tablero_Estudiante_Panel.Retirar_Vista(this);
+                this.Limpiar();
             }
-            // Recomendado
-            else{
-                Cursos_Estudiante_Panel.Remover_Curso_Recomendado(ID);
-            }
-           
-            
-            Tablero_Estudiante_Panel.Retirar_Vista(this);
-            this.Limpiar();
-            Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
         }
     }//GEN-LAST:event_enrolarme_JButtonMouseClicked
 
@@ -401,6 +403,10 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         
         intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
         
+    }
+    
+    public int Id_Curso() {
+        return Id_Curso;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

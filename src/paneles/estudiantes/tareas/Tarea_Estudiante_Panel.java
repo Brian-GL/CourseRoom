@@ -881,7 +881,26 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void subir_Cambios_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Cambios_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            fecha_Actualizacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Actualizado ",CourseRoom.Utilerias().Fecha_Hora_Local()));
+            //fecha_Actualizacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Actualizado ",CourseRoom.Utilerias().Fecha_Hora_Local()));
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Subir Los Cambios?", "Pregunta De Confirmación", 
+                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            
+            if(resultado == JOptionPane.YES_OPTION){
+            
+                ResponseModel response = CourseRoom.Solicitudes().Entregar_Tarea_Usuario(Id_Tarea, 
+                        Tablero_Estudiante_Panel.Id_Usuario());
+
+                if(response.Is_Success()){
+                    CourseRoom.Utilerias().Mensaje_Informativo("Entregar Tarea", response.Mensaje());
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Entregar Tarea", response.Mensaje());
+                }
+            
+                Tablero_Estudiante_Panel.Mostrar_Vista("Tarea");
+                Tablero_Estudiante_Panel.Retirar_Vista(this);
+                this.Limpiar();
+            }
         }
     }//GEN-LAST:event_subir_Cambios_JButtonMouseClicked
 
