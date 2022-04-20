@@ -146,6 +146,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         editar_Tematicas_JScrollPane = new javax.swing.JScrollPane();
         editar_Tematicas_JTable = new javax.swing.JTable();
         guardar_Datos_Generales_Curso_JButton = new javax.swing.JButton();
+        finalizar_Curso_JButton = new javax.swing.JButton();
 
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
@@ -1091,7 +1092,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                         }
                                     });
 
-                                    eliminar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+                                    eliminar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
                                     eliminar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/computer_1.png"))); // NOI18N
                                     eliminar_Curso_JButton.setText("Eliminar Curso");
                                     eliminar_Curso_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
@@ -1172,6 +1173,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                     editar_Tematicas_JScrollPane.setOpaque(false);
 
                                     editar_Tematicas_JTable.setAutoCreateRowSorter(true);
+                                    editar_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                                     editar_Tematicas_JTable.setModel(
 
                                         new javax.swing.table.DefaultTableModel(
@@ -1205,7 +1207,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                                 return super.getColumnClass(column);
                                             }
                                         });
-                                        editar_Tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                                         editar_Tematicas_JTable.setRowHeight(32);
                                         editar_Tematicas_JTable.setShowGrid(true);
                                         editar_Tematicas_JTable.setSurrendersFocusOnKeystroke(true);
@@ -1270,6 +1271,25 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                             }
                                         });
 
+                                        finalizar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+                                        finalizar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/working.png"))); // NOI18N
+                                        finalizar_Curso_JButton.setText("Finalizar Curso");
+                                        finalizar_Curso_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
+                                        finalizar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                                        finalizar_Curso_JButton.setPreferredSize(new java.awt.Dimension(400, 50));
+                                        ((ImageIcon)finalizar_Curso_JButton.getIcon()).getImage().flush();
+                                        finalizar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                                            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                                finalizar_Curso_JButtonMouseClicked(evt);
+                                            }
+                                            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                                finalizar_Curso_JButtonMouseEntered(evt);
+                                            }
+                                            public void mouseExited(java.awt.event.MouseEvent evt) {
+                                                finalizar_Curso_JButtonMouseExited(evt);
+                                            }
+                                        });
+
                                         javax.swing.GroupLayout editar_JPanelLayout = new javax.swing.GroupLayout(editar_JPanel);
                                         editar_JPanel.setLayout(editar_JPanelLayout);
                                         editar_JPanelLayout.setHorizontalGroup(
@@ -1291,7 +1311,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(agregar_Tematica_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                             .addComponent(editar_Tematicas_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addGroup(editar_JPanelLayout.createSequentialGroup()
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editar_JPanelLayout.createSequentialGroup()
                                                         .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addGroup(editar_JPanelLayout.createSequentialGroup()
                                                                 .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1303,12 +1323,16 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                             .addGroup(editar_JPanelLayout.createSequentialGroup()
                                                                 .addComponent(guardar_Datos_Generales_Curso_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addGap(46, 46, 46)))
-                                                        .addComponent(editar_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editar_JPanelLayout.createSequentialGroup()
-                                                        .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(eliminar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addGap(46, 46, 46))
+                                                            .addGroup(editar_JPanelLayout.createSequentialGroup()
+                                                                .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                        .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(editar_JPanelLayout.createSequentialGroup()
+                                                                .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(36, 36, 36)
+                                                                .addComponent(eliminar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                            .addComponent(editar_Tematicas_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                 .addContainerGap(27, Short.MAX_VALUE))
                                         );
                                         editar_JPanelLayout.setVerticalGroup(
@@ -1342,7 +1366,9 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                                         .addComponent(guardar_Datos_Generales_Curso_JButton)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(eliminar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(editar_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(eliminar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(finalizar_Curso_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(cambiar_Imagen_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addContainerGap())
                                         );
@@ -1795,6 +1821,25 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         agregar_Usuario_Grupo_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_agregar_Usuario_Grupo_JButtonMouseExited
 
+    private void finalizar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            
+        }
+    }//GEN-LAST:event_finalizar_Curso_JButtonMouseClicked
+
+    private void finalizar_Curso_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseEntered
+        // TODO add your handling code here:
+        finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+    }//GEN-LAST:event_finalizar_Curso_JButtonMouseEntered
+
+    private void finalizar_Curso_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseExited
+        // TODO add your handling code here:
+        finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+    }//GEN-LAST:event_finalizar_Curso_JButtonMouseExited
+
     public int Id_Curso() {
         return Id_Curso;
     }
@@ -2078,6 +2123,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private javax.swing.JScrollPane estadisticas_JScrollPane;
     private javax.swing.JTable estadisticas_JTable;
     private javax.swing.JLabel fecha_Creacion_JLabel;
+    private javax.swing.JButton finalizar_Curso_JButton;
     private javax.swing.JButton generar_Grupos_JButton;
     private javax.swing.JButton grupos_JButton;
     private javax.swing.JPanel grupos_JPanel;
@@ -2562,6 +2608,9 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         editar_Nombre_JTextField.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         editar_Nombre_JTextField.setCaretColor(CourseRoom.Utilerias().Tercer_Color_Fuente());
         editar_Nombre_JTextField.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        
+        finalizar_Curso_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         tematicas_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
         tematicas_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());

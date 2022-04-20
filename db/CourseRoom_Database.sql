@@ -1130,6 +1130,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_ExisteUsuarioEnGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_ExisteUsuarioEnGrupo`(_IdCurso INT, _IdUsuario INT) RETURNS bit(1)
+    DETERMINISTIC
+BEGIN
+
+	RETURN EXISTS (SELECT UsuariosGrupos.IdUsuario FROM tb_usuariosgrupos UsuariosGrupos 
+    INNER JOIN tb_grupos Grupos ON Grupos.IdGrupo = UsuariosGrupos.IdGrupo
+    WHERE Grupos.IdCurso = _IdCurso AND UsuariosGrupos.IdUsuario = _IdUsuario);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP FUNCTION IF EXISTS `fn_IntentosAceptablesGrupo` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1488,6 +1511,26 @@ CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_ObtenerMes`(_Fecha V
     DETERMINISTIC
 BEGIN
 	RETURN CONVERT((SUBSTRING(_Fecha, -16, 2)),UNSIGNED INTEGER);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `fn_ObtenerNumeroMiembrosCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` FUNCTION `fn_ObtenerNumeroMiembrosCurso`(_IdCurso INT) RETURNS int
+    DETERMINISTIC
+BEGIN
+	RETURN (SELECT COUNT(IdUsuario) FROM courseroom.tb_cursosusuarios WHERE IdCurso = _IdCurso AND Estatus = 'Actual');
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -2416,6 +2459,42 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_AgregarGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_AgregarGrupo`(
+	IN _Nombre VARCHAR(80),
+    IN _Descripcion TEXT,
+    IN _IdCurso INT
+)
+BEGIN
+
+	IF courseroom.fn_CampoValido(_Nombre) = 1 AND courseroom.fn_CampoTextoValido(_Descripcion) = 1 THEN
+		IF EXISTS(SELECT IdCurso FROM tb_cursos WHERE IdCurso = _IdCurso AND Activo = 1 AND Finalizado = 0) THEN
+			INSERT INTO tb_grupos(Nombre,Descripcion,FechaCreacion,IdCurso,Imagen,Activo)
+			VALUES(_Nombre,_Descripcion,courseroom.fn_ObtenerFecha(),_IdCurso,NULL,1);
+		
+			SELECT LAST_INSERT_ID() AS "Codigo", 'El Grupo Ha Sido Registrado Satisfactoriamente' AS "Mensaje";
+
+        ELSE
+			SELECT -1 AS "Codigo", 'El Curso No Se Encuentra Registrado O Ya Esta Finalizado' AS "Mensaje";
+        END IF;
+    ELSE
+		SELECT -1 AS "Codigo", 'Algún Parámetro De Entrada No Cuenta Con El Formato Adecuado' AS "Mensaje";
+    END IF;	
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_AgregarInteres` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2844,6 +2923,50 @@ BEGIN
 
     END IF;
     
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_AgregarUsuarioAGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_AgregarUsuarioAGrupo`(
+	IN _IdUsuario INT,
+    IN _IdGrupo INT
+)
+BEGIN
+
+	IF courseroom.fn_ExisteUsuario(_IdUsuario) = 1 THEN
+
+		If EXISTS(SELECT IdGrupo FROM tb_grupos WHERE IdGrupo = _IdGrupo AND Activo = 1) THEN
+			-- Validar que no exista el registro:
+			IF NOT EXISTS(SELECT IdGrupo FROM tb_usuariosgrupos WHERE IdUsuario = _IdUsuario AND IdGrupo = _IdGrupo) THEN
+				INSERT INTO tb_usuariosgrupos(IdUsuario,IdGrupo,FechaIngreso,Intentos) 
+				VALUES (_IdUsuario,_IdGrupo,courseroom.fn_ObtenerFecha(),0);
+				
+				CALL sp_AgregarAvisosGrupo(_IdGrupo,_IdUsuario,CONCAT('El Usuario ',
+					courseroom.fn_NombreCompletoUsuario(_IdUsuario),' Ha Sido Agregado Al Grupo ',courseroom.fn_NombreGrupo(_IdGrupo)),'Grupo');
+
+				SELECT 1 AS "Codigo", 'El Usuario Ha Sido Registrado En El Grupo Satisfactoriamente' AS "Mensaje";
+				
+			ELSE
+				SELECT -1 AS "Codigo", 'El Usuario Ya Se Encuentra Registrado En Ese Grupo' AS "Mensaje";
+			END IF;
+		ELSE
+			SELECT -1 AS "Codigo", 'El Grupo No Se Encuentra Registrado' AS "Mensaje";
+		END IF;
+	ELSE
+		SELECT -1 AS "Codigo", 'El Usuario No Se Encuentra Registrado' AS "Mensaje";
+	END IF;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -3719,7 +3842,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_FinalizarCurso` */;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_FinalizarCursoProfesor` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -3729,7 +3852,42 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_FinalizarCurso`(
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_FinalizarCursoProfesor`(
+	IN _IdCurso INT,
+	IN _IdProfesor INT
+)
+BEGIN
+	
+    -- Validar que exista el curso:
+    IF EXISTS (SELECT IdCurso FROM tb_cursos WHERE IdCurso = _IdCurso AND Activo = 1 AND Finalizado = 0 AND IdProfesor = _IdProfesor) THEN
+       
+		UPDATE tb_cursos SET Finalizado = 1 WHERE IdCurso = _IdCurso;
+
+		CALL sp_AgregarAvisosCurso(_IdCurso,_IdProfesor,CONCAT('El Curso ',courseroom.fn_NombreCurso(_IdCurso),' Se Ha Establecido Como Finalizado'),'Curso');
+		
+		SELECT 1 AS "Codigo", 'El Curso Se Ha Establecido Como Finalizado Satisfactoriamente' AS "Mensaje";
+		
+        
+	ELSE 
+		SELECT -1 AS "Codigo", 'El Curso No Se Encuentra Registrado O Ya Se Encuentra Finalizado' AS "Mensaje";
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_FinalizarCursoUsuario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_FinalizarCursoUsuario`(
 	IN _IdCurso INT,
 	IN _IdUsuario INT
 )
@@ -4943,6 +5101,27 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerInfoGruposCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerInfoGruposCurso`(
+	IN _IdCurso INT
+)
+BEGIN
+	SELECT IdGrupo, Nombre FROM tb_grupos WHERE IdCurso = _IdCurso ORDER BY IdGrupo DESC;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerInteresesUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -5244,6 +5423,25 @@ BEGIN
 		SELECT (@PromedioGeneral + _NuevoPromedio) / (@Cuenta + 1) AS NuevoPromedio;
     END IF;
     
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerNumeroMiembrosCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerNumeroMiembrosCurso`(IN _IdCurso INT)
+BEGIN
+	SELECT courseroom.fn_ObtenerNumeroMiembrosCurso(_IdCurso) AS NumeroMiembros;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -5635,6 +5833,27 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerTodosIDsUsuariosCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerTodosIDsUsuariosCurso`(
+	IN _IdCurso INT
+)
+BEGIN
+	SELECT IdUsuario FROM tb_cursosusuarios WHERE IdCurso = _IdCurso AND Estatus = 'Actual';
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerUltimoAviso` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -5714,6 +5933,34 @@ BEGIN
     SELECT IdUsuario, courseroom.fn_NombreCompleto(Nombre, Paterno, Materno) AS NombreCompleto
     FROM tb_usuarios WHERE Activo = 1 AND ChatsConmigo = 1
     AND CONCAT(Nombre, ' ', Paterno, ' ',Materno) LIKE CONCAT('%',_Busqueda,'%') LIMIT 25;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerUsuariosSinGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerUsuariosSinGrupo`(
+	IN _IdCurso INT
+)
+BEGIN
+	
+	SELECT Usuarios.IdUsuario, 
+    courseroom.fn_NombreCompleto(Usuarios.Nombre,Usuarios.Paterno,Usuarios.Materno) AS NombreCompleto
+    FROM tb_usuarios Usuarios 
+    INNER JOIN tb_cursosusuarios CursosUsuarios ON CursosUsuarios.IdUsuario = Usuarios.IdUsuario
+    INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = CursosUsuarios.IdCurso
+    WHERE Cursos.IdCurso = _IdCurso AND Cursos.Activo = 1 AND Usuarios.Activo = 1 
+    AND CursosUsuarios.Estatus = 'Actual' AND courseroom.fn_ExisteUsuarioEnGrupo(Cursos.IdCurso,Usuarios.IdUsuario) = 0;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -6212,6 +6459,32 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ValidarGeneracionGrupos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ValidarGeneracionGrupos`(
+	IN _IdCurso INT
+)
+BEGIN
+	IF NOT EXISTS(SELECT Grupos.IdCurso FROM tb_grupos Grupos 
+		INNER JOIN tb_usuariosgrupos UsuariosGrupos ON UsuariosGrupos.IdGrupo = Grupos.IdGrupo WHERE Grupos.IdCurso = _IdCurso) THEN
+        SELECT 1 AS "Codigo", 'El Curso No Tiene Grupos Generados' AS "Mensaje";
+	ELSE
+        SELECT -1 AS "Codigo", 'El Curso Ya Tiene Grupos Generados' AS "Mensaje";
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -6222,4 +6495,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-18 21:00:58
+-- Dump completed on 2022-04-19 20:20:58
