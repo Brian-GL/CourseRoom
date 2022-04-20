@@ -9,6 +9,8 @@ import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
 import datos.interfaces.Limpieza_Interface;
+import frames.estudiantes.Agregar_Usuario_Grupo_Frame;
+import frames.estudiantes.Generar_Grupo_Curso_Profesor_Frame;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -120,6 +122,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         generar_Grupos_JButton = new javax.swing.JButton();
         grupos_JScrollPane = new javax.swing.JScrollPane();
         grupos_JTable = new javax.swing.JTable();
+        agregar_Usuario_Grupo_JButton = new javax.swing.JButton();
         materiales_Curso_JPanel = new javax.swing.JPanel();
         compartir_Materiales_JButton = new javax.swing.JButton();
         materiales_JScrollPane = new javax.swing.JScrollPane();
@@ -148,8 +151,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
-        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
         titulo_JPanel.setOpaque(false);
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -160,8 +163,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         tareas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework.png"))); // NOI18N
-        tareas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tareas_JButton.setToolTipText("<html> <h3>Tareas</h3> </html>");
+        tareas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)tareas_JButton.getIcon()).getImage().flush();
         tareas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -170,8 +173,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         materiales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/book.png"))); // NOI18N
-        materiales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         materiales_JButton.setToolTipText("<html>\n<h3>Materiales</h3></html>");
+        materiales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)materiales_JButton.getIcon()).getImage().flush();
         materiales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -180,8 +183,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/teacher_1.png"))); // NOI18N
-        informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         informacion_JButton.setToolTipText("<html>\n<h3>Información Del Curso\n</h3></html>");
+        informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -207,8 +210,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         miembros_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/team.png"))); // NOI18N
-        miembros_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         miembros_JButton.setToolTipText("<html>\n<h3>Miembros Del Curso</h3></html>");
+        miembros_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)miembros_JButton.getIcon()).getImage().flush();
         miembros_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -217,8 +220,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         actualizar_JButton.setToolTipText("<html>\n<h4>Actualizar<br>Página\n</h4></html>");
+        actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -233,8 +236,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/meeting.png"))); // NOI18N
-        chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         chat_JButton.setToolTipText("<html>\n<h3>Chat Del Curso</h3></html>");
+        chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)chat_JButton.getIcon()).getImage().flush();
         chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -243,8 +246,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         regresion_Lineal_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/function.png"))); // NOI18N
-        regresion_Lineal_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresion_Lineal_JButton.setToolTipText("<html>\n<h3>Grafica De<br>Avance</h3></html>");
+        regresion_Lineal_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)regresion_Lineal_JButton.getIcon()).getImage().flush();
         regresion_Lineal_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -253,8 +256,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         estadisticas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/stats.png"))); // NOI18N
-        estadisticas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         estadisticas_JButton.setToolTipText("<html>\n<h3>Estadísticas</h3></html>");
+        estadisticas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)estadisticas_JButton.getIcon()).getImage().flush();
         estadisticas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -263,8 +266,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         editar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-tool.png"))); // NOI18N
-        editar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         editar_Curso_JButton.setToolTipText("<html><h3>Ajustes Del<br>Curso</h3></html>");
+        editar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)editar_Curso_JButton.getIcon()).getImage().flush();
         editar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -273,8 +276,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         });
 
         grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_2.png"))); // NOI18N
-        grupos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         grupos_JButton.setToolTipText("<html><h3>Crear<br<Grupos</h3></html>");
+        grupos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)grupos_JButton.getIcon()).getImage().flush();
         grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -495,11 +498,11 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                 tareas_JTable.setRowSorter(new TableRowSorter(tareas_JTable.getModel()));
                 tareas_JScrollPane.setViewportView(tareas_JTable);
 
+                crear_Tarea_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 crear_Tarea_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_3.png"))); // NOI18N
                 crear_Tarea_JButton.setText("Crear Tarea");
-                crear_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                crear_Tarea_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 crear_Tarea_JButton.setToolTipText("");
+                crear_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 ((ImageIcon)crear_Tarea_JButton.getIcon()).getImage().flush();
                 crear_Tarea_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -690,15 +693,15 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
                         curso_JLayeredPane.add(chat_JPanel, "Chat");
 
-                        grupos_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
                         grupos_JPanel.setToolTipText("");
                         grupos_JPanel.setOpaque(false);
+                        grupos_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
+                        generar_Grupos_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
                         generar_Grupos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/target.png"))); // NOI18N
                         generar_Grupos_JButton.setText("Generar Grupos");
-                        generar_Grupos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                        generar_Grupos_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
                         generar_Grupos_JButton.setToolTipText("Compartir Y Subir Archivo");
+                        generar_Grupos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                         ((ImageIcon)generar_Grupos_JButton.getIcon()).getImage().flush();
                         generar_Grupos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -791,6 +794,24 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                             });
                             grupos_JScrollPane.setViewportView(grupos_JTable);
 
+                            agregar_Usuario_Grupo_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+                            agregar_Usuario_Grupo_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/group_1.png"))); // NOI18N
+                            agregar_Usuario_Grupo_JButton.setText("Agregar Usuario A Grupo");
+                            agregar_Usuario_Grupo_JButton.setToolTipText("Compartir Y Subir Archivo");
+                            agregar_Usuario_Grupo_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                            ((ImageIcon)agregar_Usuario_Grupo_JButton.getIcon()).getImage().flush();
+                            agregar_Usuario_Grupo_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                    agregar_Usuario_Grupo_JButtonMouseClicked(evt);
+                                }
+                                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                    agregar_Usuario_Grupo_JButtonMouseEntered(evt);
+                                }
+                                public void mouseExited(java.awt.event.MouseEvent evt) {
+                                    agregar_Usuario_Grupo_JButtonMouseExited(evt);
+                                }
+                            });
+
                             javax.swing.GroupLayout grupos_JPanelLayout = new javax.swing.GroupLayout(grupos_JPanel);
                             grupos_JPanel.setLayout(grupos_JPanelLayout);
                             grupos_JPanelLayout.setHorizontalGroup(
@@ -798,18 +819,21 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                 .addGroup(grupos_JPanelLayout.createSequentialGroup()
                                     .addGap(0, 0, 0)
                                     .addGroup(grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+                                        .addComponent(grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
                                         .addGroup(grupos_JPanelLayout.createSequentialGroup()
                                             .addComponent(generar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE))))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(agregar_Usuario_Grupo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             );
                             grupos_JPanelLayout.setVerticalGroup(
                                 grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(grupos_JPanelLayout.createSequentialGroup()
                                     .addGap(0, 0, 0)
-                                    .addComponent(grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                                    .addComponent(grupos_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(generar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(grupos_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(generar_Grupos_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(agregar_Usuario_Grupo_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(0, 0, 0))
                             );
 
@@ -819,11 +843,11 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                             materiales_Curso_JPanel.setToolTipText("");
                             materiales_Curso_JPanel.setOpaque(false);
 
+                            compartir_Materiales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
                             compartir_Materiales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
                             compartir_Materiales_JButton.setText("Compartir Material(es)");
-                            compartir_Materiales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                            compartir_Materiales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
                             compartir_Materiales_JButton.setToolTipText("Compartir Y Subir Archivo");
+                            compartir_Materiales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                             ((ImageIcon)compartir_Materiales_JButton.getIcon()).getImage().flush();
                             compartir_Materiales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1047,13 +1071,13 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                         }
                                     });
 
-                                    editar_Nombre_JLabel.setText("Nombre");
                                     editar_Nombre_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                                    editar_Nombre_JLabel.setText("Nombre");
 
-                                    editar_Nombre_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-                                    editar_Nombre_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                                     editar_Nombre_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+                                    editar_Nombre_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
                                     editar_Nombre_JButton.setToolTipText("Editar Nombre Del Grupo");
+                                    editar_Nombre_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                                     ((ImageIcon)editar_Nombre_JButton.getIcon()).getImage().flush();
                                     editar_Nombre_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1067,12 +1091,12 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                         }
                                     });
 
+                                    eliminar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
                                     eliminar_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/computer_1.png"))); // NOI18N
                                     eliminar_Curso_JButton.setText("Eliminar Curso");
-                                    eliminar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                                    eliminar_Curso_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
-                                    eliminar_Curso_JButton.setPreferredSize(new java.awt.Dimension(400, 50));
                                     eliminar_Curso_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
+                                    eliminar_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                                    eliminar_Curso_JButton.setPreferredSize(new java.awt.Dimension(400, 50));
                                     ((ImageIcon)eliminar_Curso_JButton.getIcon()).getImage().flush();
                                     eliminar_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1086,8 +1110,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                         }
                                     });
 
-                                    editar_Descripcion_JLabel.setText("Descripción");
                                     editar_Descripcion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                                    editar_Descripcion_JLabel.setText("Descripción");
 
                                     editar_Descripcion_JScrollPane.setPreferredSize(new java.awt.Dimension(485, 300));
 
@@ -1103,10 +1127,10 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                     });
                                     editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
-                                    editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-                                    editar_Descripcion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                                     editar_Descripcion_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+                                    editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
                                     editar_Descripcion_JButton.setToolTipText("Editar Descripción Del Grupo");
+                                    editar_Descripcion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                                     ((ImageIcon)editar_Descripcion_JButton.getIcon()).getImage().flush();
                                     editar_Descripcion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1120,18 +1144,18 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                         }
                                     });
 
-                                    editar_Tematicas_JLabel.setText("Temáticas");
                                     editar_Tematicas_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                                    editar_Tematicas_JLabel.setText("Temáticas");
                                     editar_Tematicas_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
 
                                     tematicas_AutoCompletionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isaiah Leblanc", "Fitzgerald Dean", "Emma Doyle", "Galvin Gillespie", "Hunter Ross", "Kellie Valencia", "Miranda Holder", "Drake Mendoza", "Uma Parks", "Julian Hill" }));
                                     tematicas_AutoCompletionComboBox.setSelectedIndex(-1);
-                                    tematicas_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
                                     tematicas_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
+                                    tematicas_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
+                                    agregar_Tematica_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                                     agregar_Tematica_JButton.setText("Agregar");
                                     agregar_Tematica_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                                    agregar_Tematica_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                                     agregar_Tematica_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                             agregar_Tematica_JButtonMouseClicked(evt);
@@ -1682,7 +1706,10 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void generar_Grupos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generar_Grupos_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+            Generar_Grupo_Curso_Profesor_Frame generar_Grupo_Curso_Profesor_Frame =
+                    new Generar_Grupo_Curso_Profesor_Frame(Id_Curso);
             
+            generar_Grupo_Curso_Profesor_Frame.setVisible(true);
         }
     }//GEN-LAST:event_generar_Grupos_JButtonMouseClicked
 
@@ -1745,6 +1772,28 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         guardar_Datos_Generales_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         guardar_Datos_Generales_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_guardar_Datos_Generales_Curso_JButtonMouseExited
+
+    private void agregar_Usuario_Grupo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Usuario_Grupo_JButtonMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            Agregar_Usuario_Grupo_Frame agregar_Usuario_Grupo_Frame =
+                    new Agregar_Usuario_Grupo_Frame(Id_Curso);
+            
+            agregar_Usuario_Grupo_Frame.setVisible(true);
+        }
+    }//GEN-LAST:event_agregar_Usuario_Grupo_JButtonMouseClicked
+
+    private void agregar_Usuario_Grupo_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Usuario_Grupo_JButtonMouseEntered
+        // TODO add your handling code here:
+        agregar_Usuario_Grupo_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
+        agregar_Usuario_Grupo_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+    }//GEN-LAST:event_agregar_Usuario_Grupo_JButtonMouseEntered
+
+    private void agregar_Usuario_Grupo_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Usuario_Grupo_JButtonMouseExited
+        // TODO add your handling code here:
+        agregar_Usuario_Grupo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        agregar_Usuario_Grupo_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+    }//GEN-LAST:event_agregar_Usuario_Grupo_JButtonMouseExited
 
     public int Id_Curso() {
         return Id_Curso;
@@ -2001,6 +2050,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton agregar_Tematica_JButton;
+    private javax.swing.JButton agregar_Usuario_Grupo_JButton;
     private javax.swing.JButton cambiar_Imagen_JButton;
     private javax.swing.JButton chat_JButton;
     private javax.swing.JPanel chat_JPanel;
@@ -2311,7 +2361,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         Agregar_Interes_Tematica_Edicion(id, tematica);
         
-        
        
         Colorear_Componentes();
     }
@@ -2463,6 +2512,9 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         generar_Grupos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         generar_Grupos_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
+        
+        agregar_Usuario_Grupo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
+        agregar_Usuario_Grupo_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         
         modelo = (DefaultTableModel) grupos_JTable.getModel();
         for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -2620,7 +2672,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         }
     }
 
-    
+    @Override
     public void Enviar_Archivo() {
         Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
@@ -2803,4 +2855,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
             
         }
     }
+    
+    
 }

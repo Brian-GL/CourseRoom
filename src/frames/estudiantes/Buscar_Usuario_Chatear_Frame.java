@@ -74,6 +74,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
         setMaximumSize(new java.awt.Dimension(800, 495));
         setMinimumSize(new java.awt.Dimension(800, 495));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(800, 495));
         setResizable(false);
 

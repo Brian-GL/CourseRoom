@@ -1763,7 +1763,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
 
     }
     
-    public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Componentes_Interface{
+    private class Calificar_Profesor_Frame extends javax.swing.JDialog implements Componentes_Interface{
 
     
         public Calificar_Profesor_Frame() {

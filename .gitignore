@@ -7,3 +7,5 @@ hs_err_pid1272
 *.project
 *.build
 *.manifest.mf
+*.class
+/build/classes/paneles/estudiantes/tareas/Tarea_Estudiante_Panel.form
