@@ -5041,6 +5041,33 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerImagenesEnviadasTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerImagenesEnviadasTarea`(
+	IN _IdTarea INT,
+    IN _IdUsuario INT
+)
+BEGIN
+	SELECT SubidosTareas.Archivo, SubidosTareas.Extension FROM tb_archivossubidostareas SubidosTareas
+    INNER JOIN tb_tareascursousuarios TareasCurso 
+    ON TareasCurso.IdTarea = SubidosTareas.IdTarea AND TareasCurso.IdUsuario = SubidosTareas.IdUsuario
+    WHERE SubidosTareas.IdTarea = _IdTarea AND SubidosTareas.IdUsuario <> _IdUsuario 
+    AND (TareasCurso.Estatus = 'ENTREGADA' OR TareasCurso.Estatus = 'ENTREGADA CON RETRASO' OR TareasCurso.Estatus = 'CALIFICADA')
+    AND SubidosTareas.Activo = 1 AND (UPPER(SubidosTareas.Extension) = 'JPEG' OR UPPER(SubidosTareas.Extension) = 'JPG');
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerImagenGrupo` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -5442,6 +5469,33 @@ DELIMITER ;;
 CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerNumeroMiembrosCurso`(IN _IdCurso INT)
 BEGIN
 	SELECT courseroom.fn_ObtenerNumeroMiembrosCurso(_IdCurso) AS NumeroMiembros;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerPDFsEnviadosTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerPDFsEnviadosTarea`(
+	IN _IdTarea INT,
+    IN _IdUsuario INT
+)
+BEGIN
+	SELECT SubidosTareas.Archivo, SubidosTareas.Extension FROM tb_archivossubidostareas SubidosTareas
+    INNER JOIN tb_tareascursousuarios TareasCurso 
+    ON TareasCurso.IdTarea = SubidosTareas.IdTarea AND TareasCurso.IdUsuario = SubidosTareas.IdUsuario
+    WHERE SubidosTareas.IdTarea = _IdTarea AND SubidosTareas.IdUsuario <> _IdUsuario 
+    AND (TareasCurso.Estatus = 'ENTREGADA' OR TareasCurso.Estatus = 'ENTREGADA CON RETRASO' OR TareasCurso.Estatus = 'CALIFICADA')
+    AND SubidosTareas.Activo = 1 AND UPPER(SubidosTareas.Extension) = 'PDF';
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -6495,4 +6549,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-19 20:20:58
+-- Dump completed on 2022-04-20 20:43:07
