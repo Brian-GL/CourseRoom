@@ -10,6 +10,8 @@ DELETE FROM tb_tematicasusuarios WHERE IdTematica > 0;
 DELETE FROM tb_tematicas WHERE IdTematica > 0;
 ALTER TABLE tb_tematicas AUTO_INCREMENT = 1;
 DELETE FROM tb_preguntas WHERE IdPregunta > 0;
+DELETE FROM tb_localidades WHERE IdLocalidad > 0;
+ALTER TABLE tb_localidades AUTO_INCREMENT = 1;
 
 USE courseroom;
 SELECT *FROM tb_usuarios;
