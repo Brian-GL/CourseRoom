@@ -21,22 +21,33 @@ package modelos;
  *
  * @author Erick
  */
-public class FechaActualizacionTareaSubidaModel {
-    private String fecha_Subida;
+public class CalificacionTareaModel {
+    private Double calificacion;
+    private String fecha_Calificacion;
     
-     public FechaActualizacionTareaSubidaModel(String fecha_Subida) {
-        this.fecha_Subida = fecha_Subida;
+    public CalificacionTareaModel(double calificacion, String fecha_Calificacion) {
+        this.calificacion = calificacion;
+        this.fecha_Calificacion = fecha_Calificacion;
+    }
+    
+    public CalificacionTareaModel(){
+        this.calificacion = -1.0;
+        this.fecha_Calificacion = new String();
+    }
+    
+     public Double Calificacion() {
+        return calificacion;
     }
      
-    public FechaActualizacionTareaSubidaModel(){
-        this.fecha_Subida = new String();
+    public void Calificacion(double calificacion) {
+        this.calificacion = calificacion;
     }
 
-    public String Fecha_Subida() {
-        return fecha_Subida;
+    public String Fecha_Calificacion() {
+        return fecha_Calificacion;
     }
     
-    public void Fecha_Subida(String fecha_Subida) {
-        this.fecha_Subida = fecha_Subida;
+    public void Fecha_Calificacion(String fecha_Calificacion) {
+        this.fecha_Calificacion = fecha_Calificacion;
     }
 }

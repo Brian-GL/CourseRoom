@@ -27,6 +27,7 @@ import modelos.ArchivoModel;
 import modelos.ArchivosCompartidosGrupoModel;
 import modelos.ArchivosTareaModel;
 import modelos.AvisosModel;
+import modelos.CalificacionTareaModel;
 import modelos.ChatsPersonalesModel;
 import modelos.ConfiguracionesModel;
 import modelos.CursosCreadosProfesorModel;
@@ -2256,6 +2257,37 @@ public class Solicitudes {
         return response;
         
     }
+    
+    public CalificacionTareaModel Obtener_Calificacion_Tarea(int id_Tarea, int id_Usuario){
+        CalificacionTareaModel calificacionTareaModel = new CalificacionTareaModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Tarea);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Calificacion_Tarea", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 2){
+                   
+                    calificacionTareaModel.Calificacion((double)resultado.remove(0));
+                    calificacionTareaModel.Fecha_Calificacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+           }
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return calificacionTareaModel;
+    }
 
     public ConfiguracionesModel Obtener_Configuraciones(int id_Usuario){
         ConfiguracionesModel configuracionesModel = new ConfiguracionesModel();
@@ -3047,7 +3079,7 @@ public class Solicitudes {
 
     }
     
-     public Lista<FechaActualizacionTareaSubidaModel> Obtener_Fecha_Actualizacion_Tarea_Subida(int id_Tarea, int id_Usuario){
+    public Lista<FechaActualizacionTareaSubidaModel> Obtener_Fecha_Actualizacion_Tarea_Subida(int id_Tarea, int id_Usuario){
         Lista<FechaActualizacionTareaSubidaModel> response = new Lista<>();
         
         try {
