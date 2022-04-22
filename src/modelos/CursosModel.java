@@ -22,24 +22,24 @@ package modelos;
  * @author JOEL BR
  */
 public class CursosModel {
-    private Integer id_Curso, id_Usuario, lista_Tematicas;
-    private String nombre, nombre_Completo, fecha_Creacion;
+    private Integer id_Curso, id_Usuario;
+    private String nombre, nombre_Completo, lista_Tematicas, fecha_Creacion;
     private Double puntuacion;
 
-    public CursosModel(int id_Curso, int id_Usuario, int lista_Tematicas, String nombre, 
+    public CursosModel(int id_Curso, int id_Usuario, String lista_Tematicas, String nombre, 
             String nombre_Completo, String fecha_Creacion, double puntuacion) {
         this.id_Curso = id_Curso;
         this.id_Usuario = id_Usuario;
-        this.lista_Tematicas = lista_Tematicas;
         this.nombre = nombre;
         this.nombre_Completo = nombre_Completo;
+        this.lista_Tematicas = lista_Tematicas;
         this.fecha_Creacion = fecha_Creacion;
         this.puntuacion = puntuacion;
     }
 
     public CursosModel() {
-        this.id_Curso = this.id_Usuario = this.lista_Tematicas = 0;
-        this.nombre = this.nombre_Completo = this.fecha_Creacion = new String();
+        this.id_Curso = this.id_Usuario = 0;
+        this.nombre = this.nombre_Completo = this.fecha_Creacion = this.lista_Tematicas = new String();
         this.puntuacion = -1.0;
     }
 
@@ -59,11 +59,11 @@ public class CursosModel {
         this.id_Usuario = id_Usuario;
     }
 
-    public int Lista_Tematicas() {
+    public String Lista_Tematicas() {
         return lista_Tematicas;
     }
 
-    public void Lista_Tematicas(int lista_Tematicas) {
+    public void Lista_Tematicas(String lista_Tematicas) {
         this.lista_Tematicas = lista_Tematicas;
     }
 

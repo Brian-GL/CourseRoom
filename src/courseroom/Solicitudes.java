@@ -29,11 +29,14 @@ import modelos.ArchivosTareaModel;
 import modelos.AvisosModel;
 import modelos.ChatsPersonalesModel;
 import modelos.ConfiguracionesModel;
+import modelos.CursosCreadosProfesorModel;
+import modelos.CursosModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.DatosGeneralesGrupoModel;
 import modelos.DatosGeneralesPreguntaModel;
 import modelos.DatosGeneralesTareaModel;
 import modelos.DatosGeneralesTareaPendienteModel;
+import modelos.DatosGeneralesTareaProfesor;
 import modelos.DatosPerfilChatPersonalModel;
 import modelos.DatosPerfilModel;
 import modelos.DesempenoUsuarioCursoModel;
@@ -2281,6 +2284,190 @@ public class Solicitudes {
         return configuracionesModel;
     }
     
+    public Lista<CursosModel> Obtener_Cursos_Actuales(int id_Usuario){
+        
+        Lista<CursosModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Cursos_Actuales", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                CursosModel cursosModel;
+                int id_Curso, id_Usuario1;
+                String nombre, nombre_Completo, fecha_Creacion, lista_Tematicas;
+                double puntuacion;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Curso = (int) fila.remove(0);
+                    nombre = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    id_Usuario1 = (int) fila.remove(0);
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    lista_Tematicas = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Creacion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    puntuacion = (double) fila.remove(0);
+                    
+                    cursosModel = new CursosModel(id_Curso, id_Usuario1, nombre, nombre_Completo, lista_Tematicas, fecha_Creacion, puntuacion);
+                    
+                    response.push_back(cursosModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return response;
+        
+    }
+    
+    public Lista<CursosCreadosProfesorModel> Obtener_Cursos_Creados_Profesor(int id_Profesor){
+        
+        Lista<CursosCreadosProfesorModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Profesor);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Cursos_Creados_Profesor", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                CursosCreadosProfesorModel cursosCreadosProfesorModel;
+                int id_Curso;
+                String nombre, tematicas, estatus, fecha_Creacion;
+
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Curso = (int) fila.remove(0);
+                    nombre = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    tematicas = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Creacion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    cursosCreadosProfesorModel = new CursosCreadosProfesorModel(id_Curso, nombre, tematicas, estatus, fecha_Creacion);
+                    
+                    response.push_back(cursosCreadosProfesorModel);
+                }
+            }
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
+    public Lista<CursosModel> Obtener_Cursos_Finalizados(int id_Usuario){
+        
+        Lista<CursosModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Cursos_Finalizados", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                CursosModel cursosModel;
+                int id_Curso, id_Usuario1;
+                String nombre, nombre_Completo, fecha_Creacion, lista_Tematicas;
+                double puntuacion;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Curso = (int) fila.remove(0);
+                    nombre = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    id_Usuario1 = (int) fila.remove(0);
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    lista_Tematicas = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Creacion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    puntuacion = (double) fila.remove(0);
+                    
+                    cursosModel = new CursosModel(id_Curso, id_Usuario1, nombre, nombre_Completo, lista_Tematicas, fecha_Creacion, puntuacion);
+                    
+                    response.push_back(cursosModel);
+                }
+            }
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return response;  
+    }
+    
+    public Lista<CursosModel> Obtener_Cursos_Nuevos(){
+        
+        Lista<CursosModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Cursos_Nuevos", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                CursosModel cursosModel;
+                int id_Curso, id_Usuario1;
+                String nombre, nombre_Completo, fecha_Creacion, lista_Tematicas;
+                double puntuacion;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Curso = (int) fila.remove(0);
+                    nombre = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    id_Usuario1 = (int) fila.remove(0);
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    lista_Tematicas = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Creacion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    puntuacion = (double) fila.remove(0);
+                    
+                    cursosModel = new CursosModel(id_Curso, id_Usuario1, nombre, nombre_Completo, lista_Tematicas, fecha_Creacion, puntuacion);
+                    
+                    response.push_back(cursosModel);
+                } 
+            }
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return response;  
+    }
+    
     public ComboOptionModel Obtener_Datos_Generales_Chat_Personal(int id_Chat, int id_Usuario){
         ComboOptionModel comboOption = new ComboOptionModel();
         
@@ -2493,6 +2680,42 @@ public class Solicitudes {
         return datosGeneralesTareaPendienteModel;
     }
     
+    public DatosGeneralesTareaProfesor Obtener_Datos_Generales_Tarea_Profesor(int id_Tarea, int id_Profesor){
+        DatosGeneralesTareaProfesor datosGeneralesTareaProfesor = new DatosGeneralesTareaProfesor();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Tarea);
+            parametros.add(id_Profesor);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Datos_Generales_Tarea_Profesor", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size()== 5){
+                   
+                    datosGeneralesTareaProfesor.Nombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaProfesor.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaProfesor.Fecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaProfesor.Fecha_Entrega(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaProfesor.Estatus(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return datosGeneralesTareaProfesor;
+    }
+    
     public DatosPerfilModel Obtener_Datos_Perfil(int id_Usuario){
         DatosPerfilModel datosPerfilModel = new DatosPerfilModel();
         try {
@@ -2569,6 +2792,60 @@ public class Solicitudes {
         }
         
         return datosPerfilChatPersonalModel;
+    }
+    
+    public Lista<DesempenoUsuarioCursoModel> Obtener_Desempeno_Curso(int id_Curso){
+        Lista<DesempenoUsuarioCursoModel> response = new Lista<>();
+        
+        try {
+            Vector<Object> parametros = new Vector<>();
+            
+            parametros.add(id_Curso);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Desempeno_Curso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+                
+                DesempenoUsuarioCursoModel desempenoUsuarioCursoModel;
+                Integer id_Desempeno_Curso;
+                String tarea_Calificada, rumbo_Estatus_Promedio, rumbo_Estatus_Puntualidad, fecha_Registro;
+                Double calificacion, prediccion_Puntualidad, promedio_Curso, prediccion_Promedio, puntualidad, promedio_Puntualidad;
+                Boolean rezago;
+                Vector<Object> fila;
+                
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Desempeno_Curso = (int) fila.remove(0);
+                    tarea_Calificada = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    calificacion = (double)fila.remove(0);
+                    promedio_Curso = (double)fila.remove(0);
+                    prediccion_Promedio = (double)fila.remove(0);
+                    rumbo_Estatus_Promedio = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    puntualidad = (double)fila.remove(0);
+                    promedio_Puntualidad = (double)fila.remove(0);
+                    prediccion_Puntualidad = (double)fila.remove(0);
+                    rumbo_Estatus_Puntualidad = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    rezago = (boolean)fila.remove(0);
+                    fecha_Registro = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    desempenoUsuarioCursoModel = new DesempenoUsuarioCursoModel(id_Desempeno_Curso, tarea_Calificada, rumbo_Estatus_Promedio, rumbo_Estatus_Puntualidad, fecha_Registro, calificacion, promedio_Curso, promedio_Curso, prediccion_Promedio, puntualidad, promedio_Puntualidad, prediccion_Puntualidad, rezago);
+                    
+                    response.push_back(desempenoUsuarioCursoModel);
+                }
+                
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return response;
     }
 
     public Lista<DesempenoUsuarioCursoModel> Obtener_Desempeno_Usuario_Curso(int id_Curso, int id_Usuario){
@@ -2682,6 +2959,8 @@ public class Solicitudes {
         
         return response;
     }
+    
+    
   
     public Lista<String> Obtener_Estados(){
         
