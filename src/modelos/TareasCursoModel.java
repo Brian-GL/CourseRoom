@@ -21,61 +21,60 @@ package modelos;
  *
  * @author Erick
  */
-public class CursosCreadosProfesorModel {
-    private Integer id_Curso;
-    private String nombre, tematicas, estatus, fecha_Creacion;
-    
-    public CursosCreadosProfesorModel(int id_Curso, String nombre, String tematicas, String estatus,
-            String fecha_Creacion) {
-        this.id_Curso = id_Curso;
+public class TareasCursoModel {
+    private Integer id_Tarea;
+    private String nombre, fecha_Creacion, fecha_Entrega, estatus;
+
+    public TareasCursoModel(int id_Tarea, String nombre, String fecha_Creacion, String fecha_Entrega, String estatus) {
+        this.id_Tarea = id_Tarea;
         this.nombre = nombre;
-        this.tematicas = tematicas;
-        this.estatus = estatus;
         this.fecha_Creacion = fecha_Creacion;
+        this.fecha_Entrega = fecha_Entrega;
+        this.estatus = estatus;
     }
-    
-    public CursosCreadosProfesorModel() {
-        this.id_Curso = 0;
-        this.nombre = this.tematicas = this.estatus = this.fecha_Creacion = new String();
+
+    public TareasCursoModel() {
+        this.id_Tarea = 0;
+        this.nombre = this.fecha_Creacion = this.fecha_Entrega = this.estatus = new String();
     }
-    
-    public int Id_Curso() {
-        return id_Curso;
+
+    public int Id_Tarea() {
+        return id_Tarea;
     }
-    
-    public void Id_Curso(int id_Curso) {
-        this.id_Curso = id_Curso;
+
+    public void Id_Tarea(int id_Tarea) {
+        this.id_Tarea = id_Tarea;
     }
 
     public String Nombre() {
         return nombre;
     }
-    
+
     public void Nombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String Tematicas() {
-        return tematicas;
-    }
-    
-    public void Tematicas(String tematicas) {
-        this.tematicas = tematicas;
-    }
-
-    public String Estatus() {
-        return estatus;
-    }
-    
-    public void Estatus(String estatus){
-        this.estatus = estatus;
     }
 
     public String Fecha_Creacion() {
         return fecha_Creacion;
     }
-    
+
     public void Fecha_Creacion(String fecha_Creacion) {
         this.fecha_Creacion = fecha_Creacion;
+    }
+
+    public String Fecha_Entrega() {
+        return fecha_Entrega;
+    }
+
+    public void Fecha_Entrega(String fecha_Entrega) {
+        this.fecha_Entrega = fecha_Entrega;
+    }
+
+    public String Estatus() {
+        return estatus;
+    }
+
+    public void Estatus(String estatus) {
+        this.estatus = estatus;
     }
 }

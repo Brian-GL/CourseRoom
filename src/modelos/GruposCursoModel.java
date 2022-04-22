@@ -21,60 +21,50 @@ package modelos;
  *
  * @author Erick
  */
-public class CursosCreadosProfesorModel {
-    private Integer id_Curso;
-    private String nombre, tematicas, estatus, fecha_Creacion;
+public class GruposCursoModel {
+    private Integer id_Grupo;
+    private String nombre, numero_Integrantes, fecha_Creacion;
     
-    public CursosCreadosProfesorModel(int id_Curso, String nombre, String tematicas, String estatus,
-            String fecha_Creacion) {
-        this.id_Curso = id_Curso;
+    public GruposCursoModel(int id_Grupo, String nombre, String numero_Integrantes, String fecha_Creacion) {
+        this.id_Grupo = id_Grupo;
         this.nombre = nombre;
-        this.tematicas = tematicas;
-        this.estatus = estatus;
+        this.numero_Integrantes = numero_Integrantes;
         this.fecha_Creacion = fecha_Creacion;
     }
     
-    public CursosCreadosProfesorModel() {
-        this.id_Curso = 0;
-        this.nombre = this.tematicas = this.estatus = this.fecha_Creacion = new String();
+    public GruposCursoModel() {
+        this.id_Grupo = 0;
+        this.nombre = this.numero_Integrantes = this.fecha_Creacion = new String();
     }
-    
-    public int Id_Curso() {
-        return id_Curso;
+
+    public int Id_Grupo() {
+        return id_Grupo;
     }
-    
-    public void Id_Curso(int id_Curso) {
-        this.id_Curso = id_Curso;
+
+    public void Id_Grupo(int id_Grupo) {
+        this.id_Grupo = id_Grupo;
     }
 
     public String Nombre() {
         return nombre;
     }
-    
+
     public void Nombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String Tematicas() {
-        return tematicas;
-    }
-    
-    public void Tematicas(String tematicas) {
-        this.tematicas = tematicas;
+    public String Numero_Integrantes() {
+        return numero_Integrantes;
     }
 
-    public String Estatus() {
-        return estatus;
-    }
-    
-    public void Estatus(String estatus){
-        this.estatus = estatus;
+    public void Numero_Integrantes(String numero_Integrantes) {
+        this.numero_Integrantes = numero_Integrantes;
     }
 
     public String Fecha_Creacion() {
         return fecha_Creacion;
     }
-    
+
     public void Fecha_Creacion(String fecha_Creacion) {
         this.fecha_Creacion = fecha_Creacion;
     }
