@@ -828,29 +828,24 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     public static void Cambiar_Imagen_Usuario(byte[] bytes_Imagen_Perfil, Image imagen) {
         
         if(bytes_Imagen_Perfil.length > 0){
-            
-            ResponseModel response = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(IdUsuario, bytes_Imagen_Perfil);
-            
-            if(response.Is_Success()){
-            
-                imagen_Usuario = imagen;
-
-                if(imagen_Usuario != null){
-
-                    Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-                    ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
-                    imagen_Perfil_JLabel.setIcon(icono_Imagen);
-                    icono_Imagen.getImage().flush();
-                    imagen_Redimensionada.flush();
-
-                    Establecer_Colores();
-                    
-                    CourseRoom.Utilerias().Mensaje_Informativo("Cambiar Imagen Perfil",response.Mensaje());
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(IdUsuario, bytes_Imagen_Perfil);
+                if (response.Is_Success()) {
+                    imagen_Usuario = imagen;
+                    if (imagen_Usuario != null) {
+                        Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                        ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
+                        imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                        icono_Imagen.getImage().flush();
+                        imagen_Redimensionada.flush();
+                        Establecer_Colores();
+                        CourseRoom.Utilerias().Mensaje_Informativo("Cambiar Imagen Perfil", response.Mensaje());
+                    }
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar La Imagen De Perfil", response.Mensaje());
                 }
-            
-            }else{
-                CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar La Imagen De Perfil",response.Mensaje());            }
-        }
+            });
+        }            
     }
     
     public static Integer Id_Sesion() {
@@ -881,33 +876,33 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     @Override
     public void Iniciar_Componentes() {
         
-        
-        byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(IdUsuario);
-        
-        if(bytes_Imagen_Perfil.length > 0){
-            imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+        SwingUtilities.invokeLater(() -> {
+            byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(IdUsuario);
 
-            if(imagen_Usuario != null){
-                Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-                ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
-                imagen_Perfil_JLabel.setIcon(icono_Imagen);
-                icono_Imagen.getImage().flush();
-                imagen_Redimensionada.flush();
+            if (bytes_Imagen_Perfil.length > 0) {
+                imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+
+                if (imagen_Usuario != null) {
+                    Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                    ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
+                    imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                    icono_Imagen.getImage().flush();
+                    imagen_Redimensionada.flush();
+                }
             }
-        }
-        
+        });
         perfil_Panel = new Perfil_Profesor_Panel();
         visualizador_JPanel.add("Perfil",perfil_Panel);
+        SwingUtilities.invokeLater(() -> {
+            ResponseModel response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
 
-        ResponseModel response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
-
-        if(!response.Is_Success()){
-            IdSesion = -1;
-            System.err.println(response.Mensaje());
-        }else{
-            IdSesion = response.Codigo();
-        }
-        
+            if (!response.Is_Success()) {
+                IdSesion = -1;
+                System.err.println(response.Mensaje());
+            } else {
+                IdSesion = response.Codigo();
+            }
+        });
 
         chats_Panel = new Chats_Profesor_Panel();
         visualizador_JPanel.add("Chats", chats_Panel);

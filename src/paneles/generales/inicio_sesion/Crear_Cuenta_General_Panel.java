@@ -1350,7 +1350,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             apellido_Paterno_JTextField.requestFocus();
         }
         else if(longitud2 <=2){
-            CourseRoom.Utilerias().Mensaje_Alerta("Error de Contenido","Los Campos Obligatorios Deben Contener Al Menos 3 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Los Campos Obligatorios<br>Deben Contener Al Menos 3 Caracteres");
             apellido_Materno_JTextField.requestFocus();
         }
         else{
@@ -1390,13 +1390,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void Obtener_Localidades_Estado(){
         String estado = (String)estado_AutoCompletionComboBox.getSelectedItem();
         localidad_AutoCompletionComboBox.removeAllItems();
-       
-        //Obtener localidades:
-        Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+        SwingUtilities.invokeLater(() -> {
+            //Obtener localidades:
+            Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
 
-        while(!localidades.is_empty()){
-            localidad_AutoCompletionComboBox.addItem(localidades.delist());
-        }
+            while (!localidades.is_empty()) {
+                localidad_AutoCompletionComboBox.addItem(localidades.delist());
+            }
+        });
     }
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1516,38 +1517,40 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
+        SwingUtilities.invokeLater(() -> {
+            //Obtener estados:
+            Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
 
-        //Obtener estados:
-        Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+            if (!estados.is_empty()) {
+                while (!estados.is_empty()) {
+                    estado_AutoCompletionComboBox.addItem(estados.delist());
+                }
 
-        if(!estados.is_empty()){
-            while(!estados.is_empty()){
-                estado_AutoCompletionComboBox.addItem(estados.delist());
+                estado_AutoCompletionComboBox.setSelectedIndex(0);
+            } else {
+                estado_AutoCompletionComboBox.setEnabled(false);
+                localidad_AutoCompletionComboBox.setEnabled(false);
             }
+        });
 
-            estado_AutoCompletionComboBox.setSelectedIndex(0);
-        }else{
-            estado_AutoCompletionComboBox.setEnabled(false);
-            localidad_AutoCompletionComboBox.setEnabled(false);
-        }
+        SwingUtilities.invokeLater(() -> {
+            // Obtener temáticas:
+            Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
 
-        // Obtener temáticas:
-        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
+            if (!tematicas.is_empty()) {
+                while (!tematicas.is_empty()) {
+                    intereses_AutoCompletionComboBox.addItem(tematicas.delist());
+                }
 
-        if(!tematicas.is_empty()){
-            while(!tematicas.is_empty()){
-                intereses_AutoCompletionComboBox.addItem(tematicas.delist());
+                intereses_AutoCompletionComboBox.setSelectedIndex(0);
+            } else {
+                intereses_AutoCompletionComboBox.setEnabled(false);
+                agregar_Interes_JButton.setEnabled(false);
+                intereses_JTable.setEnabled(false);
             }
-
-            intereses_AutoCompletionComboBox.setSelectedIndex(0);
-        }else{
-            intereses_AutoCompletionComboBox.setEnabled(false);
-            agregar_Interes_JButton.setEnabled(false);
-            intereses_JTable.setEnabled(false);
-        }
+        });
         
         Colorear_Componentes();
-       
     }
 
     @Override
@@ -1696,42 +1699,37 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 if(imagen == null){
                     imagen = new byte[]{};
                 }
+                SwingUtilities.invokeLater(() -> {
+                    ResponseModel response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena,
+                            nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario, imagen, promedio_General, descripcion);
 
-                ResponseModel response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena, 
-                        nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario,imagen, promedio_General,descripcion);
+                    int codigo = response.Codigo();
+                    String mensaje = response.Mensaje();
 
+                    if (response.Is_Success()) {
 
-                int codigo = response.Codigo();
-                String mensaje = response.Mensaje();
-
-                if(response.Is_Success()){
-
-                    //Agregar intereses:
-                    DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
-                    Celda_Renderer celda;
-                    for (int i = 0; i < modelo.getRowCount(); i++) {
-                        celda = (Celda_Renderer) modelo.getValueAt(i, 0);
-
-                        response = CourseRoom.Solicitudes().Agregar_Interes(codigo, Integer.parseInt(celda.ID()));
-
-                        if(!response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Ínteres", response.Mensaje());
-                            break;
+                        //Agregar intereses:
+                        DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
+                        Celda_Renderer celda;
+                        for (int i = 0; i < modelo.getRowCount(); i++) {
+                            celda = (Celda_Renderer) modelo.getValueAt(i, 0);
+                            response = CourseRoom.Solicitudes().Agregar_Interes(codigo, Integer.parseInt(celda.ID()));
+                            if (!response.Is_Success()) {
+                                CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Ínteres", response.Mensaje());
+                                break;
+                            }
                         }
+                        CourseRoom.Utilerias().Mensaje_Informativo("Agregar Usuario", mensaje);
 
+                        CourseRoom.Esconder_Frame();
+
+                        CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"), codigo);
+
+                        CourseRoom.Mostrar_Frame();
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario", mensaje);
                     }
-
-                    CourseRoom.Utilerias().Mensaje_Informativo("Agregar Usuario",mensaje);
-
-                    CourseRoom.Esconder_Frame();
-
-                    CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"),codigo);
-
-                    CourseRoom.Mostrar_Frame();
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario",mensaje);
-                }
-
+                });
             }else{
                 CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario","No Se Ha Seleccionado Una Localidad");
             }

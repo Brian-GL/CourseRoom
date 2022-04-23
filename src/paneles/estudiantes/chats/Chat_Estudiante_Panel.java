@@ -574,7 +574,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             if (longitud > 499) {
             redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
             }else{
                 Enviar_Mensaje();
             }
@@ -589,19 +589,20 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
-            
-                ResponseModel response = CourseRoom.Solicitudes().Remover_Chat_Personal(Id_Chat, 
-                        Tablero_Estudiante_Panel.Id_Usuario());
+                SwingUtilities.invokeLater(() -> {
+                    ResponseModel response = CourseRoom.Solicitudes().Remover_Chat_Personal(Id_Chat,
+                            Tablero_Estudiante_Panel.Id_Usuario());
 
-                if(response.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Chat", response.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Chat", response.Mensaje());
-                }
-            
-                Tablero_Estudiante_Panel.Mostrar_Vista("Chats");
-                Tablero_Estudiante_Panel.Retirar_Vista(this);
-                this.Limpiar();
+                    if (response.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Chat", response.Mensaje());
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Chat", response.Mensaje());
+                    }
+
+                    Tablero_Estudiante_Panel.Mostrar_Vista("Chats");
+                    Tablero_Estudiante_Panel.Retirar_Vista(this);
+                    this.Limpiar();
+                });
             }
         }
     }//GEN-LAST:event_eliminar_Chat_JButtonMouseClicked
@@ -619,46 +620,47 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
     }//GEN-LAST:event_eliminar_Chat_JButtonMouseExited
 
     private void Obtener_Datos_Generales_Chat(){
-        
-        ComboOptionModel response = 
-                CourseRoom.Solicitudes().Obtener_Datos_Generales_Chat_Personal(Id_Chat, 
-                        Tablero_Estudiante_Panel.Id_Usuario());
-        
-        if(response.Id() > 0){
-            titulo_JLabel.setText(response.Valor());
-            DatosPerfilChatPersonalModel datosPerfilChatPersonalModel = 
-                CourseRoom.Solicitudes().Obtener_Datos_Perfil_Chat_Personal(response.Id());
-            
-            if(!datosPerfilChatPersonalModel.Nombre().isBlank()){
-                genero_JLabel.setText(datosPerfilChatPersonalModel.Genero());
-                tipo_Perfil_JLabel.setText(datosPerfilChatPersonalModel.Tipo_Usuario());
-                apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilChatPersonalModel.Paterno()," ",datosPerfilChatPersonalModel.Materno()));
-                nombres_JLabel.setText(datosPerfilChatPersonalModel.Nombre());
-                correo_JLabel.setText(datosPerfilChatPersonalModel.Correo_Electronico());
-            }
-            
-            Lista<ComboOptionModel> intereses = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(response.Id());
-            DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-            modelo.setRowCount(0);
-            while(!intereses.is_empty()){
-                Agregar_Interes_Tematica(intereses.delist());
-            }
-            
-            Image imagen_Usuario;
-            byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(response.Id());
-        
-            if(bytes_Imagen_Perfil.length > 0){
-                imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+        SwingUtilities.invokeLater(() -> {
+            ComboOptionModel response
+                    = CourseRoom.Solicitudes().Obtener_Datos_Generales_Chat_Personal(Id_Chat,
+                            Tablero_Estudiante_Panel.Id_Usuario());
 
-                if(imagen_Usuario != null){
+            if (response.Id() > 0) {
+                titulo_JLabel.setText(response.Valor());
+                DatosPerfilChatPersonalModel datosPerfilChatPersonalModel
+                        = CourseRoom.Solicitudes().Obtener_Datos_Perfil_Chat_Personal(response.Id());
 
-                    ImageIcon icono_Imagen = new ImageIcon(imagen_Usuario);
-                    imagen_Perfil_JLabel.setIcon(icono_Imagen);
-                    icono_Imagen.getImage().flush();
-                    imagen_Usuario.flush();
+                if (!datosPerfilChatPersonalModel.Nombre().isBlank()) {
+                    genero_JLabel.setText(datosPerfilChatPersonalModel.Genero());
+                    tipo_Perfil_JLabel.setText(datosPerfilChatPersonalModel.Tipo_Usuario());
+                    apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilChatPersonalModel.Paterno(), " ", datosPerfilChatPersonalModel.Materno()));
+                    nombres_JLabel.setText(datosPerfilChatPersonalModel.Nombre());
+                    correo_JLabel.setText(datosPerfilChatPersonalModel.Correo_Electronico());
+                }
+
+                Lista<ComboOptionModel> intereses = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(response.Id());
+                DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+                modelo.setRowCount(0);
+                while (!intereses.is_empty()) {
+                    Agregar_Interes_Tematica(intereses.delist());
+                }
+
+                Image imagen_Usuario;
+                byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(response.Id());
+
+                if (bytes_Imagen_Perfil.length > 0) {
+                    imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+
+                    if (imagen_Usuario != null) {
+
+                        ImageIcon icono_Imagen = new ImageIcon(imagen_Usuario);
+                        imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                        icono_Imagen.getImage().flush();
+                        imagen_Usuario.flush();
+                    }
                 }
             }
-        }
+        });
     }
     
     private void Agregar_Interes_Tematica(ComboOptionModel comboOptionModel){
@@ -709,17 +711,17 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
-        
-        Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Chat);
-        
-        if(!response.is_empty()){
-            while(!response.is_empty()){
-                Agregar_Mensaje_Chat(response.delist());
+        SwingUtilities.invokeLater(() -> {
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Chat);
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Mensaje_Chat(response.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Chat", "No Se Encontraron Mensajes En El Chat");
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Chat", "No Se Encontraron Mensajes En El Chat");
-        }
-        
+        });
     }
     
     private void Agregar_Mensaje_Chat(MensajesModel mensajesModel){
@@ -886,14 +888,13 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
                     CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
-            
-            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(mensaje, new byte[]{}, "", 
-                    Tablero_Estudiante_Panel.Id_Usuario(), Id_Chat);
-            
-            if(!responseModel.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",responseModel.Mensaje());
-            }
-            
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(mensaje, new byte[]{}, "",
+                        Tablero_Estudiante_Panel.Id_Usuario(), Id_Chat);
+                if (!responseModel.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", responseModel.Mensaje());
+                }
+            });
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
         }
@@ -943,7 +944,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                         }else{
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
                         }
-                       
+                                               
                     }
                     else{
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo Supera El Tamaño Aceptado De Subida");

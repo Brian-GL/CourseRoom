@@ -491,13 +491,14 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             Tablero_Estudiante_Panel.Retirar_Vista(grupo_Estudiante_Panel);
             grupo_Estudiante_Panel.Limpiar();
         }
-        
-        Lista<GruposModel> lista = 
-                CourseRoom.Solicitudes().Obtener_Grupos(Tablero_Estudiante_Panel.Id_Usuario());
-        
-        while(!lista.is_empty()){
-            Agregar_Grupo(lista.delist());
-        }
+        SwingUtilities.invokeLater(() -> {
+            Lista<GruposModel> lista
+                    = CourseRoom.Solicitudes().Obtener_Grupos(Tablero_Estudiante_Panel.Id_Usuario());
+
+            while (!lista.is_empty()) {
+                Agregar_Grupo(lista.delist());
+            }
+        });
     }
     
     private void Buscar_Grupos(String busqueda){
@@ -511,17 +512,18 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             Tablero_Estudiante_Panel.Retirar_Vista(grupo_Estudiante_Panel);
             grupo_Estudiante_Panel.Limpiar();
         }
-        
-        Lista<GruposModel> lista = 
-                CourseRoom.Solicitudes().Buscar_Grupos(busqueda,Tablero_Estudiante_Panel.Id_Usuario());
-        
-        if(!lista.is_empty()){
-            while(!lista.is_empty()){
-                Agregar_Grupos_Busqueda(lista.delist());
+        SwingUtilities.invokeLater(() -> {
+            Lista<GruposModel> lista
+                    = CourseRoom.Solicitudes().Buscar_Grupos(busqueda, Tablero_Estudiante_Panel.Id_Usuario());
+
+            if (!lista.is_empty()) {
+                while (!lista.is_empty()) {
+                    Agregar_Grupos_Busqueda(lista.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Grupos");
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta","No Se Encontraron Grupos");
-        }
+        });
     }
     
     private void Agregar_Grupos_Busqueda(GruposModel gruposModel) {
@@ -607,8 +609,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
 
             return mostrar_Grupos_Lista.medium().Id_Grupo() == id_Grupo;
-        }
-      
+        } 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

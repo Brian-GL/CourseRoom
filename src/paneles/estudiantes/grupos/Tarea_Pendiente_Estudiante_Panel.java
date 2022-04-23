@@ -287,12 +287,14 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void estatus_Tarea_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_estatus_Tarea_JComboBoxItemStateChanged
-        ResponseModel response = CourseRoom.Solicitudes().Cambiar_Estatus_Tarea_Pendiente(Id_Tarea_Pendiente, (String)estatus_Tarea_JComboBox.getSelectedItem(), Tablero_Estudiante_Panel.Id_Usuario());
-        if(response.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Tarea Pendiente", response.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Tarea Pendiente", response.Mensaje());
-                }
+        SwingUtilities.invokeLater(() -> {
+            ResponseModel response = CourseRoom.Solicitudes().Cambiar_Estatus_Tarea_Pendiente(Id_Tarea_Pendiente, (String) estatus_Tarea_JComboBox.getSelectedItem(), Tablero_Estudiante_Panel.Id_Usuario());
+            if (response.Is_Success()) {
+                CourseRoom.Utilerias().Mensaje_Informativo("Tarea Pendiente", response.Mensaje());
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Tarea Pendiente", response.Mensaje());
+            }
+        });
     }//GEN-LAST:event_estatus_Tarea_JComboBoxItemStateChanged
 
 

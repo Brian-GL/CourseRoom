@@ -75,7 +75,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private Cuestionario_Curso_Estudiante_Panel cuestionario_Curso_Estudiante_Panel;
     private int Id_Curso;
     
-   
     public Curso_Estudiante_Panel(int id_Curso) {
         initComponents();
         Id_Curso = id_Curso;
@@ -1096,20 +1095,21 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
-            
-                ResponseModel response = CourseRoom.Solicitudes().Abandonar_Curso(Id_Curso, 
-                        Tablero_Estudiante_Panel.Id_Usuario());
+                SwingUtilities.invokeLater(() -> {
+                    ResponseModel response = CourseRoom.Solicitudes().Abandonar_Curso(Id_Curso,
+                            Tablero_Estudiante_Panel.Id_Usuario());
 
-                if(response.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Abandonar Curso", response.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Abandonar Curso", response.Mensaje());
-                }
-            
+                    if (response.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Abandonar Curso", response.Mensaje());
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Abandonar Curso", response.Mensaje());
+                    }
+                });
                 Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
                 Tablero_Estudiante_Panel.Retirar_Vista(this);
                 this.Limpiar();
             }
+                    
         }
     }//GEN-LAST:event_abandonar_Curso_JButtonMouseClicked
 
@@ -1128,21 +1128,21 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void contestar_Cuestionario_Finalizar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contestar_Cuestionario_Finalizar_Curso_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            ResponseModel response = CourseRoom.Solicitudes().Validacion_Contestar_Cuestionario(Id_Curso, Tablero_Estudiante_Panel.Id_Usuario());
-            
-            if(response.Is_Success()){
-                //Cuestionario:
-                cuestionario_Curso_Estudiante_Panel = 
-                        new Cuestionario_Curso_Estudiante_Panel(this.Id_Curso, this.titulo_JLabel.getText(), this);
-        
-                Tablero_Estudiante_Panel.Agregar_Vista(cuestionario_Curso_Estudiante_Panel, ID_Cuestionario);
-                Tablero_Estudiante_Panel.Mostrar_Vista(ID_Cuestionario);
-                
-                
-            }else{
-                CourseRoom.Utilerias().Mensaje_Alerta("Contestar Cuestionario", response.Mensaje());
-            }
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel response = CourseRoom.Solicitudes().Validacion_Contestar_Cuestionario(Id_Curso, Tablero_Estudiante_Panel.Id_Usuario());
+
+                if (response.Is_Success()) {
+                    //Cuestionario:
+                    cuestionario_Curso_Estudiante_Panel
+                            = new Cuestionario_Curso_Estudiante_Panel(this.Id_Curso, this.titulo_JLabel.getText(), this);
+
+                    Tablero_Estudiante_Panel.Agregar_Vista(cuestionario_Curso_Estudiante_Panel, ID_Cuestionario);
+                    Tablero_Estudiante_Panel.Mostrar_Vista(ID_Cuestionario);
+
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Contestar Cuestionario", response.Mensaje());
+                }
+            });
         }
     }//GEN-LAST:event_contestar_Cuestionario_Finalizar_Curso_JButtonMouseClicked
 
@@ -1204,17 +1204,17 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
-        
-        Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Curso);
-        
-        if(!response.is_empty()){
-            while(!response.is_empty()){
-                Agregar_Mensaje_Curso(response.delist());
+        SwingUtilities.invokeLater(() -> {
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Curso);
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Mensaje_Curso(response.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Curso", "No Se Encontraron Mensajes En El Curso");
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Curso", "No Se Encontraron Mensajes En El Curso");
-        }
-        
+        });
     }
     
     private void Agregar_Mensaje_Curso(MensajesModel mensajesModel){
@@ -1913,10 +1913,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
-            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Curso(mensaje, new byte[]{}, "", Tablero_Estudiante_Panel.Id_Usuario(), Id_Curso);
-            if(!responseModel.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",responseModel.Mensaje());
-            }
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Curso(mensaje, new byte[]{}, "", Tablero_Estudiante_Panel.Id_Usuario(), Id_Curso);
+                if (!responseModel.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", responseModel.Mensaje());
+                }
+            });
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
         }

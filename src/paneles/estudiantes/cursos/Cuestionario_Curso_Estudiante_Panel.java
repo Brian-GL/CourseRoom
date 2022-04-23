@@ -1187,7 +1187,9 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
             
-            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), "¿Estás Segur@ De Enviar Las Respuestas De Tu Cuestionario?", "Terminar Cuestionario", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                    "¿Estás Segur@ De Enviar Las Respuestas De Tu Cuestionario?", "Terminar Cuestionario", 
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
                 Registrar_Cuestionario();
@@ -1228,8 +1230,12 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
     private String Descripcion_Cuestionario(String nombre_Curso){
         
         return CourseRoom.Utilerias().Formato_HTML_Central(
-                CourseRoom.Utilerias().Concatenar("A continuación te pediremos que nos ayudes a contestar este cuestionario final del curso '",
-                        nombre_Curso,"'Esto debido a que requerimos datos para brindarle a todos nuestros usuarios mejores estadísticas e información relevante al tomar un curso o dentro de este.Esperamos no molestarte, te aseguramos no te tomará más de 5 minutos en contestar.De antemano muchas gracias por tu tiempo y por hacer de CourseRoom® un mejor lugar cada día."));
+                CourseRoom.Utilerias().Concatenar("A continuación te pediremos que nos ayudes a contestar este "
+                        + "cuestionario final del curso '", nombre_Curso,"'Esto debido a que requerimos datos "
+                        + "para brindarle a todos nuestros usuarios mejores estadísticas e información relevante "
+                        + "al tomar un curso o dentro de este.Esperamos no molestarte, te aseguramos no te tomará "
+                        + "más de 5 minutos en contestar.De antemano muchas gracias por tu tiempo y por hacer de "
+                        + "CourseRoom® un mejor lugar cada día."));
         
     }
     
