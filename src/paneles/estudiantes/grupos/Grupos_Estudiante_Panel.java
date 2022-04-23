@@ -389,15 +389,14 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         int longitud = buscar_JTextField.getText().length();
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
             if (longitud > 99) {
-            buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Grupos<br>Rebasa Los 100 Caracteres");
-          }else{
-                SwingUtilities.invokeLater(() -> {
-                    Buscar_Grupos(buscar_JTextField.getText());
-                });
-
+                buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Grupos<br>Rebasa Los 100 Caracteres");
+              }else{
+                    SwingUtilities.invokeLater(() -> {
+                        Buscar_Grupos(buscar_JTextField.getText());
+                    });
+                }
             }
-        }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
 
     private void mostrar_Grupos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Grupos_JButtonMouseClicked

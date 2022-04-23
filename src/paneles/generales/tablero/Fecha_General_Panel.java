@@ -7,6 +7,7 @@ package paneles.generales.tablero;
 
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
+import modelos.TareasMesModel;
 
 /**
  *
@@ -132,6 +133,12 @@ public class Fecha_General_Panel extends javax.swing.JPanel implements Component
     public void Establecer_Tercer_Color(){
         Colorear_Componentes();
     }
+    
+    public void Establecer_Valores(TareasMesModel modelo){
+        hora_JLabel.setText(modelo.Horario());
+        descripcion_JTextPane.setText(modelo.Descripcion());
+                
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido_JPanel;
@@ -144,13 +151,9 @@ public class Fecha_General_Panel extends javax.swing.JPanel implements Component
     @Override
     public void Iniciar_Componentes() {
         
-        String concatenacion = 
-        CourseRoom.Utilerias().Concatenar(String.valueOf(CourseRoom.Utilerias().number().randomNumber(1, true)),
-                ":",String.valueOf(CourseRoom.Utilerias().number().randomNumber(2, false))," P.M");
-        hora_JLabel.setText(concatenacion);
+        
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Centro(CourseRoom.Utilerias().lorem().paragraph(2)));
         descripcion_JTextPane.setCaretPosition(0);
         
         Colorear_Componentes();

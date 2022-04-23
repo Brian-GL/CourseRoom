@@ -42,6 +42,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ArchivoModel;
 import modelos.ComboOptionModel;
 import modelos.DatosPerfilChatPersonalModel;
 import modelos.MensajesModel;
@@ -104,8 +105,8 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         intereses_Tematicas_JTable = new javax.swing.JTable();
         eliminar_Chat_JButton = new javax.swing.JButton();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1110, 630));
+        setOpaque(false);
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setOpaque(false);
@@ -140,9 +141,9 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         });
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
-        regresar_JButton.setToolTipText("<html> <h3>Regresar A Mis Chats</h3> </html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresar_JButton.setToolTipText("<html> <h3>Regresar A Mis Chats</h3> </html>");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -210,7 +211,6 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         mensajes_Chat_JScrollPane.setOpaque(false);
 
         mensajes_Chat_JTable.setAutoCreateRowSorter(true);
-        mensajes_Chat_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         mensajes_Chat_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -244,6 +244,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                     return super.getColumnClass(column);
                 }
             });
+            mensajes_Chat_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             mensajes_Chat_JTable.setRowHeight(80);
             mensajes_Chat_JTable.setShowGrid(true);
             mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
@@ -265,9 +266,13 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                             Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
 
                             if(celda.Tiene_Icono()){
-                                String extension = FilenameUtils.getExtension(celda.Texto());
-                                String ruta = celda.ID();
-                                CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+                                int id_Mensaje = Integer.parseInt(celda.ID());
+
+                                if (id_Mensaje > 0){
+                                    Descargar_Archivo(id_Mensaje,celda.Texto());
+                                }else{
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                }
                             }
                         }
 
@@ -283,9 +288,9 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             enviar_Mensaje_Chat_JPanel.setLayout(new java.awt.BorderLayout());
 
             enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
-            enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
             enviar_Archivo_Chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
             ((ImageIcon)enviar_Archivo_Chat_JButton.getIcon()).getImage().flush();
             enviar_Archivo_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -733,8 +738,15 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             celda = new Celda_Renderer(mensajesModel.Mensaje());
             celdas[1] = celda;
         }else{
-            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()));
-            celdas[1] = celda;
+            try {
+                Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                ImageIcon icono = new ImageIcon(imagen);
+                celda = new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()));
+                celdas[1] = celda;
+            } catch (IOException ex) {
+                celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()));
+                celdas[1] = celda;
+            }
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio());
         celdas[2] = celda;
@@ -744,6 +756,41 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         
         mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
                 CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
+    }
+    
+    private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
+        
+        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/chats/", nombre_Archivo));
+        
+        if(!archivo.exists()){
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
+
+                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
+                    File directorio = new File("/descargas/chats/");
+                    File crear_Archivo;
+                    try {
+                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
+                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else{
+            String extension = FilenameUtils.getExtension(nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+        }
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -792,8 +839,6 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-       
-        
         Colorear_Componentes();
         
         Obtener_Datos_Generales_Chat();
@@ -886,9 +931,8 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             celdas[2] = celda;
             
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-            modelo.addRow(celdas);
-            mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
-                    CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
+            modelo.insertRow(0,celdas);
+            mensajes_Chat_JTable.setRowHeight(0, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
             
             ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(mensaje, new byte[]{}, "", 
                     Tablero_Profesor_Panel.Id_Usuario(), Id_Chat);
@@ -939,8 +983,8 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                             celdas[1] = celda;
                             celda = new Celda_Renderer(fecha);
                             celdas[2] = celda;
-                            modelo.addRow(celdas);
-                            mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
+                            modelo.insertRow(0,celdas);
+                            mensajes_Chat_JTable.setRowHeight(0, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
                             icono.flush();
                             CourseRoom.Utilerias().Mensaje_Informativo("Chat",response.Mensaje());
                         }else{

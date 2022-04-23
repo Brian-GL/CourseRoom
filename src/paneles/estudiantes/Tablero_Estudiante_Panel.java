@@ -1022,7 +1022,7 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
         tareas_Panel = new Tareas_Estudiante_Panel();
         visualizador_JPanel.add("Tareas",tareas_Panel);
 
-        fechas_Panel = new Fechas_General_Panel();
+        fechas_Panel = new Fechas_General_Panel(false);
         visualizador_JPanel.add("Fechas",fechas_Panel);
 
         avisos_Panel = new Avisos_General_Panel(false);

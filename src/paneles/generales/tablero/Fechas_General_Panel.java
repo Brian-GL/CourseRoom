@@ -26,22 +26,26 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import javax.swing.JScrollPane;
 import courseroom.CourseRoom;
+import datos.estructuras.Nodo;
 import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import modelos.TareasMesModel;
+import paneles.estudiantes.Tablero_Estudiante_Panel;
+import paneles.profesores.Tablero_Profesor_Panel;
 
 /**
  *
  * @author LENOVO
  */
 public class Fechas_General_Panel extends JScrollPane implements Limpieza_Interface, Componentes_Interface{
-
-    /**
-     * Creates new form Pagina_Fechas_Estudiante
-     */
-    public Fechas_General_Panel() {
+    
+    // 0 -> Estudiante | 1 -> Profesor:
+    private boolean tipo_Usuario;
+   
+    public Fechas_General_Panel(boolean _tipo_Usuario) {
         initComponents();
-        
+        tipo_Usuario = _tipo_Usuario;
         Iniciar_Componentes();
     }
 
@@ -351,17 +355,28 @@ public class Fechas_General_Panel extends JScrollPane implements Limpieza_Interf
     @SuppressWarnings("null")
     private void Establecer_Mes(int dias_del_mes, int dias_del_mes_anterior) {
         int cuenta = 0;
+        Lista<TareasMesModel> lista = Obtener_Fechas();
         LocalDateTime tiempo_Actual = LocalDateTime.now();
         LocalDateTime fecha_Primera_Mes = LocalDateTime.of(tiempo_Actual.getYear(), tiempo_Actual.getMonth(), 1,12,12);
         DayOfWeek dia_De_La_Semana = fecha_Primera_Mes.getDayOfWeek();
         int hasta_Valor = dia_De_La_Semana.getValue() - 1;
 
         Lista<Fecha_General_Panel> lista_Cajas = new Lista<>();
-        
+        TareasMesModel tareasMesModel;
         Fecha_General_Panel dia_Calendario_Panel;
+        int dia;
+        
         for (int i = hasta_Valor; i > 0; i--) {
-            dia_Calendario_Panel = new Fecha_General_Panel(dias_del_mes_anterior - i);
+            dia = dias_del_mes_anterior - i;
+            dia_Calendario_Panel = new Fecha_General_Panel(dia);
             dia_Calendario_Panel.Establecer_Tercer_Color();
+            
+            tareasMesModel = Obtener_Dia(dia, lista);
+            
+            if(tareasMesModel != null){
+                dia_Calendario_Panel.Establecer_Valores(tareasMesModel);
+            }
+            
             lista_Cajas.push_back(dia_Calendario_Panel);
             cuenta++;
         }
@@ -373,6 +388,11 @@ public class Fechas_General_Panel extends JScrollPane implements Limpieza_Interf
             } else {
                 dia_Calendario_Panel.Establecer_Segundo_Color();
             }
+            tareasMesModel = Obtener_Dia(i, lista);
+            
+            if(tareasMesModel != null){
+                dia_Calendario_Panel.Establecer_Valores(tareasMesModel);
+            }
             lista_Cajas.push_back(dia_Calendario_Panel);
             cuenta++;
         }
@@ -381,7 +401,14 @@ public class Fechas_General_Panel extends JScrollPane implements Limpieza_Interf
         while (cuenta < 42) {
             dia_Calendario_Panel = new Fecha_General_Panel(i);
             dia_Calendario_Panel.Establecer_Tercer_Color();
+            
+            tareasMesModel = Obtener_Dia(i, lista);
+            
+            if(tareasMesModel != null){
+                dia_Calendario_Panel.Establecer_Valores(tareasMesModel);
+            }
             lista_Cajas.push_back(dia_Calendario_Panel);
+            
             i++;
             cuenta++;
         }
@@ -403,6 +430,65 @@ public class Fechas_General_Panel extends JScrollPane implements Limpieza_Interf
                 cuenta = 0;
             }
         }
+        
+        lista.clear();
+    }
+    
+    private TareasMesModel Obtener_Dia(int dia, Lista<TareasMesModel> lista){
+        
+        Nodo<TareasMesModel> first = lista.front();
+        Nodo<TareasMesModel> last = lista.back();
+
+        int middle_index = (lista.size())/2;
+        String day = String.valueOf(dia);
+
+        if(middle_index % 2 == 0){
+            for (int i = 0; i < middle_index; i++) {
+
+                if (first.element().Dia().equals(day)){
+                    return first.element();
+                }
+
+                if (last.element().Dia().equals(day)){
+                    return last.element();
+                }
+
+                first = first.next();
+                last = last.previous();
+            }
+            return null;
+        }else{
+            for(int i = 0; i < middle_index;i++) {
+
+                if(first.element().Dia().equals(day)){
+                    return first.element();
+                }
+
+                if(last.element().Dia().equals(day)){
+                    return last.element();
+                }
+
+                first = first.next();
+                last = last.previous();
+            }
+
+            return (lista.medium().Dia().equals(day)) ? lista.medium() : null;
+        }
+      
+    }
+    
+    private Lista<TareasMesModel> Obtener_Fechas(){
+        
+        Lista<TareasMesModel> response;
+
+        if(!tipo_Usuario){
+            response = CourseRoom.Solicitudes().Obtener_Tareas_Mes(LocalDateTime.now().getMonthValue(), Tablero_Estudiante_Panel.Id_Usuario());
+
+        }else{
+            response = CourseRoom.Solicitudes().Obtener_Tareas_Mes(LocalDateTime.now().getMonthValue(), Tablero_Profesor_Panel.Id_Usuario());
+        }
+        
+        return response;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

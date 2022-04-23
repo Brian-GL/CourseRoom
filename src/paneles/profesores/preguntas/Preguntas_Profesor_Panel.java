@@ -468,7 +468,6 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         return mostrar_Preguntas_Lista.size();
     }
     
-    
     public void Agregar_Pregunta_Local(
             int real_ID,
             String id,
@@ -624,7 +623,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         celdas[3] = celda;
         
         DefaultTableModel modelo = (DefaultTableModel) buscar_Preguntas_JTable.getModel();
-        modelo.insertRow(0, celdas);
+        modelo.addRow(celdas);
         buscar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(preguntasModel.Pregunta().length()));
         
         

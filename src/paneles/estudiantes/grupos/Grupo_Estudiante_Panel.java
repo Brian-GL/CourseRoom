@@ -54,6 +54,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.ComboOptionModel;
+import modelos.DatosGeneralesGrupoModel;
 import modelos.MensajesModel;
 import modelos.MiembrosGrupoModel;
 import modelos.ResponseModel;
@@ -75,20 +76,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private int Id_Grupo;
     
     
-    public Grupo_Estudiante_Panel(
-            int id_Grupo,
-            String id_Vista) {
+    public Grupo_Estudiante_Panel(int id_Grupo,String id_Vista) {
         initComponents();
         
-        /*ImageIcon icono_Grupo = new ImageIcon(_imagen_Grupo);
-        titulo_JLabel.setText(nombre_Grupo);
-        editar_Nombre_JTextField.setText(nombre_Grupo);
-        curso_JLabel.setText(CourseRoom.Utilerias().Concatenar("Del Curso ",_curso));
-        imagen_JLabel.setIcon(icono_Grupo);
-        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creado El ",_fecha_Creacion));
-        //icono_Grupo.getImage().flush();
-
-        this.ID = _id;*/
         this.Id_Grupo = id_Grupo;
         this.Id_Vista = id_Vista;
         
@@ -1367,8 +1357,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             SwingUtilities.invokeLater(() -> {
+                Obtener_Datos_Generales_Grupo();
                 Obtener_Mensajes_Grupo();
                 Obtener_Tareas_Pendientes_Grupo();
+                Obtener_Miembros_Grupo();
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -1697,6 +1689,37 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
     
+    private void Obtener_Datos_Generales_Grupo(){
+        
+        DatosGeneralesGrupoModel datosGeneralesGrupoModel = CourseRoom.Solicitudes().Obtener_Datos_Generales_Grupo(Id_Grupo);
+        
+        if(!datosGeneralesGrupoModel.Nombre().isBlank()){
+           
+            titulo_JLabel.setText(datosGeneralesGrupoModel.Nombre());
+            editar_Nombre_JTextField.setText(datosGeneralesGrupoModel.Nombre());
+            curso_JLabel.setText(CourseRoom.Utilerias().Concatenar("Del Curso ",datosGeneralesGrupoModel.Nombre_Curso()));
+            descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesGrupoModel.Descripcion()));
+            editar_Descripcion_JTextPane.setText(datosGeneralesGrupoModel.Descripcion());
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creado El ",datosGeneralesGrupoModel.Fecha_Creacion()));
+            
+            
+            byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Grupo(Id_Grupo);
+
+            if(bytes_Imagen.length > 0){
+                Image imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                if(imagen != null){
+
+                    imagen = imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
+                    ImageIcon icono_Imagen = new ImageIcon(imagen);
+                    imagen_JLabel.setIcon(icono_Imagen);
+                    icono_Imagen.getImage().flush();
+                }
+            } 
+
+        }
+    
+    }
        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abandonar_Grupo_JButton;
@@ -1762,9 +1785,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         carta_Visible = 0;
         tareas_Pendientes_Estudiante_Lista = new Lista<>();
-        String descripcion = CourseRoom.Utilerias().lorem().paragraph(5);
-        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(descripcion));
-        editar_Descripcion_JTextPane.setText(descripcion);
         
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);

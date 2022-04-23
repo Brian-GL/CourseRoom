@@ -587,12 +587,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Fecha_Nacimiento_JLabel.setText("Fecha De Nacimiento *");
         editar_Fecha_Nacimiento_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
         guardar_Cambios_Datos_Personales_JButton.setText("Guardar Cambios");
-        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         guardar_Cambios_Datos_Personales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         guardar_Cambios_Datos_Personales_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardar_Cambios_Datos_Personales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        guardar_Cambios_Datos_Personales_JButton.setToolTipText("<html> <h3>Continuar a la pestaña de perfil</h3> </html>");
         ((ImageIcon)guardar_Cambios_Datos_Personales_JButton.getIcon()).getImage().flush();
         guardar_Cambios_Datos_Personales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -974,14 +974,16 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
                                 int id_Tematica = Integer.parseInt(celda.ID());
 
-                                ResponseModel response = CourseRoom.Solicitudes().Remover_Interes_Usuario(id_Tematica,Tablero_Estudiante_Panel.Id_Usuario());
+                                SwingUtilities.invokeLater(() -> {
+                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Interes_Usuario(id_Tematica,Tablero_Estudiante_Panel.Id_Usuario());
 
-                                if(response.Is_Success()){
-                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Interes", response.Mensaje());
-                                    modelo.removeRow(fila);
-                                }else{
-                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Interes", response.Mensaje());
-                                }
+                                    if(response.Is_Success()){
+                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Interes", response.Mensaje());
+                                        modelo.removeRow(fila);
+                                    }else{
+                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Interes", response.Mensaje());
+                                    }
+                                });
 
                             }
                         }

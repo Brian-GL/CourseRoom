@@ -45,8 +45,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
        initComponents();
         
        Iniciar_Componentes();
-       
-       Obtener_Preguntas();
+      
         
     }
    
@@ -531,7 +530,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
         
-        modelo.addRow(celdas);
+        modelo.insertRow(0,celdas);
         
         mostrar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(pregunta.length()));
         
@@ -626,7 +625,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         celdas[3] = celda;
         
         DefaultTableModel modelo = (DefaultTableModel) buscar_Preguntas_JTable.getModel();
-        modelo.insertRow(0, celdas);
+        modelo.addRow(celdas);
         buscar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(preguntasModel.Pregunta().length()));
         
         

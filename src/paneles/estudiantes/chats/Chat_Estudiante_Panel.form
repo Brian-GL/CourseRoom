@@ -50,10 +50,10 @@
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[32767, 72]"/>
         </Property>
-        <Property name="opaque" type="boolean" value="false"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[982, 72]"/>
         </Property>
+        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
 
       <Layout>
@@ -116,12 +116,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/verified-user.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Datos&lt;br&gt;Del Usuario&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Datos&lt;br&gt;Del Usuario&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="informacion_JButtonMouseClicked"/>
@@ -135,12 +135,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/influencer.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Mensajes&lt;br&gt;Enviados&lt;/h3&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Mensajes&lt;br&gt;Enviados&lt;/h3&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chat_JButtonMouseClicked"/>
@@ -178,12 +178,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/updated.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h4&gt;Actualizar&lt;br&gt;P&#xe1;gina&lt;/h4&gt; &lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
               </Border>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h4&gt;Actualizar&lt;br&gt;P&#xe1;gina&lt;/h4&gt; &lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="actualizar_JButtonMouseClicked"/>
@@ -253,7 +253,7 @@
                     <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="mensajes_Chat_JTable.setRowSorter(new TableRowSorter(mensajes_Chat_JTable.getModel()));&#xd;&#xa;mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable) e.getComponent();&#xd;&#xa;            &#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;&#xd;&#xa;            // Abrir&#xd;&#xa;            if (columna == 1) {&#xd;&#xa;                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);&#xd;&#xa;&#xd;&#xa;                if(celda.Tiene_Icono()){&#xd;&#xa;                    String extension = FilenameUtils.getExtension(celda.Texto());&#xd;&#xa;                    String ruta = celda.ID();&#xd;&#xa;                    CourseRoom.Utilerias.Abrir_Archivo(ruta, extension, celda.Texto());&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="mensajes_Chat_JTable.setRowSorter(new TableRowSorter(mensajes_Chat_JTable.getModel()));&#xd;&#xa;mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable) e.getComponent();&#xd;&#xa;            &#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;&#xd;&#xa;            // Abrir&#xd;&#xa;            if (columna == 1) {&#xd;&#xa;                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);&#xd;&#xa;&#xd;&#xa;                if(celda.Tiene_Icono()){&#xd;&#xa;&#xd;&#xa;                    int id_Mensaje = Integer.parseInt(celda.ID());&#xd;&#xa;                    &#xd;&#xa;                    if (id_Mensaje &gt; 0){&#xd;&#xa;                        Descargar_Archivo(id_Mensaje,celda.Texto());&#xd;&#xa;                    }else{&#xd;&#xa;                        CourseRoom.Utilerias().Mensaje_Alerta(&quot;Alerta!!!&quot;, &quot;No Se Pudo Descargar El Archivo&quot;);&#xd;&#xa;                    }&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -558,22 +558,22 @@
             </Container>
             <Component class="javax.swing.JButton" name="eliminar_Chat_JButton">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="26" style="1"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/close.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar Chat"/>
-                <Property name="toolTipText" type="java.lang.String" value="Abandona Y Elimina El Grupo De Los Tuyos"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
                   </Border>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="26" style="1"/>
+                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[400, 50]"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Abandona Y Elimina El Grupo De Los Tuyos"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminar_Chat_JButtonMouseClicked"/>

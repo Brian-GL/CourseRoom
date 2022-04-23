@@ -915,7 +915,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         tareas_Panel = new Tareas_Profesor_Panel();
         visualizador_JPanel.add("Tareas",tareas_Panel);
 
-        fechas_Panel = new Fechas_General_Panel();
+        fechas_Panel = new Fechas_General_Panel(true);
         visualizador_JPanel.add("Fechas",fechas_Panel);
 
         avisos_Panel = new Avisos_General_Panel(true);

@@ -511,13 +511,15 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             
             if(resultado == JOptionPane.YES_OPTION){
             
-                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), chats_Conmigo, avisos_Activo, false);
+                SwingUtilities.invokeLater(() -> {
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), chats_Conmigo, avisos_Activo, false);
 
-                if(response.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Cuenta", response.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Cuenta", response.Mensaje());
-                }
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Cuenta", response.Mensaje());
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Cuenta", response.Mensaje());
+                    }
+                });
             }
             
             CourseRoom_Frame.getInstance().Cerrar_Sesion();
@@ -547,15 +549,17 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             
                 if(resultado == JOptionPane.YES_OPTION){
 
-                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
-                            chats_Conmigo, false, true);
+                    SwingUtilities.invokeLater(() -> {
+                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
+                                chats_Conmigo, false, true);
 
-                    if(response.Is_Success()){
-                        CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
-                        avisos_Activo = false;
-                    }else{
-                        CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
-                    }
+                        if(response.Is_Success()){
+                            CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
+                            avisos_Activo = false;
+                        }else{
+                            CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
+                        }
+                    });
                 }
             }else{
                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
@@ -564,15 +568,17 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             
                 if(resultado == JOptionPane.YES_OPTION){
 
-                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
-                            chats_Conmigo, true, true);
+                    SwingUtilities.invokeLater(() -> {
+                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
+                                chats_Conmigo, true, true);
 
-                    if(response.Is_Success()){
-                        CourseRoom.Utilerias().Mensaje_Informativo("Activar Notificaciones", response.Mensaje());
-                        avisos_Activo = true;
-                    }else{
-                        CourseRoom.Utilerias().Mensaje_Alerta("Activar Notificaciones", response.Mensaje());
-                    }
+                        if(response.Is_Success()){
+                            CourseRoom.Utilerias().Mensaje_Informativo("Activar Notificaciones", response.Mensaje());
+                            avisos_Activo = true;
+                        }else{
+                            CourseRoom.Utilerias().Mensaje_Alerta("Activar Notificaciones", response.Mensaje());
+                        }
+                    });
                 }
             }
             
@@ -601,15 +607,21 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             
                 if(resultado == JOptionPane.YES_OPTION){
 
-                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
-                            false, avisos_Activo, true);
+                    
+                    SwingUtilities.invokeLater(() -> {
+                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
+                                false, avisos_Activo, true);
+                        
+                        if(response.Is_Success()){
+                            CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats Conmigo", response.Mensaje());
+                            chats_Conmigo = false;
+                        }else{
+                            CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats Conmigo", response.Mensaje());
+                        }
+                        
+                    });
 
-                    if(response.Is_Success()){
-                        CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats Conmigo", response.Mensaje());
-                        chats_Conmigo = false;
-                    }else{
-                        CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats Conmigo", response.Mensaje());
-                    }
+                    
                 }
             }else{
                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
@@ -618,15 +630,19 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
             
                 if(resultado == JOptionPane.YES_OPTION){
 
-                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
+                    SwingUtilities.invokeLater(() -> {
+                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Estudiante_Panel.Id_Usuario(), 
                             true, avisos_Activo, true);
+                        
+                        if(response.Is_Success()){
+                            CourseRoom.Utilerias().Mensaje_Informativo("Activar Chats Conmigo", response.Mensaje());
+                            chats_Conmigo = true;
+                        }else{
+                            CourseRoom.Utilerias().Mensaje_Alerta("Activar Chats Conmigo", response.Mensaje());
+                        }
+                    });
 
-                    if(response.Is_Success()){
-                        CourseRoom.Utilerias().Mensaje_Informativo("Activar Chats Conmigo", response.Mensaje());
-                        chats_Conmigo = true;
-                    }else{
-                        CourseRoom.Utilerias().Mensaje_Alerta("Activar Chats Conmigo", response.Mensaje());
-                    }
+                    
                 }
             }
         }
@@ -644,8 +660,46 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
-    private void Agregar_Sesion(SesionesModel sesionModel){
+    private void Obtener_Sesiones(){
         
+        SwingUtilities.invokeLater(() -> {
+            Lista<SesionesModel> sesiones = CourseRoom.Solicitudes().Obtener_Sesiones(Tablero_Estudiante_Panel.Id_Usuario());
+            while(!sesiones.is_empty()){
+                Agregar_Sesion(sesiones.delist());
+            }
+        });
+        
+    }
+    
+    private void Obtener_Configuraciones(){
+        
+        SwingUtilities.invokeLater(() -> {
+            ConfiguracionesModel configuracionesModel = 
+                    CourseRoom.Solicitudes().Obtener_Configuraciones(Tablero_Estudiante_Panel.Id_Usuario());
+
+            chats_Conmigo = configuracionesModel.Chats_Conmigo();
+            avisos_Activo = configuracionesModel.Avisos_Activos();
+
+            if(configuracionesModel.Avisos_Activos()){
+                desactivar_Activar_Notificaciones_JButton.setText("¿Desactivar Notificaciones?");
+                desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Desactivar Sus Notificaciones?");
+            }else{
+                desactivar_Activar_Notificaciones_JButton.setText("¿Activar Notificaciones?");
+                desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Activar Sus Notificaciones?");
+            }
+
+            if(configuracionesModel.Chats_Conmigo()){
+                permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Desactivar Chats Conmigo?");
+                permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Desactivar La Opción De Permitir Chats Con Usted?");
+            }else{
+                permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Activar Chats Conmigo?");
+                permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Activar La Opción De Permitir Chats Con Usted?");
+            }
+            
+        });
+    }
+    
+    private void Agregar_Sesion(SesionesModel sesionModel){
         
         Celda_Renderer[] celdas = new Celda_Renderer[6];
         Celda_Renderer celda;
@@ -673,6 +727,7 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         
     }
    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
@@ -708,33 +763,10 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
        
-        Lista<SesionesModel> sesiones = CourseRoom.Solicitudes().Obtener_Sesiones(Tablero_Estudiante_Panel.Id_Usuario());
-        
-        while(!sesiones.is_empty()){
-            Agregar_Sesion(sesiones.delist());
-        }
-        
-        ConfiguracionesModel configuracionesModel = 
-                CourseRoom.Solicitudes().Obtener_Configuraciones(Tablero_Estudiante_Panel.Id_Usuario());
-        
-        chats_Conmigo = configuracionesModel.Chats_Conmigo();
-        avisos_Activo = configuracionesModel.Avisos_Activos();
-        
-        if(configuracionesModel.Avisos_Activos()){
-            desactivar_Activar_Notificaciones_JButton.setText("¿Desactivar Notificaciones?");
-            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Desactivar Sus Notificaciones?");
-        }else{
-            desactivar_Activar_Notificaciones_JButton.setText("¿Activar Notificaciones?");
-            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Activar Sus Notificaciones?");
-        }
-        
-        if(configuracionesModel.Chats_Conmigo()){
-            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Desactivar Chats Conmigo?");
-            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Desactivar La Opción De Permitir Chats Con Usted?");
-        }else{
-            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Activar Chats Conmigo?");
-            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Activar La Opción De Permitir Chats Con Usted?");
-        }
+        SwingUtilities.invokeLater(() -> {
+            Obtener_Sesiones();
+            Obtener_Configuraciones();
+        });
         
     }
     
@@ -787,13 +819,11 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         
         primer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
-        //borde_Linea = new LineBorder(CourseRoom.Utilerias().Tercer_Color(),5);
         borde_Titulo = new TitledBorder(borde_Linea, "Segundo Color", TitledBorder.CENTER,
                 TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Segundo_Color_Fuente());
         
         segundo_Color_Personalizado_JLabel.setBorder(borde_Titulo);
         
-        //borde_Linea = new LineBorder(CourseRoom.Utilerias().Primer_Color(),5);
         borde_Titulo = new TitledBorder(borde_Linea, "Tercer Color", TitledBorder.CENTER,
                 TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Tercer_Color_Fuente());
         tercer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
