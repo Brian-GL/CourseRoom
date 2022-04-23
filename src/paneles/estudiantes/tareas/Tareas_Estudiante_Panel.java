@@ -499,15 +499,14 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             tarea_Estudiante_Panel  = mostrar_Tareas_Lista.delist();
             Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
         }
-        
-        
-        Lista<TareasEstudianteModel> tareas_Estudiante 
-                = CourseRoom.Solicitudes().Obtener_Tareas_Estudiante(Tablero_Estudiante_Panel.Id_Usuario());
-        
-        while(!tareas_Estudiante.is_empty()){
-            Agregar_Tarea(tareas_Estudiante.delist());
-        }
-        
+        SwingUtilities.invokeLater(() -> {
+            Lista<TareasEstudianteModel> tareas_Estudiante
+                    = CourseRoom.Solicitudes().Obtener_Tareas_Estudiante(Tablero_Estudiante_Panel.Id_Usuario());
+
+            while (!tareas_Estudiante.is_empty()) {
+                Agregar_Tarea(tareas_Estudiante.delist());
+            }
+        });
     }
     
     private void Buscar_Tareas(String busqueda){
@@ -521,17 +520,17 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
             tarea_Estudiante_Panel.Limpiar();
         }
-        
-        Lista<TareasEstudianteModel> lista = 
-                CourseRoom.Solicitudes().Buscar_Tareas(busqueda, Tablero_Estudiante_Panel.Id_Usuario() );
-        
-        if(!lista.is_empty()){
-            while(!lista.is_empty()){
-                Agregar_Tarea_Busqueda(lista.delist());
+        SwingUtilities.invokeLater(() -> {
+            Lista<TareasEstudianteModel> lista
+                    = CourseRoom.Solicitudes().Buscar_Tareas(busqueda, Tablero_Estudiante_Panel.Id_Usuario());
+            if (!lista.is_empty()) {
+                while (!lista.is_empty()) {
+                    Agregar_Tarea_Busqueda(lista.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta","No Se Encontraron Registros");
-        }
+        });
     }
     
     public void Agregar_Tarea_Busqueda(TareasEstudianteModel tareasEstudianteModel) {
@@ -597,33 +596,26 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 if (first.element().Id_Tarea() == id_Tarea){
                     return true;
                 }
-
                 if (last.element().Id_Tarea() == id_Tarea){
                     return true;
                 }
-
                 first = first.next();
                 last = last.previous();
             }
             return false;
         }else{
             for(int i = 0; i < middle_index;i++) {
-
                 if(first.element().Id_Tarea() == id_Tarea){
                     return true;
                 }
-
                 if(last.element().Id_Tarea() == id_Tarea){
                     return true;
                 }
-
                 first = first.next();
                 last = last.previous();
             }
-
             return mostrar_Tareas_Lista.medium().Id_Tarea() == id_Tarea;
-        }
-      
+        }      
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

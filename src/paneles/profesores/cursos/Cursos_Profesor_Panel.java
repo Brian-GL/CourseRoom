@@ -420,6 +420,4 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         cursos_Creados_Lista.clear();
         
     }
-
-    
 }

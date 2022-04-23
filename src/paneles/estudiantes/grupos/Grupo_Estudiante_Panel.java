@@ -41,6 +41,8 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -436,14 +438,16 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                                 int id_Grupo = Integer.parseInt(celda.ID());
 
-                                ResponseModel response = CourseRoom.Solicitudes().Remover_Voto_Miembro_Grupo(id_Grupo, Tablero_Estudiante_Panel.Id_Usuario());
+                                SwingUtilities.invokeLater(() -> {
+                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Voto_Miembro_Grupo(id_Grupo, Tablero_Estudiante_Panel.Id_Usuario());
 
-                                if(response.Is_Success()){
-                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
-                                    modelo.removeRow(fila);
-                                }else{
-                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
-                                }
+                                    if(response.Is_Success()){
+                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
+                                        modelo.removeRow(fila);
+                                    }else{
+                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
+                                    }
+                                });
 
                             }
                         }
@@ -670,16 +674,17 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                                             int id_Archivo_Compartido = Integer.parseInt(celda.ID());
 
-                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Compartido_Grupo(
-                                                id_Archivo_Compartido,Tablero_Estudiante_Panel.Id_Usuario());
+                                            SwingUtilities.invokeLater(() -> {
+                                                ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Compartido_Grupo(
+                                                    id_Archivo_Compartido,Tablero_Estudiante_Panel.Id_Usuario());
 
-                                            if(response.Is_Success()){
-                                                CourseRoom.Utilerias().Mensaje_Informativo("Archivo Compartido", response.Mensaje());
-                                                modelo.removeRow(fila);
-                                            }else{
-                                                CourseRoom.Utilerias().Mensaje_Alerta("Archivo Compartido", response.Mensaje());
-                                            }
-
+                                                if(response.Is_Success()){
+                                                    CourseRoom.Utilerias().Mensaje_Informativo("Archivo Compartido", response.Mensaje());
+                                                    modelo.removeRow(fila);
+                                                }else{
+                                                    CourseRoom.Utilerias().Mensaje_Alerta("Archivo Compartido", response.Mensaje());
+                                                }
+                                            });
                                         }
 
                                         break;
@@ -769,8 +774,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     miembro_A_Cargo_JLabel.setText("Miembro A Cargo");
                     miembro_A_Cargo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-                    miembro_A_Cargo_autoCompletionComboBox.setToolTipText("");
                     miembro_A_Cargo_autoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                    miembro_A_Cargo_autoCompletionComboBox.setToolTipText("");
 
                     javax.swing.GroupLayout anadir_Tarea_Pendiente_JPanelLayout = new javax.swing.GroupLayout(anadir_Tarea_Pendiente_JPanel);
                     anadir_Tarea_Pendiente_JPanel.setLayout(anadir_Tarea_Pendiente_JPanelLayout);
@@ -902,15 +907,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                         editar_JPanel.setOpaque(false);
 
+                        cambiar_Imagen_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
                         cambiar_Imagen_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/replace.png"))); // NOI18N
                         cambiar_Imagen_JButton.setText("Cambiar Imagen");
+                        cambiar_Imagen_JButton.setToolTipText("Cambiar Imagen Del Grupo");
                         cambiar_Imagen_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                        cambiar_Imagen_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
                         cambiar_Imagen_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
                         cambiar_Imagen_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
                         cambiar_Imagen_JButton.setMinimumSize(new java.awt.Dimension(400, 40));
                         cambiar_Imagen_JButton.setPreferredSize(new java.awt.Dimension(400, 50));
-                        cambiar_Imagen_JButton.setToolTipText("Cambiar Imagen Del Grupo");
                         ((ImageIcon)cambiar_Imagen_JButton.getIcon()).getImage().flush();
                         cambiar_Imagen_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1203,13 +1208,19 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             ImageIcon icono_Grupo = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
 
                             imagen_JLabel.setIcon(icono_Grupo);
-                            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Grupo(Id_Grupo, FileUtils.readFileToByteArray(archivo));
-                            if (respuesta.Is_Success()) {
-                                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                            } else {
-                                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-                            }
-
+                            SwingUtilities.invokeLater(() -> {
+                                ResponseModel respuesta;
+                                try {
+                                    respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Grupo(Id_Grupo, FileUtils.readFileToByteArray(archivo));
+                                    if (respuesta.Is_Success()) {
+                                        CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                                    } else {
+                                        CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                                    }
+                                } catch (IOException ex) {
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                                }
+                            });
                             abrir_Imagen.flush();
 
                         }else{
@@ -1218,7 +1229,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
                     }
-                }
+                }     
             }
         }
     }//GEN-LAST:event_cambiar_Imagen_JButtonMouseClicked
@@ -1238,7 +1249,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void editar_Nombre_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
             
         }
 
@@ -1263,16 +1273,16 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
-            
-                ResponseModel response = CourseRoom.Solicitudes().Abandonar_Grupo(Id_Grupo, 
-                        Tablero_Estudiante_Panel.Id_Usuario());
+                SwingUtilities.invokeLater(() -> {
+                    ResponseModel response = CourseRoom.Solicitudes().Abandonar_Grupo(Id_Grupo,
+                            Tablero_Estudiante_Panel.Id_Usuario());
 
-                if(response.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Abandonar Grupo", response.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Abandonar Grupo", response.Mensaje());
-                }
-            
+                    if (response.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Abandonar Grupo", response.Mensaje());
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Abandonar Grupo", response.Mensaje());
+                    }
+                });
                 Tablero_Estudiante_Panel.Mostrar_Vista("Grupos");
                 Tablero_Estudiante_Panel.Retirar_Vista(this);
                 this.Limpiar();
@@ -1322,18 +1332,18 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             
             if(nombre_Tarea_Pendiente.length() > 3 &&
                 fecha_Finalizacion.length() > 3 && miembro_A_Cargo.Id() > 0){
+                SwingUtilities.invokeLater(() -> {
+                    ResponseModel response = CourseRoom.Solicitudes().Agregar_Tarea_Pendiente_Grupo(Id_Grupo, nombre_Tarea_Pendiente,
+                            descripcion, fecha_Finalizacion, miembro_A_Cargo.Id());
 
-                ResponseModel response = CourseRoom.Solicitudes().Agregar_Tarea_Pendiente_Grupo(Id_Grupo, nombre_Tarea_Pendiente,
-                        descripcion, fecha_Finalizacion, miembro_A_Cargo.Id());
-                
-                if(response.Is_Success()){
-                    Agregar_Tarea_Pendiente_Local(nombre_Tarea_Pendiente,miembro_A_Cargo, response.Codigo());
-                    nombre_Tarea_Pendiente_JTextField.setText("");
-                    descripcion_Tarea_Pendiente_JTextPane.setText("");
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Tarea Pendiente", response.Mensaje());
-                }
-                
+                    if (response.Is_Success()) {
+                        Agregar_Tarea_Pendiente_Local(nombre_Tarea_Pendiente, miembro_A_Cargo, response.Codigo());
+                        nombre_Tarea_Pendiente_JTextField.setText("");
+                        descripcion_Tarea_Pendiente_JTextPane.setText("");
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Tarea Pendiente", response.Mensaje());
+                    }
+                });
             }else{
                 CourseRoom.Utilerias().Mensaje_Alerta("Tarea Pendiente", "Algún Campo No Cuenta Con El Formato Adecuado");
             }
@@ -1407,15 +1417,16 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void guardar_Cambios_Datos_Generales_Grupo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-                       
-            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Generales_Grupo(Id_Grupo,
-                editar_Nombre_JTextField.getText(), editar_Descripcion_JTextPane.getText());
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Generales_Grupo(Id_Grupo,
+                        editar_Nombre_JTextField.getText(), editar_Descripcion_JTextPane.getText());
 
-            if(respuesta.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-            }else{
-                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-            }
+                if (respuesta.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                }
+            });
         }
     }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseClicked
 
@@ -1439,16 +1450,17 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         while(!tareas_Pendientes_Estudiante_Lista.is_empty()){
             tarea_Pendiente_Estudiante_Panel= tareas_Pendientes_Estudiante_Lista.delist();
             Tablero_Estudiante_Panel.Retirar_Vista(tarea_Pendiente_Estudiante_Panel);
-            
-            Lista<TareasPendientesGrupoModel> lista = 
-                CourseRoom.Solicitudes().Obtener_Tareas_Pendientes_Grupo(Tablero_Estudiante_Panel.Id_Usuario());
-            if(!lista.is_empty()){
-            while(!lista.is_empty()){
-                Agregar_Tarea_Pendiente(lista.delist());
-            }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
-        }
+            SwingUtilities.invokeLater(() -> {
+                Lista<TareasPendientesGrupoModel> lista
+                        = CourseRoom.Solicitudes().Obtener_Tareas_Pendientes_Grupo(Tablero_Estudiante_Panel.Id_Usuario());
+                if (!lista.is_empty()) {
+                    while (!lista.is_empty()) {
+                        Agregar_Tarea_Pendiente(lista.delist());
+                    }
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
+                }
+            });
         }
     }
     
@@ -1562,7 +1574,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             
             imagen.flush();
             
-            
             Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel =
                     new Tarea_Pendiente_Estudiante_Panel(tareasPendientesGrupoModel.Id_Tarea_Pendiente(), this.Id_Vista);
             
@@ -1611,6 +1622,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     celdas[0] = celda;
                 }
             }
+            
             celda = new Celda_Renderer(fecha_Ingreso,Id_Usuario);
             celdas[1] = celda;
             imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
@@ -1620,8 +1632,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             modelo.addRow(celdas);
             icono.getImage().flush();
             miembros_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
-        } catch (IOException ex) {
-            
+        } catch (IOException ex) {  
         }
 
     }
@@ -1632,17 +1643,18 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         modelo.setRowCount(0);
         
         miembro_A_Cargo_autoCompletionComboBox.removeAllItems();
-               
-        Lista<MiembrosGrupoModel> lista = 
-                CourseRoom.Solicitudes().Obtener_Miembros_Grupo(Tablero_Estudiante_Panel.Id_Usuario());
-        
-        if(!lista.is_empty()){
-            while(!lista.is_empty()){
-                Agregar_Miembro(lista.delist());
+        SwingUtilities.invokeLater(() -> {
+            Lista<MiembrosGrupoModel> lista
+                    = CourseRoom.Solicitudes().Obtener_Miembros_Grupo(Tablero_Estudiante_Panel.Id_Usuario());
+
+            if (!lista.is_empty()) {
+                while (!lista.is_empty()) {
+                    Agregar_Miembro(lista.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Miembros");
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Miembros");
-        }
+        });
     }
     
     public int Id_Grupo() {
@@ -1653,17 +1665,17 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
-        
-        Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Grupo);
-        
-        if(!response.is_empty()){
-            while(!response.is_empty()){
-                Agregar_Mensaje_Grupo(response.delist());
+        SwingUtilities.invokeLater(() -> {
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Grupo);
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Mensaje_Grupo(response.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Grupo", "No Se Encontraron Mensajes En El Grupo");
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Grupo", "No Se Encontraron Mensajes En El Grupo");
-        }
-        
+        });
     }
     
     private void Agregar_Mensaje_Grupo(MensajesModel mensajesModel){
@@ -2108,10 +2120,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
-            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Grupo(mensaje, new byte[]{}, "", Tablero_Estudiante_Panel.Id_Usuario(), Id_Grupo);
-            if(!responseModel.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",responseModel.Mensaje());
-            }
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Grupo(mensaje, new byte[]{}, "", Tablero_Estudiante_Panel.Id_Usuario(), Id_Grupo);
+                if (!responseModel.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", responseModel.Mensaje());
+                }
+            });
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
         }
@@ -2241,6 +2255,4 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 break;
         }
     }
-
-    
 }

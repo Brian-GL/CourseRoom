@@ -250,9 +250,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         tarea_JLayeredPane.setPreferredSize(new java.awt.Dimension(982, 534));
         tarea_JLayeredPane.setLayout(new java.awt.CardLayout());
 
-        informacion_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         informacion_Tarea_JPanel.setToolTipText("");
         informacion_Tarea_JPanel.setOpaque(false);
+        informacion_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
         curso_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -617,15 +617,16 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                                             int id_Archivo_Subido = Integer.parseInt(celda.ID());
 
-                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Estudiante_Panel.Id_Usuario());
+                                            SwingUtilities.invokeLater(() -> {
+                                                ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Estudiante_Panel.Id_Usuario());
 
-                                            if(response.Is_Success()){
-                                                CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
-                                                modelo.removeRow(fila);
-                                            }else{
-                                                CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
-                                            }
-
+                                                if(response.Is_Success()){
+                                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
+                                                    modelo.removeRow(fila);
+                                                }else{
+                                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
+                                                }
+                                            });
                                         }
 
                                         break;
@@ -887,16 +888,15 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
-            
-                ResponseModel response = CourseRoom.Solicitudes().Entregar_Tarea_Usuario(Id_Tarea, 
-                        Tablero_Estudiante_Panel.Id_Usuario());
-
-                if(response.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Entregar Tarea", response.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Entregar Tarea", response.Mensaje());
-                }
-            
+                SwingUtilities.invokeLater(() -> {
+                    ResponseModel response = CourseRoom.Solicitudes().Entregar_Tarea_Usuario(Id_Tarea,
+                            Tablero_Estudiante_Panel.Id_Usuario());
+                    if (response.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Entregar Tarea", response.Mensaje());
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Entregar Tarea", response.Mensaje());
+                    }
+                });
                 Tablero_Estudiante_Panel.Mostrar_Vista("Tarea");
                 Tablero_Estudiante_Panel.Retirar_Vista(this);
                 this.Limpiar();
@@ -945,11 +945,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     }//GEN-LAST:event_retroalimentacion_JButtonMouseClicked
 
     private void enviar_Archivo_Chat_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_Archivo_Chat_JButtonMouseClicked
-
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
             Enviar_Archivo();
-            
         }
     }//GEN-LAST:event_enviar_Archivo_Chat_JButtonMouseClicked
 
@@ -1035,17 +1032,17 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
-        
-        Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Tarea);
-        
-        if(!response.is_empty()){
-            while(!response.is_empty()){
-                Agregar_Mensaje_Tarea(response.delist());
+        SwingUtilities.invokeLater(() -> {
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Tarea);
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Mensaje_Tarea(response.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
-        }
-        
+        });
     }
     
     private void Agregar_Mensaje_Tarea(MensajesModel mensajesModel){
@@ -1370,12 +1367,14 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
+            SwingUtilities.invokeLater(() -> {
             ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Tarea(mensaje, new byte[]{}, "", Tablero_Estudiante_Panel.Id_Usuario(), Id_Tarea);
             if(responseModel.Is_Success()){
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
             }else{
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
             }
+            });
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
         }
@@ -1424,12 +1423,10 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         }else{
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
                         }
-                       
                     }
                     else{
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo Supera El Tamaño Aceptado De Subida");
                     }
-                  
                 } catch (IOException ex) {
                 }
             }

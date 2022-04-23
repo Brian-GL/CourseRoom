@@ -342,19 +342,19 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
-            
-                ResponseModel response = CourseRoom.Solicitudes().Enrolar_Usuario_Curso(Id_Curso, 
-                        Tablero_Estudiante_Panel.Id_Usuario());
+                SwingUtilities.invokeLater(() -> {
+                    ResponseModel response = CourseRoom.Solicitudes().Enrolar_Usuario_Curso(Id_Curso,
+                            Tablero_Estudiante_Panel.Id_Usuario());
 
-                if(response.Is_Success()){
-                    Curso_Estudiante_Panel curso_Estudiante_Panel = 
-                    new Curso_Estudiante_Panel(/*nombre_Curso, imagen_Curso, nombre_Profesor, imagen_Profesor, fecha_Creacion, ID,*/-1);
-                    Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, ID);
-                    CourseRoom.Utilerias().Mensaje_Informativo("Enrolar Curso", response.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Alerta("Enrolar Curso", response.Mensaje());
-                }
-            
+                    if (response.Is_Success()) {
+                        Curso_Estudiante_Panel curso_Estudiante_Panel
+                                = new Curso_Estudiante_Panel(/*nombre_Curso, imagen_Curso, nombre_Profesor, imagen_Profesor, fecha_Creacion, ID,*/-1);
+                        Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, ID);
+                        CourseRoom.Utilerias().Mensaje_Informativo("Enrolar Curso", response.Mensaje());
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Enrolar Curso", response.Mensaje());
+                    }
+                });
                 Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
                 Tablero_Estudiante_Panel.Retirar_Vista(this);
                 this.Limpiar();
@@ -511,6 +511,4 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         modelo.setRowCount(0);
     }
-    
-
 }

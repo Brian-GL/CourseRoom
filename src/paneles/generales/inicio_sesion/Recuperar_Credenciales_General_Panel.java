@@ -218,26 +218,22 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
     public void Recuperar_Credenciales() throws XmlRpcException, IOException {
  
         if(CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo_Electronico_JTextField.getText())){
-            
-            Boolean respuesta = CourseRoom.Solicitudes().Recuperar_Credenciales(correo_Electronico_JTextField.getText());
-            
-            if(respuesta){
-                 CourseRoom.Utilerias().Mensaje_Informativo("Recuperar Credenciales", 
-                                                "Hemos enviado las credenciales al correo electr\u00f3nico.<br>"
-                                                + "Te recomendamos que revises la bandeja de entrada como en spam o correo no deseado.<br>"
-                                                + "La informaci\u00f3n llegará siempre y cuando exista una cuenta vinculada con el correo electr\u00f3nico");
-            }
-            else{
-                CourseRoom.Utilerias().Mensaje_Error("Recuperar Credenciales","Mmmm...<br>Parece que el correo electrónico no existe<br>o estamos experimentando problemas en el envío");
-            }
-           
+            SwingUtilities.invokeLater(() -> {
+                Boolean respuesta = CourseRoom.Solicitudes().Recuperar_Credenciales(correo_Electronico_JTextField.getText());
+                if (respuesta) {
+                    CourseRoom.Utilerias().Mensaje_Informativo("Recuperar Credenciales",
+                            "Hemos enviado las credenciales al correo electr\u00f3nico.<br>"
+                            + "Te recomendamos que revises la bandeja de entrada como en spam o correo no deseado.<br>"
+                            + "La informaci\u00f3n llegará siempre y cuando exista una cuenta vinculada con el correo electr\u00f3nico");
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Error("Recuperar Credenciales", "Mmmm...<br>Parece que el correo electrónico no existe<br>o estamos experimentando problemas en el envío");
+                }
+            });
         }
         else{
             CourseRoom.Utilerias().Mensaje_Alerta("Recuperar Credenciales","Mmmm...<br>Parece que el formato de texto que ingresaste no es el adecuado");
         }
-        
         correo_Electronico_JTextField.setText("");
-        
     }
   
 
@@ -279,6 +275,4 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
         regresar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
         recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
     }
-    
-
 }
