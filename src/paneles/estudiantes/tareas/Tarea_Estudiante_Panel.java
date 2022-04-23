@@ -250,9 +250,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         tarea_JLayeredPane.setPreferredSize(new java.awt.Dimension(982, 534));
         tarea_JLayeredPane.setLayout(new java.awt.CardLayout());
 
-        informacion_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         informacion_Tarea_JPanel.setToolTipText("");
         informacion_Tarea_JPanel.setOpaque(false);
+        informacion_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
         curso_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -617,15 +617,16 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                                             int id_Archivo_Subido = Integer.parseInt(celda.ID());
 
-                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Estudiante_Panel.Id_Usuario());
+                                            SwingUtilities.invokeLater(() -> {
+                                                ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Estudiante_Panel.Id_Usuario());
 
-                                            if(response.Is_Success()){
-                                                CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
-                                                modelo.removeRow(fila);
-                                            }else{
-                                                CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
-                                            }
-
+                                                if(response.Is_Success()){
+                                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
+                                                    modelo.removeRow(fila);
+                                                }else{
+                                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
+                                                }
+                                            });
                                         }
 
                                         break;

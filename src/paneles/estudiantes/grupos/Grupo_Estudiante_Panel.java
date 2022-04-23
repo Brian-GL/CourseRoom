@@ -446,14 +446,16 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                                 int id_Grupo = Integer.parseInt(celda.ID());
 
-                                ResponseModel response = CourseRoom.Solicitudes().Remover_Voto_Miembro_Grupo(id_Grupo, Tablero_Estudiante_Panel.Id_Usuario());
+                                SwingUtilities.invokeLater(() -> {
+                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Voto_Miembro_Grupo(id_Grupo, Tablero_Estudiante_Panel.Id_Usuario());
 
-                                if(response.Is_Success()){
-                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
-                                    modelo.removeRow(fila);
-                                }else{
-                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
-                                }
+                                    if(response.Is_Success()){
+                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
+                                        modelo.removeRow(fila);
+                                    }else{
+                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
+                                    }
+                                });
 
                             }
                         }
@@ -680,16 +682,17 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                                             int id_Archivo_Compartido = Integer.parseInt(celda.ID());
 
-                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Compartido_Grupo(
-                                                id_Archivo_Compartido,Tablero_Estudiante_Panel.Id_Usuario());
+                                            SwingUtilities.invokeLater(() -> {
+                                                ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Compartido_Grupo(
+                                                    id_Archivo_Compartido,Tablero_Estudiante_Panel.Id_Usuario());
 
-                                            if(response.Is_Success()){
-                                                CourseRoom.Utilerias().Mensaje_Informativo("Archivo Compartido", response.Mensaje());
-                                                modelo.removeRow(fila);
-                                            }else{
-                                                CourseRoom.Utilerias().Mensaje_Alerta("Archivo Compartido", response.Mensaje());
-                                            }
-
+                                                if(response.Is_Success()){
+                                                    CourseRoom.Utilerias().Mensaje_Informativo("Archivo Compartido", response.Mensaje());
+                                                    modelo.removeRow(fila);
+                                                }else{
+                                                    CourseRoom.Utilerias().Mensaje_Alerta("Archivo Compartido", response.Mensaje());
+                                                }
+                                            });
                                         }
 
                                         break;
@@ -779,8 +782,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     miembro_A_Cargo_JLabel.setText("Miembro A Cargo");
                     miembro_A_Cargo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-                    miembro_A_Cargo_autoCompletionComboBox.setToolTipText("");
                     miembro_A_Cargo_autoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                    miembro_A_Cargo_autoCompletionComboBox.setToolTipText("");
 
                     javax.swing.GroupLayout anadir_Tarea_Pendiente_JPanelLayout = new javax.swing.GroupLayout(anadir_Tarea_Pendiente_JPanel);
                     anadir_Tarea_Pendiente_JPanel.setLayout(anadir_Tarea_Pendiente_JPanelLayout);
@@ -912,15 +915,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                         editar_JPanel.setOpaque(false);
 
+                        cambiar_Imagen_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
                         cambiar_Imagen_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/replace.png"))); // NOI18N
                         cambiar_Imagen_JButton.setText("Cambiar Imagen");
+                        cambiar_Imagen_JButton.setToolTipText("Cambiar Imagen Del Grupo");
                         cambiar_Imagen_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                        cambiar_Imagen_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
                         cambiar_Imagen_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
                         cambiar_Imagen_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
                         cambiar_Imagen_JButton.setMinimumSize(new java.awt.Dimension(400, 40));
                         cambiar_Imagen_JButton.setPreferredSize(new java.awt.Dimension(400, 50));
-                        cambiar_Imagen_JButton.setToolTipText("Cambiar Imagen Del Grupo");
                         ((ImageIcon)cambiar_Imagen_JButton.getIcon()).getImage().flush();
                         cambiar_Imagen_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                             public void mouseClicked(java.awt.event.MouseEvent evt) {
