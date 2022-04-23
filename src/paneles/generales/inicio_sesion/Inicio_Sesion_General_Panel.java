@@ -402,28 +402,24 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
         
         if(CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo)) {
             String password = String.valueOf(contrasena_JPasswordField.getPassword());
-            ResponseModel response = CourseRoom.Solicitudes().Obtener_Usuario(correo, password);
-
-            if(response.Is_Success()){
-                
-                SwingUtilities.invokeLater(() -> {
-                    CourseRoom.Esconder_Frame();
-                    CourseRoom.Frame().Mostrar_Tablero(response.Mensaje().equals("Estudiante"),response.Codigo());
-                    CourseRoom.Mostrar_Frame();
-                });
-                
-                
-            }else{
-                getToolkit().beep();
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", response.Mensaje());
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel response = CourseRoom.Solicitudes().Obtener_Usuario(correo, password);
+                if (response.Is_Success()) {
+                    SwingUtilities.invokeLater(() -> {
+                        CourseRoom.Esconder_Frame();
+                        CourseRoom.Frame().Mostrar_Tablero(response.Mensaje().equals("Estudiante"), response.Codigo());
+                        CourseRoom.Mostrar_Frame();
+                    });
+                } else {
+                    getToolkit().beep();
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta", response.Mensaje());
+                    correo_Electronico_JTextField.setText("");
+                    contrasena_JPasswordField.setText("");
+                    correo_Electronico_JTextField.requestFocus();
+                }
                 correo_Electronico_JTextField.setText("");
                 contrasena_JPasswordField.setText("");
-                correo_Electronico_JTextField.requestFocus();   
-            }
-            correo_Electronico_JTextField.setText("");
-            contrasena_JPasswordField.setText("");
-            
-
+            });
         } else {
             getToolkit().beep();
             CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "El Correo Electrónico <br>*" + correo + "*<br>No Cuenta Con El Formato Adecuado");

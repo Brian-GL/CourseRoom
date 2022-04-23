@@ -1116,16 +1116,16 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         if(SwingUtilities.isLeftMouseButton(evt)){
             
             if(Verificar_Campos_Autenticacion()){
-                            
-                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Autenticacion(Tablero_Estudiante_Panel.Id_Usuario(),
-                        editar_Correo_Electronico_JTextField.getText(), String.valueOf(contrasena_JPasswordField.getPassword()));
+                SwingUtilities.invokeLater(() -> {
+                    ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Autenticacion(Tablero_Estudiante_Panel.Id_Usuario(),
+                            editar_Correo_Electronico_JTextField.getText(), String.valueOf(contrasena_JPasswordField.getPassword()));
 
-                if(respuesta.Is_Success()){
-                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar Los Datos De Autenticación", respuesta.Mensaje());
-                }
-        
+                    if (respuesta.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar Los Datos De Autenticación", respuesta.Mensaje());
+                    }
+                });
             }
 
         }
@@ -1171,7 +1171,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                             imagen_Perfil_JLabel.setIcon(icono_Imagen);
 
                             Tablero_Estudiante_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
-
                             obtener_Imagen.flush();
                         }else{
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
@@ -1238,17 +1237,18 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         if(SwingUtilities.isLeftMouseButton(evt)){
             
             ComboOptionModel comboOption = (ComboOptionModel)editar_Localidad_AutoCompletionComboBox.getSelectedItem();
-            
-            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Personales(Tablero_Estudiante_Panel.Id_Usuario(),
-                    editar_Nombres_JTextField.getText(), editar_Apellido_Paterno_JTextField.getText(),
-                    editar_Apellido_Materno_JTextField.getText(), editar_Genero_JTextField.getText(), 
-                    CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()),comboOption.Id());
-            
-            if(respuesta.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-            }else{
-                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-            }
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Personales(Tablero_Estudiante_Panel.Id_Usuario(),
+                        editar_Nombres_JTextField.getText(), editar_Apellido_Paterno_JTextField.getText(),
+                        editar_Apellido_Materno_JTextField.getText(), editar_Genero_JTextField.getText(),
+                        CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()), comboOption.Id());
+
+                if (respuesta.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                }
+            });
         }
     }//GEN-LAST:event_guardar_Cambios_Datos_Personales_JButtonMouseClicked
 
@@ -1278,15 +1278,15 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         if(SwingUtilities.isLeftMouseButton(evt)){
             
             Double promedio_General = editar_Promedio_General_JFormattedTextField.getText().isBlank() || editar_Promedio_General_JFormattedTextField.getText().isEmpty()? Double.valueOf(-1) : Double.valueOf(editar_Promedio_General_JFormattedTextField.getText());
-            
-            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Informacion_Extra(Tablero_Estudiante_Panel.Id_Usuario(),
-                    "Estudiante", promedio_General, editar_Descripcion_JTextPane.getText());
-            
-            if(respuesta.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-            }else{
-                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-            }
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Informacion_Extra(Tablero_Estudiante_Panel.Id_Usuario(),
+                        "Estudiante", promedio_General, editar_Descripcion_JTextPane.getText());
+                if (respuesta.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                }
+            });
         }
     }//GEN-LAST:event_guardar_Cambios_Informacion_Extra_JButtonMouseClicked
 
@@ -1309,8 +1309,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             ComboOptionModel interes = ((ComboOptionModel)intereses_AutoCompletionComboBox.getSelectedItem()) != null
                     ? ((ComboOptionModel)intereses_AutoCompletionComboBox.getSelectedItem()) : new ComboOptionModel();
             
-            Agregar_Nuevo_Interes_Tematica(interes);
-            
+            Agregar_Nuevo_Interes_Tematica(interes);            
         }
     }//GEN-LAST:event_agregar_Interes_JButtonMouseClicked
 
@@ -1453,7 +1452,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Actualizar_Datos();
+            SwingUtilities.invokeLater(() -> {
+                Actualizar_Datos();
+            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1561,13 +1562,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             
             celda = new Celda_Renderer(remover);
             celdas[1] = celda;
-            
-            ResponseModel responseModel = CourseRoom.Solicitudes().Agregar_Interes(Tablero_Estudiante_Panel.Id_Usuario(), interes.Id());
-            if(responseModel.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente",responseModel.Mensaje());
-            }else{
-                CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente",responseModel.Mensaje());
-            }
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel responseModel = CourseRoom.Solicitudes().Agregar_Interes(Tablero_Estudiante_Panel.Id_Usuario(), interes.Id());
+                if (responseModel.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
+                }
+            });
             modelo.addRow(celdas);
             
             intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
@@ -1611,13 +1613,13 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void Obtener_Localidades_Estado(){
         String estado = (String)editar_Estado_AutoCompletionComboBox.getSelectedItem();
         editar_Localidad_AutoCompletionComboBox.removeAllItems();
-       
-        //Obtener localidades:
-        Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
-
-        while(!localidades.is_empty()){
-            editar_Localidad_AutoCompletionComboBox.addItem((ComboOptionModel)localidades.delist());
-        }
+        SwingUtilities.invokeLater(() -> {
+            //Obtener localidades:
+            Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+            while (!localidades.is_empty()) {
+                editar_Localidad_AutoCompletionComboBox.addItem((ComboOptionModel) localidades.delist());
+            }
+        });
     }
     
     private boolean Verificar_Campos_Autenticacion() {
@@ -1630,7 +1632,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","No Se Permiten Campos Vacios !!!");
             return false;
         } else {
-            
             if (Password.equals(Password2)) {
                 var valor = CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(editar_Correo_Electronico_JTextField.getText().trim());
                 if (!valor) {
@@ -1645,7 +1646,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                     } else{
                         return true;
                     }
-
                 }
             } else {
                 // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
@@ -1653,12 +1653,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 contrasena_JPasswordField.requestFocus();
                 return false;
             }
-            
         }
-        
     }
     
     private void Actualizar_Datos(){
+        
         DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Estudiante_Panel.Id_Usuario());
         if(datosPerfilModel != null){
             
@@ -1710,20 +1709,16 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.Localidad());
                 editar_Estado_JButton.setVisible(true);
             }else{
-
                 editar_Estado_AutoCompletionComboBox.setEnabled(false);
                 editar_Localidad_AutoCompletionComboBox.setEnabled(false);
                 editar_Estado_JButton.setVisible(false);
-
             }
             
             //Obtener intereses usuario:
             Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
-
             while(!tematicas.is_empty()){
                 Agregar_Interes_Tematica(tematicas.delist());
             }
-            
         }
     }
 
@@ -1822,21 +1817,21 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_JTable.getTableHeader().setFont(gadugi);
         intereses_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        // Obtener temáticas:
-        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
+        SwingUtilities.invokeLater(() -> {
+            // Obtener temáticas:
+            Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
 
-        if(!tematicas.is_empty()){
-            while(!tematicas.is_empty()){
-                intereses_AutoCompletionComboBox.addItem(tematicas.delist());
+            if (!tematicas.is_empty()) {
+                while (!tematicas.is_empty()) {
+                    intereses_AutoCompletionComboBox.addItem(tematicas.delist());
+                }
+                intereses_AutoCompletionComboBox.setSelectedIndex(0);
+            } else {
+                intereses_AutoCompletionComboBox.setEnabled(false);
+                agregar_Interes_JButton.setEnabled(false);
+                intereses_JTable.setEnabled(false);
             }
-            intereses_AutoCompletionComboBox.setSelectedIndex(0);
-        }else{
-            intereses_AutoCompletionComboBox.setEnabled(false);
-            agregar_Interes_JButton.setEnabled(false);
-            intereses_JTable.setEnabled(false);
-        }
-        
+        });
         Colorear_Componentes();
          
     }
@@ -2022,5 +2017,4 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             
         }
     }
-
 }

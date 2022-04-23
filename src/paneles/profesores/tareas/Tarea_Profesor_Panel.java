@@ -128,8 +128,8 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         eliminar_Tarea_JButton = new javax.swing.JButton();
         guardar_Cambios_Datos_Generales_Tarea_JButton = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
@@ -263,9 +263,9 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         tarea_JLayeredPane.setPreferredSize(new java.awt.Dimension(982, 534));
         tarea_JLayeredPane.setLayout(new java.awt.CardLayout());
 
-        informacion_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         informacion_Tarea_JPanel.setToolTipText("");
         informacion_Tarea_JPanel.setOpaque(false);
+        informacion_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
         curso_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         curso_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -288,15 +288,15 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         descripcion_JScrollPane.setVerifyInputWhenFocusTarget(false);
         descripcion_JScrollPane.setWheelScrollingEnabled(false);
 
+        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setBorder(null);
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
-        descripcion_JTextPane.setEditable(false);
         descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         descripcion_JTextPane.setText("");
+        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción</h3>\n</html>");
         descripcion_JTextPane.setFocusCycleRoot(false);
         descripcion_JTextPane.setOpaque(false);
         descripcion_JTextPane.setRequestFocusEnabled(false);
-        descripcion_JTextPane.setToolTipText("<html>\n<h3>Descripción</h3>\n</html>");
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
         fecha_Entrega_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -352,9 +352,9 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
         tarea_JLayeredPane.add(informacion_Tarea_JPanel, "Informacion");
 
-        archivos_Adjuntos_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
         archivos_Adjuntos_JPanel.setToolTipText("");
         archivos_Adjuntos_JPanel.setOpaque(false);
+        archivos_Adjuntos_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
         subir_Archivos_Adjuntos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
         subir_Archivos_Adjuntos_JButton.setText("Subir Adjunto(s)");
@@ -378,6 +378,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         archivos_Adjuntos_JScrollPane.setOpaque(false);
 
         archivos_Adjuntos_JTable.setAutoCreateRowSorter(true);
+        archivos_Adjuntos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         archivos_Adjuntos_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -411,7 +412,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                     return super.getColumnClass(column);
                 }
             });
-            archivos_Adjuntos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             archivos_Adjuntos_JTable.setRowHeight(75);
             archivos_Adjuntos_JTable.setShowGrid(true);
             archivos_Adjuntos_JTable.setShowVerticalLines(false);
@@ -452,16 +452,16 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                                     Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
 
                                     int id_Archivo_Subido = Integer.parseInt(celda.ID());
+                                    SwingUtilities.invokeLater(() -> {
+                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());
 
-                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());
-
-                                    if(response.Is_Success()){
-                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
-                                        modelo.removeRow(fila);
-                                    }else{
-                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
-                                    }
-
+                                        if(response.Is_Success()){
+                                            CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
+                                            modelo.removeRow(fila);
+                                        }else{
+                                            CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
+                                        }
+                                    });
                                 }
 
                                 break;
@@ -500,14 +500,15 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             tarea_JLayeredPane.add(archivos_Adjuntos_JPanel, "Archivos_Adjuntos");
 
             chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-            chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
             chat_JPanel.setOpaque(false);
+            chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
             chat_JPanel.setLayout(new java.awt.BorderLayout());
 
             mensajes_Chat_JScrollPane.setBorder(null);
             mensajes_Chat_JScrollPane.setOpaque(false);
 
             mensajes_Chat_JTable.setAutoCreateRowSorter(true);
+            mensajes_Chat_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
             mensajes_Chat_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -541,7 +542,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         return super.getColumnClass(column);
                     }
                 });
-                mensajes_Chat_JTable.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
                 mensajes_Chat_JTable.setRowHeight(80);
                 mensajes_Chat_JTable.setRowMargin(15);
                 mensajes_Chat_JTable.setShowGrid(true);
@@ -589,6 +589,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                 tareas_Por_Calificar_JScrollPane.setOpaque(false);
 
                 tareas_Por_Calificar_JTable.setAutoCreateRowSorter(true);
+                tareas_Por_Calificar_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 tareas_Por_Calificar_JTable.setModel(
 
                     new javax.swing.table.DefaultTableModel(
@@ -622,7 +623,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                             return super.getColumnClass(column);
                         }
                     });
-                    tareas_Por_Calificar_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                     tareas_Por_Calificar_JTable.setRowHeight(96);
                     tareas_Por_Calificar_JTable.setShowGrid(true);
                     tareas_Por_Calificar_JTable.setSurrendersFocusOnKeystroke(true);
@@ -647,9 +647,9 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
                     tarea_JLayeredPane.add(tareas_Por_Calificar_JScrollPane, "Tareas_Calificar");
 
-                    editar_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
                     editar_Tarea_JPanel.setToolTipText("");
                     editar_Tarea_JPanel.setOpaque(false);
+                    editar_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
                     editar_Nombre_JLabel.setText("Nombre");
                     editar_Nombre_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -727,12 +727,12 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         }
                     });
 
+                    guardar_Cambios_Datos_Generales_Tarea_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
                     guardar_Cambios_Datos_Generales_Tarea_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/check.png"))); // NOI18N
                     guardar_Cambios_Datos_Generales_Tarea_JButton.setText("Guardar Cambios");
+                    guardar_Cambios_Datos_Generales_Tarea_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
                     guardar_Cambios_Datos_Generales_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                     guardar_Cambios_Datos_Generales_Tarea_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                    guardar_Cambios_Datos_Generales_Tarea_JButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-                    guardar_Cambios_Datos_Generales_Tarea_JButton.setToolTipText("<html> <h3>Crear nueva cuenta</h3> </html>");
                     ((ImageIcon)guardar_Cambios_Datos_Generales_Tarea_JButton.getIcon()).getImage().flush();
                     guardar_Cambios_Datos_Generales_Tarea_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -781,17 +781,15 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(editar_Nombre_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(guardar_Cambios_Datos_Generales_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
-                                    .addGap(16, 16, 16)
                                     .addGroup(editar_Tarea_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(editar_Descripcion_JLabel)
                                         .addComponent(editar_Descripcion_JButton))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(editar_Descripcion_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(editar_Tarea_JPanelLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(eliminar_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(eliminar_Tarea_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addContainerGap(34, Short.MAX_VALUE))
                     );
 
@@ -1065,17 +1063,17 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
-        
-        Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Tarea);
-        
-        if(!response.is_empty()){
-            while(!response.is_empty()){
-                Agregar_Mensaje_Tarea(response.delist());
-            }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
-        }
-        
+         SwingUtilities.invokeLater(() -> {
+             Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Tarea);
+
+             if (!response.is_empty()) {
+                 while (!response.is_empty()) {
+                     Agregar_Mensaje_Tarea(response.delist());
+                 }
+             } else {
+                 CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
+             }
+         });
     }
     
     private void Agregar_Mensaje_Tarea(MensajesModel mensajesModel){
@@ -1405,7 +1403,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         String ruta = archivo_Abierto.getAbsolutePath();
                         String nombre_Archivo = archivo_Abierto.getName();
                         String emisor = Perfil_Profesor_Panel.Nombre_Completo();
-                       
+                        
                         ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Id_Tarea,
                                 nombre_Archivo, 
                                 FileUtils.readFileToByteArray(archivo_Abierto),  
@@ -1429,8 +1427,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                             CourseRoom.Utilerias().Mensaje_Informativo("Tarea",response.Mensaje());
                         }else{
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
-                        }
-                       
+                        }                       
                     }
                     else{
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo Supera El Tamaño Aceptado De Subida");
@@ -1463,10 +1460,12 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
             modelo.addRow(celdas);
             mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
-            ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Tarea(mensaje, new byte[]{}, "", Tablero_Profesor_Panel.Id_Usuario(), Id_Tarea);
-            if(!responseModel.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",responseModel.Mensaje());
-            }
+            SwingUtilities.invokeLater(() -> {
+                ResponseModel responseModel = CourseRoom.Solicitudes().Enviar_Mensaje_Tarea(mensaje, new byte[]{}, "", Tablero_Profesor_Panel.Id_Usuario(), Id_Tarea);
+                if (!responseModel.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", responseModel.Mensaje());
+                }
+            });
             redactar_Mensaje_Chat_JTextField.setText("");
             redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
         }
@@ -1514,13 +1513,11 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                             CourseRoom.Utilerias().Mensaje_Informativo("Tarea",response.Mensaje());
                         }else{
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
-                        }
-                       
+                        }                       
                     }
                     else{
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo Supera El Tamaño Aceptado De Subida");
-                    }
-                  
+                    }                  
                 } catch (IOException ex) {
                 }
             }
@@ -1529,7 +1526,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         }
     }
    
-
     @Override
     public void Limpiar() {
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();

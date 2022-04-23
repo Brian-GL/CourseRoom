@@ -493,17 +493,17 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
             Tablero_Profesor_Panel.Retirar_Vista(chat_Estudiante_Panel);
             chat_Estudiante_Panel.Limpiar();
         }
-        
-        Lista<ChatsPersonalesModel> lista = 
-                CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Profesor_Panel.Id_Usuario());
-        
-        if(!lista.is_empty()){
-            while(!lista.is_empty()){
-                Agregar_Chat(lista.delist());
+        SwingUtilities.invokeLater(() -> {
+            Lista<ChatsPersonalesModel> lista
+                    = CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Profesor_Panel.Id_Usuario());
+            if (!lista.is_empty()) {
+                while (!lista.is_empty()) {
+                    Agregar_Chat(lista.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
-        }
+        });
     }
     
     private void Buscar_Chats_Personales(String busqueda){
@@ -517,17 +517,17 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
             Tablero_Profesor_Panel.Retirar_Vista(chat_Estudiante_Panel);
             chat_Estudiante_Panel.Limpiar();
         }
-        
-        Lista<ChatsPersonalesModel> lista = 
-                CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda,Tablero_Profesor_Panel.Id_Usuario());
-        
-        if(!lista.is_empty()){
-            while(!lista.is_empty()){
-                Agregar_Chat_Busqueda(lista.delist());
+        SwingUtilities.invokeLater(() -> {
+            Lista<ChatsPersonalesModel> lista
+                    = CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda, Tablero_Profesor_Panel.Id_Usuario());
+            if (!lista.is_empty()) {
+                while (!lista.is_empty()) {
+                    Agregar_Chat_Busqueda(lista.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Chats");
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta","No Se Encontraron Chats");
-        }
+        });
     }
     
     private void Agregar_Chat(ChatsPersonalesModel chatsPersonalesModel) {
