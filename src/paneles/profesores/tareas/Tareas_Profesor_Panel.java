@@ -38,6 +38,7 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.TareasPorCalificarModel;
 import paneles.profesores.Tablero_Profesor_Panel;
 
 /**
@@ -56,7 +57,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
     public Tareas_Profesor_Panel() {
         initComponents();
         Iniciar_Componentes();
-        //Obtener_Tareas();
     }
 
     /**
@@ -387,78 +387,120 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         }
     }
     
-    private void Agregar_Tarea_Por_Calificar(String nombre_Tarea, String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Estudiante,
-            String nombre_Estudiante, String fecha_Creacion, String fecha_Entregada, String fecha_Entrega, String _id){
+    private void Agregar_Tarea_Por_Calificar(TareasPorCalificarModel tareasPorCalificarModel){
         
+        DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        URL url_Imagen;
+        
         Image imagen;
         ImageIcon icono;
         
-        try {
-           
-            url_Imagen = new URL(ruta_Imagen_Curso);
-            imagen = ImageIO.read(url_Imagen);
-            icono = new ImageIcon(imagen);
+        String id = CourseRoom.Utilerias().Concatenar("Tarea_Por_Calificar_", tareasPorCalificarModel.Id_Tarea());
+        
+        celda = new Celda_Renderer(tareasPorCalificarModel.Nombre(),id);
+        celdas[0] = celda;
+        
+        byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(tareasPorCalificarModel.Id_Curso());
+        
+        if (bytes_Imagen != null){
             
-            celda = new Celda_Renderer(nombre_Tarea,_id);
-            celdas[0] = celda;
-            celda = new Celda_Renderer(icono, nombre_Curso, _id);
+            if(bytes_Imagen.length > 0){
+            
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                if(imagen != null){
+
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tareasPorCalificarModel.Nombre_Curso(), id);
+                    celdas[1] = celda;
+                    
+                    imagen.flush();
+                }
+            }
+            else{
+                celda = new Celda_Renderer(tareasPorCalificarModel.Nombre_Curso(), id);
+                celdas[1] = celda;
+            }
+            
+        }else{
+            celda = new Celda_Renderer(tareasPorCalificarModel.Nombre_Curso(), id);
             celdas[1] = celda;
+        }
+        
+        bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(tareasPorCalificarModel.Id_Usuario());
+        
+        if (bytes_Imagen != null){
             
-            url_Imagen = new URL(ruta_Imagen_Estudiante);
-            imagen = ImageIO.read(url_Imagen);
+            if(bytes_Imagen.length > 0){
             
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono,nombre_Estudiante, _id);
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                if(imagen != null){
+
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tareasPorCalificarModel.Nombre_Completo(), id);
+                    celdas[2] = celda;
+                    
+                    imagen.flush();
+                }
+            }
+            else{
+                celda = new Celda_Renderer(tareasPorCalificarModel.Nombre_Completo(), id);
+                celdas[2] = celda;
+            }
+            
+        }else{
+            celda = new Celda_Renderer(tareasPorCalificarModel.Nombre_Completo(), id);
             celdas[2] = celda;
-            celda = new Celda_Renderer(fecha_Entregada,_id);
-            celdas[3] = celda;
-            celda = new Celda_Renderer(fecha_Entrega, _id);
-            celdas[4] = celda;
-            
-//            Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel =
-//                    new Tarea_Por_Calificar_Profesor_Panel(nombre_Tarea,nombre_Curso,
-//                            fecha_Creacion, fecha_Entrega, fecha_Entregada, "Por Calificar");
-//            
-//            tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
-            
-            DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
-            modelo.addRow(celdas);
-            
-//            Tablero_Profesor_Panel.Agregar_Vista(tarea_Entregada_Profesor_Panel, _id);
-            
-            imagen.flush();
-            
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
         }
-           
+       
+        celda = new Celda_Renderer(tareasPorCalificarModel.Fecha_Subida(),id);
+        celdas[3] = celda;
+        celda = new Celda_Renderer(tareasPorCalificarModel.Fecha_Entrega(), id);
+        celdas[4] = celda;
+        
+        modelo.addRow(celdas);
+        
+        Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel =
+                new Tarea_Por_Calificar_Profesor_Panel(tareasPorCalificarModel.Id_Tarea());
+
+        tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
+
+        Tablero_Profesor_Panel.Agregar_Vista(tarea_Entregada_Profesor_Panel, id);
+
     }
+ 
     
-    /*private void Obtener_Tareas(){
+    private void Obtener_Tareas_Por_Calificar(){
         
-        DefaultTableModel modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
-        modelo_Tareas_Creadas.setRowCount(0);
+        // Limpieza:
+        DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
+        modelo.setRowCount(0);
         
-        Tarea_Profesor_Panel tarea_Profesor_Panel;
-        while(!mostrar_Tareas_Lista.is_empty()){
-            tarea_Profesor_Panel  = mostrar_Tareas_Lista.delist();
-            tarea_Profesor_Panel.Retirar_Vista(tarea_Profesor_Panel);
+        Tarea_Por_Calificar_Profesor_Panel tarea_Por_Calificar_Profesor_Panel;
+        while(!tareas_Por_Calificar_Lista.is_empty()){
+            tarea_Por_Calificar_Profesor_Panel = tareas_Por_Calificar_Lista.delist();
+            tarea_Por_Calificar_Profesor_Panel.Limpiar();
+            Tablero_Profesor_Panel.Retirar_Vista(tarea_Por_Calificar_Profesor_Panel);
         }
         
+        // Obtención:
         
-        Lista<TareasEstudianteModel> tareas_Estudiante 
-                = CourseRoom.Solicitudes().Obtener_Tareas_Estudiante(Tablero_Profesor_Panel.Id_Usuario());
+        Lista<TareasPorCalificarModel> response 
+                = CourseRoom.Solicitudes().Obtener_Tareas_Por_Calificar(Tablero_Profesor_Panel.Id_Usuario());
         
-        while(!tareas_Estudiante.is_empty()){
-            Agregar_Tarea(tareas_Estudiante.delist());
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Tarea_Por_Calificar(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Tareas Por Calificar", "No Se Encontraron Tareas Por Calificar");
         }
         
-    }*/
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
@@ -493,32 +535,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         tareas_Creadas_JTable.getTableHeader().setFont(gadugi);
         tareas_Por_Calificar_JTable.getTableHeader().setFont(gadugi);
         
-        DefaultTableModel modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
-        
-        String _id, ruta_Imagen_Curso, ruta_Imagen_Estudiante;
-        String nombre_Tarea,nombre_Curso, nombre_Estudiante, fecha_Creacion, fecha_Entregado, fecha_Entrega, estatus;
-        
-        _id = "Tarea_Por_Calificar_0";
-        ruta_Imagen_Curso = "https://picsum.photos/96/96";
-        ruta_Imagen_Estudiante = "https://i.pravatar.cc/96";
-        nombre_Tarea = CourseRoom.Utilerias().job().title();
-        nombre_Curso = CourseRoom.Utilerias().educator().course();
-        nombre_Estudiante = CourseRoom.Utilerias().name().fullName();
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        fecha_Entregado = CourseRoom.Utilerias().Fecha_Hora_Local();
-        fecha_Entrega = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
-        Agregar_Tarea_Por_Calificar(nombre_Tarea, ruta_Imagen_Curso, nombre_Curso, ruta_Imagen_Estudiante,
-                nombre_Estudiante, fecha_Creacion, fecha_Entregado, fecha_Entrega, _id);
-
-        _id = "Tarea_Creada_0";
-
-        nombre_Tarea = CourseRoom.Utilerias().university().name();
-        nombre_Curso = CourseRoom.Utilerias().educator().course();
-        fecha_Entrega = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
-        estatus = CourseRoom.Utilerias().bool().bool() ? "Asignada" : "Completada";
-
-        Agregar_Tarea_Creada(nombre_Tarea,ruta_Imagen_Curso, nombre_Curso, fecha_Entrega, estatus, _id);
-            
     }
 
     @Override

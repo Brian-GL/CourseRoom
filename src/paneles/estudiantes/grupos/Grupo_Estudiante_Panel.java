@@ -41,8 +41,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -1871,6 +1869,8 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         Colorear_Componentes();
+        
+        Obtener_Datos_Generales_Grupo();
         
     }
 

@@ -59,23 +59,16 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
     private byte carta_Visible;
     private int Id_Tarea;
     
-    public Tarea_Por_Calificar_Profesor_Panel(
-            String nombre_Tarea, 
-            String nombre_Curso,
-            String fecha_Creacion,
-            String fecha_Entrega,
-            String fecha_Entregada,
-            String estatus,
-            int id_Tarea){
+    public Tarea_Por_Calificar_Profesor_Panel(int id_Tarea){
         initComponents();
         
         Id_Tarea = id_Tarea;
-        titulo_JLabel.setText(nombre_Tarea);
-        curso_JLabel.setText(CourseRoom.Utilerias().Concatenar("Del Curso ", nombre_Curso));
-        fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Se entrega el ", fecha_Entrega));
-        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", fecha_Creacion));
-        fecha_Entregado_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entregada el ", fecha_Entregada));
-        estatus_Tarea_JLabel.setText(estatus);
+//        titulo_JLabel.setText(nombre_Tarea);
+//        curso_JLabel.setText(CourseRoom.Utilerias().Concatenar("Del Curso ", nombre_Curso));
+//        fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Se entrega el ", fecha_Entrega));
+//        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", fecha_Creacion));
+//        fecha_Entregado_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entregada el ", fecha_Entregada));
+//        estatus_Tarea_JLabel.setText(estatus);
         
         Iniciar_Componentes();
     }
