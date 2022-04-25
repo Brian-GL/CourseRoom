@@ -24,6 +24,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import modelos.CursosCreadosProfesorModel;
 import paneles.profesores.Tablero_Profesor_Panel;
 
 /**
@@ -80,8 +81,8 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         acciones_JPanel.setOpaque(false);
 
         crear_Curso_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/training.png"))); // NOI18N
-        crear_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         crear_Curso_JButton.setToolTipText("<html><h3>Crear Un<br>Nuevo Curso</h3></html>");
+        crear_Curso_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)crear_Curso_JButton.getIcon()).getImage().flush();
         crear_Curso_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -138,6 +139,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         cursos_Creados_JScrollPane.setOpaque(false);
 
         cursos_Creados_JTable.setAutoCreateRowSorter(true);
+        cursos_Creados_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cursos_Creados_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -145,11 +147,11 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
 
                 },
                 new String [] {
-                    "Curso", "Temáticas", "Creado", "Estatus", "Remover?"
+                    "Curso", "Temáticas", "Creado", "Estatus"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -171,12 +173,26 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                     return super.getColumnClass(column);
                 }
             });
-            cursos_Creados_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             cursos_Creados_JTable.setRowHeight(96);
             cursos_Creados_JTable.setRowMargin(5);
             cursos_Creados_JTable.setShowGrid(true);
             cursos_Creados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
             cursos_Creados_JTable.setRowSorter(new TableRowSorter(cursos_Creados_JTable.getModel()));
+            cursos_Creados_JTable.addMouseListener(new MouseAdapter() {
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (e.getClickCount() == 2) {
+
+                        JTable tabla = (JTable) e.getComponent();
+                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                        int columna = tabla.getSelectedColumn();
+                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
+                        Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
+                    }
+                }
+            });
             cursos_Creados_JScrollPane.setViewportView(cursos_Creados_JTable);
 
             setLayer(contenido_Titulo_JPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -217,7 +233,9 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            SwingUtilities.invokeLater(() -> {
+                Obtener_Cursos_Creados_Profesor();
+            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -290,6 +308,92 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
             CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar El Curso",ex.getMessage());
         }
     }
+    
+    private void Agregar_Curso_Creado(CursosCreadosProfesorModel cursosCreadosProfesorModel){
+        
+        DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        
+        Image imagen;
+        ImageIcon icono;
+        
+        String id = CourseRoom.Utilerias().Concatenar("Agregar_Curso_Creado_", cursosCreadosProfesorModel.Id_Curso());
+        
+        celda = new Celda_Renderer(cursosCreadosProfesorModel.Nombre(),id);
+        celdas[0] = celda;
+        
+        byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(cursosCreadosProfesorModel.Id_Curso());
+        
+        if (bytes_Imagen != null){
+            
+            if(bytes_Imagen.length > 0){
+            
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                if(imagen != null){
+
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,cursosCreadosProfesorModel.Nombre(), id);
+                    celdas[0] = celda;
+                    
+                    imagen.flush();
+                }
+            }
+            else{
+                celda = new Celda_Renderer(cursosCreadosProfesorModel.Nombre(), id);
+                celdas[0] = celda;
+            }
+            
+        }else{
+            celda = new Celda_Renderer(cursosCreadosProfesorModel.Nombre(), id);
+            celdas[0] = celda;
+        }
+        
+        celda = new Celda_Renderer(cursosCreadosProfesorModel.Tematicas(),id);
+        celdas[1] = celda;
+        celda = new Celda_Renderer(cursosCreadosProfesorModel.Fecha_Creacion(),id);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(cursosCreadosProfesorModel.Estatus(),id);
+        celdas[3] = celda;
+        modelo.addRow(celdas);
+        Curso_Profesor_Panel curso_Profesor_Panel =
+                new Curso_Profesor_Panel(cursosCreadosProfesorModel.Id_Curso());
+
+        cursos_Creados_Lista.push_back(curso_Profesor_Panel);
+
+        Tablero_Profesor_Panel.Agregar_Vista(curso_Profesor_Panel, id);
+
+
+    }
+    
+    private void Obtener_Cursos_Creados_Profesor(){
+        
+        // Limpieza:
+        DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Curso_Profesor_Panel curso_Profesor_Panel;
+        while(!cursos_Creados_Lista.is_empty()){
+            curso_Profesor_Panel = cursos_Creados_Lista.delist();
+            curso_Profesor_Panel.Limpiar();
+            Tablero_Profesor_Panel.Retirar_Vista(curso_Profesor_Panel);
+        }
+        
+        // Obtención:
+        
+        Lista<CursosCreadosProfesorModel> response 
+                = CourseRoom.Solicitudes().Obtener_Cursos_Creados_Profesor(Tablero_Profesor_Panel.Id_Usuario());
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Curso_Creado(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Cursos Creados", "No Se Encontraron Cursos Nuevos");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
@@ -310,70 +414,9 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         cursos_Creados_JScrollPane.getViewport().setOpaque(false);
         cursos_Creados_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         cursos_Creados_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-
         cursos_Creados_Lista = new Lista<>();
-
         cursos_Creados_JTable.getTableHeader().setFont(gadugi);
-
-        cursos_Creados_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    if(columna < 4){
-                         DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
-                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-                        Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
-                    }else{
-                        //Remover
-                    }
-                }
-            }
-        });
-        
-        byte[] response = null;
-        
-        try{
-            URL url_Imagen = new URL("https://picsum.photos/500/700");
-
-
-            try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()){
-                byte[] chunk = new byte[1024];
-                int bytesRead;
-                try(InputStream stream = url_Imagen.openStream()){
-
-                    while ((bytesRead = stream.read(chunk)) > 0) {
-                        outputStream.write(chunk, 0, bytesRead);
-                    }
-
-                    response =  outputStream.toByteArray();
-                }
-
-            } catch (IOException e) {
-
-            }
-        
-        } catch (MalformedURLException ex) {
-            
-        }
-        
-        String id, nombre_Curso,  inscripciones, fecha_Creacion, intereses_Tematicas;
-        
-        id = "Curso_Creado_1";
-        
-        nombre_Curso =  CourseRoom.Utilerias().educator().course();
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        intereses_Tematicas = CourseRoom.Utilerias().lorem().words(5).toString();
-        inscripciones = String.valueOf(CourseRoom.Utilerias().number().numberBetween(0, 100));
-        
-        Agregar_Curso_Actual(id, response, nombre_Curso, intereses_Tematicas, fecha_Creacion, inscripciones);
-
-       
+        cursos_Creados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
     }
 
     @Override
