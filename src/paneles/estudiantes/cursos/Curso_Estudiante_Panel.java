@@ -59,9 +59,12 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
+import modelos.DatosGeneralesCursoModel;
+import modelos.DatosGeneralesTareaProfesor;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
+import paneles.profesores.Tablero_Profesor_Panel;
 
 /**
  *
@@ -80,18 +83,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Id_Curso = id_Curso;
         
         ID_Cuestionario = CourseRoom.Utilerias().Concatenar("Cuestionario_Curso_", id_Curso);
-        
-        /*titulo_JLabel.setText(_nombre_Curso);
-        ImageIcon icono = new ImageIcon(_imagen_Curso);
-        imagen_Curso_JLabel.setIcon(icono);
-        icono = new ImageIcon(_imagen_Profesor);
-        imagen_Profesor_JLabel.setIcon(icono);
-        this.ID = _id;
-        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creado El ",_fecha_Creacion)));
-        descripcion_Profesor_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar("<b>",_nombre_Profesor, ":<b><br> <br>",CourseRoom.Utilerias().lorem().paragraph(10))));
-        
-        _imagen_Curso.flush();
-        _imagen_Profesor.flush();*/
         
         Iniciar_Componentes();
     }
@@ -1405,6 +1396,24 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         }
     }
     
+   private void Obtener_Datos_Generales_Curso(){
+        
+        DatosGeneralesCursoModel datosGeneralesCursoModel = 
+                CourseRoom.Solicitudes().Obtener_Datos_Generales_Curso(Id_Curso);
+        
+        if(!datosGeneralesCursoModel.Nombre().isBlank()){
+            titulo_JLabel.setText(datosGeneralesCursoModel.Nombre());
+            /*ImageIcon icono = new ImageIcon(_imagen_Curso);
+            imagen_Curso_JLabel.setIcon(icono);
+            icono = new ImageIcon(_imagen_Profesor);
+            imagen_Profesor_JLabel.setIcon(icono);
+            this.ID = _id;*/
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesCursoModel.Fecha_Creacion()));
+            descripcion_Profesor_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesCursoModel.Descripcion()));
+            //_imagen_Curso.flush();
+            //_imagen_Profesor.flush();
+        } 
+    }
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abandonar_Curso_JButton;
@@ -1466,7 +1475,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         informacion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         informacion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().lorem().paragraph(10)));
         descripcion_Curso_JScrollPane.getViewport().setOpaque(false);
         descripcion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -1482,8 +1490,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
         intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-
-        Agregar_Interes_Tematica(CourseRoom.Utilerias().music().genre());
             
         //Tareas:
         
@@ -1493,17 +1499,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         tareas_JTable.getTableHeader().setFont(gadugi);
         tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        String _id, nombre,  fecha_Creacion, fecha_Entrega, estatus;
-          
-        _id = CourseRoom.Utilerias().Concatenar(this.ID,"_Tarea_0");
-        nombre = CourseRoom.Utilerias().university().name();
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        fecha_Entrega = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
-        estatus = CourseRoom.Utilerias().bool().bool() ? "Entregado" : "Pendiente";
-        
-        Agregar_Tarea(nombre, fecha_Creacion, fecha_Entrega, estatus, _id);
-            
+                    
         //Miembros:
         miembros_JScrollPane.getViewport().setOpaque(false);
         miembros_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1512,14 +1508,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         miembros_JTable.getTableHeader().setFont(gadugi);
 
         miembros_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        String ruta = "https://i.pravatar.cc/96";
-        
-        nombre = CourseRoom.Utilerias().name().fullName();
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
-        
-        Agregar_Miembro(ruta, nombre, fecha_Creacion);
-
+      
         // Chat 
         
         mensajes_Chat_JScrollPane.getViewport().setOpaque(false);
@@ -1641,19 +1630,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         estadisticas_JTable.getTableHeader().setFont(gadugi);
         estadisticas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        String tarea_Calificada,calificacion, promedio_Curso,prediccion, fecha_Calificacion;
-        boolean rumbo;
-        
-        tarea_Calificada = (CourseRoom.Utilerias().job().field());
-        calificacion = (String.valueOf(CourseRoom.Utilerias().number().numberBetween(1, 10)));
-        promedio_Curso = (String.valueOf(CourseRoom.Utilerias().number().randomDouble(2, 1, 100)));
-        prediccion = (String.valueOf(CourseRoom.Utilerias().number().randomDouble(2, 1, 100)));
-        fecha_Calificacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        rumbo = CourseRoom.Utilerias().bool().bool();
-
-        Agregar_Estadistica(tarea_Calificada, calificacion, promedio_Curso, prediccion, rumbo, fecha_Calificacion);
-        
-       
         Colorear_Componentes();
     }
 
