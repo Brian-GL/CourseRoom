@@ -981,7 +981,6 @@ public class Solicitudes {
 
     }
 
-    
     public Lista<GruposModel> Buscar_Grupos(String busqueda, int id_Usuario){
         Lista<GruposModel> response = new Lista<>();
         
