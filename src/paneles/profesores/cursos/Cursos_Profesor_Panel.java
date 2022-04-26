@@ -312,7 +312,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
     private void Agregar_Curso_Creado(CursosCreadosProfesorModel cursosCreadosProfesorModel){
         
         DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
         Celda_Renderer celda;
         
         Image imagen;

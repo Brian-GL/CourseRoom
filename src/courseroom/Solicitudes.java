@@ -2512,13 +2512,14 @@ public class Solicitudes {
         return response;  
     }
     
-    public Lista<CursosModel> Obtener_Cursos_Nuevos(){
+    public Lista<CursosModel> Obtener_Cursos_Nuevos(int id_Usuario){
         
         Lista<CursosModel> response = new Lista<>();
         
         try {
             Vector<Object> parametros = new Vector<>();
             
+            parametros.add(id_Usuario);
             parametros.add(CourseRoom.Utilerias().MiUidd());
             parametros.add(CourseRoom.Utilerias().MiIP());
             
