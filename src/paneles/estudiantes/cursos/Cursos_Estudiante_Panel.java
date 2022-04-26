@@ -42,6 +42,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
+import modelos.CursosModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
 /**
@@ -646,8 +647,12 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
             if (longitud > 99) {
             buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Warning!!!","La Busqueda De Cursos<br>Rebasa Los 500 Caracteres");
-          }
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Cursos<br>Rebasa Los 100 Caracteres");
+          }else{
+                SwingUtilities.invokeLater(() -> {
+                    Buscar_Cursos(buscar_JTextField.getText());
+                });
+            }
         }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
 
@@ -790,186 +795,511 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         modelo_Cursos_Actuales.addRow(celdas);
     }
-    
-    
-    private void Agregar_Curso_Actual(String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Profesor, String nombre_Profesor,
-            String intereses_Tematicas, String fecha_Creacion, String puntuacion, String id){
+       
+    private void Buscar_Cursos(String busqueda){
         
-        URL url_Imagen;
-        Image obtener_Imagen_Curso, obtener_Imagen_Profesor;
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-        Celda_Renderer celda;
-        ImageIcon icono;
-        Image imagen;
+        DefaultTableModel modelo = (DefaultTableModel) buscar_Cursos_JTable.getModel();
+        modelo.setRowCount(0);
         
-        try {
-            
-            url_Imagen = new URL(ruta_Imagen_Curso);
-            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
-            url_Imagen = new URL(ruta_Imagen_Profesor);
-            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
-            imagen = obtener_Imagen_Curso.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono, nombre_Curso, id);
-            celdas[0] = celda;
-            imagen = obtener_Imagen_Profesor.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono,nombre_Profesor, id);
-            celdas[1] = celda;
-            celda = new Celda_Renderer(intereses_Tematicas, id);
-            celdas[2] = celda;
-            celda = new Celda_Renderer(fecha_Creacion, id);
-            celdas[3] = celda;
-            celda = new Celda_Renderer(puntuacion, id);
-            celdas[4] = celda;
-            Curso_Estudiante_Panel curso_Estudiante_Panel
-                    = new Curso_Estudiante_Panel(/*nombre_Curso, obtener_Imagen_Curso,
-                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id,*/-1);
-            mostrar_Cursos_Actuales_Lista.push_back(curso_Estudiante_Panel);
-            Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
-            modelo_Cursos_Actuales.addRow(celdas);
-            id_Curso_Actual++;
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
+        Curso_Estudiante_Panel curso_Estudiante_Panel;
+        while(!buscar_Cursos_Lista.is_empty()){
+            curso_Estudiante_Panel = buscar_Cursos_Lista.delist();
+            Tablero_Estudiante_Panel.Retirar_Vista(curso_Estudiante_Panel);
+            curso_Estudiante_Panel.Limpiar();
         }
-    }
-    
-    private void Agregar_Curso_Finalizado(String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Profesor, String nombre_Profesor,
-            String intereses_Tematicas, String fecha_Creacion, String puntuacion, String id){
-        
-        URL url_Imagen;
-        Image obtener_Imagen_Curso, obtener_Imagen_Profesor;
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-        Celda_Renderer celda;
-        ImageIcon icono;
-        Image imagen;
-        
-        try {
-            
-            url_Imagen = new URL(ruta_Imagen_Curso);
-            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
-            url_Imagen = new URL(ruta_Imagen_Profesor);
-            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
-            imagen = obtener_Imagen_Curso.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono, nombre_Curso, id);
-            celdas[0] = celda;
-            imagen = obtener_Imagen_Profesor.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono,nombre_Profesor, id);
-            celdas[1] = celda;
-            celda = new Celda_Renderer(intereses_Tematicas, id);
-            celdas[2] = celda;
-            celda = new Celda_Renderer(fecha_Creacion, id);
-            celdas[3] = celda;
-            celda = new Celda_Renderer(puntuacion, id);
-            celdas[4] = celda;
-            Curso_Estudiante_Panel curso_Estudiante_Panel
-                    = new Curso_Estudiante_Panel(/*nombre_Curso, obtener_Imagen_Curso,
-                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id,*/-1);
-            mostrar_Cursos_Finalizados_Lista.push_back(curso_Estudiante_Panel);
-            Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
-            DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
-            modelo.addRow(celdas);
-            id_Curso_Actual++;
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
-        }
-    }
-    
-    private void Agregar_Curso_Recomendado(String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Profesor, String nombre_Profesor,
-            String intereses_Tematicas, String fecha_Creacion, String puntuacion, String id, String _id_Curso_Actual){
-        
-        URL url_Imagen;
-        Image obtener_Imagen_Curso, obtener_Imagen_Profesor;
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-        Celda_Renderer celda;
-        ImageIcon icono;
-        Image imagen;
-        
-        try {
-            
-            url_Imagen = new URL(ruta_Imagen_Curso);
-            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
-            url_Imagen = new URL(ruta_Imagen_Profesor);
-            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
-            imagen = obtener_Imagen_Curso.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono, nombre_Curso, id);
-            celdas[0] = celda;
-            imagen = obtener_Imagen_Profesor.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono,nombre_Profesor, id);
-            celdas[1] = celda;
-            celda = new Celda_Renderer(intereses_Tematicas, id);
-            celdas[2] = celda;
-            celda = new Celda_Renderer(fecha_Creacion, id);
-            celdas[3] = celda;
-            celda = new Celda_Renderer(puntuacion, id);
-            celdas[4] = celda;
-            Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel
-                    = new Vista_Previa_Curso_Estudiante_Panel(/*nombre_Curso, obtener_Imagen_Curso,
-                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id, false, _id_Curso_Actual*/-1);
-            mostrar_Cursos_Recomendados_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
-            Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
-            modelo_Cursos_Recomendados.addRow(celdas);
-            id_Curso_Actual++;
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
-        }
-    }
-    
-       private void Agregar_Curso_Nuevo(String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Profesor, String nombre_Profesor,
-            String intereses_Tematicas, String fecha_Creacion, String puntuacion, String id, String _id_Curso_Actual){
-        
-        URL url_Imagen;
-        Image obtener_Imagen_Curso, obtener_Imagen_Profesor;
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-        Celda_Renderer celda;
-        ImageIcon icono;
-        Image imagen;
-        
-        try {
-            
-            url_Imagen = new URL(ruta_Imagen_Curso);
-            obtener_Imagen_Curso = ImageIO.read(url_Imagen);
-            url_Imagen = new URL(ruta_Imagen_Profesor);
-            obtener_Imagen_Profesor = ImageIO.read(url_Imagen);
-            imagen = obtener_Imagen_Curso.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono, nombre_Curso, id);
-            celdas[0] = celda;
-            imagen = obtener_Imagen_Profesor.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono,nombre_Profesor, id);
-            celdas[1] = celda;
-            celda = new Celda_Renderer(intereses_Tematicas, id);
-            celdas[2] = celda;
-            celda = new Celda_Renderer(fecha_Creacion, id);
-            celdas[3] = celda;
-            celda = new Celda_Renderer(puntuacion, id);
-            celdas[4] = celda;
-            Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel
-                    = new Vista_Previa_Curso_Estudiante_Panel(/*nombre_Curso, obtener_Imagen_Curso,
-                            nombre_Profesor, obtener_Imagen_Profesor, fecha_Creacion,  id, true, _id_Curso_Actual*/-1);
-            mostrar_Cursos_Nuevos_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
-            Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
-            modelo_Cursos_Nuevos.addRow(celdas);
-            id_Curso_Actual++;
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            
-        }
+        SwingUtilities.invokeLater(() -> {
+            Lista<CursosModel> lista
+                    = CourseRoom.Solicitudes().Buscar_Cursos(busqueda);
 
+            if (!lista.is_empty()) {
+                while (!lista.is_empty()) {
+                    Agregar_Curso_Busqueda(lista.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");
+            }
+        });
     }
+    
+    private void Agregar_Curso_Actual(CursosModel cursosModel){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        String puntuacion = String.valueOf(cursosModel.Puntuacion());
+        
+        Image imagen;
+        ImageIcon icono;
+        
+        String id = CourseRoom.Utilerias().Concatenar("Agregar_Curso_Actual_", cursosModel.Id_Curso());
+        
+        celda = new Celda_Renderer(cursosModel.Nombre(),id);
+        celdas[0] = celda;
+        
+        byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(cursosModel.Id_Curso());
+        
+        if (bytes_Imagen != null){
+            
+            if(bytes_Imagen.length > 0){
+            
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+                if(imagen != null){
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,cursosModel.Nombre(), id);
+                    celdas[0] = celda;
+                    
+                    imagen.flush();
+                }
+            }
+            else{
+                celda = new Celda_Renderer(cursosModel.Nombre(), id);
+                celdas[0] = celda;
+            }
+        }else{
+            celda = new Celda_Renderer(cursosModel.Nombre(), id);
+            celdas[0] = celda;
+        }
+        
+        celda = new Celda_Renderer(cursosModel.Nombre_Completo(),id);
+        celdas[1] = celda;
+        
+        bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(cursosModel.Id_Usuario());
+        
+        if (bytes_Imagen != null){
+            
+            if(bytes_Imagen.length > 0){
+            
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+                if(imagen != null){
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,cursosModel.Nombre_Completo(), id);
+                    celdas[1] = celda;
+                    
+                    imagen.flush();
+                }
+            }
+            else{
+                celda = new Celda_Renderer(cursosModel.Nombre_Completo(), id);
+                celdas[1] = celda;
+            }
+        }else{
+            celda = new Celda_Renderer(cursosModel.Nombre_Completo(), id);
+            celdas[1] = celda;
+        }
+        
+        celda = new Celda_Renderer(cursosModel.Lista_Tematicas(),id);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(cursosModel.Fecha_Creacion(),id);
+        celdas[3] = celda;
+        celda = new Celda_Renderer(puntuacion,id);
+        celdas[4] = celda;
+        modelo.addRow(celdas);
+        Curso_Estudiante_Panel curso_Estudiante_Panel =
+                new Curso_Estudiante_Panel(cursosModel.Id_Curso());
+        mostrar_Cursos_Actuales_Lista.push_back(curso_Estudiante_Panel);
+        Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
+    }
+    
+    private void Obtener_Cursos_Actuales(){
+        
+        // Limpieza:
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Curso_Estudiante_Panel curso_Estudiante_Panel;
+        while(!mostrar_Cursos_Actuales_Lista.is_empty()){
+            curso_Estudiante_Panel = mostrar_Cursos_Actuales_Lista.delist();
+            curso_Estudiante_Panel.Limpiar();
+            Tablero_Estudiante_Panel.Retirar_Vista(curso_Estudiante_Panel);
+        }
+        
+        // Obtención:
+        Lista<CursosModel> response 
+                = CourseRoom.Solicitudes().Obtener_Cursos_Actuales(Tablero_Estudiante_Panel.Id_Usuario());
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Curso_Actual(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Cursos Actuales", "No Se Encontraron Cursos Actuales");
+        }
+        
+    }
+    
+    private boolean Existe_Curso_Actual(int id_Curso){
+        Nodo<Curso_Estudiante_Panel> first = mostrar_Cursos_Actuales_Lista.front();
+        Nodo<Curso_Estudiante_Panel> last = mostrar_Cursos_Actuales_Lista.back();
 
+        int middle_index = (mostrar_Cursos_Actuales_Lista.size())/2;
+
+        if(middle_index % 2 == 0){
+            for (int i = 0; i < middle_index; i++) {
+
+                if (first.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+
+                if (last.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                first = first.next();
+                last = last.previous();
+            }
+            return false;
+        }else{
+            for(int i = 0; i < middle_index;i++) {
+
+                if(first.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                if(last.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                first = first.next();
+                last = last.previous();
+            }
+            return mostrar_Cursos_Actuales_Lista.medium().Id_Curso() == id_Curso;
+        } 
+    }
+    
+    private boolean Existe_Curso_Recomendado(int id_Curso){
+        Nodo<Vista_Previa_Curso_Estudiante_Panel> first = mostrar_Cursos_Recomendados_Lista.front();
+        Nodo<Vista_Previa_Curso_Estudiante_Panel> last = mostrar_Cursos_Recomendados_Lista.back();
+
+        int middle_index = (mostrar_Cursos_Recomendados_Lista.size())/2;
+
+        if(middle_index % 2 == 0){
+            for (int i = 0; i < middle_index; i++) {
+
+                if (first.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+
+                if (last.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                first = first.next();
+                last = last.previous();
+            }
+            return false;
+        }else{
+            for(int i = 0; i < middle_index;i++) {
+
+                if(first.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                if(last.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                first = first.next();
+                last = last.previous();
+            }
+            return mostrar_Cursos_Recomendados_Lista.medium().Id_Curso() == id_Curso;
+        } 
+    }
+    
+    private void Agregar_Curso_Nuevo(CursosModel cursosModel){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Nuevos_JTable.getModel();
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        String puntuacion = String.valueOf(cursosModel.Puntuacion());
+        
+        Image imagen;
+        ImageIcon icono;
+        
+        String id = CourseRoom.Utilerias().Concatenar("Agregar_Curso_Nuevo_", cursosModel.Id_Curso());
+        
+        celda = new Celda_Renderer(cursosModel.Nombre(),id);
+        celdas[0] = celda;
+        
+        byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(cursosModel.Id_Curso());
+        
+        if (bytes_Imagen != null){
+            
+            if(bytes_Imagen.length > 0){
+            
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                if(imagen != null){
+
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,cursosModel.Nombre(), id);
+                    celdas[0] = celda;
+                    
+                    imagen.flush();
+                }
+            }
+            else{
+                celda = new Celda_Renderer(cursosModel.Nombre(), id);
+                celdas[0] = celda;
+            }
+        }else{
+            celda = new Celda_Renderer(cursosModel.Nombre(), id);
+            celdas[0] = celda;
+        }
+        
+        celda = new Celda_Renderer(cursosModel.Nombre_Completo(),id);
+        celdas[1] = celda;
+        
+        bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(cursosModel.Id_Usuario());
+        
+        if (bytes_Imagen != null){
+            
+            if(bytes_Imagen.length > 0){
+            
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                if(imagen != null){
+
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,cursosModel.Nombre_Completo(), id);
+                    celdas[1] = celda;
+                    
+                    imagen.flush();
+                }
+            }
+            else{
+                celda = new Celda_Renderer(cursosModel.Nombre_Completo(), id);
+                celdas[1] = celda;
+            }
+        }else{
+            celda = new Celda_Renderer(cursosModel.Nombre_Completo(), id);
+            celdas[1] = celda;
+        }
+        
+        celda = new Celda_Renderer(cursosModel.Lista_Tematicas(),id);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(cursosModel.Fecha_Creacion(),id);
+        celdas[3] = celda;
+        celda = new Celda_Renderer(puntuacion,id);
+        celdas[4] = celda;
+        modelo.addRow(celdas);
+        Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel =
+                new Vista_Previa_Curso_Estudiante_Panel(cursosModel.Id_Curso());
+
+        mostrar_Cursos_Nuevos_Lista.push_back(vista_Previa_Curso_Estudiante_Panel);
+
+        Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
+    }
+    
+    private void Obtener_Cursos_Nuevos(){
+        
+        // Limpieza:
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Nuevos_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel;
+        while(!mostrar_Cursos_Nuevos_Lista.is_empty()){
+            vista_Previa_Curso_Estudiante_Panel = mostrar_Cursos_Nuevos_Lista.delist();
+            vista_Previa_Curso_Estudiante_Panel.Limpiar();
+            Tablero_Estudiante_Panel.Retirar_Vista(vista_Previa_Curso_Estudiante_Panel);
+        }
+        
+        // Obtención:
+        Lista<CursosModel> response 
+                = CourseRoom.Solicitudes().Obtener_Cursos_Nuevos(Tablero_Estudiante_Panel.Id_Usuario());
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Curso_Nuevo(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Cursos Nuevos", "No Se Encontraron Cursos Nuevos");
+        }
+    }
+    
+    private boolean Existe_Curso_Nuevo(int id_Curso){
+        Nodo<Vista_Previa_Curso_Estudiante_Panel> first = mostrar_Cursos_Nuevos_Lista.front();
+        Nodo<Vista_Previa_Curso_Estudiante_Panel> last = mostrar_Cursos_Nuevos_Lista.back();
+
+        int middle_index = (mostrar_Cursos_Nuevos_Lista.size())/2;
+
+        if(middle_index % 2 == 0){
+            for (int i = 0; i < middle_index; i++) {
+
+                if (first.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+
+                if (last.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                first = first.next();
+                last = last.previous();
+            }
+            return false;
+        }else{
+            for(int i = 0; i < middle_index;i++) {
+
+                if(first.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                if(last.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                first = first.next();
+                last = last.previous();
+            }
+            return mostrar_Cursos_Nuevos_Lista.medium().Id_Curso() == id_Curso;
+        } 
+    }
+    
+    private void Agregar_Curso_Finalizado(CursosModel cursosModel){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        String puntuacion = String.valueOf(cursosModel.Puntuacion());
+        
+        Image imagen;
+        ImageIcon icono;
+        
+        String id = CourseRoom.Utilerias().Concatenar("Agregar_Curso_Finalizado_", cursosModel.Id_Curso());
+        
+        celda = new Celda_Renderer(cursosModel.Nombre(),id);
+        celdas[0] = celda;
+        
+        byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(cursosModel.Id_Curso());
+        
+        if (bytes_Imagen != null){
+            
+            if(bytes_Imagen.length > 0){
+            
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                if(imagen != null){
+
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,cursosModel.Nombre(), id);
+                    celdas[0] = celda;
+                    
+                    imagen.flush();
+                }
+            }
+            else{
+                celda = new Celda_Renderer(cursosModel.Nombre(), id);
+                celdas[0] = celda;
+            }
+        }else{
+            celda = new Celda_Renderer(cursosModel.Nombre(), id);
+            celdas[0] = celda;
+        }
+        
+        celda = new Celda_Renderer(cursosModel.Nombre_Completo(),id);
+        celdas[1] = celda;
+        
+        bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(cursosModel.Id_Usuario());
+        
+        if (bytes_Imagen != null){
+            
+            if(bytes_Imagen.length > 0){
+            
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                if(imagen != null){
+
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,cursosModel.Nombre_Completo(), id);
+                    celdas[1] = celda;
+                    
+                    imagen.flush();
+                }
+            }
+            else{
+                celda = new Celda_Renderer(cursosModel.Nombre_Completo(), id);
+                celdas[1] = celda;
+            }
+        }else{
+            celda = new Celda_Renderer(cursosModel.Nombre_Completo(), id);
+            celdas[1] = celda;
+        }
+        
+        celda = new Celda_Renderer(cursosModel.Lista_Tematicas(),id);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(cursosModel.Fecha_Creacion(),id);
+        celdas[3] = celda;
+        celda = new Celda_Renderer(puntuacion,id);
+        celdas[4] = celda;
+        modelo.addRow(celdas);
+        Curso_Estudiante_Panel curso_Estudiante_Panel =
+                new Curso_Estudiante_Panel(cursosModel.Id_Curso());
+
+        mostrar_Cursos_Finalizados_Lista.push_back(curso_Estudiante_Panel);
+
+        Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
+    }
+    
+    private void Obtener_Cursos_Finalizados(){
+        
+        // Limpieza:
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Curso_Estudiante_Panel curso_Estudiante_Panel;
+        while(!mostrar_Cursos_Finalizados_Lista.is_empty()){
+            curso_Estudiante_Panel = mostrar_Cursos_Finalizados_Lista.delist();
+            curso_Estudiante_Panel.Limpiar();
+            Tablero_Estudiante_Panel.Retirar_Vista(curso_Estudiante_Panel);
+        }
+        
+        // Obtención:
+        
+        Lista<CursosModel> response 
+                = CourseRoom.Solicitudes().Obtener_Cursos_Finalizados(Tablero_Estudiante_Panel.Id_Usuario());
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Curso_Finalizado(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Cursos Creados", "No Se Encontraron Cursos Nuevos");
+        }
+    }
+    
+    private boolean Existe_Curso_Finalizado(int id_Curso){
+        Nodo<Curso_Estudiante_Panel> first = mostrar_Cursos_Finalizados_Lista.front();
+        Nodo<Curso_Estudiante_Panel> last = mostrar_Cursos_Finalizados_Lista.back();
+
+        int middle_index = (mostrar_Cursos_Finalizados_Lista.size())/2;
+
+        if(middle_index % 2 == 0){
+            for (int i = 0; i < middle_index; i++) {
+
+                if (first.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+
+                if (last.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                first = first.next();
+                last = last.previous();
+            }
+            return false;
+        }else{
+            for(int i = 0; i < middle_index;i++) {
+
+                if(first.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                if(last.element().Id_Curso() == id_Curso){
+                    return true;
+                }
+                first = first.next();
+                last = last.previous();
+            }
+            return mostrar_Cursos_Finalizados_Lista.medium().Id_Curso() == id_Curso;
+        } 
+    }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JButton actualizar_JButton;
