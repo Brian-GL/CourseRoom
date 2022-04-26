@@ -1048,7 +1048,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     
     private void Agregar_Mensaje_Tarea(MensajesModel mensajesModel){
         Celda_Renderer[] celdas = new Celda_Renderer[3];
-  
+        String id = String.valueOf(mensajesModel.Id_Mensaje());
         Celda_Renderer celda;
         celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
         celdas[0] = celda;
@@ -1082,7 +1082,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             estatus_Tarea_JLabel.setText(datosGeneralesTarea.Estatus());
             descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTarea.Descripcion()));
         }
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

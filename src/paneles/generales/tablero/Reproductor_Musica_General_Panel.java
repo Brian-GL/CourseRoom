@@ -90,7 +90,6 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         
     }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1079,7 +1078,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
                         
-                        CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
+                        SwingUtilities.invokeLater(() -> {
+                            CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
+                        });
                         progreso_JSlider.setEnabled(true);
                         
                     }
@@ -1157,7 +1158,10 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
                         
-                        CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
+                        SwingUtilities.invokeLater(() -> {
+                            CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
+                        });
+                        
                         progreso_JSlider.setEnabled(true);
                     }
                     
