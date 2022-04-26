@@ -45,7 +45,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.DatosGeneralesTareaPendienteModel;
-import modelos.DatosGeneralesTareaProfesor;
+import modelos.DatosGeneralesTareaProfesorModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -1054,17 +1054,17 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
     
     private void Obtener_Datos_Generales_Tarea_Pendiente(){
         
-        DatosGeneralesTareaProfesor datosGeneralesTareaProfesor = 
+        DatosGeneralesTareaProfesorModel datosGeneralesTareaProfesorModel = 
                 CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea_Profesor(Id_Tarea,Tablero_Profesor_Panel.Id_Usuario());
         
-        if(!datosGeneralesTareaProfesor.Nombre().isBlank()){
-            titulo_JLabel.setText(datosGeneralesTareaProfesor.Nombre());
-            //curso_JLabel.setText(datosGeneralesTareaProfesor.);
-            fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", datosGeneralesTareaProfesor.Fecha_Entrega()));
-            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesor.Fecha_Creacion()));
-            //fecha_Entregado_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entregada el ", datosGeneralesTareaProfesor.fecha_Entregada));
-            estatus_Tarea_JLabel.setText(datosGeneralesTareaProfesor.Estatus());
-            descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaProfesor.Descripcion()));
+        if(!datosGeneralesTareaProfesorModel.Nombre().isBlank()){
+            titulo_JLabel.setText(datosGeneralesTareaProfesorModel.Nombre());
+            curso_JLabel.setText(datosGeneralesTareaProfesorModel.Nombre_Curso());
+            fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", datosGeneralesTareaProfesorModel.Fecha_Entrega()));
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesorModel.Fecha_Creacion()));
+            //fecha_Entregado_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entregada el ", datosGeneralesTareaProfesorModel.fecha_Entregada));
+            estatus_Tarea_JLabel.setText(datosGeneralesTareaProfesorModel.Estatus());
+            descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaProfesorModel.Descripcion()));
         } 
     }
     

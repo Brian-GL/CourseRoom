@@ -60,7 +60,7 @@ import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import modelos.DatosGeneralesCursoModel;
-import modelos.DatosGeneralesTareaProfesor;
+import modelos.DatosGeneralesTareaProfesorModel;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
