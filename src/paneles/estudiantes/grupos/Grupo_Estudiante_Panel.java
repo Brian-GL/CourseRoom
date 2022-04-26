@@ -1522,7 +1522,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             imagen.flush();
             
             Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel =
-                    new Tarea_Pendiente_Estudiante_Panel(id_Tarea_Pendiente,Id_Grupo,Id_Vista);
+                    new Tarea_Pendiente_Estudiante_Panel(id_Tarea_Pendiente,Id_Vista);
             
             tareas_Pendientes_JTable.setRowHeight(modelo.getRowCount()-1, 
                     CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
@@ -1587,7 +1587,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             imagen.flush();
             
             Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel =
-                    new Tarea_Pendiente_Estudiante_Panel(tareasPendientesGrupoModel.Id_Tarea_Pendiente(), Id_Grupo, this.Id_Vista);
+                    new Tarea_Pendiente_Estudiante_Panel(tareasPendientesGrupoModel.Id_Tarea_Pendiente(), this.Id_Vista);
             
             tareas_Pendientes_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
             Tablero_Estudiante_Panel.Agregar_Vista(tarea_Pendiente_Estudiante_Panel, Id_Tarea_Pendiente);

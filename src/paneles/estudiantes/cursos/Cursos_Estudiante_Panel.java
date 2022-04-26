@@ -35,10 +35,6 @@ import datos.interfaces.Carta_Visibilidad_Interface;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
@@ -63,7 +59,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     private static DefaultTableModel modelo_Cursos_Nuevos;
     
     private byte carta_Visible;
-    private static int id_Curso_Actual;
     
     /**
      * Creates new form Cursos_Estudiante_Panel
@@ -1417,7 +1412,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     public void Iniciar_Componentes() {
         
         carta_Visible = 0;
-        id_Curso_Actual = 0;
         
         //Buscar cursos:
         

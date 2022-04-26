@@ -17,7 +17,6 @@
  */
 package paneles.estudiantes.grupos;
 
-import clases.Celda_Renderer;
 import javax.swing.SwingUtilities;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 import courseroom.CourseRoom;
@@ -38,14 +37,15 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
     
     private String grupo_ID;
-    private int Id_Tarea_Pendiente, Id_Grupo;
+    private int Id_Tarea_Pendiente;
+    
+    
     /**
      * Creates new form Tarea_Pendiente_Estudiante_Panel
      */
-    public Tarea_Pendiente_Estudiante_Panel(int id_Tarea_Pendiente, int id_Grupo, String id_vista_Grupo) {
+    public Tarea_Pendiente_Estudiante_Panel(int id_Tarea_Pendiente, String id_vista_Grupo) {
         initComponents();
-
-        this.Id_Grupo = id_Grupo;        
+  
         this.Id_Tarea_Pendiente = id_Tarea_Pendiente;
         this.grupo_ID = id_vista_Grupo;
         

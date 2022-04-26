@@ -44,6 +44,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.DatosGeneralesTareaModel;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
@@ -1067,6 +1068,22 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
                 CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
+    
+    private void Obtener_Datos_Generales_Tarea(){
+        
+        DatosGeneralesTareaModel datosGeneralesTarea = 
+                CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea(Id_Tarea, Tablero_Estudiante_Panel.Id_Usuario());
+        
+        if(!datosGeneralesTarea.Nombre().isBlank()){
+            titulo_JLabel.setText(datosGeneralesTarea.Nombre());
+            //curso_JLabel.setText(datosGeneralesTarea.);
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTarea.Fecha_Creacion()));
+            fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", datosGeneralesTarea.Fecha_Entrega()));
+            //estatus_Tarea_JLabel.setText(datosGeneralesTarea.);
+            descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTarea.Descripcion()));
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
@@ -1132,23 +1149,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
         retroalimentacion_JTable.getTableHeader().setFont(gadugi);
         retroalimentacion_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-
-        String retroalimentacion, fecha_Creacion, nombre_Archivo, ruta;
-        
-        retroalimentacion = CourseRoom.Utilerias().lorem().paragraph(5);
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        nombre_Archivo = CourseRoom.Utilerias().file().fileName();
-        ruta = CourseRoom.Utilerias().internet().url();
-        
-        Agregar_Retroalimentacion(retroalimentacion, fecha_Creacion, nombre_Archivo, ruta);
-        
-        nombre_Archivo = CourseRoom.Utilerias().file().fileName();
-        ruta = CourseRoom.Utilerias().internet().url();
-        
-        Agregar_Archivo_Adjunto(nombre_Archivo, ruta, fecha_Creacion);
-           
-        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(
-                CourseRoom.Utilerias().Concatenar(descripcion_JTextPane.getText() +  "\n\n",CourseRoom.Utilerias().lorem().paragraph(20))));
         
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1165,11 +1165,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
        
         Colorear_Componentes();
         
-//        titulo_JLabel.setText(nombre_Tarea);
-//        curso_JLabel.setText(nombre_Curso);
-//        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", fecha_Entrega));
-//        fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", fecha_Entrega));
-//        estatus_Tarea_JLabel.setText(estatus);
+
     }
 
     @Override
