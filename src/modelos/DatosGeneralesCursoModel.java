@@ -22,10 +22,12 @@ package modelos;
  * @author JOEL BR
  */
 public class DatosGeneralesCursoModel {
+    private int id_Profesor;
     private String nombre, descripcion, nombre_Completo, descripcion_Profesor, fecha_Creacion;
 
-    public DatosGeneralesCursoModel(String nombre, String descripcion, String nombre_Completo, String descripcion_Profesor, String fecha_Creacion) {
+    public DatosGeneralesCursoModel(int id_Profesor,String nombre, String descripcion, String nombre_Completo, String descripcion_Profesor, String fecha_Creacion) {
         this.nombre = nombre;
+        this.id_Profesor = id_Profesor;
         this.descripcion = descripcion;
         this.nombre_Completo = nombre_Completo;
         this.descripcion_Profesor = descripcion_Profesor;
@@ -33,6 +35,7 @@ public class DatosGeneralesCursoModel {
     }
 
     public DatosGeneralesCursoModel() {
+        this.id_Profesor = -1;
         this.nombre = this.descripcion = this.nombre_Completo = this.descripcion_Profesor = this.fecha_Creacion = new String();
     }
 
@@ -75,4 +78,14 @@ public class DatosGeneralesCursoModel {
     public void Fecha_Creacion(String fecha_Creacion) {
         this.fecha_Creacion = fecha_Creacion;
     }
+
+    public int Id_Profesor() {
+        return id_Profesor;
+    }
+
+    public void Id_Profesor(int id_Profesor) {
+        this.id_Profesor = id_Profesor;
+    }
+    
+    
 }

@@ -4538,7 +4538,8 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneral
     IN _IdCurso INT
 )
 BEGIN
-    SELECT Cursos.Nombre, Cursos.Descripcion, courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
+    SELECT Cursos.IdProfesor, Cursos.Nombre, Cursos.Descripcion, 
+    courseroom.fn_NombreCompleto(Usuarios.Nombre, Usuarios.Paterno, Usuarios.Materno) AS NombreCompleto,
     Usuarios.Descripcion AS DescripcionProfesor, Cursos.FechaCreacion FROM tb_cursos Cursos
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Cursos.IdProfesor
     WHERE Cursos.IdCurso = _IdCurso AND Cursos.Activo = 1 LIMIT 1;
@@ -6581,4 +6582,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-26 18:11:41
+-- Dump completed on 2022-04-26 18:45:34

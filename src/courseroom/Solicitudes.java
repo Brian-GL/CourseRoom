@@ -2607,8 +2607,9 @@ public class Solicitudes {
 
                Vector<Object> resultado  = (Vector<Object>)respuesta;
 
-               if(resultado.size()== 5){
+               if(resultado.size() == 6){
                    
+                    datosGeneralesCursoModel.Id_Profesor((int)resultado.remove(0));
                     datosGeneralesCursoModel.Nombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesCursoModel.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesCursoModel.Nombre_Completo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));

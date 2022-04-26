@@ -1403,16 +1403,50 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         if(!datosGeneralesCursoModel.Nombre().isBlank()){
             titulo_JLabel.setText(datosGeneralesCursoModel.Nombre());
-            /*ImageIcon icono = new ImageIcon(_imagen_Curso);
-            imagen_Curso_JLabel.setIcon(icono);
-            icono = new ImageIcon(_imagen_Profesor);
-            imagen_Profesor_JLabel.setIcon(icono);
-            this.ID = _id;*/
             fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesCursoModel.Fecha_Creacion()));
-            descripcion_Profesor_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesCursoModel.Descripcion()));
-            //_imagen_Curso.flush();
-            //_imagen_Profesor.flush();
-        } 
+            descripcion_Profesor_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(
+                    CourseRoom.Utilerias().Concatenar(datosGeneralesCursoModel.Nombre_Completo(),":<br>",datosGeneralesCursoModel.Descripcion_Profesor())));
+            descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesCursoModel.Descripcion()));
+            
+            byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(datosGeneralesCursoModel.Id_Profesor());
+            Image imagen;
+            ImageIcon icono;
+            if (bytes_Imagen != null) {
+
+                if (bytes_Imagen.length > 0) {
+
+                    imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                    if (imagen != null) {
+
+                        imagen = imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
+                        icono = new ImageIcon(imagen);
+                        imagen_Profesor_JLabel.setIcon(icono);
+
+                    }
+                }
+            }
+
+            bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(Id_Curso);
+            if (bytes_Imagen != null) {
+
+                if (bytes_Imagen.length > 0) {
+
+                    imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                    if (imagen != null) {
+
+                        imagen = imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
+                        icono = new ImageIcon(imagen);
+                        imagen_Curso_JLabel.setIcon(icono);
+                        imagen.flush();
+
+                    }
+                }
+            }
+            
+        }    
+          
     }
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
