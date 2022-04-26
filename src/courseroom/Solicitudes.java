@@ -2732,7 +2732,7 @@ public class Solicitudes {
         return datosGeneralesTareaModel;
     }
     
-    public DatosGeneralesTareaPendienteModel Obtener_Datos_Generales_Tarea_Pendiente(int id_Tarea_Pendiente, int id_Usuario){
+    public DatosGeneralesTareaPendienteModel Obtener_Datos_Generales_Tarea_Pendiente(int id_Tarea_Pendiente){
         DatosGeneralesTareaPendienteModel datosGeneralesTareaPendienteModel = new DatosGeneralesTareaPendienteModel();
         
         try {
@@ -2740,7 +2740,6 @@ public class Solicitudes {
             Vector parametros = new Vector();
 
             parametros.add(id_Tarea_Pendiente);
-            parametros.add(id_Usuario);
             parametros.add(CourseRoom.Utilerias().MiUidd());
             parametros.add(CourseRoom.Utilerias().MiIP());
 

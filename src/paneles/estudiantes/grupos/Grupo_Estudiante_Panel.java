@@ -41,8 +41,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -1261,7 +1259,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void editar_Nombre_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            editar_Nombre_JTextField.setEnabled(!editar_Nombre_JTextField.isEnabled());
         }
 
     }//GEN-LAST:event_editar_Nombre_JButtonMouseClicked
@@ -1318,7 +1316,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
+            editar_Descripcion_JTextPane.setEnabled(!editar_Descripcion_JTextPane.isEnabled());
         }
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseClicked
 
@@ -1524,7 +1522,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             imagen.flush();
             
             Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel =
-                    new Tarea_Pendiente_Estudiante_Panel(id_Tarea_Pendiente,Id_Vista);
+                    new Tarea_Pendiente_Estudiante_Panel(id_Tarea_Pendiente,Id_Grupo,Id_Vista);
             
             tareas_Pendientes_JTable.setRowHeight(modelo.getRowCount()-1, 
                     CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
@@ -1589,7 +1587,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             imagen.flush();
             
             Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel =
-                    new Tarea_Pendiente_Estudiante_Panel(tareasPendientesGrupoModel.Id_Tarea_Pendiente(), this.Id_Vista);
+                    new Tarea_Pendiente_Estudiante_Panel(tareasPendientesGrupoModel.Id_Tarea_Pendiente(), Id_Grupo, this.Id_Vista);
             
             tareas_Pendientes_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
             Tablero_Estudiante_Panel.Agregar_Vista(tarea_Pendiente_Estudiante_Panel, Id_Tarea_Pendiente);
