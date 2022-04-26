@@ -44,6 +44,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.DatosGeneralesTareaPendienteModel;
+import modelos.DatosGeneralesTareaProfesor;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -1050,7 +1052,21 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         
     }
     
-          
+    private void Obtener_Datos_Generales_Tarea_Pendiente(){
+        
+        DatosGeneralesTareaProfesor datosGeneralesTareaProfesor = 
+                CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea_Profesor(Id_Tarea,Tablero_Profesor_Panel.Id_Usuario());
+        
+        if(!datosGeneralesTareaProfesor.Nombre().isBlank()){
+            titulo_JLabel.setText(datosGeneralesTareaProfesor.Nombre());
+            //curso_JLabel.setText(datosGeneralesTareaProfesor.);
+            fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", datosGeneralesTareaProfesor.Fecha_Entrega()));
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesor.Fecha_Creacion()));
+            //fecha_Entregado_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entregada el ", datosGeneralesTareaProfesor.fecha_Entregada));
+            estatus_Tarea_JLabel.setText(datosGeneralesTareaProfesor.Estatus());
+            descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaProfesor.Descripcion()));
+        } 
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
@@ -1105,9 +1121,6 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         carta_Visible = 0;
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         
-        descripcion_JTextPane.setText(
-                CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().lorem().paragraph(40)));
-        
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         
@@ -1130,12 +1143,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         retroalimentacion_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         archivos_Entregados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        nombres_JLabel.setText(titulo_JLabel.getText());
-        apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(CourseRoom.Utilerias().name().lastName(), " ", CourseRoom.Utilerias().name().lastName()));
-        correo_JLabel.setText(CourseRoom.Utilerias().internet().emailAddress());
-        genero_JLabel.setText(CourseRoom.Utilerias().demographic().sex());
-        tipo_Perfil_JLabel.setText(CourseRoom.Utilerias().bool().bool() ? "Estudiante" : "Profesor");
+
 
         ImageIcon imagen = new ImageIcon(Tablero_Profesor_Panel.Obtener_Imagen_Usuario());
         imagen_Perfil_JLabel.setIcon(imagen);
@@ -1146,10 +1154,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         intereses_Tematicas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
-        intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-
-        Agregar_Interes_Tematica("1", CourseRoom.Utilerias().music().genre());
-        
+        intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());      
       
         Colorear_Componentes();
     }
