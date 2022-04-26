@@ -4475,15 +4475,16 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerCursosNuevos`()
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerCursosNuevos`(IN _IdUsuario INT)
 BEGIN
 	SELECT Cursos.IdCurso, Cursos.Nombre,  Usuarios.IdUsuario, 
     courseroom.fn_NombreCompleto(Usuarios.Nombre,Usuarios.Paterno,Usuarios.Materno) AS NombreCompleto,
     courseroom.fn_ObtenerListaTematicasCurso(Cursos.IdCurso) AS ListaTematicas, Cursos.FechaCreacion, 
     Cursos.Puntuacion FROM tb_cursos Cursos 
     INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Cursos.IdProfesor
-    ORDER BY Cursos.IdCurso DESC LIMIT 50;
-    
+    INNER JOIN tb_cursosusuarios CursosUsuarios ON CursosUsuarios.IdCurso = Cursos.IdCurso
+    WHERE CursosUsuarios.IdUsuario <> _IdUsuario
+    ORDER BY Cursos.IdCurso DESC LIMIT 250;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -6577,4 +6578,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-25 18:58:24
+-- Dump completed on 2022-04-25 20:19:30
