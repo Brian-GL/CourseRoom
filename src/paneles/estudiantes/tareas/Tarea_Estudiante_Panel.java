@@ -1385,7 +1385,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     }
 
     @Override
-public void Enviar_Archivo() {
+    public void Enviar_Archivo() {
         
         Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
@@ -1427,7 +1427,7 @@ public void Enviar_Archivo() {
                                 modelo.insertRow(0,celdas);
                                 mensajes_Chat_JTable.setRowHeight(0, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
                                 icono.flush();
-                                CourseRoom.Utilerias().Mensaje_Informativo("Chat",response.Mensaje());
+                                CourseRoom.Utilerias().Mensaje_Informativo("Tarea",response.Mensaje());
                             }else{
                                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
                             }

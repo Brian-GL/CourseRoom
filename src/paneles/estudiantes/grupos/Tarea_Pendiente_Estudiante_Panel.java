@@ -301,7 +301,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
                     
                     imagen = imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
                     ImageIcon icono = new ImageIcon(imagen);
-                    miem
+                    miembro_A_Cargo_JLabel.setIcon(icono);
                 }
             }
             
