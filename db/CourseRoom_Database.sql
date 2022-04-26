@@ -3000,6 +3000,37 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_BuscarCursos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_BuscarCursos`(
+    IN _Busqueda VARCHAR(100),
+    IN _IdUsuario INT
+)
+BEGIN
+	SELECT Cursos.IdCurso, Cursos.Nombre,  Usuarios.IdUsuario, 
+    courseroom.fn_NombreCompleto(Usuarios.Nombre,Usuarios.Paterno,Usuarios.Materno) AS NombreCompleto,
+    courseroom.fn_ObtenerListaTematicasCurso(Cursos.IdCurso) AS ListaTematicas, Cursos.FechaCreacion, 
+	CAST(CursosUsuarios.Estatus AS CHAR) As Estatus FROM tb_cursos Cursos 
+    INNER JOIN tb_usuarios Usuarios ON Usuarios.IdUsuario = Cursos.IdProfesor
+    INNER JOIN tb_cursosusuarios CursosUsuarios ON CursosUsuarios.IdCurso = Cursos.IdCurso
+    WHERE CursosUsuarios.IdUsuario = _IdUsuario 
+    AND Cursos.Nombre LIKE CONCAT('%',Cursos.Nombre,'%')
+    ORDER BY Cursos.IdCurso DESC LIMIT 250;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_BuscarGrupos` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -6546,4 +6577,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-21 17:50:25
+-- Dump completed on 2022-04-25 18:58:24

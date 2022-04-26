@@ -27,6 +27,7 @@ import modelos.ArchivoModel;
 import modelos.ArchivosCompartidosGrupoModel;
 import modelos.ArchivosTareaModel;
 import modelos.AvisosModel;
+import modelos.BuscarCursosModel;
 import modelos.CalificacionTareaModel;
 import modelos.ChatsPersonalesModel;
 import modelos.ConfiguracionesModel;
@@ -929,6 +930,57 @@ public class Solicitudes {
         return response;
         
     }
+    
+    public Lista<BuscarCursosModel> Buscar_Cursos(String busqueda, int id_Usuario) {
+
+        Lista<BuscarCursosModel> response = new Lista<>();
+
+        try {
+            Vector<Object> parametros = new Vector<>();
+
+            parametros.add(CourseRoom.Utilerias().Codificacion(busqueda));
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Buscar_Cursos", parametros);
+
+            if (respuesta != null) {
+
+                Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
+
+                BuscarCursosModel buscarCursosModel;
+                int id_Curso, id_Usuario1;
+                String nombre, nombre_Completo, fecha_Creacion, lista_Tematicas, estatus;
+                Vector<Object> fila;
+                while(!resultado.isEmpty()){
+                    
+                    fila = resultado.remove(0);
+                    
+                    id_Curso = (int) fila.remove(0);
+                    nombre = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    id_Usuario1 = (int) fila.remove(0);
+                    nombre_Completo = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    lista_Tematicas = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    fecha_Creacion = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    estatus = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
+                    
+                    buscarCursosModel = new BuscarCursosModel(id_Curso, 
+                            id_Usuario1, nombre, nombre_Completo, lista_Tematicas, fecha_Creacion, estatus);
+                    
+                    response.push_back(buscarCursosModel);
+                }
+
+            }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return response;
+
+    }
+
     
     public Lista<GruposModel> Buscar_Grupos(String busqueda, int id_Usuario){
         Lista<GruposModel> response = new Lista<>();
