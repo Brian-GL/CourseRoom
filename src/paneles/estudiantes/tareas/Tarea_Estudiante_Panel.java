@@ -1292,54 +1292,65 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 
     }
-
+   
     public void Subir_Archivos() {
         Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
-        
+
         if (resultado == JFileChooser.APPROVE_OPTION) {
-            File[] archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
+            File archivo_Abierto = escogedor_Archivos.getSelectedFile();
             
-            if(archivos_Abiertos != null){
-                try {
-                    String fecha;
-                    String ruta;
-                    String nombre_Archivo;
-                    Celda_Renderer[] celdas = new Celda_Renderer[3];
-                    Celda_Renderer celda;
-                    long tamanio;
-                    boolean archivo_Mayor = false;
-                    DefaultTableModel modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
-                    Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-                    ImageIcon icono_Abrir = new ImageIcon(icono);
-                    icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-                    ImageIcon icono_Remover = new ImageIcon(icono);                    
-                    for (File archivo_Abierto : archivos_Abiertos) {
-                        tamanio = FileUtils.sizeOf(archivo_Abierto);
-                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                        if(tamanio < 75){
-                        ruta = archivo_Abierto.getAbsolutePath();
-                        nombre_Archivo = archivo_Abierto.getName();
-                        fecha = CourseRoom.Utilerias().Fecha_Hora_Local();                        
-                        celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
-                        celdas[0] = celda;
-                        celda = new Celda_Renderer(fecha);
-                        celdas[1] = celda;
-                        celda = new Celda_Renderer(icono_Remover);
-                        celdas[2] = celda;
-                        modelo.addRow(celdas);
-                        archivos_Subidos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
-                    }else{
-                            archivo_Mayor = true;
+            if(archivo_Abierto != null){
+                
+                long tamanio = FileUtils.sizeOf(archivo_Abierto);
+                tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                if(tamanio < 35){
+                    
+                    SwingUtilities.invokeLater(() -> {
+                        try {
+                            
+                            Celda_Renderer[] celdas = new Celda_Renderer[4];
+                            DefaultTableModel modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
+                            Celda_Renderer celda;
+                            
+                            ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Subido_Tarea(Id_Tarea,
+                                    Tablero_Estudiante_Panel.Id_Usuario(), archivo_Abierto.getName(),
+                                    FileUtils.readFileToByteArray(archivo_Abierto),
+                                    FilenameUtils.getExtension(archivo_Abierto.getName()));
+
+                            if(response.Is_Success()){
+                                String id_Archivo = String.valueOf(response.Codigo());
+                                
+                                Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                                ImageIcon icono = new ImageIcon(imagen);
+                                celda = new Celda_Renderer(icono, archivo_Abierto.getName(), id_Archivo);
+                                celdas[0] = celda;
+                                celda = new Celda_Renderer(Perfil_Estudiante_Panel.Nombre_Completo(), id_Archivo);
+                                celdas[1] = celda;
+                                celda = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(), id_Archivo);
+                                celdas[2] = celda;
+                                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+                                icono = new ImageIcon(imagen);
+                                celda = new Celda_Renderer(icono, id_Archivo);
+                                celdas[3] = celda;
+                                modelo.insertRow(0,celdas);
+                                CourseRoom.Utilerias().Mensaje_Informativo("Tarea",response.Mensaje());
+                                imagen.flush();
+                                
+                            } else{
+                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
+                            }
+
+                        } catch (IOException ex) {
+                            CourseRoom.Utilerias().Mensaje_Error("Error!!!","Se Encontro Un Error Al Subir El Archivo");
                         }
-                    }
-                    if(archivo_Mayor){
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                    }                 
-                    icono.flush();
-                } catch (IOException ex) {
-                    CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Archivo",ex.getMessage());
-                }
+                    
+                    });
+                    
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                }                 
+                    
             }
         }
     }

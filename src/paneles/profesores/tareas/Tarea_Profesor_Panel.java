@@ -67,7 +67,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     
     public Tarea_Profesor_Panel(int id_Tarea){
         initComponents();
-        Id_Tarea = id_Tarea;
+        this.Id_Tarea = id_Tarea;
         
         /*titulo_JLabel.setText(nombre_Tarea);
         curso_JLabel.setText(nombre_Curso);
@@ -1392,52 +1392,56 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
         if (resultado == JFileChooser.APPROVE_OPTION) {
             File archivo_Abierto = escogedor_Archivos.getSelectedFile();
-
-            if (archivo_Abierto != null) {
-                try {
+            
+            if(archivo_Abierto != null){
+                
+                long tamanio = FileUtils.sizeOf(archivo_Abierto);
+                tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                if(tamanio < 35){
                     
-                    long tamanio = FileUtils.sizeOf(archivo_Abierto);
-                    tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                    if(tamanio < 35){
-
-                        String ruta = archivo_Abierto.getAbsolutePath();
-                        String nombre_Archivo = archivo_Abierto.getName();
-                        String emisor = Perfil_Profesor_Panel.Nombre_Completo();
-                        
-                        ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Id_Tarea,
-                                nombre_Archivo, 
-                                FileUtils.readFileToByteArray(archivo_Abierto),  
-                                FilenameUtils.getExtension(nombre_Archivo));
-                        String fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
-                        if(response.Is_Success()){
-                            Celda_Renderer[] celdas = new Celda_Renderer[3];
+                    SwingUtilities.invokeLater(() -> {
+                        try {
+                            
+                            Celda_Renderer[] celdas = new Celda_Renderer[4];
                             DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
                             Celda_Renderer celda;
-                            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-                            ImageIcon icono_Abrir = new ImageIcon(icono);
-                            celda = new Celda_Renderer(emisor);
-                            celdas[0] = celda;
-                            celda = new Celda_Renderer(icono_Abrir,nombre_Archivo,ruta);
-                            celdas[1] = celda;
-                            celda = new Celda_Renderer(fecha);
-                            celdas[2] = celda;
-                            modelo.addRow(celdas);
-                            mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
-                            icono.flush();
-                            CourseRoom.Utilerias().Mensaje_Informativo("Tarea",response.Mensaje());
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
-                        }                       
-                    }
-                    else{
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo Supera El Tamaño Aceptado De Subida");
-                    }
-                  
-                } catch (IOException ex) {
-                }
+                            
+                            ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Tablero_Profesor_Panel.Id_Usuario(), archivo_Abierto.getName(),
+                                    FileUtils.readFileToByteArray(archivo_Abierto),
+                                    FilenameUtils.getExtension(archivo_Abierto.getName()));
+
+                            if(response.Is_Success()){
+                                String id_Archivo = String.valueOf(response.Codigo());
+                                
+                                Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                                ImageIcon icono = new ImageIcon(imagen);
+                                celda = new Celda_Renderer(icono, archivo_Abierto.getName(), id_Archivo);
+                                celdas[0] = celda;
+                                celda = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(), id_Archivo);
+                                celdas[1] = celda;
+                                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+                                icono = new ImageIcon(imagen);
+                                celda = new Celda_Renderer(icono, id_Archivo);
+                                celdas[2] = celda;
+                                modelo.insertRow(0,celdas);
+                                CourseRoom.Utilerias().Mensaje_Informativo("Tarea",response.Mensaje());
+                                imagen.flush();
+                                
+                            } else{
+                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
+                            }
+
+                        } catch (IOException ex) {
+                            CourseRoom.Utilerias().Mensaje_Error("Error!!!","Se Encontro Un Error Al Compartir El Archivo");
+                        }
+                    
+                    });
+                    
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                }                 
+                    
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo No Tiene Un Formato Adecuado");
         }
     }
 
@@ -1597,5 +1601,4 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             
         }
     }
-    
 }
