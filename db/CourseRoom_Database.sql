@@ -4612,10 +4612,13 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneral
     IN _IdUsuario INT
 )
 BEGIN
-    SELECT Tareas.Nombre, Tareas.Descripcion, Tareas.FechaCreacion, Tareas.FechaEntrega
+    SELECT Cursos.IdCurso, Cursos.Nombre AS NombreCurso, Tareas.Nombre, Tareas.Descripcion, 
+    Tareas.FechaCreacion, Tareas.FechaEntrega, CAST(TareasCursoUsuario AS CHAR) AS Estatus
     FROM tb_tareas Tareas
-    INNER JOIN tb_tareascursousuarios TareasCursoUsuario ON TareasCursoUsuario.IdTarea = Tareas.IdTarea
-    WHERE TareasCursoUsuario.IdTarea = _IdTarea AND TareasCursoUsuario.IdUsuario = _IdUsuario AND Tareas.Activo = 1;
+    INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = Tareas.IdCurso
+    INNER JOIN tb_tareascursousuarios TareasCursoUsuario ON TareasCursoUsuario.IdTarea = Tareas.IdTarea 
+    WHERE TareasCursoUsuario.IdTarea = _IdTarea AND TareasCursoUsuario.IdUsuario = _IdUsuario 
+    AND Tareas.Activo = 1;
 
 END ;;
 DELIMITER ;
@@ -4665,7 +4668,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneral
     IN _IdProfesor INT
 )
 BEGIN
-    SELECT Tareas.Nombre, Tareas.Descripcion, Tareas.FechaCreacion, Tareas.FechaEntrega,
+    SELECT Cursos.IdCurso, Cursos.Nombre AS NombreCurso, Tareas.Nombre, Tareas.Descripcion, Tareas.FechaCreacion, Tareas.FechaEntrega,
     courseroom.fn_EstatusTareaProfesor(Tareas.FechaCreacion, Tareas.FechaEntrega) AS Estatus
     FROM tb_tareas Tareas INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = Tareas.IdCurso
     WHERE Cursos.IdProfesor = _IdProfesor AND Tareas.IdTarea = _IdTarea AND 
@@ -6578,4 +6581,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-25 20:19:30
+-- Dump completed on 2022-04-26 18:11:41

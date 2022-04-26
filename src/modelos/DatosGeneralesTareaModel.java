@@ -22,17 +22,25 @@ package modelos;
  * @author JOEL BR
  */
 public class DatosGeneralesTareaModel {
-    private String nombre, descripcion, fecha_Creacion, fecha_Entrega;
+    
+    private int id_Curso;
+    private String nombre, descripcion, fecha_Creacion, fecha_Entrega, nombre_Curso, estatus;
 
-    public DatosGeneralesTareaModel(String nombre, String descripcion, String fecha_Creacion, String fecha_Entrega) {
+    public DatosGeneralesTareaModel(int id_Curso,String nombre_Curso, String nombre, 
+            String descripcion, String fecha_Creacion, String fecha_Entrega,String estatus) {
+        
+        this.id_Curso = id_Curso;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha_Creacion = fecha_Creacion;
         this.fecha_Entrega = fecha_Entrega;
+        this.estatus = estatus;
+        this.nombre_Curso = nombre_Curso;
     }
 
     public DatosGeneralesTareaModel() {
-        this.nombre = this.descripcion = this.fecha_Creacion = this.fecha_Entrega = new String();
+        this.id_Curso = -1;
+        this.nombre = this.descripcion = this.fecha_Creacion = this.fecha_Entrega = this.estatus =  this.nombre_Curso = new String();
     }
 
     public String Nombre() {
@@ -65,6 +73,30 @@ public class DatosGeneralesTareaModel {
 
     public void Fecha_Entrega(String fecha_Entrega) {
         this.fecha_Entrega = fecha_Entrega;
+    }
+
+    public int Id_Curso() {
+        return id_Curso;
+    }
+
+    public void Id_Curso(int id_Curso) {
+        this.id_Curso = id_Curso;
+    }
+
+    public String Nombre_Curso() {
+        return nombre_Curso;
+    }
+
+    public void Nombre_Curso(String nombre_Curso) {
+        this.nombre_Curso = nombre_Curso;
+    }
+
+    public String Estatus() {
+        return estatus;
+    }
+
+    public void Estatus(String estatus) {
+        this.estatus = estatus;
     }
 
 }

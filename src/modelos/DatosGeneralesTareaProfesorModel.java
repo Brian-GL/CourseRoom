@@ -21,10 +21,13 @@ package modelos;
  *
  * @author Erick
  */
-public class DatosGeneralesTareaProfesor {
-    private String nombre, descripcion, fecha_Creacion, fecha_Entrega, estatus;
+public class DatosGeneralesTareaProfesorModel {
+    private int id_Curso;
+    private String nombre_Curso, nombre, descripcion, fecha_Creacion, fecha_Entrega, estatus;
     
-    public DatosGeneralesTareaProfesor(String nombre, String descripcion, String fecha_Creacion, String fecha_Entrega, String estatus) {
+    public DatosGeneralesTareaProfesorModel(int id_Curso, String nombre_Curso, String nombre, String descripcion, String fecha_Creacion, String fecha_Entrega, String estatus) {
+        this.id_Curso = id_Curso;
+        this.nombre_Curso = nombre_Curso;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha_Creacion = fecha_Creacion;
@@ -32,8 +35,9 @@ public class DatosGeneralesTareaProfesor {
         this.estatus = estatus;
     }
     
-        public DatosGeneralesTareaProfesor() {
-        this.nombre = this.descripcion = this.fecha_Creacion = this.fecha_Entrega = this.estatus = new String();
+    public DatosGeneralesTareaProfesorModel() {
+        this.id_Curso = -1;
+        this.nombre = this.descripcion = this.fecha_Creacion = this.fecha_Entrega = this.estatus =  this.nombre_Curso= new String();
     }
 
     public String Nombre() {
@@ -75,4 +79,22 @@ public class DatosGeneralesTareaProfesor {
     public void Estatus(String estatus) {
         this.estatus = estatus;
     }
+
+    public int Id_Curso() {
+        return id_Curso;
+    }
+
+    public void Id_Curso(int id_Curso) {
+        this.id_Curso = id_Curso;
+    }
+
+    public String Nombre_Curso() {
+        return nombre_Curso;
+    }
+
+    public void Nombre_Curso(String nombre_Curso) {
+        this.nombre_Curso = nombre_Curso;
+    }
+    
+    
 }

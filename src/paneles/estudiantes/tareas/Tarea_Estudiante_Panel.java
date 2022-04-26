@@ -1076,10 +1076,10 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         if(!datosGeneralesTarea.Nombre().isBlank()){
             titulo_JLabel.setText(datosGeneralesTarea.Nombre());
-            //curso_JLabel.setText(datosGeneralesTarea.);
+            curso_JLabel.setText(datosGeneralesTarea.Nombre_Curso());
             fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTarea.Fecha_Creacion()));
             fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", datosGeneralesTarea.Fecha_Entrega()));
-            //estatus_Tarea_JLabel.setText(datosGeneralesTarea.);
+            estatus_Tarea_JLabel.setText(datosGeneralesTarea.Estatus());
             descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTarea.Descripcion()));
         }
         

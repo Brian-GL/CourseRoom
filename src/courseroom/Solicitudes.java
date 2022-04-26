@@ -38,7 +38,7 @@ import modelos.DatosGeneralesGrupoModel;
 import modelos.DatosGeneralesPreguntaModel;
 import modelos.DatosGeneralesTareaModel;
 import modelos.DatosGeneralesTareaPendienteModel;
-import modelos.DatosGeneralesTareaProfesor;
+import modelos.DatosGeneralesTareaProfesorModel;
 import modelos.DatosPerfilChatPersonalModel;
 import modelos.DatosPerfilModel;
 import modelos.DesempenoUsuarioCursoModel;
@@ -2679,6 +2679,7 @@ public class Solicitudes {
 
                if(resultado.size()== 6){
                    
+                   
                     datosGeneralesPreguntaModel.Id_Usuario((int)resultado.remove(0));
                     datosGeneralesPreguntaModel.Nombre_Completo(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesPreguntaModel.Pregunta(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
@@ -2714,12 +2715,15 @@ public class Solicitudes {
 
                Vector<Object> resultado  = (Vector<Object>)respuesta;
 
-               if(resultado.size()== 5){
+               if(resultado.size() == 8){
                    
+                    datosGeneralesTareaModel.Id_Curso((int)resultado.remove(0));
+                    datosGeneralesTareaModel.Nombre_Curso(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesTareaModel.Nombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesTareaModel.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesTareaModel.Fecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesTareaModel.Fecha_Entrega(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosGeneralesTareaModel.Estatus(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 }
                
            }
@@ -2768,8 +2772,8 @@ public class Solicitudes {
         return datosGeneralesTareaPendienteModel;
     }
     
-    public DatosGeneralesTareaProfesor Obtener_Datos_Generales_Tarea_Profesor(int id_Tarea, int id_Profesor){
-        DatosGeneralesTareaProfesor datosGeneralesTareaProfesor = new DatosGeneralesTareaProfesor();
+    public DatosGeneralesTareaProfesorModel Obtener_Datos_Generales_Tarea_Profesor(int id_Tarea, int id_Profesor){
+        DatosGeneralesTareaProfesorModel datosGeneralesTareaProfesor = new DatosGeneralesTareaProfesorModel();
         
         try {
 
@@ -2788,6 +2792,8 @@ public class Solicitudes {
 
                if(resultado.size()== 5){
                    
+                    datosGeneralesTareaProfesor.Id_Curso((int)resultado.remove(0));
+                    datosGeneralesTareaProfesor.Nombre_Curso(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesTareaProfesor.Nombre(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesTareaProfesor.Descripcion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                     datosGeneralesTareaProfesor.Fecha_Creacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
