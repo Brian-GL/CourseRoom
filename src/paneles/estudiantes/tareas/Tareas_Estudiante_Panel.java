@@ -539,7 +539,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
         
-        Image imagen = null;
+        Image imagen;
         byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(tareasEstudianteModel.Id_Curso());
         
         if(bytes_Imagen.length > 0){
@@ -572,8 +572,6 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_Tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(tareasEstudianteModel.Nombre().length()));
         
         if(!Existe_Tarea(tareasEstudianteModel.Id_Tarea())){
-            
-            imagen = (imagen != null) ? imagen.getScaledInstance(48, 48, Image.SCALE_SMOOTH) : null;
 
             Tarea_Estudiante_Panel tarea_Estudiante_Panel = 
                     new Tarea_Estudiante_Panel(tareasEstudianteModel.Id_Tarea());
