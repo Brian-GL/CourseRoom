@@ -47,6 +47,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.DatosGeneralesTareaProfesorModel;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
@@ -68,14 +69,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     public Tarea_Profesor_Panel(int id_Tarea){
         initComponents();
         this.Id_Tarea = id_Tarea;
-        
-        /*titulo_JLabel.setText(nombre_Tarea);
-        curso_JLabel.setText(nombre_Curso);
-        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", fecha_Creacion));
-        fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Se entrega el ", fecha_Entrega));
-        estatus_Tarea_JLabel.setText(estatus);*/
-       
-        
+         
         Iniciar_Componentes();
     }
 
@@ -1151,6 +1145,23 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
            
     }
     
+    private void Obtener_Datos_Generales_Tarea(){
+        
+        DatosGeneralesTareaProfesorModel datosGeneralesTareaProfesor = 
+                CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea_Profesor(Id_Tarea, Tablero_Profesor_Panel.Id_Usuario());
+        
+        if(!datosGeneralesTareaProfesor.Nombre().isBlank()){
+            
+            titulo_JLabel.setText(datosGeneralesTareaProfesor.Nombre());
+            curso_JLabel.setText(datosGeneralesTareaProfesor.Nombre_Curso());
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesor.Fecha_Creacion()));
+            fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Se entrega el ", datosGeneralesTareaProfesor.Fecha_Entrega()));
+            estatus_Tarea_JLabel.setText(datosGeneralesTareaProfesor.Estatus());
+            descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaProfesor.Descripcion()));
+            
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;

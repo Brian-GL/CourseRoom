@@ -45,6 +45,8 @@ import paneles.profesores.perfil.Perfil_Profesor_Panel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelos.ComboOptionModel;
+import modelos.DatosGeneralesCursoModel;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
@@ -63,14 +65,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         int id_Curso) {
         initComponents();
         Id_Curso = id_Curso;
-        /*titulo_JLabel.setText(_nombre_Curso);
-        editar_Nombre_JTextField.setText(_nombre_Curso);
-        ImageIcon icono = new ImageIcon(_imagen_Curso);
-        imagen_Curso_JLabel.setIcon(icono);
-        this.ID = _id;
-        this.Id_Curso = id_Curso;
-        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creado El ",_fecha_Creacion)));
-        _imagen_Curso.flush();*/
         
         Iniciar_Componentes();
     }
@@ -2089,7 +2083,70 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
             CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar La Estadística",ex.getMessage());
         }
     }
+    
+    private void Obtener_Datos_Generales_Curso(){
+        
+        DatosGeneralesCursoModel datosGeneralesCursoProfesor = 
+                CourseRoom.Solicitudes().Obtener_Datos_Generales_Curso(Id_Curso);
+        
+        if(!datosGeneralesCursoProfesor.Nombre().isBlank()){
+            
+            titulo_JLabel.setText(datosGeneralesCursoProfesor.Nombre());
+            editar_Nombre_JTextField.setText(datosGeneralesCursoProfesor.Nombre());
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creado El ",datosGeneralesCursoProfesor.Fecha_Creacion())));
+            descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesCursoProfesor.Descripcion()));
+            
+            byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(Id_Curso);
+            Image imagen;
+            ImageIcon icono;
+            if (bytes_Imagen != null) {
 
+                if (bytes_Imagen.length > 0) {
+
+                    imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                    if (imagen != null) {
+
+                        imagen = imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
+                        icono = new ImageIcon(imagen);
+                        imagen_Curso_JLabel.setIcon(icono);
+                        imagen.flush();
+
+                    }
+                }
+            }
+            
+            Obtener_Tematicas_Curso();
+            
+        }
+        
+    }
+    
+    private void Obtener_Tematicas_Curso(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas_Curso(Id_Curso);
+        
+        while(!tematicas.is_empty()){
+            Agregar_Tematica(tematicas.delist());
+        }
+        
+    }
+    
+    private void Agregar_Tematica(ComboOptionModel comboOptionModel){
+        
+        DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[1];
+        
+        Celda_Renderer celda = new Celda_Renderer(comboOptionModel.Valor(), comboOptionModel.Id().toString());
+        celdas[0] = celda;
+        
+        modelo.addRow(celdas);
+        
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
