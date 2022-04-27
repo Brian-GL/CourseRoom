@@ -484,7 +484,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                     int id_Mensaje = Integer.parseInt(celda.ID());
 
                                     if (id_Mensaje > 0){
-                                        Descargar_Archivo(id_Mensaje,celda.Texto());
+                                        Descargar_Archivo_Chat(id_Mensaje,celda.Texto());
                                     }else{
                                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
                                     }
@@ -613,9 +613,16 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                         int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                                         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                                         Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                        String extension = FilenameUtils.getExtension(celda.Texto());
-                                        String ruta = celda.ID();
-                                        CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+                                        if(celda.Tiene_Icono()){
+
+                                            int id_Archivo = Integer.parseInt(celda.ID());
+
+                                            if (id_Archivo > 0){
+                                                Descargar_Archivo_Entrega(id_Archivo,celda.Texto());
+                                            }else{
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                            }
+                                        }
                                     }
                                     break;
                                     // Remover
@@ -912,15 +919,13 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 SwingUtilities.invokeLater(() -> {
                     ResponseModel response = CourseRoom.Solicitudes().Entregar_Tarea_Usuario(Id_Tarea,
                             Tablero_Estudiante_Panel.Id_Usuario());
-                    if (response.Is_Success()) {
+                    
+                    if(response.Is_Success()) {
                         CourseRoom.Utilerias().Mensaje_Informativo("Entregar Tarea", response.Mensaje());
                     } else {
                         CourseRoom.Utilerias().Mensaje_Alerta("Entregar Tarea", response.Mensaje());
                     }
                 });
-                Tablero_Estudiante_Panel.Mostrar_Vista("Tarea");
-                Tablero_Estudiante_Panel.Retirar_Vista(this);
-                this.Limpiar();
             }
         }
     }//GEN-LAST:event_subir_Cambios_JButtonMouseClicked
@@ -985,8 +990,8 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         int longitud = redactar_Mensaje_Chat_JTextField.getText().length();
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             if (longitud > 499) {
-            redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
+                redactar_Mensaje_Chat_JTextField.setText(redactar_Mensaje_Chat_JTextField.getText().substring(0, longitud - 1));
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
             }else{
                 Enviar_Mensaje();
             }
@@ -1133,7 +1138,42 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         });
     }
 
-    private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
+    private void Descargar_Archivo_Entrega(int id_Archivo_Subido, String nombre_Archivo){
+        
+        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+        
+        if(!archivo.exists()){
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Estudiante_Panel.Id_Usuario());
+
+                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
+                    File directorio = new File("/descargas/tareas/");
+                    File crear_Archivo;
+                    try {
+                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
+                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else{
+            String extension = FilenameUtils.getExtension(nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+        }
+        
+    }
+    
+    private void Descargar_Archivo_Chat(int id_Mensaje, String nombre_Archivo){
         
         File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
         
@@ -1257,7 +1297,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             }
         });
     }
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
