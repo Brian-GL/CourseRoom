@@ -31,6 +31,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.DatosGeneralesCursoModel;
 import modelos.ResponseModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
@@ -409,6 +410,59 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         return Id_Curso;
     }
     
+    private void Obtener_Datos_Generales_Curso(){
+        
+        DatosGeneralesCursoModel datosGeneralesCursoModel = 
+                CourseRoom.Solicitudes().Obtener_Datos_Generales_Curso(Id_Curso);
+        
+        if(!datosGeneralesCursoModel.Nombre().isBlank()){
+            titulo_JLabel.setText(datosGeneralesCursoModel.Nombre());
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creado el ", datosGeneralesCursoModel.Fecha_Creacion()));
+            descripcion_Profesor_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(
+                    CourseRoom.Utilerias().Concatenar(datosGeneralesCursoModel.Nombre_Completo(),":<br>",datosGeneralesCursoModel.Descripcion_Profesor())));
+            descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesCursoModel.Descripcion()));
+            
+            byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(datosGeneralesCursoModel.Id_Profesor());
+            Image imagen;
+            ImageIcon icono;
+            if (bytes_Imagen != null) {
+
+                if (bytes_Imagen.length > 0) {
+
+                    imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                    if (imagen != null) {
+
+                        imagen = imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
+                        icono = new ImageIcon(imagen);
+                        imagen_Profesor_JLabel.setIcon(icono);
+
+                    }
+                }
+            }
+
+            bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(Id_Curso);
+            if (bytes_Imagen != null) {
+
+                if (bytes_Imagen.length > 0) {
+
+                    imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                    if (imagen != null) {
+
+                        imagen = imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
+                        icono = new ImageIcon(imagen);
+                        imagen_Curso_JLabel.setIcon(icono);
+                        imagen.flush();
+
+                    }
+                }
+            }
+            
+        }    
+          
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane descripcion_Curso_JScrollPane;
     private javax.swing.JTextPane descripcion_Curso_JTextPane;
@@ -433,8 +487,6 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
       
         //Informacion curso:
         
-        descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().lorem().paragraph(10)));
-        
         informacion_Curso_JScrollPane.getViewport().setOpaque(false);
         informacion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         informacion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -453,10 +505,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
-        intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-
-        Agregar_Interes_Tematica(new String(),CourseRoom.Utilerias().music().genre());
-        
+        intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());       
     }
 
     @Override
