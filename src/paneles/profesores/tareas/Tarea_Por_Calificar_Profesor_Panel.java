@@ -352,11 +352,11 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         informacion_Estudiante_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
         imagen_Perfil_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
         imagen_Perfil_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_Perfil_JLabel.setMaximumSize(new java.awt.Dimension(2000, 2000));
         imagen_Perfil_JLabel.setMinimumSize(new java.awt.Dimension(450, 450));
         imagen_Perfil_JLabel.setPreferredSize(new java.awt.Dimension(450, 450));
-        imagen_Perfil_JLabel.setToolTipText("Imagen De Perfil");
 
         apellidos_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         apellidos_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -660,7 +660,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                 calificacion_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
                 calificacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 calificacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/online-class.png"))); // NOI18N
-                calificacion_JLabel.setText("Calfiicacion");
+                calificacion_JLabel.setText("Calificacion");
                 calificacion_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
                 calificacion_JLabel.setOpaque(true);
                 ((ImageIcon)calificacion_JLabel.getIcon()).getImage().flush();
@@ -958,7 +958,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
     private void calificar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calificar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Calificar_Profesor_Frame calificar_Profesor_Frame = new Calificar_Profesor_Frame();
+            Calificar_Profesor_Frame calificar_Profesor_Frame = new Calificar_Profesor_Frame(Id_Tarea,Id_Usuario);
             calificar_Profesor_Frame.setVisible(true);
         }
     }//GEN-LAST:event_calificar_JButtonMouseClicked

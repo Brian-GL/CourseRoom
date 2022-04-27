@@ -10,6 +10,7 @@ import datos.interfaces.Componentes_Interface;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
+import modelos.ResponseModel;
 
 /**
  *
@@ -17,10 +18,14 @@ import javax.swing.SwingUtilities;
  */
 public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Componentes_Interface{
 
+    private int Id_Tarea, Id_Usuario;
     
-    public Calificar_Profesor_Frame() {
+    public Calificar_Profesor_Frame(int id_Tarea, int id_Usuario) {
         
         initComponents();
+        
+        Id_Tarea = id_Tarea;
+        Id_Usuario = id_Usuario;
         
         Iniciar_Componentes();
     }
@@ -125,14 +130,36 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             if(calificacion_JFormattedTextField.getText() != null){
-                if(!calificacion_JFormattedTextField.getText().isBlank() && !calificacion_JFormattedTextField.getText().isEmpty()){
+                if(!calificacion_JFormattedTextField.getText().isBlank()){
 
-                    
+                    try{
+                        double calificacion = Double.parseDouble(calificacion_JFormattedTextField.getText());
 
-                    this.dispose();
+                        if(calificacion >= 0 && calificacion <= 100){
+                            
+                            ResponseModel response = CourseRoom.Solicitudes().Calificar_Tarea(Id_Tarea,Id_Usuario, calificacion);
+                            
+                            if(response.Is_Success()){
+                                
+                                CourseRoom.Utilerias().Mensaje_Alerta("Calificar", response.Mensaje());
+                                
+                                this.dispose();
+                            }else{
+                                CourseRoom.Utilerias().Mensaje_Alerta("Calificar", response.Mensaje());
+                            }
+                        }else{
+                            CourseRoom.Utilerias().Mensaje_Alerta("Calificar", "El Valor De La Calificación Se Encuentra En Un Rango No Válido");
+                        } 
+                        
+                    } catch(NumberFormatException ex){
+                        CourseRoom.Utilerias().Mensaje_Alerta("Calificar", "Ingrese Un Valor Para La Calificación Válido");
+                    }
 
-
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Calificar", "Ingrese Un Valor Para La Calificación Válido");
                 }
+            } else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Calificar", "Ingrese Un Valor Para La Calificación Válido");
             }
         }
     }//GEN-LAST:event_calificar_JButtonMouseClicked
