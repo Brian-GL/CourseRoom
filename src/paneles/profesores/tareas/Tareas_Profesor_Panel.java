@@ -466,7 +466,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         modelo.addRow(celdas);
         
         Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel =
-                new Tarea_Por_Calificar_Profesor_Panel(tareasPorCalificarModel.Id_Tarea());
+                new Tarea_Por_Calificar_Profesor_Panel(tareasPorCalificarModel.Id_Tarea(),tareasPorCalificarModel.Id_Usuario());
 
         tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
 
