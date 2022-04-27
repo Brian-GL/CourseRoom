@@ -465,7 +465,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
           
     }
     
-        private void Obtener_Tematicas_Curso(){
+    private void Obtener_Tematicas_Curso(){
         
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         modelo.setRowCount(0);
