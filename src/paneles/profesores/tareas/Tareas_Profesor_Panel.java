@@ -29,10 +29,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -345,48 +341,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         }
     }//GEN-LAST:event_tareas_Creadas_JButtonMouseClicked
 
-    private void Agregar_Tarea_Creada(String nombre_Tarea, String ruta_Imagen_Curso, String nombre_Curso,
-            String fecha_Entrega, String estatus_Tarea, String _id){
-        DefaultTableModel modelo_Tareas_Creadas = (DefaultTableModel) tareas_Creadas_JTable.getModel();
-        try {
-            Celda_Renderer[] celdas = new Celda_Renderer[5];
-            String fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-            Celda_Renderer celda;
-            URL url_Imagen;
-            Image imagen;
-            ImageIcon icono;
-            
-            celda = new Celda_Renderer(nombre_Tarea, _id);
-            celdas[0] = celda;
-            url_Imagen = new URL(ruta_Imagen_Curso);
-            imagen = ImageIO.read(url_Imagen);
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono, nombre_Curso, _id);
-            celdas[1] = celda;
-            celda = new Celda_Renderer(fecha_Creacion, _id);
-            celdas[2] = celda;
-            celda = new Celda_Renderer(fecha_Entrega, _id);
-            celdas[3] = celda;
-            celda = new Celda_Renderer(estatus_Tarea, _id);
-            celdas[4] = celda;
-            
-            Tarea_Profesor_Panel tarea_Profesor_Panel =
-                    new Tarea_Profesor_Panel(/*nombre_Tarea,nombre_Curso,
-                            fecha_Creacion, fecha_Entrega, estatus_Tarea, _id,*/-1);
-            tareas_Creadas_Lista.push_back(tarea_Profesor_Panel);
-            
-            modelo_Tareas_Creadas.addRow(celdas);
-            
-            Tablero_Profesor_Panel.Agregar_Vista(tarea_Profesor_Panel, _id);
-            
-            imagen.flush();
-            
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar La Tarea Creada",ex.getMessage());
-        }
-    }
     
     private void Agregar_Tarea_Por_Calificar(TareasPorCalificarModel tareasPorCalificarModel){
         
@@ -466,7 +420,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         modelo.addRow(celdas);
         
         Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel =
-                new Tarea_Por_Calificar_Profesor_Panel(tareasPorCalificarModel.Id_Tarea(),tareasPorCalificarModel.Id_Usuario());
+                new Tarea_Por_Calificar_Profesor_Panel(tareasPorCalificarModel.Id_Tarea());
 
         tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
 

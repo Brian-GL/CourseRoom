@@ -1070,7 +1070,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }else{
-            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()),id);
+            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);

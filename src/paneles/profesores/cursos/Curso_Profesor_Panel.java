@@ -1864,7 +1864,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
             celda = new Celda_Renderer(mensajesModel.Mensaje());
             celdas[1] = celda;
         }else{
-            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()));
+            celda = new Celda_Renderer(mensajesModel.Mensaje());
             celdas[1] = celda;
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio());

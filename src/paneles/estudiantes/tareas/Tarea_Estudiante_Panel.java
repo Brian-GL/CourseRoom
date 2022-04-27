@@ -49,6 +49,7 @@ import modelos.ArchivosTareaModel;
 import modelos.DatosGeneralesTareaModel;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
+import modelos.RetroalimentacionesTareaModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
@@ -346,6 +347,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         archivos_Adjuntos_JScrollPane.setOpaque(false);
 
         archivos_Adjuntos_JTable.setAutoCreateRowSorter(true);
+        archivos_Adjuntos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         archivos_Adjuntos_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -379,7 +381,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     return super.getColumnClass(column);
                 }
             });
-            archivos_Adjuntos_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             archivos_Adjuntos_JTable.setRowHeight(50);
             archivos_Adjuntos_JTable.setShowGrid(true);
             archivos_Adjuntos_JTable.setSurrendersFocusOnKeystroke(true);
@@ -398,9 +399,15 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                             int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                             DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                             Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                            String extension = FilenameUtils.getExtension(celda.Texto());
-                            String ruta = celda.ID();
-                            CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+
+                            int id_Archivo = Integer.parseInt(celda.ID());
+
+                            if (id_Archivo > 0){
+                                Descargar_Archivo_Adjunto(id_Archivo,celda.Texto());
+                            }else{
+                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                            }
+
                         }
 
                     }
@@ -722,6 +729,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     retroalimentacion_JScrollPane.setOpaque(false);
 
                     retroalimentacion_JTable.setAutoCreateRowSorter(true);
+                    retroalimentacion_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                     retroalimentacion_JTable.setModel(
 
                         new javax.swing.table.DefaultTableModel(
@@ -755,7 +763,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                 return super.getColumnClass(column);
                             }
                         });
-                        retroalimentacion_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                         retroalimentacion_JTable.setRowHeight(90);
                         retroalimentacion_JTable.setShowGrid(true);
                         retroalimentacion_JTable.setSurrendersFocusOnKeystroke(true);
@@ -774,9 +781,15 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                         int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                                         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                                         Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                        String extension = FilenameUtils.getExtension(celda.Texto());
-                                        String ruta = celda.ID();
-                                        CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+                                        if(celda.Tiene_Icono()){
+                                            int id_Retroalimentacion = Integer.parseInt(celda.ID());
+
+                                            if (id_Retroalimentacion > 0){
+                                                Descargar_Archivo_Retroalimentacion(id_Retroalimentacion,celda.Texto());
+                                            }else{
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -984,11 +997,16 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         return Id_Tarea;
     }
     
-    private void Agregar_Retroalimentacion(String retroalimentacion, 
-            String fecha_Retroalimentacion, String archivo_Adjunto, String ruta_Archivo_Adjunto){
+    private void Agregar_Retroalimentacion(RetroalimentacionesTareaModel retroalimentacionesTareaModel){
         
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
+        String retroalimentacion =  retroalimentacionesTareaModel.Retroalimentacion();
+        String fecha_Retroalimentacion = retroalimentacionesTareaModel.Fecha_Envio();
+        String archivo_Adjunto = retroalimentacionesTareaModel.Nombre_Archivo(); 
+        
+        String id = String.valueOf(retroalimentacionesTareaModel.Id_Retroalimentacion());
+        
         DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
         
         try {
@@ -996,18 +1014,18 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
             ImageIcon icono = new ImageIcon(imagen);
             
-            celda = new Celda_Renderer(retroalimentacion);
+            celda = new Celda_Renderer(retroalimentacion,id);
             celdas[0] = celda;
-            celda = new Celda_Renderer(fecha_Retroalimentacion);
+            celda = new Celda_Renderer(fecha_Retroalimentacion,id);
             celdas[1] = celda;
-            celda = new Celda_Renderer(icono,archivo_Adjunto, ruta_Archivo_Adjunto);
+            celda = new Celda_Renderer(icono,archivo_Adjunto, id);
             celdas[2] = celda;
             modelo.addRow(celdas);
             retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(retroalimentacion.length()));
             
             imagen.flush();
         } catch (IOException ex) {
-            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar La Retroalimentación",ex.getMessage());
+           System.err.println(ex.getMessage());
         }
     }
     
@@ -1040,7 +1058,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         archivos_Adjuntos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(archivo_Adjunto.length()));
 
         
-        
     }
     
     private void Obtener_Mensajes_Tarea(){
@@ -1070,7 +1087,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }else{
-            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()),id);
+            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
@@ -1100,19 +1117,20 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     
     private void Obtener_Archivos_Adjuntos_Tarea(){
         
+        
         DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
         modelo.setRowCount(0);
-        
-        Lista<ArchivosTareaModel> response = CourseRoom.Solicitudes().Obtener_Archivos_Adjuntos_Tarea(Id_Tarea);
-        
-        if(response.is_empty()){
-            CourseRoom.Utilerias().Mensaje_Alerta("Archivos Adjuntos", "No Se Encontraron Archivos Adjuntos");
-        }else{
-            while(!response.is_empty()){
-                Agregar_Archivo_Adjunto(response.delist());
+        SwingUtilities.invokeLater(() -> {
+            Lista<ArchivosTareaModel> response = CourseRoom.Solicitudes().Obtener_Archivos_Adjuntos_Tarea(Id_Tarea);
+
+            if(response.is_empty()){
+                CourseRoom.Utilerias().Mensaje_Alerta("Archivos Adjuntos", "No Se Encontraron Archivos Adjuntos");
+            }else{
+                while(!response.is_empty()){
+                    Agregar_Archivo_Adjunto(response.delist());
+                }
             }
-        }
-        
+        });
     }
 
     private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
@@ -1149,6 +1167,97 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         }
         
     }
+    
+    private void Descargar_Archivo_Adjunto(int id_Archivo, String nombre_Archivo){
+        
+        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+        
+        if(!archivo.exists()){
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Adjunto_Tarea(id_Archivo);
+
+                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
+                    File directorio = new File("/descargas/tareas/");
+                    File crear_Archivo;
+                    try {
+                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
+                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else{
+            String extension = FilenameUtils.getExtension(nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+        }
+        
+    }
+    
+    private void Descargar_Archivo_Retroalimentacion(int id_Retroalimentacion, String nombre_Archivo){
+        
+        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+        
+        if(!archivo.exists()){
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Retroalimentacion_Tarea(id_Retroalimentacion);
+
+                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
+                    File directorio = new File("/descargas/tareas/");
+                    File crear_Archivo;
+                    try {
+                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
+                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else{
+            String extension = FilenameUtils.getExtension(nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+        }
+        
+    }
+    
+    private void Obtener_Retroalimentaciones(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        SwingUtilities.invokeLater(() -> {
+            Lista<RetroalimentacionesTareaModel> response =
+                    CourseRoom.Solicitudes().Obtener_Retroalimentaciones_Tarea(Id_Tarea,
+                            Tablero_Estudiante_Panel.Id_Usuario());
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Retroalimentacion(response.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Retroalimentaciones Tarea", "No Se Encontraron Retroalimentaciones");
+            }
+        });
+    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;

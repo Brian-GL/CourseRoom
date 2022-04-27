@@ -562,10 +562,10 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
             try {
                 Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
                 ImageIcon icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono,CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()),id);
+                celda = new Celda_Renderer(icono,mensajesModel.Mensaje(),id);
                 celdas[1] = celda;
             } catch (IOException ex) {
-                celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()),id);
+                celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
                 celdas[1] = celda;
             }
         }
