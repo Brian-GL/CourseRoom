@@ -20,6 +20,7 @@ package paneles.estudiantes.cursos;
 import clases.Celda_Renderer;
 import courseroom.CourseRoom;
 import courseroom.CourseRoom_Frame;
+import datos.colecciones.Lista;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
 import java.awt.Font;
@@ -31,6 +32,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ComboOptionModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.ResponseModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
@@ -461,6 +463,32 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
             
         }    
           
+    }
+    
+        private void Obtener_Tematicas_Curso(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas_Curso(Id_Curso);
+        
+        while(!tematicas.is_empty()){
+            Agregar_Tematica(tematicas.delist());
+        }
+        
+    }
+    
+    private void Agregar_Tematica(ComboOptionModel comboOptionModel){
+        
+        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[1];
+        
+        Celda_Renderer celda = new Celda_Renderer(comboOptionModel.Valor(), comboOptionModel.Id().toString());
+        celdas[0] = celda;
+        
+        modelo.addRow(celdas);
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
