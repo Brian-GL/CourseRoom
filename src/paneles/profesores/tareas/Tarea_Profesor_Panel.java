@@ -47,6 +47,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ArchivoModel;
 import modelos.DatosGeneralesTareaProfesorModel;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
@@ -1025,15 +1026,16 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     private void guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+                SwingUtilities.invokeLater(() -> {
+                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Generales_Tarea(Id_Tarea,
+                        editar_Nombre_JTextField.getText(), editar_Descripcion_JTextPane.getText());
 
-//            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Generales_Grupo(Id_Grupo,
-//                editar_Nombre_JTextField.getText(), editar_Descripcion_JTextPane.getText());
-//
-//            if(respuesta.Is_Success()){
-//                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-//            }else{
-//                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-//            }
+                if (respuesta.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                }
+            });
         }
     }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked
 
@@ -1072,18 +1074,18 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     
     private void Agregar_Mensaje_Tarea(MensajesModel mensajesModel){
         Celda_Renderer[] celdas = new Celda_Renderer[3];
-  
+        String id = String.valueOf(mensajesModel.Id_Mensaje());
         Celda_Renderer celda;
-        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
         celdas[0] = celda;
         if(mensajesModel.Extension().isBlank()){
-            celda = new Celda_Renderer(mensajesModel.Mensaje());
+            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }else{
-            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()));
+            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),".",mensajesModel.Extension()),id);
             celdas[1] = celda;
         }
-        celda = new Celda_Renderer(mensajesModel.Fecha_Envio());
+        celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
         celdas[2] = celda;
 
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
@@ -1163,6 +1165,41 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         
     }
 
+    private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
+        
+        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+        
+        if(!archivo.exists()){
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
+
+                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
+                    File directorio = new File("/descargas/tareas/");
+                    File crear_Archivo;
+                    try {
+                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
+                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else{
+            String extension = FilenameUtils.getExtension(nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+        }
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton archivos_Adjuntos_JButton;
@@ -1243,34 +1280,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         
         mensajes_Chat_JTable.getTableHeader().setFont(gadugi);
         
-        mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-
-                    // Abrir
-                    if (columna == 1) {
-                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                        Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
-                        
-                        if(celda.Tiene_Icono()){
-                            String extension = FilenameUtils.getExtension(celda.Texto());
-                            String ruta = celda.ID();
-                            CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
-                        }
-                    }
-
-                }
-            }
-        });
-        
+        mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());  
        
         Colorear_Componentes();
     }
