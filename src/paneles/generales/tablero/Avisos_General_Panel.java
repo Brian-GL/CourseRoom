@@ -396,7 +396,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
                     if(!tipo_Usuario){
                         if(id_Usuario == Tablero_Estudiante_Panel.Id_Usuario()){
                             mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación\n";
-                            System.out.println(mensaje);
+                            CourseRoom.Utilerias().Mostrar_Aviso();
                             avisosModel = CourseRoom.Solicitudes().Obtener_Ultimo_Aviso(id_Usuario);
                             if(avisosModel.Id_Aviso() > 0){
                                 Agregar_Ultimo_Aviso(avisosModel);
@@ -406,7 +406,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
                     }else{
                         if(id_Usuario == Tablero_Profesor_Panel.Id_Usuario()){
                             mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación\n";
-                            System.out.println(mensaje);
+                            CourseRoom.Utilerias().Mostrar_Aviso();
                             avisosModel = CourseRoom.Solicitudes().Obtener_Ultimo_Aviso(id_Usuario);
                             if(avisosModel.Id_Aviso() > 0){
                                 Agregar_Ultimo_Aviso(avisosModel);

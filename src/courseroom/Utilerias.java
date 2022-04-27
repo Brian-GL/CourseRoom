@@ -100,11 +100,15 @@ import datos.estructuras.Tripleta;
 import frames.generales.Lector_Audio_General_Frame;
 import frames.generales.Lector_PDF_General_Frame;
 import frames.generales.Lector_Video_General_Panel;
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.Image;
+import java.awt.SystemTray;
 import java.awt.Toolkit;
+import java.awt.TrayIcon;
+import java.awt.TrayIcon.MessageType;
 import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
 import java.io.BufferedReader;
@@ -1068,6 +1072,29 @@ public class Utilerias {
             return Codificacion(DireccionIP());
         } catch (IOException ex) {
             return new String();
+        }
+    }
+    
+    public void Mostrar_Aviso(){
+        try {
+            //Obtain only one instance of the SystemTray object
+            SystemTray tray = SystemTray.getSystemTray();
+            
+            //If the icon is a file
+            Image image = ImageIO.read(getClass().getResource("/recursos/iconos/bell_warning.png"));
+            //Alternative (if the icon is on the classpath):
+            //Image image = Toolkit.getDefaultToolkit().createImage(getClass().getResource("icon.png"));
+            
+            TrayIcon trayIcon = new TrayIcon(image, "Notificación");
+            //Let the system resize the image if needed
+            trayIcon.setImageAutoSize(true);
+            //Set tooltip text for the tray icon
+            trayIcon.setToolTip("Nueva Notificación De CourseRoom");
+            tray.add(trayIcon);
+            
+            trayIcon.displayMessage("CourseRoom", "Tienes Una Nueva Notificación", MessageType.INFO);
+        } catch (AWTException | IOException ex) {
+            
         }
     }
     
