@@ -25,6 +25,7 @@ import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
 import datos.interfaces.Limpieza_Interface;
+import frames.profesores.Calificar_Profesor_Frame;
 import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.Image;
@@ -36,6 +37,8 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -51,6 +54,7 @@ import modelos.DatosGeneralesTareaProfesorModel;
 import modelos.DatosPerfilModel;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
+import modelos.RetroalimentacionesTareaModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import paneles.profesores.Tablero_Profesor_Panel;
@@ -1111,6 +1115,53 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         }
     }
     
+    private void Agregar_Retroalimentacion(RetroalimentacionesTareaModel retroalimentacionesTareaModel){
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+        Celda_Renderer celda;
+        String retroalimentacion = retroalimentacionesTareaModel.Retroalimentacion();
+        String fecha_Retroalimentacion = retroalimentacionesTareaModel.Fecha_Envio();
+        String archivo_Adjunto = CourseRoom.Utilerias().Concatenar(retroalimentacionesTareaModel.Nombre_Archivo(),
+                ".", retroalimentacionesTareaModel.Extension());
+        String id = String.valueOf(retroalimentacionesTareaModel.Id_Retroalimentacion());
+        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
+        
+        try {
+            
+            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+            ImageIcon icono = new ImageIcon(imagen);
+            
+            celda = new Celda_Renderer(retroalimentacion,id);
+            celdas[0] = celda;
+            celda = new Celda_Renderer(fecha_Retroalimentacion,id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(icono,archivo_Adjunto, id);
+            celdas[2] = celda;
+            modelo.addRow(celdas);
+            retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(retroalimentacion.length()));
+            
+            imagen.flush();
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+    
+    private void Obtener_Retroalimentciones(){
+        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
+        modelo.setRowCount(0);
+        SwingUtilities.invokeLater(() -> {
+            Lista<RetroalimentacionesTareaModel> response = CourseRoom.Solicitudes().Obtener_Retroalimentaciones_Tarea(Id_Tarea,Id_Usuario);
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Retroalimentacion(response.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Retroalimentaciones", "No Se Encontraron Retroalimentaciones");
+            }
+        });
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JLabel apellidos_JLabel;
@@ -1318,32 +1369,44 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
 
     
     public void Retroalimentar(String retroalimentacion, File archivo_Abierto) {
-        
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
-            
-        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
-        
         try {
+            String extension = FilenameUtils.getExtension(archivo_Abierto.getName());
+            byte[] archivo = FileUtils.readFileToByteArray(archivo_Abierto);
+            String nombre_Archivo = archivo_Abierto.getName();
+            SwingUtilities.invokeLater(() -> {
+            ResponseModel response = CourseRoom.Solicitudes().Enviar_Retroalimentacion_Tarea(Id_Tarea, Id_Usuario, retroalimentacion, nombre_Archivo, archivo, extension);
+            if(response.Is_Success()){
+            Celda_Renderer[] celdas = new Celda_Renderer[3];
+            String id = String.valueOf(response.Codigo());
+            DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
             
-            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-            ImageIcon icono_Abrir = new ImageIcon(icono);
-            
-            Celda_Renderer celda;
-            
-            celda = new Celda_Renderer(retroalimentacion);
-            celdas[0] = celda;
-            celda  = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(), "");
-            celdas[1] = celda;
-            celda = (archivo_Abierto != null) ? new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),archivo_Abierto.getAbsolutePath())
-                    : new Celda_Renderer("No Disponible","");
-            celdas[2] =  celda;
-            
-            modelo.addRow(celdas);
-            
-            icono.flush();
-            retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1,CourseRoom.Utilerias().Altura_Fila_Tabla(retroalimentacion.length()));
+            try {
+                
+                Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                ImageIcon icono_Abrir = new ImageIcon(icono);
+                
+                Celda_Renderer celda;
+                
+                celda = new Celda_Renderer(retroalimentacion, id);
+                celdas[0] = celda;
+                celda  = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(), id);
+                celdas[1] = celda;
+                celda = new Celda_Renderer(icono_Abrir,archivo_Abierto.getName(),id);
+                celdas[2] =  celda;
+                
+                modelo.addRow(celdas);
+                
+                icono.flush();
+                retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1,CourseRoom.Utilerias().Altura_Fila_Tabla(retroalimentacion.length()));
+            } catch (IOException ex) {
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Retroalimentación",ex.getMessage());
+            }
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
+            }
+            });
         } catch (IOException ex) {
-            CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Retroalimentación",ex.getMessage());
+            Logger.getLogger(Tarea_Por_Calificar_Profesor_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -1644,8 +1707,9 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                     Retroalimentar(retroalimentacion_JTextPane.getText(),archivo_Adjunto);
 
                     this.dispose();
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Retroalimentación", "La Retroalimentación No Tiene El Formato Adecuado.");
                 }
-
             }
         }                                                   
 
@@ -1755,38 +1819,23 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         private void Adjuntar_Archivo(){
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             int resultado = escogedor_Archivos.showOpenDialog(this);
+
             if (resultado == JFileChooser.APPROVE_OPTION) {
-                File[] archivo_Adjunto = escogedor_Archivos.getSelectedFiles();
-               // archivo_Adjunto = escogedor_Archivos.getSelectedFile();
-                if(archivo_Adjunto != null){
-                    //archivo_Adjunto_JLabel.setText(archivo_Adjunto.getName());
-                    try {
-                    String ruta;
-                    String nombre_Archivo;
-                    long tamanio;
-                    boolean archivo_Mayor = false;
-                    Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-                    ImageIcon icono_Abrir = new ImageIcon(icono);
-                    for (File archivos_Adjuntos : archivo_Adjunto){
-                        tamanio = FileUtils.sizeOf(archivos_Adjuntos);
-                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                        if(tamanio < 75){
-                            ruta = archivos_Adjuntos.getAbsolutePath();
-                            nombre_Archivo = archivos_Adjuntos.getName();                                     
-                        }else{
-                            archivo_Mayor = true;
-                        }
+               File archivo_Abierto = escogedor_Archivos.getSelectedFile();
+
+                if (archivo_Abierto != null) {
+
+                    long tamanio = FileUtils.sizeOf(archivo_Abierto);
+                    tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                    if (tamanio < 35) {
+                       archivo_Adjunto = archivo_Abierto;
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "El Archivo Adjunto Supera El Tamaño Aceptado De Subida");
                     }
-                    if(archivo_Mayor){
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                    }
-                    icono.flush();
-                } catch (IOException ex) {
-                    CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Archivo",ex.getMessage());
                 }
-                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "El Archivo Adjunto No Tiene Un Formato Adecuado");
             }
-        }
 
     }
     
@@ -1975,4 +2024,5 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         }
     }
     
+}
 }
