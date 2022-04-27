@@ -33,6 +33,7 @@ import modelos.ChatsPersonalesModel;
 import modelos.ConfiguracionesModel;
 import modelos.CursosCreadosProfesorModel;
 import modelos.CursosModel;
+import modelos.DatosEntregaTareaModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.DatosGeneralesGrupoModel;
 import modelos.DatosGeneralesPreguntaModel;
@@ -2555,6 +2556,42 @@ public class Solicitudes {
         }
         
         return response;  
+    }
+    
+    public DatosEntregaTareaModel Obtener_Datos_Entrega_Tarea(int id_Tarea, int id_Usuario){
+        DatosEntregaTareaModel datosEntregaTareaModel = new DatosEntregaTareaModel();
+        
+        try {
+
+            Vector parametros = new Vector();
+
+            parametros.add(id_Tarea);
+            parametros.add(id_Usuario);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Datos_Entrega_Tarea", parametros);
+
+            if(respuesta != null){
+
+               Vector<Object> resultado  = (Vector<Object>)respuesta;
+
+               if(resultado.size() == 4){
+                   
+                    datosEntregaTareaModel.Fecha_Subida(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosEntregaTareaModel.Calificacion((Double)resultado.remove(0));
+                    datosEntregaTareaModel.Fecha_Calificacion(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                    datosEntregaTareaModel.Estatus(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+
+                }
+               
+           }
+
+        } catch (XmlRpcException | IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        return datosEntregaTareaModel;
     }
     
     public ComboOptionModel Obtener_Datos_Generales_Chat_Personal(int id_Chat, int id_Usuario){
