@@ -34,9 +34,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.SocketException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -49,7 +46,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.ArchivoModel;
-import modelos.DatosGeneralesTareaPendienteModel;
+import modelos.DatosEntregaTareaModel;
 import modelos.DatosGeneralesTareaProfesorModel;
 import modelos.DatosPerfilModel;
 import modelos.MensajesModel;
@@ -613,13 +610,25 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                             int columna = tabla.getSelectedColumn();
 
                             // Abrir
-                            if (columna == 0){
-                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                String extension = FilenameUtils.getExtension(celda.Texto());
-                                String ruta = celda.ID();
-                                CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+                            switch (columna) {
+                                case 0: {
+                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                    Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
+                                    if(celda.Tiene_Icono()){
+
+                                        int id_Archivo = Integer.parseInt(celda.ID());
+
+                                        if (id_Archivo > 0){
+                                            Descargar_Archivo_Entrega(id_Archivo,celda.Texto());
+                                        }else{
+                                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                        }
+                                    }
+                                }
+                                break;
+                                default:
+                                break;
                             }
                         }
                     }
@@ -1005,7 +1014,6 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             curso_JLabel.setText(datosGeneralesTareaProfesorModel.Nombre_Curso());
             fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", datosGeneralesTareaProfesorModel.Fecha_Entrega()));
             fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesorModel.Fecha_Creacion()));
-            //fecha_Entregado_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entregada el ", datosGeneralesTareaProfesorModel.fecha_Entregada));
             estatus_Tarea_JLabel.setText(datosGeneralesTareaProfesorModel.Estatus());
             descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaProfesorModel.Descripcion()));
             Obtener_Datos_Generales_Estudiante(Id_Usuario);
@@ -1045,6 +1053,34 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
         }
         
+    }
+    
+    private void Descargar_Archivo_Entrega(int id_Archivo_Subido, String nombre_Archivo){
+        
+        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+        
+        if(!archivo.exists()){
+
+            SwingUtilities.invokeLater(() -> {
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Subido_Tarea(id_Archivo_Subido, Id_Usuario);
+                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
+                    File directorio = new File("/descargas/tareas/");
+                    File crear_Archivo;
+                    try {
+                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
+                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());                        
+                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+            });
+        } else{
+            String extension = FilenameUtils.getExtension(nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+        }
     }
     
     private void Obtener_Mensajes_Tarea(){
@@ -1160,6 +1196,23 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                 CourseRoom.Utilerias().Mensaje_Alerta("Retroalimentaciones", "No Se Encontraron Retroalimentaciones");
             }
         });
+    }
+    
+    private void Obtener_Datos_Entrega_Tarea(){
+        DatosEntregaTareaModel datosEntregaTareaModel = 
+                CourseRoom.Solicitudes().Obtener_Datos_Entrega_Tarea(Id_Tarea, Id_Usuario);
+        
+        if(datosEntregaTareaModel.Calificacion() > 0){
+            String valor_Calificacion = String.valueOf(datosEntregaTareaModel.Calificacion());
+            calificacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Calificación: ", valor_Calificacion));
+            fecha_Entregado_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entregada el ", datosEntregaTareaModel.Fecha_Subida()));
+            estatus_Envio_JLabel.setText(datosEntregaTareaModel.Estatus());
+        }
+    }
+    
+    private void Obtener_Archivos_Entregados(){
+        DefaultTableModel modelo = (DefaultTableModel) archivos_Entregados_JTable.getModel();
+        modelo.setRowCount(0);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
