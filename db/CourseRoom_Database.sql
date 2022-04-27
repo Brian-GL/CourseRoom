@@ -4491,6 +4491,30 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosEntregaTarea` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosEntregaTarea`(
+	IN _IdTarea INT,
+    IN _IdUsuario INT
+)
+BEGIN
+	SELECT FechaSubida, Calificacion, FechaCalificacion, CAST(Estatus AS CHAR) AS Estatus
+    FROM tb_tareascursousuarios WHERE IdTarea = _IdTarea AND IdUsuario = _IdUsuario
+    LIMIT 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_ObtenerDatosGeneralesChatPersonal` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -4614,7 +4638,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerDatosGeneral
 )
 BEGIN
     SELECT Cursos.IdCurso, Cursos.Nombre AS NombreCurso, Tareas.Nombre, Tareas.Descripcion, 
-    Tareas.FechaCreacion, Tareas.FechaEntrega, CAST(TareasCursoUsuario AS CHAR) AS Estatus
+    Tareas.FechaCreacion, Tareas.FechaEntrega, CAST(TareasCursoUsuario.Estatus AS CHAR) AS Estatus
     FROM tb_tareas Tareas
     INNER JOIN tb_cursos Cursos ON Cursos.IdCurso = Tareas.IdCurso
     INNER JOIN tb_tareascursousuarios TareasCursoUsuario ON TareasCursoUsuario.IdTarea = Tareas.IdTarea 
@@ -6582,4 +6606,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-26 18:45:34
+-- Dump completed on 2022-04-27 18:03:34
