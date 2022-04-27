@@ -59,6 +59,7 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
+import modelos.ComboOptionModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.DatosGeneralesTareaProfesorModel;
 import modelos.MensajesModel;
@@ -1396,7 +1397,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         }
     }
     
-   private void Obtener_Datos_Generales_Curso(){
+    private void Obtener_Datos_Generales_Curso(){
         
         DatosGeneralesCursoModel datosGeneralesCursoModel = 
                 CourseRoom.Solicitudes().Obtener_Datos_Generales_Curso(Id_Curso);
@@ -1445,10 +1446,39 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 }
             }
             
+            Obtener_Tematicas_Curso();
+            
         }    
           
     }
+    
+    private void Obtener_Tematicas_Curso(){
         
+        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas_Curso(Id_Curso);
+        
+        while(!tematicas.is_empty()){
+            Agregar_Tematica(tematicas.delist());
+        }
+        
+    }
+    
+    private void Agregar_Tematica(ComboOptionModel comboOptionModel){
+        
+        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[1];
+        
+        Celda_Renderer celda = new Celda_Renderer(comboOptionModel.Valor(), comboOptionModel.Id().toString());
+        celdas[0] = celda;
+        
+        modelo.addRow(celdas);
+        
+    }
+    
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abandonar_Curso_JButton;
     private javax.swing.JButton actualizar_JButton;
