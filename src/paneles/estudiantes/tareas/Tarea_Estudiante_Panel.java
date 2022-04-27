@@ -44,6 +44,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ArchivoModel;
+import modelos.ArchivosTareaModel;
 import modelos.DatosGeneralesTareaModel;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
@@ -417,6 +419,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             mensajes_Chat_JScrollPane.setOpaque(false);
 
             mensajes_Chat_JTable.setAutoCreateRowSorter(true);
+            mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             mensajes_Chat_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -450,7 +453,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         return super.getColumnClass(column);
                     }
                 });
-                mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 mensajes_Chat_JTable.setRowHeight(80);
                 mensajes_Chat_JTable.setShowGrid(true);
                 mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
@@ -471,9 +473,14 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                 Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
 
                                 if(celda.Tiene_Icono()){
-                                    String extension = FilenameUtils.getExtension(celda.Texto());
-                                    String ruta = celda.ID();
-                                    CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+
+                                    int id_Mensaje = Integer.parseInt(celda.ID());
+
+                                    if (id_Mensaje > 0){
+                                        Descargar_Archivo(id_Mensaje,celda.Texto());
+                                    }else{
+                                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                    }
                                 }
                             }
 
@@ -1002,12 +1009,15 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         } catch (IOException ex) {
             CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar La Retroalimentación",ex.getMessage());
         }
-        
     }
     
-    private void Agregar_Archivo_Adjunto(String archivo_Adjunto, String ruta_Archivo_Adjunto, String fecha_Adjunto){
+    private void Agregar_Archivo_Adjunto(ArchivosTareaModel archivosTareaModel){
         Celda_Renderer[] celdas = new Celda_Renderer[2];
         Celda_Renderer celda;
+        
+        String id = String.valueOf(archivosTareaModel.Id_Archivo_Tarea());
+        String archivo_Adjunto = CourseRoom.Utilerias().Concatenar(archivosTareaModel.Nombre_Archivo(),".",archivosTareaModel.Extension());
+        String fecha_Adjunto = archivosTareaModel.Fecha_Enviado();
         DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
         
         try {
@@ -1015,18 +1025,22 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
             ImageIcon icono = new ImageIcon(imagen);
             
-            celda = new Celda_Renderer(icono,archivo_Adjunto, ruta_Archivo_Adjunto);
+            celda = new Celda_Renderer(icono,archivo_Adjunto, id);
             celdas[0] = celda;
-            celda = new Celda_Renderer(fecha_Adjunto);
-            celdas[1] = celda;
-            
-            modelo.addRow(celdas);
-            archivos_Adjuntos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(archivo_Adjunto.length()));
             
             imagen.flush();
         } catch (IOException ex) {
-            CourseRoom.Utilerias().Mensaje_Error("Error Al Subir El Archivo Adjunto",ex.getMessage());
+            celda = new Celda_Renderer(archivo_Adjunto, id);
+            celdas[0] = celda;
         }
+        celda = new Celda_Renderer(fecha_Adjunto,id);
+        celdas[1] = celda;
+
+        modelo.addRow(celdas);
+        archivos_Adjuntos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(archivo_Adjunto.length()));
+
+        
+        
     }
     
     private void Obtener_Mensajes_Tarea(){
@@ -1083,7 +1097,59 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTarea.Descripcion()));
         }
     }
+    
+    private void Obtener_Archivos_Adjuntos_Tarea(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Lista<ArchivosTareaModel> response = CourseRoom.Solicitudes().Obtener_Archivos_Adjuntos_Tarea(Id_Tarea);
+        
+        if(response.is_empty()){
+            CourseRoom.Utilerias().Mensaje_Alerta("Archivos Adjuntos", "No Se Encontraron Archivos Adjuntos");
+        }else{
+            while(!response.is_empty()){
+                Agregar_Archivo_Adjunto(response.delist());
+            }
+        }
+        
+    }
 
+    private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
+        
+        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+        
+        if(!archivo.exists()){
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
+
+                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
+                    File directorio = new File("/descargas/tareas/");
+                    File crear_Archivo;
+                    try {
+                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
+                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else{
+            String extension = FilenameUtils.getExtension(nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+        }
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton archivos_Adjuntos_JButton;
@@ -1161,7 +1227,6 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-       
         Colorear_Componentes();
         
 

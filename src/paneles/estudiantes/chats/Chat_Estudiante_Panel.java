@@ -709,8 +709,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
     public int Id_Chat() {
         return Id_Chat;
     }
-    
-    
+     
     private void Obtener_Mensajes_Chat(){
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
