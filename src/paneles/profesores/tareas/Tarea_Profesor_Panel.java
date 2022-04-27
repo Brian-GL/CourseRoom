@@ -127,8 +127,8 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
-        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
         titulo_JPanel.setOpaque(false);
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -207,8 +207,8 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         });
 
         tareas_Por_Calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_4.png"))); // NOI18N
-        tareas_Por_Calificar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tareas_Por_Calificar_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
+        tareas_Por_Calificar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)tareas_Por_Calificar_JButton.getIcon()).getImage().flush();
         tareas_Por_Calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -294,22 +294,22 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         descripcion_JTextPane.setRequestFocusEnabled(false);
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
+        fecha_Entrega_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         fecha_Entrega_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Entrega_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/clock.png"))); // NOI18N
-        fecha_Entrega_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         ((ImageIcon)fecha_Entrega_JLabel.getIcon()).getImage().flush();
 
+        estatus_Tarea_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         estatus_Tarea_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         estatus_Tarea_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_1.png"))); // NOI18N
         estatus_Tarea_JLabel.setText("Pendiente");
         estatus_Tarea_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        estatus_Tarea_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         estatus_Tarea_JLabel.setOpaque(true);
         ((ImageIcon)estatus_Tarea_JLabel.getIcon()).getImage().flush();
 
+        fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         fecha_Creacion_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_Creacion_JLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/daily-tasks.png"))); // NOI18N
-        fecha_Creacion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         ((ImageIcon)fecha_Creacion_JLabel.getIcon()).getImage().flush();
 
         javax.swing.GroupLayout informacion_Tarea_JPanelLayout = new javax.swing.GroupLayout(informacion_Tarea_JPanel);
@@ -351,11 +351,11 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         archivos_Adjuntos_JPanel.setOpaque(false);
         archivos_Adjuntos_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
+        subir_Archivos_Adjuntos_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         subir_Archivos_Adjuntos_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
         subir_Archivos_Adjuntos_JButton.setText("Subir Adjunto(s)");
-        subir_Archivos_Adjuntos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        subir_Archivos_Adjuntos_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         subir_Archivos_Adjuntos_JButton.setToolTipText("Compartir Y Subir Archivo");
+        subir_Archivos_Adjuntos_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)subir_Archivos_Adjuntos_JButton.getIcon()).getImage().flush();
         subir_Archivos_Adjuntos_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -541,6 +541,36 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                 mensajes_Chat_JTable.setRowMargin(15);
                 mensajes_Chat_JTable.setShowGrid(true);
                 mensajes_Chat_JTable.setRowSorter(new TableRowSorter(mensajes_Chat_JTable.getModel()));
+                mensajes_Chat_JTable.addMouseListener(new MouseAdapter() {
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        if (e.getClickCount() == 2) {
+
+                            JTable tabla = (JTable) e.getComponent();
+                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                            int columna = tabla.getSelectedColumn();
+
+                            // Abrir
+                            if (columna == 1) {
+                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
+
+                                if(celda.Tiene_Icono()){
+
+                                    int id_Mensaje = Integer.parseInt(celda.ID());
+
+                                    if (id_Mensaje > 0){
+                                        Descargar_Archivo(id_Mensaje,celda.Texto());
+                                    }else{
+                                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                });
                 mensajes_Chat_JScrollPane.setViewportView(mensajes_Chat_JTable);
 
                 chat_JPanel.add(mensajes_Chat_JScrollPane, java.awt.BorderLayout.CENTER);
@@ -646,8 +676,8 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                     editar_Tarea_JPanel.setOpaque(false);
                     editar_Tarea_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
 
-                    editar_Nombre_JLabel.setText("Nombre");
                     editar_Nombre_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                    editar_Nombre_JLabel.setText("Nombre");
 
                     editar_Nombre_JTextField.setEditable(false);
                     editar_Nombre_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
@@ -657,10 +687,10 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         }
                     });
 
-                    editar_Nombre_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-                    editar_Nombre_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                     editar_Nombre_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+                    editar_Nombre_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
                     editar_Nombre_JButton.setToolTipText("Editar Nombre Del Grupo");
+                    editar_Nombre_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                     ((ImageIcon)editar_Nombre_JButton.getIcon()).getImage().flush();
                     editar_Nombre_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -674,8 +704,8 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         }
                     });
 
-                    editar_Descripcion_JLabel.setText("Descripción");
                     editar_Descripcion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                    editar_Descripcion_JLabel.setText("Descripción");
 
                     editar_Descripcion_JTextPane.setEditable(false);
                     editar_Descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -686,10 +716,10 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                     });
                     editar_Descripcion_JScrollPane.setViewportView(editar_Descripcion_JTextPane);
 
-                    editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
-                    editar_Descripcion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                     editar_Descripcion_JButton.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+                    editar_Descripcion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/rename.png"))); // NOI18N
                     editar_Descripcion_JButton.setToolTipText("Editar Nombre Del Grupo");
+                    editar_Descripcion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                     ((ImageIcon)editar_Descripcion_JButton.getIcon()).getImage().flush();
                     editar_Descripcion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -703,12 +733,12 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         }
                     });
 
+                    eliminar_Tarea_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
                     eliminar_Tarea_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
                     eliminar_Tarea_JButton.setText("Eliminar Tarea");
-                    eliminar_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                    eliminar_Tarea_JButton.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
-                    eliminar_Tarea_JButton.setPreferredSize(new java.awt.Dimension(400, 50));
                     eliminar_Tarea_JButton.setToolTipText("Abandona Y Elimina El Grupo De Los Tuyos");
+                    eliminar_Tarea_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                    eliminar_Tarea_JButton.setPreferredSize(new java.awt.Dimension(400, 50));
                     ((ImageIcon)eliminar_Tarea_JButton.getIcon()).getImage().flush();
                     eliminar_Tarea_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
