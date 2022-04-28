@@ -650,6 +650,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
+        Obtener_Grupos();
     }
 
     @Override

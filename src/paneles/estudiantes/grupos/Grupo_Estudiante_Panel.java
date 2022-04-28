@@ -1377,11 +1377,23 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             SwingUtilities.invokeLater(() -> {
-                Obtener_Datos_Generales_Grupo();
-                Obtener_Mensajes_Grupo();
-                Obtener_Tareas_Pendientes_Grupo();
-                Obtener_Miembros_Grupo();
-                Obtener_Archivos_Compartidos();
+                switch (carta_Visible) {
+                    case 0: case 5:
+                        Obtener_Datos_Generales_Grupo();
+                        break;
+                    case 1:
+                        Obtener_Miembros_Grupo();
+                        break;
+                    case 2:
+                        Obtener_Mensajes_Grupo();
+                        break;
+                    case 3:
+                        Obtener_Archivos_Compartidos();
+                        break;
+                    case 4:
+                        Obtener_Tareas_Pendientes_Grupo();
+                        break;
+                }
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -2007,6 +2019,12 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         Colorear_Componentes();
+        
+        Obtener_Datos_Generales_Grupo();
+        Obtener_Mensajes_Grupo();
+        Obtener_Tareas_Pendientes_Grupo();
+        Obtener_Miembros_Grupo();
+        Obtener_Archivos_Compartidos();
         
     }
 

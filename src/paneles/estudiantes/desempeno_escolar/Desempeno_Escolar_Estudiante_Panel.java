@@ -259,7 +259,13 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Obtener_Desempeno_Usuario();
+            switch (carta_Visible) {
+            case 0:
+                break;
+            case 1:
+                Obtener_Desempeno_Usuario();
+                break;
+            }
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -478,7 +484,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         chartPanel.setMaximumSize(regresion_Lineal_JPanel.getMaximumSize());
         regresion_Lineal_JPanel.add(chartPanel);
         
-        
+        Obtener_Desempeno_Usuario();
     }
 
     @Override

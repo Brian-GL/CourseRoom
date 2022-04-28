@@ -37,7 +37,6 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import modelos.PreguntasModel;
 import modelos.TareasEstudianteModel;
 import paneles.estudiantes.Tablero_Estudiante_Panel;
 
@@ -656,7 +655,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        
+        Obtener_Tareas();
     }
 
     @Override

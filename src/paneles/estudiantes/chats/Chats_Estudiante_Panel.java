@@ -702,6 +702,8 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
         buscar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
+        Obtener_Chats_Personales();
+        
     }
 
     @Override
