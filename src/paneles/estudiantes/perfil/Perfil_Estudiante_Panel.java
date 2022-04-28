@@ -45,7 +45,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     public Perfil_Estudiante_Panel() {
         initComponents();
         Iniciar_Componentes();
-        Actualizar_Datos();
     }
 
     /**

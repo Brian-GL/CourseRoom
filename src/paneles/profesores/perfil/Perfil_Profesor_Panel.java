@@ -1424,7 +1424,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         Obtener_Datos_Perfil();
-        Obtener_Localidades_Estado
+        Obtener_Localidades_Estado();
     }
 
     @Override
