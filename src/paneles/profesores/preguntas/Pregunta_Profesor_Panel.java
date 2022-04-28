@@ -653,7 +653,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         Obtener_Datos_Generales_Pregunta(false);
-        
+        Obtener_Mensajes_Pregunta();
       
         Colorear_Componentes();
         
