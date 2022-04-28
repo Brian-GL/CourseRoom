@@ -46,6 +46,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.ArchivoModel;
 import modelos.ArchivosTareaModel;
+import modelos.CalificacionTareaModel;
+import modelos.DatosEntregaTareaModel;
 import modelos.DatosGeneralesTareaModel;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
@@ -1296,6 +1298,36 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 CourseRoom.Utilerias().Mensaje_Alerta("Retroalimentaciones Tarea", "No Se Encontraron Retroalimentaciones");
             }
         });
+    }
+    
+    private void Obtener_Datos_Entrega_Tarea(){
+        
+        DatosEntregaTareaModel datosEntrega = CourseRoom.Solicitudes().Obtener_Datos_Entrega_Tarea(Id_Tarea, 
+                Tablero_Estudiante_Panel.Id_Usuario());
+        
+
+        if(datosEntrega.Calificacion() > 0){
+            
+            String valor_Calificacion = String.valueOf(datosEntrega.Calificacion());
+            
+            calificacion_JLabel.setText(CourseRoom.Utilerias().Concatenar(valor_Calificacion,
+                    ", El ",datosEntrega.Fecha_Calificacion()));
+            
+            fecha_Actualizacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Actualizada El: ", 
+                    datosEntrega.Fecha_Subida()));
+       
+        }
+        
+    }
+    
+    
+    private void Obtener_Archivos_Entregados_Tarea(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
