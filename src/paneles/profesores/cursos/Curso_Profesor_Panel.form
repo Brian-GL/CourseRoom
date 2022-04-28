@@ -2,10 +2,10 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
-    <Property name="opaque" type="boolean" value="false"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1110, 630]"/>
     </Property>
+    <Property name="opaque" type="boolean" value="false"/>
   </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -200,7 +200,6 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/recursos/iconos/reply.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Regresar A Mis Cursos&lt;/h3&gt;&lt;/html&gt;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder/>
@@ -209,6 +208,7 @@
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;h3&gt;Regresar A Mis Cursos&lt;/h3&gt;&lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="regresar_JButtonMouseClicked"/>
@@ -754,7 +754,6 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/recursos/iconos/attachment.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Enviar Archivo"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                         <BevelBorder/>
@@ -763,6 +762,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Enviar Archivo"/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enviar_Archivo_Chat_JButtonMouseClicked"/>
@@ -1467,14 +1467,10 @@
             </Container>
             <Component class="javax.swing.JButton" name="guardar_Datos_Generales_Curso_JButton">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="22" style="1"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/check.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Guardar Cambios"/>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Crear nueva cuenta&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
@@ -1483,6 +1479,10 @@
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="22" style="1"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Crear nueva cuenta&lt;/h3&gt; &lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="guardar_Datos_Generales_Curso_JButtonMouseClicked"/>

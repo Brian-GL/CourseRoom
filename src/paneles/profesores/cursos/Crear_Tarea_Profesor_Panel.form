@@ -63,13 +63,11 @@
                   <Component id="regresar_JButton" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="titulo_JLabel" min="-2" pref="273" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="574" max="32767" attributes="0"/>
                   <Component id="informacion_JButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="archivos_Adjuntos_JButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="crear_Tarea_JButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -83,7 +81,6 @@
                               <Component id="archivos_Adjuntos_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="informacion_JButton" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="titulo_JLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="crear_Tarea_JButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -176,30 +173,6 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)regresar_JButton.getIcon()).getImage().flush();"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="crear_Tarea_JButton">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/recursos/iconos/check.png"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                <BevelBorder/>
-              </Border>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="16" style="1"/>
-            </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Compartir Y Subir Archivo"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear_Tarea_JButtonMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear_Tarea_JButtonMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear_Tarea_JButtonMouseExited"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((ImageIcon)crear_Tarea_JButton.getIcon()).getImage().flush();"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -342,14 +315,10 @@
             </Component>
             <Component class="javax.swing.JButton" name="guardar_Cambios_Datos_Generales_Tarea_JButton">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="24" style="1"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/iconos/check.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Guardar Cambios"/>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Crear nueva cuenta&lt;/h3&gt; &lt;/html&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                     <BevelBorder/>
@@ -358,6 +327,10 @@
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="24" style="1"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; &lt;h3&gt;Crear nueva cuenta&lt;/h3&gt; &lt;/html&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked"/>
@@ -466,7 +439,7 @@
                     <Property name="surrendersFocusOnKeystroke" type="boolean" value="true"/>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="archivos_Adjuntos_JTable.setRowSorter(new TableRowSorter(archivos_Adjuntos_JTable.getModel()));&#xd;&#xa;archivos_Adjuntos_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable) e.getComponent();&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;            switch (columna) {&#xd;&#xa;                // Abrir&#xd;&#xa;                case 0:&#xd;&#xa;                    {&#xd;&#xa;                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);&#xd;&#xa;                        String extension = FilenameUtils.getExtension(celda.Texto());&#xd;&#xa;                        String ruta = celda.ID();&#xd;&#xa;                        CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());&#xd;&#xa;                    }&#xd;&#xa;                    break;&#xd;&#xa;                    // Remover&#xd;&#xa;                case 3:&#xd;&#xa;                    {&#xd;&#xa;                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                        modelo.removeRow(fila);&#xd;&#xa;                        break;&#xd;&#xa;                    }&#xd;&#xa;                default:&#xd;&#xa;                    break;&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="archivos_Adjuntos_JTable.setRowSorter(new TableRowSorter(archivos_Adjuntos_JTable.getModel()));&#xd;&#xa;archivos_Adjuntos_JTable.addMouseListener(new MouseAdapter() {&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void mousePressed(MouseEvent e) {&#xd;&#xa;        if (e.getClickCount() == 2) {&#xd;&#xa;&#xd;&#xa;            JTable tabla = (JTable) e.getComponent();&#xd;&#xa;            int columna = tabla.getSelectedColumn();&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;            switch (columna) {&#xd;&#xa;                // Abrir&#xd;&#xa;                /*case 0:&#xd;&#xa;                    {&#xd;&#xa;                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);&#xd;&#xa;                        String extension = FilenameUtils.getExtension(celda.Texto());&#xd;&#xa;                        String ruta = celda.ID();&#xd;&#xa;                        CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());&#xd;&#xa;                    }&#xd;&#xa;                    break;*/&#xd;&#xa;                    // Remover&#xd;&#xa;                case 3:&#xd;&#xa;                    {&#xd;&#xa;                        int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), &#xd;&#xa;                            &quot;&#xbf;Est&#xe1;s Segur@ De Remover Este Archivo Adjunto?&quot;, &quot;Remover Archivo Adjunto&quot;, &#xd;&#xa;                                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);&#xd;&#xa;&#xd;&#xa;                        if(resultado == JOptionPane.YES_OPTION){&#xd;&#xa;                            int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());&#xd;&#xa;                            &#xd;&#xa;                            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();&#xd;&#xa;                            Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);&#xd;&#xa;                            &#xd;&#xa;                            int id_Archivo_Subido = Integer.parseInt(celda.ID());&#xd;&#xa;                            SwingUtilities.invokeLater(() -&gt; {&#xd;&#xa;                            ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());&#xd;&#xa;&#xd;&#xa;                            if(response.Is_Success()){&#xd;&#xa;                                CourseRoom.Utilerias().Mensaje_Informativo(&quot;Remover Archivo Adjunto&quot;, response.Mensaje());&#xd;&#xa;                                modelo.removeRow(fila);&#xd;&#xa;                            }else{&#xd;&#xa;                                CourseRoom.Utilerias().Mensaje_Alerta(&quot;Remover Archivo Adjunto&quot;, response.Mensaje());&#xd;&#xa;                            }&#xd;&#xa;                            });&#xd;&#xa;                        }&#xd;&#xa;&#xd;&#xa;                        break;&#xd;&#xa;                    }&#xd;&#xa;                default:&#xd;&#xa;                    break;&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

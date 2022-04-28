@@ -1543,7 +1543,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             String id = CourseRoom.Utilerias().Concatenar("Tarea_Temporal_", this.ID);
-            Crear_Tarea_Profesor_Panel crear_Tarea_Profesor_Panel = new Crear_Tarea_Profesor_Panel(this.ID, id);
+            Crear_Tarea_Profesor_Panel crear_Tarea_Profesor_Panel = new Crear_Tarea_Profesor_Panel(Id_Curso, id);
             Tablero_Profesor_Panel.Agregar_Vista(crear_Tarea_Profesor_Panel,id);
             Tablero_Profesor_Panel.Mostrar_Vista(id);
         }
