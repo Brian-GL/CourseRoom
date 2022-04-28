@@ -760,7 +760,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
     
     private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
         
-        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/chats/", nombre_Archivo));
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/chats/", nombre_Archivo));
         
         if(!archivo.exists()){
 
@@ -768,14 +768,13 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
 
-                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
-                    File directorio = new File("/descargas/chats/");
-                    File crear_Archivo;
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
                     try {
-                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
-                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
                         
-                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
+                        
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
                         
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
@@ -920,14 +919,15 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
             
             SwingUtilities.invokeLater(() -> {
-                ResponseModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(mensaje, new byte[]{}, "",
+                ResponseModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(mensaje, new byte[]{}, new String(),
                         Tablero_Estudiante_Panel.Id_Usuario(), Id_Chat);
+                String fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
                 if (!response.Is_Success()) {
                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());
                 }else{
                     String id = String.valueOf(response.Codigo());
                     String emisor = Perfil_Estudiante_Panel.Nombre_Completo();
-                    String fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
+                    
                     Celda_Renderer[] celdas = new Celda_Renderer[3];
                     Celda_Renderer celda;
                     celda = new Celda_Renderer(emisor,id);
@@ -960,7 +960,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
             if (archivo_Abierto != null) {
                 
-                    
                 long tamanio = FileUtils.sizeOf(archivo_Abierto);
                 tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
                 if(tamanio < 35){

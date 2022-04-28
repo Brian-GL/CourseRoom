@@ -818,8 +818,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     icono = new ImageIcon(imagen);
                     celda = new Celda_Renderer(icono,buscarCursosModel.Nombre(), id);
                     celdas[0] = celda;
-                    
-                    imagen.flush();
                 }
             }
             else{

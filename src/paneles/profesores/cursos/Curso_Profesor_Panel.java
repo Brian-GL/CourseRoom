@@ -1841,6 +1841,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
+        
         SwingUtilities.invokeLater(() -> {
             Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Curso);
 
@@ -1858,16 +1859,17 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         Celda_Renderer[] celdas = new Celda_Renderer[3];
   
         Celda_Renderer celda;
+        String id = String.valueOf(mensajesModel.Id_Mensaje());
         celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
         celdas[0] = celda;
         if(mensajesModel.Extension().isBlank()){
-            celda = new Celda_Renderer(mensajesModel.Mensaje());
+            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }else{
-            celda = new Celda_Renderer(mensajesModel.Mensaje());
+            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }
-        celda = new Celda_Renderer(mensajesModel.Fecha_Envio());
+        celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
         celdas[2] = celda;
 
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();

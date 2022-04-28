@@ -454,7 +454,6 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 ImageIcon icono_Imagen = new ImageIcon(imagen);
                 celda =  new Celda_Renderer(icono_Imagen,gruposModel.Nombre(),Id_Grupo);
                 celdas[0] = celda;
-                icono_Imagen.getImage().flush();
             }else{
                 celda =  new Celda_Renderer(gruposModel.Nombre_Curso(), Id_Grupo);
                 celdas[0] = celda;

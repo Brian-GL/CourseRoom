@@ -44,36 +44,12 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
 public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface{
 
     private String ID;
-    private String nombre_Curso;
-    private Image imagen_Curso;
-    private String nombre_Profesor;
-    private Image imagen_Profesor;
-    private String fecha_Creacion;
-    private String nuevo_Curso_ID;
-    private boolean tipo_Curso; // 0 -> Recomendado | 1 -> Nuevo
-     private int Id_Curso;
+    private int Id_Curso;
     
     public Vista_Previa_Curso_Estudiante_Panel(int id_Curso) {
         initComponents();
         Id_Curso = id_Curso;
-        
-        /*titulo_JLabel.setText(_nombre_Curso);
-        ImageIcon icono = new ImageIcon(_imagen_Curso);
-        imagen_Curso_JLabel.setIcon(icono);
-        icono = new ImageIcon(_imagen_Profesor);
-        imagen_Profesor_JLabel.setIcon(icono);
-        this.ID = _id;
-        fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creado El ",_fecha_Creacion)));
-        descripcion_Profesor_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar("<b>",_nombre_Profesor, ":<b><br> <br>",CourseRoom.Utilerias().lorem().paragraph(10))));
-        
-        nombre_Curso = _nombre_Curso;
-        imagen_Curso = _imagen_Curso;
-        nombre_Profesor = _nombre_Profesor;
-        imagen_Profesor = _imagen_Profesor;
-        fecha_Creacion = _fecha_Creacion;
-        nuevo_Curso_ID = _nuevo_Curso_ID;
-        tipo_Curso = _tipo_Curso;*/
-        
+    
         Iniciar_Componentes();
     }
 

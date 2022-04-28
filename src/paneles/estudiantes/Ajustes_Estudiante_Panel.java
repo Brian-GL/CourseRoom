@@ -727,8 +727,6 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
         
     }
    
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
     private javax.swing.JLayeredPane ajustes_JLayeredPane;
@@ -763,10 +761,8 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
 
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
        
-        SwingUtilities.invokeLater(() -> {
-            Obtener_Sesiones();
-            Obtener_Configuraciones();
-        });
+        Obtener_Sesiones();
+        Obtener_Configuraciones();
         
     }
     

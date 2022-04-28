@@ -1699,6 +1699,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 if(imagen == null){
                     imagen = new byte[]{};
                 }
+                
                 SwingUtilities.invokeLater(() -> {
                     ResponseModel response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena,
                             nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario, imagen, promedio_General, descripcion);
@@ -1714,10 +1715,10 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                         for (int i = 0; i < modelo.getRowCount(); i++) {
                             celda = (Celda_Renderer) modelo.getValueAt(i, 0);
                             response = CourseRoom.Solicitudes().Agregar_Interes(codigo, Integer.parseInt(celda.ID()));
-                            if (!response.Is_Success()) {
-                                CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Ínteres", response.Mensaje());
-                                break;
-                            }
+//                            if (!response.Is_Success()) {
+//                                CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Ínteres", response.Mensaje());
+//                                break;
+//                            }
                         }
                         CourseRoom.Utilerias().Mensaje_Informativo("Agregar Usuario", mensaje);
 

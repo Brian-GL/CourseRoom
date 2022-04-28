@@ -140,11 +140,13 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
 
                             Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
 
+                            System.err.println(celda.ID());
+
                             int id_Usuario_Receptor = Integer.parseInt(celda.ID());
 
                             SwingUtilities.invokeLater(() -> {
                                 ResponseModel response = CourseRoom.Solicitudes().Agregar_Chat(Tablero_Estudiante_Panel.Id_Usuario()
-                                    , id_Usuario_Receptor);
+                                    ,id_Usuario_Receptor);
 
                                 if(response.Is_Success()){
                                     CourseRoom.Utilerias().Mensaje_Informativo("Agregar Chat", response.Mensaje());
@@ -282,6 +284,8 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
             Image imagen;
             ImageIcon icono;
             
+            System.out.println(usuario.Id());
+            
             byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(usuario.Id());
         
             if(bytes_Imagen_Perfil.length > 0){
@@ -309,7 +313,6 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
             celda = new Celda_Renderer(icono,usuario.Id().toString());
             celdas[1] = celda;
             modelo.addRow(celdas);
-            
             
             imagen.flush();
         } catch (IOException ex) {

@@ -537,7 +537,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
         SwingUtilities.invokeLater(() -> {
-            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Pregunta);
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Pregunta(Id_Pregunta);
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
