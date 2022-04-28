@@ -63,6 +63,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     
     public Curso_Profesor_Panel(
         int id_Curso) {
+        
         initComponents();
         Id_Curso = id_Curso;
         
@@ -1885,38 +1886,38 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
         //Boys (Age,weight) series  
         XYSeries series1 = new XYSeries("Boys");  
-        series1.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
 
         dataset.addSeries(series1);  
 
         //Girls (Age,weight) series  
         XYSeries series2 = new XYSeries("Girls");  
-        series2.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
 
         dataset.addSeries(series2);  
         
         //Boys (Age,weight) series  
         XYSeries series3 = new XYSeries("Regresion Lineal", false);  
-        series3.add(1, series1.getX(0));  
-        series3.add(10, series2.getX(9)); 
+//        series3.add(1, series1.getX(0));  
+//        series3.add(10, series2.getX(9)); 
         
         dataset.addSeries(series3);
 
@@ -2227,7 +2228,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         informacion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         informacion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().lorem().paragraph(10)));
+        //descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().lorem().paragraph(10)));
         descripcion_Curso_JScrollPane.getViewport().setOpaque(false);
         descripcion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -2240,9 +2241,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         tematicas_JTable.getTableHeader().setFont(gadugi);
         tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        String tematica = CourseRoom.Utilerias().music().genre();
-        String id = new String();
-        Agregar_Interes_Tematica(id,tematica);
+        
+        //Agregar_Interes_Tematica(id,tematica);
             
         //Tareas:
         
@@ -2253,15 +2253,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         tareas_JTable.getTableHeader().setFont(gadugi);
         tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        String _id, nombre,  fecha_Creacion, fecha_Entrega, estatus;
-          
-        _id = CourseRoom.Utilerias().Concatenar(this.ID,"_Tarea_0");
-        nombre = CourseRoom.Utilerias().university().name();
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        fecha_Entrega = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
-        estatus = CourseRoom.Utilerias().bool().bool() ? "Entregado" : "Pendiente";
-        
-        Agregar_Tarea(nombre, fecha_Creacion, fecha_Entrega, estatus, _id);
+       
+        //Agregar_Tarea(nombre, fecha_Creacion, fecha_Entrega, estatus, _id);
         
         
         tareas_JTable.addMouseListener(new MouseAdapter() {
@@ -2295,12 +2288,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
         miembros_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        String ruta = "https://i.pravatar.cc/96";
-        
-        nombre = CourseRoom.Utilerias().name().fullName();
-        fecha_Creacion = CourseRoom.Utilerias().Fecha_Hora(CourseRoom.Utilerias().date().birthday(22, 23));
-        
-        Agregar_Miembro(ruta, nombre, fecha_Creacion);
         
         miembros_JTable.addMouseListener(new MouseAdapter() {
 
@@ -2354,7 +2341,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                 Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
                                 String extension = FilenameUtils.getExtension(celda.Texto());
                                 String ruta = celda.ID();
-                                CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+                                //CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
                             }
                             break;
                         //Remover
@@ -2439,17 +2426,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         estadisticas_JTable.getTableHeader().setFont(gadugi);
         estadisticas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        String tarea_Calificada,calificacion, promedio_Curso,prediccion, fecha_Calificacion;
-        boolean rumbo;
-        
-        tarea_Calificada = (CourseRoom.Utilerias().job().field());
-        calificacion = (String.valueOf(CourseRoom.Utilerias().number().numberBetween(1, 10)));
-        promedio_Curso = (String.valueOf(CourseRoom.Utilerias().number().randomDouble(2, 1, 100)));
-        prediccion = (String.valueOf(CourseRoom.Utilerias().number().randomDouble(2, 1, 100)));
-        fecha_Calificacion = CourseRoom.Utilerias().Fecha_Hora_Local();
-        rumbo = CourseRoom.Utilerias().bool().bool();
-
-        Agregar_Estadistica(tarea_Calificada, calificacion, promedio_Curso, prediccion, rumbo, fecha_Calificacion);
+       
+        //Agregar_Estadistica(tarea_Calificada, calificacion, promedio_Curso, prediccion, rumbo, fecha_Calificacion);
         
         // Editar curso:
         editar_Descripcion_JTextPane.setText(descripcion_Curso_JTextPane.getText());
@@ -2463,7 +2441,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         editar_Tematicas_JTable.getTableHeader().setFont(gadugi);
         editar_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        Agregar_Interes_Tematica_Edicion(id, tematica);
+        //Agregar_Interes_Tematica_Edicion(id, tematica);
         
        
         Colorear_Componentes();

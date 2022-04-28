@@ -127,9 +127,9 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         titulo_JPanel.setOpaque(false);
         titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
+        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo_JLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         titulo_JLabel.setMaximumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setMinimumSize(new java.awt.Dimension(818, 68));
         titulo_JLabel.setOpaque(true);
@@ -210,14 +210,14 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             .addGroup(titulo_JPanelLayout.createSequentialGroup()
                 .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 705, Short.MAX_VALUE)
+                .addComponent(titulo_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(informacion_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(archivos_Adjuntos_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comentarios_JButton)
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editar_Tarea_JButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(actualizar_JButton))
@@ -934,7 +934,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     private void eliminar_Tarea_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Tarea_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            
         }
     }//GEN-LAST:event_eliminar_Tarea_JButtonMouseClicked
 
@@ -1078,7 +1078,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
                         FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
                         
-                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
@@ -1091,7 +1091,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             });
         } else{
             String extension = FilenameUtils.getExtension(nombre_Archivo);
-            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
     }
@@ -1162,7 +1162,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                         crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
                         FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
                         
-                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
@@ -1175,7 +1175,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             });
         } else{
             String extension = FilenameUtils.getExtension(nombre_Archivo);
-            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
     }
@@ -1231,8 +1231,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         
         archivos_Adjuntos_JTable.getTableHeader().setFont(gadugi);
         archivos_Adjuntos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().lorem().paragraph(20)));
         
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -1526,7 +1524,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     @Override
     public void Carta_Visible() {
         switch (carta_Visible) {
-            case 0:
+            case 0: 
                 informacion_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
                 archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 comentarios_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
@@ -1550,19 +1548,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                 comentarios_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 editar_Tarea_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 break;
-            case 4:
-                informacion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                comentarios_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                editar_Tarea_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                break;
-            case 5:
-                informacion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                comentarios_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                editar_Tarea_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-                break;
-            
         }
     }
 }

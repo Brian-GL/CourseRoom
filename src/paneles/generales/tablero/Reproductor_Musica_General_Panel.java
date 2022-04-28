@@ -54,6 +54,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GradientPaint;
+import java.util.Random;
 import javax.swing.JFileChooser;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -1556,6 +1557,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     public void Establecer_Colores(Image image) {
        try {
             int maximo_auxiliar = 0;
+            
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
             PixelGrabber obtener_Pixeles = new PixelGrabber(image, 0, 0, -1, -1, false);
             int largo_Imagen = image.getWidth(null);
@@ -1563,6 +1565,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
             Color color;
             Par<Integer, Color> par;
+            Random random = new Random();
             if (obtener_Pixeles.grabPixels()) {
                 pixeles = (int[]) obtener_Pixeles.getPixels();
                 for(int i = 0; i < pixeles.length; i++){
@@ -1584,7 +1587,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += CourseRoom.Utilerias().number().numberBetween(1,largo_Imagen+1);
+                    i += random.nextInt(1,largo_Imagen+1);
                 }
 
                 segundo_Color = primer_Color;
@@ -1593,12 +1596,12 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 if(lista_Colores.size() > 1){
                     
                     while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                        posicion = random.nextInt(0,lista_Colores.size()-1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 25){
                              while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                                posicion = random.nextInt(0,lista_Colores.size()-1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
                              break;
@@ -1611,12 +1614,12 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     iteraciones = 0;
                     
                     while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                        posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                        posicion = random.nextInt(0,lista_Colores.size()-1);
                         tercer_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
                         if(iteraciones > 50){
                             while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                                posicion = random.nextInt(0,lista_Colores.size()-1);
                                 tercer_Color = lista_Colores.get(posicion).second();
                             }
                             break;

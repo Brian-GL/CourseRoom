@@ -598,7 +598,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                         crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
                         FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
                         
-                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
@@ -611,7 +611,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
             });
         } else{
             String extension = FilenameUtils.getExtension(nombre_Archivo);
-            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
     }

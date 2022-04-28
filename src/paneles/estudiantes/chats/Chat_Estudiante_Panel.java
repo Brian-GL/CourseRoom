@@ -775,7 +775,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                         
                        FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
                         
-                        CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
@@ -787,8 +787,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
             });
         } else{
-            String extension = FilenameUtils.getExtension(nombre_Archivo);
-            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
     }

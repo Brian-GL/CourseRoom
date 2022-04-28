@@ -25,6 +25,7 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.image.PixelGrabber;
 import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
@@ -640,6 +641,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
                 int maximo_auxiliar = 0;
                 primer_Color = Color.BLACK;
+                Random random = new Random();
                 Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
                 PixelGrabber obtener_Pixeles = new PixelGrabber(imagen_Usuario, 0, 0, -1, -1, false);
                 int largo_Imagen = imagen_Usuario.getWidth(null);
@@ -668,7 +670,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                             lista_Colores.push_back(1, color);
                         }
 
-                        i += CourseRoom.Utilerias().number().numberBetween(1,largo_Imagen);
+                        i += random.nextInt(1,largo_Imagen);
                     }
 
                     segundo_Color = primer_Color;
@@ -677,12 +679,12 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                     if(lista_Colores.size() > 1){
 
                         while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                            posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                            posicion = random.nextInt(0,lista_Colores.size()-1);
                             segundo_Color = lista_Colores.get(posicion).second();
                             iteraciones++;
                             if(iteraciones > 25){
                                  while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                    posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                                    posicion = random.nextInt(0,lista_Colores.size()-1);
                                     segundo_Color = lista_Colores.get(posicion).second();
                                 }
                                  break;
@@ -696,12 +698,12 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                         iteraciones = 0;
 
                         while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                            posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                            posicion = random.nextInt(0,lista_Colores.size()-1);
                             tercer_Color = lista_Colores.get(posicion).second();
                             iteraciones++;
                             if(iteraciones > 50){
                                 while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                    posicion = CourseRoom.Utilerias().number().numberBetween(0,lista_Colores.size()-1);
+                                    posicion = random.nextInt(0,lista_Colores.size()-1);
                                     tercer_Color = lista_Colores.get(posicion).second();
                                 }
                                 break;

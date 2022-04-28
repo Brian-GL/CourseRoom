@@ -278,38 +278,38 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
 
         //Boys (Age,weight) series  
         XYSeries series1 = new XYSeries("Boys");  
-        series1.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
 
         dataset.addSeries(series1);  
 
         //Girls (Age,weight) series  
         XYSeries series2 = new XYSeries("Girls");  
-        series2.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
 
         dataset.addSeries(series2);  
         
         //Boys (Age,weight) series  
         XYSeries series3 = new XYSeries("Regresion Lineal", false);  
-        series3.add(1, series1.getX(0));  
-        series3.add(10, series2.getX(9)); 
+//        series3.add(1, series1.getX(0));  
+//        series3.add(10, series2.getX(9)); 
         
         dataset.addSeries(series3);
 

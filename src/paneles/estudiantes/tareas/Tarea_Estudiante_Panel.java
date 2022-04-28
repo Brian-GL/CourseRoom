@@ -1157,7 +1157,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
                         FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
                         
-                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
@@ -1170,7 +1170,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             });
         } else{
             String extension = FilenameUtils.getExtension(nombre_Archivo);
-            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
     }
@@ -1192,7 +1192,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
                         FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
                         
-                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
@@ -1205,7 +1205,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             });
         } else{
             String extension = FilenameUtils.getExtension(nombre_Archivo);
-            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
     }
@@ -1227,7 +1227,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
                         FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
                         
-                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
@@ -1240,7 +1240,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             });
         } else{
             String extension = FilenameUtils.getExtension(nombre_Archivo);
-            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
     }
@@ -1262,7 +1262,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                         crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
                         FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
                         
-                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
@@ -1275,7 +1275,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             });
         } else{
             String extension = FilenameUtils.getExtension(nombre_Archivo);
-            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
     }

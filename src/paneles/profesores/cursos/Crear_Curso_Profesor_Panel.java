@@ -928,38 +928,6 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
       
         materiales_JTable.getTableHeader().setFont(gadugi);
         materiales_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        materiales_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int columna = tabla.getSelectedColumn();
-
-                    // Abrir
-                    switch (columna) {
-                        case 0:
-                            {
-                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                String extension = FilenameUtils.getExtension(celda.Texto());
-                                String ruta = celda.ID();
-                                CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
-                            }
-                            break;
-                        //Remover
-                        case 3:
-                            break;
-                       
-                        default:
-                            break;
-                    }
-
-                }
-            }
-        });
         
         // Editar curso:
         

@@ -63,7 +63,9 @@ import modelos.ComboOptionModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.DatosGeneralesTareaProfesorModel;
 import modelos.MensajesModel;
+import modelos.MiembrosGrupoModel;
 import modelos.ResponseModel;
+import modelos.TareasCursoModel;
 import org.apache.commons.io.FileUtils;
 import paneles.profesores.Tablero_Profesor_Panel;
 
@@ -1237,31 +1239,31 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
         //Boys (Age,weight) series  
         XYSeries series1 = new XYSeries("Boys");  
-        series1.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
-        series1.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
+//        series1.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1,100));
 
         dataset.addSeries(series1);  
 
         //Girls (Age,weight) series  
         XYSeries series2 = new XYSeries("Girls");  
-        series2.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
-        series2.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(1, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(2, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(3, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(4, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(5, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(6, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(7, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(8, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(9, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
+//        series2.add(10, CourseRoom.Utilerias().number().randomDouble(2, 1, 100));
 
         dataset.addSeries(series2);  
         
@@ -1275,29 +1277,17 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         return dataset;  
     }  
     
-    private void Agregar_Interes_Tematica(String interes_Tematica){
-        
-        DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-        Celda_Renderer[] celdas = new Celda_Renderer[1];
-        Celda_Renderer celda;
-        
-        celda = new Celda_Renderer(interes_Tematica);
-        celdas[0] = celda;
-        modelo.addRow(celdas);
-        
-        intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
-        
-    }
-    
-    private void Agregar_Tarea(String nombre_Tarea, String fecha_Creacion, String fecha_Entrega, String estatus, String _id){
+    private void Agregar_Tarea(TareasCursoModel tareasCursoModel){
+        String nombre_Tarea = tareasCursoModel.Nombre();
+        String fecha_Creacion = tareasCursoModel.Fecha_Creacion();
+        String fecha_Entrega = tareasCursoModel.Fecha_Entrega();
+        String estatus = tareasCursoModel.Estatus();
+        String _id = String.valueOf(tareasCursoModel.Id_Tarea());
         
         Celda_Renderer[] celdas = new Celda_Renderer[4];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
 
-        Image imagen_Curso = ((ImageIcon)imagen_Curso_JLabel.getIcon()).getImage();
-        imagen_Curso = imagen_Curso.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-        ImageIcon icono_Curso = new ImageIcon(imagen_Curso);
         
         celda = new Celda_Renderer(nombre_Tarea, _id);
         celdas[0] = celda;
@@ -1308,46 +1298,47 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         celda = new Celda_Renderer(estatus, _id);
         celdas[3] = celda;
         
-        //Tareas_Estudiante_Panel.Agregar_Tarea_Desde_Curso(_id,nombre_Tarea, this.titulo_JLabel.getText() ,icono_Curso, fecha_Creacion, fecha_Entrega, estatus);
-        
         modelo.addRow(celdas);
         
         tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Tarea.length()));
         
     }
     
-    
-    private void Agregar_Miembro(String ruta_Imagen_Miembro, String nombre_Miembro, String fecha_Ingreso){
+    private void Agregar_Miembro(MiembrosGrupoModel miembrosGrupoModel){
         
         Celda_Renderer[] celdas = new Celda_Renderer[2];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
+        String id = String.valueOf(miembrosGrupoModel.Id_Usuario());
         
-        URL url_Imagen;
-        Image obtener_Imagen;
-        ImageIcon icono_Miembro;
-        
-        try {
+        byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(miembrosGrupoModel.Id_Usuario());
+        if(bytes_Imagen_Perfil != null){
             
-            url_Imagen = new URL(ruta_Imagen_Miembro);
-            obtener_Imagen = ImageIO.read(url_Imagen);
-            icono_Miembro = new ImageIcon(obtener_Imagen);
-
-            celda = new Celda_Renderer(icono_Miembro,nombre_Miembro,"");
+            if(bytes_Imagen_Perfil.length > 0){
+                Image imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+                
+                if(imagen_Usuario != null){
+                    
+                    imagen_Usuario = imagen_Usuario.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    ImageIcon icono_Imagen = new ImageIcon(imagen_Usuario);
+                    celda = new Celda_Renderer(icono_Imagen,miembrosGrupoModel.Nombre_Completo(),id);
+                    celdas[0] = celda;
+                }else{
+                    celda = new Celda_Renderer(miembrosGrupoModel.Nombre_Completo(),id);
+                    celdas[0] = celda;
+                }
+            }else{
+                celda = new Celda_Renderer(miembrosGrupoModel.Nombre_Completo(), id);
+                celdas[0] = celda;
+            }
+        }else{
+            celda = new Celda_Renderer(miembrosGrupoModel.Nombre_Completo(), id);
             celdas[0] = celda;
-            celda = new Celda_Renderer(fecha_Ingreso);
-            celdas[1] = celda;
-            
-            modelo.addRow(celdas);
-            
-            obtener_Imagen.flush();
-            obtener_Imagen.getGraphics().dispose();
-            miembros_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
-        } catch (MalformedURLException ex) {
-
-        } catch (IOException ex) {
-
         }
+        celda = new Celda_Renderer(miembrosGrupoModel.Fecha_Ingreso(),id);
+        celdas[1] = celda;
+        modelo.addRow(celdas);
+        miembros_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
         
     }
     
@@ -1446,8 +1437,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 }
             }
             
-            Obtener_Tematicas_Curso();
-            
         }    
           
     }
@@ -1478,7 +1467,41 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
     }
     
+    private void Obtener_Miembros_Curso(){
+        
+        DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Lista<MiembrosGrupoModel> response 
+                = CourseRoom.Solicitudes().Obtener_Miembros_Curso(Id_Curso);
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Miembro(response.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Miembros Curso", "No Se Encontraron Miembros Del Curso");
+        }
+        
+    }
    
+    private void Obtener_Tareas_Curso(){
+        
+        Lista<TareasCursoModel> tareas = 
+                CourseRoom.Solicitudes().Obtener_Tareas_Curso(Id_Curso, Tablero_Estudiante_Panel.Id_Usuario());
+        
+        if(!tareas.is_empty()){
+            while(!tareas.is_empty()){
+                Agregar_Tarea(tareas.delist());
+            }
+        }else{
+            CourseRoom.Utilerias().Mensaje_Alerta("Tareas Curso", "No Se Encontraron Tareas Del Curso");
+        }
+        
+        
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abandonar_Curso_JButton;
     private javax.swing.JButton actualizar_JButton;
@@ -1591,38 +1614,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
       
         materiales_JTable.getTableHeader().setFont(gadugi);
         materiales_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        materiales_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int columna = tabla.getSelectedColumn();
-
-                    // Abrir
-                    switch (columna) {
-                        case 0:
-                            {
-                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                String extension = FilenameUtils.getExtension(celda.Texto());
-                                String ruta = celda.ID();
-                                CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
-                            }
-                            break;
-                        //Remover
-                        case 3:
-                            break;
-                       
-                        default:
-                            break;
-                    }
-
-                }
-            }
-        });
+        
         
         // Grupos:
         grupos_JScrollPane.getViewport().setOpaque(false);

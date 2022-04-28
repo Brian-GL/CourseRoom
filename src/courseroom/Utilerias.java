@@ -305,7 +305,6 @@ public class Utilerias {
         return color_Azul_Claro;
     }
 
-
     public ComputerSystem getComputerSystem() {
         return hardware.getComputerSystem();
     }
@@ -466,7 +465,7 @@ public class Utilerias {
             try {
                 Runtime.getRuntime().exec(Concatenar("explorer.exe/select,",archivo.getAbsolutePath()));
             } catch (IOException ex) {
-                
+                Mensaje_Error("Abrir Archivo","Se Encontró Un Error Al Abrir El Archivo");
             }
         }
 
