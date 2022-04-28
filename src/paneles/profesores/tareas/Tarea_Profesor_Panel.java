@@ -65,7 +65,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
     private String ID;
     private byte carta_Visible;
-    private Lista<Tarea_Por_Calificar_Profesor_Panel> tareas_Por_Calificar_Lista;
     private int Id_Tarea;
     
     public Tarea_Profesor_Panel(int id_Tarea){
@@ -413,9 +412,14 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                                 int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                                 DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                                 Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                String extension = FilenameUtils.getExtension(celda.Texto());
-                                String ruta = celda.ID();
-                                CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+
+                                int id_Archivo = Integer.parseInt(celda.ID());
+
+                                if (id_Archivo > 0){
+                                    Descargar_Archivo_Adjunto(id_Archivo,celda.Texto());
+                                }else{
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                }
                             }
                             break;
                             // Remover
@@ -433,7 +437,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
                                     int id_Archivo_Subido = Integer.parseInt(celda.ID());
                                     SwingUtilities.invokeLater(() -> {
-                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());
+                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Adjunto_Tarea(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());
 
                                         if(response.Is_Success()){
                                             CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
@@ -1038,55 +1042,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
                 CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
- 
-    private void Agregar_Tarea_Por_Calificar(String nombre_Tarea, String ruta_Imagen_Curso, String nombre_Curso, String ruta_Imagen_Estudiante,
-            String nombre_Estudiante, String fecha_Creacion, String fecha_Entregada, String fecha_Entrega, String _id){
-        
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-        Celda_Renderer celda;
-        URL url_Imagen;
-        Image imagen;
-        ImageIcon icono;
-        
-        try {
-           
-            url_Imagen = new URL(ruta_Imagen_Curso);
-            imagen = ImageIO.read(url_Imagen);
-            icono = new ImageIcon(imagen);
-            
-            celda = new Celda_Renderer(nombre_Tarea,_id);
-            celdas[0] = celda;
-            celda = new Celda_Renderer(icono, nombre_Curso, _id);
-            celdas[1] = celda;
-            
-            url_Imagen = new URL(ruta_Imagen_Estudiante);
-            imagen = ImageIO.read(url_Imagen);
-            
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono,nombre_Estudiante, _id);
-            celdas[2] = celda;
-            celda = new Celda_Renderer(fecha_Entregada,_id);
-            celdas[3] = celda;
-            celda = new Celda_Renderer(fecha_Entrega, _id);
-            celdas[4] = celda;
-            
-//            Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel =
-//                    new Tarea_Por_Calificar_Profesor_Panel(nombre_Tarea,nombre_Curso,
-//                            fecha_Creacion, fecha_Entrega, fecha_Entregada, "Por Calificar");
-//            
-//            tareas_Por_Calificar_Lista.push_back(tarea_Entregada_Profesor_Panel);
-            
-//            Tablero_Profesor_Panel.Agregar_Vista(tarea_Entregada_Profesor_Panel, _id);
-            
-            imagen.flush();
-            
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Tarea Por Calificar",ex.getMessage());
-        }
-           
-    }
     
     private void Obtener_Datos_Generales_Tarea(){
         
@@ -1190,6 +1145,40 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
     }
     
+    private void Descargar_Archivo_Adjunto(int id_Archivo, String nombre_Archivo){
+        
+        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+        
+        if(!archivo.exists()){
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Adjunto_Tarea(id_Archivo);
+
+                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
+                    File directorio = new File("/descargas/tareas/");
+                    File crear_Archivo;
+                    try {
+                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
+                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                        CourseRoom.Utilerias().Abrir_Archivo(crear_Archivo.getAbsolutePath(), archivoModel.Extension(), nombre_Archivo);
+                        
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else{
+            String extension = FilenameUtils.getExtension(nombre_Archivo);
+            CourseRoom.Utilerias().Abrir_Archivo(archivo.getAbsolutePath(), extension, nombre_Archivo);
+        }
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton archivos_Adjuntos_JButton;
@@ -1234,7 +1223,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     public void Iniciar_Componentes() {
         
         carta_Visible = 0;
-        tareas_Por_Calificar_Lista = new Lista<>();
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         
         archivos_Adjuntos_JScrollPane.getViewport().setOpaque(false);
@@ -1363,12 +1351,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
-        }
-        
-        Tarea_Por_Calificar_Profesor_Panel tarea_Entregada_Profesor_Panel;
-        for (Nodo<Tarea_Por_Calificar_Profesor_Panel> nodo = tareas_Por_Calificar_Lista.front(); nodo != null; nodo = nodo.next()) {
-            tarea_Entregada_Profesor_Panel = nodo.element();
-            tarea_Entregada_Profesor_Panel.Colorear_Componentes();
         }
         
         guardar_Cambios_Datos_Generales_Tarea_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
@@ -1539,7 +1521,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
         modelo.setRowCount(0);
         modelo.setRowCount(0);
-        tareas_Por_Calificar_Lista.clear();
     }
 
     @Override
