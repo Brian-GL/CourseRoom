@@ -555,6 +555,89 @@ public class Solicitudes {
         return response;
     }
 
+    public ResponseModel Agregar_Curso(String nombre, String descripcion, int id_Profesor){
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(CourseRoom.Utilerias().Codificacion(nombre));
+            parametros.add(CourseRoom.Utilerias().Codificacion(descripcion));
+            parametros.add(id_Profesor);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Agregar_Curso", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
+    public ResponseModel Agregar_Desempeno_Usuario(String tarea_Calificada, double calificacion, double promedio_Curso,
+            double promedio_General, double prediccion_Promedio, String rumbo_Estatus_Promedio, double puntualidad,
+            double promedio_Puntualidad, double prediccion_Puntualidad, String rumbo_Estatus_Puntualidad,
+            boolean rezago, int id_Usuario, int id_Curso){
+        ResponseModel response = new ResponseModel();
+        
+        try {
+            
+            Vector parametros = new Vector();
+            
+            parametros.add(CourseRoom.Utilerias().Codificacion(tarea_Calificada));
+            parametros.add(calificacion);
+            parametros.add(promedio_Curso);
+            parametros.add(promedio_General);
+            parametros.add(prediccion_Promedio);
+            parametros.add(CourseRoom.Utilerias().Codificacion(rumbo_Estatus_Promedio));
+            parametros.add(puntualidad);
+            parametros.add(promedio_Puntualidad);
+            parametros.add(prediccion_Puntualidad);
+            parametros.add(CourseRoom.Utilerias().Codificacion(rumbo_Estatus_Puntualidad));
+            parametros.add(rezago);
+            parametros.add(id_Usuario);
+            parametros.add(id_Curso);
+            parametros.add(CourseRoom.Utilerias().MiUidd());
+            parametros.add(CourseRoom.Utilerias().MiIP());
+            
+            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Agregar_Desempeno_Usuario", parametros);
+            
+            if(respuesta != null){
+                
+                Vector<Object> resultado  = (Vector<Object>)respuesta;
+                
+                response.Codigo((Integer)resultado.remove(0));
+                response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
+                
+            }else{
+                response.Codigo(-1);
+                response.Mensaje("No Se Obtuvo Una Respuesta Del Servidor");
+            }
+            
+        } catch (XmlRpcException | IOException ex) {
+            response.Codigo(-1);
+            response.Mensaje(ex.getMessage());
+        }
+        
+        return response;
+    }
+    
     public ResponseModel Agregar_Interes(int id_Usuario, int id_Tematica){
         ResponseModel response = new ResponseModel();
         

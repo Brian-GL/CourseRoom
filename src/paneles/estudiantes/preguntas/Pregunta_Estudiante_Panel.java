@@ -86,8 +86,8 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
 
         setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         informacion_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         informacion_JPanel.setMaximumSize(new java.awt.Dimension(32767, 150));
@@ -95,12 +95,12 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         informacion_JPanel.setPreferredSize(new java.awt.Dimension(982, 150));
 
         regresar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/reply.png"))); // NOI18N
+        regresar_JButton.setToolTipText("<html> <h3>Regresar A Mis Preguntas</h3> </html>");
         regresar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         regresar_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresar_JButton.setMaximumSize(new java.awt.Dimension(48, 64));
         regresar_JButton.setMinimumSize(new java.awt.Dimension(48, 64));
         regresar_JButton.setPreferredSize(new java.awt.Dimension(48, 64));
-        regresar_JButton.setToolTipText("<html> <h3>Regresar A Mis Preguntas</h3> </html>");
         ((ImageIcon)regresar_JButton.getIcon()).getImage().flush();
         regresar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,8 +120,8 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         preguntador_Imagen_JLabel.setMinimumSize(new java.awt.Dimension(48, 48));
         preguntador_Imagen_JLabel.setPreferredSize(new java.awt.Dimension(48, 48));
 
-        pregunta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         pregunta_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pregunta_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
 
         descripcion_Pregunta_JScrollPane.setBorder(null);
         descripcion_Pregunta_JScrollPane.setOpaque(false);
@@ -135,8 +135,8 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         descripcion_Pregunta_JScrollPane.setViewportView(descripcion_Pregunta_JTextPane);
 
         actualizar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/updated.png"))); // NOI18N
-        actualizar_JButton.setToolTipText("<html> <h3>Actualizar<br>Página</h3> </html>");
         actualizar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        actualizar_JButton.setToolTipText("<html> <h3>Actualizar<br>Página</h3> </html>");
         ((ImageIcon)actualizar_JButton.getIcon()).getImage().flush();
         actualizar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -167,7 +167,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         });
 
         eliminar_Pregunta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
-        eliminar_Pregunta_JButton.setToolTipText("<html> <h3>Eliminar<br>Pregunta</h3> </html>");
+        eliminar_Pregunta_JButton.setToolTipText("<html> <h3>Remover<br>Pregunta</h3> </html>");
         eliminar_Pregunta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)eliminar_Pregunta_JButton.getIcon()).getImage().flush();
         eliminar_Pregunta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -216,21 +216,22 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                         .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(actualizar_JButton)
-                        .addGap(18, 19, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(eliminar_Pregunta_JButton)
-                        .addGap(18, 19, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(marcar_Solucionada_JButton))))
         );
 
         chat_JPanel.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
-        chat_JPanel.setOpaque(false);
         chat_JPanel.setPreferredSize(new java.awt.Dimension(1110, 630));
+        chat_JPanel.setOpaque(false);
         chat_JPanel.setLayout(new java.awt.BorderLayout());
 
         mensajes_Chat_JScrollPane.setBorder(null);
         mensajes_Chat_JScrollPane.setOpaque(false);
 
         mensajes_Chat_JTable.setAutoCreateRowSorter(true);
+        mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         mensajes_Chat_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -264,7 +265,6 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                     return super.getColumnClass(column);
                 }
             });
-            mensajes_Chat_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             mensajes_Chat_JTable.setRowHeight(80);
             mensajes_Chat_JTable.setShowGrid(true);
             mensajes_Chat_JTable.setSurrendersFocusOnKeystroke(true);
@@ -307,9 +307,9 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
             enviar_Mensaje_Chat_JPanel.setLayout(new java.awt.BorderLayout());
 
             enviar_Archivo_Chat_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/attachment.png"))); // NOI18N
+            enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
             enviar_Archivo_Chat_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             enviar_Archivo_Chat_JButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            enviar_Archivo_Chat_JButton.setToolTipText("Enviar Archivo");
             ((ImageIcon)enviar_Archivo_Chat_JButton.getIcon()).getImage().flush();
             enviar_Archivo_Chat_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {

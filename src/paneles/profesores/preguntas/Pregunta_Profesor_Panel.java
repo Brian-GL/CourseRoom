@@ -86,8 +86,8 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
 
         setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
         setMinimumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(1110, 630));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1110, 630));
 
         informacion_JPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         informacion_JPanel.setMaximumSize(new java.awt.Dimension(32767, 150));
@@ -151,6 +151,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         });
 
         marcar_Solucionada_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/problem-solving.png"))); // NOI18N
+        marcar_Solucionada_JButton.setToolTipText("<html> <h3>Marcar<br>Pregunta<br>Solucionada</h3> </html>");
         marcar_Solucionada_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)marcar_Solucionada_JButton.getIcon()).getImage().flush();
         marcar_Solucionada_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,6 +167,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         });
 
         eliminar_Pregunta_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
+        eliminar_Pregunta_JButton.setToolTipText("<html> <h3>Remover<br>Pregunta</h3> </html>");
         eliminar_Pregunta_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)eliminar_Pregunta_JButton.getIcon()).getImage().flush();
         eliminar_Pregunta_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -214,9 +216,9 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                         .addComponent(regresar_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(informacion_JPanelLayout.createSequentialGroup()
                         .addComponent(actualizar_JButton)
-                        .addGap(18, 19, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(eliminar_Pregunta_JButton)
-                        .addGap(18, 19, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(marcar_Solucionada_JButton))))
         );
 
