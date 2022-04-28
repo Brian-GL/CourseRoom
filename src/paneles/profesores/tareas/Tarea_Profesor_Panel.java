@@ -22,7 +22,6 @@ import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
 import courseroom.CourseRoom_Frame;
 import datos.colecciones.Lista;
-import datos.estructuras.Nodo;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
@@ -35,8 +34,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -57,10 +54,6 @@ import org.apache.commons.io.FilenameUtils;
 import paneles.profesores.Tablero_Profesor_Panel;
 import paneles.profesores.perfil.Perfil_Profesor_Panel;
 
-/**
- *
- * @author LENOVO
- */
 public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Componentes_Interface, Envio_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private String ID;
@@ -816,9 +809,20 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             SwingUtilities.invokeLater(() -> {
                 Obtener_Mensajes_Tarea();
+                switch (carta_Visible) {
+                    case 0: case 3:
+                        Obtener_Datos_Generales_Tarea();
+                        break;
+                    case 1:
+                        Obtener_Archivos_Adjuntos_Tarea();
+                        break;
+                    case 2:
+                        Obtener_Mensajes_Tarea();
+                        break;
+                }
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -837,7 +841,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             ((CardLayout) tarea_JLayeredPane.getLayout()).show(tarea_JLayeredPane, "Edicion");
-            carta_Visible = 5;
+            carta_Visible = 3;
             Carta_Visible();
         }
     }//GEN-LAST:event_editar_Tarea_JButtonMouseClicked
@@ -933,8 +937,23 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
     private void eliminar_Tarea_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Tarea_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Eliminar La Tarea?", "Pregunta",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
+            if (resultado == JOptionPane.YES_OPTION) {
+
+                SwingUtilities.invokeLater(() -> {
+                    ResponseModel response = CourseRoom.Solicitudes().Remover_Tarea(Id_Tarea, Tablero_Profesor_Panel.Id_Usuario());
+
+                    if (response.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Tarea", response.Mensaje());
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Tarea", response.Mensaje());
+                    }
+                });
+            }
         }
     }//GEN-LAST:event_eliminar_Tarea_JButtonMouseClicked
 
@@ -1231,9 +1250,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         
         archivos_Adjuntos_JTable.getTableHeader().setFont(gadugi);
         archivos_Adjuntos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().lorem().paragraph(20)));
-        
+                
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -1251,6 +1268,10 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());  
        
         Colorear_Componentes();
+        Obtener_Mensajes_Tarea();
+        Obtener_Datos_Generales_Tarea();
+        Obtener_Archivos_Adjuntos_Tarea();
+        
     }
 
     @Override
@@ -1550,19 +1571,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                 comentarios_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 editar_Tarea_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 break;
-            case 4:
-                informacion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                comentarios_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                editar_Tarea_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                break;
-            case 5:
-                informacion_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                comentarios_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-                editar_Tarea_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-                break;
-            
         }
     }
 }

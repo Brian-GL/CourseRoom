@@ -44,10 +44,8 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         
        initComponents();
        Iniciar_Componentes();
-       Obtener_Preguntas();
     }
    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -720,6 +718,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         buscar_Preguntas_JTable.getTableHeader().setFont(gadugi);
         buscar_Preguntas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
+        Obtener_Preguntas();
     }
 
     @Override

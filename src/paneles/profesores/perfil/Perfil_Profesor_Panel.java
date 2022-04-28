@@ -1229,7 +1229,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Actualizar_Datos();
+            Obtener_Datos_Perfil();
+            Obtener_Localidades_Estado();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1303,7 +1304,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         
     }
     
-    private void Actualizar_Datos(){
+    private void Obtener_Datos_Perfil(){
         SwingUtilities.invokeLater(() -> {
             DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Profesor_Panel.Id_Usuario());
             if (datosPerfilModel != null) {
@@ -1417,14 +1418,13 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
         carta_Visible = 0;
         
-      
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        
-        
+        Obtener_Datos_Perfil();
+        Obtener_Localidades_Estado
     }
 
     @Override
