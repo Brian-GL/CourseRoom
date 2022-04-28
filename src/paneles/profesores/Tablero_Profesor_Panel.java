@@ -596,7 +596,6 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     private void salir_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salir_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
             CourseRoom.Frame().Cerrar_Sesion();
             this.Limpiar();
         }

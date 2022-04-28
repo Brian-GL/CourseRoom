@@ -717,6 +717,8 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         buscar_Preguntas_JTable.getTableHeader().setFont(gadugi);
         buscar_Preguntas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
+        Obtener_Preguntas();
+        
     }
 
     @Override

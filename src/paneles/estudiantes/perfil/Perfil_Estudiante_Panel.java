@@ -1455,7 +1455,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             SwingUtilities.invokeLater(() -> {
-                Actualizar_Datos();
+                Obtener_Datos_Perfil();
+                Obtener_Localidades_Estado();
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -1658,7 +1659,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         }
     }
     
-    private void Actualizar_Datos(){
+    private void Obtener_Datos_Perfil(){
         
         DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Estudiante_Panel.Id_Usuario());
         if(datosPerfilModel != null){
@@ -1835,7 +1836,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
         Colorear_Componentes();
-         
+        Obtener_Datos_Perfil();
+        Obtener_Localidades_Estado();
+                
     }
 
     @Override

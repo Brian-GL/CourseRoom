@@ -317,8 +317,18 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             //Obtener_Tareas();
+            switch (carta_Visible) {
+                case 0 -> {
+                    titulo_JLabel.setText("Tareas Por Calificar");
+                    Obtener_Tareas_Creadas();
+                }
+                case 1 -> {
+                    titulo_JLabel.setText("Tareas Creadas");
+                    Obtener_Tareas_Creadas();
+                }
+            }
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -578,6 +588,8 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         tareas_Creadas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         tareas_Por_Calificar_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        Obtener_Tareas_Por_Calificar();
+        Obtener_Tareas_Creadas();
         
     }
 

@@ -521,8 +521,6 @@ public final class Ajustes_Estudiante_Panel extends javax.swing.JPanel implement
                     }
                 });
             }
-            
-            CourseRoom_Frame.getInstance().Cerrar_Sesion();
         }
     }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseClicked
 

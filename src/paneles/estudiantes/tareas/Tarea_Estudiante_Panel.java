@@ -46,7 +46,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelos.ArchivoModel;
 import modelos.ArchivosTareaModel;
-import modelos.CalificacionTareaModel;
 import modelos.DatosEntregaTareaModel;
 import modelos.DatosGeneralesTareaModel;
 import modelos.MensajesModel;
@@ -947,9 +946,16 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            SwingUtilities.invokeLater(() -> {
-                Obtener_Mensajes_Tarea();
-            });
+            switch (carta_Visible) {
+                case 0 -> Obtener_Datos_Generales_Tarea();
+                case 1 -> Obtener_Archivos_Adjuntos_Tarea();
+                case 2 -> Obtener_Mensajes_Tarea();
+                case 3 -> {
+                    Obtener_Datos_Entrega_Tarea();
+                    Obtener_Archivos_Entregados_Tarea();
+                }
+                case 4 -> Obtener_Retroalimentaciones();
+            }
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1409,6 +1415,12 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         Colorear_Componentes();
         
+        Obtener_Archivos_Entregados_Tarea();
+        Obtener_Datos_Entrega_Tarea();
+        Obtener_Retroalimentaciones();
+        Obtener_Archivos_Adjuntos_Tarea();
+        Obtener_Datos_Generales_Tarea();
+        Obtener_Mensajes_Tarea();
 
     }
 

@@ -680,7 +680,6 @@ public class Tablero_Estudiante_Panel extends javax.swing.JPanel implements Limp
     private void salir_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salir_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            
             CourseRoom_Frame.getInstance().Cerrar_Sesion();
         }
     }//GEN-LAST:event_salir_JButtonMouseClicked

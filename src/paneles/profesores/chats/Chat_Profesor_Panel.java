@@ -67,9 +67,6 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         Id_Chat = id_Chat;
 
         Iniciar_Componentes();
-        
-        
-        
     }
 
     /**
@@ -558,10 +555,13 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             SwingUtilities.invokeLater(() -> {
-                Obtener_Datos_Generales_Chat();
-                Obtener_Mensajes_Chat();
+                if (!carta_Visible) {
+                    Obtener_Mensajes_Chat();
+                } else {
+                    Obtener_Datos_Generales_Chat();
+                }
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -838,6 +838,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         Colorear_Componentes();
         
         Obtener_Datos_Generales_Chat();
+        Obtener_Mensajes_Chat();
     }
 
     @Override

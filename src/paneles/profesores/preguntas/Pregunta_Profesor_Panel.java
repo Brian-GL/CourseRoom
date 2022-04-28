@@ -356,8 +356,6 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                     .addContainerGap())
             );
         }// </editor-fold>//GEN-END:initComponents
-
-    
     
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
@@ -653,7 +651,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         Obtener_Datos_Generales_Pregunta(false);
-        
+        Obtener_Mensajes_Pregunta();
       
         Colorear_Componentes();
         
