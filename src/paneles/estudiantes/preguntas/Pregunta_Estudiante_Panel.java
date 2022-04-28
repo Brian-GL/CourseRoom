@@ -357,8 +357,6 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
             );
         }// </editor-fold>//GEN-END:initComponents
 
-    
-    
     private void regresar_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseExited
         // TODO add your handling code here:
         regresar_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
@@ -379,10 +377,8 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            SwingUtilities.invokeLater(() -> {
-                Obtener_Datos_Generales_Pregunta(true);
-                Obtener_Mensajes_Pregunta();
-            });
+            Obtener_Datos_Generales_Pregunta(true);
+            Obtener_Mensajes_Pregunta();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -650,7 +646,9 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        Obtener_Datos_Generales_Pregunta(false);
+       
+        Obtener_Datos_Generales_Pregunta(true);
+        Obtener_Mensajes_Pregunta();
    
         Colorear_Componentes();
         

@@ -109,9 +109,9 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="actualizar_JButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" pref="19" max="32767" attributes="0"/>
                           <Component id="eliminar_Pregunta_JButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" pref="19" max="32767" attributes="0"/>
                           <Component id="marcar_Solucionada_JButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>

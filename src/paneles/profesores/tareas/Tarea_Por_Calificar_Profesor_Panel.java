@@ -900,7 +900,24 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
+            switch (carta_Visible) {
+                case 0:
+                    Obtener_Datos_Generales_Tarea();
+                    break;
+                case 1:
+                    Obtener_Datos_Generales_Estudiante();
+                    break;
+                case 2:
+                    Obtener_Mensajes_Tarea();
+                    break;
+                case 3:
+                    Obtener_Archivos_Entregados();
+                    break;
+                case 4:
+                    Obtener_Retroalimentaciones();
+                    break;
 
+            }
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1016,7 +1033,6 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesorModel.Fecha_Creacion()));
             estatus_Tarea_JLabel.setText(datosGeneralesTareaProfesorModel.Estatus());
             descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaProfesorModel.Descripcion()));
-            Obtener_Datos_Generales_Estudiante(Id_Usuario);
         } 
     }
     
@@ -1123,9 +1139,9 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                 CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
     
-    private void Obtener_Datos_Generales_Estudiante(int id_Usuario){
+    private void Obtener_Datos_Generales_Estudiante(){
         
-        DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(id_Usuario);
+        DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Id_Usuario);
         if(datosPerfilModel != null){
             
             nombres_JLabel.setText(datosPerfilModel.Nombre());
@@ -1135,7 +1151,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             tipo_Perfil_JLabel.setText(datosPerfilModel.Tipo_Usuario());
             
             Image imagen_Usuario;
-                byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(id_Usuario);
+                byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(Id_Usuario);
 
                 if (bytes_Imagen_Perfil.length > 0) {
                     imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
@@ -1182,7 +1198,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         }
     }
     
-    private void Obtener_Retroalimentciones(){
+    private void Obtener_Retroalimentaciones(){
         DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
         modelo.setRowCount(0);
         SwingUtilities.invokeLater(() -> {
@@ -1289,12 +1305,18 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         archivos_Entregados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-
         ImageIcon imagen = new ImageIcon(Tablero_Profesor_Panel.Obtener_Imagen_Usuario());
         imagen_Perfil_JLabel.setIcon(imagen);
         imagen.getImage().flush();     
       
         Colorear_Componentes();
+        
+        Obtener_Datos_Generales_Tarea();
+        Obtener_Datos_Generales_Estudiante();
+        Obtener_Mensajes_Tarea();
+        Obtener_Retroalimentaciones();
+        Obtener_Datos_Entrega_Tarea();
+        Obtener_Archivos_Entregados();
     }
 
     @Override
