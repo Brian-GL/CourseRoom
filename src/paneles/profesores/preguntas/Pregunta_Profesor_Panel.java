@@ -538,7 +538,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
         SwingUtilities.invokeLater(() -> {
-            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Pregunta);
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Pregunta(Id_Pregunta);
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
                     Agregar_Mensaje_Pregunta(response.delist());
@@ -550,10 +550,11 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     }
     
     private void Agregar_Mensaje_Pregunta(MensajesModel mensajesModel){
+        
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         String id = String.valueOf(mensajesModel.Id_Mensaje());
         Celda_Renderer celda;
-        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
         celdas[0] = celda;
         if(mensajesModel.Extension().isBlank()){
             celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
@@ -568,6 +569,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                 celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
                 celdas[1] = celda;
             }
+            
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
         celdas[2] = celda;
@@ -581,20 +583,19 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
     
     private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
         
-        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/preguntas/", nombre_Archivo));
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/preguntas/", nombre_Archivo));
         
         if(!archivo.exists()){
 
             SwingUtilities.invokeLater(() -> {
 
-                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Pregunta(id_Mensaje);
 
-                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
-                    File directorio = new File("/descargas/preguntas/");
-                    File crear_Archivo;
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
                     try {
-                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
-                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
                         
                         CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
@@ -608,7 +609,6 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
 
             });
         } else{
-            String extension = FilenameUtils.getExtension(nombre_Archivo);
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
@@ -701,7 +701,6 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
         
         String mensaje = redactar_Mensaje_Chat_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
-            
             
              SwingUtilities.invokeLater(() -> {
                 ResponseModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Pregunta(mensaje,

@@ -795,7 +795,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         } else{
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
-        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

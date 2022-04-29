@@ -1694,7 +1694,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
         SwingUtilities.invokeLater(() -> {
-            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Grupo);
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Grupo(Id_Grupo);
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
@@ -1712,15 +1712,22 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         String id = String.valueOf(mensajesModel.Id_Mensaje());
         Celda_Renderer celda;
-        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
         celdas[0] = celda;
         if(mensajesModel.Extension().isBlank()){
             celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }else{
-            celda = new Celda_Renderer(CourseRoom.Utilerias().Concatenar(mensajesModel.Mensaje(),
-                    ".",mensajesModel.Extension()),id);
-            celdas[1] = celda;
+            try {
+                Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                ImageIcon icono = new ImageIcon(imagen);
+                celda = new Celda_Renderer(icono,mensajesModel.Mensaje(),id);
+                celdas[1] = celda;
+            } catch (IOException ex) {
+                celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
+                celdas[1] = celda;
+            }
+            
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
         celdas[2] = celda;
@@ -1771,20 +1778,19 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     
     private void Descargar_Archivo_Chat(int id_Mensaje, String nombre_Archivo){
         
-        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/grupos/", nombre_Archivo));
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/grupos/", nombre_Archivo));
         
         if(!archivo.exists()){
 
             SwingUtilities.invokeLater(() -> {
 
-                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Grupo(id_Mensaje);
 
-                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
-                    File directorio = new File("/descargas/grupos/");
-                    File crear_Archivo;
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
                     try {
-                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
-                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
                         
                         CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
@@ -1798,7 +1804,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
             });
         } else{
-            String extension = FilenameUtils.getExtension(nombre_Archivo);
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
@@ -1806,7 +1811,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
     
     private void Descargar_Archivo_Compartido(int id_Archivo_Compartido, String nombre_Archivo){
         
-        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/grupos/", nombre_Archivo));
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/grupos/", nombre_Archivo));
         
         if(!archivo.exists()){
 
@@ -1814,12 +1819,11 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Compartido_Grupo(id_Archivo_Compartido);
 
-                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
-                    File directorio = new File("/descargas/grupos/");
-                    File crear_Archivo;
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
                     try {
-                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
-                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
                         
                         CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
@@ -1833,7 +1837,6 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
             });
         } else{
-            String extension = FilenameUtils.getExtension(nombre_Archivo);
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
@@ -2307,7 +2310,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     celda = new Celda_Renderer(fecha,id);
                     celdas[2] = celda;
                     DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-                    modelo.addRow(celdas);
+                    modelo.insertRow(0,celdas);
                     mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
 
                     redactar_Mensaje_Chat_JTextField.setText("");
@@ -2355,7 +2358,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                 celdas[1] = celda;
                                 celda = new Celda_Renderer(fecha,id);
                                 celdas[2] = celda;
-                                modelo.addRow(celdas);
+                                modelo.insertRow(0,celdas);
                                 mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Archivo.length()));
                                 icono.flush();
                                 CourseRoom.Utilerias().Mensaje_Informativo("Grupo",response.Mensaje());
