@@ -905,20 +905,20 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         if(SwingUtilities.isLeftMouseButton(evt)){
             switch (carta_Visible) {
                 case 0:
-                    Obtener_Datos_Generales_Tarea();
+                    Obtener_Datos_Generales_Tarea(true);
                     break;
                 case 1:
-                    Obtener_Datos_Generales_Estudiante();
+                    Obtener_Datos_Generales_Estudiante(true);
                     break;
                 case 2:
-                    Obtener_Mensajes_Tarea();
+                    Obtener_Mensajes_Tarea(true);
                     break;
                 case 3:
                     Obtener_Datos_Entrega_Tarea(true);
-                    Obtener_Archivos_Entregados();
+                    Obtener_Archivos_Entregados(true);
                     break;
                 case 4:
-                    Obtener_Retroalimentaciones();
+                    Obtener_Retroalimentaciones(true);
                     break;
 
             }
@@ -1025,21 +1025,87 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         }
     }//GEN-LAST:event_informacion_Estudiante_JButtonMouseClicked
    
-    private void Obtener_Datos_Generales_Tarea(){
+    private void Agregar_Archivo_Entrega(ArchivosTareaModel archivosTareaModel){
         
-        DatosGeneralesTareaProfesorModel datosGeneralesTareaProfesorModel = 
-                CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea_Profesor(Id_Tarea,Tablero_Profesor_Panel.Id_Usuario());
+        // "Archivo", "Subido"
         
-        if(!datosGeneralesTareaProfesorModel.Nombre().isBlank()){
-            titulo_JLabel.setText(datosGeneralesTareaProfesorModel.Nombre());
-            curso_JLabel.setText(datosGeneralesTareaProfesorModel.Nombre_Curso());
-            fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", datosGeneralesTareaProfesorModel.Fecha_Entrega()));
-            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesorModel.Fecha_Creacion()));
-            estatus_Tarea_JLabel.setText(datosGeneralesTareaProfesorModel.Estatus());
-            descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaProfesorModel.Descripcion()));
-        } 
+        Celda_Renderer[] celdas = new Celda_Renderer[2];
+        Celda_Renderer celda;
+        String id = String.valueOf(archivosTareaModel.Id_Archivo_Tarea());
+        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
+        
+        try {
+            
+            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+            ImageIcon icono = new ImageIcon(imagen);
+            
+            celda = new Celda_Renderer(icono,archivosTareaModel.Nombre_Archivo(),id);
+            celdas[0] = celda;
+            celda = new Celda_Renderer(archivosTareaModel.Fecha_Enviado(),id);
+            celdas[1] = celda;
+            
+            modelo.addRow(celdas);
+            retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
+            
+            imagen.flush();
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
     
+    private void Agregar_Mensaje_Tarea(MensajesModel mensajesModel){
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+        String id = String.valueOf(mensajesModel.Id_Mensaje());
+        Celda_Renderer celda;
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
+        celdas[0] = celda;
+        if(mensajesModel.Extension().isBlank()){
+            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
+            celdas[1] = celda;
+        }else{
+            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
+            celdas[1] = celda;
+        }
+        celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
+        celdas[2] = celda;
+
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.addRow(celdas);
+        
+        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
+                CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
+    }
+    
+    private void Agregar_Retroalimentacion(RetroalimentacionesTareaModel retroalimentacionesTareaModel){
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+        Celda_Renderer celda;
+        String retroalimentacion = retroalimentacionesTareaModel.Retroalimentacion();
+        String fecha_Retroalimentacion = retroalimentacionesTareaModel.Fecha_Envio();
+        String archivo_Adjunto = retroalimentacionesTareaModel.Nombre_Archivo();
+        String id = String.valueOf(retroalimentacionesTareaModel.Id_Retroalimentacion());
+        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
+        
+        try {
+            
+            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+            ImageIcon icono = new ImageIcon(imagen);
+            
+            celda = new Celda_Renderer(retroalimentacion,id);
+            celdas[0] = celda;
+            celda = new Celda_Renderer(fecha_Retroalimentacion,id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(icono,archivo_Adjunto, id);
+            celdas[2] = celda;
+            modelo.addRow(celdas);
+            retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(retroalimentacion.length()));
+            
+            imagen.flush();
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+       
     private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
         
         File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/Tareas/", nombre_Archivo));
@@ -1128,116 +1194,23 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         }
     }
     
-    private void Obtener_Mensajes_Tarea(){
-        
-        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+    private void Obtener_Archivos_Entregados(boolean bandera){
+        DefaultTableModel modelo = (DefaultTableModel) archivos_Entregados_JTable.getModel();
         modelo.setRowCount(0);
+        
         SwingUtilities.invokeLater(() -> {
-            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Tarea);
-
-            if (!response.is_empty()) {
-                while (!response.is_empty()) {
-                    Agregar_Mensaje_Tarea(response.delist());
+        
+            Lista<ArchivosTareaModel> response = 
+                    CourseRoom.Solicitudes().Obtener_Archivos_Subidos_Tarea(Id_Tarea, Id_Usuario);
+            
+            if(!response.is_empty()){
+                while(!response.is_empty()){
+                    Agregar_Archivo_Entrega(response.delist());
                 }
             } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
-            }
-        });
-    }
-    
-    private void Agregar_Mensaje_Tarea(MensajesModel mensajesModel){
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
-        String id = String.valueOf(mensajesModel.Id_Mensaje());
-        Celda_Renderer celda;
-        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
-        celdas[0] = celda;
-        if(mensajesModel.Extension().isBlank()){
-            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
-            celdas[1] = celda;
-        }else{
-            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
-            celdas[1] = celda;
-        }
-        celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
-        celdas[2] = celda;
-
-        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-        modelo.addRow(celdas);
-        
-        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
-                CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
-    }
-    
-    private void Obtener_Datos_Generales_Estudiante(){
-        
-        DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Id_Usuario);
-        if(datosPerfilModel != null){
-            
-            nombres_JLabel.setText(datosPerfilModel.Nombre());
-            apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Paterno()," ",datosPerfilModel.Materno()));
-            correo_JLabel.setText(datosPerfilModel.Correo_Electronico());            
-            genero_JLabel.setText(datosPerfilModel.Genero());
-            tipo_Perfil_JLabel.setText(datosPerfilModel.Tipo_Usuario());
-            
-            Image imagen_Usuario;
-                byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(Id_Usuario);
-
-                if (bytes_Imagen_Perfil.length > 0) {
-                    imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
-
-                    if (imagen_Usuario != null) {
-
-                        ImageIcon icono_Imagen = new ImageIcon(imagen_Usuario);
-                        imagen_Perfil_JLabel.setIcon(icono_Imagen);
-                        icono_Imagen.getImage().flush();
-                        imagen_Usuario.flush();
-                    }
+                if (bandera) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Archivos Entregados", "No Se Encontraron Archivos Entregados");
                 }
-        }
-    }
-    
-    private void Agregar_Retroalimentacion(RetroalimentacionesTareaModel retroalimentacionesTareaModel){
-        
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
-        Celda_Renderer celda;
-        String retroalimentacion = retroalimentacionesTareaModel.Retroalimentacion();
-        String fecha_Retroalimentacion = retroalimentacionesTareaModel.Fecha_Envio();
-        String archivo_Adjunto = retroalimentacionesTareaModel.Nombre_Archivo();
-        String id = String.valueOf(retroalimentacionesTareaModel.Id_Retroalimentacion());
-        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
-        
-        try {
-            
-            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-            ImageIcon icono = new ImageIcon(imagen);
-            
-            celda = new Celda_Renderer(retroalimentacion,id);
-            celdas[0] = celda;
-            celda = new Celda_Renderer(fecha_Retroalimentacion,id);
-            celdas[1] = celda;
-            celda = new Celda_Renderer(icono,archivo_Adjunto, id);
-            celdas[2] = celda;
-            modelo.addRow(celdas);
-            retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(retroalimentacion.length()));
-            
-            imagen.flush();
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
-        }
-    }
-    
-    private void Obtener_Retroalimentaciones(){
-        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
-        modelo.setRowCount(0);
-        SwingUtilities.invokeLater(() -> {
-            Lista<RetroalimentacionesTareaModel> response = CourseRoom.Solicitudes().Obtener_Retroalimentaciones_Tarea(Id_Tarea,Id_Usuario);
-
-            if (!response.is_empty()) {
-                while (!response.is_empty()) {
-                    Agregar_Retroalimentacion(response.delist());
-                }
-            } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Retroalimentaciones", "No Se Encontraron Retroalimentaciones");
             }
         });
     }
@@ -1254,7 +1227,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                 calificacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Calificación: ", valor_Calificacion));
                 fecha_Entregado_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entregada el ", datosEntregaTareaModel.Fecha_Subida()));
                 estatus_Envio_JLabel.setText(datosEntregaTareaModel.Estatus());
-            } else{
+            }else{
                 if(bandera){
                     CourseRoom.Utilerias().Mensaje_Alerta("Datos Entrega Tarea", "No Se Encontraron Datos De Entrega De La Tarea");
                 }
@@ -1263,55 +1236,94 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         });
     }
     
-    private void Obtener_Archivos_Entregados(){
-        DefaultTableModel modelo = (DefaultTableModel) archivos_Entregados_JTable.getModel();
-        modelo.setRowCount(0);
-        
-        SwingUtilities.invokeLater(() -> {
-        
-            Lista<ArchivosTareaModel> response = 
-                    CourseRoom.Solicitudes().Obtener_Archivos_Subidos_Tarea(Id_Tarea, Id_Usuario);
-            
-            if(!response.is_empty()){
-                while(!response.is_empty()){
-                    Agregar_Archivo_Entrega(response.delist());
-                }
-            }else{
-                CourseRoom.Utilerias().Mensaje_Alerta("Archivos Entregados", "No Se Encontraron Archivos Entregados");
+    private void Obtener_Datos_Generales_Tarea(boolean bandera) {
+
+        DatosGeneralesTareaProfesorModel datosGeneralesTareaProfesorModel
+                = CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea_Profesor(Id_Tarea, Tablero_Profesor_Panel.Id_Usuario());
+
+        if (!datosGeneralesTareaProfesorModel.Nombre().isBlank()) {
+            titulo_JLabel.setText(datosGeneralesTareaProfesorModel.Nombre());
+            curso_JLabel.setText(datosGeneralesTareaProfesorModel.Nombre_Curso());
+            fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", datosGeneralesTareaProfesorModel.Fecha_Entrega()));
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesorModel.Fecha_Creacion()));
+            estatus_Tarea_JLabel.setText(datosGeneralesTareaProfesorModel.Estatus());
+            descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaProfesorModel.Descripcion()));
+        }else {
+            if (bandera) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales Tarea", "No Se Encontraron Los Datos Generales De La Tarea");
             }
-        
-        });
-        
-    }
-    
-    private void Agregar_Archivo_Entrega(ArchivosTareaModel archivosTareaModel){
-        
-        // "Archivo", "Subido"
-        
-        Celda_Renderer[] celdas = new Celda_Renderer[2];
-        Celda_Renderer celda;
-        String id = String.valueOf(archivosTareaModel.Id_Archivo_Tarea());
-        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
-        
-        try {
-            
-            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-            ImageIcon icono = new ImageIcon(imagen);
-            
-            celda = new Celda_Renderer(icono,archivosTareaModel.Nombre_Archivo(),id);
-            celdas[0] = celda;
-            celda = new Celda_Renderer(archivosTareaModel.Fecha_Enviado(),id);
-            celdas[1] = celda;
-            
-            modelo.addRow(celdas);
-            retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
-            
-            imagen.flush();
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
         }
     }
     
+    private void Obtener_Datos_Generales_Estudiante(boolean bandera) {
+
+        DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Id_Usuario);
+        if (datosPerfilModel != null) {
+
+            nombres_JLabel.setText(datosPerfilModel.Nombre());
+            apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Paterno(), " ", datosPerfilModel.Materno()));
+            correo_JLabel.setText(datosPerfilModel.Correo_Electronico());
+            genero_JLabel.setText(datosPerfilModel.Genero());
+            tipo_Perfil_JLabel.setText(datosPerfilModel.Tipo_Usuario());
+
+            Image imagen_Usuario;
+            byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(Id_Usuario);
+
+            if (bytes_Imagen_Perfil.length > 0) {
+                imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+
+                if (imagen_Usuario != null) {
+
+                    ImageIcon icono_Imagen = new ImageIcon(imagen_Usuario);
+                    imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                    icono_Imagen.getImage().flush();
+                    imagen_Usuario.flush();
+                }
+            }
+        }else {
+            if (bandera) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales Estudiante", "No Se Encontraron Los Datos Generales Del Estudiante");
+            }
+        }
+    }
+    
+    private void Obtener_Mensajes_Tarea(boolean bandera){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+        SwingUtilities.invokeLater(() -> {
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Tarea);
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Mensaje_Tarea(response.delist());
+                }
+            } else {
+                if (bandera) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
+                }
+            }
+        });
+    }
+    
+    private void Obtener_Retroalimentaciones(boolean bandera){
+        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
+        modelo.setRowCount(0);
+        SwingUtilities.invokeLater(() -> {
+            Lista<RetroalimentacionesTareaModel> response = CourseRoom.Solicitudes().Obtener_Retroalimentaciones_Tarea(Id_Tarea,Id_Usuario);
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Retroalimentacion(response.delist());
+                }
+            } else {
+                if (bandera) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Retroalimentaciones", "No Se Encontraron Retroalimentaciones");
+                }
+            }
+        });
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JLabel apellidos_JLabel;
@@ -1392,12 +1404,12 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
       
         Colorear_Componentes();
         
-        Obtener_Datos_Generales_Tarea();
-        Obtener_Datos_Generales_Estudiante();
-        Obtener_Mensajes_Tarea();
-        Obtener_Retroalimentaciones();
+        Obtener_Datos_Generales_Tarea(false);
+        Obtener_Datos_Generales_Estudiante(false);
+        Obtener_Mensajes_Tarea(false);
+        Obtener_Retroalimentaciones(false);
         Obtener_Datos_Entrega_Tarea(false);
-        Obtener_Archivos_Entregados();
+        Obtener_Archivos_Entregados(false);
     }
 
     @Override
