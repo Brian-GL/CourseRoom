@@ -1090,7 +1090,33 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Obtener_Tareas_Curso(true);
+            switch (carta_Visible) {
+                case 0:
+                    Obtener_Datos_Generales_Curso(true);
+                    Obtener_Tematicas_Curso(true);
+                    break;
+                case 1:
+                    Obtener_Tareas_Curso(true);
+                    break;
+                case 2:
+                    Obtener_Miembros_Curso(true);
+                    break;
+                case 3:
+                    Obtener_Mensajes_Curso(true);
+                    break;
+                case 4:
+                    Obtener_Materiales_Curso(true);
+                    break;
+                case 5:
+                    Obtener_Grupos_Curso(true);
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    Obtener_Estadisticas_Curso(true);
+                    break;
+
+            }
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1424,7 +1450,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
     }
     
-    private void Obtener_Datos_Generales_Curso(){
+    private void Obtener_Datos_Generales_Curso(boolean bandera){
         
         DatosGeneralesCursoModel datosGeneralesCursoModel = 
                 CourseRoom.Solicitudes().Obtener_Datos_Generales_Curso(Id_Curso);
@@ -1473,20 +1499,30 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 }
             }
             
+        }else{
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales Curso", "No Se Encontraron Los Datos Generales Del Curso");
+            }
         }    
           
     }
     
-    private void Obtener_Tematicas_Curso(){
+    private void Obtener_Tematicas_Curso(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
         modelo.setRowCount(0);
         
         Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas_Curso(Id_Curso);
         
-        while(!tematicas.is_empty()){
-            Agregar_Tematica(tematicas.delist());
-        }
+        if(!tematicas.is_empty()){
+            while(!tematicas.is_empty()){
+                Agregar_Tematica(tematicas.delist());
+            }
+        }else{
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Tematicas Curso", "No Se Encontraron Las Tematicas Del Curso");
+            }
+        } 
         
     }
     
@@ -1503,7 +1539,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
     }
     
-    private void Obtener_Miembros_Curso(){
+    private void Obtener_Miembros_Curso(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
         modelo.setRowCount(0);
@@ -1516,7 +1552,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 Agregar_Miembro(response.delist());
             }
         }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Miembros Curso", "No Se Encontraron Miembros Del Curso");
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Miembros Curso", "No Se Encontraron Miembros Del Curso");
+            }
         }
         
     }
@@ -1550,7 +1588,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
     }
     
-    private void Obtener_Materiales_Curso(){
+    private void Obtener_Materiales_Curso(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) materiales_JTable.getModel();
         modelo.setRowCount(0);
@@ -1563,7 +1601,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 Agregar_Material(response.delist());
             }
         }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Materiales Curso", "No Se Encontraron Materiales Del Curso");
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Materiales Curso", "No Se Encontraron Materiales Del Curso");
+            }
         }
         
     }
@@ -1603,7 +1643,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         }
     }
     
-    private void Obtener_Grupos_Curso(){
+    private void Obtener_Grupos_Curso(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) grupos_JTable.getModel();
         modelo.setRowCount(0);
@@ -1616,7 +1656,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 Agregar_Grupo(response.delist());
             }
         }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Materiales Curso", "No Se Encontraron Materiales Del Curso");
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Materiales Curso", "No Se Encontraron Materiales Del Curso");
+            }
         }
     }
     
@@ -1663,7 +1705,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
     }
     
-    private void Obtener_Estadisticas_Curso(){
+    private void Obtener_Estadisticas_Curso(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
         modelo.setRowCount(0);
@@ -1676,7 +1718,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 Agregar_Estadistica(response.delist());
             }
         }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Materiales Curso", "No Se Encontraron Materiales Del Curso");
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Materiales Curso", "No Se Encontraron Materiales Del Curso");
+            }
         }
     }
     
@@ -1984,6 +2028,13 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Colorear_Componentes();
         
         Obtener_Tareas_Curso(false);
+        Obtener_Estadisticas_Curso(false);
+        Obtener_Grupos_Curso(false);
+        Obtener_Materiales_Curso(false);
+        Obtener_Miembros_Curso(false);
+        Obtener_Tematicas_Curso(false);
+        Obtener_Datos_Generales_Curso(false);
+        Obtener_Mensajes_Curso(false);
     }
 
     @Override
