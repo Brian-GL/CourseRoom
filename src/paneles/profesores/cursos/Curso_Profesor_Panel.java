@@ -49,6 +49,7 @@ import modelos.ArchivoModel;
 import modelos.ComboOptionModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.MensajesModel;
+import modelos.MiembrosGrupoModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 
@@ -574,6 +575,47 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                     miembros_JTable.setShowGrid(true);
                     miembros_JTable.setSurrendersFocusOnKeystroke(true);
                     miembros_JTable.setRowSorter(new TableRowSorter(miembros_JTable.getModel()));
+                    miembros_JTable.addMouseListener(new MouseAdapter() {
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+                            if (e.getClickCount() == 2) {
+
+                                JTable tabla = (JTable) e.getComponent();
+
+                                int columna = tabla.getSelectedColumn();
+
+                                if (columna == 2) {
+
+                                    int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                                        "¿Estás Segur@ De Eliminar Al Usuario?", "Remover Usuario", 
+                                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                                    if(resultado == JOptionPane.YES_OPTION){
+                                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
+                                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                        Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
+
+                                        int id_Grupo = Integer.parseInt(celda.ID());
+
+                                        SwingUtilities.invokeLater(() -> {
+                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Miembro_Curso(id_Grupo, Tablero_Estudiante_Panel.Id_Usuario());
+
+                                            if(response.Is_Success()){
+                                                CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
+                                                modelo.removeRow(fila);
+                                            }else{
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
+                                            }
+                                        });
+
+                                    }
+                                }
+
+                            }
+                        }
+                    });
                     miembros_JScrollPane.setViewportView(miembros_JTable);
 
                     curso_JLayeredPane.add(miembros_JScrollPane, "Miembros");
@@ -1841,59 +1883,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         finalizar_Curso_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_finalizar_Curso_JButtonMouseExited
 
-    public int Id_Curso() {
-        return Id_Curso;
-    }
-    
-    private void Obtener_Mensajes_Curso(){
-        
-        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-        modelo.setRowCount(0);
-        
-        SwingUtilities.invokeLater(() -> {
-            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Curso);
-
-            if (!response.is_empty()) {
-                while (!response.is_empty()) {
-                    Agregar_Mensaje_Curso(response.delist());
-                }
-            } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Curso", "No Se Encontraron Mensajes En El Curso");
-            }
-        });
-    }
-    
-    private void Agregar_Mensaje_Curso(MensajesModel mensajesModel){
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
-        String id = String.valueOf(mensajesModel.Id_Mensaje());
-        Celda_Renderer celda;
-        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
-        celdas[0] = celda;
-        if(mensajesModel.Extension().isBlank()){
-            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
-            celdas[1] = celda;
-        }else{
-            try {
-                Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-                ImageIcon icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono,mensajesModel.Mensaje(),id);
-                celdas[1] = celda;
-            } catch (IOException ex) {
-                celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
-                celdas[1] = celda;
-            }
-            
-        }
-        celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
-        celdas[2] = celda;
-
-        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-        modelo.addRow(celdas);
-        
-        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
-                CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
-    }
-    
     private XYDataset createDataset() {  
         
         XYSeriesCollection dataset = new XYSeriesCollection();  
@@ -1936,122 +1925,10 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         dataset.addSeries(series3);
 
         return dataset;  
-    }  
-    
-    private void Agregar_Interes_Tematica(String id, String interes_Tematica){
-        
-        DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();
-        Celda_Renderer[] celdas = new Celda_Renderer[1];
-        Celda_Renderer celda;
-        
-        celda = new Celda_Renderer(interes_Tematica, id);
-        celdas[0] = celda;
-        modelo.addRow(celdas);
-        
-        tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
-        
     }
     
-    private void Agregar_Interes_Tematica_Edicion(String id, String interes_Tematica){
-        try {
-            DefaultTableModel modelo = (DefaultTableModel) editar_Tematicas_JTable.getModel();
-            
-            Celda_Renderer[] celdas = new Celda_Renderer[2];
-            Celda_Renderer celda;
-            
-            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-            ImageIcon remover = new ImageIcon(icono);
-            
-            celda = new Celda_Renderer(interes_Tematica,id);
-            celdas[0] = celda;
-            
-            celda = new Celda_Renderer(remover);
-            celdas[1] = celda;
-            modelo.addRow(celdas);
-            
-            editar_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
-            
-            icono.flush();
-        } catch (IOException ex) {
-            
-        }
-    }
-    
-    private void Agregar_Tarea(String nombre_Tarea, String fecha_Creacion, String fecha_Entrega, String estatus, String _id){
-        
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-        Celda_Renderer celda;
-        DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
-        String vacio = new String();
-        Image imagen;
-        ImageIcon icono;
-        
-        try {
-           
-            celda = new Celda_Renderer(nombre_Tarea, _id);
-            celdas[0] = celda;
-            celda = new Celda_Renderer(fecha_Creacion, _id);
-            celdas[1] = celda;
-            celda = new Celda_Renderer(fecha_Entrega, _id);
-            celdas[2] = celda;
-            celda = new Celda_Renderer(estatus, _id);
-            celdas[3] = celda;
-            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-            icono  = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono,vacio);
-            celdas[4] = celda;
-            
-            //Tareas_Profesor_Panel.Agregar_Tarea_Desde_Curso(_id,nombre_Tarea, this.titulo_JLabel.getText() ,icono_Curso, fecha_Creacion, fecha_Entrega, estatus);
-            
-            modelo.addRow(celdas);
-            
-            tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Tarea.length()));
-            
-            imagen.flush();
-            imagen.getGraphics().dispose();
-        } catch (IOException ex) {
-            
-        }
-        
-    }
-    
-    private void Agregar_Miembro(String ruta_Imagen_Miembro, String nombre_Miembro, String fecha_Ingreso){
-        
-        Celda_Renderer[] celdas = new Celda_Renderer[3];
-        Celda_Renderer celda;
-        DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
-        
-        URL url_Imagen;
-        Image imagen;
-        ImageIcon icono;
-        String vacio = new String();
-        
-        try {
-            
-            url_Imagen = new URL(ruta_Imagen_Miembro);
-            imagen = ImageIO.read(url_Imagen);
-            icono = new ImageIcon(imagen);
-
-            celda = new Celda_Renderer(icono,nombre_Miembro,"");
-            celdas[0] = celda;
-            celda = new Celda_Renderer(fecha_Ingreso);
-            celdas[1] = celda;
-            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-            icono = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono,vacio);
-            celdas[2] = celda;
-            
-            modelo.addRow(celdas);
-            
-            imagen.flush();
-            imagen.getGraphics().dispose();
-            miembros_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
-        } catch (MalformedURLException ex) {
-
-        } catch (IOException ex) {
-            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Al Integrante",ex.getMessage());
-        }
-        
+    public int Id_Curso() {
+        return Id_Curso;
     }
     
     private void Agregar_Estadistica(String tarea_Calificada, String calificacion, String promedio_Curso,
@@ -2098,6 +1975,205 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         } catch(IOException ex){
             CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar La Estadística",ex.getMessage());
         }
+    }
+    
+    private void Agregar_Interes_Tematica(String id, String interes_Tematica){
+        
+        DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();
+        Celda_Renderer[] celdas = new Celda_Renderer[1];
+        Celda_Renderer celda;
+        
+        celda = new Celda_Renderer(interes_Tematica, id);
+        celdas[0] = celda;
+        modelo.addRow(celdas);
+        
+        tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
+        
+    }
+    
+    private void Agregar_Interes_Tematica_Edicion(String id, String interes_Tematica){
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) editar_Tematicas_JTable.getModel();
+            
+            Celda_Renderer[] celdas = new Celda_Renderer[2];
+            Celda_Renderer celda;
+            
+            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            ImageIcon remover = new ImageIcon(icono);
+            
+            celda = new Celda_Renderer(interes_Tematica,id);
+            celdas[0] = celda;
+            
+            celda = new Celda_Renderer(remover);
+            celdas[1] = celda;
+            modelo.addRow(celdas);
+            
+            editar_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
+            
+            icono.flush();
+        } catch (IOException ex) {
+            
+        }
+    }
+    
+    private void Agregar_Mensaje_Curso(MensajesModel mensajesModel){
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+        String id = String.valueOf(mensajesModel.Id_Mensaje());
+        Celda_Renderer celda;
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
+        celdas[0] = celda;
+        if(mensajesModel.Extension().isBlank()){
+            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
+            celdas[1] = celda;
+        }else{
+            try {
+                Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                ImageIcon icono = new ImageIcon(imagen);
+                celda = new Celda_Renderer(icono,mensajesModel.Mensaje(),id);
+                celdas[1] = celda;
+            } catch (IOException ex) {
+                celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
+                celdas[1] = celda;
+            }
+            
+        }
+        celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
+        celdas[2] = celda;
+
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.addRow(celdas);
+        
+        mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount()-1, 
+                CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
+    }
+    
+    private void Agregar_Miembro(MiembrosGrupoModel miembrosGrupoModel){
+        try {
+            
+            ComboOptionModel comboOptionModel = 
+                    new ComboOptionModel(miembrosGrupoModel.Id_Usuario(), miembrosGrupoModel.Nombre_Completo());
+            String Id_Usuario = String.valueOf(miembrosGrupoModel.Id_Usuario());
+            String nombre_Miembro = miembrosGrupoModel.Nombre_Completo();
+            String fecha_Ingreso = miembrosGrupoModel.Fecha_Ingreso();
+            
+            Image imagen;
+            ImageIcon icono;
+            
+            Celda_Renderer[] celdas = new Celda_Renderer[3];
+            Celda_Renderer celda;
+            DefaultTableModel modelo = (DefaultTableModel)miembros_JTable.getModel();
+            
+            byte[] bytes_Imagen_Grupo = 
+                    CourseRoom.Solicitudes().Obtener_Imagen_Perfil(miembrosGrupoModel.Id_Usuario());
+            
+            if(bytes_Imagen_Grupo.length > 0){
+                
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Grupo);
+                
+                if(imagen != null){
+                    
+                    
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda =  new Celda_Renderer(icono,nombre_Miembro,Id_Usuario);
+                    celdas[0] = celda;
+                    
+                }else{
+                    celda =  new Celda_Renderer(nombre_Miembro, Id_Usuario);
+                    celdas[0] = celda;
+                }
+            }
+            
+            celda = new Celda_Renderer(fecha_Ingreso,Id_Usuario);
+            celdas[1] = celda;
+            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono, Id_Usuario);
+            celdas[2] = celda;
+            modelo.addRow(celdas);
+            icono.getImage().flush();
+            miembros_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
+        } catch (IOException ex) {  
+        }
+
+    }
+    
+    private void Agregar_Tarea(String nombre_Tarea, String fecha_Creacion, String fecha_Entrega, String estatus, String _id){
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
+        String vacio = new String();
+        Image imagen;
+        ImageIcon icono;
+        
+        try {
+           
+            celda = new Celda_Renderer(nombre_Tarea, _id);
+            celdas[0] = celda;
+            celda = new Celda_Renderer(fecha_Creacion, _id);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(fecha_Entrega, _id);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(estatus, _id);
+            celdas[3] = celda;
+            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            icono  = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono,vacio);
+            celdas[4] = celda;
+            
+            //Tareas_Profesor_Panel.Agregar_Tarea_Desde_Curso(_id,nombre_Tarea, this.titulo_JLabel.getText() ,icono_Curso, fecha_Creacion, fecha_Entrega, estatus);
+            
+            modelo.addRow(celdas);
+            
+            tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Tarea.length()));
+            
+            imagen.flush();
+            imagen.getGraphics().dispose();
+        } catch (IOException ex) {
+            
+        }
+        
+    }
+    
+    private void Obtener_Mensajes_Curso(boolean bandera){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+        SwingUtilities.invokeLater(() -> {
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Curso(Id_Curso);
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Mensaje_Curso(response.delist());
+                }
+            } else {
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Curso", "No Se Encontraron Mensajes En El Curso");
+                }
+            }
+        });
+    }
+    
+    private void Obtener_Miembros_Curso(boolean bandera){
+        
+        DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        SwingUtilities.invokeLater(() -> {
+            Lista<MiembrosGrupoModel> lista
+                    = CourseRoom.Solicitudes().Obtener_Miembros_Curso(Id_Curso);
+
+            if (!lista.is_empty()) {
+                while (!lista.is_empty()) {
+                    Agregar_Miembro(lista.delist());
+                }
+            } else {
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Curso Profesor", "No Se Encontraron Miembros");
+                }
+            }
+        });
     }
     
     private void Obtener_Datos_Generales_Curso(){
@@ -2488,7 +2564,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         //Agregar_Interes_Tematica_Edicion(id, tematica);
         
-       
+        Obtener_Mensajes_Curso(false);
+        Obtener_Miembros_Curso(false);
         Colorear_Componentes();
     }
 
