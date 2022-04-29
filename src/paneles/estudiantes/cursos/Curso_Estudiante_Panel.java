@@ -22,6 +22,7 @@ import clases.Escogedor_Archivos;
 import courseroom.CourseRoom;
 import courseroom.CourseRoom_Frame;
 import datos.colecciones.Lista;
+import datos.estructuras.Nodo;
 import datos.interfaces.Carta_Visibilidad_Interface;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Envio_Interface;
@@ -57,6 +58,7 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
 import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
+import modelos.ArchivoModel;
 import modelos.ArchivosCompartidosGrupoModel;
 import modelos.ComboOptionModel;
 import modelos.DatosGeneralesCursoModel;
@@ -68,6 +70,7 @@ import modelos.ResponseModel;
 import modelos.TareasCursoModel;
 import org.apache.commons.io.FileUtils;
 import paneles.estudiantes.tareas.Tarea_Estudiante_Panel;
+import paneles.estudiantes.tareas.Tareas_Estudiante_Panel;
 
 /**
  *
@@ -77,7 +80,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private byte carta_Visible;
     private String ID_Cuestionario;
-    private Lista<Tarea_Estudiante_Panel> tareas_Estudiante_Panel;
+    private Lista<Tarea_Estudiante_Panel> tareas_Estudiante_Lista;
     private Cuestionario_Curso_Estudiante_Panel cuestionario_Curso_Estudiante_Panel;
     private int Id_Curso;
     
@@ -515,9 +518,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             JTable tabla = (JTable) e.getComponent();
                             int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                             int columna = tabla.getSelectedColumn();
-
                             DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-
                             Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
                             Tablero_Estudiante_Panel.Mostrar_Vista(celda.ID());
 
@@ -630,18 +631,24 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                                 if (e.getClickCount() == 2) {
 
                                     JTable tabla = (JTable) e.getComponent();
-                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
                                     int columna = tabla.getSelectedColumn();
 
                                     // Abrir
                                     if (columna == 1) {
+                                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                                         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                                         Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
 
                                         if(celda.Tiene_Icono()){
-                                            String extension = FilenameUtils.getExtension(celda.Texto());
-                                            String ruta = celda.ID();
-                                            CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+
+                                            int id_Mensaje = Integer.parseInt(celda.ID());
+
+                                            if (id_Mensaje > 0){
+                                                Descargar_Archivo_Chat(id_Mensaje,celda.Texto());
+                                            }else{
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                            }
                                         }
                                     }
 
@@ -1197,7 +1204,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
         SwingUtilities.invokeLater(() -> {
-            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Curso);
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Curso(Id_Curso);
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
@@ -1306,10 +1313,9 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         modelo.addRow(celdas);
         
         Tarea_Estudiante_Panel tarea_Estudiante_Panel = new Tarea_Estudiante_Panel(tareasCursoModel.Id_Tarea());
-        tareas_Estudiante_Panel.push_back(tarea_Estudiante_Panel);
+        tareas_Estudiante_Lista.push_back(tarea_Estudiante_Panel);
         
         tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Tarea.length()));
-        
     }
     
     private void Agregar_Miembro(MiembrosGrupoModel miembrosGrupoModel){
@@ -1452,7 +1458,14 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
         modelo.setRowCount(0);
         
-        
+        Tarea_Estudiante_Panel tarea_Estudiante_Panel;
+        while(!tareas_Estudiante_Lista.is_empty()){
+            tarea_Estudiante_Panel  = tareas_Estudiante_Lista.delist();
+            if(!Tareas_Estudiante_Panel.Existe_Tarea(tarea_Estudiante_Panel.Id_Tarea())){
+                Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
+                tarea_Estudiante_Panel.Limpiar();
+            }
+        }
         
         Lista<TareasCursoModel> tareas = 
                 CourseRoom.Solicitudes().Obtener_Tareas_Curso(Id_Curso, Tablero_Estudiante_Panel.Id_Usuario());
@@ -1666,6 +1679,38 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
     }
     
+    private void Descargar_Archivo_Chat(int id_Mensaje, String nombre_Archivo){
+        
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/cursos/", nombre_Archivo));
+        
+        if(!archivo.exists()){
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Curso(id_Mensaje);
+
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
+                    try {
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
+                        
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
+                        
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else{
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abandonar_Curso_JButton;
     private javax.swing.JButton actualizar_JButton;
@@ -1720,7 +1765,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     public void Iniciar_Componentes() {
         carta_Visible = 0;
         
-        tareas_Estudiante_Panel = new Lista<>();
+        tareas_Estudiante_Lista = new Lista<>();
         
         //Informacion curso:
        
@@ -1789,22 +1834,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         grupos_JTable.getTableHeader().setFont(gadugi);
         grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        grupos_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    //int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-                    if(columna == 3){
-                        //Remover
-                    }
-                }
-            }
-        });
         
       
         // Regresion lineal:
@@ -1926,6 +1955,12 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
+        }
+        
+        Tarea_Estudiante_Panel tarea_Estudiante_Panel;
+        for (Nodo<Tarea_Estudiante_Panel> nodo = tareas_Estudiante_Lista.front(); nodo != null; nodo = nodo.next()) {
+            tarea_Estudiante_Panel = nodo.element();
+            tarea_Estudiante_Panel.Colorear_Componentes();
         }
 
         
@@ -2225,6 +2260,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         modelo.setRowCount(0);
         modelo = (DefaultTableModel) grupos_JTable.getModel();
         modelo.setRowCount(0);
+        tareas_Estudiante_Lista.clear();
         
     }
 
