@@ -1071,8 +1071,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
     }
     
     private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
-        
-        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+     File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/tareas/", nombre_Archivo));
         
         if(!archivo.exists()){
 
@@ -1080,12 +1079,11 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
 
-                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
-                    File directorio = new File("/descargas/tareas/");
-                    File crear_Archivo;
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
                     try {
-                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
-                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
                         
                         CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
@@ -1100,13 +1098,12 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             });
         } else{
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
-        }
-        
+        } 
     }
     
     private void Descargar_Archivo_Adjunto(int id_Archivo, String nombre_Archivo){
         
-        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/tareas/", nombre_Archivo));
         
         if(!archivo.exists()){
 
@@ -1114,12 +1111,11 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Adjunto_Tarea(id_Archivo);
 
-                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
-                    File directorio = new File("/descargas/tareas/");
-                    File crear_Archivo;
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
                     try {
-                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
-                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
                         
                         CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
@@ -1135,7 +1131,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         } else{
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
-        
     }
     
     public int Id_Tarea() {
